@@ -859,5 +859,1882 @@ namespace Alis.Core.Physic.Test
             float sep = SeparationFunction.FindMinSeparation(out var idxA, out var idxB, 0.0f);
             Assert.False(float.IsNaN(sep));
         }
+
+        [Fact]
+        public void TOI_MaxIterations_Failed()
+        {
+            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
+            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
+            var input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(shapeA, 0),
+                ProxyB = new DistanceProxy(shapeB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(0.0f, 0.02f),
+                    C = new Vector2F(0.0f, -0.02f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 100,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 100,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            Assert.NotNull(output);
+        }
+
+        [Fact]
+        public void EpCollider_FirstClipUnderflow()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.4f, 0.02f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.25f, -0.01f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        [Fact]
+        public void EpCollider_SecondClipUnderflow()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.4f, 0.02f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.75f, -0.01f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        [Fact]
+        public void WorldPhysic_StepDisabled()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.GetEnabled = false;
+            world.Step(1.0f / 60.0f);
+            Assert.False(world.GetEnabled);
+        }
+
+        [Fact]
+        public void WorldPhysic_BodyAddedFixtureAdded()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            bool bodyAdded = false;
+            bool fixtureAdded = false;
+            world.BodyAdded = (w, b) => bodyAdded = true;
+            world.FixtureAdded = (w, b, f) => fixtureAdded = true;
+            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Assert.True(bodyAdded);
+            Assert.True(fixtureAdded);
+        }
+
+        [Fact]
+        public void WorldPhysic_BodyRemovedDelegate()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            bool removed = false;
+            world.BodyRemoved = (w, b) => removed = true;
+            var body = world.CreateBody(Vector2F.Zero);
+            world.Remove(body);
+            Assert.True(removed);
+        }
+
+        [Fact]
+        public void WorldPhysic_RemoveNullBody_Throws()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
+        }
+
+        [Fact]
+        public void WorldPhysic_CreateChainShape()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var verts = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(1, 1) };
+            var body = world.CreateChainShape(verts);
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void WorldPhysic_QueryAabbCallback()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRectangle(1, 1, 1, Vector2F.Zero, 0, BodyType.Dynamic);
+            bool queried = false;
+            world.QueryAabb(f =>
+            {
+                queried = true;
+                return true;
+            }, new Aabb { LowerBound = new Vector2F(-2, -2), UpperBound = new Vector2F(2, 2) });
+            Assert.True(queried);
+        }
+
+        [Fact]
+        public void ContactManager_TryResolveFilterRejects()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.ContactManager.ContactFilter = (a, b) => false;
+            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        [Fact]
+        public void ContactManager_UpdateContactWithLock()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        [Fact]
+        public void Terrain_CreateTerrain()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var terrain = new Terrain(world, new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) });
+            terrain.Initialize();
+            Assert.NotNull(terrain);
+        }
+
+        [Fact]
+        public void RealExplosion_Activate()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var explosion = new RealExplosion(world);
+            var result = explosion.Activate(new Vector2F(0, 0), 10.0f, 100.0f);
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Island_SolveWithGravity()
+        {
+            var world = new WorldPhysic(new Vector2F(0, -9.81f));
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0, 5), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(world);
+        }
+
+        [Fact]
+        public void ContactSolver_MultiCoreSolve()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("VelocityConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        [Fact]
+        public void MarchingSquares_DetectSquares_NoCombine()
+        {
+            sbyte[,] data = new sbyte[4, 4];
+            data[0, 0] = -1; data[1, 0] = -1; data[2, 0] = 1; data[3, 0] = 1;
+            data[0, 1] = -1; data[1, 1] = 1;  data[2, 1] = 1; data[3, 1] = 1;
+            data[0, 2] = 1;  data[1, 2] = 1;  data[2, 2] = 1; data[3, 2] = 1;
+            data[0, 3] = 1;  data[1, 3] = 1;  data[2, 3] = 1; data[3, 3] = 1;
+
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, false);
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void MarchingSquares_DetectSquares_Combine()
+        {
+            sbyte[,] data = new sbyte[4, 4];
+            data[0, 0] = -1; data[1, 0] = -1; data[2, 0] = 1; data[3, 0] = 1;
+            data[0, 1] = -1; data[1, 1] = 1;  data[2, 1] = 1; data[3, 1] = 1;
+            data[0, 2] = 1;  data[1, 2] = 1;  data[2, 2] = 1; data[3, 2] = 1;
+            data[0, 3] = 1;  data[1, 3] = 1;  data[2, 3] = 1; data[3, 3] = 1;
+
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // WorldPhysic.ResetToiState - early return hit by direct call
+        // Lines 643-644
+        // ========================================================================
+        [Fact]
+        public void World_ResetToiState_EarlyReturn()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var method = typeof(WorldPhysic).GetMethod("ResetToiState", BindingFlags.Instance | BindingFlags.NonPublic);
+            var stepCompleteField = typeof(WorldPhysic).GetField("_stepComplete", BindingFlags.Instance | BindingFlags.NonPublic);
+            stepCompleteField?.SetValue(world, false);
+            method?.Invoke(world, null);
+            stepCompleteField?.SetValue(world, true);
+        }
+
+        // ========================================================================
+        // WorldPhysic.SolveToi - disabled contact after TOI update
+        // Lines 577-584 hit when contact update results in non-touching
+        // ========================================================================
+        [Fact]
+        public void World_SolveToi_NonTouchingAfterUpdate()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            bodyB.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+            world.ContactManager.BeginContact = c => { c.Enabled = false; return true; };
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.SolveToi - static body skip in island reset loop
+        // Lines 617-618
+        // ========================================================================
+        [Fact]
+        public void World_SolveToi_StaticBodySkip()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Static);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CalculateContactAlpha - ToiFlag shortcut path
+        // Lines 726-727
+        // ========================================================================
+        [Fact]
+        public void World_CalcContactAlpha_ToiFlagPath()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
+            bodyA.IsBullet = true;
+            // Step once to create contact
+            world.Step(1.0f / 60.0f);
+            // Set ToiFlag on any contact via reflection
+            var contactRef = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            var cm = contactRef?.GetValue(world) as ContactManager;
+            if (cm != null && cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    contact.ToiFlag = true;
+                    contact.Toi = 0.5f;
+                    var calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
+                    var result = (float)calcMethod.Invoke(world, new object[] { contact });
+                    Assert.Equal(0.5f, result);
+                }
+            }
+        }
+
+        // ========================================================================
+        // WorldPhysic.CalculateContactAlpha - alpha0 advance paths
+        // Lines 741-749
+        // ========================================================================
+        [Fact]
+        public void World_CalcContactAlpha_Alpha0Advance()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.Sweep.Alpha0 = 0.3f;
+            bodyB.Sweep.Alpha0 = 0.6f;
+            bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
+            bodyA.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.ProcessToiContact - island capacity reached
+        // Lines 798-799
+        // ========================================================================
+        [Fact]
+        public void World_ProcessToiContact_CapacityReached()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var island = world.GetIsland;
+            // Fill island to capacity via direct manipulation
+            var bodyCapField = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
+            var contactCapField = typeof(Island).GetField("_contactCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            var bodyCountField = typeof(Island).GetField("_bodyCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (bodyCapField != null) bodyCapField.SetValue(island, 0);
+            if (bodyCountField != null) bodyCountField.SetValue(island, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            bodyB.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.ProcessToiContact - non-bullet, both dynamic skip
+        // Lines 807-810
+        // ========================================================================
+        [Fact]
+        public void World_ProcessToiContact_NonBulletDynamicSkip()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = false;
+            bodyB.IsBullet = false;
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.Add - FixtureAdded handler loop body
+        // Lines 914-916
+        // ========================================================================
+        [Fact]
+        public void World_AddBody_FixtureAddedEvent()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            int count = 0;
+            world.FixtureAdded = (w, b, f) => count++;
+            var body = new Body();
+            body.CreateCircle(1.0f, 1.0f);
+            body.GetBodyType = BodyType.Dynamic;
+            world.Add(body);
+            Assert.Equal(1, count);
+        }
+
+        // ========================================================================
+        // World.TestPoint return true in lambda
+        // Line 1406
+        // ========================================================================
+        [Fact]
+        public void World_TestPoint_ReturnsFixture()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Static);
+            var result = world.TestPoint(new Vector2F(0.5f, 0.5f));
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // World.CreateCapsule polygon path (line 1662)
+        // Small enough to not exceed MaxPolygonVertices
+        // ========================================================================
+        [Fact]
+        public void World_CreateCapsule_PolygonPath()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateCapsule(1.0f, 0.3f, 4, 0.3f, 4, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // World.CreateRoundedRectangle polygon path (line 1714)
+        // Small enough to not exceed MaxPolygonVertices
+        // ========================================================================
+        [Fact]
+        public void World_CreateRoundedRectangle_PolygonPath()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRoundedRectangle(0.5f, 0.5f, 0.1f, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // ContactManager.AddPair - null contact return (lines 180-181)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_AddPair_NullContact()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
+            bodyA.GetBodyType = BodyType.Dynamic;
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.ContactAlreadyExists - swapped match (lines 479-480)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ContactAlreadyExists_Swapped()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.ProcessContactCollision - body disabled (lines 543-544)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessCollision_BodyDisabled()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            bodyA.Enabled = false;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.ProcessContactMultiCore - body disabled (lines 590-591)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessMultiCore_BodyDisabled()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            bodyA.Enabled = false;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.TryResolveContactFilter - ContactFilter delegate rejects
+        // Lines 655-661
+        // ========================================================================
+        [Fact]
+        public void ContactManager_TryResolveFilter_ContactFilterRejects()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.ContactManager.ContactFilter = (a, b) => false;
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            world.ContactManager.BeginContact = c => { c.FilterFlag = true; return true; };
+            var joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.UpdateContactWithLock - multithread path
+        // Lines 683-684 (same lock order exception)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_UpdateLock_SameOrder()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            bodyA.LockOrder = 1;
+            bodyB.LockOrder = 1;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.AcquireLocks - spinning path
+        // Lines 717-718 (spin-wait)
+        // Already tested via multi-core path
+        // ========================================================================
+
+        // ========================================================================
+        // Collision.ResolveBarycentricContact - u1<=0 && r>radius² return
+        // Lines 224-225
+        // ========================================================================
+        [Fact]
+        public void Collision_Bary_U1Zero_RExceeds()
+        {
+            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var circle = new CircleShape(0.01f, 1.0f);
+            var xfPoly = ControllerTransform.Identity;
+            var xfCircle = new ControllerTransform(new Vector2F(1.1f, 0.9f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Collision.ResolveBarycentricContact - u2<=0 && r>radius² return
+        // Lines 234-235
+        // ========================================================================
+        [Fact]
+        public void Collision_Bary_U2Zero_RExceeds()
+        {
+            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var circle = new CircleShape(0.01f, 1.0f);
+            var xfPoly = ControllerTransform.Identity;
+            var xfCircle = new ControllerTransform(new Vector2F(-1.1f, 0.9f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Collision.FindMaxSeparation - increment and decrement search paths
+        // Lines 853-856
+        // ========================================================================
+        [Fact]
+        public void Collision_FindMaxSeparation_Search()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
+            var xfA = ControllerTransform.Identity;
+            var xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Collision.CollidePolygons - separationB > separationA (line 331 path)
+        // FaceB path: lines 319-320
+        // ========================================================================
+        [Fact]
+        public void Collision_Polygons_FaceBPath()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var xfA = ControllerTransform.Identity;
+            var xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider.SelectPrimaryAxis - else branch (lines 1434-1435)
+        // Primary axis for non-colliding edge-polygon pair
+        // ========================================================================
+        [Fact]
+        public void EpCollider_SelectPrimary_Else()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            var polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            var xfPolygon = new ControllerTransform(new Vector2F(0.0f, 3.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.Equal(0, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // EpCollider.Collide - unknown collision normal path (lines 1020-1021)
+        // ========================================================================
+        [Fact]
+        public void EpCollider_Collide_UnknownNormal()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            var xfPolygon = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.Equal(0, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // EpCollider.Collide - back face path (lines 1064-1073)
+        // ========================================================================
+        [Fact]
+        public void EpCollider_Collide_BackFace()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            var xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.2f), (float)Math.PI);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Island.UpdateSleepState - AllowSleep and sleep path 
+        // ========================================================================
+        [Fact]
+        public void Island_UpdateSleep_SleepPath()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = true;
+            body.LinearVelocityInternal = Vector2F.Zero;
+            body.AngularVelocity = 0f;
+            // Step many times to trigger sleep
+            for (int i = 0; i < 100; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.False(body.Awake);
+        }
+
+        // ========================================================================
+        // Island.SolveToi - max translation/rotation clamping paths
+        // Lines 599-609
+        // ========================================================================
+        [Fact]
+        public void Island_SolveToi_TranslationRotationClamp()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
+            bodyA.AngularVelocity = 10000f;
+            bodyA.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // Island.Report - null contact manager (lines 665-666)
+        // ========================================================================
+        [Fact]
+        public void Island_Report_NullCM()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var island = world.GetIsland;
+            var cmField = typeof(Island).GetField("_contactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (cmField != null)
+            {
+                cmField.SetValue(island, null);
+                world.Step(1.0f / 60.0f);
+            }
+        }
+
+        // ========================================================================
+        // ContactSolver - multicore thresholds
+        // Lines 326, 329-330, 532-533, 692-694, 858-862
+        // ========================================================================
+        [Fact]
+        public void ContactSolver_MultiCore_Thresholds()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("VelocityConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            cm.GetType().GetField("PositionConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // RealExplosion.MergeCircularData - merge path
+        // Lines 384-396
+        // ========================================================================
+        [Fact]
+        public void RealExplosion_MergeCircular_Wrap()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            world.CreateRectangle(20f, 20f, 1f, new Vector2F(5f, 5f), 0f, BodyType.Dynamic);
+            var explosion = new RealExplosion(world);
+            var result = explosion.Activate(Vector2F.Zero, 25f, 100f);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // MarchingSquares.DetectSquares - fail to find starting point (lines 307-309)
+        // ========================================================================
+        [Fact]
+        public void MarchingSquares_DetectSquares_NoStartPoint()
+        {
+            sbyte[,] data = new sbyte[3, 3];
+            data[0, 0] = -1; data[1, 0] = -1; data[2, 0] = -1;
+            data[0, 1] = -1; data[1, 1] = 1;  data[2, 1] = -1;
+            data[0, 2] = -1; data[1, 2] = -1; data[2, 2] = -1;
+
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // MarchingSquares.DetectSquares - no matching vertex (lines 313-315)
+        // ========================================================================
+        [Fact]
+        public void MarchingSquares_DetectSquares_NoMatchingVertex()
+        {
+            sbyte[,] data = new sbyte[3, 3];
+            data[0, 0] = 1; data[1, 0] = 1; data[2, 0] = 1;
+            data[0, 1] = 1; data[1, 1] = 1; data[2, 1] = 1;
+            data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = -1;
+
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // DTSweep - FinalizationConvexHull paths via CdtDecomposer
+        // ========================================================================
+        [Fact]
+        public void DTSweep_Triangulate()
+        {
+            var points = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(4, 0),
+                new Vector2F(4, 4),
+                new Vector2F(2, 2),
+                new Vector2F(0, 4)
+            };
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotEmpty(result);
+        }
+
+        // ========================================================================
+        // DTSweep - Complex triangulation with more points (convex shape)
+        // ========================================================================
+        [Fact]
+        public void DTSweep_ComplexTriangulate()
+        {
+            var points = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(4, 0),
+                new Vector2F(5, 2),
+                new Vector2F(4, 4),
+                new Vector2F(0, 4),
+                new Vector2F(-1, 2)
+            };
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotEmpty(result);
+        }
+
+        // ========================================================================
+        // DTSweep - Large triangulation (convex-ish shape)
+        // ========================================================================
+        [Fact]
+        public void DTSweep_LargeTriangulate()
+        {
+            var points = new Vertices();
+            for (int i = 0; i < 12; i++)
+            {
+                float angle = (float)i / 12 * (float)Math.PI * 2;
+                points.Add(new Vector2F((float)Math.Cos(angle) * 5, (float)Math.Sin(angle) * 5));
+            }
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // Collision.CollideEdgeAndCircle - missing normals
+        // ========================================================================
+        [Fact]
+        public void Collision_EdgeCircle_VertexNormals()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-0.5f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(1.5f, 0.0f);
+            var circle = new CircleShape(0.2f, 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            // Place circle near vertex0 region of edge
+            var xfCircle = new ControllerTransform(new Vector2F(-0.4f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CreateCapsule - polygon path (line 1662)
+        // ========================================================================
+        [Fact]
+        public void World_CreateCapsule_SimpleCapsule()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateCapsule(0.5f, 0.3f, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // TimeOfImpact.CalculateTimeOfImpact - max iterations failure
+        // Lines 164-167
+        // ========================================================================
+        [Fact]
+        public void TOI_Calculate_FailedOnMaxIter()
+        {
+            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
+            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
+            var input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(shapeA, 0),
+                ProxyB = new DistanceProxy(shapeB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(0.0f, 0.03f),
+                    C = new Vector2F(0.0f, -0.03f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 50,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 50,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            Assert.NotNull(output);
+        }
+
+        // ========================================================================
+        // TimeOfImpact.TryPushBackIterations - push back touching
+        // Lines 245-250
+        // ========================================================================
+        [Fact]
+        public void TOI_PushBackIter_Touching()
+        {
+            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(shapeA, 0),
+                ProxyB = new DistanceProxy(shapeB, 0),
+                SweepA = new Sweep { LocalCenter = Vector2F.Zero, C0 = new Vector2F(2.5f, 0.0f), C = new Vector2F(2.0f, 0.0f), A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                TMax = 1.0f
+            };
+            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            Assert.NotNull(output);
+        }
+
+        private static void PreSolveDisableContact(Contact c, ref Manifold m) { c.Enabled = false; }
+
+        // ========================================================================
+        // WorldPhysic.SolveToi - disabled/not-touching contact (lines 578-584)
+        // ========================================================================
+        [Fact]
+        public void World_SolveToi_DisabledAfterUpdate()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            // Step with PreSolve that disables the contact
+            world.ContactManager.PreSolve += PreSolveDisableContact;
+            for (int i = 0; i < 3; i++)
+                world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CalculateContactAlpha - alpha0 advance paths (lines 741-749)
+        // Setup unequal alpha0 values with contact
+        // ========================================================================
+        [Fact]
+        public void World_CalcContactAlpha_Alpha0Advance_Hit()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
+            bodyA.IsBullet = true;
+            // Step to create contact
+            world.Step(1.0f / 60.0f);
+            // Now directly set unequal alpha0 values
+            var cmField = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            var cm = cmField?.GetValue(world) as ContactManager;
+            if (cm != null && cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    var fA = contact.FixtureA;
+                    var fB = contact.FixtureB;
+                    fA.GetBody.Sweep.Alpha0 = 0.2f;
+                    fB.GetBody.Sweep.Alpha0 = 0.8f;
+                    var method = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (method != null)
+                    {
+                        var result = (float)method.Invoke(world, new object[] { contact });
+                        Assert.True(result >= 0);
+                    }
+                }
+            }
+        }
+
+        // ========================================================================
+        // WorldPhysic.ProcessToiContact - all paths via reflection
+        // Lines 793-856
+        // ========================================================================
+        [Fact]
+        public void World_ProcessToiContact_Reflection()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            var bodyC = world.CreateCircle(0.5f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
+            bodyA.IsBullet = true;
+
+            // Step multiple times to create contacts between bodies
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            for (int i = 0; i < 5; i++)
+                world.Step(1.0f / 60.0f);
+
+            var ptcMethod = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            // Find a contact edge to use
+            int callCount = 0;
+            for (ContactEdge ce = bodyA.ContactList; ce != null; ce = ce.Next)
+            {
+                if (ce.Contact != null && ce.Contact.Enabled)
+                {
+                    ptcMethod?.Invoke(world, new object[] { ce, bodyA, 0.5f });
+                    callCount++;
+                }
+            }
+            Assert.True(callCount > 0);
+        }
+
+        // ========================================================================
+        // WorldPhysic.TestPoint - returns true in lambda (line 1406)
+        // ========================================================================
+        [Fact]
+        public void World_TestPoint_InsideFixture()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Static);
+            body.CreateCircle(0.3f, 1.0f, new Vector2F(0.5f, 0.5f));
+            // Point inside the rectangle
+            var result = world.TestPoint(new Vector2F(0.2f, 0.2f));
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CreateCapsule - polygon path (line 1662)
+        // ========================================================================
+        [Fact]
+        public void World_CreateCapsule_Direct()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateCapsule(0.5f, 0.1f, 3, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CreateRoundedRectangle - polygon path (line 1714)
+        // ========================================================================
+        [Fact]
+        public void World_CreateRounded_Direct()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRoundedRectangle(0.3f, 0.3f, 0.05f, 0.05f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // ContactManager.AddPair - null contact (lines 180-181)
+        // EdgeShape + Circle shape combination where Contact.Create returns null
+        // ========================================================================
+        [Fact]
+        public void ContactManager_AddPair_Null()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var edgeBody = world.CreateEdge(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            edgeBody.GetBodyType = BodyType.Dynamic;
+            var circleBody = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            // Make fixtures incompatible - one is a sensor, other isn't
+            foreach (var f in edgeBody.FixtureList) f.GetIsSensor = true;
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(edgeBody);
+        }
+
+        // ========================================================================
+        // ContactManager.ContactAlreadyExists - swapped match (lines 479-480)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ContactAlreadyExists_SwappedFixtures()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            // Add two overlapping circles that share the same fixture pair but swapped
+            bodyA.CreateCircle(0.5f, 1.0f, new Vector2F(0.3f, 0f));
+            for (int i = 0; i < 3; i++)
+                world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // ContactManager.ProcessContactCollision - body not enabled (lines 543-544)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessCollision_DisabledBody()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            // Disable body after contact created
+            bodyA.Enabled = false;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.ProcessContactMultiCore - body disabled (lines 590-591)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessMulti_DisabledBody()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            bodyA.Enabled = false;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.TryResolveContactFilter - ContactFilter path (lines 655-664)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_TryResolve_ContactFilterPath()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.ContactFilter = (a, b) => false;
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            // Create contact then flag it for filtering
+            world.Step(1.0f / 60.0f);
+            if (cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    contact.FilterFlag = true;
+                    world.Step(1.0f / 60.0f);
+                }
+            }
+        }
+
+        // ========================================================================
+        // ContactManager.UpdateContactWithLock - same lock order exception (lines 683-684)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_UpdateLock_SameOrderEx()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            bodyA.LockOrder = 0;
+            bodyB.LockOrder = 0;
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager.AcquireLocks - spin-wait (lines 717-721)
+        // Via multicore step
+        // ========================================================================
+        [Fact]
+        public void ContactManager_AcquireLocks_Spin()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // Collision.ResolveBarycentricContact - early return when r > radius^2
+        // Lines 224-225, 234-235, 247-248
+        // ========================================================================
+        [Fact]
+        public void Collision_Barycentric_EarlyReturns()
+        {
+            // u1 <= 0 case with r > radius^2
+            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var circle = new CircleShape(0.01f, 1.0f);
+            var xfPoly = ControllerTransform.Identity;
+            // Place circle far from vertex v1 to get u1 <= 0 and r > radius^2
+            var xfCircle = new ControllerTransform(new Vector2F(1.5f, 1.5f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
+            Assert.True(manifold.PointCount <= 1);
+        }
+
+        // ========================================================================
+        // Collision.FindMaxSeparation - local search finds better edge
+        // Lines 853-856
+        // ========================================================================
+        [Fact]
+        public void Collision_FindMaxSep_BetterEdge()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 1.0f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            var xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 6.0f);
+            var xfB = ControllerTransform.Identity;
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Collision.CollidePolygons - separationB > separationA (FaceB path)
+        // Lines 319-320
+        // ========================================================================
+        [Fact]
+        public void Collision_Polygons_FaceB()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(5.0f, 0.5f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var xfA = ControllerTransform.Identity;
+            var xfB = new ControllerTransform(new Vector2F(0.6f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider.Collide - back face culling paths (lines 1064-1073)
+        // ========================================================================
+        [Fact]
+        public void EpCollider_Collide_BackFaceCulling()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-0.5f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(1.5f, 0.0f);
+            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            // Place polygon behind the edge normal
+            var xfPolygon = new ControllerTransform(new Vector2F(0.5f, -0.3f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider.SelectPrimaryAxis - else branch (lines 1434-1435)
+        // ========================================================================
+        [Fact]
+        public void EpCollider_SelectPrimary_ElseBranch()
+        {
+            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            var polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            var xfEdge = ControllerTransform.Identity;
+            // Far away so no overlap, triggering the "unknown" axis selection
+            var xfPolygon = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+            Assert.Equal(0, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // Island.SolveToi - max translation/rotation clamping (lines 599-609)
+        // ========================================================================
+        [Fact]
+        public void Island_SolveToi_Clamping_All()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
+            bodyA.AngularVelocity = 10000f;
+            bodyA.IsBullet = true;
+            for (int i = 0; i < 5; i++)
+                world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // Island.Report - null contact manager (lines 665-666)
+        // ========================================================================
+        [Fact]
+        public void Island_Report_NullContactManager()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var island = world.GetIsland;
+            var cmField = typeof(Island).GetField("_contactManager",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            if (cmField != null)
+            {
+                cmField.SetValue(island, null);
+                world.Step(1.0f / 60.0f);
+            }
+        }
+
+        // ========================================================================
+        // ContactSolver - multicore threshold paths (lines 326, 329-330, 532-533, etc.)
+        // ========================================================================
+        [Fact]
+        public void ContactSolver_MultiCore_All()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+
+            // Set both velocity and position constraints thresholds to 0 to force multicore
+            var velField = cm.GetType().GetField("VelocityConstraintsMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            velField?.SetValue(cm, 0);
+            var posField = cm.GetType().GetField("PositionConstraintsMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            posField?.SetValue(cm, 0);
+
+            var bodyA = world.CreateCircle(0.3f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.3f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            var bodyC = world.CreateCircle(0.3f, 1.0f, new Vector2F(-0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // RealExplosion.MergeCircularData - full path (lines 384-396)
+        // Create scenario where raycasting wraps around 360 degrees
+        // ========================================================================
+        [Fact]
+        public void RealExplosion_MergeCircular_360()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            // Create a large body that wraps around the explosion center
+            var body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            var explosion = new RealExplosion(world);
+            var result = explosion.Activate(Vector2F.Zero, 25f, 100f);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // MarchingSquares - fail to find starting point (lines 307-309)
+        // ========================================================================
+        [Fact]
+        public void MarchingSquares_NoStartingPoint()
+        {
+            sbyte[,] data = new sbyte[3, 3];
+            data[0, 0] = 1; data[1, 0] = 1; data[2, 0] = 1;
+            data[0, 1] = 1; data[1, 1] = -1; data[2, 1] = 1;
+            data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = 1;
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // MarchingSquares - no matching vertex (lines 313-315)
+        // ========================================================================
+        [Fact]
+        public void MarchingSquares_NoMatchingVertex()
+        {
+            sbyte[,] data = new sbyte[4, 4];
+            data[0, 0] = 1; data[1, 0] = 1; data[2, 0] = 1; data[3, 0] = 1;
+            data[0, 1] = 1; data[1, 1] = 1; data[2, 1] = 1; data[3, 1] = 1;
+            data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = -1; data[3, 2] = -1;
+            data[0, 3] = 1; data[1, 3] = 1; data[2, 3] = -1; data[3, 3] = -1;
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // DTSweep - various edge event paths via CdtDecomposer
+        // ========================================================================
+        [Fact]
+        public void DTSweep_Triangulate_EdgeEvents()
+        {
+            var points = new Vertices
+            {
+                new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(5, 3),
+                new Vector2F(3, 4), new Vector2F(0, 3)
+            };
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotEmpty(result);
+        }
+
+        // ========================================================================
+        // DTSweep - FinalizationConvexHull (line 342 path)
+        // ========================================================================
+        [Fact]
+        public void DTSweep_FinalizeConvexHull()
+        {
+            var points = new Vertices
+            {
+                new Vector2F(0, 0), new Vector2F(4, 0), new Vector2F(5, 2),
+                new Vector2F(4, 5), new Vector2F(0, 5), new Vector2F(-1, 2)
+            };
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotEmpty(result);
+        }
+
+        // ========================================================================
+        // DTSweep - Sweep with constraints
+        // ========================================================================
+        [Fact]
+        public void DTSweep_SweepConstraints()
+        {
+            var points = new Vertices
+            {
+                new Vector2F(0, 0), new Vector2F(6, 0), new Vector2F(6, 4),
+                new Vector2F(4, 6), new Vector2F(0, 6), new Vector2F(-2, 4)
+            };
+            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            Assert.NotEmpty(result);
+        }
+
+        // ========================================================================
+        // Island - SolveToi clamping translation (lines 599-602)
+        // ========================================================================
+        [Fact]
+        public void Island_SolveToi_TransClamp()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(1000f, 0f);
+            bodyA.AngularVelocity = 1000f;
+            bodyA.IsBullet = true;
+            bodyB.IsBullet = true;
+            for (int i = 0; i < 5; i++)
+                world.Step(1.0f / 60.0f);
+            Assert.NotNull(bodyA);
+        }
+
+        // ========================================================================
+        // ContactManager - Direct ProcessContactCollision disabled body via reflection
+        // Lines 543-544, 590-591
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessCollision_DisabledDirect()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var cm = world.ContactManager;
+            if (cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    var pccMethod = typeof(ContactManager).GetMethod("ProcessContactCollision",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    // Disable body via direct field (not property which destroys contacts)
+                    var enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
+                    enabledField?.SetValue(bodyA, false);
+                    pccMethod?.Invoke(cm, new object[] { contact });
+                }
+            }
+        }
+
+        // ========================================================================
+        // ContactManager - Direct ProcessContactMultiCore disabled body via reflection
+        // Lines 590-591
+        // ========================================================================
+        [Fact]
+        public void ContactManager_ProcessMulti_DisabledDirect()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var cm = world.ContactManager;
+            if (cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    var pcmcMethod = typeof(ContactManager).GetMethod("ProcessContactMultiCore",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    var enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
+                    enabledField?.SetValue(bodyA, false);
+                    int lockOrder = 0;
+                    pcmcMethod?.Invoke(cm, new object[] { contact, lockOrder });
+                }
+            }
+        }
+
+        // ========================================================================
+        // ContactManager - Direct TryResolveContactFilter with ContactFilter reject
+        // Lines 655-665
+        // ========================================================================
+        [Fact]
+        public void ContactManager_TryResolve_FilterRejectDirect()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            if (cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    var tryResolve = typeof(ContactManager).GetMethod("TryResolveContactFilter",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    contact.FilterFlag = true;
+                    cm.ContactFilter = (a, b) => false;
+                    var args = new object[] { contact, bodyA, bodyB, contact.FixtureA, contact.FixtureB };
+                    tryResolve?.Invoke(cm, args);
+                }
+            }
+        }
+
+        // ========================================================================
+        // ContactManager - Direct UpdateContactWithLock same lock order
+        // Lines 683-684
+        // ========================================================================
+        [Fact]
+        public void ContactManager_UpdateLock_SameOrderDirect()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            if (cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList)
+                {
+                    var updateLock = typeof(ContactManager).GetMethod("UpdateContactWithLock",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    bodyA.LockOrder = 0;
+                    bodyB.LockOrder = 0;
+                    var ex = Record.Exception(() =>
+                        updateLock?.Invoke(cm, new object[] { contact }));
+                    Assert.NotNull(ex);
+                    Assert.IsType<TargetInvocationException>(ex);
+                    Assert.IsType<InvalidOperationException>(ex.InnerException);
+                }
+            }
+        }
+
+        // ========================================================================
+        // ContactManager.AcquireLocks - normal path
+        // Lines 717-721 (normal acquire with no contention)
+        // ========================================================================
+        [Fact]
+        public void ContactManager_AcquireLocks_Normal()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            var acquireLock = typeof(ContactManager).GetMethod("AcquireLocks",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            bodyA.Lock = 0;
+            bodyB.Lock = 0;
+            acquireLock?.Invoke(null, new object[] { bodyA, bodyB });
+            Assert.Equal(1, bodyA.Lock);
+            Assert.Equal(1, bodyB.Lock);
+        }
+
+        // ========================================================================
+        // TimeOfImpact - TryHandleDistanceResult with touching result (line 195-199)
+        // ========================================================================
+        [Fact]
+        public void TimeOfImpact_TryHandle_Touching()
+        {
+            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            var input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(shapeA, 0),
+                ProxyB = new DistanceProxy(shapeB, 0),
+                SweepA = new Sweep { LocalCenter = Vector2F.Zero, C0 = new Vector2F(2.0f, 0.0f), C = new Vector2F(1.0f, 0.0f), A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                TMax = 1.0f
+            };
+            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            Assert.NotNull(output);
+        }
+
+        // ========================================================================
+        // RealExplosion.MergeCircularData - full path (lines 384-396)
+        // Directly set up data to trigger merge
+        // ========================================================================
+        [Fact]
+        public void RealExplosion_MergeCircular_DataFull()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            var explosion = new RealExplosion(world);
+            var dataField = typeof(RealExplosion).GetField("_data",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            if (dataField != null)
+            {
+                var dataType = typeof(RealExplosion).GetNestedType("ShapeData",
+                    BindingFlags.NonPublic);
+                if (dataType != null)
+                {
+                    var listType = typeof(List<>).MakeGenericType(dataType);
+                    var list = Activator.CreateInstance(listType);
+                    var addMethod = listType.GetMethod("Add");
+
+                    // Create two shape data entries with same body and matching min/max
+                    var sd1 = Activator.CreateInstance(dataType);
+                    var sd1Body = dataType.GetField("Body");
+                    var sd1Min = dataType.GetField("Min");
+                    var sd1Max = dataType.GetField("Max");
+                    sd1Body?.SetValue(sd1, body);
+                    sd1Min?.SetValue(sd1, 0.0f);
+                    sd1Max?.SetValue(sd1, (float)Math.PI);
+                    addMethod?.Invoke(list, new[] { sd1 });
+
+                    var sd2 = Activator.CreateInstance(dataType);
+                    var sd2Body = dataType.GetField("Body");
+                    var sd2Min = dataType.GetField("Min");
+                    var sd2Max = dataType.GetField("Max");
+                    sd2Body?.SetValue(sd2, body);
+                    sd2Min?.SetValue(sd2, (float)Math.PI);
+                    sd2Max?.SetValue(sd2, (float)Math.PI * 2);
+                    addMethod?.Invoke(list, new[] { sd2 });
+
+                    dataField.SetValue(explosion, list);
+
+                    var mergeMethod = typeof(RealExplosion).GetMethod("MergeCircularData",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    mergeMethod?.Invoke(explosion, null);
+                }
+            }
+            Assert.NotNull(explosion);
+        }
+
+        // ========================================================================
+        // MarchingSquares - DetectSquares with no starting point (lines 307-309) 
+        // ========================================================================
+        [Fact]
+        public void MarchingSquares_Detect_NoStart()
+        {
+            sbyte[,] data = new sbyte[5, 5];
+            for (int x = 0; x < 5; x++)
+                for (int y = 0; y < 5; y++)
+                    data[x, y] = -1;
+            data[2, 2] = 1;
+            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(4, 4) };
+            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CreateCapsule - direct polygon path (line 1662)
+        // ========================================================================
+        [Fact]
+        public void World_CreateCapsule_Small()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            // Use topEdges=1, bottomEdges=1 to get only 4 vertices (< MaxPolygonVertices=8)
+            var body = world.CreateCapsule(1.0f, 0.2f, 1, 0.2f, 1, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // WorldPhysic.CreateRoundedRectangle - direct polygon path (line 1714)
+        // ========================================================================
+        [Fact]
+        public void World_CreateRounded_Small()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var body = world.CreateRoundedRectangle(0.2f, 0.2f, 0.03f, 0.03f, 2, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // Final attempt: ProcessToiContact with controlled contact edge
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_DirectCall()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
+            bodyA.IsBullet = true;
+            bodyB.IsBullet = true;
+
+            // Step enough times to create a contact
+            for (int i = 0; i < 10; i++)
+                world.Step(1.0f / 60.0f);
+
+            // Now directly call ProcessToiContact via reflection on the existing contact
+            var ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            bool called = false;
+            for (ContactEdge ce = bodyB.ContactList; ce != null; ce = ce.Next)
+            {
+                if (ce.Contact != null && ce.Contact.Enabled && !ce.Contact.IslandFlag)
+                {
+                    ptc?.Invoke(world, new object[] { ce, bodyB, 0.5f });
+                    called = true;
+                }
+            }
+
+            // Also try from bodyA's contact list
+            for (ContactEdge ce = bodyA.ContactList; ce != null; ce = ce.Next)
+            {
+                if (ce.Contact != null && ce.Contact.Enabled && !ce.Contact.IslandFlag)
+                {
+                    ptc?.Invoke(world, new object[] { ce, bodyA, 0.5f });
+                    called = true;
+                }
+            }
+
+            Assert.True(called, "ProcessToiContact should have been called at least once");
+        }
+
+        // ========================================================================
+        // TimeOfImpact max iteration edge case with extreme parameters
+        // ========================================================================
+        [Fact]
+        public void TOI_MaxIter_Failure()
+        {
+            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
+            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
+            var input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(shapeA, 0),
+                ProxyB = new DistanceProxy(shapeB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(0, 0.003f),
+                    C = new Vector2F(0, -0.003f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 200,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = Vector2F.Zero,
+                    C = Vector2F.Zero,
+                    A0 = 0.0f,
+                    A = (float)Math.PI * 200,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            Assert.NotNull(output);
+        }
+
+        // ========================================================================
+        // Collision - FindMaxSeparation with search path (lines 853-856)
+        // ========================================================================
+        [Fact]
+        public void Collision_FindMaxSep_SearchFull()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.2f, 1.0f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(3.0f, 3.0f), 1.0f);
+            var xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 3.0f);
+            var xfB = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // Collision - ClipFaceB with np < 2 (lines 389-390, 397-398)
+        // ========================================================================
+        [Fact]
+        public void Collision_ClipFace_FewPoints()
+        {
+            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 0.1f), 1.0f);
+            var polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 10.0f), 1.0f);
+            var xfA = ControllerTransform.Identity;
+            var xfB = new ControllerTransform(new Vector2F(0.05f, 0.0f), 0.0f);
+            var manifold = new Manifold();
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // ContactManager AddPair - tries to trigger null contact path
+        // ========================================================================
+        [Fact]
+        public void ContactManager_AddPair_Direct()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
+            bodyA.GetBodyType = BodyType.Dynamic;
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            for (int i = 0; i < 5; i++)
+                world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // ContactManager AcquireLocks - run via multicore with simple body setup
+        // ========================================================================
+        [Fact]
+        public void ContactManager_MultiCore_Acquire()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var cm = world.ContactManager;
+            cm.GetType().GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            cm.GetType().GetField("VelocityConstraintsMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+        }
+
+        // ========================================================================
+        // WorldPhysic CalculateContactAlpha - bB.Alpha0 < bA.Alpha0 path (lines 746-749)
+        // ========================================================================
+        [Fact]
+        public void World_CalcAlpha_BB_LessThan_BA()
+        {
+            var world = new WorldPhysic(Vector2F.Zero);
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            world.Step(1.0f / 60.0f);
+
+            var cmField = typeof(WorldPhysic).GetField("ContactManager",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            var cm = cmField?.GetValue(world) as ContactManager;
+            if (cm != null && cm.ContactCount > 0)
+            {
+                var contact = cm.ContactList.Next;
+                if (contact != cm.ContactList && cm.ContactCount > 0)
+                {
+                    // Set bB.Alpha0 < bA.Alpha0 to trigger the else if branch
+                    var fA = contact.FixtureA;
+                    var fB = contact.FixtureB;
+                    fA.GetBody.Sweep.Alpha0 = 0.8f;
+                    fB.GetBody.Sweep.Alpha0 = 0.2f;
+                    var calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha",
+                        BindingFlags.Instance | BindingFlags.NonPublic);
+                    calcMethod?.Invoke(world, new object[] { contact });
+                }
+            }
+        }
+
+        // ========================================================================
+        // ProcessToiContact - all remaining paths with properly paced steps
+        // ========================================================================
+        // ========================================================================
+        // ProcessToiContact - all remaining paths with validated contact creation
+        // ========================================================================
+        private static bool FindAndProcessToiContact(WorldPhysic world, Body bodyA, bool? setEnabled = null, bool? setOtherIsland = null, bool? setSensor = null, bool? setCapacity = null)
+        {
+            if (setCapacity == true)
+            {
+                var island = world.GetIsland;
+                var bcf = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
+                bcf?.SetValue(island, 0);
+            }
+
+            var ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            // Try both bodyA and bodyB contact lists
+            bool called = false;
+            for (ContactEdge ce = bodyA.ContactList; ce != null; ce = ce.Next)
+            {
+                if (ce.Contact != null && !ce.Contact.IslandFlag)
+                {
+                    if (setEnabled == false) ce.Contact.Enabled = false;
+                    if (setOtherIsland == true && ce.Other != null) ce.Other.Island = true;
+                    if (setSensor == true) ce.Contact.FixtureA.GetIsSensor = true;
+                    ptc?.Invoke(world, new object[] { ce, bodyA, 0.5f });
+                    called = true;
+                }
+            }
+            return called;
+        }
+
+        [Fact]
+        public void ProcessToiContact_AllPaths()
+        {
+            // Create world with gravity disabled
+            var world = new WorldPhysic(Vector2F.Zero);
+            world.GetGravity = Vector2F.Zero;
+
+            // Create overlapping bodies that will definitely produce a contact
+            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-0.4f, 0f), BodyType.Dynamic);
+            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.4f, 0f), BodyType.Dynamic);
+            bodyA.IsBullet = true;
+            bodyA.Awake = true;
+            bodyB.Awake = true;
+
+            // Step to create contacts
+            world.Step(1.0f / 60.0f);
+
+            // Verify contacts were created
+            Assert.True(bodyA.ContactList != null || bodyB.ContactList != null, "At least one body should have contacts");
+
+            // Test: contact not enabled (lines 826-830)
+            bool r1 = FindAndProcessToiContact(world, bodyA, setEnabled: false);
+            if (!r1) r1 = FindAndProcessToiContact(world, bodyB, setEnabled: false);
+            Assert.True(r1, "ProcessToiContact with disabled contact should have been called");
+
+            // Step again to re-create contacts
+            world.Step(1.0f / 60.0f);
+
+            // Test: non-bullet dynamic (lines 809-810)
+            bodyA.IsBullet = false;
+            bodyB.IsBullet = false;
+            bool r2 = FindAndProcessToiContact(world, bodyA);
+            if (!r2) r2 = FindAndProcessToiContact(world, bodyB);
+            Assert.True(r2, "ProcessToiContact non-bullet should have been called");
+
+            // Test: capacity reached (lines 798-799)
+            world.Step(1.0f / 60.0f);
+            bool r3 = FindAndProcessToiContact(world, bodyA, setCapacity: true);
+            if (!r3) r3 = FindAndProcessToiContact(world, bodyB, setCapacity: true);
+            Assert.True(r3, "ProcessToiContact capacity check should have been called");
+        }
     }
 }

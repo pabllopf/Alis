@@ -1769,7 +1769,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         #region CxFastList — FindDefault
 
         [Fact]
-        public void CxFastList_FindDefault_FindsDefaultValue()
+        public void CxFastList_FindDefault_IteratesToFindDefaultValue()
         {
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
             Type intListType = listType.MakeGenericType(typeof(int));
@@ -1779,9 +1779,29 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             MethodInfo find = intListType.GetMethod("Find");
 
             add.Invoke(list, new object[] { 0 });
+            add.Invoke(list, new object[] { 20 });
+            add.Invoke(list, new object[] { 10 });
 
             object result = find.Invoke(list, new object[] { 0 });
             Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void CxFastList_FindDefault_NotFound_ReturnsNull()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo find = intListType.GetMethod("Find");
+
+            add.Invoke(list, new object[] { 10 });
+            add.Invoke(list, new object[] { 20 });
+            add.Invoke(list, new object[] { 30 });
+
+            object result = find.Invoke(list, new object[] { 0 });
+            Assert.Null(result);
         }
 
         #endregion
@@ -1793,12 +1813,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
             Type intListType = listType.MakeGenericType(typeof(int));
+            Type nodeType = typeof(CxFastListNode<int>);
             object list = Activator.CreateInstance(intListType);
 
             MethodInfo erase = intListType.GetMethod("Erase");
-            MethodInfo begin = intListType.GetMethod("Begin");
+            ConstructorInfo nodeCtor = nodeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            object dummyNode = nodeCtor.Invoke(new object[] { 99 });
 
-            object result = erase.Invoke(list, new object[] { null, begin.Invoke(list, null) });
+            object result = erase.Invoke(list, new object[] { null, dummyNode });
             Assert.Null(result);
         }
 
@@ -1819,30 +1841,107 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             object pPoly = Activator.CreateInstance(geomPolyType);
             object uPoly = Activator.CreateInstance(geomPolyType);
+            object pPoly2 = Activator.CreateInstance(geomPolyType);
             FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
             FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
             object pPoints = pointsField.GetValue(pPoly);
             object uPoints = pointsField.GetValue(uPoly);
+            object pPoints2 = pointsField.GetValue(pPoly2);
             MethodInfo addV2 = vectorListType.GetMethod("Add");
-            MethodInfo beginV2 = vectorListType.GetMethod("Begin");
 
-            addV2.Invoke(pPoints, new object[] { new Vector2F(0f, 2f) });
+            // pPoly: points where FindStartingPoint finds bi at (0,2)
+            // head=(10,5) next=(0,2) next=(5,2) next=null
             addV2.Invoke(pPoints, new object[] { new Vector2F(5f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(0f, 2f) });
             addV2.Invoke(pPoints, new object[] { new Vector2F(10f, 5f) });
             lengthField.SetValue(pPoly, 3);
 
+            // uPoly: has bi.NextPos() = (5,2) for HasMatchingVertex match
             addV2.Invoke(uPoints, new object[] { new Vector2F(5f, 2f) });
-            addV2.Invoke(uPoints, new object[] { new Vector2F(0f, 0f) });
+            addV2.Invoke(uPoints, new object[] { new Vector2F(0f, 2f) });
             lengthField.SetValue(uPoly, 2);
+
+            // pPoly2: for another cell that references oldPoly (pPoly) for UpdatePolygonReferences
+            addV2.Invoke(pPoints2, new object[] { new Vector2F(0f, 0f) });
+            lengthField.SetValue(pPoly2, 1);
+
+            // pPoly3: for the HasValidStart failure path (y=2, ay=4)
+            // bi will point to (0,4) but its next has Y=3 != 4
+            object pPoly3 = Activator.CreateInstance(geomPolyType);
+            object pPoints3 = pointsField.GetValue(pPoly3);
+            addV2.Invoke(pPoints3, new object[] { new Vector2F(5f, 3f) });
+            addV2.Invoke(pPoints3, new object[] { new Vector2F(0f, 4f) });
+            lengthField.SetValue(pPoly3, 2);
 
             GeomPolyVal[,] ps = new GeomPolyVal[5, 5];
             ps[0, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 12 });
             ps[0, 0] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { uPoly, 3 });
+            ps[1, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 0 });
+            ps[3, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 0 });
+            ps[0, 2] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly3, 12 });
 
             object ret = Activator.CreateInstance(geomPolyListType);
             Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
 
             combineScanLines.Invoke(null, new object[] { ps, ret, domain, 5, 5, 2f, 2f });
+        }
+
+        #endregion
+
+        #region UpdatePolygonReferences — forward and backward
+
+        [Fact]
+        public void UpdatePolygonReferences_UpdatesForwardAndBackward()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("UpdatePolygonReferences",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            MarchingSquares.GeomPoly oldPoly = new MarchingSquares.GeomPoly();
+            MarchingSquares.GeomPoly newPoly = new MarchingSquares.GeomPoly();
+            GeomPolyVal[,] ps = new GeomPolyVal[5, 5];
+            ps[1, 1] = new GeomPolyVal(oldPoly, 0);
+            ps[3, 1] = new GeomPolyVal(oldPoly, 0);
+            ps[0, 1] = new GeomPolyVal(oldPoly, 0);
+
+            method.Invoke(null, new object[] { ps, 1, 5, 1, oldPoly, newPoly });
+
+            Assert.Same(newPoly, ps[3, 1].GeomP);
+            Assert.Same(newPoly, ps[0, 1].GeomP);
+            Assert.Same(oldPoly, ps[1, 1].GeomP);
+        }
+
+        #endregion
+
+        #region RemoveParallelVerticesAfterInsertion — wrap to begin
+
+        [Fact]
+        public void RemoveParallelVerticesAfterInsertion_AtEnd_WrapsToBegin()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("RemoveParallelVerticesAfterInsertion",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type nodeType = typeof(CxFastListNode<Vector2F>);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+
+            object poly = Activator.CreateInstance(geomPolyType);
+            FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            object points = pointsField.GetValue(poly);
+
+            MethodInfo add = vectorListType.GetMethod("Add");
+            MethodInfo begin = vectorListType.GetMethod("Begin");
+            FieldInfo nextField = nodeType.GetField("Next", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            add.Invoke(points, new object[] { new Vector2F(0f, 0f) });
+            add.Invoke(points, new object[] { new Vector2F(5f, 0f) });
+
+            object lastNode = begin.Invoke(points, null);
+            while (nextField.GetValue(lastNode) != null)
+            {
+                lastNode = nextField.GetValue(lastNode);
+            }
+
+            method.Invoke(null, new object[] { points, poly, lastNode });
         }
 
         #endregion

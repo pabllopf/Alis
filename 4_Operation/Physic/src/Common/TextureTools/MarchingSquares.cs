@@ -911,10 +911,11 @@ namespace Alis.Core.Physic.Common.TextureTools
                 CxFastListNode<T> i = Begin();
                 int count = 0;
 
-                do
+                while (i != null)
                 {
                     count++;
-                } while (i.NextPos() != null);
+                    i = i.NextPos();
+                }
 
                 return count;
             }
@@ -979,7 +980,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     }
 
                     head = head.Next;
-                } while (head != _head);
+                } while (head != null && head != _head);
 
                 return null;
             }
@@ -999,7 +1000,7 @@ namespace Alis.Core.Physic.Common.TextureTools
                     }
 
                     head = head.Next;
-                } while (head != _head);
+                } while (head != null && head != _head);
 
                 return null;
             }

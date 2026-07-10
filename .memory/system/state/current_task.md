@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 226 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 239 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
+    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    93.8% (Line: 93.8%, Branch: None%)
+    96.5% (Line: 98.5%, Branch: 92.6%)
 
     ### Uncovered Lines
-    1
+    2
 
     ### Uncovered Branches
-    0
+    5
 
     ### Method
-    ImDrawCmd
+    DialogManager
 
     ### Complexity / LOC
-    23 / 24 lines
+    51 / 170 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImDrawCmd.cs
+//  File:DialogManager.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
+using Alis.Extension.Language.Dialogue.Core;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Extension.Language.Dialogue
 {
     /// <summary>
-    ///     The im draw cmd
+    ///     Unified dialog manager with support for basic and advanced features including state machine, events, and conditions
     /// </summary>
-    public struct ImDrawCmd
+    public class DialogManager
     {
         /// <summary>
-        ///     The clip rect
+        ///     The event publisher
         /// </summary>
-        public Vector4F ClipRect { get; set; }
+        private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
 
         /// <summary>
-        ///     The texture id
+        ///     The dialog dictionary
         /// </summary>
-        public IntPtr TextureId { get; set; }
+        internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
 
         /// <summary>
-        ///     The vtx offset
+        ///     The current dialog context
         /// </summary>
-        public uint VtxOffset { get; set; }
+        private DialogContext _currentContext;
 
         /// <summary>
-        ///     The idx offset
+        ///     The last dialog state (for tracking after dialog ends)
         /// </summary>
-        public uint IdxOffset { get; set; }
-
-        /// <summary>
+        private DialogStateType _lastState = DialogStateType.Idle;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImDrawCmdTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/test/DialogManagerTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImDrawCmd.cs
+    Commit format: test: coverage DialogManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

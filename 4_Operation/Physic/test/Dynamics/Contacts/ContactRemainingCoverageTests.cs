@@ -176,11 +176,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         [Fact]
-        public void ReportSeparation_AllHandlers_FireAll()
+        public void ReportSeparation_CalledWhenBodiesSeparateButAabbsOverlap()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.4f, 0.0f), BodyType.Dynamic);
 
             int fixtureASepCount = 0;
             int fixtureBSepCount = 0;
@@ -200,9 +200,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.ContactManager.EndContact = contact => endContactCount++;
 
             world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
 
-            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
+            bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(1.01f, 0.0f), 0.0f);
 
             world.Step(1.0f / 60.0f);
 
@@ -222,14 +223,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Fixture circleFixture = new Fixture(new CircleShape(0.5f, 1.0f));
             Fixture polygonFixture = new Fixture(new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f));
 
-            Contact c1 = Contact.Create(contactManager, circleFixture, 0, polygonFixture, 0);
-            Assert.NotNull(c1);
+            Contact poolCandidate = Contact.Create(contactManager, circleFixture, 0, polygonFixture, 0);
 
-            c1.Destroy();
+            poolCandidate.Next = contactManager.ContactPoolList.Next;
+            contactManager.ContactPoolList.Next = poolCandidate;
 
             Fixture edgeFixture = new Fixture(new EdgeShape());
-            Contact c2 = Contact.Create(contactManager, circleFixture, 0, edgeFixture, 0);
-            Assert.NotNull(c2);
+            Contact result = Contact.Create(contactManager, circleFixture, 0, edgeFixture, 0);
+            Assert.NotNull(result);
         }
     }
 }
