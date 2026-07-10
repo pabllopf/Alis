@@ -31,7 +31,7 @@ updated: 2026-07-10T09:15:00Z
 | 2 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs | 0.0% | 5 | - | Operation | ✅ |
 | 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ⬅ ACTIVE |
 | 4 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 51.5% | 14 | - | Operation | ⬜ |
-| 5 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs | 26.9% | 120 | - | Application | ⬜ |
+| 5 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs | 26.9% | 120 | - | Application | ✅ |
 | 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 24.2% | 151 | - | Application | ⬜ Blocked (OpenGL) |
 | 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 41.7% | 151 | - | Application | ⬜ Blocked (OpenGL + ECS) |
 
@@ -39,7 +39,9 @@ updated: 2026-07-10T09:15:00Z
 
 | File | Tests Added | Lines Added | Commit |
 |------|------------|-------------|--------|
-| SingleComponentUpdateFilter.cs | 4 | 132 | PENDING |
+| ContactManager.cs | 10 | ~200 | 2b4747171 |
+| Collision.cs | 17 | ~400 | 52218b656 |
+| SingleComponentUpdateFilter.cs | 4 | 132 | 323a3e7a9 |
 | DistanceJoint.cs | 13 | 282 | a4e02bafd |
 | FrictionJoint.cs | 13 | 199 | e547ea826 |
 | GearJoint.cs | 12 | 299 | d53583d51 |
@@ -49,6 +51,8 @@ updated: 2026-07-10T09:15:00Z
 | GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
 | Body.cs (simulation paths) | 6 | 165 | afdda294d |
 | Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
+| ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
+| WorldPhysic.cs | 61 | ~1200 | pending |
 
 ## Notes
 
