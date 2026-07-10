@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 239 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 243 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs
 
     ### Language
     cs
 
     ### Coverage
-    96.5% (Line: 98.5%, Branch: 92.6%)
+    96.8% (Line: 100.0%, Branch: 90.0%)
 
     ### Uncovered Lines
-    2
+    0
 
     ### Uncovered Branches
-    5
+    1
 
     ### Method
-    DialogManager
+    CorridorData
 
     ### Complexity / LOC
-    51 / 170 lines
+    16 / 37 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:DialogManager.cs
+//  File:CorridorData.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using Alis.Core.Aspect.Logging;
-using Alis.Extension.Language.Dialogue.Core;
+using Alis.Core.Aspect.Data.Json;
+using HashCode = Alis.Core.Aspect.Math.HashCode;
 
-namespace Alis.Extension.Language.Dialogue
+namespace Alis.Extension.Math.ProceduralDungeon.Models
 {
     /// <summary>
-    ///     Unified dialog manager with support for basic and advanced features including state machine, events, and conditions
+    ///     Represents the data structure for a corridor in the dungeon.
+    ///     This is an immutable data structure that holds corridor information.
     /// </summary>
-    public class DialogManager
+    [Serializable]
+    public readonly partial struct CorridorData : IEquatable<CorridorData>
     {
         /// <summary>
-        ///     The event publisher
+        ///     Initializes a new instance of the <see cref="CorridorData" /> struct.
         /// </summary>
-        private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
+        /// <param name="xPos">The x position of the corridor on the board.</param>
+        /// <param name="yPos">The y position of the corridor on the board.</param>
+        /// <param name="width">The width of the corridor.</param>
+        /// <param name="height">The height of the corridor.</param>
+        /// <param name="direction">The direction the corridor is facing.</param>
+        public CorridorData(int xPos, int yPos, int width, int height, Direction direction)
+        {
+            XPos = xPos;
+            YPos = yPos;
+            Width = width;
+            Height = height;
+            Direction = direction;
+        }
 
         /// <summary>
-        ///     The dialog dictionary
-        /// </summary>
-        internal readonly Dictionary<string, Dialog> Dialogs = new Dictionary<string, Dialog>();
-
-        /// <summary>
-        ///     The current dialog context
-        /// </summary>
-        private DialogContext _currentContext;
-
-        /// <summary>
-        ///     The last dialog state (for tracking after dialog ends)
-        /// </summary>
-        private DialogStateType _lastState = DialogStateType.Idle;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/test/DialogManagerTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/test/Models/CorridorDataTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DialogManager.cs
+    Commit format: test: coverage CorridorData.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

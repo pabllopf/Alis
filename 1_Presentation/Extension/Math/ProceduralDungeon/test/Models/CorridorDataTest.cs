@@ -87,6 +87,20 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
+        ///     Tests that equals should return false when only width differs (short-circuit branch coverage).
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnFalse_WhenOnlyWidthDiffers()
+        {
+            CorridorData corridorData1 = new CorridorData(15, 25, 4, 6, Direction.North);
+            CorridorData corridorData2 = new CorridorData(15, 25, 5, 6, Direction.North);
+
+            bool result = corridorData1.Equals(corridorData2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
         ///     Tests that equality operator should return true for equal corridor data.
         /// </summary>
         [Fact]
