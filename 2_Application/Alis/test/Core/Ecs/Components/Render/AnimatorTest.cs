@@ -642,5 +642,99 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
+
+        [Fact]
+        public void Animator_GetCurrentFrame_OnDefaultStruct_ThrowsNullReference()
+        {
+            Animator animator = default;
+
+            Assert.Throws<NullReferenceException>(() => _ = animator.GetCurrentFrame());
+        }
+
+        [Fact]
+        public void Animator_Play_OnDefaultStruct_ThrowsNullReference()
+        {
+            Animator animator = default;
+
+            Assert.Throws<NullReferenceException>(() => animator.Play("test"));
+        }
+
+        [Fact]
+        public void Animator_NextFrame_OnDefaultStruct_ThrowsNullReference()
+        {
+            Animator animator = default;
+
+            Assert.Throws<NullReferenceException>(() => animator.NextFrame());
+        }
+
+        [Fact]
+        public void Animator_OnStart_AfterOnExit_ClockRestarts()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 1f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+            animator.OnExit(null!);
+            animator.OnStart(null!);
+
+            animator.OnUpdate(null!);
+            Assert.Equal(0, animator.CurrentFrameIndex);
+        }
+
+        [Fact]
+        public void Animator_OnUpdate_WithHighSpeed_MultipleUpdates()
+        {
+            Animator animator = new Animator();
+            animator.Animations = new List<Animation>
+            {
+                new Animation
+                {
+                    Name = "TestAnim",
+                    Speed = 10000f,
+                    Frames = new List<Frame>
+                    {
+                        new Frame { NameFile = "frame1" },
+                        new Frame { NameFile = "frame2" },
+                        new Frame { NameFile = "frame3" }
+                    }
+                }
+            };
+            animator.Play("TestAnim");
+            animator.OnStart(null!);
+            System.Threading.Thread.Sleep(30);
+            animator.OnUpdate(null!);
+
+            Assert.InRange(animator.CurrentFrameIndex, 1, 2);
+        }
+
+        [Fact]
+        public void Animator_AddAnimation_WithMultipleAnimations_OrdersCorrectly()
+        {
+            Animator animator = new Animator();
+            Animation first = new Animation("first", 0, 1f);
+            Animation second = new Animation("second", 1, 2f);
+            Animation third = new Animation("third", 2, 3f);
+
+            animator.AddAnimation(first);
+            animator.AddAnimation(second);
+            animator.AddAnimation(third);
+
+            Assert.Equal(3, animator.Animations.Count);
+            Assert.Equal("first", animator.Animations[0].Name);
+            Assert.Equal("second", animator.Animations[1].Name);
+            Assert.Equal("third", animator.Animations[2].Name);
+        }
     }
 }
