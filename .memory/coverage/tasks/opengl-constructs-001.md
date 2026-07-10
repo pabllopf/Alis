@@ -8,10 +8,11 @@
 ### Approach
 Created `GlMock.cs` — a delegate-based mock system for `Gl.cs` that provides managed implementations of OpenGL functions via `Marshal.GetFunctionPointerForDelegate`. Registered mock functions for 25+ OpenGL operations (create/compile/link shaders, uniforms, buffers, etc.) and initialized `Gl.Initialize()` with the mock `GetProcAddress`.
 
-### Tests Added (19 total)
-- `GLShaderCoverageTest.cs` — 7 tests (create vertex/fragment shaders, compile failure, dispose, shader log)
-- `GLShaderProgramCoverageTest.cs` — 10 tests (create from shaders/strings, link failure, use, get locations, dispose, indexer)
-- `GLShaderProgramParamCoverageTest.cs` — 2 tests (create param, get location from program)
+### Tests Added (26 total, in Constructs/ directory)
+- `GlMock.cs` — delegate-based mock for 40+ OpenGL functions
+- `GlShaderMockCoverageTest.cs` — 4 tests (create shaders, compile failure, dispose)
+- `GlShaderProgramMockCoverageTest.cs` — 5 tests (create program, link failure, Use(), GetUniformLocation, dispose)
+- `GlCoverageMockTest.cs` — 17 tests (Gl wrapper methods: GetShaderCompileStatus, GetShaderInfoLog, GetProgramLinkStatus, GetProgramInfoLog, GenBuffer, GenVertexArray, GenTexture, GetError, ActiveTexture, LineWidth, GenerateMipmap, DeleteBuffer, DeleteVertexArray, DeleteTexture, ShaderSource)
 
 ### Key Paths Covered
 - GLShader constructor with valid/invalid sources
@@ -24,4 +25,4 @@ Created `GlMock.cs` — a delegate-based mock system for `Gl.cs` that provides m
 - GLShaderProgramParam creation and GetLocation
 
 ### Status
-Completed — 19 new tests, all passing with mocked OpenGL delegates
+Completed — 26 new tests, all passing with mocked OpenGL delegates
