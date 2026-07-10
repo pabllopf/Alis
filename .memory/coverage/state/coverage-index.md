@@ -52,7 +52,7 @@ updated: 2026-07-10T09:15:00Z
 | Body.cs (simulation paths) | 6 | 165 | afdda294d |
 | Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
 | ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
-| WorldPhysic.cs | 61 | ~1200 | pending |
+| WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
 
 ## Notes
 
