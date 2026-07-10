@@ -52,6 +52,15 @@
 
 ---
 
+## Entry 6 — 2026-07-10T00:05:00Z
+
+- **Commit:** pending
+- **File:** ComponentRegistry.cs
+- **Tests Added:** 6 (ComponentRegistryRemainingTest.cs)
+- **Key Paths:** Non-component type error, source-generator error, existing type stable ID, new type setup, register idempotency
+
+---
+
 ## Entry 5 — 2026-07-10T00:04:00Z
 
 - **Commit:** 323a3e7a9
@@ -80,3 +89,15 @@
   - `RangeRun_MultipleUpdates_AccumulatesCorrectly`
 - **Key Paths:** Range-based Run with deferred entity position verification, single deferred entity edge case, multi-update accumulation
 - **Status:** All 11 GameObjectUpdate tests passing
+
+---
+
+## Entry 8 — 2026-07-10T09:21:00Z
+
+- **Commit:** 223d053c6
+- **File:** GameObjectUpdate.cs (additional coverage)
+- **Tests Added:** 1
+  - `RangeRun_SameTypeDeferredEntities_TriggersRangeBasedRun`
+- **Key Paths:** Range-based Run called with `SelfSpawningComponent` that spawns entities with the same component type, triggering the range-based Run for `GameObjectUpdate<SelfSpawningComponent, Position>`
+- **Technique:** Self-referencing component that creates entities with itself in Update, triggering UpdateSubset path with same archetype
+- **Status:** All 3,106 ECS tests passing
