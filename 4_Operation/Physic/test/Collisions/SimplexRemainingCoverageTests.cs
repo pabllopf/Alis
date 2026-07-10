@@ -91,7 +91,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ReadCache_WithCount3_ShouldRestoreThreeVertices()
         {
-            PolygonShape poly = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            Vertices triVerts = new Vertices
+            {
+                new Vector2F(-2.0f, -2.0f),
+                new Vector2F(2.0f, -2.0f),
+                new Vector2F(0.0f, 2.0f)
+            };
+            PolygonShape poly = new PolygonShape(triVerts, 1.0f);
             CircleShape circle = new CircleShape(0.5f, 1.0f);
             DistanceProxy proxyA = new DistanceProxy(poly, 0);
             DistanceProxy proxyB = new DistanceProxy(circle, 0);
@@ -101,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collisions
             SimplexCache cache = new SimplexCache
             {
                 Count = 3,
-                Metric = 1.0f
+                Metric = 16.0f
             };
             cache.IndexA[0] = 0;
             cache.IndexA[1] = 1;
@@ -205,11 +211,11 @@ namespace Alis.Core.Physic.Test.Collisions
                 V = new FixedArray3<SimplexVertex>()
             };
             simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
+            simplex.V[1] = new SimplexVertex { W = new Vector2F(2.0f, 0.0f) };
 
             Vector2F direction = simplex.GetSearchDirection();
 
-            Assert.Equal(new Vector2F(0.0f, 0.0f), direction);
+            Assert.Equal(new Vector2F(0.0f, -1.0f), direction);
         }
 
         [Fact]
