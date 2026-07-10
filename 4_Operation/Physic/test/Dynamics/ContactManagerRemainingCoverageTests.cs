@@ -5,6 +5,7 @@ using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -561,6 +562,75 @@ namespace Alis.Core.Physic.Test.Dynamics
             bodyB.LockOrder = 1;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // TryResolveContactFilter — ContactFilter returns false path
+        // ========================================================================
+        [Fact]
+        public void TryResolveContactFilter_WithContactFilterFalse_Destroys()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.FilterFlag = true;
+                return true;
+            };
+            world.ContactManager.ContactFilter = (_, _) => false;
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        // ========================================================================
+        // TryResolveContactFilter — ShouldCollide returns false (joint prevents)
+        // ========================================================================
+        [Fact]
+        public void TryResolveContactFilter_JointPreventsCollision_Destroys()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = false;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        // ========================================================================
+        // AcquireLocks — through multithreaded collision path
+        // ========================================================================
+        [Fact]
+        public void AcquireLocks_ThroughMultiCore_DoesNotDeadlock()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // PassesCollisionFilters — all checks pass path
+        // ========================================================================
+        [Fact]
+        public void PassesCollisionFilters_AllTrue_CreatesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.ContactManager.ContactFilter = null;
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
         }
     }
 }

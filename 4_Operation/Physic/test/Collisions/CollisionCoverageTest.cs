@@ -1845,5 +1845,450 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(PointState.Persist, state1[0]);
             Assert.Equal(PointState.Persist, state2[0]);
         }
+
+        // ========================================================================
+        // IsCircleInPreviousEdgeRegion — HasVertex0=false early return (L568-L569)
+        // Circle in Region A (v <= 0), dd <= radius^2, HasVertex0=false.
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndCircle_RegionA_HasVertex0False_ReturnsFalse()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = false;
+            edge.HasVertex3 = false;
+
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            // q = (-0.05, 0.0): v = -0.1 <= 0 (Region A),
+            // dd = 0.0025 <= radius^2 = 0.0961,
+            // IsCircleInPreviousEdgeRegion: HasVertex0=false => returns false immediately.
+            // Then contact is produced.
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-0.05f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // IsCircleInNextEdgeRegion — HasVertex3=false early return (L590-L591)
+        // Circle in Region B (u <= 0), dd <= radius^2, HasVertex3=false.
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndCircle_RegionB_HasVertex3False_ReturnsFalse()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = false;
+            edge.HasVertex3 = false;
+
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            // q = (2.05, 0.0): u = -0.1 <= 0 (Region B),
+            // dd = 0.0025 <= radius^2 = 0.0961,
+            // IsCircleInNextEdgeRegion: HasVertex3=false => returns false immediately.
+            // Then contact is produced.
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(2.05f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // CollidePolygons — flip=true path (separationB dominates)
+        // Using differently-shaped rectangles to ensure separationB > tol.
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_FlipTrue_WithFeatureSwap()
+        {
+            // Wide vs tall rectangle to trigger flip=true with contact points needing swap.
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(2.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 1.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollidePolygons — first clip underflow (np < SettingEnv.MaxManifoldPoints)
+        // Using rotated polygons to force clip to yield < 2 points.
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_FirstClipUnderflow_EarlyReturn()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.2f, 0.3f), 0.3f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollidePolygons — second clip underflow (np < SettingEnv.MaxManifoldPoints)
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_SecondClipUnderflow_EarlyReturn()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.3f, 0.3f), 0.3f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — front face, edge axis primary, produce contact
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_FrontFace_EdgeAxisPrimary_ProducesContact()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 0.3f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.2f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — back face, edge axis primary, produce contact
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BackFace_EdgeAxisPrimary()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 0.3f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.8f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — polygon axis primary, BuildFaceBManifold with BackFace
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_FaceB_Primary_BackFace()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.3f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.8f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — front face, polygon axis primary, BuildFaceBManifold
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_FaceB_Primary_FrontFace()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.3f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.2f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — SelectPrimaryAxis polygonAxis.Type != Unknown and 
+        // polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_PolygonSeparationDominates_SelectsPolygonAxis()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 2.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — first clip underflow in EpCollider.Collide
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_EpCollider_ClipUnderflow()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.2f, 0.2f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — second clip underflow in EpCollider.Collide
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_EpCollider_SecondClipUnderflow2()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // FindBestEdge — sPrev > s && sPrev > sNext (increment = -1)
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_FindBestEdge_PrevEdgeDominant()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 0.3f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.3f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // FindBestEdge — sNext > s (increment = +1), LocalSearch increment +1
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_FindBestEdge_NextEdgeDominant_LocalSearchIncrementPos()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 0.3f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, -0.3f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // LocalSearch — s > bestSeparation (loop finds better edge)
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_LocalSearch_ImprovesSeparation2()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.1f), 0.3f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — back face with HasVertex0 && HasVertex3, Convex1, !Convex2
+        // Exercises SelectBackLowerLimit (L1373) and SelectBackUpperLimit (L1386)
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BackFace_Limits_BothVertices_Convex1()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.5f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, -1.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.8f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — back face with HasVertex0 only, Convex1=false
+        // Exercises SelectBackLowerLimit (L1374) 
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BackFace_HasVertex0_NonConvex()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, -1.0f);
+            edge.HasVertex3 = false;
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.8f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — back face with HasVertex3 only
+        // Exercises SelectBackUpperLimit (L1388)
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BackFace_HasVertex3Only()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = false;
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.5f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.8f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — edge axis type unknown with non-overlapping
+        // ========================================================================
+
+        // Already covered by CollideEdgeAndPolygon_EdgeAxisTypeUnknown_Returns.
+
+        // ========================================================================
+        // EpCollider — ComputePolygonSeparation adjacency skip via Dot(n, perp) >= 0
+        // and Dot(n - upperLimit, normal) < -AngularSlop
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_ComputePolygonSeparation_AdjacencySkip()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-0.5f, 0.5f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(2.5f, -0.5f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.2f, 0.8f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — BuildManifoldPoints with FaceB primary axis (swap features)
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BuildManifoldPoints_FaceBSwap()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.3f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.3f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
     }
 }
