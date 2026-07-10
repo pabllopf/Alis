@@ -1,7 +1,7 @@
 # Coverage Summary
 
 ## Latest
-- **File**: `WebSocketClientFactory.cs`
-- **Coverage**: 55.4% → ~78.5%
-- **Tests Added**: 24
-- **Commit**: Pending
+- **File**: `NetworkServerManager.cs`
+- **Coverage**: 61.1% → ~77.0%
+- **Tests Added**: 21
+- **Commit**: f724a7109
