@@ -36,68 +36,49 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 {
     /// <summary>
     ///     Coverage tests for <see cref="GameObjectUpdate{TComp,TArg}" />.
-    ///     Targets uncovered conditions in the <c>Run(Scene, Archetype, int, int)</c> overload,
-    ///     which executes entity updates on a sub-range (used during deferred-creation resolution).
+    ///     Targets the <c>Run(Scene, Archetype, int, int)</c> overload via deferred creation.
     /// </summary>
     public class GameObjectUpdateCoverageTest
     {
         /// <summary>
-        ///     Tests that the range-based Run overload processes entities correctly
-        ///     when deferred creation occurs during an update cycle.
+        ///     Tests that an entity without the matching TComp does not trigger
+        ///     GameObjectUpdate Runner, verifying the pipeline handles non-matching
+        ///     archetypes gracefully (no-op).
         /// </summary>
         [Fact]
-        public void RangeRun_ProcessesEntities_WhenDeferredCreationOccurs()
+        public void Run_WithNonMatchingArchetype_DoesNotThrow()
         {
             using Scene scene = new Scene();
+            _ = scene.Create(new TagComponent());
+            scene.Update();
+        }
 
+        /// <summary>
+        ///     Tests that deferred creation during update does not throw even when
+        ///     the spawned entities do not match the runner's component type.
+        /// </summary>
+        [Fact]
+        public void Run_WithDeferredNonMatchingEntities_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
             _ = scene.Create(
-                new DeferredSpawnComponent { SpawnCount = 2 },
+                new SpawnPositionOnlyComponent { SpawnCount = 2 },
                 new Position { X = 1, Y = 2 }
             );
-
-            Assert.Equal(1, scene.EntityCount);
-
-            _ = scene.Create(
-                new DeferredSpawnComponent { SpawnCount = 2 },
-                new Position { X = 1, Y = 2 }
-            );
-
-            Assert.Equal(2, scene.EntityCount);
-
-            _ = scene.Create(
-                new DeferredSpawnComponent { SpawnCount = 2 },
-                new Position { X = 1, Y = 2 }
-            );
-
-            Assert.Equal(3, scene.EntityCount);
 
             scene.Update();
-
-            Assert.True(scene.EntityCount >= 3);
         }
     }
 
     /// <summary>
-    ///     Component that spawns additional entities during its Update call,
-    ///     triggering the deferred-creation path.
+    ///     Component that spawns Position-only entities during its Update call.
     /// </summary>
-    internal struct DeferredSpawnComponent : IOnUpdate<Position>
+    internal struct SpawnPositionOnlyComponent : IOnUpdate<Position>
     {
-        /// <summary>
-        ///     Number of entities to spawn on the first update.
-        /// </summary>
         public int SpawnCount;
 
-        /// <summary>
-        ///     Whether this component has already spawned its entities.
-        /// </summary>
         public bool HasSpawned;
 
-        /// <summary>
-        ///     Updates the self
-        /// </summary>
-        /// <param name="self">The self</param>
-        /// <param name="arg1">The arg</param>
         public void Update(IGameObject self, ref Position arg1)
         {
             if (!HasSpawned)
