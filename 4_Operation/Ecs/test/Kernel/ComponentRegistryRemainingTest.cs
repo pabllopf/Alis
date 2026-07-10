@@ -21,7 +21,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void GetComponentFactoryFromType_IComponentBaseType_ThrowsWithGeneratorMessage()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(Position)));
+                Component.GetComponentFactoryFromType(typeof(IOnInit)));
 
             Assert.Contains("source generator", ex.Message);
         }
@@ -56,6 +56,45 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             ComponentId id = Component.GetComponentId(typeof(Velocity));
             Assert.True(id.RawIndex >= 0);
+        }
+
+        [Fact]
+        public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
+        {
+            var result = Component.GetExistingOrSetupNewComponent<Armor>();
+
+            Assert.NotNull(result.ComponentID);
+            Assert.Null(result.Initer);
+            Assert.Null(result.Destroyer);
+        }
+
+        [Fact]
+        public void GetComponentId_AfterRegisterComponent_ReturnsValidId()
+        {
+            Component.RegisterComponent<Uri>();
+
+            ComponentId id = Component.GetComponentId(typeof(Uri));
+
+            Assert.True(id.RawIndex >= 0);
+        }
+
+        [Fact]
+        public void GetExistingOrSetupNewComponent_ExistingType_ReturnsCachedDelegates()
+        {
+            var first = Component.GetExistingOrSetupNewComponent<Damage>();
+            var second = Component.GetExistingOrSetupNewComponent<Damage>();
+
+            Assert.Equal(first.ComponentID, second.ComponentID);
+            Assert.Equal(first.Initer, second.Initer);
+        }
+
+        [Fact]
+        public void GetComponentId_NonExistentPlainType_ThrowsWithRegisterMessage()
+        {
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                Component.GetComponentFactoryFromType(typeof(DateTime)));
+
+            Assert.Contains("RegisterComponent", ex.Message);
         }
     }
 }
