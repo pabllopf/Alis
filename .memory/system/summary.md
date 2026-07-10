@@ -43,3 +43,10 @@
 - **Tests Added**: 15
 - **Commit**: `256fb1150`
 - **File**: `1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs`
+
+### GameObject.cs
+- **Coverage Before**: 75.0%
+- **Coverage After**: ~82.0%
+- **Tests Added**: 50
+- **Commit**: `76971ea4d`
+- **File**: `4_Operation/Ecs/src/GameObject.cs`

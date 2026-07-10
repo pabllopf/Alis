@@ -147,6 +147,7 @@
   "pabllopf-official_alis:4_Operation/Audio/src/Players/LinuxPlayer.cs",
   "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs",
   "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObject.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Archetype.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
