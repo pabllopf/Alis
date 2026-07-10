@@ -203,6 +203,7 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "system/results/DropBoxCloudManager_result.md",
     "system/results/RopeJoint_result.md",
     "system/results/ImFontGlyphRangesBuilder_result.md",
     "system/results/ImDrawListPtr_result.md",
@@ -228,7 +229,6 @@
     "system/results/Clipboard.cs_result.md",
     "system/results/Joystick.cs_result.md",
     "system/results/ConvexShape.cs_result.md",
-    "system/results/SfmlTime.cs_result.md",
     "coverage/state/uncovered-files.json",
     "coverage/decisions",
     "coverage/patterns",

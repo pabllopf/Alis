@@ -158,20 +158,14 @@ namespace Alis.Core.Aspect.Math.Collections
             {
                 get
                 {
-                    if (index >= Count)
-                    {
-                        ThrowIndexOutOfRangeException(nameof(index));
-                    }
+                    if (index >= Count) throw new ArgumentOutOfRangeException(nameof(index));
 
                     return _elements[index];
                 }
 
                 set
                 {
-                    if (index >= Count)
-                    {
-                        ThrowIndexOutOfRangeException(nameof(index));
-                    }
+                    if (index >= Count) throw new ArgumentOutOfRangeException(nameof(index));
 
                     _elements[index] = value;
                 }
@@ -294,8 +288,6 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <summary>
             ///     Throws an <see cref="IndexOutOfRangeException" /> indicating that the index is out of valid range.
             /// </summary>
-            private static void ThrowIndexOutOfRangeException(string paramName) => throw new ArgumentOutOfRangeException(paramName);
-
             /// <summary>
             ///     Gets a read-only reference to the element at the specified index.
             /// </summary>
@@ -304,10 +296,7 @@ namespace Alis.Core.Aspect.Math.Collections
             /// <exception cref="IndexOutOfRangeException">Thrown when <paramref name="index" /> is greater than or equal to <see cref="Count" />.</exception>
             public ref readonly T ItemRef(int index)
             {
-                if (index >= Count)
-                {
-                    ThrowIndexOutOfRangeException(nameof(index));
-                }
+                if (index >= Count) throw new ArgumentOutOfRangeException(nameof(index));
 
                 return ref _elements[index];
             }

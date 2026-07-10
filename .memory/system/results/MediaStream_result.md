@@ -3,5 +3,5 @@ File: MediaStream.cs
 CoverageBefore: 32.7%
 CoverageAfter: ~40%
 TestsAdded: 7 new tests (AvgFrameRateNumber, IsAvc, Profile, CodecLongName, PixFmt, Level properties)
-Commit: (uncommitted)
+Commit: 0224a2218
 Status: Completed

@@ -1,26 +1,29 @@
 
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 137 files) Outputting AI-ready tasks:
+
+
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs
+    pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    33.3% (Line: 34.6%, Branch: 28.6%)
 
     ### Uncovered Lines
-    2
+    102
 
     ### Uncovered Branches
-    0
+    30
 
     ### Method
-    GamePadState
+    DropBoxCloudManager
 
     ### Complexity / LOC
-    2 / 15 lines
+    31 / 209 lines
 
     ### Source Code
     ```csharp
@@ -31,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:GamePadState.cs
+//  File:DropBoxCloudManager.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -53,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Glfw.Enums;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Ecs.Systems.Manager;
+using Alis.Core.Ecs.Systems.Scope;
+using Dropbox.Api;
+using Dropbox.Api.Files;
+using Dropbox.Api.Stone;
+using Dropbox.Api.Users;
 
-namespace Alis.Extension.Graphic.Glfw.Structs
+namespace Alis.Extension.Cloud.DropBox
 {
     /// <summary>
-    ///     Represents the state of a gamepad.
+    ///     The cloud manager class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct GamePadState
+    /// <seealso cref="AManager" />
+    /// <seealso cref="ICloudManager" />
+    public class DropBoxCloudManager : AManager, ICloudManager, IDisposable
     {
-        /// <summary>
-        ///     The states
-        /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
-        private readonly InputState[] states;
+    /// <summary>
+    ///     Error message for not initialized state
+    /// </summary>
+    private const string NotInitializedError = "DropBox manager is not initialized. Call InitializeAsync first.";
 
-        /// <summary>
-        ///     The axes
-        /// </summary>
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        private readonly float[] axes;
+    /// <summary>
+    ///     The path delimiter used for Dropbox paths (always forward slash)
+    /// </summary>
+    private const string PathDelimiter = "/";
 
-        /// <summary>
-        ///     Gets the state of the specified <paramref name="button" />.
-        /// </summary>
-        /// <param name="button">The button to retrieve the state of.</param>
-        /// <returns>The button state, either <see cref="InputState.Press" /> or <see cref="InputState.Release" />.</returns>
-        public InputState GetButtonState(GamePadButton button) => states[(int) button];
-
-        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/GamePadStateTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerTests.cs
 
     Priority
-    CRITICAL (NEW)
+    HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage GamePadState.cs
+    Commit format: test: coverage DropBoxCloudManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

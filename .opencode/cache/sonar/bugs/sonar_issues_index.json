@@ -1,0 +1,72 @@
+{
+  "AZ7fFnnsqjt04IrTJ5SH": {
+    "index": 0,
+    "key": "AZ7fFnnsqjt04IrTJ5SH",
+    "rule": "csharpsquid:S2583",
+    "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+    "severity": "MAJOR",
+    "type": "BUG",
+    "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+    "line": 261,
+    "status": "pending",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  },
+  "AZ7Wga6T8Znd_eTQxpai": {
+    "index": 1,
+    "key": "AZ7Wga6T8Znd_eTQxpai",
+    "rule": "csharpsquid:S2583",
+    "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+    "severity": "MAJOR",
+    "type": "BUG",
+    "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+    "line": null,
+    "status": "pending",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  },
+  "AZ7SNQ04GxvN3xmv4SmI": {
+    "index": 2,
+    "key": "AZ7SNQ04GxvN3xmv4SmI",
+    "rule": "csharpsquid:S2583",
+    "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+    "severity": "MAJOR",
+    "type": "BUG",
+    "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+    "line": null,
+    "status": "pending",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  },
+  "AZ6mihJTkNcRXyPBxty3": {
+    "index": 3,
+    "key": "AZ6mihJTkNcRXyPBxty3",
+    "rule": "csharpsquid:S2583",
+    "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+    "severity": "MAJOR",
+    "type": "BUG",
+    "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+    "line": null,
+    "status": "pending",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  },
+  "AZ7KU79QgfB4D_M8MD1M": {
+    "index": 4,
+    "key": "AZ7KU79QgfB4D_M8MD1M",
+    "rule": "csharpsquid:S3887",
+    "component": "pabllopf-official_alis:4_Operation/Ecs/generator/EquatableArray.cs",
+    "severity": "MINOR",
+    "type": "BUG",
+    "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'.",
+    "line": null,
+    "status": "pending",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  }
+}

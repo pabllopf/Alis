@@ -1,0 +1,68 @@
+{
+  "project": "pabllopf-official_alis",
+  "total": 1,
+  "fetched": 1,
+  "fetchedAt": "2026-07-10T07:49:23Z",
+  "issues": [
+    {
+      "key": "AZ7fFnnsqjt04IrTJ5SH",
+      "rule": "csharpsquid:S2583",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+      "project": "pabllopf-official_alis",
+      "line": 261,
+      "hash": "d64e63e69b415d5967089f1f19040700",
+      "textRange": {
+        "startLine": 261,
+        "endLine": 261,
+        "startOffset": 16,
+        "endOffset": 29
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+              "textRange": {
+                "startLine": 263,
+                "endLine": 283,
+                "startOffset": 20,
+                "endOffset": 24
+              }
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "pitfall",
+        "suspicious",
+        "symbolic-execution",
+        "unused"
+      ],
+      "creationDate": "2026-06-19T08:53:02+0000",
+      "updateDate": "2026-06-19T08:53:02+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "f8294cdf-c9fd-4d64-8623-3982513bf484",
+      "lastChangeSource": "ANALYSIS"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "AZ7fFnnsqjt04IrTJ5SH": {
+    "index": 0,
+    "key": "AZ7fFnnsqjt04IrTJ5SH",
+    "rule": "csharpsquid:S2583",
+    "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+    "severity": "MAJOR",
+    "type": "BUG",
+    "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+    "line": 261,
+    "status": "resolved",
+    "assignedWorker": null,
+    "attemptCount": 0,
+    "lastError": null
+  }
+}

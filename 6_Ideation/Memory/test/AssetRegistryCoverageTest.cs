@@ -38,57 +38,26 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
-    /// <summary>
-    /// The asset registry coverage test class
-    /// </summary>
-    /// <seealso cref="IDisposable"/>
     [Collection("AssetRegistryCollection")]
     public class AssetRegistryCoverageTest : IDisposable
     {
-        /// <summary>
-        /// The static
-        /// </summary>
         private static readonly PropertyInfo ActiveAssemblyProp = typeof(AssetRegistry).GetProperty("ActiveAssemblyName",
             BindingFlags.NonPublic | BindingFlags.Static);
 
-        /// <summary>
-        /// The static
-        /// </summary>
         private static readonly FieldInfo LoadersField = typeof(AssetRegistry).GetField("RegisteredAssetLoaders",
             BindingFlags.NonPublic | BindingFlags.Static);
 
-        /// <summary>
-        /// The static
-        /// </summary>
         private static readonly FieldInfo ZipCacheField = typeof(AssetRegistry).GetField("_zipCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
-        /// <summary>
-        /// The static
-        /// </summary>
         private static readonly FieldInfo PathCacheField = typeof(AssetRegistry).GetField("_extractedPathCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
-        /// <summary>
-        /// The saved assembly
-        /// </summary>
         private readonly string _savedAssembly;
-        /// <summary>
-        /// The saved loaders
-        /// </summary>
         private readonly Dictionary<object, object> _savedLoaders = new();
-        /// <summary>
-        /// The saved zip cache
-        /// </summary>
         private readonly Dictionary<object, object> _savedZipCache = new();
-        /// <summary>
-        /// The saved path cache
-        /// </summary>
         private readonly Dictionary<object, object> _savedPathCache = new();
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AssetRegistryCoverageTest"/> class
-        /// </summary>
         public AssetRegistryCoverageTest()
         {
             _savedAssembly = (string)ActiveAssemblyProp.GetValue(null);
@@ -97,9 +66,6 @@ namespace Alis.Core.Aspect.Memory.Test
             foreach (DictionaryEntry e in GetPathCache()) _savedPathCache[e.Key] = e.Value;
         }
 
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
         public void Dispose()
         {
             ActiveAssemblyProp.SetValue(null, _savedAssembly);
@@ -108,11 +74,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Restore(GetPathCache(), _savedPathCache);
         }
 
-        /// <summary>
-        /// Restores the target
-        /// </summary>
-        /// <param name="target">The target</param>
-        /// <param name="saved">The saved</param>
         private static void Restore(IDictionary target, Dictionary<object, object> saved)
         {
             target.Clear();
@@ -120,27 +81,10 @@ namespace Alis.Core.Aspect.Memory.Test
                 target[kvp.Key] = kvp.Value;
         }
 
-        /// <summary>
-        /// Gets the loaders
-        /// </summary>
-        /// <returns>The dictionary</returns>
         private static IDictionary GetLoaders() => (IDictionary)LoadersField.GetValue(null);
-        /// <summary>
-        /// Gets the zip cache
-        /// </summary>
-        /// <returns>The dictionary</returns>
         private static IDictionary GetZipCache() => (IDictionary)ZipCacheField.GetValue(null);
-        /// <summary>
-        /// Gets the path cache
-        /// </summary>
-        /// <returns>The dictionary</returns>
         private static IDictionary GetPathCache() => (IDictionary)PathCacheField.GetValue(null);
 
-        /// <summary>
-        /// Creates the test zip bytes using the specified entries
-        /// </summary>
-        /// <param name="entries">The entries</param>
-        /// <returns>The byte array</returns>
         private static byte[] CreateTestZipBytes(Dictionary<string, string> entries)
         {
             using MemoryStream ms = new MemoryStream();
@@ -158,11 +102,6 @@ namespace Alis.Core.Aspect.Memory.Test
             return ms.ToArray();
         }
 
-        /// <summary>
-        /// Setup the assembly using the specified assembly name
-        /// </summary>
-        /// <param name="assemblyName">The assembly name</param>
-        /// <param name="zipBytes">The zip bytes</param>
         private static void SetupAssembly(string assemblyName, byte[] zipBytes)
         {
             ActiveAssemblyProp.SetValue(null, null);
@@ -172,9 +111,6 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
         }
 
-        /// <summary>
-        /// Tests that make safe temp name no extension generates name without extension
-        /// </summary>
         [Fact]
         public void MakeSafeTempName_NoExtension_GeneratesNameWithoutExtension()
         {
@@ -188,9 +124,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.DoesNotContain(".", result.Substring("TestAssembly_".Length));
         }
 
-        /// <summary>
-        /// Tests that make safe temp name extension length exactly 16 keeps extension
-        /// </summary>
         [Fact]
         public void MakeSafeTempName_ExtensionLengthExactly16_KeepsExtension()
         {
@@ -205,9 +138,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.EndsWith("." + ext15, result);
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name duplicate filenames resolves by full path
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByFullPath()
         {
@@ -224,9 +154,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name duplicate filenames resolves by partial path
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByPartialPath()
         {
@@ -243,9 +170,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name resource without extension returns stream
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ResourceWithoutExtension_ReturnsStream()
         {
@@ -267,9 +191,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("all: clean", content);
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name subdir resource returns content
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_SubdirResource_ReturnsContent()
         {
@@ -286,9 +207,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that get resource path by name resource without extension returns path
-        /// </summary>
         [Fact]
         public void GetResourcePathByName_ResourceWithoutExtension_ReturnsPath()
         {
@@ -306,9 +224,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("This is the readme", File.ReadAllText(result));
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name triple duplicate filenames resolves by full path
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_TripleDuplicateFilenames_ResolvesByFullPath()
         {
@@ -326,9 +241,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name partial match via index of finds resource
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_PartialMatchViaIndexOf_FindsResource()
         {
@@ -344,9 +256,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that ensure zip cached duplicate filenames builds cache correctly
-        /// </summary>
         [Fact]
         public void EnsureZipCached_DuplicateFilenames_BuildsCacheCorrectly()
         {
@@ -364,9 +273,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("data1", File.ReadAllText(path1));
         }
 
-        /// <summary>
-        /// Tests that get resource memory stream by name backslash in resource name finds resource
-        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_BackslashInResourceName_FindsResource()
         {
@@ -382,9 +288,6 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
-        /// <summary>
-        /// Tests that register assembly clears extracted path cache for assembly
-        /// </summary>
         [Fact]
         public void RegisterAssembly_ClearsExtractedPathCacheForAssembly()
         {
@@ -403,6 +306,292 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.NotNull(path2);
             Assert.True(File.Exists(path2));
             Assert.Equal("second version", File.ReadAllText(path2));
+        }
+
+        [Fact]
+        public void GetResourceMemoryStreamByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
+        {
+            string assemblyName = "CacheMiss_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
+
+            var field = typeof(AssetRegistry).GetField("_zipCache",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            var original = (IDictionary)field.GetValue(null);
+            try
+            {
+                var wrapper = new CacheMissDict(original, assemblyName);
+                field.SetValue(null, wrapper);
+
+                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("file.txt"));
+                Assert.Contains("Cache del assets.pack no disponible", ex.Message);
+            }
+            finally
+            {
+                field.SetValue(null, original);
+            }
+        }
+
+        [Fact]
+        public void GetResourcePathByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
+        {
+            string assemblyName = "CacheMissPath_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourcePathByName("file.txt");
+
+            var field = typeof(AssetRegistry).GetField("_zipCache",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            var original = (IDictionary)field.GetValue(null);
+            try
+            {
+                var wrapper = new CacheMissDict(original, assemblyName);
+                field.SetValue(null, wrapper);
+
+                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                    AssetRegistry.GetResourcePathByName("file.txt"));
+                Assert.Contains("Cache del assets.pack no disponible", ex.Message);
+            }
+            finally
+            {
+                field.SetValue(null, original);
+            }
+        }
+
+        [Fact]
+        public void GetResourceMemoryStreamByName_ZipEntryNull_ThrowsFileNotFoundException()
+        {
+            string assemblyName = "ZipEntryNull_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"real.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourceMemoryStreamByName("real.txt")?.Dispose();
+
+            var zipCache = GetZipCache();
+            var entry = (ZipCacheEntry)zipCache[assemblyName];
+
+            string originalKey = null;
+            foreach (var kvp in entry.EntriesByFullNameLower)
+            {
+                if (kvp.Value.FullName == "real.txt")
+                {
+                    originalKey = kvp.Key;
+                    break;
+                }
+            }
+
+            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out var info))
+            {
+                info.FullName = "nonexistent.txt";
+            }
+
+            try
+            {
+                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("real.txt"));
+                Assert.Contains("race", ex.Message);
+            }
+            finally
+            {
+                if (info != null)
+                {
+                    info.FullName = "real.txt";
+                }
+            }
+        }
+
+        [Fact]
+        public void TryGetCachedPath_EntryCandidateNull_RemovesCacheEntry()
+        {
+            string assemblyName = "NullCandidate_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            string path = AssetRegistry.GetResourcePathByName("file.txt");
+            Assert.True(File.Exists(path));
+
+            var zipCache = GetZipCache();
+            var entry = (ZipCacheEntry)zipCache[assemblyName];
+            entry.EntriesByFullNameLower.Clear();
+            entry.EntriesByFileNameLower.Clear();
+
+            FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                AssetRegistry.GetResourcePathByName("file.txt"));
+            Assert.Contains("not found in `assets.pack`", ex.Message);
+
+            string compositeKey = assemblyName.ToLowerInvariant() + "|file.txt";
+            Assert.False(GetPathCache().Contains(compositeKey));
+        }
+
+        [Fact]
+        public void EnsureZipCachedForActiveAssembly_LoaderMissing_ThrowsInvalidOperationException()
+        {
+            string assemblyName = "LoaderMiss_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
+
+            var loadersField = typeof(AssetRegistry).GetField("RegisteredAssetLoaders",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            var original = (IDictionary)loadersField.GetValue(null);
+            try
+            {
+                var wrapper = new LoaderMissingDict(original, assemblyName);
+                loadersField.SetValue(null, wrapper);
+
+                var zipCache = GetZipCache();
+                zipCache.Remove(assemblyName);
+
+                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                    AssetRegistry.GetResourceMemoryStreamByName("file.txt"));
+                Assert.Contains("no tiene un assets.pack registrado", ex.Message);
+            }
+            finally
+            {
+                loadersField.SetValue(null, original);
+            }
+        }
+
+        [Fact]
+        public void GetResourceMemoryStreamByName_LengthExceedsMaxInt_CreatesMemoryStreamWithoutCapacity()
+        {
+            string assemblyName = "BigLen_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
+
+            AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
+
+            var zipCache = GetZipCache();
+            var entry = (ZipCacheEntry)zipCache[assemblyName];
+            var info = entry.EntriesByFullNameLower["file.txt"];
+            long originalLength = info.Length;
+            info.Length = (long)int.MaxValue + 1;
+
+            try
+            {
+                using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("file.txt");
+                Assert.NotNull(result);
+                Assert.True(result.Length > 0);
+            }
+            finally
+            {
+                info.Length = originalLength;
+            }
+        }
+
+        private sealed class CacheMissDict : IDictionary
+        {
+            private readonly IDictionary _inner;
+            private readonly string _missKey;
+
+            public CacheMissDict(IDictionary inner, string missKey)
+            {
+                _inner = inner;
+                _missKey = missKey;
+            }
+
+            public bool Contains(object key)
+            {
+                if (key is string s && s == _missKey)
+                    return false;
+                return _inner.Contains(key);
+            }
+
+            public object this[object key]
+            {
+                get => _inner[key];
+                set => _inner[key] = value;
+            }
+
+            public bool TryGetValue(string key, out ZipCacheEntry value)
+            {
+                if (key == _missKey)
+                {
+                    value = null;
+                    return false;
+                }
+                if (_inner.Contains(key))
+                {
+                    value = (ZipCacheEntry)_inner[key];
+                    return true;
+                }
+                value = null;
+                return false;
+            }
+
+            public void Add(object key, object value) => _inner.Add(key, value);
+            public void Clear() => _inner.Clear();
+            public IDictionaryEnumerator GetEnumerator() => _inner.GetEnumerator();
+            public void Remove(object key) => _inner.Remove(key);
+            public bool IsFixedSize => _inner.IsFixedSize;
+            public bool IsReadOnly => _inner.IsReadOnly;
+            public ICollection Keys => _inner.Keys;
+            public ICollection Values => _inner.Values;
+            IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_inner).GetEnumerator();
+            public void CopyTo(Array array, int index) => _inner.CopyTo(array, index);
+            public int Count => _inner.Count;
+            public bool IsSynchronized => _inner.IsSynchronized;
+            public object SyncRoot => _inner.SyncRoot;
+        }
+
+        private sealed class LoaderMissingDict : IDictionary
+        {
+            private readonly IDictionary _inner;
+            private readonly string _missKey;
+
+            public LoaderMissingDict(IDictionary inner, string missKey)
+            {
+                _inner = inner;
+                _missKey = missKey;
+            }
+
+            public bool Contains(object key)
+            {
+                if (key is string s && s == _missKey)
+                    return true;
+                return _inner.Contains(key);
+            }
+
+            public object this[object key]
+            {
+                get => _inner[key];
+                set => _inner[key] = value;
+            }
+
+            public bool TryGetValue(string key, out Func<Stream> value)
+            {
+                if (key == _missKey)
+                {
+                    value = null;
+                    return false;
+                }
+                if (_inner.Contains(key))
+                {
+                    value = (Func<Stream>)_inner[key];
+                    return true;
+                }
+                value = null;
+                return false;
+            }
+
+            public void Add(object key, object value) => _inner.Add(key, value);
+            public void Clear() => _inner.Clear();
+            public IDictionaryEnumerator GetEnumerator() => _inner.GetEnumerator();
+            public void Remove(object key) => _inner.Remove(key);
+            public bool IsFixedSize => _inner.IsFixedSize;
+            public bool IsReadOnly => _inner.IsReadOnly;
+            public ICollection Keys => _inner.Keys;
+            public ICollection Values => _inner.Values;
+            IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_inner).GetEnumerator();
+            public void CopyTo(Array array, int index) => _inner.CopyTo(array, index);
+            public int Count => _inner.Count;
+            public bool IsSynchronized => _inner.IsSynchronized;
+            public object SyncRoot => _inner.SyncRoot;
         }
     }
 }
