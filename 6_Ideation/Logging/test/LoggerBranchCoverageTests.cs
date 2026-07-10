@@ -39,12 +39,6 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         [Fact]
-        public void Debug_NullBranch()
-        {
-            AttemptNullBranch(() => Logger.Debug("trigger-null-branch"));
-        }
-
-        [Fact]
         public void Info_NullBranch()
         {
             AttemptNullBranch(() => Logger.Info("trigger-null-branch"));

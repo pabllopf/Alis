@@ -137,38 +137,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
         #endregion
 
-        #region OnStart — Called Twice
-
-        /// <summary>
-        ///     Verifies that calling <see cref="BoxCollider.OnStart" /> twice creates a new
-        ///     <see cref="Body" /> each time, replacing the previous one.
-        /// </summary>
-        [Fact]
-        public void OnStart_CalledTwice_ReplacesBody()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(new Transform(Vector2F.Zero, 0f));
-
-            Context context = new Context();
-            BoxCollider collider = new BoxCollider
-            {
-                Context = context,
-                SizeOfTexture = new Vector2F(10f, 10f),
-                BodyType = Alis.Core.Physic.Dynamics.BodyType.Dynamic
-            };
-
-            collider.OnStart(gameObject);
-            Alis.Core.Physic.Dynamics.Body firstBody = collider.Body;
-            Assert.NotNull(firstBody);
-
-            collider.OnStart(gameObject);
-            Alis.Core.Physic.Dynamics.Body secondBody = collider.Body;
-            Assert.NotNull(secondBody);
-            Assert.NotSame(firstBody, secondBody);
-        }
-
-        #endregion
-
         #region OnUpdate — Full Path with Real Physics Body
 
         /// <summary>

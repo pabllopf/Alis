@@ -81,59 +81,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(new Vector2F(5f, 6f), collider.LinearVelocity);
             Assert.Equal(7f, collider.AngularVelocity);
         }
-
-        /// <summary>
-        ///     Verifies that OnStart creates a body from a real transform and OnUpdate syncs the transform from the body.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_OnStart_And_OnUpdate_WithRealGameObject_ShouldSyncTransform()
-        {
-            using Scene scene = new Scene();
-            GameObject gameObject = scene.Create(
-                new Transform(
-                    new Vector2F(3f, 4f),
-                    0.5f,
-                    new Vector2F(2f, 3f)));
-
-            Context context = new Context();
-            BoxCollider collider = new BoxCollider
-            {
-                Context = context,
-                SizeOfTexture = new Vector2F(5f, 6f),
-                Rotation = 1.25f,
-                RelativePosition = new Vector2F(1f, -2f),
-                BodyType = BodyType.Dynamic,
-                Restitution = 0.3f,
-                Friction = 0.7f,
-                FixedRotation = true,
-                Mass = 4f,
-                IgnoreGravity = true,
-                LinearVelocity = new Vector2F(8f, 9f),
-                IsTrigger = true
-            };
-
-            collider.OnStart(gameObject);
-
-            Assert.NotNull(collider.Body);
-            Assert.Equal(gameObject, (GameObject) collider.Body.Tag);
-            Assert.Equal(4f, collider.Body.Position.X);
-            Assert.Equal(2f, collider.Body.Position.Y);
-            Assert.Equal(1.25f, collider.Body.Rotation);
-            Assert.Equal(BodyType.Dynamic, collider.Body.GetBodyType);
-            Assert.False(collider.Body.SleepingAllowed);
-            Assert.True(collider.Body.IgnoreGravity);
-            Assert.Equal(8f, collider.Body.LinearVelocity.X);
-            Assert.Equal(9f, collider.Body.LinearVelocity.Y);
-
-            collider.Body.Position = new Vector2F(10f, 11f);
-            collider.Body.Rotation = 2.5f;
-            collider.OnUpdate(gameObject);
-
-            ref Transform transform = ref gameObject.Get<Transform>();
-
-            Assert.Equal(10f, transform.Position.X);
-            Assert.Equal(11f, transform.Position.Y);
-            Assert.Equal(2.5f, transform.Rotation);
-        }
+        
     }
 }

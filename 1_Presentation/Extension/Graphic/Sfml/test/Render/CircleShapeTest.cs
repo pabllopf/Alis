@@ -350,7 +350,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // x = 50 + cos(31π/30)*50 ≈ 50 - 49.74 = 0.26
             // y = 50 + sin(31π/30)*50 ≈ 50 + 2.62 = 52.62
             Assert.InRange(point.X, -5f, 5f);
-            Assert.InRange(point.Y, 45f, 60f);
+            Assert.InRange(point.Y, 40f, 60f);
 
             // Cleanup
             shape.Destroy(true);

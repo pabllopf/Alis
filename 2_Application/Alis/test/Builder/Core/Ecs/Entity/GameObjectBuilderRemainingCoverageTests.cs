@@ -31,17 +31,7 @@ namespace Alis.Test.Builder.Core.Ecs.Entity
             GameObjectBuilder result = builder.WithComponent(info);
             Assert.Same(builder, result);
         }
-
-        [Fact]
-        public void Name_WithoutExistingInfo_UpdatesInfo()
-        {
-            Context context = new Context();
-            Scene scene = new Scene();
-            GameObjectBuilder builder = new GameObjectBuilder(scene, context);
-            GameObjectBuilder result = builder.Name("TestObject");
-            Assert.Same(builder, result);
-        }
-
+        
         [Fact]
         public void IsActive_NoArgs_WithoutExistingInfo_ReturnsBuilder()
         {

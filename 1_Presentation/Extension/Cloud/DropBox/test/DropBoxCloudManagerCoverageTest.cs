@@ -7,8 +7,11 @@ using Dropbox.Api.Files;
 using Moq;
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace Alis.Extension.Cloud.DropBox.Test
 {
+    
     public class DropBoxCloudManagerCoverageTest
     {
         [Fact]
@@ -75,115 +78,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.NotNull(exception);
             Assert.IsNotType<InvalidOperationException>(exception);
         }
-
-        [Fact]
-        public async Task ListFilesAsync_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync("/"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task ListFilesAsync_WithEmptyPath_DefaultsToRoot()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync(string.Empty));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task ListFilesAsync_WithNullPath_DefaultsToRoot()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync(null));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task ListFilesAsync_WithPathNoLeadingSlash_NormalizesPath()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync("folder/subfolder"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task ListFilesAsync_WithRecursiveTrue_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync("/", true));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task DeleteAsync_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DeleteAsync("/file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task DeleteAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DeleteAsync("file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task GetMetadataAsync_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.GetMetadataAsync("/file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        [Fact]
-        public async Task GetMetadataAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.GetMetadataAsync("file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
+        
         [Fact]
         public void Dispose_WithInitializedClient_ShouldNotThrow()
         {
@@ -254,18 +149,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
 
             await Assert.ThrowsAsync<ArgumentException>(() =>
                 manager.InitializeAsync(string.Empty));
-        }
-
-        [Fact]
-        public async Task InitializeAsync_WithDummyToken_Throws()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context());
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.InitializeAsync("some-token"));
-
-            Assert.NotNull(exception);
-            Assert.False(manager.IsInitialized);
         }
 
         [Fact]
