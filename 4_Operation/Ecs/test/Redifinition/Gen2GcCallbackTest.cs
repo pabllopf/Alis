@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
@@ -286,6 +288,165 @@ namespace Alis.Core.Ecs.Test.Redifinition
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
+        }
+
+        /// <summary>
+        ///     Tests that Func&lt;bool&gt; callback returning false executes exactly once after finalization
+        /// </summary>
+        [Fact]
+        public void Gen2GcCallback_FuncBoolReturningFalse_ExecutesOnceAfterFinalization()
+        {
+            int callCount = 0;
+
+            Gen2GcCallback.Register(() =>
+            {
+                callCount++;
+                return false;
+            });
+
+            ClearRegisteredCallbacks();
+
+            for (int i = 0; i < 5; i++)
+            {
+                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
+            }
+
+            Assert.Equal(1, callCount);
+        }
+
+        /// <summary>
+        ///     Tests that Func&lt;bool&gt; callback returning true is rescheduled after finalization
+        /// </summary>
+        [Fact]
+        public void Gen2GcCallback_FuncBoolReturningTrue_ReschedulesAfterFinalization()
+        {
+            int callCount = 0;
+
+            Gen2GcCallback.Register(() =>
+            {
+                callCount++;
+                return true;
+            });
+
+            ClearRegisteredCallbacks();
+
+            for (int i = 0; i < 5; i++)
+            {
+                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
+            }
+
+            Assert.True(callCount >= 2, $"Callback should have been called at least twice (was {callCount})");
+        }
+
+        /// <summary>
+        ///     Tests that Func&lt;object, bool&gt; callback with alive target executes after finalization
+        /// </summary>
+        [Fact]
+        public void Gen2GcCallback_ObjectCallbackWithAliveTarget_ExecutesAfterFinalization()
+        {
+            int callCount = 0;
+            object target = new object();
+
+            Gen2GcCallback.Register(obj =>
+            {
+                callCount++;
+                return false;
+            }, target);
+
+            ClearRegisteredCallbacks();
+
+            for (int i = 0; i < 5; i++)
+            {
+                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
+            }
+
+            Assert.Equal(1, callCount);
+            GC.KeepAlive(target);
+        }
+
+        /// <summary>
+        ///     Tests that Func&lt;object, bool&gt; callback with dead target frees GCHandle without invoking callback
+        /// </summary>
+        [Fact]
+        public void Gen2GcCallback_ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback()
+        {
+            bool[] called = { false };
+
+            RegisterWithDeadTarget(called);
+
+            for (int i = 0; i < 5; i++)
+            {
+                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
+            }
+
+            ClearRegisteredCallbacks();
+
+            for (int i = 0; i < 5; i++)
+            {
+                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                GC.WaitForPendingFinalizers();
+            }
+
+            Assert.False(called[0], "Callback should not be called when target object is collected");
+        }
+
+        private static void RegisterWithDeadTarget(bool[] called)
+        {
+            object target = new object();
+            Gen2GcCallback.Register(obj =>
+            {
+                called[0] = true;
+                return false;
+            }, target);
+        }
+
+        /// <summary>
+        ///     Tests that static Gen2CollectionOccured event fires via the default static constructor callback
+        /// </summary>
+        [Fact]
+        public void Gen2GcCallback_StaticEvent_FiresAfterGCFinalization()
+        {
+            bool eventFired = false;
+            Action originalHandler = Gen2GcCallback.Gen2CollectionOccured;
+
+            try
+            {
+                Gen2GcCallback.Gen2CollectionOccured = () => { eventFired = true; };
+
+                ClearRegisteredCallbacks();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    GC.Collect(2, GCCollectionMode.Forced, blocking: true);
+                    GC.WaitForPendingFinalizers();
+                }
+
+                Assert.True(eventFired, "Gen2CollectionOccured event should have fired after GC finalization");
+            }
+            finally
+            {
+                Gen2GcCallback.Gen2CollectionOccured = originalHandler;
+            }
+        }
+
+        /// <summary>
+        ///     Clears the private static _registeredCallbacks list via reflection,
+        ///     allowing registered instances to become eligible for GC finalization.
+        /// </summary>
+        private static void ClearRegisteredCallbacks()
+        {
+            FieldInfo field = typeof(Gen2GcCallback).GetField(
+                "_registeredCallbacks",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            if (field?.GetValue(null) is List<Gen2GcCallback> list)
+            {
+                list.Clear();
+            }
         }
     }
 }
