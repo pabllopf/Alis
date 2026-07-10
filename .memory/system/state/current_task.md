@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 243 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 246 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs
+    pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs
 
     ### Language
     cs
 
     ### Coverage
-    96.8% (Line: 100.0%, Branch: 90.0%)
+    97.1% (Line: 97.5%, Branch: 95.7%)
 
     ### Uncovered Lines
-    0
+    4
 
     ### Uncovered Branches
-    1
+    2
 
     ### Method
-    CorridorData
+    GenericPriorityQueue
 
     ### Complexity / LOC
-    16 / 37 lines
+    44 / 198 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:CorridorData.cs
+//  File:GenericPriorityQueue.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Data.Json;
-using HashCode = Alis.Core.Aspect.Math.HashCode;
+using System.Collections;
+using System.Collections.Generic;
 
-namespace Alis.Extension.Math.ProceduralDungeon.Models
+namespace Alis.Extension.Math.HighSpeedPriorityQueue
 {
     /// <summary>
-    ///     Represents the data structure for a corridor in the dungeon.
-    ///     This is an immutable data structure that holds corridor information.
+    ///     A copy of StablePriorityQueue which also has generic priority-type
     /// </summary>
-    [Serializable]
-    public readonly partial struct CorridorData : IEquatable<CorridorData>
+    /// <typeparam name="TItem">The values in the queue.  Must extend the GenericPriorityQueueNode class</typeparam>
+    /// <typeparam name="TPriority">The priority-type.  Must extend IComparable&lt;TPriority&gt;</typeparam>
+    public sealed class GenericPriorityQueue<TItem, TPriority> : IFixedSizePriorityQueue<TItem, TPriority>
+        where TItem : GenericPriorityQueueNode<TPriority>
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="CorridorData" /> struct.
+        ///     The comparer
         /// </summary>
-        /// <param name="xPos">The x position of the corridor on the board.</param>
-        /// <param name="yPos">The y position of the corridor on the board.</param>
-        /// <param name="width">The width of the corridor.</param>
-        /// <param name="height">The height of the corridor.</param>
-        /// <param name="direction">The direction the corridor is facing.</param>
-        public CorridorData(int xPos, int yPos, int width, int height, Direction direction)
-        {
-            XPos = xPos;
-            YPos = yPos;
-            Width = width;
-            Height = height;
-            Direction = direction;
-        }
+        private readonly Comparison<TPriority> _comparer;
 
         /// <summary>
+        ///     The nodes
+        /// </summary>
+        private TItem[] _nodes;
+
+        /// <summary>
+        ///     The num nodes
+        /// </summary>
+        internal int _numNodes;
+
+        /// <summary>
+        ///     The num nodes ever enqueued
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/test/Models/CorridorDataTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/GenericPriorityQueueTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/CorridorData.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage CorridorData.cs
+    Commit format: test: coverage GenericPriorityQueue.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
