@@ -45,6 +45,15 @@
 
 ## Entry 5 — 2026-07-10T00:04:00Z
 
+- **Commit:** pending
+- **File:** DelaunayTriangle.cs / DTSweep.cs
+- **Tests Added:** 12 (DelaunayTriangleCoverageTest.cs) + 5 (DTSweepCoverageTest.cs)
+- **Key Paths:** EdgeIndex, MarkConstrainedEdge, Legalize, ClearNeighbor, MarkNeighborEdges, star/concave/colinear triangulations, constrained edge events
+
+---
+
+## Entry 5 — 2026-07-10T00:04:00Z
+
 - **Commit:** 323a3e7a9
 - **File:** SingleComponentUpdateFilter.cs
 - **Tests Added:** 4 (SingleComponentUpdateFilterCoverageTest.cs)
