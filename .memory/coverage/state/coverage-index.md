@@ -45,6 +45,7 @@ updated: 2026-07-10T09:15:00Z
 | DynamicTree.cs | 14 | ~300 | pending |
 | DelaunayTriangle.cs | 12 | ~200 | pending |
 | DTSweep.cs | 5 | ~120 | pending |
+| ComponentRegistry.cs | 6 | ~60 | pending |
 | SingleComponentUpdateFilter.cs | 4 | 132 | 323a3e7a9 |
 | GameObjectUpdate.cs | 5 | 167 | 6c50547d6 |
 | DistanceJoint.cs | 13 | 282 | a4e02bafd |
@@ -59,6 +60,7 @@ updated: 2026-07-10T09:15:00Z
 | Gen2GcCallback.cs (finalizer paths + event) | 5 | 140 | 936fff825 |
 | ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
 | GameObjectUpdate.cs (deferred range-run edge cases) | 4 | 132 | |
+| GameObjectUpdate.cs (same-type deferred entity range-run) | 1 | 53 | 223d053c6 |
 | WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
 | GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
 | SimplifyTools.cs | 17 | ~350 | 028c2c1a8 |
@@ -68,4 +70,4 @@ updated: 2026-07-10T09:15:00Z
 - **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
 - **Gen2GcCallback**: Completed. Added 5 tests covering finalizer execution (Func<bool> false/true paths), Func<object, bool> alive/dead target paths, and static event invocation via reflection-cleared callback list.
 - **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing.
-- **GameObjectUpdate.cs**: Added 4 tests covering range-based Run with deferred creation edge cases, non-matching archetypes, and multi-update accumulation. Available for next task.
+- **GameObjectUpdate.cs**: Added 4 tests covering range-based Run with deferred creation edge cases, non-matching archetypes, and multi-update accumulation. Additional test triggers range-based Run by spawning entities with the same component type during update.
