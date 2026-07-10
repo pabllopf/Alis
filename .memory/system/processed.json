@@ -148,5 +148,13 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/MotorJoint.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/WindowsPlayer.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Image.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/SimplifyTools.cs",
+  "pabllopf-official_alis:4_Operation/Audio/src/Players/UnixPlayerBase.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/PathManager.cs"
 ]
