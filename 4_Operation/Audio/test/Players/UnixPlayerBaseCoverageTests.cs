@@ -16,7 +16,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             TestUnixPlayer player = new TestUnixPlayer();
             MethodInfo method = typeof(UnixPlayerBase).GetMethod("StartBashProcess", BindingFlags.NonPublic | BindingFlags.Instance);
-            Process process = (Process)method.Invoke(player, new object[] { "echo test" });
+            Process process = (Process)method.Invoke(player, new object[] { "sleep 1" });
             Assert.NotNull(process);
             Assert.False(process.HasExited);
             process.Kill();

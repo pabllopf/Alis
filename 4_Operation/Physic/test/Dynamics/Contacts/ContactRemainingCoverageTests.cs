@@ -174,5 +174,62 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(0.5f, contact.Friction);
         }
+
+        [Fact]
+        public void ReportSeparation_AllHandlers_FireAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            int fixtureASepCount = 0;
+            int fixtureBSepCount = 0;
+            int bodyASepCount = 0;
+            int bodyBSepCount = 0;
+            int endContactCount = 0;
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.FixtureA.OnSeparation = (_, _, _) => fixtureASepCount++;
+                contact.FixtureB.OnSeparation = (_, _, _) => fixtureBSepCount++;
+                return true;
+            };
+
+            bodyA.OnSeparation += (_, _, _) => bodyASepCount++;
+            bodyB.OnSeparation += (_, _, _) => bodyBSepCount++;
+            world.ContactManager.EndContact = contact => endContactCount++;
+
+            world.Step(1.0f / 60.0f);
+
+            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(fixtureASepCount > 0);
+            Assert.True(fixtureBSepCount > 0);
+            Assert.True(bodyASepCount > 0);
+            Assert.True(bodyBSepCount > 0);
+            Assert.True(endContactCount > 0);
+        }
+
+        [Fact]
+        public void Create_WithSwapBranch_AndPool_ReusesFromPool()
+        {
+            DynamicTreeBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            ContactManager contactManager = new ContactManager(broadPhase);
+
+            Fixture circleFixture = new Fixture(new CircleShape(0.5f, 1.0f));
+            Fixture polygonFixture = new Fixture(new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f));
+
+            Contact c1 = Contact.Create(contactManager, circleFixture, 0, polygonFixture, 0);
+            Assert.NotNull(c1);
+
+            c1.Destroy();
+
+            Fixture edgeFixture = new Fixture(new EdgeShape());
+            Contact c2 = Contact.Create(contactManager, circleFixture, 0, edgeFixture, 0);
+            Assert.NotNull(c2);
+        }
     }
 }

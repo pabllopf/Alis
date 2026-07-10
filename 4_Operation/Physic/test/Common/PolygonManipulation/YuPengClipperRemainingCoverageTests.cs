@@ -108,5 +108,65 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 
             Assert.False((bool)equalsObj.Invoke(edge, new object[] { 42 }));
         }
+
+        [Fact]
+        public void InsertIntersectionPoint_MultipleIntersectionsOnSameEdge_InsertsBoth()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            Vertices verts = new Vertices
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 10f),
+                new Vector2F(0f, 10f)
+            };
+
+            Vector2F start = new Vector2F(0f, 0f);
+            Vector2F end = new Vector2F(10f, 0f);
+
+            method.Invoke(null, new object[] { verts, start, end, new Vector2F(3f, 0f) });
+            method.Invoke(null, new object[] { verts, start, end, new Vector2F(6f, 0f) });
+
+            Assert.Equal(6, verts.Count);
+        }
+
+        [Fact]
+        public void RemoveCoincidentVertices_WithCoincidentVertex_RemovesIt()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("RemoveCoincidentVertices",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            Vertices verts = new Vertices
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1e-10f, 0f),
+                new Vector2F(1f, 1f)
+            };
+
+            method.Invoke(null, new object[] { verts });
+
+            Assert.Equal(2, verts.Count);
+        }
+
+        [Fact]
+        public void RemoveCoincidentVertices_MultipleCoincident_RemovesAll()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("RemoveCoincidentVertices",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            Vertices verts = new Vertices
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1e-10f, 0f),
+                new Vector2F(2e-10f, 0f),
+                new Vector2F(1f, 1f)
+            };
+
+            method.Invoke(null, new object[] { verts });
+
+            Assert.Equal(2, verts.Count);
+        }
     }
 }

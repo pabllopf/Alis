@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 212 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 226 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
 
     ### Language
     cs
 
     ### Coverage
-    89.5% (Line: 87.9%, Branch: 97.2%)
+    93.8% (Line: 93.8%, Branch: None%)
 
     ### Uncovered Lines
-    21
-
-    ### Uncovered Branches
     1
 
+    ### Uncovered Branches
+    0
+
     ### Method
-    FFMpegWrapper
+    ImDrawCmd
 
     ### Complexity / LOC
-    38 / 195 lines
+    23 / 24 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:FFMpegWrapper.cs
+//  File:ImDrawCmd.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Media.FFmpeg
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     FFmpeg wrapper
+    ///     The im draw cmd
     /// </summary>
-    public static class FfMpegWrapper
+    public struct ImDrawCmd
     {
         /// <summary>
-        /// The hide banner arg
+        ///     The clip rect
         /// </summary>
-        private const string HideBannerArg = "-hide_banner";
+        public Vector4F ClipRect { get; set; }
 
         /// <summary>
-        ///     The regex
+        ///     The texture id
         /// </summary>
-        private static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+        public IntPtr TextureId { get; set; }
 
         /// <summary>
-        ///     The regex
+        ///     The vtx offset
         /// </summary>
-        private static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+        public uint VtxOffset { get; set; }
 
         /// <summary>
-        ///     FFmpeg verbosity. This sets the 'loglevel' parameter on FFmpeg. Useful when showing output and debugging issues.
+        ///     The idx offset
+        /// </summary>
+        public uint IdxOffset { get; set; }
+
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/FFMpegWrapperTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImDrawCmdTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FFMpegWrapper.cs
+    Commit format: test: coverage ImDrawCmd.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

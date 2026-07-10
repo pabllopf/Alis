@@ -1619,6 +1619,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
+        #region CxFastList_Size
+
+   
+
+        #endregion
+
         #region CxFastList_Remove_WithNullHeadOnly
 
         [Fact]
@@ -1713,6 +1719,130 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             Assert.True((bool)empty.Invoke(list, null));
             Assert.Equal(0, (int)countField.GetValue(list));
+        }
+
+        #endregion
+
+        #region CxFastList — Size
+
+        [Fact]
+        public void CxFastList_Size_ReturnsCorrectCount()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo size = intListType.GetMethod("Size");
+
+            add.Invoke(list, new object[] { 10 });
+            add.Invoke(list, new object[] { 20 });
+            add.Invoke(list, new object[] { 30 });
+
+            int count = (int)size.Invoke(list, null);
+            Assert.Equal(3, count);
+        }
+
+        #endregion
+
+        #region CxFastList — FindNonDefault fallthrough
+
+        [Fact]
+        public void CxFastList_FindNonDefault_ValueNotFound_ReturnsNull()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo find = intListType.GetMethod("Find");
+
+            add.Invoke(list, new object[] { 10 });
+            add.Invoke(list, new object[] { 20 });
+
+            object result = find.Invoke(list, new object[] { 999 });
+            Assert.Null(result);
+        }
+
+        #endregion
+
+        #region CxFastList — FindDefault
+
+        [Fact]
+        public void CxFastList_FindDefault_FindsDefaultValue()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo find = intListType.GetMethod("Find");
+
+            add.Invoke(list, new object[] { 0 });
+
+            object result = find.Invoke(list, new object[] { 0 });
+            Assert.NotNull(result);
+        }
+
+        #endregion
+
+        #region CxFastList — Erase when _head is null
+
+        [Fact]
+        public void CxFastList_Erase_EmptyListPrevNull_ReturnsNull()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo erase = intListType.GetMethod("Erase");
+            MethodInfo begin = intListType.GetMethod("Begin");
+
+            object result = erase.Invoke(list, new object[] { null, begin.Invoke(list, null) });
+            Assert.Null(result);
+        }
+
+        #endregion
+
+        #region CombineScanLines — full execution path
+
+        [Fact]
+        public void CombineScanLines_FullPath_ExecutesSuccessfully()
+        {
+            MethodInfo combineScanLines = typeof(MarchingSquares).GetMethod("CombineScanLines",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            Type geomPolyListType = listType.MakeGenericType(geomPolyType);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type geomPolyValType = typeof(GeomPolyVal);
+
+            object pPoly = Activator.CreateInstance(geomPolyType);
+            object uPoly = Activator.CreateInstance(geomPolyType);
+            FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
+            object pPoints = pointsField.GetValue(pPoly);
+            object uPoints = pointsField.GetValue(uPoly);
+            MethodInfo addV2 = vectorListType.GetMethod("Add");
+            MethodInfo beginV2 = vectorListType.GetMethod("Begin");
+
+            addV2.Invoke(pPoints, new object[] { new Vector2F(0f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(5f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(10f, 5f) });
+            lengthField.SetValue(pPoly, 3);
+
+            addV2.Invoke(uPoints, new object[] { new Vector2F(5f, 2f) });
+            addV2.Invoke(uPoints, new object[] { new Vector2F(0f, 0f) });
+            lengthField.SetValue(uPoly, 2);
+
+            GeomPolyVal[,] ps = new GeomPolyVal[5, 5];
+            ps[0, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 12 });
+            ps[0, 0] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { uPoly, 3 });
+
+            object ret = Activator.CreateInstance(geomPolyListType);
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            combineScanLines.Invoke(null, new object[] { ps, ret, domain, 5, 5, 2f, 2f });
         }
 
         #endregion
