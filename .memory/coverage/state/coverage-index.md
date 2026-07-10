@@ -28,6 +28,7 @@ updated: 2026-07-10T09:15:00Z
 | # | File | Coverage | UL | UC | Layer | Status |
 |---|------|----------|----|----|-------|--------|
 | 1 | 4_Operation/Graphic/src/Ui/Font.cs | 0.0% | 228 | - | Operation | ⬜ Blocked (Native/UI) |
+| 1b | 4_Operation/Graphic/src/Ui/FontManager.cs | 0.0% | 7 | - | Operation | ✅ 6 new tests (FontManagerCoverageTest.cs) |
 | 2 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs | 0.0% | 5 | - | Operation | ✅ |
 | 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ✅ |
 | 4 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 51.5% | 14 | - | Operation | ✅ |
@@ -64,6 +65,7 @@ updated: 2026-07-10T09:15:00Z
 | WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
 | GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
 | SimplifyTools.cs | 17 | ~350 | 028c2c1a8 |
+| FontManager.cs | 6 | ~80 | pending |
 
 ## Notes
 

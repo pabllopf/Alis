@@ -101,3 +101,21 @@
 - **Key Paths:** Range-based Run called with `SelfSpawningComponent` that spawns entities with the same component type, triggering the range-based Run for `GameObjectUpdate<SelfSpawningComponent, Position>`
 - **Technique:** Self-referencing component that creates entities with itself in Update, triggering UpdateSubset path with same archetype
 - **Status:** All 3,106 ECS tests passing
+
+---
+
+## Entry 9 — 2026-07-10T09:35:00Z
+
+- **Commit:** pending
+- **File:** FontManager.cs
+- **Task:** Add functional tests for FontManager static class
+- **Tests Added:** 6 new test methods
+  - `DefaultFont_IsNotNull` — verifies DefaultFont returns non-null Font
+  - `DefaultFont_HasExpectedNameFile` — verifies NameFile is "mono.bmp"
+  - `DefaultFont_HasDepthOne` — verifies Depth is 1
+  - `RenderText_WithColors_ThrowsWhenOpenGLNotInitialized`
+  - `RenderText_WithCoordinates_ThrowsWhenOpenGLNotInitialized`
+  - `DefaultFont_PropertyExists_AndIsReadOnly`
+- **Coverage Estimate:** 0.0% → ~50% (estimated, pending SonarCloud sync)
+- **Technique:** Direct invocation of static members; Font constructor does not require OpenGL context
+- **Status:** All 759 Graphic tests passing
