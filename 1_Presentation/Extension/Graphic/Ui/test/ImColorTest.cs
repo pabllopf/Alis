@@ -85,6 +85,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImColor color = new ImColor();
 
             // Act
+            color.SetHsv(0, 1, 1);
+
+            // Assert
+            Assert.NotEqual(default, color.Value);
         }
 
         /// <summary>
@@ -97,6 +101,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImColor color = new ImColor();
 
             // Act
+            color.SetHsv(0, 1, 1, 0.5f);
+
+            // Assert
+            Assert.Equal(0.5f, color.Value.W);
         }
 
         /// <summary>
@@ -118,6 +126,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
+            color.SetHsv(0, 1, 1);
+            Assert.NotEqual(default, color.Value);
         }
 
         /// <summary>
@@ -127,6 +137,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
+            color.SetHsv(0, 1, 1, 0.5f);
+            Assert.Equal(0.5f, color.Value.W);
         }
 
         /// <summary>
@@ -136,6 +148,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void V3_SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
+            color.SetHsv(0.5f, 0.5f, 0.5f);
+            Assert.NotEqual(default, color.Value);
         }
 
         /// <summary>
@@ -145,6 +159,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void V3_SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
+            color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f);
+            Assert.Equal(0.5f, color.Value.W);
         }
     }
 }
