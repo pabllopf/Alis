@@ -1,17 +1,17 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 257 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 261 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/src/PublicBufferMemoryStream.cs
 
     ### Language
     cs
 
     ### Coverage
-    98.7% (Line: 98.4%, Branch: 100.0%)
+    99.1% (Line: 99.0%, Branch: 100.0%)
 
     ### Uncovered Lines
     1
@@ -20,10 +20,10 @@
     0
 
     ### Method
-    PhysicManager
+    PublicBufferMemoryStream
 
     ### Complexity / LOC
-    18 / 79 lines
+    45 / 146 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:PublicBufferMemoryStream.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Systems.Scope;
-using Alis.Core.Physic;
-using Alis.Core.Physic.Dynamics;
+using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Extension.Network.Exceptions;
 
-namespace Alis.Core.Ecs.Systems.Manager.Physic
+namespace Alis.Extension.Network
 {
     /// <summary>
-    ///     The physic manager base class
+    ///     This memory stream is not instance thread safe (not to be confused with the BufferPool which is instance thread
+    ///     safe)
     /// </summary>
-    /// <seealso cref="AManager" />
-    public class PhysicManager : AManager
+    public class PublicBufferMemoryStream : MemoryStream
     {
         /// <summary>
-        ///     The iterations
+        ///     The buffer pool internal
         /// </summary>
-        private SolverIterations iterations;
+        internal readonly BufferPool BufferPoolInternal;
 
         /// <summary>
-        ///     The time step physics
+        ///     The buffer
         /// </summary>
-        internal float timeStepPhysics;
+        internal byte[] Buffer;
 
         /// <summary>
-        ///     Gets or sets the world physic
+        ///     The ms
         /// </summary>
-        public WorldPhysic WorldPhysic { get; set; }
+        internal MemoryStream Ms;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PhysicManager" /> class
-        /// </summary>
-        /// <param name="context">The context</param>
+        ///     Initializes a new instance of the <see cref="PublicBufferMemoryStream" /> class
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Systems/Manager/Physic/PhysicManagerTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Network/test/PublicBufferMemoryStreamTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Network/src/PublicBufferMemoryStream.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage PhysicManager.cs
+    Commit format: test: coverage PublicBufferMemoryStream.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

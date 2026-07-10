@@ -153,6 +153,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketImplementation.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/PingPongManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/PublicBufferMemoryStream.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientFactory.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientOptions.cs",
@@ -194,6 +195,7 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorage.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/Update.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/SceneUpdateFilter.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/SingleComponentUpdateFilter.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Image.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs",
@@ -260,6 +262,7 @@
   "pabllopf-official_alis:6_Ideation/Data/src/Json/Parsing/JsonParser.cs",
   "pabllopf-official_alis:6_Ideation/Logging/src/Logger.cs",
   "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/ConsoleLogOutput.cs",
+  "pabllopf-official_alis:6_Ideation/Logging/src/Outputs/FileLogOutput.cs",
   "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
   "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs"
 ]

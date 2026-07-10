@@ -524,6 +524,16 @@ namespace Alis.Extension.Network.Test
         }
 
         /// <summary>
+        /// Tests that Capacity setter throws NotSupportedException (non-expandable stream)
+        /// </summary>
+        [Fact]
+        public void Capacity_Set_ThrowsNotSupportedException()
+        {
+            PublicBufferMemoryStream stream = new PublicBufferMemoryStream(new byte[64], new BufferPool());
+            Assert.Throws<NotSupportedException>(() => stream.Capacity = 128);
+        }
+
+        /// <summary>
         /// Tests that CanTimeout returns expected value
         /// </summary>
         [Fact]
