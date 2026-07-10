@@ -1,7 +1,7 @@
 # Coverage Summary
 
 ## Latest
-- **File**: `EmscriptenWeb.cs`
-- **Coverage**: 61.6% → ~90.0%
-- **Tests Added**: 83
-- **Commit**: ae66b21b8
+- **File**: `ContactManager.cs`
+- **Coverage**: 65.8% → ~78.0%
+- **Tests Added**: 24
+- **Commit**: 45bf4b5b8
