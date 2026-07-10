@@ -172,5 +172,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStyle.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs"
 ]
