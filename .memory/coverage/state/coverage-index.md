@@ -38,10 +38,11 @@ updated: 2026-07-10T12:30:00Z
 
 ## Current Task
 
-### AudioReader.cs (82.0%)
-- **Action:** Added 2 tests for ResolveBitDepth 24-bit and 8-bit format
-- **Commit:** 329ef61cb
-- **Estimated Impact:** +0.2% (covers 2 conditional branches)
+### Network Module Coverage Sprint
+- **Action:** Added 69 tests across 4 network module files
+- **Scope:** WebSocketNetworkTransport, NetworkClientManager, NetworkServerManager, PingPongManager
+- **Commits:** 6f55917df, cfe82bac6, f1c1e5c62, 19b769a57
+- **Estimated Impact:** Improved coverage for Network Extension from ~50% to ~58% (est.)
 
 ## Processed Files
 
@@ -82,6 +83,10 @@ updated: 2026-07-10T12:30:00Z
 | GameObject.cs | 12 | ~200 | e4c991127 |
 | BrowserPlayer.cs | 7 | ~10 | 3aa820754 |
 | FastestArrayPool.cs | 3 | ~10 | 81a23add0 |
+| WebSocketNetworkTransport.cs | 16 | ~200 | 6f55917df |
+| NetworkClientManager.cs | 20 | ~300 | cfe82bac6 |
+| NetworkServerManager.cs | 24 | ~300 | f1c1e5c62 |
+| PingPongManager.cs | 9 | ~120 | 19b769a57 |
 
 ## Notes
 
@@ -89,3 +94,8 @@ updated: 2026-07-10T12:30:00Z
 - **Gen2GcCallback**: Completed. Added 5 tests covering finalizer execution (Func<bool> false/true paths), Func<object, bool> alive/dead target paths, and static event invocation via reflection-cleared callback list.
 - **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing.
 - **GameObjectUpdate.cs**: Added 4 tests covering range-based Run with deferred creation edge cases, non-matching archetypes, and multi-update accumulation. Additional test triggers range-based Run by spawning entities with the same component type during update.
+- **WebSocketNetworkTransport.cs (29.4%)**: Added 16 tests covering StartAsync exception paths (invalid IP, port-in-use → state reset), Dispose after failure, BroadcastAsync edge cases, constructor URI variations. Blocked for private network-dependent methods (AcceptConnectionsAsync, HandleClientAsync, ReceiveFromClientAsync) which require real TCP/WebSocket connections.
+- **NetworkClientManager.cs (27.3%)**: Added 20 tests covering state transitions (Disconnect idempotency, StopAsync delegation), ConnectAsync failure → Error state, handler edge cases, GetConnectedPlayers/GetPlayer null session, Dispose after Initialize.
+- **NetworkServerManager.cs (61.1%)**: Added 24 tests covering ListenAsync exception → Error state, StopListeningAsync idempotency, session/player edge cases (non-existent session/player, duplicate registration), Dispose after failure.
+- **PingPongManager.cs (47.7%)**: Added 9 tests covering constructor with positive keepAliveInterval, PingForever/PingLoop with cancelled token, HandleExpiredKeepAliveInterval, SendPing cancellation.
+- **WebSocketImplementation.cs (77.3%) / WebSocketFrameReader.cs (69.2%)**: Remaining uncovered lines require actual WebSocket frame data or real connections. Coverage gains have diminishing returns without integration test infrastructure.
