@@ -2,6 +2,13 @@
 
 ## Recently Processed Files
 
+### Collision.cs
+- **Coverage Before**: 70.4%
+- **Coverage After**: ~85.8%
+- **Tests Added**: 13
+- **Commit**: (pending)
+- **File**: `4_Operation/Physic/src/Collisions/Collision.cs`
+
 ### GitHubApiService.cs
 - **Coverage Before**: 67.9%
 - **Coverage After**: ~92%
@@ -22,3 +29,10 @@
 - **Tests Added**: 6
 - **Commit**: (pending)
 - **File**: `1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs`
+
+### ImGuiPayload.cs
+- **Coverage Before**: 69.2%
+- **Coverage After**: ~100%
+- **Tests Added**: 20
+- **Commit**: `c7bc18519`
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs`
