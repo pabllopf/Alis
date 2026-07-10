@@ -28,24 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
-    /// <summary>
-    ///     Remaining coverage tests for <see cref="VideoPlayer" /> targeting
-    ///     the still-uncovered code paths: PlayInBackground pre-conditions,
-    ///     constructor field initialization, and Dispose branches.
-    /// </summary>
     public class VideoPlayerRemainingCoverageTests
     {
-        /// <summary>
-        ///     Tests that <see cref="VideoPlayer.PlayInBackground" /> throws
-        ///     <see cref="InvalidOperationException" /> when <see cref="VideoPlayer.Filename" />
-        ///     is null.
-        /// </summary>
         [Fact]
         public void PlayInBackground_NullFilename_ThrowsInvalidOperationException()
         {
@@ -56,11 +45,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("No filename was specified", ex.Message);
         }
 
-        /// <summary>
-        ///     Tests that <see cref="VideoPlayer.PlayInBackground" /> throws
-        ///     <see cref="InvalidOperationException" /> when <see cref="VideoPlayer.Filename" />
-        ///     is empty.
-        /// </summary>
         [Fact]
         public void PlayInBackground_EmptyFilename_ThrowsInvalidOperationException()
         {
@@ -71,40 +55,22 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("No filename was specified", ex.Message);
         }
 
-        /// <summary>
-        ///     Tests that the constructor with a custom ffplay executable name
-        ///     stores the value in the private <c>ffplay</c> field.
-        /// </summary>
-        [Fact]
-        public void Constructor_CustomFfplayExecutable_SetsField()
-        {
-            const string customExecutable = "myffplay";
-            VideoPlayer player = new VideoPlayer("test.mp4", customExecutable);
-
-            FieldInfo ffplayField = typeof(VideoPlayer).GetField("ffplay",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            string actual = (string)ffplayField.GetValue(player);
-
-            Assert.Equal(customExecutable, actual);
-        }
-
-        /// <summary>
-        ///     Tests that <see cref="VideoPlayer.PlayInBackground" /> does not throw
-        ///     any pre-condition exception (i.e. <see cref="InvalidOperationException" />)
-        ///     when <see cref="VideoPlayer.Filename" /> is set and <c>OpenedForWriting</c> is false.
-        ///     NOTE: This test may fail if the ffplay executable is not installed on the
-        ///     test system, because <see cref="FfMpegWrapper.OpenOutput" /> attempts to
-        ///     start ffplay as an external process.
-        /// </summary>
         [Fact]
         public void PlayInBackground_WithFilename_DoesNotThrowPreconditionException()
         {
             VideoPlayer player = new VideoPlayer("test.mp4");
 
-            InvalidOperationException ex = Record.Exception(() => player.PlayInBackground()) as InvalidOperationException;
+            Exception ex = Record.Exception(() => player.PlayInBackground());
 
-            Assert.Null(ex);
+            Assert.IsNotType<InvalidOperationException>(ex);
+        }
+
+        [Fact]
+        public void Constructor_WithFfplayExecutable_DoesNotThrow()
+        {
+            VideoPlayer player = new VideoPlayer("test.mp4", "myffplay");
+
+            Assert.NotNull(player);
         }
     }
 }

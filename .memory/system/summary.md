@@ -80,6 +80,7 @@
 | 2026-07-10 05:00:00 | SimplifyTools.cs | 58.2% | 100% | +41.8% | 028c2c1a8 | Completed |
 | 2026-07-10 08:30:00 | NetworkClientManager.cs | 27.3% | ~40% | +12.7% | 7258d4de2 | Completed |
 | 2026-07-10 08:35:00 | WebSocketNetworkTransport.cs | 29.4% | ~42-45% | +13-16% | be526381a | Completed |
+| 2026-07-10 08:40:00 | VideoPlayer.cs | 29.8% | ~42% | +12% | d1f1968a8 | Completed |
 ## Test Files Created
 - `PulleyJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/PulleyJointTest.cs`
 - `WheelJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/WheelJointTest.cs`
@@ -105,3 +106,4 @@
 - `GlShaderProgramParamRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Constructs/GlShaderProgramParamRemainingCoverageTests.cs`
 - `NetworkClientManagerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Network/test/Client/NetworkClientManagerRemainingCoverageTests.cs`
 - `WebSocketNetworkTransportRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Network/test/Core/WebSocketNetworkTransportRemainingCoverageTests.cs`
+- `VideoPlayerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Video/VideoPlayerRemainingCoverageTests.cs`
