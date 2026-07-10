@@ -186,6 +186,39 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         }
 
         /// <summary>
+        ///     Tests that Dispose with false disposing does not dispose the RNG
+        /// </summary>
+        [Fact]
+        public void Dispose_WithFalseDisposing_ShouldNotDisposeRng()
+        {
+            // Arrange
+            MockDisposableDungeonGenerator mockGenerator = new MockDisposableDungeonGenerator();
+            MockDisposableRandomNumberGenerator mockRandomNumberGenerator = new MockDisposableRandomNumberGenerator();
+            ExposedDungeon dungeon = new ExposedDungeon(mockGenerator, mockRandomNumberGenerator);
+
+            // Act
+            dungeon.CallDispose(false);
+
+            // Assert - The RNG should NOT have been disposed when disposing=false
+            Assert.False(mockRandomNumberGenerator.IsDisposed);
+        }
+
+        /// <summary>
+        ///     Tests that Dispose with false disposing does not throw with non-disposable RNG
+        /// </summary>
+        [Fact]
+        public void Dispose_WithFalseDisposingAndNonDisposableRng_ShouldNotThrow()
+        {
+            // Arrange
+            MockDisposableDungeonGenerator mockGenerator = new MockDisposableDungeonGenerator();
+            MockRandomNumberGenerator mockRandomNumberGenerator = new MockRandomNumberGenerator();
+            ExposedDungeon dungeon = new ExposedDungeon(mockGenerator, mockRandomNumberGenerator);
+
+            // Act & Assert - No exception means success
+            dungeon.CallDispose(false);
+        }
+
+        /// <summary>
         ///     Tests that internal constructor with null generator and null random generator throws ArgumentNullException
         /// </summary>
         [Fact]
@@ -451,6 +484,19 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
         ///     Checks if the generator has been disposed.
         /// </summary>
         public bool IsDisposed => _disposed;
+    }
+
+    /// <summary>
+    ///     Exposes protected Dispose(bool) for testing the disposing=false path.
+    /// </summary>
+    internal class ExposedDungeon : Dungeon
+    {
+        public ExposedDungeon(IDungeonGenerator generator, IRandomNumberGenerator randomNumberGenerator)
+            : base(generator, randomNumberGenerator)
+        {
+        }
+
+        public void CallDispose(bool disposing) => Dispose(disposing);
     }
 
     /// <summary>
