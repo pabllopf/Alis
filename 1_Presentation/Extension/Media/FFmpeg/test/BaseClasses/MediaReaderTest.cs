@@ -187,5 +187,30 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 
             Assert.Equal(payload, destination.ToArray());
         }
+
+        [Fact]
+        public async Task MediaReader_CopyToAsync_ShouldThrowWhenReaderNotOpened()
+        {
+            TestReader reader = new TestReader();
+            TestWriter writer = new TestWriter();
+            writer.SetOpened(true);
+            writer.SetStream(new MemoryStream());
+
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => reader.CopyToAsync(writer));
+
+            Assert.Contains("Reader is not opened for reading", ex.Message);
+        }
+
+        [Fact]
+        public async Task MediaReader_CopyToAsync_ShouldThrowWhenWriterNotOpened()
+        {
+            TestReader reader = new TestReader();
+            TestWriter writer = new TestWriter();
+            reader.SetStream(new MemoryStream(System.Text.Encoding.UTF8.GetBytes("data")));
+
+            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => reader.CopyToAsync(writer));
+
+            Assert.Contains("Writer is not opened for writing", ex.Message);
+        }
     }
 }
