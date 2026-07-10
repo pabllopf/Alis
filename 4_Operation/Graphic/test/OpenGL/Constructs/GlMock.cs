@@ -62,6 +62,13 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Register("glUniform4f", Marshal.GetFunctionPointerForDelegate((Uniform4F)MockUniform4F));
             Register("glUniformMatrix4fv", Marshal.GetFunctionPointerForDelegate((UniformMatrix4FvDel)MockUniformMatrix4Fv));
             Register("glUniformMatrix3fv", Marshal.GetFunctionPointerForDelegate((UniformMatrix3FvDel)MockUniformMatrix3Fv));
+            Register("glActiveTexture", Marshal.GetFunctionPointerForDelegate((Gl.ActiveTexture)MockActiveTexture));
+            Register("glLineWidth", Marshal.GetFunctionPointerForDelegate((Gl.LineWidth)MockLineWidth));
+            Register("glGetError", Marshal.GetFunctionPointerForDelegate((Gl.GetError)MockGetError));
+            Register("glDeleteBuffers", Marshal.GetFunctionPointerForDelegate((DeleteBuffers)MockDeleteBuffers));
+            Register("glDeleteTextures", Marshal.GetFunctionPointerForDelegate((DeleteTextures)MockDeleteTextures));
+            Register("glDeleteVertexArrays", Marshal.GetFunctionPointerForDelegate((DeleteVertexArrays)MockDeleteVertexArrays));
+            Register("glGenerateMipmap", Marshal.GetFunctionPointerForDelegate((GetString)MockGenerateMipmap));
             Register("glGenBuffers", Marshal.GetFunctionPointerForDelegate((GenBuffers)MockGenBuffers));
             Register("glBindBuffer", Marshal.GetFunctionPointerForDelegate((BindBuffer)MockBindBuffer));
             Register("glBufferData", Marshal.GetFunctionPointerForDelegate((BufferData)MockBufferData));
@@ -215,6 +222,11 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             {
                 @params[0] = 0;
             }
+            else if (pname == ProgramParameter.InfoLogLength)
+            {
+                string log = ProgramErrorLogs.GetValueOrDefault(program) ?? string.Empty;
+                @params[0] = string.IsNullOrEmpty(log) ? 0 : log.Length + 1;
+            }
         }
 
         private static void MockUseProgram(uint program) { }
@@ -226,7 +238,18 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
 
         private static void MockDetachShader(uint program, uint shader) { }
 
-        private static void MockGetProgramInfoLog(uint program, int maxLength, int[] length, StringBuilder infoLog) { }
+        private static void MockGetProgramInfoLog(uint program, int maxLength, int[] length, StringBuilder infoLog)
+        {
+            string log = ProgramErrorLogs.GetValueOrDefault(program) ?? string.Empty;
+            if (infoLog != null)
+            {
+                infoLog.Append(log);
+            }
+            if (length != null && length.Length > 0)
+            {
+                length[0] = log.Length;
+            }
+        }
 
         private static int MockGetUniformLocation(uint program, string name) => name.GetHashCode();
 
@@ -281,5 +304,13 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
         private static void MockTexImage2D(TextureTarget target, int level, PixelInternalFormat internalFormat, int width, int height, int border, PixelFormat format, PixelType type, IntPtr data) { }
 
         private static void MockViewport(int x, int y, int width, int height) { }
+
+        private static void MockActiveTexture(TextureUnit texture) { }
+        private static void MockLineWidth(float width) { }
+        private static int MockGetError() => 0;
+        private static void MockDeleteBuffers(int n, uint[] buffers) { }
+        private static void MockDeleteTextures(int n, uint[] textures) { }
+        private static void MockDeleteVertexArrays(int n, uint[] arrays) { }
+        private static IntPtr MockGenerateMipmap(StringName target) => IntPtr.Zero;
     }
 }
