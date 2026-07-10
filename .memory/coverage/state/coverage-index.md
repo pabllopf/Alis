@@ -18,6 +18,7 @@
 | 4_Operation/Graphic/src/OpenGL/Constructs/GLShader.cs | 41.9% | COMPLETED (19 tests via GlMock) | pending | 2026-07-10 |
 | 4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs | 0.0% | COMPLETED (19 tests via GlMock) | pending | 2026-07-10 |
 | 4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs | 0.0% | COMPLETED (19 tests via GlMock) | pending | 2026-07-10 |
+| 1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs | ~80% | COMPLETED (73 tests) | pending | 2026-07-10 |
 
 ## Tasks
 - TASK-001: ComponentRegistry.cs - cover remaining 19 uncovered lines

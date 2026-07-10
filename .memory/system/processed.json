@@ -188,9 +188,9 @@
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs"
-,
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs"
 ]
