@@ -176,5 +176,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/VideoMode.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoWriter.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontPtr.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Transform.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/PingPongManager.cs"
 ]
