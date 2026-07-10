@@ -68,6 +68,28 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             scene.Update();
         }
+
+        /// <summary>
+        ///     Tests that the range-based Run overload processes deferred entities
+        ///     that share the same component type as the spawning entity.
+        /// </summary>
+        [Fact]
+        public void RangeRun_SameTypeDeferredEntities_TriggersRangeBasedRun()
+        {
+            using Scene scene = new Scene();
+
+            GameObject entity = scene.Create(
+                new SelfSpawningComponent { SpawnCount = 3, HasSpawned = false, CallCount = 0 },
+                new Position { X = 1, Y = 2 }
+            );
+
+            Assert.Equal(1, scene.EntityCount);
+
+            scene.Update();
+
+            Assert.Equal(4, scene.EntityCount);
+            Assert.Equal(1, entity.Get<SelfSpawningComponent>().CallCount);
+        }
     }
 
     /// <summary>
@@ -88,6 +110,37 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 for (int i = 0; i < SpawnCount; i++)
                 {
                     owner.Scene.Create(new Position());
+                }
+
+                HasSpawned = true;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Component that spawns additional entities with the SAME component type
+    ///     during Update, triggering the range-based Run overload on the same
+    ///     GameObjectUpdate type.
+    /// </summary>
+    internal struct SelfSpawningComponent : IOnUpdate<Position>
+    {
+        public int SpawnCount;
+        public bool HasSpawned;
+        public int CallCount;
+
+        public void Update(IGameObject self, ref Position arg1)
+        {
+            CallCount++;
+            if (!HasSpawned && SpawnCount > 0)
+            {
+                GameObject owner = (GameObject)self;
+
+                for (int i = 0; i < SpawnCount; i++)
+                {
+                    owner.Scene.Create(
+                        new SelfSpawningComponent { SpawnCount = 0, HasSpawned = true, CallCount = 0 },
+                        new Position { X = 0, Y = 0 }
+                    );
                 }
 
                 HasSpawned = true;
