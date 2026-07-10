@@ -58,3 +58,16 @@
 - **File:** GameObjectUpdate.cs
 - **Tests Added:** 5 (GameObjectUpdateRangeRunTest.cs) + fix to GameObjectUpdateCoverageTest.cs
 - **Key Paths:** Run(Scene, Archetype, int, int) overload (lines 78-96) via UpdateSubset, non-matching archetype no-op
+
+---
+
+## Entry 7 — 2026-07-10T10:30:00Z
+
+- **File:** GameObjectUpdate.cs (additional coverage)
+- **Tests Added:** 4 more edge-case tests
+  - `RangeRun_DeferredEntities_HaveCorrectPositionAfterUpdate`
+  - `Run_WithNonMatchingArchetype_DoesNotThrow`
+  - `RangeRun_SingleDeferredEntity_ProcessesCorrectly`
+  - `RangeRun_MultipleUpdates_AccumulatesCorrectly`
+- **Key Paths:** Range-based Run with deferred entity position verification, single deferred entity edge case, multi-update accumulation
+- **Status:** All 11 GameObjectUpdate tests passing
