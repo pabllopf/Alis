@@ -144,5 +144,9 @@
   "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyPlatformIntegration.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/ManagerBuilders/Scenes/SceneManagerBuilder.cs",
-  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs"
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Collisions/TimeOfImpact.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/MotorJoint.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs"
 ]

@@ -29,7 +29,7 @@ updated: 2026-07-10T09:15:00Z
 |---|------|----------|----|----|-------|--------|
 | 1 | 4_Operation/Graphic/src/Ui/Font.cs | 0.0% | 228 | - | Operation | ⬜ Blocked (Native/UI) |
 | 2 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs | 0.0% | 5 | - | Operation | ✅ |
-| 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ⬅ ACTIVE |
+| 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ✅ |
 | 4 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 51.5% | 14 | - | Operation | ⬜ |
 | 5 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs | 26.9% | 120 | - | Application | ✅ |
 | 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 24.2% | 151 | - | Application | ⬜ Blocked (OpenGL) |
@@ -51,6 +51,7 @@ updated: 2026-07-10T09:15:00Z
 | GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
 | Body.cs (simulation paths) | 6 | 165 | afdda294d |
 | Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
+| Gen2GcCallback.cs (finalizer paths + event) | 5 | 140 | 936fff825 |
 | ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
 | WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
 | GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
@@ -58,5 +59,5 @@ updated: 2026-07-10T09:15:00Z
 ## Notes
 
 - **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
-- **Gen2GcCallback**: ACTIVE target. Public registration API covered, missing finalizer/GCHandle paths.
-- **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing.
+- **Gen2GcCallback**: Completed. Added 5 tests covering finalizer execution (Func<bool> false/true paths), Func<object, bool> alive/dead target paths, and static event invocation via reflection-cleared callback list.
+- **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing. Available for next task.

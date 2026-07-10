@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics.Tracing;
 using System.Net.Security;
 using System.Net.WebSockets;
 using Alis.Extension.Network.Internal;
@@ -1153,6 +1154,401 @@ namespace Alis.Extension.Network.Test.Internal
             WebSocketState webSocketState = WebSocketState.Open;
 
             Events.Log.InvalidStateBeforeCloseOutput(guid, webSocketState);
+        }
+        private sealed class TestEventListener : EventListener
+        {
+            protected override void OnEventSourceCreated(EventSource eventSource)
+            {
+                if (eventSource.Name == "Ninja-WebSockets")
+                {
+                    EnableEvents(eventSource, EventLevel.Verbose);
+                }
+            }
+        }
+
+        [Fact]
+        public void ClientConnectingToIpAddress_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ClientConnectingToIpAddress(Guid.NewGuid(), "127.0.0.1", 8080);
+        }
+
+        [Fact]
+        public void ClientConnectingToHost_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ClientConnectingToHost(Guid.NewGuid(), "localhost", 8080);
+        }
+
+        [Fact]
+        public void AttemtingToSecureSslConnection_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.AttemtingToSecureSslConnection(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void ConnectionSecured_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ConnectionSecured(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void ConnectionNotSecure_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ConnectionNotSecure(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void SslCertificateError_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.SslCertificateError(SslPolicyErrors.RemoteCertificateChainErrors);
+        }
+
+        [Fact]
+        public void HandshakeSent_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.HandshakeSent(Guid.NewGuid(), "header");
+        }
+
+        [Fact]
+        public void ReadingHttpResponse_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ReadingHttpResponse(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void ReadHttpResponseError_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ReadHttpResponseError(Guid.NewGuid(), "error");
+        }
+
+        [Fact]
+        public void InvalidHttpResponseCode_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), "response");
+        }
+
+        [Fact]
+        public void HandshakeFailure_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.HandshakeFailure(Guid.NewGuid(), "message");
+        }
+
+        [Fact]
+        public void ClientHandshakeSuccess_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ClientHandshakeSuccess(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void ServerHandshakeSuccess_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ServerHandshakeSuccess(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void AcceptWebSocketStarted_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.AcceptWebSocketStarted(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void SendingHandshakeResponse_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.SendingHandshakeResponse(Guid.NewGuid(), "response");
+        }
+
+        [Fact]
+        public void WebSocketVersionNotSupported_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), "exception");
+        }
+
+        [Fact]
+        public void BadRequest_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.BadRequest(Guid.NewGuid(), "exception");
+        }
+
+        [Fact]
+        public void UsePerMessageDeflate_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.UsePerMessageDeflate(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void NoMessageCompression_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.NoMessageCompression(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void KeepAliveIntervalZero_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.KeepAliveIntervalZero(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void PingPongManagerStarted_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.PingPongManagerStarted(Guid.NewGuid(), 30);
+        }
+
+        [Fact]
+        public void PingPongManagerEnded_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.PingPongManagerEnded(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void KeepAliveIntervalExpired_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.KeepAliveIntervalExpired(Guid.NewGuid(), 30);
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeout_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc", "ex");
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutCancelled_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, "desc", "ex");
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutError_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), "closeEx", WebSocketCloseStatus.NormalClosure, "desc", "ex");
+        }
+
+        [Fact]
+        public void TryGetBufferNotSupported_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), "MemoryStream");
+        }
+
+        [Fact]
+        public void SendingFrame_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.SendingFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024, true);
+        }
+
+        [Fact]
+        public void ReceivedFrame_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ReceivedFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024);
+        }
+
+        [Fact]
+        public void CloseOutputNoHandshake_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
+        }
+
+        [Fact]
+        public void CloseHandshakeStarted_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
+        }
+
+        [Fact]
+        public void CloseHandshakeRespond_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
+        }
+
+        [Fact]
+        public void CloseHandshakeComplete_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseHandshakeComplete(Guid.NewGuid());
+        }
+
+        [Fact]
+        public void CloseFrameReceivedInUnexpectedState_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, "desc");
+        }
+
+        [Fact]
+        public void WebSocketDispose_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketDispose(Guid.NewGuid(), WebSocketState.Open);
+        }
+
+        [Fact]
+        public void WebSocketDisposeCloseTimeout_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketDisposeCloseTimeout(Guid.NewGuid(), WebSocketState.Open);
+        }
+
+        [Fact]
+        public void WebSocketDisposeError_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, "error");
+        }
+
+        [Fact]
+        public void InvalidStateBeforeClose_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.InvalidStateBeforeClose(Guid.NewGuid(), WebSocketState.Open);
+        }
+
+        [Fact]
+        public void InvalidStateBeforeCloseOutput_EventEnabled_WritesEvent()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.InvalidStateBeforeCloseOutput(Guid.NewGuid(), WebSocketState.Open);
+        }
+
+        [Fact]
+        public void HandshakeSent_NullHttpHeader_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.HandshakeSent(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void ReadHttpResponseError_NullException_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.ReadHttpResponseError(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void InvalidHttpResponseCode_NullResponse_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void HandshakeFailure_NullMessage_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.HandshakeFailure(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void SendingHandshakeResponse_NullResponse_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.SendingHandshakeResponse(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void WebSocketVersionNotSupported_NullException_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void BadRequest_NullException_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.BadRequest(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void TryGetBufferNotSupported_NullStreamType_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), null);
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeout_NullDescriptions_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null, null);
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutCancelled_NullDescriptions_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, null, null);
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutError_NullDescriptions_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), null, WebSocketCloseStatus.NormalClosure, null, null);
+        }
+
+        [Fact]
+        public void CloseOutputNoHandshake_NullStatusDescription_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
+        }
+
+        [Fact]
+        public void CloseHandshakeStarted_NullStatusDescription_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
+        }
+
+        [Fact]
+        public void CloseHandshakeRespond_NullStatusDescription_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
+        }
+
+        [Fact]
+        public void CloseFrameReceivedInUnexpectedState_NullStatusDescription_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, null);
+        }
+
+        [Fact]
+        public void WebSocketDisposeError_NullException_UsesEmptyString()
+        {
+            using var listener = new TestEventListener();
+            Events.Log.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, null);
         }
     }
 }
