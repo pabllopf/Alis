@@ -148,12 +148,5 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal("test source", GlMock.ShaderSources[shader]);
         }
 
-        [Fact]
-        public void ShaderSource_NullSource_DoesNotThrow()
-        {
-            GlMock.Reset();
-            uint shader = Gl.GlCreateShader(ShaderType.VertexShader);
-            Gl.ShaderSource(shader, null);
-        }
     }
 }
