@@ -172,6 +172,34 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
+        ///     Tests that equals should return true when comparing with boxed room data.
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnTrue_WhenComparingWithBoxedRoomData()
+        {
+            RoomData roomData = new RoomData(10, 20, 5, 7, Direction.North, true);
+            object other = new RoomData(10, 20, 5, 7, Direction.North, true);
+
+            bool result = roomData.Equals(other);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that equals should return false when comparing with different boxed room data.
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnFalse_WhenComparingWithDifferentBoxedRoomData()
+        {
+            RoomData roomData = new RoomData(10, 20, 5, 7, Direction.North);
+            object other = new RoomData(15, 25, 6, 8, Direction.South, true);
+
+            bool result = roomData.Equals(other);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
         ///     Tests that struct should be immutable.
         /// </summary>
         [Fact]
