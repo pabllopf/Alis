@@ -77,6 +77,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             _board = Board ?? throw new ArgumentNullException(nameof(Board));
             _rooms = Rooms ?? throw new ArgumentNullException(nameof(Rooms));
             _corridors = Corridors ?? throw new ArgumentNullException(nameof(Corridors));
+            Validate();
         }
         
         /// <summary>
