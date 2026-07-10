@@ -446,5 +446,62 @@ namespace Alis.Extension.Media.FFmpeg.Test
             // Assert
             Assert.IsAssignableFrom<IDisposable>(player);
         }
+
+        /// <summary>
+        ///     Tests that Dispose calls Kill when ffplayp is running and not opened for writing
+        /// </summary>
+        [Fact]
+        public void AudioPlayer_Dispose_WhenFfplaypRunningAndNotOpened_KillsProcess()
+        {
+            // Arrange — use a process that waits as ffplayp, then dispose
+            AudioPlayer player = new AudioPlayer("audio.wav");
+            Process sleepProcess = Process.Start(new ProcessStartInfo
+            {
+                FileName = "/bin/sleep",
+                Arguments = "30",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+            Assert.NotNull(sleepProcess);
+            Assert.False(sleepProcess.HasExited);
+
+            // Set private ffplayp field via reflection
+            typeof(AudioPlayer).GetField("ffplayp", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                ?.SetValue(player, sleepProcess);
+
+            // Act
+            player.Dispose();
+
+            // Assert — process should be killed by Dispose
+            sleepProcess.WaitForExit(1000);
+            Assert.True(sleepProcess.HasExited);
+            sleepProcess.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that Dispose when ffplayp already exited does not throw
+        /// </summary>
+        [Fact]
+        public void AudioPlayer_Dispose_WhenFfplaypAlreadyExited_DoesNotThrow()
+        {
+            // Arrange
+            AudioPlayer player = new AudioPlayer("audio.wav");
+            Process exitedProcess = Process.Start(new ProcessStartInfo
+            {
+                FileName = "/bin/echo",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            });
+            Assert.NotNull(exitedProcess);
+            exitedProcess.WaitForExit();
+
+            typeof(AudioPlayer).GetField("ffplayp", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                ?.SetValue(player, exitedProcess);
+
+            // Act + Assert
+            Exception exception = Record.Exception(() => player.Dispose());
+            Assert.Null(exception);
+            exitedProcess.Dispose();
+        }
     }
 }
