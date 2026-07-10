@@ -17,6 +17,7 @@
 | 2026-07-09 22:40:00 | AdsManager.cs | 98.7% | 100% | +1.3% | 38b3a931f | Completed |
 
 | 2026-07-09 23:00:00 | BayazitDecomposer.cs | 99.6% | ~99.8% | +0.2% | 907100b9c | Completed |
+| 2026-07-10 10:55:00 | WebAssemblyDisplayManager.cs | 50.7% | ~89-93% | +38-42% | 79a0e7a67 | Completed |
 | 2026-07-09 23:35:00 | ImGuiP7.cs | 0.0% | ~15-20% | +15-20% | 6ac4c60ae | Completed |
 | 2026-07-09 23:30:00 | ImPlot.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
 | 2026-07-09 23:35:00 | ImPlotP2.cs | 0.0% | 0.0% | +0% | N/A | BLOCKED_BY_PRODUCTION_CODE |
@@ -130,3 +131,4 @@
 - `VideoWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Video/VideoWriterRemainingCoverageTests.cs`
 - `ImFontPtrRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImFontPtrRemainingCoverageTests.cs`
 - `TransformRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Sfml/test/Render/TransformRemainingCoverageTests.cs`
+- `WebAssemblyDisplayManagerRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/4_Operation/Graphic/test/Platforms/Web/WebAssemblyDisplayManagerRemainingCoverageTests.cs`
