@@ -56,6 +56,17 @@ namespace Alis.Extension.Updater.Services.Api
         }
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="GitHubApiService" /> class with a pre-configured HttpClient
+        /// </summary>
+        /// <param name="apiUrl">The API URL</param>
+        /// <param name="httpClient">The HttpClient instance to use</param>
+        internal GitHubApiService(Uri apiUrl, HttpClient httpClient)
+        {
+            _httpClient = httpClient ?? new HttpClient();
+            ApiUrl = apiUrl;
+        }
+
+        /// <summary>
         ///     Disposes this instance
         /// </summary>
         public void Dispose()

@@ -243,45 +243,145 @@ namespace Alis.Extension.Updater.Test
       
         #endregion
 
-        #region GetLatestReleaseAsync Tests
-
-        
-
+       #region GetLatestReleaseAsync Tests
 
         /// <summary>
-        ///     Tests that GetLatestReleaseAsync is async (returns Task)
+        ///     Tests that GetLatestReleaseAsync returns response from HTTP call
         /// </summary>
         [Fact]
-        public void GetLatestReleaseAsync_ReturnsTask()
+        public async Task GetLatestReleaseAsync_WithSuccessfulResponse_ReturnsDictionaryWithResponse()
         {
-            // The method signature: public async Task<Dictionary<string, object>> GetLatestReleaseAsync()
-            // Verify it returns a Task type
+            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
+            string expectedResponse = "{\"tag_name\": \"v1.0.0\"}";
 
-            // This is verified by the method declaration: async Task<Dictionary<string, object>>
-            Assert.True(true); // Placeholder — full integration requires HTTP mock
+            Mock<HttpMessageHandler> handler = new Mock<HttpMessageHandler>();
+            handler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Content = new StringContent(expectedResponse)
+                });
+
+            using HttpClient httpClient = new HttpClient(handler.Object);
+            using GitHubApiService service = new GitHubApiService(apiUrl, httpClient);
+
+            Dictionary<string, object> result = await service.GetLatestReleaseAsync();
+
+            Assert.NotNull(result);
+            Assert.True(result.ContainsKey("response"));
+            Assert.Equal(expectedResponse, result["response"]);
         }
 
         /// <summary>
-        ///     Tests that GetLatestReleaseAsync does not parse JSON (returns raw response)
+        ///     Tests that GetLatestReleaseAsync sets User-Agent header
         /// </summary>
         [Fact]
-        public async Task GetLatestReleaseAsync_ReturnsRawResponseNotParsed()
+        public async Task GetLatestReleaseAsync_SetsUserAgentHeader()
         {
-            // The service returns: new Dictionary<string, object> { {"response", response} }
-            // where "response" is the raw string from GetStringAsync
-
             Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
-            
-            GitHubApiService? testService = new GitHubApiService(apiUrl);
+            string expectedResponse = "ok";
 
-            // Assert — the dictionary contains a "response" key with raw string value
-            // The service does NOT parse JSON — it returns the raw response
+            Mock<HttpMessageHandler> handler = new Mock<HttpMessageHandler>();
+            handler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Content = new StringContent(expectedResponse)
+                });
 
-            testService?.Dispose();
+            using HttpClient httpClient = new HttpClient(handler.Object);
+            using GitHubApiService service = new GitHubApiService(apiUrl, httpClient);
+
+            await service.GetLatestReleaseAsync();
+
+            handler.Protected().Verify(
+                "SendAsync",
+                Times.Once(),
+                ItExpr.Is<HttpRequestMessage>(req =>
+                    req.Headers.UserAgent.ToString() == "request"),
+                ItExpr.IsAny<CancellationToken>());
+        }
+
+        /// <summary>
+        ///     Tests that GetLatestReleaseAsync uses the correct API URL
+        /// </summary>
+        [Fact]
+        public async Task GetLatestReleaseAsync_UsesCorrectUrl()
+        {
+            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
+
+            Mock<HttpMessageHandler> handler = new Mock<HttpMessageHandler>();
+            handler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.OK,
+                    Content = new StringContent("{}")
+                });
+
+            using HttpClient httpClient = new HttpClient(handler.Object);
+            using GitHubApiService service = new GitHubApiService(apiUrl, httpClient);
+
+            await service.GetLatestReleaseAsync();
+
+            handler.Protected().Verify(
+                "SendAsync",
+                Times.Once(),
+                ItExpr.Is<HttpRequestMessage>(req =>
+                    req.RequestUri == apiUrl),
+                ItExpr.IsAny<CancellationToken>());
+        }
+
+        /// <summary>
+        ///     Tests that GetLatestReleaseAsync throws on HTTP error
+        /// </summary>
+        [Fact]
+        public async Task GetLatestReleaseAsync_WithHttpError_ThrowsException()
+        {
+            Uri apiUrl = new Uri("https://api.github.com/repos/test/test/releases/latest");
+
+            Mock<HttpMessageHandler> handler = new Mock<HttpMessageHandler>();
+            handler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    StatusCode = System.Net.HttpStatusCode.NotFound
+                });
+
+            using HttpClient httpClient = new HttpClient(handler.Object);
+            using GitHubApiService service = new GitHubApiService(apiUrl, httpClient);
+
+            await Assert.ThrowsAsync<HttpRequestException>(() => service.GetLatestReleaseAsync());
+        }
+
+        /// <summary>
+        ///     Tests that internal constructor with null HttpClient creates a new one
+        /// </summary>
+        [Fact]
+        public void InternalConstructor_WithNullHttpClient_ShouldNotThrow()
+        {
+            Uri apiUrl = new Uri("https://api.github.com/test");
+            using GitHubApiService service = new GitHubApiService(apiUrl, null);
+
+            Assert.NotNull(service);
+            Assert.Equal(apiUrl, service.ApiUrl);
         }
 
         #endregion
-
         #region Edge Cases
 
         /// <summary>
