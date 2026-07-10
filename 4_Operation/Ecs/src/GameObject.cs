@@ -1951,7 +1951,7 @@ namespace Alis.Core.Ecs
             }
 
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord events = exists ? Scene.EventLookup[EntityIdOnly] : default(EventRecord);
+            EventRecord events = exists ? world.EventLookup[EntityIdOnly] : default(EventRecord);
 
             if (exists)
             {
@@ -1994,10 +1994,15 @@ namespace Alis.Core.Ecs
             }
 
             bool exists = entityLocation.HasEvent(flag);
-            EventRecord record = exists ? Scene.EventLookup[EntityIdOnly] : default(EventRecord);
+            EventRecord record = exists ? world.EventLookup[EntityIdOnly] : default(EventRecord);
 
             world.EntityTable[EntityID].Flags |= flag;
             EventRecord.Initalize(exists, ref record!);
+
+            if (!exists)
+            {
+                world.EventLookup[EntityIdOnly] = record;
+            }
 
             switch (flag)
             {
