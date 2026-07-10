@@ -120,12 +120,73 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", result[2]);
         }
 
+        [Fact]
+        public void ToArray_NineElements_TriggersMultipleResizes()
+        {
+            IEnumerable<int> source = NineElementEnumerable();
+
+            int[] result = EnumerableHelpers.ToArray(source, out int length);
+
+            Assert.Equal(9, length);
+            Assert.Equal(1, result[0]);
+            Assert.Equal(5, result[4]);
+            Assert.Equal(9, result[8]);
+        }
+
+        [Fact]
+        public void ToArray_SeventeenElements_TriggersThreeResizes()
+        {
+            IEnumerable<int> source = SeventeenElementEnumerable();
+
+            int[] result = EnumerableHelpers.ToArray(source, out int length);
+
+            Assert.Equal(17, length);
+            Assert.Equal(1, result[0]);
+            Assert.Equal(9, result[8]);
+            Assert.Equal(17, result[16]);
+        }
+
+        [Fact]
+        public void ToArray_EmptyICollection_ReturnsEmptyArray()
+        {
+            ICollection<int> source = new List<int>();
+
+            int[] result = EnumerableHelpers.ToArray(source, out int length);
+
+            Assert.Empty(result);
+            Assert.Equal(0, length);
+        }
+
+        [Fact]
+        public void Reset_OnCustomEnumerator_RestoresState()
+        {
+            List<int> items = [1, 2, 3];
+            IEnumerator<int> enumerator = items.GetEnumerator();
+            enumerator.MoveNext();
+            Assert.Equal(1, enumerator.Current);
+
+            EnumerableHelpers.Reset(ref enumerator);
+
+            enumerator.MoveNext();
+            Assert.Equal(1, enumerator.Current);
+        }
+
         /// <summary>
         ///     Returns an empty enumerable that does not implement <see cref="ICollection{T}" />.
         /// </summary>
         private static IEnumerable<int> EmptyEnumerable()
         {
             yield break;
+        }
+
+        private static IEnumerable<int> NineElementEnumerable()
+        {
+            for (int i = 1; i <= 9; i++) yield return i;
+        }
+
+        private static IEnumerable<int> SeventeenElementEnumerable()
+        {
+            for (int i = 1; i <= 17; i++) yield return i;
         }
 
         /// <summary>
