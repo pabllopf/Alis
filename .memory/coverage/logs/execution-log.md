@@ -75,6 +75,19 @@
 
 ---
 
+## Entry 11 — 2026-07-10T12:30:00Z
+
+- **Commit:** 81a23add0
+- **File:** FastestArrayPool.cs
+- **Task:** Add tests for ClearBuckets method and Gen2GcCallback event subscription
+- **Tests Added:** 3 new test methods (FastestArrayPoolClearBucketsTest.cs)
+  - `ClearBuckets_AfterReturningArrays_RentStillWorks`
+  - `ClearBuckets_WithNoReturnedArrays_RentStillWorks`
+  - `Constructor_SubscribesToGen2Event_AndClearBucketsSafe`
+- **Key Paths:** ClearBuckets() method, constructor event subscription (Gen2CollectionOccured)
+- **Technique:** Invoked `Gen2GcCallback.Gen2CollectionOccured?.Invoke()` directly to trigger ClearBuckets
+- **Status:** All 44 FastestArrayPool tests passing
+
 ## Entry 10 — 2026-07-10T12:00:00Z
 
 - **Commit:** 3aa820754

@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-10T12:00:00Z
+updated: 2026-07-10T12:30:00Z
 ---
 
 # Coverage Index
@@ -76,6 +76,7 @@ updated: 2026-07-10T12:00:00Z
 | FilePickerPathConverter.cs | 2 | 22 | c0d715b32 |
 | GameObject.cs | 12 | ~200 | e4c991127 |
 | BrowserPlayer.cs | 7 | ~10 | 3aa820754 |
+| FastestArrayPool.cs | 3 | ~10 | 81a23add0 |
 
 ## Notes
 

@@ -24,3 +24,5 @@
 | GameObject.cs | local-agent | 2026-07-10T08:15:00Z | COMPLETED - 12 new tests, commit e4c991127 |
 | DropBoxCloudManager.cs | local-agent | 2026-07-10T10:15:00Z | IN PROGRESS - adding coverage tests |
 | Image.cs | local-agent | 2026-07-10T09:40:00Z | IN PROGRESS |
+| FilePickerFactory.cs | local-agent | 2026-07-10T12:30:00Z | ACQUIRED - coverage tests in progress |
+| FastestArrayPool.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 3 new tests (ClearBuckets via Gen2GcCallback event), commit 81a23add0 |
