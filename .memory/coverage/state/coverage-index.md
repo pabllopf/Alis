@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-08T09:15:00Z
+updated: 2026-07-10T09:15:00Z
 ---
 
 # Coverage Index
@@ -11,29 +11,35 @@ updated: 2026-07-08T09:15:00Z
 **Branch:** master
 
 ## Current Coverage
-- **Overall:** 61.8%
-- **Line Coverage:** 61.0%
-- **Branch Coverage:** 65.9%
-- **Uncovered Lines:** 22,413
-- **Uncovered Conditions:** 4,079
+- **Overall:** 63.3%
+- **Line Coverage:** 62.4%
+- **Branch Coverage:** 67.7%
+- **Uncovered Lines:** 21,607
+- **Uncovered Conditions:** 3,862
 - **NCLOC:** 92,007
+
+## Delta from Last Index (2026-07-08)
+- **Overall:** +1.5% (was 61.8%)
+- **Uncovered Lines:** -806 (was 22,413)
+- **Uncovered Conditions:** -217 (was 4,079)
 
 ## Targets (Sorted by Priority)
 
 | # | File | Coverage | UL | UC | Layer | Status |
 |---|------|----------|----|----|-------|--------|
-| 1 | 4_Operation/Physic/src/Dynamics/Joints/DistanceJoint.cs | 19.6% | 117 | 14 | Operation | ✅ |
-| 2 | 4_Operation/Physic/src/Dynamics/Joints/FrictionJoint.cs | 20.6% | 94 | 6 | Operation | ✅ |
-| 3 | 4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs | 28.1% | 198 | 14 | Operation | ✅ |
-| 4 | 4_Operation/Physic/src/Dynamics/ContactManager.cs | 56.8% | 141 | 67 | Operation | ✅ |
-| 5 | 4_Operation/Physic/src/Controllers/GravityController.cs | 34.8% | 40 | 33 | Operation | ✅ |
-| 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 23.4% | 153 | 50 | Application | ⬜ Blocked (OpenGL) |
-| 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 39.3% | 158 | 40 | Application | ⬜ Blocked (OpenGL + ECS) |
+| 1 | 4_Operation/Graphic/src/Ui/Font.cs | 0.0% | 228 | - | Operation | ⬜ Blocked (Native/UI) |
+| 2 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs | 0.0% | 5 | - | Operation | ✅ |
+| 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ⬅ ACTIVE |
+| 4 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 51.5% | 14 | - | Operation | ⬜ |
+| 5 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs | 26.9% | 120 | - | Application | ⬜ |
+| 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 24.2% | 151 | - | Application | ⬜ Blocked (OpenGL) |
+| 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 41.7% | 151 | - | Application | ⬜ Blocked (OpenGL + ECS) |
 
 ## Processed Files
 
 | File | Tests Added | Lines Added | Commit |
 |------|------------|-------------|--------|
+| SingleComponentUpdateFilter.cs | 4 | 132 | PENDING |
 | DistanceJoint.cs | 13 | 282 | a4e02bafd |
 | FrictionJoint.cs | 13 | 199 | e547ea826 |
 | GearJoint.cs | 12 | 299 | d53583d51 |
@@ -47,7 +53,5 @@ updated: 2026-07-08T09:15:00Z
 ## Notes
 
 - **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
-- **ContactManager/Contact**: 15 Step()-based tests cover Evaluate variants (Polygon, Edge, Chain), sensor fixtures, OnCollision/OnSeparation/BeginContact/EndContact/PreSolve delegates, and warm starting.
-- **AABB.cs**: Already has 38 tests (pre-existing AabbTest.cs). All public methods covered.
-- **Body.cs (simulation)**: 6 Step()-based tests cover FixedRotation, IgnoreGravity, Enabled=false, sleep/wake, CollideConnected joint, world-Rotation setter.
-- **Body.cs (uncovered paths)**: 14 additional tests cover GetBodyType same-value, LocalCenter non-dynamic, Inertia offset, duplicate fixture exceptions, Apply*/wake-from-sleep, ref overloads, static-body no-op.
+- **Gen2GcCallback**: ACTIVE target. Public registration API covered, missing finalizer/GCHandle paths.
+- **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing.
