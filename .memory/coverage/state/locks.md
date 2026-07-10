@@ -16,10 +16,10 @@
 | DynamicTree.cs | local-agent | 2026-07-10T00:03:00Z | 14 NEW TESTS ADDED |
 | DelaunayTriangle.cs | local-agent | 2026-07-10T00:04:00Z | 12 NEW TESTS ADDED |
 | DTSweep.cs | local-agent | 2026-07-10T00:04:00Z | 5 NEW TESTS ADDED |
-| ComponentRegistry.cs | local-agent | 2026-07-10T00:05:00Z | 6 NEW TESTS ADDED |
 | WorldPhysic.cs | local-agent | 2026-07-10T00:45:00Z | COMPLETED - 61 NEW TESTS ADDED (all passing) |
 | GitHubApiService.cs | local-agent | 2026-07-10T07:45:00Z | COMPLETED - 5 NEW TESTS ADDED (all passing, internal ctor added for testability) |
 | SimplifyTools.cs | local-agent | 2026-07-10T01:00:00Z | COMPLETED - 17 NEW TESTS ADDED (all passing) |
 | ComponentRegistry.cs | local-agent | 2026-07-10T01:10:00Z | IN PROGRESS |
-| FilePickerPathConverter.cs | local-agent | 2026-07-10T10:00:00Z | ACQUIRED |
-| FontManager.cs | local-agent | 2026-07-10T09:30:00Z | COMPLETED - 6 new tests, commit pending |
+| BrowserPlayer.cs | local-agent | 2026-07-10T12:00:00Z | IN PROGRESS |
+| GameObject.cs | local-agent | 2026-07-10T08:15:00Z | COMPLETED - 12 new tests, commit e4c991127 |
+| DropBoxCloudManager.cs | local-agent | 2026-07-10T10:15:00Z | IN PROGRESS - adding coverage tests |

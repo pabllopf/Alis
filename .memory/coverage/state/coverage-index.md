@@ -65,7 +65,9 @@ updated: 2026-07-10T09:15:00Z
 | WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
 | GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
 | SimplifyTools.cs | 17 | ~350 | 028c2c1a8 |
-| FontManager.cs | 6 | ~80 | pending |
+| FontManager.cs | 6 | ~80 | 079a6da3f |
+| FilePickerPathConverter.cs | 2 | 22 | c0d715b32 |
+| GameObject.cs | 12 | ~200 | e4c991127 |
 
 ## Notes
 
