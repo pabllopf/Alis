@@ -328,5 +328,180 @@ namespace Alis.Core.Physic.Test.Controllers
 
             Assert.Equal(500f, body.LinearVelocityInternal.X);
         }
+
+        /// <summary>
+        ///     Tests that angular clamping actually triggers with high enough velocity
+        /// </summary>
+        [Fact]
+        public void Update_WithAngularVelocityHighEnough_ShouldClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.AngularVelocity = 200f;
+            controller.Update(0.1f);
+
+            float rotation = 0.1f * Math.Abs(body.AngularVelocity);
+            Assert.True(rotation <= 2.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that Update with zero dt does not throw
+        /// </summary>
+        [Fact]
+        public void Update_WithZeroDt_ShouldNotThrow()
+        {
+            VelocityLimitController controller = new VelocityLimitController();
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
+            controller.WorldPhysic = world;
+
+            controller.Update(0f);
+
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that Update with multiple bodies applies limits to all
+        /// </summary>
+        [Fact]
+        public void Update_WithMultipleBodies_ShouldClampAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body2 = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body1);
+            controller.AddBody(body2);
+
+            body1.LinearVelocityInternal = new Vector2F(100f, 0f);
+            body2.LinearVelocityInternal = new Vector2F(200f, 0f);
+            controller.Update(0.016f);
+
+            float displacement1 = 0.016f * body1.LinearVelocityInternal.Length();
+            float displacement2 = 0.016f * body2.LinearVelocityInternal.Length();
+            Assert.True(displacement1 <= 5.0f + 0.0001f);
+            Assert.True(displacement2 <= 5.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that changing MaxLinearVelocity after construction is reflected
+        /// </summary>
+        [Fact]
+        public void MaxLinearVelocityProperty_ChangeAfterConstruction_ShouldAffectClamping()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            controller.MaxLinearVelocity = 5.0f;
+            body.LinearVelocityInternal = new Vector2F(100f, 0f);
+            controller.Update(0.016f);
+
+            float displacement = 0.016f * body.LinearVelocityInternal.Length();
+            Assert.True(displacement <= 5.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that changing MaxAngularVelocity after construction is reflected
+        /// </summary>
+        [Fact]
+        public void MaxAngularVelocityProperty_ChangeAfterConstruction_ShouldAffectClamping()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            controller.MaxAngularVelocity = 2.0f;
+            body.AngularVelocity = 200f;
+            controller.Update(0.1f);
+
+            float rotation = 0.1f * Math.Abs(body.AngularVelocity);
+            Assert.True(rotation <= 2.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveBody with body not in list does not throw
+        /// </summary>
+        [Fact]
+        public void RemoveBody_WithNonExistentBody_ShouldNotThrow()
+        {
+            VelocityLimitController controller = new VelocityLimitController();
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body body = world.CreateBody();
+
+            controller.RemoveBody(body);
+
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that Update with both linear and angular clamping disabled does nothing
+        /// </summary>
+        [Fact]
+        public void Update_WithBothLimitsDisabled_ShouldNotClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(0.0f, 0.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(500f, 0f);
+            body.AngularVelocity = 500f;
+            controller.Update(0.016f);
+
+            Assert.Equal(500f, body.LinearVelocityInternal.X);
+            Assert.Equal(500f, body.AngularVelocity);
+        }
+
+        /// <summary>
+        ///     Tests that Update with both linear and angular limits active clamps both
+        /// </summary>
+        [Fact]
+        public void Update_WithBothLimitsActive_ShouldClampBoth()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 2.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(100f, 0f);
+            body.AngularVelocity = 200f;
+            controller.Update(0.1f);
+
+            float displacement = 0.1f * body.LinearVelocityInternal.Length();
+            float rotation = 0.1f * Math.Abs(body.AngularVelocity);
+            Assert.True(displacement <= 5.0f + 0.0001f);
+            Assert.True(rotation <= 2.0f + 0.0001f);
+        }
+
+        /// <summary>
+        ///     Tests that Update with disabled body does not clamp
+        /// </summary>
+        [Fact]
+        public void Update_WithDisabledBody_ShouldNotClamp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            body.Enabled = false;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.LinearVelocityInternal = new Vector2F(500f, 0f);
+            controller.Update(0.016f);
+
+            Assert.Equal(500f, body.LinearVelocityInternal.X);
+        }
     }
 }

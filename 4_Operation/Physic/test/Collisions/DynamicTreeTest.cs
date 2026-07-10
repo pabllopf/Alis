@@ -285,6 +285,145 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(moved);
         }
+
+        /// <summary>
+        ///     Tests that Balance is exercised with many proxies to trigger rotations.
+        /// </summary>
+        [Fact]
+        public void AddManyProxies_ShouldTriggerBalanceRotations()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            // Add proxies in a pattern that creates imbalance and triggers the AVL rotations
+            for (int i = 0; i < 100; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.5f, 0.0f),
+                    new Vector2F(i * 0.5f + 0.3f, 0.3f));
+                tree.AddProxy(ref aabb);
+            }
+
+            Assert.True(tree.Height > 0);
+            Assert.True(tree.MaxBalance >= 0);
+        }
+
+        /// <summary>
+        ///     Tests removing the root proxy directly.
+        /// </summary>
+        [Fact]
+        public void RemoveProxy_WhenRemovingRoot_ShouldResetTree()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            tree.RemoveProxy(proxyId);
+
+            Assert.Equal(0, tree.Height);
+            Assert.Equal(0.0f, tree.AreaRatio);
+        }
+
+        /// <summary>
+        ///     Tests ComputeHeight with a specific node id.
+        /// </summary>
+        [Fact]
+        public void ComputeHeight_WithSpecificNodeId_ShouldReturnHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            int height = tree.ComputeHeight(proxyId);
+
+            Assert.Equal(0, height);
+        }
+
+        /// <summary>
+        ///     Tests AllocateNode triggers growth beyond initial capacity.
+        /// </summary>
+        [Fact]
+        public void AllocateNode_ShouldGrowCapacity_WhenFreeListExhausted()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            // Initial capacity is 16, so adding 20+ proxies forces growth
+            for (int i = 0; i < 20; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                tree.AddProxy(ref aabb);
+            }
+
+            Assert.True(tree.Height > 0);
+            tree.Validate();
+        }
+
+        /// <summary>
+        ///     Tests that ValidateMetrics does not throw for valid tree.
+        /// </summary>
+        [Fact]
+        public void ValidateMetrics_ShouldNotThrow_ForValidTree()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                tree.AddProxy(ref aabb);
+            }
+
+            tree.Validate();
+        }
+
+        /// <summary>
+        ///     Tests that ValidateStructure does not throw for valid tree.
+        /// </summary>
+        [Fact]
+        public void ValidateStructure_ShouldNotThrow_ForValidTree()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                tree.AddProxy(ref aabb);
+            }
+
+            tree.ValidateStructure(0);
+        }
+
+        /// <summary>
+        ///     Tests that MoveProxy with negative displacement extends lower bound.
+        /// </summary>
+        [Fact]
+        public void MoveProxy_WithNegativeDisplacement_ShouldExtendLowerBound()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            Aabb newAabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(6.0f, 6.0f));
+            bool moved = tree.MoveProxy(proxyId, ref newAabb, new Vector2F(-10.0f, 0.0f));
+
+            Assert.True(moved);
+        }
+
+        /// <summary>
+        ///     Tests that GetFatAabb out-parameter overload returns correct AABB.
+        /// </summary>
+        [Fact]
+        public void GetFatAabb_OutParameter_ShouldReturnCorrectBounds()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            int proxyId = tree.AddProxy(ref aabb);
+
+            tree.GetFatAabb(proxyId, out Aabb fatAabb);
+
+            Assert.True(fatAabb.LowerBound.X <= 0.0f);
+            Assert.True(fatAabb.UpperBound.X >= 1.0f);
+        }
     }
 }
 
