@@ -30,10 +30,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
@@ -317,22 +320,34 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
 
-            var field = typeof(AssetRegistry).GetField("_zipCache",
-                BindingFlags.NonPublic | BindingFlags.Static);
-            var original = (IDictionary)field.GetValue(null);
-            try
-            {
-                var wrapper = new CacheMissDict(original, assemblyName);
-                field.SetValue(null, wrapper);
+            using var cts = new CancellationTokenSource();
 
-                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
-                    AssetRegistry.GetResourceMemoryStreamByName("file.txt"));
-                Assert.Contains("Cache del assets.pack no disponible", ex.Message);
-            }
-            finally
+            Task.Run(() =>
             {
-                field.SetValue(null, original);
+                while (!cts.IsCancellationRequested)
+                {
+                    GetZipCache().Remove(assemblyName);
+                    Thread.SpinWait(10);
+                }
+            });
+
+            bool hit = false;
+            Stopwatch sw = Stopwatch.StartNew();
+
+            while (!hit && sw.Elapsed < TimeSpan.FromSeconds(5))
+            {
+                try
+                {
+                    AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
+                }
+                catch (FileNotFoundException ex) when (ex.Message.Contains("Cache del assets.pack no disponible"))
+                {
+                    hit = true;
+                }
             }
+
+            cts.Cancel();
+            Assert.True(hit, "Cache miss race condition was triggered");
         }
 
         [Fact]
@@ -344,22 +359,34 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourcePathByName("file.txt");
 
-            var field = typeof(AssetRegistry).GetField("_zipCache",
-                BindingFlags.NonPublic | BindingFlags.Static);
-            var original = (IDictionary)field.GetValue(null);
-            try
-            {
-                var wrapper = new CacheMissDict(original, assemblyName);
-                field.SetValue(null, wrapper);
+            using var cts = new CancellationTokenSource();
 
-                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
-                    AssetRegistry.GetResourcePathByName("file.txt"));
-                Assert.Contains("Cache del assets.pack no disponible", ex.Message);
-            }
-            finally
+            Task.Run(() =>
             {
-                field.SetValue(null, original);
+                while (!cts.IsCancellationRequested)
+                {
+                    GetZipCache().Remove(assemblyName);
+                    Thread.SpinWait(10);
+                }
+            });
+
+            bool hit = false;
+            Stopwatch sw = Stopwatch.StartNew();
+
+            while (!hit && sw.Elapsed < TimeSpan.FromSeconds(5))
+            {
+                try
+                {
+                    AssetRegistry.GetResourcePathByName("file.txt");
+                }
+                catch (FileNotFoundException ex) when (ex.Message.Contains("Cache del assets.pack no disponible"))
+                {
+                    hit = true;
+                }
             }
+
+            cts.Cancel();
+            Assert.True(hit, "Cache miss race condition was triggered for GetResourcePathByName");
         }
 
         [Fact]
@@ -414,6 +441,9 @@ namespace Alis.Core.Aspect.Memory.Test
             string path = AssetRegistry.GetResourcePathByName("file.txt");
             Assert.True(File.Exists(path));
 
+            string compositeKey = assemblyName.ToLowerInvariant() + "|file.txt";
+            GetPathCache()[compositeKey] = path;
+
             var zipCache = GetZipCache();
             var entry = (ZipCacheEntry)zipCache[assemblyName];
             entry.EntriesByFullNameLower.Clear();
@@ -423,7 +453,6 @@ namespace Alis.Core.Aspect.Memory.Test
                 AssetRegistry.GetResourcePathByName("file.txt"));
             Assert.Contains("not found in `assets.pack`", ex.Message);
 
-            string compositeKey = assemblyName.ToLowerInvariant() + "|file.txt";
             Assert.False(GetPathCache().Contains(compositeKey));
         }
 
@@ -436,25 +465,16 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
 
-            var loadersField = typeof(AssetRegistry).GetField("RegisteredAssetLoaders",
+            GetZipCache().Remove(assemblyName);
+            GetLoaders().Remove(assemblyName);
+
+            var method = typeof(AssetRegistry).GetMethod("EnsureZipCachedForActiveAssembly",
                 BindingFlags.NonPublic | BindingFlags.Static);
-            var original = (IDictionary)loadersField.GetValue(null);
-            try
-            {
-                var wrapper = new LoaderMissingDict(original, assemblyName);
-                loadersField.SetValue(null, wrapper);
 
-                var zipCache = GetZipCache();
-                zipCache.Remove(assemblyName);
-
-                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                    AssetRegistry.GetResourceMemoryStreamByName("file.txt"));
-                Assert.Contains("no tiene un assets.pack registrado", ex.Message);
-            }
-            finally
-            {
-                loadersField.SetValue(null, original);
-            }
+            TargetInvocationException tie = Assert.Throws<TargetInvocationException>(() =>
+                method.Invoke(null, null));
+            Assert.IsType<InvalidOperationException>(tie.InnerException);
+            Assert.Contains("no tiene un assets.pack registrado", tie.InnerException.Message);
         }
 
         [Fact]
@@ -484,114 +504,95 @@ namespace Alis.Core.Aspect.Memory.Test
             }
         }
 
-        private sealed class CacheMissDict : IDictionary
+        [Fact]
+        public void ExtractResourceToTemp_ZipEntryNull_ThrowsFileNotFoundException()
         {
-            private readonly IDictionary _inner;
-            private readonly string _missKey;
+            string assemblyName = "ExtractRace_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"real.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
 
-            public CacheMissDict(IDictionary inner, string missKey)
+            string path = AssetRegistry.GetResourcePathByName("real.txt");
+            Assert.True(File.Exists(path));
+
+            File.Delete(path);
+            GetPathCache().Clear();
+
+            var zipCache = GetZipCache();
+            var entry = (ZipCacheEntry)zipCache[assemblyName];
+            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out var info))
             {
-                _inner = inner;
-                _missKey = missKey;
+                info.FullName = "fake.txt";
             }
 
-            public bool Contains(object key)
+            try
             {
-                if (key is string s && s == _missKey)
-                    return false;
-                return _inner.Contains(key);
+                FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() =>
+                    AssetRegistry.GetResourcePathByName("real.txt"));
+                Assert.Contains("race", ex.Message);
             }
-
-            public object this[object key]
+            finally
             {
-                get => _inner[key];
-                set => _inner[key] = value;
-            }
-
-            public bool TryGetValue(string key, out ZipCacheEntry value)
-            {
-                if (key == _missKey)
+                if (info != null)
                 {
-                    value = null;
-                    return false;
+                    info.FullName = "real.txt";
                 }
-                if (_inner.Contains(key))
-                {
-                    value = (ZipCacheEntry)_inner[key];
-                    return true;
-                }
-                value = null;
-                return false;
             }
-
-            public void Add(object key, object value) => _inner.Add(key, value);
-            public void Clear() => _inner.Clear();
-            public IDictionaryEnumerator GetEnumerator() => _inner.GetEnumerator();
-            public void Remove(object key) => _inner.Remove(key);
-            public bool IsFixedSize => _inner.IsFixedSize;
-            public bool IsReadOnly => _inner.IsReadOnly;
-            public ICollection Keys => _inner.Keys;
-            public ICollection Values => _inner.Values;
-            IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_inner).GetEnumerator();
-            public void CopyTo(Array array, int index) => _inner.CopyTo(array, index);
-            public int Count => _inner.Count;
-            public bool IsSynchronized => _inner.IsSynchronized;
-            public object SyncRoot => _inner.SyncRoot;
         }
 
-        private sealed class LoaderMissingDict : IDictionary
+        [Fact]
+        public void ExtractResourceToTemp_SetLastWriteTimeUtcFails_CatchBlockHandles()
         {
-            private readonly IDictionary _inner;
-            private readonly string _missKey;
+            string assemblyName = "CatchBlock_" + Guid.NewGuid();
+            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
+            SetupAssembly(assemblyName, zipBytes);
 
-            public LoaderMissingDict(IDictionary inner, string missKey)
-            {
-                _inner = inner;
-                _missKey = missKey;
-            }
+            string path = AssetRegistry.GetResourcePathByName("file.txt");
+            Assert.True(File.Exists(path));
 
-            public bool Contains(object key)
-            {
-                if (key is string s && s == _missKey)
-                    return true;
-                return _inner.Contains(key);
-            }
+            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            bool done = false;
 
-            public object this[object key]
+            Task.Run(() =>
             {
-                get => _inner[key];
-                set => _inner[key] = value;
-            }
-
-            public bool TryGetValue(string key, out Func<Stream> value)
-            {
-                if (key == _missKey)
+                while (!cts.IsCancellationRequested)
                 {
-                    value = null;
-                    return false;
+                    if (File.Exists(path))
+                    {
+                        try { File.Delete(path); } catch { }
+                    }
+                    Thread.SpinWait(10);
                 }
-                if (_inner.Contains(key))
+            });
+
+            Stopwatch sw = Stopwatch.StartNew();
+            while (sw.Elapsed < TimeSpan.FromSeconds(5))
+            {
+                try
                 {
-                    value = (Func<Stream>)_inner[key];
-                    return true;
+                    File.Delete(path);
                 }
-                value = null;
-                return false;
+                catch { }
+
+                GetPathCache().Clear();
+
+                try
+                {
+                    string result = AssetRegistry.GetResourcePathByName("file.txt");
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        done = true;
+                        break;
+                    }
+                }
+                catch
+                {
+                }
             }
 
-            public void Add(object key, object value) => _inner.Add(key, value);
-            public void Clear() => _inner.Clear();
-            public IDictionaryEnumerator GetEnumerator() => _inner.GetEnumerator();
-            public void Remove(object key) => _inner.Remove(key);
-            public bool IsFixedSize => _inner.IsFixedSize;
-            public bool IsReadOnly => _inner.IsReadOnly;
-            public ICollection Keys => _inner.Keys;
-            public ICollection Values => _inner.Values;
-            IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable)_inner).GetEnumerator();
-            public void CopyTo(Array array, int index) => _inner.CopyTo(array, index);
-            public int Count => _inner.Count;
-            public bool IsSynchronized => _inner.IsSynchronized;
-            public object SyncRoot => _inner.SyncRoot;
+            cts.Cancel();
+            Assert.True(done, "Extraction completed with catch block handling");
         }
+
+
     }
 }

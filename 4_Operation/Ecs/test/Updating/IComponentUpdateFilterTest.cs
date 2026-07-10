@@ -18,8 +18,8 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             var filter = new TestUpdateFilter();
             ReadOnlySpan<ArchetypeDeferredUpdateRecord> span = [];
-            var exception = Record.Exception(() => filter.UpdateSubset(span));
-            Assert.Null(exception);
+            filter.UpdateSubset(span);
+            Assert.Equal(1, filter.CallCount);
         }
 
         [Fact]

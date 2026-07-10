@@ -40,6 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
     /// <summary>
     /// The archetype remaining coverage tests class
     /// </summary>
+    [CollectionDefinition("ArchetypeRemainingCoverageTests", DisableParallelization = true)]
     public class ArchetypeRemainingCoverageTests
     {
         /// <summary>

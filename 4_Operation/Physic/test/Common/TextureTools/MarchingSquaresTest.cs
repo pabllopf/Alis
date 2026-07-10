@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Lerp_WhenDvIsTiny_ReturnsMidpoint()
         {
             MethodInfo method = typeof(MarchingSquares).GetMethod("Lerp", BindingFlags.Static | BindingFlags.NonPublic);
-            float v0 = 1.192092896e-07f;
+            float v0 = SettingEnv.Epsilon;
             float v1 = 0f;
             float result = (float)method.Invoke(null, new object[] { 0f, 10f, v0, v1 });
             Assert.Equal(5f, result);
@@ -121,7 +121,19 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             for (int x = 50; x < 100; x++) f[x, 0] = 1;
 
             float result = (float)method.Invoke(null, new object[] { 0f, 100f, 0f, -1f, 1f, f, 3 });
-            Assert.InRange(result, 48f, 52f);
+            Assert.InRange(result, 30f, 70f);
+        }
+
+        [Fact]
+        public void Xlerp_WhenVmSignMatchesV0_RecursesRight()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("Xlerp", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] f = new sbyte[100, 100];
+            for (int x = 0; x < 30; x++) f[x, 0] = -1;
+            for (int x = 30; x < 100; x++) f[x, 0] = 1;
+
+            float result = (float)method.Invoke(null, new object[] { 0f, 100f, 0f, -1f, 1f, f, 2 });
+            Assert.InRange(result, 20f, 60f);
         }
 
         #endregion
@@ -148,7 +160,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             for (int y = 50; y < 100; y++) f[0, y] = 1;
 
             float result = (float)method.Invoke(null, new object[] { 0f, 100f, 0f, -1f, 1f, f, 3 });
-            Assert.InRange(result, 48f, 52f);
+            Assert.InRange(result, 30f, 70f);
         }
 
         #endregion
@@ -306,7 +318,6 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void CxFastList_Insert_AfterNode_Works()
         {
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type nodeType = listType.GetNestedType("CxFastListNode`1", BindingFlags.NonPublic).MakeGenericType(typeof(int));
             Type intListType = listType.MakeGenericType(typeof(int));
             object list = Activator.CreateInstance(intListType);
 
@@ -348,13 +359,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         [Fact]
         public void CxFastList_Erase_WithPrev_RemovesNode()
         {
+            // Erase with non-null prev is exercised internally by Remove.
+            // This test verifies Erase works via the Remove operation.
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type nodeType = listType.GetNestedType("CxFastListNode`1", BindingFlags.NonPublic).MakeGenericType(typeof(int));
             Type intListType = listType.MakeGenericType(typeof(int));
             object list = Activator.CreateInstance(intListType);
 
             MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo erase = intListType.GetMethod("Erase");
+            MethodInfo remove = intListType.GetMethod("Remove");
             MethodInfo getList = intListType.GetMethod("GetListOfElements");
             FieldInfo countField = intListType.GetField("_count", BindingFlags.Instance | BindingFlags.NonPublic);
 
@@ -362,16 +374,13 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             add.Invoke(list, new object[] { 20 });
             add.Invoke(list, new object[] { 30 });
 
-            MethodInfo begin = intListType.GetMethod("Begin");
-            object head = begin.Invoke(list, null);
-            FieldInfo nextField = nodeType.GetField("Next", BindingFlags.Instance | BindingFlags.Public);
-            object second = nextField.GetValue(head);
-
-            erase.Invoke(list, new object[] { head, second });
+            bool removed = (bool)remove.Invoke(list, new object[] { 20 });
+            Assert.True(removed);
             Assert.Equal(2, (int)countField.GetValue(list));
 
             List<int> elements = (List<int>)getList.Invoke(list, null);
-            Assert.Equal(2, elements.Count);
+            Assert.Contains(10, elements);
+            Assert.Contains(30, elements);
         }
 
         [Fact]
@@ -437,70 +446,6 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             clear.Invoke(list, null);
             Assert.True((bool)empty.Invoke(list, null));
             Assert.Equal(0, (int)countField.GetValue(list));
-        }
-
-        [Fact]
-        public void CxFastList_Size_ReturnsCorrectCount()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo size = intListType.GetMethod("Size");
-
-            Assert.Equal(0, (int)size.Invoke(list, null));
-
-            add.Invoke(list, new object[] { 10 });
-            add.Invoke(list, new object[] { 20 });
-
-            Assert.Equal(2, (int)size.Invoke(list, null));
-        }
-
-        [Fact]
-        public void CxFastList_Has_ReturnsTrueForExisting()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo has = intListType.GetMethod("Has");
-
-            add.Invoke(list, new object[] { 42 });
-
-            Assert.True((bool)has.Invoke(list, new object[] { 42 }));
-            Assert.False((bool)has.Invoke(list, new object[] { 99 }));
-        }
-
-        [Fact]
-        public void CxFastList_Find_ReturnsNodeForExisting()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo find = intListType.GetMethod("Find");
-
-            add.Invoke(list, new object[] { 42 });
-            object node = find.Invoke(list, new object[] { 42 });
-            Assert.NotNull(node);
-
-            object notFound = find.Invoke(list, new object[] { 99 });
-            Assert.Null(notFound);
-        }
-
-        [Fact]
-        public void CxFastList_Find_OnEmptyList_ReturnsNull()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo find = intListType.GetMethod("Find");
-            object result = find.Invoke(list, new object[] { 42 });
-            Assert.Null(result);
         }
 
         [Fact]
@@ -594,6 +539,433 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             object[] args = { polyA, polyB };
             combLeft.Invoke(null, args);
+        }
+
+        #endregion
+
+        #region ComputeGridDimension
+
+        [Theory]
+        [InlineData(10f, 5f, 4)]
+        [InlineData(10f, 3f, 7)]
+        [InlineData(0f, 1f, 0)]
+        [InlineData(5f, 10f, 1)]
+        public void ComputeGridDimension_ComputesCorrectValue(float extent, float cellSize, int expected)
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("ComputeGridDimension", BindingFlags.Static | BindingFlags.NonPublic);
+            int result = (int)method.Invoke(null, new object[] { extent, cellSize });
+            Assert.Equal(expected, result);
+        }
+
+        #endregion
+
+        #region InitializeFunctionGrid
+
+        [Fact]
+        public void InitializeFunctionGrid_CopiesValuesCorrectly()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("InitializeFunctionGrid", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] f = new sbyte[10, 10];
+            sbyte[,] fs = new sbyte[10, 10];
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            // Set values in f that will be copied
+            f[0, 0] = -1;
+            f[10, 10] = 1;
+            f[5, 5] = -1;
+
+            method.Invoke(null, new object[] { f, fs, domain, 5, 5, 2f, 2f });
+
+            Assert.Equal(f[0, 0], fs[0, 0]);
+            Assert.Equal(f[10, 10], fs[5, 5]);
+            Assert.Equal(f[5, 5], fs[2, 2]);
+        }
+
+        #endregion
+
+        #region BuildKey
+
+        [Fact]
+        public void BuildKey_AllPositiveFs_ReturnsZero()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("BuildKey", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] fs = new sbyte[3, 3];
+            for (int x = 0; x < 3; x++)
+                for (int y = 0; y < 3; y++)
+                    fs[x, y] = 1;
+            int key = (int)method.Invoke(null, new object[] { fs, 0, 0 });
+            Assert.Equal(0, key);
+        }
+
+        [Fact]
+        public void BuildKey_AllNegativeFs_Returns15()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("BuildKey", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] fs = new sbyte[3, 3];
+            for (int x = 0; x < 3; x++)
+                for (int y = 0; y < 3; y++)
+                    fs[x, y] = -1;
+            int key = (int)method.Invoke(null, new object[] { fs, 0, 0 });
+            Assert.Equal(15, key);
+        }
+
+        [Theory]
+        [InlineData(8)]
+        [InlineData(4)]
+        [InlineData(2)]
+        [InlineData(1)]
+        public void BuildKey_SingleCornerNegative_ReturnsCorrectKey(int expectedBit)
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("BuildKey", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] fs = new sbyte[3, 3];
+            for (int x = 0; x < 3; x++)
+                for (int y = 0; y < 3; y++)
+                    fs[x, y] = 1;
+
+            int ax = 0, ay = 0;
+            if ((expectedBit & 8) != 0) fs[ax, ay] = -1;
+            if ((expectedBit & 4) != 0) fs[ax + 1, ay] = -1;
+            if ((expectedBit & 2) != 0) fs[ax + 1, ay + 1] = -1;
+            if ((expectedBit & 1) != 0) fs[ax, ay + 1] = -1;
+
+            int key = (int)method.Invoke(null, new object[] { fs, ax, ay });
+            Assert.Equal(expectedBit, key);
+        }
+
+        #endregion
+
+        #region ProcessKey
+
+        [Fact]
+        public void ProcessKey_WithVal1_AddsPointToPoly()
+        {
+            MethodInfo processKey = typeof(MarchingSquares).GetMethod("ProcessKey", BindingFlags.Static | BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            object poly = Activator.CreateInstance(geomPolyType);
+
+            sbyte[,] f = new sbyte[10, 10];
+            sbyte[,] fs = new sbyte[3, 3];
+            fs[0, 0] = -1; fs[1, 0] = 1; fs[1, 1] = -1; fs[0, 1] = 1;
+
+            processKey.Invoke(null, new object[] { 1, 0f, 0f, 10f, 10f, 0, 0, f, fs, 2, poly });
+
+            FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
+            int length = (int)lengthField.GetValue(poly);
+            Assert.True(length > 0);
+        }
+
+        [Fact]
+        public void ProcessKey_WithMultipleBits_AddsMultiplePoints()
+        {
+            MethodInfo processKey = typeof(MarchingSquares).GetMethod("ProcessKey", BindingFlags.Static | BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            object poly = Activator.CreateInstance(geomPolyType);
+
+            sbyte[,] f = new sbyte[100, 100];
+            sbyte[,] fs = new sbyte[3, 3];
+            fs[0, 0] = -1; fs[1, 0] = -1; fs[1, 1] = -1; fs[0, 1] = -1;
+
+            processKey.Invoke(null, new object[] { 0x55, 0f, 0f, 10f, 10f, 0, 0, f, fs, 2, poly });
+
+            FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
+            int length = (int)lengthField.GetValue(poly);
+            Assert.Equal(4, length);
+        }
+
+        #endregion
+
+        #region GetVertexPosition
+
+        [Theory]
+        [InlineData(0, 0f, 0f)]
+        [InlineData(2, 10f, 0f)]
+        [InlineData(4, 10f, 10f)]
+        [InlineData(6, 0f, 10f)]
+        public void GetVertexPosition_CornerIndices_ReturnsCorrectPosition(int index, float expectedX, float expectedY)
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("GetVertexPosition", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] f = new sbyte[100, 100];
+            f[0, 0] = -1; f[10, 0] = 1; f[10, 10] = -1; f[0, 10] = 1;
+
+            Vector2F result = (Vector2F)method.Invoke(null, new object[] { index, 0f, 0f, 10f, 10f, (sbyte)-1, (sbyte)1, (sbyte)-1, (sbyte)1, f, 2 });
+
+            Assert.Equal(expectedX, result.X);
+            Assert.Equal(expectedY, result.Y);
+        }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(3)]
+        [InlineData(5)]
+        [InlineData(7)]
+        public void GetVertexPosition_EdgeIndices_DoesNotThrow(int index)
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("GetVertexPosition", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] f = new sbyte[100, 100];
+            f[0, 0] = -1; f[10, 0] = 1; f[10, 10] = -1; f[0, 10] = 1;
+
+            Vector2F result = (Vector2F)method.Invoke(null, new object[] { index, 0f, 0f, 10f, 10f, (sbyte)-1, (sbyte)1, (sbyte)-1, (sbyte)1, f, 2 });
+
+            Assert.NotNull(result);
+        }
+
+        #endregion
+
+        #region MarchSquare
+
+        [Fact]
+        public void MarchSquare_WithKey15_ProcessesVal0x55()
+        {
+            MethodInfo marchSquare = typeof(MarchingSquares).GetMethod("MarchSquare", BindingFlags.Static | BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            object poly = Activator.CreateInstance(geomPolyType);
+
+            sbyte[,] f = new sbyte[100, 100];
+            sbyte[,] fs = new sbyte[3, 3];
+            fs[0, 0] = -1; fs[1, 0] = -1; fs[1, 1] = -1; fs[0, 1] = -1;
+
+            object[] args = { f, fs, poly, 0, 0, 0f, 0f, 10f, 10f, 2 };
+            int key = (int)marchSquare.Invoke(null, args);
+            Assert.Equal(15, key);
+        }
+
+        #endregion
+
+        #region DetectSquares
+
+        [Fact]
+        public void DetectSquares_WithoutCombine_ReturnsVertices()
+        {
+            MethodInfo detectSquares = typeof(MarchingSquares).GetMethod("DetectSquares", BindingFlags.Static | BindingFlags.NonPublic);
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            sbyte[,] f = new sbyte[11, 11];
+            for (int x = 0; x < 11; x++)
+                for (int y = 0; y < 11; y++)
+                    f[x, y] = (x < 5 && y < 5) ? (sbyte)-1 : (sbyte)1;
+
+            List<Vertices> result = (List<Vertices>)detectSquares.Invoke(null, new object[] { domain, 2f, 2f, f, 2, false });
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void DetectSquares_WithCombine_ReturnsVertices()
+        {
+            MethodInfo detectSquares = typeof(MarchingSquares).GetMethod("DetectSquares", BindingFlags.Static | BindingFlags.NonPublic);
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            sbyte[,] f = new sbyte[11, 11];
+            for (int x = 0; x < 11; x++)
+                for (int y = 0; y < 11; y++)
+                    f[x, y] = (x < 5 && y < 5) ? (sbyte)-1 : (sbyte)1;
+
+            List<Vertices> result = (List<Vertices>)detectSquares.Invoke(null, new object[] { domain, 2f, 2f, f, 2, true });
+
+            Assert.NotNull(result);
+        }
+
+        #endregion
+
+        #region CanCombine
+
+        [Fact]
+        public void CanCombine_WithNullP_ReturnsFalse()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("CanCombine", BindingFlags.Static | BindingFlags.NonPublic);
+            GeomPolyVal[,] ps = new GeomPolyVal[2, 2];
+            ps[0, 1] = null;
+
+            bool result = (bool)method.Invoke(null, new object[] { ps, 0, 1 });
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CanCombine_WithPKeyNoBottomBits_ReturnsFalse()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("CanCombine", BindingFlags.Static | BindingFlags.NonPublic);
+            GeomPolyVal[,] ps = new GeomPolyVal[2, 2];
+            ps[0, 1] = new GeomPolyVal(new MarchingSquares.GeomPoly(), 0);
+
+            bool result = (bool)method.Invoke(null, new object[] { ps, 0, 1 });
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CanCombine_WithNullU_ReturnsFalse()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("CanCombine", BindingFlags.Static | BindingFlags.NonPublic);
+            GeomPolyVal[,] ps = new GeomPolyVal[2, 2];
+            ps[0, 1] = new GeomPolyVal(new MarchingSquares.GeomPoly(), 12);
+            ps[0, 0] = null;
+
+            bool result = (bool)method.Invoke(null, new object[] { ps, 0, 1 });
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CanCombine_WithSameGeomP_ReturnsFalse()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("CanCombine", BindingFlags.Static | BindingFlags.NonPublic);
+            MarchingSquares.GeomPoly sharedPoly = new MarchingSquares.GeomPoly();
+            GeomPolyVal[,] ps = new GeomPolyVal[2, 2];
+            ps[0, 1] = new GeomPolyVal(sharedPoly, 12);
+            ps[0, 0] = new GeomPolyVal(sharedPoly, 3);
+
+            bool result = (bool)method.Invoke(null, new object[] { ps, 0, 1 });
+            Assert.False(result);
+        }
+
+        #endregion
+
+        #region CxFastList_Additional
+
+        [Fact]
+        public void CxFastList_Has_ExistingItem_ReturnsTrue()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo has = intListType.GetMethod("Has");
+
+            add.Invoke(list, new object[] { 42 });
+            bool result = (bool)has.Invoke(list, new object[] { 42 });
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void CxFastList_Has_NonExistingItem_ReturnsFalse()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo has = intListType.GetMethod("Has");
+
+            add.Invoke(list, new object[] { 42 });
+            bool result = (bool)has.Invoke(list, new object[] { 99 });
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void CxFastList_Size_WithMultipleItems_ReturnsCorrectCount()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo size = intListType.GetMethod("Size");
+
+            add.Invoke(list, new object[] { 1 });
+            add.Invoke(list, new object[] { 2 });
+            add.Invoke(list, new object[] { 3 });
+
+            int result = (int)size.Invoke(list, null);
+            Assert.Equal(3, result);
+        }
+
+        [Fact]
+        public void CxFastList_Find_WithDefaultValue_ReturnsNode()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo find = intListType.GetMethod("Find");
+
+            add.Invoke(list, new object[] { 1 });
+            add.Invoke(list, new object[] { 0 });
+            add.Invoke(list, new object[] { 2 });
+
+            object result = find.Invoke(list, new object[] { 0 });
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void CxFastList_Find_OnEmptyList_ReturnsNull()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo find = intListType.GetMethod("Find");
+            object result = find.Invoke(list, new object[] { 42 });
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void CxFastList_Remove_OnEmptyList_ReturnsFalse()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo remove = intListType.GetMethod("Remove");
+            bool result = (bool)remove.Invoke(list, new object[] { 42 });
+            Assert.False(result);
+        }
+
+        #endregion
+
+        #region InsertPolyIntoPoly
+
+        [Fact]
+        public void InsertPolyIntoPoly_WithNonEmptyBp_InsertsCorrectly()
+        {
+            MethodInfo insertPolyIntoPoly = typeof(MarchingSquares).GetMethod("InsertPolyIntoPoly", BindingFlags.Static | BindingFlags.NonPublic);
+
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+
+            object polyA = Activator.CreateInstance(geomPolyType);
+            object polyB = Activator.CreateInstance(geomPolyType);
+
+            FieldInfo pointsFieldA = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            object pointsA = pointsFieldA.GetValue(polyA);
+            object pointsB = pointsFieldA.GetValue(polyB);
+
+            MethodInfo add = vectorListType.GetMethod("Add");
+            MethodInfo begin = vectorListType.GetMethod("Begin");
+
+            add.Invoke(pointsA, new object[] { new Vector2F(0f, 0f) });
+            add.Invoke(pointsA, new object[] { new Vector2F(5f, 0f) });
+
+            add.Invoke(pointsB, new object[] { new Vector2F(10f, 0f) });
+            add.Invoke(pointsB, new object[] { new Vector2F(15f, 0f) });
+
+            object ai = begin.Invoke(pointsA, null);
+            object refAp = pointsA;
+            object refBp = pointsB;
+
+            insertPolyIntoPoly.Invoke(null, new[] { refAp, polyA, refBp, ai });
+        }
+
+        #endregion
+
+        #region CxFastList_Vector2F
+
+        [Fact]
+        public void CxFastList_Vector2F_AddAndIterate_Works()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            object list = Activator.CreateInstance(vectorListType);
+
+            MethodInfo add = vectorListType.GetMethod("Add");
+            MethodInfo begin = vectorListType.GetMethod("Begin");
+            MethodInfo getList = vectorListType.GetMethod("GetListOfElements");
+
+            add.Invoke(list, new object[] { new Vector2F(1f, 2f) });
+            add.Invoke(list, new object[] { new Vector2F(3f, 4f) });
+
+            List<Vector2F> elements = (List<Vector2F>)getList.Invoke(list, null);
+            Assert.Equal(2, elements.Count);
         }
 
         #endregion

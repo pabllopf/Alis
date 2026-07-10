@@ -42,6 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     Extended tests for the AddComponent functionality, covering additional
     ///     edge cases and integration scenarios.
     /// </remarks>
+    [CollectionDefinition("AddComponentExtendedTest", DisableParallelization = true)]
     public class AddComponentExtendedTest
     {
         /// <summary>

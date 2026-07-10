@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
+using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 using CDP = Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 using Xunit;
 
@@ -462,6 +463,223 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
 
             Assert.NotNull(polygon.GetTriangles);
             Assert.Single(polygon.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that AddPoint adds a point to the polygon and updates links
+        /// </summary>
+        [Fact]
+        public void AddPoint_ShouldAddPointAndUpdateCount()
+        {
+            List<CDP.PolygonPoint> points = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(points);
+            CDP.PolygonPoint newPoint = new CDP.PolygonPoint(1, 1);
+
+            polygon.AddPoint(newPoint);
+
+            Assert.Equal(4, polygon.GetPoints.Count);
+            Assert.Contains(newPoint, polygon.GetPoints);
+        }
+
+        /// <summary>
+        ///     Tests that RemovePoint removes a point and updates links
+        /// </summary>
+        [Fact]
+        public void RemovePoint_ShouldRemovePointAndDecreaseCount()
+        {
+            List<CDP.PolygonPoint> points = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(points);
+            CDP.PolygonPoint pointToRemove = points[1];
+
+            polygon.RemovePoint(pointToRemove);
+
+            Assert.Equal(2, polygon.GetPoints.Count);
+            Assert.DoesNotContain(pointToRemove, polygon.GetPoints);
+        }
+
+        /// <summary>
+        ///     Tests that InsertPointAfter inserts at correct position
+        /// </summary>
+        [Fact]
+        public void InsertPointAfter_ShouldInsertAtCorrectPosition()
+        {
+            List<CDP.PolygonPoint> points = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(points);
+            CDP.PolygonPoint newPoint = new CDP.PolygonPoint(0.5, 0.5);
+
+            polygon.InsertPointAfter(points[0], newPoint);
+
+            Assert.Equal(4, polygon.GetPoints.Count);
+            Assert.Equal(1, polygon.GetPoints.IndexOf(newPoint));
+        }
+
+        /// <summary>
+        ///     Tests that PrepareTriangulation creates constraints for polygon edges
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithSimplePolygon_ShouldCreateConstraints()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(3, tcx.Constraints.Count);
+            Assert.Equal(3, tcx.Points.Count);
+            Assert.NotNull(polygon.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that PrepareTriangulation processes holes
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithHoles_ShouldProcessHoles()
+        {
+            List<CDP.PolygonPoint> outerPts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(outerPts);
+            List<CDP.PolygonPoint> holePts = new List<CDP.PolygonPoint>
+            {
+                new CDP.PolygonPoint(0.2, 0.2),
+                new CDP.PolygonPoint(0.4, 0.2),
+                new CDP.PolygonPoint(0.3, 0.4)
+            };
+            CDP.Polygon hole = new CDP.Polygon(holePts);
+            polygon.AddHole(hole);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(6, tcx.Constraints.Count);
+            Assert.Equal(6, tcx.Points.Count);
+        }
+
+        /// <summary>
+        ///     Tests that PrepareTriangulation adds steiner points to context
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithSteinerPoints_ShouldAddSteinerPoints()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            TriangulationPoint steiner = new TriangulationPoint(0.5, 0.5);
+            polygon.AddSteinerPoint(steiner);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(4, tcx.Points.Count);
+        }
+
+        /// <summary>
+        ///     Tests that PrepareTriangulation clears existing triangles
+        /// </summary>
+        [Fact]
+        public void PrepareTriangulation_WithExistingTriangles_ShouldClearTriangles()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            DelaunayTriangle triangle = new DelaunayTriangle(
+                new TriangulationPoint(0, 0),
+                new TriangulationPoint(1, 0),
+                new TriangulationPoint(0, 1));
+            polygon.AddTriangle(triangle);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Empty(polygon.GetTriangles);
+        }
+
+        /// <summary>
+        ///     Tests that ClearSteinerPoints clears when steiner points exist
+        /// </summary>
+        [Fact]
+        public void ClearSteinerPoints_WithPoints_ShouldClear()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            polygon.AddSteinerPoint(new TriangulationPoint(0.5, 0.5));
+
+            polygon.ClearSteinerPoints();
+            TestTriangulationContext tcx = new TestTriangulationContext();
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(3, tcx.Points.Count);
+        }
+
+        /// <summary>
+        ///     Tests that AddSteinerPoint adds to internal list
+        /// </summary>
+        [Fact]
+        public void AddSteinerPoint_ShouldAddToInternalList()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            TriangulationPoint steiner = new TriangulationPoint(0.5, 0.5);
+
+            polygon.AddSteinerPoint(steiner);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(4, tcx.Points.Count);
+        }
+
+        /// <summary>
+        ///     Tests that AddSteinerPoints adds multiple points to internal list
+        /// </summary>
+        [Fact]
+        public void AddSteinerPoints_ShouldAddMultipleToInternalList()
+        {
+            List<CDP.PolygonPoint> pts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(pts);
+            List<TriangulationPoint> steinerPoints = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.2, 0.2),
+                new TriangulationPoint(0.5, 0.5)
+            };
+
+            polygon.AddSteinerPoints(steinerPoints);
+            TestTriangulationContext tcx = new TestTriangulationContext();
+            polygon.PrepareTriangulation(tcx);
+
+            Assert.Equal(5, tcx.Points.Count);
+        }
+
+        /// <summary>
+        ///     Tests that GetHoles returns holes after adding
+        /// </summary>
+        [Fact]
+        public void GetHoles_AfterAddingHole_ShouldReturnHoles()
+        {
+            List<CDP.PolygonPoint> outerPts = CreateTrianglePoints();
+            CDP.Polygon polygon = new CDP.Polygon(outerPts);
+            List<CDP.PolygonPoint> holePts = new List<CDP.PolygonPoint>
+            {
+                new CDP.PolygonPoint(0.2, 0.2),
+                new CDP.PolygonPoint(0.4, 0.2),
+                new CDP.PolygonPoint(0.3, 0.4)
+            };
+            CDP.Polygon hole = new CDP.Polygon(holePts);
+            polygon.AddHole(hole);
+
+            Assert.NotNull(polygon.GetHoles);
+            Assert.Single(polygon.GetHoles);
+        }
+    }
+
+    /// <summary>
+    ///     Test context for PrepareTriangulation
+    /// </summary>
+    internal class TestTriangulationContext : TriangulationContext
+    {
+        public List<TriangulationConstraint> Constraints { get; } = new List<TriangulationConstraint>();
+
+        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b)
+        {
+            TriangulationConstraint constraint = new TriangulationConstraint { P = a, Q = b };
+            Constraints.Add(constraint);
+            return constraint;
         }
     }
 }

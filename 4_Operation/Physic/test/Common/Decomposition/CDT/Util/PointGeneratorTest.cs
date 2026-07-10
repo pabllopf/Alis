@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 using Xunit;
 
@@ -44,6 +46,107 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void PointGenerator_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(PointGenerator));
+        }
+
+        /// <summary>
+        /// Tests that UniformDistribution returns correct number of points
+        /// </summary>
+        [Fact]
+        public void UniformDistribution_WithPositiveN_ReturnsCorrectCount()
+        {
+            List<TriangulationPoint> points = PointGenerator.UniformDistribution(10, 100.0);
+
+            Assert.Equal(10, points.Count);
+        }
+
+        /// <summary>
+        /// Tests that UniformDistribution with zero returns empty list
+        /// </summary>
+        [Fact]
+        public void UniformDistribution_WithZeroN_ReturnsEmptyList()
+        {
+            List<TriangulationPoint> points = PointGenerator.UniformDistribution(0, 100.0);
+
+            Assert.Empty(points);
+        }
+
+        /// <summary>
+        /// Tests that UniformDistribution points are within scale range
+        /// </summary>
+        [Fact]
+        public void UniformDistribution_PointsAreWithinScaleRange()
+        {
+            double scale = 100.0;
+            List<TriangulationPoint> points = PointGenerator.UniformDistribution(100, scale);
+
+            foreach (TriangulationPoint p in points)
+            {
+                Assert.InRange(p.X, -scale / 2, scale / 2);
+                Assert.InRange(p.Y, -scale / 2, scale / 2);
+            }
+        }
+
+        /// <summary>
+        /// Tests that UniformDistribution generates different points
+        /// </summary>
+        [Fact]
+        public void UniformDistribution_GeneratesDifferentPoints()
+        {
+            List<TriangulationPoint> points = PointGenerator.UniformDistribution(10, 100.0);
+
+            Assert.Equal(10, points.Count);
+        }
+
+        /// <summary>
+        /// Tests that UniformGrid returns correct number of points
+        /// </summary>
+        [Fact]
+        public void UniformGrid_WithPositiveN_ReturnsCorrectCount()
+        {
+            int n = 5;
+            List<TriangulationPoint> points = PointGenerator.UniformGrid(n, 100.0);
+
+            Assert.Equal((n + 1) * (n + 1), points.Count);
+        }
+
+        /// <summary>
+        /// Tests that UniformGrid with zero returns a single point
+        /// </summary>
+        [Fact]
+        public void UniformGrid_WithZeroN_ReturnsSinglePoint()
+        {
+            List<TriangulationPoint> points = PointGenerator.UniformGrid(0, 100.0);
+
+            Assert.Single(points);
+        }
+
+        /// <summary>
+        /// Tests that UniformGrid points are within scale range
+        /// </summary>
+        [Fact]
+        public void UniformGrid_PointsAreWithinScaleRange()
+        {
+            double scale = 100.0;
+            int n = 5;
+            List<TriangulationPoint> points = PointGenerator.UniformGrid(n, scale);
+
+            foreach (TriangulationPoint p in points)
+            {
+                Assert.InRange(p.X, -scale / 2, scale / 2);
+                Assert.InRange(p.Y, -scale / 2, scale / 2);
+            }
+        }
+
+        /// <summary>
+        /// Tests that UniformGrid points are ordered correctly
+        /// </summary>
+        [Fact]
+        public void UniformGrid_PointsAreOrdered()
+        {
+            int n = 2;
+            List<TriangulationPoint> points = PointGenerator.UniformGrid(n, 10.0);
+
+            Assert.Equal((n + 1) * (n + 1), points.Count);
         }
     }
 }

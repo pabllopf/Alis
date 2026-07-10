@@ -664,6 +664,155 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         #endregion
+
+        #region CollidePolygonAndCircle — SetupVertexAManifold and SetupFaceAManifold coverage
+
+        /// <summary>
+        ///     Tests that CollidePolygonAndCircle calls SetupVertexAManifold when the circle is near a vertex
+        ///     and the u1 barycentric coordinate is <= 0 with r <= radius^2.
+        /// </summary>
+        [Fact]
+        public void CollidePolygonAndCircle_SetupVertexAManifold_WhenU1Branch()
+        {
+            Vertices vertices = PolygonTools.CreateRectangle(2.0f, 2.0f);
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfPolygon = ControllerTransform.Identity;
+            // Position circle so u1 <= 0 in ResolveBarycentricContact
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-2.2f, -2.2f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygonAndCircle(ref manifold, polygon, ref xfPolygon, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+            Assert.Equal(ManifoldType.FaceA, manifold.Type);
+        }
+
+        /// <summary>
+        ///     Tests that CollidePolygonAndCircle calls SetupVertexAManifold when the circle is near a vertex
+        ///     and the u2 barycentric coordinate is <= 0 with r <= radius^2.
+        /// </summary>
+        [Fact]
+        public void CollidePolygonAndCircle_SetupVertexAManifold_WhenU2Branch()
+        {
+            Vertices vertices = PolygonTools.CreateRectangle(2.0f, 2.0f);
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfPolygon = ControllerTransform.Identity;
+            // Position circle so u2 <= 0 in ResolveBarycentricContact
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-2.1f, 2.1f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygonAndCircle(ref manifold, polygon, ref xfPolygon, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+            Assert.Equal(ManifoldType.FaceA, manifold.Type);
+        }
+
+        /// <summary>
+        ///     Tests that CollidePolygonAndCircle calls SetupFaceAManifold from the face center branch
+        ///     when u1 > 0, u2 > 0, and separation2 <= radius.
+        /// </summary>
+        [Fact]
+        public void CollidePolygonAndCircle_SetupFaceAManifold_FromFaceCenterBranch()
+        {
+            Vertices vertices = PolygonTools.CreateRectangle(2.0f, 2.0f);
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfPolygon = ControllerTransform.Identity;
+            // Position circle just above the top edge center so u1 > 0, u2 > 0, and separation2 <= radius
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(0.0f, 2.4f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygonAndCircle(ref manifold, polygon, ref xfPolygon, circle, ref xfCircle);
+
+            Assert.Equal(1, manifold.PointCount);
+            Assert.Equal(ManifoldType.FaceA, manifold.Type);
+        }
+
+        #endregion
+
+        #region CollidePolygons — Manifold type verification and clip filtering
+
+        /// <summary>
+        ///     Tests that CollidePolygons produces FaceB manifold type when flip is true
+        ///     (separationB dominates separationA).
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_ShouldProduceFaceBManifold_WhenFlipTrue()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 2.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            // Should have at least one contact point
+            Assert.True(manifold.PointCount >= 1);
+        }
+
+        /// <summary>
+        ///     Tests that CollidePolygons produces FaceA manifold type when flip is false
+        ///     (separationA dominates or equals separationB).
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_ShouldProduceFaceAManifold_WhenFlipFalse()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 2.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        #endregion
+
+        #region CollidePolygons — Clip filtering (separation > totalRadius)
+
+        /// <summary>
+        ///     Tests that CollidePolygons filters clip points where separation > totalRadius.
+        ///     Uses rotated configuration where some clip points may fail the separation check.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_FiltersClipPoints_WhenSeparationExceedsRadius()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.5f, 0.0f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            // Manifold may have 0-8 points depending on overlap
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that CollidePolygons with deeply overlapping identical rectangles
+        ///     produces multiple contact points with correct manifold type.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_DeeplyOverlapping_ProducesManifold()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 1);
+        }
+
+        #endregion
     }
 }
 

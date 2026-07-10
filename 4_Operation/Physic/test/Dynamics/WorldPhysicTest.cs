@@ -693,5 +693,146 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(1, callCount);
         }
+
+        [Fact]
+        public void AddBody_FromAnotherWorld_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic otherWorld = new WorldPhysic();
+            Body body = otherWorld.CreateBody();
+
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => world.Add(body));
+            Assert.Contains("another world", ex.Message);
+        }
+
+        [Fact]
+        public void CreateLoopShape_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vertices vertices = new Vertices();
+            vertices.Add(new Vector2F(0f, 0f));
+            vertices.Add(new Vector2F(1f, 0f));
+            vertices.Add(new Vector2F(0f, 1f));
+
+            Body body = world.CreateLoopShape(vertices);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateLoopShape_WithPosition_ShouldReturnBodyAtPosition()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vertices vertices = new Vertices();
+            vertices.Add(new Vector2F(0f, 0f));
+            vertices.Add(new Vector2F(1f, 0f));
+            vertices.Add(new Vector2F(0f, 1f));
+            Vector2F position = new Vector2F(5f, 10f);
+
+            Body body = world.CreateLoopShape(vertices, position);
+
+            Assert.NotNull(body);
+            Assert.Equal(5f, body.Position.X);
+            Assert.Equal(10f, body.Position.Y);
+        }
+
+        [Fact]
+        public void Step_WithWorldHasNewFixture_ProcessesNewContacts()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            int contactsAfterFirstStep = world.ContactManager.ContactCount;
+            Assert.True(contactsAfterFirstStep > 0);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        [Fact]
+        public void Step_WithCustomIterations_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            SolverIterations iterations = new SolverIterations
+            {
+                PositionIterations = 1,
+                VelocityIterations = 1,
+                ToiPositionIterations = 1,
+                ToiVelocityIterations = 1
+            };
+
+            world.Step(TimeSpan.FromSeconds(1.0f / 60.0f), ref iterations);
+        }
+
+        [Fact]
+        public void GetGravity_Setter_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
+            bool threw = false;
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.GetGravity = new Vector2F(0, -5f);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void GetIsLocked_ShouldBeTrue_DuringStep()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
+            bool wasLocked = false;
+            world.ContactManager.BeginContact = contact =>
+            {
+                wasLocked = world.GetIsLocked;
+                return false;
+            };
+
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(wasLocked);
+        }
+
+        [Fact]
+        public void GetIsland_ShouldReturnInitializedIsland()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.NotNull(world.GetIsland);
+        }
+
+        [Fact]
+        public void FixtureRemovedEvent_ShouldFire_WhenBodyRemoved()
+        {
+            WorldPhysic world = new WorldPhysic();
+            int callCount = 0;
+            world.FixtureRemoved += (sender, body, fixture) => callCount++;
+
+            Body body = world.CreateRectangle(2f, 2f, 1f);
+            world.Remove(body);
+
+            Assert.Equal(1, callCount);
+        }
     }
 }

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 using Xunit;
 
@@ -44,6 +45,72 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void PolygonGenerator_TypeShouldBeAccessible()
         {
             Assert.NotNull(typeof(PolygonGenerator));
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep returns polygon with correct vertex count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithValidInput_ReturnsPolygonWithCorrectVertexCount()
+        {
+            int vertexCount = 10;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep with many vertices returns correct count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithManyVertices_ReturnsCorrectCount()
+        {
+            int vertexCount = 500;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep throws with fewer than 3 vertices
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithLessThanThreeVertices_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonGenerator.RandomCircleSweep(100.0, 2));
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 returns polygon with correct vertex count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_WithValidInput_ReturnsPolygonWithCorrectVertexCount()
+        {
+            int vertexCount = 10;
+            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 with many vertices returns correct count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_WithManyVertices_ReturnsCorrectCount()
+        {
+            int vertexCount = 500;
+            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 throws with fewer than 3 vertices
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_WithLessThanThreeVertices_ThrowsArgumentException()
+        {
+            Assert.Throws<ArgumentException>(() => PolygonGenerator.RandomCircleSweep2(100.0, 2));
         }
     }
 }

@@ -44,6 +44,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
     ///     during Generation 2 garbage collections. This is critical for memory
     ///     management and cleanup operations in the ECS.
     /// </remarks>
+    [CollectionDefinition("Gen2GcCallbackTest", DisableParallelization = true)]
     public class Gen2GcCallbackTest
     {
         /// <summary>

@@ -206,5 +206,187 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Single(forces);
             Assert.True(forces[body].Length() < 100f);
         }
+
+        /// <summary>
+        ///     Tests that Activate with body in range returns non-empty dictionary
+        /// </summary>
+        [Fact]
+        public void Activate_WithBodyInRange_ShouldReturnNonEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.NotEmpty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with no bodies in range returns empty dictionary
+        /// </summary>
+        [Fact]
+        public void Activate_WithNoBodiesInRange_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(100f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with max force limits applied force
+        /// </summary>
+        [Fact]
+        public void Activate_WithMaxForce_ShouldLimitForce()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 1000f, 5f);
+
+            Assert.NotEmpty(result);
+            Assert.True(result[body].Length() <= 5f + 0.001f);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with static body returns empty
+        /// </summary>
+        [Fact]
+        public void Activate_WithStaticBody_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Static);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with multiple bodies returns all affected
+        /// </summary>
+        [Fact]
+        public void Activate_WithMultipleBodies_ShouldReturnAllAffected()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body1 = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            Body body2 = world.CreateCircle(1f, 1f, new Vector2F(-5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.Equal(2, result.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with body outside radius but within AABB returns empty
+        /// </summary>
+        [Fact]
+        public void Activate_WithBodyOutsideRadiusButInsideAabb_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(8f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with ignored controller returns empty
+        /// </summary>
+        [Fact]
+        public void Activate_WithIgnoredController_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            body.ControllerFilter.IgnoreController(explosion.ControllerCategories);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with zero radius returns empty
+        /// </summary>
+        [Fact]
+        public void Activate_WithZeroRadius_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 0f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that Activate with disabled body returns empty
+        /// </summary>
+        [Fact]
+        public void Activate_WithDisabledBody_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            body.Enabled = false;
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        ///     Tests that GetPercent with power zero handles math correctly
+        /// </summary>
+        [Fact]
+        public void GetPercent_WithPowerZero_ShouldReturnZero()
+        {
+            WorldPhysic world = new WorldPhysic();
+            SimpleExplosion explosion = new SimpleExplosion(world);
+            explosion.Power = 0f;
+
+            float percent = explosion.GetPercent(5f, 10f);
+
+            Assert.InRange(percent, 0f, 1f);
+        }
+
+        /// <summary>
+        ///     Tests that GetPercent clamps negative values to zero
+        /// </summary>
+        [Fact]
+        public void GetPercent_NegativeResult_ShouldClampToZero()
+        {
+            WorldPhysic world = new WorldPhysic();
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            float percent = explosion.GetPercent(15f, 10f);
+
+            Assert.Equal(0f, percent);
+        }
+
+        /// <summary>
+        ///     Tests that GetPercent clamps values above one to one
+        /// </summary>
+        [Fact]
+        public void GetPercent_ResultAboveOne_ShouldClampToOne()
+        {
+            WorldPhysic world = new WorldPhysic();
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            float percent = explosion.GetPercent(-5f, 10f);
+
+            Assert.Equal(1f, percent);
+        }
     }
 }

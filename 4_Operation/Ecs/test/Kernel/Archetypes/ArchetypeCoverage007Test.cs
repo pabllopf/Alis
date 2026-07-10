@@ -40,6 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
     ///     Covers: multi-generic archetypes (T1-T8), ResolveDeferredEntityCreations
     ///     overflow, ModifyComponentLocationTable resize, and hash edge cases.
     /// </summary>
+    [CollectionDefinition("ArchetypeCoverage007Test", DisableParallelization = true)]
     public class ArchetypeCoverage007Test
     {
         /// <summary>

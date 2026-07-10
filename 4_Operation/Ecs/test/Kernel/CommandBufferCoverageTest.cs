@@ -39,6 +39,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     Coverage-focused tests for <see cref="CommandBuffer" />, targeting
     ///     uncovered method overloads, exception paths, and entity-creation chain.
     /// </summary>
+    [CollectionDefinition("CommandBufferCoverageTest", DisableParallelization = true)]
     public partial class CommandBufferCoverageTest
     {
         /// <summary>

@@ -44,6 +44,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
     ///     DeleteEntityFromStorage, EnsureCapacity, GetEntitySpan, GetEntityDataReference,
     ///     GetComponentIndex, ReleaseArrays, Update with range, and archetype creation paths.
     /// </summary>
+    [CollectionDefinition("ArchetypeCoverageTest", DisableParallelization = true)]
     public class ArchetypeCoverageTest
     {
         /// <summary>

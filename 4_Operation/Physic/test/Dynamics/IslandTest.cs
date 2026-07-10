@@ -29,7 +29,10 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -141,6 +144,125 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => island.Dispose());
 
             Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that add contact should increment contact count
+        /// </summary>
+        [Fact]
+        public void AddContact_ShouldIncrementContactCount()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(4, 4, 4, contactManager);
+
+            Body bodyA = world.CreateBody();
+            Body bodyB = world.CreateBody();
+            CircleShape shapeA = new CircleShape(1.0f, 1.0f);
+            CircleShape shapeB = new CircleShape(1.0f, 1.0f);
+            Fixture fixtureA = bodyA.CreateFixture(shapeA);
+            Fixture fixtureB = bodyB.CreateFixture(shapeB);
+            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
+
+            island.Add(contact);
+
+            Assert.Equal(1, island.ContactCount);
+        }
+
+        /// <summary>
+        /// Tests that add joint should increment joint count
+        /// </summary>
+        [Fact]
+        public void AddJoint_ShouldIncrementJointCount()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(4, 4, 4, contactManager);
+
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2, 0));
+
+            island.Add(joint);
+
+            Assert.Equal(1, island.JointCount);
+        }
+
+        /// <summary>
+        /// Tests that reset reuses existing buffers when capacity is sufficient
+        /// </summary>
+        [Fact]
+        public void Reset_WithSufficientCapacity_ReusesExistingBuffers()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+
+            island.Reset(40, 40, 40, contactManager);
+            Body[] originalBodies = island.Bodies;
+
+            island.Reset(10, 10, 10, contactManager);
+
+            Assert.Same(originalBodies, island.Bodies);
+        }
+
+        /// <summary>
+        /// Tests that solve through world step does not throw
+        /// </summary>
+        [Fact]
+        public void Solve_ThroughWorldStep_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that after collision handlers are called through Island.Report
+        /// </summary>
+        [Fact]
+        public void AfterCollisionHandlers_ShouldBeCalled_ThroughIslandReport()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int fixtureACount = 0;
+            int fixtureBCount = 0;
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.FixtureA.AfterCollision = (_, _, _, _) => fixtureACount++;
+                contact.FixtureB.AfterCollision = (_, _, _, _) => fixtureBCount++;
+                return true;
+            };
+
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(fixtureACount > 0);
+            Assert.True(fixtureBCount > 0);
+        }
+
+        /// <summary>
+        /// Tests that post solve handler is called through Island.Report
+        /// </summary>
+        [Fact]
+        public void PostSolveHandler_ShouldBeCalled_ThroughIslandReport()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int postSolveCount = 0;
+            world.ContactManager.PostSolve = (_, _) => postSolveCount++;
+
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(postSolveCount > 0);
         }
     }
 }

@@ -35,14 +35,8 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
-    /// <summary>
-    /// The time of impact test class
-    /// </summary>
     public class TimeOfImpactTest
     {
-        /// <summary>
-        /// Tests that calculate time of impact should return separated for far sweeps
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnSeparated_ForFarSweeps()
         {
@@ -80,9 +74,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, output.T);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact should return overlapped when starting intersecting
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenStartingIntersecting()
         {
@@ -120,9 +111,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact should return touching state for approaching shapes
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnTouching_ForApproachingShapes()
         {
@@ -159,9 +147,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.State == ToiOutputState.Touching || output.State == ToiOutputState.Seperated);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact should return t between zero and one
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnT_BetweenZeroAndOne()
         {
@@ -199,9 +184,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.T <= 1.0f);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact should return overlapped when shapes fully intersect
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenShapesFullyIntersect()
         {
@@ -239,9 +221,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact for overlapped updates diagnostics counters
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ForOverlapped_ShouldUpdateDiagnosticsCounters()
         {
@@ -279,9 +258,6 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiCalls >= 1);
         }
 
-        /// <summary>
-        /// Tests that calculate time of impact for approaching updates iter diagnostics counters
-        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ForApproaching_ShouldUpdateIterDiagnosticsCounters()
         {
@@ -319,6 +295,285 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiMaxIters >= 0);
             Assert.True(TimeOfImpact.ToiMaxRootIters >= 0);
         }
+
+        [Fact]
+        public void CalculateTimeOfImpact_ShouldTriggerRootFind_WhenSweepsCross()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-3.0f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(3.0f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.State == ToiOutputState.Touching || output.State == ToiOutputState.Seperated);
+            Assert.True(output.T >= 0.0f);
+        }
+
+        [Fact]
+        public void CalculateTimeOfImpact_ShouldUpdateRootIters_WhenRootFinding()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-3.0f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(3.0f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(TimeOfImpact.ToiRootIters >= 0);
+            Assert.True(TimeOfImpact.ToiMaxRootIters >= 0);
+            Assert.True(TimeOfImpact.ToiIters >= 0);
+        }
+
+        [Fact]
+        public void CalculateTimeOfImpact_WithPolygons_ShouldComputeTouching()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(polyA, 0),
+                ProxyB = new DistanceProxy(polyB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-5.0f, 0.0f),
+                    C = new Vector2F(-4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(5.0f, 0.0f),
+                    C = new Vector2F(4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+            Assert.True(output.T <= 1.0f);
+        }
+
+        // ========================================================================
+        // Additional coverage for pushback iterations, root-find, and rotation
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests TOI with rotating sweeps to exercise the separation function
+        ///     and pushback iteration paths.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_WithRotatingSweeps_ShouldComputeValidResult()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-5.0f, 0.0f),
+                    C = new Vector2F(-4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI / 4.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(5.0f, 0.0f),
+                    C = new Vector2F(4.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = -(float)Math.PI / 4.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+            Assert.True(output.T <= 1.0f);
+        }
+
+        /// <summary>
+        ///     Tests TOI with different sized shapes that closely approach each other
+        ///     to exercise the root-finding path with bisection updates.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_DifferentSizesCloseApproach_ShouldComputeValidResult()
+        {
+            CircleShape circleA = new CircleShape(0.3f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-2.5f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(2.5f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+            Assert.True(output.T <= 1.0f);
+        }
+
+        /// <summary>
+        ///     Tests TOI with sweeps that maintain almost constant distance
+        ///     to potentially trigger the s2 > target - tolerance branch.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_ParallelSweeps_ShouldComputeValidResult()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-5.0f, 0.0f),
+                    C = new Vector2F(5.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(5.0f, 0.0f),
+                    C = new Vector2F(-5.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+            Assert.True(output.T <= 1.0f);
+        }
+
+        /// <summary>
+        ///     Tests that root find bisection bounds update works with polygon sweeps
+        ///     that approach at an angle.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_PolygonsAngledApproach_ShouldComputeResult()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(polyA, 0),
+                ProxyB = new DistanceProxy(polyB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-3.0f, 0.0f),
+                    C = new Vector2F(0.0f, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(3.0f, 1.0f),
+                    C = new Vector2F(0.0f, 1.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.T >= 0.0f);
+            Assert.True(output.T <= 1.0f);
+        }
     }
 }
-

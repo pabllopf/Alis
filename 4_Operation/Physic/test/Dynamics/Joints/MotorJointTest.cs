@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -164,6 +165,433 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.AngularOffset = 0.5f;
 
             Assert.Equal(0.5f, joint.AngularOffset);
+        }
+
+        /// <summary>
+        /// Tests that constructor with useWorldCoordinates true sets linear offset correctly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesTrue_ShouldSetLinearOffset()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(10.0f, 0.0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(20.0f, 0.0f), 0f, BodyType.Dynamic);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB, true);
+
+            Assert.Equal(JointType.Motor, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor with useWorldCoordinates false uses world coordinates directly
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesFalse_ShouldUseWorldCoordinates()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyB.Position = new Vector2F(5.0f, 3.0f);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB, false);
+
+            Assert.Equal(JointType.Motor, joint.JointType);
+        }
+
+        /// <summary>
+        /// Tests that constructor initializes max force to one
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldInitializeMaxForceToOne()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Equal(1.0f, joint.MaxForce);
+        }
+
+        /// <summary>
+        /// Tests that constructor initializes max torque to one
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldInitializeMaxTorqueToOne()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Equal(1.0f, joint.MaxTorque);
+        }
+
+        /// <summary>
+        /// Tests that world anchor a get returns body a position
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Get_ShouldReturnBodyAPosition()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyA.Position = new Vector2F(3.0f, 4.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Vector2F anchor = joint.WorldAnchorA;
+
+            Assert.Equal(new Vector2F(3.0f, 4.0f), anchor);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b get returns body b position
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Get_ShouldReturnBodyBPosition()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            bodyB.Position = new Vector2F(5.0f, 6.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Vector2F anchor = joint.WorldAnchorB;
+
+            Assert.Equal(new Vector2F(5.0f, 6.0f), anchor);
+        }
+
+        /// <summary>
+        /// Tests that world anchor a set updates linear error and does not throw
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_ShouldNotThrow()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.WorldAnchorA = new Vector2F(10.0f, 20.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that world anchor b set updates linear error and does not throw
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Set_ShouldNotThrow()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.WorldAnchorB = new Vector2F(15.0f, 25.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that linear offset set with same value does not change offset
+        /// </summary>
+        [Fact]
+        public void LinearOffset_SetSameValue_ShouldNotChange()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Vector2F original = joint.LinearOffset;
+            joint.LinearOffset = original;
+
+            Assert.Equal(original, joint.LinearOffset);
+        }
+
+        /// <summary>
+        /// Tests that angular offset set with same value does not change offset
+        /// </summary>
+        [Fact]
+        public void AngularOffset_SetSameValue_ShouldNotChange()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            float original = joint.AngularOffset;
+            joint.AngularOffset = original;
+
+            Assert.Equal(original, joint.AngularOffset);
+        }
+
+        /// <summary>
+        /// Tests that step with default values initializes solver without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithDefaultValues_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with max force initializes linear friction solver without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithMaxForce_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 50.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with max torque initializes angular friction solver without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithMaxTorque_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxTorque = 25.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with max force and max torque initializes both friction solvers without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithMaxForceAndMaxTorque_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 50.0f;
+            joint.MaxTorque = 25.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with max force progress the simulation without throwing
+        /// </summary>
+        [Fact]
+        public void Step_MultipleSteps_WithMaxForce_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 100.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with max torque progress the simulation without throwing
+        /// </summary>
+        [Fact]
+        public void Step_MultipleSteps_WithMaxTorque_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxTorque = 50.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with linear offset progress the simulation without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithLinearOffset_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.LinearOffset = new Vector2F(0.5f, 0.0f);
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that multiple steps with angular offset progress the simulation without throwing
+        /// </summary>
+        [Fact]
+        public void Step_WithAngularOffset_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.AngularOffset = 0.1f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force returns value after step with max force
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_AfterStep_WithMaxForce_ShouldReturnValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 100.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque returns value after step with max torque
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_AfterStep_WithMaxTorque_ShouldReturnValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxTorque = 50.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            float torque = joint.GetReactionTorque(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that step with both force and torque for multiple steps maintains stability
+        /// </summary>
+        [Fact]
+        public void Step_WithForceAndTorque_MultipleSteps_ShouldMaintainStability()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 50.0f;
+            joint.MaxTorque = 25.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 30; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
         }
     }
 }

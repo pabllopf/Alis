@@ -424,6 +424,199 @@ namespace Alis.Core.Physic.Test
             // Assert — each polygon body is split, non-polygon bodies untouched
         }
 
+        /// <summary>
+        ///     Tests that SplitShape with a cut that starts/ends outside the polygon produces two polygons
+        /// </summary>
+        [Fact]
+        public void SplitShape_DiagonalCut_ShouldSplitIntoTwo()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5f, -5f),
+                new(5f, -5f),
+                new(5f, 5f),
+                new(-5f, 5f)
+            };
+            Body body = world.CreateBody();
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            Fixture fixture = body.CreateFixture(polygon);
+
+            CuttingTools.SplitShape(fixture, new Vector2F(-6f, -6f), new Vector2F(6f, 6f), out Vertices first, out Vertices second);
+
+            Assert.NotNull(first);
+            Assert.NotNull(second);
+            Assert.True(first.Count > 0, "First polygon should have vertices");
+            Assert.True(second.Count > 0, "Second polygon should have vertices");
+        }
+
+        /// <summary>
+        ///     Tests that SplitShape handles entry and exit points very close together
+        /// </summary>
+        [Fact]
+        public void SplitShape_EntryAndExitCloseTogether_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-5f, -5f),
+                new(5f, -5f),
+                new(5f, 5f),
+                new(-5f, 5f)
+            };
+            Body body = world.CreateBody();
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            Fixture fixture = body.CreateFixture(polygon);
+
+            CuttingTools.SplitShape(fixture, new Vector2F(0f, -6f), new Vector2F(0f, 6f), out Vertices first, out Vertices second);
+
+            Assert.NotNull(first);
+            Assert.NotNull(second);
+        }
+
+        #endregion
+
+        #region Cut Integration Tests — Dynamic Bodies
+
+        /// <summary>
+        ///     Tests that Cut processes dynamic bodies (non-static) and splits them
+        /// </summary>
+        [Fact]
+        public void Cut_DynamicBody_ShouldSplit()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-10f, -10f),
+                new(10f, -10f),
+                new(10f, 10f),
+                new(-10f, 10f)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Dynamic;
+
+            int initialCount = world.BodyList.Count;
+
+            bool result = CuttingTools.Cut(world, new Vector2F(0f, -20f), new Vector2F(0f, 20f));
+
+            Assert.True(result);
+            // Original body should be removed and new bodies potentially created
+            Assert.True(world.BodyList.Count >= initialCount - 1);
+        }
+
+        /// <summary>
+        ///     Tests that Cut with a kinematic body processes it
+        /// </summary>
+        [Fact]
+        public void Cut_KinematicBody_ShouldProcess()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-10f, -10f),
+                new(10f, -10f),
+                new(10f, 10f),
+                new(-10f, 10f)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Kinematic;
+
+            int initialCount = world.BodyList.Count;
+
+            bool result = CuttingTools.Cut(world, new Vector2F(0f, -20f), new Vector2F(0f, 20f));
+
+            Assert.True(result);
+            Assert.True(world.BodyList.Count >= initialCount - 1);
+        }
+
+        /// <summary>
+        ///     Tests that Cut creates new bodies that are set to Dynamic type after split
+        /// </summary>
+        [Fact]
+        public void Cut_CreatesDynamicBodies_WithCorrectType()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-10f, -10f),
+                new(10f, -10f),
+                new(10f, 10f),
+                new(-10f, 10f)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Dynamic;
+
+            bool result = CuttingTools.Cut(world, new Vector2F(0f, -20f), new Vector2F(0f, 20f));
+
+            Assert.True(result);
+            // At least some bodies should be dynamic after split
+            foreach (Body b in world.BodyList)
+            {
+                Assert.Equal(BodyType.Dynamic, b.GetBodyType);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Cut preserves body position and rotation when splitting
+        /// </summary>
+        [Fact]
+        public void Cut_PreservesPositionAndRotation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-10f, -10f),
+                new(10f, -10f),
+                new(10f, 10f),
+                new(-10f, 10f)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Dynamic;
+            body.Position = new Vector2F(5f, 5f);
+            body.Rotation = 0.5f;
+
+            bool result = CuttingTools.Cut(world, new Vector2F(5f, -15f), new Vector2F(5f, 25f));
+
+            Assert.True(result);
+            foreach (Body b in world.BodyList)
+            {
+                Assert.Equal(5f, b.Position.X, 3);
+                Assert.Equal(5f, b.Position.Y, 3);
+                Assert.Equal(0.5f, b.Rotation, 3);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Cut with a cut line that barely clips the edge of a polygon still processes
+        /// </summary>
+        [Fact]
+        public void Cut_CutLineTouchingEdge_ShouldProcess()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices vertices = new Vertices
+            {
+                new(-10f, -10f),
+                new(10f, -10f),
+                new(10f, 10f),
+                new(-10f, 10f)
+            };
+            Body body = world.CreateBody();
+            body.CreatePolygon(vertices, 1.0f);
+            body.GetBodyType = BodyType.Dynamic;
+
+            int initialCount = world.BodyList.Count;
+
+            // Cut line that goes through the edge of the polygon
+            bool result = CuttingTools.Cut(world, new Vector2F(10f, -20f), new Vector2F(10f, 20f));
+
+            Assert.True(result);
+            Assert.True(world.BodyList.Count >= initialCount - 1);
+        }
+
         #endregion
 
         #region Helper Methods — Direct Access to Private Static Methods

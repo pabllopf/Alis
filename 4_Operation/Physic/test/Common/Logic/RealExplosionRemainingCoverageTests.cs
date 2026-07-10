@@ -310,5 +310,176 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Assert.False(explosion.IsActiveOn(body));
         }
+
+        [Fact]
+        public void Activate_WithDynamicBodyOutsideExplosion_ShouldTriggerRaycast()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithDynamicCircleOutsideExplosion_ShouldTriggerCreatePolygonFromCircle()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(3f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithDynamicBodyBehindStaticBody_ShouldSkipBlockedBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Static);
+            Body dynamicBody = world.CreateRectangle(4f, 4f, 1f, new Vector2F(20f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithMultipleDynamicBodies_ShouldAffectAllHitByRays()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body1 = world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            Body body2 = world.CreateCircle(3f, 1f, new Vector2F(0, 15f), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithDynamicBodyAtAngle_ShouldCalculateAngleBounds()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 10f), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithLargeRadiusAndMaxForce_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(5f, 5f, 1f, new Vector2F(100f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-50f, 0), 200f, 1000f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithExplosionCloseToRectangleEdge_ShouldProcessRayCast()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-1f, 0), 20f, 50f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithExplosionCloseToCircleEdge_ShouldProcessCreatePolygonFromCircle()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(5f, 1f, new Vector2F(12f, 0), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-1f, 0), 20f, 50f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithKinematicBody_ShouldNotBeAffected()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Kinematic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void Activate_WithMaxForceZeroAndBodyOutside_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(3f, 1f, new Vector2F(10f, 0), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 30f, 0f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithBodyVeryCloseToExplosion_ShouldProcessRayHit()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(2f, 2f, 1f, new Vector2F(3f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithLargeRectangleBody_ShouldComputeAngleBounds()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(20f, 2f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 200f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithExplosionBehindBody_ShouldStillProcessRayCast()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(25f, 0), 30f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithCircleShapeBodyLargeRadius_ShouldApplyImpulses()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(6f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 500f);
+
+            Assert.NotNull(result);
+        }
     }
 }

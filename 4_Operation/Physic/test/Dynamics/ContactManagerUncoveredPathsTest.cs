@@ -1,8 +1,10 @@
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
@@ -166,6 +168,76 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests the multicore collision path by setting CollideMultithreadThreshold to 0.
+        ///     Exercises CollideMultiCore, ProcessContactMultiCore, UpdateContactWithLock, and AcquireLocks.
+        /// </summary>
+        [Fact]
+        public void CollideMultiCore_ShouldProcessContacts_WhenThresholdLow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that when both bodies are not active (asleep), ProcessContactCollision
+        ///     skips contact processing via the !activeA && !activeB early return.
+        /// </summary>
+        [Fact]
+        public void ProcessContactCollision_BothBodiesInactive_SkipsContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests TryResolveContactFilter when FilterFlag is set and a joint prevents collision.
+        ///     The joint (CollideConnected=false) makes bodyB.ShouldCollide(bodyA) return false,
+        ///     which triggers contact destruction in TryResolveContactFilter.
+        /// </summary>
+        [Fact]
+        public void TryResolveContactFilter_Destroys_WhenJointPreventsCollision()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            int initialCount = world.ContactManager.ContactCount;
+            Assert.True(initialCount > 0);
+
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
         }
     }
 }

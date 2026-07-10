@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 137 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 142 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs
 
     ### Language
     cs
 
     ### Coverage
-    33.3% (Line: 34.6%, Branch: 28.6%)
+    37.5% (Line: 33.3%, Branch: 100.0%)
 
     ### Uncovered Lines
-    102
+    20
 
     ### Uncovered Branches
-    30
+    0
 
     ### Method
-    DropBoxCloudManager
+    MediaWriter
 
     ### Complexity / LOC
-    31 / 209 lines
+    12 / 51 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:DropBoxCloudManager.cs
+//  File:MediaWriter.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Logging;
-using Alis.Core.Ecs.Systems.Manager;
-using Alis.Core.Ecs.Systems.Scope;
-using Dropbox.Api;
-using Dropbox.Api.Files;
-using Dropbox.Api.Stone;
-using Dropbox.Api.Users;
+using Alis.Extension.Media.FFmpeg.Encoding;
 
-namespace Alis.Extension.Cloud.DropBox
+namespace Alis.Extension.Media.FFmpeg.BaseClasses
 {
     /// <summary>
-    ///     The cloud manager class
+    ///     The media writer class
     /// </summary>
-    /// <seealso cref="AManager" />
-    /// <seealso cref="ICloudManager" />
-    public class DropBoxCloudManager : AManager, ICloudManager, IDisposable
+    public abstract class MediaWriter<TFrame> where TFrame : IMediaFrame
     {
-    /// <summary>
-    ///     Error message for not initialized state
-    /// </summary>
-    private const string NotInitializedError = "DropBox manager is not initialized. Call InitializeAsync first.";
+        /// <summary>
+        /// The fmpeg executable name
+        /// </summary>
+        private const string FFmpegExecutableName = "ffmpeg";
 
-    /// <summary>
-    ///     The path delimiter used for Dropbox paths (always forward slash)
-    /// </summary>
-    private const string PathDelimiter = "/";
+        /// <summary>
+        ///     Output filename
+        /// </summary>
+        public virtual string Filename { get; protected set; }
 
+        /// <summary>
+        ///     Input data stream
+        /// </summary>
+        public virtual Stream InputDataStream { get; protected set; }
+
+        /// <summary>
+        ///     Is data stream opened for writing
+        /// </summary>
+        public virtual bool OpenedForWriting { get; protected set; }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/test/DropBoxCloudManagerTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaWriterTests.cs
 
     Priority
     HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage DropBoxCloudManager.cs
+    Commit format: test: coverage MediaWriter.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

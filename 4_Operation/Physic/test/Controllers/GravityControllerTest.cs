@@ -694,5 +694,82 @@ namespace Alis.Core.Physic.Test.Controllers
         }
 
         #endregion
+
+        #region Additional Edge Cases
+
+        /// <summary>
+        ///     Tests that setting MaxRadius to zero allows gravity to be applied at any distance
+        /// </summary>
+        [Fact]
+        public void MaxRadius_Zero_ShouldNotRestrictGravity()
+        {
+            GravityController controller = new GravityController(10.0f)
+            {
+                MaxRadius = 0f,
+                MinRadius = 0f,
+                GravityType = GravityType.DistanceSquared
+            };
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            controller.AddBody(controllerBody);
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        ///     Tests that setting Strength to a very large value does not throw
+        /// </summary>
+        [Fact]
+        public void Strength_VeryLarge_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(float.MaxValue);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body body = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(0, 0));
+
+            controller.Update(0.016f);
+
+            Assert.NotNull(controller);
+        }
+
+        /// <summary>
+        ///     Tests that Update with both empty bodies and empty points should not throw
+        /// </summary>
+        [Fact]
+        public void Update_WithEmptyBodiesAndPoints_ShouldNotThrow()
+        {
+            GravityController controller = new GravityController(10.0f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            controller.WorldPhysic = world;
+            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+
+            controller.Update(0.016f);
+
+            Assert.True(true);
+        }
+
+        /// <summary>
+        ///     Tests that the GravityType getter/setter works for both enum values
+        /// </summary>
+        [Fact]
+        public void GravityType_ShouldSupportDistanceSquaredAndLinear()
+        {
+            GravityController controller = new GravityController(10.0f);
+
+            Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
+
+            controller.GravityType = GravityType.Linear;
+            Assert.Equal(GravityType.Linear, controller.GravityType);
+
+            controller.GravityType = GravityType.DistanceSquared;
+            Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
+        }
+
+        #endregion
     }
 }

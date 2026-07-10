@@ -328,6 +328,98 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Null(contact.FixtureA);
             Assert.Null(contact.FixtureB);
         }
+
+        // ========================================================================
+        // Additional coverage — Evaluate branches and Destroy with manifold points
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that two overlapping circles create a contact, exercising the
+        ///     <see cref="ContactType.Circle" /> branch of Evaluate.
+        /// </summary>
+        [Fact]
+        public void CircleAndCircle_Overlap_CreatesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that a polygon and a circle overlapping create a contact, exercising the
+        ///     <see cref="ContactType.PolygonAndCircle" /> branch of Evaluate.
+        /// </summary>
+        [Fact]
+        public void PolygonAndCircle_Overlap_CreatesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        /// <summary>
+        ///     Tests that Destroy awakens attached bodies when manifold has contact points
+        ///     and fixtures are not sensors.
+        /// </summary>
+        [Fact]
+        public void Destroy_WithManifoldPoints_ShouldAwakeBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+            Assert.True(contact.Manifold.PointCount > 0);
+
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+
+            contact.Destroy();
+
+            Assert.True(bodyA.Awake);
+            Assert.True(bodyB.Awake);
+        }
+
+        /// <summary>
+        ///     Tests that the contact pool reuses destroyed contacts when creating new ones.
+        /// </summary>
+        [Fact]
+        public void Create_ShouldReuseFromPool_WhenContactDestroyed()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            // Separate the bodies to destroy contacts and populate the pool
+            bodyA.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(200.0f, 200.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            // The pool should now have entries
+            bool poolHasEntries = world.ContactManager.ContactPoolList.Next != world.ContactManager.ContactPoolList;
+            Assert.True(poolHasEntries);
+
+            // Bring bodies back together to re-create contacts (potentially from pool)
+            bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(0.5f, 0.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
     }
 }
 

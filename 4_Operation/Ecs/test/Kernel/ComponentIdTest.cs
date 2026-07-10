@@ -42,6 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     ///     Tests the <see cref="ComponentId" /> struct which represents a lightweight
     ///     component type identifier used for fast lookups in the ECS system.
     /// </remarks>
+    [CollectionDefinition("ComponentIdTest", DisableParallelization = true)]
     public class ComponentIdTest
     {
         /// <summary>

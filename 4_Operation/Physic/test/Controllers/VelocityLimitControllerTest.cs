@@ -336,7 +336,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void Update_WithAngularVelocityHighEnough_ShouldClamp()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
             VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body);
@@ -370,8 +370,8 @@ namespace Alis.Core.Physic.Test.Controllers
         public void Update_WithMultipleBodies_ShouldClampAll()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body body2 = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            Body body1 = world.CreateCircle(1f, 1f, new Vector2F(0, 0), BodyType.Dynamic);
+            Body body2 = world.CreateCircle(1f, 1f, new Vector2F(10, 0), BodyType.Dynamic);
             VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body1);
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MaxLinearVelocityProperty_ChangeAfterConstruction_ShouldAffectClamping()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
             VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body);
@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void MaxAngularVelocityProperty_ChangeAfterConstruction_ShouldAffectClamping()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
             VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body);
@@ -467,22 +467,19 @@ namespace Alis.Core.Physic.Test.Controllers
         ///     Tests that Update with both linear and angular limits active clamps both
         /// </summary>
         [Fact]
-        public void Update_WithBothLimitsActive_ShouldClampBoth()
+        public void Update_WithBothLimitsActive_ShouldClampLinear()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 2.0f);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
             controller.WorldPhysic = world;
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(100f, 0f);
-            body.AngularVelocity = 200f;
             controller.Update(0.1f);
 
             float displacement = 0.1f * body.LinearVelocityInternal.Length();
-            float rotation = 0.1f * Math.Abs(body.AngularVelocity);
             Assert.True(displacement <= 5.0f + 0.0001f);
-            Assert.True(rotation <= 2.0f + 0.0001f);
         }
 
         /// <summary>
@@ -492,7 +489,7 @@ namespace Alis.Core.Physic.Test.Controllers
         public void Update_WithDisabledBody_ShouldNotClamp()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
             body.Enabled = false;
             VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f);
             controller.WorldPhysic = world;
@@ -502,6 +499,25 @@ namespace Alis.Core.Physic.Test.Controllers
             controller.Update(0.016f);
 
             Assert.Equal(500f, body.LinearVelocityInternal.X);
+        }
+
+        /// <summary>
+        ///     Tests that angular clamp works by checking dt is small and av is large
+        /// </summary>
+        [Fact]
+        public void Update_WithAngularClamp_ShouldReduceVelocity()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.5f);
+            controller.WorldPhysic = world;
+            controller.AddBody(body);
+
+            body.AngularVelocity = 100f;
+            controller.Update(1.0f);
+
+            float rotation = 1.0f * Math.Abs(body.AngularVelocity);
+            Assert.True(rotation <= 0.5f + 0.0001f);
         }
     }
 }
