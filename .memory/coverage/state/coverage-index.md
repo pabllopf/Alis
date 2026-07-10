@@ -1,6 +1,6 @@
 ---
 status: Active
-updated: 2026-07-10T09:15:00Z
+updated: 2026-07-10T12:00:00Z
 ---
 
 # Coverage Index
@@ -68,6 +68,7 @@ updated: 2026-07-10T09:15:00Z
 | FontManager.cs | 6 | ~80 | 079a6da3f |
 | FilePickerPathConverter.cs | 2 | 22 | c0d715b32 |
 | GameObject.cs | 12 | ~200 | e4c991127 |
+| BrowserPlayer.cs | 7 | ~10 | 3aa820754 |
 
 ## Notes
 

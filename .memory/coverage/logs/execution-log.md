@@ -77,11 +77,20 @@
 
 ## Entry 10 — 2026-07-10T12:00:00Z
 
-- **Commit:** pending
+- **Commit:** 3aa820754
 - **File:** BrowserPlayer.cs
 - **Task:** Add tests for BrowserPlayer.cs static method edge cases and SetVolume via uninitialized object
-- **Tests Added:** pending
-- **Key Paths:** SetVolume return completed task, TryGetFormat edge cases, FindDataChunk/FindFmtChunk boundary cases
+- **Tests Added:** 7 new test methods (BrowserPlayerEdgeCaseTests.cs)
+  - `SetVolume_ShouldReturnCompletedTask` - uses FormatterServices.GetUninitializedObject to bypass OpenAL-dependent constructor
+  - `SetVolume_WithZero_ShouldReturnCompletedTask`
+  - `SetVolume_WithMaxValue_ShouldReturnCompletedTask`
+  - `GetFormat_WithZeroBitsAndZeroChannels_ShouldReturnFalse`
+  - `GetFormat_WithNegativeBits_ShouldReturnFalse`
+  - `FindFmtChunk_WithNullArray_ShouldThrowNullReferenceException`
+  - `FindDataChunk_WithNullArray_ShouldThrowNullReferenceException`
+- **Key Paths:** SetVolume returns completed task, TryGetFormat edge cases (0/0, negative bits), FindDataChunk/FindFmtChunk null validation
+- **Technique:** Used `FormatterServices.GetUninitializedObject` to create BrowserPlayer instance without calling OpenAL-dependent constructor
+- **Status:** All 385 Audio tests passing (133 skipped - platform-specific)
 - **Blockers:** Instance methods (constructor, Play, Pause, Resume, Stop) require OpenAL runtime - not available on macOS without OpenAL framework support for "openal32" P/Invoke
 
 ---
