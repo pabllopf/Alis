@@ -626,6 +626,72 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         }
 
         // ========================================================================
+        // CalculateBeta — PointOnLineSegment branches
+        // ========================================================================
+
+        [Fact]
+        public void CalculateBeta_WithPointOnLineSegment_ReturnsHalfCoefficient()
+        {
+            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            // Edge from (0,0) to (2,0), point at (0,0) which is start
+            object edge = ctor.Invoke(new object[] { new Vector2F(0f, 0f), new Vector2F(2f, 0f) });
+
+            MethodInfo calcBeta = typeof(YuPengClipper).GetMethod("CalculateBeta", BindingFlags.Static | BindingFlags.NonPublic);
+
+            float result = (float)calcBeta.Invoke(null, new object[] { new Vector2F(0f, 0f), edge, 2f });
+            // Point (0,0) is at start -> PointOnLineSegment: 0.5 * 2 = 1.0
+            Assert.True(result >= 0.5f);
+
+            result = (float)calcBeta.Invoke(null, new object[] { new Vector2F(2f, 0f), edge, 2f });
+            Assert.True(result >= 0.5f);
+        }
+
+        [Fact]
+        public void CalculateBeta_WithPointOutsideSimplex_ReturnsZero()
+        {
+            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            object edge = ctor.Invoke(new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f) });
+
+            MethodInfo calcBeta = typeof(YuPengClipper).GetMethod("CalculateBeta", BindingFlags.Static | BindingFlags.NonPublic);
+
+            float result = (float)calcBeta.Invoke(null, new object[] { new Vector2F(10f, 10f), edge, 1f });
+            Assert.Equal(0f, result);
+        }
+
+        // ========================================================================
+        // CalculateSimplexCoefficient — isLeft == 0 branch (collinear points)
+        // ========================================================================
+
+        [Fact]
+        public void CalculateSimplexCoefficient_WithCollinearPoints_ReturnsZero()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
+
+            float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f), new Vector2F(2f, 0f) });
+            Assert.Equal(0f, result);
+        }
+
+        [Fact]
+        public void CalculateSimplexCoefficient_WithLeftTurn_ReturnsPositive()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
+
+            float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f), new Vector2F(0f, 1f) });
+            Assert.Equal(1f, result);
+        }
+
+        [Fact]
+        public void CalculateSimplexCoefficient_WithRightTurn_ReturnsNegative()
+        {
+            MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
+
+            float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(0f, 1f), new Vector2F(1f, 0f) });
+            Assert.Equal(-1f, result);
+        }
+
+        // ========================================================================
         // Edge class (private nested) — reflection tests for remaining branches
         // ========================================================================
 

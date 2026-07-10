@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
@@ -211,12 +212,46 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         [Fact]
-        public async Task Play_WithResourceExtraction_ShouldSucceed()
+        public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
-            string assemblyName = "WinPlayerResTest_" + Guid.NewGuid().ToString("N");
+            string entryName = "res_loop_test_for_win.wav";
             byte[] wavBytes = new byte[100];
             wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
-            string entryName = "res_test.wav";
+
+            byte[] zipBytes;
+            using (var zipMs = new MemoryStream())
+            {
+                using (var archive = new ZipArchive(zipMs, ZipArchiveMode.Create, true))
+                {
+                    var entry = archive.CreateEntry(entryName, CompressionLevel.Optimal);
+                    using (var s = entry.Open()) s.Write(wavBytes, 0, wavBytes.Length);
+                }
+                zipBytes = zipMs.ToArray();
+            }
+
+            string assemblyName = "WinPlayerLoopResTest_" + Guid.NewGuid().ToString("N");
+            string prevActive = AssetRegistryTestHelper.SaveAndSetActive(null);
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
+            AssetRegistryTestHelper.SaveAndSetActive(assemblyName);
+
+            try
+            {
+                _player = CreatePlayer();
+                await _player.PlayLoop(entryName, false);
+                Assert.True(_player.Playing);
+            }
+            finally
+            {
+                AssetRegistryTestHelper.RestoreActive(prevActive);
+            }
+        }
+
+        [Fact]
+        public async Task Play_WithResourceExtraction_ShouldSucceed()
+        {
+            string entryName = "res_test_for_win.wav";
+            byte[] wavBytes = new byte[100];
+            wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
 
             byte[] zipBytes;
             using (var zipMs = new System.IO.MemoryStream())
@@ -229,8 +264,9 @@ namespace Alis.Core.Audio.Test.Players
                 zipBytes = zipMs.ToArray();
             }
 
+            string assemblyName = "WinPlayerResTest_" + Guid.NewGuid().ToString("N");
             string prevActive = AssetRegistryTestHelper.SaveAndSetActive(null);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new System.IO.MemoryStream(zipBytes, false));
+            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
             AssetRegistryTestHelper.SaveAndSetActive(assemblyName);
 
             try

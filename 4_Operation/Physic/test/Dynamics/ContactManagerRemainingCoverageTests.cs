@@ -632,5 +632,61 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
             Assert.True(world.ContactManager.ContactCount > 0);
         }
+
+        // ========================================================================
+        // ContactAlreadyExists with reversed fixture/index ordering
+        // ========================================================================
+        [Fact]
+        public void ContactAlreadyExists_ReverseOrder_DetectsCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            int count = world.ContactManager.ContactCount;
+            Assert.True(count > 0);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(count, world.ContactManager.ContactCount);
+        }
+
+        // ========================================================================
+        // AcquireLocks with contention (via UpdateContactWithLock)
+        // ========================================================================
+        [Fact]
+        public void AcquireLocks_WithContention_HandlesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            bodyA.LockOrder = 1;
+            bodyB.LockOrder = 2;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // TryResolveContactFilter with all paths via multithreaded collision
+        // ========================================================================
+        [Fact]
+        public void TryResolveContactFilter_MultiCore_ExecutesAllPaths()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            bodyA.SetCollisionGroup(-1);
+            bodyB.SetCollisionGroup(-1);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
     }
 }

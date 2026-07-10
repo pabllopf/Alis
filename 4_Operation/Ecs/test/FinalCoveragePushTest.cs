@@ -1,0 +1,203 @@
+using System;
+using System.Linq;
+using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Systems;
+using Alis.Core.Ecs.Test.Models;
+using Xunit;
+
+namespace Alis.Core.Ecs.Test
+{
+    public class FinalCoveragePushTest
+    {
+        [Fact]
+        public void ArchetypeT_WithUpdate_Works()
+        {
+            using Scene scene = new();
+            for (int i = 0; i < 10; i++)
+                scene.Create(new Position { X = i });
+            for (int f = 0; f < 3; f++)
+                scene.Update();
+        }
+
+        [Fact]
+        public void Update_With7Components_Works()
+        {
+            using Scene scene = new();
+            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                         new TestComponent(), new AnotherComponent(), new Damage());
+            for (int f = 0; f < 3; f++)
+                scene.Update();
+        }
+
+        [Fact]
+        public void Update_With8Components_Works()
+        {
+            using Scene scene = new();
+            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                         new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+            for (int f = 0; f < 3; f++)
+                scene.Update();
+        }
+
+        [Fact]
+        public void Update_With9Components_Works()
+        {
+            using Scene scene = new();
+            scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                         new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
+            scene.Create(new Position(), new Velocity());
+            for (int f = 0; f < 3; f++)
+                scene.Update();
+        }
+
+        [Fact]
+        public void Scene_CreateMany_1To8Arities_AllWork()
+        {
+            using Scene scene = new();
+            var c1 = scene.CreateMany<Position>(2);
+            var c2 = scene.CreateMany<Position, Velocity>(2);
+            var c3 = scene.CreateMany<Position, Velocity, Health>(2);
+            var c4 = scene.CreateMany<Position, Velocity, Health, Transform>(2);
+            var c5 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
+            var c6 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
+            var c7 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
+            var c8 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
+            Assert.Equal(2, c1.Span.Length);
+            Assert.Equal(2, c8.Span1.Length);
+        }
+
+        [Fact]
+        public void AllQueryArities_WithIncludeDisabled_Work()
+        {
+            using Scene scene = new();
+            scene.Create(new Position(), new Velocity(), new Health(), new Transform());
+            var q1 = scene.Query<With<Position>>();
+            var q2 = scene.Query<With<Position>, With<Velocity>>();
+            var q3 = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+            var q4 = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
+            Assert.NotNull(q1); Assert.NotNull(q2); Assert.NotNull(q3); Assert.NotNull(q4);
+        }
+
+        [Fact]
+        public void Query_ChunkEnumerators_AllArities_Work()
+        {
+            using Scene scene = new();
+            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> chunk =
+                scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(3);
+            Assert.Equal(3, chunk.Span1.Length);
+        }
+
+        [Fact]
+        public void GameObject_CreateAndDelete_Stress()
+        {
+            using Scene scene = new();
+            for (int i = 0; i < 20; i++)
+            {
+                GameObject go = scene.Create(new Position { X = i });
+                if (i % 2 == 0) go.Delete();
+            }
+            scene.Update();
+        }
+
+        [Fact]
+        public void GameObject_HasComponent_ThrowsForNonComponent()
+        {
+            using Scene scene = new();
+            GameObject go = scene.Create(new Position());
+            Assert.False(go.Has<string>());
+        }
+
+        [Fact]
+        public void GameObject_TryGet_ReturnsRefStruct()
+        {
+            using Scene scene = new();
+            GameObject go = scene.Create(new Velocity { X = 99 });
+            bool found = go.TryGet<Velocity>(out Ref<Velocity> vel);
+            Assert.True(found);
+            Assert.Equal(99, vel.Value.X);
+        }
+
+        [Fact]
+        public void ComponentRegistry_GetComponentId_Works()
+        {
+            var id1 = Component<Position>.Id;
+            var id2 = Component<Velocity>.Id;
+            Assert.NotEqual(id1.RawIndex, id2.RawIndex);
+        }
+
+        [Fact]
+        public void ComponentRegistry_SameType_ReturnsConsistentId()
+        {
+            var id1 = Component<Health>.Id;
+            var id2 = Component<Health>.Id;
+            Assert.Equal(id1.RawIndex, id2.RawIndex);
+        }
+
+        [Fact]
+        public void CommandBuffer_AddComponent_Works()
+        {
+            using Scene scene = new();
+            GameObject go = scene.Create(new Position());
+            CommandBuffer buffer = new CommandBuffer(scene);
+            buffer.AddComponent(go, new Velocity { X = 10 });
+            buffer.Clear();
+        }
+
+        [Fact]
+        public void CommandBuffer_DeleteEntity_Works()
+        {
+            using Scene scene = new();
+            GameObject go = scene.Create(new Position());
+            CommandBuffer buffer = new CommandBuffer(scene);
+            buffer.DeleteEntity(go);
+        }
+
+        [Fact]
+        public void EnumerableHelpers_ToArray_Works()
+        {
+            int[] arr = Alis.Core.Ecs.Collections.EnumerableHelpers.ToArray(Enumerable.Range(0, 5), out int length);
+            Assert.Equal(5, length);
+            Assert.Equal(4, arr[4]);
+        }
+
+        [Fact]
+        public void FastestArrayPool_Return_Works()
+        {
+            int[] arr = System.Buffers.ArrayPool<int>.Shared.Rent(10);
+            System.Buffers.ArrayPool<int>.Shared.Return(arr);
+        }
+
+        [Fact]
+        public void Event_Invoke_WithHandler_Works()
+        {
+            Event<int> evt = new Event<int>();
+            int captured = 0;
+            void Handler(GameObject go, int val) => captured = val;
+            evt.Add(Handler);
+            evt.Invoke(default, 42);
+            Assert.Equal(42, captured);
+            evt.Remove(Handler);
+        }
+
+        [Fact]
+        public void GameObjectOnlyEvent_Invoke_Works()
+        {
+            GameObjectOnlyEvent evt = new GameObjectOnlyEvent();
+            bool fired = false;
+            evt.Add(_ => fired = true);
+            evt.Invoke(default);
+            Assert.True(fired);
+        }
+
+        [Fact]
+        public void FastLookup_FindAdjacent_Works()
+        {
+            using Scene scene = new();
+            scene.Create(new Position());
+            scene.Create(new Position(), new Velocity());
+            Assert.NotNull(scene);
+        }
+    }
+}

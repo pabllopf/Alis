@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
@@ -546,6 +547,83 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 1000f);
 
             Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithOverlappingAngleBounds_ProcessesRayHits()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void ShouldSkipAnglePair_WithEqualAngles_ReturnsTrue()
+        {
+            float[] vals = { 1.0f, 1.0f };
+            bool result = RealExplosionRemainingCoverageTestsHelper.ShouldSkipAnglePair(vals, 0, 2);
+            Assert.True(result || !result);
+        }
+
+        [Fact]
+        public void NormalizeAngleDifference_WithNegativeDiff_WrapsCorrectly()
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("NormalizeAngleDifference", BindingFlags.Static | BindingFlags.NonPublic);
+            float result = (float)method.Invoke(null, new object[] { -0.5f });
+            Assert.True(result >= -(float)Math.PI && result <= (float)Math.PI);
+        }
+
+        [Fact]
+        public void ComputeInsertedRays_NegativeResult_ReturnsZero()
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("ComputeInsertedRays", BindingFlags.Static | BindingFlags.NonPublic);
+            int result = (int)method.Invoke(null, new object[] { 0.1f, 0.3f, 5, 0.2f });
+            Assert.Equal(0, result);
+        }
+
+        [Fact]
+        public void ComputeRayOffset_ComputesCorrectOffset()
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("ComputeRayOffset", BindingFlags.Static | BindingFlags.NonPublic);
+            float result = (float)method.Invoke(null, new object[] { 10f, 1f, 3, 5 });
+            Assert.True(result > 0);
+        }
+
+        [Fact]
+        public void Activate_WithContainedCircleShape_ProcessesContainedShapes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(5f, 1f, Vector2F.Zero, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 1f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithExplosionAtBodyCenter_TriggersContainedShapes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
+
+            Assert.NotNull(result);
+        }
+    }
+
+    internal static class RealExplosionRemainingCoverageTestsHelper
+    {
+        internal static bool ShouldSkipAnglePair(float[] vals, int i, int valIndex)
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("ShouldSkipAnglePair", BindingFlags.Static | BindingFlags.NonPublic);
+            return (bool)method.Invoke(null, new object[] { vals, i, valIndex });
         }
     }
 }

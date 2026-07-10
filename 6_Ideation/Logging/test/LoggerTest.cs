@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Logging.Abstractions;
 using Alis.Core.Aspect.Logging.Formatters;
 using Alis.Core.Aspect.Logging.Outputs;
@@ -88,14 +89,34 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that static logger error should not throw
+        ///     Tests that static logger exception should throw
         /// </summary>
         [Fact]
-        public void Logger_Error_ShouldNotThrow()
+        public void Logger_Exception_ShouldThrow()
         {
             Logger.SetDefaultLogger(new MockLogger());
 
-            Logger.Error("Error message");
+            Assert.Throws<InvalidOperationException>(() => Logger.Exception("Exception message"));
+        }
+
+        [Fact]
+        public void Logger_Trace_WithNullDefaultLogger_DoesNotThrow()
+        {
+            var field = typeof(Logger).GetField("_defaultLogger", BindingFlags.NonPublic | BindingFlags.Static);
+            var saved = field.GetValue(null);
+            try
+            {
+                field.SetValue(null, null);
+                Logger.Trace("test");
+                Logger.Debug("test");
+                Logger.Info("test");
+                Logger.Warning("test");
+                Logger.Error("test");
+            }
+            finally
+            {
+                field.SetValue(null, saved);
+            }
         }
 
         /// <summary>
@@ -107,7 +128,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Logger.SetDefaultLogger(new MockLogger());
 
             Logger.Debug("Debug message");
-        }
+    }
 
         /// <summary>
         ///     Tests that static logger exception should log and throw

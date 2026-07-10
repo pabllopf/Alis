@@ -568,5 +568,80 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bool result = solver.SolveToiPositionConstraints(0, 1);
             Assert.True(result || !result);
         }
+
+        // ========================================================================
+        // AcquireContactLocks with contention
+        // ========================================================================
+        [Fact]
+        public void AcquireContactLocks_Contention_DoesNotDeadlock()
+        {
+            ContactSolver solver = new ContactSolver();
+            int[] locks = new int[2];
+            typeof(ContactSolver).GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic)
+                ?.SetValue(solver, locks);
+            locks[0] = 1;
+            MethodInfo acquireMethod = typeof(ContactSolver).GetMethod("AcquireContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo releaseMethod = typeof(ContactSolver).GetMethod("ReleaseContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Exception ex = Record.Exception(() =>
+            {
+                releaseMethod.Invoke(solver, new object[] { 0, 1 });
+                acquireMethod.Invoke(solver, new object[] { 0, 1 });
+                releaseMethod.Invoke(solver, new object[] { 0, 1 });
+            });
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // LockBodies with contention
+        // ========================================================================
+        [Fact]
+        public void LockBodies_Contention_DoesNotDeadlock()
+        {
+            ContactSolver solver = new ContactSolver();
+            int[] locks = new int[2];
+            typeof(ContactSolver).GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic)
+                ?.SetValue(solver, locks);
+            locks[0] = 1;
+            MethodInfo lockMethod = typeof(ContactSolver).GetMethod("LockBodies",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo unlockMethod = typeof(ContactSolver).GetMethod("UnlockBodies",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Exception ex = Record.Exception(() =>
+            {
+                unlockMethod.Invoke(solver, new object[] { 0, 1 });
+                lockMethod.Invoke(solver, new object[] { 0, 1 });
+                unlockMethod.Invoke(solver, new object[] { 0, 1 });
+            });
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolveTwoPointNormal — all 4 branches via actual contact setup
+        // ========================================================================
+        [Fact]
+        public void SolveTwoPointNormal_ThroughWorldStep_Executes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // InitializeVelocityConstraints with two-point contact
+        // ========================================================================
+        [Fact]
+        public void InitializeVelocityConstraints_TwoPointContact_Works()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

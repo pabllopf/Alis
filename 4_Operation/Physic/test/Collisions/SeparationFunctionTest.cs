@@ -203,6 +203,30 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(indexA >= 0);
         }
 
+        // ========================================================================
+        // FindMinSeparation with default type (uninitialized) — covers default case
+        // ========================================================================
+
+        [Fact]
+        public void FindMinSeparation_WithDefaultType_ReturnsZero()
+        {
+            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            Assert.Equal(0.0f, separation);
+            Assert.Equal(-1, indexA);
+            Assert.Equal(-1, indexB);
+        }
+
+        // ========================================================================
+        // Evaluate with default type (uninitialized) — covers default case
+        // ========================================================================
+
+        [Fact]
+        public void Evaluate_WithDefaultType_ReturnsZero()
+        {
+            float s = SeparationFunction.Evaluate(0, 0, 0.0f);
+            Assert.Equal(0.0f, s);
+        }
+
         /// <summary>
         /// Tests that evaluate with face a mode should return finite separation
         /// </summary>

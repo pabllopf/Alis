@@ -2290,5 +2290,336 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(manifold.PointCount >= 0);
         }
+
+        // ========================================================================
+        // CollidePolygons — brute-force multiple configurations to hit branches
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_MultipleConfigs_BranchCoverage()
+        {
+            // Try many configurations to cover flip, clip, feature swap
+            float[] positions = { 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f, 1.2f, 1.5f };
+            float[] rotations = { 0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, (float)Math.PI / 6, (float)Math.PI / 4, (float)Math.PI / 3 };
+            float[] widthsA = { 0.5f, 1.0f, 1.5f, 2.0f };
+            float[] heightsA = { 0.5f, 1.0f, 1.5f };
+            float[] widthsB = { 0.5f, 1.0f, 1.5f };
+            float[] heightsB = { 0.5f, 1.0f, 2.0f };
+
+            int runs = 0;
+            foreach (float x in positions)
+            {
+                foreach (float rot in rotations)
+                {
+                    foreach (float wa in widthsA)
+                    {
+                        foreach (float ha in heightsA)
+                        {
+                            foreach (float wb in widthsB)
+                            {
+                                foreach (float hb in heightsB)
+                                {
+                                    if (++runs > 500) goto done;
+                                    PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(wa, ha), 1.0f);
+                                    PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(wb, hb), 1.0f);
+                                    ControllerTransform xfA = ControllerTransform.Identity;
+                                    ControllerTransform xfB = new ControllerTransform(new Vector2F(x, 0.0f), rot);
+                                    Manifold manifold = new Manifold();
+                                    Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            done:;
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — brute-force multiple configurations
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_MultipleConfigs_BranchCoverage()
+        {
+            float[] positionsX = { 0.5f, 1.0f, 1.5f, 2.0f };
+            float[] positionsY = { -0.5f, -0.3f, 0.0f, 0.3f, 0.5f, 0.8f, 1.0f, 1.5f };
+            float[] rotations = { 0.0f, 0.1f, 0.2f, 0.3f, (float)Math.PI / 6 };
+            float[] widths = { 0.3f, 0.5f, 1.0f, 2.0f };
+            float[] heights = { 0.3f, 0.5f, 1.0f, 2.0f };
+
+            int runs = 0;
+            foreach (float px in positionsX)
+            {
+                foreach (float py in positionsY)
+                {
+                    foreach (float rot in rotations)
+                    {
+                        foreach (float w in widths)
+                        {
+                            foreach (float h in heights)
+                            {
+                                if (++runs > 300) goto done;
+                                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+                                edge.HasVertex0 = true;
+                                edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+                                edge.HasVertex3 = true;
+                                edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+                                PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
+                                ControllerTransform xfEdge = ControllerTransform.Identity;
+                                ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(px, py), rot);
+                                Manifold manifold = new Manifold();
+                                Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+                            }
+                        }
+                    }
+                }
+            }
+            done:;
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — brute-force adjacency skip variations
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_AdjacencyVariations_BranchCoverage()
+        {
+            float[] vos = { -2.0f, -1.5f, -1.0f, -0.5f, 0.0f, 0.5f, 1.0f, 1.5f };
+            float[] v3s = { 1.5f, 2.0f, 2.5f, 3.0f, 3.5f, 4.0f, 4.5f, 5.0f };
+
+            int runs = 0;
+            foreach (float v0x in vos)
+            {
+                foreach (float v0y in vos)
+                {
+                    foreach (float v3x in v3s)
+                    {
+                        foreach (float v3y in vos)
+                        {
+                            if (++runs > 200) goto done;
+                            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+                            edge.HasVertex0 = true;
+                            edge.Vertex0 = new Vector2F(v0x, v0y);
+                            edge.HasVertex3 = true;
+                            edge.Vertex3 = new Vector2F(v3x, v3y);
+
+                            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+                            ControllerTransform xfEdge = ControllerTransform.Identity;
+                            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.3f), 0.0f);
+                            Manifold manifold = new Manifold();
+                            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+                        }
+                    }
+                }
+            }
+            done:;
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — expanded configurations for EpCollider branches
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_ExpandedConfigs_BranchCoverage()
+        {
+            float[] xs = { 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f, 1.2f, 1.5f, 2.0f };
+            float[] ys = { -1.0f, -0.8f, -0.6f, -0.4f, -0.2f, 0.0f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f, 1.5f, 2.0f };
+            float[] rots = { 0.0f, 0.1f, 0.2f, 0.3f, 0.5f, 0.8f, 1.0f, (float)Math.PI / 6, (float)Math.PI / 4, (float)Math.PI / 3, (float)Math.PI / 2 };
+            float[] ws = { 0.1f, 0.2f, 0.3f, 0.5f, 0.8f, 1.0f, 1.5f, 2.0f, 3.0f, 5.0f };
+            float[] hs = { 0.1f, 0.2f, 0.3f, 0.5f, 0.8f, 1.0f, 1.5f, 2.0f, 3.0f, 5.0f };
+            bool[] hasVert0 = { false, true };
+            bool[] hasVert3 = { false, true };
+
+            int runs = 0;
+            foreach (float x in xs)
+            {
+                foreach (float y in ys)
+                {
+                    foreach (float rot in rots)
+                    {
+                        foreach (float w in ws)
+                        {
+                            foreach (float h in hs)
+                            {
+                                if (++runs > 400) goto done;
+                                for (int hv0 = 0; hv0 < 2; hv0++)
+                                {
+                                    for (int hv3 = 0; hv3 < 2; hv3++)
+                                    {
+                                        EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+                                        edge.HasVertex0 = hasVert0[hv0];
+                                        edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+                                        edge.HasVertex3 = hasVert3[hv3];
+                                        edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+                                        PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
+                                        ControllerTransform xfEdge = ControllerTransform.Identity;
+                                        ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);
+                                        Manifold manifold = new Manifold();
+                                        Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            done:;
+        }
+
+        // ========================================================================
+        // CollidePolygons — additional configurations for clip/feature swap
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_ExtraConfigs_BranchCoverage()
+        {
+            float[] xs = { 0.0f, 0.1f, 0.2f, 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.2f, 1.5f, 2.0f };
+            float[] rots = { 0.0f, 0.05f, 0.1f, 0.15f, 0.2f, 0.25f, 0.3f, 0.4f, 0.5f, 0.6f, 0.8f, 1.0f, (float)Math.PI / 6, (float)Math.PI / 4, (float)Math.PI / 3 };
+            float[] sizes = { 0.3f, 0.4f, 0.5f, 0.6f, 0.7f, 0.8f, 0.9f, 1.0f, 1.2f, 1.5f, 2.0f };
+
+            int runs = 0;
+            foreach (float x in xs)
+            {
+                foreach (float rot in rots)
+                {
+                    foreach (float s1 in sizes)
+                    {
+                        foreach (float s2 in sizes)
+                        {
+                            if (++runs > 500) goto done;
+                            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(s1, s2), 1.0f);
+                            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(s2, s1), 1.0f);
+                            ControllerTransform xfA = ControllerTransform.Identity;
+                            ControllerTransform xfB = new ControllerTransform(new Vector2F(x, 0.0f), rot);
+                            Manifold manifold = new Manifold();
+                            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+                        }
+                    }
+                }
+            }
+            done:;
+        }
+
+        // ========================================================================
+        // CollidePolygons — rotation-based configurations for flip branch
+        // ========================================================================
+
+        [Fact]
+        public void CollidePolygons_RotationConfigs_BranchCoverage()
+        {
+            for (int i = 0; i < 200; i++)
+            {
+                float x = (i % 20) * 0.1f;
+                float rot = (i / 20) * 0.1f;
+                PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f + (i % 5) * 0.3f, 0.5f + (i / 5 % 5) * 0.3f), 1.0f);
+                PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f + (i % 7) * 0.3f, 0.5f + (i / 7 % 5) * 0.3f), 1.0f);
+                ControllerTransform xfA = ControllerTransform.Identity;
+                ControllerTransform xfB = new ControllerTransform(new Vector2F(x, 0.0f), rot);
+                Manifold manifold = new Manifold();
+                Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+            }
+        }
+
+        // ========================================================================
+        // EpCollider — targeted configuration for polygonSeparation > radius
+        // Using thin tall polygon at angle where one face shows separation
+        // while edge normal shows close proximity.
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_PolygonSeparationExceedsRadius()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            // Narrow tall polygon rotated so one face normal points away from edge
+            // while edge shows proximity.
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 5.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 2.0f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider — thin polygon near edge, ComputePolygonSeparation s > radius
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_ThinPolygon_SeparationExceedsRadius()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.05f, 3.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            // Position right at the edge: edge normal shows close proximity
+            // but polygon horizontal normals show separation > radius
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.01f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — targeted to trigger clip underflow in EpCollider
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_ShallowOverlap_ClipUnderflow()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            // Very small polygon just barely overlapping
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.005f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndPolygon — barely touching with rotation for clip underflow
+        // ========================================================================
+
+        [Fact]
+        public void CollideEdgeAndPolygon_BarelyTouching_ClipUnderflow()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, -0.005f), 0.3f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
     }
 }

@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 198 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 209 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs
 
     ### Language
     cs
 
     ### Coverage
-    81.6% (Line: 80.1%, Branch: 86.8%)
+    88.5% (Line: 88.0%, Branch: 90.0%)
 
     ### Uncovered Lines
-    28
+    20
 
     ### Uncovered Branches
     5
 
     ### Method
-    Polygon
+    CuttingTools
 
     ### Complexity / LOC
-    38 / 171 lines
+    35 / 194 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Polygon.cs
+//  File:CuttingTools.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
+namespace Alis.Core.Physic.Common.PolygonManipulation
 {
     /// <summary>
-    ///     The polygon class
+    ///     The cutting tools class
     /// </summary>
-    /// <seealso cref="ITriangulatable" />
-    internal class Polygon : ITriangulatable
+    public static class CuttingTools
     {
         /// <summary>
-        ///     The triangulation point
+        ///     Split a fixture into 2 vertice collections using the given entry and exit-point.
         /// </summary>
-        protected readonly List<TriangulationPoint> Points = new List<TriangulationPoint>();
+        /// <param name="fixture">The Fixture to split</param>
+        /// <param name="entryPoint">The entry point - The start point</param>
+        /// <param name="exitPoint">The exit point - The end point</param>
+        /// <param name="first">The first collection of vertexes</param>
+        /// <param name="second">The second collection of vertexes</param>
+        public static void SplitShape(Fixture fixture, Vector2F entryPoint, Vector2F exitPoint, out Vertices first, out Vertices second)
+        {
+            Vector2F localEntryPoint = fixture.GetBody.GetLocalPoint(ref entryPoint);
+            Vector2F localExitPoint = fixture.GetBody.GetLocalPoint(ref exitPoint);
 
-        /// <summary>
-        ///     The holes
-        /// </summary>
-        protected List<Polygon> Holes;
-
-        /// <summary>
-        ///     The last
-        /// </summary>
-        protected PolygonPoint Last;
-
-        /// <summary>
-        ///     The steiner points
-        /// </summary>
-        protected List<TriangulationPoint> SteinerPoints;
+            if (!(fixture.GetShape is PolygonShape shape))
+            {
+                first = new Vertices();
+                second = new Vertices();
+                return;
+            }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/CDT/Polygon/PolygonTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/PolygonManipulation/CuttingToolsTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Polygon.cs
+    Commit format: test: coverage CuttingTools.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

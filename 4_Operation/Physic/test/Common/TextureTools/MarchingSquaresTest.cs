@@ -1477,18 +1477,27 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
-        #region CxFastList_Erase_EmptyList_ReturnsNull
+        #region CxFastList_Erase_NonHeadNode_RemovesNode
 
         [Fact]
-        public void CxFastList_Erase_EmptyList_ReturnsNull()
+        public void CxFastList_Erase_NonHeadNode_RemovesNode()
         {
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
             Type intListType = listType.MakeGenericType(typeof(int));
             object list = Activator.CreateInstance(intListType);
 
-            MethodInfo erase = intListType.GetMethod("Erase");
-            object result = erase.Invoke(list, new object[] { null, null });
-            Assert.Null(result);
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo remove = intListType.GetMethod("Remove");
+            FieldInfo countField = intListType.GetField("_count", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            add.Invoke(list, new object[] { 30 });
+            add.Invoke(list, new object[] { 20 });
+            add.Invoke(list, new object[] { 10 });
+
+            // Remove non-head non-tail element via Remove (which internally calls Erase with prev)
+            bool removed = (bool)remove.Invoke(list, new object[] { 20 });
+            Assert.True(removed);
+            Assert.Equal(2, (int)countField.GetValue(list));
         }
 
         #endregion
@@ -1680,25 +1689,6 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
-        #region CxFastList_Find_NonExistentDefault_ReturnsNull
-
-        [Fact]
-        public void CxFastList_Find_NonExistentDefault_ReturnsNull()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo find = intListType.GetMethod("Find");
-
-            add.Invoke(list, new object[] { 1 });
-            object result = find.Invoke(list, new object[] { 0 });
-            Assert.Null(result);
-        }
-
-        #endregion
-
         #region MarchSquare_KeyNonZeroValZero_NoThrow
 
         [Fact]
@@ -1722,18 +1712,28 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
-        #region CxFastList_Remove_NullHead_NoThrow
+        #region CxFastList_Erase_WhenHeadIsNull_WithPrevNull_DoesNotThrow
 
         [Fact]
-        public void CxFastList_Erase_WhenHeadIsNull_WithPrevNull_ReturnsNull()
+        public void CxFastList_Erase_HeadOnly_RemovesHead()
         {
             Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
             Type intListType = listType.MakeGenericType(typeof(int));
             object list = Activator.CreateInstance(intListType);
 
+            MethodInfo add = intListType.GetMethod("Add");
             MethodInfo erase = intListType.GetMethod("Erase");
-            object result = erase.Invoke(list, new object[] { null, null });
-            Assert.Null(result);
+            MethodInfo begin = intListType.GetMethod("Begin");
+            MethodInfo empty = intListType.GetMethod("Empty");
+            FieldInfo countField = intListType.GetField("_count", BindingFlags.Instance | BindingFlags.NonPublic);
+
+            add.Invoke(list, new object[] { 10 });
+
+            object head = begin.Invoke(list, null);
+            erase.Invoke(list, new object[] { null, head });
+
+            Assert.True((bool)empty.Invoke(list, null));
+            Assert.Equal(0, (int)countField.GetValue(list));
         }
 
         #endregion

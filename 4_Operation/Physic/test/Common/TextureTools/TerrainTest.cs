@@ -237,6 +237,75 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         }
 
         /// <summary>
+        /// Tests that ModifyTerrain updates all four dirty area bounds.
+        /// </summary>
+        [Fact]
+        public void ModifyTerrain_UpdatesDirtyAreaBounds()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
+            terrain.PointsPerUnit = 2;
+            terrain.CellSize = 10;
+            terrain.SubCellSize = 2;
+            terrain.Initialize();
+
+            terrain._dirtyArea = new Aabb(
+                new Vector2F(float.MaxValue, float.MaxValue),
+                new Vector2F(float.MinValue, float.MinValue)
+            );
+
+            Vector2F location = terrain._topLeft + new Vector2F(1, -1);
+            terrain.ModifyTerrain(location, -1);
+
+            Assert.NotEqual(float.MaxValue, terrain._dirtyArea.LowerBound.X);
+            Assert.NotEqual(float.MinValue, terrain._dirtyArea.UpperBound.X);
+        }
+
+        /// <summary>
+        /// Tests that RegenerateTerrain clamps xStart to 0 when negative.
+        /// </summary>
+        [Fact]
+        public void RegenerateTerrain_ClampsXStartToZero()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
+            terrain.PointsPerUnit = 2;
+            terrain.CellSize = 10;
+            terrain.SubCellSize = 2;
+            terrain.Initialize();
+
+            terrain._dirtyArea = new Aabb(
+                new Vector2F(-100, 0),
+                new Vector2F(10, 10)
+            );
+            terrain.RegenerateTerrain();
+
+            Assert.Equal(float.MaxValue, terrain._dirtyArea.LowerBound.X);
+        }
+
+        /// <summary>
+        /// Tests that RegenerateTerrain clamps xEnd to _xnum when exceeding.
+        /// </summary>
+        [Fact]
+        public void RegenerateTerrain_ClampsXEndToXnum()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
+            terrain.PointsPerUnit = 2;
+            terrain.CellSize = 10;
+            terrain.SubCellSize = 2;
+            terrain.Initialize();
+
+            terrain._dirtyArea = new Aabb(
+                new Vector2F(0, 0),
+                new Vector2F(1000, 10)
+            );
+            terrain.RegenerateTerrain();
+
+            Assert.Equal(float.MaxValue, terrain._dirtyArea.LowerBound.X);
+        }
+
+        /// <summary>
         /// Tests that generate terrain with mixed terrain map data executes the non-early-return
         /// path, covering body map initialization, scaling, translation, simplification and triangulation.
         /// </summary>

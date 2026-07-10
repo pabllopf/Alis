@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -962,7 +963,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that ApplyAngularImpulse wakes a sleeping body.
+        /// Tests that ApplyAngularImpulse wakes a sleeping body.
         /// </summary>
         [Fact]
         public void ApplyAngularImpulse_WakesSleepingBody()
@@ -975,6 +976,131 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(body.Awake);
             body.ApplyAngularImpulse(5.0f);
             Assert.True(body.Awake);
+        }
+
+        /// <summary>
+        /// Tests that Inertia getter computes mass * center^2 term.
+        /// </summary>
+        [Fact]
+        public void Inertia_Getter_ComputesFullValue()
+        {
+            Body body = new Body();
+            body.GetBodyType = BodyType.Dynamic;
+            body.Sweep.LocalCenter = new Vector2F(1.0f, 1.0f);
+            body.Mass = 2.0f;
+
+            float inertia = body.Inertia;
+            Assert.True(inertia >= 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that SetCollisionCategories applies to all fixtures.
+        /// </summary>
+        [Fact]
+        public void SetCollisionCategories_AppliesToAllFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.SetCollisionCategories(Categories.Cat1 | Categories.Cat2);
+
+            foreach (Fixture fixture in body.FixtureList)
+            {
+                Assert.Equal(Categories.Cat1 | Categories.Cat2, fixture.GetCollisionCategories);
+            }
+        }
+
+        /// <summary>
+        /// Tests that SetCollidesWith applies to all fixtures.
+        /// </summary>
+        [Fact]
+        public void SetCollidesWith_AppliesToAllFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.SetCollidesWith(Categories.Cat3);
+
+            foreach (Fixture fixture in body.FixtureList)
+            {
+                Assert.Equal(Categories.Cat3, fixture.GetCollidesWith);
+            }
+        }
+
+        /// <summary>
+        /// Tests that SetCollisionGroup applies to all fixtures.
+        /// </summary>
+        [Fact]
+        public void SetCollisionGroup_AppliesToAllFixtures()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
+            body.CreateCircle(0.5f, 1.0f);
+
+            body.SetCollisionGroup(1);
+
+            foreach (Fixture fixture in body.FixtureList)
+            {
+                Assert.Equal(1, fixture.GetCollisionGroup);
+            }
+        }
+
+        /// <summary>
+        /// Tests that ContactList is accessible.
+        /// </summary>
+        [Fact]
+        public void ContactList_InitiallyNull()
+        {
+            Body body = new Body();
+            Assert.Null(body.ContactList);
+        }
+
+        /// <summary>
+        /// Tests that IgnoreCcd property can be set and read.
+        /// </summary>
+        [Fact]
+        public void IgnoreCcd_Property_ShouldBeSettable()
+        {
+            Body body = new Body();
+            body.IgnoreCcd = true;
+            Assert.True(body.IgnoreCcd);
+            body.IgnoreCcd = false;
+            Assert.False(body.IgnoreCcd);
+        }
+
+        /// <summary>
+        /// Tests that WorldCenter returns the sweep center.
+        /// </summary>
+        [Fact]
+        public void WorldCenter_ReturnsSweepC()
+        {
+            Body body = new Body();
+            body.Sweep.C = new Vector2F(3.0f, 4.0f);
+            Assert.Equal(3.0f, body.WorldCenter.X);
+            Assert.Equal(4.0f, body.WorldCenter.Y);
+        }
+
+        /// <summary>
+        /// Tests that GetIslandIndex property can be set and read.
+        /// </summary>
+        [Fact]
+        public void GetIslandIndex_Property_ShouldBeSettable()
+        {
+            Body body = new Body();
+            body.GetIslandIndex = 5;
+            Assert.Equal(5, body.GetIslandIndex);
+        }
+
+        /// <summary>
+        /// Tests that ControllerFilter is accessible.
+        /// </summary>
+        [Fact]
+        public void ControllerFilter_DefaultIsAll()
+        {
+            Body body = new Body();
+            Assert.Equal(ControllerCategories.All, body.ControllerFilter.ControllerCategories);
         }
 
         /// <summary>

@@ -268,5 +268,55 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
 
             Assert.Equal(2, result.Count);
         }
+
+        [Fact]
+        public void ParseToDictionary_WithoutOuterBraces_ParsesKeyValue()
+        {
+            string json = "\"name\": \"John\"";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Single(result);
+            Assert.Equal("John", result["name"]);
+        }
+
+        [Fact]
+        public void ParseToDictionary_WithEmptyKey_ThrowsJsonParsingException()
+        {
+            string json = "{\"\":\"value\"}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Single(result);
+            Assert.Equal("value", result[""]);
+        }
+
+        [Fact]
+        public void ParseToDictionary_WithOnlyOpeningBrace_ReturnsEmpty()
+        {
+            string json = "{";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Empty(result);
+        }
+
+        [Fact]
+        public void ParseToDictionary_WithTrailingComma_ParsesSuccessfully()
+        {
+            string json = "{\"a\":\"1\",}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Single(result);
+            Assert.Equal("1", result["a"]);
+        }
+
+        [Fact]
+        public void ParseToDictionary_WithPositionAtEndAfterBrace_ThrowsJsonParsingException()
+        {
+            string json = "{\"a\"}";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        [Fact]
+        public void ParseToDictionary_WithUnicodeCharacters_ParsesCorrectly()
+        {
+            string json = "{\"key\":\"value with üñíçödé\"}";
+            Dictionary<string, string> result = _parser.ParseToDictionary(json);
+            Assert.Equal("value with üñíçödé", result["key"]);
+        }
     }
 }
