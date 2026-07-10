@@ -41,6 +41,7 @@ updated: 2026-07-10T09:15:00Z
 |------|------------|-------------|--------|
 | ContactManager.cs | 10 | ~200 | 2b4747171 |
 | Collision.cs | 17 | ~400 | 52218b656 |
+| ContactSolver.cs | 9 | ~200 | pending |
 | SingleComponentUpdateFilter.cs | 4 | 132 | 323a3e7a9 |
 | DistanceJoint.cs | 13 | 282 | a4e02bafd |
 | FrictionJoint.cs | 13 | 199 | e547ea826 |
