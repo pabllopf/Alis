@@ -347,5 +347,27 @@ namespace Alis.Extension.Io.FileDialog.Test
                 Directory.Delete(tempDir);
             }
         }
+
+        /// <summary>
+        ///     Tests that ConvertPathSeparators preserves a valid path with no separators.
+        /// </summary>
+        [Fact]
+        public void ConvertPathSeparators_WithNoSeparators_ShouldReturnSame()
+        {
+            string result = FilePickerPathConverter.ConvertPathSeparators("simplepath");
+
+            Assert.Equal("simplepath", result);
+        }
+
+        /// <summary>
+        ///     Tests that NormalizePath removes trailing tab.
+        /// </summary>
+        [Fact]
+        public void NormalizePath_WithTrailingTab_ShouldRemoveTab()
+        {
+            string result = FilePickerPathConverter.NormalizePath("/path/to/file.txt\t");
+
+            Assert.Equal("/path/to/file.txt", result);
+        }
     }
 }
