@@ -166,5 +166,7 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/WorldPhysic.cs",
   "pabllopf-official_alis:6_Ideation/Math/src/Util/Constant.cs",
-  "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs"
+  "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs"
 ]
