@@ -1,5 +1,5 @@
 ---
-status: Active
+status: Completed
 created: 2026-07-10T12:30:00Z
 worker: local-agent
 ---
