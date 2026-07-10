@@ -1327,5 +1327,381 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
+
+        // ========================================================================
+        // ShouldSkipContactAlpha — !collideA && !collideB path
+        // ========================================================================
+        [Fact]
+        public void ShouldSkipContactAlpha_BothNonBulletDynamic_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — other.Island already true
+        // ========================================================================
+        [Fact]
+        public void ProcessJointEdges_WithOtherAlreadyInIsland_SkipsAdd()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint jointAB = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            DistanceJoint jointBC = new DistanceJoint(bodyB, bodyC, new Vector2F(2f, 0f), new Vector2F(4f, 0f));
+            world.Add(jointAB);
+            world.Add(jointBC);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — sensor fixture skip
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_WithSensorFixture_Skips()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.FixtureList[0].GetIsSensor = true;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — disabled contact after update
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_ContactDisabled_ResetsBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.Enabled = false;
+                return true;
+            };
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — not touching after update
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_NotTouching_ResetsBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.IsTouching = false;
+                return true;
+            };
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — bullet body continues
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_WithBulletBody_Continues()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CreateGear with convex polygon
+        // ========================================================================
+        [Fact]
+        public void CreateGear_ConvexPath_CreatesBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateGear(1f, 3, 1.5f, 0.1f, 1f, Vector2F.Zero, 0f, BodyType.Static);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // CreateCapsule with many vertices (decompose path)
+        // ========================================================================
+        [Fact]
+        public void CreateCapsule_WithManyVertices_Decomposes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(2f, 0.5f, 8, 0.5f, 8, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // FlagContactsForJointRemoval non-fixed, non-collide path
+        // ========================================================================
+        [Fact]
+        public void FlagContactsForJointRemoval_NonFixedNonCollide_FlagsContacts()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            joint.CollideConnected = false;
+            world.Add(joint);
+            world.Remove(joint);
+            Assert.Empty(world.JointList);
+        }
+
+        // ========================================================================
+        // ConnectJointNonFixed non-fixed type path
+        // ========================================================================
+        [Fact]
+        public void ConnectJointNonFixed_NonFixedType_ConnectsEdgeB()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+            Assert.NotNull(joint.EdgeB.Joint);
+            Assert.Same(bodyA, joint.EdgeB.Other);
+        }
+
+        // ========================================================================
+        // BuildToiIsland with non-dynamic body
+        // ========================================================================
+        [Fact]
+        public void BuildToiIsland_WithNonDynamicBody_SkipsContactProcessing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Kinematic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyB.LinearVelocityInternal = new Vector2F(100f, 0f);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — other already in island (line 843-849)
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_OtherAlreadyInIsland_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — other not in island
+        // ========================================================================
+        [Fact]
+        public void ProcessJointEdges_WithOtherNotInIsland_AddsToStack()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Kinematic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CalculateContactAlpha — TOI output not Touching
+        // ========================================================================
+        [Fact]
+        public void CalculateContactAlpha_NotTouching_ReturnsOne()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — island capacity reached
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_IslandCapacityReached_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(500f, 0f);
+            for (int i = 0; i < 5; i++)
+            {
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
+
+        // ========================================================================
+        // ProcessToiContact — non-static other wakes up
+        // ========================================================================
+        [Fact]
+        public void ProcessToiContact_NonStaticOther_WakesUp()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            bodyB.Awake = false;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // RemoveJointEdgeA — bodyA with multiple joints (various pointer states)
+        // ========================================================================
+        [Fact]
+        public void RemoveJointEdgeA_MultipleJoints_CorrectlyUpdatesPointers()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint1 = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            DistanceJoint joint2 = new DistanceJoint(bodyA, bodyC, Vector2F.Zero, new Vector2F(4f, 0f));
+            world.Add(joint1);
+            world.Add(joint2);
+            world.Remove(joint1);
+            Assert.Single(world.JointList);
+            Assert.Contains(joint2, world.JointList);
+        }
+
+        // ========================================================================
+        // RemoveJointEdgeB — bodyB with multiple joints
+        // ========================================================================
+        [Fact]
+        public void RemoveJointEdgeB_MultipleJoints_CorrectlyUpdatesPointers()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint1 = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            DistanceJoint joint2 = new DistanceJoint(bodyC, bodyB, new Vector2F(4f, 0f), new Vector2F(2f, 0f));
+            world.Add(joint1);
+            world.Add(joint2);
+            world.Remove(joint1);
+            Assert.Single(world.JointList);
+            Assert.Contains(joint2, world.JointList);
+        }
+
+        // ========================================================================
+        // FlagContactsForJointFiltering — CollideConnected=false with contacts
+        // ========================================================================
+        [Fact]
+        public void FlagContactsForJointFiltering_WithContacts_FiltersCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = false;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        // ========================================================================
+        // FlagContactsForJointFiltering — CollideConnected=true skips filtering
+        // ========================================================================
+        [Fact]
+        public void FlagContactsForJointFiltering_CollideConnectedTrue_SkipsFiltering()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = true;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            int afterAdd = world.ContactManager.ContactCount;
+            world.Remove(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.True(afterAdd > 0);
+        }
+
+        // ========================================================================
+        // FlagContactsForJointRemoval — non-fixed, non-collide with matching contact
+        // ========================================================================
+        [Fact]
+        public void FlagContactsForJointRemoval_WithMatchingContact_FlagsIt()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = false;
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+            joint.CollideConnected = true;
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // CreateChain with both rope and no rope
+        // ========================================================================
+        [Fact]
+        public void CreateChain_WithAndWithoutRope_Works()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Path pathNoRope = world.CreateChain(
+                new Vector2F(0f, 0f), new Vector2F(1f, 0f), 0.1f, 0.05f, 3, 1f, false);
+            Assert.NotNull(pathNoRope);
+            Path pathWithRope = world.CreateChain(
+                new Vector2F(2f, 0f), new Vector2F(3f, 0f), 0.1f, 0.05f, 3, 1f, true);
+            Assert.NotNull(pathWithRope);
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — edge from where joint.Other != null and Enabled
+        // ========================================================================
+        [Fact]
+        public void ProcessJointEdges_PrevNextNullPointer_CorrectlyProcesses()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint jointAB = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            DistanceJoint jointBC = new DistanceJoint(bodyB, bodyC, new Vector2F(2f, 0f), new Vector2F(4f, 0f));
+            world.Add(jointAB);
+            world.Add(jointBC);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

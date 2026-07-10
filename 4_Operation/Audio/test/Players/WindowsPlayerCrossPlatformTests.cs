@@ -1,0 +1,195 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Players;
+using Xunit;
+
+namespace Alis.Core.Audio.Test.Players
+{
+    public class WindowsPlayerCrossPlatformTests
+    {
+        private static bool IsWinmmStubAvailable()
+        {
+            try
+            {
+                MethodInfo method = typeof(WindowsPlayer).GetMethod("ExecuteMsiCommand",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                if (method == null) return false;
+                WindowsPlayer p = new WindowsPlayer();
+                method.Invoke(p, new object[] { "Status test.wav Length" });
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        [Fact]
+        public async Task SetVolume_ShouldNotThrow_WhenStubAvailable()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            WindowsPlayer player = new WindowsPlayer();
+            await player.SetVolume(50);
+            await player.SetVolume(0);
+            await player.SetVolume(100);
+        }
+
+        [Fact]
+        public async Task Play_WithExistingFile_ShouldSetUpFields()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy content");
+                WindowsPlayer player = new WindowsPlayer();
+                await player.Play(tempFile);
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                string storedFile = (string)fileNameField?.GetValue(player);
+                Assert.Equal(tempFile, storedFile);
+
+                Assert.True(player.Playing);
+                Assert.False(player.Paused);
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        [Fact]
+        public async Task PlayLoop_WithExistingFile_ShouldSetUpFields()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy content");
+                WindowsPlayer player = new WindowsPlayer();
+                await player.PlayLoop(tempFile, false);
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
+                    BindingFlags.NonPublic | BindingFlags.Instance);
+                string storedFile = (string)fileNameField?.GetValue(player);
+                Assert.Equal(tempFile, storedFile);
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        [Fact]
+        public async Task Pause_WhenPlaying_ShouldSetPaused()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
+                BindingFlags.Public | BindingFlags.Instance);
+            playingProp?.SetValue(player, true, null);
+
+            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            fileNameField?.SetValue(player, "test.wav");
+
+            await player.Pause();
+            Assert.True(player.Paused);
+        }
+
+        [Fact]
+        public async Task Resume_WhenPlayingAndPaused_ShouldSetNotPaused()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
+                BindingFlags.Public | BindingFlags.Instance);
+            playingProp?.SetValue(player, true, null);
+            PropertyInfo pausedProp = typeof(WindowsPlayer).GetProperty("Paused",
+                BindingFlags.Public | BindingFlags.Instance);
+            pausedProp?.SetValue(player, true, null);
+
+            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            fileNameField?.SetValue(player, "test.wav");
+
+            await player.Resume();
+            Assert.False(player.Paused);
+        }
+
+        [Fact]
+        public async Task Stop_WhenPlaying_ShouldResetState()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
+                BindingFlags.Public | BindingFlags.Instance);
+            playingProp?.SetValue(player, true, null);
+
+            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            fileNameField?.SetValue(player, "test.wav");
+
+            await player.Stop();
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
+        }
+
+        [Fact]
+        public void ExecuteMsiCommand_WithStatus_ShouldSucceed()
+        {
+            if (!IsWinmmStubAvailable()) return;
+            WindowsPlayer player = new WindowsPlayer();
+            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            timerField?.SetValue(player, new System.Timers.Timer(1) { AutoReset = false });
+
+            MethodInfo method = typeof(WindowsPlayer).GetMethod("ExecuteMsiCommand",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            method?.Invoke(player, new object[] { "Status test.wav Length" });
+
+            var timer = (System.Timers.Timer)timerField?.GetValue(player);
+            Assert.Equal(5000, timer?.Interval);
+        }
+
+        [Fact]
+        public void HandlePlaybackFinished_ShouldFireEvent()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            bool eventRaised = false;
+            player.PlaybackFinished += (sender, e) => eventRaised = true;
+
+            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            timerField?.SetValue(player, new System.Timers.Timer(100) { AutoReset = false });
+
+            MethodInfo method = typeof(WindowsPlayer).GetMethod("HandlePlaybackFinished",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            if (method != null)
+            {
+                method.Invoke(player, new object[] { null, null });
+            }
+
+            Assert.False(player.Playing);
+            Assert.True(eventRaised);
+        }
+
+        [Fact]
+        public async Task Play_WithNullFileName_ShouldThrowFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await Assert.ThrowsAsync<FileNotFoundException>(() => player.Play(null));
+        }
+
+        [Fact]
+        public async Task PlayLoop_WithNullFileName_ShouldThrowFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await Assert.ThrowsAsync<FileNotFoundException>(() => player.PlayLoop(null, false));
+        }
+    }
+}

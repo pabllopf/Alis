@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 193 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 198 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs
 
     ### Language
     cs
 
     ### Coverage
-    77.8% (Line: 80.4%, Branch: 64.8%)
+    81.6% (Line: 80.1%, Branch: 86.8%)
 
     ### Uncovered Lines
-    120
+    28
 
     ### Uncovered Branches
-    43
+    5
 
     ### Method
-    ContactSolver
+    Polygon
 
     ### Complexity / LOC
-    90 / 700 lines
+    38 / 171 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ContactSolver.cs
+//  File:Polygon.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common;
+using System.Collections.Generic;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 
-namespace Alis.Core.Physic.Dynamics.Contacts
+namespace Alis.Core.Physic.Common.Decomposition.CDT.Polygon
 {
     /// <summary>
-    ///     The contact solver class
+    ///     The polygon class
     /// </summary>
-    public class ContactSolver : IDisposable
+    /// <seealso cref="ITriangulatable" />
+    internal class Polygon : ITriangulatable
     {
         /// <summary>
-        ///     Bundles contact constraint data for impulse application.
+        ///     The triangulation point
         /// </summary>
-        private readonly struct ContactConstraintData
-        {
-            /// <summary>
-            /// The cp
-            /// </summary>
-            public readonly VelocityConstraintPoint Cp1;
-            /// <summary>
-            /// The cp
-            /// </summary>
-            public readonly VelocityConstraintPoint Cp2;
-            /// <summary>
-            /// The normal
-            /// </summary>
+        protected readonly List<TriangulationPoint> Points = new List<TriangulationPoint>();
+
+        /// <summary>
+        ///     The holes
+        /// </summary>
+        protected List<Polygon> Holes;
+
+        /// <summary>
+        ///     The last
+        /// </summary>
+        protected PolygonPoint Last;
+
+        /// <summary>
+        ///     The steiner points
+        /// </summary>
+        protected List<TriangulationPoint> SteinerPoints;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Contacts/ContactSolverTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/CDT/Polygon/PolygonTests.cs
 
     Priority
-    MEDIUM (NEW)
+    LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Polygon/Polygon.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ContactSolver.cs
+    Commit format: test: coverage Polygon.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

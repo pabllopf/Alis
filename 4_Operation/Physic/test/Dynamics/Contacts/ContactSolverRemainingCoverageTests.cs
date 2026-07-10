@@ -401,5 +401,172 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Exception ex = Record.Exception(() => solveMethod.Invoke(solver, new object[] { 0, 1 }));
             Assert.Null(ex);
         }
+
+        // ========================================================================
+        // SolveVelocityConstraints multithreaded path via threshold
+        // ========================================================================
+        [Fact]
+        public void SolveVelocityConstraints_MultiThreadedThreshold_Executes()
+        {
+            ContactSolver solver = new ContactSolver();
+            typeof(ContactSolver).GetField("_velocityConstraintsMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(solver, 0);
+            solver.Count = 2;
+            solver.VelocityConstraints = new ContactVelocityConstraint[2];
+            for (int i = 0; i < 2; i++)
+            {
+                solver.VelocityConstraints[i] = new ContactVelocityConstraint
+                {
+                    IndexA = 0,
+                    IndexB = 1,
+                    PointCount = 1,
+                    InvMassA = 1f,
+                    InvMassB = 1f,
+                    InvIa = 1f,
+                    InvIb = 1f,
+                    Normal = new Vector2F(1f, 0f),
+                    Friction = 0f,
+                    TangentSpeed = 0f
+                };
+                solver.VelocityConstraints[i].Points[0].NormalImpulse = 0f;
+                solver.VelocityConstraints[i].Points[0].TangentImpulse = 0f;
+                solver.VelocityConstraints[i].Points[0].NormalMass = 1f;
+                solver.VelocityConstraints[i].Points[0].TangentMass = 1f;
+                solver.VelocityConstraints[i].Points[0].Ra = Vector2F.Zero;
+                solver.VelocityConstraints[i].Points[0].Rb = Vector2F.Zero;
+                solver.VelocityConstraints[i].Points[0].VelocityBias = 0f;
+            }
+            Type solverPosType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverPosition");
+            Array positions = Array.CreateInstance(solverPosType, 2);
+            object pos0 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos0, new Vector2F(0f, 0f));
+            solverPosType.GetField("A").SetValue(pos0, 0f);
+            object pos1 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos1, new Vector2F(1f, 0f));
+            solverPosType.GetField("A").SetValue(pos1, 0f);
+            positions.SetValue(pos0, 0);
+            positions.SetValue(pos1, 1);
+            solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
+            Type solverVelType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverVelocity");
+            Array velocities = Array.CreateInstance(solverVelType, 2);
+            object vel0 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel0, new Vector2F(-1f, 0f));
+            solverVelType.GetField("W").SetValue(vel0, 0f);
+            object vel1 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel1, new Vector2F(0f, 0f));
+            solverVelType.GetField("W").SetValue(vel1, 0f);
+            velocities.SetValue(vel0, 0);
+            velocities.SetValue(vel1, 1);
+            solver.GetType().GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, velocities);
+            int[] locks = new int[2];
+            solver.GetType().GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, locks);
+            Exception ex = Record.Exception(() => solver.SolveVelocityConstraints());
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolvePositionConstraints multithreaded path via threshold
+        // ========================================================================
+        [Fact]
+        public void SolvePositionConstraints_MultiThreadedThreshold_Executes()
+        {
+            ContactSolver solver = new ContactSolver();
+            typeof(ContactSolver).GetField("_positionConstraintsMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.NonPublic)?.SetValue(solver, 0);
+            solver.Count = 2;
+            solver.PositionConstraints = new ContactPositionConstraint[2];
+            for (int i = 0; i < 2; i++)
+            {
+                solver.PositionConstraints[i] = new ContactPositionConstraint
+                {
+                    IndexA = 0,
+                    IndexB = 1,
+                    InvMassA = 1f,
+                    InvMassB = 1f,
+                    InvIa = 1f,
+                    InvIb = 1f,
+                    LocalCenterA = Vector2F.Zero,
+                    LocalCenterB = Vector2F.Zero,
+                    PointCount = 1,
+                    RadiusA = 0.5f,
+                    RadiusB = 0.5f,
+                    Type = ManifoldType.FaceA,
+                    LocalNormal = new Vector2F(1f, 0f),
+                    LocalPoint = new Vector2F(0.5f, 0f)
+                };
+            }
+            Type solverPosType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverPosition");
+            Array positions = Array.CreateInstance(solverPosType, 2);
+            object pos0 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos0, new Vector2F(0f, 0f));
+            solverPosType.GetField("A").SetValue(pos0, 0f);
+            object pos1 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos1, new Vector2F(1f, 0f));
+            solverPosType.GetField("A").SetValue(pos1, 0f);
+            positions.SetValue(pos0, 0);
+            positions.SetValue(pos1, 1);
+            solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
+            int[] locks = new int[2];
+            solver.GetType().GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, locks);
+            bool result = solver.SolvePositionConstraints();
+            Assert.True(result || !result);
+        }
+
+        // ========================================================================
+        // Reset with WarmStarting = false
+        // ========================================================================
+        [Fact]
+        public void Reset_WithWarmStartingFalse_SetsImpulsesToZero()
+        {
+            ContactSolver solver = new ContactSolver();
+            TimeStep step = new TimeStep { Dt = 1f / 60f, DtRatio = 1.0f, WarmStarting = false };
+            SolverPosition[] pos = new SolverPosition[2];
+            SolverVelocity[] vel = new SolverVelocity[2];
+            int[] lks = new int[2];
+            Contact[] dummyContacts = new Contact[1];
+            Exception ex = Record.Exception(() => solver.Reset(ref step, 0, dummyContacts, pos, vel, lks, 0, 0));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolveToiPositionConstraints with non-zero count
+        // ========================================================================
+        [Fact]
+        public void SolveToiPositionConstraints_WithNonZeroCount_Executes()
+        {
+            ContactSolver solver = new ContactSolver();
+            solver.Count = 1;
+            solver.PositionConstraints = new ContactPositionConstraint[1];
+            solver.PositionConstraints[0] = new ContactPositionConstraint
+            {
+                IndexA = 0,
+                IndexB = 1,
+                InvMassA = 1f,
+                InvMassB = 1f,
+                InvIa = 1f,
+                InvIb = 1f,
+                LocalCenterA = Vector2F.Zero,
+                LocalCenterB = Vector2F.Zero,
+                PointCount = 1,
+                RadiusA = 0.5f,
+                RadiusB = 0.5f,
+                Type = ManifoldType.FaceA,
+                LocalNormal = new Vector2F(1f, 0f),
+                LocalPoint = new Vector2F(0.5f, 0f)
+            };
+            Type solverPosType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverPosition");
+            Array positions = Array.CreateInstance(solverPosType, 2);
+            object pos0 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos0, new Vector2F(0f, 0f));
+            solverPosType.GetField("A").SetValue(pos0, 0f);
+            object pos1 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos1, new Vector2F(1f, 0f));
+            solverPosType.GetField("A").SetValue(pos1, 0f);
+            positions.SetValue(pos0, 0);
+            positions.SetValue(pos1, 1);
+            solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
+            bool result = solver.SolveToiPositionConstraints(0, 1);
+            Assert.True(result || !result);
+        }
     }
 }

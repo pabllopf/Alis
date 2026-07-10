@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="16563e1d-f16a-4da4-be0b-d2de969af26c" name="@MacBook-Pro-de-Pablo 2026-07-10 13:38:33" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-07-10T13:38:33.5627650+01:00" queuing="2026-07-10T13:38:33.5627650+01:00" start="2026-07-10T13:38:31.4875810+01:00" finish="2026-07-10T13:38:33.5660730+01:00" />
+  <TestSettings name="default" id="32025ad3-e54c-42ce-9f58-4aac0bf09f76">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-07-10_13_38_33" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f5fe47f3-a827-436c-9a26-68f09bdb860a" testId="e45dde50-9533-0d92-3c3f-88112a70a00f" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.GetFileName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001350" startTime="2026-07-10T13:38:33.1119020+01:00" endTime="2026-07-10T13:38:33.1119020+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f5fe47f3-a827-436c-9a26-68f09bdb860a" />
+    <UnitTestResult executionId="3439b545-e851-43ee-9d7e-4a3f379332b3" testId="9775d49b-be98-9d74-b032-cab37e91c9f6" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.SplitMultiplePaths_WhenLoggerThrowsAfterProcessing_ShouldCatchAndReturnEmpty" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0013308" startTime="2026-07-10T13:38:33.1081280+01:00" endTime="2026-07-10T13:38:33.1081280+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3439b545-e851-43ee-9d7e-4a3f379332b3" />
+    <UnitTestResult executionId="732acd71-1575-405b-9800-734e422c2640" testId="f509ea9c-40c9-a6f5-9272-1e079d0bea47" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.ConvertPathSeparators_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnOriginal" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0005551" startTime="2026-07-10T13:38:33.1078100+01:00" endTime="2026-07-10T13:38:33.1078100+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="732acd71-1575-405b-9800-734e422c2640" />
+    <UnitTestResult executionId="34c668bd-8f30-4e92-a2ca-c818f3633cc8" testId="28514472-9344-fef3-26c3-57bc70206125" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.NormalizePath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000507" startTime="2026-07-10T13:38:33.1084070+01:00" endTime="2026-07-10T13:38:33.1084070+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34c668bd-8f30-4e92-a2ca-c818f3633cc8" />
+    <UnitTestResult executionId="8d55a999-92ad-4146-945e-c92945963e1f" testId="53350498-d94f-0a00-03e2-34eb2469c478" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.GetDirectoryName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001758" startTime="2026-07-10T13:38:33.1082650+01:00" endTime="2026-07-10T13:38:33.1082650+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d55a999-92ad-4146-945e-c92945963e1f" />
+    <UnitTestResult executionId="8b7b6b41-a093-46f3-9c27-8c7c3ea1e133" testId="97a4c146-fcc2-1f33-05b3-206ca6a8e5d8" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.SplitMultiplePaths_WhenNormalizePathLoggerThrows_ShouldCatchAndReturnEmpty" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001190" startTime="2026-07-10T13:38:33.1086950+01:00" endTime="2026-07-10T13:38:33.1086950+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b7b6b41-a093-46f3-9c27-8c7c3ea1e133" />
+    <UnitTestResult executionId="37ce648b-6110-41f6-a2ae-103529cfd51a" testId="92201cd2-cd51-5a74-9388-9e52f10392dc" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.IsValidPath_WithMustExistTrueAndInvalidChars_ShouldCatchAndReturnFalse" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0058137" startTime="2026-07-10T13:38:33.1043050+01:00" endTime="2026-07-10T13:38:33.1043170+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37ce648b-6110-41f6-a2ae-103529cfd51a" />
+    <UnitTestResult executionId="ef28fa56-78b3-439d-9771-feaeea559de8" testId="de023911-1b7a-ab18-e3e7-2b30833371f1" testName="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.IsValidPath_WithMustExistFalseAndLoggerThrowsInsideTry_ShouldCatchAndReturnFalse" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001215" startTime="2026-07-10T13:38:33.1085530+01:00" endTime="2026-07-10T13:38:33.1085530+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef28fa56-78b3-439d-9771-feaeea559de8" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.GetDirectoryName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="53350498-d94f-0a00-03e2-34eb2469c478">
+      <Execution id="8d55a999-92ad-4146-945e-c92945963e1f" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="GetDirectoryName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.SplitMultiplePaths_WhenLoggerThrowsAfterProcessing_ShouldCatchAndReturnEmpty" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="9775d49b-be98-9d74-b032-cab37e91c9f6">
+      <Execution id="3439b545-e851-43ee-9d7e-4a3f379332b3" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="SplitMultiplePaths_WhenLoggerThrowsAfterProcessing_ShouldCatchAndReturnEmpty" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.IsValidPath_WithMustExistTrueAndInvalidChars_ShouldCatchAndReturnFalse" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="92201cd2-cd51-5a74-9388-9e52f10392dc">
+      <Execution id="37ce648b-6110-41f6-a2ae-103529cfd51a" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="IsValidPath_WithMustExistTrueAndInvalidChars_ShouldCatchAndReturnFalse" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.SplitMultiplePaths_WhenNormalizePathLoggerThrows_ShouldCatchAndReturnEmpty" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="97a4c146-fcc2-1f33-05b3-206ca6a8e5d8">
+      <Execution id="8b7b6b41-a093-46f3-9c27-8c7c3ea1e133" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="SplitMultiplePaths_WhenNormalizePathLoggerThrows_ShouldCatchAndReturnEmpty" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.ConvertPathSeparators_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnOriginal" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="f509ea9c-40c9-a6f5-9272-1e079d0bea47">
+      <Execution id="732acd71-1575-405b-9800-734e422c2640" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="ConvertPathSeparators_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnOriginal" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.IsValidPath_WithMustExistFalseAndLoggerThrowsInsideTry_ShouldCatchAndReturnFalse" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="de023911-1b7a-ab18-e3e7-2b30833371f1">
+      <Execution id="ef28fa56-78b3-439d-9771-feaeea559de8" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="IsValidPath_WithMustExistFalseAndLoggerThrowsInsideTry_ShouldCatchAndReturnFalse" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.NormalizePath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="28514472-9344-fef3-26c3-57bc70206125">
+      <Execution id="34c668bd-8f30-4e92-a2ca-c818f3633cc8" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="NormalizePath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests.GetFileName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/io/filedialog/test/bin/debug/lib/alis.extension.io.filedialog.test.dll" id="e45dde50-9533-0d92-3c3f-88112a70a00f">
+      <Execution id="f5fe47f3-a827-436c-9a26-68f09bdb860a" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Io/FileDialog/test/bin/Debug/lib/Alis.Extension.Io.FileDialog.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Io.FileDialog.Test.FilePickerPathConverterRemainingCoverageTests" name="GetFileName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e45dde50-9533-0d92-3c3f-88112a70a00f" executionId="f5fe47f3-a827-436c-9a26-68f09bdb860a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9775d49b-be98-9d74-b032-cab37e91c9f6" executionId="3439b545-e851-43ee-9d7e-4a3f379332b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f509ea9c-40c9-a6f5-9272-1e079d0bea47" executionId="732acd71-1575-405b-9800-734e422c2640" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28514472-9344-fef3-26c3-57bc70206125" executionId="34c668bd-8f30-4e92-a2ca-c818f3633cc8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="53350498-d94f-0a00-03e2-34eb2469c478" executionId="8d55a999-92ad-4146-945e-c92945963e1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="97a4c146-fcc2-1f33-05b3-206ca6a8e5d8" executionId="8b7b6b41-a093-46f3-9c27-8c7c3ea1e133" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92201cd2-cd51-5a74-9388-9e52f10392dc" executionId="37ce648b-6110-41f6-a2ae-103529cfd51a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="de023911-1b7a-ab18-e3e7-2b30833371f1" executionId="ef28fa56-78b3-439d-9771-feaeea559de8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="8" executed="8" passed="8" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.03]   Discovering: Alis.Extension.Io.FileDialog.Test
+[xUnit.net 00:00:00.05]   Discovered:  Alis.Extension.Io.FileDialog.Test
+[xUnit.net 00:00:00.05]   Starting:    Alis.Extension.Io.FileDialog.Test
+[10/7/2026 12:38:33] [Trace] [Alis.Core.Aspect.Logging] Validating path: /path/with\u0000null (mustExist: True)
+[xUnit.net 00:00:00.09]   Finished:    Alis.Extension.Io.FileDialog.Test
+</StdOut>
+    </Output>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>

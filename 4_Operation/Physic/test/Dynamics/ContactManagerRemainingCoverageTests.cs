@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
@@ -422,6 +423,142 @@ namespace Alis.Core.Physic.Test.Dynamics
             bodyA.SetTransform(new Vector2F(1000f, 1000f), 0f);
             bodyB.SetTransform(new Vector2F(2000f, 2000f), 0f);
 
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessContactCollision - bodies enabled, both active, overlapping (full path)
+        // ========================================================================
+        [Fact]
+        public void ProcessContactCollision_FullPath_UpdatesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // AddPair - Contact.Create returns null (unlikely, but test setup)
+        // ========================================================================
+        [Fact]
+        public void AddPair_WithEdgeShape_HandlesNullContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateEdge(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            bodyA.GetBodyType = BodyType.Dynamic;
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // RemoveFromBody — with complex node structures
+        // ========================================================================
+        [Fact]
+        public void RemoveBody_WithMultipleContacts_RemovesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.8f, 0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(-0.8f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            int before = world.ContactManager.ContactCount;
+            Assert.True(before > 0);
+            world.Remove(bodyB);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount <= before);
+        }
+
+        // ========================================================================
+        // Destroy - with EndContact registered (not null)
+        // ========================================================================
+        [Fact]
+        public void Destroy_WithEndContact_FiresCallback()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            int endCount = 0;
+            world.ContactManager.EndContact = contact => endCount++;
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            bodyA.SetTransform(new Vector2F(1000f, 1000f), 0f);
+            bodyB.SetTransform(new Vector2F(2000f, 2000f), 0f);
+            world.Step(1.0f / 60.0f);
+            Assert.True(endCount > 0);
+        }
+
+        // ========================================================================
+        // Collide method - with multi-core path (threshold = 0)
+        // ========================================================================
+        [Fact]
+        public void Collide_MultiCorePath_ProcessesContacts()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // ProcessContactMultiCore - both active and overlapping
+        // ========================================================================
+        [Fact]
+        public void ProcessContactMultiCore_AllActiveAndOverlapping_Updates()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // PassesCollisionFilters - full path (all checks pass)
+        // ========================================================================
+        [Fact]
+        public void PassesCollisionFilters_AllChecksPass_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.ContactManager.ContactFilter = (fixtureA, fixtureB) => true;
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // UpdateContactWithLock - with idA > idB (swapped order)
+        // ========================================================================
+        [Fact]
+        public void UpdateContactWithLock_SwappedLockOrder_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+            bodyA.LockOrder = 2;
+            bodyB.LockOrder = 1;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }

@@ -744,6 +744,20 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(t2, result);
         }
 
+        [Fact]
+        public void PerformRootFind_WhenRootIterCountReaches50_BreaksAndReturnsT2()
+        {
+            float t1 = 0.0f, t2 = 1.0f;
+            float s1 = 100.0f, s2 = -100.0f;
+            float target = 0.0f, tolerance = 1e-10f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("PerformRootFind", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { 0, 0, t1, t2, s1, s2, target, tolerance };
+            float result = (float)method.Invoke(null, args);
+
+            Assert.Equal(t2, result);
+        }
+
         /// <summary>
         ///     Tests that diagnostics counters work when EnableDiagnostics is true in PerformRootFind.
         /// </summary>
@@ -828,6 +842,136 @@ namespace Alis.Core.Physic.Test.Collisions
             ToiOutput outputOut = (ToiOutput)args[3];
             Assert.True(result);
             Assert.Equal(ToiOutputState.Overlapped, outputOut.State);
+        }
+
+        [Fact]
+        public void TryHandleDistanceResult_WithDistanceLessThanTargetPlusTolerance_ReturnsTouching()
+        {
+            ToiOutput output = new ToiOutput();
+            float t1 = 0.5f;
+            float target = 0.1f;
+            float tolerance = 0.05f;
+            float distance = target + tolerance - 0.01f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("TryHandleDistanceResult", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { new DistanceOutput { Distance = distance }, target, tolerance, output, t1 };
+            bool result = (bool)method.Invoke(null, args);
+
+            Assert.True(result);
+            Assert.Equal(ToiOutputState.Touching, ((ToiOutput)args[3]).State);
+            Assert.Equal(t1, ((ToiOutput)args[3]).T);
+        }
+
+        [Fact]
+        public void TryHandleDistanceResult_WithPositiveDistance_ReturnsFalse()
+        {
+            ToiOutput output = new ToiOutput();
+            float t1 = 0.5f;
+            float target = 0.1f;
+            float tolerance = 0.05f;
+            float distance = 1.0f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("TryHandleDistanceResult", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { new DistanceOutput { Distance = distance }, target, tolerance, output, t1 };
+            bool result = (bool)method.Invoke(null, args);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ComputeRootStep_OddAndEvenIterations_ReturnsDifferentValues()
+        {
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("ComputeRootStep", BindingFlags.NonPublic | BindingFlags.Static);
+
+            float result1 = (float)method.Invoke(null, new object[] { 0, 0f, 1f, 10f, -10f, 0f });
+            float result2 = (float)method.Invoke(null, new object[] { 1, 0f, 1f, 10f, -10f, 0f });
+
+            Assert.Equal(0.5f, result1);
+            Assert.NotEqual(0.5f, result2);
+        }
+
+        [Fact]
+        public void CalculateTimeOfImpact_WithEnablingDiagnostics_CountersUpdated()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep { LocalCenter = Vector2F.Zero, C0 = new Vector2F(-3.0f, 0.0f), C = new Vector2F(0.0f, 0.0f), A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = new Vector2F(3.0f, 0.0f), C = new Vector2F(0.0f, 0.0f), A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                TMax = 1.0f
+            };
+
+            int beforeCalls = TimeOfImpact.ToiCalls;
+            int beforeIters = TimeOfImpact.ToiIters;
+
+            TimeOfImpact.CalculateTimeOfImpact(out _, ref input);
+
+            Assert.True(TimeOfImpact.ToiCalls >= beforeCalls + 1);
+        }
+
+        [Fact]
+        public void CalculateTimeOfImpact_WhenTwoCirclesCollide_ReturnsOverlapped()
+        {
+            CircleShape circleA = new CircleShape(1.5f, 1.0f);
+            CircleShape circleB = new CircleShape(1.5f, 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = new Vector2F(0.5f, 0.0f), C = new Vector2F(0.5f, 0.0f), A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.State == ToiOutputState.Overlapped || output.State == ToiOutputState.Touching);
+        }
+
+        [Fact]
+        public void UpdateBisectionBounds_SGreaterThanTarget_SetsA1()
+        {
+            float a1 = 0.0f, s1 = 1.0f;
+            float a2 = 1.0f, s2 = -1.0f;
+            float t = 0.5f, s = 0.5f, target = 0.1f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("UpdateBisectionBounds", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { a1, s1, a2, s2, t, s, target };
+            method.Invoke(null, args);
+
+            Assert.Equal(0.5f, (float)args[0]);
+            Assert.Equal(0.5f, (float)args[1]);
+        }
+
+        [Fact]
+        public void UpdateBisectionBounds_SLessThanOrEqualTarget_SetsA2()
+        {
+            float a1 = 0.0f, s1 = 1.0f;
+            float a2 = 1.0f, s2 = -1.0f;
+            float t = 0.5f, s = 0.0f, target = 0.1f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("UpdateBisectionBounds", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { a1, s1, a2, s2, t, s, target };
+            method.Invoke(null, args);
+
+            Assert.Equal(0.5f, (float)args[2]);
+            Assert.Equal(0.0f, (float)args[3]);
+        }
+
+        [Fact]
+        public void Diagnostics_DisableDiagnostics_RootIters_DoNotIncrement()
+        {
+            int before = TimeOfImpact.ToiRootIters;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("RecordRootIteration", BindingFlags.NonPublic | BindingFlags.Static);
+            method.Invoke(null, null);
+
+            Assert.Equal(before + 1, TimeOfImpact.ToiRootIters);
         }
     }
 }

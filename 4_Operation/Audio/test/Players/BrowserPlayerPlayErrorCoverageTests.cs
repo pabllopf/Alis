@@ -127,6 +127,101 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         [Fact]
+        public async Task Play_WithPlaybackFinishedHandler_ShouldInvokeEvent()
+        {
+            byte[] wavBytes = new byte[144];
+            int pos = 0;
+            Encoding.ASCII.GetBytes("RIFF", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(36 + 100).CopyTo(wavBytes, pos); pos += 4;
+            Encoding.ASCII.GetBytes("WAVE", 0, 4, wavBytes, pos); pos += 4;
+
+            Encoding.ASCII.GetBytes("fmt ", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(16).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes((short)1).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes((short)1).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes(44100).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(88200).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes((short)2).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes((short)16).CopyTo(wavBytes, pos); pos += 2;
+
+            Encoding.ASCII.GetBytes("data", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(100).CopyTo(wavBytes, pos);
+
+            SetupAssembly("eventTest.wav", wavBytes);
+
+            try
+            {
+                _player = new BrowserPlayer();
+                bool eventRaised = false;
+                _player.PlaybackFinished += (sender, e) => eventRaised = true;
+
+                await _player.Play("eventTest.wav");
+                Assert.True(eventRaised);
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("OpenAL"))
+            {
+            }
+            catch (DllNotFoundException)
+            {
+            }
+        }
+
+        [Fact]
+        public async Task Play_WithEmptyResource_ShouldThrow()
+        {
+            SetupAssembly("empty.wav", Array.Empty<byte>());
+
+            try
+            {
+                _player = new BrowserPlayer();
+                await Assert.ThrowsAsync<InvalidOperationException>(() => _player.Play("empty.wav"));
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("OpenAL"))
+            {
+            }
+            catch (DllNotFoundException)
+            {
+            }
+        }
+
+        [Fact]
+        public async Task Play_WithoutEventHandler_ShouldNotThrow()
+        {
+            byte[] wavBytes = new byte[144];
+            int pos = 0;
+            Encoding.ASCII.GetBytes("RIFF", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(36 + 100).CopyTo(wavBytes, pos); pos += 4;
+            Encoding.ASCII.GetBytes("WAVE", 0, 4, wavBytes, pos); pos += 4;
+            Encoding.ASCII.GetBytes("fmt ", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(16).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes((short)1).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes((short)1).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes(44100).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(88200).CopyTo(wavBytes, pos); pos += 4;
+            BitConverter.GetBytes((short)2).CopyTo(wavBytes, pos); pos += 2;
+            BitConverter.GetBytes((short)16).CopyTo(wavBytes, pos); pos += 2;
+            Encoding.ASCII.GetBytes("data", 0, 4, wavBytes, pos); pos += 4;
+            BitConverter.GetBytes(100).CopyTo(wavBytes, pos);
+
+            SetupAssembly("noHandler.wav", wavBytes);
+
+            try
+            {
+                _player = new BrowserPlayer();
+                await _player.Play("noHandler.wav");
+
+                Assert.True(_player.Playing);
+                _player.Stop();
+            }
+            catch (InvalidOperationException ex) when (ex.Message.Contains("OpenAL"))
+            {
+            }
+            catch (DllNotFoundException)
+            {
+            }
+        }
+
+        [Fact]
         public async Task PlayLoop_WithValidWav_ShouldDelegateToPlay()
         {
             byte[] wavBytes = new byte[144];

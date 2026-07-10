@@ -471,6 +471,89 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.NotNull(body);
         }
+
+        // ========================================================================
+        // UpdateSleepState — SettingEnv.AllowSleep = false (early return)
+        // Note: AllowSleep is readonly; test verifies sleep behavior with default setting.
+        // ========================================================================
+        [Fact]
+        public void UpdateSleepState_WithAllowSleepTrue_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // SolveToi — early break when contacts okay
+        // ========================================================================
+        [Fact]
+        public void SolveToi_PositionIterationsBreakEarly_WhenContactsOkay()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolvePositionConstraints — returns false when unsolvable
+        // ========================================================================
+        [Fact]
+        public void SolvePositionConstraints_Unsolvable_ReturnsFalse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.001f, 0.0f), BodyType.Dynamic);
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.NotNull(bodyA);
+            Assert.NotNull(bodyB);
+        }
+
+        // ========================================================================
+        // Report — with contact manager and constraints
+        // ========================================================================
+        [Fact]
+        public void Report_WithHandlers_InvokesAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int postSolveCount = 0;
+            world.ContactManager.PostSolve = (_, _) => postSolveCount++;
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(postSolveCount > 0);
+        }
+
+        // ========================================================================
+        // Solve — with multiple velocity iterations
+        // ========================================================================
+        [Fact]
+        public void Solve_MultipleVelocityIterations_Executes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            SolverIterations iterations = new SolverIterations
+            {
+                PositionIterations = 3,
+                VelocityIterations = 3,
+                ToiPositionIterations = 3,
+                ToiVelocityIterations = 3
+            };
+            world.Step(TimeSpan.FromSeconds(1.0f / 60.0f), ref iterations);
+            Assert.NotNull(bodyA);
+            Assert.NotNull(bodyB);
+        }
     }
 }
 

@@ -1,0 +1,104 @@
+#if osxarm64 || osxarm || osxx64 || osx
+using System;
+using System.Reflection;
+using Alis.Core.Graphic.Platforms.Osx.Native;
+using Xunit;
+
+namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
+{
+    public class ObjectiveCInteropTest
+    {
+        [Fact]
+        public void Class_ReturnsNonZero_ForKnownClass()
+        {
+            IntPtr result = ObjectiveCInterop.Class("NSObject");
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+
+        [Fact]
+        public void Class_ReturnsZero_ForUnknownClass()
+        {
+            IntPtr result = ObjectiveCInterop.Class("NonExistentClassXYZ");
+            Assert.Equal(IntPtr.Zero, result);
+        }
+
+        [Fact]
+        public void Sel_ReturnsNonZero_ForKnownSelector()
+        {
+            IntPtr result = ObjectiveCInterop.Sel("alloc");
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+
+        [Fact]
+        public void Sel_ReturnsNonZero_ForAnyString()
+        {
+            IntPtr result = ObjectiveCInterop.Sel("someRandomSelector");
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+
+        [Fact]
+        public void selMouseLocationOutside_IsNonZero()
+        {
+            FieldInfo field = typeof(ObjectiveCInterop).GetField("selMouseLocationOutside", BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.NotNull(field);
+            IntPtr val = (IntPtr)field.GetValue(null);
+            Assert.NotEqual(IntPtr.Zero, val);
+        }
+
+        [Fact]
+        public void selConvertPointFromView_IsNonZero()
+        {
+            FieldInfo field = typeof(ObjectiveCInterop).GetField("selConvertPointFromView", BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.NotNull(field);
+            IntPtr val = (IntPtr)field.GetValue(null);
+            Assert.NotEqual(IntPtr.Zero, val);
+        }
+
+        [Fact]
+        public void Objc_Constant_IsCorrect()
+        {
+            Assert.Equal("/usr/lib/libobjc.A.dylib", ObjectiveCInterop.Objc);
+        }
+
+        [Fact]
+        public void NSApplicationLoad_DoesNotThrow()
+        {
+            ObjectiveCInterop.NSApplicationLoad();
+        }
+
+        [Fact]
+        public void objc_getClass_NSObject_ReturnsNonZero()
+        {
+            IntPtr cls = ObjectiveCInterop.objc_getClass("NSObject");
+            Assert.NotEqual(IntPtr.Zero, cls);
+        }
+
+        [Fact]
+        public void sel_registerName_alloc_ReturnsNonZero()
+        {
+            IntPtr sel = ObjectiveCInterop.sel_registerName("alloc");
+            Assert.NotEqual(IntPtr.Zero, sel);
+        }
+
+        [Fact]
+        public void StaticMethods_AreExported()
+        {
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("objc_getClass", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("sel_registerName", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("CFStringCreateWithCString", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("Dlopen", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("Dlsym", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("CGEventCreate", BindingFlags.Public | BindingFlags.Static));
+            Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("CFRelease", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        [Fact]
+        public void Dlopen_OpenGL_ReturnsNonZero()
+        {
+            IntPtr handle = ObjectiveCInterop.Dlopen(
+                "/System/Library/Frameworks/OpenGL.framework/OpenGL", 0);
+            Assert.NotEqual(IntPtr.Zero, handle);
+        }
+    }
+}
+#endif

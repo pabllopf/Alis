@@ -361,5 +361,94 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(bodyA);
             Assert.NotNull(bodyB);
         }
+
+        // ========================================================================
+        // IntegratePositions with clamping (both translation and rotation)
+        // ========================================================================
+        [Fact]
+        public void IntegratePositions_ClampingBoth_Works()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.LinearVelocityInternal = new Vector2F(5000f, 0f);
+            body.AngularVelocity = 5000f;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // UpdateSleepState with minSleepTime >= TimeToSleep and positionSolved true
+        // ========================================================================
+        [Fact]
+        public void UpdateSleepState_EnoughSleepTime_AndPositionSolved_Sleeps()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = true;
+            for (int i = 0; i < 600; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.False(body.Awake);
+        }
+
+        // ========================================================================
+        // SolveToi with velocity iterations after position solve
+        // ========================================================================
+        [Fact]
+        public void SolveToi_VelocityIterations_Executes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(500f, 0f);
+            for (int i = 0; i < 3; i++)
+            {
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
+
+        // ========================================================================
+        // Report with null ContactVelocityConstraint (edge case)
+        // ========================================================================
+        [Fact]
+        public void Report_WithConstraintsArray_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // InitializeSolverData with step.WarmStarting = false
+        // ========================================================================
+        [Fact]
+        public void InitializeSolverData_WithNoWarmStarting_DoesNotWarmStart()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolvePositionConstraints with enabled joints (full path)
+        // ========================================================================
+        [Fact]
+        public void SolvePositionConstraints_WithEnabledJoints_Resolves()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            joint.CollideConnected = false;
+            world.Add(joint);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

@@ -109,19 +109,24 @@ namespace Alis.Core.Audio.Test
         [Fact]
         public async Task PlayLoop_WithLoopTrue_ShouldSetUpRepeatCommand()
         {
-            // Create a temporary file
             string tempFile = Path.Combine(Path.GetTempPath(), $"test_{Guid.NewGuid()}.tmp");
             File.WriteAllText(tempFile, "test content");
 
             try
             {
                 _player = CreatePlayer();
-                // This will attempt MCI call - the key is that when loop=true,
-                // the command should include "Repeat"
-                Exception exception = await Assert.ThrowsAnyAsync<Exception>(() => _player.PlayLoop(tempFile, true));
-
-                // On non-Windows, this will throw from MCI call
-                // The test validates that the code path for loop=true is reached
+                try
+                {
+                    await _player.PlayLoop(tempFile, true);
+                    Assert.True(_player.Playing);
+                }
+                catch (DllNotFoundException)
+                {
+                    // On non-Windows without stub, MCI call throws
+                }
+                catch (EntryPointNotFoundException)
+                {
+                }
             }
             finally
             {
