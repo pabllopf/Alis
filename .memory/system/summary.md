@@ -36,3 +36,10 @@
 - **Tests Added**: 20
 - **Commit**: `c7bc18519`
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs`
+
+### StreamAdaptor.cs
+- **Coverage Before**: 72.7%
+- **Coverage After**: ~95%
+- **Tests Added**: 15
+- **Commit**: `256fb1150`
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Systems/StreamAdaptor.cs`
