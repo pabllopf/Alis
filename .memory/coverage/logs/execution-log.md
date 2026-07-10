@@ -202,9 +202,51 @@
 
 ---
 
-## Entry 16 — 2026-07-10T09:45:00Z
+## Entry 16 — 2026-07-10T16:00:00Z
+
+- **Commit:** 6f55917df
+- **File:** WebSocketNetworkTransport.cs
+- **Task:** Add edge-case and exception path coverage tests (invalid IP, port-in-use, state transitions, dispose scenarios)
+- **Tests Added:** 16 new test methods in WebSocketNetworkTransportEdgeCaseTests.cs
+  - StartAsync with invalid IP FormatException
+  - StartAsync with invalid host name
+  - StartAsync with port in use (SocketException)
+  - State reset on StartAsync failure
+  - StartAsync when already started
+  - StopAsync after successful start
+  - Dispose after StartAsync failure
+  - BroadcastAsync with/without exceptClientId
+  - Constructor URI variations (null, custom port, port 0, localhost)
+  - Dispose multiple instances
+- **Key Paths Covered:** StartAsync catch block (state reset on failure), Dispose exception swallowing, constructor branches
+- **Status:** All 756 Network tests passing
+
+---
+
+## Entry 17 — 2026-07-10T16:15:00Z
 
 - **Commit:** pending
+- **File:** NetworkClientManager.cs
+- **Task:** Add edge-case and exception path coverage tests for state transitions, disconnect paths, handler registration, connection failure
+- **Tests Added:** 20 new test methods in NetworkClientManagerEdgeCaseTests.cs
+  - Constructor multiple instances unique IDs
+  - InitializeAsync with CancellationToken
+  - StartAsync after Disconnect
+  - DisconnectAsync from Idle/Disconnected states (idempotent)
+  - StopAsync delegation
+  - RegisterMessageHandler overwrite/null
+  - UnregisterMessageHandler non-existent
+  - GetConnectedPlayers/GetPlayer null session
+  - ConnectAsync failure paths
+  - Dispose after Initialize
+- **Key Paths Covered:** DisconnectAsync early return, ConnectAsync exception → Error state, StartAsync in Disconnected state
+- **Status:** All 776 Network tests passing
+
+---
+
+## Entry 16 — 2026-07-10T09:45:00Z
+
+- **Commit:** ab8c950d0
 - **File:** Image.cs
 - **Task:** Add coverage for BMP compression type 3 (BITFIELDS), RLE8, RLE4 escape codes, unsupported bitsPerPixel
 - **Tests Added:** 12 new test methods in `ImageCoverageTest.cs`

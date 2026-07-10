@@ -29,4 +29,6 @@
 | FilePickerExecutor.cs | local-agent | 2026-07-10T12:42:00Z | COMPLETED - 2 new tests, commit 5414ba516 |
 | FilePickerFactory.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 7 new tests, commit 7258d4de2 |
 | FastestArrayPool.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 3 new tests (ClearBuckets via Gen2GcCallback event), commit 81a23add0 |
-| WebSocketNetworkTransport.cs | local-agent | 2026-07-10T16:00:00Z | IN PROGRESS - adding edge-case/exception coverage tests |
+| WebSocketNetworkTransport.cs | local-agent | 2026-07-10T16:00:00Z | COMPLETED - 16 new tests (edge-case/exception paths), commit 6f55917df |
+| NetworkClientManager.cs | local-agent | 2026-07-10T16:15:00Z | COMPLETED - 20 new tests (edge-case/state transition/connection failure), commit pending |
+| NetworkServerManager.cs | local-agent | 2026-07-10T16:30:00Z | IN PROGRESS - adding coverage tests |
