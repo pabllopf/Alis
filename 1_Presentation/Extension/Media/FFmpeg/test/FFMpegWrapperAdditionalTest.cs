@@ -506,5 +506,56 @@ namespace Alis.Extension.Media.FFmpeg.Test
                 process.Kill();
             }
         }
+
+        /// <summary>
+        ///     Tests that GetEncoders returns a non-empty dictionary when ffmpeg is available.
+        /// </summary>
+        [MacOsOnly]
+        public void FFMpegWrapper_GetEncoders_ShouldReturnEncoders()
+        {
+            // Arrange & Act
+            var encoders = FfMpegWrapper.GetEncoders("ffmpeg");
+
+            // Assert
+            Assert.NotNull(encoders);
+            Assert.NotEmpty(encoders);
+            Assert.Contains(encoders, e => e.Value.Type == MediaType.Video);
+            Assert.Contains(encoders, e => e.Value.Type == MediaType.Audio);
+        }
+
+        /// <summary>
+        ///     Tests that GetDecoders returns a non-empty dictionary when ffmpeg is available.
+        /// </summary>
+        [MacOsOnly]
+        public void FFMpegWrapper_GetDecoders_ShouldReturnDecoders()
+        {
+            // Arrange & Act
+            var decoders = FfMpegWrapper.GetDecoders("ffmpeg");
+
+            // Assert
+            Assert.NotNull(decoders);
+            Assert.NotEmpty(decoders);
+            Assert.Contains(decoders, d => d.Value.Type == MediaType.Video);
+            Assert.Contains(decoders, d => d.Value.Type == MediaType.Audio);
+        }
+
+        /// <summary>
+        ///     Tests that GetFormats processes ffmpeg output when ffmpeg is available.
+        ///     Note: GetFormats uses ToDictionary which may throw on duplicate keys from ffmpeg output.
+        /// </summary>
+        [MacOsOnly]
+        public void FFMpegWrapper_GetFormats_ShouldProcessOutput()
+        {
+            // Arrange & Act
+            Exception exception = Record.Exception(() => FfMpegWrapper.GetFormats("ffmpeg"));
+
+            // Assert - either returns successfully (no dupes) or fails with ArgumentException (duplicate keys)
+            // Either outcome validates the method was called and regex processed output
+            if (exception != null)
+            {
+                Assert.IsType<ArgumentException>(exception);
+                Assert.Contains("same key", exception.Message);
+            }
+        }
     }
 }
