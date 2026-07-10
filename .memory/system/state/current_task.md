@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 183 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 193 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
 
     ### Language
     cs
 
     ### Coverage
-    69.2% (Line: 69.2%, Branch: None%)
+    77.8% (Line: 80.4%, Branch: 64.8%)
 
     ### Uncovered Lines
-    4
+    120
 
     ### Uncovered Branches
-    0
+    43
 
     ### Method
-    ImGuiPayload
+    ContactSolver
 
     ### Complexity / LOC
-    20 / 27 lines
+    90 / 700 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiPayload.cs
+//  File:ContactSolver.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
-    ///     The im gui payload
+    ///     The contact solver class
     /// </summary>
-    public struct ImGuiPayload
+    public class ContactSolver : IDisposable
     {
         /// <summary>
-        ///     The data
+        ///     Bundles contact constraint data for impulse application.
         /// </summary>
-        public IntPtr Data { get; set; }
-
-        /// <summary>
-        ///     The data size
-        /// </summary>
-        public int DataSize { get; set; }
-
-        /// <summary>
-        ///     The source id
-        /// </summary>
-        public uint SourceId { get; set; }
-
-        /// <summary>
-        ///     The source parent id
-        /// </summary>
-        public uint SourceParentId { get; set; }
-
+        private readonly struct ContactConstraintData
+        {
+            /// <summary>
+            /// The cp
+            /// </summary>
+            public readonly VelocityConstraintPoint Cp1;
+            /// <summary>
+            /// The cp
+            /// </summary>
+            public readonly VelocityConstraintPoint Cp2;
+            /// <summary>
+            /// The normal
+            /// </summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiPayloadTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Contacts/ContactSolverTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Contacts/ContactSolver.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiPayload.cs
+    Commit format: test: coverage ContactSolver.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

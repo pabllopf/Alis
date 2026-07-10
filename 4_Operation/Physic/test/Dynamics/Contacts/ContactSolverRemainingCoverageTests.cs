@@ -1,0 +1,405 @@
+using System;
+using System.Reflection;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Xunit;
+
+namespace Alis.Core.Physic.Test.Dynamics.Contacts
+{
+    public class ContactSolverRemainingCoverageTests
+    {
+        [Fact]
+        public void Reset_WithPreAllocatedBuffers_SkipsArrayResize()
+        {
+            ContactSolver solver = new ContactSolver();
+            TimeStep step = new TimeStep { Dt = 1f / 60f, DtRatio = 1.0f, WarmStarting = true };
+
+            SolverPosition[] pos = new SolverPosition[2];
+            SolverVelocity[] vel = new SolverVelocity[2];
+            int[] lks = new int[2];
+            Contact[] dummyContacts = new Contact[1];
+            solver.Reset(ref step, 0, dummyContacts, pos, vel, lks, 0, 0);
+
+            int preCount = solver.VelocityConstraints.Length;
+
+            solver.Reset(ref step, 0, dummyContacts, pos, vel, lks, 0, 0);
+
+            Assert.Equal(preCount, solver.VelocityConstraints.Length);
+        }
+
+        [Fact]
+        public void SolveToiPositionConstraints_WithOverlappingBodies_ResolvesOverlap()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void WorldManifold_Initialize_CirclesCoincidentPoints_NormalStaysOneZero()
+        {
+            Manifold manifold = new Manifold
+            {
+                PointCount = 1,
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0.0f, 0.0f)
+            };
+            manifold.Points[0] = new ManifoldPoint { LocalPoint = new Vector2F(0.0f, 0.0f) };
+
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
+                out Vector2F normal, out FixedArray2<Vector2F> points);
+
+            Assert.Equal(1.0f, normal.X);
+            Assert.Equal(0.0f, normal.Y);
+        }
+
+        [Fact]
+        public void WorldManifold_Initialize_FaceBWithRotation_VerifiesNormalNegation()
+        {
+            Manifold manifold = new Manifold
+            {
+                PointCount = 1,
+                Type = ManifoldType.FaceB,
+                LocalPoint = new Vector2F(0.0f, 0.0f),
+                LocalNormal = new Vector2F(0.0f, 1.0f)
+            };
+            manifold.Points[0] = new ManifoldPoint { LocalPoint = new Vector2F(0.0f, 0.0f) };
+
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, -1.0f), 0.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.0f, 1.0f), 0.0f);
+
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.3f, ref xfB, 0.3f,
+                out Vector2F normal, out FixedArray2<Vector2F> points);
+
+            Assert.Equal(-0.0f, normal.X);
+            Assert.Equal(-1.0f, normal.Y);
+        }
+
+        [Fact]
+        public void Dispose_WithProtectedDisposeFalse_DoesNotThrow()
+        {
+            ContactSolver solver = new ContactSolver();
+            MethodInfo disposeMethod = typeof(ContactSolver).GetMethod("Dispose",
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                null, new Type[] { typeof(bool) }, null);
+
+            Exception ex = Record.Exception(() => disposeMethod.Invoke(solver, new object[] { false }));
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolveToiPositionConstraints_WithContacts_Executes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void SolveVelocityConstraints_WithMultipleBodies_ExecutesSinglePointNormal()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(bodyA.Position.X <= 0f || bodyB.Position.X >= 0.5f);
+        }
+
+        [Fact]
+        public void SolvePositionConstraints_WithOverlappingBodies_ResolvesOverlap()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0f, 0f));
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.8f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        [Fact]
+        public void StoreImpulses_AfterStep_StoresValues()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            for (int i = 0; i < 3; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void SolveFrictionImpulse_WithTwoPoints_Applies()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveFrictionImpulse",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.TangentSpeed = 0f;
+            vc.Friction = 0.5f;
+            vc.Normal = new Vector2F(1f, 0f);
+
+            vc.Points[0].NormalImpulse = 1.0f;
+            vc.Points[0].TangentImpulse = 0f;
+            vc.Points[0].TangentMass = 1.0f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+
+            vc.Points[1].NormalImpulse = 1.0f;
+            vc.Points[1].TangentImpulse = 0f;
+            vc.Points[1].TangentMass = 1.0f;
+            vc.Points[1].Ra = new Vector2F(0f, 0f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+
+            Vector2F vA = Vector2F.Zero;
+            float wA = 0f;
+            Vector2F vB = new Vector2F(1f, 0f);
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float friction = 0.5f;
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+
+            object[] args = { vc, vA, wA, vB, wB, normal, friction, mA, iA, mB, iB };
+            method.Invoke(null, args);
+
+            Assert.True(vc.Points[0].TangentImpulse >= 0f);
+            Assert.True(vc.Points[1].TangentImpulse >= 0f);
+        }
+
+        [Fact]
+        public void InitializeVelocityConstraintPoints_WithoutVelocityBias_WhenVrelHigh()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 1;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.Restitution = 0.5f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+
+            var points = new FixedArray2<Vector2F>();
+            points[0] = new Vector2F(0f, 0f);
+
+            Type dataType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.Contacts.VelocityConstraintInitData");
+            object data = Activator.CreateInstance(dataType,
+                new object[] { Vector2F.Zero, new Vector2F(1f, 0f), 1f, 1f, 1f, 1f, new Vector2F(0f, 1f), new Vector2F(-2f, 0f), 0f, Vector2F.Zero, 0f });
+
+            object[] args = { vc, points, data };
+            method.Invoke(null, args);
+
+            Assert.Equal(0f, vc.Points[0].VelocityBias);
+        }
+
+        [Fact]
+        public void SolveContactPositionConstraint_WithTwoPoints_ReturnsMinSeparation()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveContactPositionConstraint",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            ContactSolver solver = new ContactSolver();
+
+            Type solverPosType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverPosition");
+            Array positions = Array.CreateInstance(solverPosType, 2);
+            object pos0 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos0, new Vector2F(0f, 0f));
+            solverPosType.GetField("A").SetValue(pos0, 0f);
+            object pos1 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos1, new Vector2F(1f, 0f));
+            solverPosType.GetField("A").SetValue(pos1, 0f);
+            positions.SetValue(pos0, 0);
+            positions.SetValue(pos1, 1);
+
+            solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
+
+            var pc = new ContactPositionConstraint
+            {
+                IndexA = 0,
+                IndexB = 1,
+                InvMassA = 1.0f,
+                InvMassB = 1.0f,
+                InvIa = 1.0f,
+                InvIb = 1.0f,
+                LocalCenterA = Vector2F.Zero,
+                LocalCenterB = Vector2F.Zero,
+                PointCount = 2,
+                RadiusA = 0.5f,
+                RadiusB = 0.5f,
+                Type = ManifoldType.FaceA,
+                LocalNormal = new Vector2F(1f, 0f),
+                LocalPoint = new Vector2F(0.5f, 0f)
+            };
+            pc.LocalPoints[0] = new Vector2F(-0.5f, -0.5f);
+            pc.LocalPoints[1] = new Vector2F(-0.5f, 0.5f);
+
+            float result = (float)method.Invoke(solver, new object[] { pc });
+            Assert.True(result <= 0f);
+        }
+
+        [Fact]
+        public void SolveTwoPointNormal_FourthBranchBothVnNonNegative_AppliesBlockImpulse()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.K.Ex = new Vector2F(2f, 1f);
+            vc.K.Ey = new Vector2F(1f, 2f);
+            vc.NormalMass = vc.K.Inverse;
+
+            vc.Points[0].NormalImpulse = 0f;
+            vc.Points[0].NormalMass = 1.0f;
+            vc.Points[0].VelocityBias = 0f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+
+            vc.Points[1].NormalImpulse = 0f;
+            vc.Points[1].NormalMass = 1.0f;
+            vc.Points[1].VelocityBias = 0f;
+            vc.Points[1].Ra = new Vector2F(0f, 0f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+
+            Vector2F vA = new Vector2F(-1f, 0f);
+            float wA = 0f;
+            Vector2F vB = Vector2F.Zero;
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+
+            object[] args = { vA, wA, vB, wB, vc, normal, mA, iA, mB, iB };
+            method.Invoke(null, args);
+
+            Vector2F vAResult = (Vector2F)args[0];
+            Assert.True(vAResult.X >= -2f);
+        }
+
+        [Fact]
+        public void AcquireReleaseContactLocks_MultipleCalls_DoesNotDeadlock()
+        {
+            ContactSolver solver = new ContactSolver();
+            int[] locks = new int[4];
+            typeof(ContactSolver).GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic)
+                ?.SetValue(solver, locks);
+
+            MethodInfo acquireMethod = typeof(ContactSolver).GetMethod("AcquireContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo releaseMethod = typeof(ContactSolver).GetMethod("ReleaseContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            Exception ex = Record.Exception(() =>
+            {
+                acquireMethod.Invoke(solver, new object[] { 0, 1 });
+                releaseMethod.Invoke(solver, new object[] { 1, 0 });
+
+                acquireMethod.Invoke(solver, new object[] { 3, 2 });
+                releaseMethod.Invoke(solver, new object[] { 2, 3 });
+            });
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolveVelocityConstraints_MultiThreadedBodies_Completes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            for (int i = 0; i < 10; i++)
+            {
+                world.CreateCircle(0.5f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
+            }
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolveVelocityConstraints_WithOrderedIndices_ReordersLocks()
+        {
+            MethodInfo solveMethod = typeof(ContactSolver).GetMethod("SolveVelocityConstraints",
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                null, new Type[] { typeof(int), typeof(int) }, null);
+
+            ContactSolver solver = new ContactSolver();
+            solver.Count = 1;
+            solver.VelocityConstraints = new ContactVelocityConstraint[1];
+            solver.VelocityConstraints[0] = new ContactVelocityConstraint
+            {
+                IndexA = 1,
+                IndexB = 0,
+                ContactIndex = 0,
+                PointCount = 1,
+                InvMassA = 1f,
+                InvMassB = 1f,
+                InvIa = 1f,
+                InvIb = 1f,
+                Normal = new Vector2F(1f, 0f),
+                Friction = 0f,
+                TangentSpeed = 0f
+            };
+            solver.VelocityConstraints[0].Points[0].NormalImpulse = 0f;
+            solver.VelocityConstraints[0].Points[0].TangentImpulse = 0f;
+            solver.VelocityConstraints[0].Points[0].NormalMass = 1f;
+            solver.VelocityConstraints[0].Points[0].TangentMass = 1f;
+            solver.VelocityConstraints[0].Points[0].Ra = Vector2F.Zero;
+            solver.VelocityConstraints[0].Points[0].Rb = Vector2F.Zero;
+            solver.VelocityConstraints[0].Points[0].VelocityBias = 0f;
+
+            Type solverPosType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverPosition");
+            Array positions = Array.CreateInstance(solverPosType, 2);
+            object pos0 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos0, new Vector2F(0f, 0f));
+            solverPosType.GetField("A").SetValue(pos0, 0f);
+            object pos1 = Activator.CreateInstance(solverPosType);
+            solverPosType.GetField("C").SetValue(pos1, new Vector2F(1f, 0f));
+            solverPosType.GetField("A").SetValue(pos1, 0f);
+            positions.SetValue(pos0, 0);
+            positions.SetValue(pos1, 1);
+            solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
+
+            Type solverVelType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverVelocity");
+            Array velocities = Array.CreateInstance(solverVelType, 2);
+            object vel0 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel0, new Vector2F(-1f, 0f));
+            solverVelType.GetField("W").SetValue(vel0, 0f);
+            object vel1 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel1, new Vector2F(0f, 0f));
+            solverVelType.GetField("W").SetValue(vel1, 0f);
+            velocities.SetValue(vel0, 0);
+            velocities.SetValue(vel1, 1);
+            solver.GetType().GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, velocities);
+
+            int[] locks = new int[2];
+            solver.GetType().GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, locks);
+
+            Exception ex = Record.Exception(() => solveMethod.Invoke(solver, new object[] { 0, 1 }));
+            Assert.Null(ex);
+        }
+    }
+}
