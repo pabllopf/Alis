@@ -33,6 +33,7 @@ using Alis.Core.Ecs.Systems.Configuration.Graphic;
 using Alis.Core.Ecs.Systems.Manager;
 using Alis.Core.Ecs.Systems.Manager.Physic;
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Physic
@@ -257,6 +258,63 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Physic
             Assert.Equal("test-name", physicManager.Name);
             Assert.Equal("test-tag", physicManager.Tag);
             Assert.Same(context, physicManager.Context);
+        }
+
+        /// <summary>
+        ///     Tests that OnAwake with TargetFrames at 30 hits the <= 30 branch and does not throw.
+        /// </summary>
+        [Fact]
+        public void OnAwake_WithTargetFramesAt30_DoesNotThrow()
+        {
+            Setting setting = new Setting();
+            GraphicSetting graphic = setting.Graphic;
+            graphic.TargetFrames = 30;
+            setting.Graphic = graphic;
+
+            Context context = new Context(setting);
+            PhysicManager physicManager = context.PhysicManager;
+
+            physicManager.OnAwake();
+
+            Exception ex = Record.Exception(() => physicManager.OnPhysicUpdate());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that OnAwake with TargetFrames at 15 hits the <= 15 branch and does not throw.
+        /// </summary>
+        [Fact]
+        public void OnAwake_WithTargetFramesAt15_DoesNotThrow()
+        {
+            Setting setting = new Setting();
+            GraphicSetting graphic = setting.Graphic;
+            graphic.TargetFrames = 15;
+            setting.Graphic = graphic;
+
+            Context context = new Context(setting);
+            PhysicManager physicManager = context.PhysicManager;
+
+            physicManager.OnAwake();
+
+            Exception ex = Record.Exception(() => physicManager.OnPhysicUpdate());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        ///     Tests that UnAttach with a valid body added to the world removes it without throwing.
+        /// </summary>
+        [Fact]
+        public void UnAttach_WithValidBody_RemovesBody()
+        {
+            Context context = new Context(new Setting());
+            PhysicManager physicManager = context.PhysicManager;
+
+            Body body = new Body();
+            body.GetBodyType = BodyType.Dynamic;
+            physicManager.WorldPhysic.Add(body);
+
+            Exception ex = Record.Exception(() => physicManager.UnAttach(body));
+            Assert.Null(ex);
         }
     }
 }

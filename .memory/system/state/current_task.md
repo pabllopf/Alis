@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 256 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 257 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs
+    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    98.3% (Line: 100.0%, Branch: 90.0%)
+    98.7% (Line: 98.4%, Branch: 100.0%)
 
     ### Uncovered Lines
-    0
-
-    ### Uncovered Branches
     1
 
+    ### Uncovered Branches
+    0
+
     ### Method
-    FilePickerResult
+    PhysicManager
 
     ### Complexity / LOC
-    19 / 62 lines
+    18 / 79 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:FilePickerResult.cs
+//  File:PhysicManager.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Extension.Io.FileDialog
+namespace Alis.Core.Ecs.Systems.Manager.Physic
 {
     /// <summary>
-    ///     Represents the result of a file picker dialog operation.
+    ///     The physic manager base class
     /// </summary>
-    public class FilePickerResult
+    /// <seealso cref="AManager" />
+    public class PhysicManager : AManager
     {
         /// <summary>
-        ///     Initializes a new instance of the FilePickerResult class for a successful operation.
+        ///     The iterations
         /// </summary>
-        /// <param name="selectedPaths">The list of selected paths</param>
-        /// <exception cref="ArgumentNullException">Thrown when selectedPaths is null</exception>
-        /// <exception cref="ArgumentException">Thrown when selectedPaths is empty</exception>
-        public FilePickerResult(List<string> selectedPaths)
-        {
-            if (selectedPaths == null)
-            {
-                throw new ArgumentNullException(nameof(selectedPaths), "Selected paths cannot be null.");
-            }
+        private SolverIterations iterations;
 
-            if (selectedPaths.Count == 0)
-            {
-                throw new ArgumentException("At least one path must be selected.", nameof(selectedPaths));
-            }
+        /// <summary>
+        ///     The time step physics
+        /// </summary>
+        internal float timeStepPhysics;
 
-            IsSuccess = true;
-            IsCancelled = false;
+        /// <summary>
+        ///     Gets or sets the world physic
+        /// </summary>
+        public WorldPhysic WorldPhysic { get; set; }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PhysicManager" /> class
+        /// </summary>
+        /// <param name="context">The context</param>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/test/FilePickerResultTests.cs
+    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Systems/Manager/Physic/PhysicManagerTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs
+    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Physic/PhysicManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage FilePickerResult.cs
+    Commit format: test: coverage PhysicManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
