@@ -15,3 +15,10 @@
 - **Tests Added**: 73
 - **Commit**: (pending)
 - **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs`
+
+### WebSocketFrameReader.cs
+- **Coverage Before**: 69.2%
+- **Coverage After**: ~82%
+- **Tests Added**: 6
+- **Commit**: (pending)
+- **File**: `1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs`

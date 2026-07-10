@@ -192,5 +192,6 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Updater/src/Services/Api/GitHubApiService.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIOPtr.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameReader.cs"
 ]
