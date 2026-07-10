@@ -417,6 +417,33 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
+        ///     Tests constructor with a simple filename (no directory path)
+        /// </summary>
+        [Fact]
+        public void FileLogOutput_Constructor_FileNameOnly_ShouldCreate()
+        {
+            string originalDir = Directory.GetCurrentDirectory();
+            Directory.CreateDirectory(_testDir);
+            try
+            {
+                Directory.SetCurrentDirectory(_testDir);
+                string filePath = "simple_name.log";
+
+                using (FileLogOutput output = new FileLogOutput(filePath))
+                {
+                    output.Write(new LogEntry(LogLevel.Info, "Test", "Logger"));
+                }
+
+                Assert.True(File.Exists(filePath));
+            }
+            finally
+            {
+                Directory.SetCurrentDirectory(originalDir);
+                Cleanup();
+            }
+        }
+
+        /// <summary>
         ///     Helper StreamWriter that throws on all operations
         /// </summary>
         private sealed class ThrowingStreamWriter : StreamWriter
