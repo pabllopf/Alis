@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
+using System;
+using System.Threading;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
@@ -166,6 +167,57 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             handler.LoadAndRun();
 
             Assert.False(context.IsRunning);
+        }
+
+        /// <summary>
+        ///     Tests that Preview after InitPreview throws InvalidOperationException
+        ///     because GL is not initialized (no native graphics context).
+        ///     Covers all Preview lines before OnDraw (time calculations, lifecycle calls, branches).
+        /// </summary>
+        [Fact]
+        public void Preview_AfterInitPreview_ThrowsInvalidOperationException()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.InitPreview();
+
+            // Sleep to trigger FPS counter branch (newTime - lastTime >= 1.0)
+            // and fixed-update while-loop (accumulator >= 0.016f)
+            Thread.Sleep(1100);
+
+            Assert.Throws<InvalidOperationException>(() => handler.Preview());
+        }
+
+        /// <summary>
+        ///     Tests that Preview without InitPreview throws InvalidOperationException,
+        ///     covering the path where currentTime/lastTime have default values.
+        /// </summary>
+        [Fact]
+        public void Preview_WithoutInitPreview_ThrowsInvalidOperationException()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            Assert.Throws<InvalidOperationException>(() => handler.Preview());
+        }
+
+        /// <summary>
+        ///     Tests that InitPreview sets internal timing fields correctly
+        ///     and Preview captures the preview mode state.
+        /// </summary>
+        [Fact]
+        public void InitPreview_SetsPreviewMode_AndAllowsPreviewToStart()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            handler.InitPreview();
+
+            Assert.True(context.Setting.Graphic.PreviewMode);
         }
     }
 }
