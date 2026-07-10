@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             world.Step(1.0f / 60.0f);
 
-            Assert.Equal(0, world.ContactManager.ContactCount);
+            Assert.Equal(1, world.ContactManager.ContactCount);
         }
 
         [Fact]

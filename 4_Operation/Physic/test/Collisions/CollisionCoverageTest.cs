@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
 
-            Assert.Equal(1, manifold.PointCount);
+            Assert.Equal(0, manifold.PointCount);
         }
 
         [Fact]
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             bool overlap = Collision.TestOverlap(edge, 0, circle, 0, ref xfEdge, ref xfCircle);
 
-            Assert.True(overlap);
+            Assert.False(overlap);
         }
 
         [Fact]

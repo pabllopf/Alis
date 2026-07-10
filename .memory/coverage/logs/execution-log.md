@@ -117,3 +117,13 @@
 - **Coverage Estimate:** ~75.0% → ~76% (estimated)
 - **Technique:** Focused branch coverage for event system paths, Delete version mismatch, Set exception path
 - **Status:** All 3122 ECS tests passing
+
+---
+
+## Entry 12 — 2026-07-10T14:30:00Z
+
+- **Commit:** 329ef61cb
+- **File:** AudioReader.cs
+- **Task:** Add ResolveBitDepth tests for 24-bit and 8-bit format edge cases
+- **Tests Added:** 2 new test methods (ResolveBitDepth_ShouldSet24BitFor24BitFormat, ResolveBitDepth_ShouldSet8BitFor8BitFormat)
+- **Status:** All 936 Media tests passing

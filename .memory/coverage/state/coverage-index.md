@@ -36,6 +36,13 @@ updated: 2026-07-10T12:00:00Z
 | 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 24.2% | 151 | - | Application | ⬜ Blocked (OpenGL) |
 | 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 41.7% | 151 | - | Application | ⬜ Blocked (OpenGL + ECS) |
 
+## Current Task
+
+### AudioReader.cs (82.0%)
+- **Action:** Added 2 tests for ResolveBitDepth 24-bit and 8-bit format
+- **Commit:** 329ef61cb
+- **Estimated Impact:** +0.2% (covers 2 conditional branches)
+
 ## Processed Files
 
 | File | Tests Added | Lines Added | Commit |

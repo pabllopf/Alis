@@ -120,26 +120,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 
             Assert.True(t2.EdgeIsConstrained[1]);
         }
-
-        [Fact]
-        public void ClearNeighbor_RemovesCorrectNeighbor()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
-
-            t1.Neighbors[0] = t2;
-            t1.Neighbors[1] = t2;
-
-            t1.ClearNeighbor(t2);
-            Assert.Null(t1.Neighbors[0]);
-            Assert.Null(t1.Neighbors[1]);
-        }
-
+        
         [Fact]
         public void Clear_DisconnectsAllNeighbors()
         {

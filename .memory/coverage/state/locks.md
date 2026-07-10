@@ -19,7 +19,8 @@
 | WorldPhysic.cs | local-agent | 2026-07-10T00:45:00Z | COMPLETED - 61 NEW TESTS ADDED (all passing) |
 | GitHubApiService.cs | local-agent | 2026-07-10T07:45:00Z | COMPLETED - 5 NEW TESTS ADDED (all passing, internal ctor added for testability) |
 | SimplifyTools.cs | local-agent | 2026-07-10T01:00:00Z | COMPLETED - 17 NEW TESTS ADDED (all passing) |
-| ComponentRegistry.cs | local-agent | 2026-07-10T01:10:00Z | IN PROGRESS |
+| ComponentRegistry.cs | local-agent | 2026-07-10T08:30:00Z | ACQUIRED |
 | BrowserPlayer.cs | local-agent | 2026-07-10T12:00:00Z | COMPLETED - 7 new tests (static edge cases + SetVolume via uninitialized object). Instance methods blocked - require OpenAL runtime |
 | GameObject.cs | local-agent | 2026-07-10T08:15:00Z | COMPLETED - 12 new tests, commit e4c991127 |
 | DropBoxCloudManager.cs | local-agent | 2026-07-10T10:15:00Z | IN PROGRESS - adding coverage tests |
+| Image.cs | local-agent | 2026-07-10T09:40:00Z | IN PROGRESS |

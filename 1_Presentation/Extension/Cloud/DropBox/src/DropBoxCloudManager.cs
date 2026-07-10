@@ -58,37 +58,50 @@ namespace Alis.Extension.Cloud.DropBox
     /// </summary>
     private const string PathDelimiter = "/";
 
-        /// <summary>
-        ///     The access token
-        /// </summary>
-        internal string _accessToken;
+    /// <summary>
+    ///     The access token
+    /// </summary>
+    internal string _accessToken;
 
-        /// <summary>
-        ///     The Dropbox client
-        /// </summary>
-        private DropboxClient _dropboxClient;
+    /// <summary>
+    ///     The Dropbox client
+    /// </summary>
+    internal DropboxClient _dropboxClient;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
-        /// </summary>
-        /// <param name="context">The context</param>
-        public DropBoxCloudManager(Context context) : base(context)
-        {
-            Name = "DropBoxManager";
-            Tag = "Cloud";
-        }
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
+    /// </summary>
+    /// <param name="context">The context</param>
+    public DropBoxCloudManager(Context context) : base(context)
+    {
+        Name = "DropBoxManager";
+        Tag = "Cloud";
+    }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
-        /// </summary>
-        /// <param name="id">The id</param>
-        /// <param name="name">The name</param>
-        /// <param name="tag">The tag</param>
-        /// <param name="isEnable">The is enable</param>
-        /// <param name="context">The context</param>
-        public DropBoxCloudManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
-        {
-        }
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class
+    /// </summary>
+    /// <param name="id">The id</param>
+    /// <param name="name">The name</param>
+    /// <param name="tag">The tag</param>
+    /// <param name="isEnable">The is enable</param>
+    /// <param name="context">The context</param>
+    public DropBoxCloudManager(string id, string name, string tag, bool isEnable, Context context) : base(id, name, tag, isEnable, context)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="DropBoxCloudManager" /> class with a pre-configured client for testing
+    /// </summary>
+    /// <param name="context">The context</param>
+    /// <param name="dropboxClient">The Dropbox client to use</param>
+    internal DropBoxCloudManager(Context context, DropboxClient dropboxClient) : base(context)
+    {
+        _dropboxClient = dropboxClient;
+        _accessToken = "test-access-token";
+        Name = "DropBoxManager";
+        Tag = "Cloud";
+    }
 
         /// <summary>
         ///     Gets a value indicating whether the manager is initialized with a valid access token

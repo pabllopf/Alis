@@ -1,29 +1,26 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 20 files) Outputting AI-ready tasks:
-
-
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    0.0% (Line: 0.0%, Branch: None%)
 
     ### Uncovered Lines
-    188
+    2
 
     ### Uncovered Branches
-    24
+    0
 
     ### Method
-    Shader
+    GamePadState
 
     ### Complexity / LOC
-    54 / 349 lines
+    2 / 15 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +31,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Shader.cs
+//  File:GamePadState.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +53,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Aspect.Math.Matrix;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Sfml.Systems;
-using Alis.Extension.Graphic.Sfml.Windows;
-using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
+using Alis.Extension.Graphic.Glfw.Enums;
 
-namespace Alis.Extension.Graphic.Sfml.Render
+namespace Alis.Extension.Graphic.Glfw.Structs
 {
     /// <summary>
-    ///     Wrapper for pixel shaders
+    ///     Represents the state of a gamepad.
     /// </summary>
-    public class Shader : ObjectBase
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    public struct GamePadState
     {
         /// <summary>
-        ///     Special value that can be passed to SetParameter,
-        ///     and that represents the texture of the object being drawn
+        ///     The states
         /// </summary>
-        public static readonly CurrentTextureType CurrentTexture = null;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
+        private readonly InputState[] states;
 
         /// <summary>
-        ///     The texture
+        ///     The axes
         /// </summary>
-        private readonly Dictionary<string, Texture> myTextures = new Dictionary<string, Texture>();
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
+        private readonly float[] axes;
 
+        /// <summary>
+        ///     Gets the state of the specified <paramref name="button" />.
+        /// </summary>
+        /// <param name="button">The button to retrieve the state of.</param>
+        /// <returns>The button state, either <see cref="InputState.Press" /> or <see cref="InputState.Release" />.</returns>
+        public InputState GetButtonState(GamePadButton button) => states[(int) button];
 
+        /// <summary>
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/test/Render/ShaderTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/test/Structs/GamePadStateTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/GamePadState.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Shader.cs
+    Commit format: test: coverage GamePadState.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
