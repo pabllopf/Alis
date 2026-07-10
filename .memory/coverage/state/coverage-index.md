@@ -53,7 +53,7 @@ updated: 2026-07-10T09:15:00Z
 | Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
 | ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
 | WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
-| GitHubApiService.cs | 5 | ~200 | <pending> |
+| GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
 
 ## Notes
 
