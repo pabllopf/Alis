@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -657,6 +658,77 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             }
 
             Assert.NotNull(joint);
+        }
+
+        [Fact]
+        public void SolveVelocityConstraints_WithExcessImpulse_ClampsImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.MaxForce = 0.1f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            int indexA = bodyA.GetIslandIndex;
+            int indexB = bodyB.GetIslandIndex;
+            int maxIndex = Math.Max(indexA, indexB) + 1;
+
+            SolverPosition[] positions = new SolverPosition[maxIndex];
+            SolverVelocity[] velocities = new SolverVelocity[maxIndex];
+            for (int i = 0; i < maxIndex; i++)
+            {
+                positions[i] = new SolverPosition { C = Vector2F.Zero, A = 0.0f };
+                velocities[i] = new SolverVelocity { V = Vector2F.Zero, W = 0.0f };
+            }
+            velocities[indexA] = new SolverVelocity { V = new Vector2F(-50, 0), W = 0.0f };
+            velocities[indexB] = new SolverVelocity { V = new Vector2F(50, 0), W = 0.0f };
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = positions,
+                Velocities = velocities,
+                Locks = new int[maxIndex]
+            };
+
+            MethodInfo initMethod = typeof(FrictionJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+
+            MethodInfo solveMethod = typeof(FrictionJoint).GetMethod("SolveVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            solveMethod.Invoke(joint, new object[] { data });
+        }
+
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            MethodInfo initMethod = typeof(FrictionJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
         }
     }
 }

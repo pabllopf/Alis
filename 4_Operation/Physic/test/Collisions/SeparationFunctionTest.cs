@@ -303,7 +303,69 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(float.IsInfinity(s));
         }
 
+        // ========================================================================
+        // Evaluate with FaceB mode — exercises the FaceB branch (line 316-326)
+        // ========================================================================
 
+        [Fact]
+        public void Evaluate_WithFaceBMode_ShouldReturnFiniteSeparation()
+        {
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = new Vector2F(3.0f, 0.0f), C = new Vector2F(3.0f, 0.0f), LocalCenter = Vector2F.Zero };
+
+            SimplexCache cache = new SimplexCache { Count = 2 };
+            cache.IndexA[0] = 0;
+            cache.IndexA[1] = 0;
+            cache.IndexB[0] = 0;
+            cache.IndexB[1] = 1;
+
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+            float s = SeparationFunction.Evaluate(0, -1, 0.0f);
+
+            Assert.False(float.IsNaN(s));
+            Assert.False(float.IsInfinity(s));
+        }
+
+        // ========================================================================
+        // FindMinSeparation with default type (Points) - just checks no crash
+        // ========================================================================
+
+        [Fact]
+        public void FindMinSeparation_WithUninitializedData_DoesNotCrash()
+        {
+            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            Assert.False(float.IsNaN(separation));
+        }
+
+        // ========================================================================
+        // Evaluate with FaceBMode and indexB >= 0 (indexB is not -1)
+        // ========================================================================
+
+        [Fact]
+        public void Evaluate_WithFaceBMode_IndexBNotNegative_ReturnsFinite()
+        {
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = new Vector2F(3.0f, 0.0f), C = new Vector2F(3.0f, 0.0f), LocalCenter = Vector2F.Zero };
+
+            SimplexCache cache = new SimplexCache { Count = 2 };
+            cache.IndexA[0] = 0;
+            cache.IndexA[1] = 0;
+            cache.IndexB[0] = 0;
+            cache.IndexB[1] = 1;
+
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+            float s = SeparationFunction.Evaluate(0, 0, 0.0f);
+
+            Assert.False(float.IsNaN(s));
+        }
     }
 }
 

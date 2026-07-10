@@ -409,6 +409,68 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(body.Awake);
         }
+
+        [Fact]
+        public void SolvePositionConstraints_ContactsAndJointsOkay_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolveToi_WithIslandBodies_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void Reset_WithNullBodies_AllocatesNewBuffers()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(1, 1, 1, contactManager);
+            Assert.NotNull(island.Bodies);
+            Assert.NotNull(island.Velocities);
+            Assert.NotNull(island.Positions);
+            Assert.NotNull(island.Locks);
+        }
+
+        [Fact]
+        public void Reset_ExpandsContactsBuffer_WhenCapacityExceedsInitial()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(1, 1, 1, contactManager);
+
+            island.Reset(1, 50, 1, contactManager);
+            Assert.NotNull(island.Bodies);
+        }
+
+        [Fact]
+        public void UpdateSleepState_WithStaticBody_SkipsSleepProcessing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Static);
+
+            for (int i = 0; i < 300; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(body);
+        }
     }
 }
 

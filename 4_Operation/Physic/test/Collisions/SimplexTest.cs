@@ -537,5 +537,47 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(1, simplex.Count);
         }
+
+        [Fact]
+        public void GetClosestPoint_WithInvalidCount_ReturnsZero()
+        {
+            Simplex simplex = new Simplex
+            {
+                Count = 4,
+                V = new FixedArray3<SimplexVertex>()
+            };
+
+            Vector2F point = simplex.GetClosestPoint();
+
+            Assert.Equal(Vector2F.Zero, point);
+        }
+
+        [Fact]
+        public void GetMetric_WithInvalidCount_ReturnsZero()
+        {
+            Simplex simplex = new Simplex
+            {
+                Count = 4,
+                V = new FixedArray3<SimplexVertex>()
+            };
+
+            float metric = simplex.GetMetric();
+
+            Assert.Equal(0.0f, metric);
+        }
+
+        [Fact]
+        public void GetSearchDirection_WithInvalidCount_ReturnsZero()
+        {
+            Simplex simplex = new Simplex
+            {
+                Count = 4,
+                V = new FixedArray3<SimplexVertex>()
+            };
+
+            Vector2F direction = simplex.GetSearchDirection();
+
+            Assert.Equal(Vector2F.Zero, direction);
+        }
     }
 }

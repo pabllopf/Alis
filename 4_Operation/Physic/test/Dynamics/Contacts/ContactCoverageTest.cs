@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
@@ -478,6 +480,147 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.Step(1.0f / 60.0f);
 
             Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // Contact.Create — from pool reuse (line 555-561)
+        // ========================================================================
+
+        [Fact]
+        public void Create_FromPool_ReusesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            // Separate bodies to destroy contacts (populate pool)
+            bodyA.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(200.0f, 200.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+
+            // Bring back together (will reuse from pool)
+            bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(0.5f, 0.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // Contact.Update — sensor contact with matching (touching=true)
+        // ========================================================================
+
+        [Fact]
+        public void Update_SensorContact_TriggersBeginContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            bodyA.FixtureList[0].GetIsSensor = true;
+
+            bool beginFired = false;
+            world.ContactManager.BeginContact = contact =>
+            {
+                beginFired = true;
+                return true;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(beginFired);
+        }
+
+        // ========================================================================
+        // Evaluate — EdgeAndCircle branch - ensures correct type dispatch
+        // ========================================================================
+
+        [Fact]
+        public void Evaluate_EdgeAndCircle_DispatchesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, -0.5f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // Contact.Create with swapped Edge+Polygon (line 565 conditional)
+        // ========================================================================
+
+        [Fact]
+        public void Create_EdgeAndPolygonNoSwap_ReturnsContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // ResetRestitution mixes fixture restitutions (line 212)
+        // ========================================================================
+
+        [Fact]
+        public void ResetRestitution_MixesFixtureRestitutions()
+        {
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
+            fixtureA.GetRestitution = 0.3f;
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
+            fixtureB.GetRestitution = 0.1f;
+            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
+
+            contact.ResetRestitution();
+
+            Assert.NotEqual(0, contact.Restitution);
+        }
+
+        // ========================================================================
+        // ResetFriction mixes fixture frictions (line 220)
+        // ========================================================================
+
+        [Fact]
+        public void ResetFriction_MixesFixtureFrictions()
+        {
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
+            fixtureA.GetFriction = 0.5f;
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
+            fixtureB.GetFriction = 0.7f;
+            Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
+
+            contact.ResetFriction();
+
+            Assert.NotEqual(0, contact.Friction);
+        }
+
+        // ========================================================================
+        // GetWorldManifold — exercises the WorldManifold.Initialize path
+        // ========================================================================
+
+        [Fact]
+        public void GetWorldManifold_WithValidContact_ReturnsNormal()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            if (contact != null && contact.Manifold.PointCount > 0)
+            {
+                contact.GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points);
+                Assert.NotEqual(Vector2F.Zero, normal);
+            }
         }
     }
 }

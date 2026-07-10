@@ -770,6 +770,23 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
         }
 
+        [Fact]
+        public void Update_WithPointGravityDistanceSquared_AppliesForce()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
+            GravityController controller = new GravityController(100f)
+            {
+                WorldPhysic = world,
+                GravityType = GravityType.DistanceSquared,
+                MaxRadius = 100f,
+                MinRadius = 0f
+            };
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(5.0f, 0.0f), BodyType.Dynamic);
+            controller.AddPoint(new Vector2F(5.1f, 0.0f));
+
+            controller.Update(1.0f / 60.0f);
+        }
+
         #endregion
     }
 }

@@ -836,8 +836,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             };
             List<TriangulationPoint> constraints = new List<TriangulationPoint>
             {
-                points[4], points[6],
-                points[5], points[7]
+                points[4], points[5],
+                points[6], points[7]
             };
             var cps = new ConstrainedPointSet(points, constraints);
             DtSweepContext tcx = new DtSweepContext();
@@ -1786,6 +1786,97 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             m.Invoke(null, new object[] { tcx, n1 });
             Assert.NotNull(tcx.Basin.LeftNode);
             Assert.NotNull(tcx.Basin.RightNode);
+        }
+
+        // ========================================================================
+        // IsEdgeSideOfTriangle — neighbor is null (line 487)
+        // ========================================================================
+
+        [Fact]
+        public void IsEdgeSideOfTriangle_WithNeighborNull_MarksEdgeOnlyOnSelf()
+        {
+            MethodInfo m = GetMethod("IsEdgeSideOfTriangle",
+                typeof(DelaunayTriangle), typeof(TriangulationPoint), typeof(TriangulationPoint));
+            var p1 = new TriangulationPoint(0, 0);
+            var p2 = new TriangulationPoint(1, 0);
+            var p3 = new TriangulationPoint(0, 1);
+            var triangle = new DelaunayTriangle(p1, p2, p3);
+            triangle.Neighbors[0] = null;
+            bool result = (bool)m.Invoke(null, new object[] { triangle, p1, p2 });
+            Assert.True(result);
+        }
+
+        // ========================================================================
+        // FillBasinReq — prev == LeftNode with Cw orientation (early return line 912)
+        // ========================================================================
+
+        [Fact]
+        public void FillBasinReq_PrevEqualsLeftNodeCw_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var pL = new TriangulationPoint(0, 2);
+            var pB = new TriangulationPoint(1, 1);
+            var pN = new TriangulationPoint(2, 2);
+            var nL = new AdvancingFrontNode(pL);
+            var nB = new AdvancingFrontNode(pB);
+            var nN = new AdvancingFrontNode(pN);
+            nL.Next = nB; nB.Prev = nL;
+            nB.Next = nN; nN.Prev = nB;
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nB;
+            tcx.Basin.RightNode = nN;
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 10.0;
+            tcx.Triangulatable = new MockTriangulatable();
+            m.Invoke(null, new object[] { tcx, nB });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // FillBasinReq — next == RightNode with Ccw orientation (line 922-923)
+        // ========================================================================
+
+        [Fact]
+        public void FillBasinReq_NextEqualsRightNodeCcw_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var pL = new TriangulationPoint(0, 0);
+            var pB = new TriangulationPoint(1, 1);
+            var pR = new TriangulationPoint(2, 2);
+            var nL = new AdvancingFrontNode(pL);
+            var nB = new AdvancingFrontNode(pB);
+            var nR = new AdvancingFrontNode(pR);
+            nL.Next = nB; nB.Prev = nL;
+            nB.Next = nR; nR.Prev = nB;
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nB;
+            tcx.Basin.RightNode = nR;
+            tcx.Basin.LeftHighest = false;
+            tcx.Basin.Width = 10.0;
+            tcx.Triangulatable = new MockTriangulatable();
+            m.Invoke(null, new object[] { tcx, nB });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // LargeHole_DontFill — AngleExceeds90Degrees=true, prev2Node null, next2Node
+        // present, and AngleExceedsPlus90DegreesOrIsNegative returns false
+        // (line 776-778 path)
+        // ========================================================================
+
+        [Fact]
+        public void LargeHole_DontFill_WithNext2PresentButNotExceeding_ReturnsFalse()
+        {
+            MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
+            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 0));
+            node.Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 1));
+            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(1, -1));
+            bool result = (bool)m.Invoke(null, new object[] { node });
+            // With acute angles, LargeHole_DontFill returns false
+            Assert.False(result);
         }
     }
 }

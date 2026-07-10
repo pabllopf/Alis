@@ -112,5 +112,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         {
             Assert.Throws<ArgumentException>(() => PolygonGenerator.RandomCircleSweep2(100.0, 2));
         }
+
+        /// <summary>
+        /// Tests that Rng static field is accessible
+        /// </summary>
+        [Fact]
+        public void Rng_StaticField_ShouldBeAccessible()
+        {
+            Assert.NotNull(PolygonGenerator.Rng);
+        }
     }
 }

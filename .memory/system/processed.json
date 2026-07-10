@@ -189,4 +189,6 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/EmscriptenWeb.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/ContactManager.cs"
+,
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Delaunay/DelaunayTriangle.cs"
 ]

@@ -337,5 +337,33 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.Validate();
             Assert.True(tree.Height > 0);
         }
+
+        [Fact]
+        public void ValidateStructure_WithNullNode_ReturnsEarly()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            tree.ValidateStructure(DynamicTree<int>.NullNode);
+        }
+
+        [Fact]
+        public void ValidateMetrics_WithNullNode_ReturnsEarly()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            tree.ValidateMetrics(DynamicTree<int>.NullNode);
+        }
+
+        [Fact]
+        public void RayCast_OnEmptyTree_ReturnsWithoutIterating()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(0, 0),
+                Point2 = new Vector2F(1, 0),
+                MaxFraction = 1.0f
+            };
+
+            tree.RayCast((ref RayCastInput ri, int id) => 1.0f, ref input);
+        }
     }
 }

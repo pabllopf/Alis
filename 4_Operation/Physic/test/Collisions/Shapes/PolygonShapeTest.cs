@@ -603,5 +603,37 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.NotNull(polygon.Vertices);
             Assert.NotNull(polygon.Normals);
         }
+
+        [Fact]
+        public void CompareTo_WithDifferentVertexCount_ReturnsFalse()
+        {
+            Vertices vertsA = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            Vertices vertsB = new Vertices { new Vector2F(0, 0), new Vector2F(3, 0), new Vector2F(3, 2), new Vector2F(0, 2) };
+            PolygonShape shapeA = new PolygonShape(vertsA, 1.0f);
+            PolygonShape shapeB = new PolygonShape(vertsB, 1.0f);
+
+            bool result = shapeA.CompareTo(shapeB);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void RayCast_WithParallelEdgeOutside_CoversParallelBranch()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(5, 15),
+                Point2 = new Vector2F(15, 15),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
     }
 }

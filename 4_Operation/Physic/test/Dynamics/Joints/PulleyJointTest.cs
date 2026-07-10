@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -582,6 +583,40 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             }
 
             Assert.NotNull(joint);
+        }
+
+        [Fact]
+        public void InternalConstructor_ShouldSetJointType()
+        {
+            PulleyJoint joint = new PulleyJoint();
+            Assert.Equal(JointType.Pulley, joint.JointType);
+        }
+
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            MethodInfo initMethod = typeof(PulleyJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
         }
     }
 }

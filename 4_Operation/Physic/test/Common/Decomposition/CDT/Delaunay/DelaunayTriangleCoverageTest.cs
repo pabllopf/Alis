@@ -608,5 +608,36 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[2]);
             Assert.Null(t2.Neighbors[0]);
         }
+
+        [Fact]
+        public void MarkNeighbor_WithNonExistentEdge_LogsError()
+        {
+            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
+            TriangulationPoint p4 = new TriangulationPoint(5.0, 5.0);
+            TriangulationPoint p5 = new TriangulationPoint(6.0, 6.0);
+
+            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
+            DelaunayTriangle t2 = new DelaunayTriangle(p4, p5, new TriangulationPoint(7.0, 7.0));
+
+            t1.MarkNeighbor(p4, p5, t2);
+        }
+
+        [Fact]
+        public void MarkNeighbor_WithNoSharedEdge_LogsError()
+        {
+            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
+            TriangulationPoint p4 = new TriangulationPoint(5.0, 0.0);
+            TriangulationPoint p5 = new TriangulationPoint(6.0, 0.0);
+            TriangulationPoint p6 = new TriangulationPoint(5.0, 1.0);
+
+            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
+            DelaunayTriangle t2 = new DelaunayTriangle(p4, p5, p6);
+
+            t1.MarkNeighbor(t2);
+        }
     }
 }

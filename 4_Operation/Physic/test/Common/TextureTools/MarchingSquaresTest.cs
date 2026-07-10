@@ -1426,5 +1426,55 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         }
 
         #endregion
+
+        #region CxFastList_Remove_NonExistentItem
+
+        [Fact]
+        public void CxFastList_Remove_NonExistentNonDefault_ReturnsFalse()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo add = intListType.GetMethod("Add");
+            MethodInfo remove = intListType.GetMethod("Remove");
+
+            add.Invoke(list, new object[] { 10 });
+            bool removed = (bool)remove.Invoke(list, new object[] { 42 });
+            Assert.False(removed);
+        }
+
+        #endregion
+
+        #region RemoveParallelVerticesAfterInsertion
+
+        [Fact]
+        public void RemoveParallelVerticesAfterInsertion_WithParallelVerts_RemovesOne()
+        {
+            MethodInfo removeParallel = typeof(MarchingSquares).GetMethod("RemoveParallelVerticesAfterInsertion",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+
+            object poly = Activator.CreateInstance(geomPolyType);
+            FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            object points = pointsField.GetValue(poly);
+
+            MethodInfo add = vectorListType.GetMethod("Add");
+            MethodInfo begin = vectorListType.GetMethod("Begin");
+
+            add.Invoke(points, new object[] { new Vector2F(0f, 0f) });
+            add.Invoke(points, new object[] { new Vector2F(1f, 1f) });
+            add.Invoke(points, new object[] { new Vector2F(1f, 0f) });
+            add.Invoke(points, new object[] { new Vector2F(2f, 0f) });
+
+            object ai = begin.Invoke(points, null);
+
+            removeParallel.Invoke(null, new object[] { points, poly, ai });
+        }
+
+        #endregion
     }
 }

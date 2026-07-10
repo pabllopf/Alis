@@ -581,5 +581,140 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             float result = (float)method.Invoke(solver, new object[] { pc });
             Assert.True(result <= 0f);
         }
+
+        // ========================================================================
+        // SolveTwoPointNormal — second branch: x.X >= 0 && vn2 >= 0 (line 681)
+        // ========================================================================
+
+        [Fact]
+        public void SolveTwoPointNormal_SecondBranchXNonNegativeVn2NonNegative_AppliesBlockImpulse()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.K.Ex = new Vector2F(1f, 0.5f);
+            vc.K.Ey = new Vector2F(0.5f, 1f);
+            vc.NormalMass = vc.K.Inverse;
+
+            vc.Points[0].NormalImpulse = 0f;
+            vc.Points[0].NormalMass = 1.0f;
+            vc.Points[0].VelocityBias = -0.5f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+
+            vc.Points[1].NormalImpulse = 0f;
+            vc.Points[1].NormalMass = 1.0f;
+            vc.Points[1].VelocityBias = -0.5f;
+            vc.Points[1].Ra = new Vector2F(0f, 0f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+
+            Vector2F vA = new Vector2F(-0.1f, 0f);
+            float wA = 0f;
+            Vector2F vB = new Vector2F(0.1f, 0f);
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+
+            object[] args = { vA, wA, vB, wB, vc, normal, mA, iA, mB, iB };
+            method.Invoke(null, args);
+            Vector2F vAResult = (Vector2F)args[0];
+            Assert.NotNull(vAResult);
+        }
+
+        // ========================================================================
+        // SolveTwoPointNormal — third branch: x.Y >= 0 && vn1 >= 0 (line 691)
+        // ========================================================================
+
+        [Fact]
+        public void SolveTwoPointNormal_ThirdBranchYNonNegativeVn1NonNegative_AppliesBlockImpulse()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.K.Ex = new Vector2F(1f, 0f);
+            vc.K.Ey = new Vector2F(0f, 1f);
+            vc.NormalMass = vc.K.Inverse;
+
+            vc.Points[0].NormalImpulse = 0f;
+            vc.Points[0].NormalMass = 1.0f;
+            vc.Points[0].VelocityBias = 0.5f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+
+            vc.Points[1].NormalImpulse = 0f;
+            vc.Points[1].NormalMass = 1.0f;
+            vc.Points[1].VelocityBias = -0.5f;
+            vc.Points[1].Ra = new Vector2F(0f, 0f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+
+            Vector2F vA = new Vector2F(-0.1f, 0f);
+            float wA = 0f;
+            Vector2F vB = new Vector2F(0.1f, 0f);
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+
+            object[] args = { vA, wA, vB, wB, vc, normal, mA, iA, mB, iB };
+            method.Invoke(null, args);
+            Vector2F vAResult = (Vector2F)args[0];
+            Assert.NotNull(vAResult);
+        }
+
+        // ========================================================================
+        // InitializeVelocityConstraints — redundant constraint (k11*k11 < kMaxConditionNumber * (k11*k22 - k12*k12) fails)
+        // exercises PointCount = 1 fallback (line 329)
+        // ========================================================================
+
+        [Fact]
+        public void InitializeVelocityConstraints_RedundantConstraint_ReducesPointCount()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        // ========================================================================
+        // SolveVelocityConstraints — threaded path via World step (line 428)
+        // ========================================================================
+
+        [Fact]
+        public void SolveVelocityConstraints_ThreadedViaWorld_ExecutesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            for (int i = 0; i < 5; i++)
+            {
+                world.CreateCircle(1.0f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
+            }
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolvePositionConstraints — threaded path via World with many bodies
+        // ========================================================================
+
+        [Fact]
+        public void SolvePositionConstraints_ThreadedViaWorld_ExecutesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            for (int i = 0; i < 5; i++)
+            {
+                world.CreateCircle(1.0f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
+            }
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

@@ -428,6 +428,25 @@ namespace Alis.Core.Physic.Test.Collisions
             broadPhase.UpdatePairs((idA, idB) => pairs.Add((idA, idB)));
             Assert.Empty(pairs);
         }
+
+        [Fact]
+        public void UpdatePairs_WithManyOverlappingProxies_GrowsPairBuffer()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            int[] ids = new int[20];
+            for (int i = 0; i < 20; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(0.0f, 0.0f),
+                    new Vector2F(10.0f, 10.0f));
+                ids[i] = broadPhase.AddProxy(ref aabb);
+                broadPhase.SetProxy(ids[i], ref ids[i]);
+            }
+
+            int pairCount = 0;
+            broadPhase.UpdatePairs((idA, idB) => pairCount++);
+            Assert.True(pairCount > 0);
+        }
     }
 }
 

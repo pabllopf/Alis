@@ -507,5 +507,38 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.True(result);
         }
+
+        [Fact]
+        public void InternalConstructor_ShouldSetJointType()
+        {
+            WeldJoint joint = new WeldJoint();
+            Assert.Equal(JointType.Weld, joint.JointType);
+        }
+
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesTrue_ShouldTransformAnchors()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(10.0f, 0.0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(20.0f, 0.0f), 0f, BodyType.Dynamic);
+
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, new Vector2F(10.0f, 5.0f), new Vector2F(20.0f, 5.0f), true);
+
+            Assert.Equal(JointType.Weld, joint.JointType);
+            Assert.Equal(new Vector2F(0.0f, 5.0f), joint.LocalAnchorA);
+            Assert.Equal(new Vector2F(0.0f, 5.0f), joint.LocalAnchorB);
+        }
+
+        [Fact]
+        public void GetReactionTorque_ShouldReturnZeroInitially()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+
+            float torque = joint.GetReactionTorque(1.0f);
+
+            Assert.Equal(0.0f, torque);
+        }
     }
 }

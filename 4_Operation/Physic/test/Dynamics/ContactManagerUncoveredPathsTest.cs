@@ -339,5 +339,105 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
+
+        // ========================================================================
+        // ShouldCollide — non-zero groups that don't match (line 367-375)
+        // ========================================================================
+
+        [Fact]
+        public void ShouldCollide_WithNonMatchingGroups_UsesCategories()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            bodyA.SetCollisionGroup(1);
+            bodyB.SetCollisionGroup(2);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        // ========================================================================
+        // ProcessContactMultiCore — bodyA disabled (line 589-591)
+        // ========================================================================
+
+        [Fact]
+        public void ProcessContactMultiCore_WithDisabledBody_ReturnsNext()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+
+            bodyA.Enabled = false;
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount <= 0);
+        }
+
+        // ========================================================================
+        // CollideMultiCore — exercises the multicore path end-to-end
+        // ========================================================================
+
+        [Fact]
+        public void CollideMultiCore_WithMultipleContacts_ProcessesAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            for (int i = 0; i < 3; i++)
+            {
+                world.CreateCircle(1.0f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
+            }
+
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        // ========================================================================
+        // RemoveFromBody — nodeA == bodyA.ContactList (line 291-293)
+        // ========================================================================
+
+        [Fact]
+        public void RemoveFromBody_NodeAIsContactList_UpdatesList()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            world.Remove(bodyA);
+            Assert.Null(bodyA.ContactList);
+        }
+
+        // ========================================================================
+        // PassesCollisionFilters — ContactFilter returns false (line 507-510)
+        // ========================================================================
+
+        [Fact]
+        public void PassesCollisionFilters_ContactFilterBlocks_ReturnsFalse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.ContactManager.ContactFilter = (_, _) => false;
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
     }
 }

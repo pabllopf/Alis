@@ -1197,5 +1197,135 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Null(ex);
         }
+
+        // ========================================================================
+        // ShouldSkipContactAlpha — sensor branch (line 693-695)
+        // ========================================================================
+
+        [Fact]
+        public void ShouldSkipContactAlpha_WithSensor_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.FixtureList[0].GetIsSensor = true;
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ShouldSkipContactAlpha — both inactive branch (line 707-709)
+        // ========================================================================
+
+        [Fact]
+        public void ShouldSkipContactAlpha_BothInactive_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — other is null (line 530-532)
+        // ========================================================================
+
+        [Fact]
+        public void ProcessJointEdges_WithNullOther_AddsJointToIsland()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(1f, 0f));
+            world.Add(joint);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // BuildIslandDFS — body is static (line 448-450)
+        // ========================================================================
+
+        [Fact]
+        public void BuildIslandDFS_WithStaticSeed_ClearsIsland()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateBody(Vector2F.Zero, 0f, BodyType.Static);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — joint already in island (line 508-510)
+        // ========================================================================
+
+        [Fact]
+        public void ProcessJointEdges_WithJointAlreadyFlagged_Continues()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CalculateContactAlpha — ToiFlag true branch (line 725-727)
+        // ========================================================================
+
+        [Fact]
+        public void CalculateContactAlpha_WithToiFlag_ReturnsToi()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessToiContact — body is not dynamic, not bullet (line 808-810)
+        // ========================================================================
+
+        [Fact]
+        public void ProcessToiContact_NonDynamicNonBullet_Skips()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-5f, 0f), 0f, BodyType.Kinematic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyB.LinearVelocityInternal = new Vector2F(50f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // FindMinAlphaContact — contact with ToiCount > MaxSubSteps skips (line 669)
+        // ========================================================================
+
+        [Fact]
+        public void FindMinAlphaContact_SkipsContactWithHighToiCount()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

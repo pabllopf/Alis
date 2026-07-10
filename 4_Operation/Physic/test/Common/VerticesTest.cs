@@ -831,6 +831,22 @@ namespace Alis.Core.Physic.Test.Common
             Assert.Equal(PolygonError.NotCounterClockWise, result);
         }
 
+        [Fact]
+        public void CheckPolygon_SelfIntersecting_ReturnsNotSimple()
+        {
+            Vertices bowtie = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 2),
+                new Vector2F(2, 0),
+                new Vector2F(0, 2)
+            };
+
+            PolygonError result = bowtie.CheckPolygon();
+
+            Assert.Equal(PolygonError.NotSimple, result);
+        }
+
         /// <summary>
         ///     Tests that IsCounterClockWise returns false for clockwise polygon.
         /// </summary>
@@ -936,6 +952,23 @@ namespace Alis.Core.Physic.Test.Common
             {
                 new Vector2F(0, 0),
                 new Vector2F(0, 5),
+                new Vector2F(3, 2)
+            };
+            Vector2F axis = new Vector2F(0, 1);
+
+            triangle.ProjectToAxis(ref axis, out float min, out float max);
+
+            Assert.Equal(0, min);
+            Assert.Equal(5, max);
+        }
+
+        [Fact]
+        public void ProjectToAxis_WithDecreasingValues_CoversDotLessThanMinBranch()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 5),
+                new Vector2F(0, 0),
                 new Vector2F(3, 2)
             };
             Vector2F axis = new Vector2F(0, 1);
