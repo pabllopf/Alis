@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 249 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 255 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationManager.cs
+    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
 
     ### Language
     cs
 
     ### Coverage
-    97.7% (Line: 98.1%, Branch: 96.4%)
+    98.3% (Line: 98.9%, Branch: 88.9%)
 
     ### Uncovered Lines
-    5
-
-    ### Uncovered Branches
     3
 
+    ### Uncovered Branches
+    2
+
     ### Method
-    TranslationManager
+    GearJoint
 
     ### Complexity / LOC
-    66 / 333 lines
+    23 / 335 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:TranslationManager.cs
+//  File:GearJoint.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Alis.Extension.Language.Translator.Abstractions;
-using Alis.Extension.Language.Translator.Cache;
-using Alis.Extension.Language.Translator.Pluralization;
-using Alis.Extension.Language.Translator.Providers;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Extension.Language.Translator
+namespace Alis.Core.Physic.Dynamics.Joints
 {
+    // K = J * invM * JT = invMass + invI * cross(r, ug)^2
+
     /// <summary>
-    ///     The translation manager class
+    ///     A gear joint is used to connect two joints together.
+    ///     Either joint can be a revolute or prismatic joint.
+    ///     You specify a gear ratio to bind the motions together:
+    ///     <![CDATA[coordinate1 + ratio * coordinate2 = ant]]>
+    ///     The ratio can be negative or positive. If one joint is a revolute joint
+    ///     and the other joint is a prismatic joint, then the ratio will have units
+    ///     of length or units of 1/length.
+    ///     Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed.
     /// </summary>
-    /// <remarks>
-    ///     This class serves as a facade for the translation system, coordinating
-    ///     language management, translation lookup, caching, and pluralization.
-    ///     It uses dependency injection to allow for flexible configuration of providers,
-    ///     caches, and other services.
-    /// </remarks>
-    public class TranslationManager
+    public class GearJoint : Joint
     {
         /// <summary>
-        ///     The translation cache
+        ///     The body
         /// </summary>
-        private readonly ITranslationCache cache;
+        private readonly Body _bodyA;
 
         /// <summary>
-        ///     The fallback language codes (e.g., "en-US" -> ["en-US", "en"])
+        ///     The body
         /// </summary>
-        private readonly List<string> fallbackLanguages = new List<string>();
+        private readonly Body _bodyB;
+
+        /// <summary>
+        ///     The body
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Language/Translator/test/TranslationManagerTests.cs
+    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/GearJointTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationManager.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage TranslationManager.cs
+    Commit format: test: coverage GearJoint.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
