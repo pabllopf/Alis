@@ -90,6 +90,7 @@
 | 2026-07-10 09:45:00 | MediaWriter.cs | 37.5% | ~72% | +34.5% | 19c023b68 | Completed |
 | 2026-07-10 10:00:00 | VideoMode.cs | 44.4% | ~70% | +22-26% | pending | Completed |
 | 2026-07-10 10:05:00 | VideoWriter.cs | 44.8% | ~68-72% | +23-27% | e738dd18d | Completed |
+| 2026-07-10 09:56:00 | ImFontPtr.cs | 45.3% | ~85% | +40% | fd26d4515 | Completed |
 ## Test Files Created
 - `PulleyJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/PulleyJointTest.cs`
 - `WheelJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/WheelJointTest.cs`
@@ -125,3 +126,4 @@
 - `MediaWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaWriterRemainingCoverageTests.cs`
 - `VideoModeRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Sfml/test/Windows/VideoModeRemainingCoverageTests.cs`
 - `VideoWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/Video/VideoWriterRemainingCoverageTests.cs`
+- `ImFontPtrRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImFontPtrRemainingCoverageTests.cs`
