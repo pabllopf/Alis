@@ -169,5 +169,6 @@
   "pabllopf-official_alis:6_Ideation/Memory/src/AssetRegistry.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaStream.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImColor.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Payment/Stripe/src/StripeGatewayClient.cs"
 ]
