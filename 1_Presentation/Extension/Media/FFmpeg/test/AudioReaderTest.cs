@@ -301,5 +301,39 @@ namespace Alis.Extension.Media.FFmpeg.Test
             // Bit depth should remain 0 for empty sample format
             Assert.Equal(0, metadata.BitDepth);
         }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets correct bit depth for 24-bit format.
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_ShouldSet24BitFor24BitFormat()
+        {
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            {
+                BitDepth = 0,
+                SampleFormat = "s24le"
+            };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(24, metadata.BitDepth);
+        }
+
+        /// <summary>
+        ///     Tests that ResolveBitDepth sets correct bit depth for 8-bit format.
+        /// </summary>
+        [Fact]
+        public void ResolveBitDepth_ShouldSet8BitFor8BitFormat()
+        {
+            AudioMetadata metadata = new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata
+            {
+                BitDepth = 0,
+                SampleFormat = "s8le"
+            };
+
+            AudioReader.ResolveBitDepth(metadata);
+
+            Assert.Equal(8, metadata.BitDepth);
+        }
     }
 }
