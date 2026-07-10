@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.PolygonManipulation;
@@ -617,6 +619,96 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 
             PolyClipError error;
             List<Vertices> result = YuPengClipper.Union(atOrigin, overlapping, out error);
+
+            Assert.NotNull(result);
+            Assert.NotEmpty(result);
+            Assert.Equal(PolyClipError.None, error);
+        }
+
+        // ========================================================================
+        // Edge class (private nested) — reflection tests for remaining branches
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that Edge operator - reverses start and end.
+        /// </summary>
+        [Fact]
+        public void Edge_OperatorNegation_ReversesStartAndEnd()
+        {
+            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            object edge = ctor.Invoke(new object[] { new Vector2F(1f, 2f), new Vector2F(3f, 4f) });
+
+            MethodInfo negOp = edgeType.GetMethod("op_UnaryNegation", BindingFlags.Static | BindingFlags.Public);
+            object negated = negOp.Invoke(null, new object[] { edge });
+
+            PropertyInfo edgeStart = edgeType.GetProperty("EdgeStart");
+            PropertyInfo edgeEnd = edgeType.GetProperty("EdgeEnd");
+
+            Assert.Equal(new Vector2F(3f, 4f), (Vector2F)edgeStart.GetValue(negated));
+            Assert.Equal(new Vector2F(1f, 2f), (Vector2F)edgeEnd.GetValue(negated));
+        }
+
+        /// <summary>
+        ///     Tests that Edge.Equals with null returns false.
+        /// </summary>
+        [Fact]
+        public void Edge_Equals_WithNull_ReturnsFalse()
+        {
+            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            object edge = ctor.Invoke(new object[] { new Vector2F(1f, 2f), new Vector2F(3f, 4f) });
+
+            MethodInfo equalsObj = edgeType.GetMethod("Equals", new[] { typeof(object) });
+            bool result = (bool)equalsObj.Invoke(edge, new object[] { null });
+            Assert.False(result);
+
+            MethodInfo typedEquals = edgeType.GetMethod("Equals", new[] { edgeType });
+            bool result2 = (bool)typedEquals.Invoke(edge, new object[] { null });
+            Assert.False(result2);
+        }
+
+        /// <summary>
+        ///     Tests that Edge.GetHashCode is consistent for equal edges.
+        /// </summary>
+        [Fact]
+        public void Edge_GetHashCode_ReturnsConsistentValue()
+        {
+            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
+            object edge1 = ctor.Invoke(new object[] { new Vector2F(1f, 2f), new Vector2F(3f, 4f) });
+            object edge2 = ctor.Invoke(new object[] { new Vector2F(1f, 2f), new Vector2F(3f, 4f) });
+
+            int hash1 = (int)edgeType.GetMethod("GetHashCode").Invoke(edge1, null);
+            int hash2 = (int)edgeType.GetMethod("GetHashCode").Invoke(edge2, null);
+
+            Assert.Equal(hash1, hash2);
+        }
+
+        /// <summary>
+        ///     Tests Union when both polygons share the same AABB lower bound,
+        ///     so translate == Vector2F.Zero in Execute().
+        /// </summary>
+        [Fact]
+        public void Union_WhenTranslateIsZero_Succeeds()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(3f, 1f),
+                new Vector2F(3f, 3f),
+                new Vector2F(1f, 3f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f),
+                new Vector2F(2f, 1f),
+                new Vector2F(2f, 2f),
+                new Vector2F(1f, 2f)
+            });
+
+            PolyClipError error;
+            List<Vertices> result = YuPengClipper.Union(square1, square2, out error);
 
             Assert.NotNull(result);
             Assert.NotEmpty(result);

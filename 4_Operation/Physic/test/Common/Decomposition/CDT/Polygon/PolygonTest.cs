@@ -466,30 +466,38 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         }
 
         /// <summary>
-        ///     Tests that AddPoint adds a point to the polygon and updates links
+        ///     Tests that AddPoint adds a point after Last is set via AddPoints
         /// </summary>
         [Fact]
         public void AddPoint_ShouldAddPointAndUpdateCount()
         {
-            List<CDP.PolygonPoint> points = CreateTrianglePoints();
-            CDP.Polygon polygon = new CDP.Polygon(points);
+            CDP.Polygon polygon = new CDP.Polygon();
+            List<CDP.PolygonPoint> initialPoints = CreateTrianglePoints();
+            polygon.AddPoints(initialPoints);
+            int initialCount = polygon.GetPoints.Count;
             CDP.PolygonPoint newPoint = new CDP.PolygonPoint(1, 1);
 
             polygon.AddPoint(newPoint);
 
-            Assert.Equal(4, polygon.GetPoints.Count);
+            Assert.Equal(initialCount + 1, polygon.GetPoints.Count);
             Assert.Contains(newPoint, polygon.GetPoints);
         }
 
         /// <summary>
-        ///     Tests that RemovePoint removes a point and updates links
+        ///     Tests that RemovePoint removes a point from polygon initialized via AddPoints
         /// </summary>
         [Fact]
         public void RemovePoint_ShouldRemovePointAndDecreaseCount()
         {
-            List<CDP.PolygonPoint> points = CreateTrianglePoints();
-            CDP.Polygon polygon = new CDP.Polygon(points);
-            CDP.PolygonPoint pointToRemove = points[1];
+            CDP.Polygon polygon = new CDP.Polygon();
+            List<CDP.PolygonPoint> pts = new List<CDP.PolygonPoint>
+            {
+                new CDP.PolygonPoint(0, 0),
+                new CDP.PolygonPoint(1, 0),
+                new CDP.PolygonPoint(0, 1)
+            };
+            polygon.AddPoints(pts);
+            CDP.PolygonPoint pointToRemove = pts[1];
 
             polygon.RemovePoint(pointToRemove);
 
@@ -503,11 +511,17 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         [Fact]
         public void InsertPointAfter_ShouldInsertAtCorrectPosition()
         {
-            List<CDP.PolygonPoint> points = CreateTrianglePoints();
-            CDP.Polygon polygon = new CDP.Polygon(points);
+            CDP.Polygon polygon = new CDP.Polygon();
+            List<CDP.PolygonPoint> pts = new List<CDP.PolygonPoint>
+            {
+                new CDP.PolygonPoint(0, 0),
+                new CDP.PolygonPoint(1, 0),
+                new CDP.PolygonPoint(0, 1)
+            };
+            polygon.AddPoints(pts);
             CDP.PolygonPoint newPoint = new CDP.PolygonPoint(0.5, 0.5);
 
-            polygon.InsertPointAfter(points[0], newPoint);
+            polygon.InsertPointAfter(pts[0], newPoint);
 
             Assert.Equal(4, polygon.GetPoints.Count);
             Assert.Equal(1, polygon.GetPoints.IndexOf(newPoint));

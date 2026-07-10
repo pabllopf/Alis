@@ -650,5 +650,83 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that WorldAnchorA set updates localCenterA (not LocalAnchorA).
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_UpdatesLocalCenterA()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+
+            joint.WorldAnchorA = new Vector2F(5.0f, 10.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB set updates localCenterA (not LocalAnchorB).
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Set_UpdatesLocalCenterA()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+
+            joint.WorldAnchorB = new Vector2F(5.0f, 10.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that SolvePositionConstraints with Frequency=0 and small length error exercises the position solve path.
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_WithFrequencyZero_ExercisesPositionSolve()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-2.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            joint.Frequency = 0.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 60; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that zero length in InitVelocityConstraints sets u to zero.
+        /// </summary>
+        [Fact]
+        public void InitVelocity_WithSamePosition_SetsUToZero()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
     }
 }

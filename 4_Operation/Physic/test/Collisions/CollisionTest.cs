@@ -718,10 +718,10 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             Vertices vertices = PolygonTools.CreateRectangle(2.0f, 2.0f);
             PolygonShape polygon = new PolygonShape(vertices, 1.0f);
-            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            CircleShape circle = new CircleShape(0.5f, 1.0f);
             ControllerTransform xfPolygon = ControllerTransform.Identity;
-            // Position circle just above the top edge center so u1 > 0, u2 > 0, and separation2 <= radius
-            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(0.0f, 2.4f), 0.0f);
+            // Circle just above top edge: separation2 = 0.1 <= radius = 0.51
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(0.0f, 2.1f), 0.0f);
             Manifold manifold = new Manifold();
 
             Collision.CollidePolygonAndCircle(ref manifold, polygon, ref xfPolygon, circle, ref xfCircle);

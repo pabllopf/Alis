@@ -481,5 +481,71 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Assert.NotNull(result);
         }
+
+        [Fact]
+        public void ListAny_WithNonEmptyList_ReturnsTrue()
+        {
+            List<int> list = new List<int> { 1 };
+            Assert.True(RealExplosion.ListAny(list));
+        }
+
+        [Fact]
+        public void ListAny_WithEmptyList_ReturnsFalse()
+        {
+            List<int> list = new List<int>();
+            Assert.False(RealExplosion.ListAny(list));
+        }
+
+        [Fact]
+        public void ListFirst_WithNonEmptyList_ReturnsFirst()
+        {
+            List<int> list = new List<int> { 1, 2, 3 };
+            Assert.Equal(1, RealExplosion.ListFirst(list));
+        }
+
+        [Fact]
+        public void ListLast_WithNonEmptyList_ReturnsLast()
+        {
+            List<int> list = new List<int> { 1, 2, 3 };
+            Assert.Equal(3, RealExplosion.ListLast(list));
+        }
+
+        [Fact]
+        public void IsActiveOn_WithKinematicBody_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Kinematic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Assert.True(explosion.IsActiveOn(body));
+        }
+
+        [Fact]
+        public void Activate_WithRectangleAndCircle_DynamicBodies_ShouldProcessMultipleShapes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body rect = world.CreateRectangle(2f, 2f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            Body circle = world.CreateCircle(2f, 1f, new Vector2F(0, 12f), BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 30f, 100f);
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void Activate_WithLargeForceAndMultipleBodies_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            for (int i = 0; i < 3; i++)
+            {
+                world.CreateRectangle(2f, 2f, 1f, new Vector2F(10f + i * 5f, 0), 0f, BodyType.Dynamic);
+            }
+            RealExplosion explosion = new RealExplosion(world);
+
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 1000f);
+
+            Assert.NotNull(result);
+        }
     }
 }

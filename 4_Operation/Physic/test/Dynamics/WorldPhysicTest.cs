@@ -834,5 +834,368 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(1, callCount);
         }
+
+        [Fact]
+        public void AddBody_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            bool threw = false;
+            Body newBody = new Body();
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Add(newBody);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void RemoveBody_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            bool threw = false;
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Remove(body);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void AddJoint_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            bool threw = false;
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1f, 0f));
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Add(joint);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void RemoveJoint_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(1f, 0f));
+            world.Add(joint);
+            bool threw = false;
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Remove(joint);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void AddController_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            bool threw = false;
+            GravityController controller = new GravityController(9.8f);
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Add(controller);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void RemoveController_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            GravityController controller = new GravityController(9.8f);
+            world.Add(controller);
+            bool threw = false;
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Remove(controller);
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void Clear_WhenLocked_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            bool threw = false;
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                try
+                {
+                    world.Clear();
+                }
+                catch (InvalidOperationException)
+                {
+                    threw = true;
+                }
+                return false;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void CreateGear_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateGear(1f, 6, 0.2f, 0.5f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateChain_WithoutRopeJoint_ShouldReturnPath()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Path path = world.CreateChain(
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                0.1f, 0.05f, 3, 1f, false);
+            Assert.NotNull(path);
+        }
+
+        [Fact]
+        public void CreateChain_WithRopeJoint_ShouldReturnPath()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Path path = world.CreateChain(
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                0.1f, 0.05f, 3, 1f, true);
+            Assert.NotNull(path);
+        }
+
+        [Fact]
+        public void CreateCapsule_FullParams_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(2f, 0.5f, 4, 0.5f, 4, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void RemoveJoint_FixedType_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(1f, 0f));
+            world.Add(joint);
+
+            world.Remove(joint);
+
+            Assert.Empty(world.JointList);
+        }
+
+        [Fact]
+        public void ProcessJointEdges_WithDisabledOtherBody_SkipsDisabled()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+            bodyB.Enabled = false;
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void FlagContactsForJointFiltering_WithCollideConnectedFalse_SkipsFiltering()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = false;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        [Fact]
+        public void FlagContactsForJointRemoval_WithCollideConnectedTrue_SkipsFlagging()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            joint.CollideConnected = true;
+            world.Add(joint);
+
+            world.Remove(joint);
+
+            Assert.Empty(world.JointList);
+        }
+
+        [Fact]
+        public void ConnectJointNonFixed_WithFixedType_SkipsEdgeB()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(1f, 0f));
+            world.Add(joint);
+
+            Assert.Single(world.JointList);
+        }
+
+        [Fact]
+        public void ShouldProcessBody_WithStaticBody_ReturnsFalse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateBody(Vector2F.Zero, 0f, BodyType.Static);
+            world.CreateBody(new Vector2F(0.5f, 0f), 0f, BodyType.Static);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void ExecuteStepPhysics_WithContinuousPhysics_SolvesToi()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void ProcessJointEdges_WithJointFromNullOther_AddsJointToIsland()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0.5f, 0f), 0f, BodyType.Dynamic);
+
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.5f, 0f));
+            world.Add(joint);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolveToi_WithDisabledContact_ResetsBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.Enabled = false;
+                return false;
+            };
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
     }
 }

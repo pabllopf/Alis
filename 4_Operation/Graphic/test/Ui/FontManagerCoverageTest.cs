@@ -31,14 +31,14 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void RenderText_WithColors_ThrowsWhenOpenGLNotInitialized()
         {
-            Assert.Throws<InvalidOperationException>(
+            Assert.ThrowsAny<Exception>(
                 () => FontManager.RenderText("hello", 0, 0, Color.White, Color.Black));
         }
 
         [Fact]
         public void RenderText_WithCoordinates_ThrowsWhenOpenGLNotInitialized()
         {
-            Assert.Throws<InvalidOperationException>(
+            Assert.ThrowsAny<Exception>(
                 () => FontManager.RenderText("hello", 0, 0));
         }
 

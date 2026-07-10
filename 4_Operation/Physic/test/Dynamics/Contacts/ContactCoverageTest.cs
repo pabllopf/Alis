@@ -370,5 +370,114 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.True(sepFired);
         }
+
+        [Fact]
+        public void InvokeHandlers_WithMultipleHandlers_AllFire()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            int fireCount = 0;
+            OnCollisionEventHandler handler1 = (_, _, _) => { fireCount++; return true; };
+            OnCollisionEventHandler handler2 = (_, _, _) => { fireCount++; return true; };
+
+            bodyA.OnCollision += handler1;
+            bodyA.OnCollision += handler2;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(2, fireCount);
+        }
+
+        [Fact]
+        public void InvokeHandlers_WithOneFalse_DisablesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            int fireCount = 0;
+            OnCollisionEventHandler handler1 = (_, _, _) => { fireCount++; return true; };
+            OnCollisionEventHandler handler2 = (_, _, _) => { fireCount++; return false; };
+
+            bodyA.OnCollision += handler1;
+            bodyA.OnCollision += handler2;
+
+            world.Step(1.0f / 60.0f);
+
+            // Both handlers fire regardless of return values
+            Assert.Equal(2, fireCount);
+            // Contact should be disabled due to handler2 returning false
+            Assert.False(world.ContactManager.ContactList.Next.Enabled);
+        }
+
+        [Fact]
+        public void Destroy_WithSensorFixtures_DoesNotAwakeBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+
+            contact.FixtureA.GetIsSensor = true;
+
+            contact.Destroy();
+
+            Assert.NotNull(contact);
+        }
+
+        [Fact]
+        public void Update_WithNoTouchingTransition_DoesNotFireCallbacks()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            bool beginFired = false;
+            world.ContactManager.BeginContact = contact =>
+            {
+                beginFired = true;
+                return true;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            // Both bodies are now inactive (moved far apart or disabled)
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(beginFired);
+        }
+
+        [Fact]
+        public void ProcessSensorContact_WhenSensorsOverlap_DetectsTouching()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            bodyA.FixtureList[0].GetIsSensor = true;
+
+            bool sensorTouching = false;
+            world.ContactManager.BeginContact = contact =>
+            {
+                sensorTouching = contact.IsTouching;
+                return true;
+            };
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
     }
 }

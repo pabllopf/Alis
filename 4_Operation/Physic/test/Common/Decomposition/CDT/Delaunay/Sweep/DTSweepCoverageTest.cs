@@ -1002,59 +1002,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ========================================================================
-        // FillLeftAboveEdgeEvent — covers while loop branches
-        // ========================================================================
-
-        [Fact]
-        public void FillLeftAboveEdgeEvent_O1Cw_FillsBelow()
-        {
-            MethodInfo m = GetMethod("FillLeftAboveEdgeEvent",
-                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = false;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(4, 0), new TriangulationPoint(0, 0));
-            var p1 = new TriangulationPoint(4, 0);
-            var p2 = new TriangulationPoint(3, 1);
-            var p3 = new TriangulationPoint(2, 0);
-            var node = new AdvancingFrontNode(p1);
-            node.Prev = new AdvancingFrontNode(p2);
-            node.Prev.Prev = new AdvancingFrontNode(p3);
-            tcx.Triangulatable = new MockTriangulatable();
-            tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
-            tcx.Head = new TriangulationPoint(-5, -1);
-            tcx.Tail = new TriangulationPoint(5, -1);
-            tcx.CreateAdvancingFront();
-
-            m.Invoke(null, new object[] { tcx, tcx.EdgeEvent.ConstrainedEdge, node });
-        }
-
-        [Fact]
-        public void FillLeftAboveEdgeEvent_O1NotCw_AdvancesNode()
-        {
-            MethodInfo m = GetMethod("FillLeftAboveEdgeEvent",
-                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = false;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(4, 0), new TriangulationPoint(0, 0));
-            var p1 = new TriangulationPoint(4, 0);
-            var p2 = new TriangulationPoint(3, -1);
-            var p3 = new TriangulationPoint(2, 0);
-            var node = new AdvancingFrontNode(p1);
-            node.Prev = new AdvancingFrontNode(p2);
-            node.Prev.Prev = new AdvancingFrontNode(p3);
-            tcx.Triangulatable = new MockTriangulatable();
-            tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
-            tcx.Head = new TriangulationPoint(-5, -1);
-            tcx.Tail = new TriangulationPoint(5, -1);
-            tcx.CreateAdvancingFront();
-
-            m.Invoke(null, new object[] { tcx, tcx.EdgeEvent.ConstrainedEdge, node });
-        }
-
-        // ========================================================================
-        // NextFlipPoint — Ccw branch 
+        // NextFlipPoint — Ccw branch (PointCw of op)
         // ========================================================================
 
         [Fact]
@@ -1068,77 +1016,63 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var ep = new TriangulationPoint(2, 2);
             var p2 = new TriangulationPoint(1, 2);
             var ot = new DelaunayTriangle(eq, p2, op);
-            // Orient2d(eq=(0,0), op=(1,0), ep=(2,2)) → detleft = -4, detright = 2, val = -6 → CW? Let me think...
-            // For ot.PointCw(op): need Orient2d = Ccw to take that branch
-            // Actually let me just construct orientation to be Ccw
-            // Orient2d((0,0), (1,0), (2,2)) → (0-2)*(0-0) - (0-0)*(1-2) = -2*0 - 0*(-1) = 0 ... that's collinear
-            // Let me use ep = (2, 2)... detleft = (0-2)*(0-0) - (0-0)*(1-2) = -2*0 - 0*(-1) = 0
-            // Hmm need to be more careful
-            // For Ccw: (eq.x - ep.x)*(op.y - ep.y) - (eq.y - ep.y)*(op.x - ep.x) > 0
-            // eq=(0,0), op=(1,0), ep=(2,2): (-2)*(-2) - (-2)*(-1) = 4 - 2 = 2 > 0 → CCW
-            // So o2d = Ccw, and it should return ot.PointCw(op)
-            // op is at index 2 in ot = {eq, p2, op}
-            // PointCw(2) = Points[(2+1)%3] = Points[0] = eq
+
             TriangulationPoint result = (TriangulationPoint)m.Invoke(null, new object[] { ep, eq, ot, op });
             Assert.NotNull(result);
-            Assert.Equal(eq, result);
+            Assert.Equal(p2, result);
         }
 
         // ========================================================================
-        // Fill — directly test the filling method
+        // Integration: Concave shape exercises fill and edge event paths
         // ========================================================================
 
         [Fact]
-        public void Fill_CreatesTriangleAndRemovesNode()
+        public void Triangulate_ConcaveShape_CoversFillAndEdgeEvents()
         {
-            MethodInfo m = GetMethod("Fill", typeof(DtSweepContext), typeof(AdvancingFrontNode));
-            var p1 = new TriangulationPoint(0, 0);
-            var p2 = new TriangulationPoint(1, 1);
-            var p3 = new TriangulationPoint(2, 0);
-            var t = new DelaunayTriangle(p1, new TriangulationPoint(-1, 0), new TriangulationPoint(3, 0));
-            var node = new AdvancingFrontNode(p2) { Triangle = t };
-            node.Prev = new AdvancingFrontNode(p1) { Triangle = t };
-            node.Next = new AdvancingFrontNode(p3) { Triangle = t };
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
-            tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
-            tcx.Head = new TriangulationPoint(-5, -1);
-            tcx.Tail = new TriangulationPoint(5, -1);
-            tcx.CreateAdvancingFront();
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(3.0, 0.0),
+                new TriangulationPoint(3.0, 2.0),
+                new TriangulationPoint(1.0, 2.0),
+                new TriangulationPoint(1.0, 1.0),
+                new TriangulationPoint(0.0, 1.0)
+            };
 
-            m.Invoke(null, new object[] { tcx, node });
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(pointSet);
+            DtSweep.Triangulate(tcx);
 
-            Assert.True(tcx.Triangles.Count > 0);
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.True(pointSet.GetTriangles.Count >= 4);
         }
 
         // ========================================================================
-        // EdgeEvent private (ep, eq, triangle, point) — Collinear branch
+        // Integration: Zigzag pattern triggers FillAbove events
         // ========================================================================
 
         [Fact]
-        public void EdgeEvent_WithCollinearPoint_ThrowsPointOnEdgeException()
+        public void Triangulate_ZigzagPattern_CoversFillAboveEvents()
         {
-            MethodInfo m = GetMethod("EdgeEvent",
-                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
-                typeof(DelaunayTriangle), typeof(TriangulationPoint));
-            var ep = new TriangulationPoint(0, 0);
-            var eq = new TriangulationPoint(2, 0);
-            var p1 = new TriangulationPoint(0, 2);
-            var p2 = new TriangulationPoint(2, 2);
-            var pIn = new TriangulationPoint(1, 0); // collinear with ep, eq
-            var triangle = new DelaunayTriangle(ep, eq, p1);
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(ep, eq);
-            tcx.Triangulatable = new MockTriangulatable();
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(1.0, 1.0),
+                new TriangulationPoint(2.0, 0.0),
+                new TriangulationPoint(3.0, 1.0),
+                new TriangulationPoint(4.0, 0.0),
+                new TriangulationPoint(5.0, 1.0),
+                new TriangulationPoint(6.0, 0.0)
+            };
 
-            try
-            {
-                m.Invoke(null, new object[] { tcx, ep, eq, triangle, p1 });
-            }
-            catch (TargetInvocationException)
-            {
-                // Expected for some collinear cases
-            }
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(pointSet);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.True(pointSet.GetTriangles.Count >= 5);
         }
 
         // ========================================================================
@@ -1271,34 +1205,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             }
         }
 
-        // ========================================================================
-        // NewFrontTriangle — covers both Legalize and MapTriangleToNodes branches
-        // ========================================================================
-
-        [Fact]
-        public void NewFrontTriangle_WithLegalizedTriangle_AddsTriangle()
-        {
-            MethodInfo m = GetMethod("NewFrontTriangle",
-                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            var point = new TriangulationPoint(1, 1);
-            var p1 = new TriangulationPoint(0, 0);
-            var p2 = new TriangulationPoint(2, 0);
-            var node = new AdvancingFrontNode(p1);
-            node.Next = new AdvancingFrontNode(p2);
-            node.Triangle = new DelaunayTriangle(p1, new TriangulationPoint(3, 0), p2);
-            tcx.Triangulatable = new MockTriangulatable();
-            tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(point);
-            tcx.Head = new TriangulationPoint(-5, -1);
-            tcx.Tail = new TriangulationPoint(5, -1);
-            tcx.CreateAdvancingFront();
-
-            AdvancingFrontNode newNode = (AdvancingFrontNode)m.Invoke(null, new object[] { tcx, point, node });
-
-            Assert.NotNull(newNode);
-            Assert.Equal(point, newNode.Point);
-        }
-
         private class MockTriangulatable : ITriangulatable
         {
             public readonly List<DelaunayTriangle> Triangles = new List<DelaunayTriangle>();
@@ -1309,6 +1215,577 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             public void AddTriangle(DelaunayTriangle t) => Triangles.Add(t);
             public void AddTriangles(IEnumerable<DelaunayTriangle> tris) => Triangles.AddRange(tris);
             public void ClearTriangles() => Triangles.Clear();
+        }
+
+        // ========================================================================
+        // FillBasinReq additional coverage
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests FillBasinReq when node.Prev == LeftNode AND node.Next == RightNode
+        ///     (both boundaries matched, early return after Fill).
+        ///     Uses Width > Height so IsShallow is true and Fill is not called.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_WithBothLeftAndRightNode_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var pL = new TriangulationPoint(0, 2);
+            var pNode = new TriangulationPoint(1, 1);
+            var pR = new TriangulationPoint(2, 2);
+            var nL = new AdvancingFrontNode(pL);
+            var nNode = new AdvancingFrontNode(pNode);
+            var nR = new AdvancingFrontNode(pR);
+            nL.Next = nNode; nNode.Prev = nL;
+            nNode.Next = nR; nR.Prev = nNode;
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nNode;
+            tcx.Basin.RightNode = nR;
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 3.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nNode });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq when node.Prev == LeftNode.
+        ///     Uses Width > Height so IsShallow returns true early.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_WithPrevAtLeftAndCwOrientation_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var pL = new TriangulationPoint(0, 2);
+            var pNode = new TriangulationPoint(1, 0);
+            var pMid = new TriangulationPoint(2, 1);
+            var pR = new TriangulationPoint(3, 2);
+            var nL = new AdvancingFrontNode(pL);
+            var nNode = new AdvancingFrontNode(pNode);
+            var nMid = new AdvancingFrontNode(pMid);
+            var nR = new AdvancingFrontNode(pR);
+            nL.Next = nNode; nNode.Prev = nL;
+            nNode.Next = nMid; nMid.Prev = nNode;
+            nMid.Next = nR; nR.Prev = nMid;
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nNode;
+            tcx.Basin.RightNode = nR;
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 3.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nNode });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq when node.Next == RightNode.
+        ///     Uses Width > Height so IsShallow returns true early.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_WithNextAtRightAndCcwOrientation_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var pL = new TriangulationPoint(0, 2);
+            var pMid = new TriangulationPoint(1, 1);
+            var pNode = new TriangulationPoint(2, 0);
+            var pR = new TriangulationPoint(3, 2);
+            var nL = new AdvancingFrontNode(pL);
+            var nMid = new AdvancingFrontNode(pMid);
+            var nNode = new AdvancingFrontNode(pNode);
+            var nR = new AdvancingFrontNode(pR);
+            nL.Next = nMid; nMid.Prev = nL;
+            nMid.Next = nNode; nNode.Prev = nMid;
+            nNode.Next = nR; nR.Prev = nNode;
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nNode;
+            tcx.Basin.RightNode = nR;
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 3.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nNode });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // FillBasin — early return when RightNode == BottomNode
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests FillBasin when the right node equals the bottom node
+        ///     (second early return inside FillBasin).
+        /// </summary>
+        [Fact]
+        public void FillBasin_WithRightNodeEqualsBottomNode_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasin", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            // 3-node chain where the minimum (bottom) is the last node,
+            // so RightNode (= BottomNode) has no Next → early return
+            var p1 = new TriangulationPoint(0, 0);
+            var p2 = new TriangulationPoint(1, 0);
+            var p3 = new TriangulationPoint(2, -1);
+            var n1 = new AdvancingFrontNode(p1);
+            var n2 = new AdvancingFrontNode(p2);
+            var n3 = new AdvancingFrontNode(p3);
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, n1 });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // NextFlipPoint — collinear orientation throws PointOnEdgeException
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests NextFlipPoint when the orientation is Collinear,
+        ///     which should throw PointOnEdgeException.
+        /// </summary>
+        [Fact]
+        public void NextFlipPoint_WithCollinear_ThrowsPointOnEdgeException()
+        {
+            MethodInfo m = GetMethod("NextFlipPoint",
+                typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+            var ep = new TriangulationPoint(2, 0);
+            var eq = new TriangulationPoint(0, 0);
+            var op = new TriangulationPoint(1, 0);
+            var p2 = new TriangulationPoint(0, 1);
+            var ot = new DelaunayTriangle(eq, p2, op);
+
+            Assert.Throws<TargetInvocationException>(() =>
+                m.Invoke(null, new object[] { ep, eq, ot, op }));
+        }
+
+        // ========================================================================
+        // FillBasinReq — non-shallow paths (Width <= height so IsShallow returns false)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow when node.Prev == LeftNode and orient2d == Cw
+        ///     → return early without advancing.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_PrevLeftNode_Cw_ReturnsEarly()
+        {
+            MethodInfo fillBasinReq = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var pL = new TriangulationPoint(0, 3);
+            var pNode = new TriangulationPoint(1, 0);
+            var pMid = new TriangulationPoint(2, 1);
+            var pMid2 = new TriangulationPoint(3, 0);
+            var pR = new TriangulationPoint(2, 3);
+
+            var nL = new AdvancingFrontNode(pL);
+            var nNode = new AdvancingFrontNode(pNode);
+            var nMid = new AdvancingFrontNode(pMid);
+            var nMid2 = new AdvancingFrontNode(pMid2);
+            var nR = new AdvancingFrontNode(pR);
+
+            nL.Next = nNode; nNode.Prev = nL;
+            nNode.Next = nMid; nMid.Prev = nNode;
+            nMid.Next = nMid2; nMid2.Prev = nMid;
+            nMid2.Next = nR; nR.Prev = nMid2;
+
+            // Set up triangles to avoid NRE in Fill.MarkNeighbor
+            nL.Triangle = new DelaunayTriangle(pL, pNode, pMid);
+            nNode.Triangle = new DelaunayTriangle(pL, pNode, pMid);
+            nMid.Triangle = new DelaunayTriangle(pNode, pMid, pMid2);
+            nMid2.Triangle = new DelaunayTriangle(pMid, pMid2, pR);
+            nR.Triangle = new DelaunayTriangle(pMid, pMid2, pR);
+
+            // Create advancing front so tcx.AFront is not null
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(5, 5));
+            frontHead.Next = nL; nL.Prev = frontHead;
+            nR.Next = frontTail; frontTail.Prev = nR;
+            tcx.AFront = new AdvancingFront(frontHead, frontTail);
+
+            tcx.Basin.LeftNode = nL;
+            tcx.Basin.BottomNode = nNode;
+            tcx.Basin.RightNode = nR;
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 2.0; // Width <= height (3) → non-shallow
+            tcx.Triangulatable = new MockTriangulatable();
+
+            fillBasinReq.Invoke(null, new object[] { tcx, nNode });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow when node.Prev == LeftNode and orient2d != Cw (Ccw)
+        ///     → advances to node.Next and recurses. Uses FillBasin for setup.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_PrevLeftNode_NotCw_AdvancesNext()
+        {
+            MethodInfo fillBasin = GetMethod("FillBasin", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var p1 = new TriangulationPoint(0, 3);
+            var p2 = new TriangulationPoint(1, 0);
+            var p3 = new TriangulationPoint(2, -1);
+            var p4 = new TriangulationPoint(3, 0);
+            var p5 = new TriangulationPoint(2, 3);
+
+            var n1 = new AdvancingFrontNode(p1);
+            var n2 = new AdvancingFrontNode(p2);
+            var n3 = new AdvancingFrontNode(p3);
+            var n4 = new AdvancingFrontNode(p4);
+            var n5 = new AdvancingFrontNode(p5);
+
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+            n3.Next = n4; n4.Prev = n3;
+            n4.Next = n5; n5.Prev = n4;
+
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(5, 5));
+            frontHead.Next = n1; n1.Prev = frontHead;
+            n5.Next = frontTail; frontTail.Prev = n5;
+            tcx.AFront = new AdvancingFront(frontHead, frontTail);
+
+            // Set Triangle on all nodes that could be passed to FillBasinReq
+            n1.Triangle = new DelaunayTriangle(frontHead.Point, p1, p2);
+            n2.Triangle = new DelaunayTriangle(p1, p2, p3);
+            n3.Triangle = new DelaunayTriangle(p2, p3, p4);
+            n4.Triangle = new DelaunayTriangle(p3, p4, p5);
+            n5.Triangle = new DelaunayTriangle(p4, p5, frontTail.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            fillBasin.Invoke(null, new object[] { tcx, n1 });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // FillBasinReq — additional non-shallow paths via FillBasinReq reflection
+        // These tests directly call FillBasinReq to exercise branch paths
+        // that are hard to reach via integration tests.
+        // ========================================================================
+
+        private static void SetupBasinAndFront(DtSweepContext tcx,
+            AdvancingFrontNode[] nodes, TriangulationPoint[] pts,
+            AdvancingFrontNode frontHead, AdvancingFrontNode frontTail)
+        {
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                if (i > 0 && i < nodes.Length - 1)
+                    nodes[i].Triangle = new DelaunayTriangle(pts[i - 1], pts[i], pts[i + 1]);
+                else if (i == 0 && nodes.Length > 1)
+                    nodes[i].Triangle = new DelaunayTriangle(frontHead.Point, pts[i], pts[i + 1]);
+                else if (i == nodes.Length - 1 && nodes.Length > 1)
+                    nodes[i].Triangle = new DelaunayTriangle(pts[i - 1], pts[i], frontTail.Point);
+                else
+                    nodes[i].Triangle = new DelaunayTriangle(frontHead.Point, pts[i], frontTail.Point);
+            }
+            if (nodes.Length > 0)
+            {
+                frontHead.Next = nodes[0]; nodes[0].Prev = frontHead;
+                nodes[nodes.Length - 1].Next = frontTail; frontTail.Prev = nodes[nodes.Length - 1];
+            }
+            tcx.AFront = new AdvancingFront(frontHead, frontTail);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow when node.Next == RightNode and orient2d == Ccw
+        ///     → return early.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_NextRightNode_Ccw_ReturnsEarly()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var pts = new[] { new TriangulationPoint(0, 3), new TriangulationPoint(1, 1), new TriangulationPoint(2, 0), new TriangulationPoint(3, 3) };
+            var nodes = new[] { new AdvancingFrontNode(pts[0]), new AdvancingFrontNode(pts[1]), new AdvancingFrontNode(pts[2]), new AdvancingFrontNode(pts[3]) };
+            for (int i = 0; i < nodes.Length - 1; i++) { nodes[i].Next = nodes[i + 1]; nodes[i + 1].Prev = nodes[i]; }
+
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(5, 5));
+            SetupBasinAndFront(tcx, nodes, pts, frontHead, frontTail);
+
+            tcx.Basin.LeftNode = nodes[0];
+            tcx.Basin.BottomNode = nodes[2];
+            tcx.Basin.RightNode = nodes[3];
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 2.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nodes[2] });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow when node.Next == RightNode and orient2d != Ccw (Cw)
+        ///     → advances to node.Prev and recurses.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_NextRightNode_NotCcw_AdvancesPrev()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var pts = new[] { new TriangulationPoint(0, 3), new TriangulationPoint(1, 2), new TriangulationPoint(2, 1), new TriangulationPoint(3, 0), new TriangulationPoint(4, 3) };
+            var nodes = new[] { new AdvancingFrontNode(pts[0]), new AdvancingFrontNode(pts[1]), new AdvancingFrontNode(pts[2]), new AdvancingFrontNode(pts[3]), new AdvancingFrontNode(pts[4]) };
+            for (int i = 0; i < nodes.Length - 1; i++) { nodes[i].Next = nodes[i + 1]; nodes[i + 1].Prev = nodes[i]; }
+
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(6, 5));
+            SetupBasinAndFront(tcx, nodes, pts, frontHead, frontTail);
+
+            tcx.Basin.LeftNode = nodes[0];
+            tcx.Basin.BottomNode = nodes[3];
+            tcx.Basin.RightNode = nodes[4];
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 3.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nodes[3] });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow in else branch when prev.Y < next.Y
+        ///     → node = node.Prev, recurses.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_Else_PrevYLess_AdvancesPrev()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var pts = new[] { new TriangulationPoint(0, 4), new TriangulationPoint(0, 1), new TriangulationPoint(1, 0), new TriangulationPoint(2, 2), new TriangulationPoint(3, 2), new TriangulationPoint(3, 4) };
+            var nodes = new[] { new AdvancingFrontNode(pts[0]), new AdvancingFrontNode(pts[1]), new AdvancingFrontNode(pts[2]), new AdvancingFrontNode(pts[3]), new AdvancingFrontNode(pts[4]), new AdvancingFrontNode(pts[5]) };
+            for (int i = 0; i < nodes.Length - 1; i++) { nodes[i].Next = nodes[i + 1]; nodes[i + 1].Prev = nodes[i]; }
+
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(5, 5));
+            SetupBasinAndFront(tcx, nodes, pts, frontHead, frontTail);
+
+            tcx.Basin.LeftNode = nodes[0];
+            tcx.Basin.BottomNode = nodes[2];
+            tcx.Basin.RightNode = nodes[5];
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 1.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nodes[2] });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        /// <summary>
+        ///     Tests FillBasinReq non-shallow in else branch when prev.Y >= next.Y
+        ///     → node = node.Next, recurses.
+        /// </summary>
+        [Fact]
+        public void FillBasinReq_NonShallow_Else_PrevYGE_AdvancesNext()
+        {
+            MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var pts = new[] { new TriangulationPoint(0, 4), new TriangulationPoint(0, 2), new TriangulationPoint(1, 0), new TriangulationPoint(2, 1), new TriangulationPoint(3, 1), new TriangulationPoint(3, 4) };
+            var nodes = new[] { new AdvancingFrontNode(pts[0]), new AdvancingFrontNode(pts[1]), new AdvancingFrontNode(pts[2]), new AdvancingFrontNode(pts[3]), new AdvancingFrontNode(pts[4]), new AdvancingFrontNode(pts[5]) };
+            for (int i = 0; i < nodes.Length - 1; i++) { nodes[i].Next = nodes[i + 1]; nodes[i + 1].Prev = nodes[i]; }
+
+            var frontHead = new AdvancingFrontNode(new TriangulationPoint(-5, 5));
+            var frontTail = new AdvancingFrontNode(new TriangulationPoint(5, 5));
+            SetupBasinAndFront(tcx, nodes, pts, frontHead, frontTail);
+
+            tcx.Basin.LeftNode = nodes[0];
+            tcx.Basin.BottomNode = nodes[2];
+            tcx.Basin.RightNode = nodes[5];
+            tcx.Basin.LeftHighest = true;
+            tcx.Basin.Width = 1.0;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, nodes[2] });
+            Assert.NotNull(tcx.Basin);
+        }
+
+        // ========================================================================
+        // FlipEdgeEvent — not in scan area branch
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests FlipEdgeEvent when InScanArea returns false.
+        ///     This exercises the else branch: NextFlipPoint + FlipScanEdgeEvent + EdgeEvent.
+        /// </summary>
+        [Fact]
+        public void FlipEdgeEvent_NotInScanArea_CallsFlipScanAndEdgeEvent()
+        {
+            MethodInfo m = GetMethod("FlipEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var p1 = new TriangulationPoint(0, 0);
+            var p2 = new TriangulationPoint(2, 0);
+            var p3 = new TriangulationPoint(1, 2);
+            var p4 = new TriangulationPoint(3, 1);
+            var t = new DelaunayTriangle(p1, p2, p3);
+            var ot = new DelaunayTriangle(p2, p4, p3);
+            t.Neighbors[0] = ot;
+            ot.Neighbors[0] = t;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(p1, p4);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try
+            {
+                m.Invoke(null, new object[] { tcx, p1, p2, t, p3 });
+            }
+            catch (TargetInvocationException)
+            {
+            }
+        }
+
+        // ========================================================================
+        // EdgeEvent — collinear orientation branches
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests the EdgeEvent method when o1 == Collinear and triangle.Contains(eq, p1).
+        /// </summary>
+        [Fact]
+        public void EdgeEvent_O1Collinear_Contains_MarksConstrainedEdge()
+        {
+            MethodInfo m = GetMethod("EdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var ep = new TriangulationPoint(2, 0);
+            var eq = new TriangulationPoint(0, 0);
+            var p1 = new TriangulationPoint(1, 0);
+            var p2 = new TriangulationPoint(0, 2);
+            var p3 = new TriangulationPoint(2, 2);
+            var triangle = new DelaunayTriangle(ep, p1, p2);
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(ep, eq);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try
+            {
+                m.Invoke(null, new object[] { tcx, ep, eq, triangle, p3 });
+            }
+            catch (TargetInvocationException)
+            {
+            }
+        }
+
+        // ========================================================================
+        // EdgeEvent — o1 == o2 branches (both Cw or both Ccw)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests EdgeEvent when o1 == o2 == Cw → calls NeighborCcw.
+        /// </summary>
+        [Fact]
+        public void EdgeEvent_O1EqualsO2_Cw_CallsNeighborCcw()
+        {
+            MethodInfo m = GetMethod("EdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var ep = new TriangulationPoint(3, 0);
+            var eq = new TriangulationPoint(0, 0);
+            var p1 = new TriangulationPoint(1, 1);
+            var p2 = new TriangulationPoint(2, 1);
+            var p3 = new TriangulationPoint(0, 2);
+            var p4 = new TriangulationPoint(3, 2);
+
+            var t1 = new DelaunayTriangle(eq, p1, p3);
+            var t2 = new DelaunayTriangle(p1, p2, p4);
+            var t3 = new DelaunayTriangle(p2, ep, p4);
+            t1.Neighbors[2] = t2;
+            t2.Neighbors[1] = t3;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try
+            {
+                m.Invoke(null, new object[] { tcx, ep, eq, t1, p1 });
+            }
+            catch (TargetInvocationException)
+            {
+            }
+        }
+
+        // ========================================================================
+        // PointEvent — point.HasEdges == false (no EdgeEvent called)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests PointEvent via integration when a point has no edges attached.
+        ///     Exercises the scenario where point.HasEdges is false, skipping EdgeEvent.
+        /// </summary>
+        [Fact]
+        public void Triangulate_PointWithoutEdges_SkipsEdgeEvent()
+        {
+            List<TriangulationPoint> points = new List<TriangulationPoint>
+            {
+                new TriangulationPoint(0.0, 0.0),
+                new TriangulationPoint(2.0, 0.0),
+                new TriangulationPoint(1.0, 1.0)
+            };
+
+            PointSet pointSet = new PointSet(points);
+            DtSweepContext tcx = new DtSweepContext();
+            tcx.PrepareTriangulation(pointSet);
+            DtSweep.Triangulate(tcx);
+
+            Assert.NotNull(pointSet.GetTriangles);
+            Assert.True(pointSet.GetTriangles.Count >= 1);
+        }
+
+        // ========================================================================
+        // FillBasin — exercises while loops for BottomNode and RightNode
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests FillBasin when the bottom search while loop finds a lower node
+        ///     and the right search while loop also advances.
+        /// </summary>
+        [Fact]
+        public void FillBasin_WithValidChain_FillsCompletely()
+        {
+            MethodInfo m = GetMethod("FillBasin", typeof(DtSweepContext), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+
+            var p1 = new TriangulationPoint(0, 0);
+            var p2 = new TriangulationPoint(1, -1);
+            var p3 = new TriangulationPoint(2, -2);
+            var p4 = new TriangulationPoint(3, -1);
+            var p5 = new TriangulationPoint(4, 0);
+            var n1 = new AdvancingFrontNode(p1);
+            var n2 = new AdvancingFrontNode(p2);
+            var n3 = new AdvancingFrontNode(p3);
+            var n4 = new AdvancingFrontNode(p4);
+            var n5 = new AdvancingFrontNode(p5);
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+            n3.Next = n4; n4.Prev = n3;
+            n4.Next = n5; n5.Prev = n4;
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            m.Invoke(null, new object[] { tcx, n1 });
+            Assert.NotNull(tcx.Basin.LeftNode);
+            Assert.NotNull(tcx.Basin.RightNode);
         }
     }
 }

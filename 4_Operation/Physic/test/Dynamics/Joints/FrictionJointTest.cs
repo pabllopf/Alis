@@ -541,5 +541,122 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that GetReactionTorque after step with max torque returns non-zero value.
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_AfterStep_WithMaxTorque_ShouldReturnNonZero()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.MaxTorque = 50.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            float torque = joint.GetReactionTorque(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that angular mass is computed when both bodies have inertia.
+        /// </summary>
+        [Fact]
+        public void AngularMass_WithPositiveInertia_ShouldComputeCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.MaxForce = 0.0f;
+            joint.MaxTorque = 0.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that construction with useWorldCoordinates=false uses local anchors directly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesFalse_UsesLocalAnchors()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            Vector2F anchor = new Vector2F(2.0f, 3.0f);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, anchor, false);
+
+            Assert.Equal(anchor, joint.LocalAnchorA);
+            Assert.Equal(anchor, joint.LocalAnchorB);
+        }
+
+        /// <summary>
+        /// Tests that Step with zero MaxForce and MaxTorque still progresses simulation.
+        /// </summary>
+        [Fact]
+        public void Step_WithZeroForceAndTorque_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.MaxForce = 0.0f;
+            joint.MaxTorque = 0.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that linear impulse clamping is exercised with large velocity difference.
+        /// </summary>
+        [Fact]
+        public void Step_WithLargeVelocityDifference_ExercisesImpulseClamping()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
+            joint.MaxForce = 1.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 60; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
     }
 }

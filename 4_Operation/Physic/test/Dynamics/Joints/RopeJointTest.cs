@@ -407,7 +407,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that get reaction force after step should not throw
+        ///     Tests that get reaction force after step should not throw
         /// </summary>
         [Fact]
         public void GetReactionForce_AfterStep_ShouldNotThrow()
@@ -429,6 +429,171 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             }
 
             Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        ///     Tests that Step with bodies at the same position exercises the short length branch.
+        /// </summary>
+        [Fact]
+        public void Step_WithSamePosition_ShouldHitShortLengthBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        ///     Tests that Step with bodies beyond max length exercises the active constraint (c > 0) branch.
+        /// </summary>
+        [Fact]
+        public void Step_WithBodiesConstrained_ShouldActivateConstraint()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-3.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(3.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            joint.MaxLength = 1.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(LimitState.AtUpper, joint.State);
+        }
+
+        /// <summary>
+        ///     Tests that Step with warm starting enabled exercises the warm starting path.
+        /// </summary>
+        [Fact]
+        public void Step_WithWarmStarting_ExercisesWarmStartPath()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.5f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.5f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            joint.MaxLength = 0.5f;
+            world.Add(joint);
+
+            for (int i = 0; i < 5; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Vector2F force = joint.GetReactionForce(60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        ///     Tests that State becomes AtUpper when length exceeds MaxLength.
+        /// </summary>
+        [Fact]
+        public void State_WithLengthExceedingMaxLength_ShouldBeAtUpper()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-2.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            joint.MaxLength = 1.0f;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(LimitState.AtUpper, joint.State);
+        }
+
+        /// <summary>
+        ///     Tests that the constructor with useWorldCoordinates=true transforms anchors correctly.
+        /// </summary>
+        [Fact]
+        public void Constructor_WithUseWorldCoordinatesTrue_TransformsAnchors()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(5.0f, 0.0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(15.0f, 0.0f), 0f, BodyType.Dynamic);
+            Vector2F worldAnchorA = new Vector2F(7.0f, 2.0f);
+            Vector2F worldAnchorB = new Vector2F(17.0f, 2.0f);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, worldAnchorA, worldAnchorB, true);
+
+            Assert.Equal(new Vector2F(2.0f, 2.0f), joint.LocalAnchorA);
+            Assert.Equal(new Vector2F(2.0f, 2.0f), joint.LocalAnchorB);
+        }
+
+        /// <summary>
+        ///     Tests that the GetReactionForce after step returns a force vector.
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_AfterStep_ReturnsForceVector()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-2.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            joint.MaxLength = 1.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Vector2F force = joint.GetReactionForce(60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        ///     Tests that SolvePositionConstraints returns a valid result.
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_ReturnsValidResult()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
             Assert.NotNull(joint);
         }
     }

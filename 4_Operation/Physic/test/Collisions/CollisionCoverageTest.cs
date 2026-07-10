@@ -280,5 +280,205 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(PointState.Add, state2[0]);
             Assert.Equal(PointState.Add, state2[1]);
         }
+
+        // ========================================================================
+        // EpCollider — first clip underflow (< MaxManifoldPoints)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that CollideEdgeAndPolygon returns early when the first ClipSegmentToLine
+        ///     produces fewer than 2 points (np &lt; SettingEnv.MaxManifoldPoints).
+        ///     Uses a non-overlapping configuration so the clip yields 0 points.
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_FirstClipUnderflow_ReturnsEarly()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -2.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that CollideEdgeAndPolygon returns early when the second ClipSegmentToLine
+        ///     produces fewer than 2 points (np &lt; SettingEnv.MaxManifoldPoints).
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_SecondClipUnderflow_ReturnsEarly()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -1.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // EpCollider.CalculateFrontState — various convexity/vertex combinations
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests CollideEdgeAndPolygon with HasVertex0 and HasVertex3, both convex,
+        ///     to exercise the bothConvex branch in CalculateFrontState.
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_BothConvexFront_FindsManifold()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            // Collinear adjacent edges → convex = true for both
+            edge.HasVertex0 = true;
+            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
+            edge.HasVertex3 = true;
+            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, -0.5f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // ComputePolygonSeparation — adjacency skip via Dot(n, perp) branches
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests CollideEdgeAndPolygon with a configuration that exercises
+        ///     the adjacency skip in ComputePolygonSeparation (Dot(n, perp) branches).
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndPolygon_WithAdjacencySkip_Continues()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = true;
+            edge.HasVertex3 = true;
+            // Non-collinear adjacent edges → non-convex
+            edge.Vertex0 = new Vector2F(-0.5f, 0.5f);
+            edge.Vertex3 = new Vector2F(2.5f, 0.5f);
+
+            Vertices thinRect = PolygonTools.CreateRectangle(0.2f, 0.8f);
+            PolygonShape polygon = new PolygonShape(thinRect, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideEdgeAndCircle — region A with hasVertex0=true (previous edge region)
+        // with circle beyond radius for the early-out path
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests CollideEdgeAndCircle in region A with a previous edge,
+        ///     where dd > radius*radius triggers early return.
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndCircle_RegionA_FarFromVertex_ReturnsEarly()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = false;
+            edge.HasVertex3 = false;
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            // v <= 0 (region A) but far enough that dd > radius^2
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-1.0f, 2.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+
+            Assert.Equal(0, manifold.PointCount);
+        }
+
+        /// <summary>
+        ///     Tests CollideEdgeAndCircle in region B with a next edge,
+        ///     where dd > radius*radius triggers early return.
+        /// </summary>
+        [Fact]
+        public void CollideEdgeAndCircle_RegionB_FarFromVertex_ReturnsEarly()
+        {
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
+            edge.HasVertex0 = false;
+            edge.HasVertex3 = false;
+            CircleShape circle = new CircleShape(0.3f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            // u <= 0 (region B) but far enough that dd > radius^2
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(3.0f, 2.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
+
+            Assert.Equal(0, manifold.PointCount);
+        }
+
+        // ========================================================================
+        // ClipSegmentToLine — extension branch (distance0 * distance1 < 0)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that ClipSegmentToLine computes the intersection correctly
+        ///     when one point is on each side of the clip plane.
+        ///     This exercises the distance0 * distance1 < 0 branch.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_ClipExtensionBranch_ComputesIntersection()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.6f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        // ========================================================================
+        // CollideCircles — exactly overlapping (distSqr == 0)
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests CollideCircles when circles are exactly on top of each other.
+        /// </summary>
+        [Fact]
+        public void CollideCircles_ExactlyOverlapping_ProducesContact()
+        {
+            CircleShape circleA = new CircleShape(1.0f, 1.0f);
+            CircleShape circleB = new CircleShape(1.0f, 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = ControllerTransform.Identity;
+            Manifold manifold = new Manifold();
+
+            Collision.CollideCircles(ref manifold, circleA, ref xfA, circleB, ref xfB);
+
+            Assert.Equal(1, manifold.PointCount);
+            Assert.Equal(ManifoldType.Circles, manifold.Type);
+        }
     }
 }

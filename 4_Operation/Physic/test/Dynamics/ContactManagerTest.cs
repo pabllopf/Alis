@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
@@ -152,6 +153,45 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.True(postSolveCount > 0);
+        }
+
+        [Fact]
+        public void Collide_WithNoContacts_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void FindNewContacts_AfterStep_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void DestroyContact_WithMultipleOverlappingBodies_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(-0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            world.Remove(bodyA);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
         }
     }
 }

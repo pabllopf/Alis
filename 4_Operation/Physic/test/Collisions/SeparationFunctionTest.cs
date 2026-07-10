@@ -204,10 +204,10 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that evaluate with face B mode should return finite separation
+        /// Tests that evaluate with face a mode should return finite separation
         /// </summary>
         [Fact]
-        public void Evaluate_WithFaceBMode_ShouldReturnFiniteSeparation()
+        public void Evaluate_WithFaceAMode_ShouldReturnFiniteSeparation()
         {
             PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
             PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
@@ -218,15 +218,65 @@ namespace Alis.Core.Physic.Test.Collisions
 
             SimplexCache cache = new SimplexCache { Count = 2 };
             cache.IndexA[0] = 0;
+            cache.IndexA[1] = 1;
+            cache.IndexB[0] = 0;
+            cache.IndexB[1] = 0;
+
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+            float s = SeparationFunction.Evaluate(-1, 0, 0.0f);
+
+            Assert.False(float.IsNaN(s));
+            Assert.False(float.IsInfinity(s));
+        }
+
+        /// <summary>
+        /// Tests that Set with FaceA mode does not flip axis when s >= 0 (faceA without flip).
+        /// </summary>
+        [Fact]
+        public void Set_WithFaceAMode_ShouldNotFlipAxis_WhenPointBIsBelowPointA()
+        {
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = new Vector2F(0.0f, -3.0f), C = new Vector2F(0.0f, -3.0f), LocalCenter = Vector2F.Zero };
+
+            SimplexCache cache = new SimplexCache { Count = 2 };
+            cache.IndexA[0] = 0;
+            cache.IndexA[1] = 1;
+            cache.IndexB[0] = 0;
+            cache.IndexB[1] = 0;
+
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+
+            Assert.False(float.IsNaN(separation));
+        }
+
+        /// <summary>
+        /// Tests that Set with FaceB mode does not flip axis when s >= 0.
+        /// </summary>
+        [Fact]
+        public void Set_WithFaceBMode_ShouldNotFlipAxis_WhenPointAIsBelowPointB()
+        {
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = new Vector2F(0.0f, -3.0f), C = new Vector2F(0.0f, -3.0f), LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+
+            SimplexCache cache = new SimplexCache { Count = 2 };
+            cache.IndexA[0] = 0;
             cache.IndexA[1] = 0;
             cache.IndexB[0] = 0;
             cache.IndexB[1] = 1;
 
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float s = SeparationFunction.Evaluate(0, 0, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
 
-            Assert.False(float.IsNaN(s));
-            Assert.False(float.IsInfinity(s));
+            Assert.False(float.IsNaN(separation));
         }
 
         /// <summary>
@@ -252,6 +302,8 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(float.IsNaN(s));
             Assert.False(float.IsInfinity(s));
         }
+
+
     }
 }
 

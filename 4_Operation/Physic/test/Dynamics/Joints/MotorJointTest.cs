@@ -593,5 +593,151 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that GetReactionTorque after step with max torque returns a value.
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_AfterStep_WithMaxTorque_ReturnsValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxTorque = 50.0f;
+            joint.MaxForce = 0.0f;
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            float torque = joint.GetReactionTorque(1.0f / 60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that motor joint with large linear offset and max force exercises linear friction clamping.
+        /// </summary>
+        [Fact]
+        public void Step_WithLargeLinearOffset_ExercisesLinearClamping()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            joint.MaxForce = 500.0f;
+            joint.LinearOffset = new Vector2F(10.0f, 10.0f);
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that angular mass is zero when both bodies have no inertia.
+        /// </summary>
+        [Fact]
+        public void AngularMass_WithNoInertia_HandlesCorrectly()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Equal(0.0f, joint.GetReactionTorque(1.0f));
+            Assert.Equal(Vector2F.Zero, joint.GetReactionForce(1.0f));
+        }
+
+        /// <summary>
+        /// Tests that AngularOffset set with new value wakes bodies and updates offset.
+        /// </summary>
+        [Fact]
+        public void AngularOffset_SetDifferentValue_ShouldWakeBodies()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.AngularOffset = 0.3f;
+
+            Assert.Equal(0.3f, joint.AngularOffset);
+        }
+
+        /// <summary>
+        /// Tests that LinearOffset set with new value wakes bodies and updates offset.
+        /// </summary>
+        [Fact]
+        public void LinearOffset_SetDifferentValue_ShouldWakeBodies()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            joint.LinearOffset = new Vector2F(1.0f, 2.0f);
+
+            Assert.Equal(new Vector2F(1.0f, 2.0f), joint.LinearOffset);
+        }
+
+        /// <summary>
+        /// Tests that the constructor initializes correction factor to 0.3.
+        /// </summary>
+        [Fact]
+        public void Constructor_ShouldInitializeCorrectionFactor()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            Assert.Equal(0.3f, joint.CorrectionFactor);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorA set updates linear error (not position).
+        /// </summary>
+        [Fact]
+        public void WorldAnchorA_Set_UpdatesLinearError()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            Vector2F original = joint.WorldAnchorA;
+
+            joint.WorldAnchorA = new Vector2F(10.0f, 20.0f);
+
+            Vector2F afterSet = joint.WorldAnchorA;
+            Assert.Equal(original, afterSet);
+        }
+
+        /// <summary>
+        /// Tests that WorldAnchorB set updates linear error (not position).
+        /// </summary>
+        [Fact]
+        public void WorldAnchorB_Set_UpdatesLinearError()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            Vector2F original = joint.WorldAnchorB;
+
+            joint.WorldAnchorB = new Vector2F(10.0f, 20.0f);
+
+            Vector2F afterSet = joint.WorldAnchorB;
+            Assert.Equal(original, afterSet);
+        }
     }
 }

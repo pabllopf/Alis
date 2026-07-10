@@ -259,5 +259,83 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.Validate();
             Assert.True(tree.Height > 0);
         }
+
+        [Fact]
+        public void FindBestSibling_WithTwoProxies_ReturnsBestSibling()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(10.0f, 10.0f), new Vector2F(12.0f, 12.0f));
+            tree.AddProxy(ref aabb1);
+            tree.AddProxy(ref aabb2);
+
+            Aabb leafAabb = new Aabb(new Vector2F(1.0f, 1.0f), new Vector2F(3.0f, 3.0f));
+            int sibling = tree.FindBestSibling(leafAabb);
+
+            Assert.True(sibling >= 0);
+        }
+
+        [Fact]
+        public void ComputeChildCost_LeafAndInternal_ReturnsDifferentCost()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(2.0f, 0.0f), new Vector2F(3.0f, 1.0f));
+            int proxy1 = tree.AddProxy(ref aabb1);
+            int proxy2 = tree.AddProxy(ref aabb2);
+
+            float cost = tree.ComputeChildCost(proxy1, new Aabb(new Vector2F(0.5f, 0.5f), new Vector2F(2.5f, 1.5f)), 1.0f);
+
+            Assert.True(cost >= 0);
+        }
+
+        [Fact]
+        public void RemoveLeaf_WithGrandParent_ExercisesFullRemoval()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                tree.AddProxy(ref aabb);
+            }
+
+            // Remove proxy 4 which has a grandparent in the tree
+            tree.RemoveProxy(4);
+
+            tree.Validate();
+            Assert.True(tree.Height >= 0);
+        }
+
+        [Fact]
+        public void Balance_WithImbalancedTree_TriggersRotation()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 50; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.5f, 0.0f),
+                    new Vector2F(i * 0.5f + 0.4f, 0.4f));
+                tree.AddProxy(ref aabb);
+            }
+
+            int balance = tree.MaxBalance;
+            tree.Validate();
+            Assert.True(balance >= 0);
+        }
+
+        [Fact]
+        public void AttachNewParent_WhenSiblingIsRoot_UpdatesRoot()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            Aabb aabb2 = new Aabb(new Vector2F(10.0f, 10.0f), new Vector2F(12.0f, 12.0f));
+            tree.AddProxy(ref aabb1);
+            tree.AddProxy(ref aabb2);
+
+            tree.Validate();
+            Assert.True(tree.Height > 0);
+        }
     }
 }

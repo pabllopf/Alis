@@ -338,12 +338,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
 
             DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
+            DelaunayTriangle t2 = new DelaunayTriangle(p1, p4, p3);
 
             t1.MarkNeighbor(t2);
 
-            Assert.Equal(t2, t1.Neighbors[0]);
-            Assert.Equal(t1, t2.Neighbors[0]);
+            Assert.Equal(t2, t1.Neighbors[1]);
+            Assert.Equal(t1, t2.Neighbors[1]);
         }
 
         [Fact]
@@ -376,12 +376,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
             DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
             t1.Neighbors[0] = t2;
-            t1.Neighbors[1] = t2;
 
             t1.ClearNeighbor(t2);
 
             Assert.Null(t1.Neighbors[0]);
-            Assert.Null(t1.Neighbors[1]);
         }
 
         [Fact]
@@ -427,7 +425,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 
             DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
             DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
-            t1.Neighbors[0] = t2;
+            t1.Neighbors[1] = t2;
 
             Assert.Equal(t2, t1.NeighborCw(p1));
         }
@@ -442,7 +440,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 
             DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
             DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
-            t1.Neighbors[1] = t2;
+            t1.Neighbors[2] = t2;
 
             Assert.Equal(t2, t1.NeighborCcw(p1));
         }

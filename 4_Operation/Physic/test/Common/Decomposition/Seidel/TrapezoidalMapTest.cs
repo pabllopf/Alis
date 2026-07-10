@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
 
         // ========================================================================
-        // Additional coverage — epsilon branches, chained Case3/Case4, BoundingBox
+        // Additional coverage — epsilon branches, BoundingBox
         // ========================================================================
 
         /// <summary>
@@ -246,38 +246,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        ///     Tests Case3 when _cross and _bCross are set (chained from Case2),
-        ///     exercising both the _cross == t.Top and _bCross == t.Bottom true branches.
-        /// </summary>
-        [Fact]
-        public void Case3_WhenChainedFromCase2_ShouldUseExistingCross()
-        {
-            TrapezoidalMap map = new TrapezoidalMap();
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(10, 0);
-            Point p3 = new Point(10, 10);
-            Point p4 = new Point(0, 10);
-            Trapezoid t = new Trapezoid(p1, p2, new Edge(p4, p3), new Edge(p1, p2));
-
-            // First call Case2 to set _cross and _bCross
-            Edge edge1 = new Edge(new Point(2, 5), new Point(15, 5));
-            Trapezoid[] case2Result = map.Case2(t, edge1);
-            // trapezoids[0] has the same Top and Bottom as original t
-            // _cross = t.Top, _bCross = t.Bottom
-
-            // Now call Case3 on trapezoids[0] from Case2
-            // This should have _cross == trapezoids[0].Top (TRUE) and _bCross == trapezoids[0].Bottom (TRUE)
-            Edge edge2 = new Edge(new Point(3, 6), new Point(7, 6));
-            Trapezoid[] result = map.Case3(case2Result[0], edge2);
-
-            Assert.Equal(2, result.Length);
-            Assert.NotNull(result[0]);
-            Assert.NotNull(result[1]);
-        }
-
-        /// <summary>
         ///     Tests Case3 when epsilon comparisons for left/right points are false
         ///     (edge endpoints don't align with trapezoid left/right boundaries).
+        ///     This exercises the else branches for both epsilon checks.
         /// </summary>
         [Fact]
         public void Case3_WhenEdgeInsideTrapezoid_ShouldUseTrapezoidPoints()
@@ -297,34 +268,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Assert.Equal(2, result.Length);
             Assert.NotNull(result[0]);
             Assert.NotNull(result[1]);
-        }
-
-        /// <summary>
-        ///     Tests Case4 when _cross == t.Top is true (chained from Case2).
-        /// </summary>
-        [Fact]
-        public void Case4_WhenChainedFromCase2_CrossMatch_ShouldUseExistingCross()
-        {
-            TrapezoidalMap map = new TrapezoidalMap();
-            Point p1 = new Point(0, 0);
-            Point p2 = new Point(10, 0);
-            Point p3 = new Point(10, 10);
-            Point p4 = new Point(0, 10);
-            Trapezoid t = new Trapezoid(p1, p2, new Edge(p4, p3), new Edge(p1, p2));
-
-            // First call Case2 to set _cross and _bCross
-            Edge edge1 = new Edge(new Point(2, 5), new Point(15, 5));
-            Trapezoid[] case2Result = map.Case2(t, edge1);
-
-            // Call Case4 on trapezoids[0] from Case2
-            // _cross == trapezoids[0].Top (TRUE), _bCross == trapezoids[0].Bottom (TRUE)
-            Edge edge2 = new Edge(new Point(-5, 6), new Point(7, 6));
-            Trapezoid[] result = map.Case4(case2Result[0], edge2);
-
-            Assert.Equal(3, result.Length);
-            Assert.NotNull(result[0]);
-            Assert.NotNull(result[1]);
-            Assert.NotNull(result[2]);
         }
 
         /// <summary>
@@ -381,6 +324,135 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
             Assert.True(result.RightPoint.X >= 9.0f); // max X plus margin
             Assert.True(result.Bottom.P.Y <= 2.0f); // min Y minus margin
             Assert.True(result.Top.P.Y >= 7.0f); // max Y plus margin
+        }
+
+        // ========================================================================
+        // Case3 — true branches for _cross and _bCross
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests Case3 when _cross == t.Top and _bCross == t.Bottom (both true).
+        ///     Calls Case2 first to set the internal cross fields, then invokes Case3
+        ///     with a new trapezoid sharing the same top/bottom edges.
+        /// </summary>
+        [Fact]
+        public void Case3_WhenCrossAndBCrossMatch_UpdatesExistingTrapezoids()
+        {
+            TrapezoidalMap map = new TrapezoidalMap();
+            Point tp1 = new Point(0, 10);
+            Point tp2 = new Point(10, 10);
+            Point bp1 = new Point(0, 0);
+            Point bp2 = new Point(10, 0);
+            Edge topEdge = new Edge(tp1, tp2);
+            Edge bottomEdge = new Edge(bp1, bp2);
+            Point left = new Point(0, 0);
+            Point right = new Point(10, 0);
+            Trapezoid t1 = new Trapezoid(left, right, topEdge, bottomEdge);
+
+            // Case2 sets _cross = t1.Top and _bCross = t1.Bottom
+            Edge e1 = new Edge(new Point(2, 5), new Point(15, 5));
+            map.Case2(t1, e1);
+
+            // Build a second trapezoid with the same top/bottom edges
+            Trapezoid tUpperLeft = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tLowerLeft = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tUpperRight = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tLowerRight = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid t2 = new Trapezoid(left, right, topEdge, bottomEdge)
+            {
+                UpperLeft = tUpperLeft,
+                LowerLeft = tLowerLeft,
+                UpperRight = tUpperRight,
+                LowerRight = tLowerRight
+            };
+
+            Edge e2 = new Edge(new Point(3, 6), new Point(7, 6));
+            Trapezoid[] result = map.Case3(t2, e2);
+
+            Assert.Equal(2, result.Length);
+            Assert.NotNull(result[0]);
+            Assert.NotNull(result[1]);
+        }
+
+        // ========================================================================
+        // Case4 — true branches for _cross and _bCross
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests Case4 when _cross == t.Top and _bCross == t.Bottom (both true).
+        ///     Calls Case2 first to set the internal cross fields, then invokes Case4
+        ///     with a new trapezoid sharing the same top/bottom edges.
+        /// </summary>
+        [Fact]
+        public void Case4_WhenCrossAndBCrossMatch_UpdatesExistingTrapezoids()
+        {
+            TrapezoidalMap map = new TrapezoidalMap();
+            Point tp1 = new Point(0, 10);
+            Point tp2 = new Point(10, 10);
+            Point bp1 = new Point(0, 0);
+            Point bp2 = new Point(10, 0);
+            Edge topEdge = new Edge(tp1, tp2);
+            Edge bottomEdge = new Edge(bp1, bp2);
+            Point left = new Point(0, 0);
+            Point right = new Point(10, 0);
+            Trapezoid t1 = new Trapezoid(left, right, topEdge, bottomEdge);
+
+            // Case2 sets _cross = t1.Top and _bCross = t1.Bottom
+            Edge e1 = new Edge(new Point(2, 5), new Point(15, 5));
+            map.Case2(t1, e1);
+
+            // Build a second trapezoid with the same top/bottom edges
+            Trapezoid tUpperLeft = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tLowerLeft = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tUpperRight = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid tLowerRight = new Trapezoid(left, right, topEdge, bottomEdge);
+            Trapezoid t2 = new Trapezoid(left, right, topEdge, bottomEdge)
+            {
+                UpperLeft = tUpperLeft,
+                LowerLeft = tLowerLeft,
+                UpperRight = tUpperRight,
+                LowerRight = tLowerRight
+            };
+
+            // Case4 edge: P is outside (left of trapezoid), Q is inside
+            Edge e2 = new Edge(new Point(-3, 6), new Point(7, 6));
+            Trapezoid[] result = map.Case4(t2, e2);
+
+            Assert.Equal(3, result.Length);
+            Assert.NotNull(result[0]);
+            Assert.NotNull(result[1]);
+            Assert.NotNull(result[2]);
+        }
+
+        // ========================================================================
+        // BoundingBox — comprehensive edge set to exercise all UpdateMax/UpdateMin branches
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests BoundingBox with a set of edges specifically chosen to hit all
+        ///     four UpdateMax branches (P.X, P.Y, Q.X, Q.Y) and all four UpdateMin branches.
+        /// </summary>
+        [Fact]
+        public void BoundingBox_WithExtremeEdges_HitsAllUpdateBranches()
+        {
+            TrapezoidalMap map = new TrapezoidalMap();
+            List<Edge> edges = new List<Edge>
+            {
+                new Edge(new Point(10, 10), new Point(20, 5)),
+                new Edge(new Point(70, 80), new Point(130, 30)),
+                new Edge(new Point(50, 50), new Point(60, 200)),
+                new Edge(new Point(-50, -60), new Point(-40, -55)),
+                new Edge(new Point(-30, -30), new Point(-250, -50)),
+                new Edge(new Point(-80, -80), new Point(-90, -300))
+            };
+
+            Trapezoid result = map.BoundingBox(edges);
+
+            Assert.NotNull(result);
+            Assert.NotNull(result.LeftPoint);
+            Assert.NotNull(result.RightPoint);
+            Assert.NotNull(result.Top);
+            Assert.NotNull(result.Bottom);
         }
     }
 }

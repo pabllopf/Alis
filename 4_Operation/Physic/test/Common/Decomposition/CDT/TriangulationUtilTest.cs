@@ -75,5 +75,164 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
 
             Assert.Equal(Orientation.Collinear, result);
         }
+
+        /// <summary>
+        /// Tests that Orient2d with clockwise points should return clockwise.
+        /// </summary>
+        [Fact]
+        public void Orient2d_WithClockwisePoints_ShouldReturnClockwise()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(0.0, 1.0);
+            TriangulationPoint pc = new TriangulationPoint(1.0, 0.0);
+
+            Orientation result = TriangulationUtil.Orient2d(pa, pb, pc);
+
+            Assert.Equal(Orientation.Cw, result);
+        }
+
+        /// <summary>
+        /// Tests that SmartIncircle returns true when point is inside the circle.
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_WithPointInsideCircle_ReturnsTrue()
+        {
+            TriangulationPoint pa = new TriangulationPoint(-1.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 2.0);
+            TriangulationPoint pd = new TriangulationPoint(0.0, 1.0);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that SmartIncircle returns false when point is on the circle edge.
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_WithPointOnEdge_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(-1.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pd = new TriangulationPoint(0.5, 0.0);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that SmartIncircle returns false when oabd <= 0.
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_WhenOabdNonPositive_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 1.0);
+            TriangulationPoint pd = new TriangulationPoint(2.0, 2.0);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that SmartIncircle returns false when ocad <= 0.
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_WhenOcadNonPositive_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(2.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(1.0, -0.5);
+            TriangulationPoint pd = new TriangulationPoint(1.0, 1.0);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        /// Tests that InScanArea returns true when point is in scan area.
+        /// </summary>
+        [Fact]
+        public void InScanArea_WithPointInside_ReturnsTrue()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(2.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 2.0);
+            TriangulationPoint pd = new TriangulationPoint(0.5, 0.5);
+
+            bool result = TriangulationUtil.InScanArea(pa, pb, pc, pd);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that InScanArea returns false when point is outside.
+        /// </summary>
+        [Fact]
+        public void InScanArea_WithPointOutside_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(2.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 2.0);
+            TriangulationPoint pd = new TriangulationPoint(-1.0, -1.0);
+
+            bool result = TriangulationUtil.InScanArea(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that InScanArea returns false when the second check (oadc) fails.
+        /// </summary>
+        [Fact]
+        public void InScanArea_WhenOadcFails_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(4.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(0.0, 4.0);
+            TriangulationPoint pd = new TriangulationPoint(0.0, 2.0);
+
+            bool result = TriangulationUtil.InScanArea(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that SmartIncircle returns true when det > 0 (inside circumcircle).
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_DetGreaterThanZero_ReturnsTrue()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(2.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(1.0, 2.0);
+            TriangulationPoint pd = new TriangulationPoint(1.0, 0.5);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that SmartIncircle returns false when det <= 0 (on/outside circumcircle).
+        /// </summary>
+        [Fact]
+        public void SmartIncircle_DetNonPositive_ReturnsFalse()
+        {
+            TriangulationPoint pa = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint pb = new TriangulationPoint(2.0, 0.0);
+            TriangulationPoint pc = new TriangulationPoint(1.0, 2.0);
+            TriangulationPoint pd = new TriangulationPoint(1.0, 3.0);
+
+            bool result = TriangulationUtil.SmartIncircle(pa, pb, pc, pd);
+
+            Assert.False(result);
+        }
     }
 }

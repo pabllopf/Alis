@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
@@ -238,6 +239,105 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        [Fact]
+        public void Destroy_WhenNotTouching_DoesNotFireSeparation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            contact.IsTouching = false;
+
+            world.ContactManager.Destroy(contact);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
+        }
+
+        [Fact]
+        public void RemoveFromBody_WithSingleContact_UpdatesLists()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            world.Remove(bodyA);
+
+            Assert.Null(bodyA.ContactList);
+        }
+
+        [Fact]
+        public void Collide_MultiCore_WithSingleProcessor_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+                BindingFlags.Instance | BindingFlags.Public);
+            field.SetValue(world.ContactManager, 0);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void NotifySeparation_WithAllHandlersNull_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            bodyA.SetTransform(new Vector2F(1000f, 1000f), 0f);
+            bodyB.SetTransform(new Vector2F(2000f, 2000f), 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void TryResolveContactFilter_WithoutFilterFlag_ReturnsFalse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            joint.CollideConnected = true;
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void AddPair_BodiesSameFixture_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount >= 0);
         }
     }
 }

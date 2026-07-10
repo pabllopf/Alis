@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -479,6 +480,128 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
 
             Assert.True(area > 0);
+        }
+
+        /// <summary>
+        ///     Tests that RayCast returns false when the ray is parallel and outside the polygon (denominator near zero, numerator < 0).
+        /// </summary>
+        [Fact]
+        public void RayCast_ParallelOutside_ReturnsFalse()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            // Ray parallel to the right edge, starting outside to the right
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(15, 5),
+                Point2 = new Vector2F(25, 5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that RayCast returns false when upper < lower during iteration.
+        /// </summary>
+        [Fact]
+        public void RayCast_UpperLessThanLower_ReturnsFalse()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            // Ray that would make upper cross lower
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5, -5),
+                Point2 = new Vector2F(15, 15),
+                MaxFraction = 0.1f
+            };
+
+            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        ///     Tests that ComputeSubmergedArea with diveCount = 1 adjusts indices correctly.
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_SingleDive_AdjustsIndices()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            // Water level that cuts through creating exactly one dive transition
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 1.5f, ref transform, out Vector2F sc);
+
+            Assert.True(area >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that ComputeSubmergedArea with diveCount = 1 and intoIndex == -1 triggers the intoIndex adjustment.
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_SingleDiveIntoIndexMinusOne_AdjustsCorrectly()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(2, 2), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, 1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, 1.0f, ref transform, out Vector2F sc);
+
+            Assert.True(area >= 0);
+        }
+
+        /// <summary>
+        ///     Tests that TestPoint returns false for a point outside a rotated polygon.
+        /// </summary>
+        [Fact]
+        public void TestPoint_WithRotatedTransform_Outside_ReturnsFalse()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(10, 0), new Vector2F(10, 10), new Vector2F(0, 10) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = new ControllerTransform(new Vector2F(5, 5), (float)Math.PI / 4);
+            Vector2F point = new Vector2F(0, 0);
+
+            bool inside = polygon.TestPoint(ref transform, ref point);
+
+            Assert.False(inside);
+        }
+
+        /// <summary>
+        ///     Tests that ComputeSubmergedArea with bottom-up normal and water below everything returns zero.
+        /// </summary>
+        [Fact]
+        public void ComputeSubmergedArea_NormalDown_WaterBelow_ReturnsZero()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(0, 2) };
+            PolygonShape polygon = new PolygonShape(vertices, 1.0f);
+            ControllerTransform transform = ControllerTransform.Identity;
+            Vector2F normal = new Vector2F(0, -1);
+
+            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F sc);
+
+            Assert.Equal(0, area);
+        }
+
+        /// <summary>
+        ///     Tests that the internal parameterless constructor initializes correctly.
+        /// </summary>
+        [Fact]
+        public void InternalConstructor_ShouldInitializeCorrectly()
+        {
+            PolygonShape polygon = new PolygonShape();
+
+            Assert.Equal(ShapeType.Polygon, polygon.ShapeType);
+            Assert.NotNull(polygon.Vertices);
+            Assert.NotNull(polygon.Normals);
         }
     }
 }

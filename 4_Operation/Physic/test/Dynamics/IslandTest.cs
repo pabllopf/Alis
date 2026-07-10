@@ -264,6 +264,151 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(postSolveCount > 0);
         }
+
+        [Fact]
+        public void Reset_ExpandsBodiesBuffer_WhenCapacityExceedsInitial()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(1, 1, 1, contactManager);
+            Body[] originalBodies = island.Bodies;
+
+            island.Reset(50, 1, 1, contactManager);
+
+            Assert.NotSame(originalBodies, island.Bodies);
+        }
+
+        [Fact]
+        public void IntegratePositions_WithHighVelocity_ClampsTranslation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.LinearVelocityInternal = new Vector2F(5000f, 0f);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(body.Position.X < 10f);
+        }
+
+        [Fact]
+        public void IntegratePositions_WithHighAngularVelocity_ClampsRotation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.AngularVelocity = 500f;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void UpdateSleepState_ResetsSleepTime_WhenVelocityExceedsTolerance()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.LinearVelocityInternal = new Vector2F(0.1f, 0f);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void SolveToi_ShouldNotThrow_WhenCalledThroughStep()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+        [Fact]
+        public void IntegrateVelocities_WithIgnoreGravity_SkipsGravity()
+        {
+            WorldPhysic world = new WorldPhysic(new Vector2F(0f, -9.80665f));
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.IgnoreGravity = true;
+            Vector2F startPos = body.Position;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(startPos, body.Position);
+        }
+
+        [Fact]
+        public void IntegratePositions_WithHighAngularVelocity_ClampsRotationValue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.AngularVelocity = 500f;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(body.Rotation < 50f);
+        }
+
+        [Fact]
+        public void UpdateSleepState_WithStationaryBodies_EventuallySleeps()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = true;
+
+            for (int i = 0; i < 300; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.False(body.Awake);
+        }
+
+        [Fact]
+        public void Solve_WithDisabledJoint_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            joint.Enabled = false;
+            world.Add(joint);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void SolvePositionConstraints_WithNonOverlappingBodies_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(100f, 0f), BodyType.Dynamic);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+            Assert.Null(ex);
+        }
+
+        [Fact]
+        public void UpdateSleepState_WithSleepingNotAllowed_ResetsSleepTime()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = false;
+
+            for (int i = 0; i < 300; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.True(body.Awake);
+        }
     }
 }
 

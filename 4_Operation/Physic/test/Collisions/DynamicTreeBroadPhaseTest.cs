@@ -250,6 +250,184 @@ namespace Alis.Core.Physic.Test.Collisions
 
             broadPhase.ShiftOrigin(shift);
         }
+
+        /// <summary>
+        /// Tests that RemoveProxy marks the move buffer entry as null proxy.
+        /// </summary>
+        [Fact]
+        public void RemoveProxy_ShouldUnBufferMove()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(-1.0f, -1.0f), new Vector2F(1.0f, 1.0f));
+
+            int proxyId = broadPhase.AddProxy(ref aabb);
+            broadPhase.RemoveProxy(proxyId);
+
+            Assert.Equal(0, broadPhase.ProxyCount);
+        }
+
+        /// <summary>
+        /// Tests that AddProxy beyond initial move capacity triggers buffer growth.
+        /// </summary>
+        [Fact]
+        public void AddManyProxies_ShouldTriggerMoveBufferGrowth()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            for (int i = 0; i < 20; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                broadPhase.AddProxy(ref aabb);
+            }
+
+            Assert.Equal(20, broadPhase.ProxyCount);
+        }
+
+        /// <summary>
+        /// Tests that UpdatePairs with null proxy entries in move buffer skips them.
+        /// </summary>
+        [Fact]
+        public void UpdatePairs_WithRemovedProxies_SkipsNullProxies()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabbA = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            Aabb aabbB = new Aabb(new Vector2F(1.0f, 1.0f), new Vector2F(3.0f, 3.0f));
+
+            int proxyA = broadPhase.AddProxy(ref aabbA);
+            int proxyB = broadPhase.AddProxy(ref aabbB);
+            broadPhase.SetProxy(proxyA, ref proxyA);
+            broadPhase.SetProxy(proxyB, ref proxyB);
+
+            broadPhase.RemoveProxy(proxyB);
+            broadPhase.RemoveProxy(proxyA);
+
+            List<(int, int)> pairs = new List<(int, int)>();
+            broadPhase.UpdatePairs((idA, idB) => pairs.Add((idA, idB)));
+
+            Assert.Empty(pairs);
+        }
+
+        /// <summary>
+        /// Tests that QueryCallback self-match is skipped.
+        /// </summary>
+        [Fact]
+        public void Query_WithSameProxy_SkipsSelfMatch()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            int proxyId = broadPhase.AddProxy(ref aabb);
+            broadPhase.SetProxy(proxyId, ref proxyId);
+
+            List<int> hits = new List<int>();
+            Aabb query = new Aabb(new Vector2F(-1.0f, -1.0f), new Vector2F(3.0f, 3.0f));
+            broadPhase.Query(id =>
+            {
+                hits.Add(id);
+                return true;
+            }, ref query);
+
+            Assert.Single(hits);
+        }
+
+        /// <summary>
+        /// Tests that TestOverlap returns false for a removed proxy (comparing with itself).
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithRemovedProxy_DoesNotThrow()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            int proxyId = broadPhase.AddProxy(ref aabb);
+
+            broadPhase.RemoveProxy(proxyId);
+
+            Assert.Equal(0, broadPhase.ProxyCount);
+        }
+
+        /// <summary>
+        /// Tests that TreeQuality returns a valid value.
+        /// </summary>
+        [Fact]
+        public void TreeQuality_ShouldReturnValidValue()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            broadPhase.AddProxy(ref aabb);
+
+            Assert.True(broadPhase.TreeQuality >= 0);
+        }
+
+        /// <summary>
+        /// Tests that TreeBalance returns a valid value.
+        /// </summary>
+        [Fact]
+        public void TreeBalance_ShouldReturnValidValue()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            broadPhase.AddProxy(ref aabb);
+
+            Assert.True(broadPhase.TreeBalance >= 0);
+        }
+
+        /// <summary>
+        /// Tests that TreeHeight returns a valid value.
+        /// </summary>
+        [Fact]
+        public void TreeHeight_ShouldReturnValidValue()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            broadPhase.AddProxy(ref aabb);
+
+            Assert.True(broadPhase.TreeHeight >= 0);
+        }
+
+        /// <summary>
+        /// Tests that BufferMove grows capacity when exceeded.
+        /// </summary>
+        [Fact]
+        public void AddManyProxies_ShouldGrowBufferCapacity()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            for (int i = 0; i < 100; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                broadPhase.AddProxy(ref aabb);
+            }
+
+            Assert.Equal(100, broadPhase.ProxyCount);
+        }
+
+        /// <summary>
+        /// Tests that removing many proxies handles unbuffering correctly.
+        /// </summary>
+        [Fact]
+        public void RemoveManyProxies_ShouldHandleUnBuffer()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            int[] ids = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 2.0f, 0.0f),
+                    new Vector2F(i * 2.0f + 1.0f, 1.0f));
+                ids[i] = broadPhase.AddProxy(ref aabb);
+                broadPhase.SetProxy(ids[i], ref ids[i]);
+            }
+
+            for (int i = 0; i < 10; i++)
+            {
+                broadPhase.RemoveProxy(ids[i]);
+            }
+
+            List<(int, int)> pairs = new List<(int, int)>();
+            broadPhase.UpdatePairs((idA, idB) => pairs.Add((idA, idB)));
+            Assert.Empty(pairs);
+        }
     }
 }
 

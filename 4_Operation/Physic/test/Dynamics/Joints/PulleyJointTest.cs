@@ -504,5 +504,84 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Vector2F force = joint.GetReactionForce(100.0f);
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that stepping with warm starting enabled exercises the warm-start path.
+        /// </summary>
+        [Fact]
+        public void Step_WithWarmStarting_ExercisesWarmStart()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                1.0f);
+
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Vector2F force = joint.GetReactionForce(60.0f);
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that stepping with zero-length anchors (both uA and uB become zero) exercises the short-length branches.
+        /// </summary>
+        [Fact]
+        public void Step_WithZeroLengthBothAnchors_ExercisesShortBranches()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                Vector2F.Zero, Vector2F.Zero,
+                Vector2F.Zero, Vector2F.Zero,
+                1.0f);
+
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+
+            Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that stepping with mass > 0 in SolvePositionConstraints exercises the mass branch.
+        /// </summary>
+        [Fact]
+        public void Step_WithValidMass_ExercisesPositionMassBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(1.0f, 0.0f), BodyType.Dynamic);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                new Vector2F(0.0f, 1.0f),
+                new Vector2F(0.0f, -1.0f),
+                new Vector2F(0.0f, 2.0f),
+                new Vector2F(0.0f, -2.0f),
+                2.0f);
+
+            world.Add(joint);
+
+            for (int i = 0; i < 10; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(joint);
+        }
     }
 }

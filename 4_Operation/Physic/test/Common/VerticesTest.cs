@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Common;
 using Xunit;
@@ -706,6 +707,261 @@ namespace Alis.Core.Physic.Test.Common
             string result = empty.ToString();
 
             Assert.Equal(string.Empty, result);
+        }
+
+        /// <summary>
+        ///     Tests that Translate with holes also translates hole vertices.
+        /// </summary>
+        [Fact]
+        public void Translate_WithHoles_ShouldTranslateHoleVertices()
+        {
+            Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(2, 0), new Vector2F(1, 2) };
+            Vertices hole = new Vertices { new Vector2F(0.5f, 0.5f), new Vector2F(1.5f, 0.5f), new Vector2F(1, 1.5f) };
+            vertices.Holes = new List<Vertices> { hole };
+
+            vertices.Translate(new Vector2F(10, 10));
+
+            Assert.Equal(new Vector2F(10, 10), vertices[0]);
+            Assert.Equal(new Vector2F(10.5f, 10.5f), hole[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Scale with holes also scales hole vertices.
+        /// </summary>
+        [Fact]
+        public void Scale_WithHoles_ShouldScaleHoleVertices()
+        {
+            Vertices vertices = new Vertices { new Vector2F(1, 1), new Vector2F(3, 1), new Vector2F(2, 3) };
+            Vertices hole = new Vertices { new Vector2F(1.5f, 1.5f), new Vector2F(2.5f, 1.5f), new Vector2F(2, 2.5f) };
+            vertices.Holes = new List<Vertices> { hole };
+
+            vertices.Scale(new Vector2F(2, 2));
+
+            Assert.Equal(new Vector2F(2, 2), vertices[0]);
+            Assert.Equal(new Vector2F(3, 3), hole[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Rotate with holes also rotates hole vertices.
+        /// </summary>
+        [Fact]
+        public void Rotate_WithHoles_ShouldRotateHoleVertices()
+        {
+            Vertices vertices = new Vertices { new Vector2F(1, 0) };
+            Vertices hole = new Vertices { new Vector2F(0, 1) };
+            vertices.Holes = new List<Vertices> { hole };
+
+            vertices.Rotate((float)Math.PI / 2);
+
+            Assert.True(Math.Abs(vertices[0].X) < 0.001f);
+            Assert.True(Math.Abs(hole[0].X + 1) < 0.001f);
+        }
+
+        /// <summary>
+        ///     Tests that IsConvex returns false for a concave shape.
+        /// </summary>
+        [Fact]
+        public void IsConvex_ConcaveShape_ReturnsFalse()
+        {
+            Vertices concave = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(3, 0),
+                new Vector2F(3, 3),
+                new Vector2F(1, 1),
+                new Vector2F(0, 3)
+            };
+
+            Assert.False(concave.IsConvex());
+        }
+
+        /// <summary>
+        ///     Tests that GetArea returns correct area for CCW polygon.
+        /// </summary>
+        [Fact]
+        public void GetArea_WithNegativeSignedArea_ReturnsPositiveArea()
+        {
+            Vertices cwPolygon = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 1),
+                new Vector2F(1, 0)
+            };
+
+            float area = cwPolygon.GetArea();
+
+            Assert.True(area > 0);
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns SideTooSmall for polygon with degenerate edge.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_SideTooSmall_ReturnsError()
+        {
+            float tiny = SettingEnv.Epsilon * 0.5f;
+            Vertices withSmallEdge = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(tiny, 0),
+                new Vector2F(tiny, 3),
+                new Vector2F(0, 3)
+            };
+
+            PolygonError result = withSmallEdge.CheckPolygon();
+
+            Assert.Equal(PolygonError.SideTooSmall, result);
+        }
+
+        /// <summary>
+        ///     Tests that CheckPolygon returns NotCounterClockWise for CW polygon.
+        /// </summary>
+        [Fact]
+        public void CheckPolygon_Clockwise_ReturnsNotCounterClockWise()
+        {
+            Vertices cwPolygon = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 2),
+                new Vector2F(2, 0)
+            };
+
+            PolygonError result = cwPolygon.CheckPolygon();
+
+            Assert.Equal(PolygonError.NotCounterClockWise, result);
+        }
+
+        /// <summary>
+        ///     Tests that IsCounterClockWise returns false for clockwise polygon.
+        /// </summary>
+        [Fact]
+        public void IsCounterClockWise_ClockwisePolygon_ReturnsFalse()
+        {
+            Vertices cw = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 1),
+                new Vector2F(1, 0)
+            };
+
+            Assert.False(cw.IsCounterClockWise());
+        }
+
+        /// <summary>
+        ///     Tests that IsCounterClockWise returns false for less than 3 vertices.
+        /// </summary>
+        [Fact]
+        public void IsCounterClockWise_FewerThanThreeVertices_ReturnsFalse()
+        {
+            Vertices line = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1) };
+
+            Assert.False(line.IsCounterClockWise());
+        }
+
+        /// <summary>
+        ///     Tests that ForceCounterClockWise does nothing for already CCW polygon.
+        /// </summary>
+        [Fact]
+        public void ForceCounterClockWise_AlreadyCCW_DoesNothing()
+        {
+            Vertices ccw = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(1, 0),
+                new Vector2F(0.5f, 1)
+            };
+
+            ccw.ForceCounterClockWise();
+
+            Assert.True(ccw.IsCounterClockWise());
+        }
+
+        /// <summary>
+        ///     Tests that ForceCounterClockWise does nothing for less than 3 vertices.
+        /// </summary>
+        [Fact]
+        public void ForceCounterClockWise_FewerThanThreeVertices_DoesNothing()
+        {
+            Vertices line = new Vertices { new Vector2F(0, 0), new Vector2F(1, 1) };
+
+            line.ForceCounterClockWise();
+
+            Assert.Equal(2, line.Count);
+        }
+
+        /// <summary>
+        ///     Tests that IsSimple returns true for a simple convex quadrilateral.
+        /// </summary>
+        [Fact]
+        public void IsSimple_ConvexQuad_ReturnsTrue()
+        {
+            Vertices quad = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+
+            Assert.True(quad.IsSimple());
+        }
+
+        /// <summary>
+        ///     Tests that GetCentroid returns correct centroid for a square.
+        /// </summary>
+        [Fact]
+        public void GetCentroid_WithSquare_ReturnsCorrectCentroid()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+
+            Vector2F centroid = square.GetCentroid();
+
+            Assert.Equal(1.0f, centroid.X, 4);
+            Assert.Equal(1.0f, centroid.Y, 4);
+        }
+
+        /// <summary>
+        ///     Tests that ProjectToAxis covers the else branch when dot is not less than min.
+        /// </summary>
+        [Fact]
+        public void ProjectToAxis_WithMixedValues_CoversBothBranches()
+        {
+            Vertices triangle = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(0, 5),
+                new Vector2F(3, 2)
+            };
+            Vector2F axis = new Vector2F(0, 1);
+
+            triangle.ProjectToAxis(ref axis, out float min, out float max);
+
+            Assert.Equal(0, min);
+            Assert.Equal(5, max);
+        }
+
+        /// <summary>
+        ///     Tests that PointInPolygonAngle returns false for point on edge.
+        /// </summary>
+        [Fact]
+        public void PointInPolygonAngle_OnEdge_ReturnsFalse()
+        {
+            Vertices square = new Vertices
+            {
+                new Vector2F(0, 0),
+                new Vector2F(2, 0),
+                new Vector2F(2, 2),
+                new Vector2F(0, 2)
+            };
+            Vector2F onEdge = new Vector2F(1, 0);
+
+            Assert.False(square.PointInPolygonAngle(ref onEdge));
         }
     }
 }

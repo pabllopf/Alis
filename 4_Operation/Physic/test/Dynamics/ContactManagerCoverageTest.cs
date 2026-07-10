@@ -215,5 +215,68 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount < initialCount);
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
+
+        [Fact]
+        public void ShouldCollide_WithNonMatchingGroups_UsesCategoryCheck()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            bodyA.SetCollisionGroup(1);
+            bodyB.SetCollisionGroup(2);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void BodyTypeStatic_WithDynamic_PreventsCollision()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Static);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Static);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        [Fact]
+        public void RemoveBody_WithMultipleContacts_DestroysAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.8f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(-0.8f, 0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            int beforeRemove = world.ContactManager.ContactCount;
+            Assert.True(beforeRemove > 0);
+
+            world.Remove(bodyA);
+
+            int afterRemove = world.ContactManager.ContactCount;
+            Assert.True(afterRemove < beforeRemove);
+        }
+
+        [Fact]
+        public void Step_WithFilterFlagSet_ReEvaluatesContacts()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            world.ContactManager.ContactFilter = (_, _) => false;
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
     }
 }

@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 142 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 160 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs
+    pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs
 
     ### Language
     cs
 
     ### Coverage
-    37.5% (Line: 33.3%, Branch: 100.0%)
+    55.1% (Line: 56.4%, Branch: 46.4%)
 
     ### Uncovered Lines
-    20
+    78
 
     ### Uncovered Branches
-    0
+    15
 
     ### Method
-    MediaWriter
+    WebAssemblyConfiguration
 
     ### Complexity / LOC
-    12 / 51 lines
+    75 / 216 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:MediaWriter.cs
+//  File:WebAssemblyConfiguration.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
-using System.IO;
-using Alis.Extension.Media.FFmpeg.Encoding;
 
-namespace Alis.Extension.Media.FFmpeg.BaseClasses
+namespace Alis.Core.Graphic.Platforms.Web
 {
     /// <summary>
-    ///     The media writer class
+    ///     Configuration builder for WebAssembly platform
+    ///     Provides a fluent interface to configure platform settings
     /// </summary>
-    public abstract class MediaWriter<TFrame> where TFrame : IMediaFrame
+    
+    public class WebAssemblyConfigurationBuilder
     {
         /// <summary>
-        /// The fmpeg executable name
+        /// The configuration
         /// </summary>
-        private const string FFmpegExecutableName = "ffmpeg";
+        private readonly WebAssemblyConfiguration _configuration;
 
         /// <summary>
-        ///     Output filename
+        ///     Initializes a new instance of the WebAssemblyConfigurationBuilder
         /// </summary>
-        public virtual string Filename { get; protected set; }
+        public WebAssemblyConfigurationBuilder() => _configuration = new WebAssemblyConfiguration();
 
         /// <summary>
-        ///     Input data stream
+        ///     Sets the window width and height
         /// </summary>
-        public virtual Stream InputDataStream { get; protected set; }
+        public WebAssemblyConfigurationBuilder WithSize(int width, int height)
+        {
+            _configuration.WindowWidth = width;
+            _configuration.WindowHeight = height;
+            return this;
+        }
 
-        /// <summary>
-        ///     Is data stream opened for writing
-        /// </summary>
-        public virtual bool OpenedForWriting { get; protected set; }
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaWriterTests.cs
+    pabllopf-official_alis:4_Operation/Graphic/test/Platforms/Web/WebAssemblyConfigurationTests.cs
 
     Priority
-    HIGH (NEW)
+    MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/MediaWriter.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage MediaWriter.cs
+    Commit format: test: coverage WebAssemblyConfiguration.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
