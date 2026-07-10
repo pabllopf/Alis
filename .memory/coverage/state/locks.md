@@ -23,9 +23,10 @@
 | BrowserPlayer.cs | local-agent | 2026-07-10T12:00:00Z | COMPLETED - 7 new tests (static edge cases + SetVolume via uninitialized object). Instance methods blocked - require OpenAL runtime |
 | GameObject.cs | local-agent | 2026-07-10T08:15:00Z | COMPLETED - 12 new tests, commit e4c991127 |
 | DropBoxCloudManager.cs | local-agent | 2026-07-10T10:15:00Z | IN PROGRESS - adding coverage tests |
-| Image.cs | local-agent | 2026-07-10T09:40:00Z | COMPLETED - 12 new tests, commit pending |
+| Image.cs | local-agent | 2026-07-10T09:40:00Z | COMPLETED - 12 new tests, commit ab8c950d0 |
 | FilePickerPathConverter.cs | local-agent | 2026-07-10T12:35:00Z | COMPLETED - 9 new tests, commit 5414ba516 |
 | FilePickerValidator.cs | local-agent | 2026-07-10T12:40:00Z | COMPLETED - 8 new tests, commit 5414ba516 |
 | FilePickerExecutor.cs | local-agent | 2026-07-10T12:42:00Z | COMPLETED - 2 new tests, commit 5414ba516 |
 | FilePickerFactory.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 7 new tests, commit 7258d4de2 |
 | FastestArrayPool.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 3 new tests (ClearBuckets via Gen2GcCallback event), commit 81a23add0 |
+| WebSocketNetworkTransport.cs | local-agent | 2026-07-10T16:00:00Z | IN PROGRESS - adding edge-case/exception coverage tests |
