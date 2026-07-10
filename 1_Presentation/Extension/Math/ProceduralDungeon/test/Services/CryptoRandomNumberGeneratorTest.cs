@@ -39,6 +39,16 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
     public class CryptoRandomNumberGeneratorTest
     {
         /// <summary>
+        ///     Exposes protected Dispose(bool) for testing the disposing=false branch.
+        /// </summary>
+        private class TestableCryptoRandomNumberGenerator : CryptoRandomNumberGenerator
+        {
+            public void CallDispose(bool disposing)
+            {
+                Dispose(disposing);
+            }
+        }
+        /// <summary>
         ///     Tests that next with range should return value within range.
         /// </summary>
         [Fact]
@@ -223,6 +233,23 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
                 // Assert
                 Assert.Equal(minValue, result);
             }
+        }
+
+        /// <summary>
+        ///     Tests that disposing with false does not dispose the managed RNG.
+        /// </summary>
+        [Fact]
+        public void Dispose_WithFalse_ShouldNotDisposeManagedRng()
+        {
+            // Arrange
+            TestableCryptoRandomNumberGenerator rng = new TestableCryptoRandomNumberGenerator();
+
+            // Act
+            rng.CallDispose(false);
+
+            // Assert - RNG still works because Dispose(false) only releases unmanaged resources
+            int result = rng.Next(1, 10);
+            Assert.InRange(result, 1, 9);
         }
     }
 }
