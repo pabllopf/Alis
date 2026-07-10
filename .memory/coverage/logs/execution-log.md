@@ -244,6 +244,29 @@
 
 ---
 
+## Entry 18 — 2026-07-10T16:30:00Z
+
+- **Commit:** pending
+- **File:** NetworkServerManager.cs
+- **Task:** Add edge-case and exception path coverage for state transitions, session/player edge cases, Listen failure
+- **Tests Added:** 24 new test methods in NetworkServerManagerEdgeCaseTests.cs
+  - Constructor/property defaults
+  - InitializeAsync with CancellationToken
+  - StartAsync after Disconnect
+  - StopAsync delegation to StopListeningAsync
+  - StopListeningAsync idempotency (Uninitialized, Disconnected)
+  - CloseSessionAsync non-existent
+  - KickPlayerAsync non-existent session/player
+  - RegisterPlayerInSession without session/duplicate
+  - GetPlayer/GetConnectedPlayers null session
+  - Handler register/unregister edge cases
+  - ListenAsync invalid address → Error state
+  - Dispose after Listen failure/after Initialize/already disposed
+- **Key Paths Covered:** ListenAsync catch block (Error state), StopListeningAsync early returns, session/player edge cases, disposal paths
+- **Status:** All 800 Network tests passing
+
+---
+
 ## Entry 16 — 2026-07-10T09:45:00Z
 
 - **Commit:** ab8c950d0
