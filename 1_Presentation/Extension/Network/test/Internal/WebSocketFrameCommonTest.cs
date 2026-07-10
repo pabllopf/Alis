@@ -79,5 +79,33 @@ namespace Alis.Extension.Network.Test.Internal
 
             Assert.Equal(expectedPayload, payload);
         }
+
+        /// <summary>
+        ///     Tests that apply mask key at index should not throw when buffer is null
+        /// </summary>
+        [Fact]
+        public void ApplyMaskKeyAtIndex_ShouldNotThrow_WhenBufferIsNull()
+        {
+            byte[] maskKeyArray = new byte[WebSocketFrameCommon.MaskKeyLength] { 1, 2, 3, 4 };
+
+            Exception exception = Record.Exception(() =>
+                WebSocketFrameCommon.ApplyMaskKeyAtIndex(null, maskKeyArray, 0, 0, 0));
+
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Tests that apply mask key at index should not throw when mask key array is null
+        /// </summary>
+        [Fact]
+        public void ApplyMaskKeyAtIndex_ShouldNotThrow_WhenMaskKeyArrayIsNull()
+        {
+            byte[] buffer = new byte[4];
+
+            Exception exception = Record.Exception(() =>
+                WebSocketFrameCommon.ApplyMaskKeyAtIndex(buffer, null, 0, 0, 0));
+
+            Assert.Null(exception);
+        }
     }
 }
