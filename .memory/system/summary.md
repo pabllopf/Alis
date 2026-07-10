@@ -87,6 +87,7 @@
 | 2026-07-10 09:04:00 | ImColor.cs | 33.3% | 100% | +66.7% | c782ef470 | Completed |
 | 2026-07-10 09:17:00 | StripeGatewayClient.cs | 35.0% | ~48% | +13% | 41c5d3042 | Completed |
 | 2026-07-10 09:40:00 | ImGuiStyle.cs | 35.8% | ~70-75% | +34-39% | c3eb7ab53 | Completed |
+| 2026-07-10 09:45:00 | MediaWriter.cs | 37.5% | ~72% | +34.5% | 19c023b68 | Completed |
 ## Test Files Created
 - `PulleyJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/PulleyJointTest.cs`
 - `WheelJointTest.cs` updated at `/Users/pabllopf/repositorios/Alis/4_Operation/Physic/test/Dynamics/Joints/WheelJointTest.cs`
@@ -119,3 +120,4 @@
 - `ImColorTest.cs` updated at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImColorTest.cs`
 - `StripeGatewayClientRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Payment/Stripe/test/StripeGatewayClientRemainingCoverageTests.cs`
 - `ImGuiStyleRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/ImGuiStyleRemainingCoverageTests.cs`
+- `MediaWriterRemainingCoverageTests.cs` at `/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Media/FFmpeg/test/BaseClasses/MediaWriterRemainingCoverageTests.cs`
