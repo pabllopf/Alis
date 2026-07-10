@@ -1,101 +1,18 @@
----
-status: Active
-updated: 2026-07-10T12:30:00Z
----
-
 # Coverage Index
 
 ## Project
-**Name:** Alis
-**Key:** pabllopf-official_alis
-**Branch:** master
-
-## Current Coverage
-- **Overall:** 63.3%
-- **Line Coverage:** 62.4%
-- **Branch Coverage:** 67.7%
-- **Uncovered Lines:** 21,607
-- **Uncovered Conditions:** 3,862
-- **NCLOC:** 92,007
-
-## Delta from Last Index (2026-07-08)
-- **Overall:** +1.5% (was 61.8%)
-- **Uncovered Lines:** -806 (was 22,413)
-- **Uncovered Conditions:** -217 (was 4,079)
-
-## Targets (Sorted by Priority)
-
-| # | File | Coverage | UL | UC | Layer | Status |
-|---|------|----------|----|----|-------|--------|
-| 1 | 4_Operation/Graphic/src/Ui/Font.cs | 0.0% | 228 | - | Operation | ⬜ Blocked (Native/UI) |
-| 1b | 4_Operation/Graphic/src/Ui/FontManager.cs | 0.0% | 7 | - | Operation | ✅ 6 new tests (FontManagerCoverageTest.cs) |
-| 2 | 4_Operation/Ecs/src/Kernel/Archetypes/Fields.cs | 0.0% | 5 | - | Operation | ✅ |
-| 3 | 4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs | 37.0% | 24 | - | Operation | ✅ |
-| 4 | 4_Operation/Ecs/src/Updating/Runners/GameObjectUpdate.cs | 51.5% | 14 | - | Operation | ✅ |
-| 5 | 2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs | 26.9% | 120 | - | Application | ✅ |
-| 6 | 2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs | 24.2% | 151 | - | Application | ⬜ Blocked (OpenGL) |
-| 7 | 2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs | 41.7% | 151 | - | Application | ⬜ Blocked (OpenGL + ECS) |
-
-## Current Task
-
-### Network Module Coverage Sprint
-- **Action:** Added 69 tests across 4 network module files
-- **Scope:** WebSocketNetworkTransport, NetworkClientManager, NetworkServerManager, PingPongManager
-- **Commits:** 6f55917df, cfe82bac6, f1c1e5c62, 19b769a57
-- **Estimated Impact:** Improved coverage for Network Extension from ~50% to ~58% (est.)
+- Name: Alis
+- SonarCloud Key: pabllopf-official_alis
+- Branch: master
+- Current Coverage: 63.3%
 
 ## Processed Files
 
-| File | Tests Added | Lines Added | Commit |
-|------|------------|-------------|--------|
-| ContactManager.cs | 10 | ~200 | 2b4747171 |
-| Collision.cs | 17 | ~400 | 52218b656 |
-| ContactSolver.cs | 9 | ~200 | pending |
-| DynamicTree.cs | 14 | ~300 | pending |
-| DelaunayTriangle.cs | 12 | ~200 | pending |
-| DTSweep.cs | 5 | ~120 | pending |
-| ComponentRegistry.cs | 6 | ~60 | pending |
-| SingleComponentUpdateFilter.cs | 4 | 132 | 323a3e7a9 |
-| GameObjectUpdate.cs | 5 | 167 | 6c50547d6 |
-| DistanceJoint.cs | 13 | 282 | a4e02bafd |
-| FrictionJoint.cs | 13 | 199 | e547ea826 |
-| GearJoint.cs | 12 | 299 | d53583d51 |
-| ContactManager.cs | 8 | 258 | d5fefccb9 |
-| GravityController.cs | 9 | 213 | c6c7cde5d |
-| ContactManager.cs (Evaluate/handlers) | 15 | 478 | c1ee01ea5 |
-| GraphicManager.cs (lifecycle) | 3 | 89 | 692039671 |
-| Body.cs (simulation paths) | 6 | 165 | afdda294d |
-| Body.cs (wake/sleep, exceptions, ref overloads) | 14 | 228 | b4b2cfbf0 |
-| Gen2GcCallback.cs (finalizer paths + event) | 5 | 140 | 936fff825 |
-| ContextHandler.cs (Preview/InitPreview paths) | 3 | 108 | |
-| GameObjectUpdate.cs (deferred range-run edge cases) | 4 | 132 | |
-| GameObjectUpdate.cs (same-type deferred entity range-run) | 1 | 53 | 223d053c6 |
-| WorldPhysic.cs | 61 | ~1200 | da7d8e1c6 |
-| GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
-| SimplifyTools.cs | 17 | ~350 | 028c2c1a8 |
-| FontManager.cs | 6 | ~80 | 079a6da3f |
-| Image.cs | 12 | ~300 | ab8c950d0 |
-| FilePickerPathConverter.cs | 2 | 22 | c0d715b32 |
-| FilePickerFactory.cs | 7 | ~80 | 7258d4de2 |
-| FilePickerPathConverter.cs | 9 | ~60 | 5414ba516 |
-| FilePickerValidator.cs | 8 | ~60 | 5414ba516 |
-| FilePickerExecutor.cs | 2 | ~15 | 5414ba516 |
-| GameObject.cs | 12 | ~200 | e4c991127 |
-| BrowserPlayer.cs | 7 | ~10 | 3aa820754 |
-| FastestArrayPool.cs | 3 | ~10 | 81a23add0 |
-| WebSocketNetworkTransport.cs | 16 | ~200 | 6f55917df |
-| NetworkClientManager.cs | 20 | ~300 | cfe82bac6 |
-| NetworkServerManager.cs | 24 | ~300 | f1c1e5c62 |
-| PingPongManager.cs | 9 | ~120 | 19b769a57 |
+| File | Coverage | Status | Commit | Date |
+|------|----------|--------|--------|------|
+| 4_Operation/Ecs/src/Kernel/ComponentRegistry.cs | 81.0% | COMPLETED | 24494aafc | 2026-07-10 |
+| 1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs | 15.6% | COMPLETED | pending | 2026-07-10 |
 
-## Notes
-
-- **GraphicManager/BoxCollider**: Remaining uncovered paths require OpenGL context or full ECS infrastructure. Integration tests with headless OpenGL or interface refactoring needed.
-- **Gen2GcCallback**: Completed. Added 5 tests covering finalizer execution (Func<bool> false/true paths), Func<object, bool> alive/dead target paths, and static event invocation via reflection-cleared callback list.
-- **Fields.cs**: 0.0% coverage - only method is `internal`, needs InternalsVisibleTo or indirect testing.
-- **GameObjectUpdate.cs**: Added 4 tests covering range-based Run with deferred creation edge cases, non-matching archetypes, and multi-update accumulation. Additional test triggers range-based Run by spawning entities with the same component type during update.
-- **WebSocketNetworkTransport.cs (29.4%)**: Added 16 tests covering StartAsync exception paths (invalid IP, port-in-use → state reset), Dispose after failure, BroadcastAsync edge cases, constructor URI variations. Blocked for private network-dependent methods (AcceptConnectionsAsync, HandleClientAsync, ReceiveFromClientAsync) which require real TCP/WebSocket connections.
-- **NetworkClientManager.cs (27.3%)**: Added 20 tests covering state transitions (Disconnect idempotency, StopAsync delegation), ConnectAsync failure → Error state, handler edge cases, GetConnectedPlayers/GetPlayer null session, Dispose after Initialize.
-- **NetworkServerManager.cs (61.1%)**: Added 24 tests covering ListenAsync exception → Error state, StopListeningAsync idempotency, session/player edge cases (non-existent session/player, duplicate registration), Dispose after failure.
-- **PingPongManager.cs (47.7%)**: Added 9 tests covering constructor with positive keepAliveInterval, PingForever/PingLoop with cancelled token, HandleExpiredKeepAliveInterval, SendPing cancellation.
-- **WebSocketImplementation.cs (77.3%) / WebSocketFrameReader.cs (69.2%)**: Remaining uncovered lines require actual WebSocket frame data or real connections. Coverage gains have diminishing returns without integration test infrastructure.
+## Tasks
+- TASK-001: ComponentRegistry.cs - cover remaining 19 uncovered lines
+- TASK-002: GoogleDriveCloudManager.cs - cover edge-case/exception paths (23 tests added)

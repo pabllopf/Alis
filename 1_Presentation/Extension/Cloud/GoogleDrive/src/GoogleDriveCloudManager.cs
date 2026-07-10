@@ -94,6 +94,18 @@ namespace Alis.Extension.Cloud.GoogleDrive
         }
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="GoogleDriveCloudManager" /> class with a pre-configured Drive service
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="driveService">The pre-configured Google Drive service</param>
+        internal GoogleDriveCloudManager(Context context, DriveService driveService) : base(context)
+        {
+            _driveService = driveService;
+            Name = "GoogleDriveManager";
+            Tag = "Cloud";
+        }
+
+        /// <summary>
         ///     Gets a value indicating whether the manager is initialized
         /// </summary>
         public bool IsInitialized => _driveService != null;
