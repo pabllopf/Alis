@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 179 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 183 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
 
     ### Language
     cs
 
     ### Coverage
-    66.9% (Line: 67.9%, Branch: 63.8%)
+    69.2% (Line: 69.2%, Branch: None%)
 
     ### Uncovered Lines
-    69
+    4
 
     ### Uncovered Branches
-    25
+    0
 
     ### Method
-    Simplex
+    ImGuiPayload
 
     ### Complexity / LOC
-    47 / 271 lines
+    20 / 27 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:Simplex.cs
+//  File:ImGuiPayload.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Dynamics;
+using System.Runtime.InteropServices;
+using System.Text;
 
-namespace Alis.Core.Physic.Collisions
+namespace Alis.Extension.Graphic.Ui
 {
     /// <summary>
-    ///     Represents a simplex (point, line segment, or triangle) in the GJK algorithm.
+    ///     The im gui payload
     /// </summary>
-    /// <remarks>
-    ///     The simplex is built iteratively in the Minkowski difference space of two convex shapes.
-    ///     It tracks up to 3 vertices, each storing support point indices, world positions, and
-    ///     barycentric coordinates for computing the closest point to the origin.
-    ///     
-    ///     The simplex evolves through these states:
-    ///     <list type="number">
-    ///         <item><term>1 vertex</term><description>A single point in Minkowski space.</description></item>
-    ///         <item><term>2 vertices</term><description>A line segment. The closest point lies on the segment.</description></item>
-    ///         <item><term>3 vertices</term><description>A triangle. The origin is inside = shapes overlap.</description></item>
-    ///     </list>
-    /// </remarks>
-    internal struct Simplex
+    public struct ImGuiPayload
     {
         /// <summary>
-        ///     Gets or sets the number of active vertices in this simplex.
+        ///     The data
         /// </summary>
-        /// <value>
-        ///     An <see cref="int"/> between 0 and 3. A count of 3 means the origin is contained.
-        /// </value>
-        internal int Count;
+        public IntPtr Data { get; set; }
+
+        /// <summary>
+        ///     The data size
+        /// </summary>
+        public int DataSize { get; set; }
+
+        /// <summary>
+        ///     The source id
+        /// </summary>
+        public uint SourceId { get; set; }
+
+        /// <summary>
+        ///     The source parent id
+        /// </summary>
+        public uint SourceParentId { get; set; }
+
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Collisions/SimplexTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiPayloadTests.cs
 
     Priority
     MEDIUM (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Collisions/Simplex.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage Simplex.cs
+    Commit format: test: coverage ImGuiPayload.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
