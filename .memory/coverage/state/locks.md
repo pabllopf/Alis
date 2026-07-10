@@ -31,4 +31,5 @@
 | FastestArrayPool.cs | local-agent | 2026-07-10T12:30:00Z | COMPLETED - 3 new tests (ClearBuckets via Gen2GcCallback event), commit 81a23add0 |
 | WebSocketNetworkTransport.cs | local-agent | 2026-07-10T16:00:00Z | COMPLETED - 16 new tests (edge-case/exception paths), commit 6f55917df |
 | NetworkClientManager.cs | local-agent | 2026-07-10T16:15:00Z | COMPLETED - 20 new tests (edge-case/state transition/connection failure), commit pending |
-| NetworkServerManager.cs | local-agent | 2026-07-10T16:30:00Z | COMPLETED - 24 new tests (state/session/player edge cases), commit pending |
+| NetworkServerManager.cs | local-agent | 2026-07-10T16:30:00Z | COMPLETED - 24 new tests (state/session/player edge cases), commit f1c1e5c62 |
+| PingPongManager.cs | local-agent | 2026-07-10T16:45:00Z | IN PROGRESS - adding coverage tests |
