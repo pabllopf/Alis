@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 209 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 212 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
 
     ### Language
     cs
 
     ### Coverage
-    88.5% (Line: 88.0%, Branch: 90.0%)
+    89.5% (Line: 87.9%, Branch: 97.2%)
 
     ### Uncovered Lines
-    20
+    21
 
     ### Uncovered Branches
-    5
+    1
 
     ### Method
-    CuttingTools
+    FFMpegWrapper
 
     ### Complexity / LOC
-    35 / 194 lines
+    38 / 195 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:CuttingTools.cs
+//  File:FFMpegWrapper.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Dynamics;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
 
-namespace Alis.Core.Physic.Common.PolygonManipulation
+namespace Alis.Extension.Media.FFmpeg
 {
     /// <summary>
-    ///     The cutting tools class
+    ///     FFmpeg wrapper
     /// </summary>
-    public static class CuttingTools
+    public static class FfMpegWrapper
     {
         /// <summary>
-        ///     Split a fixture into 2 vertice collections using the given entry and exit-point.
+        /// The hide banner arg
         /// </summary>
-        /// <param name="fixture">The Fixture to split</param>
-        /// <param name="entryPoint">The entry point - The start point</param>
-        /// <param name="exitPoint">The exit point - The end point</param>
-        /// <param name="first">The first collection of vertexes</param>
-        /// <param name="second">The second collection of vertexes</param>
-        public static void SplitShape(Fixture fixture, Vector2F entryPoint, Vector2F exitPoint, out Vertices first, out Vertices second)
-        {
-            Vector2F localEntryPoint = fixture.GetBody.GetLocalPoint(ref entryPoint);
-            Vector2F localExitPoint = fixture.GetBody.GetLocalPoint(ref exitPoint);
+        private const string HideBannerArg = "-hide_banner";
 
-            if (!(fixture.GetShape is PolygonShape shape))
-            {
-                first = new Vertices();
-                second = new Vertices();
-                return;
-            }
+        /// <summary>
+        ///     The regex
+        /// </summary>
+        private static readonly Regex CodecRegex = new Regex(@"(?<type>[VAS\.])[F\.][S\.][X\.][B\.][D\.] (?<codec>[a-zA-Z0-9_-]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+
+        /// <summary>
+        ///     The regex
+        /// </summary>
+        private static readonly Regex FormatRegex = new Regex(@"(?<type>[DE]{1,2})\s+?(?<format>[a-zA-Z0-9_\-,]+)\W+(?<description>.*)\n?", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
+
+        /// <summary>
+        ///     FFmpeg verbosity. This sets the 'loglevel' parameter on FFmpeg. Useful when showing output and debugging issues.
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/PolygonManipulation/CuttingToolsTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/FFMpegWrapperTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/PolygonManipulation/CuttingTools.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage CuttingTools.cs
+    Commit format: test: coverage FFMpegWrapper.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

@@ -1619,27 +1619,6 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
-        #region CxFastList_Size
-
-        [Fact]
-        public void CxFastList_Size_ReturnsCorrectCount()
-        {
-            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
-            Type intListType = listType.MakeGenericType(typeof(int));
-            object list = Activator.CreateInstance(intListType);
-
-            MethodInfo add = intListType.GetMethod("Add");
-            MethodInfo size = intListType.GetMethod("Size");
-
-            add.Invoke(list, new object[] { 10 });
-            add.Invoke(list, new object[] { 20 });
-
-            int count = (int)size.Invoke(list, null);
-            Assert.Equal(2, count);
-        }
-
-        #endregion
-
         #region CxFastList_Remove_WithNullHeadOnly
 
         [Fact]

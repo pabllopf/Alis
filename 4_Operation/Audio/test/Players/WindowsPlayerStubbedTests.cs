@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -28,7 +29,7 @@ namespace Alis.Core.Audio.Test.Players
 
         private WindowsPlayer CreatePlayer() => new WindowsPlayer();
 
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
@@ -42,7 +43,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(timerField?.GetValue(_player));
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithoutLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
@@ -52,7 +53,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
             _player = CreatePlayer();
@@ -62,7 +63,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Pause_WhenPlaying_ShouldSetPausedTrue()
         {
             _player = CreatePlayer();
@@ -73,7 +74,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(_player.Paused);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Resume_WhenPaused_ShouldSetPausedFalse()
         {
             _player = CreatePlayer();
@@ -86,7 +87,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(_player.Playing);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Stop_WhenPlaying_ShouldSetPlayingFalse()
         {
             _player = CreatePlayer();
@@ -98,7 +99,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Play_Pause_Resume_Stop_Sequence_ShouldWork()
         {
             _player = CreatePlayer();
@@ -118,7 +119,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task SetVolume_ShouldNotThrow()
         {
             _player = CreatePlayer();
@@ -127,7 +128,7 @@ namespace Alis.Core.Audio.Test.Players
             await _player.SetVolume(100);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Play_ThenDispose_ShouldWork()
         {
             _player = CreatePlayer();
@@ -138,7 +139,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(_player);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task MultiplePauseResume_ShouldWork()
         {
             _player = CreatePlayer();
@@ -154,7 +155,7 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task PlaybackFinished_ShouldFireWhenTimerElapses()
         {
             _player = CreatePlayer();
@@ -176,7 +177,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventFired);
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task ExecuteMsiCommand_WithStatusCommand_ShouldSetTimerInterval()
         {
             _player = CreatePlayer();
@@ -193,7 +194,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(5000, timer?.Interval);
         }
 
-        [Fact]
+        [WindowsOnly]
         public void ExecuteMsiCommand_WithErrorResponse_ShouldThrowInvalidOperationException()
         {
             _player = CreatePlayer();
@@ -211,7 +212,7 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
             string entryName = "res_loop_test_for_win.wav";
@@ -246,7 +247,7 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
-        [Fact]
+        [WindowsOnly]
         public async Task Play_WithResourceExtraction_ShouldSucceed()
         {
             string entryName = "res_test_for_win.wav";

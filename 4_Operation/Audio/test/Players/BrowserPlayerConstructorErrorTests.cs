@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Alis.Core.Audio.Players;
+using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
@@ -15,7 +16,7 @@ namespace Alis.Core.Audio.Test.Players
             try { File.WriteAllText(ModeFilePath, "success"); } catch { }
         }
 
-        [Fact]
+        [BrowserOnly]
         public void Constructor_WhenDeviceFails_ShouldThrow()
         {
             File.WriteAllText(ModeFilePath, "device_fail");
@@ -23,7 +24,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("OpenAL", ex.Message);
         }
 
-        [Fact]
+        [BrowserOnly]
         public void Constructor_WhenContextFails_ShouldThrow()
         {
             File.WriteAllText(ModeFilePath, "context_fail");
@@ -31,7 +32,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("OpenAL", ex.Message);
         }
 
-        [Fact]
+        [BrowserOnly]
         public void Constructor_WhenMakeCurrentFails_ShouldThrow()
         {
             File.WriteAllText(ModeFilePath, "current_fail");

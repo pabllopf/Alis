@@ -652,7 +652,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         {
             Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
             ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
-            object edge = ctor.Invoke(new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f) });
+            // Edge from (1,0) to (2,0) - not starting at ZERO
+            object edge = ctor.Invoke(new object[] { new Vector2F(1f, 0f), new Vector2F(2f, 0f) });
 
             MethodInfo calcBeta = typeof(YuPengClipper).GetMethod("CalculateBeta", BindingFlags.Static | BindingFlags.NonPublic);
 
