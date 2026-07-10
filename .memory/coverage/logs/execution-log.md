@@ -31,3 +31,30 @@
 - **File:** ContactSolver.cs
 - **Tests Added:** 9 (ContactSolverCoverageTest.cs)
 - **Key Paths:** 2-point contact K matrix, warm starting, WorldManifold coincident points, FaceB normal negation
+
+---
+
+## Entry 4 — 2026-07-10T00:03:00Z
+
+- **Commit:** pending
+- **File:** DynamicTree.cs
+- **Tests Added:** 14 (DynamicTreeCoverageTest.cs)
+- **Key Paths:** Tree balancing, node pool growth, rebuild bottom-up, ray cast callback termination, remove and re-add
+
+---
+
+## Entry 5 — 2026-07-10T00:04:00Z
+
+- **Commit:** 323a3e7a9
+- **File:** SingleComponentUpdateFilter.cs
+- **Tests Added:** 4 (SingleComponentUpdateFilterCoverageTest.cs)
+- **Key Paths:** UpdateSubset method (lines 84-95) via deferred creation pattern, componentIndex != 0 and == 0 branches
+
+---
+
+## Entry 6 — 2026-07-10T00:05:00Z
+
+- **Commit:** 6c50547d6
+- **File:** GameObjectUpdate.cs
+- **Tests Added:** 5 (GameObjectUpdateRangeRunTest.cs) + fix to GameObjectUpdateCoverageTest.cs
+- **Key Paths:** Run(Scene, Archetype, int, int) overload (lines 78-96) via UpdateSubset, non-matching archetype no-op
