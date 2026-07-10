@@ -58,7 +58,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that constructor with valid scene and attribute type creates filter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Constructor_WithValidSceneAndAttributeType_CreatesFilter()
         {
             using Scene scene = new Scene();
@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that constructor processes existing archetypes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Constructor_ProcessesExistingArchetypes()
         {
             using Scene scene = new Scene();
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update invokes on update for all components with attribute
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Update_InvokesOnUpdateForAllComponentsWithAttribute()
         {
             using Scene scene = new Scene();
@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update called multiple times executes each time
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Update_CalledMultipleTimes_ExecutesEachTime()
         {
             using Scene scene = new Scene();
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update with no matching components does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Update_WithNoMatchingComponents_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update with empty scene does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Update_WithEmptyScene_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -155,7 +155,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update subset through deferred creation updates only new entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void UpdateSubset_ThroughDeferredCreation_UpdatesOnlyNewEntities()
         {
             using Scene scene = new Scene();
@@ -175,7 +175,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Tests that <see cref="SceneUpdateFilter.ArchetypeAdded" /> resizes the internal component buffer
         ///     when the number of filtered components in an archetype exceeds the initial capacity of 8.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ArchetypeAdded_ResizesBuffer_WhenExceedingInitialCapacity()
         {
             GenerationServices.RegisterUpdateMethodAttribute(StretchFilterType, typeof(Position));
@@ -208,6 +208,36 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
+        ///     Tests that <see cref="SceneUpdateFilter.RegisterNewComponents" /> handles the case where
+        ///     <c>_filter</c> is already populated and new component types are registered. This covers
+        ///     the <c>_filter is null = false</c> sub-condition at line 142.
+        /// </summary>
+        [Fact]
+        public void ArchetypeAdded_WhenFilterAlreadySetAndNewComponentRegistered_CoversBranch()
+        {
+            GenerationServices.RegisterUpdateMethodAttribute(RegisteredFilterType, typeof(UpdateComponent));
+
+            using Scene scene = new Scene();
+
+            // First entity with UpdateComponent, so its archetype exists
+            scene.Create(new UpdateComponent { CallCount = 0 });
+
+            // Create filter and register it with the scene
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, RegisteredFilterType);
+            scene._updatesByAttributes[RegisteredFilterType] = filter;
+
+            // Create entity with a brand-new component type (never before seen by the ComponentTable).
+            // This registers a new entry in ComponentTable, making _lastRegisteredComponentId < Count
+            // when ArchetypeAdded is called on the filter for the new archetype.
+            // Since _filter was already set during construction, the second call to
+            // RegisterNewComponents hits _filter is null = false.
+            scene.Create(new CoverageOnlyComponent { Data = 42 });
+
+            Exception ex = Record.Exception(() => filter.Update());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
         ///     The registered scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
@@ -228,6 +258,15 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <seealso cref="Attribute" />
         private sealed class EmptySceneUpdateFilterAttribute : Attribute
         {
+        }
+
+        /// <summary>
+        ///     Component type used only in <see cref="ArchetypeAdded_WhenFilterAlreadySetAndNewComponentRegistered_CoversBranch" />
+        ///     to force a new registration after the filter is constructed.
+        /// </summary>
+        private struct CoverageOnlyComponent
+        {
+            public int Data;
         }
     }
 }
