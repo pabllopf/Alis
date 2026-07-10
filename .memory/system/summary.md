@@ -1,7 +1,7 @@
 # Coverage Summary
 
 ## Latest
-- **File**: `NetworkServerManager.cs`
-- **Coverage**: 61.1% → ~77.0%
-- **Tests Added**: 21
-- **Commit**: f724a7109
+- **File**: `WebAssemblyInputManager.cs`
+- **Coverage**: 61.2% → ~88.0%
+- **Tests Added**: 29
+- **Commit**: 285985e29

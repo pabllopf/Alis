@@ -185,5 +185,6 @@
   "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyConfiguration.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientFactory.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/Monitor.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyInputManager.cs"
 ]
