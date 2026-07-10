@@ -117,6 +117,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerExecutor.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerFactory.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerPathConverter.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerValidator.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",

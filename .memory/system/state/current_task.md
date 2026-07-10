@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 255 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 256 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
+    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs
 
     ### Language
     cs
 
     ### Coverage
-    98.3% (Line: 98.9%, Branch: 88.9%)
+    98.3% (Line: 100.0%, Branch: 90.0%)
 
     ### Uncovered Lines
-    3
+    0
 
     ### Uncovered Branches
-    2
+    1
 
     ### Method
-    GearJoint
+    FilePickerResult
 
     ### Complexity / LOC
-    23 / 335 lines
+    19 / 62 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:GearJoint.cs
+//  File:FilePickerResult.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Vector;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Extension.Io.FileDialog
 {
-    // K = J * invM * JT = invMass + invI * cross(r, ug)^2
-
     /// <summary>
-    ///     A gear joint is used to connect two joints together.
-    ///     Either joint can be a revolute or prismatic joint.
-    ///     You specify a gear ratio to bind the motions together:
-    ///     <![CDATA[coordinate1 + ratio * coordinate2 = ant]]>
-    ///     The ratio can be negative or positive. If one joint is a revolute joint
-    ///     and the other joint is a prismatic joint, then the ratio will have units
-    ///     of length or units of 1/length.
-    ///     Warning: You have to manually destroy the gear joint if jointA or jointB is destroyed.
+    ///     Represents the result of a file picker dialog operation.
     /// </summary>
-    public class GearJoint : Joint
+    public class FilePickerResult
     {
         /// <summary>
-        ///     The body
+        ///     Initializes a new instance of the FilePickerResult class for a successful operation.
         /// </summary>
-        private readonly Body _bodyA;
+        /// <param name="selectedPaths">The list of selected paths</param>
+        /// <exception cref="ArgumentNullException">Thrown when selectedPaths is null</exception>
+        /// <exception cref="ArgumentException">Thrown when selectedPaths is empty</exception>
+        public FilePickerResult(List<string> selectedPaths)
+        {
+            if (selectedPaths == null)
+            {
+                throw new ArgumentNullException(nameof(selectedPaths), "Selected paths cannot be null.");
+            }
 
-        /// <summary>
-        ///     The body
-        /// </summary>
-        private readonly Body _bodyB;
+            if (selectedPaths.Count == 0)
+            {
+                throw new ArgumentException("At least one path must be selected.", nameof(selectedPaths));
+            }
 
-        /// <summary>
-        ///     The body
+            IsSuccess = true;
+            IsCancelled = false;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Dynamics/Joints/GearJointTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/test/FilePickerResultTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/FilePickerResult.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage GearJoint.cs
+    Commit format: test: coverage FilePickerResult.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
