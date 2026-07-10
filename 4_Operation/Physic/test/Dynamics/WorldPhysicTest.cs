@@ -1,0 +1,697 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:WorldPhysicTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Controllers;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
+using Xunit;
+
+namespace Alis.Core.Physic.Test.Dynamics
+{
+    public class WorldPhysicTest
+    {
+        [Fact]
+        public void DefaultConstructor_ShouldInitializeWithDefaultGravity()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.NotNull(world);
+            Assert.Equal(0f, world.GetGravity.X);
+            Assert.Equal(-9.80665f, world.GetGravity.Y);
+        }
+
+        [Fact]
+        public void Constructor_WithGravity_ShouldSetGravity()
+        {
+            Vector2F gravity = new Vector2F(0f, -10f);
+            WorldPhysic world = new WorldPhysic(gravity);
+
+            Assert.Equal(gravity, world.GetGravity);
+        }
+
+        [Fact]
+        public void Constructor_WithBroadPhase_ShouldSetBroadPhase()
+        {
+            IBroadPhase broadPhase = new DynamicTreeBroadPhase();
+            WorldPhysic world = new WorldPhysic(broadPhase);
+
+            Assert.NotNull(world);
+        }
+
+        [Fact]
+        public void CreateBody_ShouldReturnBodyAddedToWorld()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody(new Vector2F(1f, 2f), 0.5f, BodyType.Dynamic);
+
+            Assert.NotNull(body);
+            Assert.Equal(1f, body.Position.X);
+            Assert.Equal(2f, body.Position.Y);
+            Assert.Equal(0.5f, body.Rotation);
+            Assert.Equal(BodyType.Dynamic, body.GetBodyType);
+            Assert.Single(world.BodyList);
+        }
+
+        [Fact]
+        public void CreateBody_WithDefaults_ShouldReturnStaticBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody();
+
+            Assert.NotNull(body);
+            Assert.Equal(BodyType.Static, body.GetBodyType);
+        }
+
+        [Fact]
+        public void CreateRectangle_ShouldReturnBodyWithRectangleFixture()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateRectangle(2f, 1f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+
+            Assert.NotNull(body);
+            Assert.Single(body.FixtureList);
+        }
+
+        [Fact]
+        public void CreateRectangle_WithInvalidWidth_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                world.CreateRectangle(-1f, 1f, 1f));
+        }
+
+        [Fact]
+        public void CreateRectangle_WithInvalidHeight_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                world.CreateRectangle(1f, -1f, 1f));
+        }
+
+        [Fact]
+        public void CreateCircle_ShouldReturnBodyWithCircleFixture()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(0f, 0f), BodyType.Dynamic);
+
+            Assert.NotNull(body);
+            Assert.Single(body.FixtureList);
+        }
+
+        [Fact]
+        public void CreatePolygon_ShouldReturnBodyWithPolygonFixture()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vertices vertices = PolygonTools.CreateRectangle(1f, 1f);
+            Body body = world.CreatePolygon(vertices, 1f, new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+
+            Assert.NotNull(body);
+            Assert.Single(body.FixtureList);
+        }
+
+        [Fact]
+        public void CreateEdge_ShouldReturnBodyWithEdge()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateEdge(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateChainShape_ShouldReturnBodyWithChain()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vertices vertices = new Vertices();
+            vertices.Add(new Vector2F(0f, 0f));
+            vertices.Add(new Vector2F(1f, 0f));
+            vertices.Add(new Vector2F(0f, 1f));
+
+            Body body = world.CreateChainShape(vertices);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void AddBody_ShouldAddBodyToWorld()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = new Body();
+
+            world.Add(body);
+
+            Assert.Single(world.BodyList);
+        }
+
+        [Fact]
+        public void AddBody_Null_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Add((Body)null));
+        }
+
+        [Fact]
+        public void AddBody_SameBodyTwice_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = new Body();
+            world.Add(body);
+
+            Assert.Throws<ArgumentException>(() => world.Add(body));
+        }
+
+        [Fact]
+        public void RemoveBody_ShouldRemoveBodyFromWorld()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody();
+
+            world.Remove(body);
+
+            Assert.Empty(world.BodyList);
+        }
+
+        [Fact]
+        public void RemoveBody_Null_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
+        }
+
+        [Fact]
+        public void RemoveBody_FromWrongWorld_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic other = new WorldPhysic();
+            Body body = other.CreateBody();
+
+            Assert.Throws<ArgumentException>(() => world.Remove(body));
+        }
+
+        [Fact]
+        public void BodyAddedEvent_ShouldFire_WhenBodyIsAdded()
+        {
+            WorldPhysic world = new WorldPhysic();
+            int callCount = 0;
+            world.BodyAdded += (w, b) => callCount++;
+
+            world.CreateBody();
+
+            Assert.Equal(1, callCount);
+        }
+
+        [Fact]
+        public void BodyRemovedEvent_ShouldFire_WhenBodyIsRemoved()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody();
+            int callCount = 0;
+            world.BodyRemoved += (w, b) => callCount++;
+
+            world.Remove(body);
+
+            Assert.Equal(1, callCount);
+        }
+
+        [Fact]
+        public void AddController_ShouldAddToControllerList()
+        {
+            WorldPhysic world = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+
+            world.Add(controller);
+
+            Assert.Single(world.ControllerList);
+        }
+
+        [Fact]
+        public void AddController_Null_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Add((Controller)null));
+        }
+
+        [Fact]
+        public void AddController_SameControllerTwice_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+            world.Add(controller);
+
+            Assert.Throws<ArgumentException>(() => world.Add(controller));
+        }
+
+        [Fact]
+        public void AddController_FromAnotherWorld_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic other = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+            other.Add(controller);
+
+            Assert.Throws<ArgumentException>(() => world.Add(controller));
+        }
+
+        [Fact]
+        public void RemoveController_ShouldRemoveFromControllerList()
+        {
+            WorldPhysic world = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+            world.Add(controller);
+
+            world.Remove(controller);
+
+            Assert.Empty(world.ControllerList);
+        }
+
+        [Fact]
+        public void RemoveController_Null_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Throws<ArgumentNullException>(() => world.Remove((Controller)null));
+        }
+
+        [Fact]
+        public void RemoveController_FromWrongWorld_ShouldThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            WorldPhysic other = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+            other.Add(controller);
+
+            Assert.Throws<ArgumentException>(() => world.Remove(controller));
+        }
+
+        [Fact]
+        public void ControllerAddedEvent_ShouldFire_WhenControllerIsAdded()
+        {
+            WorldPhysic world = new WorldPhysic();
+            int callCount = 0;
+            world.ControllerAdded += (w, c) => callCount++;
+
+            world.Add(new GravityController(9.8f));
+
+            Assert.Equal(1, callCount);
+        }
+
+        [Fact]
+        public void ControllerRemovedEvent_ShouldFire_WhenControllerIsRemoved()
+        {
+            WorldPhysic world = new WorldPhysic();
+            GravityController controller = new GravityController(9.8f);
+            world.Add(controller);
+            int callCount = 0;
+            world.ControllerRemoved += (w, c) => callCount++;
+
+            world.Remove(controller);
+
+            Assert.Equal(1, callCount);
+        }
+
+        [Fact]
+        public void GetGravity_Setter_ShouldUpdateGravity()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vector2F newGravity = new Vector2F(0f, -20f);
+
+            world.GetGravity = newGravity;
+
+            Assert.Equal(newGravity, world.GetGravity);
+        }
+
+        [Fact]
+        public void GetEnabled_Default_ShouldBeTrue()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.True(world.GetEnabled);
+        }
+
+        [Fact]
+        public void GetEnabled_SetFalse_ShouldBeFalse()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            world.GetEnabled = false;
+
+            Assert.False(world.GetEnabled);
+        }
+
+        [Fact]
+        public void GetIsLocked_Default_ShouldBeFalse()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.False(world.GetIsLocked);
+        }
+
+        [Fact]
+        public void ProxyCount_ShouldReturnZero_WhenNoBodies()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Equal(0, world.ProxyCount);
+        }
+
+        [Fact]
+        public void ContactCount_ShouldReturnZero_WhenNoBodies()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Equal(0, world.ContactCount);
+        }
+
+        [Fact]
+        public void Tag_ShouldGetAndSet()
+        {
+            WorldPhysic world = new WorldPhysic();
+            object tag = "test";
+
+            world.Tag = tag;
+
+            Assert.Equal(tag, world.Tag);
+        }
+
+        [Fact]
+        public void ContactList_ShouldReturnList()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.NotNull(world.ContactList);
+        }
+
+        [Fact]
+        public void UpdateTime_Default_ShouldBeZero()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Assert.Equal(TimeSpan.Zero, world.UpdateTime);
+        }
+
+        [Fact]
+        public void Clear_ShouldRemoveAllBodies()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateBody();
+            world.CreateBody();
+
+            world.Clear();
+
+            Assert.Empty(world.BodyList);
+        }
+
+        [Fact]
+        public void Clear_ShouldRemoveAllControllers()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.Add(new GravityController(9.8f));
+
+            world.Clear();
+
+            Assert.Empty(world.ControllerList);
+        }
+
+        [Fact]
+        public void ClearForces_ShouldNotThrow_WhenNoBodies()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            world.ClearForces();
+        }
+
+        [Fact]
+        public void ClearForces_ShouldResetBodyForces()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            body.Force = new Vector2F(10f, 0f);
+            body.Torque = 5f;
+
+            world.ClearForces();
+
+            Assert.Equal(Vector2F.Zero, body.Force);
+            Assert.Equal(0f, body.Torque);
+        }
+
+        [Fact]
+        public void SetGravity_ShouldSetPrivateGravity()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vector2F newGravity = new Vector2F(0f, -5f);
+
+            world.SetGravity(newGravity);
+
+            Assert.Equal(newGravity, world.GetGravity);
+        }
+
+        [Fact]
+        public void Step_WithTimeSpan_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+
+            world.Step(TimeSpan.FromSeconds(1f / 60f));
+        }
+
+        [Fact]
+        public void Step_WithDisabledWorld_ShouldNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.GetEnabled = false;
+
+            world.Step(1f / 60f);
+        }
+
+        [Fact]
+        public void ShiftOrigin_ShouldNotThrow_WhenNoBodies()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            world.ShiftOrigin(new Vector2F(10f, 10f));
+        }
+
+        [Fact]
+        public void ShiftOrigin_ShouldShiftBodyPositions()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body body = world.CreateBody(new Vector2F(5f, 5f), 0f, BodyType.Static);
+
+            world.ShiftOrigin(new Vector2F(1f, 1f));
+
+            Assert.Equal(4f, body.Position.X);
+            Assert.Equal(4f, body.Position.Y);
+        }
+
+        [Fact]
+        public void TestPoint_ShouldReturnNull_WhenNoFixtureAtPoint()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Fixture result = world.TestPoint(new Vector2F(100f, 100f));
+
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void TestPoint_ShouldReturnFixture_WhenPointInsideShape()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Static);
+
+            Fixture result = world.TestPoint(new Vector2F(0f, 0f));
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
+        public void QueryAabb_ShouldInvokeCallback_WhenFixtureInAabb()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Static);
+            Aabb aabb = new Aabb(new Vector2F(-2f, -2f), new Vector2F(2f, 2f));
+            bool callbackInvoked = false;
+
+            world.QueryAabb(f =>
+            {
+                callbackInvoked = true;
+                return true;
+            }, aabb);
+
+            Assert.True(callbackInvoked);
+        }
+
+        [Fact]
+        public void QueryAabb_ShouldNotInvokeCallback_WhenNoFixtureInAabb()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(100f, 100f), 0f, BodyType.Static);
+            Aabb aabb = new Aabb(new Vector2F(-2f, -2f), new Vector2F(2f, 2f));
+            bool callbackInvoked = false;
+
+            world.QueryAabb(f =>
+            {
+                callbackInvoked = true;
+                return true;
+            }, aabb);
+
+            Assert.False(callbackInvoked);
+        }
+
+        [Fact]
+        public void RayCast_ShouldInvokeCallback_WhenRayHitsFixture()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Static);
+            bool callbackInvoked = false;
+
+            world.RayCast((f, point, normal, fraction) =>
+            {
+                callbackInvoked = true;
+                return -1f;
+            }, new Vector2F(-5f, 0f), new Vector2F(5f, 0f));
+
+            Assert.True(callbackInvoked);
+        }
+
+        [Fact]
+        public void RayCast_ShouldReturnMaxFraction_WhenNoHit()
+        {
+            WorldPhysic world = new WorldPhysic();
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(100f, 100f), 0f, BodyType.Static);
+            bool callbackInvoked = false;
+
+            world.RayCast((f, point, normal, fraction) =>
+            {
+                callbackInvoked = true;
+                return 1f;
+            }, new Vector2F(-10f, 0f), new Vector2F(10f, 0f));
+
+            Assert.False(callbackInvoked);
+        }
+
+        [Fact]
+        public void CreateEllipse_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Body body = world.CreateEllipse(1f, 0.5f, 16, 1f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateLineArc_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Body body = world.CreateLineArc(MathF.PI, 8, 1f, false);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateSolidArc_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Body body = world.CreateSolidArc(1f, MathF.PI, 8, 1f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void RemoveBody_WhenBodyHasJoint_ShouldRemoveCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+
+            world.Remove(bodyA);
+
+            Assert.DoesNotContain(bodyA, world.BodyList);
+        }
+
+        [Fact]
+        public void CreateCompoundPolygon_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+            Vertices rect = PolygonTools.CreateRectangle(1f, 1f);
+            List<Vertices> list = new List<Vertices> { rect };
+
+            Body body = world.CreateCompoundPolygon(list, 1f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateCapsule_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Body body = world.CreateCapsule(2f, 0.5f, 1f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void CreateRoundedRectangle_ShouldReturnBody()
+        {
+            WorldPhysic world = new WorldPhysic();
+
+            Body body = world.CreateRoundedRectangle(2f, 1f, 0.3f, 0.3f, 8, 1f);
+
+            Assert.NotNull(body);
+        }
+
+        [Fact]
+        public void FixtureAddedEvent_ShouldFire_WhenFixtureAdded()
+        {
+            WorldPhysic world = new WorldPhysic();
+            int callCount = 0;
+            world.FixtureAdded += (sender, body, fixture) => callCount++;
+
+            world.CreateRectangle(2f, 2f, 1f);
+
+            Assert.Equal(1, callCount);
+        }
+    }
+}
