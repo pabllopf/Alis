@@ -109,6 +109,7 @@
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/BinaryReaderWriter.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/Events.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Updater/src/UpdateManager.cs",
