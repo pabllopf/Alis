@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
@@ -78,11 +79,32 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         private readonly string _tempFile;
 
         /// <summary>
+        /// The real audio wav file
+        /// </summary>
+        private readonly string _realAudioFile;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AudioReaderRemainingCoverageTests"/> class
         /// </summary>
         public AudioReaderRemainingCoverageTests()
         {
             _tempFile = Path.GetTempFileName();
+            _realAudioFile = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".wav");
+            CreateTestWavFile(_realAudioFile);
+        }
+
+        /// <summary>
+        /// Creates a real WAV test audio file using ffmpeg
+        /// </summary>
+        private static void CreateTestWavFile(string path)
+        {
+            using Process process = new Process();
+            process.StartInfo.FileName = "ffmpeg";
+            process.StartInfo.Arguments = $"-f lavfi -i anullsrc=r=44100:cl=mono -t 0.5 -acodec pcm_s16le -f wav \"{path}\" -y -loglevel quiet";
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.UseShellExecute = false;
+            process.Start();
+            process.WaitForExit(10000);
         }
 
         /// <summary>
@@ -93,6 +115,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             if (!string.IsNullOrEmpty(_tempFile) && File.Exists(_tempFile))
             {
                 File.Delete(_tempFile);
+            }
+            if (!string.IsNullOrEmpty(_realAudioFile) && File.Exists(_realAudioFile))
+            {
+                try { File.Delete(_realAudioFile); } catch { }
             }
         }
 
@@ -244,6 +270,91 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.CopyTo(mockWriter.Object));
             Assert.Contains("not opened for writing", ex.Message);
+        }
+
+        /// <summary>
+        /// Tests that LoadMetadataAsync succeeds with a real WAV file using ffprobe.
+        /// </summary>
+        [Fact]
+        public void LoadMetadataAsync_WithRealAudioFile_Succeeds()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+
+            Exception ex = Record.Exception(() => reader.LoadMetadataAsync().Wait());
+
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that LoadMetadataAsync with ignoreStreamErrors=true succeeds with real audio file.
+        /// </summary>
+        [Fact]
+        public void LoadMetadataAsync_WithIgnoreStreamErrors_AndRealFile_Succeeds()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+
+            Exception ex = Record.Exception(() => reader.LoadMetadataAsync(ignoreStreamErrors: true).Wait());
+
+            Assert.Null(ex);
+            Assert.True(reader.MetadataLoaded);
+        }
+
+        /// <summary>
+        /// Tests that Load prepares the reader for reading frames after metadata is loaded.
+        /// </summary>
+        [Fact]
+        public void Load_AfterMetadata_OpensDataStream()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+            reader.LoadMetadataAsync().Wait();
+
+            reader.Load(16);
+
+            Assert.True(reader.OpenedForReading);
+        }
+
+        /// <summary>
+        /// Tests that Load with 24-bit depth works after metadata load.
+        /// </summary>
+        [Fact]
+        public void Load_WithBitDepth24_Succeeds()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+            reader.LoadMetadataAsync().Wait();
+
+            Exception ex = Record.Exception(() => reader.Load(24));
+
+            Assert.Null(ex);
+            Assert.True(reader.OpenedForReading);
+        }
+
+        /// <summary>
+        /// Tests that Load with invalid bit depth (8) throws.
+        /// </summary>
+        [Fact]
+        public void Load_WithInvalidBitDepth8_Throws()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+            reader.LoadMetadataAsync().Wait();
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(8));
+
+            Assert.Contains("bit depths", ex.Message);
+        }
+
+        /// <summary>
+        /// Tests that Load when already opened throws.
+        /// </summary>
+        [Fact]
+        public void Load_WhenAlreadyOpened_Throws()
+        {
+            using AudioReader reader = new AudioReader(_realAudioFile);
+            reader.LoadMetadataAsync().Wait();
+            reader.Load(16);
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load(16));
+
+            Assert.Contains("already loaded", ex.Message);
         }
 
         /// <summary>

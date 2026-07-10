@@ -277,11 +277,81 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     Tests that constructor with stream validates null stream
         /// </summary>
         [Fact]
-        public void AudioVideoWriter_Constructor_WithStream_Null_ShouldThrowArgumentNullException()
+        public void ConstructorWithStream_WithNullStream_ThrowsArgumentNullException()
         {
-            ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => new AudioVideoWriter((Stream)null, 1920, 1080, 30.0, 2, 44100, 16, null, null));
+            Assert.Throws<ArgumentNullException>(() => new AudioVideoWriter((Stream)null, 640, 480, 30, 2, 44100, 16, null, null));
+        }
 
-            Assert.Contains("outputStream", ex.Message);
+        /// <summary>
+        ///     Tests that stream constructor validates zero video framerate
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithZeroFramerate_ThrowsInvalidDataException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter(ms, 640, 480, 0, 2, 44100, 16, null, null));
+            Assert.Contains("framerate", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that stream constructor validates negative video framerate
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithNegativeFramerate_ThrowsInvalidDataException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter(ms, 640, 480, -30.0, 2, 44100, 16, null, null));
+            Assert.Contains("framerate", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that stream constructor validates zero audio channels
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithZeroAudioChannels_ThrowsInvalidDataException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter(ms, 640, 480, 30, 0, 44100, 16, null, null));
+            Assert.Contains("Channels", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that stream constructor validates zero audio sample rate
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithZeroSampleRate_ThrowsInvalidDataException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidDataException ex = Assert.Throws<InvalidDataException>(() =>
+                new AudioVideoWriter(ms, 640, 480, 30, 2, 0, 16, null, null));
+            Assert.Contains("Sample rate", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that stream constructor validates invalid bit depth (8)
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithBitDepth8_ThrowsInvalidOperationException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                new AudioVideoWriter(ms, 640, 480, 30, 2, 44100, 8, null, null));
+            Assert.Contains("bit depths", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that stream constructor validates invalid bit depth (64)
+        /// </summary>
+        [Fact]
+        public void ConstructorWithStream_WithBitDepth64_ThrowsInvalidOperationException()
+        {
+            using MemoryStream ms = new MemoryStream();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
+                new AudioVideoWriter(ms, 640, 480, 30, 2, 44100, 64, null, null));
+            Assert.Contains("bit depths", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
