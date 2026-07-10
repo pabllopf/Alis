@@ -73,7 +73,12 @@ updated: 2026-07-10T12:30:00Z
 | GitHubApiService.cs | 5 | ~200 | 96b2a6840 |
 | SimplifyTools.cs | 17 | ~350 | 028c2c1a8 |
 | FontManager.cs | 6 | ~80 | 079a6da3f |
+| Image.cs | 12 | ~300 | pending |
 | FilePickerPathConverter.cs | 2 | 22 | c0d715b32 |
+| FilePickerFactory.cs | 7 | ~80 | 7258d4de2 |
+| FilePickerPathConverter.cs | 9 | ~60 | 5414ba516 |
+| FilePickerValidator.cs | 8 | ~60 | 5414ba516 |
+| FilePickerExecutor.cs | 2 | ~15 | 5414ba516 |
 | GameObject.cs | 12 | ~200 | e4c991127 |
 | BrowserPlayer.cs | 7 | ~10 | 3aa820754 |
 | FastestArrayPool.cs | 3 | ~10 | 81a23add0 |
