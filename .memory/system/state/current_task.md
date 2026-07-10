@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 246 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 249 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs
+    pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationManager.cs
 
     ### Language
     cs
 
     ### Coverage
-    97.1% (Line: 97.5%, Branch: 95.7%)
+    97.7% (Line: 98.1%, Branch: 96.4%)
 
     ### Uncovered Lines
-    4
+    5
 
     ### Uncovered Branches
-    2
+    3
 
     ### Method
-    GenericPriorityQueue
+    TranslationManager
 
     ### Complexity / LOC
-    44 / 198 lines
+    66 / 333 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:GenericPriorityQueue.cs
+//  File:TranslationManager.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Alis.Extension.Language.Translator.Abstractions;
+using Alis.Extension.Language.Translator.Cache;
+using Alis.Extension.Language.Translator.Pluralization;
+using Alis.Extension.Language.Translator.Providers;
 
-namespace Alis.Extension.Math.HighSpeedPriorityQueue
+namespace Alis.Extension.Language.Translator
 {
     /// <summary>
-    ///     A copy of StablePriorityQueue which also has generic priority-type
+    ///     The translation manager class
     /// </summary>
-    /// <typeparam name="TItem">The values in the queue.  Must extend the GenericPriorityQueueNode class</typeparam>
-    /// <typeparam name="TPriority">The priority-type.  Must extend IComparable&lt;TPriority&gt;</typeparam>
-    public sealed class GenericPriorityQueue<TItem, TPriority> : IFixedSizePriorityQueue<TItem, TPriority>
-        where TItem : GenericPriorityQueueNode<TPriority>
+    /// <remarks>
+    ///     This class serves as a facade for the translation system, coordinating
+    ///     language management, translation lookup, caching, and pluralization.
+    ///     It uses dependency injection to allow for flexible configuration of providers,
+    ///     caches, and other services.
+    /// </remarks>
+    public class TranslationManager
     {
         /// <summary>
-        ///     The comparer
+        ///     The translation cache
         /// </summary>
-        private readonly Comparison<TPriority> _comparer;
+        private readonly ITranslationCache cache;
 
         /// <summary>
-        ///     The nodes
+        ///     The fallback language codes (e.g., "en-US" -> ["en-US", "en"])
         /// </summary>
-        private TItem[] _nodes;
-
-        /// <summary>
-        ///     The num nodes
-        /// </summary>
-        internal int _numNodes;
-
-        /// <summary>
-        ///     The num nodes ever enqueued
+        private readonly List<string> fallbackLanguages = new List<string>();
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/test/GenericPriorityQueueTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Language/Translator/test/TranslationManagerTests.cs
 
     Priority
     LOW (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/GenericPriorityQueue.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Language/Translator/src/TranslationManager.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage GenericPriorityQueue.cs
+    Commit format: test: coverage TranslationManager.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================
