@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
+using Alis.Core.Ecs.Systems.Scope;
+using Context = Alis.Core.Ecs.Systems.Scope.Context;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
@@ -166,7 +170,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         /// <returns>The ctx</returns>
         private static Context CreateContext()
         {
-            Alis.Core.Ecs.Systems.Scope.Context ctx = new Alis.Core.Ecs.Systems.Scope.Context(new Alis.Core.Ecs.Systems.Configuration.Setting());
+            Context ctx = new Context(new Setting());
             return ctx;
         }
     }

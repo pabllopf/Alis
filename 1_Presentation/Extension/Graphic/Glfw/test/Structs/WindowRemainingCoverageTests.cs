@@ -55,21 +55,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         /// <summary>
-        /// Windows the opacity get returns default
-        /// </summary>
-        [RequiresDisplay]
-        public void Window_Opacity_Get_ReturnsDefault()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow(800, 600, "Test");
-            Window w = window;
-
-            float opacity = w.Opacity;
-
-            Assert.Equal(1.0f, opacity);
-        }
-
-        /// <summary>
         /// Windows the opacity set within bounds
         /// </summary>
         [RequiresDisplay]

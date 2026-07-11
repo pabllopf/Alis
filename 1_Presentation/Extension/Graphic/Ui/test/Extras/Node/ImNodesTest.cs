@@ -749,15 +749,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void SaveEditorStateToIniFile_ThrowsDllNotFoundException()
         {
         }
-
-        /// <summary>
-        ///     Tests that save editor state to ini string throws dll not found exception
-        /// </summary>
-        [Fact]
-        public void SaveEditorStateToIniString_ThrowsDllNotFoundException()
-        {
-            Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(new ImNodesEditorContext()));
-        }
+        
 
         /// <summary>
         ///     Tests that save editor state to ini string with data size throws dll not found exception

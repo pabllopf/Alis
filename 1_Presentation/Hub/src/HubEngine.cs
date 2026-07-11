@@ -158,9 +158,7 @@ namespace Alis.App.Hub
 
 
             platform = GetPlatform();
-            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
-
-            if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
+if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform.Cleanup();
@@ -175,8 +173,7 @@ namespace Alis.App.Hub
             IntPtr imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
 
-            Debug.Assert(platform != null, "Platform must be provided before Initialize is called.");
-            platform.MakeContextCurrent();
+platform.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
             if (currentCtx == IntPtr.Zero)
@@ -187,9 +184,7 @@ namespace Alis.App.Hub
             ImGui.SetCurrentContext(currentCtx);
 
             _spaceWork.io = ImGui.GetIo();
-            Debug.Assert(_spaceWork.io.NativePtr != IntPtr.Zero, "ImGui _spaceWork.io must be valid after creating or setting context.");
-
-            // Backend capabilities
+// Backend capabilities
 
             _spaceWork.io.BackendFlags |= ImGuiBackendFlags.RendererHasVtxOffset |
                                           ImGuiBackendFlags.PlatformHasViewports |
@@ -271,8 +266,7 @@ namespace Alis.App.Hub
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, 0);
             Gl.GlBindVertexArray(0);
 
-            Debug.Assert(platform != null, nameof(platform) + " != null");
-            platform.ShowWindow();
+platform.ShowWindow();
             platform.SetTitle("Alis Hub - by @pabllopf");
 
             _spaceWork.io = ImGui.GetIo();
@@ -446,12 +440,8 @@ namespace Alis.App.Hub
         internal void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
-            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
-
-            platform.GetMouseState(out _, out _, out bool[] mouseButtons);
-            Debug.Assert((mouseButtons != null) && (mouseButtons.Length >= 3), "mouseButtons debe tener al menos 3 elementos");
-
-            platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
+platform.GetMouseState(out _, out _, out bool[] mouseButtons);
+platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
 
             platform.GetMousePositionInView(out float mx, out float my);
 

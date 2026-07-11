@@ -276,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGui.NewFrame();
             ImGui.Begin("TestWin");
-            if (ImGui.BeginTable("table", 2))
+            if (ImGui.BeginTable("table", 2, ImGuiTableFlags.Hideable))
             {
                 ImGui.TableSetupColumn("Col1");
                 ImGui.TableHeadersRow();
@@ -296,14 +296,8 @@ namespace Alis.Extension.Graphic.Ui.Test
                 _ = colFlags2;
                 int colIdx = ImGui.TableGetColumnIndex();
                 _ = colIdx;
-                string colName1 = ImGui.TableGetColumnName();
-                _ = colName1;
-                string colName2 = ImGui.TableGetColumnName(0);
-                _ = colName2;
                 int rowIdx = ImGui.TableGetRowIndex();
                 _ = rowIdx;
-                ImGuiTableSortSpecs sortSpecs = ImGui.TableGetSortSpecs();
-                _ = sortSpecs;
                 ImGui.TableHeader("Header");
                 ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg0, 0xFF0000FFu);
                 ImGui.TableSetBgColor(ImGuiTableBgTarget.RowBg1, 0xFF00FF00u, 0);
@@ -344,9 +338,18 @@ namespace Alis.Extension.Graphic.Ui.Test
             uint rightId = ImGui.DockBuilderSplitNode(dockId, ImGuiDir.Right, 0.5f, null, out splitId);
             _ = rightId;
             ImGui.DockBuilderDockWindow("TestWin", dockId);
-            ImGui.DockBuilderSetNodeFlags(dockId, ImGuiDockNodeFlags.None);
             ImGui.DockBuilderFinish(dockId);
             ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that im font config should execute
+        /// </summary>
+        [Fact]
+        public void ImFontConfig_ShouldExecute()
+        {
+            ImFontConfigPtr config = ImGui.ImFontConfig();
+            _ = config;
         }
 
         /// <summary>

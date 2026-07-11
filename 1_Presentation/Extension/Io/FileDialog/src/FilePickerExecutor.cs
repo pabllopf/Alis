@@ -42,6 +42,16 @@ namespace Alis.Extension.Io.FileDialog
     public static class FilePickerExecutor
     {
         /// <summary>
+        /// Gets or sets the value of the command exists override
+        /// </summary>
+        internal static Func<string, bool> CommandExistsOverride { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the execute command override
+        /// </summary>
+        internal static Func<string, string, int, string> ExecuteCommandOverride { get; set; }
+
+        /// <summary>
         ///     Executes a system command and returns its output.
         /// </summary>
         /// <param name="fileName">The name of the executable to run</param>
@@ -52,6 +62,11 @@ namespace Alis.Extension.Io.FileDialog
         /// <exception cref="ArgumentException">Thrown when fileName is empty</exception>
         public static string ExecuteCommand(string fileName, string arguments, int timeoutMs = 30000)
         {
+            if (ExecuteCommandOverride != null)
+            {
+                return ExecuteCommandOverride(fileName, arguments, timeoutMs);
+            }
+
             Logger.Trace($"Executing command: {fileName} with arguments: {arguments}");
 
             if (string.IsNullOrWhiteSpace(fileName))
@@ -121,6 +136,11 @@ namespace Alis.Extension.Io.FileDialog
         /// <returns>True if the command exists, false otherwise</returns>
         public static bool CommandExists(string command)
         {
+            if (CommandExistsOverride != null)
+            {
+                return CommandExistsOverride(command);
+            }
+
             Logger.Trace($"Checking if command exists: {command}");
 
             if (string.IsNullOrWhiteSpace(command))

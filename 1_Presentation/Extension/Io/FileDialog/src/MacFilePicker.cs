@@ -53,10 +53,6 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 options.AllowMultiple = false;
 
@@ -84,10 +80,6 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 options.AllowMultiple = true;
 
@@ -115,10 +107,6 @@ namespace Alis.Extension.Io.FileDialog
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteAppleScript(script);

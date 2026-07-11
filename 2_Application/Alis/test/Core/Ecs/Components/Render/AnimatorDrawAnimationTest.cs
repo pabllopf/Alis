@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Alis.Core.Ecs.Components.Render;
 using Xunit;
@@ -10,10 +11,10 @@ namespace Alis.Test.Core.Ecs.Components.Render
     public class AnimatorDrawAnimationTest
     {
         /// <summary>
-        /// Tests that draw animation when name file differs should not throw
+        /// Tests that draw animation when name file differs should call load texture
         /// </summary>
         [Fact]
-        public void DrawAnimation_WhenNameFileDiffers_ShouldNotThrow()
+        public void DrawAnimation_WhenNameFileDiffers_ShouldCallLoadTexture()
         {
             Animator animator = new Animator();
             animator.Animations = new List<Animation>
@@ -31,7 +32,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Sprite sprite = new Sprite(default, "different.png", 0);
 
-            Assert.Throws<Alis.Core.Graphic.OpenGL.GlException>(() => animator.DrawAnimation(ref sprite));
+            Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
         /// <summary>

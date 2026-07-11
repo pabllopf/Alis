@@ -160,8 +160,7 @@ namespace Alis.App.Installer
         /// </summary>
         public void Initialize()
         {
-            Debug.Assert(_platform != null, "Platform must be provided before Initialize is called.");
-            _platform.MakeContextCurrent();
+_platform.MakeContextCurrent();
 
             IntPtr currentCtx = ImGui.GetCurrentContext();
             
@@ -173,9 +172,7 @@ namespace Alis.App.Installer
             ImGui.SetCurrentContext(currentCtx);
 
             ImGuiIoPtr io = ImGui.GetIo();
-            Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO must be valid after creating or setting context.");
-
-            io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
+io.BackendFlags |= ImGuiBackendFlags.HasMouseCursors | ImGuiBackendFlags.HasSetMousePos;
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
             ImGui.StyleColorsDark();
 
@@ -184,8 +181,7 @@ namespace Alis.App.Installer
 
             if ((pixelPtr != IntPtr.Zero) && (widthPtr > 0) && (heightPtr > 0))
             {
-                Debug.Assert(_platform != null, "Platform required to upload font texture.");
-                _platform.MakeContextCurrent();
+_platform.MakeContextCurrent();
 
                 _fontTexture = Gl.GenTexture();
                 Gl.GlBindTexture(TextureTarget.Texture2D, _fontTexture);

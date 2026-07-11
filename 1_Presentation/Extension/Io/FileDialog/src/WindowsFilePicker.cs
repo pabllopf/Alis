@@ -81,10 +81,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 options.AllowMultiple = false;
 
@@ -112,10 +108,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 options.AllowMultiple = true;
 
@@ -143,10 +135,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             try
             {
                 FilePickerValidator.ValidateOptions(options);
-                if (options == null)
-                {
-                    throw new ArgumentNullException(nameof(options));
-                }
 
                 string script = BuildFolderSelectScript(options);
                 string result = ExecuteScript(script);

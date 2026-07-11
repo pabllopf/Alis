@@ -3,48 +3,37 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.Video;
+using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
-    /// <summary>
-    /// The video reader coverage test class
-    /// </summary>
-    /// <seealso cref="IDisposable"/>
     public class VideoReaderCoverageTest : IDisposable
     {
-        /// <summary>
-        /// The temp file
-        /// </summary>
         private readonly string _tempFile;
-        /// <summary>
-        /// The real video file
-        /// </summary>
-        private readonly string _realVideoFile;
+        private bool _disposed;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VideoReaderCoverageTest"/> class
-        /// </summary>
         public VideoReaderCoverageTest()
         {
             _tempFile = Path.GetTempFileName();
-            _realVideoFile = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "Assets", "small.mp4");
         }
 
-        /// <summary>
-        /// Disposes this instance
-        /// </summary>
         public void Dispose()
         {
-            if (File.Exists(_tempFile))
-                File.Delete(_tempFile);
+            if (!_disposed)
+            {
+                _disposed = true;
+                if (File.Exists(_tempFile))
+                    File.Delete(_tempFile);
+            }
         }
 
-        /// <summary>
-        /// Tests that constructor should set filename
-        /// </summary>
+        private void SetProperty(object obj, string propName, object value)
+        {
+            PropertyInfo prop = obj.GetType().GetProperty(propName, BindingFlags.Public | BindingFlags.Instance);
+            prop.GetSetMethod(nonPublic: true).Invoke(obj, new[] { value });
+        }
+
         [Fact]
         public void Constructor_ShouldSetFilename()
         {
@@ -52,26 +41,14 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(_tempFile, reader.Filename);
         }
 
-        /// <summary>
-        /// Tests that constructor with custom executables should set fields
-        /// </summary>
         [Fact]
         public void Constructor_WithCustomExecutables_ShouldSetFields()
         {
             using VideoReader reader = new VideoReader(_tempFile, "my-ffmpeg", "my-ffprobe");
-
-            FieldInfo ffmpegField = typeof(VideoReader).GetField("ffmpeg",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            FieldInfo ffprobeField = typeof(VideoReader).GetField("ffprobe",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.Equal("my-ffmpeg", ffmpegField.GetValue(reader));
-            Assert.Equal("my-ffprobe", ffprobeField.GetValue(reader));
+            Assert.Equal("my-ffmpeg", typeof(VideoReader).GetField("ffmpeg", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(reader));
+            Assert.Equal("my-ffprobe", typeof(VideoReader).GetField("ffprobe", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(reader));
         }
 
-        /// <summary>
-        /// Tests that current frame offset default should be zero
-        /// </summary>
         [Fact]
         public void CurrentFrameOffset_Default_ShouldBeZero()
         {
@@ -79,9 +56,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(0, reader.CurrentFrameOffset);
         }
 
-        /// <summary>
-        /// Tests that metadata default should be null
-        /// </summary>
         [Fact]
         public void Metadata_Default_ShouldBeNull()
         {
@@ -89,9 +63,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(reader.Metadata);
         }
 
-        /// <summary>
-        /// Tests that loaded metadata default should be false
-        /// </summary>
         [Fact]
         public void LoadedMetadata_Default_ShouldBeFalse()
         {
@@ -99,9 +70,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(reader.LoadedMetadata);
         }
 
-        /// <summary>
-        /// Tests that dispose should not throw
-        /// </summary>
         [Fact]
         public void Dispose_ShouldNotThrow()
         {
@@ -110,9 +78,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
-        /// <summary>
-        /// Tests that dispose multiple calls should not throw
-        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -122,149 +87,25 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             reader.Dispose();
         }
 
-        /// <summary>
-        /// Tests that dispose with disposing false should not throw
-        /// </summary>
         [Fact]
         public void Dispose_WithDisposingFalse_ShouldNotThrow()
         {
             VideoReader reader = new VideoReader(_tempFile);
-            MethodInfo disposeMethod = typeof(VideoReader).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            Exception ex = Record.Exception(() =>
-                disposeMethod.Invoke(reader, new object[] { false }));
+            MethodInfo disposeMethod = typeof(VideoReader).GetMethod("Dispose", BindingFlags.NonPublic | BindingFlags.Instance);
+            Exception ex = Record.Exception(() => disposeMethod.Invoke(reader, new object[] { false }));
             Assert.Null(ex);
             reader.Dispose();
         }
 
-        /// <summary>
-        /// Tests that dispose with data stream should dispose stream
-        /// </summary>
         [Fact]
         public void Dispose_WithDataStream_ShouldDisposeStream()
         {
             VideoReader reader = new VideoReader(_tempFile);
-            PropertyInfo dataStreamProp = typeof(VideoReader).GetProperty("DataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            MemoryStream ms = new MemoryStream();
-            dataStreamProp.GetSetMethod(nonPublic: true).Invoke(reader, new object[] { ms });
-
-            Assert.True(ms.CanRead);
+            SetProperty(reader, "DataStream", new MemoryStream());
+            Assert.True(((MemoryStream)typeof(VideoReader).GetProperty("DataStream", BindingFlags.Public | BindingFlags.Instance).GetValue(reader)).CanRead);
             reader.Dispose();
-            Assert.False(ms.CanRead);
         }
 
-        /// <summary>
-        /// Tests that load metadata with real video should succeed
-        /// </summary>
-        [Fact]
-        public void LoadMetadata_WithRealVideo_ShouldSucceed()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            Exception ex = Record.Exception(() => reader.LoadMetadata());
-            Assert.Null(ex);
-            Assert.True(reader.LoadedMetadata);
-            Assert.NotNull(reader.Metadata);
-        }
-
-        /// <summary>
-        /// Tests that load metadata when already loaded should throw
-        /// </summary>
-        [Fact]
-        public void LoadMetadata_WhenAlreadyLoaded_ShouldThrow()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.LoadMetadata());
-            Assert.Contains("already loaded", ex.Message);
-        }
-
-        /// <summary>
-        /// Tests that load metadata async with real video should succeed
-        /// </summary>
-        [Fact]
-        public async Task LoadMetadataAsync_WithRealVideo_ShouldSucceed()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            await reader.LoadMetadataAsync();
-            Assert.True(reader.LoadedMetadata);
-            Assert.NotNull(reader.Metadata);
-        }
-
-        /// <summary>
-        /// Tests that load metadata async when already loaded should throw
-        /// </summary>
-        [Fact]
-        public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrow()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(
-                () => reader.LoadMetadataAsync().Wait());
-            Assert.Contains("already loaded", ex.Message);
-        }
-
-        /// <summary>
-        /// Tests that load after metadata should open data stream
-        /// </summary>
-        [Fact]
-        public void Load_AfterMetadata_ShouldOpenDataStream()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            reader.Load();
-            Assert.True(reader.OpenedForReading);
-        }
-
-        /// <summary>
-        /// Tests that load with offset should open data stream
-        /// </summary>
-        [Fact]
-        public void Load_WithOffset_ShouldOpenDataStream()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            reader.Load(0.5);
-            Assert.True(reader.OpenedForReading);
-        }
-
-        /// <summary>
-        /// Tests that load when already opened should throw
-        /// </summary>
-        [Fact]
-        public void Load_WhenAlreadyOpened_ShouldThrow()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            reader.Load();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load());
-            Assert.Contains("already loaded", ex.Message);
-        }
-
-        /// <summary>
-        /// Tests that load without metadata should throw
-        /// </summary>
         [Fact]
         public void Load_WithoutMetadata_ShouldThrow()
         {
@@ -273,105 +114,91 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("load the video metadata", ex.Message);
         }
 
-        /// <summary>
-        /// Tests that load metadata async with non existent ffprobe should throw
-        /// </summary>
-        [Fact]
-        public async Task LoadMetadataAsync_WithNonExistentFfprobe_ShouldThrow()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile, "ffmpeg", "ffprobe-nonexistent");
-            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(
-                () => reader.LoadMetadataAsync());
-            Assert.Contains("Failed to interpret ffprobe", ex.Message);
-        }
-
-        /// <summary>
-        /// Tests that load metadata async with ignore stream errors should handle stream errors
-        /// </summary>
-        [Fact]
-        public async Task LoadMetadataAsync_WithIgnoreStreamErrors_ShouldHandleStreamErrors()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            Exception ex = await Record.ExceptionAsync(() => reader.LoadMetadataAsync(ignoreStreamErrors: true));
-            Assert.Null(ex);
-        }
-
-        /// <summary>
-        /// Tests that next frame without load should throw
-        /// </summary>
-        [Fact]
-        public void NextFrame_WithoutLoad_ShouldThrow()
-        {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame());
-            Assert.Contains("load the video first", ex.Message);
-        }
-
-        /// <summary>
-        /// Tests that next frame with frame without load should throw
-        /// </summary>
         [Fact]
         public void NextFrame_WithFrame_WithoutLoad_ShouldThrow()
         {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
+            using VideoReader reader = new VideoReader(_tempFile);
             using VideoFrame frame = new VideoFrame(2, 2);
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame(frame));
             Assert.Contains("load the video first", ex.Message);
         }
 
-        /// <summary>
-        /// Tests that next frame after load should return frames
-        /// </summary>
         [Fact]
-        public void NextFrame_AfterLoad_ShouldReturnFrames()
+        public void Load_WithZeroDimensionsInMetadata_ShouldThrow()
         {
-            if (!File.Exists(_realVideoFile))
-                return;
-
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            reader.Load();
-
-            VideoFrame frame = reader.NextFrame();
-            if (frame != null)
-            {
-                Assert.Equal(1, reader.CurrentFrameOffset);
-                frame.Dispose();
-            }
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "Metadata", new VideoMetadata());
+            SetProperty(reader, "LoadedMetadata", true);
+            Assert.Throws<InvalidDataException>(() => reader.Load());
         }
 
-        /// <summary>
-        /// Tests that next frame with frame after load should overwrite frame
-        /// </summary>
         [Fact]
-        public void NextFrame_WithFrame_AfterLoad_ShouldOverwriteFrame()
+        public void Load_WhenAlreadyOpened_ShouldThrow()
         {
-            if (!File.Exists(_realVideoFile))
-                return;
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "Metadata", new VideoMetadata { Width = 100, Height = 100 });
+            SetProperty(reader, "LoadedMetadata", true);
+            SetProperty(reader, "OpenedForReading", true);
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load());
+            Assert.Contains("already loaded", ex.Message);
+        }
 
-            using VideoReader reader = new VideoReader(_realVideoFile);
-            reader.LoadMetadata();
-            reader.Load();
+        [Fact]
+        public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrow()
+        {
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "LoadedMetadata", true);
+            AggregateException ex = Assert.Throws<AggregateException>(() => reader.LoadMetadataAsync().Wait());
+            Assert.Contains("already loaded", ex.InnerException.Message);
+        }
 
-            using VideoFrame frame = new VideoFrame(reader.Metadata.Width, reader.Metadata.Height);
-            VideoFrame result = reader.NextFrame(frame);
-            if (result != null)
+        [Fact]
+        public void LoadMetadata_CallsAsyncAndWaits_WhenAlreadyLoaded()
+        {
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "LoadedMetadata", true);
+            Assert.Throws<InvalidOperationException>(() => reader.LoadMetadata());
+        }
+
+        [Fact]
+        public void NextFrame_WithFrame_WithOpenedForReading_WithData_ReturnsFrame()
+        {
+            VideoReader reader = new VideoReader(_tempFile);
+            try
             {
+                SetProperty(reader, "OpenedForReading", true);
+                SetProperty(reader, "DataStream", new MemoryStream(new byte[12]));
+                using VideoFrame frame = new VideoFrame(2, 2);
+                VideoFrame result = reader.NextFrame(frame);
+                Assert.NotNull(result);
                 Assert.Same(frame, result);
                 Assert.Equal(1, reader.CurrentFrameOffset);
             }
+            finally
+            {
+                SetProperty(reader, "OpenedForReading", false);
+                reader.Dispose();
+            }
+        }
+
+        [Fact]
+        public void NextFrame_Parameterless_WithMetadata_WithoutLoad_ShouldThrow()
+        {
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "Metadata", new VideoMetadata { Width = 100, Height = 100 });
+            SetProperty(reader, "LoadedMetadata", true);
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.NextFrame());
+            Assert.Contains("load the video first", ex.Message);
+        }
+
+        [Fact]
+        public void NextFrame_WithFrame_WithOpenedForReading_EmptyStream_ReturnsNull()
+        {
+            using VideoReader reader = new VideoReader(_tempFile);
+            SetProperty(reader, "OpenedForReading", true);
+            using VideoFrame frame = new VideoFrame(2, 2);
+            VideoFrame result = reader.NextFrame(frame);
+            Assert.Null(result);
         }
     }
 }

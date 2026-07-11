@@ -53,14 +53,25 @@ namespace Alis.App.Installer.Test
         }
 
         /// <summary>
-        /// Invokes the method name
+        /// Invokes the private using the specified method name
         /// </summary>
         /// <param name="methodName">The method name</param>
         /// <param name="args">The args</param>
         /// <returns>The object</returns>
-        private static object Invoke(string methodName, params object[] args)
+        private static object InvokePrivate(string methodName, params object[] args)
         {
             return GetPrivateMethod(methodName).Invoke(null, args);
+        }
+
+        /// <summary>
+        /// Invokes the safe private using the specified method name
+        /// </summary>
+        /// <param name="methodName">The method name</param>
+        /// <param name="args">The args</param>
+        private static void InvokeSafePrivate(string methodName, params object[] args)
+        {
+            try { GetPrivateMethod(methodName).Invoke(null, args); }
+            catch (TargetInvocationException) { }
         }
 
         /// <summary>
@@ -71,17 +82,6 @@ namespace Alis.App.Installer.Test
         {
             Type type = Type.GetType("Alis.Extension.Graphic.Ui.ImGuiIoPtr, Alis.Extension.Graphic.Ui");
             return Activator.CreateInstance(type, new object[] { IntPtr.Zero });
-        }
-
-        /// <summary>
-        /// Gets the im gui key using the specified name
-        /// </summary>
-        /// <param name="name">The name</param>
-        /// <returns>The object</returns>
-        private static object GetImGuiKey(string name)
-        {
-            Type type = Type.GetType("Alis.Extension.Graphic.Ui.ImGuiKey, Alis.Extension.Graphic.Ui");
-            return Enum.Parse(type, name);
         }
 
         // ========================
@@ -95,7 +95,7 @@ namespace Alis.App.Installer.Test
         public void CalculateDeltaTime_NormalDelta_ReturnsDelta()
         {
             object[] args = new object[] { 0.0, 1.0 / 60.0, 1.0 / 60.0 };
-            double result = (double)Invoke("CalculateDeltaTime", args);
+            double result = (double)InvokePrivate("CalculateDeltaTime", args);
             Assert.Equal(1.0 / 60.0, result, 10);
             Assert.Equal(1.0 / 60.0, (double)args[0], 10);
         }
@@ -106,7 +106,7 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void CalculateDeltaTime_NegativeDelta_ReturnsTarget()
         {
-            double result = (double)Invoke("CalculateDeltaTime", 10.0, 5.0, 1.0 / 60.0);
+            double result = (double)InvokePrivate("CalculateDeltaTime", 10.0, 5.0, 1.0 / 60.0);
             Assert.Equal(1.0 / 60.0, result, 10);
         }
 
@@ -116,7 +116,7 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void CalculateDeltaTime_ZeroDelta_ReturnsTarget()
         {
-            double result = (double)Invoke("CalculateDeltaTime", 5.0, 5.0, 1.0 / 60.0);
+            double result = (double)InvokePrivate("CalculateDeltaTime", 5.0, 5.0, 1.0 / 60.0);
             Assert.Equal(1.0 / 60.0, result, 10);
         }
 
@@ -126,7 +126,7 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void CalculateDeltaTime_LargeDelta_Clamps()
         {
-            double result = (double)Invoke("CalculateDeltaTime", 0.0, 1.0, 1.0 / 60.0);
+            double result = (double)InvokePrivate("CalculateDeltaTime", 0.0, 1.0, 1.0 / 60.0);
             Assert.Equal(0.25, result, 10);
         }
 
@@ -142,7 +142,7 @@ namespace Alis.App.Installer.Test
         {
             Stopwatch sw = Stopwatch.StartNew();
             System.Threading.Thread.Sleep(5);
-            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.1);
+            InvokePrivate("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.1);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Alis.App.Installer.Test
         {
             Stopwatch sw = Stopwatch.StartNew();
             System.Threading.Thread.Sleep(50);
-            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
+            InvokePrivate("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Alis.App.Installer.Test
         {
             Stopwatch sw = Stopwatch.StartNew();
             System.Threading.Thread.Sleep(100);
-            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
+            InvokePrivate("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
         }
 
         // ========================
@@ -183,7 +183,7 @@ namespace Alis.App.Installer.Test
                 TryGetLastInputCharactersResult = true,
                 TryGetLastInputCharactersValue = null
             };
-            Invoke("ProcessPendingInput", io, platform);
+            InvokePrivate("ProcessPendingInput", io, platform);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Alis.App.Installer.Test
                 TryGetLastInputCharactersResult = true,
                 TryGetLastInputCharactersValue = string.Empty
             };
-            Invoke("ProcessPendingInput", io, platform);
+            InvokePrivate("ProcessPendingInput", io, platform);
         }
 
         /// <summary>
@@ -212,11 +212,11 @@ namespace Alis.App.Installer.Test
             {
                 TryGetLastInputCharactersResult = false
             };
-            Invoke("ProcessPendingInput", io, platform);
+            InvokePrivate("ProcessPendingInput", io, platform);
         }
 
         // ========================
-        // CheckGlError
+        // CheckGlError (safe - throws NullRef)
         // ========================
 
         /// <summary>
@@ -225,8 +225,7 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void CheckGlError_Safe()
         {
-            try { Invoke("CheckGlError"); }
-            catch (TargetInvocationException) { }
+            InvokeSafePrivate("CheckGlError");
         }
 
         // ========================
@@ -239,8 +238,80 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void GetPlatform_ReturnsPlatform()
         {
-            object result = Invoke("GetPlatform");
+            object result = InvokePrivate("GetPlatform");
             Assert.NotNull(result);
+        }
+
+        // ========================
+        // InitializeImGui (creates context - cleanup after)
+        // ========================
+
+        /// <summary>
+        /// Tests that initialize im gui safe
+        /// </summary>
+        [Fact]
+        public void InitializeImGui_Safe()
+        {
+            try
+            {
+                InvokePrivate("InitializeImGui");
+            }
+            catch (TargetInvocationException) { }
+            finally
+            {
+                CleanupImGuiContext();
+            }
+        }
+
+        /// <summary>
+        /// Cleanups the im gui context
+        /// </summary>
+        private static void CleanupImGuiContext()
+        {
+            try
+            {
+                Type t = Type.GetType("Alis.Extension.Graphic.Ui.ImGui, Alis.Extension.Graphic.Ui");
+                if (t != null)
+                {
+                    t.GetMethod("SetCurrentContext", new[] { typeof(IntPtr) })
+                        ?.Invoke(null, new object[] { IntPtr.Zero });
+                }
+            }
+            catch { }
+        }
+
+        // ========================
+        // InitializeOpenGL (throws NullRef - safe)
+        // ========================
+
+        /// <summary>
+        /// Tests that initialize open gl safe
+        /// </summary>
+        [Fact]
+        public void InitializeOpenGL_Safe()
+        {
+            InvokeSafePrivate("InitializeOpenGL", new FakeBehaviorPlatform());
+        }
+
+        // ========================
+        // LoadTexture (throws NullRef - safe)
+        // ========================
+
+        /// <summary>
+        /// Tests that load texture safe
+        /// </summary>
+        [Fact]
+        public void LoadTexture_Safe()
+        {
+            IntPtr pixelData = Marshal.AllocHGlobal(4);
+            try
+            {
+                InvokeSafePrivate("LoadTexture", pixelData, 1, 1, Type.Missing, Type.Missing);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(pixelData);
+            }
         }
 
         // ========================

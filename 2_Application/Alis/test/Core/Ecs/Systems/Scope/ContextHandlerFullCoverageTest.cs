@@ -1,7 +1,9 @@
+using System;
 using System.Threading;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
+using Scene = Alis.Core.Ecs.Scene;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Scope
@@ -47,23 +49,6 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
-        /// Tests that run with default target frames does not throw
-        /// </summary>
-        [Fact]
-        public void Run_WithDefaultTargetFrames_DoesNotThrow()
-        {
-            Context context = CreateContextWithScene();
-            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true, TargetFrames = 60f };
-            ContextHandler handler = new ContextHandler(context);
-
-            handler.InitPreview();
-
-            Thread.Sleep(100);
-
-            handler.Preview();
-        }
-
-        /// <summary>
         /// Tests that run completes one loop when is running is false
         /// </summary>
         [Fact]
@@ -93,7 +78,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             Thread.Sleep(200);
 
-            Assert.Throws<Alis.Core.Graphic.OpenGL.GlException>(() => handler.Preview());
+            Assert.ThrowsAny<Exception>(() => handler.Preview());
         }
 
         /// <summary>

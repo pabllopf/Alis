@@ -63,9 +63,7 @@ namespace Alis.App.Installer
             double lastTime = frameTimer.Elapsed.TotalSeconds;
 
             INativePlatform platform = GetPlatform();
-            Debug.Assert(platform != null, "Platform implementation must be provided for the current OS.");
-
-            if (!InitializePlatform(platform, 800, 600, "C# + OpenGL Platform"))
+if (!InitializePlatform(platform, 800, 600, "C# + OpenGL Platform"))
             {
                 Logger.Info("Failed to initialize platform or OpenGL context. Exiting.");
                 platform.Cleanup();
@@ -148,8 +146,7 @@ namespace Alis.App.Installer
 
             const int fontSize = 14;
             Stream jetBrainsStream = AssetRegistry.GetResourceMemoryStreamByName("JetBrainsMono-Bold.ttf");
-            Debug.Assert((jetBrainsStream != null) && (jetBrainsStream.Length > 0), "Primary font resource not found.");
-            IntPtr primaryFontPtr = LoadFontFromResource(jetBrainsStream);
+IntPtr primaryFontPtr = LoadFontFromResource(jetBrainsStream);
 
             fonts.AddFontFromMemoryTtf(primaryFontPtr, fontSize, fontSize);
 
@@ -356,9 +353,7 @@ namespace Alis.App.Installer
         /// <returns>The native ptr</returns>
         private static IntPtr LoadFontFromResource(Stream stream)
         {
-            Debug.Assert((stream != null) && (stream.Length > 0), "Font stream must be valid.");
-
-            byte[] data = new byte[stream.Length];
+byte[] data = new byte[stream.Length];
             stream.ReadExactly(data, 0, (int) stream.Length);
             IntPtr nativePtr = Marshal.AllocHGlobal(data.Length);
             Marshal.Copy(data, 0, nativePtr, data.Length);

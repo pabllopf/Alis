@@ -95,7 +95,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutTitle_OmitsPrompt()
         {
-            var options = new FilePickerOptions();
+            var options = new FilePickerOptions { Title = null };
 
             string script = MacFilePicker.BuildOpenFileScript(options, false);
 
@@ -141,7 +141,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithoutTitle_OmitsPrompt()
         {
-            var options = new FilePickerOptions();
+            var options = new FilePickerOptions { Title = null };
 
             string script = MacFilePicker.BuildFolderSelectScript(options);
 

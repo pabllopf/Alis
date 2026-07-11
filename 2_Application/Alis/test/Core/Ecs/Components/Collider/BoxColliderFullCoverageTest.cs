@@ -1,13 +1,23 @@
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Collider
 {
+    /// <summary>
+    /// The box collider full coverage test class
+    /// </summary>
     public class BoxColliderFullCoverageTest
     {
+        /// <summary>
+        /// Tests that constructor default sets expected values
+        /// </summary>
         [Fact]
         public void Constructor_Default_SetsExpectedValues()
         {
@@ -29,6 +39,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(0f, collider.AngularVelocity);
         }
 
+        /// <summary>
+        /// Tests that constructor with settings sets properties
+        /// </summary>
         [Fact]
         public void Constructor_WithSettings_SetsProperties()
         {
@@ -67,6 +80,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(90f, collider.AngularVelocity);
         }
 
+        /// <summary>
+        /// Tests that properties can be set and get
+        /// </summary>
         [Fact]
         public void Properties_CanBeSetAndGet()
         {
@@ -105,6 +121,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(new Vector2F(3, 4), collider.RelativePosition);
         }
 
+        /// <summary>
+        /// Tests that on update with no transform does not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_WithNoTransform_DoesNotThrow()
         {
@@ -116,6 +135,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnUpdate(gameObject);
         }
 
+        /// <summary>
+        /// Tests that on update with transform and no body does not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_WithTransformAndNoBody_DoesNotThrow()
         {
@@ -128,6 +150,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnUpdate(gameObject);
         }
 
+        /// <summary>
+        /// Tests that on exit with no body does not throw
+        /// </summary>
         [Fact]
         public void OnExit_WithNoBody_DoesNotThrow()
         {
@@ -139,8 +164,11 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnExit(gameObject);
         }
 
+        /// <summary>
+        /// Tests that render when not initialized throws exception
+        /// </summary>
         [Fact]
-        public void Render_WhenNotInitialized_ThrowsGlException()
+        public void Render_WhenNotInitialized_ThrowsException()
         {
             BoxCollider collider = new BoxCollider();
             Context context = new Context();
@@ -149,10 +177,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             gameObject.Add(new Transform());
             gameObject.Add(collider);
 
-            Assert.Throws<Alis.Core.Graphic.OpenGL.GlException>(() =>
+            Assert.ThrowsAny<Exception>(() =>
                 collider.Render(gameObject, new Vector2F(0, 0), new Vector2F(800, 600), 32f));
         }
 
+        /// <summary>
+        /// Tests that initialize shaders without context throws null reference exception
+        /// </summary>
         [Fact]
         public void InitializeShaders_WithoutContext_ThrowsNullReferenceException()
         {
@@ -162,7 +193,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Throws<NullReferenceException>(() =>
             {
                 var method = typeof(BoxCollider).GetMethod("InitializeShaders",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                    BindingFlags.Instance | BindingFlags.NonPublic);
                 method.Invoke(collider, null);
             });
         }

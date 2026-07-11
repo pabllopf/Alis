@@ -138,9 +138,7 @@ namespace Alis.Core.Ecs.Generator
 
             AddMiscFlags(componentTypeSymbol, ref flags);
 
-            Debug.Assert(genericArguments is not null);
-
-            string @namespace = null;
+string @namespace = null;
 
             if (!componentTypeSymbol.ContainingNamespace.IsGlobalNamespace)
             {

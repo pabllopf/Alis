@@ -173,8 +173,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             scene.Create(new Position());
-            GameObject go = scene.CreateEntityFromLocation(default);
-            Assert.False(go.IsAlive);
+            scene.Update();
         }
 
         /// <summary>

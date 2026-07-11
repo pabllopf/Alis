@@ -196,13 +196,13 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// Tests that build folder select script without default path omits selected path
         /// </summary>
         [Fact]
-        public void BuildFolderSelectScript_WithoutDefaultPath_OmitsSelectedPath()
+        public void BuildFolderSelectScript_WithoutDefaultPath_OmitsSelectedPathAssignment()
         {
             var options = new FilePickerOptions("Select Folder");
 
             string script = WindowsFilePicker.BuildFolderSelectScript(options);
 
-            Assert.DoesNotContain("SelectedPath", script);
+            Assert.DoesNotContain("$dialog.SelectedPath = ", script);
         }
 
         /// <summary>

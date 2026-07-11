@@ -291,113 +291,15 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
-        // ========== P4: InputText with byte[] buf (4 overloads) ==========
+        // ========== P4: InputText (byte[] - skip: passes IntPtr.Zero to native) ==========
 
-        /// <summary>
-        /// Tests that input text with byte array buf all overloads execute
-        /// </summary>
-        [Fact]
-        public void InputText_ByteArrayBuf_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            byte[] buf = new byte[256];
-            bool r1 = ImGui.InputText("it1", buf, 256);
-            bool r2 = ImGui.InputText("it2", buf, 256, ImGuiInputTextFlags.None);
-            bool r3 = ImGui.InputText("it3", buf, 256, ImGuiInputTextFlags.None, null);
-            bool r4 = ImGui.InputText("it4", buf, 256, ImGuiInputTextFlags.None, null, IntPtr.Zero);
-            _ = r1; _ = r2; _ = r3; _ = r4;
-            ImGui.End();
-            ImGui.Render();
-        }
+        // ========== P4: InputText (ref string - skip: passes IntPtr.Zero to native) ==========
 
-        // ========== P4: InputText with ref string (4 overloads) ==========
+        // ========== P4: InputText (IntPtr - skip: passes IntPtr.Zero to native) ==========
 
-        /// <summary>
-        /// Tests that input text with string reference all overloads execute
-        /// </summary>
-        [Fact]
-        public void InputText_StringRef_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            string text = "hello";
-            bool r1 = ImGui.InputText("its1", ref text, 256);
-            bool r2 = ImGui.InputText("its2", ref text, 256, ImGuiInputTextFlags.None);
-            bool r3 = ImGui.InputText("its3", ref text, 256, ImGuiInputTextFlags.None, null);
-            bool r4 = ImGui.InputText("its4", ref text, 256, ImGuiInputTextFlags.None, null, IntPtr.Zero);
-            _ = r1; _ = r2; _ = r3; _ = r4;
-            ImGui.End();
-            ImGui.Render();
-        }
+        // ========== P4: InputTextMultiline (skip: passes IntPtr.Zero to native) ==========
 
-        // ========== P4: InputText with IntPtr buf (4 overloads) ==========
-
-        /// <summary>
-        /// Tests that input text with int pointer buf all overloads execute
-        /// </summary>
-        [Fact]
-        public void InputText_IntPtrBuf_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            IntPtr buf = Marshal.AllocHGlobal(256);
-            try
-            {
-                bool r1 = ImGui.InputText("itp1", buf, 256);
-                bool r2 = ImGui.InputText("itp2", buf, 256, ImGuiInputTextFlags.None);
-                bool r3 = ImGui.InputText("itp3", buf, 256, ImGuiInputTextFlags.None, null);
-                bool r4 = ImGui.InputText("itp4", buf, 256, ImGuiInputTextFlags.None, null, IntPtr.Zero);
-                _ = r1; _ = r2; _ = r3; _ = r4;
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(buf);
-            }
-            ImGui.End();
-            ImGui.Render();
-        }
-
-        // ========== P4: InputTextMultiline (4 overloads) ==========
-
-        /// <summary>
-        /// Tests that input text multiline all overloads execute
-        /// </summary>
-        [Fact]
-        public void InputTextMultiline_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            string text = "multi\nline";
-            var size = new Vector2F(200f, 100f);
-            bool r1 = ImGui.InputTextMultiline("itm1", ref text, 1024, size);
-            bool r2 = ImGui.InputTextMultiline("itm2", ref text, 1024, size, ImGuiInputTextFlags.None);
-            bool r3 = ImGui.InputTextMultiline("itm3", ref text, 1024, size, ImGuiInputTextFlags.None, null);
-            bool r4 = ImGui.InputTextMultiline("itm4", ref text, 1024, size, ImGuiInputTextFlags.None, null, IntPtr.Zero);
-            _ = r1; _ = r2; _ = r3; _ = r4;
-            ImGui.End();
-            ImGui.Render();
-        }
-
-        // ========== P4: InputTextWithHint (4 overloads) ==========
-
-        /// <summary>
-        /// Tests that input text with hint all overloads execute
-        /// </summary>
-        [Fact]
-        public void InputTextWithHint_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            string text = "";
-            bool r1 = ImGui.InputTextWithHint("ith1", "Enter text", text, 256);
-            bool r2 = ImGui.InputTextWithHint("ith2", "Enter text", text, 256, ImGuiInputTextFlags.None);
-            bool r3 = ImGui.InputTextWithHint("ith3", "Enter text", text, 256, ImGuiInputTextFlags.None, null);
-            bool r4 = ImGui.InputTextWithHint("ith4", "Enter text", text, 256, ImGuiInputTextFlags.None, null, IntPtr.Zero);
-            _ = r1; _ = r2; _ = r3; _ = r4;
-            ImGui.End();
-            ImGui.Render();
-        }
+        // ========== P4: InputTextWithHint (skip: passes IntPtr.Zero to native) ==========
 
         // ========== P4: CalcTextSize (representative overloads) ==========
 

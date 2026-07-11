@@ -69,16 +69,39 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
+        /// Sets the field using the specified obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <param name="fieldName">The field name</param>
+        /// <param name="value">The value</param>
+        private static void SetField(object obj, string fieldName, object value)
+        {
+            FieldInfo field = obj.GetType().GetField(fieldName,
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            field.SetValue(obj, value);
+        }
+
+        /// <summary>
+        /// Sets the backing field using the specified obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <param name="propName">The prop name</param>
+        /// <param name="value">The value</param>
+        private static void SetBackingField(object obj, string propName, object value)
+        {
+            FieldInfo field = obj.GetType().GetField($"<{propName}>k__BackingField",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            field.SetValue(obj, value);
+        }
+
+        /// <summary>
         /// Tests that close write with null ffmpegp should throw null ref
         /// </summary>
         [Fact]
         public void CloseWrite_WithNullFfmpegp_ShouldThrowNullRef()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
-
-            FieldInfo openedField = typeof(AudioVideoWriter).GetField("<OpenedForWriting>k__BackingField",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            openedField.SetValue(writer, true);
+            SetBackingField(writer, "OpenedForWriting", true);
 
             Exception ex = Record.Exception(() => writer.CloseWrite());
 
@@ -93,19 +116,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void Dispose_WithOpenedForWriting_ShouldComplete()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
-
-            FieldInfo openedField = typeof(AudioVideoWriter).GetField("<OpenedForWriting>k__BackingField",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            openedField.SetValue(writer, true);
-
-            Process process = CreateExitedProcess();
-            FieldInfo processField = typeof(AudioVideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            processField.SetValue(writer, process);
-
-            FieldInfo cscField = typeof(AudioVideoWriter).GetField("csc",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            cscField.SetValue(writer, new CancellationTokenSource());
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
+            SetField(writer, "csc", new CancellationTokenSource());
 
             Exception ex = Record.Exception(() => writer.Dispose());
             Assert.Null(ex);
@@ -118,7 +131,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void Dispose_WithoutOpenedForWriting_ShouldNotThrow()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
-
             Exception ex = Record.Exception(() => writer.Dispose());
             Assert.Null(ex);
         }
@@ -130,11 +142,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void Dispose_WithCsc_ShouldDisposeCsc()
         {
             AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
-
-            FieldInfo cscField = typeof(AudioVideoWriter).GetField("csc",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            cscField.SetValue(writer, new CancellationTokenSource());
-
+            SetField(writer, "csc", new CancellationTokenSource());
             Exception ex = Record.Exception(() => writer.Dispose());
             Assert.Null(ex);
         }
@@ -146,20 +154,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         public void WriteFrame_Video_WhenOpened_WritesToStream()
         {
             AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
-
-            FieldInfo openedField = typeof(AudioVideoWriter).GetField("<OpenedForWriting>k__BackingField",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            openedField.SetValue(writer, true);
-
-            Process process = CreateExitedProcess();
-            FieldInfo processField = typeof(AudioVideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            processField.SetValue(writer, process);
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
 
             using MemoryStream videoStream = new MemoryStream();
-            FieldInfo inputVideoField = typeof(AudioVideoWriter).GetField("<InputDataStreamVideo>k__BackingField",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            inputVideoField.SetValue(writer, videoStream);
+            SetBackingField(writer, "InputDataStreamVideo", videoStream);
 
             using VideoFrame frame = new VideoFrame(2, 2);
             byte[] expectedData = frame.RawData;
@@ -169,8 +168,72 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(expectedData.Length, videoStream.Length);
             Assert.Equal(expectedData, videoStream.ToArray());
 
-            openedField.SetValue(writer, false);
+            SetBackingField(writer, "OpenedForWriting", false);
             writer.Dispose();
+        }
+
+        /// <summary>
+        /// Tests that close write with exited process disposes streams
+        /// </summary>
+        [Fact]
+        public void CloseWrite_WithExitedProcess_DisposesStreams()
+        {
+            using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
+            SetBackingField(writer, "InputDataStreamVideo", new MemoryStream());
+
+            Exception ex = Record.Exception(() => writer.CloseWrite());
+            Assert.Null(ex);
+            Assert.False(writer.OpenedForWriting);
+        }
+
+        /// <summary>
+        /// Tests that close write stream mode with exited process disposes output data stream
+        /// </summary>
+        [Fact]
+        public void CloseWrite_StreamMode_WithExitedProcess_DisposesOutputDataStream()
+        {
+            using MemoryStream outputStream = new MemoryStream();
+            using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
+            SetBackingField(writer, "InputDataStreamVideo", new MemoryStream());
+            SetBackingField(writer, "OutputDataStream", outputStream);
+
+            Exception ex = Record.Exception(() => writer.CloseWrite());
+            Assert.Null(ex);
+            Assert.False(writer.OpenedForWriting);
+        }
+
+        /// <summary>
+        /// Tests that dispose with opened for writing filename mode should close write
+        /// </summary>
+        [Fact]
+        public void Dispose_WithOpenedForWritingFilenameMode_ShouldCloseWrite()
+        {
+            using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
+
+            Exception ex = Record.Exception(() => writer.Dispose());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that close write with exited process and socket should complete
+        /// </summary>
+        [Fact]
+        public void CloseWrite_WithExitedProcessAndSocket_ShouldComplete()
+        {
+            using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
+            SetBackingField(writer, "OpenedForWriting", true);
+            SetField(writer, "Ffmpegp", CreateExitedProcess());
+            SetBackingField(writer, "InputDataStreamVideo", new MemoryStream());
+
+            Exception ex = Record.Exception(() => writer.CloseWrite());
+            Assert.Null(ex);
+            Assert.False(writer.OpenedForWriting);
         }
     }
 }
