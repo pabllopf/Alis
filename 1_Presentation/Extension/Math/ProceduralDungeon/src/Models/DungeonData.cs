@@ -143,7 +143,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         {
             if (_board == null)
             {
-                throw new ArgumentNullException(nameof(_board));
+                throw new InvalidOperationException("_board cannot be null.");
             }
 
             if (_board.GetLength(0) <= 0 || _board.GetLength(1) <= 0)
