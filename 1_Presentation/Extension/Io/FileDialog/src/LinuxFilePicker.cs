@@ -139,7 +139,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Executes the file dialog using zenity or kdialog.
         /// </summary>
-        private static string ExecuteFileDialog(FilePickerOptions options, bool allowMultiple)
+        internal static string ExecuteFileDialog(FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Executing file dialog (allowMultiple: {allowMultiple}).");
 
@@ -158,7 +158,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Executes the folder dialog using zenity or kdialog.
         /// </summary>
-        private static string ExecuteFolderDialog(FilePickerOptions options)
+        internal static string ExecuteFolderDialog(FilePickerOptions options)
         {
             Logger.Trace("Executing folder dialog.");
 
@@ -177,7 +177,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Gets the available dialog tool (zenity or kdialog).
         /// </summary>
-        private static string GetAvailableDialogTool()
+        internal static string GetAvailableDialogTool()
         {
             Logger.Trace("Checking for available dialog tools...");
 
@@ -200,7 +200,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds the arguments for the file dialog command.
         /// </summary>
-        private static string BuildFileDialogArguments(string tool, FilePickerOptions options, bool allowMultiple)
+        internal static string BuildFileDialogArguments(string tool, FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Building file dialog arguments for {tool}.");
 
@@ -224,7 +224,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <param name="args">The args</param>
         /// <param name="options">The options</param>
         /// <param name="allowMultiple">The allow multiple</param>
-        private static void BuildZenityFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
+        internal static void BuildZenityFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
         {
             args.Add("--file-selection");
 
@@ -261,7 +261,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <param name="args">The args</param>
         /// <param name="options">The options</param>
         /// <param name="allowMultiple">The allow multiple</param>
-        private static void BuildKdialogFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
+        internal static void BuildKdialogFileDialogArguments(List<string> args, FilePickerOptions options, bool allowMultiple)
         {
             if (allowMultiple)
             {
@@ -296,7 +296,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds the arguments for the folder dialog command.
         /// </summary>
-        private static string BuildFolderDialogArguments(string tool, FilePickerOptions options)
+        internal static string BuildFolderDialogArguments(string tool, FilePickerOptions options)
         {
             Logger.Trace($"Building folder dialog arguments for {tool}.");
 
@@ -342,7 +342,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private static FilePickerResult ParseResult(string output, bool allowMultiple)
+        internal static FilePickerResult ParseResult(string output, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
@@ -387,7 +387,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Escapes special characters in shell strings.
         /// </summary>
-        private static string EscapeShellString(string input)
+        internal static string EscapeShellString(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

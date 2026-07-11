@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GamePadStateTests.cs
+//  File:FontTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Glfw.Test.Structs
+namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
-    public class GamePadStateTests
+    /// <summary>
+    ///     Unit tests for the <see cref="Font"/> class.
+    /// </summary>
+    public class FontTest
     {
         [Fact]
-        public void GetButtonState_WithAnyButton_ReturnsPress()
+        public void Font_IsAssignableFromObjectBase()
         {
-            GamePadState state = new GamePadState();
-            InputState result = state.GetButtonState(GamePadButton.A);
-            Assert.Equal(InputState.Release, result);
+            Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Font)));
         }
 
         [Fact]
-        public void GetAxis_WithAnyAxis_ReturnsZero()
+        public void Font_ImplementsIDisposable()
         {
-            GamePadState state = new GamePadState();
-            float result = state.GetAxis(GamePadAxis.LeftX);
-            Assert.Equal(0.0f, result);
+            Assert.True(typeof(System.IDisposable).IsAssignableFrom(typeof(Font)));
         }
 
         [Fact]
-        public void GetButtonState_ForAllButtons_ReturnsDefault()
+        public void Info_Struct_HasFamilyProperty()
         {
-            GamePadState state = new GamePadState();
-            foreach (GamePadButton button in Enum.GetValues(typeof(GamePadButton)))
-            {
-                InputState result = state.GetButtonState(button);
-                Assert.Equal(InputState.Release, result);
-            }
+            var infoType = typeof(Font).GetNestedType("Info");
+            Assert.NotNull(infoType);
+            var familyProp = infoType.GetProperty("Family");
+            Assert.NotNull(familyProp);
+            Assert.Equal(typeof(string), familyProp.PropertyType);
         }
 
         [Fact]
-        public void GetAxis_ForAllAxes_ReturnsZero()
+        public void InfoMarshalData_Struct_HasFamilyField()
         {
-            GamePadState state = new GamePadState();
-            foreach (GamePadAxis axis in Enum.GetValues(typeof(GamePadAxis)))
-            {
-                float result = state.GetAxis(axis);
-                Assert.Equal(0.0f, result);
-            }
+            var infoType = typeof(Font).GetNestedType("InfoMarshalData", System.Reflection.BindingFlags.NonPublic);
+            Assert.NotNull(infoType);
+            var familyField = infoType.GetField("Family");
+            Assert.NotNull(familyField);
+            Assert.Equal(typeof(System.IntPtr), familyField.FieldType);
         }
     }
 }

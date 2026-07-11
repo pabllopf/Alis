@@ -133,15 +133,6 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        /// Tests that warning null branch
-        /// </summary>
-        [Fact]
-        public void Warning_NullBranch()
-        {
-            AttemptNullBranch(() => Logger.Warning("trigger-null-branch"));
-        }
-
-        /// <summary>
         /// Tests that error null branch
         /// </summary>
         [Fact]

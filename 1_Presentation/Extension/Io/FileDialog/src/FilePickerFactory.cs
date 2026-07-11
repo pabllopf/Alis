@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Extension.Io.FileDialog
@@ -48,19 +47,19 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace("Creating FilePicker for the current operating system...");
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.Windows))
             {
                 Logger.Info("Creating WindowsFilePicker.");
                 return new WindowsFilePicker();
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.OSX))
             {
                 Logger.Info("Creating MacFilePicker.");
                 return new MacFilePicker();
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.Linux))
             {
                 Logger.Info("Creating LinuxFilePicker.");
                 return new LinuxFilePicker();
@@ -100,17 +99,17 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace("Getting current platform name...");
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.Windows))
             {
                 return "Windows";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.OSX))
             {
                 return "macOS";
             }
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (PlatformHelper.IsOSPlatform(OSPlatform.Linux))
             {
                 return "Linux";
             }
@@ -126,9 +125,9 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace("Checking if current platform is supported...");
 
-            bool isSupported = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-                               || RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
-                               || RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            bool isSupported = PlatformHelper.IsOSPlatform(OSPlatform.Windows)
+                               || PlatformHelper.IsOSPlatform(OSPlatform.OSX)
+                               || PlatformHelper.IsOSPlatform(OSPlatform.Linux);
 
             Logger.Info($"Platform {GetPlatformName()} is {(isSupported ? "supported" : "not supported")}.");
             return isSupported;

@@ -105,10 +105,6 @@
     
 
     <ItemGroup>
-        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <None Condition="Exists('$(ProjectDir).docs/')" Include="$(ProjectDir).docs/**/*.md" Pack="false" Visible="true"/>
     </ItemGroup>
 
@@ -288,7 +284,11 @@
        </Target>
    
        <!-- ========== REGISTRO DEL OUTPUT ========== -->
-       <ItemGroup>
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute"/>
+    </ItemGroup>
+
+    <ItemGroup>
            <AdditionalFiles Include="$(AssetsOutput)"
                             CopyToOutputDirectory="Never"
                             CopyToPublishDirectory="Never"

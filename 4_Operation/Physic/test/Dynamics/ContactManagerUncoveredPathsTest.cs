@@ -1,5 +1,7 @@
 using System;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shapes;
@@ -498,6 +500,109 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
+        }
+
+        // ========================================================================
+        // ContactAlreadyExists — swapped fixture/index order (line 478-480)
+        // Exercises the second comparison: (fA == fixtureB) && (fB == fixtureA)
+        // ========================================================================
+        /// <summary>
+        /// Tests that contact already exists returns true with swapped fixtures order
+        /// </summary>
+        [Fact]
+        public void ContactAlreadyExists_WithSwappedOrder_ReturnsTrue()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            ContactEdge edge = bodyB.ContactList;
+            Assert.NotNull(edge);
+            Assert.Same(bodyA, edge.Other);
+
+            MethodInfo method = typeof(ContactManager).GetMethod("ContactAlreadyExists",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.NotNull(method);
+
+            Fixture fA = edge.Contact.FixtureA;
+            Fixture fB = edge.Contact.FixtureB;
+            int iA = edge.Contact.ChildIndexA;
+            int iB = edge.Contact.ChildIndexB;
+
+            bool result = (bool)method.Invoke(null, new object[] { bodyA, bodyB, fB, fA, iB, iA });
+            Assert.True(result);
+        }
+
+        // ========================================================================
+        // TryResolveContactFilter — FilterFlag set but all filters pass (line 664-665)
+        // Exercises c.FilterFlag = false; return false;
+        // ========================================================================
+        /// <summary>
+        /// Tests that try resolve contact filter resets flag when all filters pass
+        /// </summary>
+        [Fact]
+        public void TryResolveContactFilter_AllFiltersPass_ResetsFlag()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            PropertyInfo filterFlagProp = typeof(Contact).GetProperty("FilterFlag",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            filterFlagProp.SetValue(contact, true);
+
+            world.Step(1.0f / 60.0f);
+
+            bool filterFlag = (bool)filterFlagProp.GetValue(contact);
+            Assert.False(filterFlag);
+        }
+
+        // ========================================================================
+        // AcquireLocks — body lock contention triggers retry (lines 717-721)
+        // Exercises Interlocked.Exchange(ref bodyA.Lock, 0) and Thread.Sleep(0)
+        // ========================================================================
+        /// <summary>
+        /// Tests that acquire locks retries when body lock is held by another thread
+        /// </summary>
+        [Fact]
+        public void AcquireLocks_WithContention_Retries()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody();
+            Body bodyB = world.CreateBody();
+
+            FieldInfo lockField = typeof(Body).GetField("Lock", BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo acquireLocks = typeof(ContactManager).GetMethod("AcquireLocks",
+                BindingFlags.NonPublic | BindingFlags.Static);
+
+            lockField.SetValue(bodyB, 1);
+
+            using (ManualResetEvent releaseEvent = new ManualResetEvent(false))
+            {
+                Task.Run(() =>
+                {
+                    Thread.Sleep(30);
+                    lockField.SetValue(bodyB, 0);
+                    releaseEvent.Set();
+                });
+
+                acquireLocks.Invoke(null, new object[] { bodyA, bodyB });
+
+                releaseEvent.WaitOne(1000);
+            }
+
+            lockField.SetValue(bodyA, 0);
+            lockField.SetValue(bodyB, 0);
+
+            Assert.Equal(0, lockField.GetValue(bodyA));
+            Assert.Equal(0, lockField.GetValue(bodyB));
         }
     }
 }

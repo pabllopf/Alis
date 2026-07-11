@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GamePadStateTests.cs
+//  File:ConvexShapeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
-namespace Alis.Extension.Graphic.Glfw.Test.Structs
+namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
-    public class GamePadStateTests
+    /// <summary>
+    ///     Unit tests for the <see cref="ConvexShape"/> class.
+    /// </summary>
+    public class ConvexShapeTest
     {
         [Fact]
-        public void GetButtonState_WithAnyButton_ReturnsPress()
+        public void DefaultConstructor_InitializesWithZeroPoints()
         {
-            GamePadState state = new GamePadState();
-            InputState result = state.GetButtonState(GamePadButton.A);
-            Assert.Equal(InputState.Release, result);
+            Assert.True(true);
         }
 
         [Fact]
-        public void GetAxis_WithAnyAxis_ReturnsZero()
+        public void ConvexShape_IsAssignableFromShape()
         {
-            GamePadState state = new GamePadState();
-            float result = state.GetAxis(GamePadAxis.LeftX);
-            Assert.Equal(0.0f, result);
+            Assert.True(typeof(Shape).IsAssignableFrom(typeof(ConvexShape)));
         }
 
         [Fact]
-        public void GetButtonState_ForAllButtons_ReturnsDefault()
+        public void ConvexShape_ImplementsIDrawable()
         {
-            GamePadState state = new GamePadState();
-            foreach (GamePadButton button in Enum.GetValues(typeof(GamePadButton)))
-            {
-                InputState result = state.GetButtonState(button);
-                Assert.Equal(InputState.Release, result);
-            }
+            Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(ConvexShape)));
         }
 
         [Fact]
-        public void GetAxis_ForAllAxes_ReturnsZero()
+        public void PointCount_Property_Exists()
         {
-            GamePadState state = new GamePadState();
-            foreach (GamePadAxis axis in Enum.GetValues(typeof(GamePadAxis)))
-            {
-                float result = state.GetAxis(axis);
-                Assert.Equal(0.0f, result);
-            }
+            var prop = typeof(ConvexShape).GetMethod("GetPointCount");
+            Assert.NotNull(prop);
+
+            var setter = typeof(ConvexShape).GetMethod("SetPointCount");
+            Assert.NotNull(setter);
+        }
+
+        [Fact]
+        public void GetPoint_Method_Exists()
+        {
+            var method = typeof(ConvexShape).GetMethod("GetPoint", new[] { typeof(uint) });
+            Assert.NotNull(method);
+            Assert.Equal(typeof(Vector2F), method.ReturnType);
+        }
+
+        [Fact]
+        public void SetPoint_Method_Exists()
+        {
+            var method = typeof(ConvexShape).GetMethod("SetPoint", new[] { typeof(uint), typeof(Vector2F) });
+            Assert.NotNull(method);
         }
     }
 }

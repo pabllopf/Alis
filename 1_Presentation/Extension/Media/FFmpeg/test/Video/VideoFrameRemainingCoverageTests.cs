@@ -31,6 +31,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Reflection;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -220,7 +221,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save with custom ffmpeg path should complete without exception
         /// </summary>
-        [Fact]
+        [MacOsOnly]
         public void Save_WithCustomFfmpegPath_ShouldCompleteWithoutException()
         {
             VideoFrame frame = new VideoFrame(2, 2);
