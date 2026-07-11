@@ -42,3 +42,12 @@ license: GPLv3
 | - | Expanded glossary | Comprehensive terminology |
 | - | Documented missing extension | ProceduralDungeon |
 | - | Iteration 2 complete | Full documentation coverage achieved |
+| - | Iteration 3 start | Continuing memory expansion |
+| - | Documented network samples | 6 network sample projects |
+| - | Created domain docs | ECS, Data, Logging, Math, Time, Memory, Fluent domains |
+| - | Created infrastructure docs | Build infrastructure, CI/CD |
+| - | Created services overview | All engine services cataloged |
+| - | Created concept docs | ECS architecture, layered architecture, AOP, source generators |
+| - | Created API surface docs | Engine API + Extension API surfaces |
+| - | Added missing indexes | commands, queries |
+| - | Iteration 3 complete | Domain, infrastructure, concepts, APIs documented |
