@@ -13,7 +13,7 @@ license: GPLv3
 | Parameter | Value |
 |---|---|
 | Mode | Full Repository Analysis |
-| Status | Completed |
+| Status | Completed (Iteration 2) |
 | Current Batch | verification |
 | Started | 2026-07-11 |
 | Completed | 2026-07-11 |
@@ -23,4 +23,4 @@ license: GPLv3
 
 | Type | Target | Mode | Status |
 |---|---|---|---|
-| - | - | full | completed |
+| - | - | full | completed (iter 2) |

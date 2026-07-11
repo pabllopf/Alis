@@ -19,9 +19,11 @@ license: GPLv3
 | system/checkpoints | 6 | 100% | Draft |
 | system/logs | 7 | 100% | Draft |
 | system/metadata | 1 | 100% | Draft |
-| projects | 26 | 74% | Draft |
+| projects | 40 | 80% | Draft |
+| samples | 2 | 100% | Draft |
+| decisions | 1 | 100% | Draft |
 | dependencies | 1 | 100% | Draft |
-| architecture | 2 | 100% | Draft |
+| architecture | 4 | 100% | Draft |
 | diagrams | 1 | 100% | Draft |
 | context | 6 | 100% | Draft |
 | prompts | 2 | 100% | Draft |
@@ -29,3 +31,5 @@ license: GPLv3
 | testing | 4 | 100% | Existing |
 | performance | 1 | 100% | Draft |
 | onboarding | 1 | 100% | Draft |
+| glossary | 2 | 100% | Draft |
+| knowledge-graph | 1 | 100% | Draft |

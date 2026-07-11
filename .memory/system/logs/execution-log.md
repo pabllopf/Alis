@@ -32,3 +32,13 @@ license: GPLv3
 | - | Created onboarding guide | 1 developer onboarding file |
 | - | Created AI prompts | 2 AI context prompt files |
 | - | Completed verification | Memory system generated successfully |
+| - | Iteration 2 start | Continuing memory generation |
+| - | Generated samples index | 2 sample overview files |
+| - | Documented 13 sample projects | All Alis sample games documented |
+| - | Documented 13 generator projects | All Roslyn source generators documented |
+| - | Generated ADR records | 8 architecture decision records |
+| - | Documented build system | Build system + Config.props reference |
+| - | Generated knowledge graph | Cross-linking index |
+| - | Expanded glossary | Comprehensive terminology |
+| - | Documented missing extension | ProceduralDungeon |
+| - | Iteration 2 complete | Full documentation coverage achieved |

@@ -1,187 +1,132 @@
 ---
-title: Build System — ALIS
+title: Build System
 tags:
   - architecture
-  - design
-  - pattern
-
+  - build
+  - msbuild
+  - configuration
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Build System
 
-## SDK Requirements
+## Overview
 
-```json
-{
-  "sdk": {
-    "version": "10.0.0",
-    "rollForward": "latestMajor",
-    "allowPrerelease": false
-  }
-}
-```
+The Alis build system uses MSBuild with a sophisticated shared configuration system.
 
----
+## Configuration Files
 
-## Build Commands
+| File | Purpose |
+|---|---|
+| `Directory.Build.props` | Root-level properties for all projects |
+| `.config/Config.props` | Shared multi-layer build configuration (777 lines) |
+| `.config/target/alis.targets` | MSBuild targets for NuGet packaging |
+| `.config/coverlet.runsettings` | Code coverage configuration |
+| `.config/xunit.runner.json` | Test runner configuration |
+| `.config/SonarQube.Analysis.xml` | SonarQube static analysis config |
+| `global.json` | .NET SDK version pinning |
+| `NuGet.Config` | NuGet package sources |
 
+## Solution Files
+
+| Solution | Purpose |
+|---|---|
+| `alis.slnx` | Main solution (all projects, 2847 lines) |
+| `alis_design.sln` | Design-time solution for IDE performance |
+| `alis.core.slnx` | Core projects only |
+| `alis.extensions.slnx` | Extension projects only |
+| `alis.apps.slnx` | Application projects only |
+| `alis.test.slnx` | Test projects only |
+| `alis.benchmark.slnx` | Benchmark projects |
+| `alis.samples.slnx` | Sample projects |
+| `alis.core.aspect.slnx` | Aspect-oriented core projects |
+
+## Build Modes
+
+### Debug Mode
 ```bash
-# Restore all dependencies
-dotnet restore
+dotnet build alis.slnx -c Debug
+```
+- Standard multi-project build
+- Each project compiles independently
+- Debug symbols generated
+- Test frameworks available
 
-# Build all projects (Debug)
-dotnet build alis.slnx
-
-# Build all projects (Release)
+### Release Mode
+```bash
 dotnet build alis.slnx -c Release
+```
+- Source file merging across layers
+- Single-assembly output per layer
+- Optimized for NuGet packaging
+- AOT-ready compilation
+- SonarQube analysis support
 
-# Run all tests
-dotnet test alis.slnx
+## Multi-Target Build
 
-# Run tests with coverage
-dotnet test alis.slnx /p:CollectCoverage=true
-
-# Create NuGet packages
-dotnet pack -c Release
+Debug mode targets 6 frameworks:
+```
+netcoreapp2.0;net5.0;net8.0;net10.0;netstandard2.0;net461
 ```
 
----
+Release mode targets 19+ frameworks including all modern, legacy, and platform-specific TFMs.
 
-## Multi-Targeting Configuration
+## Platform-Specific Build
 
-### Debug Mode (6 frameworks)
-```
-netcoreapp2.0; net5.0; net8.0; net10.0; netstandard2.0; net461
-```
+Runtime Identifiers supported:
+- `win-x64`, `win-x86`, `win-arm`
+- `osx-x64`, `osx-arm64`
+- `linux-x64`, `linux-arm64`, `linux-arm`
+- `browser-wasm`
+- `android-arm64`, `android-x64`
+- `ios-arm64`, `iossimulator-arm64`, `iossimulator-x64`
 
-### Release Mode (21 frameworks)
-```
-netcoreapp2.0; netcoreapp2.1; netcoreapp2.2; netcoreapp3.0; netcoreapp3.1;
-net5.0; net6.0; net7.0; net8.0; net9.0; net10.0;
-netstandard2.0; netstandard2.1;
-net461; net471; net472; net48; net481
-```
+## Build Process Flow
 
----
-
-## Runtime Identifiers
-
-```
-browser-wasm;
-win-x64; win-x86;
-linux-x64; linux-arm64; linux-arm;
-osx-x64; osx-arm64;
-android-arm64; android-x64;
-ios-arm64; iossimulator-arm64; iossimulator-x64
-```
-
----
-
-## Platform Configurations
-
-| Setting | Value |
-|---------|-------|
-| Platforms | AnyCPU; x64; x86; arm; arm64 |
-| Configurations | Debug; Release |
-| LangVersion | 13 |
-| Nullable | disable |
-| AllowUnsafeBlocks | false (default, per-project override) |
-| OutputType | Library |
-| NeutralLanguage | en |
-
----
-
-## Code Analysis
-
-| Setting | Value |
-|---------|-------|
-| EnableNETAnalyzers | true |
-| AnalysisMode | AllEnabledByDefault |
-| AnalysisLevel | latest |
-| TreatWarningsAsErrors | true |
-| WarningsAsErrors | true |
-| RunAnalyzersDuringBuild | false (Directory.Build.props) |
-
----
-
-## Source Link
-
-```xml
-<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
-<SourceLinkCreate>true</SourceLinkCreate>
-<PublishRepositoryUrl>true</PublishRepositoryUrl>
-<EmbedUntrackedSources>true</EmbedUntrackedSources>
-<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-<Deterministic>true</Deterministic>
+```mermaid
+flowchart TD
+    Solution[alis.slnx] --> Config[Config.props]
+    Config --> PlatformResolution[Platform Resolution]
+    Config --> LayerResolution[Layer Dependency Resolution]
+    Config --> GeneratorInjection[Generator Analyzer Injection]
+    
+    PlatformResolution --> DebugBuild[Debug Build]
+    PlatformResolution --> ReleaseBuild[Release Build]
+    
+    DebugBuild --> StandardCompile[Standard Compilation]
+    ReleaseBuild --> SourceMerge[Source File Merging]
+    SourceMerge --> SingleAssembly[Single Assembly Output]
+    
+    GeneratorInjection --> GeneratorBuild[Generator Build netstandard2.0]
+    GeneratorBuild --> AnalyzerInjection[Inject as Analyzer]
+    
+    SingleAssembly --> RuntimeNativeCopy[Native Runtime Copy]
+    RuntimeNativeCopy --> NuGetPack[NuGet Package]
+    
+    StandardCompile --> TestRun[Test Execution]
+    TestRun --> Coverage[Coverage Report]
 ```
 
----
+## Asset Packing
 
-## Release Build Features
+The build system includes an asset packing pipeline:
+1. Detects `Assets/` directory in projects
+2. Generates SHA-256 file manifest
+3. Zips assets to `obj/assets.zip`
+4. Converts to Base64 (`obj/assets.pack`)
+5. Embeds in assembly as `AdditionalFiles`
 
-- `IncludeBuildOutput=false` (source-only packages)
-- `IncludeSymbols=false`
-- `SymbolPackageFormat=snupkg`
-- `DebugType=portable`
-- `DebugSymbols=true`
-- `GenerateDocumentationFile=true`
+## Test Configuration
 
----
+- Tests run via `dotnet test`
+- Results in TRX format at `.test/<TargetFramework>/`
+- Coverage via coverlet with custom runsettings
+- Test projects auto-include via naming convention
 
-## Native Library Handling
+## Related
 
-The build system automatically copies native libraries based on RID:
-
-```
-runtimes/<RID>/native/ → CopyToOutputDirectory=PreserveNewest
-```
-
-Supported RIDs for native libraries: win-x64, linux-x64, linux-arm64, osx-x64, osx-arm64, and more.
-
----
-
-## InternalsVisibleTo
-
-All projects expose internals to their test assemblies:
-```xml
-<InternalsVisibleTo Include="$(AssemblyName).Test"/>
-```
-
----
-
-## NoWarn Suppressions
-
-Key suppressed warnings:
-- **CS1685**: Global alias conflicts across assemblies
-- **CS0436**: Type override from dependency
-- **NU1903/NU1902/NU1904**: Package vulnerability warnings
-- **CA1031**: General exception catching
-- **CA1062**: Parameter validation (deferred to runtime)
-- **ALIS001–ALIS010**: Custom project-specific analyzer rules
-
----
-
-## CI/CD Workflows
-
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| [ALIS][CODE] | Push/PR | Code quality checks |
-| [ALIS][TEST] | Push/PR | Test execution |
-| [ALIS][PUBLISH] | Release | NuGet package publishing |
-| [ALIS][BENCHMARK] | Schedule/Push | Performance benchmarks |
-| [ALIS][SONARCLOUD] | Push | Main SonarCloud analysis |
-| [ALIS][*][SONARCLOUD] | Push | Per-project SonarCloud (35+ workflows) |
-| [ALIS][DEPENDENCY][REVIEW] | PR | Dependency review |
-| [ALIS][CONTRIBUTORS] | Push | Contributor management |
-| [ALIS][CHECK][ISSUES] | Schedule | Issue tracking |
-
----
-
-## Related Documentation
-
-- [[architecture/repository-overview]] — Architecture overview
-- [[system/indexes/architecture-index]] — Architecture patterns
-- [[onboarding/getting-started]] — Getting started guide
+- [[Config.props]]
+- [[Build Targets]]
+- [[Architecture Overview]]
+- [[Repository Overview]]

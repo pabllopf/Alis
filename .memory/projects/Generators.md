@@ -1,81 +1,70 @@
 ---
 title: Generator Projects
 tags:
-  - project
-  - documentation
-  - reference
-
+  - generators
+  - source-generators
+  - roslyn
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Generator Projects
 
 ## Overview
-5 Roslyn code generation / analysis projects across 2 layers. Each generator ships as an `Analyzer` dependency (`PrivateAssets=all`, `ReferenceOutputAssembly=false`) consumed by the Alis.Core.Aspect aggregator. Shared build template: `.config/default/default_generator_csproj.props`.
 
-## Generator Catalog
+The repository contains **12 Roslyn source generator projects**. All target `netstandard2.0` and are referenced as analyzers by their corresponding source projects.
 
-| # | Project | Layer | Type | .cs Files | Purpose |
-|---|---|---|---|---|---|
-| 1 | [[projects/Generators/Alis.Core.Ecs.Generator\|Alis.Core.Ecs.Generator]] | 4_Operation | `IIncrementalGenerator` + `DiagnosticAnalyzer` | 13 | ECS component type registry |
-| 2 | [[projects/Generators/Alis.Core.Graphic.Generator\|Alis.Core.Graphic.Generator]] | 4_Operation | `ISourceGenerator` (stub) | 1 | Skeleton/placeholder |
-| 3 | [[projects/Generators/Alis.Core.Aspect.Memory.Generator\|Alis.Core.Aspect.Memory.Generator]] | 6_Ideation | `IIncrementalGenerator` | 1 | AOT-safe resource embedding |
-| 4 | [[projects/Generators/Alis.Core.Aspect.Fluent.Generator\|Alis.Core.Aspect.Fluent.Generator]] | 6_Ideation | `DiagnosticAnalyzer` | 1 | AOT-safety reflection analyzer |
-| 5 | [[projects/Generators/Alis.Core.Aspect.Data.Generator\|Alis.Core.Aspect.Data.Generator]] | 6_Ideation | `ISourceGenerator` | 5 | JSON serialization code gen |
-| | **Totals** | | | **21** | |
+## Generator List
 
-## Generator Dependency Flow
-```
-5_Declaration ─── Alis.Core.Aspect (aggregator, consumes all generators via Analyzer refs)
-        ▲
-        │
-┌───────┴───────────────┐
-│    Generators          │
-│  ┌──────────────────┐  │
-│  │ 4_Operation       │  │
-│  │ ├ Ecs.Generator   │  │
-│  │ └ Graphic.Generator│  │
-│  └──────────────────┘  │
-│  ┌──────────────────┐  │
-│  │ 6_Ideation        │  │
-│  │ ├ Memory.Generator│  │
-│  │ ├ Fluent.Generator│  │
-│  │ └ Data.Generator  │  │
-│  └──────────────────┘  │
-└───────────────────────┘
+| Generator | Module | Layer | Purpose |
+|---|---|---|---|
+| [[Alis.Generator]] | Alis | Application | Application-level code generation |
+| [[Alis.Core.Generator]] | Alis.Core | Structuration | Core structuration generation |
+| [[Alis.Core.Ecs.Generator]] | Alis.Core.Ecs | Operation | ECS component/system generation |
+| [[Alis.Core.Audio.Generator]] | Alis.Core.Audio | Operation | Audio module code gen |
+| [[Alis.Core.Graphic.Generator]] | Alis.Core.Graphic | Operation | Graphics module code gen |
+| [[Alis.Core.Physic.Generator]] | Alis.Core.Physic | Operation | Physics module code gen |
+| [[Alis.Core.Aspect.Data.Generator]] | Alis.Core.Aspect.Data | Ideation | Data serialization code gen |
+| [[Alis.Core.Aspect.Fluent.Generator]] | Alis.Core.Aspect.Fluent | Ideation | Fluent API builder code gen |
+| [[Alis.Core.Aspect.Logging.Generator]] | Alis.Core.Aspect.Logging | Ideation | Logging code gen |
+| [[Alis.Core.Aspect.Math.Generator]] | Alis.Core.Aspect.Math | Ideation | Math code gen |
+| [[Alis.Core.Aspect.Memory.Generator]] | Alis.Core.Aspect.Memory | Ideation | Memory management code gen |
+| [[Alis.Core.Aspect.Time.Generator]] | Alis.Core.Aspect.Time | Ideation | Time-related code gen |
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Module[Source Module] --> Generator[Generator Project]
+    Generator -->|Roslyn Analyzer| Module
+    Generator -->|Compile-Time Code| Module
 ```
 
-## Generator Directory Structure
-```
-4_Operation/Ecs/generator/         — Ecs.Generator (13 .cs files)
-4_Operation/Graphic/generator/     — Graphic.Generator (1 .cs file)
-6_Ideation/Memory/generator/       — Memory.Generator (1 .cs file)
-6_Ideation/Fluent/generator/       — Fluent.Generator (1 .cs file)
-6_Ideation/Data/generator/         — Data.Generator (5 .cs files)
-```
+## Build Flow
 
-## Shared Build Template
-`.config/default/default_generator_csproj.props`:
-- **Targets**: `netstandard2.0;net8.0;net10.0`
-- **LangVersion**: 13
-- **EnforceExtendedAnalyzerRules**: true
-- **Packages**: `Microsoft.CodeAnalysis.CSharp` (4.3.0), `Microsoft.CodeAnalysis.Analyzers` (3.3.4)
+1. Generator projects build to `netstandard2.0` DLLs
+2. Source projects reference generators as `OutputItemType="Analyzer"` with `PrivateAssets="all"`
+3. Generators produce additional `.cs` files at compile time
+4. Generated code is AOT-safe (no runtime generation)
 
-## Generator Reference Pattern
-Generators are referenced via MSBuild as analyzers (not project references):
-```xml
-<ProjectReference Include="path/to/generator/*.csproj"
-                  PrivateAssets="all"
-                  ReferenceOutputAssembly="false"
-                  OutputItemType="Analyzer" />
-```
+## Rules
+
+- Must target `netstandard2.0` only
+- Must produce deterministic output
+- Must be AOT-compatible (no `Reflection.Emit`)
+- Referenced via MSBuild wildcard patterns in `Config.props`
+- Debug and Release configurations include appropriate generator references
+
+## Release Build Integration
+
+In Release mode, generator DLLs are:
+1. Built and placed in `bin/Release/netstandard2.0/`
+2. Copied to output as `analyzers/dotnet/cs/` 
+3. Packed into NuGet package for distribution
 
 ## Related
-- [[projects/5_Declaration/Aspect]] — Aspect aggregator consuming all generators
-- [[projects/Generators/Alis.Core.Ecs.Generator]] — ECS type registry generator
-- [[projects/Generators/Alis.Core.Graphic.Generator]] — Graphic generator (stub)
-- [[projects/Generators/Alis.Core.Aspect.Memory.Generator]] — Resource embedding generator
-- [[projects/Generators/Alis.Core.Aspect.Fluent.Generator]] — AOT reflection analyzer
-- [[projects/Generators/Alis.Core.Aspect.Data.Generator]] — JSON serialization generator
+
+- [[Source Generators]]
+- [[Build System]]
+- [[Projects Index]]
+- [[Architecture Overview]]

@@ -29,3 +29,10 @@ license: GPLv3
 | 2026-07-11 | performance | 1 | 0 |
 | 2026-07-11 | onboarding | 1 | 0 |
 | 2026-07-11 | prompts | 2 | 0 |
+| 2026-07-11 | samples-index | 2 | 0 |
+| 2026-07-11 | sample-projects | 13 | 0 |
+| 2026-07-11 | generators | 13 | 0 |
+| 2026-07-11 | adrs | 1 | 0 |
+| 2026-07-11 | build-system | 2 | 0 |
+| 2026-07-11 | knowledge-graph | 1 | 0 |
+| 2026-07-11 | glossary | 1 | 0 |
