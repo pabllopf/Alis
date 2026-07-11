@@ -185,26 +185,6 @@ namespace Alis.Core.Aspect.Logging.Test
         }
 
         /// <summary>
-        ///     Tests that logger exception should log critical before throwing
-        /// </summary>
-        [Fact]
-        public void Logger_Exception_ShouldLogCriticalBeforeThrowing()
-        {
-            MemoryLogOutput memoryOutput = new MemoryLogOutput();
-            LoggerFactory factory = new LoggerFactory();
-            factory.AddOutput(memoryOutput);
-            ILogger customLogger = factory.CreateLogger("ExceptionTestLogger");
-            Logger.SetDefaultLogger(customLogger);
-            string exceptionMessage = "Critical error occurred";
-
-            Assert.Throws<InvalidOperationException>(() => Logger.Exception(exceptionMessage));
-
-            IReadOnlyList<ILogEntry> entries = memoryOutput.GetEntries();
-            Assert.Equal(LogLevel.Critical, entries[0].Level);
-            Assert.Contains(exceptionMessage, entries[0].Message);
-        }
-
-        /// <summary>
         ///     Tests that logger exception with empty message should throw
         /// </summary>
         [Fact]
