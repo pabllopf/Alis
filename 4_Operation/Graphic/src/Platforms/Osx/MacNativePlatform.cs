@@ -183,8 +183,19 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return IsWindowVisible();
         }
 
+        /// <summary>
+        ///     Determines whether the specified event type is a mouse event.
+        /// </summary>
+        /// <param name="type">The event type.</param>
+        /// <returns>true if the event type is a mouse event; otherwise, false.</returns>
         private static bool IsMouseEvent(int type) => type == 1 || type == 2 || type == 3 || type == 4 || type == 5 || type == 22;
 
+        /// <summary>
+        ///     Handles a mouse event by updating the mouse position and button states.
+        /// </summary>
+        /// <param name="evt">The native event pointer.</param>
+        /// <param name="type">The event type.</param>
+        /// <returns>true if the window is still visible; otherwise, false.</returns>
         private bool HandleMouseEvent(IntPtr evt, int type)
         {
             UpdateMousePosition(evt);
@@ -219,6 +230,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return IsWindowVisible();
         }
 
+        /// <summary>
+        ///     Updates the stored mouse position from the native event.
+        /// </summary>
+        /// <param name="evt">The native event pointer.</param>
         internal void UpdateMousePosition(IntPtr evt)
         {
             IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
@@ -230,6 +245,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
             mouseY = (int) Math.Round(py);
         }
 
+        /// <summary>
+        ///     Handles a key down event by extracting the key and updating the pressed keys state.
+        /// </summary>
+        /// <param name="evt">The native event pointer.</param>
         internal void HandleKeyDownEvent(IntPtr evt)
         {
             int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
@@ -246,6 +265,10 @@ namespace Alis.Core.Graphic.Platforms.Osx
             pressedKeys.Add(mappedKey);
         }
 
+        /// <summary>
+        ///     Handles a key up event by extracting the key and removing it from the pressed keys state.
+        /// </summary>
+        /// <param name="evt">The native event pointer.</param>
         internal void HandleKeyUpEvent(IntPtr evt)
         {
             int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
@@ -261,6 +284,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
             pressedKeys.Remove(mappedKey);
         }
 
+        /// <summary>
+        ///     Extracts the first character from a native key event.
+        /// </summary>
+        /// <param name="evt">The native event pointer.</param>
+        /// <returns>The character, or '\0' if none.</returns>
         private static char ExtractCharacterFromEvent(IntPtr evt)
         {
             IntPtr nsString = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("characters"));
@@ -284,6 +312,12 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return chars[0];
         }
 
+        /// <summary>
+        ///     Maps a macOS virtual key code to a ConsoleKey value.
+        /// </summary>
+        /// <param name="keyCode">The macOS key code.</param>
+        /// <param name="mappedKey">The mapped ConsoleKey.</param>
+        /// <returns>true if the key was mapped; otherwise, false.</returns>
         private static bool TryMapSpecialKey(int keyCode, out ConsoleKey mappedKey)
         {
             switch (keyCode)
@@ -318,6 +352,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
         }
 
+        /// <summary>
+        ///     Maps a character key event to a ConsoleKey and updates the pressed keys state.
+        /// </summary>
+        /// <param name="c">The character.</param>
+        /// <param name="isKeyDown">Whether the key is being pressed down.</param>
         internal void MapCharacterKey(char c, bool isKeyDown)
         {
             ConsoleKey? mapped = null;
@@ -355,6 +394,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
         }
 
+        /// <summary>
+        ///     Maps a symbol character to a ConsoleKey value.
+        /// </summary>
+        /// <param name="c">The character.</param>
+        /// <returns>The mapped ConsoleKey, or null if not mapped.</returns>
         private static ConsoleKey? MapSymbolKey(char c)
         {
             switch (c)
@@ -420,24 +464,46 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return v;
         }
 
+        /// <summary>
+        ///     Gets the last input characters.
+        /// </summary>
+        /// <param name="chars">The last input characters.</param>
+        /// <returns>true if characters were available; otherwise, false.</returns>
         public bool TryGetLastInputCharacters(out string chars)
         {
             chars = "";
             return false;
         }
 
+        /// <summary>
+        ///     Gets the window position on the X axis.
+        /// </summary>
+        /// <returns>The X position of the window.</returns>
         public int GetWindowPositionX()
         {
             NsRect frame = window.GetFrame();
             return (int) frame.x;
         }
 
+        /// <summary>
+        ///     Gets the window position on the Y axis.
+        /// </summary>
+        /// <returns>The Y position of the window.</returns>
         public int GetWindowPositionY()
         {
             NsRect frame = window.GetFrame();
             return (int) frame.y;
         }
 
+        /// <summary>
+        ///     Gets the window metrics including position, size, and framebuffer size.
+        /// </summary>
+        /// <param name="winX">The window X position.</param>
+        /// <param name="winY">The window Y position.</param>
+        /// <param name="winW">The window width.</param>
+        /// <param name="winH">The window height.</param>
+        /// <param name="fbW">The framebuffer width.</param>
+        /// <param name="fbH">The framebuffer height.</param>
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
             NsRect frame = ObjectiveCInterop.GetWindowFrame(window.Handle);
@@ -460,6 +526,11 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
         }
 
+        /// <summary>
+        ///     Gets the mouse position relative to the content view.
+        /// </summary>
+        /// <param name="x">The mouse X position.</param>
+        /// <param name="y">The mouse Y position.</param>
         public void GetMousePositionInView(out float x, out float y)
         {
             x = 0;
