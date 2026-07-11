@@ -15,7 +15,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
         /// <summary>
         /// Tests that run calls build and run completes when is running is false
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void Run_CallsBuildAndRun_CompletesWhenIsRunningIsFalse()
         {
             VideoGameBuilder builder = new VideoGameBuilder();

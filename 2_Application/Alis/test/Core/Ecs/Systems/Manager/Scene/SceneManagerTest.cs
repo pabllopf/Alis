@@ -100,7 +100,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         /// <summary>
         ///     Tests that AddScene adds a scene to the loaded scenes list
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void AddScene_ShouldAddSceneToList()
         {
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
@@ -145,7 +145,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
         /// <summary>
         ///     Tests that LoadedScenes can be set via internal setter
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void LoadedScenes_CanBeSet()
         {
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();

@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that static logger exception should log and throw
         /// </summary>
-        [Fact(Skip = "Logger.Exception does not route through custom logger before throwing")]
+        [Fact]
         public void Logger_Exception_ShouldLogAndThrow()
         {
             MockLogger mockLogger = new MockLogger();
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that static logger set default logger should use custom logger
         /// </summary>
-        [Fact(Skip = "Logger.Info does not route through mock logger properly due to static state interference")]
+        [Fact]
         public void Logger_SetDefaultLogger_ShouldUseCustomLogger()
         {
             MockLogger mockLogger = new MockLogger();
@@ -180,7 +180,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that static logger log delegates to info
         /// </summary>
-        [Fact(Skip = "Logger.Log does not route through mock logger properly")]
+        [Fact]
         public void Logger_Log_DelegatesToInfo()
         {
             MockLogger mockLogger = new MockLogger();

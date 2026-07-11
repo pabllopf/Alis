@@ -43,7 +43,7 @@ namespace Alis.Test.Core.Ecs
         /// <summary>
         /// Tests that constructor with context creates builder
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - FastestTable resize fails in Scene constructor")]
+        [Fact]
         public void Constructor_WithContext_CreatesBuilder()
         {
             Context context = new Context();

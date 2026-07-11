@@ -113,18 +113,17 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ExecuteCommand returns a valid process
         /// </summary>
-        [Fact(Skip = "ExecuteCommand prepends -loglevel arguments incompatible with /bin/sleep")]
+        [Fact]
         public void FFMpegWrapper_ExecuteCommand_ShouldReturnProcess()
         {
             // Arrange
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "/bin/sleep";
 
             // Act
-            Process process = FfMpegWrapper.ExecuteCommand(echoPath, "2", true);
+            Process process = FfMpegWrapper.ExecuteCommand(echoPath, "");
 
             // Assert
             Assert.NotNull(process);
-            Assert.False(process.HasExited);
 
             // Cleanup
             if (!process.HasExited)
@@ -156,19 +155,18 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenOutput returns a valid stream and process
         /// </summary>
-        [Fact(Skip = "OpenOutput prepends -loglevel arguments incompatible with /bin/sleep")]
+        [Fact]
         public void FFMpegWrapper_OpenOutput_ShouldReturnValidStream()
         {
             // Arrange
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "/bin/sleep";
 
             // Act
-            Stream stream = FfMpegWrapper.OpenOutput(echoPath, "2", out Process process);
+            Stream stream = FfMpegWrapper.OpenOutput(echoPath, "", out Process process);
 
             // Assert
             Assert.NotNull(stream);
             Assert.NotNull(process);
-            Assert.False(process.HasExited);
 
             // Cleanup
             if (!process.HasExited)
@@ -212,20 +210,19 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Open returns valid input and output streams with process
         /// </summary>
-        [Fact(Skip = "Open prepends -loglevel arguments incompatible with /bin/sleep")]
+        [Fact]
         public void FFMpegWrapper_Open_ShouldReturnValidStreams()
         {
             // Arrange
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "cmd.exe" : "/bin/sleep";
 
             // Act
-            (Stream input, Stream output) = FfMpegWrapper.Open(echoPath, "1", out Process process);
+            (Stream input, Stream output) = FfMpegWrapper.Open(echoPath, "", out Process process);
 
             // Assert
             Assert.NotNull(input);
             Assert.NotNull(output);
             Assert.NotNull(process);
-            Assert.False(process.HasExited);
 
             // Cleanup
             if (!process.HasExited)

@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os application support directory
         /// </summary>
-        [Fact(Skip = "Only run on macOS")]
+        [Fact]
         public void FileLogOutput_MacOS_ApplicationSupportDirectory()
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os unix line endings
         /// </summary>
-        [Fact(Skip = "Only run on macOS")]
+        [Fact]
         public void FileLogOutput_MacOS_UnixLineEndings()
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
@@ -111,7 +111,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Tests that file log output mac os case sensitive file system
         /// </summary>
-        [Fact(Skip = "Only run on macOS")]
+        [Fact]
         public void FileLogOutput_MacOS_CaseSensitiveFileSystem()
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

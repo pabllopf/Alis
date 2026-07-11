@@ -111,7 +111,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         ///     Verifies <see cref="BoxCollider.OnStart" /> correctly creates a static body
         ///     without dynamic properties such as Mass and LinearVelocity being set.
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void OnStart_WithStaticBody_DoesNotSetDynamicProperties()
         {
             using Scene scene = new Scene();

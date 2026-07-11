@@ -75,7 +75,7 @@ namespace Alis.Test.Core.Ecs
         /// <summary>
         /// Tests that name sets name returns builder
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void Name_SetsName_ReturnsBuilder()
         {
             Context context = new Context();
@@ -101,7 +101,7 @@ namespace Alis.Test.Core.Ecs
         /// <summary>
         /// Tests that id sets id returns builder
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void Id_SetsId_ReturnsBuilder()
         {
             Context context = new Context();

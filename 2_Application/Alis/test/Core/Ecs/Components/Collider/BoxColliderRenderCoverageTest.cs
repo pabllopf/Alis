@@ -49,7 +49,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         ///     Verifies that <see cref="BoxCollider.Render" /> is callable and enters
         ///     the <c>IsInit == false</c> branch, which throws due to missing OpenGL context.
         /// </summary>
-        [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
+        [Fact]
         public void Render_WhenNotInitialized_ThrowsDueToOpenGlDependency()
         {
             // Arrange

@@ -187,7 +187,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Tests that logger exception should log critical before throwing
         /// </summary>
-        [Fact(Skip = "Logger.Exception does not route through custom logger before throwing")]
+        [Fact]
         public void Logger_Exception_ShouldLogCriticalBeforeThrowing()
         {
             MemoryLogOutput memoryOutput = new MemoryLogOutput();
