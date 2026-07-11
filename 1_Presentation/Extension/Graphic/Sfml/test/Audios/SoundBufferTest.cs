@@ -1,5 +1,6 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         /// Tests that sound buffer is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void SoundBuffer_IsAssignableFromObjectBase()
         {
             var type = typeof(Alis.Extension.Graphic.Sfml.Audios.SoundBuffer);
@@ -22,7 +23,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         /// Tests that sound buffer class exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void SoundBuffer_Class_Exists()
         {
             var type = typeof(Alis.Extension.Graphic.Sfml.Audios.SoundBuffer);
