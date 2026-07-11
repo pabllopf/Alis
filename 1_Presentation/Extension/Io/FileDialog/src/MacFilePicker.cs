@@ -135,7 +135,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds an AppleScript for opening files.
         /// </summary>
-        private static string BuildOpenFileScript(FilePickerOptions options, bool allowMultiple)
+        internal static string BuildOpenFileScript(FilePickerOptions options, bool allowMultiple)
         {
             Logger.Trace($"Building OpenFile AppleScript (allowMultiple: {allowMultiple}).");
 
@@ -177,7 +177,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Builds an AppleScript for selecting a folder.
         /// </summary>
-        private static string BuildFolderSelectScript(FilePickerOptions options)
+        internal static string BuildFolderSelectScript(FilePickerOptions options)
         {
             Logger.Trace("Building FolderSelect AppleScript.");
 

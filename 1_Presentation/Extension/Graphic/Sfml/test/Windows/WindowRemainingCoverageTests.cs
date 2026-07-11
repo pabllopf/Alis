@@ -1,4 +1,5 @@
 // license header
+using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
