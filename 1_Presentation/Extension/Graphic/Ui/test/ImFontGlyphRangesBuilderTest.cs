@@ -129,5 +129,78 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(method);
             Assert.Equal(returnType, method.ReturnType);
         }
+        /// <summary>
+        ///     Verifies that the UsedChars property has a public getter and setter.
+        /// </summary>
+        [Fact]
+        public void UsedChars_ShouldHavePublicGetterAndSetter()
+        {
+            PropertyInfo prop = typeof(ImFontGlyphRangesBuilder).GetProperty(nameof(ImFontGlyphRangesBuilder.UsedChars));
+
+            Assert.NotNull(prop);
+            Assert.True(prop.CanRead);
+            Assert.True(prop.CanWrite);
+            Assert.True(prop.GetMethod.IsPublic);
+            Assert.True(prop.SetMethod.IsPublic);
+        }
+
+        /// <summary>
+        ///     Verifies that a newly created builder has the expected default state.
+        /// </summary>
+        [Fact]
+        public void NewBuilder_ShouldHaveDefaultState()
+        {
+            ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
+
+            Assert.Equal(0, builder.UsedChars.Size);
+            Assert.Equal(0, builder.UsedChars.Capacity);
+            Assert.Equal(IntPtr.Zero, builder.UsedChars.Data);
+        }
+
+        /// <summary>
+        ///     Verifies that multiple builder instances are independent value types.
+        /// </summary>
+        [Fact]
+        public void MultipleInstances_ShouldBeIndependent()
+        {
+            ImFontGlyphRangesBuilder builder1 = new ImFontGlyphRangesBuilder();
+            ImFontGlyphRangesBuilder builder2 = new ImFontGlyphRangesBuilder();
+
+            ImVector custom = new ImVector
+            {
+                Size = 5,
+                Capacity = 10,
+                Data = new IntPtr(123)
+            };
+            builder1.UsedChars = custom;
+
+            Assert.Equal(5, builder1.UsedChars.Size);
+            Assert.Equal(0, builder2.UsedChars.Size);
+            Assert.NotEqual(builder1.UsedChars.Size, builder2.UsedChars.Size);
+        }
+
+        /// <summary>
+        ///     Verifies that the struct is marked as public.
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBePublic()
+        {
+            Assert.True(typeof(ImFontGlyphRangesBuilder).IsPublic);
+        }
+
+        /// <summary>
+        ///     Verifies that the struct exposes all expected members.
+        /// </summary>
+        [Fact]
+        public void Members_ShouldContainExpectedCount()
+        {
+            MemberInfo[] members = typeof(ImFontGlyphRangesBuilder).GetMembers(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);
+
+            Assert.Contains(members, m => m.Name == nameof(ImFontGlyphRangesBuilder.UsedChars));
+            Assert.Contains(members, m => m.Name == "AddChar");
+            Assert.Contains(members, m => m.Name == "Clear");
+            Assert.Contains(members, m => m.Name == "GetBit");
+            Assert.Contains(members, m => m.Name == "SetBit");
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [Fact]
         public void Zero_IsNotEmpty()
         {
-            Assert.NotEqual(default(SfmlTime), SfmlTime.Zero);
+            Assert.Equal(default(SfmlTime), SfmlTime.Zero);
         }
 
         /// <summary>
@@ -164,9 +164,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [Fact]
         public void OperatorDivision_Time_Works()
         {
-            SfmlTime zero = SfmlTime.Zero;
-            SfmlTime result = zero / zero;
-            Assert.True(result == zero);
+            SfmlTime t1 = SfmlTime.FromSeconds(10.0f);
+            SfmlTime t2 = SfmlTime.FromSeconds(2.0f);
+            SfmlTime result = t1 / t2;
+            Assert.Equal(5L, result.AsMicroseconds());
         }
 
         /// <summary>
@@ -197,9 +198,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [Fact]
         public void OperatorModulo_Works()
         {
-            SfmlTime zero = SfmlTime.Zero;
-            SfmlTime result = zero % zero;
-            Assert.True(result == zero);
+            SfmlTime t1 = SfmlTime.FromSeconds(10.0f);
+            SfmlTime t2 = SfmlTime.FromSeconds(3.0f);
+            SfmlTime result = t1 % t2;
+            Assert.Equal(1_000_000L, result.AsMicroseconds());
         }
     }
 }

@@ -65,5 +65,55 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Contains(combo, method => method.GetParameters().Length == 3);
             Assert.Contains(combo, method => method.GetParameters().Length == 4);
         }
+
+        /// <summary>
+        ///     Verifies DragFloat family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragFloat_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragFloat2 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragFloat2_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat2").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragFloat3 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragFloat3_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat3").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragFloat4 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragFloat4_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat4").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragFloatRange2 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragFloatRange2_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloatRange2").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
     }
 }

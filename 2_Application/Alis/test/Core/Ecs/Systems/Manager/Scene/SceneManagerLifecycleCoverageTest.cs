@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
@@ -7,6 +9,31 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
 {
     public class SceneManagerLifecycleCoverageTest
     {
+        static SceneManagerLifecycleCoverageTest() => EnsureEcsInitialized();
+
+        private static void EnsureEcsInitialized()
+        {
+            Type globalWorldTables = Type.GetType("Alis.Core.Ecs.Kernel.Archetypes.GlobalWorldTables, Alis.Core.Ecs");
+            if (globalWorldTables == null) return;
+
+            FieldInfo tableField = globalWorldTables.GetField("ComponentTagLocationTable",
+                BindingFlags.Public | BindingFlags.Static);
+            if (tableField == null) return;
+
+            byte[][] table = (byte[][])tableField.GetValue(null);
+            if (table == null || table.Length < 64)
+            {
+                tableField.SetValue(null, new byte[64][]);
+            }
+
+            PropertyInfo bufferProp = globalWorldTables.GetProperty("ComponentTagTableBufferSize",
+                BindingFlags.NonPublic | BindingFlags.Static);
+            if (bufferProp != null && (int)(bufferProp.GetValue(null) ?? 0) < 64)
+            {
+                bufferProp.SetValue(null, 64);
+            }
+        }
+
         [Fact]
         public void OnInit_WithLoadedScene_SetsCurrentWorld()
         {

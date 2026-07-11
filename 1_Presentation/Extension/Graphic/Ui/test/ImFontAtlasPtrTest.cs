@@ -1701,5 +1701,87 @@ namespace Alis.Extension.Graphic.Ui.Test
             IntPtr id = new IntPtr(123);
 
         }
+
+        /// <summary>
+        ///     Verifies that the type is a readonly struct.
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBeReadonlyStruct()
+        {
+            Type type = typeof(ImFontAtlasPtr);
+
+            Assert.True(type.IsValueType);
+            Assert.False(type.IsClass);
+        }
+
+        /// <summary>
+        ///     Verifies that a default instance has NativePtr equal to IntPtr.Zero.
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldHaveZeroNativePtr()
+        {
+            ImFontAtlasPtr atlasPtr = new ImFontAtlasPtr();
+
+            Assert.Equal(IntPtr.Zero, atlasPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that NativePtr can be set via the IntPtr constructor and read back.
+        /// </summary>
+        [Fact]
+        public void NativePtr_ShouldRoundTripFromIntPtrConstructor()
+        {
+            IntPtr expected = new IntPtr(42);
+            ImFontAtlasPtr atlasPtr = new ImFontAtlasPtr(expected);
+
+            Assert.Equal(expected, atlasPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the implicit conversion from IntPtr sets NativePtr correctly.
+        /// </summary>
+        [Fact]
+        public void ImplicitFromIntPtr_ShouldSetNativePtr()
+        {
+            IntPtr ptr = new IntPtr(1024);
+            ImFontAtlasPtr atlasPtr = ptr;
+
+            Assert.Equal(ptr, atlasPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the implicit conversion to IntPtr returns NativePtr.
+        /// </summary>
+        [Fact]
+        public void ImplicitToIntPtr_ShouldReturnNativePtr()
+        {
+            IntPtr ptr = new IntPtr(2048);
+            ImFontAtlasPtr atlasPtr = new ImFontAtlasPtr(ptr);
+            IntPtr result = atlasPtr;
+
+            Assert.Equal(ptr, result);
+        }
+
+        /// <summary>
+        ///     Verifies that two instances with the same NativePtr are equal.
+        /// </summary>
+        [Fact]
+        public void SameNativePtr_ShouldBeEqual()
+        {
+            IntPtr ptr = new IntPtr(777);
+            ImFontAtlasPtr atlasPtr1 = new ImFontAtlasPtr(ptr);
+            ImFontAtlasPtr atlasPtr2 = new ImFontAtlasPtr(ptr);
+
+            Assert.Equal(atlasPtr1.NativePtr, atlasPtr2.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the struct is marked as public.
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBePublic()
+        {
+            Assert.True(typeof(ImFontAtlasPtr).IsPublic);
+        }
     }
 }

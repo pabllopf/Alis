@@ -52,6 +52,73 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
+        ///     Verifies ShowAboutWindow overloads exist.
+        /// </summary>
+        [Fact]
+        public void ShowAboutWindow_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowAboutWindow").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies ShowDebugLogWindow overloads exist.
+        /// </summary>
+        [Fact]
+        public void ShowDebugLogWindow_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowDebugLogWindow").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies ShowStyleEditor overloads exist.
+        /// </summary>
+        [Fact]
+        public void ShowStyleEditor_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowStyleEditor").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies ShowFontSelector method exists.
+        /// </summary>
+        [Fact]
+        public void ShowFontSelector_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("ShowFontSelector", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies ShowStackToolWindow overloads exist.
+        /// </summary>
+        [Fact]
+        public void ShowStackToolWindow_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowStackToolWindow").ToArray();
+            Assert.True(methods.Length >= 2);
+        }
+
+        /// <summary>
+        ///     Verifies ShowStyleSelector method exists.
+        /// </summary>
+        [Fact]
+        public void ShowStyleSelector_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("ShowStyleSelector", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
+        ///     Verifies ShowUserGuide method exists.
+        /// </summary>
+        [Fact]
+        public void ShowUserGuide_ShouldExist()
+        {
+            Assert.NotNull(typeof(ImGui).GetMethod("ShowUserGuide", BindingFlags.Public | BindingFlags.Static));
+        }
+
+        /// <summary>
         ///     Verifies slider-angle API keeps multiple overloads.
         /// </summary>
         [Fact]
@@ -59,7 +126,47 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             MethodInfo[] sliderAngle = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderAngle").ToArray();
 
-            Assert.True(sliderAngle.Length >= 3);
+            Assert.True(sliderAngle.Length >= 5);
+        }
+
+        /// <summary>
+        ///     Verifies SliderFloat overloads exist.
+        /// </summary>
+        [Fact]
+        public void SliderFloat_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies SliderFloat2 overloads exist.
+        /// </summary>
+        [Fact]
+        public void SliderFloat2_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat2").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies SliderFloat3 overloads exist.
+        /// </summary>
+        [Fact]
+        public void SliderFloat3_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat3").ToArray();
+            Assert.True(methods.Length >= 3);
+        }
+
+        /// <summary>
+        ///     Verifies SliderFloat4 overloads exist.
+        /// </summary>
+        [Fact]
+        public void SliderFloat4_ShouldExposeOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat4").ToArray();
+            Assert.True(methods.Length >= 2);
         }
     }
 }

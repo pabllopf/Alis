@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
 {
@@ -36,5 +38,41 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
     /// </summary>
     public class ImNodesMiniMapNodeHoveringCallbackUserDataTest
     {
+        /// <summary>
+        ///     Verifies that the type is a class (reference type).
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBeClass()
+        {
+            Type type = typeof(ImNodesMiniMapNodeHoveringCallbackUserData);
+
+            Assert.True(type.IsClass);
+            Assert.False(type.IsValueType);
+        }
+
+        /// <summary>
+        ///     Verifies that a new instance can be created via the default constructor.
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldCreateInstance()
+        {
+            ImNodesMiniMapNodeHoveringCallbackUserData instance = new ImNodesMiniMapNodeHoveringCallbackUserData();
+
+            Assert.NotNull(instance);
+        }
+
+        /// <summary>
+        ///     Verifies that multiple instances are independent.
+        /// </summary>
+        [Fact]
+        public void MultipleInstances_ShouldBeIndependent()
+        {
+            ImNodesMiniMapNodeHoveringCallbackUserData instance1 = new ImNodesMiniMapNodeHoveringCallbackUserData();
+            ImNodesMiniMapNodeHoveringCallbackUserData instance2 = new ImNodesMiniMapNodeHoveringCallbackUserData();
+
+            Assert.NotNull(instance1);
+            Assert.NotNull(instance2);
+            Assert.NotSame(instance1, instance2);
+        }
     }
 }

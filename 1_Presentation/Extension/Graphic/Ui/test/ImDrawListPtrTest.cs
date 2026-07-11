@@ -2056,5 +2056,87 @@ namespace Alis.Extension.Graphic.Ui.Test
             IntPtr idxWritePtr = drawListPtr.IdxWritePtr;
             Assert.Equal(IntPtr.Zero, idxWritePtr);
         }
+
+        /// <summary>
+        ///     Verifies that the type is a readonly struct.
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBeReadonlyStruct()
+        {
+            Type type = typeof(ImDrawListPtr);
+
+            Assert.True(type.IsValueType);
+            Assert.False(type.IsClass);
+        }
+
+        /// <summary>
+        ///     Verifies that a default instance has NativePtr equal to IntPtr.Zero.
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_ShouldHaveZeroNativePtr()
+        {
+            ImDrawListPtr drawListPtr = new ImDrawListPtr();
+
+            Assert.Equal(IntPtr.Zero, drawListPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that NativePtr can be set via the IntPtr constructor and read back.
+        /// </summary>
+        [Fact]
+        public void NativePtr_ShouldRoundTripFromIntPtrConstructor()
+        {
+            IntPtr expected = new IntPtr(42);
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(expected);
+
+            Assert.Equal(expected, drawListPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the implicit conversion from IntPtr sets NativePtr correctly.
+        /// </summary>
+        [Fact]
+        public void ImplicitFromIntPtr_ShouldSetNativePtr()
+        {
+            IntPtr ptr = new IntPtr(1024);
+            ImDrawListPtr drawListPtr = ptr;
+
+            Assert.Equal(ptr, drawListPtr.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the implicit conversion to IntPtr returns NativePtr.
+        /// </summary>
+        [Fact]
+        public void ImplicitToIntPtr_ShouldReturnNativePtr()
+        {
+            IntPtr ptr = new IntPtr(2048);
+            ImDrawListPtr drawListPtr = new ImDrawListPtr(ptr);
+            IntPtr result = drawListPtr;
+
+            Assert.Equal(ptr, result);
+        }
+
+        /// <summary>
+        ///     Verifies that two instances with the same NativePtr are equal.
+        /// </summary>
+        [Fact]
+        public void SameNativePtr_ShouldBeEqual()
+        {
+            IntPtr ptr = new IntPtr(777);
+            ImDrawListPtr drawListPtr1 = new ImDrawListPtr(ptr);
+            ImDrawListPtr drawListPtr2 = new ImDrawListPtr(ptr);
+
+            Assert.Equal(drawListPtr1.NativePtr, drawListPtr2.NativePtr);
+        }
+
+        /// <summary>
+        ///     Verifies that the struct is marked as public.
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBePublic()
+        {
+            Assert.True(typeof(ImDrawListPtr).IsPublic);
+        }
     }
 }

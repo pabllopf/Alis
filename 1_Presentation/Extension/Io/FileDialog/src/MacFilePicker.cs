@@ -213,13 +213,9 @@ namespace Alis.Extension.Io.FileDialog
                 }
                 finally
                 {
-                    try
+                    if (File.Exists(tmpFile))
                     {
                         File.Delete(tmpFile);
-                    }
-                    catch
-                    {
-                        // File deletion is best-effort.
                     }
                 }
             }
@@ -246,12 +242,6 @@ namespace Alis.Extension.Io.FileDialog
             string[] paths = FilePickerPathConverter.SplitMultiplePaths(output)
                 .Where(p => !string.IsNullOrEmpty(p))
                 .ToArray();
-
-            if (paths.Length == 0)
-            {
-                Logger.Info("No paths selected.");
-                return FilePickerResult.CreateCancelled();
-            }
 
             Logger.Info($"Successfully selected {paths.Length} path(s).");
             return new FilePickerResult(paths.ToList());

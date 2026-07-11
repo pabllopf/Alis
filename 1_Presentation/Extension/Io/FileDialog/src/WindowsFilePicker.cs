@@ -259,12 +259,6 @@ if ($dialog.ShowDialog() -eq 'OK') {{
 
             paths = paths.Where(p => !string.IsNullOrEmpty(p)).ToArray();
 
-            if (paths.Length == 0)
-            {
-                Logger.Info("No paths selected.");
-                return FilePickerResult.CreateCancelled();
-            }
-
             Logger.Info($"Successfully selected {paths.Length} path(s).");
             return new FilePickerResult(paths.ToList());
         }

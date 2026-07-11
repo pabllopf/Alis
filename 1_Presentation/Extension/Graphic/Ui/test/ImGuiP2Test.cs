@@ -52,5 +52,45 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(dragInt2.Length >= 6);
             Assert.True(dragInt3.Length >= 6);
         }
+
+        /// <summary>
+        ///     Verifies DragInt4 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragInt4_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragInt4").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragIntRange2 family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragIntRange2_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragIntRange2").ToArray();
+            Assert.True(methods.Length >= 7);
+        }
+
+        /// <summary>
+        ///     Verifies DragScalar family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragScalar_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragScalar").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DragScalarN family exposes expected overloads.
+        /// </summary>
+        [Fact]
+        public void DragScalarN_ShouldExposeExpectedOverloads()
+        {
+            MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragScalarN").ToArray();
+            Assert.True(methods.Length >= 6);
+        }
     }
 }

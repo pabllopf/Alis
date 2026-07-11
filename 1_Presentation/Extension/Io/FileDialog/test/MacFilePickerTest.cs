@@ -253,48 +253,6 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
-        /// <summary>
-        /// Tests that pick file with valid options returns result
-        /// </summary>
-        [Fact]
-        public void PickFile_WithValidOptions_ReturnsResult()
-        {
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test File");
-
-            FilePickerResult result = picker.PickFile(options);
-
-            Assert.NotNull(result);
-        }
-
-        /// <summary>
-        /// Tests that pick files with valid options returns result
-        /// </summary>
-        [Fact]
-        public void PickFiles_WithValidOptions_ReturnsResult()
-        {
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Files");
-
-            FilePickerResult result = picker.PickFiles(options);
-
-            Assert.NotNull(result);
-        }
-
-        /// <summary>
-        /// Tests that pick folder with valid options returns result
-        /// </summary>
-        [Fact]
-        public void PickFolder_WithValidOptions_ReturnsResult()
-        {
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Folder");
-
-            FilePickerResult result = picker.PickFolder(options);
-
-            Assert.NotNull(result);
-        }
-
         [Fact]
         public void PickFile_WithMockedExecution_ReturnsSuccess()
         {

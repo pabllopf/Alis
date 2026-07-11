@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
 {
@@ -36,5 +38,69 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
     /// </summary>
     public class LinkDetachWithModifierClickTest
     {
+        /// <summary>
+        ///     Verifies that the type is a value type (struct).
+        /// </summary>
+        [Fact]
+        public void Type_ShouldBeStruct()
+        {
+            Type type = typeof(LinkDetachWithModifierClick);
+
+            Assert.True(type.IsValueType);
+            Assert.False(type.IsClass);
+        }
+
+        /// <summary>
+        ///     Verifies that a default instance has a null Modifier.
+        /// </summary>
+        [Fact]
+        public void Modifier_ShouldBeNullOnDefaultInstance()
+        {
+            LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
+
+            Assert.Null(instance.Modifier);
+        }
+
+        /// <summary>
+        ///     Verifies that Modifier can be assigned and read back.
+        /// </summary>
+        [Fact]
+        public void Modifier_ShouldRoundTripAssignedValue()
+        {
+            LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
+            byte[] modifier = { 1, 2, 3 };
+
+            instance.Modifier = modifier;
+
+            Assert.Equal(modifier, instance.Modifier);
+        }
+
+        /// <summary>
+        ///     Verifies that Modifier can be set to an empty array.
+        /// </summary>
+        [Fact]
+        public void Modifier_ShouldAllowEmptyArray()
+        {
+            LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
+            byte[] modifier = Array.Empty<byte>();
+
+            instance.Modifier = modifier;
+
+            Assert.Empty(instance.Modifier);
+        }
+
+        /// <summary>
+        ///     Verifies that Modifier can be reassigned to a different value.
+        /// </summary>
+        [Fact]
+        public void Modifier_ShouldAllowReassignment()
+        {
+            LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
+
+            instance.Modifier = new byte[] { 1, 2, 3 };
+            instance.Modifier = new byte[] { 4, 5, 6, 7 };
+
+            Assert.Equal(new byte[] { 4, 5, 6, 7 }, instance.Modifier);
+        }
     }
 }
