@@ -1,13 +1,22 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
-    /// <summary>
-    /// The windows file picker test class
-    /// </summary>
-    public class WindowsFilePickerTest
+    public class WindowsFilePickerTest : IDisposable
     {
+        public WindowsFilePickerTest()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
+
+        public void Dispose()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
         /// <summary>
         /// Tests that escape script string null returns null
         /// </summary>
@@ -341,5 +350,91 @@ C:\b.txt", false);
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
+
+        [Fact]
+        public void PickFile_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\file.txt";
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test File");
+
+            FilePickerResult result = picker.PickFile(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains(@"C:\mock\file.txt", result.SelectedPaths);
+        }
+
+        [Fact]
+        public void PickFiles_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\a.txt
+C:\mock\b.txt";
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test Files");
+
+            FilePickerResult result = picker.PickFiles(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Equal(2, result.SelectedPaths.Count);
+        }
+
+        [Fact]
+        public void PickFolder_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\folder";
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test Folder");
+
+            FilePickerResult result = picker.PickFolder(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains(@"C:\mock\folder", result.SelectedPaths);
+        }
+
+        [Fact]
+        public void PickFile_WhenExecuteScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test File");
+
+            FilePickerResult result = picker.PickFile(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        [Fact]
+        public void PickFiles_WhenExecuteScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test Files");
+
+            FilePickerResult result = picker.PickFiles(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        [Fact]
+        public void PickFolder_WhenExecuteScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new WindowsFilePicker();
+            var options = new FilePickerOptions("Test Folder");
+
+            FilePickerResult result = picker.PickFolder(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
     }
 }

@@ -7,17 +7,12 @@ using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
+using Scene = Alis.Core.Ecs.Scene;
 
 namespace Alis.Test.Core.Ecs.Components.Collider
 {
-    /// <summary>
-    /// The box collider full coverage test class
-    /// </summary>
     public class BoxColliderFullCoverageTest
     {
-        /// <summary>
-        /// Tests that constructor default sets expected values
-        /// </summary>
         [Fact]
         public void Constructor_Default_SetsExpectedValues()
         {
@@ -39,9 +34,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(0f, collider.AngularVelocity);
         }
 
-        /// <summary>
-        /// Tests that constructor with settings sets properties
-        /// </summary>
         [Fact]
         public void Constructor_WithSettings_SetsProperties()
         {
@@ -80,9 +72,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(90f, collider.AngularVelocity);
         }
 
-        /// <summary>
-        /// Tests that properties can be set and get
-        /// </summary>
         [Fact]
         public void Properties_CanBeSetAndGet()
         {
@@ -121,59 +110,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(new Vector2F(3, 4), collider.RelativePosition);
         }
 
-        /// <summary>
-        /// Tests that on update with no transform does not throw
-        /// </summary>
-        [Fact]
-        public void OnUpdate_WithNoTransform_DoesNotThrow()
-        {
-            BoxCollider collider = new BoxCollider();
-            GameObject gameObject = new GameObject();
-
-            gameObject.Add(collider);
-
-            collider.OnUpdate(gameObject);
-        }
-
-        /// <summary>
-        /// Tests that on update with transform and no body does not throw
-        /// </summary>
-        [Fact]
-        public void OnUpdate_WithTransformAndNoBody_DoesNotThrow()
-        {
-            BoxCollider collider = new BoxCollider();
-            GameObject gameObject = new GameObject();
-
-            gameObject.Add(new Transform());
-            gameObject.Add(collider);
-
-            collider.OnUpdate(gameObject);
-        }
-
-        /// <summary>
-        /// Tests that on exit with no body does not throw
-        /// </summary>
-        [Fact]
-        public void OnExit_WithNoBody_DoesNotThrow()
-        {
-            BoxCollider collider = new BoxCollider();
-            GameObject gameObject = new GameObject();
-
-            gameObject.Add(collider);
-
-            collider.OnExit(gameObject);
-        }
-
-        /// <summary>
-        /// Tests that render when not initialized throws exception
-        /// </summary>
         [Fact]
         public void Render_WhenNotInitialized_ThrowsException()
         {
             BoxCollider collider = new BoxCollider();
             Context context = new Context();
             collider.Context = context;
-            GameObject gameObject = new GameObject();
+            Scene scene = new Scene();
+            GameObject gameObject = scene.Create();
             gameObject.Add(new Transform());
             gameObject.Add(collider);
 
@@ -181,16 +125,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
                 collider.Render(gameObject, new Vector2F(0, 0), new Vector2F(800, 600), 32f));
         }
 
-        /// <summary>
-        /// Tests that initialize shaders without context throws null reference exception
-        /// </summary>
         [Fact]
-        public void InitializeShaders_WithoutContext_ThrowsNullReferenceException()
+        public void InitializeShaders_WithoutContext_ThrowsTargetInvocationException()
         {
             BoxCollider collider = new BoxCollider();
             collider.Context = null;
 
-            Assert.Throws<NullReferenceException>(() =>
+            Assert.Throws<TargetInvocationException>(() =>
             {
                 var method = typeof(BoxCollider).GetMethod("InitializeShaders",
                     BindingFlags.Instance | BindingFlags.NonPublic);

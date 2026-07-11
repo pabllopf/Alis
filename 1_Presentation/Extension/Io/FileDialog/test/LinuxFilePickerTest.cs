@@ -1,13 +1,22 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
-    /// <summary>
-    /// The linux file picker test class
-    /// </summary>
-    public class LinuxFilePickerTest
+    public class LinuxFilePickerTest : IDisposable
     {
+        public LinuxFilePickerTest()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
+
+        public void Dispose()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
         /// <summary>
         /// Tests that escape shell string null returns null
         /// </summary>
@@ -484,5 +493,97 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result.IsSuccess);
             Assert.NotNull(result.ErrorMessage);
         }
+
+        [Fact]
+        public void GetAvailableDialogTool_WithCommandExistsOverride_ZenityFound_ReturnsZenity()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+
+            string tool = LinuxFilePicker.GetAvailableDialogTool();
+
+            Assert.Equal("zenity", tool);
+        }
+
+        [Fact]
+        public void GetAvailableDialogTool_WithCommandExistsOverride_KdialogFound_ReturnsKdialog()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "kdialog";
+
+            string tool = LinuxFilePicker.GetAvailableDialogTool();
+
+            Assert.Equal("kdialog", tool);
+        }
+
+        [Fact]
+        public void ExecuteFileDialog_WithZenityFound_ReturnsResult()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/test/output.txt";
+
+            var options = new FilePickerOptions("Test");
+
+            string result = LinuxFilePicker.ExecuteFileDialog(options, false);
+
+            Assert.Equal("/test/output.txt", result);
+        }
+
+        [Fact]
+        public void ExecuteFolderDialog_WithZenityFound_ReturnsResult()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/test/folder";
+
+            var options = new FilePickerOptions("Test");
+
+            string result = LinuxFilePicker.ExecuteFolderDialog(options);
+
+            Assert.Equal("/test/folder", result);
+        }
+
+        [Fact]
+        public void PickFile_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/file.txt";
+
+            var picker = new LinuxFilePicker();
+            var options = new FilePickerOptions("Test File");
+
+            FilePickerResult result = picker.PickFile(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains("/mock/file.txt", result.SelectedPaths);
+        }
+
+        [Fact]
+        public void PickFiles_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/a.txt|/mock/b.txt";
+
+            var picker = new LinuxFilePicker();
+            var options = new FilePickerOptions("Test Files");
+
+            FilePickerResult result = picker.PickFiles(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Equal(2, result.SelectedPaths.Count);
+        }
+
+        [Fact]
+        public void PickFolder_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/folder";
+
+            var picker = new LinuxFilePicker();
+            var options = new FilePickerOptions("Test Folder");
+
+            FilePickerResult result = picker.PickFolder(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains("/mock/folder", result.SelectedPaths);
+        }
+
     }
 }

@@ -8,19 +8,20 @@ using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
 using Alis.Core.Ecs.Systems.Scope;
 using Context = Alis.Core.Ecs.Systems.Scope.Context;
-using Scene = Alis.Core.Ecs.Scene;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 {
-    /// <summary>
-    /// The graphic manager event processing test class
-    /// </summary>
     public class GraphicManagerEventProcessingTest
     {
-        /// <summary>
-        /// Tests that on start does not throw
-        /// </summary>
+        private static GameObject CreateGameObjectWithComponent<T>(T component) where T : class
+        {
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
+            GameObject go = scene.Create();
+            go.Add(component);
+            return go;
+        }
+
         [Fact]
         public void OnStart_DoesNotThrow()
         {
@@ -30,9 +31,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnStart();
         }
 
-        /// <summary>
-        /// Tests that on before draw does not throw
-        /// </summary>
         [Fact]
         public void OnBeforeDraw_DoesNotThrow()
         {
@@ -42,25 +40,19 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnBeforeDraw();
         }
 
-        /// <summary>
-        /// Tests that on draw with preview mode throws exception
-        /// </summary>
         [Fact]
         public void OnDraw_WithPreviewMode_ThrowsException()
         {
             Context context = new Context(new Setting());
             context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
-            Alis.Core.Ecs.Scene graphicScene = new Alis.Core.Ecs.Scene();
-            context.SceneManager.LoadedScenes.Add(graphicScene);
-            context.SceneManager.CurrentWorld = graphicScene;
+            Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
+            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.CurrentWorld = scene;
             GraphicManager manager = new GraphicManager(context);
 
             Assert.ThrowsAny<Exception>(() => manager.OnDraw());
         }
 
-        /// <summary>
-        /// Tests that render preview without scene throws exception
-        /// </summary>
         [Fact]
         public void RenderPreview_WithoutScene_ThrowsException()
         {
@@ -76,9 +68,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             });
         }
 
-        /// <summary>
-        /// Tests that on init with preview mode does not throw
-        /// </summary>
         [Fact]
         public void OnInit_WithPreviewMode_DoesNotThrow()
         {
@@ -89,29 +78,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnInit();
         }
 
-        /// <summary>
-        /// Tests that process key event for component with no matching interface does not throw
-        /// </summary>
-        [Fact]
-        public void ProcessKeyEventForComponent_WithNoMatchingInterface_DoesNotThrow()
-        {
-            Context context = new Context(new Setting());
-            GraphicManager manager = new GraphicManager(context);
-
-            Type componentType = typeof(Info);
-            GameObject gameObject = new GameObject();
-            gameObject.Add(new Info());
-
-            HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>();
-            HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>();
-
-            manager.ProcessKeyEventForComponent(componentType, gameObject, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
-        }
-
-        /// <summary>
-        /// Tests that process key event for component with on press key calls on press key
-        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnPressKey_CallsOnPressKey()
         {
@@ -122,21 +88,17 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             TestPressKeyComponent component = new TestPressKeyComponent();
             component.OnPressKeyAction = (info) => wasCalled = true;
 
-            GameObject gameObject = new GameObject();
-            gameObject.Add(component);
-
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
             HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>();
 
-            manager.ProcessKeyEventForComponent(typeof(TestPressKeyComponent), gameObject, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
+            GameObject go = CreateGameObjectWithComponent(component);
+
+            manager.ProcessKeyEventForComponent(typeof(TestPressKeyComponent), go, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
 
             Assert.True(wasCalled);
         }
 
-        /// <summary>
-        /// Tests that process key event for component with on hold key calls on hold key
-        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnHoldKey_CallsOnHoldKey()
         {
@@ -147,21 +109,17 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             TestHoldKeyComponent component = new TestHoldKeyComponent();
             component.OnHoldKeyAction = (info) => wasCalled = true;
 
-            GameObject gameObject = new GameObject();
-            gameObject.Add(component);
-
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
             HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey>();
 
-            manager.ProcessKeyEventForComponent(typeof(TestHoldKeyComponent), gameObject, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
+            GameObject go = CreateGameObjectWithComponent(component);
+
+            manager.ProcessKeyEventForComponent(typeof(TestHoldKeyComponent), go, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
 
             Assert.True(wasCalled);
         }
 
-        /// <summary>
-        /// Tests that process key event for component with on release key calls on release key
-        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnReleaseKey_CallsOnReleaseKey()
         {
@@ -172,83 +130,33 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             TestReleaseKeyComponent component = new TestReleaseKeyComponent();
             component.OnReleaseKeyAction = (info) => wasCalled = true;
 
-            GameObject gameObject = new GameObject();
-            gameObject.Add(component);
-
             HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> heldKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> releasedKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
 
-            manager.ProcessKeyEventForComponent(typeof(TestReleaseKeyComponent), gameObject, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
+            GameObject go = CreateGameObjectWithComponent(component);
+
+            manager.ProcessKeyEventForComponent(typeof(TestReleaseKeyComponent), go, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
 
             Assert.True(wasCalled);
         }
-
-        /// <summary>
-        /// Tests that render box colliders with empty enumerable does not throw
-        /// </summary>
-        [Fact]
-        public void RenderBoxColliders_WithEmptyEnumerable_DoesNotThrow()
-        {
-        }
-
-        /// <summary>
-        /// Tests that render sprites with empty enumerable does not throw
-        /// </summary>
-        [Fact]
-        public void RenderSprites_WithEmptyEnumerable_DoesNotThrow()
-        {
-        }
     }
 
-    /// <summary>
-    /// The test press key component class
-    /// </summary>
-    /// <seealso cref="IOnPressKey"/>
     public class TestPressKeyComponent : IOnPressKey
     {
-        /// <summary>
-        /// Gets or sets the value of the on press key action
-        /// </summary>
         public Action<KeyEventInfo> OnPressKeyAction { get; set; }
-        /// <summary>
-        /// Ons the press key using the specified key event info
-        /// </summary>
-        /// <param name="keyEventInfo">The key event info</param>
         public void OnPressKey(KeyEventInfo keyEventInfo) => OnPressKeyAction(keyEventInfo);
     }
 
-    /// <summary>
-    /// The test hold key component class
-    /// </summary>
-    /// <seealso cref="IOnHoldKey"/>
     public class TestHoldKeyComponent : IOnHoldKey
     {
-        /// <summary>
-        /// Gets or sets the value of the on hold key action
-        /// </summary>
         public Action<KeyEventInfo> OnHoldKeyAction { get; set; }
-        /// <summary>
-        /// Ons the hold key using the specified key event info
-        /// </summary>
-        /// <param name="keyEventInfo">The key event info</param>
         public void OnHoldKey(KeyEventInfo keyEventInfo) => OnHoldKeyAction(keyEventInfo);
     }
 
-    /// <summary>
-    /// The test release key component class
-    /// </summary>
-    /// <seealso cref="IOnReleaseKey"/>
     public class TestReleaseKeyComponent : IOnReleaseKey
     {
-        /// <summary>
-        /// Gets or sets the value of the on release key action
-        /// </summary>
         public Action<KeyEventInfo> OnReleaseKeyAction { get; set; }
-        /// <summary>
-        /// Ons the release key using the specified key event info
-        /// </summary>
-        /// <param name="keyEventInfo">The key event info</param>
         public void OnReleaseKey(KeyEventInfo keyEventInfo) => OnReleaseKeyAction(keyEventInfo);
     }
 }

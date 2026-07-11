@@ -340,36 +340,28 @@ namespace Alis.Extension.Io.FileDialog
                 return FilePickerResult.CreateCancelled();
             }
 
-            try
+            string[] paths;
+
+            if (allowMultiple)
             {
-                string[] paths;
-
-                if (allowMultiple)
-                {
-                    paths = output.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(p => FilePickerPathConverter.NormalizePath(p))
-                        .Where(p => !string.IsNullOrEmpty(p))
-                        .ToArray();
-                }
-                else
-                {
-                    paths = new[] {FilePickerPathConverter.NormalizePath(output)};
-                }
-
-                if (paths.Length == 0)
-                {
-                    Logger.Info("No paths selected.");
-                    return FilePickerResult.CreateCancelled();
-                }
-
-                Logger.Info($"Successfully selected {paths.Length} path(s).");
-                return new FilePickerResult(paths.ToList());
+                paths = output.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries)
+                    .Select(p => FilePickerPathConverter.NormalizePath(p))
+                    .Where(p => !string.IsNullOrEmpty(p))
+                    .ToArray();
             }
-            catch (Exception ex)
+            else
             {
-                Logger.Error($"Error parsing dialog result: {ex.Message}");
-                return FilePickerResult.CreateError($"Error parsing result: {ex.Message}");
+                paths = new[] {FilePickerPathConverter.NormalizePath(output)};
             }
+
+            if (paths.Length == 0)
+            {
+                Logger.Info("No paths selected.");
+                return FilePickerResult.CreateCancelled();
+            }
+
+            Logger.Info($"Successfully selected {paths.Length} path(s).");
+            return new FilePickerResult(paths.ToList());
         }
 
         /// <summary>

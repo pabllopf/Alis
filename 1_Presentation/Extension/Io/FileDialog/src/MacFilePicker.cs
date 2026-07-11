@@ -243,26 +243,18 @@ namespace Alis.Extension.Io.FileDialog
                 return FilePickerResult.CreateCancelled();
             }
 
-            try
-            {
-                string[] paths = FilePickerPathConverter.SplitMultiplePaths(output)
-                    .Where(p => !string.IsNullOrEmpty(p))
-                    .ToArray();
+            string[] paths = FilePickerPathConverter.SplitMultiplePaths(output)
+                .Where(p => !string.IsNullOrEmpty(p))
+                .ToArray();
 
-                if (paths.Length == 0)
-                {
-                    Logger.Info("No paths selected.");
-                    return FilePickerResult.CreateCancelled();
-                }
-
-                Logger.Info($"Successfully selected {paths.Length} path(s).");
-                return new FilePickerResult(paths.ToList());
-            }
-            catch (Exception ex)
+            if (paths.Length == 0)
             {
-                Logger.Error($"Error parsing AppleScript result: {ex.Message}");
-                return FilePickerResult.CreateError($"Error parsing result: {ex.Message}");
+                Logger.Info("No paths selected.");
+                return FilePickerResult.CreateCancelled();
             }
+
+            Logger.Info($"Successfully selected {paths.Length} path(s).");
+            return new FilePickerResult(paths.ToList());
         }
 
         /// <summary>

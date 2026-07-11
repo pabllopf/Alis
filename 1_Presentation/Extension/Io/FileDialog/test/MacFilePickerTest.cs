@@ -1,12 +1,21 @@
+using System;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
-    /// <summary>
-    /// The mac file picker test class
-    /// </summary>
-    public class MacFilePickerTest
+    public class MacFilePickerTest : IDisposable
     {
+        public MacFilePickerTest()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
+
+        public void Dispose()
+        {
+            FilePickerExecutor.CommandExistsOverride = null;
+            FilePickerExecutor.ExecuteCommandOverride = null;
+        }
         /// <summary>
         /// Tests that escape apple script null returns null
         /// </summary>
@@ -285,5 +294,90 @@ namespace Alis.Extension.Io.FileDialog.Test
 
             Assert.NotNull(result);
         }
+
+        [Fact]
+        public void PickFile_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/file.txt";
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test File");
+
+            FilePickerResult result = picker.PickFile(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains("/Users/mock/file.txt", result.SelectedPaths);
+        }
+
+        [Fact]
+        public void PickFiles_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/a.txt\n/Users/mock/b.txt";
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test Files");
+
+            FilePickerResult result = picker.PickFiles(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Equal(2, result.SelectedPaths.Count);
+        }
+
+        [Fact]
+        public void PickFolder_WithMockedExecution_ReturnsSuccess()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/folder";
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test Folder");
+
+            FilePickerResult result = picker.PickFolder(options);
+
+            Assert.True(result.IsSuccess);
+            Assert.Contains("/Users/mock/folder", result.SelectedPaths);
+        }
+
+        [Fact]
+        public void PickFile_WhenExecuteAppleScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test File");
+
+            FilePickerResult result = picker.PickFile(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        [Fact]
+        public void PickFiles_WhenExecuteAppleScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test Files");
+
+            FilePickerResult result = picker.PickFiles(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        [Fact]
+        public void PickFolder_WhenExecuteAppleScriptThrows_ReturnsError()
+        {
+            FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
+
+            var picker = new MacFilePicker();
+            var options = new FilePickerOptions("Test Folder");
+
+            FilePickerResult result = picker.PickFolder(options);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
     }
 }

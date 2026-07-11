@@ -253,28 +253,20 @@ if ($dialog.ShowDialog() -eq 'OK') {{
                 return FilePickerResult.CreateCancelled();
             }
 
-            try
+            string[] paths = allowMultiple
+                ? FilePickerPathConverter.SplitMultiplePaths(output)
+                : new[] {FilePickerPathConverter.NormalizePath(output)};
+
+            paths = paths.Where(p => !string.IsNullOrEmpty(p)).ToArray();
+
+            if (paths.Length == 0)
             {
-                string[] paths = allowMultiple
-                    ? FilePickerPathConverter.SplitMultiplePaths(output)
-                    : new[] {FilePickerPathConverter.NormalizePath(output)};
-
-                paths = paths.Where(p => !string.IsNullOrEmpty(p)).ToArray();
-
-                if (paths.Length == 0)
-                {
-                    Logger.Info("No paths selected.");
-                    return FilePickerResult.CreateCancelled();
-                }
-
-                Logger.Info($"Successfully selected {paths.Length} path(s).");
-                return new FilePickerResult(paths.ToList());
+                Logger.Info("No paths selected.");
+                return FilePickerResult.CreateCancelled();
             }
-            catch (Exception ex)
-            {
-                Logger.Error($"Error parsing dialog result: {ex.Message}");
-                return FilePickerResult.CreateError($"Error parsing result: {ex.Message}");
-            }
+
+            Logger.Info($"Successfully selected {paths.Length} path(s).");
+            return new FilePickerResult(paths.ToList());
         }
 
         /// <summary>
