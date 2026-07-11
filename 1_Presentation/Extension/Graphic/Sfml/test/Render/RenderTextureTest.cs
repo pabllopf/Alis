@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Systems;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render

@@ -25,8 +25,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
                 Assert.True(reader.MetadataLoaded);
                 Assert.NotNull(reader.Metadata);
-                Assert.NotNull(reader.Metadata.Codec);
-                Assert.NotNull(reader.Metadata.Format);
+                Assert.NotNull(reader.Metadata.Streams);
+                Assert.NotEmpty(reader.Metadata.Streams);
             }
         }
 
@@ -42,8 +42,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
                 Assert.True(reader.MetadataLoaded);
                 Assert.NotNull(reader.Metadata);
-                Assert.NotNull(reader.Metadata.Codec);
-                Assert.NotNull(reader.Metadata.Format);
+                Assert.NotNull(reader.Metadata.Streams);
+                Assert.NotEmpty(reader.Metadata.Streams);
             }
         }
 
