@@ -51,3 +51,12 @@ license: GPLv3
 | - | Created API surface docs | Engine API + Extension API surfaces |
 | - | Added missing indexes | commands, queries |
 | - | Iteration 3 complete | Domain, infrastructure, concepts, APIs documented |
+| - | Iteration 4 start | Deep-dive source analysis |
+| - | Documented 23 remaining sample projects | All sample projects now documented |
+| - | Deep analysis of Ecs | 101 files, archetype system detailed |
+| - | Deep analysis of Physic | 125 files, Box2D physics detailed |
+| - | Deep analysis of Graphic | 130 files, OpenGL bindings detailed |
+| - | Deep analysis of Logging | 24 files, pipeline architecture detailed |
+| - | Generated cross-link validation | All sections verified |
+| - | Generated layer summaries | All 6 layers summarized |
+| - | Iteration 4 complete | Full coverage with deep source analysis |

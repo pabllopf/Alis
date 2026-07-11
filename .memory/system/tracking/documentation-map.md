@@ -19,7 +19,7 @@ license: GPLv3
 | system/checkpoints | 6 | 100% | Draft |
 | system/logs | 7 | 100% | Draft |
 | system/metadata | 1 | 100% | Draft |
-| projects | 42 | 85% | Draft |
+| projects | 60 | 100% | Draft |
 | samples | 2 | 100% | Draft |
 | decisions | 1 | 100% | Draft |
 | dependencies | 1 | 100% | Draft |
