@@ -1,7 +1,7 @@
 # Issue Progress
 
 - Total Issues: 5
-- Processed: 3
+- Processed: 5
 - Skipped: 0
 - Failed: 0
-- Remaining: 2
+- Remaining: 0

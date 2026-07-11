@@ -136,8 +136,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         ///     Validates that all properties contain valid data.
         ///     Should be called after deserialization to ensure data integrity.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown when any required property is null.</exception>
-        /// <exception cref="ArgumentException">Thrown when a property contains invalid values.</exception>
+        /// <exception cref="InvalidOperationException">Thrown when any required property is null or invalid.</exception>
         /// <seealso cref="JsonNativeAot" />
         public void Validate()
         {
@@ -158,7 +157,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
 
             if (_corridors == null)
             {
-                throw new ArgumentNullException(nameof(_corridors));
+                throw new InvalidOperationException("_corridors cannot be null.");
             }
         }
     }
