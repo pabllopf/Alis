@@ -5,6 +5,7 @@ select yn in "Yes" "No"; do
 
     cd ../../../
     
+    
     find . -type d -name "publish" -exec rm -Rf {} \;
     find . -type d -name ".publish" -exec rm -Rf {} \;
     
