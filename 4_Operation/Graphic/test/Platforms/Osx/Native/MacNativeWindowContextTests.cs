@@ -7,6 +7,9 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
 {
+    /// <summary>
+    ///     The mac native window context tests class
+    /// </summary>
     public class MacNativeWindowContextTests
     {
         [DllImport("/usr/lib/libSystem.B.dylib")]
