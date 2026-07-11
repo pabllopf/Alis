@@ -687,8 +687,17 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
     /// </summary>
     internal class TestTriangulationContext : TriangulationContext
     {
+        /// <summary>
+        /// Gets the value of the constraints
+        /// </summary>
         public List<TriangulationConstraint> Constraints { get; } = new List<TriangulationConstraint>();
 
+        /// <summary>
+        /// News the constraint using the specified a
+        /// </summary>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <returns>The constraint</returns>
         public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b)
         {
             TriangulationConstraint constraint = new TriangulationConstraint { P = a, Q = b };

@@ -240,10 +240,23 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         private sealed class CallbackGenericAction : IGenericAction<GameObject>
         {
+            /// <summary>
+            /// The callback
+            /// </summary>
             private readonly Action _callback;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="CallbackGenericAction"/> class
+            /// </summary>
+            /// <param name="callback">The callback</param>
             public CallbackGenericAction(Action callback) => _callback = callback;
 
+            /// <summary>
+            /// Invokes the param
+            /// </summary>
+            /// <typeparam name="T">The </typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
             public void Invoke<T>(GameObject param, ref T type) => _callback();
         }
     }

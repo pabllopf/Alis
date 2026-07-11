@@ -120,6 +120,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", result[2]);
         }
 
+        /// <summary>
+        /// Tests that to array nine elements triggers multiple resizes
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ToArray_NineElements_TriggersMultipleResizes()
         {
@@ -133,6 +136,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(9, result[8]);
         }
 
+        /// <summary>
+        /// Tests that to array seventeen elements triggers three resizes
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ToArray_SeventeenElements_TriggersThreeResizes()
         {
@@ -146,6 +152,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(17, result[16]);
         }
 
+        /// <summary>
+        /// Tests that to array empty i collection returns empty array
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ToArray_EmptyICollection_ReturnsEmptyArray()
         {
@@ -157,6 +166,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, length);
         }
 
+        /// <summary>
+        /// Tests that reset on custom enumerator restores state
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Reset_OnCustomEnumerator_RestoresState()
         {
@@ -179,11 +191,19 @@ namespace Alis.Core.Ecs.Test.Collections
             yield break;
         }
 
+        /// <summary>
+        /// Nines the element enumerable
+        /// </summary>
+        /// <returns>An enumerable of int</returns>
         private static IEnumerable<int> NineElementEnumerable()
         {
             for (int i = 1; i <= 9; i++) yield return i;
         }
 
+        /// <summary>
+        /// Seventeens the element enumerable
+        /// </summary>
+        /// <returns>An enumerable of int</returns>
         private static IEnumerable<int> SeventeenElementEnumerable()
         {
             for (int i = 1; i <= 17; i++) yield return i;

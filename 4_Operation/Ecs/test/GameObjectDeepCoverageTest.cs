@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The game object deep coverage test class
+    /// </summary>
     public class GameObjectDeepCoverageTest
     {
+        /// <summary>
+        /// Tests that game object has returns true for existing component
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Has_ReturnsTrueForExistingComponent()
         {
@@ -16,6 +22,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Position>());
         }
 
+        /// <summary>
+        /// Tests that game object has returns false for missing component
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Has_ReturnsFalseForMissingComponent()
         {
@@ -24,6 +33,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(go.Has<Velocity>());
         }
 
+        /// <summary>
+        /// Tests that game object add existing component throws
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Add_ExistingComponent_Throws()
         {
@@ -32,6 +44,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<InvalidOperationException>(() => go.Add(new Position { X = 10 }));
         }
 
+        /// <summary>
+        /// Tests that game object remove missing component throws
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Remove_MissingComponent_Throws()
         {
@@ -40,6 +55,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<ComponentNotFoundException>(() => go.Remove<Velocity>());
         }
 
+        /// <summary>
+        /// Tests that game object add and remove multiple components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_AddAndRemove_MultipleComponents_Works()
         {
@@ -55,6 +73,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Health>());
         }
 
+        /// <summary>
+        /// Tests that game object get returns correct value
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Get_ReturnsCorrectValue()
         {
@@ -65,6 +86,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(84, pos.Y);
         }
 
+        /// <summary>
+        /// Tests that game object is alive returns true for active
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_IsAlive_ReturnsTrueForActive()
         {
@@ -73,6 +97,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that game object delete makes entity not alive
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Delete_MakesEntityNotAlive()
         {
@@ -82,6 +109,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(go.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that game object equals same entity returns true
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Equals_SameEntity_ReturnsTrue()
         {
@@ -91,6 +121,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go1.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that game object equals different entity returns false
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Equals_DifferentEntity_ReturnsFalse()
         {
@@ -100,6 +133,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(go1, go2);
         }
 
+        /// <summary>
+        /// Tests that game object get hash code is consistent
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_GetHashCode_IsConsistent()
         {
@@ -110,6 +146,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(hash1, hash2);
         }
 
+        /// <summary>
+        /// Tests that game object try get with component returns ref
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_TryGet_WithComponent_ReturnsRef()
         {
@@ -120,6 +159,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(42, velRef.Value.X);
         }
 
+        /// <summary>
+        /// Tests that game object try get without component returns false
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_TryGet_WithoutComponent_ReturnsFalse()
         {
@@ -129,6 +171,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(found);
         }
 
+        /// <summary>
+        /// Tests that game object has after remove returns false
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_Has_AfterRemove_ReturnsFalse()
         {

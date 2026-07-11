@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
+    /// <summary>
+    /// The font remaining coverage tests class
+    /// </summary>
     public class FontRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor sets name file
+        /// </summary>
         [Fact]
         public void Constructor_SetsNameFile()
         {
@@ -41,6 +47,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("TestFont", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that constructor sets depth
+        /// </summary>
         [Fact]
         public void Constructor_SetsDepth()
         {
@@ -48,6 +57,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(5, font.Depth);
         }
 
+        /// <summary>
+        /// Tests that name file can get and set
+        /// </summary>
         [Fact]
         public void NameFile_CanGetAndSet()
         {
@@ -56,6 +68,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("Modified", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that depth can get and set
+        /// </summary>
         [Fact]
         public void Depth_CanGetAndSet()
         {
@@ -64,6 +79,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(42, font.Depth);
         }
 
+        /// <summary>
+        /// Tests that constructor with null name file
+        /// </summary>
         [Fact]
         public void Constructor_WithNullNameFile()
         {
@@ -71,6 +89,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Null(font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that constructor with empty name file
+        /// </summary>
         [Fact]
         public void Constructor_WithEmptyNameFile()
         {
@@ -78,6 +99,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that constructor with negative depth
+        /// </summary>
         [Fact]
         public void Constructor_WithNegativeDepth()
         {
@@ -85,6 +109,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(-5, font.Depth);
         }
 
+        /// <summary>
+        /// Tests that constructor with zero depth
+        /// </summary>
         [Fact]
         public void Constructor_WithZeroDepth()
         {

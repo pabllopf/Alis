@@ -9,8 +9,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The final coverage push test class
+    /// </summary>
     public class FinalCoveragePushTest
     {
+        /// <summary>
+        /// Tests that archetype t with update works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ArchetypeT_WithUpdate_Works()
         {
@@ -21,6 +27,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that update with 7 components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_With7Components_Works()
         {
@@ -31,6 +40,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that update with 8 components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_With8Components_Works()
         {
@@ -41,6 +53,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that update with 9 components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_With9Components_Works()
         {
@@ -52,6 +67,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that scene create many 1 to 8 arities all work
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_CreateMany_1To8Arities_AllWork()
         {
@@ -68,6 +86,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, c8.Span1.Length);
         }
 
+        /// <summary>
+        /// Tests that all query arities with include disabled work
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void AllQueryArities_WithIncludeDisabled_Work()
         {
@@ -80,6 +101,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(q1); Assert.NotNull(q2); Assert.NotNull(q3); Assert.NotNull(q4);
         }
 
+        /// <summary>
+        /// Tests that query chunk enumerators all arities work
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Query_ChunkEnumerators_AllArities_Work()
         {
@@ -89,6 +113,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(3, chunk.Span1.Length);
         }
 
+        /// <summary>
+        /// Tests that game object create and delete stress
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_CreateAndDelete_Stress()
         {
@@ -101,6 +128,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that game object has component throws for non component
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_HasComponent_ThrowsForNonComponent()
         {
@@ -109,6 +139,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(go.Has<string>());
         }
 
+        /// <summary>
+        /// Tests that game object try get returns ref struct
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_TryGet_ReturnsRefStruct()
         {
@@ -119,6 +152,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(99, vel.Value.X);
         }
 
+        /// <summary>
+        /// Tests that component registry get component id works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentRegistry_GetComponentId_Works()
         {
@@ -127,6 +163,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(id1.RawIndex, id2.RawIndex);
         }
 
+        /// <summary>
+        /// Tests that component registry same type returns consistent id
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentRegistry_SameType_ReturnsConsistentId()
         {
@@ -135,6 +174,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(id1.RawIndex, id2.RawIndex);
         }
 
+        /// <summary>
+        /// Tests that command buffer add component works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_AddComponent_Works()
         {
@@ -145,6 +187,9 @@ namespace Alis.Core.Ecs.Test
             buffer.Clear();
         }
 
+        /// <summary>
+        /// Tests that command buffer delete entity works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_DeleteEntity_Works()
         {
@@ -154,6 +199,9 @@ namespace Alis.Core.Ecs.Test
             buffer.DeleteEntity(go);
         }
 
+        /// <summary>
+        /// Tests that enumerable helpers to array works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void EnumerableHelpers_ToArray_Works()
         {
@@ -162,6 +210,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(4, arr[4]);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool return works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_Return_Works()
         {
@@ -169,6 +220,9 @@ namespace Alis.Core.Ecs.Test
             System.Buffers.ArrayPool<int>.Shared.Return(arr);
         }
 
+        /// <summary>
+        /// Tests that event invoke with handler works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Event_Invoke_WithHandler_Works()
         {
@@ -181,6 +235,9 @@ namespace Alis.Core.Ecs.Test
             evt.Remove(Handler);
         }
 
+        /// <summary>
+        /// Tests that game object only event invoke works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectOnlyEvent_Invoke_Works()
         {
@@ -191,6 +248,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(fired);
         }
 
+        /// <summary>
+        /// Tests that fast lookup find adjacent works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastLookup_FindAdjacent_Works()
         {

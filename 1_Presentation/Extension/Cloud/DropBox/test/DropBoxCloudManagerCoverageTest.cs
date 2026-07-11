@@ -12,8 +12,14 @@ using Xunit;
 namespace Alis.Extension.Cloud.DropBox.Test
 {
     
+    /// <summary>
+    /// The drop box cloud manager coverage test class
+    /// </summary>
     public class DropBoxCloudManagerCoverageTest
     {
+        /// <summary>
+        /// Tests that upload file async with non existent file throws file not found exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithNonExistentFile_ThrowsFileNotFoundException()
         {
@@ -24,6 +30,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.UploadFileAsync(nonExistentPath, "/dest.txt"));
         }
 
+        /// <summary>
+        /// Tests that upload file async with non existent file and path normalized throws file not found exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithNonExistentFileAndPathNormalized_ThrowsFileNotFoundException()
         {
@@ -34,6 +43,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.UploadFileAsync(nonExistentPath, "dest.txt"));
         }
 
+        /// <summary>
+        /// Tests that upload file async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WhenApiThrows_ThrowsException()
         {
@@ -55,6 +67,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             }
         }
 
+        /// <summary>
+        /// Tests that download file async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WhenApiThrows_ThrowsException()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that download file async with path normalized when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
         {
@@ -79,6 +97,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
         
+        /// <summary>
+        /// Tests that dispose with initialized client should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithInitializedClient_ShouldNotThrow()
         {
@@ -88,6 +109,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls with initialized client should not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCallsWithInitializedClient_ShouldNotThrow()
         {
@@ -100,6 +124,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.Null(second);
         }
 
+        /// <summary>
+        /// Tests that on destroy with initialized client should not throw
+        /// </summary>
         [Fact]
         public void OnDestroy_WithInitializedClient_ShouldNotThrow()
         {
@@ -109,6 +136,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that on destroy then dispose with initialized client should not throw
+        /// </summary>
         [Fact]
         public void OnDestroy_ThenDispose_WithInitializedClient_ShouldNotThrow()
         {
@@ -121,6 +151,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.Null(dispose);
         }
 
+        /// <summary>
+        /// Tests that dispose then on destroy with initialized client should not throw
+        /// </summary>
         [Fact]
         public void Dispose_ThenOnDestroy_WithInitializedClient_ShouldNotThrow()
         {
@@ -133,6 +166,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.Null(onDestroy);
         }
 
+        /// <summary>
+        /// Tests that initialize async with null token throws argument exception
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_WithNullToken_ThrowsArgumentException()
         {
@@ -142,6 +178,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.InitializeAsync(null));
         }
 
+        /// <summary>
+        /// Tests that initialize async with empty token throws argument exception
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_WithEmptyToken_ThrowsArgumentException()
         {
@@ -151,6 +190,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.InitializeAsync(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that is initialized with client set returns true
+        /// </summary>
         [Fact]
         public void IsInitialized_WithClientSet_ReturnsTrue()
         {
@@ -159,6 +201,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.True(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that is initialized after dispose with client returns false
+        /// </summary>
         [Fact]
         public void IsInitialized_AfterDisposeWithClient_ReturnsFalse()
         {
@@ -169,6 +214,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that is initialized after on destroy with client returns false
+        /// </summary>
         [Fact]
         public void IsInitialized_AfterOnDestroyWithClient_ReturnsFalse()
         {
@@ -179,6 +227,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that upload file async with local file path null throws exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithLocalFilePathNull_ThrowsException()
         {

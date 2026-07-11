@@ -269,6 +269,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary without outer braces parses key value
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithoutOuterBraces_ParsesKeyValue()
         {
@@ -278,6 +281,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("John", result["name"]);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary with empty key throws json parsing exception
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithEmptyKey_ThrowsJsonParsingException()
         {
@@ -287,6 +293,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("value", result[""]);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary with only opening brace returns empty
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithOnlyOpeningBrace_ReturnsEmpty()
         {
@@ -295,6 +304,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary with trailing comma parses successfully
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithTrailingComma_ParsesSuccessfully()
         {
@@ -304,6 +316,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Equal("1", result["a"]);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary with position at end after brace throws json parsing exception
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithPositionAtEndAfterBrace_ThrowsJsonParsingException()
         {
@@ -311,6 +326,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary with unicode characters parses correctly
+        /// </summary>
         [Fact]
         public void ParseToDictionary_WithUnicodeCharacters_ParsesCorrectly()
         {

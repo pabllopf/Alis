@@ -9,8 +9,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Logic
 {
+    /// <summary>
+    /// The real explosion remaining coverage tests class
+    /// </summary>
     public class RealExplosionRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor default fields should have correct values
+        /// </summary>
         [Fact]
         public void Constructor_DefaultFields_ShouldHaveCorrectValues()
         {
@@ -24,6 +30,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(5, explosion.MinRays);
         }
 
+        /// <summary>
+        /// Tests that constructor world physic should be set
+        /// </summary>
         [Fact]
         public void Constructor_WorldPhysic_ShouldBeSet()
         {
@@ -33,6 +42,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Same(world, explosion.WorldPhysic);
         }
 
+        /// <summary>
+        /// Tests that constructor controller categories should default to cat 01
+        /// </summary>
         [Fact]
         public void Constructor_ControllerCategories_ShouldDefaultToCat01()
         {
@@ -42,6 +54,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(ControllerCategories.Cat01, explosion.ControllerCategories);
         }
 
+        /// <summary>
+        /// Tests that constructor base type should be physics logic
+        /// </summary>
         [Fact]
         public void Constructor_BaseType_ShouldBePhysicsLogic()
         {
@@ -51,6 +66,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.IsAssignableFrom<PhysicsLogic>(explosion);
         }
 
+        /// <summary>
+        /// Tests that constructor base type should be filter data
+        /// </summary>
         [Fact]
         public void Constructor_BaseType_ShouldBeFilterData()
         {
@@ -60,6 +78,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.IsAssignableFrom<FilterData>(explosion);
         }
 
+        /// <summary>
+        /// Tests that activate with no bodies returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithNoBodies_ReturnsEmpty()
         {
@@ -72,6 +93,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with no bodies large radius returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithNoBodies_LargeRadius_ReturnsEmpty()
         {
@@ -84,6 +108,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with static rectangle returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithStaticRectangle_ReturnsEmpty()
         {
@@ -97,6 +124,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with dynamic rectangle far away returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithDynamicRectangle_FarAway_ReturnsEmpty()
         {
@@ -109,6 +139,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with contained shape inside rectangle returns non empty
+        /// </summary>
         [Fact]
         public void Activate_WithContainedShape_InsideRectangle_ReturnsNonEmpty()
         {
@@ -122,6 +155,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with contained shape inside circle returns non empty
+        /// </summary>
         [Fact]
         public void Activate_WithContainedShape_InsideCircle_ReturnsNonEmpty()
         {
@@ -135,6 +171,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with contained shape returns fixture with dynamic body
+        /// </summary>
         [Fact]
         public void Activate_WithContainedShape_ReturnsFixtureWithDynamicBody()
         {
@@ -150,6 +189,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(entry.Value.Length() > 0);
         }
 
+        /// <summary>
+        /// Tests that activate with contained circle shape returns fixture with dynamic body
+        /// </summary>
         [Fact]
         public void Activate_WithContainedCircleShape_ReturnsFixtureWithDynamicBody()
         {
@@ -165,6 +207,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(entry.Value.Length() > 0);
         }
 
+        /// <summary>
+        /// Tests that activate with contained static shape returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithContainedStaticShape_ReturnsEmpty()
         {
@@ -178,6 +223,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with disabled body returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithDisabledBody_ReturnsEmpty()
         {
@@ -192,6 +240,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with ignored controller returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithIgnoredController_ReturnsEmpty()
         {
@@ -206,6 +257,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with ignored controller multiple bodies only active affected
+        /// </summary>
         [Fact]
         public void Activate_WithIgnoredController_MultipleBodies_OnlyActiveAffected()
         {
@@ -221,6 +275,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.DoesNotContain(result, kvp => kvp.Key.GetBody == ignoredBody);
         }
 
+        /// <summary>
+        /// Tests that activate with zero radius far from bodies returns empty
+        /// </summary>
         [Fact]
         public void Activate_WithZeroRadius_FarFromBodies_ReturnsEmpty()
         {
@@ -234,6 +291,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with zero max force returns non empty
+        /// </summary>
         [Fact]
         public void Activate_WithZeroMaxForce_ReturnsNonEmpty()
         {
@@ -247,6 +307,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with multiple contained bodies returns all
+        /// </summary>
         [Fact]
         public void Activate_WithMultipleContainedBodies_ReturnsAll()
         {
@@ -261,6 +324,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Contains(result, kvp => kvp.Key.GetBody == body2);
         }
 
+        /// <summary>
+        /// Tests that is active on with active body returns true
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithActiveBody_ReturnsTrue()
         {
@@ -271,6 +337,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(explosion.IsActiveOn(body));
         }
 
+        /// <summary>
+        /// Tests that is active on with null body throws null reference exception
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithNullBody_ThrowsNullReferenceException()
         {
@@ -280,6 +349,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Throws<NullReferenceException>(() => explosion.IsActiveOn(null));
         }
 
+        /// <summary>
+        /// Tests that is active on with static body returns false
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithStaticBody_ReturnsFalse()
         {
@@ -290,6 +362,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(explosion.IsActiveOn(body));
         }
 
+        /// <summary>
+        /// Tests that is active on with disabled body returns false
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithDisabledBody_ReturnsFalse()
         {
@@ -301,6 +376,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(explosion.IsActiveOn(body));
         }
 
+        /// <summary>
+        /// Tests that is active on with ignored controller returns false
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithIgnoredController_ReturnsFalse()
         {
@@ -312,6 +390,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(explosion.IsActiveOn(body));
         }
 
+        /// <summary>
+        /// Tests that activate with dynamic body outside explosion should trigger raycast
+        /// </summary>
         [Fact]
         public void Activate_WithDynamicBodyOutsideExplosion_ShouldTriggerRaycast()
         {
@@ -324,6 +405,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with dynamic circle outside explosion should trigger create polygon from circle
+        /// </summary>
         [Fact]
         public void Activate_WithDynamicCircleOutsideExplosion_ShouldTriggerCreatePolygonFromCircle()
         {
@@ -336,6 +420,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with dynamic body behind static body should skip blocked body
+        /// </summary>
         [Fact]
         public void Activate_WithDynamicBodyBehindStaticBody_ShouldSkipBlockedBody()
         {
@@ -349,6 +436,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with multiple dynamic bodies should affect all hit by rays
+        /// </summary>
         [Fact]
         public void Activate_WithMultipleDynamicBodies_ShouldAffectAllHitByRays()
         {
@@ -362,6 +452,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with dynamic body at angle should calculate angle bounds
+        /// </summary>
         [Fact]
         public void Activate_WithDynamicBodyAtAngle_ShouldCalculateAngleBounds()
         {
@@ -374,6 +467,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with large radius and max force should not throw
+        /// </summary>
         [Fact]
         public void Activate_WithLargeRadiusAndMaxForce_ShouldNotThrow()
         {
@@ -386,6 +482,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with explosion close to rectangle edge should process ray cast
+        /// </summary>
         [Fact]
         public void Activate_WithExplosionCloseToRectangleEdge_ShouldProcessRayCast()
         {
@@ -398,6 +497,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with explosion close to circle edge should process create polygon from circle
+        /// </summary>
         [Fact]
         public void Activate_WithExplosionCloseToCircleEdge_ShouldProcessCreatePolygonFromCircle()
         {
@@ -410,6 +512,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with kinematic body should not be affected
+        /// </summary>
         [Fact]
         public void Activate_WithKinematicBody_ShouldNotBeAffected()
         {
@@ -423,6 +528,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that activate with max force zero and body outside should not throw
+        /// </summary>
         [Fact]
         public void Activate_WithMaxForceZeroAndBodyOutside_ShouldNotThrow()
         {
@@ -435,6 +543,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with body very close to explosion should process ray hit
+        /// </summary>
         [Fact]
         public void Activate_WithBodyVeryCloseToExplosion_ShouldProcessRayHit()
         {
@@ -447,6 +558,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with large rectangle body should compute angle bounds
+        /// </summary>
         [Fact]
         public void Activate_WithLargeRectangleBody_ShouldComputeAngleBounds()
         {
@@ -459,6 +573,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with explosion behind body should still process ray cast
+        /// </summary>
         [Fact]
         public void Activate_WithExplosionBehindBody_ShouldStillProcessRayCast()
         {
@@ -471,6 +588,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with circle shape body large radius should apply impulses
+        /// </summary>
         [Fact]
         public void Activate_WithCircleShapeBodyLargeRadius_ShouldApplyImpulses()
         {
@@ -483,6 +603,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that list any with non empty list returns true
+        /// </summary>
         [Fact]
         public void ListAny_WithNonEmptyList_ReturnsTrue()
         {
@@ -490,6 +613,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(RealExplosion.ListAny(list));
         }
 
+        /// <summary>
+        /// Tests that list any with empty list returns false
+        /// </summary>
         [Fact]
         public void ListAny_WithEmptyList_ReturnsFalse()
         {
@@ -497,6 +623,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.False(RealExplosion.ListAny(list));
         }
 
+        /// <summary>
+        /// Tests that list first with non empty list returns first
+        /// </summary>
         [Fact]
         public void ListFirst_WithNonEmptyList_ReturnsFirst()
         {
@@ -504,6 +633,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(1, RealExplosion.ListFirst(list));
         }
 
+        /// <summary>
+        /// Tests that list last with non empty list returns last
+        /// </summary>
         [Fact]
         public void ListLast_WithNonEmptyList_ReturnsLast()
         {
@@ -511,6 +643,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(3, RealExplosion.ListLast(list));
         }
 
+        /// <summary>
+        /// Tests that is active on with kinematic body returns true
+        /// </summary>
         [Fact]
         public void IsActiveOn_WithKinematicBody_ReturnsTrue()
         {
@@ -521,6 +656,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(explosion.IsActiveOn(body));
         }
 
+        /// <summary>
+        /// Tests that activate with rectangle and circle dynamic bodies should process multiple shapes
+        /// </summary>
         [Fact]
         public void Activate_WithRectangleAndCircle_DynamicBodies_ShouldProcessMultipleShapes()
         {
@@ -534,6 +672,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with large force and multiple bodies should not throw
+        /// </summary>
         [Fact]
         public void Activate_WithLargeForceAndMultipleBodies_ShouldNotThrow()
         {
@@ -549,6 +690,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with overlapping angle bounds processes ray hits
+        /// </summary>
         [Fact]
         public void Activate_WithOverlappingAngleBounds_ProcessesRayHits()
         {
@@ -561,6 +705,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that should skip angle pair with equal angles returns true
+        /// </summary>
         [Fact]
         public void ShouldSkipAnglePair_WithEqualAngles_ReturnsTrue()
         {
@@ -569,6 +716,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(result || !result);
         }
 
+        /// <summary>
+        /// Tests that normalize angle difference with negative diff wraps correctly
+        /// </summary>
         [Fact]
         public void NormalizeAngleDifference_WithNegativeDiff_WrapsCorrectly()
         {
@@ -577,6 +727,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(result >= -(float)Math.PI && result <= (float)Math.PI);
         }
 
+        /// <summary>
+        /// Tests that compute inserted rays negative result returns zero
+        /// </summary>
         [Fact]
         public void ComputeInsertedRays_NegativeResult_ReturnsZero()
         {
@@ -585,6 +738,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.Equal(0, result);
         }
 
+        /// <summary>
+        /// Tests that compute ray offset computes correct offset
+        /// </summary>
         [Fact]
         public void ComputeRayOffset_ComputesCorrectOffset()
         {
@@ -593,6 +749,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.True(result > 0);
         }
 
+        /// <summary>
+        /// Tests that activate with contained circle shape processes contained shapes
+        /// </summary>
         [Fact]
         public void Activate_WithContainedCircleShape_ProcessesContainedShapes()
         {
@@ -605,6 +764,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that activate with explosion at body center triggers contained shapes
+        /// </summary>
         [Fact]
         public void Activate_WithExplosionAtBodyCenter_TriggersContainedShapes()
         {
@@ -618,8 +780,18 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
     }
 
+    /// <summary>
+    /// The real explosion remaining coverage tests helper class
+    /// </summary>
     internal static class RealExplosionRemainingCoverageTestsHelper
     {
+        /// <summary>
+        /// Shoulds the skip angle pair using the specified vals
+        /// </summary>
+        /// <param name="vals">The vals</param>
+        /// <param name="i">The </param>
+        /// <param name="valIndex">The val index</param>
+        /// <returns>The bool</returns>
         internal static bool ShouldSkipAnglePair(float[] vals, int i, int valIndex)
         {
             MethodInfo method = typeof(RealExplosion).GetMethod("ShouldSkipAnglePair", BindingFlags.Static | BindingFlags.NonPublic);

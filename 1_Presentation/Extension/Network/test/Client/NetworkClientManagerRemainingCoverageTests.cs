@@ -9,20 +9,36 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Client
 {
+    /// <summary>
+    /// The network client manager remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class NetworkClientManagerRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The manager
+        /// </summary>
         private readonly NetworkClientManager _manager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NetworkClientManagerRemainingCoverageTests"/> class
+        /// </summary>
         public NetworkClientManagerRemainingCoverageTests()
         {
             _manager = new NetworkClientManager();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _manager?.Dispose();
         }
 
+        /// <summary>
+        /// Tests that initialize async should set state to idle
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_ShouldSetStateToIdle()
         {
@@ -32,6 +48,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Idle, _manager.State);
         }
 
+        /// <summary>
+        /// Tests that initialize async should set config
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_ShouldSetConfig()
         {
@@ -50,6 +69,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.False(_manager.Config.ServerAuthoritative);
         }
 
+        /// <summary>
+        /// Tests that initialize async with null config should create default config
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_WithNullConfig_ShouldCreateDefaultConfig()
         {
@@ -61,6 +83,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.True(_manager.Config.ServerAuthoritative);
         }
 
+        /// <summary>
+        /// Tests that initialize async called twice should throw invalid operation exception
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_CalledTwice_ShouldThrowInvalidOperationException()
         {
@@ -72,6 +97,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal("Already initialized", exception.Message);
         }
 
+        /// <summary>
+        /// Tests that start async when uninitialized should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void StartAsync_WhenUninitialized_ShouldThrowInvalidOperationException()
         {
@@ -83,6 +111,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal("Cannot start in current state", exception.Result.Message);
         }
 
+        /// <summary>
+        /// Tests that start async after initialize async should succeed
+        /// </summary>
         [Fact]
         public async Task StartAsync_AfterInitializeAsync_ShouldSucceed()
         {
@@ -93,6 +124,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Idle, _manager.State);
         }
 
+        /// <summary>
+        /// Tests that stop async when uninitialized should not throw
+        /// </summary>
         [Fact]
         public async Task StopAsync_WhenUninitialized_ShouldNotThrow()
         {
@@ -101,6 +135,9 @@ namespace Alis.Extension.Network.Test.Client
             await _manager.StopAsync(CancellationToken.None);
         }
 
+        /// <summary>
+        /// Tests that get connected players when not connected should return empty list
+        /// </summary>
         [Fact]
         public void GetConnectedPlayers_WhenNotConnected_ShouldReturnEmptyList()
         {
@@ -110,6 +147,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Empty(players);
         }
 
+        /// <summary>
+        /// Tests that get player when not connected should return null
+        /// </summary>
         [Fact]
         public void GetPlayer_WhenNotConnected_ShouldReturnNull()
         {
@@ -118,6 +158,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(player);
         }
 
+        /// <summary>
+        /// Tests that send message async when not connected should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void SendMessageAsync_WhenNotConnected_ShouldThrowInvalidOperationException()
         {
@@ -129,6 +172,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal("Not connected to server", exception.Result.Message);
         }
 
+        /// <summary>
+        /// Tests that broadcast message async when not connected should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void BroadcastMessageAsync_WhenNotConnected_ShouldThrowInvalidOperationException()
         {
@@ -140,6 +186,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal("Not connected to server", exception.Result.Message);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls should be idempotent
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_ShouldBeIdempotent()
         {
@@ -148,6 +197,9 @@ namespace Alis.Extension.Network.Test.Client
             _manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async when uninitialized should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void ConnectAsync_WhenUninitialized_ShouldThrowInvalidOperationException()
         {
@@ -159,6 +211,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal("Cannot connect in current state", exception.Result.Message);
         }
 
+        /// <summary>
+        /// Tests that disconnect async when uninitialized should return without throwing
+        /// </summary>
         [Fact]
         public async Task DisconnectAsync_WhenUninitialized_ShouldReturnWithoutThrowing()
         {
@@ -167,10 +222,21 @@ namespace Alis.Extension.Network.Test.Client
             await _manager.DisconnectAsync(CancellationToken.None);
         }
 
+        /// <summary>
+        /// The test json message class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
         private class TestJsonMessage : IJsonSerializable
         {
+            /// <summary>
+            /// Gets or sets the value of the data
+            /// </summary>
             public string Data { get; set; }
 
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Data", Data);

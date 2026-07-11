@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 {
+    /// <summary>
+    /// The delaunay triangle remaining coverage tests class
+    /// </summary>
     public class DelaunayTriangleRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that clear neighbor removes correct neighbor index 1
+        /// </summary>
         [Fact]
         public void ClearNeighbor_RemovesCorrectNeighbor_Index1()
         {
@@ -25,6 +31,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points reverse order index 0
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_ReverseOrder_Index0()
         {
@@ -41,6 +50,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[0]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points reverse order index 1
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_ReverseOrder_Index1()
         {
@@ -57,6 +69,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points reverse order index 2
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_ReverseOrder_Index2()
         {
@@ -73,6 +88,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[2]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with triangle sets index 0
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithTriangle_SetsIndex0()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t1, t2.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with triangle sets index 2
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithTriangle_SetsIndex2()
         {
@@ -107,6 +128,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t1, t2.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor edges propagates to neighbor index 1
+        /// </summary>
         [Fact]
         public void MarkNeighborEdges_PropagatesToNeighbor_Index1()
         {
@@ -126,6 +150,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor edges propagates to neighbor index 2
+        /// </summary>
         [Fact]
         public void MarkNeighborEdges_PropagatesToNeighbor_Index2()
         {
@@ -145,6 +172,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle marks constrained edge index 1
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangle_MarksConstrainedEdge_Index1()
         {
@@ -162,6 +192,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle marks constrained edge index 2
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangle_MarksConstrainedEdge_Index2()
         {
@@ -179,6 +212,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle list marks constrained edge index 1
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangleList_MarksConstrainedEdge_Index1()
         {
@@ -197,6 +233,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle list marks constrained edge index 2
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangleList_MarksConstrainedEdge_Index2()
         {

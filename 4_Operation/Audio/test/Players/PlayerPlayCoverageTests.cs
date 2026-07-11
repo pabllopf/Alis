@@ -8,8 +8,15 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The player play coverage tests class
+    /// </summary>
     public class PlayerPlayCoverageTests
     {
+        /// <summary>
+        /// Creates the temp wav file
+        /// </summary>
+        /// <returns>The file path</returns>
         private static string CreateTempWavFile()
         {
             string filePath = Path.GetTempFileName() + ".wav";
@@ -43,6 +50,9 @@ namespace Alis.Core.Audio.Test.Players
             return filePath;
         }
 
+        /// <summary>
+        /// Tests that player play with real wav file should complete successfully
+        /// </summary>
         [Fact]
         public async Task Player_Play_WithRealWavFile_ShouldCompleteSuccessfully()
         {
@@ -59,6 +69,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that player play loop with loop false should complete successfully
+        /// </summary>
         [Fact]
         public async Task Player_PlayLoop_WithLoopFalse_ShouldCompleteSuccessfully()
         {
@@ -75,6 +88,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that player play then stop should work
+        /// </summary>
         [Fact]
         public async Task Player_PlayThenStop_ShouldWork()
         {
@@ -93,6 +109,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that mac player play with real wav file should set playing true
+        /// </summary>
         [Fact]
         public async Task MacPlayer_Play_WithRealWavFile_ShouldSetPlayingTrue()
         {
@@ -109,6 +128,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that player play update last played file should cache correctly
+        /// </summary>
         [Fact]
         public async Task Player_Play_UpdateLastPlayedFile_ShouldCacheCorrectly()
         {
@@ -136,6 +158,10 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Creates the real wav file
+        /// </summary>
+        /// <returns>The file path</returns>
         private static string CreateRealWavFile()
         {
             int sampleRate = 44100;
@@ -178,6 +204,9 @@ namespace Alis.Core.Audio.Test.Players
             return filePath;
         }
 
+        /// <summary>
+        /// Tests that mac player play loop with loop true should start background loop
+        /// </summary>
         [Fact]
         public async Task MacPlayer_PlayLoop_WithLoopTrue_ShouldStartBackgroundLoop()
         {

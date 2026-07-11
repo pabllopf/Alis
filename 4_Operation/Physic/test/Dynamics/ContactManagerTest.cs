@@ -155,6 +155,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(postSolveCount > 0);
         }
 
+        /// <summary>
+        /// Tests that collide with no contacts does not throw
+        /// </summary>
         [Fact]
         public void Collide_WithNoContacts_DoesNotThrow()
         {
@@ -165,6 +168,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that find new contacts after step does not throw
+        /// </summary>
         [Fact]
         public void FindNewContacts_AfterStep_DoesNotThrow()
         {
@@ -177,6 +183,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that destroy contact with multiple overlapping bodies does not throw
+        /// </summary>
         [Fact]
         public void DestroyContact_WithMultipleOverlappingBodies_DoesNotThrow()
         {

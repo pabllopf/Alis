@@ -629,6 +629,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         // CalculateBeta — PointOnLineSegment branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that calculate beta with point on line segment returns half coefficient
+        /// </summary>
         [Fact]
         public void CalculateBeta_WithPointOnLineSegment_ReturnsHalfCoefficient()
         {
@@ -647,6 +650,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result >= 0.5f);
         }
 
+        /// <summary>
+        /// Tests that calculate beta with point outside simplex returns zero
+        /// </summary>
         [Fact]
         public void CalculateBeta_WithPointOutsideSimplex_ReturnsZero()
         {
@@ -665,6 +671,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         // CalculateSimplexCoefficient — isLeft == 0 branch (collinear points)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that calculate simplex coefficient with collinear points returns zero
+        /// </summary>
         [Fact]
         public void CalculateSimplexCoefficient_WithCollinearPoints_ReturnsZero()
         {
@@ -674,6 +683,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(0f, result);
         }
 
+        /// <summary>
+        /// Tests that calculate simplex coefficient with left turn returns positive
+        /// </summary>
         [Fact]
         public void CalculateSimplexCoefficient_WithLeftTurn_ReturnsPositive()
         {
@@ -683,6 +695,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(1f, result);
         }
 
+        /// <summary>
+        /// Tests that calculate simplex coefficient with right turn returns negative
+        /// </summary>
         [Fact]
         public void CalculateSimplexCoefficient_WithRightTurn_ReturnsNegative()
         {

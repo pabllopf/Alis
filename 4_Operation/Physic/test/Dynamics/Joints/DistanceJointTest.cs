@@ -730,6 +730,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
         {

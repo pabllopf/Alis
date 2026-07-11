@@ -43,6 +43,10 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Services
         /// </summary>
         private class TestableCryptoRandomNumberGenerator : CryptoRandomNumberGenerator
         {
+            /// <summary>
+            /// Calls the dispose using the specified disposing
+            /// </summary>
+            /// <param name="disposing">The disposing</param>
             public void CallDispose(bool disposing)
             {
                 Dispose(disposing);

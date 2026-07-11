@@ -10,11 +10,24 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player play error coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class BrowserPlayerPlayErrorCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The player
+        /// </summary>
         private BrowserPlayer _player;
+        /// <summary>
+        /// The previous active name
+        /// </summary>
         private string _previousActiveName;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_previousActiveName != null)
@@ -22,6 +35,12 @@ namespace Alis.Core.Audio.Test.Players
             try { _player?.Stop(); } catch { }
         }
 
+        /// <summary>
+        /// Setup the assembly using the specified entry name
+        /// </summary>
+        /// <param name="entryName">The entry name</param>
+        /// <param name="content">The content</param>
+        /// <returns>The name</returns>
         private string SetupAssembly(string entryName, byte[] content)
         {
             _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
@@ -30,6 +49,9 @@ namespace Alis.Core.Audio.Test.Players
             return name;
         }
 
+        /// <summary>
+        /// Tests that play with invalid wav data should throw invalid operation exception
+        /// </summary>
         [Fact]
         public async Task Play_WithInvalidWavData_ShouldThrowInvalidOperationException()
         {
@@ -50,6 +72,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with too small wav data should throw invalid operation exception
+        /// </summary>
         [Fact]
         public async Task Play_WithTooSmallWavData_ShouldThrowInvalidOperationException()
         {
@@ -71,6 +96,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with compressed wav format should throw invalid operation exception
+        /// </summary>
         [Fact]
         public async Task Play_WithCompressedWavFormat_ShouldThrowInvalidOperationException()
         {
@@ -108,6 +136,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with non existent resource should throw file not found exception
+        /// </summary>
         [Fact]
         public async Task Play_WithNonExistentResource_ShouldThrowFileNotFoundException()
         {
@@ -126,6 +157,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with playback finished handler should invoke event
+        /// </summary>
         [Fact]
         public async Task Play_WithPlaybackFinishedHandler_ShouldInvokeEvent()
         {
@@ -166,6 +200,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with empty resource should throw
+        /// </summary>
         [Fact]
         public async Task Play_WithEmptyResource_ShouldThrow()
         {
@@ -184,6 +221,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play without event handler should not throw
+        /// </summary>
         [Fact]
         public async Task Play_WithoutEventHandler_ShouldNotThrow()
         {
@@ -221,6 +261,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop with valid wav should delegate to play
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithValidWav_ShouldDelegateToPlay()
         {

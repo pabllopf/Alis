@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating
 {
+    /// <summary>
+    /// The component update filter test class
+    /// </summary>
     public class IComponentUpdateFilterTest
     {
+        /// <summary>
+        /// Tests that interface can be implemented
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Interface_CanBeImplemented()
         {
@@ -13,6 +19,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.NotNull(filter);
         }
 
+        /// <summary>
+        /// Tests that update subset with empty span does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void UpdateSubset_WithEmptySpan_DoesNotThrow()
         {
@@ -22,6 +31,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(1, filter.CallCount);
         }
 
+        /// <summary>
+        /// Tests that interface can be used as parameter
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Interface_CanBeUsedAsParameter()
         {
@@ -30,15 +42,30 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(1, filter.CallCount);
         }
 
+        /// <summary>
+        /// Uses the filter using the specified f
+        /// </summary>
+        /// <param name="f">The </param>
         private static void UseFilter(IComponentUpdateFilter f)
         {
             ReadOnlySpan<ArchetypeDeferredUpdateRecord> span = [];
             f.UpdateSubset(span);
         }
 
+        /// <summary>
+        /// The test update filter class
+        /// </summary>
+        /// <seealso cref="IComponentUpdateFilter"/>
         private sealed class TestUpdateFilter : IComponentUpdateFilter
         {
+            /// <summary>
+            /// Gets or sets the value of the call count
+            /// </summary>
             public int CallCount { get; private set; }
+            /// <summary>
+            /// Updates the subset using the specified archetypes
+            /// </summary>
+            /// <param name="archetypes">The archetypes</param>
             public void UpdateSubset(ReadOnlySpan<ArchetypeDeferredUpdateRecord> archetypes)
             {
                 CallCount++;

@@ -40,6 +40,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
     /// </summary>
     public class StreamAdaptorRemainingCoverageTests
     {
+        /// <summary>
+        /// Creates the adaptor using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <returns>The stream adaptor adaptor input stream input stream</returns>
         private static (StreamAdaptor Adaptor, InputStream InputStream) CreateAdaptor(byte[] data)
         {
             MemoryStream stream = new MemoryStream(data);
@@ -48,6 +53,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             return (adaptor, inputStream);
         }
 
+        /// <summary>
+        /// Tests that read should return correct bytes
+        /// </summary>
         [Fact]
         public void Read_ShouldReturnCorrectBytes()
         {
@@ -71,6 +79,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that read should return partial bytes when buffer larger than stream
+        /// </summary>
         [Fact]
         public void Read_ShouldReturnPartialBytes_WhenBufferLargerThanStream()
         {
@@ -90,6 +101,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that read should return zero when stream empty
+        /// </summary>
         [Fact]
         public void Read_ShouldReturnZero_WhenStreamEmpty()
         {
@@ -109,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that seek should update position
+        /// </summary>
         [Fact]
         public void Seek_ShouldUpdatePosition()
         {
@@ -120,6 +137,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that seek to end should return length
+        /// </summary>
         [Fact]
         public void Seek_ToEnd_ShouldReturnLength()
         {
@@ -131,6 +151,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that seek to beginning should return zero
+        /// </summary>
         [Fact]
         public void Seek_ToBeginning_ShouldReturnZero()
         {
@@ -143,6 +166,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that tell should return current position
+        /// </summary>
         [Fact]
         public void Tell_ShouldReturnCurrentPosition()
         {
@@ -155,6 +181,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that tell should return zero initially
+        /// </summary>
         [Fact]
         public void Tell_ShouldReturnZero_Initially()
         {
@@ -166,6 +195,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that get size should return stream length
+        /// </summary>
         [Fact]
         public void GetSize_ShouldReturnStreamLength()
         {
@@ -177,6 +209,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that get size should return zero for empty stream
+        /// </summary>
         [Fact]
         public void GetSize_ShouldReturnZero_ForEmptyStream()
         {
@@ -188,6 +223,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that dispose should free memory
+        /// </summary>
         [Fact]
         public void Dispose_ShouldFreeMemory()
         {
@@ -195,6 +233,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
         }
 
+        /// <summary>
+        /// Tests that read after seek should read from correct position
+        /// </summary>
         [Fact]
         public void Read_AfterSeek_ShouldReadFromCorrectPosition()
         {
@@ -220,6 +261,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that read should read zero bytes when size is zero
+        /// </summary>
         [Fact]
         public void Read_ShouldReadZeroBytes_WhenSizeIsZero()
         {
@@ -239,6 +283,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that tell after seek should return updated position
+        /// </summary>
         [Fact]
         public void Tell_AfterSeek_ShouldReturnUpdatedPosition()
         {
@@ -251,6 +298,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that tell after read should return updated position
+        /// </summary>
         [Fact]
         public void Tell_AfterRead_ShouldReturnUpdatedPosition()
         {

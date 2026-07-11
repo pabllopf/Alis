@@ -8,8 +8,15 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The windows player cross platform tests class
+    /// </summary>
     public class WindowsPlayerCrossPlatformTests
     {
+        /// <summary>
+        /// Ises the winmm stub available
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsWinmmStubAvailable()
         {
             try
@@ -27,6 +34,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that set volume should not throw when stub available
+        /// </summary>
         [Fact]
         public async Task SetVolume_ShouldNotThrow_WhenStubAvailable()
         {
@@ -37,6 +47,9 @@ namespace Alis.Core.Audio.Test.Players
             await player.SetVolume(100);
         }
 
+        /// <summary>
+        /// Tests that play with existing file should set up fields
+        /// </summary>
         [Fact]
         public async Task Play_WithExistingFile_ShouldSetUpFields()
         {
@@ -62,6 +75,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop with existing file should set up fields
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithExistingFile_ShouldSetUpFields()
         {
@@ -84,6 +100,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that pause when playing should set paused
+        /// </summary>
         [Fact]
         public async Task Pause_WhenPlaying_ShouldSetPaused()
         {
@@ -101,6 +120,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that resume when playing and paused should set not paused
+        /// </summary>
         [Fact]
         public async Task Resume_WhenPlayingAndPaused_ShouldSetNotPaused()
         {
@@ -121,6 +143,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that stop when playing should reset state
+        /// </summary>
         [Fact]
         public async Task Stop_WhenPlaying_ShouldResetState()
         {
@@ -139,6 +164,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that execute msi command with status should succeed
+        /// </summary>
         [Fact]
         public void ExecuteMsiCommand_WithStatus_ShouldSucceed()
         {
@@ -156,6 +184,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(5000, timer?.Interval);
         }
 
+        /// <summary>
+        /// Tests that handle playback finished should fire event
+        /// </summary>
         [Fact]
         public void HandlePlaybackFinished_ShouldFireEvent()
         {
@@ -178,6 +209,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventRaised);
         }
 
+        /// <summary>
+        /// Tests that play with null file name should throw file not found exception
+        /// </summary>
         [Fact]
         public async Task Play_WithNullFileName_ShouldThrowFileNotFoundException()
         {
@@ -185,6 +219,9 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAsync<FileNotFoundException>(() => player.Play(null));
         }
 
+        /// <summary>
+        /// Tests that play loop with null file name should throw file not found exception
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithNullFileName_ShouldThrowFileNotFoundException()
         {

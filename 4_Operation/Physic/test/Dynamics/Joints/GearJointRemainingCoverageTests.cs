@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
+    /// <summary>
+    /// The gear joint remaining coverage tests class
+    /// </summary>
     public class GearJointRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that solve velocity constraints with revolute joints should modify impulse
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithRevoluteJoints_ShouldModifyImpulse()
         {
@@ -101,6 +107,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(gearJoint);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with revolute joints and mass positive should return true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithRevoluteJointsAndMassPositive_ShouldReturnTrue()
         {
@@ -153,6 +162,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with prismatic joints and mass positive should return true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithPrismaticJointsAndMassPositive_ShouldReturnTrue()
         {
@@ -205,6 +217,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with prismatic joints and warm starting false covers else branch
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithPrismaticJointsAndWarmStartingFalse_CoversElseBranch()
         {
@@ -257,6 +272,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, impulse);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with prismatic joints should modify velocities
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithPrismaticJoints_ShouldModifyVelocities()
         {
@@ -317,6 +335,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(gearJoint);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with revolute and prismatic joints should return true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithRevoluteAndPrismaticJoints_ShouldReturnTrue()
         {
@@ -369,6 +390,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with prismatic and revolute joints should return true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithPrismaticAndRevoluteJoints_ShouldReturnTrue()
         {

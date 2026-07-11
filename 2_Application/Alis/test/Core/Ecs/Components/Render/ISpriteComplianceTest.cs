@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The sprite compliance test class
+    /// </summary>
     public class ISpriteComplianceTest
     {
+        /// <summary>
+        /// Tests that interface is implemented by sprite
+        /// </summary>
         [Fact]
         public void Interface_IsImplementedBySprite()
         {

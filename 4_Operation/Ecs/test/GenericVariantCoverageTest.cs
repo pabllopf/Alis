@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The generic variant coverage test class
+    /// </summary>
     public class GenericVariantCoverageTest
     {
+        /// <summary>
+        /// Tests that game object query enumerator all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectQueryEnumerator_AllArities_AreValueTypes()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that game object ref tuple all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectRefTuple_AllArities_AreValueTypes()
         {
@@ -33,6 +42,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that query enumerable all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void QueryEnumerable_AllArities_AreValueTypes()
         {
@@ -46,6 +58,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that chunk tuple all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ChunkTuple_AllArities_AreValueTypes()
         {
@@ -59,6 +74,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that ref tuple all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void RefTuple_AllArities_AreValueTypes()
         {
@@ -72,6 +90,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(RefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that query enumerator all arities have query enumerable
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void QueryEnumerator_AllArities_HaveQueryEnumerable()
         {
@@ -79,6 +100,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(QueryEnumerator<Position, Velocity>.QueryEnumerable).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator all arities are value types
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ChunkQueryEnumerator_AllArities_AreValueTypes()
         {
@@ -87,24 +111,36 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(ChunkQueryEnumerator<Position, Velocity, Health>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that game object enumerator is value type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectEnumerator_IsValueType()
         {
             Assert.True(typeof(GameObjectEnumerator).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that include disabled is value type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void IncludeDisabled_IsValueType()
         {
             Assert.True(typeof(IncludeDisabled).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that not is value type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Not_IsValueType()
         {
             Assert.True(typeof(Not<Position>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that with is value type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void With_IsValueType()
         {

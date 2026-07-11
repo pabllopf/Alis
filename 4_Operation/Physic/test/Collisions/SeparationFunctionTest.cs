@@ -207,6 +207,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // FindMinSeparation with default type — covers default case in switch
         // ========================================================================
 
+        /// <summary>
+        /// Tests that find min separation with default type returns zero
+        /// </summary>
         [Fact]
         public void FindMinSeparation_WithDefaultType_ReturnsZero()
         {
@@ -232,6 +235,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Evaluate returns finite value after Set (covers Points path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that evaluate with default type returns finite
+        /// </summary>
         [Fact]
         public void Evaluate_WithDefaultType_ReturnsFinite()
         {
@@ -356,6 +362,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Evaluate with FaceB mode — exercises the FaceB branch (line 316-326)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that evaluate with face b mode should return finite separation
+        /// </summary>
         [Fact]
         public void Evaluate_WithFaceBMode_ShouldReturnFiniteSeparation()
         {
@@ -383,6 +392,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // FindMinSeparation with default type (Points) - just checks no crash
         // ========================================================================
 
+        /// <summary>
+        /// Tests that find min separation with uninitialized data does not crash
+        /// </summary>
         [Fact]
         public void FindMinSeparation_WithUninitializedData_DoesNotCrash()
         {
@@ -394,6 +406,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Evaluate with FaceBMode and indexB >= 0 (indexB is not -1)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that evaluate with face b mode index b not negative returns finite
+        /// </summary>
         [Fact]
         public void Evaluate_WithFaceBMode_IndexBNotNegative_ReturnsFinite()
         {

@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
+    /// <summary>
+    /// The query and scene deep coverage test class
+    /// </summary>
     public class QueryAndSceneDeepCoverageTest
     {
+        /// <summary>
+        /// Tests that scene create many with position and velocity creates multiple
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_CreateMany_WithPositionAndVelocity_CreatesMultiple()
         {
@@ -16,6 +22,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(3, chunk.Span2.Length);
         }
 
+        /// <summary>
+        /// Tests that scene create many with single component creates multiple
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_CreateMany_WithSingleComponent_CreatesMultiple()
         {
@@ -24,6 +33,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(5, chunk.Span.Length);
         }
 
+        /// <summary>
+        /// Tests that scene query with not and include disabled combines filters
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneQuery_WithNotAndIncludeDisabled_CombinesFilters()
         {
@@ -34,6 +46,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that scene multiple disposals no throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_MultipleDisposals_NoThrow()
         {
@@ -43,6 +58,9 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Dispose();
         }
 
+        /// <summary>
+        /// Tests that scene update with events works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_Update_WithEvents_Works()
         {
@@ -51,6 +69,9 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that scene update with multiple frames works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_Update_WithMultipleFrames_Works()
         {
@@ -61,6 +82,9 @@ namespace Alis.Core.Ecs.Test.Systems
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that query enumerator ref tuple deconstruct works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void QueryEnumerator_RefTuple_DeconstructWorks()
         {
@@ -73,6 +97,9 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that query enumerator two components deconstruct works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void QueryEnumerator_TwoComponents_DeconstructWorks()
         {
@@ -86,6 +113,9 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that query enumerator three components deconstruct works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void QueryEnumerator_ThreeComponents_DeconstructWorks()
         {
@@ -100,6 +130,9 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that chunk enumerator with single component works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ChunkEnumerator_WithSingleComponent_Works()
         {
@@ -113,6 +146,9 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that chunk enumerator with two components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ChunkEnumerator_WithTwoComponents_Works()
         {
@@ -126,6 +162,9 @@ namespace Alis.Core.Ecs.Test.Systems
             }
         }
 
+        /// <summary>
+        /// Tests that scene create many three components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_CreateMany_ThreeComponents_Works()
         {
@@ -136,6 +175,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(4, chunk.Span3.Length);
         }
 
+        /// <summary>
+        /// Tests that scene create many four components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_CreateMany_FourComponents_Works()
         {
@@ -145,6 +187,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(2, chunk.Span2.Length);
         }
 
+        /// <summary>
+        /// Tests that scene create eight components works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_Create_EightComponents_Works()
         {

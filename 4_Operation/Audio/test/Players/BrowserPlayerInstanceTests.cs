@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player instance tests class
+    /// </summary>
     public class BrowserPlayerInstanceTests
     {
+        /// <summary>
+        /// Tests that constructor with open al available should initialize
+        /// </summary>
         [Fact]
         public void Constructor_WithOpenALAvailable_ShouldInitialize()
         {
@@ -28,6 +34,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that pause when not playing should set paused
+        /// </summary>
         [Fact]
         public void Pause_WhenNotPlaying_ShouldSetPaused()
         {
@@ -46,6 +55,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that resume when not playing should set playing
+        /// </summary>
         [Fact]
         public void Resume_WhenNotPlaying_ShouldSetPlaying()
         {
@@ -64,6 +76,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that stop when not playing should set both false
+        /// </summary>
         [Fact]
         public void Stop_WhenNotPlaying_ShouldSetBothFalse()
         {
@@ -82,6 +97,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that set volume should return completed task
+        /// </summary>
         [Fact]
         public void SetVolume_ShouldReturnCompletedTask()
         {
@@ -99,6 +117,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that pause resume stop sequence should work
+        /// </summary>
         [Fact]
         public void Pause_Resume_Stop_Sequence_ShouldWork()
         {
@@ -123,6 +144,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that playback finished should be raiseable
+        /// </summary>
         [Fact]
         public void PlaybackFinished_ShouldBeRaiseable()
         {

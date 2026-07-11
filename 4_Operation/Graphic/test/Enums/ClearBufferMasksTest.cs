@@ -38,24 +38,45 @@ namespace Alis.Core.Graphic.Test.Enums
     /// </summary>
     public class ClearBufferMasksTest
     {
+        /// <summary>
+        /// Tests that depth buffer bit has correct value equals expected
+        /// </summary>
         [Fact]
         public void DepthBufferBit_HasCorrectValue_EqualsExpected() { Assert.Equal(0x00000100, (int)ClearBufferMasks.DepthBufferBit); }
 
+        /// <summary>
+        /// Tests that accum buffer bit has correct value equals expected
+        /// </summary>
         [Fact]
         public void AccumBufferBit_HasCorrectValue_EqualsExpected() { Assert.Equal(0x00000200, (int)ClearBufferMasks.AccumBufferBit); }
 
+        /// <summary>
+        /// Tests that stencil buffer bit has correct value equals expected
+        /// </summary>
         [Fact]
         public void StencilBufferBit_HasCorrectValue_EqualsExpected() { Assert.Equal(0x00000400, (int)ClearBufferMasks.StencilBufferBit); }
 
+        /// <summary>
+        /// Tests that color buffer bit has correct value equals expected
+        /// </summary>
         [Fact]
         public void ColorBufferBit_HasCorrectValue_EqualsExpected() { Assert.Equal(0x00004000, (int)ClearBufferMasks.ColorBufferBit); }
 
+        /// <summary>
+        /// Tests that clear buffer masks is enum type is correct
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_IsEnum_TypeIsCorrect() { Assert.True(typeof(ClearBufferMasks).IsEnum); }
 
+        /// <summary>
+        /// Tests that clear buffer masks is public can be accessed
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_IsPublic_CanBeAccessed() { Assert.True(typeof(ClearBufferMasks).IsPublic); }
 
+        /// <summary>
+        /// Tests that clear buffer masks has four values count is correct
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_HasFourValues_CountIsCorrect()
         {
@@ -63,6 +84,9 @@ namespace Alis.Core.Graphic.Test.Enums
             Assert.Equal(4, enumValues.Length);
         }
 
+        /// <summary>
+        /// Tests that clear buffer masks can cast to int conversion is valid
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_CanCastToInt_ConversionIsValid()
         {
@@ -70,6 +94,9 @@ namespace Alis.Core.Graphic.Test.Enums
             Assert.IsType<int>(value);
         }
 
+        /// <summary>
+        /// Tests that clear buffer masks can compare values equality works
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_CanCompareValues_EqualityWorks()
         {
@@ -78,6 +105,9 @@ namespace Alis.Core.Graphic.Test.Enums
             Assert.Equal(mask1, mask2);
         }
 
+        /// <summary>
+        /// Tests that clear buffer masks different values are not equal
+        /// </summary>
         [Fact]
         public void ClearBufferMasks_DifferentValues_AreNotEqual()
         {

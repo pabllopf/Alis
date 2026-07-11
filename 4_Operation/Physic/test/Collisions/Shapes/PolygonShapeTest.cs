@@ -604,6 +604,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.NotNull(polygon.Normals);
         }
 
+        /// <summary>
+        /// Tests that compare to with different vertex count returns false
+        /// </summary>
         [Fact]
         public void CompareTo_WithDifferentVertexCount_ReturnsFalse()
         {
@@ -617,6 +620,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that ray cast with parallel edge outside covers parallel branch
+        /// </summary>
         [Fact]
         public void RayCast_WithParallelEdgeOutside_CoversParallelBranch()
         {

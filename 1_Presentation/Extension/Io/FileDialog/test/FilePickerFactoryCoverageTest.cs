@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The file picker factory coverage test class
+    /// </summary>
     public class FilePickerFactoryCoverageTest
     {
+        /// <summary>
+        /// Tests that create file picker with options with open file dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithOpenFileDialogType_ShouldReturnValidInstance()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with save file dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSaveFileDialogType_ShouldReturnValidInstance()
         {
@@ -56,6 +65,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with select folder dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSelectFolderDialogType_ShouldReturnValidInstance()
         {
@@ -67,6 +79,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with allow multiple should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithAllowMultiple_ShouldReturnValidInstance()
         {
@@ -81,6 +96,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that get platform name should be current platform
+        /// </summary>
         [Fact]
         public void GetPlatformName_ShouldBeCurrentPlatform()
         {
@@ -89,6 +107,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(platformName);
         }
 
+        /// <summary>
+        /// Tests that is platform supported should return boolean
+        /// </summary>
         [Fact]
         public void IsPlatformSupported_ShouldReturnBoolean()
         {
@@ -97,6 +118,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that create file picker should return mac file picker on mac
+        /// </summary>
         [Fact]
         public void CreateFilePicker_ShouldReturnMacFilePicker_OnMac()
         {

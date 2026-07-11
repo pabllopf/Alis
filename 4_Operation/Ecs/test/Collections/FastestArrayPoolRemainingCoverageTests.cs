@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The fastest array pool remaining coverage tests class
+    /// </summary>
     public class FastestArrayPoolRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that return with clear array reference type clears array
+        /// </summary>
         [Fact]
         public void Return_WithClearArray_ReferenceType_ClearsArray()
         {
@@ -46,6 +52,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(array[0]);
         }
 
+        /// <summary>
+        /// Tests that return with clear array reference type reuses clean
+        /// </summary>
         [Fact]
         public void Return_WithClearArray_ReferenceType_ReusesClean()
         {
@@ -58,6 +67,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(reused[0]);
         }
 
+        /// <summary>
+        /// Tests that get bucket index oversized returns minus one
+        /// </summary>
         [Fact]
         public void GetBucketIndex_Oversized_ReturnsMinusOne()
         {
@@ -68,6 +80,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(-1, result);
         }
 
+        /// <summary>
+        /// Tests that get bucket index below min bucket size returns minus one
+        /// </summary>
         [Fact]
         public void GetBucketIndex_BelowMinBucketSize_ReturnsMinusOne()
         {
@@ -78,6 +93,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(-1, result);
         }
 
+        /// <summary>
+        /// Tests that get bucket index exact bucket sizes returns correct index
+        /// </summary>
         [Fact]
         public void GetBucketIndex_ExactBucketSizes_ReturnsCorrectIndex()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(26, (int)getBucketIndex.Invoke(null, [1 << 30]));
         }
 
+        /// <summary>
+        /// Tests that rent and return reference type full cycle
+        /// </summary>
         [Fact]
         public void RentAndReturn_ReferenceType_FullCycle()
         {
@@ -105,6 +126,9 @@ namespace Alis.Core.Ecs.Test.Collections
             pool.Return(reused);
         }
 
+        /// <summary>
+        /// Tests that clear buckets after return empties buckets
+        /// </summary>
         [Fact]
         public void ClearBuckets_AfterReturn_EmptiesBuckets()
         {
@@ -116,6 +140,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotSame(arr, newArr);
         }
 
+        /// <summary>
+        /// Tests that constructor subscribes and clears
+        /// </summary>
         [Fact]
         public void Constructor_SubscribesAndClears()
         {
@@ -126,6 +153,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(arr[0]);
         }
 
+        /// <summary>
+        /// Tests that return with clear array multiple cycles clears every time
+        /// </summary>
         [Fact]
         public void Return_WithClearArray_MultipleCycles_ClearsEveryTime()
         {
@@ -139,6 +169,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that return small array bucket index minus one does not store
+        /// </summary>
         [Fact]
         public void Return_SmallArray_BucketIndexMinusOne_DoesNotStore()
         {

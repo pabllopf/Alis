@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The monitor remaining coverage tests class
+    /// </summary>
     public class MonitorRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that to string returns handle string
+        /// </summary>
         [Fact]
         public void ToString_ReturnsHandleString()
         {

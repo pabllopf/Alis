@@ -6,10 +6,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui worker tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiP7WorkerTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP7WorkerTests"/> class
+        /// </summary>
         public ImGuiP7WorkerTests()
         {
             _ctx = ImGui.CreateContext();
@@ -19,11 +29,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Plots the histogram default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_Default()
         {
@@ -33,6 +49,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with offset
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithOffset()
         {
@@ -42,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with overlay
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithOverlay()
         {
@@ -51,6 +73,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with scale min
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithScaleMin()
         {
@@ -60,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with scale max
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithScaleMax()
         {
@@ -69,6 +97,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with graph size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithGraphSize()
         {
@@ -78,6 +109,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the histogram with stride
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotHistogram_WithStride()
         {
@@ -87,6 +121,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_Default()
         {
@@ -96,6 +133,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with offset
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithOffset()
         {
@@ -105,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with overlay
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithOverlay()
         {
@@ -114,6 +157,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with scale min
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithScaleMin()
         {
@@ -123,6 +169,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with scale max
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithScaleMax()
         {
@@ -132,6 +181,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with graph size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithGraphSize()
         {
@@ -141,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Plots the lines with stride
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotLines_WithStride()
         {
@@ -150,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the id int ptr
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushId_IntPtr()
         {
@@ -160,6 +218,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the id int
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushId_Int()
         {
@@ -169,6 +230,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Radioes the button int ptr
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RadioButton_IntPtr()
         {
@@ -178,6 +242,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Radioes the button int ptr returns true
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RadioButton_IntPtr_ReturnsTrue()
         {
@@ -187,6 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Renders the platform windows default no args
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RenderPlatformWindowsDefault_NoArgs()
         {
@@ -195,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.RenderPlatformWindowsDefault();
         }
 
+        /// <summary>
+        /// Renders the platform windows default platform arg
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RenderPlatformWindowsDefault_PlatformArg()
         {
@@ -203,6 +276,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.RenderPlatformWindowsDefault(IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Renders the platform windows default both args
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RenderPlatformWindowsDefault_BothArgs()
         {
@@ -211,6 +287,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.RenderPlatformWindowsDefault(IntPtr.Zero, IntPtr.Zero);
         }
 
+        /// <summary>
+        /// Saves the ini settings to disk
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveIniSettingsToDisk()
         {
@@ -219,6 +298,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.SaveIniSettingsToDisk("test.ini");
         }
 
+        /// <summary>
+        /// Saves the ini settings to memory
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveIniSettingsToMemory()
         {
@@ -228,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Saves the ini settings to memory with out size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveIniSettingsToMemory_WithOutSize()
         {
@@ -237,6 +322,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Selectables the label
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_Label()
         {
@@ -245,6 +333,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the with selected
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_WithSelected()
         {
@@ -253,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the with flags
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_WithFlags()
         {
@@ -261,6 +355,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the with flags size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_WithFlagsSize()
         {
@@ -269,6 +366,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the ref bool
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_RefBool()
         {
@@ -278,6 +378,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the ref bool flags
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_RefBoolFlags()
         {
@@ -287,6 +390,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Selectables the ref bool flags size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Selectable_RefBoolFlagsSize()
         {
@@ -296,6 +402,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the clipboard text
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetClipboardText()
         {
@@ -304,6 +413,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the cursor pos
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetCursorPos()
         {
@@ -312,6 +424,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the cursor pos x
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetCursorPosX()
         {
@@ -320,6 +435,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the cursor pos y
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetCursorPosY()
         {
@@ -328,6 +446,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the cursor screen pos
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetCursorScreenPos()
         {
@@ -336,6 +457,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the item allow overlap
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetItemAllowOverlap()
         {
@@ -344,6 +468,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the item default focus
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetItemDefaultFocus()
         {
@@ -352,6 +479,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Resets the mouse drag delta with button
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ResetMouseDragDelta_WithButton()
         {
@@ -360,6 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowClass()
         {
@@ -369,6 +502,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sames the line default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SameLine_Default()
         {
@@ -377,6 +513,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sames the line with offset
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SameLine_WithOffset()
         {
@@ -385,6 +524,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sames the line with offset spacing
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SameLine_WithOffsetSpacing()
         {
@@ -393,6 +535,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the column offset
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetColumnOffset()
         {
@@ -401,6 +546,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the column width
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetColumnWidth()
         {
@@ -409,6 +557,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the state storage
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetStateStorage()
         {
@@ -418,6 +569,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Menus the item with selected enabled
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MenuItem_WithSelectedEnabled()
         {
@@ -427,6 +581,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Menus the item with selected enabled returns bool
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MenuItem_WithSelectedEnabled_ReturnsBool()
         {

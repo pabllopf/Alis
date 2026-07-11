@@ -39,8 +39,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
+    /// <summary>
+    /// The world physic test class
+    /// </summary>
     public class WorldPhysicTest
     {
+        /// <summary>
+        /// Tests that default constructor should initialize with default gravity
+        /// </summary>
         [Fact]
         public void DefaultConstructor_ShouldInitializeWithDefaultGravity()
         {
@@ -51,6 +57,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(-9.80665f, world.GetGravity.Y);
         }
 
+        /// <summary>
+        /// Tests that constructor with gravity should set gravity
+        /// </summary>
         [Fact]
         public void Constructor_WithGravity_ShouldSetGravity()
         {
@@ -60,6 +69,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(gravity, world.GetGravity);
         }
 
+        /// <summary>
+        /// Tests that constructor with broad phase should set broad phase
+        /// </summary>
         [Fact]
         public void Constructor_WithBroadPhase_ShouldSetBroadPhase()
         {
@@ -69,6 +81,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(world);
         }
 
+        /// <summary>
+        /// Tests that create body should return body added to world
+        /// </summary>
         [Fact]
         public void CreateBody_ShouldReturnBodyAddedToWorld()
         {
@@ -83,6 +98,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(world.BodyList);
         }
 
+        /// <summary>
+        /// Tests that create body with defaults should return static body
+        /// </summary>
         [Fact]
         public void CreateBody_WithDefaults_ShouldReturnStaticBody()
         {
@@ -93,6 +111,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(BodyType.Static, body.GetBodyType);
         }
 
+        /// <summary>
+        /// Tests that create rectangle should return body with rectangle fixture
+        /// </summary>
         [Fact]
         public void CreateRectangle_ShouldReturnBodyWithRectangleFixture()
         {
@@ -103,6 +124,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(body.FixtureList);
         }
 
+        /// <summary>
+        /// Tests that create rectangle with invalid width should throw
+        /// </summary>
         [Fact]
         public void CreateRectangle_WithInvalidWidth_ShouldThrow()
         {
@@ -112,6 +136,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 world.CreateRectangle(-1f, 1f, 1f));
         }
 
+        /// <summary>
+        /// Tests that create rectangle with invalid height should throw
+        /// </summary>
         [Fact]
         public void CreateRectangle_WithInvalidHeight_ShouldThrow()
         {
@@ -121,6 +148,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 world.CreateRectangle(1f, -1f, 1f));
         }
 
+        /// <summary>
+        /// Tests that create circle should return body with circle fixture
+        /// </summary>
         [Fact]
         public void CreateCircle_ShouldReturnBodyWithCircleFixture()
         {
@@ -131,6 +161,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(body.FixtureList);
         }
 
+        /// <summary>
+        /// Tests that create polygon should return body with polygon fixture
+        /// </summary>
         [Fact]
         public void CreatePolygon_ShouldReturnBodyWithPolygonFixture()
         {
@@ -142,6 +175,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(body.FixtureList);
         }
 
+        /// <summary>
+        /// Tests that create edge should return body with edge
+        /// </summary>
         [Fact]
         public void CreateEdge_ShouldReturnBodyWithEdge()
         {
@@ -151,6 +187,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create chain shape should return body with chain
+        /// </summary>
         [Fact]
         public void CreateChainShape_ShouldReturnBodyWithChain()
         {
@@ -165,6 +204,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that add body should add body to world
+        /// </summary>
         [Fact]
         public void AddBody_ShouldAddBodyToWorld()
         {
@@ -176,6 +218,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(world.BodyList);
         }
 
+        /// <summary>
+        /// Tests that add body null should throw
+        /// </summary>
         [Fact]
         public void AddBody_Null_ShouldThrow()
         {
@@ -184,6 +229,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentNullException>(() => world.Add((Body)null));
         }
 
+        /// <summary>
+        /// Tests that add body same body twice should throw
+        /// </summary>
         [Fact]
         public void AddBody_SameBodyTwice_ShouldThrow()
         {
@@ -194,6 +242,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Add(body));
         }
 
+        /// <summary>
+        /// Tests that remove body should remove body from world
+        /// </summary>
         [Fact]
         public void RemoveBody_ShouldRemoveBodyFromWorld()
         {
@@ -205,6 +256,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.BodyList);
         }
 
+        /// <summary>
+        /// Tests that remove body null should throw
+        /// </summary>
         [Fact]
         public void RemoveBody_Null_ShouldThrow()
         {
@@ -213,6 +267,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
         }
 
+        /// <summary>
+        /// Tests that remove body from wrong world should throw
+        /// </summary>
         [Fact]
         public void RemoveBody_FromWrongWorld_ShouldThrow()
         {
@@ -223,6 +280,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Remove(body));
         }
 
+        /// <summary>
+        /// Tests that body added event should fire when body is added
+        /// </summary>
         [Fact]
         public void BodyAddedEvent_ShouldFire_WhenBodyIsAdded()
         {
@@ -235,6 +295,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that body removed event should fire when body is removed
+        /// </summary>
         [Fact]
         public void BodyRemovedEvent_ShouldFire_WhenBodyIsRemoved()
         {
@@ -248,6 +311,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that add controller should add to controller list
+        /// </summary>
         [Fact]
         public void AddController_ShouldAddToControllerList()
         {
@@ -259,6 +325,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(world.ControllerList);
         }
 
+        /// <summary>
+        /// Tests that add controller null should throw
+        /// </summary>
         [Fact]
         public void AddController_Null_ShouldThrow()
         {
@@ -267,6 +336,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentNullException>(() => world.Add((Controller)null));
         }
 
+        /// <summary>
+        /// Tests that add controller same controller twice should throw
+        /// </summary>
         [Fact]
         public void AddController_SameControllerTwice_ShouldThrow()
         {
@@ -277,6 +349,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Add(controller));
         }
 
+        /// <summary>
+        /// Tests that add controller from another world should throw
+        /// </summary>
         [Fact]
         public void AddController_FromAnotherWorld_ShouldThrow()
         {
@@ -288,6 +363,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Add(controller));
         }
 
+        /// <summary>
+        /// Tests that remove controller should remove from controller list
+        /// </summary>
         [Fact]
         public void RemoveController_ShouldRemoveFromControllerList()
         {
@@ -300,6 +378,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.ControllerList);
         }
 
+        /// <summary>
+        /// Tests that remove controller null should throw
+        /// </summary>
         [Fact]
         public void RemoveController_Null_ShouldThrow()
         {
@@ -308,6 +389,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentNullException>(() => world.Remove((Controller)null));
         }
 
+        /// <summary>
+        /// Tests that remove controller from wrong world should throw
+        /// </summary>
         [Fact]
         public void RemoveController_FromWrongWorld_ShouldThrow()
         {
@@ -319,6 +403,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Remove(controller));
         }
 
+        /// <summary>
+        /// Tests that controller added event should fire when controller is added
+        /// </summary>
         [Fact]
         public void ControllerAddedEvent_ShouldFire_WhenControllerIsAdded()
         {
@@ -331,6 +418,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that controller removed event should fire when controller is removed
+        /// </summary>
         [Fact]
         public void ControllerRemovedEvent_ShouldFire_WhenControllerIsRemoved()
         {
@@ -345,6 +435,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that get gravity setter should update gravity
+        /// </summary>
         [Fact]
         public void GetGravity_Setter_ShouldUpdateGravity()
         {
@@ -356,6 +449,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(newGravity, world.GetGravity);
         }
 
+        /// <summary>
+        /// Tests that get enabled default should be true
+        /// </summary>
         [Fact]
         public void GetEnabled_Default_ShouldBeTrue()
         {
@@ -364,6 +460,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.GetEnabled);
         }
 
+        /// <summary>
+        /// Tests that get enabled set false should be false
+        /// </summary>
         [Fact]
         public void GetEnabled_SetFalse_ShouldBeFalse()
         {
@@ -374,6 +473,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(world.GetEnabled);
         }
 
+        /// <summary>
+        /// Tests that get is locked default should be false
+        /// </summary>
         [Fact]
         public void GetIsLocked_Default_ShouldBeFalse()
         {
@@ -382,6 +484,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(world.GetIsLocked);
         }
 
+        /// <summary>
+        /// Tests that proxy count should return zero when no bodies
+        /// </summary>
         [Fact]
         public void ProxyCount_ShouldReturnZero_WhenNoBodies()
         {
@@ -390,6 +495,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ProxyCount);
         }
 
+        /// <summary>
+        /// Tests that contact count should return zero when no bodies
+        /// </summary>
         [Fact]
         public void ContactCount_ShouldReturnZero_WhenNoBodies()
         {
@@ -398,6 +506,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that tag should get and set
+        /// </summary>
         [Fact]
         public void Tag_ShouldGetAndSet()
         {
@@ -409,6 +520,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(tag, world.Tag);
         }
 
+        /// <summary>
+        /// Tests that contact list should return list
+        /// </summary>
         [Fact]
         public void ContactList_ShouldReturnList()
         {
@@ -417,6 +531,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(world.ContactList);
         }
 
+        /// <summary>
+        /// Tests that update time default should be zero
+        /// </summary>
         [Fact]
         public void UpdateTime_Default_ShouldBeZero()
         {
@@ -425,6 +542,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(TimeSpan.Zero, world.UpdateTime);
         }
 
+        /// <summary>
+        /// Tests that clear should remove all bodies
+        /// </summary>
         [Fact]
         public void Clear_ShouldRemoveAllBodies()
         {
@@ -437,6 +557,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.BodyList);
         }
 
+        /// <summary>
+        /// Tests that clear should remove all controllers
+        /// </summary>
         [Fact]
         public void Clear_ShouldRemoveAllControllers()
         {
@@ -448,6 +571,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.ControllerList);
         }
 
+        /// <summary>
+        /// Tests that clear forces should not throw when no bodies
+        /// </summary>
         [Fact]
         public void ClearForces_ShouldNotThrow_WhenNoBodies()
         {
@@ -456,6 +582,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.ClearForces();
         }
 
+        /// <summary>
+        /// Tests that clear forces should reset body forces
+        /// </summary>
         [Fact]
         public void ClearForces_ShouldResetBodyForces()
         {
@@ -470,6 +599,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0f, body.Torque);
         }
 
+        /// <summary>
+        /// Tests that set gravity should set private gravity
+        /// </summary>
         [Fact]
         public void SetGravity_ShouldSetPrivateGravity()
         {
@@ -481,6 +613,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(newGravity, world.GetGravity);
         }
 
+        /// <summary>
+        /// Tests that step with time span should not throw
+        /// </summary>
         [Fact]
         public void Step_WithTimeSpan_ShouldNotThrow()
         {
@@ -490,6 +625,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(TimeSpan.FromSeconds(1f / 60f));
         }
 
+        /// <summary>
+        /// Tests that step with disabled world should not throw
+        /// </summary>
         [Fact]
         public void Step_WithDisabledWorld_ShouldNotThrow()
         {
@@ -499,6 +637,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1f / 60f);
         }
 
+        /// <summary>
+        /// Tests that shift origin should not throw when no bodies
+        /// </summary>
         [Fact]
         public void ShiftOrigin_ShouldNotThrow_WhenNoBodies()
         {
@@ -507,6 +648,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.ShiftOrigin(new Vector2F(10f, 10f));
         }
 
+        /// <summary>
+        /// Tests that shift origin should shift body positions
+        /// </summary>
         [Fact]
         public void ShiftOrigin_ShouldShiftBodyPositions()
         {
@@ -519,6 +663,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(4f, body.Position.Y);
         }
 
+        /// <summary>
+        /// Tests that test point should return null when no fixture at point
+        /// </summary>
         [Fact]
         public void TestPoint_ShouldReturnNull_WhenNoFixtureAtPoint()
         {
@@ -529,6 +676,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that test point should return fixture when point inside shape
+        /// </summary>
         [Fact]
         public void TestPoint_ShouldReturnFixture_WhenPointInsideShape()
         {
@@ -540,6 +690,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that query aabb should invoke callback when fixture in aabb
+        /// </summary>
         [Fact]
         public void QueryAabb_ShouldInvokeCallback_WhenFixtureInAabb()
         {
@@ -557,6 +710,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(callbackInvoked);
         }
 
+        /// <summary>
+        /// Tests that query aabb should not invoke callback when no fixture in aabb
+        /// </summary>
         [Fact]
         public void QueryAabb_ShouldNotInvokeCallback_WhenNoFixtureInAabb()
         {
@@ -574,6 +730,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(callbackInvoked);
         }
 
+        /// <summary>
+        /// Tests that ray cast should invoke callback when ray hits fixture
+        /// </summary>
         [Fact]
         public void RayCast_ShouldInvokeCallback_WhenRayHitsFixture()
         {
@@ -590,6 +749,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(callbackInvoked);
         }
 
+        /// <summary>
+        /// Tests that ray cast should return max fraction when no hit
+        /// </summary>
         [Fact]
         public void RayCast_ShouldReturnMaxFraction_WhenNoHit()
         {
@@ -606,6 +768,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(callbackInvoked);
         }
 
+        /// <summary>
+        /// Tests that create ellipse should return body
+        /// </summary>
         [Fact]
         public void CreateEllipse_ShouldReturnBody()
         {
@@ -616,6 +781,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create line arc should return body
+        /// </summary>
         [Fact]
         public void CreateLineArc_ShouldReturnBody()
         {
@@ -626,6 +794,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create solid arc should return body
+        /// </summary>
         [Fact]
         public void CreateSolidArc_ShouldReturnBody()
         {
@@ -636,6 +807,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that remove body when body has joint should remove correctly
+        /// </summary>
         [Fact]
         public void RemoveBody_WhenBodyHasJoint_ShouldRemoveCorrectly()
         {
@@ -650,6 +824,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.DoesNotContain(bodyA, world.BodyList);
         }
 
+        /// <summary>
+        /// Tests that create compound polygon should return body
+        /// </summary>
         [Fact]
         public void CreateCompoundPolygon_ShouldReturnBody()
         {
@@ -662,6 +839,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create capsule should return body
+        /// </summary>
         [Fact]
         public void CreateCapsule_ShouldReturnBody()
         {
@@ -672,6 +852,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create rounded rectangle should return body
+        /// </summary>
         [Fact]
         public void CreateRoundedRectangle_ShouldReturnBody()
         {
@@ -682,6 +865,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that fixture added event should fire when fixture added
+        /// </summary>
         [Fact]
         public void FixtureAddedEvent_ShouldFire_WhenFixtureAdded()
         {
@@ -694,6 +880,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that add body from another world should throw
+        /// </summary>
         [Fact]
         public void AddBody_FromAnotherWorld_ShouldThrow()
         {
@@ -705,6 +894,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Contains("another world", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that create loop shape should return body
+        /// </summary>
         [Fact]
         public void CreateLoopShape_ShouldReturnBody()
         {
@@ -719,6 +911,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create loop shape with position should return body at position
+        /// </summary>
         [Fact]
         public void CreateLoopShape_WithPosition_ShouldReturnBodyAtPosition()
         {
@@ -736,6 +931,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(10f, body.Position.Y);
         }
 
+        /// <summary>
+        /// Tests that step with world has new fixture processes new contacts
+        /// </summary>
         [Fact]
         public void Step_WithWorldHasNewFixture_ProcessesNewContacts()
         {
@@ -753,6 +951,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that step with custom iterations should not throw
+        /// </summary>
         [Fact]
         public void Step_WithCustomIterations_ShouldNotThrow()
         {
@@ -771,6 +972,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(TimeSpan.FromSeconds(1.0f / 60.0f), ref iterations);
         }
 
+        /// <summary>
+        /// Tests that get gravity setter when locked should throw
+        /// </summary>
         [Fact]
         public void GetGravity_Setter_WhenLocked_ShouldThrow()
         {
@@ -796,6 +1000,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that get is locked should be true during step
+        /// </summary>
         [Fact]
         public void GetIsLocked_ShouldBeTrue_DuringStep()
         {
@@ -814,6 +1021,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(wasLocked);
         }
 
+        /// <summary>
+        /// Tests that get island should return initialized island
+        /// </summary>
         [Fact]
         public void GetIsland_ShouldReturnInitializedIsland()
         {
@@ -822,6 +1032,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(world.GetIsland);
         }
 
+        /// <summary>
+        /// Tests that fixture removed event should fire when body removed
+        /// </summary>
         [Fact]
         public void FixtureRemovedEvent_ShouldFire_WhenBodyRemoved()
         {
@@ -835,6 +1048,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, callCount);
         }
 
+        /// <summary>
+        /// Tests that add body when locked should throw
+        /// </summary>
         [Fact]
         public void AddBody_WhenLocked_ShouldThrow()
         {
@@ -861,6 +1077,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that remove body when locked should throw
+        /// </summary>
         [Fact]
         public void RemoveBody_WhenLocked_ShouldThrow()
         {
@@ -888,6 +1107,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that add joint when locked should throw
+        /// </summary>
         [Fact]
         public void AddJoint_WhenLocked_ShouldThrow()
         {
@@ -917,6 +1139,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that remove joint when locked should throw
+        /// </summary>
         [Fact]
         public void RemoveJoint_WhenLocked_ShouldThrow()
         {
@@ -947,6 +1172,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that add controller when locked should throw
+        /// </summary>
         [Fact]
         public void AddController_WhenLocked_ShouldThrow()
         {
@@ -974,6 +1202,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that remove controller when locked should throw
+        /// </summary>
         [Fact]
         public void RemoveController_WhenLocked_ShouldThrow()
         {
@@ -1002,6 +1233,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that clear when locked should throw
+        /// </summary>
         [Fact]
         public void Clear_WhenLocked_ShouldThrow()
         {
@@ -1028,6 +1262,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that create gear should return body
+        /// </summary>
         [Fact]
         public void CreateGear_ShouldReturnBody()
         {
@@ -1036,6 +1273,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that create chain without rope joint should return path
+        /// </summary>
         [Fact]
         public void CreateChain_WithoutRopeJoint_ShouldReturnPath()
         {
@@ -1047,6 +1287,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(path);
         }
 
+        /// <summary>
+        /// Tests that create chain with rope joint should return path
+        /// </summary>
         [Fact]
         public void CreateChain_WithRopeJoint_ShouldReturnPath()
         {
@@ -1058,6 +1301,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(path);
         }
 
+        /// <summary>
+        /// Tests that create capsule full params should return body
+        /// </summary>
         [Fact]
         public void CreateCapsule_FullParams_ShouldReturnBody()
         {
@@ -1066,6 +1312,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that remove joint fixed type does not throw
+        /// </summary>
         [Fact]
         public void RemoveJoint_FixedType_DoesNotThrow()
         {
@@ -1079,6 +1328,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.JointList);
         }
 
+        /// <summary>
+        /// Tests that process joint edges with disabled other body skips disabled
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithDisabledOtherBody_SkipsDisabled()
         {
@@ -1094,6 +1346,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that flag contacts for joint filtering with collide connected false skips filtering
+        /// </summary>
         [Fact]
         public void FlagContactsForJointFiltering_WithCollideConnectedFalse_SkipsFiltering()
         {
@@ -1113,6 +1368,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that flag contacts for joint removal with collide connected true skips flagging
+        /// </summary>
         [Fact]
         public void FlagContactsForJointRemoval_WithCollideConnectedTrue_SkipsFlagging()
         {
@@ -1128,6 +1386,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Empty(world.JointList);
         }
 
+        /// <summary>
+        /// Tests that connect joint non fixed with fixed type skips edge b
+        /// </summary>
         [Fact]
         public void ConnectJointNonFixed_WithFixedType_SkipsEdgeB()
         {
@@ -1139,6 +1400,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(world.JointList);
         }
 
+        /// <summary>
+        /// Tests that should process body with static body returns false
+        /// </summary>
         [Fact]
         public void ShouldProcessBody_WithStaticBody_ReturnsFalse()
         {
@@ -1151,6 +1415,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that execute step physics with continuous physics solves toi
+        /// </summary>
         [Fact]
         public void ExecuteStepPhysics_WithContinuousPhysics_SolvesToi()
         {
@@ -1164,6 +1431,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that process joint edges with joint from null other adds joint to island
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithJointFromNullOther_AddsJointToIsland()
         {
@@ -1179,6 +1449,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve toi with disabled contact resets bodies
+        /// </summary>
         [Fact]
         public void SolveToi_WithDisabledContact_ResetsBodies()
         {
@@ -1202,6 +1475,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ShouldSkipContactAlpha — sensor branch (line 693-695)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that should skip contact alpha with sensor returns true
+        /// </summary>
         [Fact]
         public void ShouldSkipContactAlpha_WithSensor_ReturnsTrue()
         {
@@ -1219,6 +1495,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ShouldSkipContactAlpha — both inactive branch (line 707-709)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that should skip contact alpha both inactive returns true
+        /// </summary>
         [Fact]
         public void ShouldSkipContactAlpha_BothInactive_ReturnsTrue()
         {
@@ -1237,6 +1516,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ProcessJointEdges — other is null (line 530-532)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that process joint edges with null other adds joint to island
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithNullOther_AddsJointToIsland()
         {
@@ -1253,6 +1535,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // BuildIslandDFS — body is static (line 448-450)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that build island dfs with static seed clears island
+        /// </summary>
         [Fact]
         public void BuildIslandDFS_WithStaticSeed_ClearsIsland()
         {
@@ -1267,6 +1552,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ProcessJointEdges — joint already in island (line 508-510)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that process joint edges with joint already flagged continues
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithJointAlreadyFlagged_Continues()
         {
@@ -1284,6 +1572,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // CalculateContactAlpha — ToiFlag true branch (line 725-727)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that calculate contact alpha with toi flag returns toi
+        /// </summary>
         [Fact]
         public void CalculateContactAlpha_WithToiFlag_ReturnsToi()
         {
@@ -1300,6 +1591,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ProcessToiContact — body is not dynamic, not bullet (line 808-810)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that process toi contact non dynamic non bullet skips
+        /// </summary>
         [Fact]
         public void ProcessToiContact_NonDynamicNonBullet_Skips()
         {
@@ -1316,6 +1610,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // FindMinAlphaContact — contact with ToiCount > MaxSubSteps skips (line 669)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that find min alpha contact skips contact with high toi count
+        /// </summary>
         [Fact]
         public void FindMinAlphaContact_SkipsContactWithHighToiCount()
         {
@@ -1331,6 +1628,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ShouldSkipContactAlpha — !collideA && !collideB path
         // ========================================================================
+        /// <summary>
+        /// Tests that should skip contact alpha both non bullet dynamic returns true
+        /// </summary>
         [Fact]
         public void ShouldSkipContactAlpha_BothNonBulletDynamic_ReturnsTrue()
         {
@@ -1345,6 +1645,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessJointEdges — other.Island already true
         // ========================================================================
+        /// <summary>
+        /// Tests that process joint edges with other already in island skips add
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithOtherAlreadyInIsland_SkipsAdd()
         {
@@ -1363,6 +1666,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — sensor fixture skip
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact with sensor fixture skips
+        /// </summary>
         [Fact]
         public void ProcessToiContact_WithSensorFixture_Skips()
         {
@@ -1378,6 +1684,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — disabled contact after update
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact contact disabled resets bodies
+        /// </summary>
         [Fact]
         public void ProcessToiContact_ContactDisabled_ResetsBodies()
         {
@@ -1397,6 +1706,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — not touching after update
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact not touching resets bodies
+        /// </summary>
         [Fact]
         public void ProcessToiContact_NotTouching_ResetsBodies()
         {
@@ -1416,6 +1728,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — bullet body continues
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact with bullet body continues
+        /// </summary>
         [Fact]
         public void ProcessToiContact_WithBulletBody_Continues()
         {
@@ -1431,6 +1746,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CreateGear with convex polygon
         // ========================================================================
+        /// <summary>
+        /// Tests that create gear convex path creates body
+        /// </summary>
         [Fact]
         public void CreateGear_ConvexPath_CreatesBody()
         {
@@ -1442,6 +1760,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CreateCapsule with many vertices (decompose path)
         // ========================================================================
+        /// <summary>
+        /// Tests that create capsule with many vertices decomposes
+        /// </summary>
         [Fact]
         public void CreateCapsule_WithManyVertices_Decomposes()
         {
@@ -1453,6 +1774,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // FlagContactsForJointRemoval non-fixed, non-collide path
         // ========================================================================
+        /// <summary>
+        /// Tests that flag contacts for joint removal non fixed non collide flags contacts
+        /// </summary>
         [Fact]
         public void FlagContactsForJointRemoval_NonFixedNonCollide_FlagsContacts()
         {
@@ -1469,6 +1793,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ConnectJointNonFixed non-fixed type path
         // ========================================================================
+        /// <summary>
+        /// Tests that connect joint non fixed non fixed type connects edge b
+        /// </summary>
         [Fact]
         public void ConnectJointNonFixed_NonFixedType_ConnectsEdgeB()
         {
@@ -1484,6 +1811,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // BuildToiIsland with non-dynamic body
         // ========================================================================
+        /// <summary>
+        /// Tests that build toi island with non dynamic body skips contact processing
+        /// </summary>
         [Fact]
         public void BuildToiIsland_WithNonDynamicBody_SkipsContactProcessing()
         {
@@ -1498,6 +1828,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — other already in island (line 843-849)
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact other already in island returns early
+        /// </summary>
         [Fact]
         public void ProcessToiContact_OtherAlreadyInIsland_ReturnsEarly()
         {
@@ -1513,6 +1846,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessJointEdges — other not in island
         // ========================================================================
+        /// <summary>
+        /// Tests that process joint edges with other not in island adds to stack
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_WithOtherNotInIsland_AddsToStack()
         {
@@ -1528,6 +1864,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CalculateContactAlpha — TOI output not Touching
         // ========================================================================
+        /// <summary>
+        /// Tests that calculate contact alpha not touching returns one
+        /// </summary>
         [Fact]
         public void CalculateContactAlpha_NotTouching_ReturnsOne()
         {
@@ -1543,6 +1882,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — island capacity reached
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact island capacity reached returns early
+        /// </summary>
         [Fact]
         public void ProcessToiContact_IslandCapacityReached_ReturnsEarly()
         {
@@ -1560,6 +1902,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact — non-static other wakes up
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact non static other wakes up
+        /// </summary>
         [Fact]
         public void ProcessToiContact_NonStaticOther_WakesUp()
         {
@@ -1576,6 +1921,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveJointEdgeA — bodyA with multiple joints (various pointer states)
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint edge a multiple joints correctly updates pointers
+        /// </summary>
         [Fact]
         public void RemoveJointEdgeA_MultipleJoints_CorrectlyUpdatesPointers()
         {
@@ -1595,6 +1943,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveJointEdgeB — bodyB with multiple joints
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint edge b multiple joints correctly updates pointers
+        /// </summary>
         [Fact]
         public void RemoveJointEdgeB_MultipleJoints_CorrectlyUpdatesPointers()
         {
@@ -1614,6 +1965,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // FlagContactsForJointFiltering — CollideConnected=false with contacts
         // ========================================================================
+        /// <summary>
+        /// Tests that flag contacts for joint filtering with contacts filters correctly
+        /// </summary>
         [Fact]
         public void FlagContactsForJointFiltering_WithContacts_FiltersCorrectly()
         {
@@ -1632,6 +1986,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // FlagContactsForJointFiltering — CollideConnected=true skips filtering
         // ========================================================================
+        /// <summary>
+        /// Tests that flag contacts for joint filtering collide connected true skips filtering
+        /// </summary>
         [Fact]
         public void FlagContactsForJointFiltering_CollideConnectedTrue_SkipsFiltering()
         {
@@ -1653,6 +2010,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // FlagContactsForJointRemoval — non-fixed, non-collide with matching contact
         // ========================================================================
+        /// <summary>
+        /// Tests that flag contacts for joint removal with matching contact flags it
+        /// </summary>
         [Fact]
         public void FlagContactsForJointRemoval_WithMatchingContact_FlagsIt()
         {
@@ -1671,6 +2031,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CreateChain with both rope and no rope
         // ========================================================================
+        /// <summary>
+        /// Tests that create chain with and without rope works
+        /// </summary>
         [Fact]
         public void CreateChain_WithAndWithoutRope_Works()
         {
@@ -1686,6 +2049,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessJointEdges — edge from where joint.Other != null and Enabled
         // ========================================================================
+        /// <summary>
+        /// Tests that process joint edges prev next null pointer correctly processes
+        /// </summary>
         [Fact]
         public void ProcessJointEdges_PrevNextNullPointer_CorrectlyProcesses()
         {
@@ -1704,6 +2070,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact - comprehensive test with actual TOI event
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact full path executes
+        /// </summary>
         [Fact]
         public void ProcessToiContact_FullPath_Executes()
         {
@@ -1723,6 +2092,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Add joint with existing joint list on bodyA
         // ========================================================================
+        /// <summary>
+        /// Tests that add joint with existing joints on body a updates pointers
+        /// </summary>
         [Fact]
         public void AddJoint_WithExistingJointsOnBodyA_UpdatesPointers()
         {
@@ -1740,6 +2112,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Remove joint with non-fixed type triggers bodyB awake
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint non fixed type wakes body b
+        /// </summary>
         [Fact]
         public void RemoveJoint_NonFixedType_WakesBodyB()
         {
@@ -1756,6 +2131,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveJointEdgeA with various pointer states
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint edge a last joint updates correctly
+        /// </summary>
         [Fact]
         public void RemoveJointEdgeA_LastJoint_UpdatesCorrectly()
         {
@@ -1771,6 +2149,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessContactEdges — sensor check path
         // ========================================================================
+        /// <summary>
+        /// Tests that process contact edges sensor fixture skips
+        /// </summary>
         [Fact]
         public void ProcessContactEdges_SensorFixture_Skips()
         {
@@ -1785,6 +2166,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Solve stack growth path
         // ========================================================================
+        /// <summary>
+        /// Tests that solve with large stack grows buffer
+        /// </summary>
         [Fact]
         public void Solve_WithLargeStack_GrowsBuffer()
         {
@@ -1802,6 +2186,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ClearIslandFlagsForStaticBodies with static bodies in island
         // ========================================================================
+        /// <summary>
+        /// Tests that clear island flags for static bodies with static body clears flag
+        /// </summary>
         [Fact]
         public void ClearIslandFlagsForStaticBodies_WithStaticBody_ClearsFlag()
         {
@@ -1817,6 +2204,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // BodyAdded event with FixtureAdded
         // ========================================================================
+        /// <summary>
+        /// Tests that add body with all events fires correctly
+        /// </summary>
         [Fact]
         public void AddBody_WithAllEvents_FiresCorrectly()
         {
@@ -1833,6 +2223,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // FixtureRemoved and BodyRemoved events on RemoveBody
         // ========================================================================
+        /// <summary>
+        /// Tests that remove body with all events fires correctly
+        /// </summary>
         [Fact]
         public void RemoveBody_WithAllEvents_FiresCorrectly()
         {
@@ -1850,6 +2243,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // AddBody with body from another world throws
         // ========================================================================
+        /// <summary>
+        /// Tests that add body from another world throws argument exception
+        /// </summary>
         [Fact]
         public void AddBody_FromAnotherWorld_ThrowsArgumentException()
         {
@@ -1862,6 +2258,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // JointAdded event
         // ========================================================================
+        /// <summary>
+        /// Tests that add joint joint added event fires
+        /// </summary>
         [Fact]
         public void AddJoint_JointAddedEvent_Fires()
         {
@@ -1878,6 +2277,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // JointRemoved event
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint joint removed event fires
+        /// </summary>
         [Fact]
         public void RemoveJoint_JointRemovedEvent_Fires()
         {
@@ -1895,6 +2297,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // SynchronizeNonStaticIslandBodies
         // ========================================================================
+        /// <summary>
+        /// Tests that synchronize non static island bodies updates fixtures
+        /// </summary>
         [Fact]
         public void SynchronizeNonStaticIslandBodies_UpdatesFixtures()
         {
@@ -1908,6 +2313,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessToiContact with 2-step approach (creates contact first, then TOI)
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact two step triggers toi processing
+        /// </summary>
         [Fact]
         public void ProcessToiContact_TwoStep_TriggersToiProcessing()
         {
@@ -1925,6 +2333,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ResetToiState when _stepComplete is false (early return)
         // ========================================================================
+        /// <summary>
+        /// Tests that reset toi state step not complete returns early
+        /// </summary>
         [Fact]
         public void ResetToiState_StepNotComplete_ReturnsEarly()
         {
@@ -1943,6 +2354,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveBody with joints and contacts both present
         // ========================================================================
+        /// <summary>
+        /// Tests that remove body with joints and contacts removes correctly
+        /// </summary>
         [Fact]
         public void RemoveBody_WithJointsAndContacts_RemovesCorrectly()
         {
@@ -1961,6 +2375,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CreateCapsule with few vertices (no decompose)
         // ========================================================================
+        /// <summary>
+        /// Tests that create capsule few vertices no decompose
+        /// </summary>
         [Fact]
         public void CreateCapsule_FewVertices_NoDecompose()
         {
@@ -1972,6 +2389,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // CreateRoundedRectangle with few vertices (no decompose)
         // ========================================================================
+        /// <summary>
+        /// Tests that create rounded rectangle few vertices no decompose
+        /// </summary>
         [Fact]
         public void CreateRoundedRectangle_FewVertices_NoDecompose()
         {
@@ -1983,6 +2403,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Add(Joint) - all error cases
         // ========================================================================
+        /// <summary>
+        /// Tests that add joint null throws
+        /// </summary>
         [Fact]
         public void AddJoint_Null_Throws()
         {
@@ -1990,6 +2413,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentNullException>(() => world.Add((Joint)null));
         }
 
+        /// <summary>
+        /// Tests that add joint same joint twice throws
+        /// </summary>
         [Fact]
         public void AddJoint_SameJointTwice_Throws()
         {
@@ -2001,6 +2427,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Throws<ArgumentException>(() => world.Add(joint));
         }
 
+        /// <summary>
+        /// Tests that add joint from another world throws
+        /// </summary>
         [Fact]
         public void AddJoint_FromAnotherWorld_Throws()
         {
@@ -2016,6 +2445,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveJointEdgeA with next pointer
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint edge a with next pointer correctly updates
+        /// </summary>
         [Fact]
         public void RemoveJointEdgeA_WithNextPointer_CorrectlyUpdates()
         {
@@ -2035,6 +2467,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveJointEdgeB with next pointer
         // ========================================================================
+        /// <summary>
+        /// Tests that remove joint edge b with next pointer correctly updates
+        /// </summary>
         [Fact]
         public void RemoveJointEdgeB_WithNextPointer_CorrectlyUpdates()
         {

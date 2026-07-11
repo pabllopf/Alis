@@ -9,8 +9,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.TextureTools
 {
+    /// <summary>
+    /// The marching squares test class
+    /// </summary>
     public class MarchingSquaresTest
     {
+        /// <summary>
+        /// Tests that look march has expected values
+        /// </summary>
         [Fact]
         public void LookMarch_HasExpectedValues()
         {
@@ -25,6 +31,11 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region Square
 
+        /// <summary>
+        /// Tests that square computes correct value
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(3f, 9f)]
         [InlineData(-3f, 9f)]
@@ -41,6 +52,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region VecDsq
 
+        /// <summary>
+        /// Tests that vec dsq computes correct value
+        /// </summary>
+        /// <param name="ax">The ax</param>
+        /// <param name="ay">The ay</param>
+        /// <param name="bx">The bx</param>
+        /// <param name="by">The by</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(0, 0, 0, 0, 0f)]
         [InlineData(1, 0, 0, 0, 1f)]
@@ -59,6 +78,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region VecCross
 
+        /// <summary>
+        /// Tests that vec cross computes correct value
+        /// </summary>
+        /// <param name="ax">The ax</param>
+        /// <param name="ay">The ay</param>
+        /// <param name="bx">The bx</param>
+        /// <param name="by">The by</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(1, 0, 0, 1, 1f)]
         [InlineData(0, 1, 1, 0, -1f)]
@@ -76,6 +103,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region Lerp
 
+        /// <summary>
+        /// Tests that lerp computes correct value
+        /// </summary>
+        /// <param name="x0">The </param>
+        /// <param name="x1">The </param>
+        /// <param name="v0">The </param>
+        /// <param name="v1">The </param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(0f, 10f, 1f, 0f, 10f)]
         [InlineData(0f, 10f, 0f, 1f, 0f)]
@@ -88,6 +123,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.True(Math.Abs(result - expected) < 0.001f, $"Expected {expected}, got {result}");
         }
 
+        /// <summary>
+        /// Tests that lerp when dv is tiny returns midpoint
+        /// </summary>
         [Fact]
         public void Lerp_WhenDvIsTiny_ReturnsMidpoint()
         {
@@ -102,6 +140,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region Xlerp
 
+        /// <summary>
+        /// Tests that xlerp with zero c returns linear interpolation
+        /// </summary>
         [Fact]
         public void Xlerp_WithZeroC_ReturnsLinearInterpolation()
         {
@@ -113,6 +154,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(5f, result, 3);
         }
 
+        /// <summary>
+        /// Tests that xlerp with recursion returns interpolated value
+        /// </summary>
         [Fact]
         public void Xlerp_WithRecursion_ReturnsInterpolatedValue()
         {
@@ -125,6 +169,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.InRange(result, 30f, 70f);
         }
 
+        /// <summary>
+        /// Tests that xlerp when vm sign matches v 0 recurses right
+        /// </summary>
         [Fact]
         public void Xlerp_WhenVmSignMatchesV0_RecursesRight()
         {
@@ -141,6 +188,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region Ylerp
 
+        /// <summary>
+        /// Tests that ylerp with zero c returns linear interpolation
+        /// </summary>
         [Fact]
         public void Ylerp_WithZeroC_ReturnsLinearInterpolation()
         {
@@ -152,6 +202,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(5f, result, 3);
         }
 
+        /// <summary>
+        /// Tests that ylerp with recursion returns interpolated value
+        /// </summary>
         [Fact]
         public void Ylerp_WithRecursion_ReturnsInterpolatedValue()
         {
@@ -168,6 +221,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region MarchSquare
 
+        /// <summary>
+        /// Tests that march square with all positive fs returns zero key
+        /// </summary>
         [Fact]
         public void MarchSquare_WithAllPositiveFs_ReturnsZeroKey()
         {
@@ -186,6 +242,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(0, key);
         }
 
+        /// <summary>
+        /// Tests that march square with all negative fs returns non zero key
+        /// </summary>
         [Fact]
         public void MarchSquare_WithAllNegativeFs_ReturnsNonZeroKey()
         {
@@ -208,6 +267,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList
 
+        /// <summary>
+        /// Tests that cx fast list add and front works correctly
+        /// </summary>
         [Fact]
         public void CxFastList_AddAndFront_WorksCorrectly()
         {
@@ -224,6 +286,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(42, front.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list add multiple counts correctly
+        /// </summary>
         [Fact]
         public void CxFastList_AddMultiple_CountsCorrectly()
         {
@@ -241,6 +306,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(3, (int)countField.GetValue(list));
         }
 
+        /// <summary>
+        /// Tests that cx fast list remove existing item returns true
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_ExistingItem_ReturnsTrue()
         {
@@ -261,6 +329,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(2, (int)countField.GetValue(list));
         }
 
+        /// <summary>
+        /// Tests that cx fast list remove non existing item returns false
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_NonExistingItem_ReturnsFalse()
         {
@@ -276,6 +347,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False(removed);
         }
 
+        /// <summary>
+        /// Tests that cx fast list remove head item works
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_HeadItem_Works()
         {
@@ -295,6 +369,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(1, (int)countField.GetValue(list));
         }
 
+        /// <summary>
+        /// Tests that cx fast list pop removes head
+        /// </summary>
         [Fact]
         public void CxFastList_Pop_RemovesHead()
         {
@@ -315,6 +392,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(10, front.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list insert after node works
+        /// </summary>
         [Fact]
         public void CxFastList_Insert_AfterNode_Works()
         {
@@ -340,6 +420,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Contains(20, elements);
         }
 
+        /// <summary>
+        /// Tests that cx fast list insert null node adds to head
+        /// </summary>
         [Fact]
         public void CxFastList_Insert_NullNode_AddsToHead()
         {
@@ -357,6 +440,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(5, front.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list erase with prev removes node
+        /// </summary>
         [Fact]
         public void CxFastList_Erase_WithPrev_RemovesNode()
         {
@@ -384,6 +470,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Contains(30, elements);
         }
 
+        /// <summary>
+        /// Tests that cx fast list erase null prev removes head
+        /// </summary>
         [Fact]
         public void CxFastList_Erase_NullPrev_RemovesHead()
         {
@@ -403,6 +492,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(1, (int)countField.GetValue(list));
         }
 
+        /// <summary>
+        /// Tests that cx fast list empty on new list returns true
+        /// </summary>
         [Fact]
         public void CxFastList_Empty_OnNewList_ReturnsTrue()
         {
@@ -414,6 +506,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.True((bool)empty.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list empty after add returns false
+        /// </summary>
         [Fact]
         public void CxFastList_Empty_AfterAdd_ReturnsFalse()
         {
@@ -428,6 +523,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False((bool)empty.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list clear empties list
+        /// </summary>
         [Fact]
         public void CxFastList_Clear_EmptiesList()
         {
@@ -449,6 +547,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(0, (int)countField.GetValue(list));
         }
 
+        /// <summary>
+        /// Tests that cx fast list end returns null
+        /// </summary>
         [Fact]
         public void CxFastList_End_ReturnsNull()
         {
@@ -460,6 +561,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Null(end.Invoke(list, null));
         }
 
+        /// <summary>
+        /// Tests that cx fast list get list of elements returns all
+        /// </summary>
         [Fact]
         public void CxFastList_GetListOfElements_ReturnsAll()
         {
@@ -481,6 +585,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Contains(3, elements);
         }
 
+        /// <summary>
+        /// Tests that cx fast list get list of elements on empty list returns empty
+        /// </summary>
         [Fact]
         public void CxFastList_GetListOfElements_OnEmptyList_ReturnsEmpty()
         {
@@ -498,6 +605,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region GeomPoly
 
+        /// <summary>
+        /// Tests that geom poly constructor initializes empty
+        /// </summary>
         [Fact]
         public void GeomPoly_Constructor_InitializesEmpty()
         {
@@ -515,6 +625,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CombLeft
 
+        /// <summary>
+        /// Tests that comb left merges two connected polys
+        /// </summary>
         [Fact]
         public void CombLeft_MergesTwoConnectedPolys()
         {
@@ -546,6 +659,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region ComputeGridDimension
 
+        /// <summary>
+        /// Tests that compute grid dimension computes correct value
+        /// </summary>
+        /// <param name="extent">The extent</param>
+        /// <param name="cellSize">The cell size</param>
+        /// <param name="expected">The expected</param>
         [Theory]
         [InlineData(10f, 5f, 4)]
         [InlineData(10f, 3f, 7)]
@@ -562,6 +681,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region InitializeFunctionGrid
 
+        /// <summary>
+        /// Tests that initialize function grid copies values correctly
+        /// </summary>
         [Fact]
         public void InitializeFunctionGrid_CopiesValuesCorrectly()
         {
@@ -585,6 +707,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region BuildKey
 
+        /// <summary>
+        /// Tests that build key all positive fs returns zero
+        /// </summary>
         [Fact]
         public void BuildKey_AllPositiveFs_ReturnsZero()
         {
@@ -597,6 +722,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(0, key);
         }
 
+        /// <summary>
+        /// Tests that build key all negative fs returns 15
+        /// </summary>
         [Fact]
         public void BuildKey_AllNegativeFs_Returns15()
         {
@@ -609,6 +737,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(15, key);
         }
 
+        /// <summary>
+        /// Tests that build key single corner negative returns correct key
+        /// </summary>
+        /// <param name="expectedBit">The expected bit</param>
         [Theory]
         [InlineData(8)]
         [InlineData(4)]
@@ -636,6 +768,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region ProcessKey
 
+        /// <summary>
+        /// Tests that process key with val 1 adds point to poly
+        /// </summary>
         [Fact]
         public void ProcessKey_WithVal1_AddsPointToPoly()
         {
@@ -654,6 +789,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.True(length > 0);
         }
 
+        /// <summary>
+        /// Tests that process key with multiple bits adds multiple points
+        /// </summary>
         [Fact]
         public void ProcessKey_WithMultipleBits_AddsMultiplePoints()
         {
@@ -676,6 +814,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region GetVertexPosition
 
+        /// <summary>
+        /// Tests that get vertex position corner indices returns correct position
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="expectedX">The expected</param>
+        /// <param name="expectedY">The expected</param>
         [Theory]
         [InlineData(0, 0f, 0f)]
         [InlineData(2, 10f, 0f)]
@@ -693,6 +837,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(expectedY, result.Y);
         }
 
+        /// <summary>
+        /// Tests that get vertex position edge indices does not throw
+        /// </summary>
+        /// <param name="index">The index</param>
         [Theory]
         [InlineData(1)]
         [InlineData(3)]
@@ -713,6 +861,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region MarchSquare
 
+        /// <summary>
+        /// Tests that march square with key 15 processes val 0x 55
+        /// </summary>
         [Fact]
         public void MarchSquare_WithKey15_ProcessesVal0x55()
         {
@@ -733,6 +884,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region DetectSquares
 
+        /// <summary>
+        /// Tests that detect squares without combine returns vertices
+        /// </summary>
         [Fact]
         public void DetectSquares_WithoutCombine_ReturnsVertices()
         {
@@ -749,6 +903,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that detect squares with combine returns vertices
+        /// </summary>
         [Fact]
         public void DetectSquares_WithCombine_ReturnsVertices()
         {
@@ -769,6 +926,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CanCombine
 
+        /// <summary>
+        /// Tests that can combine with null p returns false
+        /// </summary>
         [Fact]
         public void CanCombine_WithNullP_ReturnsFalse()
         {
@@ -780,6 +940,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that can combine with p key no bottom bits returns false
+        /// </summary>
         [Fact]
         public void CanCombine_WithPKeyNoBottomBits_ReturnsFalse()
         {
@@ -791,6 +954,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that can combine with null u returns false
+        /// </summary>
         [Fact]
         public void CanCombine_WithNullU_ReturnsFalse()
         {
@@ -803,6 +969,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that can combine with same geom p returns false
+        /// </summary>
         [Fact]
         public void CanCombine_WithSameGeomP_ReturnsFalse()
         {
@@ -820,6 +989,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Additional
 
+        /// <summary>
+        /// Tests that cx fast list has existing item returns true
+        /// </summary>
         [Fact]
         public void CxFastList_Has_ExistingItem_ReturnsTrue()
         {
@@ -835,6 +1007,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that cx fast list find on empty list returns null
+        /// </summary>
         [Fact]
         public void CxFastList_Find_OnEmptyList_ReturnsNull()
         {
@@ -847,6 +1022,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that cx fast list remove on empty list returns false
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_OnEmptyList_ReturnsFalse()
         {
@@ -859,6 +1037,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that cx fast list has existing first item returns true
+        /// </summary>
         [Fact]
         public void CxFastList_Has_ExistingFirstItem_ReturnsTrue()
         {
@@ -878,6 +1059,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region InsertPolyIntoPoly
 
+        /// <summary>
+        /// Tests that insert poly into poly with non empty bp inserts correctly
+        /// </summary>
         [Fact]
         public void InsertPolyIntoPoly_WithNonEmptyBp_InsertsCorrectly()
         {
@@ -914,6 +1098,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Vector2F
 
+        /// <summary>
+        /// Tests that cx fast list vector 2 f add and iterate works
+        /// </summary>
         [Fact]
         public void CxFastList_Vector2F_AddAndIterate_Works()
         {
@@ -1429,6 +1616,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Remove_NonExistentItem
 
+        /// <summary>
+        /// Tests that cx fast list remove non existent non default returns false
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_NonExistentNonDefault_ReturnsFalse()
         {
@@ -1448,6 +1638,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region RemoveParallelVerticesAfterInsertion
 
+        /// <summary>
+        /// Tests that remove parallel vertices after insertion with parallel verts removes one
+        /// </summary>
         [Fact]
         public void RemoveParallelVerticesAfterInsertion_WithParallelVerts_RemovesOne()
         {
@@ -1479,6 +1672,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Erase_NonHeadNode_RemovesNode
 
+        /// <summary>
+        /// Tests that cx fast list erase non head node removes node
+        /// </summary>
         [Fact]
         public void CxFastList_Erase_NonHeadNode_RemovesNode()
         {
@@ -1504,6 +1700,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region ProcessCell_NonZeroPolygon_AddsToRet
 
+        /// <summary>
+        /// Tests that process cell non zero polygon with combine false adds to ret
+        /// </summary>
         [Fact]
         public void ProcessCell_NonZeroPolygonWithCombineFalse_AddsToRet()
         {
@@ -1533,6 +1732,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotEmpty(elements);
         }
 
+        /// <summary>
+        /// Tests that process cell non zero polygon with combine true and pre null adds to ret
+        /// </summary>
         [Fact]
         public void ProcessCell_NonZeroPolygonWithCombineTrueAndPreNull_AddsToRet()
         {
@@ -1565,6 +1767,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region InitializeFunctionGrid_Boundary
 
+        /// <summary>
+        /// Tests that initialize function grid at x boundary uses upper bound
+        /// </summary>
         [Fact]
         public void InitializeFunctionGrid_AtXBoundary_UsesUpperBound()
         {
@@ -1581,6 +1786,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.Equal(-1, fs[5, 0]);
         }
 
+        /// <summary>
+        /// Tests that initialize function grid at y boundary uses upper bound
+        /// </summary>
         [Fact]
         public void InitializeFunctionGrid_AtYBoundary_UsesUpperBound()
         {
@@ -1600,6 +1808,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region ProcessGridCells_MultipleIterations
 
+        /// <summary>
+        /// Tests that process grid cells multiple rows covers y loop
+        /// </summary>
         [Fact]
         public void ProcessGridCells_MultipleRows_CoversYLoop()
         {
@@ -1627,6 +1838,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Remove_WithNullHeadOnly
 
+        /// <summary>
+        /// Tests that cx fast list remove with head only matching removes it
+        /// </summary>
         [Fact]
         public void CxFastList_Remove_WithHeadOnlyMatching_RemovesIt()
         {
@@ -1649,6 +1863,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region BuildKey_ThreeCornersNegative
 
+        /// <summary>
+        /// Tests that build key three corners negative returns correct key
+        /// </summary>
+        /// <param name="expectedKey">The expected key</param>
         [Theory]
         [InlineData(14)] // bits 8+4+2 (all but bit 1)
         [InlineData(13)] // bits 8+4+1
@@ -1676,6 +1894,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region MarchSquare_KeyNonZeroValZero_NoThrow
 
+        /// <summary>
+        /// Tests that march square with non zero key but val zero returns key
+        /// </summary>
         [Fact]
         public void MarchSquare_WithNonZeroKeyButValZero_ReturnsKey()
         {
@@ -1699,6 +1920,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList_Erase_WhenHeadIsNull_WithPrevNull_DoesNotThrow
 
+        /// <summary>
+        /// Tests that cx fast list erase head only removes head
+        /// </summary>
         [Fact]
         public void CxFastList_Erase_HeadOnly_RemovesHead()
         {
@@ -1725,6 +1949,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList — Size
 
+        /// <summary>
+        /// Tests that cx fast list size returns correct count
+        /// </summary>
         [Fact]
         public void CxFastList_Size_ReturnsCorrectCount()
         {
@@ -1747,6 +1974,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList — FindNonDefault fallthrough
 
+        /// <summary>
+        /// Tests that cx fast list find non default value not found returns null
+        /// </summary>
         [Fact]
         public void CxFastList_FindNonDefault_ValueNotFound_ReturnsNull()
         {
@@ -1768,6 +1998,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList — FindDefault
 
+        /// <summary>
+        /// Tests that cx fast list find default iterates to find default value
+        /// </summary>
         [Fact]
         public void CxFastList_FindDefault_IteratesToFindDefaultValue()
         {
@@ -1786,6 +2019,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that cx fast list find default not found returns null
+        /// </summary>
         [Fact]
         public void CxFastList_FindDefault_NotFound_ReturnsNull()
         {
@@ -1808,6 +2044,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CxFastList — Erase when _head is null
 
+        /// <summary>
+        /// Tests that cx fast list erase empty list prev null returns null
+        /// </summary>
         [Fact]
         public void CxFastList_Erase_EmptyListPrevNull_ReturnsNull()
         {
@@ -1828,6 +2067,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region CombineScanLines — full execution path
 
+        /// <summary>
+        /// Tests that combine scan lines full path executes successfully
+        /// </summary>
         [Fact]
         public void CombineScanLines_FullPath_ExecutesSuccessfully()
         {
@@ -1890,6 +2132,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region UpdatePolygonReferences — forward and backward
 
+        /// <summary>
+        /// Tests that update polygon references updates forward and backward
+        /// </summary>
         [Fact]
         public void UpdatePolygonReferences_UpdatesForwardAndBackward()
         {
@@ -1914,6 +2159,9 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #region RemoveParallelVerticesAfterInsertion — wrap to begin
 
+        /// <summary>
+        /// Tests that remove parallel vertices after insertion at end wraps to begin
+        /// </summary>
         [Fact]
         public void RemoveParallelVerticesAfterInsertion_AtEnd_WrapsToBegin()
         {

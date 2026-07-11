@@ -336,6 +336,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with mixed collinearity should keep non collinear
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithMixedCollinearity_ShouldKeepNonCollinear()
         {
@@ -352,6 +355,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that douglas peucker simplify with non collinear points should recurse
+        /// </summary>
         [Fact]
         public void DouglasPeuckerSimplify_WithNonCollinearPoints_ShouldRecurse()
         {
@@ -370,6 +376,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count > 0);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with no parallel edges should return same
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithNoParallelEdges_ShouldReturnSame()
         {
@@ -386,6 +395,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with no parallel edges and four points should return same count
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithNoParallelEdgesAndFourPoints_ShouldReturnSameCount()
         {
@@ -402,6 +414,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(4, result.Count);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with parallel edges should merge
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithParallelEdges_ShouldMerge()
         {
@@ -419,6 +434,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count < 4);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with zero length edge should handle
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithZeroLengthEdge_ShouldHandle()
         {
@@ -435,6 +453,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with four points should remove
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithFourPoints_ShouldRemove()
         {
@@ -451,6 +472,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with nth one should remove all
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithNthOne_ShouldRemoveAll()
         {
@@ -467,6 +491,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with non collinear points should reduce
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithNonCollinearPoints_ShouldReduce()
         {
@@ -484,6 +511,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count > 0);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with all points kept should keep all points
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithAllPointsKept_ShouldKeepAllPoints()
         {
@@ -501,6 +531,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(4, result.Count);
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with two points should return same
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithTwoPoints_ShouldReturnSame()
         {
@@ -515,6 +548,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with single point should return same
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithSinglePoint_ShouldReturnSame()
         {
@@ -525,6 +561,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Single(result);
         }
 
+        /// <summary>
+        /// Tests that collinear simplify with all collinear points removed should handle
+        /// </summary>
         [Fact]
         public void CollinearSimplify_WithAllCollinearPointsRemoved_ShouldHandle()
         {
@@ -541,6 +580,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that douglas peucker simplify with two points should return same
+        /// </summary>
         [Fact]
         public void DouglasPeuckerSimplify_WithTwoPoints_ShouldReturnSame()
         {
@@ -555,6 +597,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that douglas peucker simplify with single point should return same
+        /// </summary>
         [Fact]
         public void DouglasPeuckerSimplify_WithSinglePoint_ShouldReturnSame()
         {
@@ -565,6 +610,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Single(result);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with two points should return same
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithTwoPoints_ShouldReturnSame()
         {
@@ -579,6 +627,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that merge parallel edges with square should merge parallel
+        /// </summary>
         [Fact]
         public void MergeParallelEdges_WithSquare_ShouldMergeParallel()
         {
@@ -596,6 +647,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count <= 4);
         }
 
+        /// <summary>
+        /// Tests that merge identical points with empty should return empty
+        /// </summary>
         [Fact]
         public void MergeIdenticalPoints_WithEmpty_ShouldReturnEmpty()
         {
@@ -606,6 +660,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by distance with two points should return same
+        /// </summary>
         [Fact]
         public void ReduceByDistance_WithTwoPoints_ShouldReturnSame()
         {
@@ -620,6 +677,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by distance with single point should return same
+        /// </summary>
         [Fact]
         public void ReduceByDistance_WithSinglePoint_ShouldReturnSame()
         {
@@ -630,6 +690,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Single(result);
         }
 
+        /// <summary>
+        /// Tests that reduce by distance with zero distance should keep all
+        /// </summary>
         [Fact]
         public void ReduceByDistance_WithZeroDistance_ShouldKeepAll()
         {
@@ -645,6 +708,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with two points should return same
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithTwoPoints_ShouldReturnSame()
         {
@@ -659,6 +725,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by nth with large nth should remove first only
+        /// </summary>
         [Fact]
         public void ReduceByNth_WithLargeNth_ShouldRemoveFirstOnly()
         {
@@ -675,6 +744,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(3, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with two points should return same
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithTwoPoints_ShouldReturnSame()
         {
@@ -689,6 +761,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, result.Count);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with zero tolerance should remove only collinear
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithZeroTolerance_ShouldRemoveOnlyCollinear()
         {
@@ -705,6 +780,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True(result.Count < 4);
         }
 
+        /// <summary>
+        /// Tests that reduce by area with mostly collinear points should remove collinear
+        /// </summary>
         [Fact]
         public void ReduceByArea_WithMostlyCollinearPoints_ShouldRemoveCollinear()
         {

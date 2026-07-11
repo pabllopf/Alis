@@ -5,20 +5,32 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Marshalling
 {
+    /// <summary>
+    /// The marshal coverage test class
+    /// </summary>
     public class MarshalCoverageTest
     {
+        /// <summary>
+        /// Tests that game object marshal exists
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectMarshal_Exists()
         {
             Assert.NotNull(typeof(GameObjectMarshal));
         }
 
+        /// <summary>
+        /// Tests that scene marshal exists
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneMarshal_Exists()
         {
             Assert.NotNull(typeof(SceneMarshal));
         }
 
+        /// <summary>
+        /// Tests that scene marshal get component returns reference
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneMarshal_GetComponent_ReturnsReference()
         {
@@ -28,6 +40,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(10, pos.X);
         }
 
+        /// <summary>
+        /// Tests that scene marshal get raw buffer returns span
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneMarshal_GetRawBuffer_ReturnsSpan()
         {

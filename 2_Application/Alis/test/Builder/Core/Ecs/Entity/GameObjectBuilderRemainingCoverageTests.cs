@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity
 {
+    /// <summary>
+    /// The game object builder remaining coverage tests class
+    /// </summary>
     public class GameObjectBuilderRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that with component audio source config returns builder
+        /// </summary>
         [Fact]
         public void WithComponent_AudioSourceConfig_ReturnsBuilder()
         {
@@ -21,6 +27,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that with component with instance without i has context returns builder
+        /// </summary>
         [Fact]
         public void WithComponent_WithInstance_WithoutIHasContext_ReturnsBuilder()
         {
@@ -32,6 +41,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity
             Assert.Same(builder, result);
         }
         
+        /// <summary>
+        /// Tests that is active no args without existing info returns builder
+        /// </summary>
         [Fact]
         public void IsActive_NoArgs_WithoutExistingInfo_ReturnsBuilder()
         {

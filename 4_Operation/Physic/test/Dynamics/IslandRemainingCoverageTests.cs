@@ -365,6 +365,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // IntegratePositions with clamping (both translation and rotation)
         // ========================================================================
+        /// <summary>
+        /// Tests that integrate positions clamping both works
+        /// </summary>
         [Fact]
         public void IntegratePositions_ClampingBoth_Works()
         {
@@ -379,6 +382,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // UpdateSleepState with minSleepTime >= TimeToSleep and positionSolved true
         // ========================================================================
+        /// <summary>
+        /// Tests that update sleep state enough sleep time and position solved sleeps
+        /// </summary>
         [Fact]
         public void UpdateSleepState_EnoughSleepTime_AndPositionSolved_Sleeps()
         {
@@ -395,6 +401,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // SolveToi with velocity iterations after position solve
         // ========================================================================
+        /// <summary>
+        /// Tests that solve toi velocity iterations executes
+        /// </summary>
         [Fact]
         public void SolveToi_VelocityIterations_Executes()
         {
@@ -412,6 +421,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Report with null ContactVelocityConstraint (edge case)
         // ========================================================================
+        /// <summary>
+        /// Tests that report with constraints array does not throw
+        /// </summary>
         [Fact]
         public void Report_WithConstraintsArray_DoesNotThrow()
         {
@@ -425,6 +437,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // InitializeSolverData with step.WarmStarting = false
         // ========================================================================
+        /// <summary>
+        /// Tests that initialize solver data with no warm starting does not warm start
+        /// </summary>
         [Fact]
         public void InitializeSolverData_WithNoWarmStarting_DoesNotWarmStart()
         {
@@ -438,6 +453,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // SolvePositionConstraints with enabled joints (full path)
         // ========================================================================
+        /// <summary>
+        /// Tests that solve position constraints with enabled joints resolves
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithEnabledJoints_Resolves()
         {

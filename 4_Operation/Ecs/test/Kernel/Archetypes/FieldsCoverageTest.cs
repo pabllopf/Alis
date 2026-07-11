@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The fields coverage test class
+    /// </summary>
     public class FieldsCoverageTest
     {
+        /// <summary>
+        /// Tests that archetype data property returns fields
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Archetype_DataProperty_ReturnsFields()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(data.Components);
         }
 
+        /// <summary>
+        /// Tests that get component data reference with valid setup returns reference
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GetComponentDataReference_WithValidSetup_ReturnsReference()
         {
@@ -40,9 +49,18 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             }
         }
 
+        /// <summary>
+        /// The position
+        /// </summary>
         private struct Position
         {
+            /// <summary>
+            /// Gets or sets the value of the x
+            /// </summary>
             public int X { get; set; }
+            /// <summary>
+            /// Gets or sets the value of the y
+            /// </summary>
             public int Y { get; set; }
         }
     }

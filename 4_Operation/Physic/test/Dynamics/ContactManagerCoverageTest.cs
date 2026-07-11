@@ -216,6 +216,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that should collide with non matching groups uses category check
+        /// </summary>
         [Fact]
         public void ShouldCollide_WithNonMatchingGroups_UsesCategoryCheck()
         {
@@ -231,6 +234,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that body type static with dynamic prevents collision
+        /// </summary>
         [Fact]
         public void BodyTypeStatic_WithDynamic_PreventsCollision()
         {
@@ -243,6 +249,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that remove body with multiple contacts destroys all
+        /// </summary>
         [Fact]
         public void RemoveBody_WithMultipleContacts_DestroysAll()
         {
@@ -262,6 +271,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(afterRemove < beforeRemove);
         }
 
+        /// <summary>
+        /// Tests that step with filter flag set re evaluates contacts
+        /// </summary>
         [Fact]
         public void Step_WithFilterFlagSet_ReEvaluatesContacts()
         {

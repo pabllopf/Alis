@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test.Outputs
 {
+    /// <summary>
+    /// The console log output remaining coverage tests class
+    /// </summary>
     public class ConsoleLogOutputRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that name property returns console output
+        /// </summary>
         [Fact]
         public void Name_Property_ReturnsConsoleOutput()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Assert.Equal("ConsoleOutput", name);
         }
 
+        /// <summary>
+        /// Tests that is enabled default value is true
+        /// </summary>
         [Fact]
         public void IsEnabled_DefaultValueIsTrue()
         {
@@ -57,6 +66,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Assert.True(enabled);
         }
 
+        /// <summary>
+        /// Tests that is enabled set false get returns false
+        /// </summary>
         [Fact]
         public void IsEnabled_SetFalse_GetReturnsFalse()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Assert.False(output.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that is enabled set true get returns true
+        /// </summary>
         [Fact]
         public void IsEnabled_SetTrue_GetReturnsTrue()
         {
@@ -76,6 +91,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Assert.True(output.IsEnabled);
         }
 
+        /// <summary>
+        /// Tests that constructor with custom formatter uses provided formatter
+        /// </summary>
         [Fact]
         public void Constructor_WithCustomFormatter_UsesProvidedFormatter()
         {
@@ -88,6 +106,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Assert.True(formatter.FormatCalled);
         }
 
+        /// <summary>
+        /// Tests that constructor with null formatter uses simple log formatter by default
+        /// </summary>
         [Fact]
         public void Constructor_WithNullFormatter_UsesSimpleLogFormatterByDefault()
         {
@@ -97,6 +118,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that write with valid entry does not throw
+        /// </summary>
         [Fact]
         public void Write_WithValidEntry_DoesNotThrow()
         {
@@ -106,6 +130,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that write after dispose does not throw
+        /// </summary>
         [Fact]
         public void Write_AfterDispose_DoesNotThrow()
         {
@@ -116,6 +143,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_DoesNotThrow()
         {
@@ -126,6 +156,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose after write does not throw
+        /// </summary>
         [Fact]
         public void Dispose_AfterWrite_DoesNotThrow()
         {
@@ -136,6 +169,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Dispose();
         }
 
+        /// <summary>
+        /// Tests that flush does not throw
+        /// </summary>
         [Fact]
         public void Flush_DoesNotThrow()
         {
@@ -144,6 +180,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Flush();
         }
 
+        /// <summary>
+        /// Tests that flush after dispose does not throw
+        /// </summary>
         [Fact]
         public void Flush_AfterDispose_DoesNotThrow()
         {
@@ -153,6 +192,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Flush();
         }
 
+        /// <summary>
+        /// Tests that write each log level individually does not throw
+        /// </summary>
         [Fact]
         public void Write_EachLogLevelIndividually_DoesNotThrow()
         {
@@ -166,6 +208,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(new LogEntry(LogLevel.Critical, "Critical", "Logger"));
         }
 
+        /// <summary>
+        /// Tests that write entry with exception does not throw
+        /// </summary>
         [Fact]
         public void Write_EntryWithException_DoesNotThrow()
         {
@@ -175,6 +220,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that write entry with null message does not throw
+        /// </summary>
         [Fact]
         public void Write_EntryWithNullMessage_DoesNotThrow()
         {
@@ -184,6 +232,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that write entry with correlation id does not throw
+        /// </summary>
         [Fact]
         public void Write_EntryWithCorrelationId_DoesNotThrow()
         {
@@ -193,6 +244,9 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             output.Write(entry);
         }
 
+        /// <summary>
+        /// Tests that write when console foreground color throws on restore does not throw
+        /// </summary>
         [Fact]
         public void Write_WhenConsoleForegroundColorThrowsOnRestore_DoesNotThrow()
         {
@@ -213,11 +267,26 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             }
         }
 
+        /// <summary>
+        /// The test formatter class
+        /// </summary>
+        /// <seealso cref="ILogFormatter"/>
         private sealed class TestFormatter : ILogFormatter
         {
+            /// <summary>
+            /// Gets or sets the value of the format called
+            /// </summary>
             public bool FormatCalled { get; private set; }
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "TestFormatter";
 
+            /// <summary>
+            /// Formats the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <returns>The string</returns>
             public string Format(ILogEntry entry)
             {
                 FormatCalled = true;

@@ -16,8 +16,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test
 {
+    /// <summary>
+    /// The final coverage test class
+    /// </summary>
     public class FinalCoverageTest
     {
+        /// <summary>
+        /// Tests that toi failed on max iter
+        /// </summary>
         [Fact]
         public void TOI_FailedOnMaxIter()
         {
@@ -35,6 +41,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Tests that toi push back touching
+        /// </summary>
         [Fact]
         public void TOI_PushBackTouching()
         {
@@ -52,6 +61,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Tests that toi push back max iter break
+        /// </summary>
         [Fact]
         public void TOI_PushBackMaxIterBreak()
         {
@@ -69,6 +81,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Tests that sep func find min sep default
+        /// </summary>
         [Fact]
         public void SepFunc_FindMinSepDefault()
         {
@@ -80,6 +95,9 @@ namespace Alis.Core.Physic.Test
             Assert.Equal(-1, idxB);
         }
 
+        /// <summary>
+        /// Tests that sep func evaluate default
+        /// </summary>
         [Fact]
         public void SepFunc_EvaluateDefault()
         {
@@ -89,6 +107,9 @@ namespace Alis.Core.Physic.Test
             Assert.Equal(0.0f, sep);
         }
 
+        /// <summary>
+        /// Tests that contact mgr try resolve filter should collide false
+        /// </summary>
         [Fact]
         public void ContactMgr_TryResolveFilterShouldCollideFalse()
         {
@@ -105,6 +126,9 @@ namespace Alis.Core.Physic.Test
             world.Remove(joint);
         }
 
+        /// <summary>
+        /// Tests that collision bary separation 2 exceeds radius
+        /// </summary>
         [Fact]
         public void Collision_BarySeparation2ExceedsRadius()
         {
@@ -117,6 +141,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collision polygons few clip points
+        /// </summary>
         [Fact]
         public void Collision_PolygonsFewClipPoints()
         {
@@ -129,6 +156,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collision ep collider polygon axis exceeds radius
+        /// </summary>
         [Fact]
         public void Collision_EpColliderPolygonAxisExceedsRadius()
         {
@@ -145,6 +175,9 @@ namespace Alis.Core.Physic.Test
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collision ep collider few clip points
+        /// </summary>
         [Fact]
         public void Collision_EpColliderFewClipPoints()
         {
@@ -157,6 +190,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collision ep collider polygon sep exceeds radius
+        /// </summary>
         [Fact]
         public void Collision_EpColliderPolygonSepExceedsRadius()
         {
@@ -169,6 +205,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collision ep collider select primary unknown
+        /// </summary>
         [Fact]
         public void Collision_EpColliderSelectPrimaryUnknown()
         {
@@ -181,6 +220,9 @@ namespace Alis.Core.Physic.Test
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collision edge circle both edges
+        /// </summary>
         [Fact]
         public void Collision_EdgeCircleBothEdges()
         {
@@ -197,6 +239,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that world reset toi state early return
+        /// </summary>
         [Fact]
         public void World_ResetToiStateEarlyReturn()
         {
@@ -212,6 +257,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that world calc contact alpha different alpha 0
+        /// </summary>
         [Fact]
         public void World_CalcContactAlphaDifferentAlpha0()
         {
@@ -225,6 +273,9 @@ namespace Alis.Core.Physic.Test
             Record.Exception(() => world.Step(1.0f / 60.0f));
         }
 
+        /// <summary>
+        /// Tests that world process toi contact full path
+        /// </summary>
         [Fact]
         public void World_ProcessToiContactFullPath()
         {
@@ -240,6 +291,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that world step locked throws
+        /// </summary>
         [Fact]
         public void World_StepLockedThrows()
         {
@@ -257,6 +311,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that island solve toi clamping
+        /// </summary>
         [Fact]
         public void Island_SolveToiClamping()
         {
@@ -272,6 +329,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that island process joint edges other enabled
+        /// </summary>
         [Fact]
         public void Island_ProcessJointEdgesOtherEnabled()
         {
@@ -283,6 +343,9 @@ namespace Alis.Core.Physic.Test
             Record.Exception(() => world.Step(1.0f / 60.0f));
         }
 
+        /// <summary>
+        /// Tests that body apply linear impulse ref point
+        /// </summary>
         [Fact]
         public void Body_ApplyLinearImpulseRefPoint()
         {
@@ -294,6 +357,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(body.LinearVelocityInternal.X > 0);
         }
 
+        /// <summary>
+        /// Tests that terrain remove old data with body map
+        /// </summary>
         [Fact]
         public void Terrain_RemoveOldDataWithBodyMap()
         {
@@ -312,6 +378,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(terrain);
         }
 
+        /// <summary>
+        /// Tests that marching combine scan lines
+        /// </summary>
         [Fact]
         public void Marching_CombineScanLines()
         {
@@ -330,6 +399,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(terrain);
         }
 
+        /// <summary>
+        /// Tests that real explosion merge circular data
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircularData()
         {
@@ -340,6 +412,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that real explosion merge circular data wrapping
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircularDataWrapping()
         {
@@ -350,6 +425,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that collision edge circle has vertex 3
+        /// </summary>
         [Fact]
         public void Collision_EdgeCircleHasVertex3()
         {
@@ -364,6 +442,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collision edge circle has vertex 0
+        /// </summary>
         [Fact]
         public void Collision_EdgeCircleHasVertex0()
         {
@@ -381,6 +462,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // SeparationFunction FaceB flip (line 197-199)
         // ========================================================================
+        /// <summary>
+        /// Tests that sep func face b flip axis
+        /// </summary>
         [Fact]
         public void SepFunc_FaceBFlipAxis()
         {
@@ -401,6 +485,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic SolveToi disabled contact reset (lines 578-584)
         // ========================================================================
+        /// <summary>
+        /// Tests that world solve toi disabled contact
+        /// </summary>
         [Fact]
         public void World_SolveToiDisabledContact()
         {
@@ -419,6 +506,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic ProcessToiContact sensor fixture skip (lines 813-815)
         // ========================================================================
+        /// <summary>
+        /// Tests that world process toi sensor skip
+        /// </summary>
         [Fact]
         public void World_ProcessToiSensorSkip()
         {
@@ -435,6 +525,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic CalculateContactAlpha both inactive skip (lines 726-727)
         // Uses ToiFlag path
         // ========================================================================
+        /// <summary>
+        /// Tests that world calc contact alpha toi flag
+        /// </summary>
         [Fact]
         public void World_CalcContactAlphaToiFlag()
         {
@@ -450,6 +543,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic RemoveBody events (lines 914-916, 1406)
         // ========================================================================
+        /// <summary>
+        /// Tests that world remove body with events
+        /// </summary>
         [Fact]
         public void World_RemoveBodyWithEvents()
         {
@@ -464,6 +560,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager TryResolveContactFilter full path (lines 655-665)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact mgr try resolve filter full
+        /// </summary>
         [Fact]
         public void ContactMgr_TryResolveFilterFull()
         {
@@ -486,6 +585,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island Report handler paths (lines 665-666 null _contactManager)
         // ========================================================================
+        /// <summary>
+        /// Tests that island report null cm
+        /// </summary>
         [Fact]
         public void Island_ReportNullCM()
         {
@@ -508,6 +610,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body GetBodyType lock error path (lines 228-229)
         // ========================================================================
+        /// <summary>
+        /// Tests that body get body type while locked throws
+        /// </summary>
         [Fact]
         public void Body_GetBodyTypeWhileLocked_Throws()
         {
@@ -523,6 +628,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Enabled locked path (lines 413-414)
         // ========================================================================
+        /// <summary>
+        /// Tests that body enabled while locked throws
+        /// </summary>
         [Fact]
         public void Body_EnabledWhileLocked_Throws()
         {
@@ -538,6 +646,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body LocalCenter locked path (lines 545-546)
         // ========================================================================
+        /// <summary>
+        /// Tests that body local center locked throws
+        /// </summary>
         [Fact]
         public void Body_LocalCenterLocked_Throws()
         {
@@ -553,6 +664,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Mass locked path (lines 577-578)
         // ========================================================================
+        /// <summary>
+        /// Tests that body mass locked throws
+        /// </summary>
         [Fact]
         public void Body_MassLocked_Throws()
         {
@@ -568,6 +682,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Inertia locked path (lines 609-610)
         // ========================================================================
+        /// <summary>
+        /// Tests that body inertia locked throws
+        /// </summary>
         [Fact]
         public void Body_InertiaLocked_Throws()
         {
@@ -583,6 +700,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Add fixture locked path (lines 691-692)
         // ========================================================================
+        /// <summary>
+        /// Tests that body add fixture locked throws
+        /// </summary>
         [Fact]
         public void Body_AddFixtureLocked_Throws()
         {
@@ -599,6 +719,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Remove fixture locked path (lines 759-760)
         // ========================================================================
+        /// <summary>
+        /// Tests that body remove fixture locked throws
+        /// </summary>
         [Fact]
         public void Body_RemoveFixtureLocked_Throws()
         {
@@ -614,6 +737,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body SetTransformIgnoreContacts locked path (lines 856-857)
         // ========================================================================
+        /// <summary>
+        /// Tests that body set transform locked throws
+        /// </summary>
         [Fact]
         public void Body_SetTransformLocked_Throws()
         {
@@ -630,6 +756,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // RealExplosion MergeCircularData with wrapping (lines 384-396)
         // ========================================================================
+        /// <summary>
+        /// Tests that real explosion merge circular wrap
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircularWrap()
         {
@@ -643,6 +772,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Terrain RemoveOldData with body entries (lines 293-298)
         // ========================================================================
+        /// <summary>
+        /// Tests that terrain remove old data bodies
+        /// </summary>
         [Fact]
         public void Terrain_RemoveOldDataBodies()
         {
@@ -665,6 +797,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic Clear locked (line 1406)
         // ========================================================================
+        /// <summary>
+        /// Tests that world clear locked throws
+        /// </summary>
         [Fact]
         public void World_ClearLocked_Throws()
         {
@@ -679,6 +814,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body OnCollision event (lines 1287, 1296)
         // ========================================================================
+        /// <summary>
+        /// Tests that body on collision event
+        /// </summary>
         [Fact]
         public void Body_OnCollisionEvent()
         {
@@ -693,6 +831,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body Remove fixture with contact (lines 776-789)
         // ========================================================================
+        /// <summary>
+        /// Tests that body remove fixture with contact
+        /// </summary>
         [Fact]
         public void Body_RemoveFixtureWithContact()
         {
@@ -707,6 +848,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body FixtureRemoved event (lines 809-811)
         // ========================================================================
+        /// <summary>
+        /// Tests that body fixture removed event
+        /// </summary>
         [Fact]
         public void Body_FixtureRemovedEvent()
         {
@@ -721,6 +865,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body ApplyLinearImpulse ref point on static body (lines 1019-1021)
         // ========================================================================
+        /// <summary>
+        /// Tests that body apply linear impulse static
+        /// </summary>
         [Fact]
         public void Body_ApplyLinearImpulseStatic()
         {
@@ -735,6 +882,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body OnSeparation event unsubscribe (line 1296)
         // ========================================================================
+        /// <summary>
+        /// Tests that body on separation event
+        /// </summary>
         [Fact]
         public void Body_OnSeparationEvent()
         {
@@ -748,6 +898,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager AddPair null contact (lines 180-181)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact mgr add pair null contact
+        /// </summary>
         [Fact]
         public void ContactMgr_AddPairNullContact()
         {
@@ -761,6 +914,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager PassesCollisionFilters BeforeCollisionA false (lines 515-516)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact mgr passes filters before collision a false
+        /// </summary>
         [Fact]
         public void ContactMgr_PassesFilters_BeforeCollisionAFalse()
         {
@@ -775,6 +931,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager PassesCollisionFilters BeforeCollisionB false (lines 521-522)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact mgr passes filters before collision b false
+        /// </summary>
         [Fact]
         public void ContactMgr_PassesFilters_BeforeCollisionBFalse()
         {
@@ -789,6 +948,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Terrain RemoveOldData with body entries (lines 293-298)
         // ========================================================================
+        /// <summary>
+        /// Tests that terrain remove old data with bodies
+        /// </summary>
         [Fact]
         public void Terrain_RemoveOldData_WithBodies()
         {
@@ -812,6 +974,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // RealExplosion MergeCircularData full path (lines 384-396)
         // ========================================================================
+        /// <summary>
+        /// Tests that real explosion merge circular full
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircularFull()
         {
@@ -827,6 +992,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Body ApplyLinearImpulse on sleeping dynamic body (lines 1019-1021)
         // ========================================================================
+        /// <summary>
+        /// Tests that body apply linear impulse sleeping
+        /// </summary>
         [Fact]
         public void Body_ApplyLinearImpulseSleeping()
         {
@@ -843,6 +1011,9 @@ namespace Alis.Core.Physic.Test
         // SeparationFunction FaceB fully flips axis (lines 197-199)
         // Uses specific geometry to force s < 0
         // ========================================================================
+        /// <summary>
+        /// Tests that sep func face b flip axis full
+        /// </summary>
         [Fact]
         public void SepFunc_FaceBFlipAxisFull()
         {
@@ -860,6 +1031,9 @@ namespace Alis.Core.Physic.Test
             Assert.False(float.IsNaN(sep));
         }
 
+        /// <summary>
+        /// Tests that toi max iterations failed
+        /// </summary>
         [Fact]
         public void TOI_MaxIterations_Failed()
         {
@@ -893,6 +1067,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Tests that ep collider first clip underflow
+        /// </summary>
         [Fact]
         public void EpCollider_FirstClipUnderflow()
         {
@@ -911,6 +1088,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that ep collider second clip underflow
+        /// </summary>
         [Fact]
         public void EpCollider_SecondClipUnderflow()
         {
@@ -929,6 +1109,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that world physic step disabled
+        /// </summary>
         [Fact]
         public void WorldPhysic_StepDisabled()
         {
@@ -938,6 +1121,9 @@ namespace Alis.Core.Physic.Test
             Assert.False(world.GetEnabled);
         }
 
+        /// <summary>
+        /// Tests that world physic body added fixture added
+        /// </summary>
         [Fact]
         public void WorldPhysic_BodyAddedFixtureAdded()
         {
@@ -951,6 +1137,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(fixtureAdded);
         }
 
+        /// <summary>
+        /// Tests that world physic body removed delegate
+        /// </summary>
         [Fact]
         public void WorldPhysic_BodyRemovedDelegate()
         {
@@ -962,6 +1151,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(removed);
         }
 
+        /// <summary>
+        /// Tests that world physic remove null body throws
+        /// </summary>
         [Fact]
         public void WorldPhysic_RemoveNullBody_Throws()
         {
@@ -969,6 +1161,9 @@ namespace Alis.Core.Physic.Test
             Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
         }
 
+        /// <summary>
+        /// Tests that world physic create chain shape
+        /// </summary>
         [Fact]
         public void WorldPhysic_CreateChainShape()
         {
@@ -978,6 +1173,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that world physic query aabb callback
+        /// </summary>
         [Fact]
         public void WorldPhysic_QueryAabbCallback()
         {
@@ -992,6 +1190,9 @@ namespace Alis.Core.Physic.Test
             Assert.True(queried);
         }
 
+        /// <summary>
+        /// Tests that contact manager try resolve filter rejects
+        /// </summary>
         [Fact]
         public void ContactManager_TryResolveFilterRejects()
         {
@@ -1003,6 +1204,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that contact manager update contact with lock
+        /// </summary>
         [Fact]
         public void ContactManager_UpdateContactWithLock()
         {
@@ -1015,6 +1219,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that real explosion activate
+        /// </summary>
         [Fact]
         public void RealExplosion_Activate()
         {
@@ -1025,6 +1232,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that island solve with gravity
+        /// </summary>
         [Fact]
         public void Island_SolveWithGravity()
         {
@@ -1034,6 +1244,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(world);
         }
 
+        /// <summary>
+        /// Tests that contact solver multi core solve
+        /// </summary>
         [Fact]
         public void ContactSolver_MultiCoreSolve()
         {
@@ -1046,6 +1259,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(bodyA);
         }
 
+        /// <summary>
+        /// Tests that marching squares detect squares no combine
+        /// </summary>
         [Fact]
         public void MarchingSquares_DetectSquares_NoCombine()
         {
@@ -1060,6 +1276,9 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that marching squares detect squares combine
+        /// </summary>
         [Fact]
         public void MarchingSquares_DetectSquares_Combine()
         {
@@ -1078,6 +1297,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.ResetToiState - early return hit by direct call
         // Lines 643-644
         // ========================================================================
+        /// <summary>
+        /// Tests that world reset toi state early return
+        /// </summary>
         [Fact]
         public void World_ResetToiState_EarlyReturn()
         {
@@ -1093,6 +1315,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.SolveToi - disabled contact after TOI update
         // Lines 577-584 hit when contact update results in non-touching
         // ========================================================================
+        /// <summary>
+        /// Tests that world solve toi non touching after update
+        /// </summary>
         [Fact]
         public void World_SolveToi_NonTouchingAfterUpdate()
         {
@@ -1112,6 +1337,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.SolveToi - static body skip in island reset loop
         // Lines 617-618
         // ========================================================================
+        /// <summary>
+        /// Tests that world solve toi static body skip
+        /// </summary>
         [Fact]
         public void World_SolveToi_StaticBodySkip()
         {
@@ -1128,6 +1356,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.CalculateContactAlpha - ToiFlag shortcut path
         // Lines 726-727
         // ========================================================================
+        /// <summary>
+        /// Tests that world calc contact alpha toi flag path
+        /// </summary>
         [Fact]
         public void World_CalcContactAlpha_ToiFlagPath()
         {
@@ -1159,6 +1390,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.CalculateContactAlpha - alpha0 advance paths
         // Lines 741-749
         // ========================================================================
+        /// <summary>
+        /// Tests that world calc contact alpha alpha 0 advance
+        /// </summary>
         [Fact]
         public void World_CalcContactAlpha_Alpha0Advance()
         {
@@ -1177,6 +1411,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.ProcessToiContact - island capacity reached
         // Lines 798-799
         // ========================================================================
+        /// <summary>
+        /// Tests that world process toi contact capacity reached
+        /// </summary>
         [Fact]
         public void World_ProcessToiContact_CapacityReached()
         {
@@ -1201,6 +1438,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.ProcessToiContact - non-bullet, both dynamic skip
         // Lines 807-810
         // ========================================================================
+        /// <summary>
+        /// Tests that world process toi contact non bullet dynamic skip
+        /// </summary>
         [Fact]
         public void World_ProcessToiContact_NonBulletDynamicSkip()
         {
@@ -1218,6 +1458,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.Add - FixtureAdded handler loop body
         // Lines 914-916
         // ========================================================================
+        /// <summary>
+        /// Tests that world add body fixture added event
+        /// </summary>
         [Fact]
         public void World_AddBody_FixtureAddedEvent()
         {
@@ -1235,6 +1478,9 @@ namespace Alis.Core.Physic.Test
         // World.TestPoint return true in lambda
         // Line 1406
         // ========================================================================
+        /// <summary>
+        /// Tests that world test point returns fixture
+        /// </summary>
         [Fact]
         public void World_TestPoint_ReturnsFixture()
         {
@@ -1248,6 +1494,9 @@ namespace Alis.Core.Physic.Test
         // World.CreateCapsule polygon path (line 1662)
         // Small enough to not exceed MaxPolygonVertices
         // ========================================================================
+        /// <summary>
+        /// Tests that world create capsule polygon path
+        /// </summary>
         [Fact]
         public void World_CreateCapsule_PolygonPath()
         {
@@ -1260,6 +1509,9 @@ namespace Alis.Core.Physic.Test
         // World.CreateRoundedRectangle polygon path (line 1714)
         // Small enough to not exceed MaxPolygonVertices
         // ========================================================================
+        /// <summary>
+        /// Tests that world create rounded rectangle polygon path
+        /// </summary>
         [Fact]
         public void World_CreateRoundedRectangle_PolygonPath()
         {
@@ -1271,6 +1523,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.AddPair - null contact return (lines 180-181)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager add pair null contact
+        /// </summary>
         [Fact]
         public void ContactManager_AddPair_NullContact()
         {
@@ -1284,6 +1539,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ContactAlreadyExists - swapped match (lines 479-480)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager contact already exists swapped
+        /// </summary>
         [Fact]
         public void ContactManager_ContactAlreadyExists_Swapped()
         {
@@ -1297,6 +1555,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ProcessContactCollision - body disabled (lines 543-544)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process collision body disabled
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessCollision_BodyDisabled()
         {
@@ -1311,6 +1572,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ProcessContactMultiCore - body disabled (lines 590-591)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process multi core body disabled
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessMultiCore_BodyDisabled()
         {
@@ -1328,6 +1592,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager.TryResolveContactFilter - ContactFilter delegate rejects
         // Lines 655-661
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager try resolve filter contact filter rejects
+        /// </summary>
         [Fact]
         public void ContactManager_TryResolveFilter_ContactFilterRejects()
         {
@@ -1346,6 +1613,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager.UpdateContactWithLock - multithread path
         // Lines 683-684 (same lock order exception)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager update lock same order
+        /// </summary>
         [Fact]
         public void ContactManager_UpdateLock_SameOrder()
         {
@@ -1369,6 +1639,9 @@ namespace Alis.Core.Physic.Test
         // Collision.ResolveBarycentricContact - u1<=0 && r>radius² return
         // Lines 224-225
         // ========================================================================
+        /// <summary>
+        /// Tests that collision bary u 1 zero r exceeds
+        /// </summary>
         [Fact]
         public void Collision_Bary_U1Zero_RExceeds()
         {
@@ -1385,6 +1658,9 @@ namespace Alis.Core.Physic.Test
         // Collision.ResolveBarycentricContact - u2<=0 && r>radius² return
         // Lines 234-235
         // ========================================================================
+        /// <summary>
+        /// Tests that collision bary u 2 zero r exceeds
+        /// </summary>
         [Fact]
         public void Collision_Bary_U2Zero_RExceeds()
         {
@@ -1401,6 +1677,9 @@ namespace Alis.Core.Physic.Test
         // Collision.FindMaxSeparation - increment and decrement search paths
         // Lines 853-856
         // ========================================================================
+        /// <summary>
+        /// Tests that collision find max separation search
+        /// </summary>
         [Fact]
         public void Collision_FindMaxSeparation_Search()
         {
@@ -1417,6 +1696,9 @@ namespace Alis.Core.Physic.Test
         // Collision.CollidePolygons - separationB > separationA (line 331 path)
         // FaceB path: lines 319-320
         // ========================================================================
+        /// <summary>
+        /// Tests that collision polygons face b path
+        /// </summary>
         [Fact]
         public void Collision_Polygons_FaceBPath()
         {
@@ -1433,6 +1715,9 @@ namespace Alis.Core.Physic.Test
         // EpCollider.SelectPrimaryAxis - else branch (lines 1434-1435)
         // Primary axis for non-colliding edge-polygon pair
         // ========================================================================
+        /// <summary>
+        /// Tests that ep collider select primary else
+        /// </summary>
         [Fact]
         public void EpCollider_SelectPrimary_Else()
         {
@@ -1448,6 +1733,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // EpCollider.Collide - unknown collision normal path (lines 1020-1021)
         // ========================================================================
+        /// <summary>
+        /// Tests that ep collider collide unknown normal
+        /// </summary>
         [Fact]
         public void EpCollider_Collide_UnknownNormal()
         {
@@ -1463,6 +1751,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // EpCollider.Collide - back face path (lines 1064-1073)
         // ========================================================================
+        /// <summary>
+        /// Tests that ep collider collide back face
+        /// </summary>
         [Fact]
         public void EpCollider_Collide_BackFace()
         {
@@ -1478,6 +1769,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island.UpdateSleepState - AllowSleep and sleep path 
         // ========================================================================
+        /// <summary>
+        /// Tests that island update sleep sleep path
+        /// </summary>
         [Fact]
         public void Island_UpdateSleep_SleepPath()
         {
@@ -1498,6 +1792,9 @@ namespace Alis.Core.Physic.Test
         // Island.SolveToi - max translation/rotation clamping paths
         // Lines 599-609
         // ========================================================================
+        /// <summary>
+        /// Tests that island solve toi translation rotation clamp
+        /// </summary>
         [Fact]
         public void Island_SolveToi_TranslationRotationClamp()
         {
@@ -1513,6 +1810,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island.Report - null contact manager (lines 665-666)
         // ========================================================================
+        /// <summary>
+        /// Tests that island report null cm
+        /// </summary>
         [Fact]
         public void Island_Report_NullCM()
         {
@@ -1533,6 +1833,9 @@ namespace Alis.Core.Physic.Test
         // ContactSolver - multicore thresholds
         // Lines 326, 329-330, 532-533, 692-694, 858-862
         // ========================================================================
+        /// <summary>
+        /// Tests that contact solver multi core thresholds
+        /// </summary>
         [Fact]
         public void ContactSolver_MultiCore_Thresholds()
         {
@@ -1549,6 +1852,9 @@ namespace Alis.Core.Physic.Test
         // RealExplosion.MergeCircularData - merge path
         // Lines 384-396
         // ========================================================================
+        /// <summary>
+        /// Tests that real explosion merge circular wrap
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircular_Wrap()
         {
@@ -1563,6 +1869,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // MarchingSquares.DetectSquares - fail to find starting point (lines 307-309)
         // ========================================================================
+        /// <summary>
+        /// Tests that marching squares detect squares no start point
+        /// </summary>
         [Fact]
         public void MarchingSquares_DetectSquares_NoStartPoint()
         {
@@ -1579,6 +1888,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // MarchingSquares.DetectSquares - no matching vertex (lines 313-315)
         // ========================================================================
+        /// <summary>
+        /// Tests that marching squares detect squares no matching vertex
+        /// </summary>
         [Fact]
         public void MarchingSquares_DetectSquares_NoMatchingVertex()
         {
@@ -1595,6 +1907,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - FinalizationConvexHull paths via CdtDecomposer
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep triangulate
+        /// </summary>
         [Fact]
         public void DTSweep_Triangulate()
         {
@@ -1613,6 +1928,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - Complex triangulation with more points (convex shape)
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep complex triangulate
+        /// </summary>
         [Fact]
         public void DTSweep_ComplexTriangulate()
         {
@@ -1632,6 +1950,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - Large triangulation (convex-ish shape)
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep large triangulate
+        /// </summary>
         [Fact]
         public void DTSweep_LargeTriangulate()
         {
@@ -1648,6 +1969,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Collision.CollideEdgeAndCircle - missing normals
         // ========================================================================
+        /// <summary>
+        /// Tests that collision edge circle vertex normals
+        /// </summary>
         [Fact]
         public void Collision_EdgeCircle_VertexNormals()
         {
@@ -1668,6 +1992,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.CreateCapsule - polygon path (line 1662)
         // ========================================================================
+        /// <summary>
+        /// Tests that world create capsule simple capsule
+        /// </summary>
         [Fact]
         public void World_CreateCapsule_SimpleCapsule()
         {
@@ -1680,6 +2007,9 @@ namespace Alis.Core.Physic.Test
         // TimeOfImpact.CalculateTimeOfImpact - max iterations failure
         // Lines 164-167
         // ========================================================================
+        /// <summary>
+        /// Tests that toi calculate failed on max iter
+        /// </summary>
         [Fact]
         public void TOI_Calculate_FailedOnMaxIter()
         {
@@ -1717,6 +2047,9 @@ namespace Alis.Core.Physic.Test
         // TimeOfImpact.TryPushBackIterations - push back touching
         // Lines 245-250
         // ========================================================================
+        /// <summary>
+        /// Tests that toi push back iter touching
+        /// </summary>
         [Fact]
         public void TOI_PushBackIter_Touching()
         {
@@ -1734,11 +2067,19 @@ namespace Alis.Core.Physic.Test
             Assert.NotNull(output);
         }
 
+        /// <summary>
+        /// Pres the solve disable contact using the specified c
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="m">The </param>
         private static void PreSolveDisableContact(Contact c, ref Manifold m) { c.Enabled = false; }
 
         // ========================================================================
         // WorldPhysic.SolveToi - disabled/not-touching contact (lines 578-584)
         // ========================================================================
+        /// <summary>
+        /// Tests that world solve toi disabled after update
+        /// </summary>
         [Fact]
         public void World_SolveToi_DisabledAfterUpdate()
         {
@@ -1758,6 +2099,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.CalculateContactAlpha - alpha0 advance paths (lines 741-749)
         // Setup unequal alpha0 values with contact
         // ========================================================================
+        /// <summary>
+        /// Tests that world calc contact alpha alpha 0 advance hit
+        /// </summary>
         [Fact]
         public void World_CalcContactAlpha_Alpha0Advance_Hit()
         {
@@ -1794,6 +2138,9 @@ namespace Alis.Core.Physic.Test
         // WorldPhysic.ProcessToiContact - all paths via reflection
         // Lines 793-856
         // ========================================================================
+        /// <summary>
+        /// Tests that world process toi contact reflection
+        /// </summary>
         [Fact]
         public void World_ProcessToiContact_Reflection()
         {
@@ -1827,6 +2174,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.TestPoint - returns true in lambda (line 1406)
         // ========================================================================
+        /// <summary>
+        /// Tests that world test point inside fixture
+        /// </summary>
         [Fact]
         public void World_TestPoint_InsideFixture()
         {
@@ -1841,6 +2191,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.CreateCapsule - polygon path (line 1662)
         // ========================================================================
+        /// <summary>
+        /// Tests that world create capsule direct
+        /// </summary>
         [Fact]
         public void World_CreateCapsule_Direct()
         {
@@ -1852,6 +2205,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.CreateRoundedRectangle - polygon path (line 1714)
         // ========================================================================
+        /// <summary>
+        /// Tests that world create rounded direct
+        /// </summary>
         [Fact]
         public void World_CreateRounded_Direct()
         {
@@ -1864,6 +2220,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager.AddPair - null contact (lines 180-181)
         // EdgeShape + Circle shape combination where Contact.Create returns null
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager add pair null
+        /// </summary>
         [Fact]
         public void ContactManager_AddPair_Null()
         {
@@ -1880,6 +2239,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ContactAlreadyExists - swapped match (lines 479-480)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager contact already exists swapped fixtures
+        /// </summary>
         [Fact]
         public void ContactManager_ContactAlreadyExists_SwappedFixtures()
         {
@@ -1896,6 +2258,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ProcessContactCollision - body not enabled (lines 543-544)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process collision disabled body
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessCollision_DisabledBody()
         {
@@ -1911,6 +2276,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.ProcessContactMultiCore - body disabled (lines 590-591)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process multi disabled body
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessMulti_DisabledBody()
         {
@@ -1928,6 +2296,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.TryResolveContactFilter - ContactFilter path (lines 655-664)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager try resolve contact filter path
+        /// </summary>
         [Fact]
         public void ContactManager_TryResolve_ContactFilterPath()
         {
@@ -1952,6 +2323,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager.UpdateContactWithLock - same lock order exception (lines 683-684)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager update lock same order ex
+        /// </summary>
         [Fact]
         public void ContactManager_UpdateLock_SameOrderEx()
         {
@@ -1970,6 +2344,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager.AcquireLocks - spin-wait (lines 717-721)
         // Via multicore step
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager acquire locks spin
+        /// </summary>
         [Fact]
         public void ContactManager_AcquireLocks_Spin()
         {
@@ -1986,6 +2363,9 @@ namespace Alis.Core.Physic.Test
         // Collision.ResolveBarycentricContact - early return when r > radius^2
         // Lines 224-225, 234-235, 247-248
         // ========================================================================
+        /// <summary>
+        /// Tests that collision barycentric early returns
+        /// </summary>
         [Fact]
         public void Collision_Barycentric_EarlyReturns()
         {
@@ -2004,6 +2384,9 @@ namespace Alis.Core.Physic.Test
         // Collision.FindMaxSeparation - local search finds better edge
         // Lines 853-856
         // ========================================================================
+        /// <summary>
+        /// Tests that collision find max sep better edge
+        /// </summary>
         [Fact]
         public void Collision_FindMaxSep_BetterEdge()
         {
@@ -2020,6 +2403,9 @@ namespace Alis.Core.Physic.Test
         // Collision.CollidePolygons - separationB > separationA (FaceB path)
         // Lines 319-320
         // ========================================================================
+        /// <summary>
+        /// Tests that collision polygons face b
+        /// </summary>
         [Fact]
         public void Collision_Polygons_FaceB()
         {
@@ -2035,6 +2421,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // EpCollider.Collide - back face culling paths (lines 1064-1073)
         // ========================================================================
+        /// <summary>
+        /// Tests that ep collider collide back face culling
+        /// </summary>
         [Fact]
         public void EpCollider_Collide_BackFaceCulling()
         {
@@ -2055,6 +2444,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // EpCollider.SelectPrimaryAxis - else branch (lines 1434-1435)
         // ========================================================================
+        /// <summary>
+        /// Tests that ep collider select primary else branch
+        /// </summary>
         [Fact]
         public void EpCollider_SelectPrimary_ElseBranch()
         {
@@ -2071,6 +2463,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island.SolveToi - max translation/rotation clamping (lines 599-609)
         // ========================================================================
+        /// <summary>
+        /// Tests that island solve toi clamping all
+        /// </summary>
         [Fact]
         public void Island_SolveToi_Clamping_All()
         {
@@ -2088,6 +2483,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island.Report - null contact manager (lines 665-666)
         // ========================================================================
+        /// <summary>
+        /// Tests that island report null contact manager
+        /// </summary>
         [Fact]
         public void Island_Report_NullContactManager()
         {
@@ -2108,6 +2506,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactSolver - multicore threshold paths (lines 326, 329-330, 532-533, etc.)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact solver multi core all
+        /// </summary>
         [Fact]
         public void ContactSolver_MultiCore_All()
         {
@@ -2133,6 +2534,9 @@ namespace Alis.Core.Physic.Test
         // RealExplosion.MergeCircularData - full path (lines 384-396)
         // Create scenario where raycasting wraps around 360 degrees
         // ========================================================================
+        /// <summary>
+        /// Tests that real explosion merge circular 360
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircular_360()
         {
@@ -2147,6 +2551,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // MarchingSquares - fail to find starting point (lines 307-309)
         // ========================================================================
+        /// <summary>
+        /// Tests that marching squares no starting point
+        /// </summary>
         [Fact]
         public void MarchingSquares_NoStartingPoint()
         {
@@ -2162,6 +2569,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // MarchingSquares - no matching vertex (lines 313-315)
         // ========================================================================
+        /// <summary>
+        /// Tests that marching squares no matching vertex
+        /// </summary>
         [Fact]
         public void MarchingSquares_NoMatchingVertex()
         {
@@ -2178,6 +2588,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - various edge event paths via CdtDecomposer
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep triangulate edge events
+        /// </summary>
         [Fact]
         public void DTSweep_Triangulate_EdgeEvents()
         {
@@ -2193,6 +2606,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - FinalizationConvexHull (line 342 path)
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep finalize convex hull
+        /// </summary>
         [Fact]
         public void DTSweep_FinalizeConvexHull()
         {
@@ -2208,6 +2624,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // DTSweep - Sweep with constraints
         // ========================================================================
+        /// <summary>
+        /// Tests that dt sweep sweep constraints
+        /// </summary>
         [Fact]
         public void DTSweep_SweepConstraints()
         {
@@ -2223,6 +2642,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Island - SolveToi clamping translation (lines 599-602)
         // ========================================================================
+        /// <summary>
+        /// Tests that island solve toi trans clamp
+        /// </summary>
         [Fact]
         public void Island_SolveToi_TransClamp()
         {
@@ -2242,6 +2664,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager - Direct ProcessContactCollision disabled body via reflection
         // Lines 543-544, 590-591
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process collision disabled direct
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessCollision_DisabledDirect()
         {
@@ -2269,6 +2694,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager - Direct ProcessContactMultiCore disabled body via reflection
         // Lines 590-591
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager process multi disabled direct
+        /// </summary>
         [Fact]
         public void ContactManager_ProcessMulti_DisabledDirect()
         {
@@ -2296,6 +2724,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager - Direct TryResolveContactFilter with ContactFilter reject
         // Lines 655-665
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager try resolve filter reject direct
+        /// </summary>
         [Fact]
         public void ContactManager_TryResolve_FilterRejectDirect()
         {
@@ -2323,6 +2754,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager - Direct UpdateContactWithLock same lock order
         // Lines 683-684
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager update lock same order direct
+        /// </summary>
         [Fact]
         public void ContactManager_UpdateLock_SameOrderDirect()
         {
@@ -2353,6 +2787,9 @@ namespace Alis.Core.Physic.Test
         // ContactManager.AcquireLocks - normal path
         // Lines 717-721 (normal acquire with no contention)
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager acquire locks normal
+        /// </summary>
         [Fact]
         public void ContactManager_AcquireLocks_Normal()
         {
@@ -2371,6 +2808,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // TimeOfImpact - TryHandleDistanceResult with touching result (line 195-199)
         // ========================================================================
+        /// <summary>
+        /// Tests that time of impact try handle touching
+        /// </summary>
         [Fact]
         public void TimeOfImpact_TryHandle_Touching()
         {
@@ -2392,6 +2832,9 @@ namespace Alis.Core.Physic.Test
         // RealExplosion.MergeCircularData - full path (lines 384-396)
         // Directly set up data to trigger merge
         // ========================================================================
+        /// <summary>
+        /// Tests that real explosion merge circular data full
+        /// </summary>
         [Fact]
         public void RealExplosion_MergeCircular_DataFull()
         {
@@ -2442,6 +2885,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // MarchingSquares - DetectSquares with no starting point (lines 307-309) 
         // ========================================================================
+        /// <summary>
+        /// Tests that marching squares detect no start
+        /// </summary>
         [Fact]
         public void MarchingSquares_Detect_NoStart()
         {
@@ -2458,6 +2904,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.CreateCapsule - direct polygon path (line 1662)
         // ========================================================================
+        /// <summary>
+        /// Tests that world create capsule small
+        /// </summary>
         [Fact]
         public void World_CreateCapsule_Small()
         {
@@ -2470,6 +2919,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic.CreateRoundedRectangle - direct polygon path (line 1714)
         // ========================================================================
+        /// <summary>
+        /// Tests that world create rounded small
+        /// </summary>
         [Fact]
         public void World_CreateRounded_Small()
         {
@@ -2481,6 +2933,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Final attempt: ProcessToiContact with controlled contact edge
         // ========================================================================
+        /// <summary>
+        /// Tests that process toi contact direct call
+        /// </summary>
         [Fact]
         public void ProcessToiContact_DirectCall()
         {
@@ -2525,6 +2980,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // TimeOfImpact max iteration edge case with extreme parameters
         // ========================================================================
+        /// <summary>
+        /// Tests that toi max iter failure
+        /// </summary>
         [Fact]
         public void TOI_MaxIter_Failure()
         {
@@ -2561,6 +3019,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Collision - FindMaxSeparation with search path (lines 853-856)
         // ========================================================================
+        /// <summary>
+        /// Tests that collision find max sep search full
+        /// </summary>
         [Fact]
         public void Collision_FindMaxSep_SearchFull()
         {
@@ -2576,6 +3037,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // Collision - ClipFaceB with np < 2 (lines 389-390, 397-398)
         // ========================================================================
+        /// <summary>
+        /// Tests that collision clip face few points
+        /// </summary>
         [Fact]
         public void Collision_ClipFace_FewPoints()
         {
@@ -2591,6 +3055,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager AddPair - tries to trigger null contact path
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager add pair direct
+        /// </summary>
         [Fact]
         public void ContactManager_AddPair_Direct()
         {
@@ -2605,6 +3072,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ContactManager AcquireLocks - run via multicore with simple body setup
         // ========================================================================
+        /// <summary>
+        /// Tests that contact manager multi core acquire
+        /// </summary>
         [Fact]
         public void ContactManager_MultiCore_Acquire()
         {
@@ -2622,6 +3092,9 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // WorldPhysic CalculateContactAlpha - bB.Alpha0 < bA.Alpha0 path (lines 746-749)
         // ========================================================================
+        /// <summary>
+        /// Tests that world calc alpha bb less than ba
+        /// </summary>
         [Fact]
         public void World_CalcAlpha_BB_LessThan_BA()
         {
@@ -2658,6 +3131,16 @@ namespace Alis.Core.Physic.Test
         // ========================================================================
         // ProcessToiContact - all remaining paths with validated contact creation
         // ========================================================================
+        /// <summary>
+        /// Finds the and process toi contact using the specified world
+        /// </summary>
+        /// <param name="world">The world</param>
+        /// <param name="bodyA">The body</param>
+        /// <param name="setEnabled">The set enabled</param>
+        /// <param name="setOtherIsland">The set other island</param>
+        /// <param name="setSensor">The set sensor</param>
+        /// <param name="setCapacity">The set capacity</param>
+        /// <returns>The called</returns>
         private static bool FindAndProcessToiContact(WorldPhysic world, Body bodyA, bool? setEnabled = null, bool? setOtherIsland = null, bool? setSensor = null, bool? setCapacity = null)
         {
             if (setCapacity == true)
@@ -2686,6 +3169,9 @@ namespace Alis.Core.Physic.Test
             return called;
         }
 
+        /// <summary>
+        /// Tests that process toi contact all paths
+        /// </summary>
         [Fact]
         public void ProcessToiContact_AllPaths()
         {

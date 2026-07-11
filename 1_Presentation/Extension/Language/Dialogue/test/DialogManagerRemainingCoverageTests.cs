@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Language.Dialogue.Test
 {
+    /// <summary>
+    /// The dialog manager remaining coverage tests class
+    /// </summary>
     public class DialogManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that get available options when dialog not in dictionary returns empty
+        /// </summary>
         [Fact]
         public void GetAvailableOptions_WhenDialogNotInDictionary_ReturnsEmpty()
         {
@@ -52,6 +58,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Empty(options);
         }
 
+        /// <summary>
+        /// Tests that show dialog with null action does not throw
+        /// </summary>
         [Fact]
         public void ShowDialog_WithNullAction_DoesNotThrow()
         {
@@ -67,6 +76,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that resume dialog when no context does not throw
+        /// </summary>
         [Fact]
         public void ResumeDialog_WhenNoContext_DoesNotThrow()
         {
@@ -77,6 +89,9 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that select option with null action does not throw
+        /// </summary>
         [Fact]
         public void SelectOption_WithNullAction_DoesNotThrow()
         {

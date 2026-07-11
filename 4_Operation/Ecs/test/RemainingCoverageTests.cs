@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The remaining coverage tests class
+    /// </summary>
     public class RemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that entity with 8 components exercises all paths
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void EntityWith8Components_ExercisesAllPaths()
         {
@@ -24,6 +30,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, count);
         }
 
+        /// <summary>
+        /// Tests that chunk tuple exercises chunk paths
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ChunkTuple_ExercisesChunkPaths()
         {
@@ -33,6 +42,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(2, chunk.Span2.Length);
         }
 
+        /// <summary>
+        /// Tests that scene update exercises update paths
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneUpdate_ExercisesUpdatePaths()
         {
@@ -42,6 +54,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that scene update with multiple types exercises all update variants
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneUpdateWithMultipleTypes_ExercisesAllUpdateVariants()
         {
@@ -51,6 +66,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that scene query with include disabled works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneQuery_WithIncludeDisabled_Works()
         {
@@ -60,6 +78,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that scene query with not filters correctly
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void SceneQuery_WithNot_FiltersCorrectly()
         {

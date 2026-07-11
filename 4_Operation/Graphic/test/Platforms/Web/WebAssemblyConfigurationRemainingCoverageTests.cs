@@ -45,6 +45,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatformFactory.Create(WebAssemblyConfiguration)
         // =====================================================================
 
+        /// <summary>
+        /// Tests that create with valid config throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithValidConfig_ThrowsInvalidOperationException()
         {
@@ -54,6 +57,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("Failed to initialize WebAssembly platform", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that create with config with icon path throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithConfigWithIconPath_ThrowsInvalidOperationException()
         {
@@ -65,6 +71,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.Create(config));
         }
 
+        /// <summary>
+        /// Tests that create with config with size throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithConfigWithSize_ThrowsInvalidOperationException()
         {
@@ -77,6 +86,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.Create(config));
         }
 
+        /// <summary>
+        /// Tests that create with config with fullscreen throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithConfigWithFullscreen_ThrowsInvalidOperationException()
         {
@@ -88,6 +100,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.Create(config));
         }
 
+        /// <summary>
+        /// Tests that create with config with pointer lock throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithConfigWithPointerLock_ThrowsInvalidOperationException()
         {
@@ -103,6 +118,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatformFactory.Create(Action<WebAssemblyConfigurationBuilder>)
         // =====================================================================
 
+        /// <summary>
+        /// Tests that create with action valid action throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithAction_ValidAction_ThrowsInvalidOperationException()
         {
@@ -113,6 +131,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                         .WithVSync(true)));
         }
 
+        /// <summary>
+        /// Tests that create with action chained full config throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Create_WithAction_ChainedFullConfig_ThrowsInvalidOperationException()
         {
@@ -141,6 +162,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatformFactory.CreateForGameDevelopment
         // =====================================================================
 
+        /// <summary>
+        /// Tests that create for game development throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForGameDevelopment_ThrowsInvalidOperationException()
         {
@@ -148,6 +172,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.CreateForGameDevelopment());
         }
 
+        /// <summary>
+        /// Tests that create for game development with custom size throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForGameDevelopment_WithCustomSize_ThrowsInvalidOperationException()
         {
@@ -159,6 +186,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatformFactory.CreateForLowEndDevice
         // =====================================================================
 
+        /// <summary>
+        /// Tests that create for low end device throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForLowEndDevice_ThrowsInvalidOperationException()
         {
@@ -166,6 +196,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.CreateForLowEndDevice());
         }
 
+        /// <summary>
+        /// Tests that create for low end device with custom size throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForLowEndDevice_WithCustomSize_ThrowsInvalidOperationException()
         {
@@ -177,6 +210,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatformFactory.CreateForHighEndDevice
         // =====================================================================
 
+        /// <summary>
+        /// Tests that create for high end device throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForHighEndDevice_ThrowsInvalidOperationException()
         {
@@ -184,6 +220,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 () => WebAssemblyPlatformFactory.CreateForHighEndDevice());
         }
 
+        /// <summary>
+        /// Tests that create for high end device with custom size throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CreateForHighEndDevice_WithCustomSize_ThrowsInvalidOperationException()
         {

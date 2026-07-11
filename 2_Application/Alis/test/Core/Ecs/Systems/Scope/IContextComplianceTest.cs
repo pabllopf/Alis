@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Scope
 {
+    /// <summary>
+    /// The context compliance test class
+    /// </summary>
     public class IContextComplianceTest
     {
+        /// <summary>
+        /// Tests that interface is empty marker
+        /// </summary>
         [Fact]
         public void Interface_IsEmptyMarker()
         {
@@ -12,6 +18,9 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             Assert.Empty(methods);
         }
 
+        /// <summary>
+        /// Tests that interface can be implemented
+        /// </summary>
         [Fact]
         public void Interface_CanBeImplemented()
         {
@@ -19,6 +28,10 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
             Assert.IsAssignableFrom<IContext>(context);
         }
 
+        /// <summary>
+        /// The test context class
+        /// </summary>
+        /// <seealso cref="IContext"/>
         private sealed class TestContext : IContext { }
     }
 }

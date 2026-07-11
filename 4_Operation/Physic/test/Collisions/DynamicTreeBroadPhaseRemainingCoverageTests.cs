@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The dynamic tree broad phase remaining coverage tests class
+    /// </summary>
     public class DynamicTreeBroadPhaseRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase instantiate and use succeeds
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_InstantiateAndUse_Succeeds()
         {
@@ -26,6 +32,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(fat.LowerBound.X <= aabb.LowerBound.X);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase update pairs works
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_UpdatePairs_Works()
         {
@@ -46,6 +55,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.NotEmpty(pairs);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase touch proxy and query works
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_TouchProxyAndQuery_Works()
         {
@@ -68,6 +80,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Contains(proxyId, hits);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase ray cast works
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_RayCast_Works()
         {
@@ -95,6 +110,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, hitCount);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase test overlap works
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_TestOverlap_Works()
         {
@@ -108,6 +126,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(broadPhase.TestOverlap(idA, idB));
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase remove proxy decrements count
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_RemoveProxy_DecrementsCount()
         {
@@ -120,6 +141,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, broadPhase.ProxyCount);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase move proxy buffers move
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_MoveProxy_BuffersMove()
         {
@@ -134,6 +158,9 @@ namespace Alis.Core.Physic.Test.Collisions
             broadPhase.MoveProxy(proxyId, ref moved, Vector2F.Zero);
         }
 
+        /// <summary>
+        /// Tests that non generic dynamic tree broad phase shift origin does not throw
+        /// </summary>
         [Fact]
         public void NonGenericDynamicTreeBroadPhase_ShiftOrigin_DoesNotThrow()
         {
@@ -144,6 +171,9 @@ namespace Alis.Core.Physic.Test.Collisions
             broadPhase.ShiftOrigin(new Vector2F(10.0f, 10.0f));
         }
 
+        /// <summary>
+        /// Tests that update pairs duplicate pairs are skipped
+        /// </summary>
         [Fact]
         public void UpdatePairs_DuplicatePairsAreSkipped()
         {
@@ -174,6 +204,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that update pairs with empty move buffer does not call callback
+        /// </summary>
         [Fact]
         public void UpdatePairs_WithEmptyMoveBuffer_DoesNotCallCallback()
         {
@@ -185,6 +218,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(called);
         }
 
+        /// <summary>
+        /// Tests that update pairs with no overlap reports no pairs
+        /// </summary>
         [Fact]
         public void UpdatePairs_WithNoOverlap_ReportsNoPairs()
         {
@@ -203,6 +239,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Empty(pairs);
         }
 
+        /// <summary>
+        /// Tests that query multiple overlapping proxies returns all
+        /// </summary>
         [Fact]
         public void Query_MultipleOverlappingProxies_ReturnsAll()
         {
@@ -227,6 +266,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(10, hits.Count);
         }
 
+        /// <summary>
+        /// Tests that query with empty tree does not throw
+        /// </summary>
         [Fact]
         public void Query_WithEmptyTree_DoesNotThrow()
         {
@@ -236,6 +278,9 @@ namespace Alis.Core.Physic.Test.Collisions
             broadPhase.Query(id => true, ref query);
         }
 
+        /// <summary>
+        /// Tests that tree properties with multiple proxies return expected values
+        /// </summary>
         [Fact]
         public void TreeProperties_WithMultipleProxies_ReturnExpectedValues()
         {
@@ -253,6 +298,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(broadPhase.TreeHeight >= 0);
         }
 
+        /// <summary>
+        /// Tests that add proxy many proxies causes move and pair buffer growth
+        /// </summary>
         [Fact]
         public void AddProxy_ManyProxies_CausesMoveAndPairBufferGrowth()
         {
@@ -274,6 +322,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(pairCount > 0);
         }
 
+        /// <summary>
+        /// Tests that remove and re add proxy reuses slot
+        /// </summary>
         [Fact]
         public void RemoveAndReAddProxy_ReusesSlot()
         {
@@ -290,6 +341,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, broadPhase.ProxyCount);
         }
 
+        /// <summary>
+        /// Tests that move proxy same position does not buffer move
+        /// </summary>
         [Fact]
         public void MoveProxy_SamePosition_DoesNotBufferMove()
         {
@@ -307,6 +361,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Empty(pairs);
         }
 
+        /// <summary>
+        /// Tests that test overlap both directions returns same
+        /// </summary>
         [Fact]
         public void TestOverlap_BothDirections_ReturnsSame()
         {
@@ -320,6 +377,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(broadPhase.TestOverlap(idA, idB), broadPhase.TestOverlap(idB, idA));
         }
 
+        /// <summary>
+        /// Tests that broad phase query callback stops when returns false
+        /// </summary>
         [Fact]
         public void BroadPhaseQueryCallback_StopsWhenReturnsFalse()
         {
@@ -344,6 +404,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, hitCount);
         }
 
+        /// <summary>
+        /// Tests that ray cast separation axis skips node
+        /// </summary>
         [Fact]
         public void RayCast_SeparationAxis_SkipsNode()
         {

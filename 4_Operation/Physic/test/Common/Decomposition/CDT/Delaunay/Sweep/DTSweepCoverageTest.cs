@@ -12,15 +12,27 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 {
+    /// <summary>
+    /// The dt sweep coverage test class
+    /// </summary>
     public class DTSweepCoverageTest
     {
+        /// <summary>
+        /// The dt sweep
+        /// </summary>
         private static Type _type = typeof(DtSweep);
+        /// <summary>
+        /// The static
+        /// </summary>
         private static BindingFlags _flags = BindingFlags.NonPublic | BindingFlags.Static;
 
         // ========================================================================
         // INTEGRATION TESTS (via Triangulate)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate with colinear points does not throw
+        /// </summary>
         [Fact]
         public void Triangulate_WithColinearPoints_DoesNotThrow()
         {
@@ -42,6 +54,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(pointSet.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate non convex point set produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_NonConvexPointSet_ProducesTriangles()
         {
@@ -64,6 +79,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 4);
         }
 
+        /// <summary>
+        /// Tests that triangulate dense point set produces many triangles
+        /// </summary>
         [Fact]
         public void Triangulate_DensePointSet_ProducesManyTriangles()
         {
@@ -85,6 +103,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 10);
         }
 
+        /// <summary>
+        /// Tests that triangulate spiral shape produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_SpiralShape_ProducesTriangles()
         {
@@ -111,6 +132,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 8);
         }
 
+        /// <summary>
+        /// Tests that triangulate single triangle constrained works
+        /// </summary>
         [Fact]
         public void Triangulate_SingleTriangleConstrained_Works()
         {
@@ -137,6 +161,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(constrainedPS.GetTriangles.Count >= 1);
         }
 
+        /// <summary>
+        /// Tests that triangulate convex polygon via point set works
+        /// </summary>
         [Fact]
         public void Triangulate_ConvexPolygonViaPointSet_Works()
         {
@@ -158,6 +185,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 3);
         }
 
+        /// <summary>
+        /// Tests that triangulate l shape polygon produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_LShapePolygon_ProducesTriangles()
         {
@@ -180,6 +210,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 4);
         }
 
+        /// <summary>
+        /// Tests that triangulate large point set does not throw
+        /// </summary>
         [Fact]
         public void Triangulate_LargePointSet_DoesNotThrow()
         {
@@ -197,6 +230,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(pointSet.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate two separated clusters produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_TwoSeparatedClusters_ProducesTriangles()
         {
@@ -219,6 +255,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 4);
         }
 
+        /// <summary>
+        /// Tests that triangulate with constrained edge at boundary works
+        /// </summary>
         [Fact]
         public void Triangulate_WithConstrainedEdgeAtBoundary_Works()
         {
@@ -244,6 +283,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(constrainedPS.GetTriangles.Count >= 2);
         }
 
+        /// <summary>
+        /// Tests that triangulate with valid constrained edges produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_WithValidConstrainedEdges_ProducesTriangles()
         {
@@ -269,6 +311,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(constrainedPS.GetTriangles.Count >= 2);
         }
 
+        /// <summary>
+        /// Tests that triangulate polygon with many points does not throw
+        /// </summary>
         [Fact]
         public void Triangulate_PolygonWithManyPoints_DoesNotThrow()
         {
@@ -288,6 +333,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(pointSet.GetTriangles.Count >= 13);
         }
 
+        /// <summary>
+        /// Tests that triangulate constrained with vertical edges produces triangles
+        /// </summary>
         [Fact]
         public void Triangulate_ConstrainedWithVerticalEdges_ProducesTriangles()
         {
@@ -315,6 +363,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(constrainedPS.GetTriangles.Count >= 3);
         }
 
+        /// <summary>
+        /// Tests that triangulate constrained with multiple non intersecting works
+        /// </summary>
         [Fact]
         public void Triangulate_ConstrainedWithMultipleNonIntersecting_Works()
         {
@@ -345,6 +396,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // REFLECTION TESTS (private methods)
         // ========================================================================
 
+        /// <summary>
+        /// Gets the method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="types">The types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetMethod(string name, params Type[] types)
         {
             return _type.GetMethod(name, _flags, null, types, null);
@@ -352,6 +409,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 
         // ---------- Angle ----------
         // Computes atan2(dot(pa-origin, pb-origin), cross(pa-origin, pb-origin))
+        /// <summary>
+        /// Tests that angle with orthogonal vectors computes zero
+        /// </summary>
         [Fact]
         public void Angle_WithOrthogonalVectors_ComputesZero()
         {
@@ -363,6 +423,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.Equal(0, result, 12);
         }
 
+        /// <summary>
+        /// Tests that angle with same vectors computes pi over 2
+        /// </summary>
         [Fact]
         public void Angle_WithSameVectors_ComputesPiOver2()
         {
@@ -374,6 +437,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.Equal(Math.PI / 2, result, 12);
         }
 
+        /// <summary>
+        /// Tests that angle with reversed order pa pb changes sign
+        /// </summary>
         [Fact]
         public void Angle_WithReversedOrderPaPb_ChangesSign()
         {
@@ -387,6 +453,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- AngleExceeds90Degrees ----------
+        /// <summary>
+        /// Tests that angle exceeds 90 degrees with acute angle returns false
+        /// </summary>
         [Fact]
         public void AngleExceeds90Degrees_WithAcuteAngle_ReturnsFalse()
         {
@@ -398,6 +467,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that angle exceeds 90 degrees with obtuse angle returns true
+        /// </summary>
         [Fact]
         public void AngleExceeds90Degrees_WithObtuseAngle_ReturnsTrue()
         {
@@ -411,6 +483,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- AngleExceedsPlus90DegreesOrIsNegative ----------
+        /// <summary>
+        /// Tests that angle exceeds plus 90 degrees or is negative with negative angle returns true
+        /// </summary>
         [Fact]
         public void AngleExceedsPlus90DegreesOrIsNegative_WithNegativeAngle_ReturnsTrue()
         {
@@ -423,6 +498,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that angle exceeds plus 90 degrees or is negative with small angle returns false
+        /// </summary>
         [Fact]
         public void AngleExceedsPlus90DegreesOrIsNegative_WithSmallAngle_ReturnsFalse()
         {
@@ -436,6 +514,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- HoleAngle ----------
+        /// <summary>
+        /// Tests that hole angle with three nodes returns angle
+        /// </summary>
         [Fact]
         public void HoleAngle_WithThreeNodes_ReturnsAngle()
         {
@@ -451,6 +532,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- BasinAngle ----------
+        /// <summary>
+        /// Tests that basin angle with three nodes forward returns angle
+        /// </summary>
         [Fact]
         public void BasinAngle_WithThreeNodesForward_ReturnsAngle()
         {
@@ -463,6 +547,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- IsEdgeSideOfTriangle ----------
+        /// <summary>
+        /// Tests that is edge side of triangle with existing edge returns true
+        /// </summary>
         [Fact]
         public void IsEdgeSideOfTriangle_WithExistingEdge_ReturnsTrue()
         {
@@ -476,6 +563,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that is edge side of triangle with non existing edge returns false
+        /// </summary>
         [Fact]
         public void IsEdgeSideOfTriangle_WithNonExistingEdge_ReturnsFalse()
         {
@@ -490,6 +580,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is edge side of triangle with neighbor having edge marks neighbor
+        /// </summary>
         [Fact]
         public void IsEdgeSideOfTriangle_WithNeighborHavingEdge_MarksNeighbor()
         {
@@ -508,6 +601,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- Legalize ----------
+        /// <summary>
+        /// Tests that legalize with no edge delaunay returns false
+        /// </summary>
         [Fact]
         public void Legalize_WithNoEdgeDelaunay_ReturnsFalse()
         {
@@ -523,6 +619,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- LegalizeEdge ----------
+        /// <summary>
+        /// Tests that legalize edge with null neighbor returns false
+        /// </summary>
         [Fact]
         public void LegalizeEdge_WithNullNeighbor_ReturnsFalse()
         {
@@ -537,6 +636,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that legalize edge with constrained edge returns false
+        /// </summary>
         [Fact]
         public void LegalizeEdge_WithConstrainedEdge_ReturnsFalse()
         {
@@ -557,6 +659,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- RotateTrianglePair ----------
+        /// <summary>
+        /// Tests that rotate triangle pair with all neighbors rotates correctly
+        /// </summary>
         [Fact]
         public void RotateTrianglePair_WithAllNeighbors_RotatesCorrectly()
         {
@@ -574,6 +679,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- LargeHole_DontFill ----------
+        /// <summary>
+        /// Tests that large hole dont fill with small angle returns false
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_WithSmallAngle_ReturnsFalse()
         {
@@ -585,6 +693,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that large hole dont fill with large angle and null next prev returns true
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_WithLargeAngleAndNullNextPrev_ReturnsTrue()
         {
@@ -600,6 +711,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- NextFlipTriangle ----------
+        /// <summary>
+        /// Tests that next flip triangle with ccw orientation legalizes ot
+        /// </summary>
         [Fact]
         public void NextFlipTriangle_WithCcwOrientation_LegalizesOt()
         {
@@ -622,6 +736,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.Same(t, result);
         }
 
+        /// <summary>
+        /// Tests that next flip triangle with cw orientation legalizes t
+        /// </summary>
         [Fact]
         public void NextFlipTriangle_WithCwOrientation_LegalizesT()
         {
@@ -647,6 +764,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // ---------- Fill (covered indirectly by Triangulate integration tests) ----------
 
         // ---------- IsShallow ----------
+        /// <summary>
+        /// Tests that is shallow with width greater than height returns true
+        /// </summary>
         [Fact]
         public void IsShallow_WithWidthGreaterThanHeight_ReturnsTrue()
         {
@@ -661,6 +781,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that is shallow with width less than height returns false
+        /// </summary>
         [Fact]
         public void IsShallow_WithWidthLessThanHeight_ReturnsFalse()
         {
@@ -675,6 +798,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is shallow with right highest returns true
+        /// </summary>
         [Fact]
         public void IsShallow_WithRightHighest_ReturnsTrue()
         {
@@ -690,6 +816,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- FillBasin ----------
+        /// <summary>
+        /// Tests that fill basin with bottom node equals left node returns early
+        /// </summary>
         [Fact]
         public void FillBasin_WithBottomNodeEqualsLeftNode_ReturnsEarly()
         {
@@ -709,6 +838,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- FillBasinReq ----------
+        /// <summary>
+        /// Tests that fill basin req with shallow returns early
+        /// </summary>
         [Fact]
         public void FillBasinReq_WithShallow_ReturnsEarly()
         {
@@ -725,6 +857,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- FillAdvancingFront ----------
+        /// <summary>
+        /// Tests that fill advancing front with node executes
+        /// </summary>
         [Fact]
         public void FillAdvancingFront_WithNode_Executes()
         {
@@ -742,6 +877,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- RotateTrianglePair advanced ----------
+        /// <summary>
+        /// Tests that rotate triangle pair with n 1 n 2 n 3 n 4 rotates correctly
+        /// </summary>
         [Fact]
         public void RotateTrianglePair_WithN1N2N3N4_RotatesCorrectly()
         {
@@ -776,6 +914,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- Additional Edge Coverage ----------
+        /// <summary>
+        /// Tests that next flip point with cw orientation returns ccw point
+        /// </summary>
         [Fact]
         public void NextFlipPoint_WithCwOrientation_ReturnsCcwPoint()
         {
@@ -797,6 +938,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(ot.Contains(result));
         }
 
+        /// <summary>
+        /// Tests that triangulate random constrained points does not throw
+        /// </summary>
         [Fact]
         public void Triangulate_RandomConstrainedPoints_DoesNotThrow()
         {
@@ -820,6 +964,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(cps.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate constrained with many internal edges works
+        /// </summary>
         [Fact]
         public void Triangulate_ConstrainedWithManyInternalEdges_Works()
         {
@@ -847,6 +994,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.True(cps.GetTriangles.Count >= 6);
         }
 
+        /// <summary>
+        /// Tests that flip scan edge event throws on bad input
+        /// </summary>
         [Fact]
         public void FlipScanEdgeEvent_ThrowsOnBadInput()
         {
@@ -876,6 +1026,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
 
         // ---------- LargeHole_DontFill additional coverage ----------
+        /// <summary>
+        /// Tests that large hole dont fill with prev 2 null and next 2 not null returns true
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_WithPrev2NullAndNext2NotNull_ReturnsTrue()
         {
@@ -897,6 +1050,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillEdgeEvent — covers Right==true and Right==false branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill edge event right true calls fill right above edge event
+        /// </summary>
         [Fact]
         public void FillEdgeEvent_RightTrue_CallsFillRightAboveEdgeEvent()
         {
@@ -924,6 +1080,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             m.Invoke(null, new object[] { tcx, tcx.EdgeEvent.ConstrainedEdge, node });
         }
 
+        /// <summary>
+        /// Tests that fill edge event right false calls fill left above edge event
+        /// </summary>
         [Fact]
         public void FillEdgeEvent_RightFalse_CallsFillLeftAboveEdgeEvent()
         {
@@ -953,6 +1112,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillRightAboveEdgeEvent — covers while loop branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill right above edge event o 1 ccw fills below
+        /// </summary>
         [Fact]
         public void FillRightAboveEdgeEvent_O1Ccw_FillsBelow()
         {
@@ -977,6 +1139,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             m.Invoke(null, new object[] { tcx, tcx.EdgeEvent.ConstrainedEdge, node });
         }
 
+        /// <summary>
+        /// Tests that fill right above edge event o 1 not ccw advances node
+        /// </summary>
         [Fact]
         public void FillRightAboveEdgeEvent_O1NotCcw_AdvancesNode()
         {
@@ -1005,6 +1170,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // NextFlipPoint — Ccw branch (PointCw of op)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that next flip point with ccw orientation returns cw point
+        /// </summary>
         [Fact]
         public void NextFlipPoint_WithCcwOrientation_ReturnsCwPoint()
         {
@@ -1026,6 +1194,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Concave shape exercises fill and edge event paths
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate concave shape covers fill and edge events
+        /// </summary>
         [Fact]
         public void Triangulate_ConcaveShape_CoversFillAndEdgeEvents()
         {
@@ -1052,6 +1223,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Zigzag pattern triggers FillAbove events
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate zigzag pattern covers fill above events
+        /// </summary>
         [Fact]
         public void Triangulate_ZigzagPattern_CoversFillAboveEvents()
         {
@@ -1079,6 +1253,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FlipEdgeEvent — via integration with constrained edges
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate with crossing constrained edges covers flip edge
+        /// </summary>
         [Fact]
         public void Triangulate_WithCrossingConstrainedEdges_CoversFlipEdge()
         {
@@ -1111,6 +1288,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // PointEvent — covers the X <= node.X + Epsilon branch (Fill called)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate duplicate x values covers point event fill branch
+        /// </summary>
         [Fact]
         public void Triangulate_DuplicateXValues_CoversPointEventFillBranch()
         {
@@ -1135,6 +1315,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillBasin — covers basin filling logic
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill basin with valid basin fills triangles
+        /// </summary>
         [Fact]
         public void FillBasin_WithValidBasin_FillsTriangles()
         {
@@ -1165,6 +1348,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillBasinReq — recursive filling
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill basin req with non shallow node fills recursively
+        /// </summary>
         [Fact]
         public void FillBasinReq_WithNonShallowNode_FillsRecursively()
         {
@@ -1192,6 +1378,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             m.Invoke(null, new object[] { tcx, nM });
         }
 
+        /// <summary>
+        /// Fills the basin context using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="bottom">The bottom</param>
         private static void FillBasinContext(DtSweepContext tcx, AdvancingFrontNode bottom)
         {
             // Helper to ensure basin state is coherent for FillBasinReq
@@ -1205,15 +1396,46 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             }
         }
 
+        /// <summary>
+        /// The mock triangulatable class
+        /// </summary>
+        /// <seealso cref="ITriangulatable"/>
         private class MockTriangulatable : ITriangulatable
         {
+            /// <summary>
+            /// The delaunay triangle
+            /// </summary>
             public readonly List<DelaunayTriangle> Triangles = new List<DelaunayTriangle>();
+            /// <summary>
+            /// Gets the value of the get points
+            /// </summary>
             public IList<TriangulationPoint> GetPoints => new List<TriangulationPoint>();
+            /// <summary>
+            /// Gets the value of the get triangles
+            /// </summary>
             public IList<DelaunayTriangle> GetTriangles => Triangles.AsReadOnly();
+            /// <summary>
+            /// Gets the value of the triangulation mode
+            /// </summary>
             public TriangulationMode TriangulationMode => TriangulationMode.Unconstrained;
+            /// <summary>
+            /// Prepares the triangulation using the specified tcx
+            /// </summary>
+            /// <param name="tcx">The tcx</param>
             public void PrepareTriangulation(TriangulationContext tcx) { }
+            /// <summary>
+            /// Adds the triangle using the specified t
+            /// </summary>
+            /// <param name="t">The </param>
             public void AddTriangle(DelaunayTriangle t) => Triangles.Add(t);
+            /// <summary>
+            /// Adds the triangles using the specified tris
+            /// </summary>
+            /// <param name="tris">The tris</param>
             public void AddTriangles(IEnumerable<DelaunayTriangle> tris) => Triangles.AddRange(tris);
+            /// <summary>
+            /// Clears the triangles
+            /// </summary>
             public void ClearTriangles() => Triangles.Clear();
         }
 
@@ -2439,6 +2661,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(tcx.Basin);
         }
 
+        /// <summary>
+        /// Setup the basin and front using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
+        /// <param name="nodes">The nodes</param>
+        /// <param name="pts">The pts</param>
+        /// <param name="frontHead">The front head</param>
+        /// <param name="frontTail">The front tail</param>
         private static void SetupBasinAndFront(DtSweepContext tcx,
             AdvancingFrontNode[] nodes, TriangulationPoint[] pts,
             AdvancingFrontNode frontHead, AdvancingFrontNode frontTail)
@@ -2758,6 +2988,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // IsEdgeSideOfTriangle — neighbor is null (line 487)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that is edge side of triangle with neighbor null marks edge only on self
+        /// </summary>
         [Fact]
         public void IsEdgeSideOfTriangle_WithNeighborNull_MarksEdgeOnlyOnSelf()
         {
@@ -2776,6 +3009,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillBasinReq — prev == LeftNode with Cw orientation (early return line 912)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill basin req prev equals left node cw returns early
+        /// </summary>
         [Fact]
         public void FillBasinReq_PrevEqualsLeftNodeCw_ReturnsEarly()
         {
@@ -2803,6 +3039,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillBasinReq — next == RightNode with Ccw orientation (line 922-923)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill basin req next equals right node ccw returns early
+        /// </summary>
         [Fact]
         public void FillBasinReq_NextEqualsRightNodeCcw_ReturnsEarly()
         {
@@ -2832,6 +3071,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // (line 776-778 path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that large hole dont fill with next 2 present but not exceeding returns false
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_WithNext2PresentButNotExceeding_ReturnsFalse()
         {

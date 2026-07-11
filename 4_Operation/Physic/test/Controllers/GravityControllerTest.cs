@@ -770,6 +770,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity distance squared applies force
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityDistanceSquared_AppliesForce()
         {

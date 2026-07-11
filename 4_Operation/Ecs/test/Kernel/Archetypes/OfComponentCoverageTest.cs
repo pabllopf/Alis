@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The of component coverage test class
+    /// </summary>
     public class OfComponentCoverageTest
     {
+        /// <summary>
+        /// Tests that multiple arities compile and execute
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void MultipleArities_CompileAndExecute()
         {
@@ -17,6 +23,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(scene);
         }
 
+        /// <summary>
+        /// Tests that archetype edge key is value type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ArchetypeEdgeKey_IsValueType()
         {

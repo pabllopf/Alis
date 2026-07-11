@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The collision remaining coverage tests class
+    /// </summary>
     public class CollisionRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that collide polygons find best edge next side local search increment pos
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdgeNextSide_LocalSearchIncrementPos()
         {
@@ -24,6 +30,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide polygons find best edge direct return
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdgeDirectReturn()
         {
@@ -38,6 +47,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that collide polygons flip swap features
+        /// </summary>
         [Fact]
         public void CollidePolygons_FlipSwapFeatures()
         {
@@ -52,6 +64,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon build manifold points edge b path
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BuildManifoldPoints_EdgeBPath()
         {
@@ -71,6 +86,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon select front lower limit no adjacents
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectFrontLowerLimit_NoAdjacents()
         {
@@ -88,6 +106,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region a with previous edge no early return
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionA_WithPreviousEdge_NoEarlyReturn()
         {
@@ -105,6 +126,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region b with next edge no early return
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionB_WithNextEdge_NoEarlyReturn()
         {
@@ -122,6 +146,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab normal flip produces contact
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_NormalFlip_ProducesContact()
         {
@@ -138,6 +165,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face compute limits back path
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_ComputeLimitsBackPath()
         {
@@ -157,6 +187,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide polygons second separation exceeds total radius
+        /// </summary>
         [Fact]
         public void CollidePolygons_SecondSeparationExceedsTotalRadius()
         {
@@ -171,6 +204,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide polygons both separations exceed total radius
+        /// </summary>
         [Fact]
         public void CollidePolygons_BothSeparationsExceedTotalRadius()
         {
@@ -185,6 +221,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 0 only non convex back face
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex0Only_NonConvex_BackFace()
         {
@@ -203,6 +242,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 3 only non convex front face
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex3Only_NonConvex_FrontFace()
         {

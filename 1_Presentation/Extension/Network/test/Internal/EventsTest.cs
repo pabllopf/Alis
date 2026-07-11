@@ -1155,8 +1155,16 @@ namespace Alis.Extension.Network.Test.Internal
 
             Events.Log.InvalidStateBeforeCloseOutput(guid, webSocketState);
         }
+        /// <summary>
+        /// The test event listener class
+        /// </summary>
+        /// <seealso cref="EventListener"/>
         private sealed class TestEventListener : EventListener
         {
+            /// <summary>
+            /// Ons the event source created using the specified event source
+            /// </summary>
+            /// <param name="eventSource">The event source</param>
             protected override void OnEventSourceCreated(EventSource eventSource)
             {
                 if (eventSource.Name == "Ninja-WebSockets")
@@ -1166,6 +1174,9 @@ namespace Alis.Extension.Network.Test.Internal
             }
         }
 
+        /// <summary>
+        /// Tests that client connecting to ip address event enabled writes event
+        /// </summary>
         [Fact]
         public void ClientConnectingToIpAddress_EventEnabled_WritesEvent()
         {
@@ -1173,6 +1184,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ClientConnectingToIpAddress(Guid.NewGuid(), "127.0.0.1", 8080);
         }
 
+        /// <summary>
+        /// Tests that client connecting to host event enabled writes event
+        /// </summary>
         [Fact]
         public void ClientConnectingToHost_EventEnabled_WritesEvent()
         {
@@ -1180,6 +1194,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ClientConnectingToHost(Guid.NewGuid(), "localhost", 8080);
         }
 
+        /// <summary>
+        /// Tests that attemting to secure ssl connection event enabled writes event
+        /// </summary>
         [Fact]
         public void AttemtingToSecureSslConnection_EventEnabled_WritesEvent()
         {
@@ -1187,6 +1204,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.AttemtingToSecureSslConnection(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that connection secured event enabled writes event
+        /// </summary>
         [Fact]
         public void ConnectionSecured_EventEnabled_WritesEvent()
         {
@@ -1194,6 +1214,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ConnectionSecured(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that connection not secure event enabled writes event
+        /// </summary>
         [Fact]
         public void ConnectionNotSecure_EventEnabled_WritesEvent()
         {
@@ -1201,6 +1224,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ConnectionNotSecure(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that ssl certificate error event enabled writes event
+        /// </summary>
         [Fact]
         public void SslCertificateError_EventEnabled_WritesEvent()
         {
@@ -1208,6 +1234,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.SslCertificateError(SslPolicyErrors.RemoteCertificateChainErrors);
         }
 
+        /// <summary>
+        /// Tests that handshake sent event enabled writes event
+        /// </summary>
         [Fact]
         public void HandshakeSent_EventEnabled_WritesEvent()
         {
@@ -1215,6 +1244,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.HandshakeSent(Guid.NewGuid(), "header");
         }
 
+        /// <summary>
+        /// Tests that reading http response event enabled writes event
+        /// </summary>
         [Fact]
         public void ReadingHttpResponse_EventEnabled_WritesEvent()
         {
@@ -1222,6 +1254,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ReadingHttpResponse(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that read http response error event enabled writes event
+        /// </summary>
         [Fact]
         public void ReadHttpResponseError_EventEnabled_WritesEvent()
         {
@@ -1229,6 +1264,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ReadHttpResponseError(Guid.NewGuid(), "error");
         }
 
+        /// <summary>
+        /// Tests that invalid http response code event enabled writes event
+        /// </summary>
         [Fact]
         public void InvalidHttpResponseCode_EventEnabled_WritesEvent()
         {
@@ -1236,6 +1274,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), "response");
         }
 
+        /// <summary>
+        /// Tests that handshake failure event enabled writes event
+        /// </summary>
         [Fact]
         public void HandshakeFailure_EventEnabled_WritesEvent()
         {
@@ -1243,6 +1284,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.HandshakeFailure(Guid.NewGuid(), "message");
         }
 
+        /// <summary>
+        /// Tests that client handshake success event enabled writes event
+        /// </summary>
         [Fact]
         public void ClientHandshakeSuccess_EventEnabled_WritesEvent()
         {
@@ -1250,6 +1294,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ClientHandshakeSuccess(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that server handshake success event enabled writes event
+        /// </summary>
         [Fact]
         public void ServerHandshakeSuccess_EventEnabled_WritesEvent()
         {
@@ -1257,6 +1304,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ServerHandshakeSuccess(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that accept web socket started event enabled writes event
+        /// </summary>
         [Fact]
         public void AcceptWebSocketStarted_EventEnabled_WritesEvent()
         {
@@ -1264,6 +1314,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.AcceptWebSocketStarted(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that sending handshake response event enabled writes event
+        /// </summary>
         [Fact]
         public void SendingHandshakeResponse_EventEnabled_WritesEvent()
         {
@@ -1271,6 +1324,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.SendingHandshakeResponse(Guid.NewGuid(), "response");
         }
 
+        /// <summary>
+        /// Tests that web socket version not supported event enabled writes event
+        /// </summary>
         [Fact]
         public void WebSocketVersionNotSupported_EventEnabled_WritesEvent()
         {
@@ -1278,6 +1334,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), "exception");
         }
 
+        /// <summary>
+        /// Tests that bad request event enabled writes event
+        /// </summary>
         [Fact]
         public void BadRequest_EventEnabled_WritesEvent()
         {
@@ -1285,6 +1344,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.BadRequest(Guid.NewGuid(), "exception");
         }
 
+        /// <summary>
+        /// Tests that use per message deflate event enabled writes event
+        /// </summary>
         [Fact]
         public void UsePerMessageDeflate_EventEnabled_WritesEvent()
         {
@@ -1292,6 +1354,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.UsePerMessageDeflate(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that no message compression event enabled writes event
+        /// </summary>
         [Fact]
         public void NoMessageCompression_EventEnabled_WritesEvent()
         {
@@ -1299,6 +1364,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.NoMessageCompression(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that keep alive interval zero event enabled writes event
+        /// </summary>
         [Fact]
         public void KeepAliveIntervalZero_EventEnabled_WritesEvent()
         {
@@ -1306,6 +1374,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.KeepAliveIntervalZero(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that ping pong manager started event enabled writes event
+        /// </summary>
         [Fact]
         public void PingPongManagerStarted_EventEnabled_WritesEvent()
         {
@@ -1313,6 +1384,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.PingPongManagerStarted(Guid.NewGuid(), 30);
         }
 
+        /// <summary>
+        /// Tests that ping pong manager ended event enabled writes event
+        /// </summary>
         [Fact]
         public void PingPongManagerEnded_EventEnabled_WritesEvent()
         {
@@ -1320,6 +1394,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.PingPongManagerEnded(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that keep alive interval expired event enabled writes event
+        /// </summary>
         [Fact]
         public void KeepAliveIntervalExpired_EventEnabled_WritesEvent()
         {
@@ -1327,6 +1404,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.KeepAliveIntervalExpired(Guid.NewGuid(), 30);
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeout_EventEnabled_WritesEvent()
         {
@@ -1334,6 +1414,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout cancelled event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeoutCancelled_EventEnabled_WritesEvent()
         {
@@ -1341,6 +1424,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout error event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeoutError_EventEnabled_WritesEvent()
         {
@@ -1348,6 +1434,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), "closeEx", WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
+        /// <summary>
+        /// Tests that try get buffer not supported event enabled writes event
+        /// </summary>
         [Fact]
         public void TryGetBufferNotSupported_EventEnabled_WritesEvent()
         {
@@ -1355,6 +1444,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), "MemoryStream");
         }
 
+        /// <summary>
+        /// Tests that sending frame event enabled writes event
+        /// </summary>
         [Fact]
         public void SendingFrame_EventEnabled_WritesEvent()
         {
@@ -1362,6 +1454,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.SendingFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024, true);
         }
 
+        /// <summary>
+        /// Tests that received frame event enabled writes event
+        /// </summary>
         [Fact]
         public void ReceivedFrame_EventEnabled_WritesEvent()
         {
@@ -1369,6 +1464,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ReceivedFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024);
         }
 
+        /// <summary>
+        /// Tests that close output no handshake event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseOutputNoHandshake_EventEnabled_WritesEvent()
         {
@@ -1376,6 +1474,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
+        /// <summary>
+        /// Tests that close handshake started event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseHandshakeStarted_EventEnabled_WritesEvent()
         {
@@ -1383,6 +1484,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
+        /// <summary>
+        /// Tests that close handshake respond event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseHandshakeRespond_EventEnabled_WritesEvent()
         {
@@ -1390,6 +1494,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
+        /// <summary>
+        /// Tests that close handshake complete event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseHandshakeComplete_EventEnabled_WritesEvent()
         {
@@ -1397,6 +1504,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseHandshakeComplete(Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Tests that close frame received in unexpected state event enabled writes event
+        /// </summary>
         [Fact]
         public void CloseFrameReceivedInUnexpectedState_EventEnabled_WritesEvent()
         {
@@ -1404,6 +1514,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, "desc");
         }
 
+        /// <summary>
+        /// Tests that web socket dispose event enabled writes event
+        /// </summary>
         [Fact]
         public void WebSocketDispose_EventEnabled_WritesEvent()
         {
@@ -1411,6 +1524,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.WebSocketDispose(Guid.NewGuid(), WebSocketState.Open);
         }
 
+        /// <summary>
+        /// Tests that web socket dispose close timeout event enabled writes event
+        /// </summary>
         [Fact]
         public void WebSocketDisposeCloseTimeout_EventEnabled_WritesEvent()
         {
@@ -1418,6 +1534,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.WebSocketDisposeCloseTimeout(Guid.NewGuid(), WebSocketState.Open);
         }
 
+        /// <summary>
+        /// Tests that web socket dispose error event enabled writes event
+        /// </summary>
         [Fact]
         public void WebSocketDisposeError_EventEnabled_WritesEvent()
         {
@@ -1425,6 +1544,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, "error");
         }
 
+        /// <summary>
+        /// Tests that invalid state before close event enabled writes event
+        /// </summary>
         [Fact]
         public void InvalidStateBeforeClose_EventEnabled_WritesEvent()
         {
@@ -1432,6 +1554,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.InvalidStateBeforeClose(Guid.NewGuid(), WebSocketState.Open);
         }
 
+        /// <summary>
+        /// Tests that invalid state before close output event enabled writes event
+        /// </summary>
         [Fact]
         public void InvalidStateBeforeCloseOutput_EventEnabled_WritesEvent()
         {
@@ -1439,6 +1564,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.InvalidStateBeforeCloseOutput(Guid.NewGuid(), WebSocketState.Open);
         }
 
+        /// <summary>
+        /// Tests that handshake sent null http header uses empty string
+        /// </summary>
         [Fact]
         public void HandshakeSent_NullHttpHeader_UsesEmptyString()
         {
@@ -1446,6 +1574,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.HandshakeSent(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that read http response error null exception uses empty string
+        /// </summary>
         [Fact]
         public void ReadHttpResponseError_NullException_UsesEmptyString()
         {
@@ -1453,6 +1584,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.ReadHttpResponseError(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that invalid http response code null response uses empty string
+        /// </summary>
         [Fact]
         public void InvalidHttpResponseCode_NullResponse_UsesEmptyString()
         {
@@ -1460,6 +1594,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that handshake failure null message uses empty string
+        /// </summary>
         [Fact]
         public void HandshakeFailure_NullMessage_UsesEmptyString()
         {
@@ -1467,6 +1604,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.HandshakeFailure(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that sending handshake response null response uses empty string
+        /// </summary>
         [Fact]
         public void SendingHandshakeResponse_NullResponse_UsesEmptyString()
         {
@@ -1474,6 +1614,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.SendingHandshakeResponse(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that web socket version not supported null exception uses empty string
+        /// </summary>
         [Fact]
         public void WebSocketVersionNotSupported_NullException_UsesEmptyString()
         {
@@ -1481,6 +1624,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that bad request null exception uses empty string
+        /// </summary>
         [Fact]
         public void BadRequest_NullException_UsesEmptyString()
         {
@@ -1488,6 +1634,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.BadRequest(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that try get buffer not supported null stream type uses empty string
+        /// </summary>
         [Fact]
         public void TryGetBufferNotSupported_NullStreamType_UsesEmptyString()
         {
@@ -1495,6 +1644,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), null);
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout null descriptions uses empty string
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeout_NullDescriptions_UsesEmptyString()
         {
@@ -1502,6 +1654,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null, null);
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout cancelled null descriptions uses empty string
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeoutCancelled_NullDescriptions_UsesEmptyString()
         {
@@ -1509,6 +1664,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, null, null);
         }
 
+        /// <summary>
+        /// Tests that close output auto timeout error null descriptions uses empty string
+        /// </summary>
         [Fact]
         public void CloseOutputAutoTimeoutError_NullDescriptions_UsesEmptyString()
         {
@@ -1516,6 +1674,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), null, WebSocketCloseStatus.NormalClosure, null, null);
         }
 
+        /// <summary>
+        /// Tests that close output no handshake null status description uses empty string
+        /// </summary>
         [Fact]
         public void CloseOutputNoHandshake_NullStatusDescription_UsesEmptyString()
         {
@@ -1523,6 +1684,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
+        /// <summary>
+        /// Tests that close handshake started null status description uses empty string
+        /// </summary>
         [Fact]
         public void CloseHandshakeStarted_NullStatusDescription_UsesEmptyString()
         {
@@ -1530,6 +1694,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
+        /// <summary>
+        /// Tests that close handshake respond null status description uses empty string
+        /// </summary>
         [Fact]
         public void CloseHandshakeRespond_NullStatusDescription_UsesEmptyString()
         {
@@ -1537,6 +1704,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
+        /// <summary>
+        /// Tests that close frame received in unexpected state null status description uses empty string
+        /// </summary>
         [Fact]
         public void CloseFrameReceivedInUnexpectedState_NullStatusDescription_UsesEmptyString()
         {
@@ -1544,6 +1714,9 @@ namespace Alis.Extension.Network.Test.Internal
             Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, null);
         }
 
+        /// <summary>
+        /// Tests that web socket dispose error null exception uses empty string
+        /// </summary>
         [Fact]
         public void WebSocketDisposeError_NullException_UsesEmptyString()
         {

@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im font config ptr remaining coverage tests class
+    /// </summary>
     public class ImFontConfigPtrRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(nativePtr, result);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns im font config ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversionFromIntPtr_ReturnsImFontConfigPtr()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(nativePtr, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that snap h setter sets value to true
+        /// </summary>
         [Fact]
         public void SnapH_Setter_SetsValueToTrue()
         {
@@ -74,6 +86,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that snap h setter sets value to false
+        /// </summary>
         [Fact]
         public void SnapH_Setter_SetsValueToFalse()
         {
@@ -96,6 +111,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph ranges setter sets value
+        /// </summary>
         [Fact]
         public void GlyphRanges_Setter_SetsValue()
         {
@@ -119,6 +137,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph min advance x setter sets value
+        /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_Setter_SetsValue()
         {
@@ -141,6 +162,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode setter sets value to true
+        /// </summary>
         [Fact]
         public void MergeMode_Setter_SetsValueToTrue()
         {
@@ -163,6 +187,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode setter sets value to false
+        /// </summary>
         [Fact]
         public void MergeMode_Setter_SetsValueToFalse()
         {
@@ -185,6 +212,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that constructor with im font config allocates memory
+        /// </summary>
         [Fact]
         public void ConstructorWithImFontConfig_AllocatesMemory()
         {
@@ -209,6 +239,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Marshal.FreeHGlobal(ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that constructor with im font config zero pointer throws access violation
+        /// </summary>
         [Fact]
         public void ConstructorWithImFontConfig_ZeroPointer_ThrowsAccessViolation()
         {

@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The simplex test class
+    /// </summary>
     public class SimplexTest
     {
+        /// <summary>
+        /// Tests that get search direction with single vertex should negate vertex
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithSingleVertex_ShouldNegateVertex()
         {
@@ -54,6 +60,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(-2.0f, 3.0f), direction);
         }
 
+        /// <summary>
+        /// Tests that get search direction with two vertices when sgn positive should return perpendicular clockwise
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithTwoVertices_WhenSgnPositive_ShouldReturnPerpendicularClockwise()
         {
@@ -70,6 +79,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(-1.0f, -1.0f), direction);
         }
 
+        /// <summary>
+        /// Tests that get search direction with two vertices when sgn negative should return perpendicular counter clockwise
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithTwoVertices_WhenSgnNegative_ShouldReturnPerpendicularCounterClockwise()
         {
@@ -86,6 +98,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(-1.0f, 1.0f), direction);
         }
 
+        /// <summary>
+        /// Tests that get search direction with three vertices should return zero
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithThreeVertices_ShouldReturnZero()
         {
@@ -100,6 +115,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, direction);
         }
 
+        /// <summary>
+        /// Tests that get closest point with count zero should return zero
+        /// </summary>
         [Fact]
         public void GetClosestPoint_WithCountZero_ShouldReturnZero()
         {
@@ -114,6 +132,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, point);
         }
 
+        /// <summary>
+        /// Tests that get closest point with count one should return vertex w
+        /// </summary>
         [Fact]
         public void GetClosestPoint_WithCountOne_ShouldReturnVertexW()
         {
@@ -129,6 +150,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(3.0f, 4.0f), point);
         }
 
+        /// <summary>
+        /// Tests that get closest point with count two should blend vertices
+        /// </summary>
         [Fact]
         public void GetClosestPoint_WithCountTwo_ShouldBlendVertices()
         {
@@ -145,6 +169,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(0.3f, 0.7f), point);
         }
 
+        /// <summary>
+        /// Tests that get closest point with count three should return zero
+        /// </summary>
         [Fact]
         public void GetClosestPoint_WithCountThree_ShouldReturnZero()
         {
@@ -159,6 +186,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, point);
         }
 
+        /// <summary>
+        /// Tests that get witness points with count zero should return zero
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithCountZero_ShouldReturnZero()
         {
@@ -174,6 +204,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, pB);
         }
 
+        /// <summary>
+        /// Tests that get witness points with single point should return stored points
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithSinglePoint_ShouldReturnStoredPoints()
         {
@@ -194,6 +227,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(3.0f, 4.0f), pointB);
         }
 
+        /// <summary>
+        /// Tests that get witness points with two vertices should blend
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithTwoVertices_ShouldBlend()
         {
@@ -211,6 +247,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(0.8f, 1.2f), pB);
         }
 
+        /// <summary>
+        /// Tests that get witness points with three vertices should blend
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithThreeVertices_ShouldBlend()
         {
@@ -229,6 +268,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(pA, pB);
         }
 
+        /// <summary>
+        /// Tests that get witness points with invalid count should throw
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_WithInvalidCount_ShouldThrow()
         {
@@ -241,6 +283,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Throws<InvalidOperationException>(() => simplex.GetWitnessPoints(out _, out _));
         }
 
+        /// <summary>
+        /// Tests that get metric with count zero should return zero
+        /// </summary>
         [Fact]
         public void GetMetric_WithCountZero_ShouldReturnZero()
         {
@@ -253,6 +298,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, simplex.GetMetric());
         }
 
+        /// <summary>
+        /// Tests that get metric with count one should return zero
+        /// </summary>
         [Fact]
         public void GetMetric_WithCountOne_ShouldReturnZero()
         {
@@ -266,6 +314,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, simplex.GetMetric());
         }
 
+        /// <summary>
+        /// Tests that get metric with two points should return segment length
+        /// </summary>
         [Fact]
         public void GetMetric_WithTwoPoints_ShouldReturnSegmentLength()
         {
@@ -282,6 +333,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(5.0f, metric);
         }
 
+        /// <summary>
+        /// Tests that get metric with three points should return cross product
+        /// </summary>
         [Fact]
         public void GetMetric_WithThreePoints_ShouldReturnCrossProduct()
         {
@@ -299,6 +353,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(4.0f, metric);
         }
 
+        /// <summary>
+        /// Tests that solve 2 should keep two vertices when origin on segment
+        /// </summary>
         [Fact]
         public void Solve2_ShouldKeepTwoVertices_WhenOriginOnSegment()
         {
@@ -315,6 +372,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 2 should reduce to closest vertex when origin outside segment
+        /// </summary>
         [Fact]
         public void Solve2_ShouldReduceToClosestVertex_WhenOriginOutsideSegment()
         {
@@ -331,6 +391,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 2 should reduce to v 0 whend 122 non positive
+        /// </summary>
         [Fact]
         public void Solve2_ShouldReduceToV0_Whend122NonPositive()
         {
@@ -347,6 +410,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to vertex 0 when closest
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToVertex0_WhenClosest()
         {
@@ -364,6 +430,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to edge 01 when origin projects on edge 01
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToEdge01_WhenOriginProjectsOnEdge01()
         {
@@ -381,6 +450,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to edge 02 when origin projects on edge 02
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToEdge02_WhenOriginProjectsOnEdge02()
         {
@@ -398,6 +470,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to vertex 1 when closest
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToVertex1_WhenClosest()
         {
@@ -415,6 +490,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to vertex 2 when closest
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToVertex2_WhenClosest()
         {
@@ -432,6 +510,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should reduce to edge 12 when origin projects on edge 12
+        /// </summary>
         [Fact]
         public void Solve3_ShouldReduceToEdge12_WhenOriginProjectsOnEdge12()
         {
@@ -449,6 +530,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 should keep three when origin inside triangle
+        /// </summary>
         [Fact]
         public void Solve3_ShouldKeepThree_WhenOriginInsideTriangle()
         {
@@ -466,6 +550,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(3, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that write cache should store state
+        /// </summary>
         [Fact]
         public void WriteCache_ShouldStoreState()
         {
@@ -488,6 +575,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(cache.Metric > 0.0f);
         }
 
+        /// <summary>
+        /// Tests that read cache should restore state from valid cache
+        /// </summary>
         [Fact]
         public void ReadCache_ShouldRestoreState_FromValidCache()
         {
@@ -512,6 +602,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that read cache should reset when metric degraded
+        /// </summary>
         [Fact]
         public void ReadCache_ShouldReset_WhenMetricDegraded()
         {
@@ -538,6 +631,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that get closest point with invalid count returns zero
+        /// </summary>
         [Fact]
         public void GetClosestPoint_WithInvalidCount_ReturnsZero()
         {
@@ -552,6 +648,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, point);
         }
 
+        /// <summary>
+        /// Tests that get metric with invalid count returns zero
+        /// </summary>
         [Fact]
         public void GetMetric_WithInvalidCount_ReturnsZero()
         {
@@ -566,6 +665,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, metric);
         }
 
+        /// <summary>
+        /// Tests that get search direction with invalid count returns zero
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithInvalidCount_ReturnsZero()
         {

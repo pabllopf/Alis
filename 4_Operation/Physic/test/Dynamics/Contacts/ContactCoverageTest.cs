@@ -373,6 +373,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(sepFired);
         }
 
+        /// <summary>
+        /// Tests that invoke handlers with multiple handlers all fire
+        /// </summary>
         [Fact]
         public void InvokeHandlers_WithMultipleHandlers_AllFire()
         {
@@ -392,6 +395,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(2, fireCount);
         }
 
+        /// <summary>
+        /// Tests that invoke handlers with one false disables contact
+        /// </summary>
         [Fact]
         public void InvokeHandlers_WithOneFalse_DisablesContact()
         {
@@ -414,6 +420,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.False(world.ContactManager.ContactList.Next.Enabled);
         }
 
+        /// <summary>
+        /// Tests that destroy with sensor fixtures does not awake bodies
+        /// </summary>
         [Fact]
         public void Destroy_WithSensorFixtures_DoesNotAwakeBodies()
         {
@@ -436,6 +445,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotNull(contact);
         }
 
+        /// <summary>
+        /// Tests that update with no touching transition does not fire callbacks
+        /// </summary>
         [Fact]
         public void Update_WithNoTouchingTransition_DoesNotFireCallbacks()
         {
@@ -461,6 +473,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(beginFired);
         }
 
+        /// <summary>
+        /// Tests that process sensor contact when sensors overlap detects touching
+        /// </summary>
         [Fact]
         public void ProcessSensorContact_WhenSensorsOverlap_DetectsTouching()
         {
@@ -486,6 +501,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // Contact.Create — from pool reuse (line 555-561)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that create from pool reuses contact
+        /// </summary>
         [Fact]
         public void Create_FromPool_ReusesContact()
         {
@@ -514,6 +532,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // Contact.Update — sensor contact with matching (touching=true)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that update sensor contact triggers begin contact
+        /// </summary>
         [Fact]
         public void Update_SensorContact_TriggersBeginContact()
         {
@@ -538,6 +559,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // Evaluate — EdgeAndCircle branch - ensures correct type dispatch
         // ========================================================================
 
+        /// <summary>
+        /// Tests that evaluate edge and circle dispatches correctly
+        /// </summary>
         [Fact]
         public void Evaluate_EdgeAndCircle_DispatchesCorrectly()
         {
@@ -554,6 +578,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // Contact.Create with swapped Edge+Polygon (line 565 conditional)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that create edge and polygon no swap returns contact
+        /// </summary>
         [Fact]
         public void Create_EdgeAndPolygonNoSwap_ReturnsContact()
         {
@@ -570,6 +597,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ResetRestitution mixes fixture restitutions (line 212)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that reset restitution mixes fixture restitutions
+        /// </summary>
         [Fact]
         public void ResetRestitution_MixesFixtureRestitutions()
         {
@@ -588,6 +618,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ResetFriction mixes fixture frictions (line 220)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that reset friction mixes fixture frictions
+        /// </summary>
         [Fact]
         public void ResetFriction_MixesFixtureFrictions()
         {
@@ -606,6 +639,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // GetWorldManifold — exercises the WorldManifold.Initialize path
         // ========================================================================
 
+        /// <summary>
+        /// Tests that get world manifold with valid contact returns normal
+        /// </summary>
         [Fact]
         public void GetWorldManifold_WithValidContact_ReturnsNormal()
         {
@@ -623,6 +659,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Tests that report separation with all null handlers does not throw
+        /// </summary>
         [Fact]
         public void ReportSeparation_WithAllNullHandlers_DoesNotThrow()
         {
@@ -643,6 +682,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(sepFired);
         }
 
+        /// <summary>
+        /// Tests that create edge and polygon symmetry handles swap correctly
+        /// </summary>
         [Fact]
         public void Create_EdgeAndPolygon_Symmetry_HandlesSwapCorrectly()
         {
@@ -655,6 +697,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that contact update was touching to not touching fires separation with null handlers
+        /// </summary>
         [Fact]
         public void ContactUpdate_WasTouchingToNotTouching_FiresSeparation_WithNullHandlers()
         {
@@ -675,6 +720,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(endCount > 0);
         }
 
+        /// <summary>
+        /// Tests that create edge and polygon with pool swapped fixtures reuses from pool
+        /// </summary>
         [Fact]
         public void Create_EdgeAndPolygon_WithPool_SwappedFixtures_ReusesFromPool()
         {
@@ -698,6 +746,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that pre solve null handler does not throw
+        /// </summary>
         [Fact]
         public void PreSolve_NullHandler_DoesNotThrow()
         {
@@ -712,6 +763,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that report collision with begin contact returning false disables contact
+        /// </summary>
         [Fact]
         public void ReportCollision_WithBeginContactReturningFalse_DisablesContact()
         {
@@ -732,6 +786,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Tests that invoke handlers null handler returns current enabled
+        /// </summary>
         [Fact]
         public void InvokeHandlers_NullHandler_ReturnsCurrentEnabled()
         {
@@ -744,6 +801,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that contact process sensor contact no manifold points
+        /// </summary>
         [Fact]
         public void Contact_ProcessSensorContact_NoManifoldPoints()
         {

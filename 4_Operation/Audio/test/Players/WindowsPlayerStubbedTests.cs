@@ -10,25 +10,48 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The windows player stubbed tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class WindowsPlayerStubbedTests : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
+        /// <summary>
+        /// The player
+        /// </summary>
         private WindowsPlayer _player;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowsPlayerStubbedTests"/> class
+        /// </summary>
         public WindowsPlayerStubbedTests()
         {
             _tempFile = Path.GetTempFileName();
             File.WriteAllText(_tempFile, "test content");
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _player?.Dispose();
             if (File.Exists(_tempFile)) File.Delete(_tempFile);
         }
 
+        /// <summary>
+        /// Creates the player
+        /// </summary>
+        /// <returns>The windows player</returns>
         private WindowsPlayer CreatePlayer() => new WindowsPlayer();
 
+        /// <summary>
+        /// Plays the with existing file should set playing true
+        /// </summary>
         [WindowsOnly]
         public async Task Play_WithExistingFile_ShouldSetPlayingTrue()
         {
@@ -43,6 +66,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(timerField?.GetValue(_player));
         }
 
+        /// <summary>
+        /// Plays the loop without loop with existing file should set playing true
+        /// </summary>
         [WindowsOnly]
         public async Task PlayLoop_WithoutLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
@@ -53,6 +79,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
+        /// <summary>
+        /// Plays the loop with loop with existing file should set playing true
+        /// </summary>
         [WindowsOnly]
         public async Task PlayLoop_WithLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
@@ -63,6 +92,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
+        /// <summary>
+        /// Pauses the when playing should set paused true
+        /// </summary>
         [WindowsOnly]
         public async Task Pause_WhenPlaying_ShouldSetPausedTrue()
         {
@@ -74,6 +106,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(_player.Paused);
         }
 
+        /// <summary>
+        /// Resumes the when paused should set paused false
+        /// </summary>
         [WindowsOnly]
         public async Task Resume_WhenPaused_ShouldSetPausedFalse()
         {
@@ -87,6 +122,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(_player.Playing);
         }
 
+        /// <summary>
+        /// Stops the when playing should set playing false
+        /// </summary>
         [WindowsOnly]
         public async Task Stop_WhenPlaying_ShouldSetPlayingFalse()
         {
@@ -99,6 +137,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
+        /// <summary>
+        /// Plays the pause resume stop sequence should work
+        /// </summary>
         [WindowsOnly]
         public async Task Play_Pause_Resume_Stop_Sequence_ShouldWork()
         {
@@ -119,6 +160,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
+        /// <summary>
+        /// Sets the volume should not throw
+        /// </summary>
         [WindowsOnly]
         public async Task SetVolume_ShouldNotThrow()
         {
@@ -128,6 +172,9 @@ namespace Alis.Core.Audio.Test.Players
             await _player.SetVolume(100);
         }
 
+        /// <summary>
+        /// Plays the then dispose should work
+        /// </summary>
         [WindowsOnly]
         public async Task Play_ThenDispose_ShouldWork()
         {
@@ -139,6 +186,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(_player);
         }
 
+        /// <summary>
+        /// Multiples the pause resume should work
+        /// </summary>
         [WindowsOnly]
         public async Task MultiplePauseResume_ShouldWork()
         {
@@ -155,6 +205,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Playbacks the finished should fire when timer elapses
+        /// </summary>
         [WindowsOnly]
         public async Task PlaybackFinished_ShouldFireWhenTimerElapses()
         {
@@ -177,6 +230,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventFired);
         }
 
+        /// <summary>
+        /// Executes the msi command with status command should set timer interval
+        /// </summary>
         [WindowsOnly]
         public async Task ExecuteMsiCommand_WithStatusCommand_ShouldSetTimerInterval()
         {
@@ -194,6 +250,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(5000, timer?.Interval);
         }
 
+        /// <summary>
+        /// Executes the msi command with error response should throw invalid operation exception
+        /// </summary>
         [WindowsOnly]
         public void ExecuteMsiCommand_WithErrorResponse_ShouldThrowInvalidOperationException()
         {
@@ -212,6 +271,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Plays the loop with resource extraction should succeed
+        /// </summary>
         [WindowsOnly]
         public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
@@ -247,6 +309,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Plays the with resource extraction should succeed
+        /// </summary>
         [WindowsOnly]
         public async Task Play_WithResourceExtraction_ShouldSucceed()
         {

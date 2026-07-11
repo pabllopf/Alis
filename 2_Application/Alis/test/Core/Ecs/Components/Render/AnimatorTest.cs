@@ -643,6 +643,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
+        /// <summary>
+        /// Tests that animator get current frame on default struct throws null reference
+        /// </summary>
         [Fact]
         public void Animator_GetCurrentFrame_OnDefaultStruct_ThrowsNullReference()
         {
@@ -651,6 +654,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => _ = animator.GetCurrentFrame());
         }
 
+        /// <summary>
+        /// Tests that animator play on default struct throws null reference
+        /// </summary>
         [Fact]
         public void Animator_Play_OnDefaultStruct_ThrowsNullReference()
         {
@@ -659,6 +665,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => animator.Play("test"));
         }
 
+        /// <summary>
+        /// Tests that animator next frame on default struct throws null reference
+        /// </summary>
         [Fact]
         public void Animator_NextFrame_OnDefaultStruct_ThrowsNullReference()
         {
@@ -667,6 +676,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => animator.NextFrame());
         }
 
+        /// <summary>
+        /// Tests that animator on start after on exit clock restarts
+        /// </summary>
         [Fact]
         public void Animator_OnStart_AfterOnExit_ClockRestarts()
         {
@@ -693,6 +705,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
+        /// <summary>
+        /// Tests that animator on update with high speed multiple updates
+        /// </summary>
         [Fact]
         public void Animator_OnUpdate_WithHighSpeed_MultipleUpdates()
         {
@@ -719,6 +734,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.InRange(animator.CurrentFrameIndex, 1, 2);
         }
 
+        /// <summary>
+        /// Tests that animator add animation with multiple animations orders correctly
+        /// </summary>
         [Fact]
         public void Animator_AddAnimation_WithMultipleAnimations_OrdersCorrectly()
         {

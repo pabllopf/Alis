@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
+    /// <summary>
+    /// The image test class
+    /// </summary>
     public partial class ImageTest
     {
+        /// <summary>
+        /// Tests that load from stream when 16 bit bmp throws not supported exception
+        /// </summary>
         [Fact]
         public void LoadFromStream_When16BitBmp_ThrowsNotSupportedException()
         {
@@ -17,6 +23,9 @@ namespace Alis.Core.Graphic.Test
             Assert.IsType<NotSupportedException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that load from stream when bitfields 32 bit returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenBitfields32Bit_ReturnsCorrectImage()
         {
@@ -28,6 +37,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 8 encoded returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle8Encoded_ReturnsCorrectImage()
         {
@@ -39,6 +51,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 8 end of line returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle8EndOfLine_ReturnsCorrectImage()
         {
@@ -50,6 +65,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 8 delta returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle8Delta_ReturnsCorrectImage()
         {
@@ -61,6 +79,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 8 absolute mode returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle8AbsoluteMode_ReturnsCorrectImage()
         {
@@ -72,6 +93,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 4 encoded returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle4Encoded_ReturnsCorrectImage()
         {
@@ -83,6 +107,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 4 end of line returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle4EndOfLine_ReturnsCorrectImage()
         {
@@ -94,6 +121,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 4 delta returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle4Delta_ReturnsCorrectImage()
         {
@@ -105,6 +135,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 4 absolute mode returns correct image
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle4AbsoluteMode_ReturnsCorrectImage()
         {
@@ -116,6 +149,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2, image.Height);
         }
 
+        /// <summary>
+        /// Tests that load from stream when rle 8 odd absolute count skips padding
+        /// </summary>
         [Fact]
         public void LoadFromStream_WhenRle8OddAbsoluteCount_SkipsPadding()
         {
@@ -125,6 +161,9 @@ namespace Alis.Core.Graphic.Test
             Assert.NotNull(image);
         }
 
+        /// <summary>
+        /// Tests that load from stream when 24 bit width not aligned loads correctly
+        /// </summary>
         [Fact]
         public void LoadFromStream_When24BitWidthNotAligned_LoadsCorrectly()
         {
@@ -139,6 +178,12 @@ namespace Alis.Core.Graphic.Test
 
         #region BMP Helper Methods for Coverage
 
+        /// <summary>
+        /// Creates the bmp 16 bit using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmp16Bit(int width, int height)
         {
             int rowSize = (width * 2 + 3) / 4 * 4;
@@ -162,6 +207,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp bitfields 32 bit using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpBitfields32Bit(int width, int height)
         {
             int headerSize = 56;
@@ -192,6 +243,14 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Builds the rle 8 header using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="rleDataSize">The rle data size</param>
+        /// <param name="paletteSize">The palette size</param>
+        /// <returns>The bmp</returns>
         private static byte[] BuildRle8Header(int width, int height, int rleDataSize, int paletteSize)
         {
             int pixelDataOffset = 14 + 40 + paletteSize;
@@ -219,6 +278,13 @@ namespace Alis.Core.Graphic.Test
             return bmp;
         }
 
+        /// <summary>
+        /// Builds the rle 4 header using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="rleDataSize">The rle data size</param>
+        /// <returns>The bmp</returns>
         private static byte[] BuildRle4Header(int width, int height, int rleDataSize)
         {
             int paletteSize = 16 * 4;
@@ -247,6 +313,12 @@ namespace Alis.Core.Graphic.Test
             return bmp;
         }
 
+        /// <summary>
+        /// Creates the bmp rle 8 using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle8(int width, int height)
         {
             int absModeSize = 2 + width + (width % 2 == 1 ? 1 : 0) + 2;
@@ -263,6 +335,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 8 end of line using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle8EndOfLine(int width, int height)
         {
             int absModeSize = 2 + width + (width % 2 == 1 ? 1 : 0) + 2;
@@ -278,6 +356,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 8 delta using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle8Delta(int width, int height)
         {
             int absModeSize = 2 + width + (width % 2 == 1 ? 1 : 0);
@@ -293,6 +377,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 8 absolute using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle8Absolute(int width, int height)
         {
             int rleDataSize = 4 + width + (width % 2 == 1 ? 1 : 0) + 2;
@@ -305,6 +395,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 4 using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle4(int width, int height)
         {
             int rleDataSize = height * (4 + 2);
@@ -320,6 +416,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 4 end of line using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle4EndOfLine(int width, int height)
         {
             int rleDataSize = 4 + 2 + (height - 1) * 2;
@@ -333,6 +435,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 4 delta using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle4Delta(int width, int height)
         {
             int rleDataSize = 4 + 6;
@@ -346,6 +454,12 @@ namespace Alis.Core.Graphic.Test
             return new MemoryStream(bmp);
         }
 
+        /// <summary>
+        /// Creates the bmp rle 4 absolute using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The memory stream</returns>
         private static MemoryStream CreateBmpRle4Absolute(int width, int height)
         {
             int pairs = (width + 1) / 2;

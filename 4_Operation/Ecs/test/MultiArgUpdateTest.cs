@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The multi arg update test class
+    /// </summary>
     public class MultiArgUpdateTest
     {
+        /// <summary>
+        /// Tests that update with 6 args works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_With6Args_Works()
         {
@@ -15,6 +21,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that update with 7 args works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_With7Args_Works()
         {

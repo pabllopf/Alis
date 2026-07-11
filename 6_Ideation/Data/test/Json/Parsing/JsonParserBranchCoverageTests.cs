@@ -35,16 +35,28 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Data.Test.Json.Parsing
 {
+    /// <summary>
+    /// The json parser branch coverage tests class
+    /// </summary>
     public class JsonParserBranchCoverageTests
     {
+        /// <summary>
+        /// The parser
+        /// </summary>
         private readonly JsonParser _parser;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="JsonParserBranchCoverageTests"/> class
+        /// </summary>
         public JsonParserBranchCoverageTests()
         {
             EscapeSequenceHandler escapeHandler = new EscapeSequenceHandler();
             _parser = new JsonParser(escapeHandler);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary opening brace only whitespace returns empty
+        /// </summary>
         [Fact]
         public void ParseToDictionary_OpeningBraceOnlyWhitespace_ReturnsEmpty()
         {
@@ -52,6 +64,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary key only no colon throws json parsing exception
+        /// </summary>
         [Fact]
         public void ParseToDictionary_KeyOnlyNoColon_ThrowsJsonParsingException()
         {
@@ -60,6 +75,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Contains("Expected ':'", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary opening brace only newline then end returns empty
+        /// </summary>
         [Fact]
         public void ParseToDictionary_OpeningBraceOnlyNewlineThenEnd_ReturnsEmpty()
         {
@@ -67,6 +85,9 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that parse to dictionary opening brace only tab then end returns empty
+        /// </summary>
         [Fact]
         public void ParseToDictionary_OpeningBraceOnlyTabThenEnd_ReturnsEmpty()
         {

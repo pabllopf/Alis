@@ -6,10 +6,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiP6RemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP6RemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiP6RemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -19,11 +29,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Inputs the float 4 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputFloat4_AllOverloads_ShouldExecute()
         {
@@ -36,6 +52,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Inputs the int all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputInt_AllOverloads_ShouldExecute()
         {
@@ -50,6 +69,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Inputs the int 2 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputInt2_AllOverloads_ShouldExecute()
         {
@@ -62,6 +84,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Inputs the int 4 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputInt4_AllOverloads_ShouldExecute()
         {
@@ -74,6 +99,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Inputs the scalar all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputScalar_AllOverloads_ShouldExecute()
         {
@@ -97,6 +125,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Inputs the scalar n all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InputScalarN_AllOverloads_ShouldExecute()
         {
@@ -119,6 +150,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Invisibles the button all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void InvisibleButton_AllOverloads_ShouldExecute()
         {
@@ -130,6 +164,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the any item queries should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsAnyItemQueries_ShouldExecute()
         {
@@ -144,6 +181,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the item state queries should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsItemStateQueries_ShouldExecute()
         {
@@ -162,6 +202,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the item clicked all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsItemClicked_AllOverloads_ShouldExecute()
         {
@@ -174,6 +217,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the item hovered all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsItemHovered_AllOverloads_ShouldExecute()
         {
@@ -186,6 +232,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the key methods should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsKeyMethods_ShouldExecute()
         {
@@ -199,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the mouse methods should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsMouseMethods_ShouldExecute()
         {
@@ -213,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the mouse dragging all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsMouseDragging_AllOverloads_ShouldExecute()
         {
@@ -224,6 +279,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the mouse hovering rect all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsMouseHoveringRect_AllOverloads_ShouldExecute()
         {
@@ -237,6 +295,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the mouse pos valid all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsMousePosValid_AllOverloads_ShouldExecute()
         {
@@ -249,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the popup open all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsPopupOpen_AllOverloads_ShouldExecute()
         {
@@ -260,6 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the rect visible all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsRectVisible_AllOverloads_ShouldExecute()
         {
@@ -271,6 +338,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the window state queries should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsWindowStateQueries_ShouldExecute()
         {
@@ -283,6 +353,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the window focused all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsWindowFocused_AllOverloads_ShouldExecute()
         {
@@ -294,6 +367,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ises the window hovered all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsWindowHovered_AllOverloads_ShouldExecute()
         {
@@ -305,6 +381,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Labels the text should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void LabelText_ShouldExecute()
         {
@@ -315,6 +394,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Loads the ini settings from memory all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void LoadIniSettingsFromMemory_AllOverloads_ShouldExecute()
         {
@@ -322,6 +404,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.LoadIniSettingsFromMemory("", 0u);
         }
 
+        /// <summary>
+        /// Logs the buttons finish text should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void LogButtons_Finish_Text_ShouldExecute()
         {
@@ -334,6 +419,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.LogFinish();
         }
 
+        /// <summary>
+        /// Logs the to clipboard all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void LogToClipboard_AllOverloads_ShouldExecute()
         {
@@ -347,6 +435,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Logs the to tty all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void LogToTty_AllOverloads_ShouldExecute()
         {
@@ -360,6 +451,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Mems the alloc mem free should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MemAlloc_MemFree_ShouldExecute()
         {
@@ -368,6 +462,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.MemFree(ptr);
         }
 
+        /// <summary>
+        /// Menus the item all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MenuItem_AllOverloads_ShouldExecute()
         {

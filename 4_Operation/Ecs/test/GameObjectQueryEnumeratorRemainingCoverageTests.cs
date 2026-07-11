@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The game object query enumerator remaining coverage tests class
+    /// </summary>
     public class GameObjectQueryEnumeratorRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that arity 1 constructor and dispose toggles structural changes
+        /// </summary>
         [Fact]
         public void Arity1_Constructor_And_Dispose_TogglesStructuralChanges()
         {
@@ -21,6 +27,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(scene.AllowStructualChanges);
         }
 
+        /// <summary>
+        /// Tests that arity 1 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity1_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -39,6 +48,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity1_EmptyQuery_ReturnsFalse()
         {
@@ -51,6 +63,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 dispose can be called multiple times
+        /// </summary>
         [Fact]
         public void Arity1_Dispose_CanBeCalledMultipleTimes()
         {
@@ -64,6 +79,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(scene.AllowStructualChanges);
         }
 
+        /// <summary>
+        /// Tests that arity 2 constructor and dispose toggles structural changes
+        /// </summary>
         [Fact]
         public void Arity2_Constructor_And_Dispose_TogglesStructuralChanges()
         {
@@ -78,6 +96,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(scene.AllowStructualChanges);
         }
 
+        /// <summary>
+        /// Tests that arity 2 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity2_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -96,6 +117,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 2 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity2_EmptyQuery_ReturnsFalse()
         {
@@ -108,6 +132,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 3 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity3_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -127,6 +154,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 3 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity3_EmptyQuery_ReturnsFalse()
         {
@@ -139,6 +169,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 4 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity4_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -164,6 +197,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 4 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity4_EmptyQuery_ReturnsFalse()
         {
@@ -176,6 +212,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 5 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity5_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -199,6 +238,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 5 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity5_EmptyQuery_ReturnsFalse()
         {
@@ -211,6 +253,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 6 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity6_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -235,6 +280,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 6 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity6_EmptyQuery_ReturnsFalse()
         {
@@ -247,6 +295,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 7 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity7_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -272,6 +323,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 7 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity7_EmptyQuery_ReturnsFalse()
         {
@@ -284,6 +338,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 8 move next with entities returns true then false
+        /// </summary>
         [Fact]
         public void Arity8_MoveNext_WithEntities_ReturnsTrueThenFalse()
         {
@@ -310,6 +367,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 8 empty query returns false
+        /// </summary>
         [Fact]
         public void Arity8_EmptyQuery_ReturnsFalse()
         {
@@ -322,6 +382,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity1_MultipleEntities_Enumeration()
         {
@@ -341,6 +404,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 archetype skip when empty span
+        /// </summary>
         [Fact]
         public void Arity1_Archetype_Skip_When_EmptySpan()
         {
@@ -358,6 +424,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 current access before move next throws
+        /// </summary>
         [Fact]
         public void Arity1_Current_AccessBeforeMoveNext_Throws()
         {
@@ -380,6 +449,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 2 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity2_MultipleEntities_Enumeration()
         {
@@ -399,6 +471,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 3 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity3_MultipleEntities_Enumeration()
         {
@@ -418,6 +493,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 4 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity4_MultipleEntities_Enumeration()
         {
@@ -437,6 +515,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 5 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity5_MultipleEntities_Enumeration()
         {
@@ -456,6 +537,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 6 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity6_MultipleEntities_Enumeration()
         {
@@ -475,6 +559,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 7 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity7_MultipleEntities_Enumeration()
         {
@@ -494,6 +581,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 8 multiple entities enumeration
+        /// </summary>
         [Fact]
         public void Arity8_MultipleEntities_Enumeration()
         {
@@ -513,6 +603,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 2 archetype skip when empty span
+        /// </summary>
         [Fact]
         public void Arity2_Archetype_Skip_When_EmptySpan()
         {
@@ -530,6 +623,9 @@ namespace Alis.Core.Ecs.Test
             enumerator.Dispose();
         }
 
+        /// <summary>
+        /// Tests that arity 1 using dispose called
+        /// </summary>
         [Fact]
         public void Arity1_Using_DisposeCalled()
         {

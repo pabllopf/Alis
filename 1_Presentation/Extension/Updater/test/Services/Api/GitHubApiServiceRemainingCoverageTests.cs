@@ -11,8 +11,14 @@ using Xunit;
 
 namespace Alis.Extension.Updater.Test.Services.Api
 {
+    /// <summary>
+    /// The git hub api service remaining coverage tests class
+    /// </summary>
     public class GitHubApiServiceRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that get latest release async returns response dictionary
+        /// </summary>
         [Fact]
         public async Task GetLatestReleaseAsync_ReturnsResponseDictionary()
         {
@@ -41,6 +47,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
             Assert.Equal(expected, result["response"]);
         }
 
+        /// <summary>
+        /// Tests that get latest release async sets user agent header
+        /// </summary>
         [Fact]
         public async Task GetLatestReleaseAsync_SetsUserAgentHeader()
         {
@@ -71,6 +80,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
                 ItExpr.IsAny<CancellationToken>());
         }
 
+        /// <summary>
+        /// Tests that get latest release async uses correct api url
+        /// </summary>
         [Fact]
         public async Task GetLatestReleaseAsync_UsesCorrectApiUrl()
         {
@@ -101,6 +113,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
                 ItExpr.IsAny<CancellationToken>());
         }
 
+        /// <summary>
+        /// Tests that get latest release async throws on http error
+        /// </summary>
         [Fact]
         public async Task GetLatestReleaseAsync_ThrowsOnHttpError()
         {
@@ -123,6 +138,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
             await Assert.ThrowsAsync<HttpRequestException>(() => service.GetLatestReleaseAsync());
         }
 
+        /// <summary>
+        /// Tests that get latest release async with empty response returns empty string
+        /// </summary>
         [Fact]
         public async Task GetLatestReleaseAsync_WithEmptyResponse_ReturnsEmptyString()
         {
@@ -149,6 +167,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
             Assert.Equal(string.Empty, result["response"]);
         }
 
+        /// <summary>
+        /// Tests that internal constructor with null http client creates default client
+        /// </summary>
         [Fact]
         public void InternalConstructor_WithNullHttpClient_CreatesDefaultClient()
         {
@@ -160,6 +181,9 @@ namespace Alis.Extension.Updater.Test.Services.Api
             Assert.Equal(apiUrl, service.ApiUrl);
         }
 
+        /// <summary>
+        /// Tests that dispose called after http client disposed does not throw
+        /// </summary>
         [Fact]
         public void Dispose_CalledAfterHttpClientDisposed_DoesNotThrow()
         {

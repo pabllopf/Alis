@@ -41,26 +41,57 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
+    /// <summary>
+    /// The asset registry coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     [Collection("AssetRegistryCollection")]
     public class AssetRegistryCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly PropertyInfo ActiveAssemblyProp = typeof(AssetRegistry).GetProperty("ActiveAssemblyName",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo LoadersField = typeof(AssetRegistry).GetField("RegisteredAssetLoaders",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo ZipCacheField = typeof(AssetRegistry).GetField("_zipCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo PathCacheField = typeof(AssetRegistry).GetField("_extractedPathCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The saved assembly
+        /// </summary>
         private readonly string _savedAssembly;
+        /// <summary>
+        /// The saved loaders
+        /// </summary>
         private readonly Dictionary<object, object> _savedLoaders = new();
+        /// <summary>
+        /// The saved zip cache
+        /// </summary>
         private readonly Dictionary<object, object> _savedZipCache = new();
+        /// <summary>
+        /// The saved path cache
+        /// </summary>
         private readonly Dictionary<object, object> _savedPathCache = new();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssetRegistryCoverageTest"/> class
+        /// </summary>
         public AssetRegistryCoverageTest()
         {
             _savedAssembly = (string)ActiveAssemblyProp.GetValue(null);
@@ -69,6 +100,9 @@ namespace Alis.Core.Aspect.Memory.Test
             foreach (DictionaryEntry e in GetPathCache()) _savedPathCache[e.Key] = e.Value;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ActiveAssemblyProp.SetValue(null, _savedAssembly);
@@ -77,6 +111,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Restore(GetPathCache(), _savedPathCache);
         }
 
+        /// <summary>
+        /// Restores the target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="saved">The saved</param>
         private static void Restore(IDictionary target, Dictionary<object, object> saved)
         {
             target.Clear();
@@ -84,10 +123,27 @@ namespace Alis.Core.Aspect.Memory.Test
                 target[kvp.Key] = kvp.Value;
         }
 
+        /// <summary>
+        /// Gets the loaders
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetLoaders() => (IDictionary)LoadersField.GetValue(null);
+        /// <summary>
+        /// Gets the zip cache
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetZipCache() => (IDictionary)ZipCacheField.GetValue(null);
+        /// <summary>
+        /// Gets the path cache
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetPathCache() => (IDictionary)PathCacheField.GetValue(null);
 
+        /// <summary>
+        /// Creates the test zip bytes using the specified entries
+        /// </summary>
+        /// <param name="entries">The entries</param>
+        /// <returns>The byte array</returns>
         private static byte[] CreateTestZipBytes(Dictionary<string, string> entries)
         {
             using MemoryStream ms = new MemoryStream();
@@ -105,6 +161,11 @@ namespace Alis.Core.Aspect.Memory.Test
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Setup the assembly using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="zipBytes">The zip bytes</param>
         private static void SetupAssembly(string assemblyName, byte[] zipBytes)
         {
             ActiveAssemblyProp.SetValue(null, null);
@@ -114,6 +175,9 @@ namespace Alis.Core.Aspect.Memory.Test
             AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
         }
 
+        /// <summary>
+        /// Tests that make safe temp name no extension generates name without extension
+        /// </summary>
         [Fact]
         public void MakeSafeTempName_NoExtension_GeneratesNameWithoutExtension()
         {
@@ -127,6 +191,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.DoesNotContain(".", result.Substring("TestAssembly_".Length));
         }
 
+        /// <summary>
+        /// Tests that make safe temp name extension length exactly 16 keeps extension
+        /// </summary>
         [Fact]
         public void MakeSafeTempName_ExtensionLengthExactly16_KeepsExtension()
         {
@@ -141,6 +208,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.EndsWith("." + ext15, result);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name duplicate filenames resolves by full path
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByFullPath()
         {
@@ -157,6 +227,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name duplicate filenames resolves by partial path
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByPartialPath()
         {
@@ -173,6 +246,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name resource without extension returns stream
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ResourceWithoutExtension_ReturnsStream()
         {
@@ -194,6 +270,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("all: clean", content);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name subdir resource returns content
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_SubdirResource_ReturnsContent()
         {
@@ -210,6 +289,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that get resource path by name resource without extension returns path
+        /// </summary>
         [Fact]
         public void GetResourcePathByName_ResourceWithoutExtension_ReturnsPath()
         {
@@ -227,6 +309,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("This is the readme", File.ReadAllText(result));
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name triple duplicate filenames resolves by full path
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_TripleDuplicateFilenames_ResolvesByFullPath()
         {
@@ -244,6 +329,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name partial match via index of finds resource
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_PartialMatchViaIndexOf_FindsResource()
         {
@@ -259,6 +347,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that ensure zip cached duplicate filenames builds cache correctly
+        /// </summary>
         [Fact]
         public void EnsureZipCached_DuplicateFilenames_BuildsCacheCorrectly()
         {
@@ -276,6 +367,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("data1", File.ReadAllText(path1));
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name backslash in resource name finds resource
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_BackslashInResourceName_FindsResource()
         {
@@ -291,6 +385,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(result.Length > 0);
         }
 
+        /// <summary>
+        /// Tests that register assembly clears extracted path cache for assembly
+        /// </summary>
         [Fact]
         public void RegisterAssembly_ClearsExtractedPathCacheForAssembly()
         {
@@ -311,6 +408,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("second version", File.ReadAllText(path2));
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name cache miss after ensure throws file not found exception
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
         {
@@ -350,6 +450,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(hit, "Cache miss race condition was triggered");
         }
 
+        /// <summary>
+        /// Tests that get resource path by name cache miss after ensure throws file not found exception
+        /// </summary>
         [Fact]
         public void GetResourcePathByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
         {
@@ -389,6 +492,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(hit, "Cache miss race condition was triggered for GetResourcePathByName");
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name zip entry null throws file not found exception
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_ZipEntryNull_ThrowsFileNotFoundException()
         {
@@ -431,6 +537,9 @@ namespace Alis.Core.Aspect.Memory.Test
             }
         }
 
+        /// <summary>
+        /// Tests that try get cached path entry candidate null removes cache entry
+        /// </summary>
         [Fact]
         public void TryGetCachedPath_EntryCandidateNull_RemovesCacheEntry()
         {
@@ -456,6 +565,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.False(GetPathCache().Contains(compositeKey));
         }
 
+        /// <summary>
+        /// Tests that ensure zip cached for active assembly loader missing throws invalid operation exception
+        /// </summary>
         [Fact]
         public void EnsureZipCachedForActiveAssembly_LoaderMissing_ThrowsInvalidOperationException()
         {
@@ -477,6 +589,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Contains("no tiene un assets.pack registrado", tie.InnerException.Message);
         }
 
+        /// <summary>
+        /// Tests that get resource memory stream by name length exceeds max int creates memory stream without capacity
+        /// </summary>
         [Fact]
         public void GetResourceMemoryStreamByName_LengthExceedsMaxInt_CreatesMemoryStreamWithoutCapacity()
         {
@@ -504,6 +619,9 @@ namespace Alis.Core.Aspect.Memory.Test
             }
         }
 
+        /// <summary>
+        /// Tests that extract resource to temp zip entry null throws file not found exception
+        /// </summary>
         [Fact]
         public void ExtractResourceToTemp_ZipEntryNull_ThrowsFileNotFoundException()
         {
@@ -539,6 +657,9 @@ namespace Alis.Core.Aspect.Memory.Test
             }
         }
 
+        /// <summary>
+        /// Tests that extract resource to temp set last write time utc fails catch block handles
+        /// </summary>
         [Fact]
         public void ExtractResourceToTemp_SetLastWriteTimeUtcFails_CatchBlockHandles()
         {

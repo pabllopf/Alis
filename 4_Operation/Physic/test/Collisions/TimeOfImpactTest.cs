@@ -38,8 +38,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The time of impact test class
+    /// </summary>
     public class TimeOfImpactTest
     {
+        /// <summary>
+        /// Tests that calculate time of impact should return separated for far sweeps
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnSeparated_ForFarSweeps()
         {
@@ -77,6 +83,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, output.T);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should return overlapped when starting intersecting
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenStartingIntersecting()
         {
@@ -114,6 +123,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should return touching for approaching shapes
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnTouching_ForApproachingShapes()
         {
@@ -150,6 +162,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.State == ToiOutputState.Touching || output.State == ToiOutputState.Seperated);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should return t between zero and one
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnT_BetweenZeroAndOne()
         {
@@ -187,6 +202,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.T <= 1.0f);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should return overlapped when shapes fully intersect
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldReturnOverlapped_WhenShapesFullyIntersect()
         {
@@ -224,6 +242,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, output.T);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact for overlapped should update diagnostics counters
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ForOverlapped_ShouldUpdateDiagnosticsCounters()
         {
@@ -261,6 +282,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiCalls >= 1);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact for approaching should update iter diagnostics counters
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ForApproaching_ShouldUpdateIterDiagnosticsCounters()
         {
@@ -299,6 +323,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiMaxRootIters >= 0);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should trigger root find when sweeps cross
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldTriggerRootFind_WhenSweepsCross()
         {
@@ -336,6 +363,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.T >= 0.0f);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact should update root iters when root finding
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_ShouldUpdateRootIters_WhenRootFinding()
         {
@@ -374,6 +404,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiIters >= 0);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact with polygons should compute touching
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_WithPolygons_ShouldComputeTouching()
         {
@@ -744,6 +777,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(t2, result);
         }
 
+        /// <summary>
+        /// Tests that perform root find with diagnostics on returns t 2
+        /// </summary>
         [Fact]
         public void PerformRootFind_WithDiagnosticsOn_ReturnsT2()
         {
@@ -857,6 +893,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(ToiOutputState.Overlapped, outputOut.State);
         }
 
+        /// <summary>
+        /// Tests that try handle distance result with distance less than target plus tolerance returns touching
+        /// </summary>
         [Fact]
         public void TryHandleDistanceResult_WithDistanceLessThanTargetPlusTolerance_ReturnsTouching()
         {
@@ -875,6 +914,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(t1, ((ToiOutput)args[3]).T);
         }
 
+        /// <summary>
+        /// Tests that try handle distance result with positive distance returns false
+        /// </summary>
         [Fact]
         public void TryHandleDistanceResult_WithPositiveDistance_ReturnsFalse()
         {
@@ -891,6 +933,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that compute root step odd and even iterations returns different values
+        /// </summary>
         [Fact]
         public void ComputeRootStep_OddAndEvenIterations_ReturnsDifferentValues()
         {
@@ -905,6 +950,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2.0f, result2);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact with enabling diagnostics counters updated
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_WithEnablingDiagnostics_CountersUpdated()
         {
@@ -928,6 +976,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(TimeOfImpact.ToiCalls >= beforeCalls + 1);
         }
 
+        /// <summary>
+        /// Tests that calculate time of impact when two circles collide returns overlapped
+        /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_WhenTwoCirclesCollide_ReturnsOverlapped()
         {
@@ -948,6 +999,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(output.State == ToiOutputState.Overlapped || output.State == ToiOutputState.Touching);
         }
 
+        /// <summary>
+        /// Tests that update bisection bounds s greater than target sets a 1
+        /// </summary>
         [Fact]
         public void UpdateBisectionBounds_SGreaterThanTarget_SetsA1()
         {
@@ -963,6 +1017,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.5f, (float)args[1]);
         }
 
+        /// <summary>
+        /// Tests that update bisection bounds s less than or equal target sets a 2
+        /// </summary>
         [Fact]
         public void UpdateBisectionBounds_SLessThanOrEqualTarget_SetsA2()
         {
@@ -978,6 +1035,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, (float)args[3]);
         }
 
+        /// <summary>
+        /// Tests that diagnostics disable diagnostics root iters do not increment
+        /// </summary>
         [Fact]
         public void Diagnostics_DisableDiagnostics_RootIters_DoNotIncrement()
         {

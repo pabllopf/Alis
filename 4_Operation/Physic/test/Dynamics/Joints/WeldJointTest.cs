@@ -508,6 +508,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that internal constructor should set joint type
+        /// </summary>
         [Fact]
         public void InternalConstructor_ShouldSetJointType()
         {
@@ -515,6 +518,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.Weld, joint.JointType);
         }
 
+        /// <summary>
+        /// Tests that constructor with use world coordinates true should transform anchors
+        /// </summary>
         [Fact]
         public void Constructor_WithUseWorldCoordinatesTrue_ShouldTransformAnchors()
         {
@@ -529,6 +535,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(new Vector2F(0.0f, 5.0f), joint.LocalAnchorB);
         }
 
+        /// <summary>
+        /// Tests that get reaction torque should return zero initially
+        /// </summary>
         [Fact]
         public void GetReactionTorque_ShouldReturnZeroInitially()
         {

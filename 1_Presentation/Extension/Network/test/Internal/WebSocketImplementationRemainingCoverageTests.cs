@@ -280,6 +280,14 @@ namespace Alis.Extension.Network.Test.Internal
         /// </summary>
         private sealed class ThrowingWriteStream : MemoryStream
         {
+            /// <summary>
+            /// Writes the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <exception cref="IOException">Simulated write error</exception>
             public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
                 throw new IOException("Simulated write error");
@@ -291,6 +299,11 @@ namespace Alis.Extension.Network.Test.Internal
         /// </summary>
         private sealed class ThrowingOnDisposeStream : MemoryStream
         {
+            /// <summary>
+            /// Disposes the disposing
+            /// </summary>
+            /// <param name="disposing">The disposing</param>
+            /// <exception cref="InvalidOperationException">Simulated close error</exception>
             protected override void Dispose(bool disposing)
             {
                 if (disposing)

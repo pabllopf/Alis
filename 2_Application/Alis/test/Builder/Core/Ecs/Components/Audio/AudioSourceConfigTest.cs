@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Components.Audio
 {
+    /// <summary>
+    /// The audio source config test class
+    /// </summary>
     public class AudioSourceConfigTest
     {
+        /// <summary>
+        /// Tests that delegate can be invoked
+        /// </summary>
         [Fact]
         public void Delegate_CanBeInvoked()
         {

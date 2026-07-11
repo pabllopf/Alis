@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The dynamic tree remaining coverage tests class
+    /// </summary>
     public class DynamicTreeRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that move proxy negative x negative y displacement extends lower bounds
+        /// </summary>
         [Fact]
         public void MoveProxy_NegativeXNegativeY_Displacement_ExtendsLowerBounds()
         {
@@ -21,6 +27,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(fat.LowerBound.Y < newAabb.LowerBound.Y);
         }
 
+        /// <summary>
+        /// Tests that move proxy positive x positive y displacement extends upper bounds
+        /// </summary>
         [Fact]
         public void MoveProxy_PositiveXPositiveY_Displacement_ExtendsUpperBounds()
         {
@@ -32,6 +41,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(moved);
         }
 
+        /// <summary>
+        /// Tests that move proxy negative x positive y displacement extends lower upper
+        /// </summary>
         [Fact]
         public void MoveProxy_NegativeXPositiveY_Displacement_ExtendsLowerUpper()
         {
@@ -43,6 +55,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(moved);
         }
 
+        /// <summary>
+        /// Tests that move proxy positive x negative y displacement extends upper lower
+        /// </summary>
         [Fact]
         public void MoveProxy_PositiveXNegativeY_Displacement_ExtendsUpperLower()
         {
@@ -54,6 +69,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(moved);
         }
 
+        /// <summary>
+        /// Tests that ray cast separation axis positive skips node
+        /// </summary>
         [Fact]
         public void RayCast_SeparationAxisPositive_SkipsNode()
         {
@@ -78,6 +96,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, hitCount);
         }
 
+        /// <summary>
+        /// Tests that ray cast callback returns negative does not update fraction
+        /// </summary>
         [Fact]
         public void RayCast_CallbackReturnsNegative_DoesNotUpdateFraction()
         {
@@ -102,6 +123,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, hitCount);
         }
 
+        /// <summary>
+        /// Tests that ray cast callback returns zero stops processing
+        /// </summary>
         [Fact]
         public void RayCast_CallbackReturnsZero_StopsProcessing()
         {
@@ -131,6 +155,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(hitCount > 0);
         }
 
+        /// <summary>
+        /// Tests that compute child cost with leaf and internal returns correct cost
+        /// </summary>
         [Fact]
         public void ComputeChildCost_WithLeafAndInternal_ReturnsCorrectCost()
         {
@@ -151,6 +178,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(sibling >= 0);
         }
 
+        /// <summary>
+        /// Tests that find best sibling with overlapping aabb triggers break condition
+        /// </summary>
         [Fact]
         public void FindBestSibling_WithOverlappingAabb_TriggersBreakCondition()
         {
@@ -168,6 +198,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(sibling >= 0);
         }
 
+        /// <summary>
+        /// Tests that balance with linear chain triggers both rotation directions
+        /// </summary>
         [Fact]
         public void Balance_WithLinearChain_TriggersBothRotationDirections()
         {
@@ -184,6 +217,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height > 0);
         }
 
+        /// <summary>
+        /// Tests that balance with descending chain triggers alternate rotations
+        /// </summary>
         [Fact]
         public void Balance_WithDescendingChain_TriggersAlternateRotations()
         {
@@ -199,6 +235,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.MaxBalance >= 0);
         }
 
+        /// <summary>
+        /// Tests that remove proxy with grand parent both child branches exercised
+        /// </summary>
         [Fact]
         public void RemoveProxy_WithGrandParent_BothChildBranchesExercised()
         {
@@ -220,6 +259,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height >= 0);
         }
 
+        /// <summary>
+        /// Tests that allocate node multiple capacity expansions grows correctly
+        /// </summary>
         [Fact]
         public void AllocateNode_MultipleCapacityExpansions_GrowsCorrectly()
         {
@@ -235,6 +277,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height >= 0);
         }
 
+        /// <summary>
+        /// Tests that remove and re add many reuses freed nodes
+        /// </summary>
         [Fact]
         public void RemoveAndReAddMany_ReusesFreedNodes()
         {
@@ -263,6 +308,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height > 0);
         }
 
+        /// <summary>
+        /// Tests that shift origin large offset updates all aabbs
+        /// </summary>
         [Fact]
         public void ShiftOrigin_LargeOffset_UpdatesAllAabbs()
         {
@@ -282,6 +330,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that query with empty tree does not throw
+        /// </summary>
         [Fact]
         public void Query_WithEmptyTree_DoesNotThrow()
         {
@@ -290,6 +341,9 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.Query(id => true, ref queryArea);
         }
 
+        /// <summary>
+        /// Tests that dynamic tree with string type operates correctly
+        /// </summary>
         [Fact]
         public void DynamicTree_WithStringType_OperatesCorrectly()
         {

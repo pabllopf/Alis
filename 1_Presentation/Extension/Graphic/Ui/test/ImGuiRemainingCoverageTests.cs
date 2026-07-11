@@ -6,10 +6,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiRemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiRemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -19,11 +29,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Sliders the int all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SliderInt_AllOverloads_ShouldExecute()
         {
@@ -37,6 +53,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sliders the int 2 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SliderInt2_AllOverloads_ShouldExecute()
         {
@@ -50,6 +69,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sliders the int 3 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SliderInt3_AllOverloads_ShouldExecute()
         {
@@ -63,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sliders the int 4 all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SliderInt4_AllOverloads_ShouldExecute()
         {
@@ -76,6 +101,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Smalls the button should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SmallButton_ShouldExecute()
         {
@@ -86,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Spacings the should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Spacing_ShouldExecute()
         {
@@ -96,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Styles the colors classic all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsClassic_AllOverloads_ShouldExecute()
         {
@@ -104,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsClassic(style);
         }
 
+        /// <summary>
+        /// Styles the colors dark all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsDark_AllOverloads_ShouldExecute()
         {
@@ -112,6 +149,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsDark(style);
         }
 
+        /// <summary>
+        /// Styles the colors light all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsLight_AllOverloads_ShouldExecute()
         {
@@ -120,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.StyleColorsLight(style);
         }
 
+        /// <summary>
+        /// Tabs the item button all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TabItemButton_AllOverloads_ShouldExecute()
         {
@@ -133,6 +176,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the get column count should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableGetColumnCount_ShouldExecute()
         {
@@ -148,6 +194,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the get column flags with index should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableGetColumnFlags_WithIndex_ShouldExecute()
         {
@@ -167,6 +216,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the get column index should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableGetColumnIndex_ShouldExecute()
         {
@@ -182,6 +234,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the get row index should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableGetRowIndex_ShouldExecute()
         {
@@ -197,6 +252,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the get sort specs should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableGetSortSpecs_ShouldExecute()
         {
@@ -212,6 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the header should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableHeader_ShouldExecute()
         {
@@ -230,6 +291,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the headers row should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableHeadersRow_ShouldExecute()
         {
@@ -246,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the next column should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableNextColumn_ShouldExecute()
         {
@@ -261,6 +328,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the next row all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableNextRow_AllOverloads_ShouldExecute()
         {
@@ -278,6 +348,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the set bg color all overloads should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableSetBgColor_AllOverloads_ShouldExecute()
         {
@@ -296,6 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the set column enabled should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableSetColumnEnabled_ShouldExecute()
         {
@@ -313,6 +389,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the set column index should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableSetColumnIndex_ShouldExecute()
         {
@@ -331,6 +410,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tables the setup column should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void TableSetupColumn_ShouldExecute()
         {
@@ -346,6 +428,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Menus the item with enabled should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MenuItem_WithEnabled_ShouldExecute()
         {
@@ -365,6 +450,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Ims the font config should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ImFontConfig_ShouldExecute()
         {
@@ -372,6 +460,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             _ = ptr;
         }
 
+        /// <summary>
+        /// Docks the builder basic chain should execute
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DockBuilder_Basic_Chain_ShouldExecute()
         {
@@ -393,6 +484,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Docks the builder set node flags should block
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DockBuilderSetNodeFlags_ShouldBlock()
         {

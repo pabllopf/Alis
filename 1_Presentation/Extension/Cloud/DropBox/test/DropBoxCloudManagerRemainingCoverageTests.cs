@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Extension.Cloud.DropBox.Test
 {
+    /// <summary>
+    /// The drop box cloud manager remaining coverage tests class
+    /// </summary>
     public class DropBoxCloudManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that download file async with non existent directory creates directory
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithNonExistentDirectory_CreatesDirectory()
         {
@@ -33,6 +39,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             }
         }
 
+        /// <summary>
+        /// Tests that download file async with existing directory skips creation
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithExistingDirectory_SkipsCreation()
         {
@@ -57,6 +66,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             }
         }
 
+        /// <summary>
+        /// Tests that download file async with local path no directory component skips directory creation
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithLocalPathNoDirectoryComponent_SkipsDirectoryCreation()
         {
@@ -68,6 +80,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.NotNull(exception);
         }
 
+        /// <summary>
+        /// Tests that download file async with null dropbox path throws null reference exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithNullDropboxPath_ThrowsNullReferenceException()
         {
@@ -77,6 +92,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.DownloadFileAsync(null, "/temp/file.txt"));
         }
 
+        /// <summary>
+        /// Tests that download file async with null local path throws exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithNullLocalPath_ThrowsException()
         {
@@ -88,6 +106,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             Assert.NotNull(exception);
         }
 
+        /// <summary>
+        /// Tests that upload file async with null dropbox path throws null reference exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithNullDropboxPath_ThrowsNullReferenceException()
         {
@@ -108,6 +129,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
             }
         }
 
+        /// <summary>
+        /// Tests that delete async with null path throws null reference exception
+        /// </summary>
         [Fact]
         public async Task DeleteAsync_WithNullPath_ThrowsNullReferenceException()
         {
@@ -117,6 +141,9 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 manager.DeleteAsync(null));
         }
 
+        /// <summary>
+        /// Tests that get metadata async with null path throws null reference exception
+        /// </summary>
         [Fact]
         public async Task GetMetadataAsync_WithNullPath_ThrowsNullReferenceException()
         {

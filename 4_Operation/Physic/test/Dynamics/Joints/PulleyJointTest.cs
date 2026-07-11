@@ -585,6 +585,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that internal constructor should set joint type
+        /// </summary>
         [Fact]
         public void InternalConstructor_ShouldSetJointType()
         {
@@ -592,6 +595,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(JointType.Pulley, joint.JointType);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
         {

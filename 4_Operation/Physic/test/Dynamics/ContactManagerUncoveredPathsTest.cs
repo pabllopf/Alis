@@ -10,8 +10,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
+    /// <summary>
+    /// The contact manager uncovered paths test class
+    /// </summary>
     public class ContactManagerUncoveredPathsTest
     {
+        /// <summary>
+        /// Tests that notify separation fires all handlers when all set
+        /// </summary>
         [Fact]
         public void NotifySeparation_FiresAllHandlers_WhenAllSet()
         {
@@ -47,6 +53,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(bodyBSepCount > 0);
         }
 
+        /// <summary>
+        /// Tests that passes collision filters fails when body should not collide
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_Fails_WhenBodyShouldNotCollide()
         {
@@ -59,6 +68,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that before collision can block contact when fixture a returns false
+        /// </summary>
         [Fact]
         public void BeforeCollision_CanBlockContact_WhenFixtureAReturnsFalse()
         {
@@ -77,6 +89,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that before collision can block contact when fixture b returns false
+        /// </summary>
         [Fact]
         public void BeforeCollision_CanBlockContact_WhenFixtureBReturnsFalse()
         {
@@ -95,6 +110,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that try resolve contact filter destroys when contact filter returns false
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_Destroys_WhenContactFilterReturnsFalse()
         {
@@ -114,6 +132,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(1, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that fixture on separation only body a should fire
+        /// </summary>
         [Fact]
         public void FixtureOnSeparation_OnlyBodyA_ShouldFire()
         {
@@ -135,6 +156,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(bodyASepCount > 0);
         }
 
+        /// <summary>
+        /// Tests that fixture on separation only body b should fire
+        /// </summary>
         [Fact]
         public void FixtureOnSeparation_OnlyBodyB_ShouldFire()
         {
@@ -156,6 +180,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(bodyBSepCount > 0);
         }
 
+        /// <summary>
+        /// Tests that collision group zero uses category check
+        /// </summary>
         [Fact]
         public void CollisionGroup_Zero_UsesCategoryCheck()
         {
@@ -241,6 +268,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that destroy when not touching does not fire separation
+        /// </summary>
         [Fact]
         public void Destroy_WhenNotTouching_DoesNotFireSeparation()
         {
@@ -259,6 +289,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that remove from body with single contact updates lists
+        /// </summary>
         [Fact]
         public void RemoveFromBody_WithSingleContact_UpdatesLists()
         {
@@ -274,6 +307,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(bodyA.ContactList);
         }
 
+        /// <summary>
+        /// Tests that collide multi core with single processor does not throw
+        /// </summary>
         [Fact]
         public void Collide_MultiCore_WithSingleProcessor_DoesNotThrow()
         {
@@ -293,6 +329,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that notify separation with all handlers null does not throw
+        /// </summary>
         [Fact]
         public void NotifySeparation_WithAllHandlersNull_DoesNotThrow()
         {
@@ -310,6 +349,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that try resolve contact filter without filter flag returns false
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_WithoutFilterFlag_ReturnsFalse()
         {
@@ -329,6 +371,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that add pair bodies same fixture returns early
+        /// </summary>
         [Fact]
         public void AddPair_BodiesSameFixture_ReturnsEarly()
         {
@@ -344,6 +389,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ShouldCollide — non-zero groups that don't match (line 367-375)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that should collide with non matching groups uses categories
+        /// </summary>
         [Fact]
         public void ShouldCollide_WithNonMatchingGroups_UsesCategories()
         {
@@ -363,6 +411,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ProcessContactMultiCore — bodyA disabled (line 589-591)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that process contact multi core with disabled body returns next
+        /// </summary>
         [Fact]
         public void ProcessContactMultiCore_WithDisabledBody_ReturnsNext()
         {
@@ -387,6 +438,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // CollideMultiCore — exercises the multicore path end-to-end
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide multi core with multiple contacts processes all
+        /// </summary>
         [Fact]
         public void CollideMultiCore_WithMultipleContacts_ProcessesAll()
         {
@@ -409,6 +463,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // RemoveFromBody — nodeA == bodyA.ContactList (line 291-293)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that remove from body node a is contact list updates list
+        /// </summary>
         [Fact]
         public void RemoveFromBody_NodeAIsContactList_UpdatesList()
         {
@@ -427,6 +484,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // PassesCollisionFilters — ContactFilter returns false (line 507-510)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that passes collision filters contact filter blocks returns false
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_ContactFilterBlocks_ReturnsFalse()
         {

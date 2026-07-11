@@ -266,6 +266,9 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private struct CoverageOnlyComponent
         {
+            /// <summary>
+            /// The data
+            /// </summary>
             public int Data;
         }
     }

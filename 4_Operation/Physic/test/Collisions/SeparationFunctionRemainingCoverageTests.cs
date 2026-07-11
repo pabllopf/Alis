@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The separation function remaining coverage tests class
+    /// </summary>
     public class SeparationFunctionRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that set face a flip axis when point b above face
+        /// </summary>
         [Fact]
         public void Set_FaceA_FlipAxis_WhenPointBAboveFace()
         {
@@ -32,6 +38,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(float.IsInfinity(separation));
         }
 
+        /// <summary>
+        /// Tests that find min separation default case returns zero
+        /// </summary>
         [Fact]
         public void FindMinSeparation_DefaultCase_ReturnsZero()
         {
@@ -43,6 +52,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(-1, idxB);
         }
 
+        /// <summary>
+        /// Tests that evaluate default case returns zero
+        /// </summary>
         [Fact]
         public void Evaluate_DefaultCase_ReturnsZero()
         {

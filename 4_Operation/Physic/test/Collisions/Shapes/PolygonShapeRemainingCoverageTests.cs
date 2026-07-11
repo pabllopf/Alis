@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions.Shapes
 {
+    /// <summary>
+    /// The polygon shape remaining coverage tests class
+    /// </summary>
     public class PolygonShapeRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that ray cast ray starting inside returns false
+        /// </summary>
         [Fact]
         public void RayCast_RayStartingInside_ReturnsFalse()
         {
@@ -56,6 +62,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.False(hit);
         }
 
+        /// <summary>
+        /// Tests that compute aabb should update upper bound x and lower bound y
+        /// </summary>
         [Fact]
         public void ComputeAabb_ShouldUpdateUpperBoundXAndLowerBoundY()
         {
@@ -69,6 +78,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.True(aabb.LowerBound.Y <= aabb.UpperBound.Y);
         }
 
+        /// <summary>
+        /// Tests that compare to with different radius returns false
+        /// </summary>
         [Fact]
         public void CompareTo_WithDifferentRadius_ReturnsFalse()
         {
@@ -82,6 +94,9 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that compare to with same radius different mass data returns false
+        /// </summary>
         [Fact]
         public void CompareTo_WithSameRadiusDifferentMassData_ReturnsFalse()
         {

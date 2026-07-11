@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
+    /// <summary>
+    /// The rule branch coverage test class
+    /// </summary>
     public class RuleBranchCoverageTest
     {
+        /// <summary>
+        /// Tests that rule applies has component returns true when archetype has component
+        /// </summary>
         [Fact]
         public void RuleApplies_HasComponent_ReturnsTrueWhenArchetypeHasComponent()
         {
@@ -20,6 +26,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies has component returns false when archetype lacks component
+        /// </summary>
         [Fact]
         public void RuleApplies_HasComponent_ReturnsFalseWhenArchetypeLacksComponent()
         {
@@ -30,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies not component returns true when archetype lacks component
+        /// </summary>
         [Fact]
         public void RuleApplies_NotComponent_ReturnsTrueWhenArchetypeLacksComponent()
         {
@@ -40,6 +52,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies not component returns false when archetype has component
+        /// </summary>
         [Fact]
         public void RuleApplies_NotComponent_ReturnsFalseWhenArchetypeHasComponent()
         {
@@ -50,6 +65,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies delegate returns true when function returns true
+        /// </summary>
         [Fact]
         public void RuleApplies_Delegate_ReturnsTrueWhenFunctionReturnsTrue()
         {
@@ -60,6 +78,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies delegate returns false when function returns false
+        /// </summary>
         [Fact]
         public void RuleApplies_Delegate_ReturnsFalseWhenFunctionReturnsFalse()
         {
@@ -70,6 +91,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(rule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies include disabled returns true
+        /// </summary>
         [Fact]
         public void RuleApplies_IncludeDisabled_ReturnsTrue()
         {
@@ -79,6 +103,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(Rule.IncludeDisabledRule.RuleApplies(archetypeType));
         }
 
+        /// <summary>
+        /// Tests that rule applies default throws invalid data exception
+        /// </summary>
         [Fact]
         public void RuleApplies_Default_ThrowsInvalidDataException()
         {
@@ -89,6 +116,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Throws<InvalidDataException>(() => { defaultRule.RuleApplies(archetypeType); });
         }
 
+        /// <summary>
+        /// Tests that rule applies custom delegate with null delegate throws null reference exception
+        /// </summary>
         [Fact]
         public void RuleApplies_CustomDelegateWithNullDelegate_ThrowsNullReferenceException()
         {

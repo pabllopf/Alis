@@ -8,17 +8,34 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The unix player base extraction coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class UnixPlayerBaseExtractionCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The previous active name
+        /// </summary>
         private string _previousActiveName;
+        /// <summary>
+        /// The wav resource name
+        /// </summary>
         private const string WavResourceName = "extract_test.wav";
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_previousActiveName != null)
                 AssetRegistryTestHelper.RestoreActive(_previousActiveName);
         }
 
+        /// <summary>
+        /// Creates the real wav bytes
+        /// </summary>
+        /// <returns>The byte array</returns>
         private static byte[] CreateRealWavBytes()
         {
             int sampleRate = 44100;
@@ -48,6 +65,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Setup the assembly
+        /// </summary>
         private void SetupAssembly()
         {
             _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
@@ -56,6 +76,9 @@ namespace Alis.Core.Audio.Test.Players
             AssetRegistryTestHelper.SaveAndSetActive(name);
         }
 
+        /// <summary>
+        /// Tests that extract wav from resources with valid resource should return path
+        /// </summary>
         [Fact]
         public void ExtractWavFromResources_WithValidResource_ShouldReturnPath()
         {
@@ -73,6 +96,9 @@ namespace Alis.Core.Audio.Test.Players
             File.Delete(result);
         }
 
+        /// <summary>
+        /// Tests that play with resource extraction should succeed
+        /// </summary>
         [Fact]
         public async Task Play_WithResourceExtraction_ShouldSucceed()
         {
@@ -86,6 +112,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that play loop with resource extraction should succeed
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithResourceExtraction_ShouldSucceed()
         {
@@ -99,6 +128,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that play with cached extraction should reuse cached file
+        /// </summary>
         [Fact]
         public async Task Play_WithCachedExtraction_ShouldReuseCachedFile()
         {

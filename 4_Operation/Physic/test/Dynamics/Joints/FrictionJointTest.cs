@@ -660,6 +660,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with excess impulse clamps impulse
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithExcessImpulse_ClampsImpulse()
         {
@@ -706,6 +709,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             solveMethod.Invoke(joint, new object[] { data });
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
         {

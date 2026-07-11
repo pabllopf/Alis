@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im draw data remaining coverage tests class
+    /// </summary>
     public class ImDrawDataRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that default values should be zero
+        /// </summary>
         [Fact]
         public void DefaultValues_ShouldBeZero()
         {
@@ -23,6 +29,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawData.OwnerViewportPtr);
         }
 
+        /// <summary>
+        /// Tests that cmd lists range with non zero ptr should return accessor
+        /// </summary>
         [Fact]
         public void CmdListsRange_WithNonZeroPtr_ShouldReturnAccessor()
         {
@@ -41,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that clear should invoke native
+        /// </summary>
         [Fact]
         public void Clear_ShouldInvokeNative()
         {
@@ -48,6 +60,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             drawData.Clear();
         }
 
+        /// <summary>
+        /// Tests that set and get properties should roundtrip
+        /// </summary>
         [Fact]
         public void SetAndGetProperties_ShouldRoundtrip()
         {
@@ -74,6 +89,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new IntPtr(0x5678), drawData.OwnerViewportPtr);
         }
 
+        /// <summary>
+        /// Tests that de index all buffers should invoke native
+        /// </summary>
         [Fact]
         public void DeIndexAllBuffers_ShouldInvokeNative()
         {
@@ -81,6 +99,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             drawData.DeIndexAllBuffers();
         }
 
+        /// <summary>
+        /// Tests that scale clip rects should invoke native
+        /// </summary>
         [Fact]
         public void ScaleClipRects_ShouldInvokeNative()
         {

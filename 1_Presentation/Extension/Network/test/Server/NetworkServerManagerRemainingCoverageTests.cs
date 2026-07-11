@@ -12,17 +12,34 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Server
 {
+    /// <summary>
+    /// The network server manager remaining coverage tests class
+    /// </summary>
     public class NetworkServerManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// The test message class
+        /// </summary>
+        /// <seealso cref="IJsonSerializable"/>
         private class TestMessage : IJsonSerializable
         {
+            /// <summary>
+            /// Gets or sets the value of the text
+            /// </summary>
             public string Text { get; set; }
+            /// <summary>
+            /// Gets the serializable properties
+            /// </summary>
+            /// <returns>An enumerable of string property name and string value</returns>
             public IEnumerable<(string PropertyName, string Value)> GetSerializableProperties()
             {
                 yield return ("Text", Text);
             }
         }
 
+        /// <summary>
+        /// Tests that send message async target not in map does not throw
+        /// </summary>
         [Fact]
         public async Task SendMessageAsync_TargetNotInMap_DoesNotThrow()
         {
@@ -31,6 +48,9 @@ namespace Alis.Extension.Network.Test.Server
             await manager.SendMessageAsync("non-existent-player", "chat", new TestMessage { Text = "hello" });
         }
 
+        /// <summary>
+        /// Tests that send message async with transport and map calls send
+        /// </summary>
         [Fact]
         public async Task SendMessageAsync_WithTransportAndMap_CallsSendAsync()
         {
@@ -52,6 +72,9 @@ namespace Alis.Extension.Network.Test.Server
             mockTransport.Verify(t => t.SendAsync("target-client", It.IsAny<NetworkMessageEnvelope>(), It.IsAny<CancellationToken>()), Times.Once);
         }
 
+        /// <summary>
+        /// Tests that send message async local player null does not throw
+        /// </summary>
         [Fact]
         public async Task SendMessageAsync_LocalPlayerNull_DoesNotThrow()
         {
@@ -65,6 +88,9 @@ namespace Alis.Extension.Network.Test.Server
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that broadcast message async with transport calls broadcast
+        /// </summary>
         [Fact]
         public async Task BroadcastMessageAsync_WithTransport_CallsBroadcastAsync()
         {
@@ -82,6 +108,9 @@ namespace Alis.Extension.Network.Test.Server
             mockTransport.Verify(t => t.BroadcastAsync(It.IsAny<NetworkMessageEnvelope>(), null, It.IsAny<CancellationToken>()), Times.Once);
         }
 
+        /// <summary>
+        /// Tests that broadcast message async local player null does not throw
+        /// </summary>
         [Fact]
         public async Task BroadcastMessageAsync_LocalPlayerNull_DoesNotThrow()
         {
@@ -100,6 +129,9 @@ namespace Alis.Extension.Network.Test.Server
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that register player in session fires player joined event
+        /// </summary>
         [Fact]
         public void RegisterPlayerInSession_FiresPlayerJoinedEvent()
         {
@@ -117,6 +149,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal("Player1", joinedPlayer.PlayerName);
         }
 
+        /// <summary>
+        /// Tests that register player in session no current session does not fire event
+        /// </summary>
         [Fact]
         public void RegisterPlayerInSession_NoCurrentSession_DoesNotFireEvent()
         {
@@ -129,6 +164,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.False(eventFired);
         }
 
+        /// <summary>
+        /// Tests that kick player async fires player left event
+        /// </summary>
         [Fact]
         public async Task KickPlayerAsync_FiresPlayerLeftEvent()
         {
@@ -146,6 +184,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal("p1", leftPlayer.PlayerId);
         }
 
+        /// <summary>
+        /// Tests that kick player async non existent session does not fire event
+        /// </summary>
         [Fact]
         public async Task KickPlayerAsync_NonExistentSession_DoesNotFireEvent()
         {
@@ -159,6 +200,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.False(eventFired);
         }
 
+        /// <summary>
+        /// Tests that kick player async non existent player does not fire event
+        /// </summary>
         [Fact]
         public async Task KickPlayerAsync_NonExistentPlayer_DoesNotFireEvent()
         {
@@ -174,6 +218,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.False(eventFired);
         }
 
+        /// <summary>
+        /// Tests that get connected players with session returns players
+        /// </summary>
         [Fact]
         public async Task GetConnectedPlayers_WithSession_ReturnsPlayers()
         {
@@ -190,6 +237,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Contains(players, p => p.PlayerId == "p2");
         }
 
+        /// <summary>
+        /// Tests that get active sessions with multiple states returns only non closed
+        /// </summary>
         [Fact]
         public async Task GetActiveSessions_WithMultipleStates_ReturnsOnlyNonClosed()
         {
@@ -206,6 +256,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.DoesNotContain(session1, active);
         }
 
+        /// <summary>
+        /// Tests that close session async non existent session does not throw
+        /// </summary>
         [Fact]
         public async Task CloseSessionAsync_NonExistentSession_DoesNotThrow()
         {
@@ -215,6 +268,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that get player returns null when not in session
+        /// </summary>
         [Fact]
         public async Task GetPlayer_ReturnsNull_WhenNotInSession()
         {
@@ -225,6 +281,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(manager.GetPlayer("non-existent-player"));
         }
 
+        /// <summary>
+        /// Tests that register player in session updates player count
+        /// </summary>
         [Fact]
         public async Task RegisterPlayerInSession_UpdatesPlayerCount()
         {
@@ -239,6 +298,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(3, manager.CurrentSession.PlayerCount);
         }
 
+        /// <summary>
+        /// Tests that create session async session contains local player
+        /// </summary>
         [Fact]
         public async Task CreateSessionAsync_SessionContainsLocalPlayer()
         {
@@ -250,6 +312,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(1, session.PlayerCount);
         }
 
+        /// <summary>
+        /// Tests that stop listening async fires disconnected event
+        /// </summary>
         [Fact]
         public async Task StopListeningAsync_FiresDisconnectedEvent()
         {
@@ -272,6 +337,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Disconnected, manager.State);
         }
 
+        /// <summary>
+        /// Tests that listen async transport fails sets error state
+        /// </summary>
         [Fact]
         public async Task ListenAsync_TransportFails_SetsErrorState()
         {
@@ -289,6 +357,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.NotNull(manager.ListenUri);
         }
 
+        /// <summary>
+        /// Tests that get player no current session returns null
+        /// </summary>
         [Fact]
         public void GetPlayer_NoCurrentSession_ReturnsNull()
         {
@@ -296,6 +367,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(manager.GetPlayer("any-id"));
         }
 
+        /// <summary>
+        /// Tests that stop listening async exception fires error event
+        /// </summary>
         [Fact]
         public async Task StopListeningAsync_Exception_FiresErrorEvent()
         {
@@ -317,6 +391,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.True(errorFired);
         }
 
+        /// <summary>
+        /// Tests that initialize async cancellation requested still completes
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_CancellationRequested_StillCompletes()
         {
@@ -329,6 +406,12 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Idle, manager.State);
         }
 
+        /// <summary>
+        /// Sets the private field using the specified obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <param name="fieldName">The field name</param>
+        /// <param name="value">The value</param>
         private static void SetPrivateField(object obj, string fieldName, object value)
         {
             FieldInfo field = obj.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);

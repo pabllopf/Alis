@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The dynamic tree coverage test class
+    /// </summary>
     public class DynamicTreeCoverageTest
     {
+        /// <summary>
+        /// Tests that add multiple proxies triggers balance
+        /// </summary>
         [Fact]
         public void AddMultipleProxies_TriggersBalance()
         {
@@ -23,6 +29,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.MaxBalance >= 0);
         }
 
+        /// <summary>
+        /// Tests that add and remove all resets tree
+        /// </summary>
         [Fact]
         public void AddAndRemoveAll_ResetsTree()
         {
@@ -44,6 +53,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, tree.Height);
         }
 
+        /// <summary>
+        /// Tests that allocate beyond capacity triggers growth
+        /// </summary>
         [Fact]
         public void AllocateBeyondCapacity_TriggersGrowth()
         {
@@ -61,6 +73,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(height >= 0);
         }
 
+        /// <summary>
+        /// Tests that rebuild bottom up produces valid tree
+        /// </summary>
         [Fact]
         public void RebuildBottomUp_ProducesValidTree()
         {
@@ -80,6 +95,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height >= 0);
         }
 
+        /// <summary>
+        /// Tests that validate does not throw
+        /// </summary>
         [Fact]
         public void Validate_DoesNotThrow()
         {
@@ -95,6 +113,9 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.Validate();
         }
 
+        /// <summary>
+        /// Tests that ray cast callback returns zero terminates
+        /// </summary>
         [Fact]
         public void RayCast_CallbackReturnsZero_Terminates()
         {
@@ -124,6 +145,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(hitCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that ray cast callback returns positive updates max fraction
+        /// </summary>
         [Fact]
         public void RayCast_CallbackReturnsPositive_UpdatesMaxFraction()
         {
@@ -153,6 +177,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(hitCount > 0);
         }
 
+        /// <summary>
+        /// Tests that move proxy with displacement extends aabb
+        /// </summary>
         [Fact]
         public void MoveProxy_WithDisplacement_ExtendsAabb()
         {
@@ -169,6 +196,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(fatAabb.LowerBound.X < newAabb.LowerBound.X);
         }
 
+        /// <summary>
+        /// Tests that compute height with multiple nodes
+        /// </summary>
         [Fact]
         public void ComputeHeight_WithMultipleNodes()
         {
@@ -185,6 +215,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(height >= 3);
         }
 
+        /// <summary>
+        /// Tests that shift origin with multiple proxies
+        /// </summary>
         [Fact]
         public void ShiftOrigin_WithMultipleProxies()
         {
@@ -206,6 +239,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that query with non overlapping aabb returns empty
+        /// </summary>
         [Fact]
         public void Query_WithNonOverlappingAabb_ReturnsEmpty()
         {
@@ -229,6 +265,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Empty(hits);
         }
 
+        /// <summary>
+        /// Tests that remove and re add maintains tree integrity
+        /// </summary>
         [Fact]
         public void RemoveAndReAdd_MaintainsTreeIntegrity()
         {
@@ -260,6 +299,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height > 0);
         }
 
+        /// <summary>
+        /// Tests that find best sibling with two proxies returns best sibling
+        /// </summary>
         [Fact]
         public void FindBestSibling_WithTwoProxies_ReturnsBestSibling()
         {
@@ -275,6 +317,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(sibling >= 0);
         }
 
+        /// <summary>
+        /// Tests that compute child cost leaf and internal returns different cost
+        /// </summary>
         [Fact]
         public void ComputeChildCost_LeafAndInternal_ReturnsDifferentCost()
         {
@@ -289,6 +334,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(cost >= 0);
         }
 
+        /// <summary>
+        /// Tests that remove leaf with grand parent exercises full removal
+        /// </summary>
         [Fact]
         public void RemoveLeaf_WithGrandParent_ExercisesFullRemoval()
         {
@@ -308,6 +356,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height >= 0);
         }
 
+        /// <summary>
+        /// Tests that balance with imbalanced tree triggers rotation
+        /// </summary>
         [Fact]
         public void Balance_WithImbalancedTree_TriggersRotation()
         {
@@ -325,6 +376,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(balance >= 0);
         }
 
+        /// <summary>
+        /// Tests that attach new parent when sibling is root updates root
+        /// </summary>
         [Fact]
         public void AttachNewParent_WhenSiblingIsRoot_UpdatesRoot()
         {
@@ -338,6 +392,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(tree.Height > 0);
         }
 
+        /// <summary>
+        /// Tests that validate structure with null node returns early
+        /// </summary>
         [Fact]
         public void ValidateStructure_WithNullNode_ReturnsEarly()
         {
@@ -345,6 +402,9 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.ValidateStructure(DynamicTree<int>.NullNode);
         }
 
+        /// <summary>
+        /// Tests that validate metrics with null node returns early
+        /// </summary>
         [Fact]
         public void ValidateMetrics_WithNullNode_ReturnsEarly()
         {
@@ -352,6 +412,9 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.ValidateMetrics(DynamicTree<int>.NullNode);
         }
 
+        /// <summary>
+        /// Tests that ray cast on empty tree returns without iterating
+        /// </summary>
         [Fact]
         public void RayCast_OnEmptyTree_ReturnsWithoutIterating()
         {

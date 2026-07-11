@@ -34,9 +34,16 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Attributes
 {
 
+    /// <summary>
+    /// The require imgui system fact attribute class
+    /// </summary>
+    /// <seealso cref="FactAttribute"/>
     public class RequireCImguiSystemFactAttribute : FactAttribute
     {
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RequireCImguiSystemFactAttribute"/> class
+        /// </summary>
         public RequireCImguiSystemFactAttribute()
         {
             if (!TryLoadSfmlLibrary("cimgui"))

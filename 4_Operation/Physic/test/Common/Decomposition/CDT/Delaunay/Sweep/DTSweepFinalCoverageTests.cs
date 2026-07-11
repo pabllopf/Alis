@@ -9,11 +9,26 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 {
+    /// <summary>
+    /// The dt sweep final coverage tests class
+    /// </summary>
     public class DTSweepFinalCoverageTests
     {
+        /// <summary>
+        /// The dt sweep
+        /// </summary>
         private static readonly Type Type = typeof(DtSweep);
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly BindingFlags Flags = BindingFlags.NonPublic | BindingFlags.Static;
 
+        /// <summary>
+        /// Gets the method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="types">The types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetMethod(string name, params Type[] types)
         {
             return Type.GetMethod(name, Flags, null, types, null);
@@ -23,6 +38,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration tests via Triangulate - these exercise full paths
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate random dense points covers many paths
+        /// </summary>
         [Fact]
         public void Triangulate_RandomDensePoints_CoversManyPaths()
         {
@@ -38,6 +56,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(ps.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate large constrained grid covers edge events
+        /// </summary>
         [Fact]
         public void Triangulate_LargeConstrainedGrid_CoversEdgeEvents()
         {
@@ -64,6 +85,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(cps.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate circular points triggers convex hull
+        /// </summary>
         [Fact]
         public void Triangulate_CircularPoints_TriggersConvexHull()
         {
@@ -81,6 +105,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.NotNull(ps.GetTriangles);
         }
 
+        /// <summary>
+        /// Tests that triangulate cross constrained diagonals triggers flip events
+        /// </summary>
         [Fact]
         public void Triangulate_CrossConstrainedDiagonals_TriggersFlipEvents()
         {
@@ -112,6 +139,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // with proper triangle adjacency so Fill doesn't crash
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill right concave edge event recursive with fill executes
+        /// </summary>
         [Fact]
         public void FillRightConcaveEdgeEvent_RecursiveWithFill_Executes()
         {
@@ -168,6 +198,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // (lines 334-336 concave, 339-343 convex)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill right convex edge event concave branch with fill
+        /// </summary>
         [Fact]
         public void FillRightConvexEdgeEvent_ConcaveBranch_WithFill()
         {
@@ -210,6 +243,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that fill right convex edge event convex branch with fill
+        /// </summary>
         [Fact]
         public void FillRightConvexEdgeEvent_ConvexBranch_WithFill()
         {
@@ -255,6 +291,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillLeftConvexEdgeEvent — both branches (lines 400-402, 408-410)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill left convex edge event both branches with fill
+        /// </summary>
         [Fact]
         public void FillLeftConvexEdgeEvent_BothBranches_WithFill()
         {
@@ -300,6 +339,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that fill left convex edge event convex branch with fill
+        /// </summary>
         [Fact]
         public void FillLeftConvexEdgeEvent_ConvexBranch_WithFill()
         {
@@ -347,6 +389,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillRightBelowEdgeEvent — both branches (lines 357-359, 363-365)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill right below edge event both branches with fill
+        /// </summary>
         [Fact]
         public void FillRightBelowEdgeEvent_BothBranches_WithFill()
         {
@@ -397,6 +442,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillRightAboveEdgeEvent — Ccw and Cw branches (lines 382, 384-387)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill right above edge event ccw branch triggers below
+        /// </summary>
         [Fact]
         public void FillRightAboveEdgeEvent_CcwBranch_TriggersBelow()
         {
@@ -435,6 +483,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that fill right above edge event cw branch advances node
+        /// </summary>
         [Fact]
         public void FillRightAboveEdgeEvent_CwBranch_AdvancesNode()
         {
@@ -459,6 +510,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillLeftConcaveEdgeEvent — recursive (lines 424-426)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill left concave edge event recursive with fill
+        /// </summary>
         [Fact]
         public void FillLeftConcaveEdgeEvent_Recursive_WithFill()
         {
@@ -506,6 +560,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillLeftBelowEdgeEvent — convex branch (lines 446-447)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill left below edge event convex branch with fill
+        /// </summary>
         [Fact]
         public void FillLeftBelowEdgeEvent_ConvexBranch_WithFill()
         {
@@ -552,6 +609,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillAdvancingFront — hole angle within bounds (lines 747-749)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill advancing front hole angle within bounds fills
+        /// </summary>
         [Fact]
         public void FillAdvancingFront_HoleAngleWithinBounds_Fills()
         {
@@ -587,6 +647,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // LargeHole_DontFill — next2/prev2 checks (lines 777-778, 783-784)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that large hole dont fill next 2 check returns false
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_Next2Check_ReturnsFalse()
         {
@@ -606,6 +669,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that large hole dont fill prev 2 check returns false
+        /// </summary>
         [Fact]
         public void LargeHole_DontFill_Prev2Check_ReturnsFalse()
         {
@@ -633,6 +699,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // TurnAdvancingFrontConvex — inner Fill branch (lines 183-186)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that turn advancing front convex inner fill covered
+        /// </summary>
         [Fact]
         public void TurnAdvancingFrontConvex_InnerFill_Covered()
         {
@@ -665,6 +734,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // EdgeEvent — catch block (lines 282-285)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that edge event constraint catches point on edge
+        /// </summary>
         [Fact]
         public void EdgeEvent_Constraint_CatchesPointOnEdge()
         {
@@ -696,6 +768,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // EdgeEvent — o2 collinear Contains true (line 545) and throw (lines 551-552)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that edge event o 2 collinear contains true marks edge
+        /// </summary>
         [Fact]
         public void EdgeEvent_O2Collinear_ContainsTrue_MarksEdge()
         {
@@ -721,6 +796,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that edge event o 2 collinear not contains throws
+        /// </summary>
         [Fact]
         public void EdgeEvent_O2Collinear_NotContains_Throws()
         {
@@ -748,6 +826,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // EdgeEvent — o1 collinear Contains true (lines 519-524)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that edge event o 1 collinear contains true marks edge
+        /// </summary>
         [Fact]
         public void EdgeEvent_O1Collinear_ContainsTrue_MarksEdge()
         {
@@ -773,6 +854,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that edge event o 1 collinear not contains throws
+        /// </summary>
         [Fact]
         public void EdgeEvent_O1Collinear_NotContains_Throws()
         {
@@ -800,6 +884,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FlipEdgeEvent — continuing flip (lines 617-622)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that flip edge event continuing flip after flip
+        /// </summary>
         [Fact]
         public void FlipEdgeEvent_ContinuingFlip_AfterFlip()
         {
@@ -831,6 +918,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FlipEdgeEvent — not in scan area (lines 628-629)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that flip edge event not in scan area triggers scan
+        /// </summary>
         [Fact]
         public void FlipEdgeEvent_NotInScanArea_TriggersScan()
         {
@@ -862,6 +952,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FlipScanEdgeEvent — not in scan area recursive (lines 706-712)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that flip scan edge event not in scan area recursive
+        /// </summary>
         [Fact]
         public void FlipScanEdgeEvent_NotInScanArea_Recursive()
         {
@@ -898,6 +991,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FinalizationConvexHull — direct with full setup (lines 110-124)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that finalization convex hull full if blocks executed
+        /// </summary>
         [Fact]
         public void FinalizationConvexHull_FullIfBlocks_Executed()
         {
@@ -936,6 +1032,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FillBasinReq — else branch prev.Y < next.Y (line 933-934)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that fill basin req else prev y less advances prev
+        /// </summary>
         [Fact]
         public void FillBasinReq_ElsePrevYLess_AdvancesPrev()
         {
@@ -980,6 +1079,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // FlipEdgeEvent — subedge done path (lines 612-614)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that flip edge event subedge done recorded
+        /// </summary>
         [Fact]
         public void FlipEdgeEvent_SubedgeDone_Recorded()
         {
@@ -1012,6 +1114,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Concentric circle pattern for edge event coverage
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate concentric circles covers edge paths
+        /// </summary>
         [Fact]
         public void Triangulate_ConcentricCircles_CoversEdgePaths()
         {
@@ -1035,6 +1140,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Many randomized point sets for stochastic coverage
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate random sets for coverage
+        /// </summary>
         [Fact]
         public void Triangulate_RandomSetsForCoverage()
         {
@@ -1057,6 +1165,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Star-shaped point set constrained
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate star constrained covers flip paths
+        /// </summary>
         [Fact]
         public void Triangulate_StarConstrained_CoversFlipPaths()
         {
@@ -1089,6 +1200,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         // Integration: Large point set coverage
         // ========================================================================
 
+        /// <summary>
+        /// Tests that triangulate large point set covers more paths
+        /// </summary>
         [Fact]
         public void Triangulate_LargePointSet_CoversMorePaths()
         {
@@ -1104,15 +1218,46 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         }
     }
 
+    /// <summary>
+    /// The mock triangulatable class
+    /// </summary>
+    /// <seealso cref="ITriangulatable"/>
     internal class MockTriangulatable : ITriangulatable
     {
+        /// <summary>
+        /// The delaunay triangle
+        /// </summary>
         public readonly List<DelaunayTriangle> Triangles = new List<DelaunayTriangle>();
+        /// <summary>
+        /// Gets the value of the get points
+        /// </summary>
         public IList<TriangulationPoint> GetPoints => new List<TriangulationPoint>();
+        /// <summary>
+        /// Gets the value of the get triangles
+        /// </summary>
         public IList<DelaunayTriangle> GetTriangles => Triangles.AsReadOnly();
+        /// <summary>
+        /// Gets the value of the triangulation mode
+        /// </summary>
         public TriangulationMode TriangulationMode => TriangulationMode.Unconstrained;
+        /// <summary>
+        /// Prepares the triangulation using the specified tcx
+        /// </summary>
+        /// <param name="tcx">The tcx</param>
         public void PrepareTriangulation(TriangulationContext tcx) { }
+        /// <summary>
+        /// Adds the triangle using the specified t
+        /// </summary>
+        /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t) => Triangles.Add(t);
+        /// <summary>
+        /// Adds the triangles using the specified tris
+        /// </summary>
+        /// <param name="tris">The tris</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> tris) => Triangles.AddRange(tris);
+        /// <summary>
+        /// Clears the triangles
+        /// </summary>
         public void ClearTriangles() => Triangles.Clear();
     }
 }

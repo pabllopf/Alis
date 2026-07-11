@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition
 {
+    /// <summary>
+    /// The bayazit decomposer remaining coverage tests class
+    /// </summary>
     public class BayazitDecomposerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that triangulate polygon with convex polygon above max vertices should split via overflow
+        /// </summary>
         [Fact]
         public void TriangulatePolygon_WithConvexPolygonAboveMaxVertices_ShouldSplitViaOverflow()
         {
@@ -40,6 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             }
         }
 
+        /// <summary>
+        /// Tests that convex partition with vertex count at max plus one should split
+        /// </summary>
         [Fact]
         public void ConvexPartition_WithVertexCountAtMaxPlusOne_ShouldSplit()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.True(result.Count >= 2);
         }
 
+        /// <summary>
+        /// Tests that can see with reflex vertex and target outside wedge should return true
+        /// </summary>
         [Fact]
         public void CanSee_WithReflexVertexAndTargetOutsideWedge_ShouldReturnTrue()
         {
@@ -80,6 +92,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.True(canSee);
         }
 
+        /// <summary>
+        /// Tests that square dist with negative coordinates should return correct value
+        /// </summary>
         [Fact]
         public void SquareDist_WithNegativeCoordinates_ShouldReturnCorrectValue()
         {
@@ -91,6 +106,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.Equal(25f, dist);
         }
 
+        /// <summary>
+        /// Tests that right with collinear points should return false
+        /// </summary>
         [Fact]
         public void Right_WithCollinearPoints_ShouldReturnFalse()
         {
@@ -101,6 +119,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.False(BayazitDecomposer.Right(a, b, c));
         }
 
+        /// <summary>
+        /// Tests that left with collinear points should return false
+        /// </summary>
         [Fact]
         public void Left_WithCollinearPoints_ShouldReturnFalse()
         {
@@ -111,6 +132,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.False(BayazitDecomposer.Left(a, b, c));
         }
 
+        /// <summary>
+        /// Tests that reflex with convex vertex at corner should return false
+        /// </summary>
         [Fact]
         public void Reflex_WithConvexVertexAtCorner_ShouldReturnFalse()
         {
@@ -128,6 +152,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.False(BayazitDecomposer.Reflex(3, vertices));
         }
 
+        /// <summary>
+        /// Tests that at with index zero should return first vertex
+        /// </summary>
         [Fact]
         public void At_WithIndexZero_ShouldReturnFirstVertex()
         {
@@ -142,6 +169,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.Equal(new Vector2F(5f, 5f), result);
         }
 
+        /// <summary>
+        /// Tests that triangulate polygon with concave three vertex polygon should not throw
+        /// </summary>
         [Fact]
         public void TriangulatePolygon_WithConcaveThreeVertexPolygon_ShouldNotThrow()
         {
@@ -158,6 +188,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.True(result.Count >= 1);
         }
 
+        /// <summary>
+        /// Tests that triangulate polygon with large convex polygon should not loop
+        /// </summary>
         [Fact]
         public void TriangulatePolygon_WithLargeConvexPolygon_ShouldNotLoop()
         {

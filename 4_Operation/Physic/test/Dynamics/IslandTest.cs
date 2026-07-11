@@ -265,6 +265,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(postSolveCount > 0);
         }
 
+        /// <summary>
+        /// Tests that reset expands bodies buffer when capacity exceeds initial
+        /// </summary>
         [Fact]
         public void Reset_ExpandsBodiesBuffer_WhenCapacityExceedsInitial()
         {
@@ -279,6 +282,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotSame(originalBodies, island.Bodies);
         }
 
+        /// <summary>
+        /// Tests that integrate positions with high velocity clamps translation
+        /// </summary>
         [Fact]
         public void IntegratePositions_WithHighVelocity_ClampsTranslation()
         {
@@ -291,6 +297,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(body.Position.X < 10f);
         }
 
+        /// <summary>
+        /// Tests that integrate positions with high angular velocity clamps rotation
+        /// </summary>
         [Fact]
         public void IntegratePositions_WithHighAngularVelocity_ClampsRotation()
         {
@@ -303,6 +312,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that update sleep state resets sleep time when velocity exceeds tolerance
+        /// </summary>
         [Fact]
         public void UpdateSleepState_ResetsSleepTime_WhenVelocityExceedsTolerance()
         {
@@ -315,6 +327,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(body);
         }
 
+        /// <summary>
+        /// Tests that solve toi should not throw when called through step
+        /// </summary>
         [Fact]
         public void SolveToi_ShouldNotThrow_WhenCalledThroughStep()
         {
@@ -328,6 +343,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Null(ex);
         }
+        /// <summary>
+        /// Tests that integrate velocities with ignore gravity skips gravity
+        /// </summary>
         [Fact]
         public void IntegrateVelocities_WithIgnoreGravity_SkipsGravity()
         {
@@ -341,6 +359,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(startPos, body.Position);
         }
 
+        /// <summary>
+        /// Tests that integrate positions with high angular velocity clamps rotation value
+        /// </summary>
         [Fact]
         public void IntegratePositions_WithHighAngularVelocity_ClampsRotationValue()
         {
@@ -353,6 +374,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(body.Rotation < 50f);
         }
 
+        /// <summary>
+        /// Tests that update sleep state with stationary bodies eventually sleeps
+        /// </summary>
         [Fact]
         public void UpdateSleepState_WithStationaryBodies_EventuallySleeps()
         {
@@ -368,6 +392,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.False(body.Awake);
         }
 
+        /// <summary>
+        /// Tests that solve with disabled joint does not throw
+        /// </summary>
         [Fact]
         public void Solve_WithDisabledJoint_DoesNotThrow()
         {
@@ -383,6 +410,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with non overlapping bodies returns early
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithNonOverlappingBodies_ReturnsEarly()
         {
@@ -395,6 +425,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that update sleep state with sleeping not allowed resets sleep time
+        /// </summary>
         [Fact]
         public void UpdateSleepState_WithSleepingNotAllowed_ResetsSleepTime()
         {
@@ -410,6 +443,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(body.Awake);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints contacts and joints okay returns true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_ContactsAndJointsOkay_ReturnsTrue()
         {
@@ -421,6 +457,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve toi with island bodies does not throw
+        /// </summary>
         [Fact]
         public void SolveToi_WithIslandBodies_DoesNotThrow()
         {
@@ -433,6 +472,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that reset with null bodies allocates new buffers
+        /// </summary>
         [Fact]
         public void Reset_WithNullBodies_AllocatesNewBuffers()
         {
@@ -446,6 +488,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(island.Locks);
         }
 
+        /// <summary>
+        /// Tests that reset expands contacts buffer when capacity exceeds initial
+        /// </summary>
         [Fact]
         public void Reset_ExpandsContactsBuffer_WhenCapacityExceedsInitial()
         {
@@ -458,6 +503,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(island.Bodies);
         }
 
+        /// <summary>
+        /// Tests that update sleep state with static body skips sleep processing
+        /// </summary>
         [Fact]
         public void UpdateSleepState_WithStaticBody_SkipsSleepProcessing()
         {
@@ -476,6 +524,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // UpdateSleepState — SettingEnv.AllowSleep = false (early return)
         // Note: AllowSleep is readonly; test verifies sleep behavior with default setting.
         // ========================================================================
+        /// <summary>
+        /// Tests that update sleep state with allow sleep true does not throw
+        /// </summary>
         [Fact]
         public void UpdateSleepState_WithAllowSleepTrue_DoesNotThrow()
         {
@@ -491,6 +542,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // SolveToi — early break when contacts okay
         // ========================================================================
+        /// <summary>
+        /// Tests that solve toi position iterations break early when contacts okay
+        /// </summary>
         [Fact]
         public void SolveToi_PositionIterationsBreakEarly_WhenContactsOkay()
         {
@@ -505,6 +559,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // SolvePositionConstraints — returns false when unsolvable
         // ========================================================================
+        /// <summary>
+        /// Tests that solve position constraints unsolvable returns false
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_Unsolvable_ReturnsFalse()
         {
@@ -522,6 +579,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Report — with contact manager and constraints
         // ========================================================================
+        /// <summary>
+        /// Tests that report with handlers invokes all
+        /// </summary>
         [Fact]
         public void Report_WithHandlers_InvokesAll()
         {
@@ -537,6 +597,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Solve — with multiple velocity iterations
         // ========================================================================
+        /// <summary>
+        /// Tests that solve multiple velocity iterations executes
+        /// </summary>
         [Fact]
         public void Solve_MultipleVelocityIterations_Executes()
         {

@@ -34,12 +34,18 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly input manager remaining coverage tests class
+    /// </summary>
     public class WebAssemblyInputManagerRemainingCoverageTests
     {
         // =====================================================================
         // GamepadInputState Tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that gamepad input state default properties are null
+        /// </summary>
         [Fact]
         public void GamepadInputState_Default_PropertiesAreNull()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state update sets current and previous
+        /// </summary>
         [Fact]
         public void GamepadInputState_Update_SetsCurrentAndPrevious()
         {
@@ -64,6 +73,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Same(gs1, state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state update multiple times shifts correctly
+        /// </summary>
         [Fact]
         public void GamepadInputState_Update_MultipleTimes_ShiftsCorrectly()
         {
@@ -86,6 +98,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // KeyBinding.IsActive (direct, not via IsActionActive)
         // =====================================================================
 
+        /// <summary>
+        /// Tests that key binding is active with no keys returns false
+        /// </summary>
         [Fact]
         public void KeyBinding_IsActive_WithNoKeys_ReturnsFalse()
         {
@@ -94,6 +109,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.IsActive(platform));
         }
 
+        /// <summary>
+        /// Tests that key binding is active with key down returns true
+        /// </summary>
         [Fact]
         public void KeyBinding_IsActive_WithKeyDown_ReturnsTrue()
         {
@@ -104,6 +122,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(binding.IsActive(platform));
         }
 
+        /// <summary>
+        /// Tests that key binding is active with key up returns false
+        /// </summary>
         [Fact]
         public void KeyBinding_IsActive_WithKeyUp_ReturnsFalse()
         {
@@ -115,6 +136,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(binding.IsActive(platform));
         }
 
+        /// <summary>
+        /// Tests that key binding is active multiple keys one down returns true
+        /// </summary>
         [Fact]
         public void KeyBinding_IsActive_MultipleKeys_OneDown_ReturnsTrue()
         {
@@ -131,6 +155,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // TryGetGamepadState - successful path
         // =====================================================================
 
+        /// <summary>
+        /// Tests that try get gamepad state with connected gamepad returns true
+        /// </summary>
         [Fact]
         public void TryGetGamepadState_WithConnectedGamepad_ReturnsTrue()
         {
@@ -144,6 +171,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.CurrentState.Connected);
         }
 
+        /// <summary>
+        /// Tests that try get gamepad state with previous state sets previous
+        /// </summary>
         [Fact]
         public void TryGetGamepadState_WithPreviousState_SetsPrevious()
         {
@@ -157,6 +187,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotNull(state.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that try get gamepad state disconnected gamepad returns true with connected false
+        /// </summary>
         [Fact]
         public void TryGetGamepadState_DisconnectedGamepad_ReturnsTrueWithConnectedFalse()
         {
@@ -175,6 +208,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsGamepadButtonJustPressed - full branching
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is gamepad button just pressed no previous state button down returns true
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustPressed_NoPreviousState_ButtonDown_ReturnsTrue()
         {
@@ -186,6 +222,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just pressed no previous state button up returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustPressed_NoPreviousState_ButtonUp_ReturnsFalse()
         {
@@ -195,6 +234,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just pressed with previous state returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustPressed_WithPreviousState_ReturnsFalse()
         {
@@ -208,6 +250,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just pressed with previous state button up returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustPressed_WithPreviousState_ButtonUp_ReturnsFalse()
         {
@@ -219,6 +264,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just pressed with previous state button released returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustPressed_WithPreviousState_ButtonReleased_ReturnsFalse()
         {
@@ -237,6 +285,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsGamepadButtonJustReleased - full branching
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is gamepad button just released no previous state returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustReleased_NoPreviousState_ReturnsFalse()
         {
@@ -246,6 +297,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustReleased(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just released with previous state returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustReleased_WithPreviousState_ReturnsFalse()
         {
@@ -257,6 +311,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustReleased(0, 0));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just released with previous state button down returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustReleased_WithPreviousState_ButtonDown_ReturnsFalse()
         {
@@ -270,6 +327,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustReleased(0, 1));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just released with previous state released returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustReleased_WithPreviousState_Released_ReturnsFalse()
         {
@@ -284,6 +344,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustReleased(0, 1));
         }
 
+        /// <summary>
+        /// Tests that is gamepad button just released with previous state pressed returns false
+        /// </summary>
         [Fact]
         public void IsGamepadButtonJustReleased_WithPreviousState_Pressed_ReturnsFalse()
         {
@@ -301,6 +364,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Update with gamepad coverage
         // =====================================================================
 
+        /// <summary>
+        /// Tests that update with connected gamepad does not throw
+        /// </summary>
         [Fact]
         public void Update_WithConnectedGamepad_DoesNotThrow()
         {
@@ -311,6 +377,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             manager.Update();
         }
 
+        /// <summary>
+        /// Tests that update multiple times with gamepad tracks previous state
+        /// </summary>
         [Fact]
         public void Update_MultipleTimes_WithGamepad_TracksPreviousState()
         {
@@ -328,6 +397,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsActionJustPressed - multiple keys in queue
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is action just pressed multiple keys first non matching then matching returns true
+        /// </summary>
         [Fact]
         public void IsActionJustPressed_MultipleKeys_FirstNonMatchingThenMatching_ReturnsTrue()
         {
@@ -339,6 +411,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(manager.IsActionJustPressed("Jump"));
         }
 
+        /// <summary>
+        /// Tests that is action just pressed multiple non matching keys returns false
+        /// </summary>
         [Fact]
         public void IsActionJustPressed_MultipleNonMatchingKeys_ReturnsFalse()
         {
@@ -354,6 +429,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Update resets nothing but calls UpdateMouseState
         // =====================================================================
 
+        /// <summary>
+        /// Tests that update get mouse wheel delta after update returns last delta
+        /// </summary>
         [Fact]
         public void Update_GetMouseWheelDelta_AfterUpdate_ReturnsLastDelta()
         {
@@ -364,6 +442,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(7.0f, manager.GetMouseWheelDelta());
         }
 
+        /// <summary>
+        /// Tests that update get mouse position after update returns current
+        /// </summary>
         [Fact]
         public void Update_GetMousePosition_AfterUpdate_ReturnsCurrent()
         {
@@ -380,6 +461,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetConnectedGamepadIndices - with connected gamepads
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get connected gamepad indices with connected returns indices
+        /// </summary>
         [Fact]
         public void GetConnectedGamepadIndices_WithConnected_ReturnsIndices()
         {
@@ -393,6 +477,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(2, indices.Length);
         }
 
+        /// <summary>
+        /// Tests that get connected gamepad indices after disconnect excludes index
+        /// </summary>
         [Fact]
         public void GetConnectedGamepadIndices_AfterDisconnect_ExcludesIndex()
         {
@@ -410,6 +497,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // VibrateGamepad default duration
         // =====================================================================
 
+        /// <summary>
+        /// Tests that vibrate gamepad default duration returns false on non browser
+        /// </summary>
         [Fact]
         public void VibrateGamepad_DefaultDuration_ReturnsFalseOnNonBrowser()
         {
@@ -420,6 +510,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Helper
         // =====================================================================
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);
@@ -427,6 +523,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             method.Invoke(instance, arguments);
         }
 
+        /// <summary>
+        /// Gets the gamepad state using the specified platform
+        /// </summary>
+        /// <param name="platform">The platform</param>
+        /// <param name="index">The index</param>
+        /// <returns>The gamepad state</returns>
         private static GamepadState GetGamepadState(WebAssemblyPlatform platform, int index)
         {
             MethodInfo method = typeof(WebAssemblyPlatform).GetMethod("TryGetGamepadState", BindingFlags.Instance | BindingFlags.Public);

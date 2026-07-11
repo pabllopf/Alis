@@ -429,6 +429,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Empty(pairs);
         }
 
+        /// <summary>
+        /// Tests that update pairs with many overlapping proxies grows pair buffer
+        /// </summary>
         [Fact]
         public void UpdatePairs_WithManyOverlappingProxies_GrowsPairBuffer()
         {

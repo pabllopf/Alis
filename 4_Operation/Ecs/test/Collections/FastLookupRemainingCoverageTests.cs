@@ -35,21 +35,37 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The fast lookup remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class FastLookupRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The scene
+        /// </summary>
         private Scene _scene;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FastLookupRemainingCoverageTests"/> class
+        /// </summary>
         public FastLookupRemainingCoverageTests()
         {
             _scene = new Scene();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             _scene?.Dispose();
             _scene = null;
         }
 
+        /// <summary>
+        /// Tests that set archetype stores data and advances index
+        /// </summary>
         [Fact]
         public void SetArchetype_StoresDataAndAdvancesIndex()
         {
@@ -66,6 +82,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Same(to, lookup.Archetypes[0]);
         }
 
+        /// <summary>
+        /// Tests that set archetype multiple calls wraps index around
+        /// </summary>
         [Fact]
         public void SetArchetype_MultipleCalls_WrapsIndexAround()
         {
@@ -81,6 +100,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, lookup.index);
         }
 
+        /// <summary>
+        /// Tests that find adjacent archetype id cache hit returns stored archetype id
+        /// </summary>
         [Fact]
         public void FindAdjacentArchetypeId_CacheHit_ReturnsStoredArchetypeId()
         {
@@ -96,6 +118,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(to.Id.RawIndex, result.RawIndex);
         }
 
+        /// <summary>
+        /// Tests that find adjacent archetype id cache miss scene graph hit returns destination id
+        /// </summary>
         [Fact]
         public void FindAdjacentArchetypeId_CacheMiss_SceneGraphHit_ReturnsDestinationId()
         {
@@ -112,12 +137,26 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(_scene.DefaultArchetype.Id.RawIndex, result.RawIndex);
         }
 
+        /// <summary>
+        /// The test type id class
+        /// </summary>
+        /// <seealso cref="ITypeId"/>
         private sealed class TestTypeId : ITypeId
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestTypeId"/> class
+            /// </summary>
+            /// <param name="value">The value</param>
             public TestTypeId(ushort value) => Value = value;
 
+            /// <summary>
+            /// Gets the value of the type
+            /// </summary>
             public Type Type => typeof(byte);
 
+            /// <summary>
+            /// Gets the value of the value
+            /// </summary>
             public ushort Value { get; }
         }
     }

@@ -36,10 +36,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiP7Tests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP7Tests"/> class
+        /// </summary>
         public ImGuiP7Tests()
         {
             _ctx = ImGui.CreateContext();
@@ -49,11 +59,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Sets the tooltip
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetTooltip()
         {
@@ -62,6 +78,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the font and pop font
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushFont_And_PopFont()
         {
@@ -76,6 +95,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the font with null font does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushFont_WithNullFont_DoesNotThrow()
         {
@@ -87,6 +109,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the font after push does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopFont_AfterPush_DoesNotThrow()
         {
@@ -101,6 +126,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the allocator functions two args with null does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_TwoArgs_WithNull_DoesNotThrow()
         {
@@ -109,6 +137,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the allocator functions three args with null does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_ThreeArgs_WithNull_DoesNotThrow()
         {
@@ -117,6 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the drag drop payload default cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetDragDropPayload_DefaultCond()
         {
@@ -126,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the drag drop payload with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetDragDropPayload_WithCond()
         {
@@ -135,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the allocator functions should expose two overloads
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_ShouldExposeTwoOverloads()
         {
@@ -143,6 +183,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(methods.Length >= 2);
         }
 
+        /// <summary>
+        /// Sets the drag drop payload should expose two overloads
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetDragDropPayload_ShouldExposeTwoOverloads()
         {
@@ -151,18 +194,27 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(methods.Length >= 2);
         }
 
+        /// <summary>
+        /// Sets the tooltip should exist
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetTooltip_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetTooltip", BindingFlags.Public | BindingFlags.Static));
         }
 
+        /// <summary>
+        /// Pushes the font should exist
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushFont_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("PushFont", BindingFlags.Public | BindingFlags.Static));
         }
 
+        /// <summary>
+        /// Pops the font should exist
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopFont_ShouldExist()
         {

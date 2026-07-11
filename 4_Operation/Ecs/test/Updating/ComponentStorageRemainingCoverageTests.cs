@@ -38,8 +38,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating
 {
+    /// <summary>
+    /// The component storage remaining coverage tests class
+    /// </summary>
     public class ComponentStorageRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that component id for int storage returns component int id
+        /// </summary>
         [Fact]
         public void ComponentId_ForIntStorage_ReturnsComponentIntId()
         {
@@ -47,6 +53,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(Component<int>.Id, storage.ComponentId);
         }
 
+        /// <summary>
+        /// Tests that set at and get at with int value works correctly
+        /// </summary>
         [Fact]
         public void SetAtAndGetAt_WithIntValue_WorksCorrectly()
         {
@@ -55,6 +64,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(42, storage.GetAt(0));
         }
 
+        /// <summary>
+        /// Tests that set at and get at with string value works correctly
+        /// </summary>
         [Fact]
         public void SetAtAndGetAt_WithStringValue_WorksCorrectly()
         {
@@ -63,6 +75,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal("hello", storage.GetAt(0));
         }
 
+        /// <summary>
+        /// Tests that as span returns full buffer
+        /// </summary>
         [Fact]
         public void AsSpan_ReturnsFullBuffer()
         {
@@ -71,6 +86,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(8, span.Length);
         }
 
+        /// <summary>
+        /// Tests that as span length returns limited span
+        /// </summary>
         [Fact]
         public void AsSpanLength_ReturnsLimitedSpan()
         {
@@ -79,6 +97,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(5, span.Length);
         }
 
+        /// <summary>
+        /// Tests that get component storage data reference returns ref to first element
+        /// </summary>
         [Fact]
         public void GetComponentStorageDataReference_ReturnsRefToFirstElement()
         {
@@ -88,6 +109,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(99, ref0);
         }
 
+        /// <summary>
+        /// Tests that dispose does not throw
+        /// </summary>
         [Fact]
         public void Dispose_DoesNotThrow()
         {
@@ -95,6 +119,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with reference type does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithReferenceType_DoesNotThrow()
         {
@@ -102,6 +129,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose called multiple times does not throw
+        /// </summary>
         [Fact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
@@ -110,6 +140,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose bool with false covers disposing branch
+        /// </summary>
         [Fact]
         public void DisposeBool_WithFalse_CoversDisposingBranch()
         {
@@ -118,6 +151,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.CallDispose(true);
         }
 
+        /// <summary>
+        /// Tests that zero capacity creates empty array
+        /// </summary>
         [Fact]
         public void ZeroCapacity_CreatesEmptyArray()
         {
@@ -126,6 +162,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(0, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that zero capacity with string creates empty array
+        /// </summary>
         [Fact]
         public void ZeroCapacity_WithString_CreatesEmptyArray()
         {
@@ -134,6 +173,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(0, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with null generic event does not throw
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_NullGenericEvent_DoesNotThrow()
         {
@@ -141,6 +183,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.InvokeGenericActionWith(null, default, 0);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with null i generic action does not throw
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_NullIGenericAction_DoesNotThrow()
         {
@@ -148,6 +193,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.InvokeGenericActionWith(null, 0);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with non generic action invokes callback
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_NonGenericAction_InvokesCallback()
         {
@@ -158,6 +206,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(invoked);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with generic event invokes callback
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_GenericEvent_InvokesCallback()
         {
@@ -170,6 +221,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(invoked);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with null generic event with string does not throw
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_NullGenericEventWithString_DoesNotThrow()
         {
@@ -177,6 +231,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.InvokeGenericActionWith(null, default, 0);
         }
 
+        /// <summary>
+        /// Tests that invoke generic action with generic event with string invokes callback
+        /// </summary>
         [Fact]
         public void InvokeGenericActionWith_GenericEventWithString_InvokesCallback()
         {
@@ -189,6 +246,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(invoked);
         }
 
+        /// <summary>
+        /// Tests that pull component from with int storage copies values
+        /// </summary>
         [Fact]
         public void PullComponentFrom_WithIntStorage_CopiesValues()
         {
@@ -203,6 +263,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(30, target[1]);
         }
 
+        /// <summary>
+        /// Tests that pull component from with string storage copies and clears source
+        /// </summary>
         [Fact]
         public void PullComponentFrom_WithStringStorage_CopiesAndClearsSource()
         {
@@ -217,6 +280,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal("c", target[0]);
         }
 
+        /// <summary>
+        /// Tests that trim rounds up to power of two
+        /// </summary>
         [Fact]
         public void Trim_RoundsUpToPowerOfTwo()
         {
@@ -225,6 +291,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(8, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that trim with power of two preserves length
+        /// </summary>
         [Fact]
         public void Trim_WithPowerOfTwo_PreservesLength()
         {
@@ -233,6 +302,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(4, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that trim with index one results in length one
+        /// </summary>
         [Fact]
         public void Trim_WithIndexOne_ResultsInLengthOne()
         {
@@ -241,6 +313,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(1, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that resize buffer grows to specified size
+        /// </summary>
         [Fact]
         public void ResizeBuffer_GrowsToSpecifiedSize()
         {
@@ -249,6 +324,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(8, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that resize buffer shrinks to specified size
+        /// </summary>
         [Fact]
         public void ResizeBuffer_ShrinksToSpecifiedSize()
         {
@@ -257,6 +335,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(4, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that store with int type returns component handle
+        /// </summary>
         [Fact]
         public void Store_WithIntType_ReturnsComponentHandle()
         {
@@ -266,6 +347,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(Component<int>.Id, handle.ComponentId);
         }
 
+        /// <summary>
+        /// Tests that store with string type returns component handle
+        /// </summary>
         [Fact]
         public void Store_WithStringType_ReturnsComponentHandle()
         {
@@ -275,6 +359,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(Component<string>.Id, handle.ComponentId);
         }
 
+        /// <summary>
+        /// Tests that indexer returns correct values at multiple indices
+        /// </summary>
         [Fact]
         public void Indexer_ReturnsCorrectValuesAtMultipleIndices()
         {
@@ -289,6 +376,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(40, storage[3]);
         }
 
+        /// <summary>
+        /// Tests that indexer overwrites previous value
+        /// </summary>
         [Fact]
         public void Indexer_OverwritesPreviousValue()
         {
@@ -298,6 +388,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(20, storage[0]);
         }
 
+        /// <summary>
+        /// Tests that as span with string returns buffer
+        /// </summary>
         [Fact]
         public void AsSpan_WithString_ReturnsBuffer()
         {
@@ -306,6 +399,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(4, span.Length);
         }
 
+        /// <summary>
+        /// Tests that as span length with string returns limited span
+        /// </summary>
         [Fact]
         public void AsSpanLength_WithString_ReturnsLimitedSpan()
         {
@@ -314,6 +410,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(2, span.Length);
         }
 
+        /// <summary>
+        /// Tests that get component storage data reference with string returns ref to first
+        /// </summary>
         [Fact]
         public void GetComponentStorageDataReference_WithString_ReturnsRefToFirst()
         {
@@ -323,6 +422,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal("hello", ref0);
         }
 
+        /// <summary>
+        /// Tests that dispose bool with false and string covers disposing branch
+        /// </summary>
         [Fact]
         public void DisposeBool_WithFalseAndString_CoversDisposingBranch()
         {
@@ -331,6 +433,9 @@ namespace Alis.Core.Ecs.Test.Updating
             storage.CallDispose(true);
         }
 
+        /// <summary>
+        /// Tests that trim with string type rounds up to power of two
+        /// </summary>
         [Fact]
         public void Trim_WithStringType_RoundsUpToPowerOfTwo()
         {
@@ -339,6 +444,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(8, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that resize buffer with string type grows buffer
+        /// </summary>
         [Fact]
         public void ResizeBuffer_WithStringType_GrowsBuffer()
         {
@@ -347,6 +455,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(8, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that delete with destroyer invokes destroy delegate
+        /// </summary>
         [Fact]
         public void Delete_WithDestroyer_InvokesDestroyDelegate()
         {
@@ -361,6 +472,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(-1, storage[0].Value);
         }
 
+        /// <summary>
+        /// Tests that store with destroyer invokes destroy delegate
+        /// </summary>
         [Fact]
         public void Store_WithDestroyer_InvokesDestroyDelegate()
         {
@@ -374,6 +488,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Equal(Component<DestroyableStruct>.Id, handle.ComponentId);
         }
 
+        /// <summary>
+        /// Tests that delete with destroyer and reference type clears from index
+        /// </summary>
         [Fact]
         public void Delete_WithDestroyerAndReferenceType_ClearsFromIndex()
         {
@@ -388,6 +505,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.Null(storage[0].Text);
         }
 
+        /// <summary>
+        /// Tests that store with destroyer and reference type invokes destroy delegate
+        /// </summary>
         [Fact]
         public void Store_WithDestroyerAndReferenceType_InvokesDestroyDelegate()
         {
@@ -402,43 +522,134 @@ namespace Alis.Core.Ecs.Test.Updating
         }
     }
 
+    /// <summary>
+    /// The destroyable struct
+    /// </summary>
     internal struct DestroyableStruct : IOnDestroy
     {
+        /// <summary>
+        /// The value
+        /// </summary>
         public int Value;
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
         public void OnDestroy() => Value = -1;
     }
 
+    /// <summary>
+    /// The destroyable ref struct
+    /// </summary>
     internal struct DestroyableRefStruct : IOnDestroy
     {
+        /// <summary>
+        /// The text
+        /// </summary>
         public string Text;
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
         public void OnDestroy() => Text = null;
     }
 
+    /// <summary>
+    /// The dispose bool test wrapper class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{int}"/>
     internal class DisposeBoolTestWrapper(int length) : ComponentStorage<int>(length)
     {
+        /// <summary>
+        /// Calls the dispose using the specified disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         public void CallDispose(bool disposing) => Dispose(disposing);
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
         internal override void Run(Alis.Core.Ecs.Scene scene, Alis.Core.Ecs.Kernel.Archetypes.Archetype b) { }
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         internal override void Run(Alis.Core.Ecs.Scene scene, Alis.Core.Ecs.Kernel.Archetypes.Archetype b, int start, int length) { }
     }
 
+    /// <summary>
+    /// The dispose bool test wrapper string class
+    /// </summary>
+    /// <seealso cref="ComponentStorage{string}"/>
     internal class DisposeBoolTestWrapperString(int length) : ComponentStorage<string>(length)
     {
+        /// <summary>
+        /// Calls the dispose using the specified disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         public void CallDispose(bool disposing) => Dispose(disposing);
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
         internal override void Run(Alis.Core.Ecs.Scene scene, Alis.Core.Ecs.Kernel.Archetypes.Archetype b) { }
+        /// <summary>
+        /// Runs the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        /// <param name="b">The </param>
+        /// <param name="start">The start</param>
+        /// <param name="length">The length</param>
         internal override void Run(Alis.Core.Ecs.Scene scene, Alis.Core.Ecs.Kernel.Archetypes.Archetype b, int start, int length) { }
     }
 
+    /// <summary>
+    /// The test generic action class
+    /// </summary>
+    /// <seealso cref="IGenericAction"/>
     internal sealed class TestGenericAction : IGenericAction
     {
+        /// <summary>
+        /// The callback
+        /// </summary>
         private readonly Action _callback;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestGenericAction"/> class
+        /// </summary>
+        /// <param name="callback">The callback</param>
         public TestGenericAction(Action callback) => _callback = callback;
+        /// <summary>
+        /// Invokes the type
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="type">The type</param>
         public void Invoke<T>(ref T type) => _callback();
     }
 
+    /// <summary>
+    /// The test game object generic action class
+    /// </summary>
+    /// <seealso cref="IGenericAction{GameObject}"/>
     internal sealed class TestGameObjectGenericAction : IGenericAction<GameObject>
     {
+        /// <summary>
+        /// The callback
+        /// </summary>
         private readonly Action _callback;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestGameObjectGenericAction"/> class
+        /// </summary>
+        /// <param name="callback">The callback</param>
         public TestGameObjectGenericAction(Action callback) => _callback = callback;
+        /// <summary>
+        /// Invokes the param
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="param">The param</param>
+        /// <param name="type">The type</param>
         public void Invoke<T>(GameObject param, ref T type) => _callback();
     }
 }

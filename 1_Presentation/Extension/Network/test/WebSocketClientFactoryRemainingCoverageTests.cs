@@ -40,8 +40,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
+    /// <summary>
+    /// The web socket client factory remaining coverage tests class
+    /// </summary>
     public class WebSocketClientFactoryRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor with buffer factory sets buffer factory
+        /// </summary>
         [Fact]
         public void Constructor_WithBufferFactory_SetsBufferFactory()
         {
@@ -51,6 +57,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(factory);
         }
 
+        /// <summary>
+        /// Tests that constructor with buffer factory dispose does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithBufferFactory_Dispose_DoesNotThrow()
         {
@@ -59,6 +68,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose default constructor does not throw
+        /// </summary>
         [Fact]
         public void Dispose_DefaultConstructor_DoesNotThrow()
         {
@@ -66,6 +78,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_DoesNotThrow()
         {
@@ -74,6 +89,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with buffer factory does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithBufferFactory_DoesNotThrow()
         {
@@ -82,6 +100,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that get sub protocol from header with protocol returns protocol
+        /// </summary>
         [Fact]
         public void GetSubProtocolFromHeader_WithProtocol_ReturnsProtocol()
         {
@@ -92,6 +113,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("myprotocol", result);
         }
 
+        /// <summary>
+        /// Tests that get sub protocol from header with protocol trailing spaces returns trimmed
+        /// </summary>
         [Fact]
         public void GetSubProtocolFromHeader_WithProtocolTrailingSpaces_ReturnsTrimmed()
         {
@@ -102,6 +126,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("chat", result);
         }
 
+        /// <summary>
+        /// Tests that get sub protocol from header with multiple protocols returns first
+        /// </summary>
         [Fact]
         public void GetSubProtocolFromHeader_WithMultipleProtocols_ReturnsFirst()
         {
@@ -112,6 +139,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("chat, video", result);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid accept string invalid accept throws web socket handshake failed exception
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidAcceptString_InvalidAccept_ThrowsWebSocketHandshakeFailedException()
         {
@@ -121,6 +151,9 @@ namespace Alis.Extension.Network.Test
                 WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, "some-key"));
         }
 
+        /// <summary>
+        /// Tests that throw if invalid accept string empty accept throws web socket handshake failed exception
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidAcceptString_EmptyAccept_ThrowsWebSocketHandshakeFailedException()
         {
@@ -130,6 +163,9 @@ namespace Alis.Extension.Network.Test
                 WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, "some-key"));
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code non 101 with body throws invalid http response code exception with details
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_Non101WithBody_ThrowsInvalidHttpResponseCodeExceptionWithDetails()
         {
@@ -142,6 +178,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("<body>Not Found</body>", ex.ResponseDetails);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code non 101 with multiple body lines throws with all details
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_Non101WithMultipleBodyLines_ThrowsWithAllDetails()
         {
@@ -155,6 +194,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Line2", ex.ResponseDetails);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate no errors returns true
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_NoErrors_ReturnsTrue()
         {
@@ -163,6 +205,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate not available returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateNotAvailable_ReturnsFalse()
         {
@@ -171,6 +216,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate name mismatch returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateNameMismatch_ReturnsFalse()
         {
@@ -179,6 +227,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate chain errors returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateChainErrors_ReturnsFalse()
         {
@@ -187,6 +238,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that build handshake request with protocol includes protocol
+        /// </summary>
         [Fact]
         public void BuildHandshakeRequest_WithProtocol_IncludesProtocol()
         {
@@ -198,6 +252,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Sec-WebSocket-Protocol: chat", request);
         }
 
+        /// <summary>
+        /// Tests that build handshake request with additional headers includes headers
+        /// </summary>
         [Fact]
         public void BuildHandshakeRequest_WithAdditionalHeaders_IncludesHeaders()
         {
@@ -209,6 +266,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Authorization: Bearer token", request);
         }
 
+        /// <summary>
+        /// Tests that build handshake request with protocol and headers includes both
+        /// </summary>
         [Fact]
         public void BuildHandshakeRequest_WithProtocolAndHeaders_IncludesBoth()
         {
@@ -223,6 +283,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Host: example.com:8080", request);
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload with valid response returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_WithValidResponse_ReturnsWebSocket()
         {
@@ -238,6 +301,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(ws);
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload with sub protocol returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_WithSubProtocol_ReturnsWebSocket()
         {
@@ -253,6 +319,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(ws);
         }
 
+        /// <summary>
+        /// Tests that connect async with sub protocol returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_WithSubProtocol_ReturnsWebSocket()
         {
@@ -267,6 +336,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(ws);
         }
 
+        /// <summary>
+        /// Tests that connect async with include exception and extensions returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_WithIncludeExceptionAndExtensions_ReturnsWebSocket()
         {
@@ -281,6 +353,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(ws);
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload include exception in close response returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_IncludeExceptionInCloseResponse_ReturnsWebSocket()
         {

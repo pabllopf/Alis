@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The deep coverage part test class
+    /// </summary>
     public class DeepCoveragePart3Test
     {
+        /// <summary>
+        /// Tests that fields get component data reference invoked
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Fields_GetComponentDataReference_Invoked()
         {
@@ -28,6 +34,9 @@ namespace Alis.Core.Ecs.Test
             catch (System.Reflection.TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that component registry register and lookup consistent
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentRegistry_RegisterAndLookup_Consistent()
         {
@@ -39,6 +48,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotEqual(posId.RawIndex, healthId.RawIndex);
         }
 
+        /// <summary>
+        /// Tests that fast lookup multiple cache misses works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastLookup_MultipleCacheMisses_Works()
         {
@@ -54,6 +66,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that command buffer multiple operations work
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_MultipleOperations_Work()
         {
@@ -68,6 +83,9 @@ namespace Alis.Core.Ecs.Test
             buffer.Playback();
         }
 
+        /// <summary>
+        /// Tests that fastest array pool get bucket index various sizes
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_GetBucketIndex_VariousSizes()
         {
@@ -81,6 +99,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that fastest array pool return clear ref type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_ReturnClearRefType()
         {
@@ -91,6 +112,9 @@ namespace Alis.Core.Ecs.Test
             for (int i = 0; i < 10; i++) Assert.Null(arr[i]);
         }
 
+        /// <summary>
+        /// Tests that fastest stack enumerator dispose works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_EnumeratorDispose_Works()
         {
@@ -102,6 +126,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(e.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that game object query enumerator all arities enumeration
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObjectQueryEnumerator_AllArities_Enumeration()
         {
@@ -117,6 +144,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that scene query with not and include disabled works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_QueryWithNotAndIncludeDisabled_Works()
         {
@@ -127,6 +157,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that scene default archetype is not null
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_DefaultArchetype_IsNotNull()
         {
@@ -134,6 +167,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(scene.DefaultArchetype);
         }
 
+        /// <summary>
+        /// Tests that scene dispose while locked no throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_Dispose_WhileLocked_NoThrow()
         {
@@ -142,6 +178,9 @@ namespace Alis.Core.Ecs.Test
             scene.Dispose();
         }
 
+        /// <summary>
+        /// Tests that component id equality works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentId_Equality_Works()
         {
@@ -152,6 +191,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(id1 != id2);
         }
 
+        /// <summary>
+        /// Tests that component id equality operator works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentId_EqualityOperator_Works()
         {

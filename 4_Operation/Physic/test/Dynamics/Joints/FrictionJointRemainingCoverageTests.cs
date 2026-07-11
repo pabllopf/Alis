@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
+    /// <summary>
+    /// The friction joint remaining coverage tests class
+    /// </summary>
     public class FrictionJointRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that solve position constraints always returns true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_AlwaysReturnsTrue()
         {
@@ -60,6 +66,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True((bool)result);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with zero angular mass leaves angular mass zero
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithZeroAngularMass_LeavesAngularMassZero()
         {
@@ -84,6 +93,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, angularMass);
         }
 
+        /// <summary>
+        /// Tests that solve angular friction with excess torque clamps angular impulse
+        /// </summary>
         [Fact]
         public void SolveAngularFriction_WithExcessTorque_ClampsAngularImpulse()
         {
@@ -141,6 +153,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(Math.Abs(angularImpulse) <= maxImpulse + 1e-6f);
         }
 
+        /// <summary>
+        /// Tests that solve linear friction with excess force clamps linear impulse
+        /// </summary>
         [Fact]
         public void SolveLinearFriction_WithExcessForce_ClampsLinearImpulse()
         {
@@ -194,6 +209,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True(linearImpulse.LengthSquared() <= maxImpulse * maxImpulse + 1e-6f);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with max force and torque zero does not modify velocity
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithMaxForceAndTorqueZero_DoesNotModifyVelocity()
         {

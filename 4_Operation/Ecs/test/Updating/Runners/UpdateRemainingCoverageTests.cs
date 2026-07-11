@@ -35,10 +35,16 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners
 {
+    /// <summary>
+    /// The update remaining coverage tests class
+    /// </summary>
     public class UpdateRemainingCoverageTests
     {
         #region Zero-length range (early-exit branch: length <= 0)
 
+        /// <summary>
+        /// Tests that update arity 0 range zero length does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity0_RangeZeroLength_DoesNotThrow()
         {
@@ -50,6 +56,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(0, entity.Get<Cov0Comp>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update arity 2 range zero length does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity2_RangeZeroLength_DoesNotThrow()
         {
@@ -61,6 +70,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(0, entity.Get<Cov2Comp>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update arity 3 range zero length does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity3_RangeZeroLength_DoesNotThrow()
         {
@@ -72,6 +84,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(0, entity.Get<Cov3Comp>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update arity 4 range zero length does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity4_RangeZeroLength_DoesNotThrow()
         {
@@ -87,6 +102,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
         #region Range-based Run(Scene, Archetype, int, int)
 
+        /// <summary>
+        /// Tests that update arity 0 range run processes deferred entities
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity0_RangeRun_ProcessesDeferredEntities()
         {
@@ -100,6 +118,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(1, deferred.Get<Cov0Comp>().CallCount);
         }
 
+        /// <summary>
+        /// Tests that update arity 2 range run processes deferred entities and mutates
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity2_RangeRun_ProcessesDeferredEntitiesAndMutates()
         {
@@ -114,6 +135,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(21, deferred.Get<ArgB>().X);
         }
 
+        /// <summary>
+        /// Tests that update arity 3 range run processes deferred entities and mutates
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity3_RangeRun_ProcessesDeferredEntitiesAndMutates()
         {
@@ -129,6 +153,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(14, deferred.Get<ArgC>().X);
         }
 
+        /// <summary>
+        /// Tests that update arity 4 range run processes deferred entities and mutates
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Update_Arity4_RangeRun_ProcessesDeferredEntitiesAndMutates()
         {
@@ -148,15 +175,37 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
     #region Test components and argument types
 
+    /// <summary>
+    /// The cov comp
+    /// </summary>
     internal struct Cov0Comp : IOnUpdate
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self) => CallCount++;
     }
 
+    /// <summary>
+    /// The cov comp
+    /// </summary>
     internal struct Cov2Comp : IOnUpdate<ArgA, ArgB>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
         public void Update(IGameObject self, ref ArgA a, ref ArgB b)
         {
             CallCount++;
@@ -165,9 +214,22 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 
+    /// <summary>
+    /// The cov comp
+    /// </summary>
     internal struct Cov3Comp : IOnUpdate<ArgA, ArgB, ArgC>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
         public void Update(IGameObject self, ref ArgA a, ref ArgB b, ref ArgC c)
         {
             CallCount++;
@@ -177,9 +239,23 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 
+    /// <summary>
+    /// The cov comp
+    /// </summary>
     internal struct Cov4Comp : IOnUpdate<ArgA, ArgB, ArgC, ArgD>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
+        /// <param name="c">The </param>
+        /// <param name="d">The </param>
         public void Update(IGameObject self, ref ArgA a, ref ArgB b, ref ArgC c, ref ArgD d)
         {
             CallCount++;
@@ -188,10 +264,34 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 
-    internal struct ArgA { public int X; }
-    internal struct ArgB { public int X; }
-    internal struct ArgC { public int X; }
-    internal struct ArgD { public int X; }
+    /// <summary>
+    /// The arg
+    /// </summary>
+    internal struct ArgA { /// <summary>
+/// The 
+/// </summary>
+public int X; }
+    /// <summary>
+    /// The arg
+    /// </summary>
+    internal struct ArgB { /// <summary>
+/// The 
+/// </summary>
+public int X; }
+    /// <summary>
+    /// The arg
+    /// </summary>
+    internal struct ArgC { /// <summary>
+/// The 
+/// </summary>
+public int X; }
+    /// <summary>
+    /// The arg
+    /// </summary>
+    internal struct ArgD { /// <summary>
+/// The 
+/// </summary>
+public int X; }
 
     #endregion
 }

@@ -37,8 +37,15 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
 {
+    /// <summary>
+    /// The polygon remaining coverage tests class
+    /// </summary>
     public class PolygonRemainingCoverageTests
     {
+        /// <summary>
+        /// Creates the triangle points
+        /// </summary>
+        /// <returns>A list of cdp polygon point</returns>
         private static List<CDP.PolygonPoint> CreateTrianglePoints()
         {
             return new List<CDP.PolygonPoint>
@@ -49,6 +56,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             };
         }
 
+        /// <summary>
+        /// Tests that constructor with non i list i enumerable should create polygon
+        /// </summary>
         [Fact]
         public void Constructor_WithNonIListIEnumerable_ShouldCreatePolygon()
         {
@@ -59,6 +69,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             Assert.Equal(3, polygon.GetPoints.Count);
         }
 
+        /// <summary>
+        /// Tests that add steiner point when already initialized should add second point
+        /// </summary>
         [Fact]
         public void AddSteinerPoint_WhenAlreadyInitialized_ShouldAddSecondPoint()
         {
@@ -75,6 +88,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             Assert.Equal(5, tcx.Points.Count);
         }
 
+        /// <summary>
+        /// Tests that add steiner points when already initialized should add more points
+        /// </summary>
         [Fact]
         public void AddSteinerPoints_WhenAlreadyInitialized_ShouldAddMorePoints()
         {
@@ -95,6 +111,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             Assert.Equal(6, tcx.Points.Count);
         }
 
+        /// <summary>
+        /// Tests that add hole multiple holes should add all holes
+        /// </summary>
         [Fact]
         public void AddHole_MultipleHoles_ShouldAddAllHoles()
         {
@@ -123,6 +142,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
             Assert.Equal(2, polygon.GetHoles.Count);
         }
 
+        /// <summary>
+        /// Tests that prepare triangulation with holes and steiner points should process both
+        /// </summary>
         [Fact]
         public void PrepareTriangulation_WithHolesAndSteinerPoints_ShouldProcessBoth()
         {

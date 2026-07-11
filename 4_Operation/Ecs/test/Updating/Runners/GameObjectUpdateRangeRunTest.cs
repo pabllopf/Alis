@@ -136,8 +136,16 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct RangeUpdateComponent : IOnUpdate<Position>
     {
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="pos">The pos</param>
         public void Update(IGameObject self, ref Position pos)
         {
             CallCount++;

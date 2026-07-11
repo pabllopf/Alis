@@ -8,6 +8,9 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The unix player base async coverage tests class
+    /// </summary>
     public class UnixPlayerBaseAsyncCoverageTests
     {
         /// <summary>
@@ -16,13 +19,35 @@ namespace Alis.Core.Audio.Test.Players
         /// </summary>
         private class TestPlayerForCoverage : UnixPlayerBase
         {
+            /// <summary>
+            /// Sets the volume using the specified percent
+            /// </summary>
+            /// <param name="percent">The percent</param>
             public override Task SetVolume(byte percent) => Task.CompletedTask;
+            /// <summary>
+            /// Gets the bash command using the specified file name
+            /// </summary>
+            /// <param name="fileName">The file name</param>
+            /// <returns>The string</returns>
             internal override string GetBashCommand(string fileName) => "true";
 
+            /// <summary>
+            /// Starts the bash process using the specified command
+            /// </summary>
+            /// <param name="command">The command</param>
+            /// <returns>The process</returns>
             public new Process StartBashProcess(string command) => base.StartBashProcess(command);
+            /// <summary>
+            /// Handles the playback finished using the specified sender
+            /// </summary>
+            /// <param name="sender">The sender</param>
+            /// <param name="e">The </param>
             public new void HandlePlaybackFinished(object sender, EventArgs e) => base.HandlePlaybackFinished(sender, e);
         }
 
+        /// <summary>
+        /// Tests that play with existing file should set playing true
+        /// </summary>
         [Fact]
         public async Task Play_WithExistingFile_ShouldSetPlayingTrue()
         {
@@ -41,6 +66,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with cached file should reuse last extracted file
+        /// </summary>
         [Fact]
         public async Task Play_WithCachedFile_ShouldReuseLastExtractedFile()
         {
@@ -66,6 +94,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with non existent file should throw file not found exception
+        /// </summary>
         [Fact]
         public async Task Play_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
@@ -74,6 +105,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that play loop without loop with existing file should set playing true
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithoutLoop_WithExistingFile_ShouldSetPlayingTrue()
         {
@@ -92,6 +126,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop without loop with non existent file should throw
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithoutLoop_WithNonExistentFile_ShouldThrow()
         {
@@ -99,6 +136,9 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAnyAsync<Exception>(() => player.PlayLoop("nonexistent_file_12345.wav", false));
         }
 
+        /// <summary>
+        /// Tests that play loop with loop with non existent file should throw
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithLoop_WithNonExistentFile_ShouldThrow()
         {
@@ -106,6 +146,9 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAnyAsync<Exception>(() => player.PlayLoop("nonexistent_file_12345.wav", true));
         }
 
+        /// <summary>
+        /// Tests that pause when playing with process should set paused
+        /// </summary>
         [Fact]
         public async Task Pause_WhenPlayingWithProcess_ShouldSetPaused()
         {
@@ -132,6 +175,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that resume when playing and paused with process should unpause
+        /// </summary>
         [Fact]
         public async Task Resume_WhenPlayingAndPausedWithProcess_ShouldUnpause()
         {
@@ -156,6 +202,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play after stop should work
+        /// </summary>
         [Fact]
         public async Task Play_AfterStop_ShouldWork()
         {
@@ -180,6 +229,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop with loop true should start background task
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithLoopTrue_ShouldStartBackgroundTask()
         {
@@ -202,6 +254,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop with loop true then cached file should use cache
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithLoopTrue_ThenCachedFile_ShouldUseCache()
         {

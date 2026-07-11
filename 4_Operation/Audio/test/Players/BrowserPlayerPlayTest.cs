@@ -9,12 +9,28 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player play test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class BrowserPlayerPlayTest : IDisposable
     {
+        /// <summary>
+        /// The player
+        /// </summary>
         private BrowserPlayer _player;
+        /// <summary>
+        /// The previous active name
+        /// </summary>
         private string _previousActiveName;
+        /// <summary>
+        /// The wav file name
+        /// </summary>
         private const string WavFileName = "test_sound.wav";
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_previousActiveName != null)
@@ -22,6 +38,10 @@ namespace Alis.Core.Audio.Test.Players
             try { _player?.Stop(); } catch { }
         }
 
+        /// <summary>
+        /// Setup the new assembly
+        /// </summary>
+        /// <returns>The string</returns>
         private string SetupNewAssembly()
         {
             _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
@@ -56,6 +76,9 @@ namespace Alis.Core.Audio.Test.Players
             return AssetRegistryTestHelper.RegisterNewAssembly(WavFileName, wavBytes);
         }
 
+        /// <summary>
+        /// Setup the player
+        /// </summary>
         private void SetupPlayer()
         {
             string name = SetupNewAssembly();
@@ -63,6 +86,9 @@ namespace Alis.Core.Audio.Test.Players
             _player = new BrowserPlayer();
         }
 
+        /// <summary>
+        /// Tests that play with valid wav from resources should succeed
+        /// </summary>
         [Fact]
         public async Task Play_WithValidWavFromResources_ShouldSucceed()
         {
@@ -81,6 +107,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play null file name should throw
+        /// </summary>
         [Fact]
         public async Task Play_NullFileName_ShouldThrow()
         {
@@ -100,6 +129,9 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAsync<ArgumentException>(() => _player.Play(null));
         }
 
+        /// <summary>
+        /// Tests that play then stop should stop playback
+        /// </summary>
         [Fact]
         public async Task Play_ThenStop_ShouldStopPlayback()
         {
@@ -120,6 +152,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play then pause then resume should work
+        /// </summary>
         [Fact]
         public async Task Play_ThenPauseThenResume_ShouldWork()
         {
@@ -144,6 +179,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play loop with any file should delegate to play
+        /// </summary>
         [Fact]
         public async Task PlayLoop_WithAnyFile_ShouldDelegateToPlay()
         {
@@ -162,6 +200,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that play with non existent resource should throw
+        /// </summary>
         [Fact]
         public async Task Play_WithNonExistentResource_ShouldThrow()
         {
@@ -176,6 +217,10 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAsync<FileNotFoundException>(() => _player.Play("nonexistent_resource.wav"));
         }
 
+        /// <summary>
+        /// Ises the open al available
+        /// </summary>
+        /// <returns>The bool</returns>
         private static bool IsOpenAlAvailable()
         {
             try

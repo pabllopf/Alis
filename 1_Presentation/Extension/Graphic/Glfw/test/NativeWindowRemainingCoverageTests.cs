@@ -41,6 +41,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
     /// </summary>
     public class NativeWindowRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private NativeWindow window;
 
         /// <summary>

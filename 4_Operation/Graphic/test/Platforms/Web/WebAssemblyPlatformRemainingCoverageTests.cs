@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly platform remaining coverage tests class
+    /// </summary>
     public class WebAssemblyPlatformRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that initialize full path returns false when egl fails
+        /// </summary>
         [Fact]
         public void Initialize_FullPath_ReturnsFalse_WhenEglFails()
         {
@@ -44,6 +50,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that initialize full path with icon path returns false when egl fails
+        /// </summary>
         [Fact]
         public void Initialize_FullPath_WithIconPath_ReturnsFalse_WhenEglFails()
         {
@@ -52,6 +61,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that initialize already initialized returns true
+        /// </summary>
         [Fact]
         public void Initialize_AlreadyInitialized_ReturnsTrue()
         {
@@ -61,6 +73,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that initialize already initialized with icon returns true
+        /// </summary>
         [Fact]
         public void Initialize_AlreadyInitializedWithIcon_ReturnsTrue()
         {
@@ -70,6 +85,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that poll events update gamepad states no exception
+        /// </summary>
         [Fact]
         public void PollEvents_UpdateGamepadStates_NoException()
         {
@@ -78,6 +96,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that update single gamepad state new index does not throw
+        /// </summary>
         [Fact]
         public void UpdateSingleGamepadState_NewIndex_DoesNotThrow()
         {
@@ -87,6 +108,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotNull(state);
         }
 
+        /// <summary>
+        /// Tests that update single gamepad state existing index updates state
+        /// </summary>
         [Fact]
         public void UpdateSingleGamepadState_ExistingIndex_UpdatesState()
         {
@@ -97,6 +121,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that update gamepad states multiple gamepads does not throw
+        /// </summary>
         [Fact]
         public void UpdateGamepadStates_MultipleGamepads_DoesNotThrow()
         {
@@ -107,6 +134,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "UpdateGamepadStates");
         }
 
+        /// <summary>
+        /// Tests that cleanup when not initialized does not clear state
+        /// </summary>
         [Fact]
         public void Cleanup_WhenNotInitialized_DoesNotClearState()
         {
@@ -116,6 +146,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that cleanup when initialized clears state
+        /// </summary>
         [Fact]
         public void Cleanup_WhenInitialized_ClearsState()
         {
@@ -126,6 +159,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that cleanup when initialized clears input chars
+        /// </summary>
         [Fact]
         public void Cleanup_WhenInitialized_ClearsInputChars()
         {
@@ -136,6 +172,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastInputCharacters(out string _));
         }
 
+        /// <summary>
+        /// Tests that cleanup when initialized clears key queue
+        /// </summary>
         [Fact]
         public void Cleanup_WhenInitialized_ClearsKeyQueue()
         {
@@ -146,6 +185,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastKeyPressed(out ConsoleKey _));
         }
 
+        /// <summary>
+        /// Tests that cleanup when initialized clears gamepad states
+        /// </summary>
         [Fact]
         public void Cleanup_WhenInitialized_ClearsGamepadStates()
         {
@@ -156,6 +198,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetGamepadState(0, out GamepadState _));
         }
 
+        /// <summary>
+        /// Tests that make context current with zero handles does nothing
+        /// </summary>
         [Fact]
         public void MakeContextCurrent_WithZeroHandles_DoesNothing()
         {
@@ -163,6 +208,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.MakeContextCurrent();
         }
 
+        /// <summary>
+        /// Tests that swap buffers with zero handles does nothing
+        /// </summary>
         [Fact]
         public void SwapBuffers_WithZeroHandles_DoesNothing()
         {
@@ -170,6 +218,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SwapBuffers();
         }
 
+        /// <summary>
+        /// Tests that get window metrics returns default values
+        /// </summary>
         [Fact]
         public void GetWindowMetrics_ReturnsDefaultValues()
         {
@@ -183,6 +234,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(600, fbH);
         }
 
+        /// <summary>
+        /// Tests that get window metrics after resize returns updated values
+        /// </summary>
         [Fact]
         public void GetWindowMetrics_AfterResize_ReturnsUpdatedValues()
         {
@@ -193,6 +247,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, winH);
         }
 
+        /// <summary>
+        /// Tests that on key down key already down does not enqueue again
+        /// </summary>
         [Fact]
         public void OnKeyDown_KeyAlreadyDown_DoesNotEnqueueAgain()
         {
@@ -203,6 +260,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastKeyPressed(out _));
         }
 
+        /// <summary>
+        /// Tests that on key down key not in states adds and enqueues
+        /// </summary>
         [Fact]
         public void OnKeyDown_KeyNotInStates_AddsAndEnqueues()
         {
@@ -213,6 +273,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.A, key);
         }
 
+        /// <summary>
+        /// Tests that on key up key exists sets false
+        /// </summary>
         [Fact]
         public void OnKeyUp_KeyExists_SetsFalse()
         {
@@ -222,6 +285,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that on key up key not in states does not throw
+        /// </summary>
         [Fact]
         public void OnKeyUp_KeyNotInStates_DoesNotThrow()
         {
@@ -229,6 +295,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnKeyUp", 999, 0);
         }
 
+        /// <summary>
+        /// Tests that on char input valid char appends to string builder
+        /// </summary>
         [Fact]
         public void OnCharInput_ValidChar_AppendsToStringBuilder()
         {
@@ -238,6 +307,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("A", chars);
         }
 
+        /// <summary>
+        /// Tests that on char input invalid char code does not throw
+        /// </summary>
         [Fact]
         public void OnCharInput_InvalidCharCode_DoesNotThrow()
         {
@@ -245,6 +317,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnCharInput", (uint)0x110000);
         }
 
+        /// <summary>
+        /// Tests that on char input zero char code does not throw
+        /// </summary>
         [Fact]
         public void OnCharInput_ZeroCharCode_DoesNotThrow()
         {
@@ -252,6 +327,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnCharInput", (uint)0);
         }
 
+        /// <summary>
+        /// Tests that on mouse move updates client coords
+        /// </summary>
         [Fact]
         public void OnMouseMove_UpdatesClientCoords()
         {
@@ -262,6 +340,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(200, y);
         }
 
+        /// <summary>
+        /// Tests that on mouse down negative button does not set button
+        /// </summary>
         [Fact]
         public void OnMouseDown_NegativeButton_DoesNotSetButton()
         {
@@ -271,6 +352,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[0]);
         }
 
+        /// <summary>
+        /// Tests that on mouse down out of range button does not set button
+        /// </summary>
         [Fact]
         public void OnMouseDown_OutOfRangeButton_DoesNotSetButton()
         {
@@ -280,6 +364,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[0]);
         }
 
+        /// <summary>
+        /// Tests that on mouse up negative button does not throw
+        /// </summary>
         [Fact]
         public void OnMouseUp_NegativeButton_DoesNotThrow()
         {
@@ -287,6 +374,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnMouseUp", -1, 0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// Tests that on mouse up out of range button does not throw
+        /// </summary>
         [Fact]
         public void OnMouseUp_OutOfRangeButton_DoesNotThrow()
         {
@@ -294,6 +384,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnMouseUp", 10, 0, 0, 0, 0);
         }
 
+        /// <summary>
+        /// Tests that on window resize updates dimensions
+        /// </summary>
         [Fact]
         public void OnWindowResize_UpdatesDimensions()
         {
@@ -303,6 +396,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that on window close sets should close
+        /// </summary>
         [Fact]
         public void OnWindowClose_SetsShouldClose()
         {
@@ -311,6 +407,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.PollEvents());
         }
 
+        /// <summary>
+        /// Tests that on window focus true sets visible
+        /// </summary>
         [Fact]
         public void OnWindowFocus_True_SetsVisible()
         {
@@ -319,6 +418,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that on window focus false clears visible
+        /// </summary>
         [Fact]
         public void OnWindowFocus_False_ClearsVisible()
         {
@@ -327,6 +429,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that on gamepad connect creates new state
+        /// </summary>
         [Fact]
         public void OnGamepadConnect_CreatesNewState()
         {
@@ -336,6 +441,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that on gamepad connect existing index does not overwrite
+        /// </summary>
         [Fact]
         public void OnGamepadConnect_ExistingIndex_DoesNotOverwrite()
         {
@@ -346,6 +454,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Single(indices);
         }
 
+        /// <summary>
+        /// Tests that on gamepad disconnect existing index sets disconnected
+        /// </summary>
         [Fact]
         public void OnGamepadDisconnect_ExistingIndex_SetsDisconnected()
         {
@@ -356,6 +467,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that on gamepad disconnect non existent index does not throw
+        /// </summary>
         [Fact]
         public void OnGamepadDisconnect_NonExistentIndex_DoesNotThrow()
         {
@@ -363,6 +477,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnGamepadDisconnect", 99);
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet a maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetA_MapsCorrectly()
         {
@@ -371,6 +488,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet z maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetZ_MapsCorrectly()
         {
@@ -379,6 +499,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Z));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 0 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number0_MapsCorrectly()
         {
@@ -387,6 +510,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D0));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 9 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number9_MapsCorrectly()
         {
@@ -395,6 +521,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D9));
         }
 
+        /// <summary>
+        /// Tests that convert key code enter maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Enter_MapsCorrectly()
         {
@@ -403,6 +532,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Enter));
         }
 
+        /// <summary>
+        /// Tests that convert key code tab maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Tab_MapsCorrectly()
         {
@@ -411,6 +543,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Tab));
         }
 
+        /// <summary>
+        /// Tests that convert key code spacebar maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Spacebar_MapsCorrectly()
         {
@@ -419,6 +554,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Spacebar));
         }
 
+        /// <summary>
+        /// Tests that convert key code backspace maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Backspace_MapsCorrectly()
         {
@@ -427,6 +565,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Backspace));
         }
 
+        /// <summary>
+        /// Tests that convert key code escape maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Escape_MapsCorrectly()
         {
@@ -435,6 +576,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Escape));
         }
 
+        /// <summary>
+        /// Tests that convert key code delete maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Delete_MapsCorrectly()
         {
@@ -443,6 +587,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Delete));
         }
 
+        /// <summary>
+        /// Tests that convert key code arrow keys maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_ArrowKeys_MapsCorrectly()
         {
@@ -460,6 +607,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.DownArrow));
         }
 
+        /// <summary>
+        /// Tests that convert key code function keys maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeys_MapsCorrectly()
         {
@@ -471,6 +621,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F12));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad keys maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_NumpadKeys_MapsCorrectly()
         {
@@ -482,6 +635,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad9));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad operators maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_NumpadOperators_MapsCorrectly()
         {
@@ -502,6 +658,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Divide));
         }
 
+        /// <summary>
+        /// Tests that convert key code navigation keys maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_NavigationKeys_MapsCorrectly()
         {
@@ -525,6 +684,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Pause));
         }
 
+        /// <summary>
+        /// Tests that convert key code modifier shift maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_ModifierShift_MapsCorrectly()
         {
@@ -533,6 +695,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.LeftArrow));
         }
 
+        /// <summary>
+        /// Tests that convert key code modifier ctrl maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_ModifierCtrl_MapsCorrectly()
         {
@@ -541,6 +706,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Escape));
         }
 
+        /// <summary>
+        /// Tests that convert key code unknown key maps to no name
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_UnknownKey_MapsToNoName()
         {
@@ -549,6 +717,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
 
+        /// <summary>
+        /// Tests that convert key code negative key maps to no name
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_NegativeKey_MapsToNoName()
         {
@@ -557,6 +728,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NoName));
         }
 
+        /// <summary>
+        /// Tests that try get last key pressed empty queue returns false
+        /// </summary>
         [Fact]
         public void TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
         {
@@ -565,6 +739,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.NoName, key);
         }
 
+        /// <summary>
+        /// Tests that try get last key pressed queue with items returns true
+        /// </summary>
         [Fact]
         public void TryGetLastKeyPressed_QueueWithItems_ReturnsTrue()
         {
@@ -574,6 +751,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ConsoleKey.A, key);
         }
 
+        /// <summary>
+        /// Tests that is key down key in states returns value
+        /// </summary>
         [Fact]
         public void IsKeyDown_KeyInStates_ReturnsValue()
         {
@@ -584,6 +764,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        /// Tests that is key down key not in states returns false
+        /// </summary>
         [Fact]
         public void IsKeyDown_KeyNotInStates_ReturnsFalse()
         {
@@ -591,6 +774,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsKeyDown(ConsoleKey.F24));
         }
 
+        /// <summary>
+        /// Tests that try get last input characters has chars returns true
+        /// </summary>
         [Fact]
         public void TryGetLastInputCharacters_HasChars_ReturnsTrue()
         {
@@ -600,6 +786,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("H", chars);
         }
 
+        /// <summary>
+        /// Tests that try get last input characters empty returns false
+        /// </summary>
         [Fact]
         public void TryGetLastInputCharacters_Empty_ReturnsFalse()
         {
@@ -608,6 +797,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(string.Empty, chars);
         }
 
+        /// <summary>
+        /// Tests that try get last input characters clears after read
+        /// </summary>
         [Fact]
         public void TryGetLastInputCharacters_ClearsAfterRead()
         {
@@ -617,6 +809,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.TryGetLastInputCharacters(out _));
         }
 
+        /// <summary>
+        /// Tests that gamepad state default state connected false
+        /// </summary>
         [Fact]
         public void GamepadState_DefaultState_ConnectedFalse()
         {
@@ -624,6 +819,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button valid index returns value
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_ValidIndex_ReturnsValue()
         {
@@ -633,6 +831,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.GetButton(0));
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button invalid index returns false
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_InvalidIndex_ReturnsFalse()
         {
@@ -641,6 +842,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(100));
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button index boundary returns false
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_IndexBoundary_ReturnsFalse()
         {
@@ -648,6 +852,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(13));
         }
 
+        /// <summary>
+        /// Tests that gamepad state button a returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonA_ReturnsCorrectValue()
         {
@@ -657,6 +864,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonA);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button b returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonB_ReturnsCorrectValue()
         {
@@ -666,6 +876,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonB);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button x returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonX_ReturnsCorrectValue()
         {
@@ -675,6 +888,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button y returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonY_ReturnsCorrectValue()
         {
@@ -684,6 +900,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button lb returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLb_ReturnsCorrectValue()
         {
@@ -693,6 +912,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button rb returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRb_ReturnsCorrectValue()
         {
@@ -702,6 +924,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button left stick click returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLeftStickClick_ReturnsCorrectValue()
         {
@@ -711,6 +936,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLeftStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button right stick click returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRightStickClick_ReturnsCorrectValue()
         {
@@ -720,6 +948,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRightStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button start returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonStart_ReturnsCorrectValue()
         {
@@ -729,6 +960,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonStart);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button back returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonBack_ReturnsCorrectValue()
         {
@@ -738,6 +972,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonBack);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button guide returns correct value
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonGuide_ReturnsCorrectValue()
         {
@@ -747,6 +984,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonGuide);
         }
 
+        /// <summary>
+        /// Tests that gamepad state all button properties default are false
+        /// </summary>
         [Fact]
         public void GamepadState_AllButtonProperties_DefaultAreFalse()
         {
@@ -764,6 +1004,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.ButtonGuide);
         }
 
+        /// <summary>
+        /// Tests that get mouse wheel default returns zero
+        /// </summary>
         [Fact]
         public void GetMouseWheel_Default_ReturnsZero()
         {
@@ -771,6 +1014,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, platform.GetMouseWheel(), 5);
         }
 
+        /// <summary>
+        /// Tests that get mouse wheel after wheel event returns delta
+        /// </summary>
         [Fact]
         public void GetMouseWheel_AfterWheelEvent_ReturnsDelta()
         {
@@ -779,6 +1025,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(42.0f, platform.GetMouseWheel(), 5);
         }
 
+        /// <summary>
+        /// Tests that get mouse state returns cloned array not same reference
+        /// </summary>
         [Fact]
         public void GetMouseState_ReturnsClonedArray_NotSameReference()
         {
@@ -788,6 +1037,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotSame(first, second);
         }
 
+        /// <summary>
+        /// Tests that get mouse position in view after mouse move returns updated coords
+        /// </summary>
         [Fact]
         public void GetMousePositionInView_AfterMouseMove_ReturnsUpdatedCoords()
         {
@@ -798,6 +1050,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(456.0f, y);
         }
 
+        /// <summary>
+        /// Tests that get window position x returns default on non browser
+        /// </summary>
         [Fact]
         public void GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
@@ -805,6 +1060,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, platform.GetWindowPositionX());
         }
 
+        /// <summary>
+        /// Tests that get window position y returns default on non browser
+        /// </summary>
         [Fact]
         public void GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
@@ -812,6 +1070,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, platform.GetWindowPositionY());
         }
 
+        /// <summary>
+        /// Tests that show window sets visible
+        /// </summary>
         [Fact]
         public void ShowWindow_SetsVisible()
         {
@@ -820,6 +1081,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that hide window clears visible
+        /// </summary>
         [Fact]
         public void HideWindow_ClearsVisible()
         {
@@ -829,6 +1093,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that show hide window toggle works repeatedly
+        /// </summary>
         [Fact]
         public void ShowHideWindow_Toggle_WorksRepeatedly()
         {
@@ -841,6 +1108,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        /// Tests that set title does not throw
+        /// </summary>
         [Fact]
         public void SetTitle_DoesNotThrow()
         {
@@ -848,6 +1118,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetTitle("Test Title");
         }
 
+        /// <summary>
+        /// Tests that set title empty string does not throw
+        /// </summary>
         [Fact]
         public void SetTitle_EmptyString_DoesNotThrow()
         {
@@ -855,6 +1128,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetTitle(string.Empty);
         }
 
+        /// <summary>
+        /// Tests that set title null string does not throw
+        /// </summary>
         [Fact]
         public void SetTitle_NullString_DoesNotThrow()
         {
@@ -862,6 +1138,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetTitle(null);
         }
 
+        /// <summary>
+        /// Tests that set size updates dimensions
+        /// </summary>
         [Fact]
         public void SetSize_UpdatesDimensions()
         {
@@ -871,6 +1150,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(768, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that set size zero dimensions does not throw
+        /// </summary>
         [Fact]
         public void SetSize_ZeroDimensions_DoesNotThrow()
         {
@@ -880,6 +1162,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that set size negative dimensions does not throw
+        /// </summary>
         [Fact]
         public void SetSize_NegativeDimensions_DoesNotThrow()
         {
@@ -889,6 +1174,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(-200, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        /// Tests that set window icon valid path does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_ValidPath_DoesNotThrow()
         {
@@ -896,6 +1184,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon("/icon.png");
         }
 
+        /// <summary>
+        /// Tests that set window icon empty path does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_EmptyPath_DoesNotThrow()
         {
@@ -903,6 +1194,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon(string.Empty);
         }
 
+        /// <summary>
+        /// Tests that set window icon null path does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_NullPath_DoesNotThrow()
         {
@@ -910,6 +1204,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             platform.SetWindowIcon(null);
         }
 
+        /// <summary>
+        /// Tests that get connected gamepad indices empty returns empty array
+        /// </summary>
         [Fact]
         public void GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
         {
@@ -918,6 +1215,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(indices);
         }
 
+        /// <summary>
+        /// Tests that get connected gamepad indices with connections returns indices
+        /// </summary>
         [Fact]
         public void GetConnectedGamepadIndices_WithConnections_ReturnsIndices()
         {
@@ -930,6 +1230,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains(1, indices);
         }
 
+        /// <summary>
+        /// Tests that get connected gamepad indices after disconnect returns only connected
+        /// </summary>
         [Fact]
         public void GetConnectedGamepadIndices_AfterDisconnect_ReturnsOnlyConnected()
         {
@@ -942,6 +1245,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Contains(0, indices);
         }
 
+        /// <summary>
+        /// Tests that poll events returns true when not closing
+        /// </summary>
         [Fact]
         public void PollEvents_ReturnsTrue_WhenNotClosing()
         {
@@ -949,6 +1255,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.PollEvents());
         }
 
+        /// <summary>
+        /// Tests that poll events returns false after window close
+        /// </summary>
         [Fact]
         public void PollEvents_ReturnsFalse_AfterWindowClose()
         {
@@ -957,6 +1266,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(platform.PollEvents());
         }
 
+        /// <summary>
+        /// Tests that poll events resets mouse wheel delta
+        /// </summary>
         [Fact]
         public void PollEvents_ResetsMouseWheelDelta()
         {
@@ -967,6 +1279,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, platform.GetMouseWheel(), 5);
         }
 
+        /// <summary>
+        /// Tests that get proc address throws on non browser
+        /// </summary>
         [Fact]
         public void GetProcAddress_ThrowsOnNonBrowser()
         {
@@ -974,6 +1289,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.ThrowsAny<Exception>(() => platform.GetProcAddress("glClearColor"));
         }
 
+        /// <summary>
+        /// Tests that try get gamepad state non existent returns false
+        /// </summary>
         [Fact]
         public void TryGetGamepadState_NonExistent_ReturnsFalse()
         {
@@ -982,6 +1300,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state);
         }
 
+        /// <summary>
+        /// Tests that try get gamepad state existent returns true
+        /// </summary>
         [Fact]
         public void TryGetGamepadState_Existent_ReturnsTrue()
         {
@@ -992,6 +1313,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that register input events does not throw on non browser
+        /// </summary>
         [Fact]
         public void RegisterInputEvents_DoesNotThrowOnNonBrowser()
         {
@@ -999,6 +1323,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "RegisterInputEvents");
         }
 
+        /// <summary>
+        /// Tests that register keyboard events does not throw on non browser
+        /// </summary>
         [Fact]
         public void RegisterKeyboardEvents_DoesNotThrowOnNonBrowser()
         {
@@ -1006,6 +1333,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "RegisterKeyboardEvents");
         }
 
+        /// <summary>
+        /// Tests that register mouse events does not throw on non browser
+        /// </summary>
         [Fact]
         public void RegisterMouseEvents_DoesNotThrowOnNonBrowser()
         {
@@ -1013,6 +1343,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "RegisterMouseEvents");
         }
 
+        /// <summary>
+        /// Tests that register gamepad events does not throw on non browser
+        /// </summary>
         [Fact]
         public void RegisterGamepadEvents_DoesNotThrowOnNonBrowser()
         {
@@ -1020,6 +1353,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "RegisterGamepadEvents");
         }
 
+        /// <summary>
+        /// Tests that register window events does not throw on non browser
+        /// </summary>
         [Fact]
         public void RegisterWindowEvents_DoesNotThrowOnNonBrowser()
         {
@@ -1027,6 +1363,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "RegisterWindowEvents");
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);
@@ -1034,6 +1376,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             method.Invoke(instance, arguments);
         }
 
+        /// <summary>
+        /// Sets the private field using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="fieldName">The field name</param>
+        /// <param name="value">The value</param>
         private static void SetPrivateField(object instance, string fieldName, object value)
         {
             FieldInfo field = instance.GetType().GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic);

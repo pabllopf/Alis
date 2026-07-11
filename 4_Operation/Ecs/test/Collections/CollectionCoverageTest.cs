@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The collection coverage test class
+    /// </summary>
     public class CollectionCoverageTest
     {
+        /// <summary>
+        /// Tests that chunk can be created
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Chunk_CanBeCreated()
         {
@@ -14,6 +20,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(4, chunk.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that enumerable helpers empty enumerator works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void EnumerableHelpers_EmptyEnumerator_Works()
         {
@@ -21,6 +30,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that fastest stack enumerator works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_Enumerator_Works()
         {
@@ -32,6 +44,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that fastest stack enumerator empty no move
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_Enumerator_Empty_NoMove()
         {

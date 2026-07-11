@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
+    /// <summary>
+    /// The weld joint remaining coverage tests class
+    /// </summary>
     public class WeldJointRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that solve position constraints with frequency positive and large error returns false
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyPositiveAndLargeError_ReturnsFalse()
         {
@@ -86,6 +92,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with frequency zero and separated bodies returns false
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyZeroAndSeparatedBodies_ReturnsFalse()
         {
@@ -136,6 +145,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with frequency zero and non zero inertia and angular error returns false
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyZeroAndNonZeroInertiaAndAngularError_ReturnsFalse()
         {
@@ -186,6 +198,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with frequency positive and large inertia should exercise frequency path
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithFrequencyPositiveAndLargeInertia_ShouldExerciseFrequencyPath()
         {
@@ -221,6 +236,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(mass);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with frequency positive and damping should exercise frequency path
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithFrequencyPositiveAndDamping_ShouldExerciseFrequencyPath()
         {
@@ -257,6 +275,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, bias);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with frequency positive and non default velocity should modify impulse
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithFrequencyPositiveAndNonDefaultVelocity_ShouldModifyImpulse()
         {
@@ -292,6 +313,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that get reaction force with simulated joint should return non zero
+        /// </summary>
         [Fact]
         public void GetReactionForce_WithSimulatedJoint_ShouldReturnNonZero()
         {
@@ -318,6 +342,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that get reaction torque with simulated joint should return non zero
+        /// </summary>
         [Fact]
         public void GetReactionTorque_WithSimulatedJoint_ShouldReturnNonZero()
         {

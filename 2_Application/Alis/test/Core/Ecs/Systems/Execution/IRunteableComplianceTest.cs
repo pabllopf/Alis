@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Execution
 {
+    /// <summary>
+    /// The runteable compliance test class
+    /// </summary>
     public class IRunteableComplianceTest
     {
+        /// <summary>
+        /// Tests that interface can be implemented
+        /// </summary>
         [Fact]
         public void Interface_CanBeImplemented()
         {
@@ -12,6 +18,9 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
             Assert.IsAssignableFrom<IRunteable>(runteable);
         }
 
+        /// <summary>
+        /// Tests that interface is empty marker
+        /// </summary>
         [Fact]
         public void Interface_IsEmptyMarker()
         {
@@ -19,6 +28,10 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
             Assert.Empty(methods);
         }
 
+        /// <summary>
+        /// The test runteable class
+        /// </summary>
+        /// <seealso cref="IRunteable"/>
         private sealed class TestRunteable : IRunteable { }
     }
 }

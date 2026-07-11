@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Core
 {
+    /// <summary>
+    /// The web socket network transport remaining coverage tests class
+    /// </summary>
     public class WebSocketNetworkTransportRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that start async called twice throws invalid operation exception
+        /// </summary>
         [Fact]
         public async Task StartAsync_CalledTwice_ThrowsInvalidOperationException()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Network.Test.Core
             await Assert.ThrowsAsync<InvalidOperationException>(() => transport.StartAsync());
         }
 
+        /// <summary>
+        /// Tests that start async valid host starts successfully
+        /// </summary>
         [Fact]
         public async Task StartAsync_ValidHost_StartsSuccessfully()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Connected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that stop async after start disconnects
+        /// </summary>
         [Fact]
         public async Task StopAsync_AfterStart_Disconnects()
         {
@@ -62,6 +74,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that receive async without cancellation throws operation canceled exception on cts cancel
+        /// </summary>
         [Fact]
         public async Task ReceiveAsync_WithoutCancellation_ThrowsOperationCanceledExceptionOnCtsCancel()
         {
@@ -73,6 +88,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.IsAssignableFrom<OperationCanceledException>(ex);
         }
 
+        /// <summary>
+        /// Tests that send async with null envelope throws
+        /// </summary>
         [Fact]
         public async Task SendAsync_WithNullEnvelope_Throws()
         {
@@ -80,6 +98,9 @@ namespace Alis.Extension.Network.Test.Core
             await Assert.ThrowsAsync<InvalidOperationException>(() => transport.SendAsync("client-id", null));
         }
 
+        /// <summary>
+        /// Tests that broadcast async with except client id does not throw
+        /// </summary>
         [Fact]
         public async Task BroadcastAsync_WithExceptClientId_DoesNotThrow()
         {

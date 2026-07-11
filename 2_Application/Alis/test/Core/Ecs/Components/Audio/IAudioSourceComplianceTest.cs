@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Audio
 {
+    /// <summary>
+    /// The audio source compliance test class
+    /// </summary>
     public class IAudioSourceComplianceTest
     {
+        /// <summary>
+        /// Tests that interface is implemented by audio source
+        /// </summary>
         [Fact]
         public void Interface_IsImplementedByAudioSource()
         {
@@ -12,6 +18,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.IsAssignableFrom<IAudioSource>(source);
         }
 
+        /// <summary>
+        /// Tests that audio source implements i on start
+        /// </summary>
         [Fact]
         public void AudioSource_ImplementsIOnStart()
         {
@@ -20,6 +29,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.NotNull(onStart);
         }
 
+        /// <summary>
+        /// Tests that audio source implements i on update
+        /// </summary>
         [Fact]
         public void AudioSource_ImplementsIOnUpdate()
         {
@@ -28,6 +40,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.NotNull(onUpdate);
         }
 
+        /// <summary>
+        /// Tests that audio source implements i on exit
+        /// </summary>
         [Fact]
         public void AudioSource_ImplementsIOnExit()
         {
@@ -36,6 +51,9 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.NotNull(onExit);
         }
 
+        /// <summary>
+        /// Tests that audio source has context property
+        /// </summary>
         [Fact]
         public void AudioSource_HasContextProperty()
         {

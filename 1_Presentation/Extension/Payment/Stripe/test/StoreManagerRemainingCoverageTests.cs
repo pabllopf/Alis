@@ -36,10 +36,21 @@ using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
 {
+    /// <summary>
+    /// The store manager remaining coverage tests class
+    /// </summary>
     public class StoreManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Creates the context
+        /// </summary>
+        /// <returns>The context</returns>
         private static Context CreateContext() => new Context();
 
+        /// <summary>
+        /// Creates the valid configuration
+        /// </summary>
+        /// <returns>The store configuration</returns>
         private static StoreConfiguration CreateValidConfiguration() => new StoreConfiguration
         {
             SecretApiKey = "sk_test_4eC39HqLyjWDarjtT1zdp7dc",
@@ -49,6 +60,12 @@ namespace Alis.Extension.Payment.Stripe.Test
             EnableAutomaticPaymentMethods = true
         };
 
+        /// <summary>
+        /// Creates the product using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="priceInCents">The price in cents</param>
+        /// <returns>The store product</returns>
         private static StoreProduct CreateProduct(string id = "test_product", long priceInCents = 999) => new StoreProduct
         {
             Id = id,
@@ -59,6 +76,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             IsEnabled = true
         };
 
+        /// <summary>
+        /// Tests that constructor with id name tag is enable context creates instance successfully
+        /// </summary>
         [Fact]
         public void Constructor_WithIdNameTagIsEnableContext_CreatesInstanceSuccessfully()
         {
@@ -72,6 +92,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that dispose called disposes successfully
+        /// </summary>
         [Fact]
         public void Dispose_Called_DisposesSuccessfully()
         {
@@ -81,6 +104,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose called multiple times does not throw
+        /// </summary>
         [Fact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
@@ -91,6 +117,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             manager.Dispose();
         }
 
+        /// <summary>
+        /// Tests that on destroy when not disposed clears products and configuration
+        /// </summary>
         [Fact]
         public void OnDestroy_WhenNotDisposed_ClearsProductsAndConfiguration()
         {
@@ -103,6 +132,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.False(manager.TryGetProduct("prod1", out _));
         }
 
+        /// <summary>
+        /// Tests that on destroy called twice second call succeeds
+        /// </summary>
         [Fact]
         public void OnDestroy_CalledTwice_SecondCallSucceeds()
         {
@@ -113,6 +145,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             manager.OnDestroy();
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with zero quantity throws argument out of range exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithZeroQuantity_ThrowsArgumentOutOfRangeException()
         {
@@ -134,6 +169,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreateCheckoutSessionAsync("product1", 0));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with negative quantity throws argument out of range exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNegativeQuantity_ThrowsArgumentOutOfRangeException()
         {
@@ -155,6 +193,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreateCheckoutSessionAsync("product1", -1));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with cancelled token throws operation canceled exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithCancelledToken_ThrowsOperationCanceledException()
         {
@@ -179,6 +220,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreateCheckoutSessionAsync("product1", cancellationToken: cts.Token));
         }
 
+        /// <summary>
+        /// Tests that create payment intent async with cancelled token throws operation canceled exception
+        /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithCancelledToken_ThrowsOperationCanceledException()
         {
@@ -203,6 +247,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreatePaymentIntentAsync("product1", cancellationToken: cts.Token));
         }
 
+        /// <summary>
+        /// Tests that get payment status async with cancelled token throws operation canceled exception
+        /// </summary>
         [Fact]
         public async Task GetPaymentStatusAsync_WithCancelledToken_ThrowsOperationCanceledException()
         {
@@ -226,6 +273,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.GetPaymentStatusAsync("pi_test", cts.Token));
         }
 
+        /// <summary>
+        /// Tests that refund payment async with cancelled token throws operation canceled exception
+        /// </summary>
         [Fact]
         public async Task RefundPaymentAsync_WithCancelledToken_ThrowsOperationCanceledException()
         {
@@ -250,6 +300,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.RefundPaymentAsync("pi_123", 500, cancellationToken: cts.Token));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with null product id throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullProductId_ThrowsArgumentException()
         {
@@ -270,6 +323,9 @@ namespace Alis.Extension.Payment.Stripe.Test
                 manager.CreateCheckoutSessionAsync(null));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with empty product id throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithEmptyProductId_ThrowsArgumentException()
         {

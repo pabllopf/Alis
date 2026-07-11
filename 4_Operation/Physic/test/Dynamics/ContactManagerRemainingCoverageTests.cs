@@ -10,8 +10,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
+    /// <summary>
+    /// The contact manager remaining coverage tests class
+    /// </summary>
     public class ContactManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that wake bodies on contact with sensor fixture returns early
+        /// </summary>
         [Fact]
         public void WakeBodiesOnContact_WithSensorFixture_ReturnsEarly()
         {
@@ -26,6 +32,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that try resolve contact filter destroys when should collide returns false
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_Destroys_WhenShouldCollideReturnsFalse()
         {
@@ -44,6 +53,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that try resolve contact filter clears filter flag when all pass
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_ClearsFilterFlag_WhenAllPass()
         {
@@ -59,6 +71,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that process contact collision both bodies active updates contact
+        /// </summary>
         [Fact]
         public void ProcessContactCollision_BothBodiesActive_UpdatesContact()
         {
@@ -71,6 +86,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that collide multi core with disabled body skips contact
+        /// </summary>
         [Fact]
         public void CollideMultiCore_WithDisabledBody_SkipsContact()
         {
@@ -91,6 +109,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount <= 0);
         }
 
+        /// <summary>
+        /// Tests that process contact multi core with overlap false destroys contact
+        /// </summary>
         [Fact]
         public void ProcessContactMultiCore_WithOverlapFalse_DestroysContact()
         {
@@ -113,6 +134,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that process contact multi core with both bodies inactive skips contact
+        /// </summary>
         [Fact]
         public void ProcessContactMultiCore_WithBothBodiesInactive_SkipsContact()
         {
@@ -135,6 +159,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that process contact multi core with try resolve contact filter destroys contact
+        /// </summary>
         [Fact]
         public void ProcessContactMultiCore_WithTryResolveContactFilter_DestroysContact()
         {
@@ -157,6 +184,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that update contact with lock with different lock orders updates contact
+        /// </summary>
         [Fact]
         public void UpdateContactWithLock_WithDifferentLockOrders_UpdatesContact()
         {
@@ -176,6 +206,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that body with multiple contacts removes one correctly
+        /// </summary>
         [Fact]
         public void BodyWithMultipleContacts_RemovesOneCorrectly()
         {
@@ -193,6 +226,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide multi core with filter flag on contact re evaluates
+        /// </summary>
         [Fact]
         public void CollideMultiCore_WithFilterFlagOnContact_ReEvaluates()
         {
@@ -215,6 +251,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that should collide group zero different uses category check
+        /// </summary>
         [Fact]
         public void ShouldCollide_GroupZeroDifferent_UsesCategoryCheck()
         {
@@ -230,6 +269,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that should collide mismatched categories returns false
+        /// </summary>
         [Fact]
         public void ShouldCollide_MismatchedCategories_ReturnsFalse()
         {
@@ -254,6 +296,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that destroy without end contact does not throw
+        /// </summary>
         [Fact]
         public void Destroy_WithoutEndContact_DoesNotThrow()
         {
@@ -273,6 +318,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that add pair with already existing contact returns early
+        /// </summary>
         [Fact]
         public void AddPair_WithAlreadyExistingContact_ReturnsEarly()
         {
@@ -289,6 +337,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(count, world.ContactManager.ContactCount);
         }
 
+        /// <summary>
+        /// Tests that remove from world removes contact decrements count
+        /// </summary>
         [Fact]
         public void RemoveFromWorld_RemovesContact_DecrementsCount()
         {
@@ -306,6 +357,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount < before);
         }
 
+        /// <summary>
+        /// Tests that should collide one group zero one non zero uses categories
+        /// </summary>
         [Fact]
         public void ShouldCollide_OneGroupZero_OneNonZero_UsesCategories()
         {
@@ -321,6 +375,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that collide multi core empty update list does not throw
+        /// </summary>
         [Fact]
         public void CollideMultiCore_EmptyUpdateList_DoesNotThrow()
         {
@@ -334,6 +391,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that destroy adds to pool and reuses
+        /// </summary>
         [Fact]
         public void Destroy_AddsToPool_AndReuses()
         {
@@ -358,6 +418,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that passes collision filters fails when before collision a returns false
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_Fails_WhenBeforeCollisionAReturnsFalse()
         {
@@ -376,6 +439,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that passes collision filters fails when before collision b returns false
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_Fails_WhenBeforeCollisionBReturnsFalse()
         {
@@ -394,6 +460,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that find new contacts with broad phase does not throw
+        /// </summary>
         [Fact]
         public void FindNewContacts_WithBroadPhase_DoesNotThrow()
         {
@@ -403,6 +472,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that collide method with no contacts does not throw
+        /// </summary>
         [Fact]
         public void CollideMethod_WithNoContacts_DoesNotThrow()
         {
@@ -412,6 +484,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that notify separation fires fixture and body when fixture null does not throw
+        /// </summary>
         [Fact]
         public void NotifySeparation_FiresFixtureAndBody_WhenFixtureNull_DoesNotThrow()
         {
@@ -431,6 +506,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessContactCollision - bodies enabled, both active, overlapping (full path)
         // ========================================================================
+        /// <summary>
+        /// Tests that process contact collision full path updates contact
+        /// </summary>
         [Fact]
         public void ProcessContactCollision_FullPath_UpdatesContact()
         {
@@ -446,6 +524,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // AddPair - Contact.Create returns null (unlikely, but test setup)
         // ========================================================================
+        /// <summary>
+        /// Tests that add pair with edge shape handles null contact
+        /// </summary>
         [Fact]
         public void AddPair_WithEdgeShape_HandlesNullContact()
         {
@@ -460,6 +541,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // RemoveFromBody — with complex node structures
         // ========================================================================
+        /// <summary>
+        /// Tests that remove body with multiple contacts removes correctly
+        /// </summary>
         [Fact]
         public void RemoveBody_WithMultipleContacts_RemovesCorrectly()
         {
@@ -478,6 +562,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Destroy - with EndContact registered (not null)
         // ========================================================================
+        /// <summary>
+        /// Tests that destroy with end contact fires callback
+        /// </summary>
         [Fact]
         public void Destroy_WithEndContact_FiresCallback()
         {
@@ -497,6 +584,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // Collide method - with multi-core path (threshold = 0)
         // ========================================================================
+        /// <summary>
+        /// Tests that collide multi core path processes contacts
+        /// </summary>
         [Fact]
         public void Collide_MultiCorePath_ProcessesContacts()
         {
@@ -515,6 +605,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ProcessContactMultiCore - both active and overlapping
         // ========================================================================
+        /// <summary>
+        /// Tests that process contact multi core all active and overlapping updates
+        /// </summary>
         [Fact]
         public void ProcessContactMultiCore_AllActiveAndOverlapping_Updates()
         {
@@ -533,6 +626,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // PassesCollisionFilters - full path (all checks pass)
         // ========================================================================
+        /// <summary>
+        /// Tests that passes collision filters all checks pass returns true
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_AllChecksPass_ReturnsTrue()
         {
@@ -547,6 +643,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // UpdateContactWithLock - with idA > idB (swapped order)
         // ========================================================================
+        /// <summary>
+        /// Tests that update contact with lock swapped lock order does not throw
+        /// </summary>
         [Fact]
         public void UpdateContactWithLock_SwappedLockOrder_DoesNotThrow()
         {
@@ -567,6 +666,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // TryResolveContactFilter — ContactFilter returns false path
         // ========================================================================
+        /// <summary>
+        /// Tests that try resolve contact filter with contact filter false destroys
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_WithContactFilterFalse_Destroys()
         {
@@ -586,6 +688,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // TryResolveContactFilter — ShouldCollide returns false (joint prevents)
         // ========================================================================
+        /// <summary>
+        /// Tests that try resolve contact filter joint prevents collision destroys
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_JointPreventsCollision_Destroys()
         {
@@ -604,6 +709,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // AcquireLocks — through multithreaded collision path
         // ========================================================================
+        /// <summary>
+        /// Tests that acquire locks through multi core does not deadlock
+        /// </summary>
         [Fact]
         public void AcquireLocks_ThroughMultiCore_DoesNotDeadlock()
         {
@@ -622,6 +730,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // PassesCollisionFilters — all checks pass path
         // ========================================================================
+        /// <summary>
+        /// Tests that passes collision filters all true creates contact
+        /// </summary>
         [Fact]
         public void PassesCollisionFilters_AllTrue_CreatesContact()
         {
@@ -636,6 +747,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // ContactAlreadyExists with reversed fixture/index ordering
         // ========================================================================
+        /// <summary>
+        /// Tests that contact already exists reverse order detects correctly
+        /// </summary>
         [Fact]
         public void ContactAlreadyExists_ReverseOrder_DetectsCorrectly()
         {
@@ -652,6 +766,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // AcquireLocks with contention (via UpdateContactWithLock)
         // ========================================================================
+        /// <summary>
+        /// Tests that acquire locks with contention handles correctly
+        /// </summary>
         [Fact]
         public void AcquireLocks_WithContention_HandlesCorrectly()
         {
@@ -672,6 +789,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         // ========================================================================
         // TryResolveContactFilter with all paths via multithreaded collision
         // ========================================================================
+        /// <summary>
+        /// Tests that try resolve contact filter multi core executes all paths
+        /// </summary>
         [Fact]
         public void TryResolveContactFilter_MultiCore_ExecutesAllPaths()
         {

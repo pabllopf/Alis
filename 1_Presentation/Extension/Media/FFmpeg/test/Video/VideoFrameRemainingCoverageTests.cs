@@ -36,15 +36,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video frame remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class VideoFrameRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoFrameRemainingCoverageTests"/> class
+        /// </summary>
         public VideoFrameRemainingCoverageTests()
         {
             _tempFile = Path.GetTempFileName();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (File.Exists(_tempFile))
@@ -53,6 +66,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing false should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingFalse_ShouldNotThrow()
         {
@@ -67,6 +83,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing false should not clear frame buffer
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingFalse_ShouldNotClearFrameBuffer()
         {
@@ -81,6 +100,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Same(rawData, frame.RawData);
         }
 
+        /// <summary>
+        /// Tests that save should complete without exception
+        /// </summary>
         [Fact]
         public void Save_ShouldCompleteWithoutException()
         {
@@ -110,6 +132,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that save with existing output file should delete and complete
+        /// </summary>
         [Fact]
         public void Save_WithExistingOutputFile_ShouldDeleteAndComplete()
         {
@@ -136,6 +161,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that save with custom encoder should complete without exception
+        /// </summary>
         [Fact]
         public void Save_WithCustomEncoder_ShouldCompleteWithoutException()
         {
@@ -161,6 +189,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that save with extra parameters should complete without exception
+        /// </summary>
         [Fact]
         public void Save_WithExtraParameters_ShouldCompleteWithoutException()
         {
@@ -186,6 +217,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that save with custom ffmpeg path should complete without exception
+        /// </summary>
         [Fact]
         public void Save_WithCustomFfmpegPath_ShouldCompleteWithoutException()
         {
@@ -211,6 +245,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that save with non existent ffmpeg should throw win 32 exception
+        /// </summary>
         [Fact]
         public void Save_WithNonExistentFfmpeg_ShouldThrowWin32Exception()
         {
@@ -234,6 +271,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that get pixels with specific coordinates should return correct bytes
+        /// </summary>
         [Fact]
         public void GetPixels_WithSpecificCoordinates_ShouldReturnCorrectBytes()
         {
@@ -254,6 +294,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(data[index + 2], pixels[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels with last pixel should return correct bytes
+        /// </summary>
         [Fact]
         public void GetPixels_WithLastPixel_ShouldReturnCorrectBytes()
         {
@@ -274,6 +317,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(data[index + 2], pixels[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels with multiple pixels should return correct count
+        /// </summary>
         [Fact]
         public void GetPixels_WithMultiplePixels_ShouldReturnCorrectCount()
         {
@@ -290,6 +336,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(30, pixels.Length);
         }
 
+        /// <summary>
+        /// Tests that load with chunked stream should accumulate data
+        /// </summary>
         [Fact]
         public void Load_WithChunkedStream_ShouldAccumulateData()
         {
@@ -313,6 +362,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that load with small chunks should accumulate correctly
+        /// </summary>
         [Fact]
         public void Load_WithSmallChunks_ShouldAccumulateCorrectly()
         {
@@ -334,6 +386,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that load partial data in chunks should resize raw data
+        /// </summary>
         [Fact]
         public void Load_PartialDataInChunks_ShouldResizeRawData()
         {
@@ -349,6 +404,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that raw data after dispose should still be accessible
+        /// </summary>
         [Fact]
         public void RawData_AfterDispose_ShouldStillBeAccessible()
         {
@@ -361,6 +419,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(300, rawData.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor with maximum dimensions should not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithMaximumDimensions_ShouldNotThrow()
         {
@@ -371,6 +432,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(3840 * 2160 * 3, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load with partial data exactly half should resize correctly
+        /// </summary>
         [Fact]
         public void Load_WithPartialDataExactlyHalf_ShouldResizeCorrectly()
         {
@@ -387,12 +451,30 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
     }
 
+    /// <summary>
+    /// The chunked memory stream class
+    /// </summary>
+    /// <seealso cref="Stream"/>
     internal class ChunkedMemoryStream : Stream
     {
+        /// <summary>
+        /// The buffer
+        /// </summary>
         private readonly byte[] _buffer;
+        /// <summary>
+        /// The chunk size
+        /// </summary>
         private readonly int _chunkSize;
+        /// <summary>
+        /// The position
+        /// </summary>
         private int _position;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkedMemoryStream"/> class
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="chunkSize">The chunk size</param>
         public ChunkedMemoryStream(byte[] buffer, int chunkSize)
         {
             _buffer = buffer;
@@ -400,24 +482,65 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             _position = 0;
         }
 
+        /// <summary>
+        /// Gets the value of the can read
+        /// </summary>
         public override bool CanRead => true;
+        /// <summary>
+        /// Gets the value of the can seek
+        /// </summary>
         public override bool CanSeek => false;
+        /// <summary>
+        /// Gets the value of the can write
+        /// </summary>
         public override bool CanWrite => false;
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         public override long Length => _buffer.Length;
+        /// <summary>
+        /// Gets or sets the value of the position
+        /// </summary>
         public override long Position
         {
             get => _position;
             set => throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
         public override void Flush() { }
 
+        /// <summary>
+        /// Seeks the offset
+        /// </summary>
+        /// <param name="offset">The offset</param>
+        /// <param name="origin">The origin</param>
+        /// <returns>The long</returns>
         public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
 
+        /// <summary>
+        /// Sets the length using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public override void SetLength(long value) => throw new NotSupportedException();
 
+        /// <summary>
+        /// Writes the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
         public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
 
+        /// <summary>
+        /// Reads the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
+        /// <returns>The bytes to read</returns>
         public override int Read(byte[] buffer, int offset, int count)
         {
             if (_position >= _buffer.Length)

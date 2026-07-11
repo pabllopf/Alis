@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Server
 {
+    /// <summary>
+    /// The network server manager edge case tests class
+    /// </summary>
     public class NetworkServerManagerEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that constructor id is not empty
+        /// </summary>
         [Fact]
         public void Constructor_Id_IsNotEmpty()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.False(string.IsNullOrEmpty(mgr.Id));
         }
 
+        /// <summary>
+        /// Tests that constructor state is uninitialized
+        /// </summary>
         [Fact]
         public void Constructor_State_IsUninitialized()
         {
@@ -23,6 +32,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Uninitialized, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that constructor properties are null
+        /// </summary>
         [Fact]
         public void Constructor_Properties_AreNull()
         {
@@ -33,6 +45,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(mgr.ListenUri);
         }
 
+        /// <summary>
+        /// Tests that initialize async with cancellation token completes
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_WithCancellationToken_Completes()
         {
@@ -42,6 +57,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Idle, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that start async after disconnect completes
+        /// </summary>
         [Fact]
         public async Task StartAsync_AfterDisconnect_Completes()
         {
@@ -51,6 +69,9 @@ namespace Alis.Extension.Network.Test.Server
             await mgr.StartAsync();
         }
 
+        /// <summary>
+        /// Tests that stop async delegates to stop listening
+        /// </summary>
         [Fact]
         public async Task StopAsync_DelegatesToStopListeningAsync()
         {
@@ -60,6 +81,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Disconnected, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that stop listening async when uninitialized does not throw
+        /// </summary>
         [Fact]
         public async Task StopListeningAsync_WhenUninitialized_DoesNotThrow()
         {
@@ -68,6 +92,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that stop listening async when disconnected does not throw
+        /// </summary>
         [Fact]
         public async Task StopListeningAsync_WhenDisconnected_DoesNotThrow()
         {
@@ -78,6 +105,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that stop listening async repeated calls are idempotent
+        /// </summary>
         [Fact]
         public async Task StopListeningAsync_RepeatedCalls_AreIdempotent()
         {
@@ -89,6 +119,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Disconnected, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that close session async non existent session does not throw
+        /// </summary>
         [Fact]
         public async Task CloseSessionAsync_NonExistentSession_DoesNotThrow()
         {
@@ -99,6 +132,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that kick player async non existent session does not throw
+        /// </summary>
         [Fact]
         public async Task KickPlayerAsync_NonExistentSession_DoesNotThrow()
         {
@@ -109,6 +145,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that kick player async non existent player does not throw
+        /// </summary>
         [Fact]
         public async Task KickPlayerAsync_NonExistentPlayer_DoesNotThrow()
         {
@@ -120,6 +159,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that register player in session without current session does not throw
+        /// </summary>
         [Fact]
         public void RegisterPlayerInSession_WithoutCurrentSession_DoesNotThrow()
         {
@@ -127,6 +169,9 @@ namespace Alis.Extension.Network.Test.Server
             mgr.RegisterPlayerInSession("p1", "Player1");
         }
 
+        /// <summary>
+        /// Tests that register player in session existing player does not duplicate
+        /// </summary>
         [Fact]
         public async Task RegisterPlayerInSession_ExistingPlayer_DoesNotDuplicate()
         {
@@ -139,6 +184,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(2, mgr.CurrentSession.Players.Count);
         }
 
+        /// <summary>
+        /// Tests that get player no session returns null
+        /// </summary>
         [Fact]
         public void GetPlayer_NoSession_ReturnsNull()
         {
@@ -146,6 +194,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(mgr.GetPlayer("any-id"));
         }
 
+        /// <summary>
+        /// Tests that get connected players no session returns empty list
+        /// </summary>
         [Fact]
         public void GetConnectedPlayers_NoSession_ReturnsEmptyList()
         {
@@ -155,6 +206,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Empty(players);
         }
 
+        /// <summary>
+        /// Tests that get session non existent returns null
+        /// </summary>
         [Fact]
         public void GetSession_NonExistent_ReturnsNull()
         {
@@ -162,6 +216,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(mgr.GetSession("non-existent"));
         }
 
+        /// <summary>
+        /// Tests that register message handler null handler does not throw
+        /// </summary>
         [Fact]
         public void RegisterMessageHandler_NullHandler_DoesNotThrow()
         {
@@ -169,6 +226,9 @@ namespace Alis.Extension.Network.Test.Server
             mgr.RegisterMessageHandler("channel", null);
         }
 
+        /// <summary>
+        /// Tests that register message handler overwrite existing does not throw
+        /// </summary>
         [Fact]
         public void RegisterMessageHandler_OverwriteExisting_DoesNotThrow()
         {
@@ -177,6 +237,9 @@ namespace Alis.Extension.Network.Test.Server
             mgr.RegisterMessageHandler("channel", async (t, d) => await Task.FromResult("second"));
         }
 
+        /// <summary>
+        /// Tests that unregister message handler non existent does not throw
+        /// </summary>
         [Fact]
         public void UnregisterMessageHandler_NonExistent_DoesNotThrow()
         {
@@ -184,6 +247,9 @@ namespace Alis.Extension.Network.Test.Server
             mgr.UnregisterMessageHandler("non-existent");
         }
 
+        /// <summary>
+        /// Tests that listen async with invalid address sets state to error
+        /// </summary>
         [Fact]
         public async Task ListenAsync_WithInvalidAddress_SetsStateToError()
         {
@@ -199,6 +265,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Equal(NetworkManagerState.Error, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that dispose after listen failure does not throw
+        /// </summary>
         [Fact]
         public async Task Dispose_AfterListenFailure_DoesNotThrow()
         {
@@ -215,6 +284,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose after initialize does not throw
+        /// </summary>
         [Fact]
         public async Task Dispose_AfterInitialize_DoesNotThrow()
         {
@@ -224,6 +296,9 @@ namespace Alis.Extension.Network.Test.Server
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose when already disposed does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WhenAlreadyDisposed_DoesNotThrow()
         {

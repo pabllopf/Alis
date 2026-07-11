@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
+    /// <summary>
+    /// The ping pong manager edge case tests class
+    /// </summary>
     public class PingPongManagerEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that constructor with cancelled token does not start ping forever
+        /// </summary>
         [Fact]
         public void Constructor_WithCancelledToken_DoesNotStartPingForever()
         {
@@ -23,6 +29,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(manager);
         }
 
+        /// <summary>
+        /// Tests that constructor with null web socket throws invalid cast exception
+        /// </summary>
         [Fact]
         public void Constructor_WithNullWebSocket_ThrowsInvalidCastException()
         {
@@ -33,6 +42,9 @@ namespace Alis.Extension.Network.Test
             Assert.IsType<InvalidCastException>(ex);
         }
 
+        /// <summary>
+        /// Tests that ping loop with cancelled token exits immediately
+        /// </summary>
         [Fact]
         public async Task PingLoop_WithCancelledToken_ExitsImmediately()
         {
@@ -46,6 +58,9 @@ namespace Alis.Extension.Network.Test
             await manager.PingLoop();
         }
 
+        /// <summary>
+        /// Tests that ping loop with non open socket breaks on state check
+        /// </summary>
         [Fact]
         public async Task PingLoop_WithNonOpenSocket_BreaksOnStateCheck()
         {
@@ -58,6 +73,9 @@ namespace Alis.Extension.Network.Test
             await manager.PingLoop();
         }
 
+        /// <summary>
+        /// Tests that ping forever with cancelled token does not throw
+        /// </summary>
         [Fact]
         public async Task PingForever_WithCancelledToken_DoesNotThrow()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that ping forever with cancelled token invokes log end
+        /// </summary>
         [Fact]
         public async Task PingForever_WithCancelledToken_InvokesLogEnd()
         {
@@ -87,6 +108,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(manager);
         }
 
+        /// <summary>
+        /// Tests that handle expired keep alive interval does not throw
+        /// </summary>
         [Fact]
         public async Task HandleExpiredKeepAliveInterval_DoesNotThrow()
         {
@@ -100,6 +124,9 @@ namespace Alis.Extension.Network.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that web socket impl pong with no subscriber does not throw
+        /// </summary>
         [Fact]
         public void WebSocketImplPong_WithNoSubscriber_DoesNotThrow()
         {
@@ -112,6 +139,9 @@ namespace Alis.Extension.Network.Test
             manager.WebSocketImplPong(null, new PongEventArgs(new ArraySegment<byte>(Array.Empty<byte>())));
         }
 
+        /// <summary>
+        /// Tests that send ping with cancelled token throws operation canceled exception
+        /// </summary>
         [Fact]
         public void SendPing_WithCancelledToken_ThrowsOperationCanceledException()
         {

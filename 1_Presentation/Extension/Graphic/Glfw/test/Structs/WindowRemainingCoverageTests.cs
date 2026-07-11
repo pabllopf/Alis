@@ -35,15 +35,28 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The window remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class WindowRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private NativeWindow window;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             window?.Dispose();
         }
 
+        /// <summary>
+        /// Windows the opacity get returns default
+        /// </summary>
         [RequiresDisplay]
         public void Window_Opacity_Get_ReturnsDefault()
         {
@@ -56,6 +69,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(1.0f, opacity);
         }
 
+        /// <summary>
+        /// Windows the opacity set within bounds
+        /// </summary>
         [RequiresDisplay]
         public void Window_Opacity_Set_WithinBounds()
         {
@@ -68,6 +84,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(0.5f, w.Opacity);
         }
 
+        /// <summary>
+        /// Windows the opacity set clamps to zero
+        /// </summary>
         [RequiresDisplay]
         public void Window_Opacity_Set_ClampsToZero()
         {
@@ -80,6 +99,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(0.0f, w.Opacity);
         }
 
+        /// <summary>
+        /// Windows the opacity set clamps to one
+        /// </summary>
         [RequiresDisplay]
         public void Window_Opacity_Set_ClampsToOne()
         {

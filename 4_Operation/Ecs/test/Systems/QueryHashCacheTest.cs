@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
+    /// <summary>
+    /// The query hash cache test class
+    /// </summary>
     public class QueryHashCacheTest
     {
+        /// <summary>
+        /// Tests that query with single component uses hash cache
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Query_WithSingleComponent_UsesHashCache()
         {
@@ -15,6 +21,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that query with two components uses hash cache
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Query_WithTwoComponents_UsesHashCache()
         {
@@ -24,6 +33,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that query with three components uses hash cache
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Query_WithThreeComponents_UsesHashCache()
         {
@@ -33,6 +45,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.NotNull(query);
         }
 
+        /// <summary>
+        /// Tests that query with four components uses hash cache
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Query_WithFourComponents_UsesHashCache()
         {

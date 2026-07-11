@@ -9,8 +9,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The unix player base coverage tests class
+    /// </summary>
     public class UnixPlayerBaseCoverageTests
     {
+        /// <summary>
+        /// Tests that start bash process should start process
+        /// </summary>
         [Fact]
         public void StartBashProcess_ShouldStartProcess()
         {
@@ -23,6 +29,9 @@ namespace Alis.Core.Audio.Test.Players
             process.Dispose();
         }
 
+        /// <summary>
+        /// Tests that start bash process with quotes in command should escape
+        /// </summary>
         [Fact]
         public void StartBashProcess_WithQuotesInCommand_ShouldEscape()
         {
@@ -34,6 +43,9 @@ namespace Alis.Core.Audio.Test.Players
             process.Dispose();
         }
 
+        /// <summary>
+        /// Tests that pause when not playing should not set paused
+        /// </summary>
         [Fact]
         public void Pause_WhenNotPlaying_ShouldNotSetPaused()
         {
@@ -42,6 +54,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that pause when playing but process null should not set paused
+        /// </summary>
         [Fact]
         public void Pause_WhenPlayingButProcessNull_ShouldNotSetPaused()
         {
@@ -53,6 +68,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that resume when not playing should not change state
+        /// </summary>
         [Fact]
         public void Resume_WhenNotPlaying_ShouldNotChangeState()
         {
@@ -62,6 +80,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that resume when playing but not paused should not change paused
+        /// </summary>
         [Fact]
         public void Resume_WhenPlayingButNotPaused_ShouldNotChangePaused()
         {
@@ -73,6 +94,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that stop when process is null should set playing and paused false
+        /// </summary>
         [Fact]
         public void Stop_WhenProcessIsNull_ShouldSetPlayingAndPausedFalse()
         {
@@ -82,6 +106,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that stop when process is not null should kill and dispose
+        /// </summary>
         [Fact]
         public void Stop_WhenProcessIsNotNull_ShouldKillAndDispose()
         {
@@ -104,6 +131,9 @@ namespace Alis.Core.Audio.Test.Players
             process.Dispose();
         }
 
+        /// <summary>
+        /// Tests that handle playback finished when not playing should not invoke event
+        /// </summary>
         [Fact]
         public void HandlePlaybackFinished_WhenNotPlaying_ShouldNotInvokeEvent()
         {
@@ -117,6 +147,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(eventRaised);
         }
 
+        /// <summary>
+        /// Tests that handle playback finished when playing should set playing false and invoke event
+        /// </summary>
         [Fact]
         public void HandlePlaybackFinished_WhenPlaying_ShouldSetPlayingFalseAndInvokeEvent()
         {
@@ -134,6 +167,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventRaised);
         }
 
+        /// <summary>
+        /// Tests that handle playback finished multiple invocations should only fire once
+        /// </summary>
         [Fact]
         public void HandlePlaybackFinished_MultipleInvocations_ShouldOnlyFireOnce()
         {
@@ -151,6 +187,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(1, eventCount);
         }
 
+        /// <summary>
+        /// Tests that pause process command should be formattable
+        /// </summary>
         [Fact]
         public void PauseProcessCommand_ShouldBeFormattable()
         {
@@ -159,6 +198,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("kill -STOP 12345", formatted);
         }
 
+        /// <summary>
+        /// Tests that resume process command should be formattable
+        /// </summary>
         [Fact]
         public void ResumeProcessCommand_ShouldBeFormattable()
         {
@@ -167,6 +209,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal("kill -CONT 67890", formatted);
         }
 
+        /// <summary>
+        /// Tests that get audio duration with non existent file should throw file not found exception
+        /// </summary>
         [Fact]
         public void GetAudioDuration_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {

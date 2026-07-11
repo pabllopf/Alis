@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The windows player logic tests class
+    /// </summary>
     public class WindowsPlayerLogicTests
     {
+        /// <summary>
+        /// Tests that constructor should initialize with playing and paused false
+        /// </summary>
         [Fact]
         public void Constructor_ShouldInitializeWithPlayingAndPausedFalse()
         {
@@ -19,6 +25,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls should not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -28,6 +37,9 @@ namespace Alis.Core.Audio.Test.Players
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose after using statement should work
+        /// </summary>
         [Fact]
         public void Dispose_AfterUsingStatement_ShouldWork()
         {
@@ -37,6 +49,9 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
+        /// <summary>
+        /// Tests that playing property should return correct initial value
+        /// </summary>
         [Fact]
         public void Playing_Property_ShouldReturnCorrectInitialValue()
         {
@@ -44,6 +59,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that paused property should return correct initial value
+        /// </summary>
         [Fact]
         public void Paused_Property_ShouldReturnCorrectInitialValue()
         {
@@ -51,6 +69,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that windows player should implement i player
+        /// </summary>
         [Fact]
         public void WindowsPlayer_ShouldImplementIPlayer()
         {
@@ -58,6 +79,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.IsAssignableFrom<IPlayer>(player);
         }
 
+        /// <summary>
+        /// Tests that windows player should implement i disposable
+        /// </summary>
         [Fact]
         public void WindowsPlayer_ShouldImplementIDisposable()
         {
@@ -65,6 +89,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.IsAssignableFrom<IDisposable>(player);
         }
 
+        /// <summary>
+        /// Tests that playback finished event should be subscribable
+        /// </summary>
         [Fact]
         public void PlaybackFinished_Event_ShouldBeSubscribable()
         {
@@ -74,6 +101,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.NotNull(player);
         }
 
+        /// <summary>
+        /// Tests that playback finished event can be unsubscribed
+        /// </summary>
         [Fact]
         public void PlaybackFinished_Event_CanBeUnsubscribed()
         {
@@ -83,6 +113,9 @@ namespace Alis.Core.Audio.Test.Players
             player.PlaybackFinished -= handler;
         }
 
+        /// <summary>
+        /// Tests that play with non existent file should throw file not found exception
+        /// </summary>
         [Fact]
         public void Play_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
@@ -92,6 +125,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("not found", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that play loop with non existent file should throw file not found exception
+        /// </summary>
         [Fact]
         public void PlayLoop_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
@@ -101,6 +137,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("not found", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that pause when not playing should not throw
+        /// </summary>
         [Fact]
         public async Task Pause_WhenNotPlaying_ShouldNotThrow()
         {
@@ -109,6 +148,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that resume when not playing should not throw
+        /// </summary>
         [Fact]
         public async Task Resume_WhenNotPlaying_ShouldNotThrow()
         {
@@ -117,6 +159,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that stop when not playing should not throw
+        /// </summary>
         [Fact]
         public async Task Stop_WhenNotPlaying_ShouldNotThrow()
         {
@@ -126,6 +171,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that stop after dispose should not throw
+        /// </summary>
         [Fact]
         public async Task Stop_AfterDispose_ShouldNotThrow()
         {
@@ -135,6 +183,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that pause after dispose should not throw
+        /// </summary>
         [Fact]
         public async Task Pause_AfterDispose_ShouldNotThrow()
         {
@@ -144,6 +195,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
+        /// <summary>
+        /// Tests that resume after dispose should not throw
+        /// </summary>
         [Fact]
         public async Task Resume_AfterDispose_ShouldNotThrow()
         {
@@ -153,6 +207,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
+        /// <summary>
+        /// Tests that playback finished file name should be internal
+        /// </summary>
         [Fact]
         public void PlaybackFinished_FileName_ShouldBeInternal()
         {

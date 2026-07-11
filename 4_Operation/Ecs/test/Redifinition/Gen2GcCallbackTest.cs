@@ -395,6 +395,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.False(called[0], "Callback should not be called when target object is collected");
         }
 
+        /// <summary>
+        /// Registers the with dead target using the specified called
+        /// </summary>
+        /// <param name="called">The called</param>
         private static void RegisterWithDeadTarget(bool[] called)
         {
             object target = new object();

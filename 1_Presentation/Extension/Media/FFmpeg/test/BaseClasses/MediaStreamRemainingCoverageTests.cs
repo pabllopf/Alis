@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
+    /// <summary>
+    /// The media stream remaining coverage tests class
+    /// </summary>
     public class MediaStreamRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that avg frame rate number default should be zero
+        /// </summary>
         [Fact]
         public void AvgFrameRateNumber_Default_ShouldBeZero()
         {
@@ -12,6 +18,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(0.0, stream.AvgFrameRateNumber);
         }
 
+        /// <summary>
+        /// Tests that avg frame rate number should be settable
+        /// </summary>
         [Fact]
         public void AvgFrameRateNumber_ShouldBeSettable()
         {
@@ -19,6 +28,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(29.97, stream.AvgFrameRateNumber);
         }
 
+        /// <summary>
+        /// Tests that is avc should be settable
+        /// </summary>
         [Fact]
         public void IsAvc_ShouldBeSettable()
         {
@@ -26,6 +38,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal("true", stream.IsAvc);
         }
 
+        /// <summary>
+        /// Tests that profile should be settable
+        /// </summary>
         [Fact]
         public void Profile_ShouldBeSettable()
         {
@@ -33,6 +48,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal("High", stream.Profile);
         }
 
+        /// <summary>
+        /// Tests that codec long name should be settable
+        /// </summary>
         [Fact]
         public void CodecLongName_ShouldBeSettable()
         {
@@ -40,6 +58,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal("H.264 / AVC", stream.CodecLongName);
         }
 
+        /// <summary>
+        /// Tests that pix fmt should be settable
+        /// </summary>
         [Fact]
         public void PixFmt_ShouldBeSettable()
         {
@@ -47,6 +68,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal("yuv420p", stream.PixFmt);
         }
 
+        /// <summary>
+        /// Tests that level should be settable
+        /// </summary>
         [Fact]
         public void Level_ShouldBeSettable()
         {

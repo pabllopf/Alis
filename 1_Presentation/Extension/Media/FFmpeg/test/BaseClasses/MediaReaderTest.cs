@@ -188,6 +188,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(payload, destination.ToArray());
         }
 
+        /// <summary>
+        /// Tests that media reader copy to async should throw when reader not opened
+        /// </summary>
         [Fact]
         public async Task MediaReader_CopyToAsync_ShouldThrowWhenReaderNotOpened()
         {
@@ -201,6 +204,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Contains("Reader is not opened for reading", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that media reader copy to async should throw when writer not opened
+        /// </summary>
         [Fact]
         public async Task MediaReader_CopyToAsync_ShouldThrowWhenWriterNotOpened()
         {

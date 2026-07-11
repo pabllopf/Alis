@@ -41,6 +41,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  Indexer Get – intermediate indices not covered in existing tests
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that indexer get index 1 should return colors 1
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index1_ShouldReturnColors1()
         {
@@ -50,6 +53,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[1]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 2 should return colors 2
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index2_ShouldReturnColors2()
         {
@@ -59,6 +65,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[2]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 3 should return colors 3
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index3_ShouldReturnColors3()
         {
@@ -68,6 +77,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[3]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 10 should return colors 10
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index10_ShouldReturnColors10()
         {
@@ -77,6 +89,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[10]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 20 should return colors 20
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index20_ShouldReturnColors20()
         {
@@ -86,6 +101,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[20]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 30 should return colors 30
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index30_ShouldReturnColors30()
         {
@@ -95,6 +113,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[30]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 40 should return colors 40
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index40_ShouldReturnColors40()
         {
@@ -104,6 +125,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[40]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 50 should return colors 50
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index50_ShouldReturnColors50()
         {
@@ -113,6 +137,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[50]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index 53 should return colors 53
+        /// </summary>
         [Fact]
         public void Indexer_Get_Index53_ShouldReturnColors53()
         {
@@ -126,6 +153,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  Indexer Set – intermediate indices not covered in existing tests
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that indexer set index 1 should set colors 1
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index1_ShouldSetColors1()
         {
@@ -135,6 +165,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors1);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 2 should set colors 2
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index2_ShouldSetColors2()
         {
@@ -144,6 +177,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors2);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 3 should set colors 3
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index3_ShouldSetColors3()
         {
@@ -153,6 +189,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors3);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 10 should set colors 10
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index10_ShouldSetColors10()
         {
@@ -162,6 +201,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors10);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 20 should set colors 20
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index20_ShouldSetColors20()
         {
@@ -171,6 +213,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors20);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 30 should set colors 30
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index30_ShouldSetColors30()
         {
@@ -180,6 +225,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors30);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 40 should set colors 40
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index40_ShouldSetColors40()
         {
@@ -189,6 +237,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors40);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 50 should set colors 50
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index50_ShouldSetColors50()
         {
@@ -198,6 +249,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, style.Colors50);
         }
 
+        /// <summary>
+        /// Tests that indexer set index 54 should set colors 54
+        /// </summary>
         [Fact]
         public void Indexer_Set_Index54_ShouldSetColors54()
         {
@@ -211,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  ScaleAllSizes
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that scale all sizes should not throw
+        /// </summary>
         [Fact]
         public void ScaleAllSizes_ShouldNotThrow()
         {
@@ -218,6 +275,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             style.ScaleAllSizes(1.5f);
         }
 
+        /// <summary>
+        /// Tests that scale all sizes with zero should not throw
+        /// </summary>
         [Fact]
         public void ScaleAllSizes_WithZero_ShouldNotThrow()
         {
@@ -225,6 +285,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             style.ScaleAllSizes(0.0f);
         }
 
+        /// <summary>
+        /// Tests that scale all sizes with negative should not throw
+        /// </summary>
         [Fact]
         public void ScaleAllSizes_WithNegative_ShouldNotThrow()
         {
@@ -236,6 +299,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  Property edge-case values (float extremes)
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that alpha should handle max value
+        /// </summary>
         [Fact]
         public void Alpha_ShouldHandleMaxValue()
         {
@@ -244,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(float.MaxValue, style.Alpha);
         }
 
+        /// <summary>
+        /// Tests that alpha should handle min value
+        /// </summary>
         [Fact]
         public void Alpha_ShouldHandleMinValue()
         {
@@ -252,6 +321,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(float.MinValue, style.Alpha);
         }
 
+        /// <summary>
+        /// Tests that disabled alpha should handle zero
+        /// </summary>
         [Fact]
         public void DisabledAlpha_ShouldHandleZero()
         {
@@ -260,6 +332,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0.0f, style.DisabledAlpha);
         }
 
+        /// <summary>
+        /// Tests that window rounding should handle max value
+        /// </summary>
         [Fact]
         public void WindowRounding_ShouldHandleMaxValue()
         {
@@ -268,6 +343,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(float.MaxValue, style.WindowRounding);
         }
 
+        /// <summary>
+        /// Tests that window border size should handle negative value
+        /// </summary>
         [Fact]
         public void WindowBorderSize_ShouldHandleNegativeValue()
         {
@@ -276,6 +354,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(-1.0f, style.WindowBorderSize);
         }
 
+        /// <summary>
+        /// Tests that mouse cursor scale should handle zero
+        /// </summary>
         [Fact]
         public void MouseCursorScale_ShouldHandleZero()
         {
@@ -284,6 +365,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0.0f, style.MouseCursorScale);
         }
 
+        /// <summary>
+        /// Tests that anti aliased lines should handle max byte
+        /// </summary>
         [Fact]
         public void AntiAliasedLines_ShouldHandleMaxByte()
         {
@@ -292,6 +376,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(255, style.AntiAliasedLines);
         }
 
+        /// <summary>
+        /// Tests that anti aliased lines use tex should handle zero
+        /// </summary>
         [Fact]
         public void AntiAliasedLinesUseTex_ShouldHandleZero()
         {
@@ -300,6 +387,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, style.AntiAliasedLinesUseTex);
         }
 
+        /// <summary>
+        /// Tests that anti aliased fill should handle max byte
+        /// </summary>
         [Fact]
         public void AntiAliasedFill_ShouldHandleMaxByte()
         {
@@ -308,6 +398,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(255, style.AntiAliasedFill);
         }
 
+        /// <summary>
+        /// Tests that curve tessellation tol should handle negative
+        /// </summary>
         [Fact]
         public void CurveTessellationTol_ShouldHandleNegative()
         {
@@ -316,6 +409,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(-0.5f, style.CurveTessellationTol);
         }
 
+        /// <summary>
+        /// Tests that circle tessellation max error should handle large value
+        /// </summary>
         [Fact]
         public void CircleTessellationMaxError_ShouldHandleLargeValue()
         {
@@ -328,6 +424,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  WindowMenuButtonPosition / ColorButtonPosition edge cases
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that window menu button position should handle none
+        /// </summary>
         [Fact]
         public void WindowMenuButtonPosition_ShouldHandleNone()
         {
@@ -336,6 +435,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ImGuiDir.None, style.WindowMenuButtonPosition);
         }
 
+        /// <summary>
+        /// Tests that window menu button position should handle right
+        /// </summary>
         [Fact]
         public void WindowMenuButtonPosition_ShouldHandleRight()
         {
@@ -344,6 +446,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ImGuiDir.Right, style.WindowMenuButtonPosition);
         }
 
+        /// <summary>
+        /// Tests that color button position should handle left
+        /// </summary>
         [Fact]
         public void ColorButtonPosition_ShouldHandleLeft()
         {
@@ -356,6 +461,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  Round-trip through multiple properties
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that multiple properties should round trip correctly
+        /// </summary>
         [Fact]
         public void MultipleProperties_ShouldRoundTripCorrectly()
         {

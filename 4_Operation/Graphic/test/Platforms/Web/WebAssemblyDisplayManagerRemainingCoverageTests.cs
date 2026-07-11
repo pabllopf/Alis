@@ -44,6 +44,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SetResolution Tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that set resolution returns true and updates dimensions
+        /// </summary>
         [Fact]
         public void SetResolution_ReturnsTrueAndUpdatesDimensions()
         {
@@ -57,6 +60,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(720, manager.GetHeight());
         }
 
+        /// <summary>
+        /// Tests that set resolution fires display resized event
+        /// </summary>
         [Fact]
         public void SetResolution_FiresDisplayResizedEvent()
         {
@@ -77,6 +83,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(720, firedHeight);
         }
 
+        /// <summary>
+        /// Tests that set resolution fires orientation changed when orientation changes
+        /// </summary>
         [Fact]
         public void SetResolution_FiresOrientationChangedWhenOrientationChanges()
         {
@@ -94,6 +103,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Portrait, firedOrientation);
         }
 
+        /// <summary>
+        /// Tests that set resolution does not fire orientation changed when orientation unchanged
+        /// </summary>
         [Fact]
         public void SetResolution_DoesNotFireOrientationChangedWhenOrientationUnchanged()
         {
@@ -111,6 +123,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(eventFired);
         }
 
+        /// <summary>
+        /// Tests that set resolution updates orientation
+        /// </summary>
         [Fact]
         public void SetResolution_UpdatesOrientation()
         {
@@ -122,6 +137,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Portrait, manager.GetOrientation());
         }
 
+        /// <summary>
+        /// Tests that set resolution same dimensions still fires display resized
+        /// </summary>
         [Fact]
         public void SetResolution_SameDimensions_StillFiresDisplayResized()
         {
@@ -136,6 +154,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, fireCount);
         }
 
+        /// <summary>
+        /// Tests that set resolution from landscape to square fires orientation changed
+        /// </summary>
         [Fact]
         public void SetResolution_FromLandscapeToSquare_FiresOrientationChanged()
         {
@@ -157,6 +178,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Update Tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that update detects dimension change
+        /// </summary>
         [Fact]
         public void Update_DetectsDimensionChange()
         {
@@ -172,6 +196,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(720, manager.GetHeight());
         }
 
+        /// <summary>
+        /// Tests that update fires display resized when dimensions change
+        /// </summary>
         [Fact]
         public void Update_FiresDisplayResizedWhenDimensionsChange()
         {
@@ -193,6 +220,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, firedHeight);
         }
 
+        /// <summary>
+        /// Tests that update fires orientation changed when orientation changes
+        /// </summary>
         [Fact]
         public void Update_FiresOrientationChangedWhenOrientationChanges()
         {
@@ -211,6 +241,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Portrait, firedOrientation);
         }
 
+        /// <summary>
+        /// Tests that update does not fire events when no changes
+        /// </summary>
         [Fact]
         public void Update_DoesNotFireEventsWhenNoChanges()
         {
@@ -232,6 +265,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(fullscreenChangedFired);
         }
 
+        /// <summary>
+        /// Tests that update fires display resized only when dimensions change
+        /// </summary>
         [Fact]
         public void Update_FiresDisplayResizedOnlyWhenDimensionsChange()
         {
@@ -256,6 +292,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(2, fireCount);
         }
 
+        /// <summary>
+        /// Tests that update detects fullscreen state change when internal state differs
+        /// </summary>
         [Fact]
         public void Update_DetectsFullscreenStateChangeWhenInternalStateDiffers()
         {
@@ -281,6 +320,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(eventIsFullscreen);
         }
 
+        /// <summary>
+        /// Tests that update does not fire fullscreen changed when state matches
+        /// </summary>
         [Fact]
         public void Update_DoesNotFireFullscreenChangedWhenStateMatches()
         {
@@ -299,6 +341,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ToggleFullscreen Tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that toggle fullscreen when already fullscreen enters exit fullscreen path
+        /// </summary>
         [Fact]
         public void ToggleFullscreen_WhenAlreadyFullscreen_EntersExitFullscreenPath()
         {
@@ -321,6 +366,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetRenderingScale Tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get rendering scale unknown value returns default
+        /// </summary>
         [Fact]
         public void GetRenderingScale_UnknownValue_ReturnsDefault()
         {
@@ -338,6 +386,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Event Subscription Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that on display resized subscribe and unsubscribe works
+        /// </summary>
         [Fact]
         public void OnDisplayResized_SubscribeAndUnsubscribe_Works()
         {
@@ -356,6 +407,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, fireCount);
         }
 
+        /// <summary>
+        /// Tests that on orientation changed subscribe and unsubscribe works
+        /// </summary>
         [Fact]
         public void OnOrientationChanged_SubscribeAndUnsubscribe_Works()
         {
@@ -374,6 +428,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1, fireCount);
         }
 
+        /// <summary>
+        /// Tests that on fullscreen changed subscribe does not fire on failed enter
+        /// </summary>
         [Fact]
         public void OnFullscreenChanged_Subscribe_DoesNotFireOnFailedEnter()
         {
@@ -392,6 +449,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Aspect Ratio After State Changes
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get aspect ratio after set resolution updates
+        /// </summary>
         [Fact]
         public void GetAspectRatio_AfterSetResolution_Updates()
         {
@@ -403,6 +463,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1920.0f / 1080.0f, manager.GetAspectRatio(), 3);
         }
 
+        /// <summary>
+        /// Tests that get aspect ratio after update updates
+        /// </summary>
         [Fact]
         public void GetAspectRatio_AfterUpdate_Updates()
         {
@@ -417,6 +480,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
         // =====================================================================
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

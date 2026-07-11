@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
+    /// <summary>
+    /// The chunk action test class
+    /// </summary>
     public class IChunkActionTest
     {
+        /// <summary>
+        /// Tests that run chunk with int span executes action
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void RunChunk_WithIntSpan_ExecutesAction()
         {
@@ -15,6 +21,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(6, action.Sum);
         }
 
+        /// <summary>
+        /// Tests that run chunk with empty span executes action
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void RunChunk_WithEmptySpan_ExecutesAction()
         {
@@ -24,9 +33,20 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(0, action.Sum);
         }
 
+        /// <summary>
+        /// The test chunk action class
+        /// </summary>
+        /// <seealso cref="IChunkAction{int}"/>
         private sealed class TestChunkAction : IChunkAction<int>
         {
+            /// <summary>
+            /// Gets or sets the value of the sum
+            /// </summary>
             public int Sum { get; private set; }
+            /// <summary>
+            /// Runs the chunk using the specified arg
+            /// </summary>
+            /// <param name="arg">The arg</param>
             public void RunChunk(Span<int> arg)
             {
                 foreach (var v in arg) Sum += v;

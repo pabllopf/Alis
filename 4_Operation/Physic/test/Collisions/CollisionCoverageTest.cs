@@ -8,10 +8,16 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The collision coverage test class
+    /// </summary>
     public class CollisionCoverageTest
     {
         /// <summary>Used for comparing floats in assertions.</summary>
         private const float Epsilon = 1e-6f;
+        /// <summary>
+        /// Tests that collide polygon and circle early out when separation s greater than radius
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_EarlyOut_WhenSeparationSGreaterThanRadius()
         {
@@ -27,6 +33,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide polygon and circle barycentric u 1 returns early when radius exceeded
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_BarycentricU1_ReturnsEarly_WhenRadiusExceeded()
         {
@@ -42,6 +51,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide polygon and circle barycentric u 2 returns early when radius exceeded
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_BarycentricU2_ReturnsEarly_WhenRadiusExceeded()
         {
@@ -57,6 +69,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide polygon and circle face center returns early when separation exceeds radius
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_FaceCenter_ReturnsEarly_WhenSeparationExceedsRadius()
         {
@@ -72,6 +87,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region b returns early when distance exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionB_ReturnsEarly_WhenDistanceExceedsRadius()
         {
@@ -86,6 +104,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab returns early when distance exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_ReturnsEarly_WhenDistanceExceedsRadius()
         {
@@ -100,6 +121,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab normal direction flips correctly
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_NormalDirection_FlipsCorrectly()
         {
@@ -114,6 +138,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide polygons clip segment early return when first clip under two points
+        /// </summary>
         [Fact]
         public void CollidePolygons_ClipSegmentEarlyReturn_WhenFirstClipUnderTwoPoints()
         {
@@ -128,6 +155,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon with has vertex 0 front collision
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_WithHasVertex0_FrontCollision()
         {
@@ -147,6 +177,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon with has vertex 3 only
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_WithHasVertex3Only()
         {
@@ -165,6 +198,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon non convex adjacent
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_NonConvexAdjacent()
         {
@@ -184,6 +220,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face collision
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFaceCollision()
         {
@@ -203,6 +242,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon polygon axis primary
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_PolygonAxisPrimary()
         {
@@ -219,6 +261,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(manifold.PointCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon edge axis type unknown returns
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EdgeAxisTypeUnknown_Returns()
         {
@@ -234,6 +279,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon edge separation exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EdgeSeparationExceedsRadius()
         {
@@ -249,6 +297,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0, manifold.PointCount);
         }
 
+        /// <summary>
+        /// Tests that test overlap edge and circle should detect overlap
+        /// </summary>
         [Fact]
         public void TestOverlap_EdgeAndCircle_ShouldDetectOverlap()
         {
@@ -262,6 +313,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.False(overlap);
         }
 
+        /// <summary>
+        /// Tests that get point states empty old manifold all adds
+        /// </summary>
         [Fact]
         public void GetPointStates_EmptyOldManifold_AllAdds()
         {
@@ -487,6 +541,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider ComputeLimits — front=false (back path at line 1288-1289)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face with both vertices computes limits
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFaceWithBothVertices_ComputesLimits()
         {
@@ -510,6 +567,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontBoth path at line 1263-1265)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 0 only non convex executes front state
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex0OnlyNonConvex_ExecutesFrontState()
         {
@@ -532,6 +592,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontAny path at line 1271-1273)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 3 only convex executes front state
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex3OnlyConvex_ExecutesFrontState()
         {
@@ -554,6 +617,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontFirstOrBoth path at line 1254-1255)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon convex 1 only executes front first or both
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_Convex1Only_ExecutesFrontFirstOrBoth()
         {
@@ -577,6 +643,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (returns i.Normal0 at line 1348)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select front lower limit with convex 1 executes
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectFrontLowerLimitWithConvex1_Executes()
         {
@@ -599,6 +668,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // SelectPrimaryAxis — polygonAxis.Type == Unknown (returns edgeAxis, line 1433)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select primary axis unknown returns edge axis
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectPrimaryAxisUnknown_ReturnsEdgeAxis()
         {
@@ -618,6 +690,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Also exercises LocalSearch with increment == -1 (line 841-843)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons find best edge prev side local search increment neg
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdgePrevSide_LocalSearchIncrementNeg()
         {
@@ -637,6 +712,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // HasVertex0=true, u1 <= 0 so IsCircleInPreviousEdgeRegion returns false.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle previous edge returns false produces contact
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_PreviousEdge_ReturnsFalse_ProducesContact()
         {
@@ -663,6 +741,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Circle in Region A, within radius, HasVertex0=true, u1 > 0.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle previous edge returns true early return
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_PreviousEdge_ReturnsTrue_EarlyReturn()
         {
@@ -690,6 +771,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // HasVertex3=true, v2 <= 0 so IsCircleInNextEdgeRegion returns false.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle next edge returns false produces contact
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_NextEdge_ReturnsFalse_ProducesContact()
         {
@@ -716,6 +800,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Circle in Region B, within radius, HasVertex3=true, v2 > 0.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle next edge returns true early return
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_NextEdge_ReturnsTrue_EarlyReturn()
         {
@@ -741,6 +828,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region AB with normal flip (n·(q-a) < 0)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab normal flip produces contact
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_NormalFlip_ProducesContact()
         {
@@ -766,6 +856,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // ResolveBarycentricContact — u1 <= 0 branch, r > radius^2 (early return)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygon and circle u 1 branch early return
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_U1Branch_EarlyReturn()
         {
@@ -788,6 +881,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // ResolveBarycentricContact — u1 <= 0 branch, r <= radius^2 (SetupVertexAManifold)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygon and circle u 1 branch setup vertex a manifold
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_U1Branch_SetupVertexAManifold()
         {
@@ -815,6 +911,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // ResolveBarycentricContact — u2 <= 0 branch, r <= radius^2 (SetupVertexAManifold)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygon and circle u 2 branch setup vertex a manifold
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_U2Branch_SetupVertexAManifold()
         {
@@ -835,6 +934,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // ResolveBarycentricContact — else branch, separation2 > radius (early return)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygon and circle face center branch early return
+        /// </summary>
         [Fact]
         public void CollidePolygonAndCircle_FaceCenterBranch_EarlyReturn()
         {
@@ -860,6 +962,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — separationB > totalRadius early return
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons separation a early return
+        /// </summary>
         [Fact]
         public void CollidePolygons_SeparationAEarlyReturn()
         {
@@ -880,6 +985,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — flip=true with feature swap (contact produced)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons flip true feature swap
+        /// </summary>
         [Fact]
         public void CollidePolygons_FlipTrue_FeatureSwap()
         {
@@ -900,6 +1008,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — flip=true, FaceB manifold, with feature swap (all branches)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons flip true face b manifold
+        /// </summary>
         [Fact]
         public void CollidePolygons_FlipTrue_FaceBManifold()
         {
@@ -918,6 +1029,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — first clip underflow (np < 2)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons first clip underflow
+        /// </summary>
         [Fact]
         public void CollidePolygons_FirstClipUnderflow()
         {
@@ -938,6 +1052,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — second clip underflow (np < 2)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons second clip underflow
+        /// </summary>
         [Fact]
         public void CollidePolygons_SecondClipUnderflow()
         {
@@ -956,6 +1073,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — ComputePolygonSeparation s > radius early return (EdgeB)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon compute polygon separation early return
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ComputePolygonSeparation_EarlyReturn()
         {
@@ -987,6 +1107,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectPrimaryAxis polygonAxis.Separation > tol (returns polygonAxis)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select primary axis polygon dominant
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectPrimaryAxis_PolygonDominant()
         {
@@ -1011,6 +1134,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontLastOrBoth path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon calculate front state convex 1 false convex 2 true
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_CalculateFrontState_Convex1FalseConvex2True()
         {
@@ -1037,6 +1163,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontAll path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon calculate front state both non convex
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_CalculateFrontState_BothNonConvex()
         {
@@ -1060,6 +1189,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — ComputeLimits back/front path
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face limits both vertices
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFaceLimits_BothVertices()
         {
@@ -1084,6 +1216,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectFrontLowerLimit, SelectFrontUpperLimit branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select limits convex 1 not convex 2
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectLimits_Convex1NotConvex2()
         {
@@ -1108,6 +1243,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackLowerLimit / SelectBackUpperLimit branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back limits
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackLimits()
         {
@@ -1132,6 +1270,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — BuildEdgeAManifold front=false branch
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon edge manifold back face
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EdgeManifold_BackFace()
         {
@@ -1155,6 +1296,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — BuildFaceBManifold path (primaryAxis.Type == EdgeB)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon build face b manifold
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BuildFaceBManifold()
         {
@@ -1179,6 +1323,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // BuildManifoldPoints — primaryAxis.Type != EdgeA (face B path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon build manifold points face b
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BuildManifoldPoints_FaceB()
         {
@@ -1204,6 +1351,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // first ClipSegmentToLine inside EpCollider.Collide.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon ep collider first clip underflow
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_FirstClipUnderflow()
         {
@@ -1227,6 +1377,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — second clip underflow (< MaxManifoldPoints = 2)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon ep collider second clip underflow
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_SecondClipUnderflow()
         {
@@ -1250,6 +1403,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region A, dd > radius^2 early return (L473-L476)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region a dd exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionA_DdExceedsRadius()
         {
@@ -1269,6 +1425,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region B, dd > radius^2 early return (L503-L506)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region b dd exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionB_DdExceedsRadius()
         {
@@ -1288,6 +1447,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region AB, dd2 > radius^2 early return (L532-L535)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab dd 2 exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_Dd2ExceedsRadius()
         {
@@ -1307,6 +1469,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region AB, normal NOT flipped (n·(q-a) >= 0)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab normal not flipped
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_NormalNotFlipped()
         {
@@ -1327,6 +1492,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Also exercises SelectFrontLowerLimit just returning Normal1
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 3 only convex 2 true front state
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex3Only_Convex2True_FrontState()
         {
@@ -1350,6 +1518,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — HasVertex0 only, Convex1=true (IsFrontAny with NaN path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 0 only convex 1 true front state
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex0Only_Convex1True_FrontState()
         {
@@ -1373,6 +1544,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (SelectFrontUpperLimit returns Normal1 at L1360)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select front upper limit convex 1 not convex 2 returns normal 1
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectFrontUpperLimit_Convex1NotConvex2_ReturnsNormal1()
         {
@@ -1397,6 +1571,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (SelectFrontUpperLimit returns -Normal1 at L1361)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon select front upper limit convex 1 true returns neg normal 1
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectFrontUpperLimit_Convex1True_ReturnsNegNormal1()
         {
@@ -1419,6 +1596,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackLowerLimit with both vertices, Convex1 && !Convex2
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back lower limit convex 1 not convex 2
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackLowerLimit_Convex1NotConvex2()
         {
@@ -1442,6 +1622,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackUpperLimit with HasVertex0 only, Convex1=true
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back upper limit convex 1 true
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackUpperLimit_Convex1True()
         {
@@ -1465,6 +1648,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // with multiple clip points to exercise clip filtering loop
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons multiple clip points filtered
+        /// </summary>
         [Fact]
         public void CollidePolygons_MultipleClipPoints_Filtered()
         {
@@ -1484,6 +1670,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // where clip points need feature swapping.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons flip true feature swap face b
+        /// </summary>
         [Fact]
         public void CollidePolygons_FlipTrue_FeatureSwap_FaceB()
         {
@@ -1502,6 +1691,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // FindBestEdge — sNext > s branch (increment = +1)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons find best edge next edge dominant
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdge_NextEdgeDominant()
         {
@@ -1525,6 +1717,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // LocalSearch — s > bestSeparation (loop iteration finds better edge)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons local search improves separation
+        /// </summary>
         [Fact]
         public void CollidePolygons_LocalSearch_ImprovesSeparation()
         {
@@ -1543,6 +1738,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (all removes, no adds)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that get point states old has points new empty all removes
+        /// </summary>
         [Fact]
         public void GetPointStates_OldHasPoints_NewEmpty_AllRemoves()
         {
@@ -1568,6 +1766,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — HasVertex3 only, Convex2=false (IsFrontBoth path)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon has vertex 3 only non convex front state
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex3Only_NonConvex_FrontState()
         {
@@ -1591,6 +1792,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontLastOrBoth path, line 1319-1320)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon is front last or both executes
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_IsFrontLastOrBoth_Executes()
         {
@@ -1615,6 +1819,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (IsFrontAll path, line 1329-1330)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon is front all executes
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_IsFrontAll_Executes()
         {
@@ -1639,6 +1846,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (returns -Neg? or forces neg path at L1373)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back lower limit convex 1 true
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackLowerLimit_Convex1True()
         {
@@ -1662,6 +1872,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackLowerLimit HasVertex0 only, Convex1=false (returns -Neg)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back lower limit non convex
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackLowerLimit_NonConvex()
         {
@@ -1684,6 +1897,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackUpperLimit HasVertex3 only (returns Normal1 at L1388)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back upper limit has vertex 3 only
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackUpperLimit_HasVertex3Only()
         {
@@ -1706,6 +1922,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — SelectBackUpperLimit both vertices, Convex1=true (returns neg)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back upper limit both convex 1 true
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackUpperLimit_BothConvex1True()
         {
@@ -1730,6 +1949,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (SelectBackUpperLimit returns -i.Normal0 at L1387)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face select back upper limit non convex
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_SelectBackUpperLimit_NonConvex()
         {
@@ -1754,6 +1976,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // IsCircleInPreviousEdgeRegion.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region a far previous edge misses is circle check
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionA_Far_PreviousEdge_MissesIsCircleCheck()
         {
@@ -1777,6 +2002,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndCircle — Region B, dd > radius^2, HasVertex3=true
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region b far next edge misses is circle check
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionB_Far_NextEdge_MissesIsCircleCheck()
         {
@@ -1801,6 +2029,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Edge with HasVertex0 and HasVertex3 true
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region ab with adjacent edges
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_WithAdjacentEdges()
         {
@@ -1825,6 +2056,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // (persist path on both)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that get point states single point persists
+        /// </summary>
         [Fact]
         public void GetPointStates_SinglePointPersists()
         {
@@ -1851,6 +2085,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Circle in Region A (v <= 0), dd <= radius^2, HasVertex0=false.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region a has vertex 0 false returns false
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionA_HasVertex0False_ReturnsFalse()
         {
@@ -1877,6 +2114,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Circle in Region B (u <= 0), dd <= radius^2, HasVertex3=false.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and circle region b has vertex 3 false returns false
+        /// </summary>
         [Fact]
         public void CollideEdgeAndCircle_RegionB_HasVertex3False_ReturnsFalse()
         {
@@ -1903,6 +2143,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Using differently-shaped rectangles to ensure separationB > tol.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons flip true with feature swap
+        /// </summary>
         [Fact]
         public void CollidePolygons_FlipTrue_WithFeatureSwap()
         {
@@ -1923,6 +2166,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Using rotated polygons to force clip to yield < 2 points.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons first clip underflow early return
+        /// </summary>
         [Fact]
         public void CollidePolygons_FirstClipUnderflow_EarlyReturn()
         {
@@ -1941,6 +2187,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — second clip underflow (np < SettingEnv.MaxManifoldPoints)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons second clip underflow early return
+        /// </summary>
         [Fact]
         public void CollidePolygons_SecondClipUnderflow_EarlyReturn()
         {
@@ -1959,6 +2208,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — front face, edge axis primary, produce contact
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon front face edge axis primary produces contact
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_FrontFace_EdgeAxisPrimary_ProducesContact()
         {
@@ -1982,6 +2234,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — back face, edge axis primary, produce contact
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face edge axis primary
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_EdgeAxisPrimary()
         {
@@ -2005,6 +2260,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — polygon axis primary, BuildFaceBManifold with BackFace
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon face b primary back face
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_FaceB_Primary_BackFace()
         {
@@ -2028,6 +2286,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — front face, polygon axis primary, BuildFaceBManifold
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon face b primary front face
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_FaceB_Primary_FrontFace()
         {
@@ -2052,6 +2313,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // polygonAxis.Separation > kRelativeTol * edgeAxis.Separation + kAbsoluteTol
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon polygon separation dominates selects polygon axis
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_PolygonSeparationDominates_SelectsPolygonAxis()
         {
@@ -2075,6 +2339,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — first clip underflow in EpCollider.Collide
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon ep collider clip underflow
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_ClipUnderflow()
         {
@@ -2098,6 +2365,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — second clip underflow in EpCollider.Collide
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon ep collider second clip underflow 2
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_SecondClipUnderflow2()
         {
@@ -2121,6 +2391,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // FindBestEdge — sPrev > s && sPrev > sNext (increment = -1)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons find best edge prev edge dominant
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdge_PrevEdgeDominant()
         {
@@ -2138,6 +2411,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // FindBestEdge — sNext > s (increment = +1), LocalSearch increment +1
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons find best edge next edge dominant local search increment pos
+        /// </summary>
         [Fact]
         public void CollidePolygons_FindBestEdge_NextEdgeDominant_LocalSearchIncrementPos()
         {
@@ -2155,6 +2431,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // LocalSearch — s > bestSeparation (loop finds better edge)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons local search improves separation 2
+        /// </summary>
         [Fact]
         public void CollidePolygons_LocalSearch_ImprovesSeparation2()
         {
@@ -2173,6 +2452,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Exercises SelectBackLowerLimit (L1373) and SelectBackUpperLimit (L1386)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face limits both vertices convex 1
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_Limits_BothVertices_Convex1()
         {
@@ -2197,6 +2479,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Exercises SelectBackLowerLimit (L1374) 
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face has vertex 0 non convex
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_HasVertex0_NonConvex()
         {
@@ -2220,6 +2505,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // Exercises SelectBackUpperLimit (L1388)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon back face has vertex 3 only
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_HasVertex3Only()
         {
@@ -2249,6 +2537,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // and Dot(n - upperLimit, normal) < -AngularSlop
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon compute polygon separation adjacency skip
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ComputePolygonSeparation_AdjacencySkip()
         {
@@ -2272,6 +2563,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — BuildManifoldPoints with FaceB primary axis (swap features)
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon build manifold points face b swap
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BuildManifoldPoints_FaceBSwap()
         {
@@ -2295,6 +2589,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — brute-force multiple configurations to hit branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons multiple configs branch coverage
+        /// </summary>
         [Fact]
         public void CollidePolygons_MultipleConfigs_BranchCoverage()
         {
@@ -2339,6 +2636,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — brute-force multiple configurations
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon multiple configs branch coverage
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_MultipleConfigs_BranchCoverage()
         {
@@ -2383,6 +2683,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — brute-force adjacency skip variations
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon adjacency variations branch coverage
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_AdjacencyVariations_BranchCoverage()
         {
@@ -2421,6 +2724,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — expanded configurations for EpCollider branches
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon expanded configs branch coverage
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ExpandedConfigs_BranchCoverage()
         {
@@ -2473,6 +2779,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — additional configurations for clip/feature swap
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons extra configs branch coverage
+        /// </summary>
         [Fact]
         public void CollidePolygons_ExtraConfigs_BranchCoverage()
         {
@@ -2507,6 +2816,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollidePolygons — rotation-based configurations for flip branch
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide polygons rotation configs branch coverage
+        /// </summary>
         [Fact]
         public void CollidePolygons_RotationConfigs_BranchCoverage()
         {
@@ -2529,6 +2841,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // while edge normal shows close proximity.
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon polygon separation exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_PolygonSeparationExceedsRadius()
         {
@@ -2554,6 +2869,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // EpCollider — thin polygon near edge, ComputePolygonSeparation s > radius
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon thin polygon separation exceeds radius
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ThinPolygon_SeparationExceedsRadius()
         {
@@ -2579,6 +2897,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — targeted to trigger clip underflow in EpCollider
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon shallow overlap clip underflow
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_ShallowOverlap_ClipUnderflow()
         {
@@ -2603,6 +2924,9 @@ namespace Alis.Core.Physic.Test.Collisions
         // CollideEdgeAndPolygon — barely touching with rotation for clip underflow
         // ========================================================================
 
+        /// <summary>
+        /// Tests that collide edge and polygon barely touching clip underflow
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_BarelyTouching_ClipUnderflow()
         {

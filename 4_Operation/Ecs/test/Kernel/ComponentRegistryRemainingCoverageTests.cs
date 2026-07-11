@@ -46,10 +46,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         private partial struct LifecycleComponent : IOnInit, IOnDestroy
         {
+            /// <summary>
+            /// Ons the init using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnInit(IGameObject self)
             {
             }
 
+            /// <summary>
+            /// Ons the destroy
+            /// </summary>
             public void OnDestroy()
             {
             }
@@ -61,6 +68,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         private struct NonRegisteredType
         {
+            /// <summary>
+            /// The value
+            /// </summary>
             public int Value;
         }
 

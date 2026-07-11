@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The file picker path converter coverage test class
+    /// </summary>
     public class FilePickerPathConverterCoverageTest
     {
+        /// <summary>
+        /// Tests that is valid path with null char and must exist true should return false
+        /// </summary>
         [Fact]
         public void IsValidPath_WithNullCharAndMustExistTrue_ShouldReturnFalse()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that normalize path with path containing null char should return normalized
+        /// </summary>
         [Fact]
         public void NormalizePath_WithPathContainingNullChar_ShouldReturnNormalized()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("/path/to/file.txt", result);
         }
 
+        /// <summary>
+        /// Tests that convert path separators with empty string should return empty
+        /// </summary>
         [Fact]
         public void ConvertPathSeparators_WithEmptyString_ShouldReturnEmpty()
         {
@@ -59,6 +71,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("", result);
         }
 
+        /// <summary>
+        /// Tests that split multiple paths with single newline should return empty
+        /// </summary>
         [Fact]
         public void SplitMultiplePaths_WithSingleNewline_ShouldReturnEmpty()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that split multiple paths with windows newline should handle correctly
+        /// </summary>
         [Fact]
         public void SplitMultiplePaths_WithWindowsNewline_ShouldHandleCorrectly()
         {
@@ -76,6 +94,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal(2, result.Length);
         }
 
+        /// <summary>
+        /// Tests that normalize path with only newline should return null
+        /// </summary>
         [Fact]
         public void NormalizePath_WithOnlyNewline_ShouldReturnNull()
         {
@@ -84,6 +105,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that convert path separators with forward slashes on unix should convert
+        /// </summary>
         [Fact]
         public void ConvertPathSeparators_WithForwardSlashesOnUnix_ShouldConvert()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("/path/to/file.txt", result);
         }
 
+        /// <summary>
+        /// Tests that split multiple paths with carriage return only should return empty
+        /// </summary>
         [Fact]
         public void SplitMultiplePaths_WithCarriageReturnOnly_ShouldReturnEmpty()
         {
@@ -100,6 +127,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that is valid path with must exist false and valid path should return true
+        /// </summary>
         [Fact]
         public void IsValidPath_WithMustExistFalseAndValidPath_ShouldReturnTrue()
         {
@@ -108,6 +138,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that get directory name with relative path should return directory
+        /// </summary>
         [Fact]
         public void GetDirectoryName_WithRelativePath_ShouldReturnDirectory()
         {

@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Language.Translator.Test
 {
+    /// <summary>
+    /// The translation manager remaining coverage tests class
+    /// </summary>
     public class TranslationManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that translate with fallback containing current language should skip same code
+        /// </summary>
         [Fact]
         public void Translate_WithFallbackContainingCurrentLanguage_ShouldSkipSameCode()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("Hola", result);
         }
 
+        /// <summary>
+        /// Tests that translate with fallback returning null should try next fallback
+        /// </summary>
         [Fact]
         public void Translate_WithFallbackReturningNull_ShouldTryNextFallback()
         {
@@ -66,6 +75,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("Bonjour", result);
         }
 
+        /// <summary>
+        /// Tests that set fallback languages with empty array should not throw
+        /// </summary>
         [Fact]
         public void SetFallbackLanguages_WithEmptyArray_ShouldNotThrow()
         {
@@ -74,6 +86,9 @@ namespace Alis.Extension.Language.Translator.Test
             mgr.SetFallbackLanguages();
         }
 
+        /// <summary>
+        /// Tests that set fallback languages with mixed valid and invalid codes should filter invalid
+        /// </summary>
         [Fact]
         public void SetFallbackLanguages_WithMixedValidAndInvalidCodes_ShouldFilterInvalid()
         {
@@ -89,6 +104,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("Hola", result);
         }
 
+        /// <summary>
+        /// Tests that add translation with valid language object should add translation
+        /// </summary>
         [Fact]
         public void AddTranslation_WithValidLanguageObject_ShouldAddTranslation()
         {
@@ -102,6 +120,9 @@ namespace Alis.Extension.Language.Translator.Test
             Assert.Equal("value", mgr.Translate("key"));
         }
 
+        /// <summary>
+        /// Tests that add language with valid name and code should add language
+        /// </summary>
         [Fact]
         public void AddLanguage_WithValidNameAndCode_ShouldAddLanguage()
         {

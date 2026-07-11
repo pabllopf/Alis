@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Extension.Cloud.GoogleDrive.Test
 {
+    /// <summary>
+    /// The google drive cloud manager coverage test class
+    /// </summary>
     public class GoogleDriveCloudManagerCoverageTest
     {
+        /// <summary>
+        /// Tests that constructor with drive service is initialized true
+        /// </summary>
         [Fact]
         public void Constructor_WithDriveService_IsInitializedTrue()
         {
@@ -18,6 +24,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.True(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that constructor without drive service is initialized false
+        /// </summary>
         [Fact]
         public void Constructor_WithoutDriveService_IsInitializedFalse()
         {
@@ -26,6 +35,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that upload file async with non existent file throws file not found exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithNonExistentFile_ThrowsFileNotFoundException()
         {
@@ -36,6 +48,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
                 manager.UploadFileAsync(nonExistentPath, "/dest.txt"));
         }
 
+        /// <summary>
+        /// Tests that upload file async with non existent file and path normalized throws file not found exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithNonExistentFileAndPathNormalized_ThrowsFileNotFoundException()
         {
@@ -46,6 +61,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
                 manager.UploadFileAsync(nonExistentPath, "dest.txt"));
         }
 
+        /// <summary>
+        /// Tests that upload file async with local file path null throws file not found exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WithLocalFilePathNull_ThrowsFileNotFoundException()
         {
@@ -55,6 +73,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
                 manager.UploadFileAsync(null, "/dest.txt"));
         }
 
+        /// <summary>
+        /// Tests that upload file async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task UploadFileAsync_WhenApiThrows_ThrowsException()
         {
@@ -75,6 +96,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             }
         }
 
+        /// <summary>
+        /// Tests that download file async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WhenApiThrows_ThrowsException()
         {
@@ -87,6 +111,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that download file async with path normalized when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DownloadFileAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
         {
@@ -99,6 +126,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that list files async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task ListFilesAsync_WhenApiThrows_ThrowsException()
         {
@@ -111,6 +141,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that list files async with empty path defaults to root
+        /// </summary>
         [Fact]
         public async Task ListFilesAsync_WithEmptyPath_DefaultsToRoot()
         {
@@ -123,6 +156,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that list files async with null path defaults to root
+        /// </summary>
         [Fact]
         public async Task ListFilesAsync_WithNullPath_DefaultsToRoot()
         {
@@ -135,6 +171,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that list files async with path no leading slash normalizes path
+        /// </summary>
         [Fact]
         public async Task ListFilesAsync_WithPathNoLeadingSlash_NormalizesPath()
         {
@@ -147,6 +186,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that delete async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DeleteAsync_WhenApiThrows_ThrowsException()
         {
@@ -159,6 +201,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that delete async with path normalized when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task DeleteAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
         {
@@ -171,6 +216,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that get metadata async when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task GetMetadataAsync_WhenApiThrows_ThrowsException()
         {
@@ -183,6 +231,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that get metadata async with path normalized when api throws throws exception
+        /// </summary>
         [Fact]
         public async Task GetMetadataAsync_WithPathNormalized_WhenApiThrows_ThrowsException()
         {
@@ -195,6 +246,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.IsNotType<InvalidOperationException>(exception);
         }
 
+        /// <summary>
+        /// Tests that dispose with drive service should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithDriveService_ShouldNotThrow()
         {
@@ -204,6 +258,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls should not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -216,6 +273,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Null(second);
         }
 
+        /// <summary>
+        /// Tests that on destroy with drive service should not throw
+        /// </summary>
         [Fact]
         public void OnDestroy_WithDriveService_ShouldNotThrow()
         {
@@ -225,6 +285,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that on destroy then dispose should not throw
+        /// </summary>
         [Fact]
         public void OnDestroy_ThenDispose_ShouldNotThrow()
         {
@@ -237,6 +300,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Null(dispose);
         }
 
+        /// <summary>
+        /// Tests that dispose then on destroy should not throw
+        /// </summary>
         [Fact]
         public void Dispose_ThenOnDestroy_ShouldNotThrow()
         {
@@ -249,6 +315,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Null(onDestroy);
         }
 
+        /// <summary>
+        /// Tests that is initialized after dispose returns false
+        /// </summary>
         [Fact]
         public void IsInitialized_AfterDispose_ReturnsFalse()
         {
@@ -259,6 +328,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that is initialized after on destroy returns false
+        /// </summary>
         [Fact]
         public void IsInitialized_AfterOnDestroy_ReturnsFalse()
         {

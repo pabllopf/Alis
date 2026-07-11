@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animation compliance test class
+    /// </summary>
     public class IAnimationComplianceTest
     {
+        /// <summary>
+        /// Tests that interface is implemented by animation
+        /// </summary>
         [Fact]
         public void Interface_IsImplementedByAnimation()
         {
@@ -12,6 +18,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.IsAssignableFrom<IAnimation>(anim);
         }
 
+        /// <summary>
+        /// Tests that animation has default properties
+        /// </summary>
         [Fact]
         public void Animation_HasDefaultProperties()
         {

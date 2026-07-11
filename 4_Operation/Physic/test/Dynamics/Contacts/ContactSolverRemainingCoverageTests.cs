@@ -10,8 +10,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Contacts
 {
+    /// <summary>
+    /// The contact solver remaining coverage tests class
+    /// </summary>
     public class ContactSolverRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that reset with pre allocated buffers skips array resize
+        /// </summary>
         [Fact]
         public void Reset_WithPreAllocatedBuffers_SkipsArrayResize()
         {
@@ -31,6 +37,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(preCount, solver.VelocityConstraints.Length);
         }
 
+        /// <summary>
+        /// Tests that solve toi position constraints with overlapping bodies resolves overlap
+        /// </summary>
         [Fact]
         public void SolveToiPositionConstraints_WithOverlappingBodies_ResolvesOverlap()
         {
@@ -43,6 +52,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that world manifold initialize circles coincident points normal stays one zero
+        /// </summary>
         [Fact]
         public void WorldManifold_Initialize_CirclesCoincidentPoints_NormalStaysOneZero()
         {
@@ -64,6 +76,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(0.0f, normal.Y);
         }
 
+        /// <summary>
+        /// Tests that world manifold initialize face b with rotation verifies normal negation
+        /// </summary>
         [Fact]
         public void WorldManifold_Initialize_FaceBWithRotation_VerifiesNormalNegation()
         {
@@ -86,6 +101,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(-1.0f, normal.Y);
         }
 
+        /// <summary>
+        /// Tests that dispose with protected dispose false does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithProtectedDisposeFalse_DoesNotThrow()
         {
@@ -98,6 +116,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve toi position constraints with contacts executes
+        /// </summary>
         [Fact]
         public void SolveToiPositionConstraints_WithContacts_Executes()
         {
@@ -110,6 +131,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with multiple bodies executes single point normal
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithMultipleBodies_ExecutesSinglePointNormal()
         {
@@ -122,6 +146,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(bodyA.Position.X <= 0f || bodyB.Position.X >= 0.5f);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with overlapping bodies resolves overlap
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithOverlappingBodies_ResolvesOverlap()
         {
@@ -137,6 +164,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that store impulses after step stores values
+        /// </summary>
         [Fact]
         public void StoreImpulses_AfterStep_StoresValues()
         {
@@ -152,6 +182,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that solve friction impulse with two points applies
+        /// </summary>
         [Fact]
         public void SolveFrictionImpulse_WithTwoPoints_Applies()
         {
@@ -191,6 +224,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(vc.Points[1].TangentImpulse >= 0f);
         }
 
+        /// <summary>
+        /// Tests that initialize velocity constraint points without velocity bias when vrel high
+        /// </summary>
         [Fact]
         public void InitializeVelocityConstraintPoints_WithoutVelocityBias_WhenVrelHigh()
         {
@@ -217,6 +253,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(0f, vc.Points[0].VelocityBias);
         }
 
+        /// <summary>
+        /// Tests that solve contact position constraint with two points returns min separation
+        /// </summary>
         [Fact]
         public void SolveContactPositionConstraint_WithTwoPoints_ReturnsMinSeparation()
         {
@@ -262,6 +301,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(result <= 0f);
         }
 
+        /// <summary>
+        /// Tests that solve two point normal fourth branch both vn non negative applies block impulse
+        /// </summary>
         [Fact]
         public void SolveTwoPointNormal_FourthBranchBothVnNonNegative_AppliesBlockImpulse()
         {
@@ -301,6 +343,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(vAResult.X >= -2f);
         }
 
+        /// <summary>
+        /// Tests that acquire release contact locks multiple calls does not deadlock
+        /// </summary>
         [Fact]
         public void AcquireReleaseContactLocks_MultipleCalls_DoesNotDeadlock()
         {
@@ -326,6 +371,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints multi threaded bodies completes
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_MultiThreadedBodies_Completes()
         {
@@ -339,6 +387,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with ordered indices reorders locks
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithOrderedIndices_ReordersLocks()
         {
@@ -405,6 +456,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // SolveVelocityConstraints multithreaded path via threshold
         // ========================================================================
+        /// <summary>
+        /// Tests that solve velocity constraints multi threaded threshold executes
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_MultiThreadedThreshold_Executes()
         {
@@ -467,6 +521,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // SolvePositionConstraints multithreaded path via threshold
         // ========================================================================
+        /// <summary>
+        /// Tests that solve position constraints multi threaded threshold executes
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_MultiThreadedThreshold_Executes()
         {
@@ -515,6 +572,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // Reset with WarmStarting = false
         // ========================================================================
+        /// <summary>
+        /// Tests that reset with warm starting false sets impulses to zero
+        /// </summary>
         [Fact]
         public void Reset_WithWarmStartingFalse_SetsImpulsesToZero()
         {
@@ -531,6 +591,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // SolveToiPositionConstraints with non-zero count
         // ========================================================================
+        /// <summary>
+        /// Tests that solve toi position constraints with non zero count executes
+        /// </summary>
         [Fact]
         public void SolveToiPositionConstraints_WithNonZeroCount_Executes()
         {
@@ -572,6 +635,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // AcquireContactLocks with contention
         // ========================================================================
+        /// <summary>
+        /// Tests that acquire contact locks contention does not deadlock
+        /// </summary>
         [Fact]
         public void AcquireContactLocks_Contention_DoesNotDeadlock()
         {
@@ -596,6 +662,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // LockBodies with contention
         // ========================================================================
+        /// <summary>
+        /// Tests that lock bodies contention does not deadlock
+        /// </summary>
         [Fact]
         public void LockBodies_Contention_DoesNotDeadlock()
         {
@@ -620,6 +689,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // SolveTwoPointNormal — all 4 branches via actual contact setup
         // ========================================================================
+        /// <summary>
+        /// Tests that solve two point normal through world step executes
+        /// </summary>
         [Fact]
         public void SolveTwoPointNormal_ThroughWorldStep_Executes()
         {
@@ -634,6 +706,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         // ========================================================================
         // InitializeVelocityConstraints with two-point contact
         // ========================================================================
+        /// <summary>
+        /// Tests that initialize velocity constraints two point contact works
+        /// </summary>
         [Fact]
         public void InitializeVelocityConstraints_TwoPointContact_Works()
         {

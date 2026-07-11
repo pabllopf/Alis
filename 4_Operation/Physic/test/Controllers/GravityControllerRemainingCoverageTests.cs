@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Controllers
 {
+    /// <summary>
+    /// The gravity controller remaining coverage tests class
+    /// </summary>
     public class GravityControllerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that update with body gravity linear fixtured body applies force
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityLinear_FixturedBody_AppliesForce()
         {
@@ -25,6 +31,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity distance squared fixtured body applies force
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityDistanceSquared_FixturedBody_AppliesForce()
         {
@@ -43,6 +52,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity linear fixtured body applies force
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityLinear_FixturedBody_AppliesForce()
         {
@@ -60,6 +72,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity linear fixtured body at same position should not throw
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityLinear_FixturedBody_AtSamePosition_ShouldNotThrow()
         {
@@ -78,6 +93,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity linear fixtured body at same position should not throw
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityLinear_FixturedBody_AtSamePosition_ShouldNotThrow()
         {
@@ -95,6 +113,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity distance squared fixtured body beyond max radius should skip
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityDistanceSquared_FixturedBody_BeyondMaxRadius_ShouldSkip()
         {
@@ -113,6 +134,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity distance squared fixtured body within min radius should skip
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityDistanceSquared_FixturedBody_WithinMinRadius_ShouldSkip()
         {
@@ -131,6 +155,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity distance squared fixtured body beyond max radius should skip
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityDistanceSquared_FixturedBody_BeyondMaxRadius_ShouldSkip()
         {
@@ -148,6 +175,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity linear fixtured body beyond max radius should skip
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityLinear_FixturedBody_BeyondMaxRadius_ShouldSkip()
         {
@@ -165,6 +195,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with point gravity linear fixtured body within min radius should skip
+        /// </summary>
         [Fact]
         public void Update_WithPointGravityLinear_FixturedBody_WithinMinRadius_ShouldSkip()
         {
@@ -182,6 +215,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with both body and point gravity fixtured bodies should not throw
+        /// </summary>
         [Fact]
         public void Update_WithBothBodyAndPointGravity_FixturedBodies_ShouldNotThrow()
         {
@@ -201,6 +237,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with multiple world bodies some filtered by controller should not throw
+        /// </summary>
         [Fact]
         public void Update_WithMultipleWorldBodies_SomeFilteredByController_ShouldNotThrow()
         {
@@ -221,6 +260,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with controller ignore through category should skip body
+        /// </summary>
         [Fact]
         public void Update_WithControllerIgnoreThroughCategory_ShouldSkipBody()
         {
@@ -235,6 +277,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity linear fixtured body valid distance should apply force
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityLinear_FixturedBody_ValidDistance_ShouldApplyForce()
         {
@@ -253,6 +298,9 @@ namespace Alis.Core.Physic.Test.Controllers
             Assert.NotNull(controller);
         }
 
+        /// <summary>
+        /// Tests that update with body gravity distance squared fixtured body valid distance should apply force
+        /// </summary>
         [Fact]
         public void Update_WithBodyGravityDistanceSquared_FixturedBody_ValidDistance_ShouldApplyForce()
         {

@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Contacts
 {
+    /// <summary>
+    /// The contact remaining coverage tests class
+    /// </summary>
     public class ContactRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that update non overlapping bodies no callbacks fired
+        /// </summary>
         [Fact]
         public void Update_NonOverlappingBodies_NoCallbacksFired()
         {
@@ -57,6 +63,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.False(endFired);
         }
 
+        /// <summary>
+        /// Tests that create edge and edge not supported type
+        /// </summary>
         [Fact]
         public void Create_EdgeAndEdge_NotSupportedType()
         {
@@ -69,6 +78,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that get world manifold with empty manifold does not throw
+        /// </summary>
         [Fact]
         public void GetWorldManifold_WithEmptyManifold_DoesNotThrow()
         {
@@ -87,6 +99,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             }
         }
 
+        /// <summary>
+        /// Tests that create from pool with swap reuses contact
+        /// </summary>
         [Fact]
         public void Create_FromPoolWithSwap_ReusesContact()
         {
@@ -107,6 +122,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that invoke handlers all return false disables contact
+        /// </summary>
         [Fact]
         public void InvokeHandlers_AllReturnFalse_DisablesContact()
         {
@@ -126,6 +144,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(2, fireCount);
         }
 
+        /// <summary>
+        /// Tests that destroy with sensor fixture and points does not awake bodies
+        /// </summary>
         [Fact]
         public void Destroy_WithSensorFixtureAndPoints_DoesNotAwakeBodies()
         {
@@ -147,6 +168,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
 
 
+        /// <summary>
+        /// Tests that reset restitution with equal values returns same value
+        /// </summary>
         [Fact]
         public void ResetRestitution_WithEqualValues_ReturnsSameValue()
         {
@@ -161,6 +185,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(0.5f, contact.Restitution);
         }
 
+        /// <summary>
+        /// Tests that reset friction with equal values returns same value
+        /// </summary>
         [Fact]
         public void ResetFriction_WithEqualValues_ReturnsSameValue()
         {
@@ -175,6 +202,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(0.5f, contact.Friction);
         }
 
+        /// <summary>
+        /// Tests that report separation called when bodies separate but aabbs overlap
+        /// </summary>
         [Fact]
         public void ReportSeparation_CalledWhenBodiesSeparateButAabbsOverlap()
         {
@@ -214,6 +244,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(endContactCount > 0);
         }
 
+        /// <summary>
+        /// Tests that create with swap branch and pool reuses from pool
+        /// </summary>
         [Fact]
         public void Create_WithSwapBranch_AndPool_ReusesFromPool()
         {

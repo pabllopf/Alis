@@ -97,10 +97,21 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct SpawnPositionOnlyComponent : IOnUpdate<Position>
     {
+        /// <summary>
+        /// The spawn count
+        /// </summary>
         public int SpawnCount;
 
+        /// <summary>
+        /// The has spawned
+        /// </summary>
         public bool HasSpawned;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
         public void Update(IGameObject self, ref Position arg1)
         {
             if (!HasSpawned)
@@ -124,10 +135,24 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     internal struct SelfSpawningComponent : IOnUpdate<Position>
     {
+        /// <summary>
+        /// The spawn count
+        /// </summary>
         public int SpawnCount;
+        /// <summary>
+        /// The has spawned
+        /// </summary>
         public bool HasSpawned;
+        /// <summary>
+        /// The call count
+        /// </summary>
         public int CallCount;
 
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
         public void Update(IGameObject self, ref Position arg1)
         {
             CallCount++;

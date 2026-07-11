@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
 {
+    /// <summary>
+    /// The distance joint remaining coverage tests class
+    /// </summary>
     public class DistanceJointRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that init velocity constraints with static bodies sets mass to zero
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithStaticBodies_SetsMassToZero()
         {
@@ -63,6 +69,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, mass);
         }
 
+        /// <summary>
+        /// Tests that init velocity constraints with frequency and static bodies sets gamma to zero
+        /// </summary>
         [Fact]
         public void InitVelocityConstraints_WithFrequencyAndStaticBodies_SetsGammaToZero()
         {
@@ -92,6 +101,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, mass);
         }
 
+        /// <summary>
+        /// Tests that solve velocity constraints with static bodies does not modify velocities
+        /// </summary>
         [Fact]
         public void SolveVelocityConstraints_WithStaticBodies_DoesNotModifyVelocities()
         {
@@ -119,6 +131,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.Equal(0.0f, impulse);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with frequency zero and large error returns false
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyZeroAndLargeError_ReturnsFalse()
         {
@@ -166,6 +181,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.False((bool)result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with frequency zero and small error returns true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyZeroAndSmallError_ReturnsTrue()
         {
@@ -214,6 +232,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True((bool)result);
         }
 
+        /// <summary>
+        /// Tests that solve position constraints with frequency zero and exact position returns true
+        /// </summary>
         [Fact]
         public void SolvePositionConstraints_WithFrequencyZeroAndExactPosition_ReturnsTrue()
         {
@@ -238,6 +259,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.True((bool)result);
         }
 
+        /// <summary>
+        /// Tests that world anchor a set should store value in local center a
+        /// </summary>
         [Fact]
         public void WorldAnchorA_Set_ShouldStoreValueInLocalCenterA()
         {
@@ -251,6 +275,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that world anchor b set should store value in local center a
+        /// </summary>
         [Fact]
         public void WorldAnchorB_Set_ShouldStoreValueInLocalCenterA()
         {
@@ -264,6 +291,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
+        /// <summary>
+        /// Tests that get reaction force with non zero impulse returns correct force
+        /// </summary>
         [Fact]
         public void GetReactionForce_WithNonZeroImpulse_ReturnsCorrectForce()
         {

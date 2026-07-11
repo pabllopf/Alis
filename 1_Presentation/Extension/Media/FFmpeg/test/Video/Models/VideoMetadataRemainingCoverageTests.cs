@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
 {
+    /// <summary>
+    /// The video metadata remaining coverage tests class
+    /// </summary>
     public class VideoMetadataRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that get first video stream when video stream exists returns stream
+        /// </summary>
         [Fact]
         public void GetFirstVideoStream_WhenVideoStreamExists_ReturnsStream()
         {
@@ -21,6 +27,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.True(result.IsVideo);
         }
 
+        /// <summary>
+        /// Tests that get first video stream when no video stream returns null
+        /// </summary>
         [Fact]
         public void GetFirstVideoStream_WhenNoVideoStream_ReturnsNull()
         {
@@ -35,6 +44,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that get first audio stream when audio stream exists returns stream
+        /// </summary>
         [Fact]
         public void GetFirstAudioStream_WhenAudioStreamExists_ReturnsStream()
         {
@@ -50,6 +62,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.True(result.IsAudio);
         }
 
+        /// <summary>
+        /// Tests that get first audio stream when no audio stream returns null
+        /// </summary>
         [Fact]
         public void GetFirstAudioStream_WhenNoAudioStream_ReturnsNull()
         {
@@ -64,6 +79,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that get first video stream with multiple streams returns first video
+        /// </summary>
         [Fact]
         public void GetFirstVideoStream_WithMultipleStreams_ReturnsFirstVideo()
         {
@@ -81,6 +99,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(1, result.Index);
         }
 
+        /// <summary>
+        /// Tests that get first audio stream with multiple streams returns first audio
+        /// </summary>
         [Fact]
         public void GetFirstAudioStream_WithMultipleStreams_ReturnsFirstAudio()
         {

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The file picker executor coverage test class
+    /// </summary>
     public class FilePickerExecutorCoverageTest
     {
+        /// <summary>
+        /// Tests that execute command with null arguments should not throw
+        /// </summary>
         [Fact]
         public void ExecuteCommand_WithNullArguments_ShouldNotThrow()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that command exists with non existent command returns false
+        /// </summary>
         [Fact]
         public void CommandExists_WithNonExistentCommand_ReturnsFalse()
         {

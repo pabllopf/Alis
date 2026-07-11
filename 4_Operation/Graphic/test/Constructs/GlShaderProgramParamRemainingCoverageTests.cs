@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
+    /// <summary>
+    /// The gl shader program param remaining coverage tests class
+    /// </summary>
     public class GlShaderProgramParamRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor 3 params sets fields correctly
+        /// </summary>
         [Fact]
         public void Constructor_3Params_SetsFieldsCorrectly()
         {
@@ -45,6 +51,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal("testName", param.Name);
         }
 
+        /// <summary>
+        /// Tests that constructor 5 params sets fields correctly
+        /// </summary>
         [Fact]
         public void Constructor_5Params_SetsFieldsCorrectly()
         {
@@ -56,6 +65,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(7, param.Location);
         }
 
+        /// <summary>
+        /// Tests that constructor 5 params program id defaults to zero
+        /// </summary>
         [Fact]
         public void Constructor_5Params_ProgramId_DefaultsToZero()
         {
@@ -65,6 +77,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(0u, param.ProgramId);
         }
 
+        /// <summary>
+        /// Tests that location get set works
+        /// </summary>
         [Fact]
         public void Location_GetSet_Works()
         {
@@ -75,6 +90,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(-5, param.Location);
         }
 
+        /// <summary>
+        /// Tests that program get set works
+        /// </summary>
         [Fact]
         public void Program_GetSet_Works()
         {
@@ -83,6 +101,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(123u, param.Program);
         }
 
+        /// <summary>
+        /// Tests that program id get set works
+        /// </summary>
         [Fact]
         public void ProgramId_GetSet_Works()
         {
@@ -91,6 +112,10 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(456u, param.ProgramId);
         }
 
+        /// <summary>
+        /// Tests that set value float array invalid length throws argument exception
+        /// </summary>
+        /// <param name="length">The length</param>
         [Theory]
         [InlineData(0)]
         [InlineData(5)]
@@ -114,6 +139,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal("param", ex.ParamName);
         }
 
+        /// <summary>
+        /// Tests that set value float array length zero throws argument exception
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_LengthZero_ThrowsArgumentException()
         {

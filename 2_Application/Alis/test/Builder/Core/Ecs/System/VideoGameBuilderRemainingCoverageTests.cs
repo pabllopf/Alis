@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System
 {
+    /// <summary>
+    /// The video game builder remaining coverage tests class
+    /// </summary>
     public class VideoGameBuilderRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that run calls build and run completes when is running is false
+        /// </summary>
         [Fact(Skip = "IndexOutOfRangeException in Scene constructor (ECS source bug)")]
         public void Run_CallsBuildAndRun_CompletesWhenIsRunningIsFalse()
         {

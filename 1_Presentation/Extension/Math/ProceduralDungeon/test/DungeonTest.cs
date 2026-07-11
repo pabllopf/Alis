@@ -491,11 +491,20 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test
     /// </summary>
     internal class ExposedDungeon : Dungeon
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExposedDungeon"/> class
+        /// </summary>
+        /// <param name="generator">The generator</param>
+        /// <param name="randomNumberGenerator">The random number generator</param>
         public ExposedDungeon(IDungeonGenerator generator, IRandomNumberGenerator randomNumberGenerator)
             : base(generator, randomNumberGenerator)
         {
         }
 
+        /// <summary>
+        /// Calls the dispose using the specified disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         public void CallDispose(bool disposing) => Dispose(disposing);
     }
 

@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.PolygonManipulation
 {
+    /// <summary>
+    /// The yu peng clipper remaining coverage tests class
+    /// </summary>
     public class YuPengClipperRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that insert intersection point alpha beyond end does not insert
+        /// </summary>
         [Fact]
         public void InsertIntersectionPoint_AlphaBeyondEnd_DoesNotInsert()
         {
@@ -24,6 +30,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, verts.Count);
         }
 
+        /// <summary>
+        /// Tests that insert intersection point alpha at zero does not insert
+        /// </summary>
         [Fact]
         public void InsertIntersectionPoint_AlphaAtZero_DoesNotInsert()
         {
@@ -38,6 +47,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, verts.Count);
         }
 
+        /// <summary>
+        /// Tests that build polygons from chain disconnected edges returns broken result
+        /// </summary>
         [Fact]
         public void BuildPolygonsFromChain_DisconnectedEdges_ReturnsBrokenResult()
         {
@@ -61,6 +73,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.BrokenResult, (PolyClipError)errVal);
         }
 
+        /// <summary>
+        /// Tests that build polygons from chain single edge returns degenerated
+        /// </summary>
         [Fact]
         public void BuildPolygonsFromChain_SingleEdge_ReturnsDegenerated()
         {
@@ -82,6 +97,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(PolyClipError.DegeneratedOutput, (PolyClipError)errVal);
         }
 
+        /// <summary>
+        /// Tests that edge equals object with non null edge returns true
+        /// </summary>
         [Fact]
         public void Edge_EqualsObject_WithNonNullEdge_ReturnsTrue()
         {
@@ -96,6 +114,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.True((bool)equalsObj.Invoke(edge1, new object[] { edge2 }));
         }
 
+        /// <summary>
+        /// Tests that edge equals object with non edge object returns false
+        /// </summary>
         [Fact]
         public void Edge_EqualsObject_WithNonEdgeObject_ReturnsFalse()
         {
@@ -109,6 +130,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.False((bool)equalsObj.Invoke(edge, new object[] { 42 }));
         }
 
+        /// <summary>
+        /// Tests that insert intersection point multiple intersections on same edge inserts both
+        /// </summary>
         [Fact]
         public void InsertIntersectionPoint_MultipleIntersectionsOnSameEdge_InsertsBoth()
         {
@@ -132,6 +156,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(6, verts.Count);
         }
 
+        /// <summary>
+        /// Tests that remove coincident vertices with coincident vertex removes it
+        /// </summary>
         [Fact]
         public void RemoveCoincidentVertices_WithCoincidentVertex_RemovesIt()
         {
@@ -150,6 +177,9 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(2, verts.Count);
         }
 
+        /// <summary>
+        /// Tests that remove coincident vertices multiple coincident removes all
+        /// </summary>
         [Fact]
         public void RemoveCoincidentVertices_MultipleCoincident_RemovesAll()
         {

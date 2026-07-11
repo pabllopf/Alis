@@ -5,10 +5,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im font ptr remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImFontPtrRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImFontPtrRemainingCoverageTests"/> class
+        /// </summary>
         public ImFontPtrRemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -17,6 +27,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.DisplaySize = new Vector2F(1920f, 1080f);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             var field = typeof(ImGui).GetField("_io", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic);
@@ -26,6 +39,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr should return native ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_ShouldReturnNativePtr()
         {
@@ -35,6 +51,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion from int ptr should create im font ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversion_FromIntPtr_ShouldCreateImFontPtr()
         {
@@ -43,6 +62,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(native, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that index advance x should read correct value
+        /// </summary>
         [Fact]
         public void IndexAdvanceX_ShouldReadCorrectValue()
         {
@@ -65,6 +87,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that index lookup should read correct value
+        /// </summary>
         [Fact]
         public void IndexLookup_ShouldReadCorrectValue()
         {
@@ -87,6 +112,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that container atlas should read correct value
+        /// </summary>
         [Fact]
         public void ContainerAtlas_ShouldReadCorrectValue()
         {
@@ -107,6 +135,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that config data count should read correct value
+        /// </summary>
         [Fact]
         public void ConfigDataCount_ShouldReadCorrectValue()
         {
@@ -126,6 +157,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that fallback char should read correct value
+        /// </summary>
         [Fact]
         public void FallbackChar_ShouldReadCorrectValue()
         {
@@ -145,6 +179,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that ellipsis char should read correct value
+        /// </summary>
         [Fact]
         public void EllipsisChar_ShouldReadCorrectValue()
         {
@@ -164,6 +201,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that dot char should read correct value
+        /// </summary>
         [Fact]
         public void DotChar_ShouldReadCorrectValue()
         {
@@ -183,6 +223,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that ascent should read correct value
+        /// </summary>
         [Fact]
         public void Ascent_ShouldReadCorrectValue()
         {
@@ -202,6 +245,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that descent should read correct value
+        /// </summary>
         [Fact]
         public void Descent_ShouldReadCorrectValue()
         {
@@ -221,6 +267,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that add glyph should not throw
+        /// </summary>
         [Fact]
         public void AddGlyph_ShouldNotThrow()
         {
@@ -235,6 +284,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that add remap char without overwrite dst should not throw
+        /// </summary>
         [Fact]
         public void AddRemapChar_WithoutOverwriteDst_ShouldNotThrow()
         {
@@ -248,6 +300,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that add remap char with overwrite dst true should not throw
+        /// </summary>
         [Fact]
         public void AddRemapChar_WithOverwriteDstTrue_ShouldNotThrow()
         {
@@ -261,6 +316,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that add remap char with overwrite dst false should not throw
+        /// </summary>
         [Fact]
         public void AddRemapChar_WithOverwriteDstFalse_ShouldNotThrow()
         {
@@ -274,6 +332,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that build lookup table should not throw
+        /// </summary>
         [Fact]
         public void BuildLookupTable_ShouldNotThrow()
         {
@@ -287,6 +348,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that clear output data should not throw
+        /// </summary>
         [Fact]
         public void ClearOutputData_ShouldNotThrow()
         {
@@ -300,6 +364,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that find glyph should return default
+        /// </summary>
         [Fact]
         public void FindGlyph_ShouldReturnDefault()
         {
@@ -314,6 +381,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that find glyph no fallback should return default
+        /// </summary>
         [Fact]
         public void FindGlyphNoFallback_ShouldReturnDefault()
         {
@@ -328,6 +398,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that get char advance should return value
+        /// </summary>
         [Fact]
         public void GetCharAdvance_ShouldReturnValue()
         {
@@ -342,6 +415,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that get debug name should not throw
+        /// </summary>
         [Fact]
         public void GetDebugName_ShouldNotThrow()
         {
@@ -362,6 +438,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that grow index should not throw
+        /// </summary>
         [Fact]
         public void GrowIndex_ShouldNotThrow()
         {
@@ -375,6 +454,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that is loaded should return bool
+        /// </summary>
         [Fact]
         public void IsLoaded_ShouldReturnBool()
         {
@@ -389,6 +471,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that render char should not throw
+        /// </summary>
         [Fact]
         public void RenderChar_ShouldNotThrow()
         {
@@ -403,6 +488,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that set glyph visible true should not throw
+        /// </summary>
         [Fact]
         public void SetGlyphVisible_True_ShouldNotThrow()
         {
@@ -416,6 +504,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that set glyph visible false should not throw
+        /// </summary>
         [Fact]
         public void SetGlyphVisible_False_ShouldNotThrow()
         {

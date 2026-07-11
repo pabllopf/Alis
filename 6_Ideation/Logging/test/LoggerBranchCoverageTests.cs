@@ -7,55 +7,152 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test
 {
+    /// <summary>
+    /// The logger branch coverage tests class
+    /// </summary>
     public class LoggerBranchCoverageTests
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo DefaultLoggerField = typeof(Logger)
             .GetField("_defaultLogger", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The silent logger class
+        /// </summary>
+        /// <seealso cref="ILogger"/>
         private sealed class SilentLogger : ILogger
         {
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "Silent";
+            /// <summary>
+            /// Logs the trace using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogTrace(string message) { }
+            /// <summary>
+            /// Logs the debug using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogDebug(string message) { }
+            /// <summary>
+            /// Logs the info using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogInfo(string message) { }
+            /// <summary>
+            /// Logs the warning using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogWarning(string message) { }
+            /// <summary>
+            /// Logs the error using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogError(string message) { }
+            /// <summary>
+            /// Logs the error using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void LogError(string message, Exception exception) { }
+            /// <summary>
+            /// Logs the critical using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
             public void LogCritical(string message) { }
+            /// <summary>
+            /// Logs the critical using the specified message
+            /// </summary>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void LogCritical(string message, Exception exception) { }
+            /// <summary>
+            /// Logs the level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
             public void Log(LogLevel level, string message) { }
+            /// <summary>
+            /// Logs the level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
+            /// <param name="exception">The exception</param>
             public void Log(LogLevel level, string message, Exception exception) { }
+            /// <summary>
+            /// Logs the structured using the specified level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <param name="message">The message</param>
+            /// <param name="properties">The properties</param>
             public void LogStructured(LogLevel level, string message, IReadOnlyDictionary<string, object> properties) { }
+            /// <summary>
+            /// Sets the correlation id using the specified correlation id
+            /// </summary>
+            /// <param name="correlationId">The correlation id</param>
             public void SetCorrelationId(string correlationId) { }
+            /// <summary>
+            /// Gets the correlation id
+            /// </summary>
+            /// <returns>The string</returns>
             public string GetCorrelationId() => null;
+            /// <summary>
+            /// Begins the scope using the specified scope
+            /// </summary>
+            /// <param name="scope">The scope</param>
+            /// <returns>The disposable</returns>
             public IDisposable BeginScope(object scope) => null;
+            /// <summary>
+            /// Ises the enabled using the specified level
+            /// </summary>
+            /// <param name="level">The level</param>
+            /// <returns>The bool</returns>
             public bool IsEnabled(LogLevel level) => true;
         }
 
+        /// <summary>
+        /// Tests that trace null branch
+        /// </summary>
         [Fact]
         public void Trace_NullBranch()
         {
             AttemptNullBranch(() => Logger.Trace("trigger-null-branch"));
         }
 
+        /// <summary>
+        /// Tests that info null branch
+        /// </summary>
         [Fact]
         public void Info_NullBranch()
         {
             AttemptNullBranch(() => Logger.Info("trigger-null-branch"));
         }
 
+        /// <summary>
+        /// Tests that warning null branch
+        /// </summary>
         [Fact]
         public void Warning_NullBranch()
         {
             AttemptNullBranch(() => Logger.Warning("trigger-null-branch"));
         }
 
+        /// <summary>
+        /// Tests that error null branch
+        /// </summary>
         [Fact]
         public void Error_NullBranch()
         {
             ContinuousRaceNullBranch(() => Logger.Error("trigger-null-branch"));
         }
 
+        /// <summary>
+        /// Tests that exception null branch
+        /// </summary>
         [Fact]
         public void Exception_NullBranch()
         {
@@ -66,6 +163,10 @@ namespace Alis.Core.Aspect.Logging.Test
             });
         }
 
+        /// <summary>
+        /// Attempts the null branch using the specified log action
+        /// </summary>
+        /// <param name="logAction">The log action</param>
         private static void AttemptNullBranch(Action logAction)
         {
             for (int attempt = 0; attempt < 2000; attempt++)
@@ -85,6 +186,10 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
+        /// <summary>
+        /// Continuouses the race null branch using the specified log action
+        /// </summary>
+        /// <param name="logAction">The log action</param>
         private static void ContinuousRaceNullBranch(Action logAction)
         {
             using CancellationTokenSource cts = new CancellationTokenSource();

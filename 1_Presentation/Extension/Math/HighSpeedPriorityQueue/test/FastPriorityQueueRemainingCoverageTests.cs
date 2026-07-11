@@ -41,6 +41,10 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         /// </summary>
         private class MutableNode : FastPriorityQueueNode
         {
+            /// <summary>
+            /// Sets the priority using the specified priority
+            /// </summary>
+            /// <param name="priority">The priority</param>
             public void SetPriority(float priority) => Priority = priority;
         }
 

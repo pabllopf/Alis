@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Client
 {
+    /// <summary>
+    /// The network client manager edge case tests class
+    /// </summary>
     public class NetworkClientManagerEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that constructor multiple instances have different ids
+        /// </summary>
         [Fact]
         public void Constructor_MultipleInstances_HaveDifferentIds()
         {
@@ -17,6 +23,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.NotEqual(mgr1.Id, mgr2.Id);
         }
 
+        /// <summary>
+        /// Tests that constructor initial state is uninitialized
+        /// </summary>
         [Fact]
         public void Constructor_InitialState_IsUninitialized()
         {
@@ -24,6 +33,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Uninitialized, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that constructor id is not empty
+        /// </summary>
         [Fact]
         public void Constructor_Id_IsNotEmpty()
         {
@@ -31,6 +43,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.False(string.IsNullOrEmpty(mgr.Id));
         }
 
+        /// <summary>
+        /// Tests that initialize async with cancellation token completes successfully
+        /// </summary>
         [Fact]
         public async Task InitializeAsync_WithCancellationToken_CompletesSuccessfully()
         {
@@ -40,6 +55,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Idle, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that start async after disconnect does not throw
+        /// </summary>
         [Fact]
         public async Task StartAsync_AfterDisconnect_DoesNotThrow()
         {
@@ -50,6 +68,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that disconnect async after initialize sets state to disconnected
+        /// </summary>
         [Fact]
         public async Task DisconnectAsync_AfterInitialize_SetsStateToDisconnected()
         {
@@ -59,6 +80,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Disconnected, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that disconnect async when already disconnected does not throw
+        /// </summary>
         [Fact]
         public async Task DisconnectAsync_WhenAlreadyDisconnected_DoesNotThrow()
         {
@@ -69,6 +93,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that disconnect async repeated calls are idempotent
+        /// </summary>
         [Fact]
         public async Task DisconnectAsync_RepeatedCalls_AreIdempotent()
         {
@@ -80,6 +107,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Disconnected, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that stop async after initialize delegates to disconnect
+        /// </summary>
         [Fact]
         public async Task StopAsync_AfterInitialize_DelegatesToDisconnect()
         {
@@ -89,6 +119,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Equal(NetworkManagerState.Disconnected, mgr.State);
         }
 
+        /// <summary>
+        /// Tests that stop async when uninitialized does not throw
+        /// </summary>
         [Fact]
         public async Task StopAsync_WhenUninitialized_DoesNotThrow()
         {
@@ -97,6 +130,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that register message handler overwrite existing does not throw
+        /// </summary>
         [Fact]
         public void RegisterMessageHandler_OverwriteExisting_DoesNotThrow()
         {
@@ -105,6 +141,9 @@ namespace Alis.Extension.Network.Test.Client
             mgr.RegisterMessageHandler("channel", async (t, d) => await Task.FromResult("second"));
         }
 
+        /// <summary>
+        /// Tests that register message handler null handler does not throw
+        /// </summary>
         [Fact]
         public void RegisterMessageHandler_NullHandler_DoesNotThrow()
         {
@@ -112,6 +151,9 @@ namespace Alis.Extension.Network.Test.Client
             mgr.RegisterMessageHandler("channel", null);
         }
 
+        /// <summary>
+        /// Tests that unregister message handler non existent channel does not throw
+        /// </summary>
         [Fact]
         public void UnregisterMessageHandler_NonExistentChannel_DoesNotThrow()
         {
@@ -119,6 +161,9 @@ namespace Alis.Extension.Network.Test.Client
             mgr.UnregisterMessageHandler("non-existent");
         }
 
+        /// <summary>
+        /// Tests that get connected players with null session returns empty list
+        /// </summary>
         [Fact]
         public void GetConnectedPlayers_WithNullSession_ReturnsEmptyList()
         {
@@ -128,6 +173,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Empty(players);
         }
 
+        /// <summary>
+        /// Tests that get player with null session returns null
+        /// </summary>
         [Fact]
         public void GetPlayer_WithNullSession_ReturnsNull()
         {
@@ -135,6 +183,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(mgr.GetPlayer("any-id"));
         }
 
+        /// <summary>
+        /// Tests that get player with null id returns null
+        /// </summary>
         [Fact]
         public void GetPlayer_WithNullId_ReturnsNull()
         {
@@ -142,6 +193,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.Null(mgr.GetPlayer(null));
         }
 
+        /// <summary>
+        /// Tests that dispose after initialize idempotent
+        /// </summary>
         [Fact]
         public void Dispose_AfterInitialize_Idempotent()
         {
@@ -151,6 +205,9 @@ namespace Alis.Extension.Network.Test.Client
             mgr.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async with null uri when idle throws
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_WithNullUri_WhenIdle_Throws()
         {
@@ -161,6 +218,9 @@ namespace Alis.Extension.Network.Test.Client
             Assert.NotNull(ex);
         }
 
+        /// <summary>
+        /// Tests that connect async when idle throws on connection failure
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_WhenIdle_ThrowsOnConnectionFailure()
         {
@@ -178,6 +238,9 @@ namespace Alis.Extension.Network.Test.Client
             }
         }
 
+        /// <summary>
+        /// Tests that connect async when idle sets state to error on failure
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_WhenIdle_SetsStateToErrorOnFailure()
         {

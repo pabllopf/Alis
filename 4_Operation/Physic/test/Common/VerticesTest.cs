@@ -831,6 +831,9 @@ namespace Alis.Core.Physic.Test.Common
             Assert.Equal(PolygonError.NotCounterClockWise, result);
         }
 
+        /// <summary>
+        /// Tests that check polygon self intersecting returns not simple
+        /// </summary>
         [Fact]
         public void CheckPolygon_SelfIntersecting_ReturnsNotSimple()
         {
@@ -962,6 +965,9 @@ namespace Alis.Core.Physic.Test.Common
             Assert.Equal(5, max);
         }
 
+        /// <summary>
+        /// Tests that project to axis with decreasing values covers dot less than min branch
+        /// </summary>
         [Fact]
         public void ProjectToAxis_WithDecreasingValues_CoversDotLessThanMinBranch()
         {

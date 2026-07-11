@@ -38,6 +38,9 @@ namespace Alis.Extension.Payment.Stripe.Test
     /// </summary>
     public class StripeGatewayClientRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that create refund async with duplicate reason should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithDuplicateReason_ShouldPassValidation()
         {
@@ -56,6 +59,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with fraudulent reason should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithFraudulentReason_ShouldPassValidation()
         {
@@ -74,6 +80,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with requested by customer reason should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithRequestedByCustomerReason_ShouldPassValidation()
         {
@@ -92,6 +101,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with null reason should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithNullReason_ShouldPassValidation()
         {
@@ -110,6 +122,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with unknown reason should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithUnknownReason_ShouldPassValidation()
         {
@@ -128,6 +143,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with amount specified should pass validation
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithAmountSpecified_ShouldPassValidation()
         {
@@ -146,6 +164,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that create refund async with empty payment intent id throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateRefundAsync_WithEmptyPaymentIntentId_ThrowsArgumentException()
         {
@@ -159,6 +180,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreateRefundAsync(request));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with null success url throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullSuccessUrl_ThrowsArgumentException()
         {
@@ -177,6 +201,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreateCheckoutSessionAsync(request));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with null cancel url throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullCancelUrl_ThrowsArgumentException()
         {
@@ -195,6 +222,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreateCheckoutSessionAsync(request));
         }
 
+        /// <summary>
+        /// Tests that create payment intent async with customer id should pass validation
+        /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithCustomerId_ShouldPassValidation()
         {
@@ -214,6 +244,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsNotType<ArgumentOutOfRangeException>(exception);
         }
 
+        /// <summary>
+        /// Tests that get payment intent async with empty id throws argument exception
+        /// </summary>
         [Fact]
         public async Task GetPaymentIntentAsync_WithEmptyId_ThrowsArgumentException()
         {
@@ -223,6 +256,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentException>(() => gateway.GetPaymentIntentAsync("  "));
         }
 
+        /// <summary>
+        /// Tests that create payment intent async with negative amount throws argument out of range exception
+        /// </summary>
         [Fact]
         public async Task CreatePaymentIntentAsync_WithNegativeAmount_ThrowsArgumentOutOfRangeException()
         {
@@ -237,6 +273,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => gateway.CreatePaymentIntentAsync(request));
         }
 
+        /// <summary>
+        /// Tests that create checkout session async with null currency throws argument exception
+        /// </summary>
         [Fact]
         public async Task CreateCheckoutSessionAsync_WithNullCurrency_ThrowsArgumentException()
         {

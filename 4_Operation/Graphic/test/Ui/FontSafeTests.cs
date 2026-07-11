@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
+    /// <summary>
+    /// The font safe tests class
+    /// </summary>
     public class FontSafeTests
     {
+        /// <summary>
+        /// Tests that constructor sets name file
+        /// </summary>
         [Fact]
         public void Constructor_SetsNameFile()
         {
@@ -14,6 +20,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("test.bmp", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that depth get set works
+        /// </summary>
         [Fact]
         public void Depth_GetSet_Works()
         {
@@ -23,6 +32,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(5, font.Depth);
         }
 
+        /// <summary>
+        /// Tests that name file get set works
+        /// </summary>
         [Fact]
         public void NameFile_GetSet_Works()
         {
@@ -31,12 +43,18 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("new.bmp", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that font is public
+        /// </summary>
         [Fact]
         public void Font_IsPublic()
         {
             Assert.True(typeof(Font).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that depth has public getter and setter
+        /// </summary>
         [Fact]
         public void Depth_HasPublicGetterAndSetter()
         {
@@ -46,6 +64,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that name file has public getter and setter
+        /// </summary>
         [Fact]
         public void NameFile_HasPublicGetterAndSetter()
         {
@@ -55,6 +76,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that render text throws when open gl not available
+        /// </summary>
         [Fact]
         public void RenderText_ThrowsWhenOpenGLNotAvailable()
         {
@@ -63,6 +87,9 @@ namespace Alis.Core.Graphic.Test.Ui
                 font.RenderText("hello", 0, 0, Alis.Core.Aspect.Math.Definition.Color.White, Alis.Core.Aspect.Math.Definition.Color.Transparent));
         }
 
+        /// <summary>
+        /// Tests that render text null text throws
+        /// </summary>
         [Fact]
         public void RenderText_NullText_Throws()
         {

@@ -9,8 +9,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The uncovered paths test class
+    /// </summary>
     public class UncoveredPathsTest
     {
+        /// <summary>
+        /// Tests that fastest array pool return clear true works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_ReturnClearTrue_Works()
         {
@@ -21,6 +27,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(arr[0]);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool rent and return ref type
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_RentAndReturn_RefType()
         {
@@ -33,6 +42,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(arr[0]);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool resize array from pool works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestArrayPool_ResizeArrayFromPool_Works()
         {
@@ -43,6 +55,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(3, arr[2]);
         }
 
+        /// <summary>
+        /// Tests that fastest stack from collection works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_FromCollection_Works()
         {
@@ -51,6 +66,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(5, stack.Pop());
         }
 
+        /// <summary>
+        /// Tests that fastest stack trim excess reduces capacity
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_TrimExcess_ReducesCapacity()
         {
@@ -61,6 +79,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(10, stack.Count);
         }
 
+        /// <summary>
+        /// Tests that fastest stack to array empty returns empty
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastestStack_ToArray_Empty_ReturnsEmpty()
         {
@@ -69,6 +90,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Empty(arr);
         }
 
+        /// <summary>
+        /// Tests that fast lookup cold path multiple transitions
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastLookup_ColdPath_MultipleTransitions()
         {
@@ -83,6 +107,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that fast lookup set archetype circular buffer
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastLookup_SetArchetype_CircularBuffer()
         {
@@ -98,6 +125,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that command buffer playback when locked throws
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_PlaybackWhenLocked_Throws()
         {
@@ -109,6 +139,9 @@ namespace Alis.Core.Ecs.Test
             scene.ExitDisallowState(null);
         }
 
+        /// <summary>
+        /// Tests that command buffer entity without with end creates entity
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_EntityWithoutWith_EndCreatesEntity()
         {
@@ -118,6 +151,9 @@ namespace Alis.Core.Ecs.Test
             buffer.Playback();
         }
 
+        /// <summary>
+        /// Tests that command buffer add component with boxed no type works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_AddComponent_WithBoxedNoType_Works()
         {
@@ -129,6 +165,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(go.Has<Velocity>());
         }
 
+        /// <summary>
+        /// Tests that command buffer entity fluent with boxed by type works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void CommandBuffer_EntityFluent_WithBoxedByType_Works()
         {
@@ -141,6 +180,9 @@ namespace Alis.Core.Ecs.Test
             buffer.Playback();
         }
 
+        /// <summary>
+        /// Tests that gen 2 gc callback register can be called
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Gen2GcCallback_Register_CanBeCalled()
         {
@@ -148,6 +190,9 @@ namespace Alis.Core.Ecs.Test
             Gen2GcCallback.Register(() => { called = true; return false; });
         }
 
+        /// <summary>
+        /// Tests that component runner factory create strongly typed works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentRunnerFactory_CreateStronglyTyped_Works()
         {
@@ -156,6 +201,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(10, storage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that entity update with many types works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void EntityUpdate_WithManyTypes_Works()
         {
@@ -165,6 +213,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that archetype types array null creates new array
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Archetype_TypesArrayNull_CreatesNewArray()
         {
@@ -174,6 +225,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(scene);
         }
 
+        /// <summary>
+        /// Tests that game object delete and recreate works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GameObject_DeleteAndRecreate_Works()
         {
@@ -186,6 +240,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that scene update with many entities works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Scene_UpdateWithManyEntities_Works()
         {
@@ -196,6 +253,9 @@ namespace Alis.Core.Ecs.Test
                 scene.Update();
         }
 
+        /// <summary>
+        /// Tests that fast lookup find adjacent with cache miss works
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void FastLookup_FindAdjacent_WithCacheMiss_Works()
         {

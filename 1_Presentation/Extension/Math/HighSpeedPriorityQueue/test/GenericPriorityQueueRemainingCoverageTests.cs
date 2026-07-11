@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The generic priority queue remaining coverage tests class
+    /// </summary>
     public class GenericPriorityQueueRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that cascade up while loop breaks when parent has higher priority
+        /// </summary>
         [Fact]
         public void CascadeUp_WhileLoop_BreaksWhenParentHasHigherPriority()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that is valid queue right child violation returns false
+        /// </summary>
         [Fact]
         public void IsValidQueue_RightChildViolation_ReturnsFalse()
         {

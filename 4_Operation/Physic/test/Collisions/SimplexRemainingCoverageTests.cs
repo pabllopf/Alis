@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The simplex remaining coverage tests class
+    /// </summary>
     public class SimplexRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that read cache with count 2 and valid metric should keep count 2
+        /// </summary>
         [Fact]
         public void ReadCache_WithCount2_AndValidMetric_ShouldKeepCount2()
         {
@@ -36,6 +42,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that read cache with count 2 and metric too large should reset
+        /// </summary>
         [Fact]
         public void ReadCache_WithCount2_AndMetricTooLarge_ShouldReset()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that read cache with count 2 and metric degenerate should reset
+        /// </summary>
         [Fact]
         public void ReadCache_WithCount2_AndMetricDegenerate_ShouldReset()
         {
@@ -88,6 +100,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(simplex.Count == 1);
         }
 
+        /// <summary>
+        /// Tests that read cache with count 3 should restore three vertices
+        /// </summary>
         [Fact]
         public void ReadCache_WithCount3_ShouldRestoreThreeVertices()
         {
@@ -122,6 +137,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(3, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that read cache with count 0 should initialize with one vertex
+        /// </summary>
         [Fact]
         public void ReadCache_WithCount0_ShouldInitializeWithOneVertex()
         {
@@ -143,6 +161,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that write cache with count 0 should store zero metric
+        /// </summary>
         [Fact]
         public void WriteCache_WithCount0_ShouldStoreZeroMetric()
         {
@@ -159,6 +180,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, cache.Metric);
         }
 
+        /// <summary>
+        /// Tests that write cache with count 1 should store single vertex
+        /// </summary>
         [Fact]
         public void WriteCache_WithCount1_ShouldStoreSingleVertex()
         {
@@ -178,6 +202,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.0f, cache.Metric);
         }
 
+        /// <summary>
+        /// Tests that write cache with count 3 should store all vertices
+        /// </summary>
         [Fact]
         public void WriteCache_WithCount3_ShouldStoreAllVertices()
         {
@@ -202,6 +229,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, (int)cache.IndexB[2]);
         }
 
+        /// <summary>
+        /// Tests that get search direction with two vertices when sgn is zero should return counter clockwise
+        /// </summary>
         [Fact]
         public void GetSearchDirection_WithTwoVertices_WhenSgnIsZero_ShouldReturnCounterClockwise()
         {
@@ -218,6 +248,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(0.0f, -1.0f), direction);
         }
 
+        /// <summary>
+        /// Tests that solve 2 when d 122 is exactly zero should reduce to v 0
+        /// </summary>
         [Fact]
         public void Solve2_WhenD122IsExactlyZero_ShouldReduceToV0()
         {
@@ -235,6 +268,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, simplex.V[0].A);
         }
 
+        /// <summary>
+        /// Tests that solve 2 when d 121 is exactly zero should reduce to v 1 and swap
+        /// </summary>
         [Fact]
         public void Solve2_WhenD121IsExactlyZero_ShouldReduceToV1AndSwap()
         {
@@ -252,6 +288,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, simplex.V[0].A);
         }
 
+        /// <summary>
+        /// Tests that solve 2 when origin on segment should compute barycentric coords
+        /// </summary>
         [Fact]
         public void Solve2_WhenOriginOnSegment_ShouldComputeBarycentricCoords()
         {
@@ -270,6 +309,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(0.5f, simplex.V[1].A);
         }
 
+        /// <summary>
+        /// Tests that solve 3 when d 122 and d 132 are zero should reduce to vertex 0
+        /// </summary>
         [Fact]
         public void Solve3_WhenD122AndD132AreZero_ShouldReduceToVertex0()
         {
@@ -288,6 +330,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, simplex.V[0].A);
         }
 
+        /// <summary>
+        /// Tests that solve 3 when d 121 and d 232 are zero should reduce to vertex 1 and swap
+        /// </summary>
         [Fact]
         public void Solve3_WhenD121AndD232AreZero_ShouldReduceToVertex1AndSwap()
         {
@@ -306,6 +351,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, simplex.V[0].A);
         }
 
+        /// <summary>
+        /// Tests that solve 3 when d 131 and d 231 are zero should reduce to vertex 2 and swap
+        /// </summary>
         [Fact]
         public void Solve3_WhenD131AndD231AreZero_ShouldReduceToVertex2AndSwap()
         {
@@ -324,6 +372,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1.0f, simplex.V[0].A);
         }
 
+        /// <summary>
+        /// Tests that solve 3 when origin inside triangle should keep three and compute barycentric
+        /// </summary>
         [Fact]
         public void Solve3_WhenOriginInsideTriangle_ShouldKeepThreeAndComputeBarycentric()
         {
@@ -344,6 +395,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.True(simplex.V[2].A > 0.0f);
         }
 
+        /// <summary>
+        /// Tests that solve 3 edge 01 path should reduce to edge 01
+        /// </summary>
         [Fact]
         public void Solve3_Edge01Path_ShouldReduceToEdge01()
         {
@@ -361,6 +415,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 edge 02 path should reduce to edge 02
+        /// </summary>
         [Fact]
         public void Solve3_Edge02Path_ShouldReduceToEdge02()
         {
@@ -378,6 +435,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that solve 3 edge 12 path should reduce to edge 12
+        /// </summary>
         [Fact]
         public void Solve3_Edge12Path_ShouldReduceToEdge12()
         {
@@ -395,6 +455,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(2, simplex.Count);
         }
 
+        /// <summary>
+        /// Tests that get witness points default case should throw
+        /// </summary>
         [Fact]
         public void GetWitnessPoints_DefaultCase_ShouldThrow()
         {
@@ -407,6 +470,9 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Throws<InvalidOperationException>(() => simplex.GetWitnessPoints(out _, out _));
         }
 
+        /// <summary>
+        /// Tests that get metric with two points zero length should return zero
+        /// </summary>
         [Fact]
         public void GetMetric_WithTwoPoints_ZeroLength_ShouldReturnZero()
         {

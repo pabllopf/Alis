@@ -6,11 +6,24 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui io ptr remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiIOPtrRemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The native ptr
+        /// </summary>
         private readonly IntPtr _nativePtr;
+        /// <summary>
+        /// The io ptr
+        /// </summary>
         private ImGuiIoPtr _ioPtr;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiIOPtrRemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiIOPtrRemainingCoverageTests()
         {
             _nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
@@ -19,11 +32,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             _ioPtr = new ImGuiIoPtr(_nativePtr);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             Marshal.FreeHGlobal(_nativePtr);
         }
 
+        /// <summary>
+        /// Tests that native ptr should return constructor value
+        /// </summary>
         [Fact]
         public void NativePtr_ShouldReturnConstructorValue()
         {
@@ -31,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(_nativePtr, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_ReturnsNativePtr()
         {
@@ -38,6 +60,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(_nativePtr, result);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns wrapper
+        /// </summary>
         [Fact]
         public void ImplicitConversion_FromIntPtr_ReturnsWrapper()
         {
@@ -45,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(_nativePtr, wrapper.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that config flags get set should roundtrip
+        /// </summary>
         [Fact]
         public void ConfigFlags_GetSet_ShouldRoundtrip()
         {
@@ -53,6 +81,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.ConfigFlags);
         }
 
+        /// <summary>
+        /// Tests that backend flags get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendFlags_GetSet_ShouldRoundtrip()
         {
@@ -61,6 +92,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.BackendFlags);
         }
 
+        /// <summary>
+        /// Tests that display size get set should roundtrip
+        /// </summary>
         [Fact]
         public void DisplaySize_GetSet_ShouldRoundtrip()
         {
@@ -69,6 +103,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.DisplaySize);
         }
 
+        /// <summary>
+        /// Tests that delta time get set should roundtrip
+        /// </summary>
         [Fact]
         public void DeltaTime_GetSet_ShouldRoundtrip()
         {
@@ -76,6 +113,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0.016f, _ioPtr.DeltaTime);
         }
 
+        /// <summary>
+        /// Tests that user data get set should roundtrip
+        /// </summary>
         [Fact]
         public void UserData_GetSet_ShouldRoundtrip()
         {
@@ -84,6 +124,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.UserData);
         }
 
+        /// <summary>
+        /// Tests that font global scale get set should roundtrip
+        /// </summary>
         [Fact]
         public void FontGlobalScale_GetSet_ShouldRoundtrip()
         {
@@ -91,6 +134,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1.5f, _ioPtr.FontGlobalScale);
         }
 
+        /// <summary>
+        /// Tests that display framebuffer scale get set should roundtrip
+        /// </summary>
         [Fact]
         public void DisplayFramebufferScale_GetSet_ShouldRoundtrip()
         {
@@ -99,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.DisplayFramebufferScale);
         }
 
+        /// <summary>
+        /// Tests that config docking with shift get set should roundtrip
+        /// </summary>
         [Fact]
         public void ConfigDockingWithShift_GetSet_ShouldRoundtrip()
         {
@@ -106,6 +155,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.ConfigDockingWithShift);
         }
 
+        /// <summary>
+        /// Tests that backend platform name get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendPlatformName_GetSet_ShouldRoundtrip()
         {
@@ -114,6 +166,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal("test", _ioPtr.BackendPlatformName.ToString());
         }
 
+        /// <summary>
+        /// Tests that backend platform user data get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendPlatformUserData_GetSet_ShouldRoundtrip()
         {
@@ -122,6 +177,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.BackendPlatformUserData);
         }
 
+        /// <summary>
+        /// Tests that backend renderer user data get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendRendererUserData_GetSet_ShouldRoundtrip()
         {
@@ -130,6 +188,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.BackendRendererUserData);
         }
 
+        /// <summary>
+        /// Tests that backend language user data get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendLanguageUserData_GetSet_ShouldRoundtrip()
         {
@@ -138,6 +199,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.BackendLanguageUserData);
         }
 
+        /// <summary>
+        /// Tests that get clipboard text fn get set should roundtrip
+        /// </summary>
         [Fact]
         public void GetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
@@ -146,6 +210,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.GetClipboardTextFn);
         }
 
+        /// <summary>
+        /// Tests that set clipboard text fn get set should roundtrip
+        /// </summary>
         [Fact]
         public void SetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
@@ -154,6 +221,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.SetClipboardTextFn);
         }
 
+        /// <summary>
+        /// Tests that clipboard user data get set should roundtrip
+        /// </summary>
         [Fact]
         public void ClipboardUserData_GetSet_ShouldRoundtrip()
         {
@@ -162,6 +232,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.ClipboardUserData);
         }
 
+        /// <summary>
+        /// Tests that set platform ime data fn get set should roundtrip
+        /// </summary>
         [Fact]
         public void SetPlatformImeDataFn_GetSet_ShouldRoundtrip()
         {
@@ -170,6 +243,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.SetPlatformImeDataFn);
         }
 
+        /// <summary>
+        /// Tests that unused padding get set should roundtrip
+        /// </summary>
         [Fact]
         public void UnusedPadding_GetSet_ShouldRoundtrip()
         {
@@ -178,6 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.UnusedPadding);
         }
 
+        /// <summary>
+        /// Tests that want capture mouse get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantCaptureMouse_GetSet_ShouldRoundtrip()
         {
@@ -185,6 +264,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantCaptureMouse);
         }
 
+        /// <summary>
+        /// Tests that want capture keyboard get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantCaptureKeyboard_GetSet_ShouldRoundtrip()
         {
@@ -192,6 +274,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantCaptureKeyboard);
         }
 
+        /// <summary>
+        /// Tests that want text input get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantTextInput_GetSet_ShouldRoundtrip()
         {
@@ -199,6 +284,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantTextInput);
         }
 
+        /// <summary>
+        /// Tests that want set mouse pos get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantSetMousePos_GetSet_ShouldRoundtrip()
         {
@@ -206,6 +294,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantSetMousePos);
         }
 
+        /// <summary>
+        /// Tests that want save ini settings get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantSaveIniSettings_GetSet_ShouldRoundtrip()
         {
@@ -213,6 +304,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantSaveIniSettings);
         }
 
+        /// <summary>
+        /// Tests that nav active get set should roundtrip
+        /// </summary>
         [Fact]
         public void NavActive_GetSet_ShouldRoundtrip()
         {
@@ -220,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.NavActive);
         }
 
+        /// <summary>
+        /// Tests that nav visible get set should roundtrip
+        /// </summary>
         [Fact]
         public void NavVisible_GetSet_ShouldRoundtrip()
         {
@@ -227,6 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.NavVisible);
         }
 
+        /// <summary>
+        /// Tests that framerate get set should roundtrip
+        /// </summary>
         [Fact]
         public void Framerate_GetSet_ShouldRoundtrip()
         {
@@ -234,6 +334,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(60f, _ioPtr.Framerate);
         }
 
+        /// <summary>
+        /// Tests that metrics render vertices get set should roundtrip
+        /// </summary>
         [Fact]
         public void MetricsRenderVertices_GetSet_ShouldRoundtrip()
         {
@@ -241,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1000, _ioPtr.MetricsRenderVertices);
         }
 
+        /// <summary>
+        /// Tests that metrics render indices get set should roundtrip
+        /// </summary>
         [Fact]
         public void MetricsRenderIndices_GetSet_ShouldRoundtrip()
         {
@@ -248,6 +354,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(2000, _ioPtr.MetricsRenderIndices);
         }
 
+        /// <summary>
+        /// Tests that metrics render windows get set should roundtrip
+        /// </summary>
         [Fact]
         public void MetricsRenderWindows_GetSet_ShouldRoundtrip()
         {
@@ -255,6 +364,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(5, _ioPtr.MetricsRenderWindows);
         }
 
+        /// <summary>
+        /// Tests that metrics active windows get set should roundtrip
+        /// </summary>
         [Fact]
         public void MetricsActiveWindows_GetSet_ShouldRoundtrip()
         {
@@ -262,6 +374,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(3, _ioPtr.MetricsActiveWindows);
         }
 
+        /// <summary>
+        /// Tests that metrics active allocations get set should roundtrip
+        /// </summary>
         [Fact]
         public void MetricsActiveAllocations_GetSet_ShouldRoundtrip()
         {
@@ -269,6 +384,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(500, _ioPtr.MetricsActiveAllocations);
         }
 
+        /// <summary>
+        /// Tests that mouse delta get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDelta_GetSet_ShouldRoundtrip()
         {
@@ -277,6 +395,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.MouseDelta);
         }
 
+        /// <summary>
+        /// Tests that mouse pos get set should roundtrip
+        /// </summary>
         [Fact]
         public void MousePos_GetSet_ShouldRoundtrip()
         {
@@ -285,6 +406,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.MousePos);
         }
 
+        /// <summary>
+        /// Tests that mouse wheel get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseWheel_GetSet_ShouldRoundtrip()
         {
@@ -292,6 +416,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1.5f, _ioPtr.MouseWheel);
         }
 
+        /// <summary>
+        /// Tests that mouse wheel h get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseWheelH_GetSet_ShouldRoundtrip()
         {
@@ -299,6 +426,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(2.5f, _ioPtr.MouseWheelH);
         }
 
+        /// <summary>
+        /// Tests that mouse hovered viewport get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseHoveredViewport_GetSet_ShouldRoundtrip()
         {
@@ -306,6 +436,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(42u, _ioPtr.MouseHoveredViewport);
         }
 
+        /// <summary>
+        /// Tests that key ctrl get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeyCtrl_GetSet_ShouldRoundtrip()
         {
@@ -313,6 +446,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.KeyCtrl);
         }
 
+        /// <summary>
+        /// Tests that key shift get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeyShift_GetSet_ShouldRoundtrip()
         {
@@ -320,6 +456,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.KeyShift);
         }
 
+        /// <summary>
+        /// Tests that key alt get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeyAlt_GetSet_ShouldRoundtrip()
         {
@@ -327,6 +466,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.KeyAlt);
         }
 
+        /// <summary>
+        /// Tests that key super get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeySuper_GetSet_ShouldRoundtrip()
         {
@@ -334,6 +476,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.KeySuper);
         }
 
+        /// <summary>
+        /// Tests that key mods get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeyMods_GetSet_ShouldRoundtrip()
         {
@@ -342,6 +487,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.KeyMods);
         }
 
+        /// <summary>
+        /// Tests that want capture mouse unless popup close get set should roundtrip
+        /// </summary>
         [Fact]
         public void WantCaptureMouseUnlessPopupClose_GetSet_ShouldRoundtrip()
         {
@@ -349,6 +497,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.WantCaptureMouseUnlessPopupClose);
         }
 
+        /// <summary>
+        /// Tests that mouse pos prev get set should roundtrip
+        /// </summary>
         [Fact]
         public void MousePosPrev_GetSet_ShouldRoundtrip()
         {
@@ -357,6 +508,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(val, _ioPtr.MousePosPrev);
         }
 
+        /// <summary>
+        /// Tests that pen pressure get set should roundtrip
+        /// </summary>
         [Fact]
         public void PenPressure_GetSet_ShouldRoundtrip()
         {
@@ -364,6 +518,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0.5f, _ioPtr.PenPressure);
         }
 
+        /// <summary>
+        /// Tests that app focus lost get set should roundtrip
+        /// </summary>
         [Fact]
         public void AppFocusLost_GetSet_ShouldRoundtrip()
         {
@@ -371,6 +528,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.AppFocusLost);
         }
 
+        /// <summary>
+        /// Tests that app accepting events get set should roundtrip
+        /// </summary>
         [Fact]
         public void AppAcceptingEvents_GetSet_ShouldRoundtrip()
         {
@@ -378,6 +538,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.AppAcceptingEvents);
         }
 
+        /// <summary>
+        /// Tests that backend using legacy key arrays get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendUsingLegacyKeyArrays_GetSet_ShouldRoundtrip()
         {
@@ -385,6 +548,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1, _ioPtr.BackendUsingLegacyKeyArrays);
         }
 
+        /// <summary>
+        /// Tests that backend using legacy nav input array get set should roundtrip
+        /// </summary>
         [Fact]
         public void BackendUsingLegacyNavInputArray_GetSet_ShouldRoundtrip()
         {
@@ -392,6 +558,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(_ioPtr.BackendUsingLegacyNavInputArray);
         }
 
+        /// <summary>
+        /// Tests that input queue surrogate get set should roundtrip
+        /// </summary>
         [Fact]
         public void InputQueueSurrogate_GetSet_ShouldRoundtrip()
         {
@@ -399,6 +568,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0xDC00, _ioPtr.InputQueueSurrogate);
         }
 
+        /// <summary>
+        /// Tests that read only properties should have default values
+        /// </summary>
         [Fact]
         public void ReadOnlyProperties_ShouldHaveDefaultValues()
         {
@@ -429,6 +601,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.False(_ioPtr.ConfigWindowsMoveFromTitleBarOnly);
         }
 
+        /// <summary>
+        /// Tests that key map get should return list
+        /// </summary>
         [Fact]
         public void KeyMap_Get_ShouldReturnList()
         {
@@ -437,6 +612,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.IsType<List<int>>(keyMap);
         }
 
+        /// <summary>
+        /// Tests that keys down get set should roundtrip
+        /// </summary>
         [Fact]
         public void KeysDown_GetSet_ShouldRoundtrip()
         {
@@ -450,6 +628,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse down get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDown_GetSet_ShouldRoundtrip()
         {
@@ -462,6 +643,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse clicked time get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseClickedTime_GetSet_ShouldRoundtrip()
         {
@@ -474,6 +658,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse clicked get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseClicked_GetSet_ShouldRoundtrip()
         {
@@ -486,6 +673,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse double clicked get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDoubleClicked_GetSet_ShouldRoundtrip()
         {
@@ -498,6 +688,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse clicked count get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseClickedCount_GetSet_ShouldRoundtrip()
         {
@@ -510,6 +703,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse clicked last count get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseClickedLastCount_GetSet_ShouldRoundtrip()
         {
@@ -522,6 +718,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse released get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseReleased_GetSet_ShouldRoundtrip()
         {
@@ -534,6 +733,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse down owned get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDownOwned_GetSet_ShouldRoundtrip()
         {
@@ -546,6 +748,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse down owned unless popup close get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDownOwnedUnlessPopupClose_GetSet_ShouldRoundtrip()
         {
@@ -558,6 +763,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse down duration get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDownDuration_GetSet_ShouldRoundtrip()
         {
@@ -570,6 +778,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse down duration prev get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDownDurationPrev_GetSet_ShouldRoundtrip()
         {
@@ -582,6 +793,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that mouse drag max distance sqr get set should roundtrip
+        /// </summary>
         [Fact]
         public void MouseDragMaxDistanceSqr_GetSet_ShouldRoundtrip()
         {
@@ -594,6 +808,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that constructor from im gui io should allocate and marshal
+        /// </summary>
         [Fact]
         public void Constructor_FromImGuiIo_ShouldAllocateAndMarshal()
         {
@@ -602,6 +819,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotEqual(IntPtr.Zero, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that read only null terminated string properties should not be null
+        /// </summary>
         [Fact]
         public void ReadOnly_NullTerminatedString_Properties_ShouldNotBeNull()
         {
@@ -610,6 +830,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(_ioPtr.BackendRendererName);
         }
 
+        /// <summary>
+        /// Tests that backend renderer name get should return default
+        /// </summary>
         [Fact]
         public void BackendRendererName_Get_ShouldReturnDefault()
         {
@@ -617,6 +840,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(name);
         }
 
+        /// <summary>
+        /// Tests that read only fonts should return im font atlas ptr
+        /// </summary>
         [Fact]
         public void ReadOnly_Fonts_ShouldReturnImFontAtlasPtr()
         {
@@ -624,6 +850,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(fonts);
         }
 
+        /// <summary>
+        /// Tests that read only font default should return im font ptr
+        /// </summary>
         [Fact]
         public void ReadOnly_FontDefault_ShouldReturnImFontPtr()
         {
@@ -631,6 +860,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotNull(font);
         }
 
+        /// <summary>
+        /// Tests that nav inputs get set should roundtrip
+        /// </summary>
         [Fact]
         public void NavInputs_GetSet_ShouldRoundtrip()
         {
@@ -644,6 +876,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that key map set should update value
+        /// </summary>
         [Fact]
         public void KeyMap_Set_ShouldUpdateValue()
         {

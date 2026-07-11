@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 {
+    /// <summary>
+    /// The delaunay triangle coverage test class
+    /// </summary>
     public class DelaunayTriangleCoverageTest
     {
+        /// <summary>
+        /// Tests that edge index returns minus one for non adjacent points
+        /// </summary>
         [Fact]
         public void EdgeIndex_ReturnsMinusOne_ForNonAdjacentPoints()
         {
@@ -23,6 +29,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(-1, index);
         }
 
+        /// <summary>
+        /// Tests that edge index returns correct index
+        /// </summary>
         [Fact]
         public void EdgeIndex_ReturnsCorrectIndex()
         {
@@ -37,6 +46,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(2, triangle.EdgeIndex(p1, p2));
         }
 
+        /// <summary>
+        /// Tests that mark constrained edge with non existent edge does not throw
+        /// </summary>
         [Fact]
         public void MarkConstrainedEdge_WithNonExistentEdge_DoesNotThrow()
         {
@@ -51,6 +63,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.False(triangle.EdgeIsConstrained[0]);
         }
 
+        /// <summary>
+        /// Tests that mark constrained edge with valid edge sets flag
+        /// </summary>
         [Fact]
         public void MarkConstrainedEdge_WithValidEdge_SetsFlag()
         {
@@ -64,6 +79,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.EdgeIsConstrained[0]);
         }
 
+        /// <summary>
+        /// Tests that area returns positive for counter clockwise triangle
+        /// </summary>
         [Fact]
         public void Area_ReturnsPositive_ForCounterClockwiseTriangle()
         {
@@ -76,6 +94,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(area > 0.0);
         }
 
+        /// <summary>
+        /// Tests that centroid returns center point
+        /// </summary>
         [Fact]
         public void Centroid_ReturnsCenterPoint()
         {
@@ -90,6 +111,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(centroid.Y > 0.0);
         }
 
+        /// <summary>
+        /// Tests that legalize rotates and replaces point
+        /// </summary>
         [Fact]
         public void Legalize_RotatesAndReplacesPoint()
         {
@@ -104,6 +128,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.Contains(nPoint));
         }
 
+        /// <summary>
+        /// Tests that mark neighbor edges propagates to neighbor
+        /// </summary>
         [Fact]
         public void MarkNeighborEdges_PropagatesToNeighbor()
         {
@@ -123,6 +150,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
         
+        /// <summary>
+        /// Tests that clear disconnects all neighbors
+        /// </summary>
         [Fact]
         public void Clear_DisconnectsAllNeighbors()
         {
@@ -138,6 +168,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[2]);
         }
 
+        /// <summary>
+        /// Tests that is interior set and get
+        /// </summary>
         [Fact]
         public void IsInterior_SetAndGet()
         {
@@ -150,6 +183,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.IsInterior);
         }
 
+        /// <summary>
+        /// Tests that constrained edge flags set and get
+        /// </summary>
         [Fact]
         public void ConstrainedEdgeFlags_SetAndGet()
         {
@@ -169,6 +205,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.GetConstrainedEdgeAcross(p1));
         }
 
+        /// <summary>
+        /// Tests that delaunay edge flags set and get
+        /// </summary>
         [Fact]
         public void DelaunayEdgeFlags_SetAndGet()
         {
@@ -188,6 +227,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.GetDelaunayEdgeAcross(p1));
         }
 
+        /// <summary>
+        /// Tests that contains with dt sweep constraint returns true for contained edge
+        /// </summary>
         [Fact]
         public void Contains_WithDtSweepConstraint_ReturnsTrueForContainedEdge()
         {
@@ -201,6 +243,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.Contains(edge));
         }
 
+        /// <summary>
+        /// Tests that contains with dt sweep constraint returns false for non contained edge
+        /// </summary>
         [Fact]
         public void Contains_WithDtSweepConstraint_ReturnsFalseForNonContainedEdge()
         {
@@ -215,6 +260,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.False(triangle.Contains(edge));
         }
 
+        /// <summary>
+        /// Tests that contains with two points returns true when both contained
+        /// </summary>
         [Fact]
         public void Contains_WithTwoPoints_ReturnsTrueWhenBothContained()
         {
@@ -227,6 +275,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.Contains(p1, p2));
         }
 
+        /// <summary>
+        /// Tests that contains with two points returns false when one not contained
+        /// </summary>
         [Fact]
         public void Contains_WithTwoPoints_ReturnsFalseWhenOneNotContained()
         {
@@ -240,6 +291,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.False(triangle.Contains(p1, p4));
         }
 
+        /// <summary>
+        /// Tests that index of with unknown point throws argument exception
+        /// </summary>
         [Fact]
         public void IndexOf_WithUnknownPoint_ThrowsArgumentException()
         {
@@ -253,6 +307,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Throws<ArgumentException>(() => triangle.IndexOf(p4));
         }
 
+        /// <summary>
+        /// Tests that index cw returns correct index
+        /// </summary>
         [Fact]
         public void IndexCw_ReturnsCorrectIndex()
         {
@@ -267,6 +324,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(1, triangle.IndexCw(p3));
         }
 
+        /// <summary>
+        /// Tests that index ccw returns correct index
+        /// </summary>
         [Fact]
         public void IndexCcw_ReturnsCorrectIndex()
         {
@@ -281,6 +341,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(0, triangle.IndexCcw(p3));
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points sets neighbor at correct index
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_SetsNeighborAtCorrectIndex()
         {
@@ -297,6 +360,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[0]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points sets neighbor at correct index edge 1
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_SetsNeighborAtCorrectIndex_Edge1()
         {
@@ -313,6 +379,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with points sets neighbor at correct index edge 2
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithPoints_SetsNeighborAtCorrectIndex_Edge2()
         {
@@ -329,6 +398,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.Neighbors[2]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with triangle sets mutual neighbor
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithTriangle_SetsMutualNeighbor()
         {
@@ -346,6 +418,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t1, t2.Neighbors[1]);
         }
 
+        /// <summary>
+        /// Tests that clear neighbors sets all to null
+        /// </summary>
         [Fact]
         public void ClearNeighbors_SetsAllToNull()
         {
@@ -365,6 +440,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[2]);
         }
 
+        /// <summary>
+        /// Tests that clear neighbor removes correct neighbor index 0
+        /// </summary>
         [Fact]
         public void ClearNeighbor_RemovesCorrectNeighbor_Index0()
         {
@@ -382,6 +460,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[0]);
         }
 
+        /// <summary>
+        /// Tests that clear neighbor removes correct neighbor index 2
+        /// </summary>
         [Fact]
         public void ClearNeighbor_RemovesCorrectNeighbor_Index2()
         {
@@ -399,6 +480,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t1.Neighbors[2]);
         }
 
+        /// <summary>
+        /// Tests that opposite point returns correct point
+        /// </summary>
         [Fact]
         public void OppositePoint_ReturnsCorrectPoint()
         {
@@ -415,6 +499,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.NotNull(opposite);
         }
 
+        /// <summary>
+        /// Tests that neighbor cw returns correct neighbor
+        /// </summary>
         [Fact]
         public void NeighborCw_ReturnsCorrectNeighbor()
         {
@@ -430,6 +517,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.NeighborCw(p1));
         }
 
+        /// <summary>
+        /// Tests that neighbor ccw returns correct neighbor
+        /// </summary>
         [Fact]
         public void NeighborCcw_ReturnsCorrectNeighbor()
         {
@@ -445,6 +535,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.NeighborCcw(p1));
         }
 
+        /// <summary>
+        /// Tests that neighbor across returns correct neighbor
+        /// </summary>
         [Fact]
         public void NeighborAcross_ReturnsCorrectNeighbor()
         {
@@ -460,6 +553,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(t2, t1.NeighborAcross(p1));
         }
 
+        /// <summary>
+        /// Tests that point ccw returns correct point
+        /// </summary>
         [Fact]
         public void PointCcw_ReturnsCorrectPoint()
         {
@@ -474,6 +570,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(p1, triangle.PointCcw(p3));
         }
 
+        /// <summary>
+        /// Tests that point cw returns correct point
+        /// </summary>
         [Fact]
         public void PointCw_ReturnsCorrectPoint()
         {
@@ -488,6 +587,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(p2, triangle.PointCw(p3));
         }
 
+        /// <summary>
+        /// Tests that to string returns formatted string
+        /// </summary>
         [Fact]
         public void ToString_ReturnsFormattedString()
         {
@@ -502,6 +604,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Contains("1", result);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle marks constrained edges
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangle_MarksConstrainedEdges()
         {
@@ -519,6 +624,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark edge with triangle list marks constrained edges
+        /// </summary>
         [Fact]
         public void MarkEdge_WithTriangleList_MarksConstrainedEdges()
         {
@@ -537,6 +645,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(t2.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark constrained edge with index sets flag
+        /// </summary>
         [Fact]
         public void MarkConstrainedEdge_WithIndex_SetsFlag()
         {
@@ -550,6 +661,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.EdgeIsConstrained[1]);
         }
 
+        /// <summary>
+        /// Tests that mark constrained edge with dt sweep constraint sets flag
+        /// </summary>
         [Fact]
         public void MarkConstrainedEdge_WithDtSweepConstraint_SetsFlag()
         {
@@ -564,6 +678,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.True(triangle.EdgeIsConstrained[0]);
         }
 
+        /// <summary>
+        /// Tests that area with degenerate triangle returns zero
+        /// </summary>
         [Fact]
         public void Area_WithDegenerateTriangle_ReturnsZero()
         {
@@ -577,6 +694,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Equal(0.0, area);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor edges with no neighbor does not throw
+        /// </summary>
         [Fact]
         public void MarkNeighborEdges_WithNoNeighbor_DoesNotThrow()
         {
@@ -590,6 +710,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             triangle.MarkNeighborEdges();
         }
 
+        /// <summary>
+        /// Tests that clear with neighbors disconnects mutually
+        /// </summary>
         [Fact]
         public void ClearWithNeighbors_DisconnectsMutually()
         {
@@ -609,6 +732,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             Assert.Null(t2.Neighbors[0]);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with non existent edge logs error
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithNonExistentEdge_LogsError()
         {
@@ -624,6 +750,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             t1.MarkNeighbor(p4, p5, t2);
         }
 
+        /// <summary>
+        /// Tests that mark neighbor with no shared edge logs error
+        /// </summary>
         [Fact]
         public void MarkNeighbor_WithNoSharedEdge_LogsError()
         {

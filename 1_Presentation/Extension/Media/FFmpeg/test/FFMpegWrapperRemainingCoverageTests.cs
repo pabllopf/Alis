@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
 {
+    /// <summary>
+    /// The ff mpeg wrapper remaining coverage tests class
+    /// </summary>
     public class FFMpegWrapperRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that run command hide banner false should execute
+        /// </summary>
         [Fact]
         public void RunCommand_HideBannerFalse_ShouldExecute()
         {
@@ -56,6 +62,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
             }
         }
 
+        /// <summary>
+        /// Tests that execute command hide banner false should return process
+        /// </summary>
         [Fact]
         public void ExecuteCommand_HideBannerFalse_ShouldReturnProcess()
         {
@@ -77,6 +86,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
             }
         }
 
+        /// <summary>
+        /// Tests that open output hide banner false should return stream
+        /// </summary>
         [Fact]
         public void OpenOutput_HideBannerFalse_ShouldReturnStream()
         {
@@ -98,6 +110,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
             }
         }
 
+        /// <summary>
+        /// Tests that open input hide banner false should return stream
+        /// </summary>
         [Fact]
         public void OpenInput_HideBannerFalse_ShouldReturnStream()
         {
@@ -119,6 +134,9 @@ namespace Alis.Extension.Media.FFmpeg.Test
             }
         }
 
+        /// <summary>
+        /// Tests that open hide banner false should return streams
+        /// </summary>
         [Fact]
         public void Open_HideBannerFalse_ShouldReturnStreams()
         {

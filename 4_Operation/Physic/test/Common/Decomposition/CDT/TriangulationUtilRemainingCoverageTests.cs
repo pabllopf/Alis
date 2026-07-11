@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
 {
+    /// <summary>
+    /// The triangulation util remaining coverage tests class
+    /// </summary>
     public class TriangulationUtilRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that smart incircle oabd negative returns false
+        /// </summary>
         [Fact]
         public void SmartIncircle_OabdNegative_ReturnsFalse()
         {
@@ -18,6 +24,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that smart incircle oabd zero returns false
+        /// </summary>
         [Fact]
         public void SmartIncircle_OabdZero_ReturnsFalse()
         {
@@ -31,6 +40,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that smart incircle ocad zero returns false
+        /// </summary>
         [Fact]
         public void SmartIncircle_OcadZero_ReturnsFalse()
         {
@@ -44,6 +56,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that smart incircle det zero returns false
+        /// </summary>
         [Fact]
         public void SmartIncircle_DetZero_ReturnsFalse()
         {
@@ -57,6 +72,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that in scan area oadb at negative epsilon boundary returns false
+        /// </summary>
         [Fact]
         public void InScanArea_OadbAtNegativeEpsilonBoundary_ReturnsFalse()
         {
@@ -71,6 +89,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that in scan area oadc at epsilon boundary oadb passes returns false
+        /// </summary>
         [Fact]
         public void InScanArea_OadcAtEpsilonBoundary_OadbPasses_ReturnsFalse()
         {
@@ -85,6 +106,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val at epsilon returns ccw
+        /// </summary>
         [Fact]
         public void Orient2d_ValAtEpsilon_ReturnsCcw()
         {
@@ -97,6 +121,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.Equal(Orientation.Ccw, result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val at negative epsilon returns cw
+        /// </summary>
         [Fact]
         public void Orient2d_ValAtNegativeEpsilon_ReturnsCw()
         {
@@ -109,6 +136,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.Equal(Orientation.Cw, result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val half epsilon returns collinear
+        /// </summary>
         [Fact]
         public void Orient2d_ValHalfEpsilon_ReturnsCollinear()
         {
@@ -121,6 +151,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.Equal(Orientation.Collinear, result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val half negative epsilon returns collinear
+        /// </summary>
         [Fact]
         public void Orient2d_ValHalfNegativeEpsilon_ReturnsCollinear()
         {
@@ -133,6 +166,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.Equal(Orientation.Collinear, result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val just above epsilon returns ccw
+        /// </summary>
         [Fact]
         public void Orient2d_ValJustAboveEpsilon_ReturnsCcw()
         {
@@ -145,6 +181,9 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             Assert.Equal(Orientation.Ccw, result);
         }
 
+        /// <summary>
+        /// Tests that orient 2d val just below negative epsilon returns cw
+        /// </summary>
         [Fact]
         public void Orient2d_ValJustBelowNegativeEpsilon_ReturnsCw()
         {

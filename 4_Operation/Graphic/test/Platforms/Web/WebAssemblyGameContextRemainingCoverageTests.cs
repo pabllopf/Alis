@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly game context remaining coverage tests class
+    /// </summary>
     public class WebAssemblyGameContextRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that game 2 d returns configuration with correct defaults
+        /// </summary>
         [Fact]
         public void Game2D_ReturnsConfigurationWithCorrectDefaults()
         {
@@ -53,6 +59,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that game 3 d returns configuration with correct defaults
+        /// </summary>
         [Fact]
         public void Game3D_ReturnsConfigurationWithCorrectDefaults()
         {
@@ -71,6 +80,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that puzzle game returns configuration with correct defaults
+        /// </summary>
         [Fact]
         public void PuzzleGame_ReturnsConfigurationWithCorrectDefaults()
         {
@@ -88,6 +100,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.MouseInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that mobile game returns configuration with correct defaults
+        /// </summary>
         [Fact]
         public void MobileGame_ReturnsConfigurationWithCorrectDefaults()
         {
@@ -106,6 +121,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.TouchInputEnabled);
         }
 
+        /// <summary>
+        /// Tests that constructor null configuration throws argument null exception
+        /// </summary>
         [Fact]
         public void Constructor_NullConfiguration_ThrowsArgumentNullException()
         {

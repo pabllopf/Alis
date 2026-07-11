@@ -6,10 +6,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiP7RemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP7RemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiP7RemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -19,11 +29,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// News the line
+        /// </summary>
         [RequireCImguiSystemFact]
         public void NewLine()
         {
@@ -32,6 +48,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Nexts the column
+        /// </summary>
         [RequireCImguiSystemFact]
         public void NextColumn()
         {
@@ -40,6 +59,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup string
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopup_String()
         {
@@ -48,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup string flags
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopup_String_Flags()
         {
@@ -56,6 +81,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup uint
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopup_Uint()
         {
@@ -64,6 +92,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup uint flags
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopup_Uint_Flags()
         {
@@ -72,6 +103,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup on item click default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick_Default()
         {
@@ -80,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup on item click string
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick_String()
         {
@@ -88,6 +125,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Opens the popup on item click string flags
+        /// </summary>
         [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick_String_Flags()
         {
@@ -96,6 +136,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the allow keyboard focus
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopAllowKeyboardFocus()
         {
@@ -105,6 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the button repeat
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopButtonRepeat()
         {
@@ -114,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the clip rect
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopClipRect()
         {
@@ -123,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the item width
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopItemWidth()
         {
@@ -132,6 +184,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the style color default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopStyleColor_Default()
         {
@@ -141,6 +196,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the style color count
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopStyleColor_Count()
         {
@@ -151,6 +209,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the style var default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopStyleVar_Default()
         {
@@ -160,6 +221,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the style var count
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopStyleVar_Count()
         {
@@ -170,6 +234,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pops the text wrap pos
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PopTextWrapPos()
         {
@@ -179,6 +246,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Progresses the bar fraction
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ProgressBar_Fraction()
         {
@@ -189,6 +259,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Progresses the bar fraction size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ProgressBar_Fraction_Size()
         {
@@ -199,6 +272,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Progresses the bar fraction size overlay
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ProgressBar_Fraction_Size_Overlay()
         {
@@ -209,6 +285,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the allow keyboard focus
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushAllowKeyboardFocus()
         {
@@ -218,6 +297,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the button repeat
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushButtonRepeat()
         {
@@ -227,6 +309,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the clip rect
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushClipRect()
         {
@@ -236,6 +321,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the id string
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushId_String()
         {
@@ -245,6 +333,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the item width
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushItemWidth()
         {
@@ -254,6 +345,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the style color uint
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushStyleColor_Uint()
         {
@@ -263,6 +357,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the style color vec 4
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushStyleColor_Vec4()
         {
@@ -272,6 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the style var float
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushStyleVar_Float()
         {
@@ -281,6 +381,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the style var vec 2
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushStyleVar_Vec2()
         {
@@ -290,6 +393,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the text wrap pos default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushTextWrapPos_Default()
         {
@@ -299,6 +405,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Pushes the text wrap pos float
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PushTextWrapPos_Float()
         {
@@ -308,6 +417,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Separators this instance
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Separator()
         {
@@ -318,6 +430,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the color edit options
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetColorEditOptions()
         {
@@ -326,6 +441,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the keyboard focus here default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetKeyboardFocusHere_Default()
         {
@@ -336,6 +454,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the keyboard focus here offset
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetKeyboardFocusHere_Offset()
         {
@@ -346,6 +467,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the mouse cursor
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetMouseCursor()
         {
@@ -354,6 +478,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next frame want capture keyboard
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextFrameWantCaptureKeyboard()
         {
@@ -362,6 +489,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next frame want capture mouse
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextFrameWantCaptureMouse()
         {
@@ -370,6 +500,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next item open default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextItemOpen_Default()
         {
@@ -378,6 +511,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next item open with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextItemOpen_WithCond()
         {
@@ -386,6 +522,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next item width
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextItemWidth()
         {
@@ -394,6 +533,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window bg alpha
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowBgAlpha()
         {
@@ -404,6 +546,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window collapsed default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowCollapsed_Default()
         {
@@ -414,6 +559,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window collapsed with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowCollapsed_WithCond()
         {
@@ -424,6 +572,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window content size
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowContentSize()
         {
@@ -434,6 +585,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window dock id default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowDockId_Default()
         {
@@ -444,6 +598,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window dock id with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowDockId_WithCond()
         {
@@ -454,6 +611,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window focus
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowFocus()
         {
@@ -464,6 +624,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window pos default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowPos_Default()
         {
@@ -474,6 +637,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window pos with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowPos_WithCond()
         {
@@ -484,6 +650,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window pos with cond pivot
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowPos_WithCondPivot()
         {
@@ -494,6 +663,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window scroll
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowScroll()
         {
@@ -504,6 +676,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window size default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowSize_Default()
         {
@@ -514,6 +689,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window size with cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowSize_WithCond()
         {
@@ -524,6 +702,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window size constraints default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowSizeConstraints_Default()
         {
@@ -534,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window size constraints with callback
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowSizeConstraints_WithCallback()
         {
@@ -544,6 +728,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window size constraints with callback data
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowSizeConstraints_WithCallbackData()
         {
@@ -554,6 +741,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the next window viewport
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetNextWindowViewport()
         {
@@ -564,6 +754,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll from pos x default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollFromPosX_Default()
         {
@@ -574,6 +767,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll from pos x with ratio
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollFromPosX_WithRatio()
         {
@@ -584,6 +780,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll from pos y default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollFromPosY_Default()
         {
@@ -594,6 +793,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll from pos y with ratio
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollFromPosY_WithRatio()
         {
@@ -604,6 +806,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll here x default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollHereX_Default()
         {
@@ -614,6 +819,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll here x with ratio
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollHereX_WithRatio()
         {
@@ -624,6 +832,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll here y default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollHereY_Default()
         {
@@ -634,6 +845,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll here y with ratio
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollHereY_WithRatio()
         {
@@ -644,6 +858,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll x
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollX()
         {
@@ -654,6 +871,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the scroll y
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetScrollY()
         {
@@ -664,6 +884,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the tab item closed
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetTabItemClosed()
         {
@@ -672,6 +895,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window collapsed bool
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowCollapsed_Bool()
         {
@@ -682,6 +908,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window collapsed bool cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowCollapsed_Bool_Cond()
         {
@@ -692,6 +921,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window collapsed str bool
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowCollapsed_Str_Bool()
         {
@@ -702,6 +934,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window collapsed str bool cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowCollapsed_Str_Bool_Cond()
         {
@@ -712,6 +947,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window focus default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowFocus_Default()
         {
@@ -720,6 +958,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window focus str
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowFocus_Str()
         {
@@ -728,6 +969,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window font scale
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowFontScale()
         {
@@ -738,6 +982,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window pos vec 2
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowPos_Vec2()
         {
@@ -748,6 +995,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window pos vec 2 cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowPos_Vec2_Cond()
         {
@@ -758,6 +1008,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window pos str vec 2
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowPos_Str_Vec2()
         {
@@ -768,6 +1021,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window pos str vec 2 cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowPos_Str_Vec2_Cond()
         {
@@ -778,6 +1034,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window size vec 2
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowSize_Vec2()
         {
@@ -788,6 +1047,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window size vec 2 cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowSize_Vec2_Cond()
         {
@@ -798,6 +1060,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window size str vec 2
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowSize_Str_Vec2()
         {
@@ -808,6 +1073,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Sets the window size str vec 2 cond
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetWindowSize_Str_Vec2_Cond()
         {
@@ -818,6 +1086,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Resets the mouse drag delta default
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ResetMouseDragDelta_Default()
         {
@@ -826,6 +1097,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Radioes the button label active
+        /// </summary>
         [RequireCImguiSystemFact]
         public void RadioButton_Label_Active()
         {

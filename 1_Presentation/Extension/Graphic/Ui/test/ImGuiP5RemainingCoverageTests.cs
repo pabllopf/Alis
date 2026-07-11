@@ -4,10 +4,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiP5RemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         private readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP5RemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiP5RemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -17,11 +27,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Tests that align text to frame padding test
+        /// </summary>
         [Fact]
         public void AlignTextToFramePadding_Test()
         {
@@ -32,6 +48,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that arrow button test
+        /// </summary>
         [Fact]
         public void ArrowButton_Test()
         {
@@ -42,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin window test
+        /// </summary>
         [Fact]
         public void Begin_Window_Test()
         {
@@ -56,6 +78,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin child string test
+        /// </summary>
         [Fact]
         public void BeginChild_String_Test()
         {
@@ -73,6 +98,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin child uint test
+        /// </summary>
         [Fact]
         public void BeginChild_Uint_Test()
         {
@@ -90,6 +118,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin child frame test
+        /// </summary>
         [Fact]
         public void BeginChildFrame_Test()
         {
@@ -103,6 +134,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin combo test
+        /// </summary>
         [Fact]
         public void BeginCombo_Test()
         {
@@ -120,6 +154,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin disabled test
+        /// </summary>
         [Fact]
         public void BeginDisabled_Test()
         {
@@ -131,6 +168,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source test
+        /// </summary>
         [Fact]
         public void BeginDragDropSource_Test()
         {
@@ -149,6 +189,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin drag drop target test
+        /// </summary>
         [Fact]
         public void BeginDragDropTarget_Test()
         {
@@ -162,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin group test
+        /// </summary>
         [Fact]
         public void BeginGroup_Test()
         {
@@ -173,6 +219,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin list box test
+        /// </summary>
         [Fact]
         public void BeginListBox_Test()
         {
@@ -190,6 +239,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin main menu bar test
+        /// </summary>
         [Fact]
         public void BeginMainMenuBar_Test()
         {
@@ -201,6 +253,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin menu test
+        /// </summary>
         [Fact]
         public void BeginMenu_Test()
         {
@@ -220,6 +275,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin menu bar test
+        /// </summary>
         [Fact]
         public void BeginMenuBar_Test()
         {
@@ -233,6 +291,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin popup context item test
+        /// </summary>
         [Fact]
         public void BeginPopupContextItem_Test()
         {
@@ -255,6 +316,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin popup context void test
+        /// </summary>
         [Fact]
         public void BeginPopupContextVoid_Test()
         {
@@ -276,6 +340,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin popup context window test
+        /// </summary>
         [Fact]
         public void BeginPopupContextWindow_Test()
         {
@@ -297,6 +364,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin tab bar test
+        /// </summary>
         [Fact]
         public void BeginTabBar_Test()
         {
@@ -314,6 +384,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin table test
+        /// </summary>
         [Fact]
         public void BeginTable_Test()
         {
@@ -339,6 +412,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that begin tooltip test
+        /// </summary>
         [Fact]
         public void BeginTooltip_Test()
         {
@@ -350,6 +426,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that bullet test
+        /// </summary>
         [Fact]
         public void Bullet_Test()
         {
@@ -361,6 +440,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that button test
+        /// </summary>
         [Fact]
         public void Button_Test()
         {
@@ -372,6 +454,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that calc item width test
+        /// </summary>
         [Fact]
         public void CalcItemWidth_Test()
         {
@@ -383,6 +468,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that close current popup test
+        /// </summary>
         [Fact]
         public void CloseCurrentPopup_Test()
         {
@@ -396,6 +484,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that color button test
+        /// </summary>
         [Fact]
         public void ColorButton_Test()
         {
@@ -409,6 +500,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that color convert float 4 to u 32 test
+        /// </summary>
         [Fact]
         public void ColorConvertFloat4ToU32_Test()
         {
@@ -417,6 +511,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.NotEqual(0u, result);
         }
 
+        /// <summary>
+        /// Tests that color convert hs vto rgb test
+        /// </summary>
         [Fact]
         public void ColorConvertHsVtoRgb_Test()
         {
@@ -427,6 +524,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.InRange(b, 0f, 1f);
         }
 
+        /// <summary>
+        /// Tests that color convert rg bto hsv test
+        /// </summary>
         [Fact]
         public void ColorConvertRgBtoHsv_Test()
         {
@@ -437,6 +537,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.InRange(v, 0f, 1f);
         }
 
+        /// <summary>
+        /// Tests that color convert u 32 to float 4 test
+        /// </summary>
         [Fact]
         public void ColorConvertU32ToFloat4_Test()
         {
@@ -447,6 +550,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.InRange(result.W, 0f, 1f);
         }
 
+        /// <summary>
+        /// Tests that color edit 4 test
+        /// </summary>
         [Fact]
         public void ColorEdit4_Test()
         {
@@ -467,6 +573,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that columns test
+        /// </summary>
         [Fact]
         public void Columns_Test()
         {

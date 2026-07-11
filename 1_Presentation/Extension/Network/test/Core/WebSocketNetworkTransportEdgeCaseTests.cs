@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Core
 {
+    /// <summary>
+    /// The web socket network transport edge case tests class
+    /// </summary>
     public class WebSocketNetworkTransportEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that start async with invalid ip address throws format exception
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithInvalidIPAddress_ThrowsFormatException()
         {
@@ -15,6 +21,9 @@ namespace Alis.Extension.Network.Test.Core
             await Assert.ThrowsAsync<FormatException>(() => transport.StartAsync());
         }
 
+        /// <summary>
+        /// Tests that start async with invalid ip address resets state to disconnected
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithInvalidIPAddress_ResetsStateToDisconnected()
         {
@@ -29,6 +38,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that start async with invalid host name throws format exception
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithInvalidHostName_ThrowsFormatException()
         {
@@ -36,6 +48,9 @@ namespace Alis.Extension.Network.Test.Core
             await Assert.ThrowsAsync<FormatException>(() => transport.StartAsync());
         }
 
+        /// <summary>
+        /// Tests that start async with invalid host name resets state to disconnected
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithInvalidHostName_ResetsStateToDisconnected()
         {
@@ -50,6 +65,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that start async with already started transport throws invalid operation exception
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithAlreadyStartedTransport_ThrowsInvalidOperationException()
         {
@@ -59,6 +77,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Contains("already started", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that start async with port in use throws socket exception
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithPortInUse_ThrowsSocketException()
         {
@@ -69,6 +90,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Contains("already in use", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that start async with port in use resets state to disconnected
+        /// </summary>
         [Fact]
         public async Task StartAsync_WithPortInUse_ResetsStateToDisconnected()
         {
@@ -85,6 +109,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport2.State);
         }
 
+        /// <summary>
+        /// Tests that stop async after start transitions to disconnected
+        /// </summary>
         [Fact]
         public async Task StopAsync_AfterStart_TransitionsToDisconnected()
         {
@@ -94,6 +121,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that dispose after start async failure does not throw
+        /// </summary>
         [Fact]
         public async Task Dispose_AfterStartAsyncFailure_DoesNotThrow()
         {
@@ -109,6 +139,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that broadcast async with except client id and no clients does not throw
+        /// </summary>
         [Fact]
         public async Task BroadcastAsync_WithExceptClientIdAndNoClients_DoesNotThrow()
         {
@@ -118,6 +151,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that broadcast async with cancellation token does not throw
+        /// </summary>
         [Fact]
         public async Task BroadcastAsync_WithCancellationToken_DoesNotThrow()
         {
@@ -128,6 +164,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that constructor with null uri has disconnected state
+        /// </summary>
         [Fact]
         public void Constructor_WithNullUri_HasDisconnectedState()
         {
@@ -135,6 +174,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that constructor with custom port uses custom port
+        /// </summary>
         [Fact]
         public void Constructor_WithCustomPort_UsesCustomPort()
         {
@@ -142,6 +184,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that constructor with port zero uses default port
+        /// </summary>
         [Fact]
         public void Constructor_WithPortZero_UsesDefaultPort()
         {
@@ -149,6 +194,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that constructor with localhost uses localhost
+        /// </summary>
         [Fact]
         public void Constructor_WithLocalhost_UsesLocalhost()
         {
@@ -156,6 +204,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple instances does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleInstances_DoesNotThrow()
         {

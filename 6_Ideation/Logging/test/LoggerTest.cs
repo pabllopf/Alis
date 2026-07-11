@@ -99,6 +99,9 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Throws<InvalidOperationException>(() => Logger.Exception("Exception message"));
         }
 
+        /// <summary>
+        /// Tests that logger trace with null default logger does not throw
+        /// </summary>
         [Fact]
         public void Logger_Trace_WithNullDefaultLogger_DoesNotThrow()
         {

@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
+    /// <summary>
+    /// The ping pong manager remaining coverage tests class
+    /// </summary>
     public class PingPongManagerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that send ping with valid payload completes successfully
+        /// </summary>
         [Fact]
         public async Task SendPing_WithValidPayload_CompletesSuccessfully()
         {
@@ -23,6 +29,9 @@ namespace Alis.Extension.Network.Test
             await manager.SendPing(payload, CancellationToken.None);
         }
 
+        /// <summary>
+        /// Tests that send ping with empty payload completes successfully
+        /// </summary>
         [Fact]
         public async Task SendPing_WithEmptyPayload_CompletesSuccessfully()
         {
@@ -36,6 +45,9 @@ namespace Alis.Extension.Network.Test
             await manager.SendPing(payload, CancellationToken.None);
         }
 
+        /// <summary>
+        /// Tests that send ping with payload exceeding max size throws invalid operation exception
+        /// </summary>
         [Fact]
         public async Task SendPing_WithPayloadExceedingMaxSize_ThrowsInvalidOperationException()
         {
@@ -50,6 +62,9 @@ namespace Alis.Extension.Network.Test
                 manager.SendPing(payload, CancellationToken.None));
         }
 
+        /// <summary>
+        /// Tests that ping loop when ping sent ticks exist calls handle expired keep alive
+        /// </summary>
         [Fact]
         public async Task PingLoop_WhenPingSentTicksExist_CallsHandleExpiredKeepAlive()
         {
@@ -66,6 +81,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(WebSocketState.CloseSent, webSocket.State);
         }
 
+        /// <summary>
+        /// Tests that ping loop sends ping and detects expired keep alive
+        /// </summary>
         [Fact]
         public async Task PingLoop_SendsPingAndDetectsExpiredKeepAlive()
         {
@@ -80,6 +98,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(WebSocketState.CloseSent, webSocket.State);
         }
 
+        /// <summary>
+        /// Tests that ping forever completes without exception
+        /// </summary>
         [Fact]
         public async Task PingForever_CompletesWithoutException()
         {

@@ -3,8 +3,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The global world tables coverage test class
+    /// </summary>
     public class GlobalWorldTablesCoverageTest
     {
+        /// <summary>
+        /// Tests that grow component tag table with many components does not throw
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void GrowComponentTagTable_WithManyComponents_DoesNotThrow()
         {
@@ -16,6 +22,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(scene);
         }
 
+        /// <summary>
+        /// Tests that component index with multiple archetypes returns valid index
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void ComponentIndex_WithMultipleArchetypes_ReturnsValidIndex()
         {
@@ -26,6 +35,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(scene);
         }
 
+        /// <summary>
+        /// Tests that has with populated scene works correctly
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Has_WithPopulatedScene_WorksCorrectly()
         {
@@ -35,6 +47,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(scene.AllowStructualChanges);
         }
 
+        /// <summary>
+        /// Tests that world archetype table with entities updates correctly
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void WorldArchetypeTable_WithEntities_UpdatesCorrectly()
         {

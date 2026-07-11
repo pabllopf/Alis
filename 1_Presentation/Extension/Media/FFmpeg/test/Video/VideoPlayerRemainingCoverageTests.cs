@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video player remaining coverage tests class
+    /// </summary>
     public class VideoPlayerRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that play in background null filename throws invalid operation exception
+        /// </summary>
         [Fact]
         public void PlayInBackground_NullFilename_ThrowsInvalidOperationException()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("No filename was specified", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that play in background empty filename throws invalid operation exception
+        /// </summary>
         [Fact]
         public void PlayInBackground_EmptyFilename_ThrowsInvalidOperationException()
         {
@@ -55,6 +64,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("No filename was specified", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that play in background with filename does not throw precondition exception
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithFilename_DoesNotThrowPreconditionException()
         {
@@ -65,6 +77,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.IsNotType<InvalidOperationException>(ex);
         }
 
+        /// <summary>
+        /// Tests that constructor with ffplay executable does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithFfplayExecutable_DoesNotThrow()
         {

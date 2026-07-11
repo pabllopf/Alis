@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player edge case tests class
+    /// </summary>
     public class BrowserPlayerEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that set volume should return completed task
+        /// </summary>
         [Fact]
         public void SetVolume_ShouldReturnCompletedTask()
         {
@@ -19,6 +25,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(Task.CompletedTask, result);
         }
 
+        /// <summary>
+        /// Tests that set volume with zero should return completed task
+        /// </summary>
         [Fact]
         public void SetVolume_WithZero_ShouldReturnCompletedTask()
         {
@@ -29,6 +38,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(Task.CompletedTask, result);
         }
 
+        /// <summary>
+        /// Tests that set volume with max value should return completed task
+        /// </summary>
         [Fact]
         public void SetVolume_WithMaxValue_ShouldReturnCompletedTask()
         {
@@ -39,6 +51,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(Task.CompletedTask, result);
         }
 
+        /// <summary>
+        /// Tests that get format with zero bits and zero channels should return false
+        /// </summary>
         [Fact]
         public void GetFormat_WithZeroBitsAndZeroChannels_ShouldReturnFalse()
         {
@@ -48,6 +63,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(0, format);
         }
 
+        /// <summary>
+        /// Tests that get format with negative bits should return false
+        /// </summary>
         [Fact]
         public void GetFormat_WithNegativeBits_ShouldReturnFalse()
         {
@@ -57,6 +75,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Equal(0, format);
         }
 
+        /// <summary>
+        /// Tests that find fmt chunk with null array should throw null reference exception
+        /// </summary>
         [Fact]
         public void FindFmtChunk_WithNullArray_ShouldThrowNullReferenceException()
         {
@@ -65,6 +86,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Throws<NullReferenceException>(() => BrowserPlayer.FindFmtChunk(null, ref fmtPos));
         }
 
+        /// <summary>
+        /// Tests that find data chunk with null array should throw null reference exception
+        /// </summary>
         [Fact]
         public void FindDataChunk_WithNullArray_ShouldThrowNullReferenceException()
         {

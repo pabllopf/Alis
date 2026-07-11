@@ -6,19 +6,34 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
+    /// <summary>
+    /// The gl shader program full tests class
+    /// </summary>
     public class GlShaderProgramFullTests
     {
+        /// <summary>
+        /// Gets the value of the type from uniform type
+        /// </summary>
         private static MethodInfo TypeFromUniformType =>
             typeof(GlShaderProgram).GetMethod("TypeFromUniformType", BindingFlags.NonPublic | BindingFlags.Static);
+        /// <summary>
+        /// Gets the value of the type from attribute type
+        /// </summary>
         private static MethodInfo TypeFromAttributeType =>
             typeof(GlShaderProgram).GetMethod("TypeFromAttributeType", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// Tests that constructor throws when gl not available
+        /// </summary>
         [Fact]
         public void Constructor_ThrowsWhenGlNotAvailable()
         {
             Assert.ThrowsAny<Exception>(() => new GlShaderProgram("vs", "fs"));
         }
 
+        /// <summary>
+        /// Tests that type from attribute type all cases
+        /// </summary>
         [Fact]
         public void TypeFromAttributeType_AllCases()
         {
@@ -31,6 +46,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(object), TypeFromAttributeType.Invoke(null, new object[] { default(ActiveAttribType) }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type basic types
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_BasicTypes()
         {
@@ -42,6 +60,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(bool), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.Bool }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type int vec types
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_IntVecTypes()
         {
@@ -50,6 +71,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(int[]), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.IntVec4 }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type bool vec types
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_BoolVecTypes()
         {
@@ -58,6 +82,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(bool[]), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.BoolVec4 }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type mat 2 types
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_Mat2Types()
         {
@@ -65,6 +92,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(Alis.Core.Aspect.Math.Matrix.Matrix4X4), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.FloatMat4 }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type mat 2x 3 types
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_Mat2x3Types()
         {
@@ -76,6 +106,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(float[]), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.FloatMat4X3 }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type sampler types return int
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_SamplerTypes_ReturnInt()
         {
@@ -96,6 +129,9 @@ namespace Alis.Core.Graphic.Test.Constructs
                 Assert.Equal(typeof(int), TypeFromUniformType.Invoke(null, new object[] { t }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type unsigned sampler types return uint
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_UnsignedSamplerTypes_ReturnUint()
         {
@@ -111,6 +147,9 @@ namespace Alis.Core.Graphic.Test.Constructs
                 Assert.Equal(typeof(uint), TypeFromUniformType.Invoke(null, new object[] { t }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type unsigned int vec types return uint array
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_UnsignedIntVecTypes_ReturnUintArray()
         {
@@ -119,12 +158,18 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(uint[]), TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.UnsignedIntVec4 }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type default returns object
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_Default_ReturnsObject()
         {
             Assert.Equal(typeof(object), TypeFromUniformType.Invoke(null, new object[] { default(ActiveUniformType) }));
         }
 
+        /// <summary>
+        /// Tests that type from uniform type float mat 3 throws
+        /// </summary>
         [Fact]
         public void TypeFromUniformType_FloatMat3_Throws()
         {
@@ -133,6 +178,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that type from attribute type float mat 3 throws
+        /// </summary>
         [Fact]
         public void TypeFromAttributeType_FloatMat3_Throws()
         {
@@ -141,36 +189,57 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that gl shader program is sealed
+        /// </summary>
         [Fact]
         public void GlShaderProgram_IsSealed() => Assert.True(typeof(GlShaderProgram).IsSealed);
 
+        /// <summary>
+        /// Tests that gl shader program implements i disposable
+        /// </summary>
         [Fact]
         public void GlShaderProgram_ImplementsIDisposable() => Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(GlShaderProgram)));
 
+        /// <summary>
+        /// Tests that dispose children field exists
+        /// </summary>
         [Fact]
         public void DisposeChildren_Field_Exists()
         {
             Assert.NotNull(typeof(GlShaderProgram).GetField("DisposeChildren", BindingFlags.Public | BindingFlags.Instance));
         }
 
+        /// <summary>
+        /// Tests that vertex shader field exists
+        /// </summary>
         [Fact]
         public void VertexShader_Field_Exists()
         {
             Assert.NotNull(typeof(GlShaderProgram).GetField("VertexShader", BindingFlags.Public | BindingFlags.Instance));
         }
 
+        /// <summary>
+        /// Tests that fragment shader field exists
+        /// </summary>
         [Fact]
         public void FragmentShader_Field_Exists()
         {
             Assert.NotNull(typeof(GlShaderProgram).GetField("FragmentShader", BindingFlags.Public | BindingFlags.Instance));
         }
 
+        /// <summary>
+        /// Tests that program id property exists
+        /// </summary>
         [Fact]
         public void ProgramId_Property_Exists()
         {
             Assert.NotNull(typeof(GlShaderProgram).GetProperty("ProgramId"));
         }
 
+        /// <summary>
+        /// Tests that indexer exists
+        /// </summary>
         [Fact]
         public void Indexer_Exists()
         {

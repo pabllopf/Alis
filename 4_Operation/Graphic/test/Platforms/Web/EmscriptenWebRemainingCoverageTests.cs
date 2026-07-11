@@ -45,6 +45,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterKeyboardCallbacks
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register keyboard callbacks does not throw
+        /// </summary>
         [Fact]
         public void RegisterKeyboardCallbacks_DoesNotThrow()
         {
@@ -57,6 +60,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterMouseCallbacks
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register mouse callbacks does not throw
+        /// </summary>
         [Fact]
         public void RegisterMouseCallbacks_DoesNotThrow()
         {
@@ -69,6 +75,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterGamepadCallbacks
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register gamepad callbacks does not throw
+        /// </summary>
         [Fact]
         public void RegisterGamepadCallbacks_DoesNotThrow()
         {
@@ -81,6 +90,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterWindowCallbacks
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register window callbacks does not throw
+        /// </summary>
         [Fact]
         public void RegisterWindowCallbacks_DoesNotThrow()
         {
@@ -93,6 +105,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetConnectedGamepads
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get connected gamepads returns empty array on native failure
+        /// </summary>
         [Fact]
         public void GetConnectedGamepads_ReturnsEmptyArrayOnNativeFailure()
         {
@@ -105,6 +120,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetGamepadAxes
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get gamepad axes returns empty array on native failure
+        /// </summary>
         [Fact]
         public void GetGamepadAxes_ReturnsEmptyArrayOnNativeFailure()
         {
@@ -117,6 +135,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetGamepadButtons
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get gamepad buttons returns empty array on native failure
+        /// </summary>
         [Fact]
         public void GetGamepadButtons_ReturnsEmptyArrayOnNativeFailure()
         {
@@ -129,6 +150,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ShowCanvas
         // =====================================================================
 
+        /// <summary>
+        /// Tests that show canvas does not throw
+        /// </summary>
         [Fact]
         public void ShowCanvas_DoesNotThrow()
         {
@@ -140,6 +164,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // HideCanvas
         // =====================================================================
 
+        /// <summary>
+        /// Tests that hide canvas does not throw
+        /// </summary>
         [Fact]
         public void HideCanvas_DoesNotThrow()
         {
@@ -151,6 +178,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SetWindowTitle
         // =====================================================================
 
+        /// <summary>
+        /// Tests that set window title does not throw
+        /// </summary>
         [Fact]
         public void SetWindowTitle_DoesNotThrow()
         {
@@ -158,6 +188,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that set window title null title does not throw
+        /// </summary>
         [Fact]
         public void SetWindowTitle_NullTitle_DoesNotThrow()
         {
@@ -169,6 +202,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SetCanvasSize
         // =====================================================================
 
+        /// <summary>
+        /// Tests that set canvas size does not throw
+        /// </summary>
         [Fact]
         public void SetCanvasSize_DoesNotThrow()
         {
@@ -176,6 +212,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that set canvas size zero dimensions does not throw
+        /// </summary>
         [Fact]
         public void SetCanvasSize_ZeroDimensions_DoesNotThrow()
         {
@@ -183,6 +222,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that set canvas size negative dimensions does not throw
+        /// </summary>
         [Fact]
         public void SetCanvasSize_NegativeDimensions_DoesNotThrow()
         {
@@ -194,6 +236,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SetWindowIcon
         // =====================================================================
 
+        /// <summary>
+        /// Tests that set window icon does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_DoesNotThrow()
         {
@@ -201,6 +246,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that set window icon null path does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_NullPath_DoesNotThrow()
         {
@@ -208,6 +256,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that set window icon empty path does not throw
+        /// </summary>
         [Fact]
         public void SetWindowIcon_EmptyPath_DoesNotThrow()
         {
@@ -219,6 +270,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetWindowPositionX
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get window position x returns default on native failure
+        /// </summary>
         [Fact]
         public void GetWindowPositionX_ReturnsDefaultOnNativeFailure()
         {
@@ -230,6 +284,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetWindowPositionY
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get window position y returns default on native failure
+        /// </summary>
         [Fact]
         public void GetWindowPositionY_ReturnsDefaultOnNativeFailure()
         {
@@ -241,6 +298,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetDevicePixelRatio
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get device pixel ratio returns default on native failure
+        /// </summary>
         [Fact]
         public void GetDevicePixelRatio_ReturnsDefaultOnNativeFailure()
         {
@@ -252,6 +312,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RequestFullscreen
         // =====================================================================
 
+        /// <summary>
+        /// Tests that request fullscreen returns false on native failure
+        /// </summary>
         [Fact]
         public void RequestFullscreen_ReturnsFalseOnNativeFailure()
         {
@@ -263,6 +326,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ExitFullscreen
         // =====================================================================
 
+        /// <summary>
+        /// Tests that exit fullscreen returns false on native failure
+        /// </summary>
         [Fact]
         public void ExitFullscreen_ReturnsFalseOnNativeFailure()
         {
@@ -274,6 +340,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsFullscreenEnabled
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is fullscreen enabled returns false on native failure
+        /// </summary>
         [Fact]
         public void IsFullscreenEnabled_ReturnsFalseOnNativeFailure()
         {
@@ -285,6 +354,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // LockPointer
         // =====================================================================
 
+        /// <summary>
+        /// Tests that lock pointer returns false on native failure
+        /// </summary>
         [Fact]
         public void LockPointer_ReturnsFalseOnNativeFailure()
         {
@@ -296,6 +368,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // UnlockPointer
         // =====================================================================
 
+        /// <summary>
+        /// Tests that unlock pointer returns false on native failure
+        /// </summary>
         [Fact]
         public void UnlockPointer_ReturnsFalseOnNativeFailure()
         {
@@ -307,6 +382,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsPointerLocked
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is pointer locked returns false on native failure
+        /// </summary>
         [Fact]
         public void IsPointerLocked_ReturnsFalseOnNativeFailure()
         {
@@ -318,6 +396,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // VibrateGamepad
         // =====================================================================
 
+        /// <summary>
+        /// Tests that vibrate gamepad returns false on native failure
+        /// </summary>
         [Fact]
         public void VibrateGamepad_ReturnsFalseOnNativeFailure()
         {
@@ -325,6 +406,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that vibrate gamepad negative index returns false
+        /// </summary>
         [Fact]
         public void VibrateGamepad_NegativeIndex_ReturnsFalse()
         {
@@ -332,6 +416,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that vibrate gamepad zero duration returns false
+        /// </summary>
         [Fact]
         public void VibrateGamepad_ZeroDuration_ReturnsFalse()
         {
@@ -343,6 +430,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetSystemTimeMs
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get system time ms returns default on native failure
+        /// </summary>
         [Fact]
         public void GetSystemTimeMs_ReturnsDefaultOnNativeFailure()
         {
@@ -354,6 +444,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // OpenFileDialog
         // =====================================================================
 
+        /// <summary>
+        /// Tests that open file dialog default mime returns null on native failure
+        /// </summary>
         [Fact]
         public void OpenFileDialog_DefaultMime_ReturnsNullOnNativeFailure()
         {
@@ -361,6 +454,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that open file dialog custom mime returns null on native failure
+        /// </summary>
         [Fact]
         public void OpenFileDialog_CustomMime_ReturnsNullOnNativeFailure()
         {
@@ -368,6 +464,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that open file dialog null mime returns null on native failure
+        /// </summary>
         [Fact]
         public void OpenFileDialog_NullMime_ReturnsNullOnNativeFailure()
         {
@@ -375,6 +474,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that open file dialog empty mime returns null on native failure
+        /// </summary>
         [Fact]
         public void OpenFileDialog_EmptyMime_ReturnsNullOnNativeFailure()
         {
@@ -386,6 +488,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SaveFile
         // =====================================================================
 
+        /// <summary>
+        /// Tests that save file returns false on native failure
+        /// </summary>
         [Fact]
         public void SaveFile_ReturnsFalseOnNativeFailure()
         {
@@ -393,6 +498,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that save file with data returns false on native failure
+        /// </summary>
         [Fact]
         public void SaveFile_WithData_ReturnsFalseOnNativeFailure()
         {
@@ -400,6 +508,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that save file null filename returns false
+        /// </summary>
         [Fact]
         public void SaveFile_NullFilename_ReturnsFalse()
         {
@@ -407,6 +518,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that save file null data returns false
+        /// </summary>
         [Fact]
         public void SaveFile_NullData_ReturnsFalse()
         {
@@ -418,6 +532,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // CopyToClipboard
         // =====================================================================
 
+        /// <summary>
+        /// Tests that copy to clipboard returns false on native failure
+        /// </summary>
         [Fact]
         public void CopyToClipboard_ReturnsFalseOnNativeFailure()
         {
@@ -425,6 +542,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that copy to clipboard null text returns false
+        /// </summary>
         [Fact]
         public void CopyToClipboard_NullText_ReturnsFalse()
         {
@@ -432,6 +552,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that copy to clipboard empty text returns false
+        /// </summary>
         [Fact]
         public void CopyToClipboard_EmptyText_ReturnsFalse()
         {
@@ -443,6 +566,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // PasteFromClipboard
         // =====================================================================
 
+        /// <summary>
+        /// Tests that paste from clipboard returns null on native failure
+        /// </summary>
         [Fact]
         public void PasteFromClipboard_ReturnsNullOnNativeFailure()
         {
@@ -454,6 +580,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ShowAlert
         // =====================================================================
 
+        /// <summary>
+        /// Tests that show alert does not throw
+        /// </summary>
         [Fact]
         public void ShowAlert_DoesNotThrow()
         {
@@ -461,6 +590,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that show alert null message does not throw
+        /// </summary>
         [Fact]
         public void ShowAlert_NullMessage_DoesNotThrow()
         {
@@ -468,6 +600,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that show alert empty message does not throw
+        /// </summary>
         [Fact]
         public void ShowAlert_EmptyMessage_DoesNotThrow()
         {
@@ -479,6 +614,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ShowConfirm
         // =====================================================================
 
+        /// <summary>
+        /// Tests that show confirm returns false on native failure
+        /// </summary>
         [Fact]
         public void ShowConfirm_ReturnsFalseOnNativeFailure()
         {
@@ -486,6 +624,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that show confirm null message returns false
+        /// </summary>
         [Fact]
         public void ShowConfirm_NullMessage_ReturnsFalse()
         {
@@ -493,6 +634,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that show confirm empty message returns false
+        /// </summary>
         [Fact]
         public void ShowConfirm_EmptyMessage_ReturnsFalse()
         {
@@ -504,6 +648,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetLanguage
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get language returns default on native failure
+        /// </summary>
         [Fact]
         public void GetLanguage_ReturnsDefaultOnNativeFailure()
         {
@@ -515,6 +662,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsOnline
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is online returns false on native failure
+        /// </summary>
         [Fact]
         public void IsOnline_ReturnsFalseOnNativeFailure()
         {
@@ -526,6 +676,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetBatteryLevel
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get battery level returns default on native failure
+        /// </summary>
         [Fact]
         public void GetBatteryLevel_ReturnsDefaultOnNativeFailure()
         {
@@ -537,6 +690,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // IsCharging
         // =====================================================================
 
+        /// <summary>
+        /// Tests that is charging returns false on native failure
+        /// </summary>
         [Fact]
         public void IsCharging_ReturnsFalseOnNativeFailure()
         {
@@ -548,6 +704,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetOrientation
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get orientation returns default on native failure
+        /// </summary>
         [Fact]
         public void GetOrientation_ReturnsDefaultOnNativeFailure()
         {
@@ -559,6 +718,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RequestCameraPermission
         // =====================================================================
 
+        /// <summary>
+        /// Tests that request camera permission returns false on native failure
+        /// </summary>
         [Fact]
         public void RequestCameraPermission_ReturnsFalseOnNativeFailure()
         {
@@ -570,6 +732,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RequestMicrophonePermission
         // =====================================================================
 
+        /// <summary>
+        /// Tests that request microphone permission returns false on native failure
+        /// </summary>
         [Fact]
         public void RequestMicrophonePermission_ReturnsFalseOnNativeFailure()
         {
@@ -581,6 +746,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ConsoleLog
         // =====================================================================
 
+        /// <summary>
+        /// Tests that console log does not throw
+        /// </summary>
         [Fact]
         public void ConsoleLog_DoesNotThrow()
         {
@@ -588,6 +756,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that console log null message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleLog_NullMessage_DoesNotThrow()
         {
@@ -599,6 +770,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ConsoleWarn
         // =====================================================================
 
+        /// <summary>
+        /// Tests that console warn does not throw
+        /// </summary>
         [Fact]
         public void ConsoleWarn_DoesNotThrow()
         {
@@ -606,6 +780,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that console warn null message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleWarn_NullMessage_DoesNotThrow()
         {
@@ -617,6 +794,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ConsoleError
         // =====================================================================
 
+        /// <summary>
+        /// Tests that console error does not throw
+        /// </summary>
         [Fact]
         public void ConsoleError_DoesNotThrow()
         {
@@ -624,6 +804,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that console error null message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleError_NullMessage_DoesNotThrow()
         {
@@ -635,6 +818,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterKeyboardCallbacks Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register keyboard callbacks all non default int ptr does not throw
+        /// </summary>
         [Fact]
         public void RegisterKeyboardCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
@@ -648,6 +834,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterMouseCallbacks Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register mouse callbacks all non default int ptr does not throw
+        /// </summary>
         [Fact]
         public void RegisterMouseCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
@@ -661,6 +850,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterGamepadCallbacks Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register gamepad callbacks all non default int ptr does not throw
+        /// </summary>
         [Fact]
         public void RegisterGamepadCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
@@ -673,6 +865,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // RegisterWindowCallbacks Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that register window callbacks all non default int ptr does not throw
+        /// </summary>
         [Fact]
         public void RegisterWindowCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
@@ -686,6 +881,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetGamepadAxes Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get gamepad axes multiple indices all return empty
+        /// </summary>
         [Fact]
         public void GetGamepadAxes_MultipleIndices_AllReturnEmpty()
         {
@@ -697,6 +895,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that get gamepad axes negative index returns empty
+        /// </summary>
         [Fact]
         public void GetGamepadAxes_NegativeIndex_ReturnsEmpty()
         {
@@ -709,6 +910,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetGamepadButtons Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get gamepad buttons multiple indices all return empty
+        /// </summary>
         [Fact]
         public void GetGamepadButtons_MultipleIndices_AllReturnEmpty()
         {
@@ -720,6 +924,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that get gamepad buttons negative index returns empty
+        /// </summary>
         [Fact]
         public void GetGamepadButtons_NegativeIndex_ReturnsEmpty()
         {
@@ -732,6 +939,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetConnectedGamepads Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get connected gamepads called multiple times returns empty
+        /// </summary>
         [Fact]
         public void GetConnectedGamepads_CalledMultipleTimes_ReturnsEmpty()
         {
@@ -747,6 +957,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetSystemTimeMs Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get system time ms called multiple times returns zero
+        /// </summary>
         [Fact]
         public void GetSystemTimeMs_CalledMultipleTimes_ReturnsZero()
         {
@@ -761,6 +974,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetWindowPositionX / Y Called Multiple Times
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get window position called multiple times returns zero
+        /// </summary>
         [Fact]
         public void GetWindowPosition_CalledMultipleTimes_ReturnsZero()
         {
@@ -775,6 +991,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // OpenFileDialog — edge cases for null coalesce path
         // =====================================================================
 
+        /// <summary>
+        /// Tests that open file dialog all mime types returns null
+        /// </summary>
         [Fact]
         public void OpenFileDialog_AllMimeTypes_ReturnsNull()
         {
@@ -782,6 +1001,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that open file dialog called multiple times returns null
+        /// </summary>
         [Fact]
         public void OpenFileDialog_CalledMultipleTimes_ReturnsNull()
         {
@@ -795,6 +1017,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // PasteFromClipboard Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that paste from clipboard called multiple times returns null
+        /// </summary>
         [Fact]
         public void PasteFromClipboard_CalledMultipleTimes_ReturnsNull()
         {
@@ -808,6 +1033,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GetLanguage Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get language called multiple times returns default
+        /// </summary>
         [Fact]
         public void GetLanguage_CalledMultipleTimes_ReturnsDefault()
         {
@@ -821,6 +1049,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // SaveFile Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that save file large data array returns false
+        /// </summary>
         [Fact]
         public void SaveFile_LargeDataArray_ReturnsFalse()
         {
@@ -833,6 +1064,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ShowConfirm Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that show confirm long message returns false
+        /// </summary>
         [Fact]
         public void ShowConfirm_LongMessage_ReturnsFalse()
         {
@@ -845,6 +1079,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // VibrateGamepad Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that vibrate gamepad max values returns false
+        /// </summary>
         [Fact]
         public void VibrateGamepad_MaxValues_ReturnsFalse()
         {
@@ -856,6 +1093,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ConsoleLog / ConsoleWarn / ConsoleError Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that console log empty message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleLog_EmptyMessage_DoesNotThrow()
         {
@@ -863,6 +1103,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that console warn empty message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleWarn_EmptyMessage_DoesNotThrow()
         {
@@ -870,6 +1113,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that console error empty message does not throw
+        /// </summary>
         [Fact]
         public void ConsoleError_EmptyMessage_DoesNotThrow()
         {
@@ -881,6 +1127,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ShowAlert Edge Cases
         // =====================================================================
 
+        /// <summary>
+        /// Tests that show alert very long message does not throw
+        /// </summary>
         [Fact]
         public void ShowAlert_VeryLongMessage_DoesNotThrow()
         {

@@ -6,16 +6,29 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player constructor error tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class BrowserPlayerConstructorErrorTests : IDisposable
     {
+        /// <summary>
+        /// The mode file path
+        /// </summary>
         private const string ModeFilePath = "/tmp/openal_stub_mode.txt";
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             // Reset to success mode
             try { File.WriteAllText(ModeFilePath, "success"); } catch { }
         }
 
+        /// <summary>
+        /// Constructors the when device fails should throw
+        /// </summary>
         [BrowserOnly]
         public void Constructor_WhenDeviceFails_ShouldThrow()
         {
@@ -24,6 +37,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("OpenAL", ex.Message);
         }
 
+        /// <summary>
+        /// Constructors the when context fails should throw
+        /// </summary>
         [BrowserOnly]
         public void Constructor_WhenContextFails_ShouldThrow()
         {
@@ -32,6 +48,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("OpenAL", ex.Message);
         }
 
+        /// <summary>
+        /// Constructors the when make current fails should throw
+        /// </summary>
         [BrowserOnly]
         public void Constructor_WhenMakeCurrentFails_ShouldThrow()
         {

@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The file picker validator coverage test class
+    /// </summary>
     public class FilePickerValidatorCoverageTest
     {
+        /// <summary>
+        /// Tests that is result valid with allow multiple and multiple paths should return true
+        /// </summary>
         [Fact]
         public void IsResultValid_WithAllowMultipleAndMultiplePaths_ShouldReturnTrue()
         {
@@ -61,6 +67,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             }
         }
 
+        /// <summary>
+        /// Tests that is result valid with successful result and non existent path should return false
+        /// </summary>
         [Fact]
         public void IsResultValid_WithSuccessfulResultAndNonExistentPath_ShouldReturnFalse()
         {
@@ -72,6 +81,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(isValid);
         }
 
+        /// <summary>
+        /// Tests that is result valid with select folder and non existent path should return false
+        /// </summary>
         [Fact]
         public void IsResultValid_WithSelectFolderAndNonExistentPath_ShouldReturnFalse()
         {
@@ -83,6 +95,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(isValid);
         }
 
+        /// <summary>
+        /// Tests that is file extension allowed with path having no extension and no filters should return true
+        /// </summary>
         [Fact]
         public void IsFileExtensionAllowed_WithPathHavingNoExtensionAndNoFilters_ShouldReturnTrue()
         {
@@ -93,6 +108,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that is result valid with error result should return true
+        /// </summary>
         [Fact]
         public void IsResultValid_WithErrorResult_ShouldReturnTrue()
         {
@@ -104,6 +122,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(isValid);
         }
 
+        /// <summary>
+        /// Tests that validate options with select folder and valid path should not throw
+        /// </summary>
         [Fact]
         public void ValidateOptions_WithSelectFolderAndValidPath_ShouldNotThrow()
         {
@@ -125,6 +146,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             }
         }
 
+        /// <summary>
+        /// Tests that is valid directory path with long path should not throw
+        /// </summary>
         [Fact]
         public void IsValidDirectoryPath_WithLongPath_ShouldNotThrow()
         {
@@ -134,6 +158,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is valid file path with empty path should return false
+        /// </summary>
         [Fact]
         public void IsValidFilePath_WithEmptyPath_ShouldReturnFalse()
         {
@@ -142,6 +169,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is file extension allowed with options having null filters should return true
+        /// </summary>
         [Fact]
         public void IsFileExtensionAllowed_WithOptionsHavingNullFilters_ShouldReturnTrue()
         {
