@@ -488,7 +488,17 @@ namespace Alis.Core.Physic.Common.TextureTools
 
         //- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-        /** Recursive linear interpolation for use in marching squares **/
+        /// <summary>
+        ///     Recursive linear interpolation for use in marching squares.
+        /// </summary>
+        /// <param name="x0">The start X coordinate.</param>
+        /// <param name="x1">The end X coordinate.</param>
+        /// <param name="y">The Y coordinate.</param>
+        /// <param name="v0">The value at the start.</param>
+        /// <param name="v1">The value at the end.</param>
+        /// <param name="f">The field values.</param>
+        /// <param name="c">The recursion depth.</param>
+        /// <returns>The interpolated X coordinate.</returns>
         internal static float Xlerp(float x0, float x1, float y, float v0, float v1, sbyte[,] f, int c)
         {
             float xm = Lerp(x0, x1, v0, v1);
@@ -507,7 +517,17 @@ namespace Alis.Core.Physic.Common.TextureTools
             return Xlerp(xm, x1, y, vm, v1, f, c - 1);
         }
 
-        /** Recursive linear interpolation for use in marching squares **/
+        /// <summary>
+        ///     Recursive linear interpolation for use in marching squares.
+        /// </summary>
+        /// <param name="y0">The start Y coordinate.</param>
+        /// <param name="y1">The end Y coordinate.</param>
+        /// <param name="x">The X coordinate.</param>
+        /// <param name="v0">The value at the start.</param>
+        /// <param name="v1">The value at the end.</param>
+        /// <param name="f">The field values.</param>
+        /// <param name="c">The recursion depth.</param>
+        /// <returns>The interpolated Y coordinate.</returns>
         internal static float Ylerp(float y0, float y1, float x, float v0, float v1, sbyte[,] f, int c)
         {
             float ym = Lerp(y0, y1, v0, v1);
@@ -526,7 +546,11 @@ namespace Alis.Core.Physic.Common.TextureTools
             return Ylerp(ym, y1, x, vm, v1, f, c - 1);
         }
 
-        /** Square value for use in marching squares **/
+        /// <summary>
+        ///     Computes the square of a value for use in marching squares.
+        /// </summary>
+        /// <param name="x">The input value.</param>
+        /// <returns>The square of the input.</returns>
         internal static float Square(float x) => x * x;
 
         /// <summary>
