@@ -153,7 +153,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
 
             if (_rooms == null)
             {
-                throw new ArgumentNullException(nameof(_rooms));
+                throw new InvalidOperationException("_rooms cannot be null.");
             }
 
             if (_corridors == null)
