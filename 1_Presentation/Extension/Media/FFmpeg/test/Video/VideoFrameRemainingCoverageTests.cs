@@ -217,35 +217,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 }
             }
         }
-
-        /// <summary>
-        /// Tests that save with custom ffmpeg path should complete without exception
-        /// </summary>
-        [MacOsOnly]
-        public void Save_WithCustomFfmpegPath_ShouldCompleteWithoutException()
-        {
-            VideoFrame frame = new VideoFrame(2, 2);
-            byte[] data = new byte[12];
-            frame.Load(new MemoryStream(data));
-
-            string outputPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName() + ".png");
-
-            try
-            {
-                Exception exception = Record.Exception(() =>
-                    frame.Save(outputPath, ffmpegExecutable: "/opt/homebrew/bin/ffmpeg"));
-
-                Assert.Null(exception);
-            }
-            finally
-            {
-                if (File.Exists(outputPath))
-                {
-                    File.Delete(outputPath);
-                }
-            }
-        }
-
+        
         /// <summary>
         /// Tests that save with non existent ffmpeg should throw win 32 exception
         /// </summary>

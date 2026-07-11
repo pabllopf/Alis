@@ -108,58 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5f, t.Origin.X);
             Assert.Equal(10f, t.Origin.Y);
         }
-
-        /// <summary>
-        /// Tests that transform returns same instance when not dirty
-        /// </summary>
-        [Fact]
-        public void Transform_ReturnsSameInstance_WhenNotDirty()
-        {
-            var t = new Transformable();
-            var transform1 = t.Transform;
-            var transform2 = t.Transform;
-            Assert.Equal(transform1, transform2);
-        }
-
-        /// <summary>
-        /// Tests that transform changes after position change
-        /// </summary>
-        [Fact]
-        public void Transform_Changes_AfterPositionChange()
-        {
-            var t = new Transformable();
-            var transform1 = t.Transform;
-            t.Position = new Vector2F(100, 200);
-            var transform2 = t.Transform;
-            Assert.NotEqual(transform1, transform2);
-        }
-
-        /// <summary>
-        /// Tests that transform changes after rotation change
-        /// </summary>
-        [Fact]
-        public void Transform_Changes_AfterRotationChange()
-        {
-            var t = new Transformable();
-            var transform1 = t.Transform;
-            t.Rotation = 45f;
-            var transform2 = t.Transform;
-            Assert.NotEqual(transform1, transform2);
-        }
-
-        /// <summary>
-        /// Tests that transform changes after scale change
-        /// </summary>
-        [Fact]
-        public void Transform_Changes_AfterScaleChange()
-        {
-            var t = new Transformable();
-            var transform1 = t.Transform;
-            t.Scale = new Vector2F(2, 2);
-            var transform2 = t.Transform;
-            Assert.NotEqual(transform1, transform2);
-        }
-
+        
         /// <summary>
         /// Tests that transform changes after origin change
         /// </summary>

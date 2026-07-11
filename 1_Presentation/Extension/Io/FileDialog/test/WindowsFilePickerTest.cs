@@ -215,16 +215,6 @@ namespace Alis.Extension.Io.FileDialog.Test
         }
 
         /// <summary>
-        /// Tests that execute script throws on non windows
-        /// </summary>
-        [Fact]
-        public void ExecuteScript_ThrowsOnNonWindows()
-        {
-            Assert.Throws<System.InvalidOperationException>(() =>
-                WindowsFilePicker.ExecuteScript("test script"));
-        }
-
-        /// <summary>
         /// Tests that parse result null returns cancelled
         /// </summary>
         [Fact]

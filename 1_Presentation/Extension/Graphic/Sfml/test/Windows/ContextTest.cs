@@ -1,4 +1,6 @@
 // license header
+
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -12,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that context is assignable from critical finalizer object
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Context_IsAssignableFromCriticalFinalizerObject()
         {
             Assert.True(typeof(System.Runtime.ConstrainedExecution.CriticalFinalizerObject).IsAssignableFrom(typeof(Context)));
@@ -21,7 +23,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that settings property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Settings_Property_Exists()
         {
             Assert.NotNull(typeof(Context).GetProperty("Settings"));
@@ -30,7 +32,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that global property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Global_Property_Exists()
         {
             var prop = typeof(Context).GetProperty("Global");
@@ -41,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that global returns instance
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Global_ReturnsInstance()
         {
             var global = Context.Global;
@@ -51,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that global returns same instance
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Global_ReturnsSameInstance()
         {
             var g1 = Context.Global;
@@ -62,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set active method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void SetActive_Method_Exists()
         {
             Assert.NotNull(typeof(Context).GetMethod("SetActive"));
