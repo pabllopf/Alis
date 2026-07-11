@@ -91,10 +91,16 @@ namespace Alis.Core.Aspect.Math
         /// <returns>A random unsigned integer seed.</returns>
         private static uint GenerateGlobalSeed()
         {
+#if NET6_0_OR_GREATER
+            Span<byte> randomBytes = stackalloc byte[sizeof(uint)];
+            RandomNumberGenerator.Fill(randomBytes);
+            return BitConverter.ToUInt32(randomBytes);
+#else
             byte[] randomBytes = new byte[sizeof(uint)];
             RandomNumberGenerator rng = RandomNumberGenerator.Create();
             rng.GetBytes(randomBytes);
             return BitConverter.ToUInt32(randomBytes, 0);
+#endif
         }
 
         /// <summary>

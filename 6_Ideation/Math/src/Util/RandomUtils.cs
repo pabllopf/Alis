@@ -56,9 +56,15 @@ namespace Alis.Core.Aspect.Math.Util
                 throw new ArgumentException("minValue must be less than or equal to maxValue.");
             }
 
+#if NET6_0_OR_GREATER
+            Span<byte> buffer = stackalloc byte[4];
+            RandomNumberGenerator.Fill(buffer);
+            int randomValue = BitConverter.ToInt32(buffer);
+#else
             byte[] buffer = new byte[4];
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
+#endif
 
             return System.Math.Abs(randomValue % (maxValue - minValue + 1)) + minValue;
         }
@@ -76,9 +82,15 @@ namespace Alis.Core.Aspect.Math.Util
                 throw new ArgumentException("value must be greater than or equal to 0.");
             }
 
+#if NET6_0_OR_GREATER
+            Span<byte> buffer = stackalloc byte[4];
+            RandomNumberGenerator.Fill(buffer);
+            int randomValue = BitConverter.ToInt32(buffer);
+#else
             byte[] buffer = new byte[4];
             Rng.GetBytes(buffer);
             int randomValue = BitConverter.ToInt32(buffer, 0);
+#endif
 
             return System.Math.Abs(randomValue % (value + 1));
         }

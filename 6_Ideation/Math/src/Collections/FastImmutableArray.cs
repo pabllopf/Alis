@@ -373,17 +373,29 @@ namespace Alis.Core.Aspect.Math.Collections
                 _count += items.Length;
             }
 
-            /// <summary>
-            ///     Adds the specified items to the end of the array.
-            /// </summary>
-            /// <param name="items">The items to add.</param>
-            public void AddRange(params T[] items)
-            {
-                int offset = Count;
-                Count += items.Length;
+        /// <summary>
+        ///     Adds the specified items to the end of the array.
+        /// </summary>
+        /// <param name="items">The items to add.</param>
+        public void AddRange(params T[] items)
+        {
+            int offset = Count;
+            Count += items.Length;
 
-                System.Array.Copy(items, 0, _elements, offset, items.Length);
-            }
+            System.Array.Copy(items, 0, _elements, offset, items.Length);
+        }
+
+        /// <summary>
+        ///     Adds the specified items from a readonly span to the end of the array.
+        /// </summary>
+        /// <param name="items">The items to add.</param>
+        public void AddRange(ReadOnlySpan<T> items)
+        {
+            int offset = Count;
+            Count += items.Length;
+
+            items.CopyTo(_elements.AsSpan(offset));
+        }
 
             /// <summary>
             ///     Adds the specified items derived from <typeparamref name="T" /> to the end of the array.
@@ -534,23 +546,23 @@ namespace Alis.Core.Aspect.Math.Collections
                 _count -= length;
             }
 
-            /// <summary>
-            ///     Removes all occurrences of the specified items from this list.
-            /// </summary>
-            /// <param name="items">The items to remove.</param>
-            public void RemoveRange(IEnumerable<T> items)
-            {
-                RemoveRange(items, EqualityComparer<T>.Default);
-            }
+        /// <summary>
+        ///     Removes all occurrences of the specified items from this list.
+        /// </summary>
+        /// <param name="items">The items to remove.</param>
+        public void RemoveRange(IEnumerable<T> items)
+        {
+            RemoveRange(items, EqualityComparer<T>.Default);
+        }
 
-            /// <summary>
-            ///     Removes all occurrences of the specified items using a custom equality comparer.
-            /// </summary>
-            /// <param name="items">The items to remove.</param>
-            /// <param name="equalityComparer">
-            ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
-            /// </param>
-            public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T> equalityComparer)
+        /// <summary>
+        ///     Removes all occurrences of the specified items using a custom equality comparer.
+        /// </summary>
+        /// <param name="items">The items to remove.</param>
+        /// <param name="equalityComparer">
+        ///     The equality comparer to use. If <c>null</c>, <see cref="EqualityComparer{T}.Default" /> is used.
+        /// </param>
+        public void RemoveRange(IEnumerable<T> items, IEqualityComparer<T> equalityComparer)
             {
                 SortedSet<int> indicesToRemove = new SortedSet<int>();
                 foreach (T item in items)
@@ -1099,6 +1111,17 @@ namespace Alis.Core.Aspect.Math.Collections
         }
 
         /// <summary>
+        ///     Copies the contents of this array to the specified destination span.
+        /// </summary>
+        /// <param name="destination">The span to copy to.</param>
+        public void CopyTo(Span<T> destination)
+        {
+            FastImmutableArray<T> self = this;
+            self.ThrowNullRefIfNotInitialized();
+            new ReadOnlySpan<T>(self.Array!).CopyTo(destination);
+        }
+
+        /// <summary>
         ///     Copies the contents of this array to the specified destination array starting at a given index.
         /// </summary>
         /// <param name="destination">The array to copy to.</param>
@@ -1108,6 +1131,18 @@ namespace Alis.Core.Aspect.Math.Collections
             FastImmutableArray<T> self = this;
             self.ThrowNullRefIfNotInitialized();
             System.Array.Copy(self.Array!, 0, destination, destinationIndex, self.Length);
+        }
+
+        /// <summary>
+        ///     Copies the contents of this array to the specified destination span starting at a given index.
+        /// </summary>
+        /// <param name="destination">The span to copy to.</param>
+        /// <param name="destinationIndex">The index in the destination span where copying begins.</param>
+        public void CopyTo(Span<T> destination, int destinationIndex)
+        {
+            FastImmutableArray<T> self = this;
+            self.ThrowNullRefIfNotInitialized();
+            new ReadOnlySpan<T>(self.Array!).CopyTo(destination.Slice(destinationIndex));
         }
 
         /// <summary>
@@ -1122,6 +1157,20 @@ namespace Alis.Core.Aspect.Math.Collections
             FastImmutableArray<T> self = this;
             self.ThrowNullRefIfNotInitialized();
             System.Array.Copy(self.Array!, sourceIndex, destination, destinationIndex, length);
+        }
+
+        /// <summary>
+        ///     Copies a range of elements from this array to the specified destination span.
+        /// </summary>
+        /// <param name="sourceIndex">The index in this array where copying begins.</param>
+        /// <param name="destination">The destination span.</param>
+        /// <param name="destinationIndex">The index in the destination span where the first copied element is written.</param>
+        /// <param name="length">The number of elements to copy.</param>
+        public void CopyTo(int sourceIndex, Span<T> destination, int destinationIndex, int length)
+        {
+            FastImmutableArray<T> self = this;
+            self.ThrowNullRefIfNotInitialized();
+            new ReadOnlySpan<T>(self.Array!, sourceIndex, length).CopyTo(destination.Slice(destinationIndex));
         }
 
         /// <summary>

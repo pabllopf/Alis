@@ -80,18 +80,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a10, float a11, float a12,
             float a20, float a21, float a22)
         {
-            float[] array = new float[9];
-
-            array[0] = a00;
-            array[3] = a01;
-            array[6] = a02;
-            array[1] = a10;
-            array[4] = a11;
-            array[7] = a12;
-            array[2] = a20;
-            array[5] = a21;
-            array[8] = a22;
-
             Ex = new Vector3F(a00, a01, a02);
             Ey = new Vector3F(a10, a11, a12);
             Ez = new Vector3F(a20, a21, a22);
