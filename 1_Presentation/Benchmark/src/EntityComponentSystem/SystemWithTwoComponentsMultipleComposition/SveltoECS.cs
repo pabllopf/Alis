@@ -87,12 +87,24 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// </summary>
             public SveltoEngine Engine { get; }
 
+            /// <summary>
+            ///     The padding 1 record struct
+            /// </summary>
             private record struct Padding1 : IEntityComponent;
 
+            /// <summary>
+            ///     The padding 2 record struct
+            /// </summary>
             private record struct Padding2 : IEntityComponent;
 
+            /// <summary>
+            ///     The padding 3 record struct
+            /// </summary>
             private record struct Padding3 : IEntityComponent;
 
+            /// <summary>
+            ///     The padding 4 record struct
+            /// </summary>
             private record struct Padding4 : IEntityComponent;
 
             /// <summary>
