@@ -2,144 +2,126 @@
 title: Architecture Overview
 tags:
   - architecture
-  - clean-architecture
-  - layered
-  - game-engine
-  - ecs
+  - overview
+  - design
 status: Draft
 license: GPLv3
 ---
 
 # Architecture Overview
 
-## Architectural Style
+## 6-Layer Clean Architecture
 
-Alis uses a strict **6-layer clean architecture** with unidirectional dependencies. Higher layers depend on lower layers only — never the reverse.
-
-```
-1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration → 6_Ideation
+```mermaid
+graph TD
+    subgraph "Layer 1: Presentation"
+        Engine[Alis.App.Engine]
+        Hub[Alis.App.Hub]
+        Installer[Alis.App.Installer]
+        Benchmark[Alis.Benchmark]
+        Extensions[Extensions*]
+    end
+    
+    subgraph "Layer 2: Application"
+        Main[Alis (Main)]
+    end
+    
+    subgraph "Layer 3: Structuration"
+        Core[Alis.Core]
+    end
+    
+    subgraph "Layer 4: Operation"
+        ECS[Alis.Core.Ecs]
+        Audio[Alis.Core.Audio]
+        Graphic[Alis.Core.Graphic]
+        Physic[Alis.Core.Physic]
+    end
+    
+    subgraph "Layer 5: Declaration"
+        Aspect[Alis.Core.Aspect]
+    end
+    
+    subgraph "Layer 6: Ideation"
+        Data[Alis.Core.Aspect.Data]
+        Fluent[Alis.Core.Aspect.Fluent]
+        Logging[Alis.Core.Aspect.Logging]
+        Math[Alis.Core.Aspect.Math]
+        Memory[Alis.Core.Aspect.Memory]
+        Time[Alis.Core.Aspect.Time]
+    end
+    
+    Engine --> Main
+    Hub --> Main
+    Installer --> Main
+    Benchmark --> Main
+    
+    Main --> Core
+    
+    Core --> ECS
+    Core --> Audio
+    Core --> Graphic
+    Core --> Physic
+    
+    ECS --> Aspect
+    Audio --> Aspect
+    Graphic --> Aspect
+    Physic --> Aspect
+    
+    Aspect --> Data
+    Aspect --> Fluent
+    Aspect --> Logging
+    Aspect --> Math
+    Aspect --> Memory
+    Aspect --> Time
 ```
 
 ## Dependency Flow
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        1_Presentation (69 projects)                     │
-│  Engine, Extensions (Ads, Cloud, Graphic, Network, Payment, Media...)  │
-├─────────────────────────────────────────────────────────────────────────┤
-│                        2_Application (30 projects)                      │
-│  Alis core library + sample games                                      │
-├─────────────────────────────────────────────────────────────────────────┤
-│                      3_Structuration (3 projects)                       │
-│  Core abstractions, base infrastructure                                │
-├─────────────────────────────────────────────────────────────────────────┤
-│                      4_Operation (14 projects)                          │
-│  Graphics, Audio, Physics, ECS operations                              │
-├─────────────────────────────────────────────────────────────────────────┤
-│                      5_Declaration (3 projects)                         │
-│  Contracts, interfaces, metadata                                       │
-├─────────────────────────────────────────────────────────────────────────┤
-│                      6_Ideation (21 projects)                           │
-│  Experimental modules (Data, Fluent, Logging, Math, Memory, Time)      │
-└─────────────────────────────────────────────────────────────────────────┘
+Dependencies flow strictly downward:
+
+```mermaid
+flowchart LR
+    P1[Layer 1: Presentation] --> P2[Layer 2: Application]
+    P2 --> P3[Layer 3: Structuration]
+    P3 --> P4[Layer 4: Operation]
+    P4 --> P5[Layer 5: Declaration]
+    P5 --> P6[Layer 6: Ideation]
 ```
 
-## Layer Responsibilities
+## Build Modes
 
-### Layer 1 — Presentation
+### Debug Mode
+- Standard MSBuild ProjectReference chain
+- Each layer references the next layer down explicitly
+- Generator projects referenced as analyzers
 
-**Role**: User-facing applications, platform integrations, and extension modules.
+### Release Mode
+- **Source file merging**: Source files from lower layers are compiled directly into higher-layer assemblies via `<Compile Include="...">`
+- **Link strategy**: Files are linked with relative path rewrites
+- **Single assembly output**: Enables producing a single merged assembly
 
-**Patterns**:
-- Executable applications (Engine, Hub, Installer)
-- Platform-specific build targets (macOS bundles, Linux/Windows zips)
-- External service integrations (Stripe, Google Ads, Dropbox, FFmpeg)
-- Source generator consumers
+## Generator Pattern
 
-**Key insight**: The Engine project uses glob-based ProjectReferences to collect all generator projects across layers 4 and 6.
+Each module has a paired generator project:
 
-### Layer 2 — Application
-
-**Role**: Application composition and business logic orchestration.
-
-**Patterns**:
-- Single main library (`Alis.csproj`) consumed by all samples
-- Sample games demonstrate engine capabilities
-- Platform-specific sample variants (Web/Desktop)
-
-### Layer 3 — Structuration
-
-**Role**: Foundation core with shared abstractions used across all layers.
-
-**Patterns**:
-- Base types and interfaces
-- Common utilities
-- Cross-cutting concerns
-
-### Layer 4 — Operation
-
-**Role**: Platform-specific operations for graphics, audio, physics, and ECS.
-
-**Patterns**:
-- Each module follows test/generator/sample/src structure
-- Source generators produce ECS/component code
-- Native API bindings for graphics/audio
-
-### Layer 5 — Declaration
-
-**Role**: Contract definitions and interface declarations.
-
-**Patterns**:
-- Pure interface definitions
-- Metadata contracts
-- Aspect declarations
-
-### Layer 6 — Ideation
-
-**Role**: Experimental and research modules.
-
-**Patterns**:
-- Standard test/generator/sample/src structure per module
-- Source generators for code generation
-- Self-contained experimental features
-
-## Source Generator Architecture
-
-Source generators are a first-class architectural element. They:
-
-1. Target `netstandard2.0` exclusively
-2. Produce AOT-safe generated code
-3. Emit diagnostics with ALIS0xxx IDs
-4. Are consumed via Analyzer ProjectReferences
-
-Generator locations:
-- `4_Operation/*/generator/` — ECS, Graphic generators
-- `6_Ideation/*/generator/` — Memory, Data, Fluent generators
-
-## Asset Pipeline
-
-The Engine implements a custom asset packing system:
-
-1. **Manifest generation**: SHA256 hashes of all assets in `Assets/` folder
-2. **ZIP creation**: Assets compressed into `assets.zip`
-3. **Base64 embedding**: ZIP converted to base64 string in `assets.pack`
-4. **Incremental builds**: MSBuild inputs/outputs prevent unnecessary regeneration
-
-## Platform Abstraction
-
-Platform detection uses MSBuild conditions:
-
-```xml
-LINUX defined when: RuntimeIdentifier starts with ubuntu/debian/alpine/etc.
-OSX defined when: RuntimeIdentifier starts with osx
-WIN defined when: RuntimeIdentifier starts with win
+```mermaid
+flowchart LR
+    Module[Module] --> Generator[Module.Generator]
+    Generator -->|Roslyn Source Generator| Module
 ```
 
-Runtime-specific output goes to: `bin/{Configuration}/{RuntimeIdentifier}/lib/`
+## Key Design Decisions
+
+1. **Aspect-First Design**: All cross-cutting concerns are defined in Layer 6 (Ideation) and consumed upward
+2. **ECS for Game Logic**: Entity-Component System separates data (components) from behavior (systems)
+3. **Pluggable Graphics Backends**: SDL2, SFML, GLFW implementations via common interfaces
+4. **Multi-Framework Support**: Builds for 15+ .NET frameworks from the same codebase
+5. **Source Generators for Code Gen**: 14 Roslyn generators reduce boilerplate
 
 ## Related
 
-- [[repository-overview]]
-- [[project-graph]]
-- [[dependency-rules]]
-- [[conventions-and-standards]]
+- [[Repository Overview]]
+- [[Projects Index]]
+- [[Dependency Index]]
+- [[Architecture Rules]]
+- [[Technology Stack]]

@@ -1,0 +1,62 @@
+{
+  "1_Presentation/Benchmark/src/ClassVsStruct/ClassVsStructBenchmark.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/ClassPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/RecordPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/SealedClassPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/ClassVsStruct/Instancies/StructRefPoint.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T00:00:00Z",
+    "last_processed_at": "2026-07-11T00:00:00Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": ""
+  }
+}

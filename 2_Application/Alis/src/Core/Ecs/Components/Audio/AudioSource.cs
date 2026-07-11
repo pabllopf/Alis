@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     Sets the player for testing purposes
         /// </summary>
-        internal IPlayer PlayerForTest { set { player = value; } }
+        internal IPlayer PlayerForTest { get => player; set => player = value; }
 
         /// <summary>
         ///     Gets or sets the value of the is playing
