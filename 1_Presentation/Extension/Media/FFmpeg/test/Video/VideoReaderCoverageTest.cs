@@ -9,12 +9,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video reader coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class VideoReaderCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
+        /// <summary>
+        /// The real video file
+        /// </summary>
         private readonly string _realVideoFile;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoReaderCoverageTest"/> class
+        /// </summary>
         public VideoReaderCoverageTest()
         {
             _tempFile = Path.GetTempFileName();
@@ -28,6 +44,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             p.WaitForExit(30000);
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -40,6 +59,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that constructor should set filename
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetFilename()
         {
@@ -47,6 +69,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(_tempFile, reader.Filename);
         }
 
+        /// <summary>
+        /// Tests that constructor with custom executables should set fields
+        /// </summary>
         [Fact]
         public void Constructor_WithCustomExecutables_ShouldSetFields()
         {
@@ -55,6 +80,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal("my-ffprobe", typeof(VideoReader).GetField("ffprobe", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(reader));
         }
 
+        /// <summary>
+        /// Tests that properties default values
+        /// </summary>
         [Fact]
         public void Properties_DefaultValues()
         {
@@ -64,6 +92,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(reader.LoadedMetadata);
         }
 
+        /// <summary>
+        /// Tests that dispose should not throw
+        /// </summary>
         [Fact]
         public void Dispose_ShouldNotThrow()
         {
@@ -72,6 +103,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls should not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -81,6 +115,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             reader.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing false should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingFalse_ShouldNotThrow()
         {
@@ -91,6 +128,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             reader.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with data stream should dispose stream
+        /// </summary>
         [Fact]
         public void Dispose_WithDataStream_ShouldDisposeStream()
         {
@@ -102,6 +142,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(ms.CanRead);
         }
 
+        /// <summary>
+        /// Tests that load without metadata should throw
+        /// </summary>
         [Fact]
         public void Load_WithoutMetadata_ShouldThrow()
         {
@@ -109,6 +152,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => reader.Load());
         }
 
+        /// <summary>
+        /// Tests that next frame without load should throw
+        /// </summary>
         [Fact]
         public void NextFrame_WithoutLoad_ShouldThrow()
         {
@@ -117,6 +163,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => reader.NextFrame(frame));
         }
 
+        /// <summary>
+        /// Tests that load metadata when already loaded should throw
+        /// </summary>
         [Fact]
         public void LoadMetadata_WhenAlreadyLoaded_ShouldThrow()
         {
@@ -127,6 +176,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("already loaded", ex.InnerException.Message);
         }
 
+        /// <summary>
+        /// Tests that load metadata async when already loaded should throw
+        /// </summary>
         [Fact]
         public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrow()
         {
@@ -137,6 +189,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("already loaded", ex.InnerException.Message);
         }
 
+        /// <summary>
+        /// Tests that load with zero dimensions should throw
+        /// </summary>
         [Fact]
         public void Load_WithZeroDimensions_ShouldThrow()
         {
@@ -148,6 +203,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => reader.Load());
         }
 
+        /// <summary>
+        /// Tests that load when already opened should throw
+        /// </summary>
         [Fact]
         public void Load_WhenAlreadyOpened_ShouldThrow()
         {
@@ -161,6 +219,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => reader.Load());
         }
 
+        /// <summary>
+        /// Tests that next frame parameterless with metadata not opened should throw
+        /// </summary>
         [Fact]
         public void NextFrame_Parameterless_WithMetadata_NotOpened_ShouldThrow()
         {
@@ -172,6 +233,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidOperationException>(() => reader.NextFrame());
         }
 
+        /// <summary>
+        /// Tests that next frame opened empty stream returns null
+        /// </summary>
         [Fact]
         public void NextFrame_Opened_EmptyStream_ReturnsNull()
         {
@@ -186,6 +250,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             finally { reader.Dispose(); }
         }
 
+        /// <summary>
+        /// Tests that next frame opened with data returns frame
+        /// </summary>
         [Fact]
         public void NextFrame_Opened_WithData_ReturnsFrame()
         {
@@ -203,6 +270,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             finally { reader.Dispose(); }
         }
 
+        /// <summary>
+        /// Tests that load metadata async with real video succeeds
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithRealVideo_Succeeds()
         {
@@ -214,6 +284,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.True(reader.Metadata.Width > 0 || reader.Metadata.Height == 0);
         }
 
+        /// <summary>
+        /// Tests that load metadata async with ignore stream errors succeeds
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithIgnoreStreamErrors_Succeeds()
         {
@@ -223,6 +296,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.True(reader.LoadedMetadata);
         }
 
+        /// <summary>
+        /// Tests that load metadata async with nonexistent ffprobe throws
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithNonexistentFfprobe_Throws()
         {
@@ -232,6 +308,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(ex);
         }
 
+        /// <summary>
+        /// Tests that try parse bit depth with matching format returns depth
+        /// </summary>
         [Fact]
         public void TryParseBitDepth_WithMatchingFormat_ReturnsDepth()
         {
@@ -243,6 +322,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(8, method.Invoke(null, new object[] { "yuv420p8le" }));
         }
 
+        /// <summary>
+        /// Tests that try parse bit depth with non matching format returns negative one
+        /// </summary>
         [Fact]
         public void TryParseBitDepth_WithNonMatchingFormat_ReturnsNegativeOne()
         {
@@ -254,12 +336,30 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
     }
 
+    /// <summary>
+    /// The testable video reader class
+    /// </summary>
+    /// <seealso cref="VideoReader"/>
     public class TestableVideoReader : VideoReader
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestableVideoReader"/> class
+        /// </summary>
+        /// <param name="filename">The filename</param>
+        /// <param name="ffmpeg">The ffmpeg</param>
+        /// <param name="ffprobe">The ffprobe</param>
         public TestableVideoReader(string filename, string ffmpeg = "ffmpeg", string ffprobe = "ffprobe")
             : base(filename, ffmpeg, ffprobe) { }
 
+        /// <summary>
+        /// Sets the opened for reading using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public void SetOpenedForReading(bool value) => OpenedForReading = value;
+        /// <summary>
+        /// Sets the data stream using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
         public void SetDataStream(Stream stream) => DataStream = stream;
     }
 }

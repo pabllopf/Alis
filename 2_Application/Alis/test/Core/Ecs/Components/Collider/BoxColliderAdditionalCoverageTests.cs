@@ -50,8 +50,14 @@ namespace Alis.Test.Core.Ecs.Components.Collider
     /// </summary>
     public class BoxColliderAdditionalCoverageTests
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxColliderAdditionalCoverageTests"/> class
+        /// </summary>
         static BoxColliderAdditionalCoverageTests() => EnsureEcsInitialized();
 
+        /// <summary>
+        /// Ensures the ecs initialized
+        /// </summary>
         private static void EnsureEcsInitialized()
         {
             Type globalWorldTables = Type.GetType("Alis.Core.Ecs.Kernel.Archetypes.GlobalWorldTables, Alis.Core.Ecs");

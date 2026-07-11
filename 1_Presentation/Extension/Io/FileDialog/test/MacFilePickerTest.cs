@@ -3,14 +3,24 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The mac file picker test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class MacFilePickerTest : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MacFilePickerTest"/> class
+        /// </summary>
         public MacFilePickerTest()
         {
             FilePickerExecutor.CommandExistsOverride = null;
             FilePickerExecutor.ExecuteCommandOverride = null;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             FilePickerExecutor.CommandExistsOverride = null;
@@ -253,6 +263,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that pick file with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFile_WithMockedExecution_ReturnsSuccess()
         {
@@ -267,6 +280,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("/Users/mock/file.txt", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick files with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFiles_WithMockedExecution_ReturnsSuccess()
         {
@@ -281,6 +297,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that pick folder with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFolder_WithMockedExecution_ReturnsSuccess()
         {
@@ -295,6 +314,10 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("/Users/mock/folder", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick file when execute apple script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFile_WhenExecuteAppleScriptThrows_ReturnsError()
         {
@@ -309,6 +332,10 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick files when execute apple script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFiles_WhenExecuteAppleScriptThrows_ReturnsError()
         {
@@ -323,6 +350,10 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick folder when execute apple script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFolder_WhenExecuteAppleScriptThrows_ReturnsError()
         {

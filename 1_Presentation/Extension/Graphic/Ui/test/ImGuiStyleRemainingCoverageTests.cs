@@ -465,6 +465,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         //  Indexer coverage for remaining color indices 4-9, 11-19, 21-29, 31-39, 41-49, 51-52, 54
         // ---------------------------------------------------------------
 
+        /// <summary>
+        /// Tests that indexer get all remaining indices should return correct color
+        /// </summary>
+        /// <param name="index">The index</param>
         [Theory]
         [InlineData(4)]
         [InlineData(5)]
@@ -571,6 +575,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[index]);
         }
 
+        /// <summary>
+        /// Tests that indexer set all remaining indices should set correct color
+        /// </summary>
+        /// <param name="index">The index</param>
         [Theory]
         [InlineData(4)]
         [InlineData(5)]

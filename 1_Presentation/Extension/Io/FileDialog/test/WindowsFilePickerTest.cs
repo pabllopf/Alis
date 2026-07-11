@@ -4,14 +4,24 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The windows file picker test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class WindowsFilePickerTest : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WindowsFilePickerTest"/> class
+        /// </summary>
         public WindowsFilePickerTest()
         {
             FilePickerExecutor.CommandExistsOverride = null;
             FilePickerExecutor.ExecuteCommandOverride = null;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             FilePickerExecutor.CommandExistsOverride = null;
@@ -341,6 +351,9 @@ C:\b.txt", false);
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick file with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFile_WithMockedExecution_ReturnsSuccess()
         {
@@ -355,6 +368,9 @@ C:\b.txt", false);
             Assert.Contains(@"C:\mock\file.txt", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick files with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFiles_WithMockedExecution_ReturnsSuccess()
         {
@@ -370,6 +386,9 @@ C:\mock\b.txt";
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that pick folder with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFolder_WithMockedExecution_ReturnsSuccess()
         {
@@ -384,6 +403,10 @@ C:\mock\b.txt";
             Assert.Contains(@"C:\mock\folder", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick file when execute script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFile_WhenExecuteScriptThrows_ReturnsError()
         {
@@ -398,6 +421,10 @@ C:\mock\b.txt";
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick files when execute script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFiles_WhenExecuteScriptThrows_ReturnsError()
         {
@@ -412,6 +439,10 @@ C:\mock\b.txt";
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick folder when execute script throws returns error
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Simulated failure</exception>
         [Fact]
         public void PickFolder_WhenExecuteScriptThrows_ReturnsError()
         {

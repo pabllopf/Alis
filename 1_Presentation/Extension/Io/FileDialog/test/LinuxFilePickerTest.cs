@@ -4,14 +4,24 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The linux file picker test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class LinuxFilePickerTest : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LinuxFilePickerTest"/> class
+        /// </summary>
         public LinuxFilePickerTest()
         {
             FilePickerExecutor.CommandExistsOverride = null;
             FilePickerExecutor.ExecuteCommandOverride = null;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             FilePickerExecutor.CommandExistsOverride = null;
@@ -494,6 +504,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that get available dialog tool with command exists override zenity found returns zenity
+        /// </summary>
         [Fact]
         public void GetAvailableDialogTool_WithCommandExistsOverride_ZenityFound_ReturnsZenity()
         {
@@ -504,6 +517,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("zenity", tool);
         }
 
+        /// <summary>
+        /// Tests that get available dialog tool with command exists override kdialog found returns kdialog
+        /// </summary>
         [Fact]
         public void GetAvailableDialogTool_WithCommandExistsOverride_KdialogFound_ReturnsKdialog()
         {
@@ -514,6 +530,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("kdialog", tool);
         }
 
+        /// <summary>
+        /// Tests that execute file dialog with zenity found returns result
+        /// </summary>
         [Fact]
         public void ExecuteFileDialog_WithZenityFound_ReturnsResult()
         {
@@ -527,6 +546,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("/test/output.txt", result);
         }
 
+        /// <summary>
+        /// Tests that execute folder dialog with zenity found returns result
+        /// </summary>
         [Fact]
         public void ExecuteFolderDialog_WithZenityFound_ReturnsResult()
         {
@@ -540,6 +562,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("/test/folder", result);
         }
 
+        /// <summary>
+        /// Tests that pick file with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFile_WithMockedExecution_ReturnsSuccess()
         {
@@ -555,6 +580,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("/mock/file.txt", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick files with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFiles_WithMockedExecution_ReturnsSuccess()
         {
@@ -570,6 +598,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that pick folder with mocked execution returns success
+        /// </summary>
         [Fact]
         public void PickFolder_WithMockedExecution_ReturnsSuccess()
         {
