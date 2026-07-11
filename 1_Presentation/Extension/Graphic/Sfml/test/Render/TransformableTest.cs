@@ -1,6 +1,7 @@
 // license header
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -13,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that default constructor sets defaults
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void DefaultConstructor_SetsDefaults()
         {
             var t = new Transformable();
@@ -29,7 +30,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that position setter updates value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Position_Setter_UpdatesValue()
         {
             var t = new Transformable();
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that position setter invalidates transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Position_Setter_InvalidatesTransform()
         {
             var t = new Transformable();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that rotation setter updates value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Rotation_Setter_UpdatesValue()
         {
             var t = new Transformable();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that rotation setter invalidates transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Rotation_Setter_InvalidatesTransform()
         {
             var t = new Transformable();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that scale setter updates value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Scale_Setter_UpdatesValue()
         {
             var t = new Transformable();
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that scale setter invalidates transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Scale_Setter_InvalidatesTransform()
         {
             var t = new Transformable();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that origin setter updates value
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Origin_Setter_UpdatesValue()
         {
             var t = new Transformable();
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that transform changes after origin change
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Transform_Changes_AfterOriginChange()
         {
             var t = new Transformable();
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform returns non null
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_ReturnsNonNull()
         {
             var t = new Transformable();
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform caches result
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_CachesResult()
         {
             var t = new Transformable();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform invalidated by position change
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_Invalidated_ByPositionChange()
         {
             var t = new Transformable();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform invalidated by rotation change
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_Invalidated_ByRotationChange()
         {
             var t = new Transformable();
@@ -174,7 +175,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform invalidated by scale change
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_Invalidated_ByScaleChange()
         {
             var t = new Transformable();
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that inverse transform invalidated by origin change
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void InverseTransform_Invalidated_ByOriginChange()
         {
             var t = new Transformable();
@@ -200,7 +201,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that transform with position translates correctly
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Transform_WithPosition_TranslatesCorrectly()
         {
             var t = new Transformable();
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that transform with scale scales correctly
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Transform_WithScale_ScalesCorrectly()
         {
             var t = new Transformable();
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that copy constructor copies properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void CopyConstructor_CopiesProperties()
         {
             var original = new Transformable();
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Destroy_DoesNotThrow()
         {
             var t = new Transformable();
