@@ -8,12 +8,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video player coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class VideoPlayerCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffplay path
+        /// </summary>
         private readonly string _fakeFfplayPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoPlayerCoverageTest"/> class
+        /// </summary>
         public VideoPlayerCoverageTest()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -26,6 +42,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -38,6 +57,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose when not opened for writing with ffplayp null should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WhenNotOpenedForWriting_WithFfplaypNull_ShouldNotThrow()
         {
@@ -46,6 +68,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose when not opened for writing with exited ffplayp should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WhenNotOpenedForWriting_WithExitedFfplayp_ShouldNotThrow()
         {
@@ -66,6 +91,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that play when opened for writing should throw
+        /// </summary>
         [Fact]
         public void Play_WhenOpenedForWriting_ShouldThrow()
         {
@@ -81,6 +109,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play with filename uses ffplay
+        /// </summary>
         [Fact]
         public void Play_WithFilename_UsesFfplay()
         {
@@ -90,6 +121,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play with extra parameters uses ffplay
+        /// </summary>
         [Fact]
         public void Play_WithExtraParameters_UsesFfplay()
         {
@@ -99,6 +133,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background when opened for writing should throw
+        /// </summary>
         [Fact]
         public void PlayInBackground_WhenOpenedForWriting_ShouldThrow()
         {
@@ -114,6 +151,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with filename returns process
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithFilename_ReturnsProcess()
         {
@@ -123,6 +163,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with run pure background does not assign ffplayp
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithRunPureBackground_DoesNotAssignFfplayp()
         {
@@ -136,6 +179,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with extra parameters returns process
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithExtraParameters_ReturnsProcess()
         {
@@ -145,6 +191,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write when opened for writing should throw
+        /// </summary>
         [Fact]
         public void OpenWrite_WhenOpenedForWriting_ShouldThrow()
         {
@@ -161,6 +210,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write with fake ffplay throws win 32 exception
+        /// </summary>
         [Fact]
         public void OpenWrite_WithFakeFfplay_ThrowsWin32Exception()
         {
@@ -173,6 +225,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write with show f fplay output throws win 32 exception
+        /// </summary>
         [Fact]
         public void OpenWrite_WithShowFFplayOutput_ThrowsWin32Exception()
         {
@@ -185,6 +240,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write when not opened for writing should throw
+        /// </summary>
         [Fact]
         public void CloseWrite_WhenNotOpenedForWriting_ShouldThrow()
         {
@@ -193,6 +251,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write when opened should reset flag
+        /// </summary>
         [Fact]
         public void CloseWrite_WhenOpened_ShouldResetFlag()
         {
@@ -211,6 +272,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that get stream for writing with fake ffplay throws win 32 exception
+        /// </summary>
         [Fact]
         public void GetStreamForWriting_WithFakeFfplay_ThrowsWin32Exception()
         {
@@ -222,6 +286,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(ex);
         }
 
+        /// <summary>
+        /// Tests that constructor with custom ffplay should set field
+        /// </summary>
         [Fact]
         public void Constructor_WithCustomFfplay_ShouldSetField()
         {
@@ -232,6 +299,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose when opened for writing should call close write
+        /// </summary>
         [Fact]
         public void Dispose_WhenOpenedForWriting_ShouldCallCloseWrite()
         {

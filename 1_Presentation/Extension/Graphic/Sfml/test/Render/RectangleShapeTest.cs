@@ -33,20 +33,32 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The rectangle shape test class
+    /// </summary>
     public class RectangleShapeTest
     {
+        /// <summary>
+        /// Tests that rectangle shape is assignable from shape
+        /// </summary>
         [Fact]
         public void RectangleShape_IsAssignableFromShape()
         {
             Assert.True(typeof(Shape).IsAssignableFrom(typeof(RectangleShape)));
         }
 
+        /// <summary>
+        /// Tests that rectangle shape implements i drawable
+        /// </summary>
         [Fact]
         public void RectangleShape_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(RectangleShape)));
         }
 
+        /// <summary>
+        /// Tests that size property exists
+        /// </summary>
         [Fact]
         public void Size_Property_Exists()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Vector2F), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that get point count method exists
+        /// </summary>
         [Fact]
         public void GetPointCount_Method_Exists()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(uint), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get point method exists
+        /// </summary>
         [Fact]
         public void GetPoint_Method_Exists()
         {

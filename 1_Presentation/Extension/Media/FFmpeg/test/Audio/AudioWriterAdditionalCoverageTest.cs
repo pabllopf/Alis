@@ -8,12 +8,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio writer additional coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioWriterAdditionalCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffmpeg path
+        /// </summary>
         private readonly string _fakeFfmpegPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioWriterAdditionalCoverageTest"/> class
+        /// </summary>
         public AudioWriterAdditionalCoverageTest()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -26,6 +42,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -38,6 +57,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that close write when ffmpegp still running kills process
+        /// </summary>
         [Fact]
         public void CloseWrite_WhenFfmpegpStillRunning_KillsProcess()
         {

@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
 {
+    /// <summary>
+    /// The scene manager lifecycle coverage test class
+    /// </summary>
     public class SceneManagerLifecycleCoverageTest
     {
+        /// <summary>
+        /// Tests that on init with no loaded scenes does not throw
+        /// </summary>
         [Fact]
         public void OnInit_WithNoLoadedScenes_DoesNotThrow()
         {
@@ -18,6 +24,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnInit();
         }
 
+        /// <summary>
+        /// Tests that on init with loaded scene sets current world
+        /// </summary>
         [Fact]
         public void OnInit_WithLoadedScene_SetsCurrentWorld()
         {
@@ -31,6 +40,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Assert.NotNull(manager.CurrentWorld);
         }
 
+        /// <summary>
+        /// Tests that on awake with scene does not throw
+        /// </summary>
         [Fact]
         public void OnAwake_WithScene_DoesNotThrow()
         {
@@ -43,6 +55,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnAwake();
         }
 
+        /// <summary>
+        /// Tests that on start with scene does not throw
+        /// </summary>
         [Fact]
         public void OnStart_WithScene_DoesNotThrow()
         {
@@ -55,6 +70,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnStart();
         }
 
+        /// <summary>
+        /// Tests that on physic update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnPhysicUpdate_WithScene_DoesNotThrow()
         {
@@ -67,6 +85,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnPhysicUpdate();
         }
 
+        /// <summary>
+        /// Tests that on before update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnBeforeUpdate_WithScene_DoesNotThrow()
         {
@@ -79,6 +100,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnBeforeUpdate();
         }
 
+        /// <summary>
+        /// Tests that on after update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnAfterUpdate_WithScene_DoesNotThrow()
         {
@@ -91,6 +115,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnAfterUpdate();
         }
 
+        /// <summary>
+        /// Tests that on before fixed update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnBeforeFixedUpdate_WithScene_DoesNotThrow()
         {
@@ -103,6 +130,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnBeforeFixedUpdate();
         }
 
+        /// <summary>
+        /// Tests that on fixed update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnFixedUpdate_WithScene_DoesNotThrow()
         {
@@ -115,6 +145,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnFixedUpdate();
         }
 
+        /// <summary>
+        /// Tests that on after fixed update with scene does not throw
+        /// </summary>
         [Fact]
         public void OnAfterFixedUpdate_WithScene_DoesNotThrow()
         {
@@ -127,6 +160,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnAfterFixedUpdate();
         }
 
+        /// <summary>
+        /// Tests that on process pending changes with scene does not throw
+        /// </summary>
         [Fact]
         public void OnProcessPendingChanges_WithScene_DoesNotThrow()
         {
@@ -139,6 +175,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnProcessPendingChanges();
         }
 
+        /// <summary>
+        /// Tests that on before draw with scene does not throw
+        /// </summary>
         [Fact]
         public void OnBeforeDraw_WithScene_DoesNotThrow()
         {
@@ -151,6 +190,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnBeforeDraw();
         }
 
+        /// <summary>
+        /// Tests that on draw with scene does not throw
+        /// </summary>
         [Fact]
         public void OnDraw_WithScene_DoesNotThrow()
         {
@@ -163,6 +205,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnDraw();
         }
 
+        /// <summary>
+        /// Tests that on after draw with scene does not throw
+        /// </summary>
         [Fact]
         public void OnAfterDraw_WithScene_DoesNotThrow()
         {
@@ -175,6 +220,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnAfterDraw();
         }
 
+        /// <summary>
+        /// Tests that on exit with scene does not throw
+        /// </summary>
         [Fact]
         public void OnExit_WithScene_DoesNotThrow()
         {
@@ -187,6 +235,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             manager.OnExit();
         }
 
+        /// <summary>
+        /// Tests that load scene with int should switch current world
+        /// </summary>
         [Fact]
         public void LoadScene_WithInt_ShouldSwitchCurrentWorld()
         {
@@ -203,6 +254,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Assert.Equal(scene2, manager.CurrentWorld);
         }
 
+        /// <summary>
+        /// Tests that load scene with string valid int should call load scene with int
+        /// </summary>
         [Fact]
         public void LoadScene_WithStringValidInt_ShouldCallLoadSceneWithInt()
         {
@@ -219,6 +273,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Assert.Equal(scene2, manager.CurrentWorld);
         }
 
+        /// <summary>
+        /// Tests that load scene with string invalid should not change current world
+        /// </summary>
         [Fact]
         public void LoadScene_WithStringInvalid_ShouldNotChangeCurrentWorld()
         {

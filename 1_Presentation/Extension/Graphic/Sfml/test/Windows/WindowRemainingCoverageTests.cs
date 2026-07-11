@@ -5,14 +5,23 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The window remaining coverage tests class
+    /// </summary>
     public class WindowRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that window is assignable from object base
+        /// </summary>
         [Fact]
         public void Window_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Window)));
         }
 
+        /// <summary>
+        /// Tests that is open settings position size properties exist
+        /// </summary>
         [Fact]
         public void IsOpen_Settings_Position_Size_Properties_Exist()
         {
@@ -22,12 +31,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetProperty("Size"));
         }
 
+        /// <summary>
+        /// Tests that system handle property exists
+        /// </summary>
         [Fact]
         public void SystemHandle_Property_Exists()
         {
             Assert.NotNull(typeof(Window).GetProperty("SystemHandle"));
         }
 
+        /// <summary>
+        /// Tests that close display set title methods exist
+        /// </summary>
         [Fact]
         public void Close_Display_SetTitle_Methods_Exist()
         {
@@ -36,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("SetTitle"));
         }
 
+        /// <summary>
+        /// Tests that set icon set visible set mouse cursor visible methods exist
+        /// </summary>
         [Fact]
         public void SetIcon_SetVisible_SetMouseCursorVisible_Methods_Exist()
         {
@@ -44,6 +62,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("SetMouseCursorVisible"));
         }
 
+        /// <summary>
+        /// Tests that set mouse cursor grabbed set mouse cursor set vertical sync enabled methods exist
+        /// </summary>
         [Fact]
         public void SetMouseCursorGrabbed_SetMouseCursor_SetVerticalSyncEnabled_Methods_Exist()
         {
@@ -52,12 +73,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("SetVerticalSyncEnabled"));
         }
 
+        /// <summary>
+        /// Tests that set key repeat enabled set active methods exist
+        /// </summary>
         [Fact]
         public void SetKeyRepeatEnabled_SetActive_Methods_Exist()
         {
             Assert.NotNull(typeof(Window).GetMethod("SetKeyRepeatEnabled", new[] { typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that set active no param calls set active true
+        /// </summary>
         [Fact]
         public void SetActive_NoParam_CallsSetActiveTrue()
         {
@@ -65,6 +92,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method);
         }
 
+        /// <summary>
+        /// Tests that set framerate limit set joystick threshold methods exist
+        /// </summary>
         [Fact]
         public void SetFramerateLimit_SetJoystickThreshold_Methods_Exist()
         {
@@ -72,6 +102,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("SetJoystickThreshold"));
         }
 
+        /// <summary>
+        /// Tests that wait and dispatch events dispatch events methods exist
+        /// </summary>
         [Fact]
         public void WaitAndDispatchEvents_DispatchEvents_Methods_Exist()
         {
@@ -79,6 +112,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("DispatchEvents"));
         }
 
+        /// <summary>
+        /// Tests that request focus has focus methods exist
+        /// </summary>
         [Fact]
         public void RequestFocus_HasFocus_Methods_Exist()
         {
@@ -86,6 +122,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("HasFocus"));
         }
 
+        /// <summary>
+        /// Tests that poll event wait event methods exist
+        /// </summary>
         [Fact]
         public void PollEvent_WaitEvent_Methods_Exist()
         {
@@ -93,6 +132,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("WaitEvent"));
         }
 
+        /// <summary>
+        /// Tests that internal get mouse position internal set mouse position methods exist
+        /// </summary>
         [Fact]
         public void InternalGetMousePosition_InternalSetMousePosition_Methods_Exist()
         {
@@ -100,12 +142,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(typeof(Window).GetMethod("InternalSetMousePosition"));
         }
 
+        /// <summary>
+        /// Tests that internal get touch position method exists
+        /// </summary>
         [Fact]
         public void InternalGetTouchPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Window).GetMethod("InternalGetTouchPosition"));
         }
 
+        /// <summary>
+        /// Tests that events are declared
+        /// </summary>
         [Fact]
         public void Events_AreDeclared()
         {

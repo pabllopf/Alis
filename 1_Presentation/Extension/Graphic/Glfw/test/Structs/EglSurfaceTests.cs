@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The egl surface tests class
+    /// </summary>
     public class EglSurfaceTests
     {
+        /// <summary>
+        /// Tests that none is default value
+        /// </summary>
         [Fact]
         public void None_IsDefaultValue()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(default(EglSurface), none);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr works
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_Works()
         {
@@ -49,6 +58,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero, ptr);
         }
 
+        /// <summary>
+        /// Tests that to string returns handle string
+        /// </summary>
         [Fact]
         public void ToString_ReturnsHandleString()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero.ToString(), result);
         }
 
+        /// <summary>
+        /// Tests that equals with same egl surface returns true
+        /// </summary>
         [Fact]
         public void Equals_WithSameEglSurface_ReturnsTrue()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(surface1.Equals(surface2));
         }
 
+        /// <summary>
+        /// Tests that equals with object returns correct result
+        /// </summary>
         [Fact]
         public void Equals_WithObject_ReturnsCorrectResult()
         {
@@ -73,6 +91,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(surface.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that equals with non egl surface object returns false
+        /// </summary>
         [Fact]
         public void Equals_WithNonEglSurfaceObject_ReturnsFalse()
         {
@@ -81,6 +102,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(surface.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that get hash code returns same for equal surfaces
+        /// </summary>
         [Fact]
         public void GetHashCode_ReturnsSameForEqualSurfaces()
         {
@@ -89,6 +113,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(surface1.GetHashCode(), surface2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that equality operator with same surfaces returns true
+        /// </summary>
         [Fact]
         public void EqualityOperator_WithSameSurfaces_ReturnsTrue()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(surface1 == surface2);
         }
 
+        /// <summary>
+        /// Tests that inequality operator with same surfaces returns false
+        /// </summary>
         [Fact]
         public void InequalityOperator_WithSameSurfaces_ReturnsFalse()
         {
@@ -105,6 +135,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(surface1 != surface2);
         }
 
+        /// <summary>
+        /// Tests that equals with i equatable interface works
+        /// </summary>
         [Fact]
         public void Equals_WithIEquatableInterface_Works()
         {

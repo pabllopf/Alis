@@ -5,20 +5,32 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The vertex buffer test class
+    /// </summary>
     public class VertexBufferTest
     {
+        /// <summary>
+        /// Tests that vertex buffer is assignable from object base
+        /// </summary>
         [Fact]
         public void VertexBuffer_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(VertexBuffer)));
         }
 
+        /// <summary>
+        /// Tests that vertex buffer implements i drawable
+        /// </summary>
         [Fact]
         public void VertexBuffer_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(VertexBuffer)));
         }
 
+        /// <summary>
+        /// Tests that usage specifier has correct values
+        /// </summary>
         [Fact]
         public void UsageSpecifier_HasCorrectValues()
         {
@@ -27,6 +39,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(2, (int)VertexBuffer.UsageSpecifier.Static);
         }
 
+        /// <summary>
+        /// Tests that available property exists
+        /// </summary>
         [Fact]
         public void Available_Property_Exists()
         {
@@ -35,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.GetMethod.IsStatic);
         }
 
+        /// <summary>
+        /// Tests that vertex count native handle properties exist
+        /// </summary>
         [Fact]
         public void VertexCount_NativeHandle_Properties_Exist()
         {
@@ -42,6 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(VertexBuffer).GetProperty("NativeHandle"));
         }
 
+        /// <summary>
+        /// Tests that primitive type usage properties exist
+        /// </summary>
         [Fact]
         public void PrimitiveType_Usage_Properties_Exist()
         {
@@ -49,6 +70,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(VertexBuffer).GetProperty("Usage"));
         }
 
+        /// <summary>
+        /// Tests that update swap methods exist
+        /// </summary>
         [Fact]
         public void Update_Swap_Methods_Exist()
         {

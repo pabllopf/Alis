@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.Entity
 {
+    /// <summary>
+    /// The game object builder full coverage tests class
+    /// </summary>
     public class GameObjectBuilderFullCoverageTests
     {
+        /// <summary>
+        /// Tests that name when game object does not have info should add info
+        /// </summary>
         [Fact]
         public void Name_WhenGameObjectDoesNotHaveInfo_ShouldAddInfo()
         {
@@ -24,6 +30,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity
             Assert.Equal("TestName", result.Get<Info>().Name);
         }
 
+        /// <summary>
+        /// Tests that id should set info id
+        /// </summary>
         [Fact]
         public void Id_ShouldSetInfoId()
         {
@@ -36,6 +45,9 @@ namespace Alis.Test.Builder.Core.Ecs.Entity
             Assert.Same(builder, result);
         }
 
+        /// <summary>
+        /// Tests that id after build should reflect set id
+        /// </summary>
         [Fact]
         public void Id_AfterBuild_ShouldReflectSetId()
         {

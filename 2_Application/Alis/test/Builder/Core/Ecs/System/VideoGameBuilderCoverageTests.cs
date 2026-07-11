@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System
 {
+    /// <summary>
+    /// The video game builder coverage tests class
+    /// </summary>
     public class VideoGameBuilderCoverageTests
     {
+        /// <summary>
+        /// Tests that run when context is not running exits immediately
+        /// </summary>
         [Fact]
         public void Run_WhenContextIsNotRunning_ExitsImmediately()
         {

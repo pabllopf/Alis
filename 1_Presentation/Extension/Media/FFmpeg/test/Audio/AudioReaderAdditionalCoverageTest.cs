@@ -7,11 +7,24 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio reader additional coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioReaderAdditionalCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
+        /// <summary>
+        /// The real audio file
+        /// </summary>
         private readonly string _realAudioFile;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioReaderAdditionalCoverageTest"/> class
+        /// </summary>
         public AudioReaderAdditionalCoverageTest()
         {
             _tempFile = Path.GetTempFileName();
@@ -20,12 +33,18 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
                 "Assets", "horse.mp3");
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (File.Exists(_tempFile))
                 File.Delete(_tempFile);
         }
 
+        /// <summary>
+        /// Tests that load metadata should work
+        /// </summary>
         [Fact]
         public void LoadMetadata_ShouldWork()
         {
@@ -39,6 +58,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.NotNull(reader.Metadata);
         }
 
+        /// <summary>
+        /// Tests that load metadata async with real audio should populate metadata
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithRealAudio_ShouldPopulateMetadata()
         {
@@ -54,6 +76,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.True(reader.Metadata.Streams.Count > 0);
         }
 
+        /// <summary>
+        /// Tests that load metadata async with ignore stream errors should succeed
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithIgnoreStreamErrors_ShouldSucceed()
         {
@@ -66,6 +91,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.True(reader.MetadataLoaded);
         }
 
+        /// <summary>
+        /// Tests that load metadata async when already loaded should throw
+        /// </summary>
         [Fact]
         public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrow()
         {
@@ -79,6 +107,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("already loaded", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that load metadata async with non existent ffprobe should throw
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithNonExistentFfprobe_ShouldThrow()
         {
@@ -91,6 +122,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("Failed to interpret ffprobe", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that load metadata with non existent ffprobe should throw
+        /// </summary>
         [Fact]
         public void LoadMetadata_WithNonExistentFfprobe_ShouldThrow()
         {
@@ -103,6 +137,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("Failed to interpret ffprobe", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that load after metadata load should open data stream
+        /// </summary>
         [Fact]
         public void Load_AfterMetadataLoad_ShouldOpenDataStream()
         {
@@ -115,6 +152,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.True(reader.OpenedForReading);
         }
 
+        /// <summary>
+        /// Tests that load with bit depth 24 should work
+        /// </summary>
         [Fact]
         public void Load_WithBitDepth24_ShouldWork()
         {
@@ -127,6 +167,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.True(reader.OpenedForReading);
         }
 
+        /// <summary>
+        /// Tests that load with bit depth 32 should work
+        /// </summary>
         [Fact]
         public void Load_WithBitDepth32_ShouldWork()
         {
@@ -139,6 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.True(reader.OpenedForReading);
         }
 
+        /// <summary>
+        /// Tests that metadata loaded default should be false
+        /// </summary>
         [Fact]
         public void MetadataLoaded_Default_ShouldBeFalse()
         {
@@ -146,6 +192,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.False(reader.MetadataLoaded);
         }
 
+        /// <summary>
+        /// Tests that metadata default should be null
+        /// </summary>
         [Fact]
         public void Metadata_Default_ShouldBeNull()
         {

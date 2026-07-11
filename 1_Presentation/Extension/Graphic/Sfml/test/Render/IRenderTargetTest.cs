@@ -4,14 +4,23 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The render target test class
+    /// </summary>
     public class IRenderTargetTest
     {
+        /// <summary>
+        /// Tests that i render target is interface
+        /// </summary>
         [Fact]
         public void IRenderTarget_IsInterface()
         {
             Assert.True(typeof(IRenderTarget).IsInterface);
         }
 
+        /// <summary>
+        /// Tests that i render target defines size property
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesSizeProperty()
         {
@@ -20,30 +29,45 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanRead);
         }
 
+        /// <summary>
+        /// Tests that i render target defines default view property
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesDefaultViewProperty()
         {
             Assert.NotNull(typeof(IRenderTarget).GetProperty("DefaultView"));
         }
 
+        /// <summary>
+        /// Tests that i render target defines get view method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesGetViewMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("GetView"));
         }
 
+        /// <summary>
+        /// Tests that i render target defines set view method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesSetViewMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("SetView"));
         }
 
+        /// <summary>
+        /// Tests that i render target defines get viewport method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesGetViewportMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("GetViewport"));
         }
 
+        /// <summary>
+        /// Tests that i render target defines map pixel to coords method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesMapPixelToCoordsMethod()
         {
@@ -51,6 +75,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(IRenderTarget).GetMethod("MapPixelToCoords", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F), typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that i render target defines map coords to pixel method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesMapCoordsToPixelMethod()
         {
@@ -58,6 +85,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(IRenderTarget).GetMethod("MapCoordsToPixel", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F), typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that i render target defines clear method
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesClearMethod()
         {
@@ -65,6 +95,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(IRenderTarget).GetMethod("Clear", new[] { typeof(Color) }));
         }
 
+        /// <summary>
+        /// Tests that i render target defines draw methods
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesDrawMethods()
         {
@@ -74,6 +107,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(IRenderTarget).GetMethod("Draw", new[] { typeof(Vertex[]), typeof(PrimitiveType), typeof(RenderStates) }));
         }
 
+        /// <summary>
+        /// Tests that i render target defines gl methods
+        /// </summary>
         [Fact]
         public void IRenderTarget_DefinesGlMethods()
         {

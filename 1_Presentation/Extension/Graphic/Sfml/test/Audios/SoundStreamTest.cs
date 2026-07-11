@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The sound stream test class
+    /// </summary>
     public class SoundStreamTest
     {
+        /// <summary>
+        /// Tests that sound stream is assignable from object base
+        /// </summary>
         [Fact]
         public void SoundStream_IsAssignableFromObjectBase()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(typeof(ObjectBase).IsAssignableFrom(type));
         }
 
+        /// <summary>
+        /// Tests that sound stream class exists
+        /// </summary>
         [Fact]
         public void SoundStream_Class_Exists()
         {

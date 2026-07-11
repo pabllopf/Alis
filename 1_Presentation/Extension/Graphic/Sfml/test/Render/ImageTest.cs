@@ -38,12 +38,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// </summary>
     public class ImageTest
     {
+        /// <summary>
+        /// Tests that image is assignable from object base
+        /// </summary>
         [Fact]
         public void Image_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Image)));
         }
 
+        /// <summary>
+        /// Tests that image constructor overloads exist
+        /// </summary>
         [Fact]
         public void Image_ConstructorOverloads_Exist()
         {
@@ -55,6 +61,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Contains(ctors, c => c.GetParameters().Length == 3 && c.GetParameters()[0].ParameterType == typeof(uint) && c.GetParameters()[1].ParameterType == typeof(uint) && c.GetParameters()[2].ParameterType == typeof(byte[]));
         }
 
+        /// <summary>
+        /// Tests that pixels property exists
+        /// </summary>
         [Fact]
         public void Pixels_Property_Exists()
         {
@@ -63,6 +72,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(byte[]), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that size property exists
+        /// </summary>
         [Fact]
         public void Size_Property_Exists()
         {
@@ -70,6 +82,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop);
         }
 
+        /// <summary>
+        /// Tests that save to file method exists
+        /// </summary>
         [Fact]
         public void SaveToFile_Method_Exists()
         {
@@ -78,6 +93,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that create mask from color single param exists
+        /// </summary>
         [Fact]
         public void CreateMaskFromColor_SingleParam_Exists()
         {
@@ -85,6 +103,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(method);
         }
 
+        /// <summary>
+        /// Tests that create mask from color two params exists
+        /// </summary>
         [Fact]
         public void CreateMaskFromColor_TwoParams_Exists()
         {
@@ -92,6 +113,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(method);
         }
 
+        /// <summary>
+        /// Tests that copy method overloads exist
+        /// </summary>
         [Fact]
         public void Copy_MethodOverloads_Exist()
         {
@@ -100,6 +124,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(Image).GetMethod("Copy", new[] { typeof(Image), typeof(uint), typeof(uint), typeof(IntRect), typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that get pixel set pixel methods exist
+        /// </summary>
         [Fact]
         public void GetPixel_SetPixel_Methods_Exist()
         {
@@ -107,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(Image).GetMethod("SetPixel"));
         }
 
+        /// <summary>
+        /// Tests that flip horizontally flip vertically methods exist
+        /// </summary>
         [Fact]
         public void FlipHorizontally_FlipVertically_Methods_Exist()
         {

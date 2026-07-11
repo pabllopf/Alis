@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The hglrc tests class
+    /// </summary>
     public class HglrcTests
     {
+        /// <summary>
+        /// Tests that none is default value
+        /// </summary>
         [Fact]
         public void None_IsDefaultValue()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(default(Hglrc), none);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr works
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_Works()
         {
@@ -49,6 +58,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero, ptr);
         }
 
+        /// <summary>
+        /// Tests that to string returns handle string
+        /// </summary>
         [Fact]
         public void ToString_ReturnsHandleString()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero.ToString(), result);
         }
 
+        /// <summary>
+        /// Tests that equals with same hglrc returns true
+        /// </summary>
         [Fact]
         public void Equals_WithSameHglrc_ReturnsTrue()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(hglrc1.Equals(hglrc2));
         }
 
+        /// <summary>
+        /// Tests that equals with object returns correct result
+        /// </summary>
         [Fact]
         public void Equals_WithObject_ReturnsCorrectResult()
         {
@@ -73,6 +91,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(hglrc.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that equals with non hglrc object returns false
+        /// </summary>
         [Fact]
         public void Equals_WithNonHglrcObject_ReturnsFalse()
         {
@@ -81,6 +102,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(hglrc.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that get hash code returns same for equal hglrc
+        /// </summary>
         [Fact]
         public void GetHashCode_ReturnsSameForEqualHglrc()
         {
@@ -89,6 +113,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(hglrc1.GetHashCode(), hglrc2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that equality operator with same hglrc returns true
+        /// </summary>
         [Fact]
         public void EqualityOperator_WithSameHglrc_ReturnsTrue()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(hglrc1 == hglrc2);
         }
 
+        /// <summary>
+        /// Tests that inequality operator with same hglrc returns false
+        /// </summary>
         [Fact]
         public void InequalityOperator_WithSameHglrc_ReturnsFalse()
         {
@@ -105,6 +135,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(hglrc1 != hglrc2);
         }
 
+        /// <summary>
+        /// Tests that equals with i equatable interface works
+        /// </summary>
         [Fact]
         public void Equals_WithIEquatableInterface_Works()
         {

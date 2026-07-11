@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The egl display tests class
+    /// </summary>
     public class EglDisplayTests
     {
+        /// <summary>
+        /// Tests that none is default value
+        /// </summary>
         [Fact]
         public void None_IsDefaultValue()
         {
@@ -42,6 +48,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(default(EglDisplay), none);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr works
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_Works()
         {
@@ -49,6 +58,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero, ptr);
         }
 
+        /// <summary>
+        /// Tests that to string returns handle string
+        /// </summary>
         [Fact]
         public void ToString_ReturnsHandleString()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(IntPtr.Zero.ToString(), result);
         }
 
+        /// <summary>
+        /// Tests that equals with same egl display returns true
+        /// </summary>
         [Fact]
         public void Equals_WithSameEglDisplay_ReturnsTrue()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(display1.Equals(display2));
         }
 
+        /// <summary>
+        /// Tests that equals with object returns correct result
+        /// </summary>
         [Fact]
         public void Equals_WithObject_ReturnsCorrectResult()
         {
@@ -73,6 +91,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(display.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that equals with non egl display object returns false
+        /// </summary>
         [Fact]
         public void Equals_WithNonEglDisplayObject_ReturnsFalse()
         {
@@ -81,6 +102,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(display.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that get hash code returns same for equal displays
+        /// </summary>
         [Fact]
         public void GetHashCode_ReturnsSameForEqualDisplays()
         {
@@ -89,6 +113,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(display1.GetHashCode(), display2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that equality operator with same displays returns true
+        /// </summary>
         [Fact]
         public void EqualityOperator_WithSameDisplays_ReturnsTrue()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.True(display1 == display2);
         }
 
+        /// <summary>
+        /// Tests that inequality operator with same displays returns false
+        /// </summary>
         [Fact]
         public void InequalityOperator_WithSameDisplays_ReturnsFalse()
         {
@@ -105,6 +135,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.False(display1 != display2);
         }
 
+        /// <summary>
+        /// Tests that equals with i equatable interface works
+        /// </summary>
         [Fact]
         public void Equals_WithIEquatableInterface_Works()
         {

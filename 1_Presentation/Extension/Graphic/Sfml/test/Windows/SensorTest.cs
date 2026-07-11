@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The sensor test class
+    /// </summary>
     public class SensorTest
     {
+        /// <summary>
+        /// Tests that type enum has correct values
+        /// </summary>
         [Fact]
         public void Type_Enum_HasCorrectValues()
         {
@@ -18,18 +24,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(6, (int)Sensor.Type.TypeCount);
         }
 
+        /// <summary>
+        /// Tests that is available method exists
+        /// </summary>
         [Fact]
         public void IsAvailable_Method_Exists()
         {
             Assert.NotNull(typeof(Sensor).GetMethod("IsAvailable"));
         }
 
+        /// <summary>
+        /// Tests that set enabled method exists
+        /// </summary>
         [Fact]
         public void SetEnabled_Method_Exists()
         {
             Assert.NotNull(typeof(Sensor).GetMethod("SetEnabled"));
         }
 
+        /// <summary>
+        /// Tests that get value method exists
+        /// </summary>
         [Fact]
         public void GetValue_Method_Exists()
         {

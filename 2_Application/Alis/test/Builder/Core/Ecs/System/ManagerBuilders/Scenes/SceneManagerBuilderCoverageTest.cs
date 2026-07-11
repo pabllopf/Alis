@@ -8,8 +8,14 @@ using Xunit;
 
 namespace Alis.Test.Builder.Core.Ecs.System.ManagerBuilders.Scenes
 {
+    /// <summary>
+    /// The scene manager builder coverage test class
+    /// </summary>
     public class SceneManagerBuilderCoverageTest
     {
+        /// <summary>
+        /// Tests that add with scene builder config should add scene
+        /// </summary>
         [Fact]
         public void Add_WithSceneBuilderConfig_ShouldAddScene()
         {
@@ -23,6 +29,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.ManagerBuilders.Scenes
             Assert.Single(result.LoadedScenes);
         }
 
+        /// <summary>
+        /// Tests that add with multiple configs should add multiple scenes
+        /// </summary>
         [Fact]
         public void Add_WithMultipleConfigs_ShouldAddMultipleScenes()
         {
@@ -37,6 +46,9 @@ namespace Alis.Test.Builder.Core.Ecs.System.ManagerBuilders.Scenes
             Assert.Equal(2, result.LoadedScenes.Count);
         }
 
+        /// <summary>
+        /// Tests that add returns same builder
+        /// </summary>
         [Fact]
         public void Add_ReturnsSameBuilder()
         {

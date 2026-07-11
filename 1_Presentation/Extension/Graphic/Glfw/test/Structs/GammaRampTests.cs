@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The gamma ramp tests class
+    /// </summary>
     public class GammaRampTests
     {
+        /// <summary>
+        /// Tests that constructor with valid arrays sets properties
+        /// </summary>
         [Fact]
         public void Constructor_WithValidArrays_SetsProperties()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(3u, ramp.Size);
         }
 
+        /// <summary>
+        /// Tests that constructor with unequal length arrays throws argument exception
+        /// </summary>
         [Fact]
         public void Constructor_WithUnequalLengthArrays_ThrowsArgumentException()
         {
@@ -60,6 +69,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Throws<ArgumentException>(() => new GammaRamp(red, green, blue));
         }
 
+        /// <summary>
+        /// Tests that constructor with all different lengths throws argument exception
+        /// </summary>
         [Fact]
         public void Constructor_WithAllDifferentLengths_ThrowsArgumentException()
         {
@@ -70,12 +82,18 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Throws<ArgumentException>(() => new GammaRamp(red, green, blue));
         }
 
+        /// <summary>
+        /// Tests that constructor with null arrays throws null reference exception
+        /// </summary>
         [Fact]
         public void Constructor_WithNullArrays_ThrowsNullReferenceException()
         {
             Assert.Throws<NullReferenceException>(() => new GammaRamp(null, new ushort[0], new ushort[0]));
         }
 
+        /// <summary>
+        /// Tests that constructor with single element arrays sets size to one
+        /// </summary>
         [Fact]
         public void Constructor_WithSingleElementArrays_SetsSizeToOne()
         {
@@ -88,6 +106,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(1u, ramp.Size);
         }
 
+        /// <summary>
+        /// Tests that constructor with empty arrays sets size to zero
+        /// </summary>
         [Fact]
         public void Constructor_WithEmptyArrays_SetsSizeToZero()
         {
@@ -100,6 +121,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(0u, ramp.Size);
         }
 
+        /// <summary>
+        /// Tests that fields are mutable
+        /// </summary>
         [Fact]
         public void Fields_AreMutable()
         {

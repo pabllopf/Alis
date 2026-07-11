@@ -6,13 +6,27 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio reader async coverage tests class
+    /// </summary>
     public class AudioReaderAsyncCoverageTests
     {
+        /// <summary>
+        /// The assets dir
+        /// </summary>
         private const string AssetsDir = "../../../Assets";
 
+        /// <summary>
+        /// Gets the asset path using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <returns>The string</returns>
         private string GetAssetPath(string file) =>
             Path.GetFullPath(Path.Combine(AssetsDir, file));
 
+        /// <summary>
+        /// Tests that load metadata async with real audio file loads successfully
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithRealAudioFile_LoadsSuccessfully()
         {
@@ -28,6 +42,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load metadata async with ogg file loads successfully
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_WithOggFile_LoadsSuccessfully()
         {
@@ -43,6 +60,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load metadata with real audio file loads successfully
+        /// </summary>
         [Fact]
         public void LoadMetadata_WithRealAudioFile_LoadsSuccessfully()
         {
@@ -57,6 +77,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load metadata already loaded throws
+        /// </summary>
         [Fact]
         public void LoadMetadata_AlreadyLoaded_Throws()
         {
@@ -71,6 +94,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load metadata async already loaded throws
+        /// </summary>
         [Fact]
         public async Task LoadMetadataAsync_AlreadyLoaded_Throws()
         {
@@ -85,6 +111,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load after metadata opens stream
+        /// </summary>
         [Fact]
         public void Load_AfterMetadata_OpensStream()
         {
@@ -101,6 +130,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load without metadata throws
+        /// </summary>
         [Fact]
         public void Load_WithoutMetadata_Throws()
         {
@@ -114,6 +146,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load already loaded throws
+        /// </summary>
         [Fact]
         public void Load_AlreadyLoaded_Throws()
         {
@@ -130,6 +165,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that load invalid bit depth throws
+        /// </summary>
         [Fact]
         public void Load_InvalidBitDepth_Throws()
         {
@@ -143,6 +181,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that next frame without load throws
+        /// </summary>
         [Fact]
         public void NextFrame_WithoutLoad_Throws()
         {
@@ -157,6 +198,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that resolve bit depth with various formats sets correct depth
+        /// </summary>
         [Fact]
         public void ResolveBitDepth_WithVariousFormats_SetsCorrectDepth()
         {
@@ -169,6 +213,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             var md8 = m(); md8.SampleFormat = "u8"; AudioReader.ResolveBitDepth(md8); Assert.Equal(8, md8.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that resolve bit depth when bit depth already set does not change
+        /// </summary>
         [Fact]
         public void ResolveBitDepth_WhenBitDepthAlreadySet_DoesNotChange()
         {
@@ -178,6 +225,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(24, metadata.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that resolve bit depth with empty sample format does not change
+        /// </summary>
         [Fact]
         public void ResolveBitDepth_WithEmptySampleFormat_DoesNotChange()
         {
@@ -187,6 +237,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(0, metadata.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that constructor with non existent file throws
+        /// </summary>
         [Fact]
         public void Constructor_WithNonExistentFile_Throws()
         {
@@ -194,6 +247,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.NotNull(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose should cleanup
+        /// </summary>
         [Fact]
         public void Dispose_ShouldCleanup()
         {

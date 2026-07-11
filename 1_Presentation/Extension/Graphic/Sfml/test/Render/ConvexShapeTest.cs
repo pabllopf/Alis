@@ -38,24 +38,36 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// </summary>
     public class ConvexShapeTest
     {
+        /// <summary>
+        /// Tests that default constructor initializes with zero points
+        /// </summary>
         [Fact]
         public void DefaultConstructor_InitializesWithZeroPoints()
         {
             Assert.True(true);
         }
 
+        /// <summary>
+        /// Tests that convex shape is assignable from shape
+        /// </summary>
         [Fact]
         public void ConvexShape_IsAssignableFromShape()
         {
             Assert.True(typeof(Shape).IsAssignableFrom(typeof(ConvexShape)));
         }
 
+        /// <summary>
+        /// Tests that convex shape implements i drawable
+        /// </summary>
         [Fact]
         public void ConvexShape_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(ConvexShape)));
         }
 
+        /// <summary>
+        /// Tests that point count property exists
+        /// </summary>
         [Fact]
         public void PointCount_Property_Exists()
         {
@@ -66,6 +78,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(setter);
         }
 
+        /// <summary>
+        /// Tests that get point method exists
+        /// </summary>
         [Fact]
         public void GetPoint_Method_Exists()
         {
@@ -74,6 +89,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Vector2F), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that set point method exists
+        /// </summary>
         [Fact]
         public void SetPoint_Method_Exists()
         {

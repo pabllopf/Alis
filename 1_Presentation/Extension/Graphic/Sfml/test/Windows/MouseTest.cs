@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse test class
+    /// </summary>
     public class MouseTest
     {
+        /// <summary>
+        /// Tests that button enum has correct values
+        /// </summary>
         [Fact]
         public void Button_Enum_HasCorrectValues()
         {
@@ -17,6 +23,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(5, (int)Mouse.Button.ButtonCount);
         }
 
+        /// <summary>
+        /// Tests that wheel enum has correct values
+        /// </summary>
         [Fact]
         public void Wheel_Enum_HasCorrectValues()
         {
@@ -24,30 +33,45 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(1, (int)Mouse.Wheel.HorizontalWheel);
         }
 
+        /// <summary>
+        /// Tests that is button pressed method exists
+        /// </summary>
         [Fact]
         public void IsButtonPressed_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("IsButtonPressed"));
         }
 
+        /// <summary>
+        /// Tests that get position method exists
+        /// </summary>
         [Fact]
         public void GetPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("GetPosition", new[] { typeof(Window) }));
         }
 
+        /// <summary>
+        /// Tests that get position no param method exists
+        /// </summary>
         [Fact]
         public void GetPosition_NoParam_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("GetPosition", System.Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that set position method exists
+        /// </summary>
         [Fact]
         public void SetPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("SetPosition", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F) }));
         }
 
+        /// <summary>
+        /// Tests that set position with window method exists
+        /// </summary>
         [Fact]
         public void SetPosition_WithWindow_Method_Exists()
         {

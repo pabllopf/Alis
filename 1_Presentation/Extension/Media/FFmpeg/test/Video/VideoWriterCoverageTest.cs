@@ -9,12 +9,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video writer coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class VideoWriterCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffmpeg path
+        /// </summary>
         private readonly string _fakeFfmpegPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoWriterCoverageTest"/> class
+        /// </summary>
         public VideoWriterCoverageTest()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -27,6 +43,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -39,6 +58,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that open write file mode with fake ffmpeg should set opened for writing
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_WithFakeFfmpeg_ShouldSetOpenedForWriting()
         {
@@ -55,6 +77,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write file mode with existing file should delete first
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_WithExistingFile_ShouldDeleteFirst()
         {
@@ -67,6 +92,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write file mode with show f fmpeg output should work
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_WithShowFFmpegOutput_ShouldWork()
         {
@@ -81,6 +109,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write already opened should throw
+        /// </summary>
         [Fact]
         public void OpenWrite_AlreadyOpened_ShouldThrow()
         {
@@ -97,6 +128,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { false });
         }
 
+        /// <summary>
+        /// Tests that close write with fake ffmpeg should reset flag
+        /// </summary>
         [Fact]
         public void CloseWrite_WithFakeFfmpeg_ShouldResetFlag()
         {
@@ -108,6 +142,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Tests that close write stream mode should dispose output stream
+        /// </summary>
         [Fact]
         public void CloseWrite_StreamMode_ShouldDisposeOutputStream()
         {
@@ -123,6 +160,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<ObjectDisposedException>(() => outputStream.ReadByte());
         }
 
+        /// <summary>
+        /// Tests that dispose when opened should call close write
+        /// </summary>
         [Fact]
         public void Dispose_WhenOpened_ShouldCallCloseWrite()
         {
@@ -134,6 +174,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Tests that dispose should dispose destination stream
+        /// </summary>
         [Fact]
         public void Dispose_ShouldDisposeDestinationStream()
         {
@@ -145,6 +188,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
         }
 
+        /// <summary>
+        /// Tests that close write when ffmpegp is null should throw
+        /// </summary>
         [Fact]
         public void CloseWrite_WhenFfmpegpIsNull_ShouldThrow()
         {
@@ -163,6 +209,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write with custom encoder options should build correct command
+        /// </summary>
         [Fact]
         public void OpenWrite_WithCustomEncoderOptions_ShouldBuildCorrectCommand()
         {

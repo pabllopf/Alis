@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The sound buffer recorder test class
+    /// </summary>
     public class SoundBufferRecorderTest
     {
+        /// <summary>
+        /// Tests that sound buffer recorder is assignable from object base
+        /// </summary>
         [Fact]
         public void SoundBufferRecorder_IsAssignableFromObjectBase()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(typeof(ObjectBase).IsAssignableFrom(type));
         }
 
+        /// <summary>
+        /// Tests that sound buffer recorder class exists
+        /// </summary>
         [Fact]
         public void SoundBufferRecorder_Class_Exists()
         {

@@ -7,12 +7,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio player additional coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioPlayerAdditionalCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffplay path
+        /// </summary>
         private readonly string _fakeFfplayPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioPlayerAdditionalCoverageTest"/> class
+        /// </summary>
         public AudioPlayerAdditionalCoverageTest()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -25,6 +41,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -37,6 +56,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Tests that close write with running ffplayp kills process
+        /// </summary>
         [Fact]
         public void CloseWrite_WithRunningFfplayp_KillsProcess()
         {
@@ -65,6 +87,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that get stream for writing with fake ffplay returns stream
+        /// </summary>
         [Fact]
         public void GetStreamForWriting_WithFakeFfplay_ReturnsStream()
         {
@@ -79,6 +104,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             process.Dispose();
         }
 
+        /// <summary>
+        /// Tests that get stream for writing with show f fplay output returns stream
+        /// </summary>
         [Fact]
         public void GetStreamForWriting_WithShowFFplayOutput_ReturnsStream()
         {
@@ -92,6 +120,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             process.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with run pure background does not assign ffplayp
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithRunPureBackground_DoesNotAssignFfplayp()
         {
@@ -106,6 +137,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background without pure background assigns ffplayp
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithoutPureBackground_AssignsFfplayp()
         {
@@ -124,6 +158,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with extra params should work
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithExtraParams_ShouldWork()
         {
@@ -138,6 +175,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with show window true should work
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithShowWindowTrue_ShouldWork()
         {
@@ -152,6 +192,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play with show window true should not throw
+        /// </summary>
         [Fact]
         public void Play_WithShowWindowTrue_ShouldNotThrow()
         {
@@ -163,6 +206,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play with extra parameters should not throw
+        /// </summary>
         [Fact]
         public void Play_WithExtraParameters_ShouldNotThrow()
         {
@@ -174,6 +220,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             player.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose when not opened for writing with running process kills it
+        /// </summary>
         [Fact]
         public void Dispose_WhenNotOpenedForWriting_WithRunningProcess_KillsIt()
         {

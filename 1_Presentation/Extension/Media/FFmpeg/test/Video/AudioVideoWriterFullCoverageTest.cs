@@ -10,18 +10,37 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The audio video writer full coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioVideoWriterFullCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The temp file
+        /// </summary>
         private readonly string _tempFile;
+        /// <summary>
+        /// The test stream
+        /// </summary>
         private readonly MemoryStream _testStream;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioVideoWriterFullCoverageTest"/> class
+        /// </summary>
         public AudioVideoWriterFullCoverageTest()
         {
             _tempFile = Path.GetTempFileName();
             _testStream = new MemoryStream();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -33,6 +52,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Creates the exited process
+        /// </summary>
+        /// <returns>The </returns>
         private static Process CreateExitedProcess()
         {
             Process p = new Process();
@@ -45,6 +68,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             return p;
         }
 
+        /// <summary>
+        /// Tests that close write with null ffmpegp should throw null ref
+        /// </summary>
         [Fact]
         public void CloseWrite_WithNullFfmpegp_ShouldThrowNullRef()
         {
@@ -60,6 +86,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Tests that dispose with opened for writing should complete
+        /// </summary>
         [Fact]
         public void Dispose_WithOpenedForWriting_ShouldComplete()
         {
@@ -82,6 +111,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose without opened for writing should not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithoutOpenedForWriting_ShouldNotThrow()
         {
@@ -91,6 +123,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose with csc should dispose csc
+        /// </summary>
         [Fact]
         public void Dispose_WithCsc_ShouldDisposeCsc()
         {
@@ -104,6 +139,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that write frame video when opened writes to stream
+        /// </summary>
         [Fact]
         public void WriteFrame_Video_WhenOpened_WritesToStream()
         {

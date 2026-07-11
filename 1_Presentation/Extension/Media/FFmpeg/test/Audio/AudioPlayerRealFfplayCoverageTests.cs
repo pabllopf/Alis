@@ -8,16 +8,32 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio player real ffplay coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioPlayerRealFfplayCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The stub ffplay
+        /// </summary>
         private const string StubFfplay = "/tmp/ffplay_stub.sh";
+        /// <summary>
+        /// The player
+        /// </summary>
         private AudioPlayer _player;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             try { _player?.Dispose(); } catch { }
         }
 
+        /// <summary>
+        /// Tests that play in background with valid executable returns process
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithValidExecutable_ReturnsProcess()
         {
@@ -30,6 +46,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             p.Dispose();
         }
 
+        /// <summary>
+        /// Tests that play in background with run pure background returns null field
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithRunPureBackground_ReturnsNullField()
         {
@@ -39,6 +58,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Null(p);
         }
 
+        /// <summary>
+        /// Tests that play in background with show window and extra params works
+        /// </summary>
         [Fact]
         public void PlayInBackground_WithShowWindowAndExtraParams_Works()
         {
@@ -51,6 +73,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             p.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write after play in background kills previous process
+        /// </summary>
         [Fact]
         public void OpenWrite_AfterPlayInBackground_KillsPreviousProcess()
         {
@@ -70,6 +95,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             stubPlayer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write when not opened throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CloseWrite_WhenNotOpened_ThrowsInvalidOperationException()
         {

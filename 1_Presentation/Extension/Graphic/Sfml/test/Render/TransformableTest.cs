@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The transformable test class
+    /// </summary>
     public class TransformableTest
     {
+        /// <summary>
+        /// Tests that default constructor sets defaults
+        /// </summary>
         [Fact]
         public void DefaultConstructor_SetsDefaults()
         {
@@ -20,6 +26,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, t.Origin.Y);
         }
 
+        /// <summary>
+        /// Tests that position setter updates value
+        /// </summary>
         [Fact]
         public void Position_Setter_UpdatesValue()
         {
@@ -29,6 +38,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(20f, t.Position.Y);
         }
 
+        /// <summary>
+        /// Tests that position setter invalidates transform
+        /// </summary>
         [Fact]
         public void Position_Setter_InvalidatesTransform()
         {
@@ -38,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(transform);
         }
 
+        /// <summary>
+        /// Tests that rotation setter updates value
+        /// </summary>
         [Fact]
         public void Rotation_Setter_UpdatesValue()
         {
@@ -46,6 +61,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(45f, t.Rotation);
         }
 
+        /// <summary>
+        /// Tests that rotation setter invalidates transform
+        /// </summary>
         [Fact]
         public void Rotation_Setter_InvalidatesTransform()
         {
@@ -55,6 +73,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(transform);
         }
 
+        /// <summary>
+        /// Tests that scale setter updates value
+        /// </summary>
         [Fact]
         public void Scale_Setter_UpdatesValue()
         {
@@ -64,6 +85,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(3f, t.Scale.Y);
         }
 
+        /// <summary>
+        /// Tests that scale setter invalidates transform
+        /// </summary>
         [Fact]
         public void Scale_Setter_InvalidatesTransform()
         {
@@ -73,6 +97,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(transform);
         }
 
+        /// <summary>
+        /// Tests that origin setter updates value
+        /// </summary>
         [Fact]
         public void Origin_Setter_UpdatesValue()
         {
@@ -82,6 +109,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(10f, t.Origin.Y);
         }
 
+        /// <summary>
+        /// Tests that transform returns same instance when not dirty
+        /// </summary>
         [Fact]
         public void Transform_ReturnsSameInstance_WhenNotDirty()
         {
@@ -91,6 +121,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(transform1, transform2);
         }
 
+        /// <summary>
+        /// Tests that transform changes after position change
+        /// </summary>
         [Fact]
         public void Transform_Changes_AfterPositionChange()
         {
@@ -101,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(transform1, transform2);
         }
 
+        /// <summary>
+        /// Tests that transform changes after rotation change
+        /// </summary>
         [Fact]
         public void Transform_Changes_AfterRotationChange()
         {
@@ -111,6 +147,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(transform1, transform2);
         }
 
+        /// <summary>
+        /// Tests that transform changes after scale change
+        /// </summary>
         [Fact]
         public void Transform_Changes_AfterScaleChange()
         {
@@ -121,6 +160,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(transform1, transform2);
         }
 
+        /// <summary>
+        /// Tests that transform changes after origin change
+        /// </summary>
         [Fact]
         public void Transform_Changes_AfterOriginChange()
         {
@@ -131,6 +173,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(transform1, transform2);
         }
 
+        /// <summary>
+        /// Tests that inverse transform returns non null
+        /// </summary>
         [Fact]
         public void InverseTransform_ReturnsNonNull()
         {
@@ -139,6 +184,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(inverse);
         }
 
+        /// <summary>
+        /// Tests that inverse transform caches result
+        /// </summary>
         [Fact]
         public void InverseTransform_CachesResult()
         {
@@ -148,6 +196,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(inv1, inv2);
         }
 
+        /// <summary>
+        /// Tests that inverse transform invalidated by position change
+        /// </summary>
         [Fact]
         public void InverseTransform_Invalidated_ByPositionChange()
         {
@@ -158,6 +209,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Tests that inverse transform invalidated by rotation change
+        /// </summary>
         [Fact]
         public void InverseTransform_Invalidated_ByRotationChange()
         {
@@ -168,6 +222,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Tests that inverse transform invalidated by scale change
+        /// </summary>
         [Fact]
         public void InverseTransform_Invalidated_ByScaleChange()
         {
@@ -178,6 +235,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Tests that inverse transform invalidated by origin change
+        /// </summary>
         [Fact]
         public void InverseTransform_Invalidated_ByOriginChange()
         {
@@ -188,6 +248,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Tests that transform with position translates correctly
+        /// </summary>
         [Fact]
         public void Transform_WithPosition_TranslatesCorrectly()
         {
@@ -199,6 +262,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(200f, point.Y);
         }
 
+        /// <summary>
+        /// Tests that transform with scale scales correctly
+        /// </summary>
         [Fact]
         public void Transform_WithScale_ScalesCorrectly()
         {
@@ -211,6 +277,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(30f, point.Y);
         }
 
+        /// <summary>
+        /// Tests that copy constructor copies properties
+        /// </summary>
         [Fact]
         public void CopyConstructor_CopiesProperties()
         {
@@ -227,6 +296,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Origin, copy.Origin);
         }
 
+        /// <summary>
+        /// Tests that destroy does not throw
+        /// </summary>
         [Fact]
         public void Destroy_DoesNotThrow()
         {

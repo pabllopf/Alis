@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The music test class
+    /// </summary>
     public class MusicTest
     {
+        /// <summary>
+        /// Tests that music is assignable from object base
+        /// </summary>
         [Fact]
         public void Music_IsAssignableFromObjectBase()
         {
@@ -13,6 +19,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(typeof(ObjectBase).IsAssignableFrom(musicType));
         }
 
+        /// <summary>
+        /// Tests that music class exists
+        /// </summary>
         [Fact]
         public void Music_Class_Exists()
         {
@@ -20,6 +29,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(musicType);
         }
 
+        /// <summary>
+        /// Tests that music implements i disposable
+        /// </summary>
         [Fact]
         public void Music_ImplementsIDisposable()
         {

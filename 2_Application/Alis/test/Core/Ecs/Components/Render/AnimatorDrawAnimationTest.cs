@@ -4,8 +4,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator draw animation test class
+    /// </summary>
     public class AnimatorDrawAnimationTest
     {
+        /// <summary>
+        /// Tests that draw animation when name file differs should not throw
+        /// </summary>
         [Fact]
         public void DrawAnimation_WhenNameFileDiffers_ShouldNotThrow()
         {
@@ -28,6 +34,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<Alis.Core.Graphic.OpenGL.GlException>(() => animator.DrawAnimation(ref sprite));
         }
 
+        /// <summary>
+        /// Tests that draw animation when name file is same should not call load texture
+        /// </summary>
         [Fact]
         public void DrawAnimation_WhenNameFileIsSame_ShouldNotCallLoadTexture()
         {

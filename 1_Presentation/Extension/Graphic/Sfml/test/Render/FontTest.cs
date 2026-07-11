@@ -38,18 +38,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// </summary>
     public class FontTest
     {
+        /// <summary>
+        /// Tests that font is assignable from object base
+        /// </summary>
         [Fact]
         public void Font_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Font)));
         }
 
+        /// <summary>
+        /// Tests that font implements i disposable
+        /// </summary>
         [Fact]
         public void Font_ImplementsIDisposable()
         {
             Assert.True(typeof(System.IDisposable).IsAssignableFrom(typeof(Font)));
         }
 
+        /// <summary>
+        /// Tests that info struct has family property
+        /// </summary>
         [Fact]
         public void Info_Struct_HasFamilyProperty()
         {
@@ -60,6 +69,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(string), familyProp.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that info marshal data struct has family field
+        /// </summary>
         [Fact]
         public void InfoMarshalData_Struct_HasFamilyField()
         {
