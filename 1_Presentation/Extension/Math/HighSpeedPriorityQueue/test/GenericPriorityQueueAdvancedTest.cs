@@ -114,7 +114,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         /// The timestamp node class
         /// </summary>
         /// <seealso cref="GenericPriorityQueueNode{int}"/>
-        private sealed class TimestampNode : GenericPriorityQueueNode<int>
+        internal sealed class TimestampNode : GenericPriorityQueueNode<int>
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TimestampNode"/> class

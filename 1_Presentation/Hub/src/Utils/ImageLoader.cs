@@ -237,7 +237,7 @@ namespace Alis.App.Hub.Utils
         /// <summary>
         ///     The cached texture class
         /// </summary>
-        private sealed class CachedTexture
+        internal sealed class CachedTexture
         {
             /// <summary>
             ///     The height

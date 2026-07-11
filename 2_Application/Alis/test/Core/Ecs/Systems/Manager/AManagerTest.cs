@@ -163,7 +163,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager
         /// <summary>
         ///     Test helper that exposes AManager constructors.
         /// </summary>
-        private sealed class TestManager : AManager
+        internal sealed class TestManager : AManager
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestManager"/> class
@@ -190,7 +190,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager
         /// <summary>
         ///     Test helper that tracks which lifecycle methods were called.
         /// </summary>
-        private sealed class OverrideTestManager : AManager
+        internal sealed class OverrideTestManager : AManager
         {
             /// <summary>
             /// Gets or sets the value of the on enable called

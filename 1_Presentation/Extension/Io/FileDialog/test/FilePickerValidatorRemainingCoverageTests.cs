@@ -113,7 +113,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// The throwing logger class
         /// </summary>
         /// <seealso cref="ILogger"/>
-        private sealed class ThrowingLogger : ILogger
+        internal sealed class ThrowingLogger : ILogger
         {
             /// <summary>
             /// Gets or sets the value of the throw trace on call
@@ -245,7 +245,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         /// The disposable action class
         /// </summary>
         /// <seealso cref="IDisposable"/>
-        private sealed class DisposableAction : IDisposable
+        internal sealed class DisposableAction : IDisposable
         {
             /// <summary>
             /// The action

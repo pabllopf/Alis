@@ -116,7 +116,7 @@ namespace Alis.Core.Ecs.Test
         ///     The no op generic action class
         /// </summary>
         /// <seealso cref="IGenericAction{GameObject}" />
-        private sealed class NoOpGenericAction : IGenericAction<GameObject>
+        internal sealed class NoOpGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Invokes the param

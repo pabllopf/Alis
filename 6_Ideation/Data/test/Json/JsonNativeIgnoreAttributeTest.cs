@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// <summary>
         ///     Model used by attribute tests.
         /// </summary>
-        private sealed class IgnoredModel
+        internal sealed class IgnoredModel
         {
             /// <summary>
             ///     Gets or sets a property intentionally ignored by serialization.

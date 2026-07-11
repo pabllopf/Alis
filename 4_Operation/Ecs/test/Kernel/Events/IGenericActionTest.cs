@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// The test generic action class
         /// </summary>
         /// <seealso cref="IGenericAction"/>
-        private sealed class TestGenericAction : IGenericAction
+        internal sealed class TestGenericAction : IGenericAction
         {
             /// <summary>
             /// Invokes the type
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// The string generic action class
         /// </summary>
         /// <seealso cref="IGenericAction"/>
-        private sealed class StringGenericAction : IGenericAction
+        internal sealed class StringGenericAction : IGenericAction
         {
             /// <summary>
             /// Invokes the type
@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// The typed generic action class
         /// </summary>
         /// <seealso cref="IGenericAction{int}"/>
-        private sealed class TypedGenericAction : IGenericAction<int>
+        internal sealed class TypedGenericAction : IGenericAction<int>
         {
             /// <summary>
             /// Invokes the param

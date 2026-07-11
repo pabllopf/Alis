@@ -113,7 +113,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         /// The job node class
         /// </summary>
         /// <seealso cref="StablePriorityQueueNode"/>
-        private sealed class JobNode : StablePriorityQueueNode
+        internal sealed class JobNode : StablePriorityQueueNode
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="JobNode"/> class

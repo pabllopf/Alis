@@ -261,7 +261,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         ///     The capture action class
         /// </summary>
         /// <seealso cref="IGenericAction{GameObject}" />
-        private sealed class CaptureAction : IGenericAction<GameObject>
+        internal sealed class CaptureAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     The calls

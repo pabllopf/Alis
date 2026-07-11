@@ -44,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     The test audio player class that exposes protected members for testing
         /// </summary>
-        private sealed class TestableAudioPlayer : AudioPlayer
+        internal sealed class TestableAudioPlayer : AudioPlayer
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestableAudioPlayer"/> class

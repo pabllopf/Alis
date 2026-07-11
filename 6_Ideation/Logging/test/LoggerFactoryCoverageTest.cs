@@ -194,7 +194,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper output that throws on Dispose, Flush, or Write.
         /// </summary>
-        private sealed class ThrowingOutput : ILogOutput
+        internal sealed class ThrowingOutput : ILogOutput
         {
             /// <summary>
             /// The throw on dispose
@@ -278,7 +278,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper filter that throws on ShouldLog.
         /// </summary>
-        private sealed class ThrowingFilter : ILogFilter
+        internal sealed class ThrowingFilter : ILogFilter
         {
             /// <summary>
             /// Gets the value of the name

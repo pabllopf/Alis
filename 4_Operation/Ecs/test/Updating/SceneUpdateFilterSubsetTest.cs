@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The scene update filter subset attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
-        private sealed class SceneUpdateFilterSubsetAttribute : Attribute
+        internal sealed class SceneUpdateFilterSubsetAttribute : Attribute
         {
         }
     }

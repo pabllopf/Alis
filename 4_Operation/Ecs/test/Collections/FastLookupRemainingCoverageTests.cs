@@ -141,7 +141,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// The test type id class
         /// </summary>
         /// <seealso cref="ITypeId"/>
-        private sealed class TestTypeId : ITypeId
+        internal sealed class TestTypeId : ITypeId
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestTypeId"/> class

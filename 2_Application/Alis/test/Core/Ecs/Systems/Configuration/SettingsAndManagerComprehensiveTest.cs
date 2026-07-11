@@ -318,7 +318,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         /// The test manager class
         /// </summary>
         /// <seealso cref="AManager"/>
-        private sealed class TestManager : AManager
+        internal sealed class TestManager : AManager
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestManager"/> class

@@ -24,7 +24,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         [Fact] public void ColorSpace_ShouldBeSettable() { var s = new MediaStream { ColorSpace = "bt709" }; Assert.Equal("bt709", s.ColorSpace); }
         [Fact] public void ColorTransfer_ShouldBeSettable() { var s = new MediaStream { ColorTransfer = "bt709" }; Assert.Equal("bt709", s.ColorTransfer); }
         [Fact] public void ColorPrimaries_ShouldBeSettable() { var s = new MediaStream { ColorPrimaries = "bt709" }; Assert.Equal("bt709", s.ColorPrimaries); }
-        [Fact] public void ChromaLocation_ShouldBeSettable() { var s = new MediaStream { ChromaLocati = "left" }; Assert.Equal("left", s.ChromaLocati); }
+        [Fact] public void ChromaLocation_ShouldBeSettable() { var s = new MediaStream { ChromaLocation = "left" }; Assert.Equal("left", s.ChromaLocation); }
         [Fact] public void Refs_ShouldBeSettable() { var s = new MediaStream { Refs = 3 }; Assert.Equal(3, s.Refs); }
         [Fact] public void IsAvc_ShouldBeSettable() { var s = new MediaStream { IsAvc = "true" }; Assert.Equal("true", s.IsAvc); }
         [Fact] public void NalLengthSize_ShouldBeSettable() { var s = new MediaStream { NalLengthSize = "4" }; Assert.Equal("4", s.NalLengthSize); }
@@ -38,9 +38,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         [Fact] public void BitRate_ShouldBeSettable() { var s = new MediaStream { BitRate = "128000" }; Assert.Equal("128000", s.BitRate); }
         [Fact] public void BitsPerRawSample_ShouldBeSettable() { var s = new MediaStream { BitsPerRawSample = "8" }; Assert.Equal("8", s.BitsPerRawSample); }
         [Fact] public void NbFrames_ShouldBeSettable() { var s = new MediaStream { NbFrames = "300" }; Assert.Equal("300", s.NbFrames); }
-        [Fact] public void NumFrames_ShouldBeSettable() { var s = new MediaStream { NumFrames = "300" }; Assert.Equal("300", s.NumFrames); }
         [Fact] public void SampleFmt_ShouldBeSettable() { var s = new MediaStream { SampleFmt = "fltp" }; Assert.Equal("fltp", s.SampleFmt); }
-        [Fact] public void SampleRateNumber_ShouldBeSettable() { var s = new MediaStream { SampleRateNumber = 44100 }; Assert.Equal(44100, s.SampleRateNumber); }
         [Fact] public void Channels_ShouldBeSettable() { var s = new MediaStream { Channels = 2 }; Assert.Equal(2, s.Channels); }
         [Fact] public void ChannelLayout_ShouldBeSettable() { var s = new MediaStream { ChannelLayout = "stereo" }; Assert.Equal("stereo", s.ChannelLayout); }
         [Fact] public void BitsPerSample_ShouldBeSettable() { var s = new MediaStream { BitsPerSample = 16 }; Assert.Equal(16, s.BitsPerSample); }

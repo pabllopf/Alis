@@ -241,14 +241,14 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The registered scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
-        private sealed class RegisteredSceneUpdateFilterAttribute : Attribute
+        internal sealed class RegisteredSceneUpdateFilterAttribute : Attribute
         {
         }
 
         /// <summary>
         ///     Attribute used to test buffer stretching beyond initial capacity.
         /// </summary>
-        private sealed class StretchFilterAttribute : Attribute
+        internal sealed class StretchFilterAttribute : Attribute
         {
         }
 
@@ -256,7 +256,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The empty scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
-        private sealed class EmptySceneUpdateFilterAttribute : Attribute
+        internal sealed class EmptySceneUpdateFilterAttribute : Attribute
         {
         }
 

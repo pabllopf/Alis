@@ -667,7 +667,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper output for testing fault tolerance.
         /// </summary>
-        private sealed class FaultyLogOutput : ILogOutput
+        internal sealed class FaultyLogOutput : ILogOutput
         {
             /// <summary>
             ///     Gets the value of the name

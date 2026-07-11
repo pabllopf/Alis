@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The generation services probe attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
-        private sealed class GenerationServicesProbeAttribute : Attribute
+        internal sealed class GenerationServicesProbeAttribute : Attribute
         {
         }
 

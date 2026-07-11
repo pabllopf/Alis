@@ -32,6 +32,6 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         /// The test context class
         /// </summary>
         /// <seealso cref="IContext"/>
-        private sealed class TestContext : IContext { }
+        internal sealed class TestContext : IContext { }
     }
 }

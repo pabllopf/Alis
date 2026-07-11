@@ -278,7 +278,7 @@ namespace Alis.Extension.Network.Test.Internal
         /// <summary>
         ///     A MemoryStream that throws on WriteAsync for testing error paths.
         /// </summary>
-        private sealed class ThrowingWriteStream : MemoryStream
+        internal sealed class ThrowingWriteStream : MemoryStream
         {
             /// <summary>
             /// Writes the buffer
@@ -297,7 +297,7 @@ namespace Alis.Extension.Network.Test.Internal
         /// <summary>
         ///     A MemoryStream that throws on Dispose for testing error handling.
         /// </summary>
-        private sealed class ThrowingOnDisposeStream : MemoryStream
+        internal sealed class ThrowingOnDisposeStream : MemoryStream
         {
             /// <summary>
             /// Disposes the disposing

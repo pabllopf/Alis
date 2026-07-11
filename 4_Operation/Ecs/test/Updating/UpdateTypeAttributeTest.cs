@@ -80,14 +80,14 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The dummy update type attribute class
         /// </summary>
         /// <seealso cref="UpdateTypeAttribute" />
-        private sealed class DummyUpdateTypeAttribute : UpdateTypeAttribute
+        internal sealed class DummyUpdateTypeAttribute : UpdateTypeAttribute
         {
         }
 
         /// <summary>
         ///     The target method holder class
         /// </summary>
-        private sealed class TargetMethodHolder
+        internal sealed class TargetMethodHolder
         {
             /// <summary>
             ///     Ticks this instance

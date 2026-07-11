@@ -37,7 +37,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// The test chunk action class
         /// </summary>
         /// <seealso cref="IChunkAction{int}"/>
-        private sealed class TestChunkAction : IChunkAction<int>
+        internal sealed class TestChunkAction : IChunkAction<int>
         {
             /// <summary>
             /// Gets or sets the value of the sum

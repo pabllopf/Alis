@@ -22,7 +22,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// The silent logger class
         /// </summary>
         /// <seealso cref="ILogger"/>
-        private sealed class SilentLogger : ILogger
+        internal sealed class SilentLogger : ILogger
         {
             /// <summary>
             /// Gets the value of the name

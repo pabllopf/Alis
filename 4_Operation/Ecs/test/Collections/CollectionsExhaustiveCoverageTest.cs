@@ -563,7 +563,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     The tracking action class
         /// </summary>
         /// <seealso cref="IGenericAction{GameObject}" />
-        private sealed class TrackingAction : IGenericAction<GameObject>
+        internal sealed class TrackingAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets or sets the value of the call count

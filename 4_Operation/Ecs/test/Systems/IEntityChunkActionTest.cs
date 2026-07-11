@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// The test entity chunk action class
         /// </summary>
         /// <seealso cref="IEntityChunkAction"/>
-        private sealed class TestEntityChunkAction : IEntityChunkAction
+        internal sealed class TestEntityChunkAction : IEntityChunkAction
         {
             /// <summary>
             /// Gets or sets the value of the count

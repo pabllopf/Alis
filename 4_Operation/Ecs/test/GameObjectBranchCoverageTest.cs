@@ -238,7 +238,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     A simple <see cref="IGenericAction{GameObject}" /> that invokes a callback.
         /// </summary>
-        private sealed class CallbackGenericAction : IGenericAction<GameObject>
+        internal sealed class CallbackGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             /// The callback

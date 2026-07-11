@@ -309,7 +309,7 @@ namespace Alis.Core.Aspect.Logging.Test
         ///     The flush counting output class
         /// </summary>
         /// <seealso cref="ILogOutput" />
-        private sealed class FlushCountingOutput : ILogOutput
+        internal sealed class FlushCountingOutput : ILogOutput
         {
             /// <summary>
             ///     Gets or sets the value of the flush count

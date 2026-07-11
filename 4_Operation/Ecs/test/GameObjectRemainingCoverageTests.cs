@@ -998,7 +998,7 @@ namespace Alis.Core.Ecs.Test
         /// The counting generic action class
         /// </summary>
         /// <seealso cref="IGenericAction{GameObject}"/>
-        private sealed class CountingGenericAction : IGenericAction<GameObject>
+        internal sealed class CountingGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             /// Gets or sets the value of the call count
@@ -1021,7 +1021,7 @@ namespace Alis.Core.Ecs.Test
         /// The counting generic action plain class
         /// </summary>
         /// <seealso cref="IGenericAction"/>
-        private sealed class CountingGenericActionPlain : IGenericAction
+        internal sealed class CountingGenericActionPlain : IGenericAction
         {
             /// <summary>
             /// Gets or sets the value of the call count

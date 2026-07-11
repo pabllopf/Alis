@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     A test helper that implements <see cref="IGenericAction{GameObject}" /> to capture invocation data.
         /// </summary>
-        private sealed class CaptureAction : IGenericAction<GameObject>
+        internal sealed class CaptureAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets the number of times <see cref="Invoke{T}" /> was called.

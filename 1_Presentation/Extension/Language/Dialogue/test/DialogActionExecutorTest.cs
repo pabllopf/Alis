@@ -187,7 +187,7 @@ namespace Alis.Extension.Language.Dialogue.Test
         /// <summary>
         ///     Test helper: an action that is always invalid
         /// </summary>
-        private sealed class InvalidDialogAction : IDialogAction
+        internal sealed class InvalidDialogAction : IDialogAction
         {
             /// <summary>
             /// The callback

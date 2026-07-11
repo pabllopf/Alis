@@ -1159,7 +1159,7 @@ namespace Alis.Extension.Network.Test.Internal
         /// The test event listener class
         /// </summary>
         /// <seealso cref="EventListener"/>
-        private sealed class TestEventListener : EventListener
+        internal sealed class TestEventListener : EventListener
         {
             /// <summary>
             /// Ons the event source created using the specified event source

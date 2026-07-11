@@ -370,7 +370,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Mock type implementing ITypeId for testing FindAdjacentArchetypeId
         /// </summary>
-        private sealed class TestTypeId : ITypeId
+        internal sealed class TestTypeId : ITypeId
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestTypeId"/> class

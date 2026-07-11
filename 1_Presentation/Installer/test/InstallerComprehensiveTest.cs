@@ -273,7 +273,7 @@ namespace Alis.App.Installer.Test
         /// The fake platform class
         /// </summary>
         /// <seealso cref="INativePlatform"/>
-        private sealed class FakePlatform : INativePlatform
+        internal sealed class FakePlatform : INativePlatform
         {
             /// <summary>
             /// Gets or sets the value of the initialize result

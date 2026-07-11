@@ -409,7 +409,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     The triangle class
         /// </summary>
         /// <seealso cref="Vertices" />
-        private sealed class Triangle : Vertices
+        internal sealed class Triangle : Vertices
         {
             //Constructor automatically fixes orientation to ccw
             /// <summary>

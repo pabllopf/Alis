@@ -271,7 +271,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// The test formatter class
         /// </summary>
         /// <seealso cref="ILogFormatter"/>
-        private sealed class TestFormatter : ILogFormatter
+        internal sealed class TestFormatter : ILogFormatter
         {
             /// <summary>
             /// Gets or sets the value of the format called

@@ -265,7 +265,7 @@ namespace Alis.Core.Ecs.Test
         ///     The scene api update attribute class
         /// </summary>
         /// <seealso cref="UpdateTypeAttribute" />
-        private sealed class SceneApiUpdateAttribute : UpdateTypeAttribute
+        internal sealed class SceneApiUpdateAttribute : UpdateTypeAttribute
         {
         }
 

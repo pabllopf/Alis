@@ -254,7 +254,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper mock logger for testing static Logger class.
         /// </summary>
-        private sealed class MockLogger : ILogger
+        internal sealed class MockLogger : ILogger
         {
             /// <summary>
             /// Gets the value of the trace messages

@@ -61,7 +61,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         /// The test runtime class
         /// </summary>
         /// <seealso cref="IRuntime"/>
-        private sealed class TestRuntime : IRuntime
+        internal sealed class TestRuntime : IRuntime
         {
             /// <summary>
             /// The call count

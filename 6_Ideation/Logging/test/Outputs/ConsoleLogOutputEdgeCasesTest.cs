@@ -242,7 +242,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// <summary>
         ///     Helper TextWriter that throws on Write/WriteLine to trigger the catch blocks in ConsoleLogOutput
         /// </summary>
-        private sealed class ThrowingTextWriter : TextWriter
+        internal sealed class ThrowingTextWriter : TextWriter
         {
             /// <summary>
             /// Writes the value

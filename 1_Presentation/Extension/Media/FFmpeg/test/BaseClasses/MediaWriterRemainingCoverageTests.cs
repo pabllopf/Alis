@@ -16,7 +16,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// The test frame class
         /// </summary>
         /// <seealso cref="IMediaFrame"/>
-        private sealed class TestFrame : IMediaFrame
+        internal sealed class TestFrame : IMediaFrame
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestFrame"/> class
@@ -41,7 +41,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// The test writer class
         /// </summary>
         /// <seealso cref="MediaWriter{TestFrame}"/>
-        private sealed class TestWriter : MediaWriter<TestFrame>
+        internal sealed class TestWriter : MediaWriter<TestFrame>
         {
             /// <summary>
             /// Sets the opened using the specified value

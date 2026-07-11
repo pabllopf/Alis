@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
         /// <summary>
         ///     Test implementation for IOnBeforeFixedUpdate.
         /// </summary>
-        private sealed class BeforeFixedUpdateHandler : IOnBeforeFixedUpdate
+        internal sealed class BeforeFixedUpdateHandler : IOnBeforeFixedUpdate
         {
             /// <summary>
             ///     Gets the number of times this lifecycle hook was called.

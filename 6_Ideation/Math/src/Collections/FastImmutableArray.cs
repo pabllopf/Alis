@@ -1302,7 +1302,7 @@ namespace Alis.Core.Aspect.Math.Collections
         ///     An array enumerator that implements the <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
         /// </summary>
         
-        private sealed class EnumeratorObject : IEnumerator<T>
+        internal sealed class EnumeratorObject : IEnumerator<T>
         {
             /// <summary>
             ///     A shareable singleton for enumerating empty arrays.

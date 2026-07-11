@@ -1349,7 +1349,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         /// <summary>
         ///     An array enumerator that implements <see cref="IEnumerator{T}" /> pattern (including <see cref="IDisposable" />).
         /// </summary>
-        private sealed class EnumeratorObject : IEnumerator<T>
+        internal sealed class EnumeratorObject : IEnumerator<T>
         {
             /// <summary>
             ///     A shareable singleton for enumerating empty arrays.

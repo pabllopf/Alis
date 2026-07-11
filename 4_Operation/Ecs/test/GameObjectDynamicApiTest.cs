@@ -272,7 +272,7 @@ namespace Alis.Core.Ecs.Test
         ///     The capture component types action class
         /// </summary>
         /// <seealso cref="IGenericAction" />
-        private sealed class CaptureComponentTypesAction : IGenericAction
+        internal sealed class CaptureComponentTypesAction : IGenericAction
         {
             /// <summary>
             ///     The calls
@@ -300,7 +300,7 @@ namespace Alis.Core.Ecs.Test
         ///     The capture generic action class
         /// </summary>
         /// <seealso cref="IGenericAction{GameObject}" />
-        private sealed class CaptureGenericAction : IGenericAction<GameObject>
+        internal sealed class CaptureGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     The calls

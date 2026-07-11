@@ -32,6 +32,6 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         /// The test runteable class
         /// </summary>
         /// <seealso cref="IRunteable"/>
-        private sealed class TestRunteable : IRunteable { }
+        internal sealed class TestRunteable : IRunteable { }
     }
 }

@@ -248,7 +248,7 @@ namespace Alis.Core.Aspect.Logging.Test
         ///     The faulty log output class
         /// </summary>
         /// <seealso cref="ILogOutput" />
-        private sealed class FaultyLogOutput : ILogOutput
+        internal sealed class FaultyLogOutput : ILogOutput
         {
             /// <summary>
             ///     Gets the value of the name

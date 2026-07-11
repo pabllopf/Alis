@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// The test update filter class
         /// </summary>
         /// <seealso cref="IComponentUpdateFilter"/>
-        private sealed class TestUpdateFilter : IComponentUpdateFilter
+        internal sealed class TestUpdateFilter : IComponentUpdateFilter
         {
             /// <summary>
             /// Gets or sets the value of the call count

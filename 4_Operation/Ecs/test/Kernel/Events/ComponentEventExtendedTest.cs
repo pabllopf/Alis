@@ -135,7 +135,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     A noop IGenericAction for testing
         /// </summary>
-        private sealed class NoOpGenericAction : IGenericAction<GameObject>
+        internal sealed class NoOpGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Invokes the specified gameObject

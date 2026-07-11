@@ -224,7 +224,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Test helper implementing IGenericAction
         /// </summary>
-        private sealed class TestAction : IGenericAction
+        internal sealed class TestAction : IGenericAction
         {
             /// <summary>
             /// The callback
@@ -246,7 +246,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Test helper implementing IGenericAction&lt;GameObject&gt;
         /// </summary>
-        private sealed class TestGameObjectAction : IGenericAction<GameObject>
+        internal sealed class TestGameObjectAction : IGenericAction<GameObject>
         {
             /// <summary>
             /// The callback

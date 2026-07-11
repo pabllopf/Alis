@@ -80,7 +80,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// <summary>
         ///     Demo model implementing both serialization contracts.
         /// </summary>
-        private sealed class DemoJsonModel : IJsonSerializable, IJsonDesSerializable<DemoJsonModel>
+        internal sealed class DemoJsonModel : IJsonSerializable, IJsonDesSerializable<DemoJsonModel>
         {
             /// <summary>
             ///     Gets or sets the player name.

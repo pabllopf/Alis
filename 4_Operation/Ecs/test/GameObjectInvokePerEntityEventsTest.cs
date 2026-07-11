@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     The capture generic action class
         /// </summary>
-        private sealed class CaptureGenericAction : IGenericAction<GameObject>
+        internal sealed class CaptureGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets the seen types

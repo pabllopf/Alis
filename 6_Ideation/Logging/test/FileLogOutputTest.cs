@@ -446,7 +446,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper StreamWriter that throws on all operations
         /// </summary>
-        private sealed class ThrowingStreamWriter : StreamWriter
+        internal sealed class ThrowingStreamWriter : StreamWriter
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="ThrowingStreamWriter"/> class

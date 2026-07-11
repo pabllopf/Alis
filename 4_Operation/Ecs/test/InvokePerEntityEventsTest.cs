@@ -1792,7 +1792,7 @@ namespace Alis.Core.Ecs.Test
         // ───────────────────────────────────────────────────────────────────
 
         /// <summary>Counts invocations without caring about type.</summary>
-        private sealed class CountingGenericAction : IGenericAction<GameObject>
+        internal sealed class CountingGenericAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets or sets the value of the call count
@@ -1812,7 +1812,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>Captures each unique type seen and total invocation count.</summary>
-        private sealed class TypeCapturingAction : IGenericAction<GameObject>
+        internal sealed class TypeCapturingAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets the value of the seen types
@@ -1844,7 +1844,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>Captures the entities passed to generic event handlers.</summary>
-        private sealed class EntityCapturingAction : IGenericAction<GameObject>
+        internal sealed class EntityCapturingAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Gets the value of the seen entities
@@ -1864,7 +1864,7 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>Mutates Position components to X=99, Y=99 to verify ref pass-through.</summary>
-        private sealed class MutatingPositionAction : IGenericAction<GameObject>
+        internal sealed class MutatingPositionAction : IGenericAction<GameObject>
         {
             /// <summary>
             ///     Invokes the param

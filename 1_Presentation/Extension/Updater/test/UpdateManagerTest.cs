@@ -552,7 +552,7 @@ namespace Alis.Extension.Updater.Test
         ///     The temp folder class
         /// </summary>
         /// <seealso cref="IDisposable" />
-        private sealed class TempFolder : IDisposable
+        internal sealed class TempFolder : IDisposable
         {
             /// <summary>
             ///     Initializes a new instance of the <see cref="TempFolder" /> class
@@ -592,7 +592,7 @@ namespace Alis.Extension.Updater.Test
         ///     The loopback http server class
         /// </summary>
         /// <seealso cref="IDisposable" />
-        private sealed class LoopbackHttpServer : IDisposable
+        internal sealed class LoopbackHttpServer : IDisposable
         {
             /// <summary>
             ///     The cancellation

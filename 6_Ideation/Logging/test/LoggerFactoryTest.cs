@@ -437,7 +437,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Helper output for testing disposal.
         /// </summary>
-        private sealed class DisposableLogOutput : ILogOutput
+        internal sealed class DisposableLogOutput : ILogOutput
         {
             /// <summary>
             ///     Gets or sets the value of the is disposed
