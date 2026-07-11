@@ -42,11 +42,11 @@ namespace Alis.Extension.Network.Test
         /// <summary>
         /// The default pool
         /// </summary>
-        private readonly BufferPool _defaultPool;
+        internal readonly BufferPool _defaultPool;
         /// <summary>
         /// The custom size pool
         /// </summary>
-        private readonly BufferPool _customSizePool;
+        internal readonly BufferPool _customSizePool;
         /// <summary>
         /// The custom buffer size
         /// </summary>

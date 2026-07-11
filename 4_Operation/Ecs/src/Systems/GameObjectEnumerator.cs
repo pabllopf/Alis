@@ -41,12 +41,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The scene
         /// </summary>
-        private readonly Scene _scene;
+        internal readonly Scene _scene;
 
         /// <summary>
         ///     The entities
         /// </summary>
-        private readonly Span<GameObjectIdOnly> _entities;
+        internal readonly Span<GameObjectIdOnly> _entities;
 
         /// <summary>
         ///     The index
@@ -90,12 +90,12 @@ namespace Alis.Core.Ecs.Systems
             /// <summary>
             ///     The scene
             /// </summary>
-            private readonly Scene _scene;
+            internal readonly Scene _scene;
 
             /// <summary>
             ///     The entities
             /// </summary>
-            private readonly Span<GameObjectIdOnly> _entities;
+            internal readonly Span<GameObjectIdOnly> _entities;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="EntityEnumerable" /> class

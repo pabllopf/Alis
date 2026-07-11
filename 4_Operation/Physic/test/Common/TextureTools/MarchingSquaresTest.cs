@@ -2042,6 +2042,103 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
         #endregion
 
+        #region CombineScanLines — !HasValidStart path (lines 306-310)
+
+        /// <summary>
+        /// Tests that combine scan lines with invalid start skips cell
+        /// </summary>
+        [Fact]
+        public void CombineScanLines_InvalidStart_SkipsCell()
+        {
+            MethodInfo combineScanLines = typeof(MarchingSquares).GetMethod("CombineScanLines",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type geomPolyValType = typeof(GeomPolyVal);
+
+            object pPoly = Activator.CreateInstance(geomPolyType);
+            object uPoly = Activator.CreateInstance(geomPolyType);
+            FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
+            object pPoints = pointsField.GetValue(pPoly);
+            object uPoints = pointsField.GetValue(uPoly);
+            MethodInfo addV2 = vectorListType.GetMethod("Add");
+
+            // FindStartingPoint(p, ay=2, ax=0) returns node at (0, 2) because Y~=2 and X>=0
+            // HasValidStart: next node after (0,2) is (10,5) with Y=5 != ay=2 → returns false
+            addV2.Invoke(pPoints, new object[] { new Vector2F(5f, 5f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(0f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(10f, 5f) });
+            lengthField.SetValue(pPoly, 3);
+
+            // uPoly: needs to exist for CanCombine to pass, but won't be checked since HasValidStart fails
+            addV2.Invoke(uPoints, new object[] { new Vector2F(5f, 2f) });
+            addV2.Invoke(uPoints, new object[] { new Vector2F(0f, 2f) });
+            lengthField.SetValue(uPoly, 2);
+
+            GeomPolyVal[,] ps = new GeomPolyVal[5, 5];
+            ps[0, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 12 });
+            ps[0, 0] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { uPoly, 3 });
+
+            object ret = Activator.CreateInstance(listType.MakeGenericType(geomPolyType));
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            combineScanLines.Invoke(null, new object[] { ps, ret, domain, 5, 5, 2f, 2f });
+            // Should not throw; the invalid start causes x++ and continue
+        }
+
+        #endregion
+
+        #region CombineScanLines — !HasMatchingVertex path (lines 312-316)
+
+        /// <summary>
+        /// Tests that combine scan lines with no matching vertex skips cell
+        /// </summary>
+        [Fact]
+        public void CombineScanLines_NoMatchingVertex_SkipsCell()
+        {
+            MethodInfo combineScanLines = typeof(MarchingSquares).GetMethod("CombineScanLines",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type geomPolyType = typeof(MarchingSquares).GetNestedType("GeomPoly", BindingFlags.NonPublic);
+            Type vectorListType = listType.MakeGenericType(typeof(Vector2F));
+            Type geomPolyValType = typeof(GeomPolyVal);
+
+            object pPoly = Activator.CreateInstance(geomPolyType);
+            object uPoly = Activator.CreateInstance(geomPolyType);
+            FieldInfo pointsField = geomPolyType.GetField("Points", BindingFlags.Instance | BindingFlags.Public);
+            FieldInfo lengthField = geomPolyType.GetField("Length", BindingFlags.Instance | BindingFlags.Public);
+            object pPoints = pointsField.GetValue(pPoly);
+            object uPoints = pointsField.GetValue(uPoly);
+            MethodInfo addV2 = vectorListType.GetMethod("Add");
+
+            // FindStartingPoint(p, ay=2, ax=0) returns node at (0, 2)
+            // HasValidStart: next node is (10, 2) with Y=2 ≈ ay=2 → true
+            // HasMatchingVertex(u, (10, 2)): u only has (5,2) and (0,2), (10,2) not found → false
+            addV2.Invoke(pPoints, new object[] { new Vector2F(10f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(0f, 2f) });
+            addV2.Invoke(pPoints, new object[] { new Vector2F(5f, 0f) });
+            lengthField.SetValue(pPoly, 3);
+
+            // uPoly does NOT contain (10, 2)
+            addV2.Invoke(uPoints, new object[] { new Vector2F(5f, 2f) });
+            addV2.Invoke(uPoints, new object[] { new Vector2F(0f, 2f) });
+            lengthField.SetValue(uPoly, 2);
+
+            GeomPolyVal[,] ps = new GeomPolyVal[5, 5];
+            ps[0, 1] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { pPoly, 12 });
+            ps[0, 0] = (GeomPolyVal)Activator.CreateInstance(geomPolyValType, new object[] { uPoly, 3 });
+
+            object ret = Activator.CreateInstance(listType.MakeGenericType(geomPolyType));
+            Aabb domain = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+
+            combineScanLines.Invoke(null, new object[] { ps, ret, domain, 5, 5, 2f, 2f });
+            // Should not throw; no matching vertex causes x++ and continue
+        }
+
+        #endregion
+
         #region CxFastList — Erase when _head is null
 
         /// <summary>

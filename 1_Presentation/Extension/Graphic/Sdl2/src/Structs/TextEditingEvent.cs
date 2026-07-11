@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Sdl2.Structs
         /// <summary>
         ///     The sdl text editing event text size
         /// </summary>
-        private readonly IntPtr textPtr;
+        internal readonly IntPtr textPtr;
 
         /// <summary>
         ///     The start

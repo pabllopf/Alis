@@ -48,12 +48,12 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     The callback
         /// </summary>
-        private readonly Func<bool> _callback0;
+        internal readonly Func<bool> _callback0;
 
         /// <summary>
         ///     The callback
         /// </summary>
-        private readonly Func<object, bool> _callback1;
+        internal readonly Func<object, bool> _callback1;
 
         /// <summary>
         ///     The weak target obj

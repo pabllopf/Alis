@@ -52,12 +52,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> _queryStack = new Stack<int>(256);
+        internal readonly Stack<int> _queryStack = new Stack<int>(256);
 
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> _raycastStack = new Stack<int>(256);
+        internal readonly Stack<int> _raycastStack = new Stack<int>(256);
 
         /// <summary>
         ///     The free list

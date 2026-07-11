@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// <summary>
         ///     The console key
         /// </summary>
-        private readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
+        internal readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
         /// </summary>

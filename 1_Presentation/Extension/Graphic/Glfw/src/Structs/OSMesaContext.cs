@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Internal pointer.
         /// </summary>
-        private readonly IntPtr handle;
+        internal readonly IntPtr handle;
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="OSMesaContext" /> to <see cref="IntPtr" />.

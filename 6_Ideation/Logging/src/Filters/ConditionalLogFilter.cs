@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <summary>
         ///     The predicate
         /// </summary>
-        private readonly Func<ILogEntry, bool> _predicate;
+        internal readonly Func<ILogEntry, bool> _predicate;
 
         /// <summary>
         ///     Initializes a new instance of the ConditionalLogFilter class.

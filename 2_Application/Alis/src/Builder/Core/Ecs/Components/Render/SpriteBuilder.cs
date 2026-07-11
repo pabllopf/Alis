@@ -46,7 +46,7 @@ namespace Alis.Builder.Core.Ecs.Components.Render
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context context;
+        internal readonly Context context;
 
         /// <summary>
         ///     The depth

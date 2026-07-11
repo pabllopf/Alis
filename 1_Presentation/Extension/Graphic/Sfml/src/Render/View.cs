@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my external
         /// </summary>
-        private readonly bool myExternal;
+        internal readonly bool myExternal;
 
         /// <summary>
         ///     Create a default view (1000x1000)

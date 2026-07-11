@@ -19,7 +19,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// The temp file
         /// </summary>
-        private readonly string _tempFile;
+        internal readonly string _tempFile;
         /// <summary>
         /// The player
         /// </summary>

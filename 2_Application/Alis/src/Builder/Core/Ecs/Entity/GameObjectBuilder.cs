@@ -51,7 +51,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context context;
+        internal readonly Context context;
 
         /// <summary>
         ///     The game object

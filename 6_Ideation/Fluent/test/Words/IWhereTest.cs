@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The query builder
             /// </summary>
-            private readonly QueryBuilder _builder = new QueryBuilder();
+            internal readonly QueryBuilder _builder = new QueryBuilder();
 
             /// <summary>
             ///     Wheres the value
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The int query builder
             /// </summary>
-            private readonly IntQueryBuilder _builder = new IntQueryBuilder();
+            internal readonly IntQueryBuilder _builder = new IntQueryBuilder();
 
             /// <summary>
             ///     Wheres the value

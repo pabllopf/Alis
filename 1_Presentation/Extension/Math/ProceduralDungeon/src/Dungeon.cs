@@ -65,12 +65,12 @@ namespace Alis.Extension.Math.ProceduralDungeon
         /// <summary>
         ///     The dungeon generator used to create dungeons.
         /// </summary>
-        private readonly IDungeonGenerator _generator;
+        internal readonly IDungeonGenerator _generator;
 
         /// <summary>
         ///     The random number generator used for randomization.
         /// </summary>
-        private readonly IRandomNumberGenerator _randomNumberGenerator;
+        internal readonly IRandomNumberGenerator _randomNumberGenerator;
 
         /// <summary>
         ///     Indicates whether this instance has been disposed.

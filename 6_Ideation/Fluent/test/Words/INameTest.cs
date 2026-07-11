@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The named builder
             /// </summary>
-            private readonly NamedBuilder _builder = new NamedBuilder();
+            internal readonly NamedBuilder _builder = new NamedBuilder();
 
             /// <summary>
             ///     Names the value

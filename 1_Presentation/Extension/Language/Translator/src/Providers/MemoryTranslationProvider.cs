@@ -47,12 +47,12 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <summary>
         ///     The lock object for thread-safe operations
         /// </summary>
-        private readonly object syncLock = new object();
+        internal readonly object syncLock = new object();
 
         /// <summary>
         ///     The translations storage: {languageCode -> {key -> value}}
         /// </summary>
-        private readonly Dictionary<string, Dictionary<string, string>> translations =
+        internal readonly Dictionary<string, Dictionary<string, string>> translations =
             new Dictionary<string, Dictionary<string, string>>();
 
         /// <summary>

@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The generation stamp
         /// </summary>
-        private readonly int _generationStamp;
+        internal readonly int _generationStamp;
 
         /// <summary>
         ///     The

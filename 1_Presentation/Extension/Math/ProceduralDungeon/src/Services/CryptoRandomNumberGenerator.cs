@@ -42,7 +42,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <summary>
         ///     The random number generator instance.
         /// </summary>
-        private readonly RandomNumberGenerator _rng;
+        internal readonly RandomNumberGenerator _rng;
 
         /// <summary>
         ///     Indicates whether this instance has been disposed.

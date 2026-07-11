@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -616,6 +617,77 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(TimeSpan.FromSeconds(1.0f / 60.0f), ref iterations);
             Assert.NotNull(bodyA);
             Assert.NotNull(bodyB);
+        }
+
+        // ========================================================================
+        // UpdateSleepState — body with SleepingAllowed = false (line 523-527)
+        // Exercises the sleep-time reset when SleepingAllowed is false
+        // ========================================================================
+        /// <summary>
+        /// Tests that update sleep state resets sleep time when sleeping not allowed
+        /// </summary>
+        [Fact]
+        public void UpdateSleepState_WhenSleepingNotAllowed_ResetsSleepTime()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = false;
+
+            for (int i = 0; i < 300; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.True(body.Awake);
+        }
+
+        // ========================================================================
+        // SolveToi — clamps translation and rotation when velocity is high (lines 598-609)
+        // Exercises the velocity clamping branches in SolveToi
+        // ========================================================================
+        /// <summary>
+        /// Tests that solve toi clamps translation and rotation when velocity exceeds limits
+        /// </summary>
+        [Fact]
+        public void SolveToi_ClampsTranslationAndRotation_WhenVelocityHigh()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            bodyA.IsBullet = true;
+            bodyA.LinearVelocityInternal = new Vector2F(20000f, 0f);
+            bodyA.AngularVelocity = 10000f;
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // Report — null _contactManager (lines 665-666)
+        // Exercises the null check early return in Report
+        // ========================================================================
+        /// <summary>
+        /// Tests that report returns early when contact manager is null
+        /// </summary>
+        [Fact]
+        public void Report_WithNullContactManager_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
+            Island island = new Island();
+            island.Reset(1, 1, 1, cm);
+
+            FieldInfo cmField = typeof(Island).GetField("_contactManager",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            cmField.SetValue(island, null);
+
+            MethodInfo reportMethod = typeof(Island).GetMethod("Report",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+
+            Exception ex = Record.Exception(() =>
+                reportMethod.Invoke(island, new object[] { new ContactVelocityConstraint[0] }));
+            Assert.Null(ex);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         ///     The escape sequence handler used to detect escaped characters and unescape
         ///     JSON strings during parsing.
         /// </summary>
-        private readonly IEscapeSequenceHandler _escapeSequenceHandler;
+        internal readonly IEscapeSequenceHandler _escapeSequenceHandler;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonParser" /> class with the specified

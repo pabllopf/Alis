@@ -42,7 +42,7 @@ namespace Alis.Extension.Language.Dialogue
         /// <summary>
         ///     The event publisher
         /// </summary>
-        private readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
+        internal readonly DialogEventPublisher _eventPublisher = new DialogEventPublisher();
 
         /// <summary>
         ///     The dialog dictionary

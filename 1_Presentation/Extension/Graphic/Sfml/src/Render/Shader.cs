@@ -55,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The texture
         /// </summary>
-        private readonly Dictionary<string, Texture> myTextures = new Dictionary<string, Texture>();
+        internal readonly Dictionary<string, Texture> myTextures = new Dictionary<string, Texture>();
 
 
         /// <summary>

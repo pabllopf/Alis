@@ -42,13 +42,13 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         ///     The states
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 15)]
-        private readonly InputState[] states;
+        internal readonly InputState[] states;
 
         /// <summary>
         ///     The axes
         /// </summary>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-        private readonly float[] axes;
+        internal readonly float[] axes;
 
         /// <summary>
         ///     Gets the state of the specified <paramref name="button" />.

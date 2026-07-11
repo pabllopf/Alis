@@ -44,17 +44,17 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly ShortSparseSet<(Archetype Archetype, int Start, int Length)> _archetypes = new ShortSparseSet<(Archetype Archetype, int Start, int Length)>();
+        internal readonly ShortSparseSet<(Archetype Archetype, int Start, int Length)> _archetypes = new ShortSparseSet<(Archetype Archetype, int Start, int Length)>();
 
         /// <summary>
         ///     The attribute type
         /// </summary>
-        private readonly Type _attributeType;
+        internal readonly Type _attributeType;
 
         /// <summary>
         ///     The scene
         /// </summary>
-        private readonly Scene _scene;
+        internal readonly Scene _scene;
 
         /// <summary>
         ///     The component storage base

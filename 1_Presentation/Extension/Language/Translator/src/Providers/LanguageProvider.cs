@@ -46,7 +46,7 @@ namespace Alis.Extension.Language.Translator.Providers
         /// <summary>
         ///     The collection of available languages
         /// </summary>
-        private readonly List<ILanguage> languages = new List<ILanguage>();
+        internal readonly List<ILanguage> languages = new List<ILanguage>();
 
         /// <summary>
         ///     Gets all available languages

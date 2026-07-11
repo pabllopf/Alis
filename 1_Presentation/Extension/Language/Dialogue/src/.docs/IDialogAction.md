@@ -68,8 +68,8 @@ var action = new CallbackDialogAction("sayHello", () =>
 ```csharp
 public class ChangeVariableAction : IDialogAction
 {
-    private readonly string _variableKey;
-    private readonly object _value;
+    internal readonly string _variableKey;
+    internal readonly object _value;
 
     public string Id { get; }
 

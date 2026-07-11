@@ -40,7 +40,7 @@ namespace Alis.Extension.Thread.Builder
         /// <summary>
         ///     The configuration builder
         /// </summary>
-        private readonly ParallelExtensionConfigurationBuilder configBuilder;
+        internal readonly ParallelExtensionConfigurationBuilder configBuilder;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParallelExtensionBuilder" /> class

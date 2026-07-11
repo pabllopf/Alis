@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         /// <summary>
         ///     The serializer
         /// </summary>
-        private readonly JsonSerializer _serializer;
+        internal readonly JsonSerializer _serializer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonSerializerTest" /> class

@@ -45,12 +45,12 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my default view
         /// </summary>
-        private readonly View myDefaultView;
+        internal readonly View myDefaultView;
 
         /// <summary>
         ///     The my texture
         /// </summary>
-        private readonly Texture myTexture;
+        internal readonly Texture myTexture;
 
         /// <summary>
         ///     Create the render-texture with the given dimensions

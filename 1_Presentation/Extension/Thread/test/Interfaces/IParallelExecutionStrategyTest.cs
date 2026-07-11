@@ -42,12 +42,12 @@ namespace Alis.Extension.Thread.Test.Interfaces
         /// <summary>
         ///     The batch size
         /// </summary>
-        private readonly int batchSize;
+        internal readonly int batchSize;
 
         /// <summary>
         ///     The return value
         /// </summary>
-        private readonly bool returnValue;
+        internal readonly bool returnValue;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MockParallelExecutionStrategy" /> class

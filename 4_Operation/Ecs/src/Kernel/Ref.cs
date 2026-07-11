@@ -100,12 +100,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The data
         /// </summary>
-        private readonly Span<T> _data;
+        internal readonly Span<T> _data;
 
         /// <summary>
         ///     The offset
         /// </summary>
-        private readonly int _offset;
+        internal readonly int _offset;
 
         /// <summary>
         ///     The wrapped reference to <typeparamref name="T" />

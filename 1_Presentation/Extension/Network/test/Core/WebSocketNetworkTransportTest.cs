@@ -44,11 +44,11 @@ namespace Alis.Extension.Network.Test.Core
         /// <summary>
         /// The default transport
         /// </summary>
-        private readonly WebSocketNetworkTransport _defaultTransport;
+        internal readonly WebSocketNetworkTransport _defaultTransport;
         /// <summary>
         /// The configured transport
         /// </summary>
-        private readonly WebSocketNetworkTransport _configuredTransport;
+        internal readonly WebSocketNetworkTransport _configuredTransport;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebSocketNetworkTransportTest"/> class

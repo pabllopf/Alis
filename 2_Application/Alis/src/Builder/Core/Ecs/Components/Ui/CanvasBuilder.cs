@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.Components.Ui
         /// <summary>
         ///     The canvas
         /// </summary>
-        private readonly Canvas canvas = new Canvas();
+        internal readonly Canvas canvas = new Canvas();
 
         /// <summary>
         ///     Builds this instance

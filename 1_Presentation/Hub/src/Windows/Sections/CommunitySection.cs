@@ -45,7 +45,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     The gallery
         /// </summary>
-        private readonly Gallery gallery = new Gallery();
+        internal readonly Gallery gallery = new Gallery();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CommunitySection" /> class

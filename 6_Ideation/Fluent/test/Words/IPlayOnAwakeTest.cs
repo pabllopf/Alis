@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             /// The play on awake builder
             /// </summary>
-            private readonly PlayOnAwakeBuilder _builder = new PlayOnAwakeBuilder();
+            internal readonly PlayOnAwakeBuilder _builder = new PlayOnAwakeBuilder();
 
             /// <summary>
             /// Plays the on awake using the specified value

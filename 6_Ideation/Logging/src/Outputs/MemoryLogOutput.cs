@@ -65,17 +65,17 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     The entries
         /// </summary>
-        private readonly List<ILogEntry> _entries;
+        internal readonly List<ILogEntry> _entries;
 
         /// <summary>
         ///     The lock
         /// </summary>
-        private readonly object _lock = new object();
+        internal readonly object _lock = new object();
 
         /// <summary>
         ///     The max entries
         /// </summary>
-        private readonly int _maxEntries;
+        internal readonly int _maxEntries;
 
         /// <summary>
         ///     The disposed

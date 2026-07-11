@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Data.Json.Deserialization
         ///     The JSON parser used to convert the JSON string into a flat dictionary of
         ///     property name-value string pairs.
         /// </summary>
-        private readonly IJsonParser _jsonParser;
+        internal readonly IJsonParser _jsonParser;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonDeserializer" /> class with the

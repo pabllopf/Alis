@@ -44,12 +44,12 @@ namespace Alis.Extension.Profile
         /// <summary>
         ///     The factory for creating resource metric snapshots.
         /// </summary>
-        private readonly ResourceMetricsFactory metricsFactory;
+        internal readonly ResourceMetricsFactory metricsFactory;
 
         /// <summary>
         ///     The time tracker for measuring elapsed time during profiling.
         /// </summary>
-        private readonly ITimeTracker timeTracker;
+        internal readonly ITimeTracker timeTracker;
 
         /// <summary>
         ///     The start time of the current profiling session.

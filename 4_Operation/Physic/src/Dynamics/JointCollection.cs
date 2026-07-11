@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly WorldPhysic worldPhysic;
+        internal readonly WorldPhysic worldPhysic;
 
         /// <summary>
         ///     The generation stamp
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Dynamics
             /// <summary>
             ///     The generation stamp
             /// </summary>
-            private readonly int _generationStamp;
+            internal readonly int _generationStamp;
 
             /// <summary>
             ///     The

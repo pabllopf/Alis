@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// The ctx
         /// </summary>
-        private readonly IntPtr _ctx;
+        internal readonly IntPtr _ctx;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ImGuiRemainingCoverageTests"/> class

@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common
 /// <summary>
 ///     The backing field for <see cref="ControlPoints" />.
 /// </summary>
-        private readonly List<Vector2F> _controlPoints;
+        internal readonly List<Vector2F> _controlPoints;
 
 /// <summary>
 ///     Gets the list of control points that define the Catmull-Rom spline curve.

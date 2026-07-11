@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     The size
         /// </summary>
-        private readonly int sizeFont = size;
+        internal readonly int sizeFont = size;
 
 
         /// <summary>

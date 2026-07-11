@@ -67,7 +67,7 @@ namespace Alis.Builder.Core.Ecs.System.ManagerBuilders.Scenes
         /// <summary>
         ///     Gets the value of the scene manager
         /// </summary>
-        private readonly SceneManager sceneManager;
+        internal readonly SceneManager sceneManager;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneManagerBuilder" /> class

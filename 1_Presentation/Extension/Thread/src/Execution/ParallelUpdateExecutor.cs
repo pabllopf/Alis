@@ -42,12 +42,12 @@ namespace Alis.Extension.Thread.Execution
         /// <summary>
         ///     The scheduler
         /// </summary>
-        private readonly ParallelExecutionScheduler scheduler;
+        internal readonly ParallelExecutionScheduler scheduler;
 
         /// <summary>
         ///     The execution strategy
         /// </summary>
-        private readonly IParallelExecutionStrategy strategy;
+        internal readonly IParallelExecutionStrategy strategy;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParallelUpdateExecutor" /> class

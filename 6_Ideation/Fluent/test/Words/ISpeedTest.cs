@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The speed builder
             /// </summary>
-            private readonly SpeedBuilder _builder = new SpeedBuilder();
+            internal readonly SpeedBuilder _builder = new SpeedBuilder();
 
             /// <summary>
             ///     Speeds the value

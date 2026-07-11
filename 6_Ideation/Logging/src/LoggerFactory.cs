@@ -46,12 +46,12 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Collection of filters applied to all loggers created by this factory.
         /// </summary>
-        private readonly List<ILogFilter> _filters = new List<ILogFilter>();
+        internal readonly List<ILogFilter> _filters = new List<ILogFilter>();
 
         /// <summary>
         ///     Collection of output destinations for all loggers created by this factory.
         /// </summary>
-        private readonly List<ILogOutput> _outputs = new List<ILogOutput>();
+        internal readonly List<ILogOutput> _outputs = new List<ILogOutput>();
 
         /// <summary>
         ///     Indicates whether this factory has been disposed.

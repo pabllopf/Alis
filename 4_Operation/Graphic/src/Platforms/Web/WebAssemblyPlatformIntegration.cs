@@ -216,15 +216,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The game context
         /// </summary>
-        private readonly WebAssemblyGameContext _gameContext;
+        internal readonly WebAssemblyGameContext _gameContext;
         /// <summary>
         /// The input manager
         /// </summary>
-        private readonly InputManager _inputManager;
+        internal readonly InputManager _inputManager;
         /// <summary>
         /// The display manager
         /// </summary>
-        private readonly DisplayManager _displayManager;
+        internal readonly DisplayManager _displayManager;
         /// <summary>
         /// The disposed
         /// </summary>
@@ -301,7 +301,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The game context
         /// </summary>
-        private readonly WebAssemblyGameContext _gameContext;
+        internal readonly WebAssemblyGameContext _gameContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputManager"/> class
@@ -395,7 +395,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The game context
         /// </summary>
-        private readonly WebAssemblyGameContext _gameContext;
+        internal readonly WebAssemblyGameContext _gameContext;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DisplayManager"/> class

@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     The clock
         /// </summary>
-        private readonly Clock _clock;
+        internal readonly Clock _clock;
 
         /// <summary>
         ///     The elapsed time

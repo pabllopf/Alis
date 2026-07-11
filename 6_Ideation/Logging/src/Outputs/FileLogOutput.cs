@@ -46,17 +46,17 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     The file path
         /// </summary>
-        private readonly string _filePath;
+        internal readonly string _filePath;
 
         /// <summary>
         ///     The formatter
         /// </summary>
-        private readonly ILogFormatter _formatter;
+        internal readonly ILogFormatter _formatter;
 
         /// <summary>
         ///     The write lock
         /// </summary>
-        private readonly object _writeLock = new object();
+        internal readonly object _writeLock = new object();
 
         /// <summary>
         ///     The disposed

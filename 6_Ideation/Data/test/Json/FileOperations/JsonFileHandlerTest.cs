@@ -48,12 +48,12 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// <summary>
         ///     The file handler
         /// </summary>
-        private readonly JsonFileHandler _fileHandler;
+        internal readonly JsonFileHandler _fileHandler;
 
         /// <summary>
         ///     The test directory
         /// </summary>
-        private readonly string _testDirectory;
+        internal readonly string _testDirectory;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonFileHandlerTest" /> class
@@ -364,7 +364,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
             /// <summary>
             /// The parser
             /// </summary>
-            private readonly JsonParser _parser;
+            internal readonly JsonParser _parser;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="ThrowingJsonDeserializer" /> class

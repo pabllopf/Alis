@@ -44,7 +44,7 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The internal player
         /// </summary>
-        private readonly IPlayer _internalPlayer;
+        internal readonly IPlayer _internalPlayer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Player" /> class

@@ -53,12 +53,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The contact solver
         /// </summary>
-        private readonly ContactSolver _contactSolver = new ContactSolver();
+        internal readonly ContactSolver _contactSolver = new ContactSolver();
 
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        private readonly Clock _watch = new Clock();
+        internal readonly Clock _watch = new Clock();
 
         /// <summary>
         ///     The contact manager

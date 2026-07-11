@@ -42,12 +42,12 @@ namespace Alis.Core.Ecs.Components.Render
         /// <summary>
         ///     The position
         /// </summary>
-        private readonly Vector2F positionOriginal = position;
+        internal readonly Vector2F positionOriginal = position;
 
         /// <summary>
         ///     The resolution
         /// </summary>
-        private readonly Vector2F resolutionOriginal = resolution;
+        internal readonly Vector2F resolutionOriginal = resolution;
 
         /// <summary>
         ///     The position

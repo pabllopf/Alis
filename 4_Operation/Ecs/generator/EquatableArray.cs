@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         ///     The items
         /// </summary>
-        private readonly T[] Items;
+        internal readonly T[] Items;
 
         /// <summary>
         ///     Gets the value of the length
@@ -170,7 +170,7 @@ namespace Alis.Core.Ecs.Generator
             /// <summary>
             ///     The items
             /// </summary>
-            private readonly T[] _items;
+            internal readonly T[] _items;
 
             /// <summary>
             ///     The index

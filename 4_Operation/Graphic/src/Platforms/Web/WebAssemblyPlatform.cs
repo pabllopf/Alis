@@ -78,15 +78,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The key states
         /// </summary>
-        private readonly Dictionary<ConsoleKey, bool> _keyStates;
+        internal readonly Dictionary<ConsoleKey, bool> _keyStates;
         /// <summary>
         /// The key pressed queue
         /// </summary>
-        private readonly Queue<ConsoleKey> _keyPressedQueue;
+        internal readonly Queue<ConsoleKey> _keyPressedQueue;
         /// <summary>
         /// The input character builder
         /// </summary>
-        private readonly StringBuilder _inputCharacterBuilder;
+        internal readonly StringBuilder _inputCharacterBuilder;
         /// <summary>
         /// The mouse
         /// </summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The mouse buttons
         /// </summary>
-        private readonly bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
+        internal readonly bool[] _mouseButtons; // [left, right, middle, aux1, aux2]
         /// <summary>
         /// The mouse wheel delta
         /// </summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The gamepad states
         /// </summary>
-        private readonly Dictionary<int, GamepadState> _gamepadStates;
+        internal readonly Dictionary<int, GamepadState> _gamepadStates;
         /// <summary>
         /// The is initialized
         /// </summary>

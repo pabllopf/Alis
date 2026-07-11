@@ -303,7 +303,7 @@ namespace Alis.Core.Ecs.Test.Systems
             /// <summary>
             ///     The multiplier
             /// </summary>
-            private readonly int _multiplier;
+            internal readonly int _multiplier;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="IntMultiplyAction" /> class

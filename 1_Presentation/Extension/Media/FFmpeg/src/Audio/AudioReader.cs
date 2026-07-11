@@ -48,12 +48,12 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     The ffprobe
         /// </summary>
-        private readonly string ffmpeg;
+        internal readonly string ffmpeg;
 
         /// <summary>
         ///     The ffprobe
         /// </summary>
-        private readonly string ffprobe;
+        internal readonly string ffprobe;
 
         /// <summary>
         ///     The loaded bit depth

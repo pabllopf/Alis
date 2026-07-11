@@ -42,12 +42,12 @@ namespace Alis.Core.Aspect.Logging.Core
         /// <summary>
         ///     The on dispose
         /// </summary>
-        private readonly Action _onDispose;
+        internal readonly Action _onDispose;
 
         /// <summary>
         ///     The scope stack
         /// </summary>
-        private readonly Stack<object> _scopeStack;
+        internal readonly Stack<object> _scopeStack;
 
         /// <summary>
         ///     The disposed

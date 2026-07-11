@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Systems.Manager
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context _context;
+        internal readonly Context _context;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AManager" /> class

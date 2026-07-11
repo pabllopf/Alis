@@ -43,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// The temp file
         /// </summary>
-        private readonly string _tempFile;
+        internal readonly string _tempFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioReaderTest"/> class

@@ -43,22 +43,22 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     The inner output
         /// </summary>
-        private readonly ILogOutput _innerOutput;
+        internal readonly ILogOutput _innerOutput;
 
         /// <summary>
         ///     The max queue size
         /// </summary>
-        private readonly int _maxQueueSize;
+        internal readonly int _maxQueueSize;
 
         /// <summary>
         ///     The queue
         /// </summary>
-        private readonly Queue<ILogEntry> _queue;
+        internal readonly Queue<ILogEntry> _queue;
 
         /// <summary>
         ///     The queue lock
         /// </summary>
-        private readonly object _queueLock = new object();
+        internal readonly object _queueLock = new object();
 
         /// <summary>
         ///     The disposed

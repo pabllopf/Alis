@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The velocity builder
             /// </summary>
-            private readonly VelocityBuilder _builder = new VelocityBuilder();
+            internal readonly VelocityBuilder _builder = new VelocityBuilder();
 
             /// <summary>
             ///     Linears the velocity using the specified x

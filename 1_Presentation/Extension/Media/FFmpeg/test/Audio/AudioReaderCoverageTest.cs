@@ -44,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// The test file
         /// </summary>
-        private readonly string _testFile;
+        internal readonly string _testFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioReaderCoverageTest"/> class

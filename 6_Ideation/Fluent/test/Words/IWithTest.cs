@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The builder
             /// </summary>
-            private readonly Builder _builder = new Builder();
+            internal readonly Builder _builder = new Builder();
 
             /// <summary>
             ///     Adds the value
@@ -146,7 +146,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The int builder
             /// </summary>
-            private readonly IntBuilder _builder = new IntBuilder();
+            internal readonly IntBuilder _builder = new IntBuilder();
 
             /// <summary>
             ///     Adds the value

@@ -45,12 +45,12 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The convex points
         /// </summary>
-        private readonly HashSet<Point> _convexPoints;
+        internal readonly HashSet<Point> _convexPoints;
 
         /// <summary>
         ///     The mono poly
         /// </summary>
-        private readonly List<Point> _monoPoly;
+        internal readonly List<Point> _monoPoly;
 
         /// <summary>
         ///     The triangles

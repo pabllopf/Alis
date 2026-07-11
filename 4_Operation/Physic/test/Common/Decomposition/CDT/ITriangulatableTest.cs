@@ -177,12 +177,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
             /// <summary>
             ///     The points
             /// </summary>
-            private readonly List<TriangulationPoint> points = new List<TriangulationPoint>();
+            internal readonly List<TriangulationPoint> points = new List<TriangulationPoint>();
 
             /// <summary>
             ///     The triangles
             /// </summary>
-            private readonly List<DelaunayTriangle> triangles = new List<DelaunayTriangle>();
+            internal readonly List<DelaunayTriangle> triangles = new List<DelaunayTriangle>();
 
             /// <summary>
             ///     Gets the value of the get points

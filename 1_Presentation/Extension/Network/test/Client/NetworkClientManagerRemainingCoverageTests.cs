@@ -18,7 +18,7 @@ namespace Alis.Extension.Network.Test.Client
         /// <summary>
         /// The manager
         /// </summary>
-        private readonly NetworkClientManager _manager;
+        internal readonly NetworkClientManager _manager;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkClientManagerRemainingCoverageTests"/> class

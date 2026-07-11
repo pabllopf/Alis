@@ -58,12 +58,12 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     The string builder
         /// </summary>
-        private readonly StringBuilder _stringBuilder;
+        internal readonly StringBuilder _stringBuilder;
 
         /// <summary>
         ///     The type symbol
         /// </summary>
-        private readonly INamedTypeSymbol _typeSymbol;
+        internal readonly INamedTypeSymbol _typeSymbol;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SerializationCodeBuilder" /> class.

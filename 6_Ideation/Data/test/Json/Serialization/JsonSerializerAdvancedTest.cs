@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
         /// <summary>
         ///     The json serializer
         /// </summary>
-        private readonly IJsonSerializer _serializer = new JsonSerializer();
+        internal readonly IJsonSerializer _serializer = new JsonSerializer();
 
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Serialization
             /// <summary>
             ///     The property count
             /// </summary>
-            private readonly int _propertyCount;
+            internal readonly int _propertyCount;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestDynamicObject" /> class

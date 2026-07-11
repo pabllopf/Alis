@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <summary>
         ///     The zero
         /// </summary>
-        private readonly IntPtr myThis = IntPtr.Zero;
+        internal readonly IntPtr myThis = IntPtr.Zero;
 
         /// <summary>
         ///     Default constructor

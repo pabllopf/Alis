@@ -41,23 +41,23 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The platform
         /// </summary>
-        private readonly WebAssemblyPlatform _platform;
+        internal readonly WebAssemblyPlatform _platform;
         /// <summary>
         /// The input manager
         /// </summary>
-        private readonly WebAssemblyInputManager _inputManager;
+        internal readonly WebAssemblyInputManager _inputManager;
         /// <summary>
         /// The input context
         /// </summary>
-        private readonly WebAssemblyInputContext _inputContext;
+        internal readonly WebAssemblyInputContext _inputContext;
         /// <summary>
         /// The display manager
         /// </summary>
-        private readonly WebAssemblyDisplayManager _displayManager;
+        internal readonly WebAssemblyDisplayManager _displayManager;
         /// <summary>
         /// The configuration
         /// </summary>
-        private readonly WebAssemblyConfiguration _configuration;
+        internal readonly WebAssemblyConfiguration _configuration;
         /// <summary>
         /// The is running
         /// </summary>

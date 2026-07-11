@@ -42,17 +42,17 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// <summary>
         ///     Roots InputStream delegate fields to prevent GC collection.
         /// </summary>
-        private readonly List<Delegate> _pinnedCallbacks = new(4);
+        internal readonly List<Delegate> _pinnedCallbacks = new(4);
 
         /// <summary>
         ///     The my input stream ptr
         /// </summary>
-        private readonly IntPtr myInputStreamPtr;
+        internal readonly IntPtr myInputStreamPtr;
 
         /// <summary>
         ///     The my stream
         /// </summary>
-        private readonly Stream myStream;
+        internal readonly Stream myStream;
 
         /// <summary>
         ///     Construct from a System.IO.Stream

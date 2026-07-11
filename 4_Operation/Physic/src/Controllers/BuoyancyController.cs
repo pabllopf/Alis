@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The gravity vector defining the direction and magnitude of gravitational force.
         /// </summary>
-        private readonly Vector2F _gravity;
+        internal readonly Vector2F _gravity;
 
         /// <summary>
         ///     Controls the rotational drag that the fluid exerts on bodies within it.

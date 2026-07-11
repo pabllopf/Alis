@@ -48,32 +48,32 @@ namespace Alis.Extension.Network.Core
         /// <summary>
         ///     The client sockets
         /// </summary>
-        private readonly ConcurrentDictionary<string, WebSocket> _clientSockets;
+        internal readonly ConcurrentDictionary<string, WebSocket> _clientSockets;
 
         /// <summary>
         ///     The host
         /// </summary>
-        private readonly string _host;
+        internal readonly string _host;
 
         /// <summary>
         ///     The lock object
         /// </summary>
-        private readonly object _lockObject = new object();
+        internal readonly object _lockObject = new object();
 
         /// <summary>
         ///     The message queue
         /// </summary>
-        private readonly ConcurrentQueue<(string ClientId, NetworkMessageEnvelope Message)> _messageQueue;
+        internal readonly ConcurrentQueue<(string ClientId, NetworkMessageEnvelope Message)> _messageQueue;
 
         /// <summary>
         ///     The port
         /// </summary>
-        private readonly int _port;
+        internal readonly int _port;
 
         /// <summary>
         ///     The serializer
         /// </summary>
-        private readonly INetworkSerializer _serializer;
+        internal readonly INetworkSerializer _serializer;
 
         /// <summary>
         ///     The is disposed

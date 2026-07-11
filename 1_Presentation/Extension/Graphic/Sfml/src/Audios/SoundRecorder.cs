@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Roots callback delegates to prevent GC collection while registered with unmanaged SFML code.
         /// </summary>
-        private readonly List<Delegate> _pinnedCallbacks = new(3);
+        internal readonly List<Delegate> _pinnedCallbacks = new(3);
 
         /// <summary>
         ///     Default constructor

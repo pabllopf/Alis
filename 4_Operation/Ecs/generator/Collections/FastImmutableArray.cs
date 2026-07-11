@@ -1312,7 +1312,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <summary>
             ///     The array being enumerated.
             /// </summary>
-            private readonly T[] _array;
+            internal readonly T[] _array;
 
             /// <summary>
             ///     The currently enumerated position.
@@ -1360,7 +1360,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <summary>
             ///     The array being enumerated.
             /// </summary>
-            private readonly T[] _array;
+            internal readonly T[] _array;
 
             /// <summary>
             ///     The currently enumerated position.

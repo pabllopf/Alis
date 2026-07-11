@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     A temporary list of contacts to be updated during Collide().
         /// </summary>
-        private readonly List<Contact> updateList = new List<Contact>();
+        internal readonly List<Contact> updateList = new List<Contact>();
 
 
         /// <summary>

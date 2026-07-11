@@ -45,13 +45,13 @@ namespace Alis.Extension.Language.Translator.Cache
         /// <summary>
         ///     The cache dictionary structure: {languageCode -> {key -> value}}
         /// </summary>
-        private readonly Dictionary<string, Dictionary<string, string>> cache =
+        internal readonly Dictionary<string, Dictionary<string, string>> cache =
             new Dictionary<string, Dictionary<string, string>>();
 
         /// <summary>
         ///     The lock object for thread-safe operations
         /// </summary>
-        private readonly object syncLock = new object();
+        internal readonly object syncLock = new object();
 
         /// <summary>
         ///     Gets a translation from the cache

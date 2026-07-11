@@ -50,22 +50,22 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The current time
         /// </summary>
-        private readonly TimeSpan currentTime;
+        internal readonly TimeSpan currentTime;
 
         /// <summary>
         ///     The no collapse
         /// </summary>
-        private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+        internal readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
 
         /// <summary>
         ///     The progress
         /// </summary>
-        private readonly float progress;
+        internal readonly float progress;
 
         /// <summary>
         ///     The total time
         /// </summary>
-        private readonly TimeSpan totalTime;
+        internal readonly TimeSpan totalTime;
 
         /// <summary>
         ///     The is open

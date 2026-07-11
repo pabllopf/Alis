@@ -173,7 +173,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             /// <summary>
             /// The action
             /// </summary>
-            private readonly Action _action;
+            internal readonly Action _action;
             /// <summary>
             /// Initializes a new instance of the <see cref="DisposableAction"/> class
             /// </summary>

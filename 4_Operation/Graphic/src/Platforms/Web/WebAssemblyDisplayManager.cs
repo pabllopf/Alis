@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The platform
         /// </summary>
-        private readonly WebAssemblyPlatform _platform;
+        internal readonly WebAssemblyPlatform _platform;
         /// <summary>
         /// The current width
         /// </summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The supported modes
         /// </summary>
-        private readonly List<DisplayMode> _supportedModes;
+        internal readonly List<DisplayMode> _supportedModes;
 
         /// <summary>
         ///     Event triggered when the window size changes

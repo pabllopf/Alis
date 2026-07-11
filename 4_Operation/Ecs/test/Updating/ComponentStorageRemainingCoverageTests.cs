@@ -615,7 +615,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         /// The callback
         /// </summary>
-        private readonly Action _callback;
+        internal readonly Action _callback;
         /// <summary>
         /// Initializes a new instance of the <see cref="TestGenericAction"/> class
         /// </summary>
@@ -638,7 +638,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         /// The callback
         /// </summary>
-        private readonly Action _callback;
+        internal readonly Action _callback;
         /// <summary>
         /// Initializes a new instance of the <see cref="TestGameObjectGenericAction"/> class
         /// </summary>

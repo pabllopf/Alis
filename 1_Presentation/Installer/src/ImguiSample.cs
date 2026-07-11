@@ -54,22 +54,22 @@ namespace Alis.App.Installer
         /// <summary>
         ///     The vector
         /// </summary>
-        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
+        internal readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
         /// <summary>
         ///     The last click time
         /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
+        internal readonly double[] _lastClickTime = new double[5];
 
         /// <summary>
         ///     The platform
         /// </summary>
-        private readonly INativePlatform _platform;
+        internal readonly INativePlatform _platform;
 
         /// <summary>
         ///     The prev mouse down
         /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
+        internal readonly bool[] _prevMouseDown = new bool[5];
 
         /// <summary>
         ///     The mouse buttons from platform

@@ -43,7 +43,7 @@ namespace Alis.Extension.Updater.Services.Api
         /// <summary>
         ///     The http client
         /// </summary>
-        private readonly HttpClient _httpClient;
+        internal readonly HttpClient _httpClient;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GitHubApiService" /> class

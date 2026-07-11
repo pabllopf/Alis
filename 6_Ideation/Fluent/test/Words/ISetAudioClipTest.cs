@@ -85,7 +85,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             /// The set audio clip builder
             /// </summary>
-            private readonly SetAudioClipBuilder _builder = new SetAudioClipBuilder();
+            internal readonly SetAudioClipBuilder _builder = new SetAudioClipBuilder();
 
             /// <summary>
             /// Sets the audio clip using the specified value

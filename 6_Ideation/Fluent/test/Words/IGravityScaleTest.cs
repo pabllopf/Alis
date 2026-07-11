@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The gravity scale builder
             /// </summary>
-            private readonly GravityScaleBuilder _builder = new GravityScaleBuilder();
+            internal readonly GravityScaleBuilder _builder = new GravityScaleBuilder();
 
             /// <summary>
             ///     Gravities the scale using the specified value

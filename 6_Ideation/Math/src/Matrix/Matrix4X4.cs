@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The precomputed hash code for this matrix instance.
         /// </summary>
-        private readonly int hashCode;
+        internal readonly int hashCode;
 
         /// <summary>The first element of the first row.</summary>
         public float M11 { get; set; }

@@ -54,12 +54,12 @@ namespace Alis.Extension.Network.Test.Samples
         /// <summary>
         ///     The supported sub protocols
         /// </summary>
-        private readonly HashSet<string> _supportedSubProtocols;
+        internal readonly HashSet<string> _supportedSubProtocols;
 
         /// <summary>
         ///     The web socket server factory
         /// </summary>
-        private readonly IWebSocketServerFactory _webSocketServerFactory;
+        internal readonly IWebSocketServerFactory _webSocketServerFactory;
 
         /// <summary>
         ///     The is disposed

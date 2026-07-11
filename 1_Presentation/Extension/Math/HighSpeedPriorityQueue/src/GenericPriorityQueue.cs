@@ -44,7 +44,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     The comparer
         /// </summary>
-        private readonly Comparison<TPriority> _comparer;
+        internal readonly Comparison<TPriority> _comparer;
 
         /// <summary>
         ///     The nodes

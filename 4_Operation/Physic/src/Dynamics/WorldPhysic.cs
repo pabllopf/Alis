@@ -58,19 +58,19 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The query callback cache
         /// </summary>
-        private readonly BroadPhaseQueryCallback _queryCallbackCache;
+        internal readonly BroadPhaseQueryCallback _queryCallbackCache;
 
         /// <summary>
         ///     The ray cast callback cache
         /// </summary>
-        private readonly BroadPhaseRayCastCallback _rayCastCallbackCache;
+        internal readonly BroadPhaseRayCastCallback _rayCastCallbackCache;
 
 
 
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        private readonly Clock _watch = new Clock();
+        internal readonly Clock _watch = new Clock();
 
         /// <summary>
         ///     Get the world body list.

@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The friction builder
             /// </summary>
-            private readonly FrictionBuilder _builder = new FrictionBuilder();
+            internal readonly FrictionBuilder _builder = new FrictionBuilder();
 
             /// <summary>
             ///     Frictions the value

@@ -53,7 +53,7 @@ namespace Alis.Extension.Network.Server
         /// <summary>
         /// The client to session map
         /// </summary>
-        private readonly ConcurrentDictionary<string, string> _clientToSessionMap;
+        internal readonly ConcurrentDictionary<string, string> _clientToSessionMap;
 
 
 
@@ -61,7 +61,7 @@ namespace Alis.Extension.Network.Server
         /// <summary>
         /// The id
         /// </summary>
-        private readonly string _id;
+        internal readonly string _id;
 
 
 
@@ -69,7 +69,7 @@ namespace Alis.Extension.Network.Server
         /// <summary>
         /// The lock object
         /// </summary>
-        private readonly object _lockObject = new object();
+        internal readonly object _lockObject = new object();
 
 
 
@@ -77,7 +77,7 @@ namespace Alis.Extension.Network.Server
         /// <summary>
         /// The message handlers
         /// </summary>
-        private readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
+        internal readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
 
 
 
@@ -85,7 +85,7 @@ namespace Alis.Extension.Network.Server
         /// <summary>
         /// The sessions
         /// </summary>
-        private readonly ConcurrentDictionary<string, NetworkSession> _sessions;
+        internal readonly ConcurrentDictionary<string, NetworkSession> _sessions;
 
 
 

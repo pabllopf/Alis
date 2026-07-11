@@ -103,7 +103,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The builder
             /// </summary>
-            private readonly Builder _builder = new Builder();
+            internal readonly Builder _builder = new Builder();
 
             /// <summary>
             ///     Hases the obj
@@ -136,7 +136,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The object builder
             /// </summary>
-            private readonly ObjectBuilder _builder = new ObjectBuilder();
+            internal readonly ObjectBuilder _builder = new ObjectBuilder();
 
             /// <summary>
             ///     Hases the obj

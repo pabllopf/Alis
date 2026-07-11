@@ -77,12 +77,12 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// The last mouse button state snapshot.
         /// </summary>
-        private readonly bool[] mouseButtons = new bool[5];
+        internal readonly bool[] mouseButtons = new bool[5];
 
         /// <summary>
         /// The accumulated text input buffer.
         /// </summary>
-        private readonly StringBuilder pendingInputCharacters = new StringBuilder();
+        internal readonly StringBuilder pendingInputCharacters = new StringBuilder();
 
         /// <summary>
         /// The accumulated vertical mouse wheel delta.

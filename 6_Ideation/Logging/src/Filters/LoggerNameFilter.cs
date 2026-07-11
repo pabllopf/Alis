@@ -42,12 +42,12 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <summary>
         ///     The included names
         /// </summary>
-        private readonly HashSet<string> _includedNames;
+        internal readonly HashSet<string> _includedNames;
 
         /// <summary>
         ///     The inclusive
         /// </summary>
-        private readonly bool _inclusive;
+        internal readonly bool _inclusive;
 
         /// <summary>
         ///     Initializes a new instance of the LoggerNameFilter class.

@@ -55,7 +55,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders
         /// <summary>
         ///     The setting base
         /// </summary>
-        private readonly Setting settingBase = new Setting();
+        internal readonly Setting settingBase = new Setting();
 
         /// <summary>
         ///     Audio the value

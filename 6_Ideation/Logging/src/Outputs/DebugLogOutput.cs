@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     The formatter
         /// </summary>
-        private readonly ILogFormatter _formatter;
+        internal readonly ILogFormatter _formatter;
 
         /// <summary>
         ///     The disposed

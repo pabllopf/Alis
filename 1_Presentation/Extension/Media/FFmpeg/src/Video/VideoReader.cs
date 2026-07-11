@@ -54,12 +54,12 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <summary>
         ///     The ffprobe
         /// </summary>
-        private readonly string ffmpeg;
+        internal readonly string ffmpeg;
 
         /// <summary>
         ///     The ffprobe
         /// </summary>
-        private readonly string ffprobe;
+        internal readonly string ffprobe;
 
         /// <summary>
         ///     Used for reading metadata and frames from video files.

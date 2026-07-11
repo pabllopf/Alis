@@ -45,7 +45,7 @@ namespace Alis.Core.Aspect.Math.Vector
         /// <summary>
         ///     The precomputed hash code for this vector instance.
         /// </summary>
-        private readonly int hashCode;
+        internal readonly int hashCode;
 
         /// <summary>The X component of the vector.</summary>
         public float X { get; set; }

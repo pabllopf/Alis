@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Roots callback delegates to prevent GC collection while registered with unmanaged SFML code.
         /// </summary>
-        private readonly List<Delegate> _pinnedCallbacks = new(2);
+        internal readonly List<Delegate> _pinnedCallbacks = new(2);
 
         /// <summary>
         ///     The my texture

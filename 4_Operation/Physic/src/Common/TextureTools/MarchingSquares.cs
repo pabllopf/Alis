@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Common.TextureTools
         /// <summary>
         ///     Processes grid cells and generates geometry polygons.
         /// </summary>
-        private readonly struct MarchCellContext
+        internal readonly struct MarchCellContext
         {
             /// <summary>
             /// The 

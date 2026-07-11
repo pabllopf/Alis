@@ -43,7 +43,7 @@ namespace Alis.Core.Audio.Test
         /// <summary>
         /// The test wav file
         /// </summary>
-        private readonly string _testWavFile;
+        internal readonly string _testWavFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserPlayerTest"/> class

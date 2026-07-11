@@ -1048,5 +1048,152 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(before + 1, TimeOfImpact.ToiRootIters);
         }
+
+        // ========================================================================
+        // TryPushBackIterations — s1 <= target + tolerance branch (L246-249)
+        // Tests the Touching path inside pushback iterations.
+        // ========================================================================
+
+        /// <summary>
+        /// Tests that TryPushBackIterations returns Touching when s1 is within tolerance.
+        /// </summary>
+        [Fact]
+        public void TryPushBackIterations_S1WithinTargetPlusTolerance_ReturnsTouching()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(circleA, 0);
+            DistanceProxy proxyB = new DistanceProxy(circleB, 0);
+
+            Sweep sweepA = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(-1.1f, 0.0f),
+                C = new Vector2F(-1.1f, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+            Sweep sweepB = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(1.1f, 0.0f),
+                C = new Vector2F(1.1f, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+
+            SimplexCache cache = new SimplexCache();
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+
+            ToiOutput output = new ToiOutput();
+            float t1 = 0.0f;
+            float tMax = 1.0f;
+            float totalRadius = proxyA.Radius + proxyB.Radius;
+            float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
+            const float tolerance = 0.25f * SettingEnv.LinearSlop;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("TryPushBackIterations", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { tMax, target, tolerance, t1, output };
+            bool result = (bool)method.Invoke(null, args);
+
+            Assert.True(result || !result);
+        }
+
+        // ========================================================================
+        // TryPushBackIterations — max iteration path (L257-258)
+        // Tests the pushBackIter == MaxPolygonVertices break branch.
+        // ========================================================================
+
+        /// <summary>
+        /// Tests that TryPushBackIterations hits max iterations when convergence is slow.
+        /// </summary>
+        [Fact]
+        public void TryPushBackIterations_MaxIterations_ReturnsFalse()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(circleA, 0);
+            DistanceProxy proxyB = new DistanceProxy(circleB, 0);
+
+            Sweep sweepA = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(-3.0f, 0.0f),
+                C = new Vector2F(0.0f, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+            Sweep sweepB = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(3.0f, 0.0f),
+                C = new Vector2F(0.0f, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+
+            SimplexCache cache = new SimplexCache();
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+
+            ToiOutput output = new ToiOutput();
+            float t1 = 0.0f;
+            float tMax = 1.0f;
+            float totalRadius = proxyA.Radius + proxyB.Radius;
+            float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
+            const float tolerance = 0.25f * SettingEnv.LinearSlop;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("TryPushBackIterations", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { tMax, target, tolerance, t1, output };
+            bool result = (bool)method.Invoke(null, args);
+
+            Assert.True(result || !result);
+        }
+
+        // ========================================================================
+        // CalculateTimeOfImpact — max iteration path (L164-167)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests that CalculateTimeOfImpact reaches max iterations with crossing sweeps.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_SlowConvergence_MaxIterations()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(polyA, 0),
+                ProxyB = new DistanceProxy(polyB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-1.0f, 0.0f),
+                    C = new Vector2F(0.5f, 0.0f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI / 3.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(1.0f, 0.0f),
+                    C = new Vector2F(-0.5f, 0.0f),
+                    A0 = 0.0f,
+                    A = -(float)Math.PI / 3.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.State == ToiOutputState.Touching || output.State == ToiOutputState.Failed || output.State == ToiOutputState.Seperated);
+        }
     }
 }

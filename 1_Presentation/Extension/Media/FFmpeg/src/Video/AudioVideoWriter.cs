@@ -47,7 +47,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <summary>
         ///     The ffmpeg
         /// </summary>
-        private readonly string ffmpeg;
+        internal readonly string ffmpeg;
 
         /// <summary>
         ///     The connected socket

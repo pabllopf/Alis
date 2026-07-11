@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     The my external
         /// </summary>
-        private readonly bool myExternal;
+        internal readonly bool myExternal;
 
         /// <summary>
         ///     Construct the texture

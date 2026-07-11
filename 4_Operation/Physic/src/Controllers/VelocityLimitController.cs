@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Controllers
         /// <summary>
         ///     The collection of bodies whose velocities are constrained.
         /// </summary>
-        private readonly List<Body> _bodies = new List<Body>();
+        internal readonly List<Body> _bodies = new List<Body>();
 
         /// <summary>
         ///     Gets whether angular velocity limiting is enabled.

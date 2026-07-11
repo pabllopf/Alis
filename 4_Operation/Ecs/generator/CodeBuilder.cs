@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs.Generator
         /// <summary>
         ///     The sb
         /// </summary>
-        private readonly StringBuilder _sb = new();
+        internal readonly StringBuilder _sb = new();
 
         /// <summary>
         ///     Gets the value of the thread shared

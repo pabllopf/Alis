@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The builder
             /// </summary>
-            private readonly Builder _builder = new Builder();
+            internal readonly Builder _builder = new Builder();
 
             /// <summary>
             ///     Ises the value

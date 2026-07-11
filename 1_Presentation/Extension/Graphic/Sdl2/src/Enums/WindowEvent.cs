@@ -60,17 +60,17 @@ namespace Alis.Extension.Graphic.Sdl2.Enums
         /// <summary>
         ///     The padding
         /// </summary>
-        private readonly byte padding1;
+        internal readonly byte padding1;
 
         /// <summary>
         ///     The padding
         /// </summary>
-        private readonly byte padding2;
+        internal readonly byte padding2;
 
         /// <summary>
         ///     The padding
         /// </summary>
-        private readonly byte padding3;
+        internal readonly byte padding3;
 
         /// <summary>
         ///     The data

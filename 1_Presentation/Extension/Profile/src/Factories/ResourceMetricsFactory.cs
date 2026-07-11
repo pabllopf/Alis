@@ -43,7 +43,7 @@ namespace Alis.Extension.Profile.Factories
         /// <summary>
         ///     The resource monitor used to gather system metrics.
         /// </summary>
-        private readonly IResourceMonitor resourceMonitor;
+        internal readonly IResourceMonitor resourceMonitor;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ResourceMetricsFactory" /> class.

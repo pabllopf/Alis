@@ -335,7 +335,7 @@ public bool IsFileAllowed(string filePath, FilePickerOptions options)
 ```csharp
 public class FileImportService
 {
-    private readonly IFilePicker _picker;
+    internal readonly IFilePicker _picker;
     
     public FileImportService()
     {

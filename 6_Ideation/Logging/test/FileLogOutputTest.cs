@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     The new guid
         /// </summary>
-        private readonly string _testDir = Path.Combine(Path.GetTempPath(), $"logging_test_{Guid.NewGuid()}");
+        internal readonly string _testDir = Path.Combine(Path.GetTempPath(), $"logging_test_{Guid.NewGuid()}");
 
         /// <summary>
         ///     Tests that file log output constructor null path should throw

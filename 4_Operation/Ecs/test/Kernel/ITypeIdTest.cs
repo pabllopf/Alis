@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// The test type id
         /// </summary>
-        private readonly struct TestTypeId : ITypeId
+        internal readonly struct TestTypeId : ITypeId
         {
             /// <summary>
             /// Initializes a new instance of the <see cref="TestTypeId"/> class

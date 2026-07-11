@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The position builder
             /// </summary>
-            private readonly PositionBuilder _builder = new PositionBuilder();
+            internal readonly PositionBuilder _builder = new PositionBuilder();
 
             /// <summary>
             ///     Positions the x

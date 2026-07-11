@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The angular velocity builder
             /// </summary>
-            private readonly AngularVelocityBuilder _builder = new AngularVelocityBuilder();
+            internal readonly AngularVelocityBuilder _builder = new AngularVelocityBuilder();
 
             /// <summary>
             ///     Angulars the velocity using the specified value

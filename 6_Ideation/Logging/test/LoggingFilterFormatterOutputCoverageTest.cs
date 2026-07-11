@@ -1557,7 +1557,7 @@ namespace Alis.Core.Aspect.Logging.Test
             /// <summary>
             /// The on dispose
             /// </summary>
-            private readonly Action _onDispose;
+            internal readonly Action _onDispose;
             /// <summary>
             /// Gets or sets the value of the was written
             /// </summary>

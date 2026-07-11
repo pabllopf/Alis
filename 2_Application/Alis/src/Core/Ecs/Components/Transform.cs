@@ -40,17 +40,17 @@ namespace Alis.Core.Ecs.Components
         /// <summary>
         ///     The position origin
         /// </summary>
-        private readonly Vector2F positionOrigin;
+        internal readonly Vector2F positionOrigin;
 
         /// <summary>
         ///     The rotation origin
         /// </summary>
-        private readonly float rotationOrigin;
+        internal readonly float rotationOrigin;
 
         /// <summary>
         ///     The scale origin
         /// </summary>
-        private readonly Vector2F scaleOrigin;
+        internal readonly Vector2F scaleOrigin;
 
         /// <summary>
         ///     The position

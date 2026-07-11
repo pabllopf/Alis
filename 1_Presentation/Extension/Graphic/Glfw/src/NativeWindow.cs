@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     Roots GLFW callback delegates to prevent GC collection while they are registered with unmanaged code.
         /// </summary>
-        private readonly List<Delegate> _pinnedCallbacks = new(16);
+        internal readonly List<Delegate> _pinnedCallbacks = new(16);
 
         /// <summary>
         ///     The title

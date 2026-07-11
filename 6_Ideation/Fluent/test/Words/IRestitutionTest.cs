@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The restitution builder
             /// </summary>
-            private readonly RestitutionBuilder _builder = new RestitutionBuilder();
+            internal readonly RestitutionBuilder _builder = new RestitutionBuilder();
 
             /// <summary>
             ///     Restitutions the value

@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Components.Audio
         /// <summary>
         ///     The loop
         /// </summary>
-        private readonly bool loop = loop;
+        internal readonly bool loop = loop;
 
         /// <summary>
         ///     The player

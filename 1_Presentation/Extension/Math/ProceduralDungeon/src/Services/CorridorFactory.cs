@@ -44,7 +44,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <summary>
         ///     The random number generator for selecting corridor directions.
         /// </summary>
-        private readonly IRandomNumberGenerator _randomNumberGenerator;
+        internal readonly IRandomNumberGenerator _randomNumberGenerator;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CorridorFactory" /> class.

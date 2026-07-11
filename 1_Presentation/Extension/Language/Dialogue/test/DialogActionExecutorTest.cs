@@ -192,7 +192,7 @@ namespace Alis.Extension.Language.Dialogue.Test
             /// <summary>
             /// The callback
             /// </summary>
-            private readonly Action _callback;
+            internal readonly Action _callback;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="InvalidDialogAction"/> class

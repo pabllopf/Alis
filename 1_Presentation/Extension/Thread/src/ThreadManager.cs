@@ -42,7 +42,7 @@ namespace Alis.Extension.Thread
         /// <summary>
         ///     The parallel update executor
         /// </summary>
-        private readonly ParallelUpdateExecutor parallelExecutor;
+        internal readonly ParallelUpdateExecutor parallelExecutor;
 
         /// <summary>
         ///     Whether the manager has been disposed

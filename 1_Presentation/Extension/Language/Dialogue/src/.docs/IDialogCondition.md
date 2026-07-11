@@ -43,8 +43,8 @@ var condition = new LambdaDialogCondition(ctx =>
 ```csharp
 public class ItemCondition : IDialogCondition
 {
-    private readonly string _itemId;
-    private readonly int _requiredQuantity;
+    internal readonly string _itemId;
+    internal readonly int _requiredQuantity;
 
     public ItemCondition(string itemId, int requiredQuantity = 1)
     {

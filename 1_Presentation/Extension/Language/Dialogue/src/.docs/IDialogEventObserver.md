@@ -55,7 +55,7 @@ manager.RegisterObserver(observer);
 ```csharp
 public class LoggingDialogObserver : IDialogEventObserver
 {
-    private readonly Logger _logger;
+    internal readonly Logger _logger;
 
     public LoggingDialogObserver(Logger logger)
     {

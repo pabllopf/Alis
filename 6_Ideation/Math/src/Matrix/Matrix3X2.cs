@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The precomputed hash code for this matrix instance.
         /// </summary>
-        private readonly int hashCode;
+        internal readonly int hashCode;
 
         /// <summary>Creates a 3x2 matrix from the specified components.</summary>
         /// <param name="m11">The value to assign to the first element in the first row.</param>

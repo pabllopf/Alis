@@ -59,7 +59,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     The gamepad
         /// </summary>
-        private readonly string[] menuItems =
+        internal readonly string[] menuItems =
         {
             $"{FontAwesome5.Cube} Projects",
             $"{FontAwesome5.Download} Installs",

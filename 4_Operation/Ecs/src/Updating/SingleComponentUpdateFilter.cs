@@ -43,12 +43,12 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     The component id
         /// </summary>
-        private readonly ComponentId _componentId;
+        internal readonly ComponentId _componentId;
 
         /// <summary>
         ///     The scene
         /// </summary>
-        private readonly Scene _scene;
+        internal readonly Scene _scene;
 
         /// <summary>
         ///     The archetypes

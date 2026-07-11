@@ -597,17 +597,17 @@ namespace Alis.Extension.Updater.Test
             /// <summary>
             ///     The cancellation
             /// </summary>
-            private readonly CancellationTokenSource _cancellation;
+            internal readonly CancellationTokenSource _cancellation;
 
             /// <summary>
             ///     The listener
             /// </summary>
-            private readonly TcpListener _listener;
+            internal readonly TcpListener _listener;
 
             /// <summary>
             ///     The worker
             /// </summary>
-            private readonly Task _worker;
+            internal readonly Task _worker;
             
 
             /// <summary>

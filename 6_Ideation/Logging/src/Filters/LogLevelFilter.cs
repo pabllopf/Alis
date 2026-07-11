@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <summary>
         ///     The minimum level
         /// </summary>
-        private readonly LogLevel _minimumLevel;
+        internal readonly LogLevel _minimumLevel;
 
         /// <summary>
         ///     Initializes a new instance of the LogLevelFilter class.

@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Helpers
         /// <summary>
         ///     The handler
         /// </summary>
-        private readonly EscapeSequenceHandler _handler;
+        internal readonly EscapeSequenceHandler _handler;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="EscapeSequenceHandlerTest" /> class

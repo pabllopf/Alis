@@ -42,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <summary>
         ///     The offset
         /// </summary>
-        private readonly int size;
+        internal readonly int size;
 
         /// <summary>
         ///     The frame buffer

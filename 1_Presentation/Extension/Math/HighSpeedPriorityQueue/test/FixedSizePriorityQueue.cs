@@ -40,7 +40,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
         /// <summary>
         ///     The items
         /// </summary>
-        private readonly List<(TItem item, TPriority priority)> _items;
+        internal readonly List<(TItem item, TPriority priority)> _items;
 
         /// <summary>
         ///     Initializes a new instance

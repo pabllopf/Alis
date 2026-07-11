@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The bucket count
         /// </summary>
-        private readonly T[][] _buckets = new T[BucketCount][];
+        internal readonly T[][] _buckets = new T[BucketCount][];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FastestArrayPool{T}" /> class

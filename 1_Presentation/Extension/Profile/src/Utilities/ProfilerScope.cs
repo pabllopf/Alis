@@ -51,12 +51,12 @@ namespace Alis.Extension.Profile.Utilities
         /// <summary>
         ///     Optional callback to invoke when the scope is disposed with the resulting snapshot.
         /// </summary>
-        private readonly Action<ProfileSnapshot> onCompleted;
+        internal readonly Action<ProfileSnapshot> onCompleted;
 
         /// <summary>
         ///     The profiler service used for profiling operations.
         /// </summary>
-        private readonly IProfilerService profilerService;
+        internal readonly IProfilerService profilerService;
 
         /// <summary>
         ///     Indicates whether the scope has been disposed.

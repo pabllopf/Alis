@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The density builder
             /// </summary>
-            private readonly DensityBuilder _builder = new DensityBuilder();
+            internal readonly DensityBuilder _builder = new DensityBuilder();
 
             /// <summary>
             ///     Densities the value

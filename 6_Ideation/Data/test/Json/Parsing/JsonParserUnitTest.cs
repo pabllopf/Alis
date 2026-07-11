@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         /// <summary>
         ///     The parser
         /// </summary>
-        private readonly IJsonParser _parser;
+        internal readonly IJsonParser _parser;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonParserUnitTest" /> class

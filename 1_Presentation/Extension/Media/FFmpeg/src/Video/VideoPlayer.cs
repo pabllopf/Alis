@@ -44,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
         /// <summary>
         ///     The ffplay
         /// </summary>
-        private readonly string ffplay;
+        internal readonly string ffplay;
 
         /// <summary>
         ///     The ffplayp

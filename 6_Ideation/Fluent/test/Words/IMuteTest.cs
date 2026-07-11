@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             /// The mute builder
             /// </summary>
-            private readonly MuteBuilder _builder = new MuteBuilder();
+            internal readonly MuteBuilder _builder = new MuteBuilder();
 
             /// <summary>
             /// Mutes the value

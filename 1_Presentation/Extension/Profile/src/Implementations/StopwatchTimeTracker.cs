@@ -43,7 +43,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <summary>
         ///     The internal stopwatch instance used for high-precision timing.
         /// </summary>
-        private readonly Stopwatch stopwatch;
+        internal readonly Stopwatch stopwatch;
 
         /// <summary>
         ///     The time when tracking was started.

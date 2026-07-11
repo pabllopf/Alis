@@ -121,7 +121,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The scale builder
             /// </summary>
-            private readonly ScaleBuilder _builder = new ScaleBuilder();
+            internal readonly ScaleBuilder _builder = new ScaleBuilder();
 
             /// <summary>
             ///     Scales the x

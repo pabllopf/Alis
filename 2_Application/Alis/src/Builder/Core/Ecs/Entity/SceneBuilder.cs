@@ -67,7 +67,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context context;
+        internal readonly Context context;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneBuilder" /> class

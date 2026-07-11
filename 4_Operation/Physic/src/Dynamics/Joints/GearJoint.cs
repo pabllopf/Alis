@@ -49,67 +49,67 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly Body _bodyA;
+        internal readonly Body _bodyA;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly Body _bodyB;
+        internal readonly Body _bodyB;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly Body _bodyC;
+        internal readonly Body _bodyC;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly Body _bodyD;
+        internal readonly Body _bodyD;
 
         /// <summary>
         ///     The constant
         /// </summary>
-        private readonly float _constant;
+        internal readonly float _constant;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private readonly Vector2F _localAnchorA;
+        internal readonly Vector2F _localAnchorA;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private readonly Vector2F _localAnchorB;
+        internal readonly Vector2F _localAnchorB;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private readonly Vector2F _localAnchorC;
+        internal readonly Vector2F _localAnchorC;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private readonly Vector2F _localAnchorD;
+        internal readonly Vector2F _localAnchorD;
 
         /// <summary>
         ///     The reference angle
         /// </summary>
-        private readonly float _referenceAngleA;
+        internal readonly float _referenceAngleA;
 
         /// <summary>
         ///     The reference angle
         /// </summary>
-        private readonly float _referenceAngleB;
+        internal readonly float _referenceAngleB;
 
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly JointType _typeA;
+        internal readonly JointType _typeA;
 
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly JointType _typeB;
+        internal readonly JointType _typeB;
 
         /// <summary>
         ///     The

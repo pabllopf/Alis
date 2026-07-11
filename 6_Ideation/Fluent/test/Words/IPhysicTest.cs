@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The physic builder
             /// </summary>
-            private readonly PhysicBuilder _builder = new PhysicBuilder();
+            internal readonly PhysicBuilder _builder = new PhysicBuilder();
 
             /// <summary>
             ///     Physics the value

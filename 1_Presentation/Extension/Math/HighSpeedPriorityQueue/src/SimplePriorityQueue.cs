@@ -53,17 +53,17 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <summary>
         ///     The item to nodes cache
         /// </summary>
-        private readonly Dictionary<TItem, IList<SimpleNode>> _itemToNodesCache;
+        internal readonly Dictionary<TItem, IList<SimpleNode>> _itemToNodesCache;
 
         /// <summary>
         ///     The null nodes cache
         /// </summary>
-        private readonly IList<SimpleNode> _nullNodesCache;
+        internal readonly IList<SimpleNode> _nullNodesCache;
 
         /// <summary>
         ///     The queue
         /// </summary>
-        private readonly GenericPriorityQueue<SimpleNode, TPriority> _queue;
+        internal readonly GenericPriorityQueue<SimpleNode, TPriority> _queue;
 
         /// <summary>
         ///     Instantiate a new Priority Queue

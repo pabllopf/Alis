@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The input builder
             /// </summary>
-            private readonly InputBuilder _builder = new InputBuilder();
+            internal readonly InputBuilder _builder = new InputBuilder();
 
             /// <summary>
             ///     Inputs the value

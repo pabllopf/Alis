@@ -44,11 +44,11 @@ namespace Alis.Extension.Network.Test.Server
         /// <summary>
         /// The manager
         /// </summary>
-        private readonly NetworkServerManager _manager;
+        internal readonly NetworkServerManager _manager;
         /// <summary>
         /// The default config
         /// </summary>
-        private readonly NetworkConfig _defaultConfig;
+        internal readonly NetworkConfig _defaultConfig;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkServerManagerTest"/> class

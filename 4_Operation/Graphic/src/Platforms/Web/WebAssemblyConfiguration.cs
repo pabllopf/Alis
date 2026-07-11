@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The configuration
         /// </summary>
-        private readonly WebAssemblyConfiguration _configuration;
+        internal readonly WebAssemblyConfiguration _configuration;
 
         /// <summary>
         ///     Initializes a new instance of the WebAssemblyConfigurationBuilder

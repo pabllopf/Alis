@@ -43,22 +43,22 @@ namespace Alis.Extension.Math.ProceduralDungeon.Services
         /// <summary>
         ///     The board builder for constructing the board.
         /// </summary>
-        private readonly IBoardBuilder _boardBuilder;
+        internal readonly IBoardBuilder _boardBuilder;
 
         /// <summary>
         ///     The dungeon configuration.
         /// </summary>
-        private readonly DungeonConfiguration _configuration;
+        internal readonly DungeonConfiguration _configuration;
 
         /// <summary>
         ///     The corridor factory for creating corridors.
         /// </summary>
-        private readonly ICorridorFactory _corridorFactory;
+        internal readonly ICorridorFactory _corridorFactory;
 
         /// <summary>
         ///     The room factory for creating rooms.
         /// </summary>
-        private readonly IRoomFactory _roomFactory;
+        internal readonly IRoomFactory _roomFactory;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DungeonGenerator" /> class.

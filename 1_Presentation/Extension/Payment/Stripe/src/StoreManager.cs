@@ -45,12 +45,12 @@ namespace Alis.Extension.Payment.Stripe
         /// <summary>
         ///     The products
         /// </summary>
-        private readonly Dictionary<string, StoreProduct> _products;
+        internal readonly Dictionary<string, StoreProduct> _products;
 
         /// <summary>
         ///     The stripe gateway client
         /// </summary>
-        private readonly IStripeGatewayClient _stripeGatewayClient;
+        internal readonly IStripeGatewayClient _stripeGatewayClient;
 
         /// <summary>
         ///     The configuration

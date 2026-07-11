@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// The context
         /// </summary>
-        private readonly IntPtr _context;
+        internal readonly IntPtr _context;
 
         /// <summary>
         ///     Initializes a new instance, creating a fresh ImGui context for the test.

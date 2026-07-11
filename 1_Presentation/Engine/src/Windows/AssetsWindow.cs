@@ -54,12 +54,12 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The command ptr
         /// </summary>
-        private readonly IntPtr commandPtr;
+        internal readonly IntPtr commandPtr;
 
         /// <summary>
         ///     The file audio
         /// </summary>
-        private readonly Dictionary<string, string> fileIcons = new Dictionary<string, string>
+        internal readonly Dictionary<string, string> fileIcons = new Dictionary<string, string>
         {
             {".png", FontAwesome5.FileImage},
             {".jpg", FontAwesome5.FileImage},
@@ -134,7 +134,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The ignore patterns
         /// </summary>
-        private readonly string[] ignorePatterns = {"*.meta", "*.tmp", ".DS_Store"};
+        internal readonly string[] ignorePatterns = {"*.meta", "*.tmp", ".DS_Store"};
 
         /// <summary>
         ///     The directory separator char

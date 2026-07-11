@@ -40,7 +40,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <summary>
         ///     The observers collection
         /// </summary>
-        private readonly List<IDialogEventObserver> _observers = new List<IDialogEventObserver>();
+        internal readonly List<IDialogEventObserver> _observers = new List<IDialogEventObserver>();
 
         /// <summary>
         ///     Subscribes an observer to dialog events

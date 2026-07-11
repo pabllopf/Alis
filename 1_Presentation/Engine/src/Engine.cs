@@ -81,52 +81,52 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The vector
         /// </summary>
-        private readonly Vector2F[] _lastClickPos = new Vector2F[5];
+        internal readonly Vector2F[] _lastClickPos = new Vector2F[5];
 
         /// <summary>
         ///     The last click time
         /// </summary>
-        private readonly double[] _lastClickTime = new double[5];
+        internal readonly double[] _lastClickTime = new double[5];
 
         /// <summary>
         ///     The mouse clicked
         /// </summary>
-        private readonly bool[] _mouseClicked = new bool[5];
+        internal readonly bool[] _mouseClicked = new bool[5];
 
         /// <summary>
         ///     The mouse clicked count
         /// </summary>
-        private readonly ushort[] _mouseClickedCount = new ushort[5];
+        internal readonly ushort[] _mouseClickedCount = new ushort[5];
 
         /// <summary>
         ///     The mouse clicked time
         /// </summary>
-        private readonly double[] _mouseClickedTime = new double[5];
+        internal readonly double[] _mouseClickedTime = new double[5];
 
         /// <summary>
         ///     The mouse double clicked
         /// </summary>
-        private readonly bool[] _mouseDoubleClicked = new bool[5];
+        internal readonly bool[] _mouseDoubleClicked = new bool[5];
 
         /// <summary>
         ///     The prev mouse down
         /// </summary>
-        private readonly bool[] _prevMouseDown = new bool[5];
+        internal readonly bool[] _prevMouseDown = new bool[5];
 
         /// <summary>
         ///     The space work
         /// </summary>
-        private readonly SpaceWork _spaceWork = new SpaceWork();
+        internal readonly SpaceWork _spaceWork = new SpaceWork();
 
         /// <summary>
         ///     The resolution program
         /// </summary>
-        private readonly float resolutionProgramX = 1920;
+        internal readonly float resolutionProgramX = 1920;
 
         /// <summary>
         ///     The resolution program
         /// </summary>
-        private readonly float resolutionProgramY = 1080;
+        internal readonly float resolutionProgramY = 1080;
 
         /// <summary>
         ///     The ebo

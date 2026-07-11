@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The rules
         /// </summary>
-        private readonly FastImmutableArray<Rule> _rules;
+        internal readonly FastImmutableArray<Rule> _rules;
 
         /// <summary>
         ///     The create

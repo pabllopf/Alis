@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The margin
         /// </summary>
-        private readonly float _margin;
+        internal readonly float _margin;
 
         // Trapezoid container
         /// <summary>

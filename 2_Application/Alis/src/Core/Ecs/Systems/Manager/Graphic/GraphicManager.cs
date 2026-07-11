@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <summary>
         ///     The escape
         /// </summary>
-        private readonly ConsoleKey[] allKeys = new[]
+        internal readonly ConsoleKey[] allKeys = new[]
         {
             ConsoleKey.A, ConsoleKey.B, ConsoleKey.C, ConsoleKey.D, ConsoleKey.E,
             ConsoleKey.F, ConsoleKey.G, ConsoleKey.H, ConsoleKey.I, ConsoleKey.J,
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// <summary>
         ///     The date time
         /// </summary>
-        private readonly Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
+        internal readonly Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
 
         // Estado actual de teclas presionadas
         /// <summary>

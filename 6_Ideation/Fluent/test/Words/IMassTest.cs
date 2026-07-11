@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The mass builder
             /// </summary>
-            private readonly MassBuilder _builder = new MassBuilder();
+            internal readonly MassBuilder _builder = new MassBuilder();
 
             /// <summary>
             ///     Masses the value

@@ -52,12 +52,12 @@ namespace Alis.Core.Aspect.Data.Json.FileOperations
         /// <summary>
         ///     The deserializer used to convert JSON file contents into typed objects.
         /// </summary>
-        private readonly IJsonDeserializer _jsonDeserializer;
+        internal readonly IJsonDeserializer _jsonDeserializer;
 
         /// <summary>
         ///     The serializer used to convert objects into JSON strings for file output.
         /// </summary>
-        private readonly IJsonSerializer _jsonSerializer;
+        internal readonly IJsonSerializer _jsonSerializer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonFileHandler" /> class with the

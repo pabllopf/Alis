@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The edge
         /// </summary>
-        private readonly Edge _edge;
+        internal readonly Edge _edge;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="YNode" /> class

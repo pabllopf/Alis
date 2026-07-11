@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The test builder
             /// </summary>
-            private readonly TestBuilder _builder = new TestBuilder();
+            internal readonly TestBuilder _builder = new TestBuilder();
 
             /// <summary>
             ///     Creates the obj
@@ -148,7 +148,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The int test builder
             /// </summary>
-            private readonly IntTestBuilder _builder = new IntTestBuilder();
+            internal readonly IntTestBuilder _builder = new IntTestBuilder();
 
             /// <summary>
             ///     Creates the obj

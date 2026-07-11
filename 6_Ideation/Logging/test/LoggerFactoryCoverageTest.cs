@@ -199,15 +199,15 @@ namespace Alis.Core.Aspect.Logging.Test
             /// <summary>
             /// The throw on dispose
             /// </summary>
-            private readonly bool _throwOnDispose;
+            internal readonly bool _throwOnDispose;
             /// <summary>
             /// The throw on flush
             /// </summary>
-            private readonly bool _throwOnFlush;
+            internal readonly bool _throwOnFlush;
             /// <summary>
             /// The throw on write
             /// </summary>
-            private readonly bool _throwOnWrite;
+            internal readonly bool _throwOnWrite;
 
             /// <summary>
             /// Gets or sets the value of the dispose called

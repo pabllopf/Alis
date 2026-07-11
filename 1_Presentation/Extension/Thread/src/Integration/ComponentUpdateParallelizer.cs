@@ -40,7 +40,7 @@ namespace Alis.Extension.Thread.Integration
         /// <summary>
         ///     The parallel update executor
         /// </summary>
-        private readonly ParallelUpdateExecutor executor;
+        internal readonly ParallelUpdateExecutor executor;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ComponentUpdateParallelizer" /> class

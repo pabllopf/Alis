@@ -22,7 +22,7 @@ namespace Alis.Core.Graphic.Test
         /// <summary>
         /// The saved
         /// </summary>
-        private readonly object _saved;
+        internal readonly object _saved;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlSafeCoverageTests"/> class

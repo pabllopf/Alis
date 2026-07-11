@@ -69,12 +69,12 @@ namespace Alis.Extension.Thread.Strategies
         /// <summary>
         ///     Cache for minimum batch sizes
         /// </summary>
-        private readonly ConcurrentDictionary<Type, int> minBatchSizeCache = new ConcurrentDictionary<Type, int>();
+        internal readonly ConcurrentDictionary<Type, int> minBatchSizeCache = new ConcurrentDictionary<Type, int>();
 
         /// <summary>
         ///     Cache for parallel capability checks
         /// </summary>
-        private readonly ConcurrentDictionary<Type, bool> parallelCapabilityCache = new ConcurrentDictionary<Type, bool>();
+        internal readonly ConcurrentDictionary<Type, bool> parallelCapabilityCache = new ConcurrentDictionary<Type, bool>();
 
         /// <summary>
         ///     Determines if the given type can be executed in parallel

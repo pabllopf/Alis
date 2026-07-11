@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         /// <summary>
         ///     The dt sweep point comparator
         /// </summary>
-        private readonly DtSweepPointComparator _comparator = new DtSweepPointComparator();
+        internal readonly DtSweepPointComparator _comparator = new DtSweepPointComparator();
 
         /// <summary>
         ///     The dt sweep basin

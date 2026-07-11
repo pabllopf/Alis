@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <summary>
         ///     The sample rate
         /// </summary>
-        private readonly int _sampleRate; // 1 in N entries pass through
+        internal readonly int _sampleRate; // 1 in N entries pass through
 
         /// <summary>
         ///     The counter

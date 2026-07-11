@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The volume builder
             /// </summary>
-            private readonly VolumeBuilder _builder = new VolumeBuilder();
+            internal readonly VolumeBuilder _builder = new VolumeBuilder();
 
             /// <summary>
             ///     Volumes the value

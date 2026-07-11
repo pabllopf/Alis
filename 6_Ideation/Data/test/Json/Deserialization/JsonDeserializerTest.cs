@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// <summary>
         ///     The deserializer
         /// </summary>
-        private readonly JsonDeserializer _deserializer;
+        internal readonly JsonDeserializer _deserializer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonDeserializerTest" /> class

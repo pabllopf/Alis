@@ -15,7 +15,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// The native ptr
         /// </summary>
-        private readonly IntPtr _nativePtr;
+        internal readonly IntPtr _nativePtr;
         /// <summary>
         /// The io ptr
         /// </summary>

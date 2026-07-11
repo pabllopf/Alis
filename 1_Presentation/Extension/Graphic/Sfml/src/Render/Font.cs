@@ -49,12 +49,12 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Roots the StreamAdaptor to prevent GC collection while referenced by unmanaged SFML code.
         /// </summary>
-        private readonly List<object> _pinnedObjects = new(1);
+        internal readonly List<object> _pinnedObjects = new(1);
 
         /// <summary>
         ///     The texture
         /// </summary>
-        private readonly Dictionary<uint, Texture> myTextures = new Dictionary<uint, Texture>();
+        internal readonly Dictionary<uint, Texture> myTextures = new Dictionary<uint, Texture>();
 
         /// <summary>
         ///     Construct the font from a file

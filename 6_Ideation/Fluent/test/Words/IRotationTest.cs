@@ -113,7 +113,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The rotation builder
             /// </summary>
-            private readonly RotationBuilder _builder = new RotationBuilder();
+            internal readonly RotationBuilder _builder = new RotationBuilder();
 
             /// <summary>
             ///     Rotations the value

@@ -52,37 +52,37 @@ namespace Alis.Extension.Language.Translator
         /// <summary>
         ///     The translation cache
         /// </summary>
-        private readonly ITranslationCache cache;
+        internal readonly ITranslationCache cache;
 
         /// <summary>
         ///     The fallback language codes (e.g., "en-US" -> ["en-US", "en"])
         /// </summary>
-        private readonly List<string> fallbackLanguages = new List<string>();
+        internal readonly List<string> fallbackLanguages = new List<string>();
 
         /// <summary>
         ///     The language provider
         /// </summary>
-        private readonly ILanguageProvider languageProvider;
+        internal readonly ILanguageProvider languageProvider;
 
         /// <summary>
         ///     List of observers to notify on translation events
         /// </summary>
-        private readonly List<ITranslationObserver> observers = new List<ITranslationObserver>();
+        internal readonly List<ITranslationObserver> observers = new List<ITranslationObserver>();
 
         /// <summary>
         ///     The pluralization engine
         /// </summary>
-        private readonly IPluralizationEngine pluralizationEngine;
+        internal readonly IPluralizationEngine pluralizationEngine;
 
         /// <summary>
         ///     The lock object for thread-safe operations
         /// </summary>
-        private readonly object syncLock = new object();
+        internal readonly object syncLock = new object();
 
         /// <summary>
         ///     The translation provider
         /// </summary>
-        private readonly ITranslationProvider translationProvider;
+        internal readonly ITranslationProvider translationProvider;
 
         /// <summary>
         ///     The current language

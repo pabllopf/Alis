@@ -38,7 +38,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The point
         /// </summary>
-        private readonly Point _point;
+        internal readonly Point _point;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="XNode" /> class

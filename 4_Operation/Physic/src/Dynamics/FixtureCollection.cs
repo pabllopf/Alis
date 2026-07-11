@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly Body _body;
+        internal readonly Body _body;
 
         /// <summary>
         ///     The fixture
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Dynamics
             /// <summary>
             ///     The generation stamp
             /// </summary>
-            private readonly int _generationStamp;
+            internal readonly int _generationStamp;
 
             /// <summary>
             ///     The

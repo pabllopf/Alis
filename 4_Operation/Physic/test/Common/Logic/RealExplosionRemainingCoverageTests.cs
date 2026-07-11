@@ -778,6 +778,102 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Assert.NotNull(result);
         }
+
+        // ========================================================================
+        // MergeCircularData — wrapping merge logic (lines 384-396)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests that merge circular data wraps min when data wraps around circle
+        /// </summary>
+        [Fact]
+        public void MergeCircularData_WrappingMerge_AdjustsMin()
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("MergeCircularData",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+
+            FieldInfo dataField = typeof(RealExplosion).GetField("_data",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            var data = (System.Collections.IList)dataField.GetValue(explosion);
+
+            Type shapeDataType = typeof(RealExplosion).Assembly.GetType("Alis.Core.Physic.Common.Logic.ShapeData");
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            // First: Min=0.1f, Max=1.0f
+            object sd1 = Activator.CreateInstance(shapeDataType);
+            shapeDataType.GetField("Body").SetValue(sd1, body);
+            shapeDataType.GetField("Min").SetValue(sd1, 0.1f);
+            shapeDataType.GetField("Max").SetValue(sd1, 1.0f);
+
+            // Middle
+            object sd2 = Activator.CreateInstance(shapeDataType);
+            shapeDataType.GetField("Body").SetValue(sd2, body);
+            shapeDataType.GetField("Min").SetValue(sd2, 2.0f);
+            shapeDataType.GetField("Max").SetValue(sd2, 3.0f);
+
+            // Last: same body, Max ~ first.Min (0.1f) so |last.Max - first.Min| < Epsilon
+            object sd3 = Activator.CreateInstance(shapeDataType);
+            shapeDataType.GetField("Body").SetValue(sd3, body);
+            shapeDataType.GetField("Min").SetValue(sd3, 2.5f);
+            shapeDataType.GetField("Max").SetValue(sd3, 0.1f + 0.5f * float.Epsilon);
+
+            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd1 });
+            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd2 });
+            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd3 });
+
+            method.Invoke(explosion, null);
+
+            int count = (int)data.GetType().GetProperty("Count").GetValue(data);
+            // After merge: last is absorbed into first → 2 elements remain
+            Assert.Equal(2, count);
+        }
+
+        /// <summary>
+        /// Tests that merge circular data while loop adjusts min by subtracting 2*Pi
+        /// </summary>
+        [Fact]
+        public void MergeCircularData_WhileLoop_AdjustsMinByTwoPi()
+        {
+            MethodInfo method = typeof(RealExplosion).GetMethod("MergeCircularData",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+
+            FieldInfo dataField = typeof(RealExplosion).GetField("_data",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            var data = (System.Collections.IList)dataField.GetValue(explosion);
+
+            Type shapeDataType = typeof(RealExplosion).Assembly.GetType("Alis.Core.Physic.Common.Logic.ShapeData");
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            // First: Min=0.1f, Max=1.0f
+            object sd1 = Activator.CreateInstance(shapeDataType);
+            shapeDataType.GetField("Body").SetValue(sd1, body);
+            shapeDataType.GetField("Min").SetValue(sd1, 0.1f);
+            shapeDataType.GetField("Max").SetValue(sd1, 1.0f);
+
+            // Last: same body, Min=2.0f (>= first.Max=1.0f for while loop),
+            // Max ~ first.Min (0.1f) so |last.Max - first.Min| < Epsilon
+            object sd2 = Activator.CreateInstance(shapeDataType);
+            shapeDataType.GetField("Body").SetValue(sd2, body);
+            shapeDataType.GetField("Min").SetValue(sd2, 2.0f);
+            shapeDataType.GetField("Max").SetValue(sd2, 0.1f + 0.5f * float.Epsilon);
+
+            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd1 });
+            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd2 });
+
+            method.Invoke(explosion, null);
+
+            // After merge: last absorbed into first → 1 element remains
+            // Then while loop triggered: fi.Min (2.0f) >= first.Max (1.0f)
+            // fi.Min -= 2*Pi → 2.0 - 6.283 = -4.283 → loop ends
+            int count = (int)data.GetType().GetProperty("Count").GetValue(data);
+            Assert.Equal(1, count);
+        }
     }
 
     /// <summary>

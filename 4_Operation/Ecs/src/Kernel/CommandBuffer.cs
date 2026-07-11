@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The max component count
         /// </summary>
-        private readonly ComponentStorageBase[] _componentRunnerBuffer =
+        internal readonly ComponentStorageBase[] _componentRunnerBuffer =
             new ComponentStorageBase[MemoryHelpers.MaxComponentCount];
 
         /// <summary>

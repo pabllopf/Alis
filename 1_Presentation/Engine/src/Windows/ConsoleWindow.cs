@@ -52,17 +52,17 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     The command ptr
         /// </summary>
-        private readonly IntPtr commandPtr;
+        internal readonly IntPtr commandPtr;
 
         /// <summary>
         ///     The no collapse
         /// </summary>
-        private readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
+        internal readonly ImGuiWindowFlags flags = ImGuiWindowFlags.NoCollapse;
 
         /// <summary>
         ///     The string writer
         /// </summary>
-        private readonly StringWriter stringWriter = new StringWriter();
+        internal readonly StringWriter stringWriter = new StringWriter();
 
         /// <summary>
         ///     The is open

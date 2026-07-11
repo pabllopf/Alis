@@ -105,7 +105,7 @@ namespace Alis.Extension.Thread.Configuration
         /// <summary>
         ///     The configuration being built
         /// </summary>
-        private readonly ParallelExtensionConfiguration configuration = new ParallelExtensionConfiguration();
+        internal readonly ParallelExtensionConfiguration configuration = new ParallelExtensionConfiguration();
 
         /// <summary>
         ///     Enables or disables parallel execution

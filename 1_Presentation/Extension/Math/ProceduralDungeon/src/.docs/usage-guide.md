@@ -298,7 +298,7 @@ var data = dungeon.Generate();
 ```csharp
 public class DungeonLevel
 {
-    private readonly DungeonData _dungeonData;
+    internal readonly DungeonData _dungeonData;
     
     public DungeonLevel()
     {

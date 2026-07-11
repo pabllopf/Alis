@@ -43,12 +43,12 @@ namespace Alis.Core.Aspect.Logging.Filters
         /// <summary>
         ///     The filters
         /// </summary>
-        private readonly List<ILogFilter> _filters;
+        internal readonly List<ILogFilter> _filters;
 
         /// <summary>
         ///     The require all
         /// </summary>
-        private readonly bool _requireAll;
+        internal readonly bool _requireAll;
 
         /// <summary>
         ///     Initializes a new instance of the CompositeLogFilter class.

@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The depth builder
             /// </summary>
-            private readonly DepthBuilder _builder = new DepthBuilder();
+            internal readonly DepthBuilder _builder = new DepthBuilder();
 
             /// <summary>
             ///     Depths the value

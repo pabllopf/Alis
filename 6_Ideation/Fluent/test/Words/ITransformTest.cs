@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The transform builder
             /// </summary>
-            private readonly TransformBuilder _builder = new TransformBuilder();
+            internal readonly TransformBuilder _builder = new TransformBuilder();
 
             /// <summary>
             ///     Transforms the value

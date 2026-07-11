@@ -55,12 +55,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     The index
         /// </summary>
-        private readonly int _index;
+        internal readonly int _index;
 
         /// <summary>
         ///     The component type
         /// </summary>
-        private readonly ComponentId _componentType;
+        internal readonly ComponentId _componentType;
 
 
         /// <summary>

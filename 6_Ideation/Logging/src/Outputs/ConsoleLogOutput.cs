@@ -44,7 +44,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         /// <summary>
         ///     The formatter used to convert log entries into strings for console display.
         /// </summary>
-        private readonly ILogFormatter _formatter;
+        internal readonly ILogFormatter _formatter;
 
         /// <summary>
         ///     Indicates whether this instance has been disposed and should no longer accept writes.

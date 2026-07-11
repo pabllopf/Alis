@@ -61,7 +61,7 @@ namespace Alis.Extension.Thread.Core
         /// <summary>
         ///     The pool of work items
         /// </summary>
-        private readonly ConcurrentBag<WorkItem> pool = new ConcurrentBag<WorkItem>();
+        internal readonly ConcurrentBag<WorkItem> pool = new ConcurrentBag<WorkItem>();
 
         /// <summary>
         ///     Rents a work item from the pool

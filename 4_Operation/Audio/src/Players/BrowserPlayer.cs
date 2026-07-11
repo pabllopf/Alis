@@ -46,12 +46,12 @@ namespace Alis.Core.Audio.Players
         /// <summary>
         ///     The buffer
         /// </summary>
-        private readonly uint _buffer;
+        internal readonly uint _buffer;
 
         /// <summary>
         ///     The source
         /// </summary>
-        private readonly uint _source;
+        internal readonly uint _source;
 
         /// <summary>
         ///     The paused

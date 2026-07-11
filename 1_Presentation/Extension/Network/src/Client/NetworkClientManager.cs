@@ -47,17 +47,17 @@ namespace Alis.Extension.Network.Client
         /// <summary>
         ///     The id
         /// </summary>
-        private readonly string _id;
+        internal readonly string _id;
 
         /// <summary>
         ///     The lock object
         /// </summary>
-        private readonly object _lockObject = new object();
+        internal readonly object _lockObject = new object();
 
         /// <summary>
         ///     The message handlers
         /// </summary>
-        private readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
+        internal readonly ConcurrentDictionary<string, Func<string, string, Task>> _messageHandlers;
 
         /// <summary>
         ///     The cancellation token source

@@ -524,7 +524,7 @@ namespace Alis.Core.Ecs.Collections
             /// <summary>
             ///     The fastest stack
             /// </summary>
-            private readonly FastestStack<T> _fastestStack;
+            internal readonly FastestStack<T> _fastestStack;
 
             /// <summary>
             ///     The current element
@@ -534,7 +534,7 @@ namespace Alis.Core.Ecs.Collections
             /// <summary>
             ///     The version
             /// </summary>
-            private readonly int _version;
+            internal readonly int _version;
 
             /// <summary>
             ///     The index

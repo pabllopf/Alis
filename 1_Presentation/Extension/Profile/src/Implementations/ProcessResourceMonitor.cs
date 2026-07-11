@@ -43,7 +43,7 @@ namespace Alis.Extension.Profile.Implementations
         /// <summary>
         ///     The process instance to monitor. Defaults to the current process.
         /// </summary>
-        private readonly Process process;
+        internal readonly Process process;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ProcessResourceMonitor" /> class

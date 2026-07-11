@@ -44,7 +44,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         ///     The bottom menu height
         /// </summary>
-        private readonly float bottomMenuHeight = 10.0f;
+        internal readonly float bottomMenuHeight = 10.0f;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BottomMenu" /> class

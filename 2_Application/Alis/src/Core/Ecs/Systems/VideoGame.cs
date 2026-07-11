@@ -44,7 +44,7 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The context handler
         /// </summary>
-        private readonly IContextHandler<Context> _contextHandler;
+        internal readonly IContextHandler<Context> _contextHandler;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="VideoGame" /> class

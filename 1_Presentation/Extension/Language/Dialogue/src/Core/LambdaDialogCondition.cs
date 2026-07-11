@@ -39,7 +39,7 @@ namespace Alis.Extension.Language.Dialogue.Core
         /// <summary>
         ///     The evaluation function
         /// </summary>
-        private readonly Func<DialogContext, bool> _evaluateFunc;
+        internal readonly Func<DialogContext, bool> _evaluateFunc;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LambdaDialogCondition" /> class

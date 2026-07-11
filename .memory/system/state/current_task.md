@@ -5,7 +5,7 @@
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    489
+    350
 
     ### Uncovered Branches
-    22
+    167
 
     ### Method
-    ImGuiP7
+    MacNativePlatform
 
     ### Complexity / LOC
-    155 / 640 lines
+    127 / 427 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImGuiP7.cs
+//  File:MacNativePlatform.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if osxarm64 || osxarm || osxx64 || osx
 using System;
-using System.Text;
-using Alis.Core.Aspect.Math.Vector;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.Platforms.Osx.Native;
 
-namespace Alis.Extension.Graphic.Ui
+namespace Alis.Core.Graphic.Platforms.Osx
 {
     /// <summary>
-    ///     The im gui class
+    ///     Plataforma nativa para macOS, coordinando ventana y contexto OpenGL
     /// </summary>
-    public static partial class ImGui
+    public class MacNativePlatform : INativePlatform
     {
         /// <summary>
-        ///     Describes whether menu item
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="shortcut">The shortcut</param>
-        /// <param name="pSelected">The selected</param>
-        /// <param name="enabled">The enabled</param>
-        /// <returns>The bool</returns>
-        public static bool MenuItem(string label, string shortcut, ref bool pSelected, bool enabled)
-        {
-            byte ret = ImGuiNative.igMenuItem_BoolPtr(Encoding.UTF8.GetBytes(label), Encoding.UTF8.GetBytes(shortcut), pSelected, enabled);
-            return ret != 0;
-        }
+        private static IntPtr _openGlHandle = IntPtr.Zero;
+
+        private readonly bool[] mouseButtons = new bool[5];
+
+        private readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
-        ///     News the frame
         /// </summary>
-        public static void NewFrame()
-        {
-            ImGuiNative.igNewFrame();
+        private MacOpenGLContext glContext;
+
+        /// <summary>
+        /// </summary>
+        private ConsoleKey? lastKeyPressed;
+
+        internal float mouseWheel;
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/ImGuiP7Tests.cs
+    pabllopf-official_alis:4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiP7.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImGuiP7.cs
+    Commit format: test: coverage MacNativePlatform.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

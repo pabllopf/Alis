@@ -45,7 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// The temp file
         /// </summary>
-        private readonly string _tempFile;
+        internal readonly string _tempFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VideoFrameRemainingCoverageTests"/> class
@@ -460,11 +460,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// The buffer
         /// </summary>
-        private readonly byte[] _buffer;
+        internal readonly byte[] _buffer;
         /// <summary>
         /// The chunk size
         /// </summary>
-        private readonly int _chunkSize;
+        internal readonly int _chunkSize;
         /// <summary>
         /// The position
         /// </summary>

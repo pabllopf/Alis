@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The audio builder
             /// </summary>
-            private readonly AudioBuilder _builder = new AudioBuilder();
+            internal readonly AudioBuilder _builder = new AudioBuilder();
 
             /// <summary>
             ///     Audioes the value

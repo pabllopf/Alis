@@ -75,19 +75,19 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// The saved assembly
         /// </summary>
-        private readonly string _savedAssembly;
+        internal readonly string _savedAssembly;
         /// <summary>
         /// The saved loaders
         /// </summary>
-        private readonly Dictionary<object, object> _savedLoaders = new();
+        internal readonly Dictionary<object, object> _savedLoaders = new();
         /// <summary>
         /// The saved zip cache
         /// </summary>
-        private readonly Dictionary<object, object> _savedZipCache = new();
+        internal readonly Dictionary<object, object> _savedZipCache = new();
         /// <summary>
         /// The saved path cache
         /// </summary>
-        private readonly Dictionary<object, object> _savedPathCache = new();
+        internal readonly Dictionary<object, object> _savedPathCache = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AssetRegistryCoverageTest"/> class

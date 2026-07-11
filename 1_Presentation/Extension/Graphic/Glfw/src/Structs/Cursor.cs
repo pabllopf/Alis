@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Internal pointer.
         /// </summary>
-        private readonly IntPtr cursor;
+        internal readonly IntPtr cursor;
 
         /// <summary>
         ///     Determines whether the specified <see cref="Cursor" />, is equal to this instance.

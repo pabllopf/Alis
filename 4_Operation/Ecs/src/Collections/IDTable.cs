@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The has gc references
         /// </summary>
-        private readonly bool _hasGcReferences;
+        internal readonly bool _hasGcReferences;
 
         /// <summary>
         ///     The buffer

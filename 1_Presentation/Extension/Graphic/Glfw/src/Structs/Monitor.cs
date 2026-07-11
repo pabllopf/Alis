@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.Glfw.Structs
         /// <summary>
         ///     Internal pointer.
         /// </summary>
-        private readonly IntPtr handle;
+        internal readonly IntPtr handle;
 
         /// <summary>
         ///     Determines whether the specified <see cref="Monitor" />, is equal to this instance.

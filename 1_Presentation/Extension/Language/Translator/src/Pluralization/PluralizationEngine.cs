@@ -45,12 +45,12 @@ namespace Alis.Extension.Language.Translator.Pluralization
         /// <summary>
         ///     Dictionary of plural form counts by language code
         /// </summary>
-        private readonly Dictionary<string, int> pluralFormCounts = new Dictionary<string, int>();
+        internal readonly Dictionary<string, int> pluralFormCounts = new Dictionary<string, int>();
 
         /// <summary>
         ///     Dictionary of pluralization rules by language code
         /// </summary>
-        private readonly Dictionary<string, Func<int, int>> pluralRules = new Dictionary<string, Func<int, int>>();
+        internal readonly Dictionary<string, Func<int, int>> pluralRules = new Dictionary<string, Func<int, int>>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PluralizationEngine" /> class

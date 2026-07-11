@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     Roots the StreamAdaptor to prevent GC collection while referenced by unmanaged SFML code.
         /// </summary>
-        private readonly List<object> _pinnedObjects = new(1);
+        internal readonly List<object> _pinnedObjects = new(1);
 
         /// <summary>
         ///     Constructs a music from an audio file

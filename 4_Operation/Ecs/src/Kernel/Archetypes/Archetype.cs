@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     The archetype id
         /// </summary>
-        private readonly GameObjectType _archetypeId = archetypeId;
+        internal readonly GameObjectType _archetypeId = archetypeId;
 
 
         /// <summary>

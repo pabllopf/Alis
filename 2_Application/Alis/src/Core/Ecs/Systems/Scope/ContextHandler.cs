@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Systems.Scope
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context _context;
+        internal readonly Context _context;
 
         /// <summary>
         ///     The accumulator

@@ -47,7 +47,7 @@ namespace Alis.Builder.Core.Ecs.Components.Audio
         /// <summary>
         ///     The context
         /// </summary>
-        private readonly Context context;
+        internal readonly Context context;
 
         /// <summary>
         ///     The is mute

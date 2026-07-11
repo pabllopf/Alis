@@ -43,15 +43,15 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The platform
         /// </summary>
-        private readonly WebAssemblyPlatform _platform;
+        internal readonly WebAssemblyPlatform _platform;
         /// <summary>
         /// The key bindings
         /// </summary>
-        private readonly Dictionary<string, KeyBinding> _keyBindings;
+        internal readonly Dictionary<string, KeyBinding> _keyBindings;
         /// <summary>
         /// The previous gamepad states
         /// </summary>
-        private readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
+        internal readonly Dictionary<int, GamepadInputState> _previousGamepadStates;
         /// <summary>
         /// The last mouse wheel delta
         /// </summary>
@@ -321,7 +321,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The keys
         /// </summary>
-        private readonly HashSet<ConsoleKey> _keys;
+        internal readonly HashSet<ConsoleKey> _keys;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="KeyBinding"/> class
@@ -465,11 +465,11 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         /// The input manager
         /// </summary>
-        private readonly WebAssemblyInputManager _inputManager;
+        internal readonly WebAssemblyInputManager _inputManager;
         /// <summary>
         /// The platform
         /// </summary>
-        private readonly WebAssemblyPlatform _platform;
+        internal readonly WebAssemblyPlatform _platform;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebAssemblyInputContext"/> class

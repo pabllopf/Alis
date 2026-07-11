@@ -58,12 +58,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The query callback cache
         /// </summary>
-        private readonly BroadPhaseQueryCallback _queryCallbackCache;
+        internal readonly BroadPhaseQueryCallback _queryCallbackCache;
 
         /// <summary>
         ///     The node
         /// </summary>
-        private readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
+        internal readonly DynamicTree<TNode> _tree = new DynamicTree<TNode>();
 
         /// <summary>
         ///     The move buffer

@@ -42,7 +42,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         /// <summary>
         /// The base directory
         /// </summary>
-        private readonly string _testAssetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Assets");
+        internal readonly string _testAssetsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Assets");
 
         /// <summary>
         ///     Tests that loading a valid BMP file returns a non-null image with correct properties

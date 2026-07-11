@@ -41,32 +41,32 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     The bounding box
         /// </summary>
-        private readonly Trapezoid _boundingBox;
+        internal readonly Trapezoid _boundingBox;
 
         /// <summary>
         ///     The edge list
         /// </summary>
-        private readonly List<Edge> _edgeList;
+        internal readonly List<Edge> _edgeList;
 
         /// <summary>
         ///     The query graph
         /// </summary>
-        private readonly QueryGraph _queryGraph;
+        internal readonly QueryGraph _queryGraph;
 
         /// <summary>
         ///     The sheer
         /// </summary>
-        private readonly float _sheer;
+        internal readonly float _sheer;
 
         /// <summary>
         ///     The trapezoidal map
         /// </summary>
-        private readonly TrapezoidalMap _trapezoidalMap;
+        internal readonly TrapezoidalMap _trapezoidalMap;
 
         /// <summary>
         ///     The mono poly
         /// </summary>
-        private readonly List<MonotoneMountain> _xMonoPoly;
+        internal readonly List<MonotoneMountain> _xMonoPoly;
 
         // Trapezoid decomposition list
         /// <summary>

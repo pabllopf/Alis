@@ -299,7 +299,7 @@ private void SelectProject()
 ```csharp
 public class DialogDispatcher
 {
-    private readonly IFilePicker _picker;
+    internal readonly IFilePicker _picker;
     
     public DialogDispatcher()
     {

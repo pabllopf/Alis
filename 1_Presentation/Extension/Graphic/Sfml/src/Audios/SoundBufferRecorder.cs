@@ -40,7 +40,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <summary>
         ///     The list
         /// </summary>
-        private readonly List<short> mySamplesArray = new List<short>();
+        internal readonly List<short> mySamplesArray = new List<short>();
 
         /// <summary>
         ///     The my sound buffer

@@ -41,12 +41,12 @@ namespace Alis.Extension.Thread.Scheduling
         /// <summary>
         ///     The execution context
         /// </summary>
-        private readonly ParallelExecutionContext context;
+        internal readonly ParallelExecutionContext context;
 
         /// <summary>
         ///     The work item pool
         /// </summary>
-        private readonly WorkItemPool workItemPool;
+        internal readonly WorkItemPool workItemPool;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParallelExecutionScheduler" /> class

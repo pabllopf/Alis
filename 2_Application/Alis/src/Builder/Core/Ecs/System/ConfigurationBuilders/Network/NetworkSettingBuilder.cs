@@ -41,7 +41,7 @@ namespace Alis.Builder.Core.Ecs.System.ConfigurationBuilders.Network
         /// <summary>
         ///     The audio setting
         /// </summary>
-        private readonly NetworkSetting networkSetting = new NetworkSetting();
+        internal readonly NetworkSetting networkSetting = new NetworkSetting();
 
         /// <summary>
         ///     Builds this instance

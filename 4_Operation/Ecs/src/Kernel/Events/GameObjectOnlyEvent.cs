@@ -128,7 +128,7 @@ namespace Alis.Core.Ecs.Kernel.Events
         ///     Executes the gameObject
         /// </summary>
         /// <param name="gameObject">The gameObject</param>
-        private readonly void Execute(GameObject gameObject)
+        internal readonly void Execute(GameObject gameObject)
         {
             _first!.Invoke(gameObject);
             if (_second is not null)

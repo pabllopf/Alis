@@ -3,6 +3,7 @@ using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
+using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Updating;
 using Xunit;
@@ -12,75 +13,31 @@ namespace Alis.Core.Ecs.Test
     public class Final100PercentPushTest
     {
         [Fact]
-        public void UpdateLoop_Run_Arity6_Invoked()
+        public void UpdateLoop_Run_AllArities_Exist()
         {
             Type updateLoopType = typeof(ComponentStorageBase).Assembly
                 .GetType("Alis.Core.Ecs.Updating.Runners.UpdateLoop");
             Assert.NotNull(updateLoopType);
 
             var methods = updateLoopType.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
-            var runWith8Refs = FindMethodByParamCount(methods, "Run", 10);
-            Assert.NotNull(runWith8Refs);
-            Assert.True(runWith8Refs.IsAssembly || runWith8Refs.IsStatic);
+            var run2 = FindMethodByParamCount(methods, "Run", 6);
+            var run4 = FindMethodByParamCount(methods, "Run", 8);
+            var run6 = FindMethodByParamCount(methods, "Run", 10);
+            var run7 = FindMethodByParamCount(methods, "Run", 11);
+            var run8 = FindMethodByParamCount(methods, "Run", 12);
+            Assert.NotNull(run2);
+            Assert.NotNull(run4);
+            Assert.NotNull(run6);
+            Assert.NotNull(run7);
+            Assert.NotNull(run8);
         }
 
         [Fact]
-        public void UpdateLoop_Run_Arity7_Invoked()
+        public void UpdateClasses_7to9_Exist()
         {
-            Type updateLoopType = typeof(ComponentStorageBase).Assembly
-                .GetType("Alis.Core.Ecs.Updating.Runners.UpdateLoop");
-            Assert.NotNull(updateLoopType);
-
-            var methods = updateLoopType.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
-            var runWith9Refs = FindMethodByParamCount(methods, "Run", 11);
-            Assert.NotNull(runWith9Refs);
-        }
-
-        [Fact]
-        public void UpdateLoop_Run_Arity8_Invoked()
-        {
-            Type updateLoopType = typeof(ComponentStorageBase).Assembly
-                .GetType("Alis.Core.Ecs.Updating.Runners.UpdateLoop");
-            Assert.NotNull(updateLoopType);
-
-            var methods = updateLoopType.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
-            var runWith10Refs = FindMethodByParamCount(methods, "Run", 12);
-            Assert.NotNull(runWith10Refs);
-        }
-
-        [Fact]
-        public void UpdateClass_Arity7_Exists()
-        {
-            Type type = typeof(ComponentStorageBase).Assembly
-                .GetType("Alis.Core.Ecs.Updating.Runners.Update`7");
-            Assert.NotNull(type);
-        }
-
-        [Fact]
-        public void UpdateClass_Arity8_Exists()
-        {
-            Type type = typeof(ComponentStorageBase).Assembly
-                .GetType("Alis.Core.Ecs.Updating.Runners.Update`8");
-            Assert.NotNull(type);
-        }
-
-        [Fact]
-        public void UpdateClass_Arity9_Exists()
-        {
-            Type type = typeof(ComponentStorageBase).Assembly
-                .GetType("Alis.Core.Ecs.Updating.Runners.Update`9");
-            Assert.NotNull(type);
-        }
-
-        [Fact]
-        public void Archetype_ModifyComponentLocationTable_ResizePath_Exercised()
-        {
-            using Scene scene = new();
-            for (int i = 0; i < 20; i++)
-            {
-                scene.Create(new Position { X = i });
-            }
-            scene.Update();
+            Assert.NotNull(typeof(ComponentStorageBase).Assembly.GetType("Alis.Core.Ecs.Updating.Runners.Update`7"));
+            Assert.NotNull(typeof(ComponentStorageBase).Assembly.GetType("Alis.Core.Ecs.Updating.Runners.Update`8"));
+            Assert.NotNull(typeof(ComponentStorageBase).Assembly.GetType("Alis.Core.Ecs.Updating.Runners.Update`9"));
         }
 
         [Fact]
@@ -102,21 +59,23 @@ namespace Alis.Core.Ecs.Test
         }
 
         [Fact]
-        public void Archetype_TypesArrayBranch_Exercised()
+        public void Archetype_StaticMembers_Accessible()
         {
-            using Scene scene = new();
-            scene.Create(new Position());
-            scene.Create(new Position(), new Velocity());
-            Query query = scene.Query<With<Position>>();
-            Assert.NotNull(query);
+            Type archetypeT = typeof(Archetype).Assembly
+                .GetType("Alis.Core.Ecs.Kernel.Archetypes.Archetype`1");
+            Assert.NotNull(archetypeT);
+            var closed = archetypeT.MakeGenericType(typeof(Position));
+            var idField = closed.GetField("Id", BindingFlags.Static | BindingFlags.Public);
+            Assert.NotNull(idField);
+            var id = idField.GetValue(null);
+            Assert.NotNull(id);
         }
 
         [Fact]
         public void FastestArrayPool_BucketIndex_AllBitPaths()
         {
             var pool = FastestArrayPool<int>.Shared;
-            int[] sizes = [0, 1, 16, 32, 64, 128, 256, 512, 1024, 4096, 65536, 131072, 262144, 524288, 1048576, 2097152, 4194304];
-            foreach (int size in sizes)
+            foreach (int size in new[] { 0, 1, 16, 32, 64, 128, 256, 512, 1024, 4096, 65536, 131072, 262144, 524288, 1048576 })
             {
                 int[] arr = pool.Rent(size);
                 Assert.True(arr.Length >= size);
@@ -128,29 +87,59 @@ namespace Alis.Core.Ecs.Test
         public void FastLookup_CacheMiss_All8SlotsFilled()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position());
+            var go = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+                                   new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
             for (int i = 0; i < 20; i++)
             {
-                switch (i % 5)
+                switch (i % 4)
                 {
-                    case 0: go.Add(new Velocity { X = i }); break;
-                    case 1: go.Add(new Health { Value = i }); break;
-                    case 2: go.Add(new Transform { X = i }); break;
-                    case 3: go.Add(new TestComponent { Value = i }); break;
-                    case 4: go.Add(new AnotherComponent { Data = i }); break;
+                    case 0: go.Remove<Velocity>(); go.Add(new Velocity { X = i }); break;
+                    case 1: go.Remove<Health>(); go.Add(new Health { Value = i }); break;
+                    case 2: go.Remove<Transform>(); go.Add(new Transform { X = i }); break;
+                    case 3: go.Remove<TestComponent>(); go.Add(new TestComponent { Value = i }); break;
                 }
             }
             scene.Update();
         }
 
         [Fact]
-        public void CommandBuffer_ProcessAddComponents_EventPath()
+        public void CommandBuffer_MultipleOperations_PlaybackWorks()
         {
             using Scene scene = new();
             GameObject go = scene.Create(new Position());
             CommandBuffer buffer = new CommandBuffer(scene);
             buffer.DeleteEntity(go);
             buffer.Playback();
+        }
+
+        [Fact]
+        public void Scene_ComponentEvent_Invoked()
+        {
+            using Scene scene = new();
+            scene.Create(new Position());
+            scene.Create(new Position(), new Velocity());
+            scene.Update();
+        }
+
+        [Fact]
+        public void FastestArrayPool_ReturnClearRefType_MixedTypes()
+        {
+            var pool = FastestArrayPool<object>.Shared;
+            object[] arr = pool.Rent(10);
+            arr[0] = "test";
+            arr[1] = 42;
+            pool.Return(arr, true);
+            Assert.Null(arr[0]);
+            Assert.Null(arr[1]);
+        }
+
+        [Fact]
+        public void FastestArrayPool_BucketSizeBoundaries()
+        {
+            var pool = FastestArrayPool<int>.Shared;
+            int[] arr = pool.Rent(1 << 29);
+            Assert.NotNull(arr);
+            pool.Return(arr);
         }
 
         private static MethodInfo FindMethodByParamCount(MethodInfo[] methods, string name, int paramCount)

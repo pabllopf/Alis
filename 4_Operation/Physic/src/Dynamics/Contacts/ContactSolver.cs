@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Bundles contact constraint data for impulse application.
         /// </summary>
-        private readonly struct ContactConstraintData
+        internal readonly struct ContactConstraintData
         {
             /// <summary>
             /// The cp
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The countdown event
         /// </summary>
-        private readonly CountdownEvent solveVelocityConstraintsWaitLock = new CountdownEvent(0);
+        internal readonly CountdownEvent solveVelocityConstraintsWaitLock = new CountdownEvent(0);
 
         /// <summary>
         ///     The position constraints multithread threshold

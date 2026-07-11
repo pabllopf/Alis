@@ -41,7 +41,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>
         ///     The precomputed hash code for this quaternion instance.
         /// </summary>
-        private readonly int hashCode;
+        internal readonly int hashCode;
 
         /// <summary>The X value of the vector component of the quaternion.</summary>
         public float X { get; private set; }
@@ -243,7 +243,7 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>Returns a value that indicates whether this instance and another quaternion are equal.</summary>
         /// <param name="other">The other quaternion.</param>
         /// <returns><c>true</c> if the two quaternions are equal; otherwise, <c>false</c>.</returns>
-        private readonly bool Equals(Quaternion other)
+        internal readonly bool Equals(Quaternion other)
         {
             return SoftwareFallback(in this, other);
 

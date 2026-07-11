@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Data.Test.Json
         /// <summary>
         ///     The escape sequence handler
         /// </summary>
-        private readonly IJsonParser _parser = new JsonParser(new EscapeSequenceHandler());
+        internal readonly IJsonParser _parser = new JsonParser(new EscapeSequenceHandler());
 
 
         /// <summary>

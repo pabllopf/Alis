@@ -53,12 +53,12 @@ namespace Alis.Core.Ecs.Systems
         /// <summary>
         ///     The scene
         /// </summary>
-        private readonly Scene _scene;
+        internal readonly Scene _scene;
 
         /// <summary>
         ///     The archetypes
         /// </summary>
-        private readonly Span<Archetype> _archetypes;
+        internal readonly Span<Archetype> _archetypes;
 
         /// <summary>
         ///     The gameObject ids

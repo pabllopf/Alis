@@ -50,12 +50,12 @@ namespace Alis.Extension.Network
         /// <summary>
         ///     The buffer pool stack
         /// </summary>
-        private readonly ConcurrentStack<byte[]> _bufferPoolStack;
+        internal readonly ConcurrentStack<byte[]> _bufferPoolStack;
 
         /// <summary>
         ///     The buffer size
         /// </summary>
-        private readonly int _bufferSize;
+        internal readonly int _bufferSize;
 
         /// <summary>
         ///     Whether the object has been disposed

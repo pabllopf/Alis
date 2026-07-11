@@ -41,12 +41,12 @@ namespace Alis.Core.Ecs.Systems.Execution
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly ConcurrentDictionary<Type, T> _cachedItems;
+        internal readonly ConcurrentDictionary<Type, T> _cachedItems;
 
         /// <summary>
         ///     The dictionary
         /// </summary>
-        private readonly List<T> runtimes;
+        internal readonly List<T> runtimes;
 
         /// <summary>
         /// </summary>

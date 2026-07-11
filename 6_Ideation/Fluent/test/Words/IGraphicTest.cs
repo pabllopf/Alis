@@ -102,7 +102,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
             /// <summary>
             ///     The graphic builder
             /// </summary>
-            private readonly GraphicBuilder _builder = new GraphicBuilder();
+            internal readonly GraphicBuilder _builder = new GraphicBuilder();
 
             /// <summary>
             ///     Graphics the value

@@ -41,7 +41,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     The offset
         /// </summary>
-        private readonly int size;
+        internal readonly int size;
 
         /// <summary>
         ///     The raw data

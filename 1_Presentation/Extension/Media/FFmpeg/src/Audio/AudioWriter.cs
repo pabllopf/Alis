@@ -47,7 +47,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     The ffmpeg
         /// </summary>
-        private readonly string ffmpeg;
+        internal readonly string ffmpeg;
 
         /// <summary>
         ///     The csc

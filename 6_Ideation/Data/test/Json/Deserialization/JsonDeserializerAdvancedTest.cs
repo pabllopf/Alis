@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
         /// <summary>
         ///     The deserializer
         /// </summary>
-        private readonly IJsonDeserializer _deserializer;
+        internal readonly IJsonDeserializer _deserializer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JsonDeserializerAdvancedTest" /> class
@@ -585,7 +585,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Deserialization
             /// <summary>
             ///     The property count
             /// </summary>
-            private readonly int _propertyCount;
+            internal readonly int _propertyCount;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestDynamicObject" /> class

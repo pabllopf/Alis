@@ -37,7 +37,7 @@ namespace Alis.Extension.Security
         /// <summary>
         ///     The key
         /// </summary>
-        private readonly char secret;
+        internal readonly char secret;
 
         /// <summary>
         ///     The encrypted value

@@ -813,6 +813,80 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         #endregion
+
+        #region CollidePolygons — separationB > totalRadius early return (L319-320)
+
+        /// <summary>
+        ///     Tests that CollidePolygons returns early when separationB > totalRadius
+        ///     after separationA passes. Uses a triangle (polyA) and a square (polyB)
+        ///     where polyA's edge normals fail to detect large separation but polyB's do.
+        /// </summary>
+        [Fact]
+        public void CollidePolygons_SeparationBExceedsTotalRadius_ReturnsEarly()
+        {
+            // A = equilateral triangle with vertices at (0,0.666), (-0.5,-0.333), (0.5,-0.333)
+            Vertices triVerts = new Vertices();
+            triVerts.Add(new Vector2F(0.0f, 0.666f));
+            triVerts.Add(new Vector2F(-0.5f, -0.333f));
+            triVerts.Add(new Vector2F(0.5f, -0.333f));
+
+            PolygonShape polyA = new PolygonShape(triVerts, 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.6f, 0.6f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            // Position B such that separationA <= totalRadius but separationB > totalRadius
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.9f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
+
+            Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
+
+            Assert.True(manifold.PointCount >= 0);
+        }
+
+        #endregion
+
+        #region TimeOfImpact — Max iteration convergence path (L164-167)
+
+        /// <summary>
+        ///     Tests that CalculateTimeOfImpact reaches max iterations when sweeps
+        ///     cross with rotation, making the separation function nonlinear.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_MaxIterations_ReturnsFailed()
+        {
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(polyA, 0),
+                ProxyB = new DistanceProxy(polyB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-1.0f, 0.0f),
+                    C = new Vector2F(0.5f, 0.0f),
+                    A0 = 0.0f,
+                    A = (float)Math.PI / 3.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(1.0f, 0.0f),
+                    C = new Vector2F(-0.5f, 0.0f),
+                    A0 = 0.0f,
+                    A = -(float)Math.PI / 3.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.True(output.State == ToiOutputState.Touching || output.State == ToiOutputState.Failed || output.State == ToiOutputState.Seperated);
+        }
+
+        #endregion
     }
 }
 

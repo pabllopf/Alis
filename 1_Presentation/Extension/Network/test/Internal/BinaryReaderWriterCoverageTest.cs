@@ -85,7 +85,7 @@ namespace Alis.Extension.Network.Test.Internal
         /// <summary>
         /// The max chunk size
         /// </summary>
-        private readonly int _maxChunkSize;
+        internal readonly int _maxChunkSize;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PartialReadStream"/> class

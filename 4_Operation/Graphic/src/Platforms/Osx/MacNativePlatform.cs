@@ -45,9 +45,9 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private static IntPtr _openGlHandle = IntPtr.Zero;
 
-        private readonly bool[] mouseButtons = new bool[5];
+        internal readonly bool[] mouseButtons = new bool[5];
 
-        private readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
+        internal readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
         /// </summary>

@@ -47,11 +47,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// The temp dir
         /// </summary>
-        private readonly string _tempDir;
+        internal readonly string _tempDir;
         /// <summary>
         /// The fake ffmpeg path
         /// </summary>
-        private readonly string _fakeFfmpegPath;
+        internal readonly string _fakeFfmpegPath;
         /// <summary>
         /// The disposed
         /// </summary>

@@ -281,12 +281,12 @@ namespace Alis.Extension.Io.FileDialog.Test
             /// <summary>
             ///     The mock path
             /// </summary>
-            private readonly string _mockPath;
+            internal readonly string _mockPath;
 
             /// <summary>
             ///     The should succeed
             /// </summary>
-            private readonly bool _shouldSucceed;
+            internal readonly bool _shouldSucceed;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="MockFilePicker" /> class
