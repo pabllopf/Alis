@@ -1,48 +1,62 @@
 ---
 title: Architecture Rules
 tags:
-  - project
-  - documentation
-  - reference
-
+  - context
+  - architecture
+  - rules
+  - constraints
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Architecture Rules
 
-## Layer Dependency (Strict, Never Reverse)
+## Layer Dependency Rules
 
-```
-1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration → 6_Ideation
-```
+1. **Strict Top-Down Flow**: Dependencies flow strictly from Layer 1 (Presentation) down to Layer 6 (Ideation)
+2. **No Reverse Dependencies**: No project in a lower layer may reference a project in a higher layer
+3. **No Cross-Layer Skips**: A layer must depend on the adjacent layer below it (no skipping)
+4. **Generator Inclusion**: All layers may reference generators from lower layers as analyzers
 
-| Layer | Role | Depends On |
-|---|---|---|
-| 1_Presentation | Engine, Extensions, UI, Benchmark | 2_Application, 3_Structuration |
-| 2_Application | Alis app core, game samples | 3_Structuration |
-| 3_Structuration | Core abstractions, base infrastructure | 4_Operation |
-| 4_Operation | Graphics, Audio, ECS, Physics | 5_Declaration, 6_Ideation |
-| 5_Declaration | Contracts, interfaces, metadata | 6_Ideation |
-| 6_Ideation | Experimental aspects (Memory, Fluent, Data, Math, Time, Logging) | nothing (lowest) |
+## Build Mode Rules
 
-## Critical Constraints
+### Debug Mode
+- Standard MSBuild ProjectReference chain
+- Each layer explicitly references the layer below
+- All source generators run at compile time
 
-- **No new projects/solutions** — repository structure is fixed at 335 projects
-- **No external NuGet packages** — only standard .NET, system libraries, native APIs
-- **No `System.Reflection.Emit`** — AOT incompatible. Use source generators instead.
-- **No runtime IL emit or dynamic method generation** — AOT compatible code only
-- **Source generators must produce AOT-safe code** with ALIS0xxx diagnostic IDs for invalid configurations
-- **Dependency direction**: lower layers never depend on higher layers
+### Release Mode
+- Source files from lower layers are compiled into higher-layer assemblies
+- No assembly boundary between layers at runtime
+- Enables single-assembly distribution
 
-## Build Constraints
+## Project Structure Rules
 
-- **Multi-targeting mandatory**: All Release builds target 15+ frameworks (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
-- **Shared config**: `.config/Config.props` — multi-targeting, runtime identifiers, analyzers
-- **Default project props**: `.config/default/`
+1. Every project must follow: `src/`, `test/`, `sample/`, `generator/` layout
+2. `.csproj` must import `$(SolutionDir).config/Config.props`
+3. Test projects must be named `{ProjectName}.Test`
+4. Generator projects must target `netstandard2.0`
+5. Sample projects must be excluded from main NuGet package
+
+## Third-Party Dependency Rules
+
+1. No external NuGet dependencies in core projects (Layers 2-6)
+2. Extension projects (Layer 1) may use NuGet only for their specific integration
+3. Approved exceptions listed in `Config.props`
+4. Native dependencies must be included in `runtimes/` directory
+
+## Performance Rules
+
+1. No LINQ in hot paths (use raw loops, `Span<T>`)
+2. No boxing (prefer generics, structs)
+3. No reflection at runtime (use source generators instead)
+4. No `System.Reflection.Emit`
+5. Prefer value types for performance-critical data
+6. Use data-oriented design patterns
 
 ## Related
-- [[diagrams/architecture-overview]] — Visual layer diagram
-- [[conventions/dependency-rules]] — Detailed dependency rules
-- [[decisions/adr-001-layered-architecture]] — Architecture decision record
+
+- [[Coding Conventions]]
+- [[Architecture Overview]]
+- [[Dependency Graph]]
+- [[Repository Overview]]

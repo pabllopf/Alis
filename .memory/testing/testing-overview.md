@@ -2,66 +2,111 @@
 title: Testing Overview
 tags:
   - testing
-  - test
-  - quality
-  - assurance
-
+  - overview
+  - coverage
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Testing Overview
 
-## Test Coverage Status
+## Test Projects
 
-### Documented Projects with Tests
+The repository contains **34 test projects** across all layers:
 
-| Project | Test Project | Coverage | Status |
-|---|---|---|---|
-| Alis.Core.Ecs | Alis.Core.Ecs.Test | ~30% | Partial |
-| Alis.Core.Graphic | Alis.Core.Graphic.Test | ~20% | Limited |
+### Layer 1: Presentation (14 test projects)
+| Test Project | Source Project |
+|---|---|
+| Alis.App.Engine.Test | Alis.App.Engine |
+| Alis.App.Hub.Test | Alis.App.Hub |
+| Alis.App.Installer.Test | Alis.App.Installer |
+| Alis.Extension.Network.Test | Alis.Extension.Network |
+| Alis.Extension.Security.Test | Alis.Extension.Security |
+| Alis.Extension.Profile.Test | Alis.Extension.Profile |
+| Alis.Extension.Media.FFmpeg.Test | Alis.Extension.Media.FFmpeg |
+| Alis.Extension.Graphic.Sdl2.Test | Alis.Extension.Graphic.Sdl2 |
+| Alis.Extension.Graphic.Sfml.Test | Alis.Extension.Graphic.Sfml |
+| Alis.Extension.Graphic.Glfw.Test | Alis.Extension.Graphic.Glfw |
+| Alis.Extension.Graphic.Ui.Test | Alis.Extension.Graphic.Ui |
+| Alis.Extension.Io.FileDialog.Test | Alis.Extension.Io.FileDialog |
+| Alis.Extension.Cloud.GoogleDrive.Test | Alis.Extension.Cloud.GoogleDrive |
+| Alis.Extension.Cloud.DropBox.Test | Alis.Extension.Cloud.DropBox |
 
-### Projects Without Tests
+### Layer 2: Application (1 test project)
+| Test Project | Source Project |
+|---|---|
+| Alis.Test | Alis |
 
-- Most Extension projects
-- Many Sample projects
-- Core foundation (Alis.Core)
+### Layer 3: Structuration (1 test project)
+| Test Project | Source Project |
+|---|---|
+| Alis.Core.Test | Alis.Core |
 
-## Testing Framework
+### Layer 4: Operation (4 test projects)
+| Test Project | Source Project |
+|---|---|
+| Alis.Core.Ecs.Test | Alis.Core.Ecs |
+| Alis.Core.Audio.Test | Alis.Core.Audio |
+| Alis.Core.Graphic.Test | Alis.Core.Graphic |
+| Alis.Core.Physic.Test | Alis.Core.Physic |
 
-- **xUnit**: Primary testing framework
-- **Platform-specific tests**: macOS, Windows, Linux, WebAssembly
+### Layer 5: Declaration (1 test project)
+| Test Project | Source Project |
+|---|---|
+| Alis.Core.Aspect.Test | Alis.Core.Aspect |
 
-## Test Categories
+### Layer 6: Ideation (6 test projects)
+| Test Project | Source Project |
+|---|---|
+| Alis.Core.Aspect.Data.Test | Alis.Core.Aspect.Data |
+| Alis.Core.Aspect.Fluent.Test | Alis.Core.Aspect.Fluent |
+| Alis.Core.Aspect.Logging.Test | Alis.Core.Aspect.Logging |
+| Alis.Core.Aspect.Math.Test | Alis.Core.Aspect.Math |
+| Alis.Core.Aspect.Memory.Test | Alis.Core.Aspect.Memory |
+| Alis.Core.Aspect.Time.Test | Alis.Core.Aspect.Time |
 
-1. **Unit Tests**: Component testing, entity operations
-2. **Integration Tests**: Scene management, system interactions
-3. **Platform Tests**: Native binding verification
-4. **Performance Tests**: Benchmarking critical paths
+### Other
+| Test Project | Source Project |
+|---|---|
+| Alis.Extension.Payment.Stripe.Test | Alis.Extension.Payment.Stripe |
+| Alis.Extension.Ads.GoogleAds.Test | Alis.Extension.Ads.GoogleAds |
+| Alis.Extension.Language.Dialogue.Test | Alis.Extension.Language.Dialogue |
+| Alis.Extension.Language.Translator.Test | Alis.Extension.Language.Translator |
+| Alis.Extension.Math.HighSpeedPriorityQueue.Test | Alis.Extension.Math.HighSpeedPriorityQueue |
+| Alis.Extension.Thread.Test | Alis.Extension.Thread |
+| Alis.Extension.Updater.Test | Alis.Extension.Updater |
 
-## Recommendations
+## Test Infrastructure
 
-1. Increase test coverage to 80%+ for core systems
-2. Add automated CI/CD testing
-3. Implement property-based testing for ECS queries
-4. Add fuzzing tests for asset pack parsing
+| Component | Technology |
+|---|---|
+| Test Framework | xUnit |
+| Mocking | Moq |
+| STA Tests | Xunit.StaFact |
+| Code Coverage | coverlet |
+| Test Output | TRX format in `.test/<TFM>/` |
 
-## Flaky Test Risks
+## Test Configuration
 
-- Platform-specific timing issues
-- Native binding initialization races
-- Multi-threaded ECS updates
+- `InternalsVisibleTo` attribute auto-added to all projects for test access
+- Test configuration in `.config/xunit.runner.json`
+- Coverage configuration in `.config/coverlet.runsettings`
+
+## Testing Conventions
+
+- Unit tests preferred over integration tests
+- Test projects auto-reference their source project by naming convention
+- TDD approach recommended for development
+- Test projects excluded from NuGet packaging
+
+## Missing Test Areas
+
+- Sample projects lack dedicated tests
+- Benchmark project has no test project
+- Generator projects are not directly tested
 
 ## Related
 
-- [[testing/analysis]] — Detailed testing patterns
-- [[tests-index]] — All test projects indexed
-- [[code-review-checklist]] — Testing checklist
-- [[coverage-map]] — Test coverage tracking
-- [[projects/Testing-Strategy]] — Testing strategy doc
-- [[Alis.Core.Ecs.Test]] — ECS test documentation
-- [[Alis.Core.Graphic.Test]] — Graphic test documentation
-- [[onboarding/getting-started]] — Running tests guide
-- [[build-system]] — Test commands
-- [[build-summary]] — Test pipeline
+- [[Tests Index]]
+- [[Testing Checkpoint]]
+- [[Repository Overview]]

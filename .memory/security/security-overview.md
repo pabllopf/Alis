@@ -1,62 +1,54 @@
 ---
 title: Security Overview
 tags:
-  - project
-  - documentation
-  - reference
-
+  - security
+  - overview
+  - analysis
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Security Overview
 
-## Security Analysis
+## Security-Sensitive Areas
 
-### Current State
+| Area | Project | Risk Level | Notes |
+|---|---|---|---|
+| Payment Processing | Alis.Extension.Payment.Stripe | High | Handles payment data through Stripe API |
+| Network Communication | Alis.Extension.Network | Medium | WebSocket-based client-server communication |
+| Cloud Storage | Alis.Extension.Cloud.GoogleDrive | Medium | OAuth-based Google Drive access |
+| Cloud Storage | Alis.Extension.Cloud.DropBox | Medium | OAuth-based Dropbox access |
+| Secure Types | Alis.Extension.Security | Medium | SecureByte, SecureString, SecureRandom implementations |
+| Advertising | Alis.Extension.Ads.GoogleAds | Low | Google Ads integration |
 
-- **Hardcoded Secrets**: None detected in public code
-- **Authentication**: Platform-specific auth handled by extensions
-- **Validation**: Input validation present in user-facing components
+## Hardcoded Secrets Detection
 
-### Potential Risks
+No hardcoded secrets detected in source code. API keys and tokens should be stored in environment variables or configuration files.
 
-1. **Native Code Interop**: Heavy use of platform-specific native bindings
-   - Risk: Buffer overflows, memory corruption
-   - Mitigation: Careful bounds checking in native calls
+## Authentication Boundaries
 
-2. **Memory Management**: Custom memory pooling and unsafe code
-   - Risk: Memory leaks, use-after-free
-   - Mitigation: RAII patterns, disposal patterns
+| Boundary | Mechanism | Notes |
+|---|---|---|
+| Cloud Services | OAuth 2.0 | Google Drive, Dropbox |
+| Payment | Stripe API Keys | Server-side only |
+| Ads | Google Ads API | Service account |
 
-3. **Asset Loading**: Embedded asset packs (.pack/.zip)
-   - Risk: Malicious asset files
-   - Mitigation: Validate asset integrity before loading
+## Input Validation
 
-4. **Network Extensions**: Network communication in extensions
-   - Risk: Man-in-the-middle attacks
-   - Mitigation: Use TLS/SSL for all network communication
+- Network protocols implement message framing and validation
+- File dialog extensions validate file paths
+- Translator/pluralization handles boundary cases
 
-### Security Recommendations
+## Recommendations
 
-1. Add input validation for all user-provided data
-2. Implement secure asset signing and verification
-3. Add encryption for sensitive data at rest
-4. Regular security audits of native bindings
-
-### Compliance
-
-- **GPLv3 License**: All code must remain open source
-- **No Proprietary Dependencies**: All dependencies are open source
+1. Ensure Stripe API keys are never committed to source control
+2. Review WebSocket implementation for message injection vulnerabilities
+3. Validate all cloud storage file paths before access
+4. Ensure proper disposal of `SecureString` instances
+5. Review network packet handling for buffer overflow risks
 
 ## Related
 
-- [[security/analysis]] — Detailed security extension analysis
-- [[security-index]] — Security-sensitive areas index
-- [[code-review-checklist]] — Security review checklist
-- [[Alis.Extension.Security]] — Security extension docs
-- [[Alis.Extension.Payment.Stripe]] — Payment security
-- [[architecture/dependency-graph]] — Trust boundary map
-- [[build-system]] — Security build config
-- [[analysis-state]] — Security analysis status
+- [[Security Index]]
+- [[Analysis]]
+- [[Security Diagrams]]

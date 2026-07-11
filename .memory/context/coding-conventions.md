@@ -1,43 +1,73 @@
 ---
 title: Coding Conventions
 tags:
-  - project
-  - documentation
-  - reference
-
+  - context
+  - conventions
+  - coding-standards
 status: Draft
-
 license: GPLv3
-
 ---
 
+# Coding Conventions
 
-## Source Files
+## Language Features
 
-- **Only `.cs` files** — never generate `.md`, `.txt`, `.json`, `.yaml`, `.xml` files in source
-- **XML documentation required** (`///`) — all public/protected/internal APIs must be documented
-- **No `//` or `/* */` comments** in code — only XML doc comments
-- **No emojis** in code, identifiers, or string literals (unless in user-facing strings in the target language)
+| Feature | Setting |
+|---|---|
+| LangVersion | 13 (latest) |
+| Nullable | Disabled |
+| Unsafe | Disabled |
+| WarningsAsErrors | Enabled |
 
-## API Design
+## Naming Conventions
 
-- Prefer **records, pattern matching, value objects** over classes where appropriate
-- Use **async/await** for I/O-bound operations
-- Use **`Span<T>` / `Memory<T>`** for high-performance paths
-- Avoid locks and manual synchronization — prefer Channels, async/await, or Akka.NET for concurrency
-- Return `Task<T>` / `ValueTask<T>` for async methods
+| Element | Convention | Example |
+|---|---|---|
+| Private fields | _camelCase | `_entityManager` |
+| Private static readonly | PascalCase | `DefaultConfiguration` |
+| Constants | PascalCase | `MaxEntities` |
+| Properties | PascalCase | `EntityId` |
+| Methods | PascalCase | `UpdateEntities` |
+| Parameters | camelCase | `entityId` |
+| Local variables | camelCase | `entityCount` |
+| Interfaces | IPascalCase | `IEntitySystem` |
+| Type parameters | T PascalCase | `TEntity` |
+| Namespaces | PascalCase dot-notation | `Alis.Core.Ecs` |
 
-## Diagnostics
+## Code Style
 
-- Source generators emit diagnostics with **ALIS0xxx** IDs for invalid configurations
-- Example: `ALIS001` for invalid generator input, `ALIS009`/`ALIS010` for warning suppressions
+- Expression-bodied members preferred for methods, constructors, destructors, local functions
+- Block-scoped namespaces (`namespace Alis.Core.Ecs { }`)
+- Maximum line length: 392 characters
+- All code, docs, and comments in English
+- No `//` or `/* */` comments — use XML doc comments (`///`) only
+- No `var` for built-in types or when type is apparent
 
-## File Conventions
+## Architecture Rules
 
-- One type per file (preferred)
-- File name matches type name
-- Namespace matches folder structure
+- Strict 6-layer dependency direction (1 -> 2 -> 3 -> 4 -> 5 -> 6)
+- No reverse cross-layer dependencies
+- No external NuGet dependencies in core projects (only in specific extensions)
+- Source generators must be AOT-safe and deterministic
+- No LINQ in hot paths
+- No boxing, no reflection, no runtime emit
+- Prefer `Span<T>`, data-oriented design, SIMD, allocation-free paths
+
+## Build Rules
+
+- All `.csproj` files must share common `Config.props`
+- Generator projects target `netstandard2.0`
+- Test projects auto-reference the corresponding source project
+- Test results stored in `.test/<TargetFramework>/`
+
+## File Structure
+
+- Mandatory file header on every `.cs` file
+- Header template defined in `.editorconfig`
+- One project per directory with `src/`, `test/`, `sample/`, `generator/` subdirectories
 
 ## Related
-- [[conventions/coding-standards]] — Detailed coding standards
-- [[conventions/naming-conventions]] — Naming rules
+
+- [[Architecture Rules]]
+- [[AI Coding Standards]]
+- [[Repository Overview]]

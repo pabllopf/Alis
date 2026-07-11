@@ -13,12 +13,18 @@ license: GPLv3
 | Batch ID | Scope | Status | Progress |
 |---|---|---|---|
 | batch-001 | system-state | completed | 10/10 |
-| batch-002 | indexes | pending | 0/14 |
-| batch-003 | queues | pending | 0/9 |
-| batch-004 | tracking | pending | 0/8 |
-| batch-005 | checkpoints | pending | 0/7 |
-| batch-006 | logs | pending | 0/7 |
-| batch-007 | projects | pending | 0/35 |
-| batch-008 | dependencies | pending | 0/1 |
-| batch-009 | architecture | pending | 0/1 |
-| batch-010 | diagrams | pending | 0/1 |
+| batch-002 | indexes | completed | 13/13 |
+| batch-003 | queues | completed | 8/8 |
+| batch-004 | tracking | completed | 8/8 |
+| batch-005 | checkpoints | completed | 6/6 |
+| batch-006 | logs | completed | 7/7 |
+| batch-007 | projects | completed | 26/26 |
+| batch-008 | dependencies | completed | 1/1 |
+| batch-009 | architecture | completed | 2/2 |
+| batch-010 | diagrams | completed | 1/1 |
+| batch-011 | context | completed | 6/6 |
+| batch-012 | security | completed | 1/1 |
+| batch-013 | testing | completed | 1/1 |
+| batch-014 | performance | completed | 1/1 |
+| batch-015 | onboarding | completed | 1/1 |
+| batch-016 | prompts | completed | 2/2 |
