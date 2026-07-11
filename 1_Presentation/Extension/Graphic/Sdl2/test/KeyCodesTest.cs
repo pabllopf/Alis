@@ -32,50 +32,77 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The key codes test class
+    /// </summary>
     public class KeyCodesTest
     {
+        /// <summary>
+        /// Tests that unknown is zero
+        /// </summary>
         [Fact]
         public void Unknown_IsZero()
         {
             Assert.Equal(0, (int)KeyCodes.Unknown);
         }
 
+        /// <summary>
+        /// Tests that return is correct
+        /// </summary>
         [Fact]
         public void Return_IsCorrect()
         {
             Assert.Equal(13, (int)KeyCodes.Return);
         }
 
+        /// <summary>
+        /// Tests that escape is correct
+        /// </summary>
         [Fact]
         public void Escape_IsCorrect()
         {
             Assert.Equal(27, (int)KeyCodes.Escape);
         }
 
+        /// <summary>
+        /// Tests that backspace is correct
+        /// </summary>
         [Fact]
         public void Backspace_IsCorrect()
         {
             Assert.Equal(8, (int)KeyCodes.Backspace);
         }
 
+        /// <summary>
+        /// Tests that tab is correct
+        /// </summary>
         [Fact]
         public void Tab_IsCorrect()
         {
             Assert.Equal(9, (int)KeyCodes.Tab);
         }
 
+        /// <summary>
+        /// Tests that space is correct
+        /// </summary>
         [Fact]
         public void Space_IsCorrect()
         {
             Assert.Equal(32, (int)KeyCodes.Space);
         }
 
+        /// <summary>
+        /// Tests that delete is correct
+        /// </summary>
         [Fact]
         public void Delete_IsCorrect()
         {
             Assert.Equal(127, (int)KeyCodes.Delete);
         }
 
+        /// <summary>
+        /// Tests that letter keys are correct
+        /// </summary>
         [Fact]
         public void LetterKeys_AreCorrect()
         {
@@ -84,6 +111,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal('z', (int)KeyCodes.Z);
         }
 
+        /// <summary>
+        /// Tests that number keys are correct
+        /// </summary>
         [Fact]
         public void NumberKeys_AreCorrect()
         {
@@ -92,6 +122,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal('9', (int)KeyCodes.Num9);
         }
 
+        /// <summary>
+        /// Tests that function keys have scancode mask
+        /// </summary>
         [Fact]
         public void FunctionKeys_HaveScancodeMask()
         {
@@ -101,6 +134,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(((int)KeyCodes.F24 & mask) != 0);
         }
 
+        /// <summary>
+        /// Tests that modifier keys have scancode mask
+        /// </summary>
         [Fact]
         public void ModifierKeys_HaveScancodeMask()
         {
@@ -115,6 +151,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(((int)KeyCodes.Rgui & mask) != 0);
         }
 
+        /// <summary>
+        /// Tests that arrow keys have scancode mask
+        /// </summary>
         [Fact]
         public void ArrowKeys_HaveScancodeMask()
         {
@@ -125,6 +164,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(((int)KeyCodes.Right & mask) != 0);
         }
 
+        /// <summary>
+        /// Tests that capslock has scancode mask
+        /// </summary>
         [Fact]
         public void Capslock_HasScancodeMask()
         {
@@ -132,6 +174,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(((int)KeyCodes.Capslock & mask) != 0);
         }
 
+        /// <summary>
+        /// Tests that navigation keys have scancode mask
+        /// </summary>
         [Fact]
         public void NavigationKeys_HaveScancodeMask()
         {

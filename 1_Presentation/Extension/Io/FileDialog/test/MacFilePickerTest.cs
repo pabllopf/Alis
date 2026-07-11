@@ -2,20 +2,32 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The mac file picker test class
+    /// </summary>
     public class MacFilePickerTest
     {
+        /// <summary>
+        /// Tests that escape apple script null returns null
+        /// </summary>
         [Fact]
         public void EscapeAppleScript_Null_ReturnsNull()
         {
             Assert.Null(MacFilePicker.EscapeAppleScript(null));
         }
 
+        /// <summary>
+        /// Tests that escape apple script empty returns empty
+        /// </summary>
         [Fact]
         public void EscapeAppleScript_Empty_ReturnsEmpty()
         {
             Assert.Equal(string.Empty, MacFilePicker.EscapeAppleScript(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that escape apple script with backslash returns escaped
+        /// </summary>
         [Fact]
         public void EscapeAppleScript_WithBackslash_ReturnsEscaped()
         {
@@ -23,6 +35,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("path\\\\to", result);
         }
 
+        /// <summary>
+        /// Tests that escape apple script with double quote returns escaped
+        /// </summary>
         [Fact]
         public void EscapeAppleScript_WithDoubleQuote_ReturnsEscaped()
         {
@@ -30,6 +45,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("say \\\"hello\\\"", result);
         }
 
+        /// <summary>
+        /// Tests that escape apple script without special chars returns same
+        /// </summary>
         [Fact]
         public void EscapeAppleScript_WithoutSpecialChars_ReturnsSame()
         {
@@ -37,6 +55,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("hello", result);
         }
 
+        /// <summary>
+        /// Tests that build open file script without multiple contains correct parts
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutMultiple_ContainsCorrectParts()
         {
@@ -54,6 +75,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("POSIX path of selectedItem", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script with multiple contains multiple allowed
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithMultiple_ContainsMultipleAllowed()
         {
@@ -65,6 +89,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("choose file", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script without title omits prompt
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutTitle_OmitsPrompt()
         {
@@ -76,6 +103,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("choose file", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script without default path omits location
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutDefaultPath_OmitsLocation()
         {
@@ -86,6 +116,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("default location", script);
         }
 
+        /// <summary>
+        /// Tests that build folder select script with all options contains correct parts
+        /// </summary>
         [Fact]
         public void BuildFolderSelectScript_WithAllOptions_ContainsCorrectParts()
         {
@@ -102,6 +135,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("POSIX path of selectedFolder", script);
         }
 
+        /// <summary>
+        /// Tests that build folder select script without title omits prompt
+        /// </summary>
         [Fact]
         public void BuildFolderSelectScript_WithoutTitle_OmitsPrompt()
         {
@@ -113,6 +149,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("choose folder", script);
         }
 
+        /// <summary>
+        /// Tests that build folder select script without default path omits location
+        /// </summary>
         [Fact]
         public void BuildFolderSelectScript_WithoutDefaultPath_OmitsLocation()
         {
@@ -123,6 +162,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("default location", script);
         }
 
+        /// <summary>
+        /// Tests that execute apple script with simple script returns output
+        /// </summary>
         [Fact]
         public void ExecuteAppleScript_WithSimpleScript_ReturnsOutput()
         {
@@ -134,6 +176,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("hello", result);
         }
 
+        /// <summary>
+        /// Tests that parse result null returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Null_ReturnsCancelled()
         {
@@ -142,6 +187,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result empty returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Empty_ReturnsCancelled()
         {
@@ -150,6 +198,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result whitespace returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Whitespace_ReturnsCancelled()
         {
@@ -158,6 +209,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result single path returns success
+        /// </summary>
         [Fact]
         public void ParseResult_SinglePath_ReturnsSuccess()
         {
@@ -167,6 +221,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Single(result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that parse result multiple paths returns multiple
+        /// </summary>
         [Fact]
         public void ParseResult_MultiplePaths_ReturnsMultiple()
         {
@@ -176,6 +233,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that parse result empty lines returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_EmptyLines_ReturnsCancelled()
         {
@@ -184,6 +244,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that pick file with valid options returns result
+        /// </summary>
         [Fact]
         public void PickFile_WithValidOptions_ReturnsResult()
         {
@@ -195,6 +258,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that pick files with valid options returns result
+        /// </summary>
         [Fact]
         public void PickFiles_WithValidOptions_ReturnsResult()
         {
@@ -206,6 +272,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that pick folder with valid options returns result
+        /// </summary>
         [Fact]
         public void PickFolder_WithValidOptions_ReturnsResult()
         {

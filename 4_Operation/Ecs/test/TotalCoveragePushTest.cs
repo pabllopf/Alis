@@ -12,8 +12,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The total coverage push test class
+    /// </summary>
     public class TotalCoveragePushTest
     {
+        /// <summary>
+        /// Tests that game object extensions deconstruct all arities
+        /// </summary>
         [Fact]
         public void GameObjectExtensions_Deconstruct_AllArities()
         {
@@ -33,6 +39,9 @@ namespace Alis.Core.Ecs.Test
             go.Deconstruct(out Ref<Position> p8, out Ref<Velocity> v8, out Ref<Health> h8, out Ref<Transform> t8, out Ref<TestComponent> tc8, out Ref<AnotherComponent> a8, out Ref<Damage> d8, out Ref<Armor> ar8);
         }
 
+        /// <summary>
+        /// Tests that entity update through scene with 8 components works
+        /// </summary>
         [Fact]
         public void EntityUpdate_ThroughScene_With8Components_Works()
         {
@@ -42,6 +51,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that neighbor cache via add remove exercises paths
+        /// </summary>
         [Fact]
         public void NeighborCache_ViaAddRemove_ExercisesPaths()
         {
@@ -59,6 +71,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that game object ref tuple arity 8 works
+        /// </summary>
         [Fact]
         public void GameObjectRefTuple_Arity8_Works()
         {
@@ -74,6 +89,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that update runner factory all arities accessible
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_AllArities_Accessible()
         {
@@ -83,6 +101,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(typeof(ComponentStorageBase).Assembly.GetType("Alis.Core.Ecs.Updating.Runners.UpdateRunnerFactory`5"));
         }
 
+        /// <summary>
+        /// Tests that chunk query enumerator all arities accessible
+        /// </summary>
         [Fact]
         public void ChunkQueryEnumerator_AllArities_Accessible()
         {
@@ -92,6 +113,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(ChunkQueryEnumerator<Position, Velocity, Health, Transform>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that chunk tuple all arities accessible
+        /// </summary>
         [Fact]
         public void ChunkTuple_AllArities_Accessible()
         {
@@ -105,6 +129,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(ChunkTuple<Position>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that game object entity id access
+        /// </summary>
         [Fact]
         public void GameObject_EntityID_Access()
         {
@@ -114,15 +141,21 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entityId >= 0);
         }
 
+        /// <summary>
+        /// Tests that component handle boxed create and dispose
+        /// </summary>
         [Fact]
         public void ComponentHandle_Boxed_CreateAndDispose()
         {
             Position pos = new Position { X = 42 };
-            ComponentHandle handle = ComponentHandle.CreateFromBoxed(typeof(Position), (object)pos);
+            ComponentHandle handle = ComponentHandle.CreateFromBoxed((object)pos);
             Assert.True(typeof(ComponentHandle).IsValueType);
             handle.Dispose();
         }
 
+        /// <summary>
+        /// Tests that component handle retrieve works
+        /// </summary>
         [Fact]
         public void ComponentHandle_Retrieve_Works()
         {
@@ -132,6 +165,9 @@ namespace Alis.Core.Ecs.Test
             handle.Dispose();
         }
 
+        /// <summary>
+        /// Tests that scene create entity from location works
+        /// </summary>
         [Fact]
         public void Scene_CreateEntityFromLocation_Works()
         {
@@ -141,6 +177,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(go.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool clear buckets works
+        /// </summary>
         [Fact]
         public void FastestArrayPool_ClearBuckets_Works()
         {
@@ -154,6 +193,9 @@ namespace Alis.Core.Ecs.Test
                 method.Invoke(pool, null);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool global clear buckets invokes
+        /// </summary>
         [Fact]
         public void FastestArrayPool_GlobalClearBuckets_Invokes()
         {
@@ -168,6 +210,9 @@ namespace Alis.Core.Ecs.Test
             });
         }
 
+        /// <summary>
+        /// Tests that game invoke per entity no events no throw
+        /// </summary>
         [Fact]
         public void Game_InvokePerEntity_NoEvents_NoThrow()
         {
@@ -176,6 +221,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that delete component data with delete works
+        /// </summary>
         [Fact]
         public void DeleteComponentData_WithDelete_Works()
         {
@@ -185,12 +233,18 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that archetype edge key value type works
+        /// </summary>
         [Fact]
         public void ArchetypeEdgeKey_ValueType_Works()
         {
             Assert.True(typeof(ArchetypeEdgeKey).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that game object entity world span access
+        /// </summary>
         [Fact]
         public void GameObject_EntityWorld_Span_Access()
         {
@@ -199,6 +253,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(scene);
         }
 
+        /// <summary>
+        /// Tests that scene update with attribute type
+        /// </summary>
         [Fact]
         public void Scene_Update_WithAttributeType()
         {

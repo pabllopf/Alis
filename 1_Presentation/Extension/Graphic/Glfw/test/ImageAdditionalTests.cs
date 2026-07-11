@@ -34,8 +34,16 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
 {
+    /// <summary>
+    /// The image additional tests class
+    /// </summary>
     public class ImageAdditionalTests
     {
+        /// <summary>
+        /// Creates the bmp with bit depth using the specified bits per pixel
+        /// </summary>
+        /// <param name="bitsPerPixel">The bits per pixel</param>
+        /// <returns>The temp file</returns>
         private static string CreateBmpWithBitDepth(int bitsPerPixel)
         {
             string tempFile = Path.GetTempFileName() + ".bmp";
@@ -87,6 +95,12 @@ namespace Alis.Extension.Graphic.Glfw.Test
             return tempFile;
         }
 
+        /// <summary>
+        /// Creates the 24 bit bmp with padding using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <returns>The temp file</returns>
         private static string Create24BitBmpWithPadding(int width, int height)
         {
             string tempFile = Path.GetTempFileName() + ".bmp";
@@ -134,6 +148,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             return tempFile;
         }
 
+        /// <summary>
+        /// Tests that image load with 8 bit bmp returns null
+        /// </summary>
         [Fact]
         public void Image_Load_With8BitBmp_ReturnsNull()
         {
@@ -149,6 +166,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
         }
 
+        /// <summary>
+        /// Tests that image load with 1 bit bmp returns null
+        /// </summary>
         [Fact]
         public void Image_Load_With1BitBmp_ReturnsNull()
         {
@@ -164,6 +184,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
         }
 
+        /// <summary>
+        /// Tests that image load with 16 bit bmp returns null
+        /// </summary>
         [Fact]
         public void Image_Load_With16BitBmp_ReturnsNull()
         {
@@ -179,6 +202,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
         }
 
+        /// <summary>
+        /// Tests that image load with 24 bit bmp with padding loads successfully
+        /// </summary>
         [Fact]
         public void Image_Load_With24BitBmpWithPadding_LoadsSuccessfully()
         {
@@ -198,6 +224,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             }
         }
 
+        /// <summary>
+        /// Tests that image load with 24 bit bmp wide with padding loads successfully
+        /// </summary>
         [Fact]
         public void Image_Load_With24BitBmpWideWithPadding_LoadsSuccessfully()
         {

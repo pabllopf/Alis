@@ -3,20 +3,32 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The windows file picker test class
+    /// </summary>
     public class WindowsFilePickerTest
     {
+        /// <summary>
+        /// Tests that escape script string null returns null
+        /// </summary>
         [Fact]
         public void EscapeScriptString_Null_ReturnsNull()
         {
             Assert.Null(WindowsFilePicker.EscapeScriptString(null));
         }
 
+        /// <summary>
+        /// Tests that escape script string empty returns empty
+        /// </summary>
         [Fact]
         public void EscapeScriptString_Empty_ReturnsEmpty()
         {
             Assert.Equal(string.Empty, WindowsFilePicker.EscapeScriptString(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that escape script string with single quote returns escaped
+        /// </summary>
         [Fact]
         public void EscapeScriptString_WithSingleQuote_ReturnsEscaped()
         {
@@ -24,6 +36,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("it''s", result);
         }
 
+        /// <summary>
+        /// Tests that escape script string with double quote returns escaped
+        /// </summary>
         [Fact]
         public void EscapeScriptString_WithDoubleQuote_ReturnsEscaped()
         {
@@ -31,6 +46,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("say `\"hi`\"", result);
         }
 
+        /// <summary>
+        /// Tests that escape script string with dollar sign returns escaped
+        /// </summary>
         [Fact]
         public void EscapeScriptString_WithDollarSign_ReturnsEscaped()
         {
@@ -38,6 +56,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("`$var", result);
         }
 
+        /// <summary>
+        /// Tests that escape script string without special chars returns same
+        /// </summary>
         [Fact]
         public void EscapeScriptString_WithoutSpecialChars_ReturnsSame()
         {
@@ -45,6 +66,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("hello.txt", result);
         }
 
+        /// <summary>
+        /// Tests that build filter string with null returns all files
+        /// </summary>
         [Fact]
         public void BuildFilterString_WithNull_ReturnsAllFiles()
         {
@@ -53,6 +77,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("All files (*.*)|*.*", result);
         }
 
+        /// <summary>
+        /// Tests that build filter string with empty list returns all files
+        /// </summary>
         [Fact]
         public void BuildFilterString_WithEmptyList_ReturnsAllFiles()
         {
@@ -61,6 +88,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("All files (*.*)|*.*", result);
         }
 
+        /// <summary>
+        /// Tests that build filter string with filters returns formatted
+        /// </summary>
         [Fact]
         public void BuildFilterString_WithFilters_ReturnsFormatted()
         {
@@ -77,6 +107,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.EndsWith("|All files (*.*)|*.*", result);
         }
 
+        /// <summary>
+        /// Tests that build open file script with all options contains correct parts
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithAllOptions_ContainsCorrectParts()
         {
@@ -96,6 +129,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("$dialog.Multiselect = $true", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script without default path omits initial directory
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutDefaultPath_OmitsInitialDirectory()
         {
@@ -106,6 +142,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("InitialDirectory", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script without filters omits filter
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutFilters_OmitsFilter()
         {
@@ -119,6 +158,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("$dialog.Filter", script);
         }
 
+        /// <summary>
+        /// Tests that build open file script without multiple omits multiselect
+        /// </summary>
         [Fact]
         public void BuildOpenFileScript_WithoutMultiple_OmitsMultiselect()
         {
@@ -132,6 +174,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("Multiselect", script);
         }
 
+        /// <summary>
+        /// Tests that build folder select script with all options contains correct parts
+        /// </summary>
         [Fact]
         public void BuildFolderSelectScript_WithAllOptions_ContainsCorrectParts()
         {
@@ -147,6 +192,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("$dialog.SelectedPath", script);
         }
 
+        /// <summary>
+        /// Tests that build folder select script without default path omits selected path
+        /// </summary>
         [Fact]
         public void BuildFolderSelectScript_WithoutDefaultPath_OmitsSelectedPath()
         {
@@ -157,6 +205,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("SelectedPath", script);
         }
 
+        /// <summary>
+        /// Tests that execute script throws on non windows
+        /// </summary>
         [Fact]
         public void ExecuteScript_ThrowsOnNonWindows()
         {
@@ -164,6 +215,9 @@ namespace Alis.Extension.Io.FileDialog.Test
                 WindowsFilePicker.ExecuteScript("test script"));
         }
 
+        /// <summary>
+        /// Tests that parse result null returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Null_ReturnsCancelled()
         {
@@ -172,6 +226,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result empty returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Empty_ReturnsCancelled()
         {
@@ -180,6 +237,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result whitespace returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Whitespace_ReturnsCancelled()
         {
@@ -188,6 +248,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result single path returns success
+        /// </summary>
         [Fact]
         public void ParseResult_SinglePath_ReturnsSuccess()
         {
@@ -197,6 +260,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Single(result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that parse result multiple paths with allow multiple returns multiple
+        /// </summary>
         [Fact]
         public void ParseResult_MultiplePaths_WithAllowMultiple_ReturnsMultiple()
         {
@@ -207,6 +273,9 @@ C:\b.txt", true);
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that parse result multiple paths without allow multiple returns single
+        /// </summary>
         [Fact]
         public void ParseResult_MultiplePaths_WithoutAllowMultiple_ReturnsSingle()
         {
@@ -217,6 +286,9 @@ C:\b.txt", false);
             Assert.Single(result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that parse result empty paths returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_EmptyPaths_ReturnsCancelled()
         {
@@ -225,6 +297,9 @@ C:\b.txt", false);
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that pick file with valid options returns error
+        /// </summary>
         [Fact]
         public void PickFile_WithValidOptions_ReturnsError()
         {
@@ -237,6 +312,9 @@ C:\b.txt", false);
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick files with valid options returns error
+        /// </summary>
         [Fact]
         public void PickFiles_WithValidOptions_ReturnsError()
         {
@@ -249,6 +327,9 @@ C:\b.txt", false);
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick folder with valid options returns error
+        /// </summary>
         [Fact]
         public void PickFolder_WithValidOptions_ReturnsError()
         {

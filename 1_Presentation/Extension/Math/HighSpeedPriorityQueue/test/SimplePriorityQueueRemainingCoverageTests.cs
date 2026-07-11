@@ -5,8 +5,14 @@ using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
 {
+    /// <summary>
+    /// The simple priority queue remaining coverage tests class
+    /// </summary>
     public class SimplePriorityQueueRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that remove default item when null cache empty throws
+        /// </summary>
         [Fact]
         public void Remove_DefaultItemWhenNullCacheEmpty_Throws()
         {
@@ -14,6 +20,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Throws<InvalidOperationException>(() => queue.Remove(default(string)));
         }
 
+        /// <summary>
+        /// Tests that get enumerator non generic returns enumerator
+        /// </summary>
         [Fact]
         public void GetEnumerator_NonGeneric_ReturnsEnumerator()
         {
@@ -26,6 +35,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("a", enumerator.Current);
         }
 
+        /// <summary>
+        /// Tests that try first with items returns true
+        /// </summary>
         [Fact]
         public void TryFirst_WithItems_ReturnsTrue()
         {
@@ -36,6 +48,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("first", item);
         }
 
+        /// <summary>
+        /// Tests that try dequeue with items returns true
+        /// </summary>
         [Fact]
         public void TryDequeue_WithItems_ReturnsTrue()
         {
@@ -47,6 +62,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that try remove default item when null cache empty returns false
+        /// </summary>
         [Fact]
         public void TryRemove_DefaultItemWhenNullCacheEmpty_ReturnsFalse()
         {
@@ -55,6 +73,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that try remove item not found returns false
+        /// </summary>
         [Fact]
         public void TryRemove_ItemNotFound_ReturnsFalse()
         {
@@ -63,6 +84,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is valid queue with items returns true
+        /// </summary>
         [Fact]
         public void IsValidQueue_WithItems_ReturnsTrue()
         {
@@ -73,6 +97,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that simple priority queue constructor with comparer creates queue
+        /// </summary>
         [Fact]
         public void SimplePriorityQueue_ConstructorWithComparer_CreatesQueue()
         {
@@ -82,6 +109,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(1, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that simple priority queue constructor with comparison creates queue
+        /// </summary>
         [Fact]
         public void SimplePriorityQueue_ConstructorWithComparison_CreatesQueue()
         {
@@ -91,6 +121,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal("x", queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that enqueue multiple items causes resize
+        /// </summary>
         [Fact]
         public void Enqueue_MultipleItems_CausesResize()
         {
@@ -103,6 +136,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, queue.Dequeue());
         }
 
+        /// <summary>
+        /// Tests that contains null item returns false
+        /// </summary>
         [Fact]
         public void Contains_NullItem_ReturnsFalse()
         {
@@ -111,6 +147,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(queue.Contains(default(string)));
         }
 
+        /// <summary>
+        /// Tests that contains null item returns true when enqueued
+        /// </summary>
         [Fact]
         public void Contains_NullItem_ReturnsTrueWhenEnqueued()
         {
@@ -119,6 +158,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.Contains(default(string)));
         }
 
+        /// <summary>
+        /// Tests that get existing node null item returns null
+        /// </summary>
         [Fact]
         public void GetExistingNode_NullItem_ReturnsNull()
         {
@@ -128,6 +170,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, priority);
         }
 
+        /// <summary>
+        /// Tests that enqueue without duplicates null item first time returns true
+        /// </summary>
         [Fact]
         public void EnqueueWithoutDuplicates_NullItem_FirstTimeReturnsTrue()
         {

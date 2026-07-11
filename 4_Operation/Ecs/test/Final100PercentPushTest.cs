@@ -10,8 +10,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The final 100 percent push test class
+    /// </summary>
     public class Final100PercentPushTest
     {
+        /// <summary>
+        /// Tests that update loop run all arities exist
+        /// </summary>
         [Fact]
         public void UpdateLoop_Run_AllArities_Exist()
         {
@@ -32,6 +38,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(run8);
         }
 
+        /// <summary>
+        /// Tests that update classes 7to 9 exist
+        /// </summary>
         [Fact]
         public void UpdateClasses_7to9_Exist()
         {
@@ -40,6 +49,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(typeof(ComponentStorageBase).Assembly.GetType("Alis.Core.Ecs.Updating.Runners.Update`9"));
         }
 
+        /// <summary>
+        /// Tests that fields get component data reference invoked via reflection
+        /// </summary>
         [Fact]
         public void Fields_GetComponentDataReference_InvokedViaReflection()
         {
@@ -58,6 +70,9 @@ namespace Alis.Core.Ecs.Test
             catch (TargetInvocationException) { }
         }
 
+        /// <summary>
+        /// Tests that archetype static members accessible
+        /// </summary>
         [Fact]
         public void Archetype_StaticMembers_Accessible()
         {
@@ -71,6 +86,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(id);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool bucket index all bit paths
+        /// </summary>
         [Fact]
         public void FastestArrayPool_BucketIndex_AllBitPaths()
         {
@@ -83,6 +101,9 @@ namespace Alis.Core.Ecs.Test
             }
         }
 
+        /// <summary>
+        /// Tests that fast lookup cache miss all 8 slots filled
+        /// </summary>
         [Fact]
         public void FastLookup_CacheMiss_All8SlotsFilled()
         {
@@ -102,6 +123,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that command buffer multiple operations playback works
+        /// </summary>
         [Fact]
         public void CommandBuffer_MultipleOperations_PlaybackWorks()
         {
@@ -112,6 +136,9 @@ namespace Alis.Core.Ecs.Test
             buffer.Playback();
         }
 
+        /// <summary>
+        /// Tests that scene component event invoked
+        /// </summary>
         [Fact]
         public void Scene_ComponentEvent_Invoked()
         {
@@ -121,6 +148,9 @@ namespace Alis.Core.Ecs.Test
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that fastest array pool return clear ref type mixed types
+        /// </summary>
         [Fact]
         public void FastestArrayPool_ReturnClearRefType_MixedTypes()
         {
@@ -133,6 +163,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(arr[1]);
         }
 
+        /// <summary>
+        /// Tests that fastest array pool bucket size boundaries
+        /// </summary>
         [Fact]
         public void FastestArrayPool_BucketSizeBoundaries()
         {
@@ -142,6 +175,13 @@ namespace Alis.Core.Ecs.Test
             pool.Return(arr);
         }
 
+        /// <summary>
+        /// Finds the method by param count using the specified methods
+        /// </summary>
+        /// <param name="methods">The methods</param>
+        /// <param name="name">The name</param>
+        /// <param name="paramCount">The param count</param>
+        /// <returns>The method info</returns>
         private static MethodInfo FindMethodByParamCount(MethodInfo[] methods, string name, int paramCount)
         {
             foreach (var m in methods)

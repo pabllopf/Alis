@@ -32,14 +32,23 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl scancode test class
+    /// </summary>
     public class SdlScancodeTest
     {
+        /// <summary>
+        /// Tests that unknown is zero
+        /// </summary>
         [Fact]
         public void Unknown_IsZero()
         {
             Assert.Equal(0, (int)SdlScancode.SdlScancodeUnknown);
         }
 
+        /// <summary>
+        /// Tests that letter keys start at 4
+        /// </summary>
         [Fact]
         public void LetterKeys_StartAt4()
         {
@@ -48,6 +57,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(29, (int)SdlScancode.SdlScancodeZ);
         }
 
+        /// <summary>
+        /// Tests that number keys start at 30
+        /// </summary>
         [Fact]
         public void NumberKeys_StartAt30()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(39, (int)SdlScancode.SdlScancode0);
         }
 
+        /// <summary>
+        /// Tests that function keys start at 58
+        /// </summary>
         [Fact]
         public void FunctionKeys_StartAt58()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(115, (int)SdlScancode.SdlScancodeF24);
         }
 
+        /// <summary>
+        /// Tests that arrow keys are correct
+        /// </summary>
         [Fact]
         public void ArrowKeys_AreCorrect()
         {
@@ -74,6 +92,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(82, (int)SdlScancode.SdlScancodeUp);
         }
 
+        /// <summary>
+        /// Tests that modifier keys start at 224
+        /// </summary>
         [Fact]
         public void ModifierKeys_StartAt224()
         {
@@ -87,42 +108,63 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(231, (int)SdlScancode.SdlScancodeRgui);
         }
 
+        /// <summary>
+        /// Tests that num scancodes is 512
+        /// </summary>
         [Fact]
         public void NumScancodes_Is512()
         {
             Assert.Equal(512, (int)SdlScancode.SdlNumScancodes);
         }
 
+        /// <summary>
+        /// Tests that return is 40
+        /// </summary>
         [Fact]
         public void Return_Is40()
         {
             Assert.Equal(40, (int)SdlScancode.SdlScancodeReturn);
         }
 
+        /// <summary>
+        /// Tests that escape is 41
+        /// </summary>
         [Fact]
         public void Escape_Is41()
         {
             Assert.Equal(41, (int)SdlScancode.SdlScancodeEscape);
         }
 
+        /// <summary>
+        /// Tests that backspace is 42
+        /// </summary>
         [Fact]
         public void Backspace_Is42()
         {
             Assert.Equal(42, (int)SdlScancode.SdlScancodeBackspace);
         }
 
+        /// <summary>
+        /// Tests that space is 44
+        /// </summary>
         [Fact]
         public void Space_Is44()
         {
             Assert.Equal(44, (int)SdlScancode.SdlScancodeSpace);
         }
 
+        /// <summary>
+        /// Tests that delete is 76
+        /// </summary>
         [Fact]
         public void Delete_Is76()
         {
             Assert.Equal(76, (int)SdlScancode.SdlScancodeDelete);
         }
 
+        /// <summary>
+        /// Tests that page navigation are correct
+        /// </summary>
         [Fact]
         public void PageNavigation_AreCorrect()
         {
@@ -132,6 +174,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(78, (int)SdlScancode.SdlScancodePagedown);
         }
 
+        /// <summary>
+        /// Tests that keypad keys are correct
+        /// </summary>
         [Fact]
         public void KeypadKeys_AreCorrect()
         {
@@ -145,6 +190,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(99, (int)SdlScancode.SdlScancodeKpPeriod);
         }
 
+        /// <summary>
+        /// Tests that multimedia keys are correct
+        /// </summary>
         [Fact]
         public void MultimediaKeys_AreCorrect()
         {
@@ -155,6 +203,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(262, (int)SdlScancode.SdlScancodeAudiomute);
         }
 
+        /// <summary>
+        /// Tests that brightness and display keys are correct
+        /// </summary>
         [Fact]
         public void BrightnessAndDisplayKeys_AreCorrect()
         {
@@ -163,6 +214,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(277, (int)SdlScancode.SdlScancodeDisplayswitch);
         }
 
+        /// <summary>
+        /// Tests that audio rewind and fast forward are correct
+        /// </summary>
         [Fact]
         public void AudioRewindAndFastForward_AreCorrect()
         {

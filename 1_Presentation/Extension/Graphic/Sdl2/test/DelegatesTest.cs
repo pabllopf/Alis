@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The delegates test class
+    /// </summary>
     public class DelegatesTest
     {
+        /// <summary>
+        /// Tests that sdl audio callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlAudioCallback_HasCorrectAttributeAndSignature()
         {
@@ -46,6 +52,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl audio callback can be created
+        /// </summary>
         [Fact]
         public void SdlAudioCallback_CanBeCreated()
         {
@@ -54,6 +63,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl event filter has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlEventFilter_HasCorrectAttributeAndSignature()
         {
@@ -63,6 +75,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl event filter can be created
+        /// </summary>
         [Fact]
         public void SdlEventFilter_CanBeCreated()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl hit test has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlHitTest_HasCorrectAttributeAndSignature()
         {
@@ -80,6 +98,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl hit test can be created
+        /// </summary>
         [Fact]
         public void SdlHitTest_CanBeCreated()
         {
@@ -88,6 +109,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl i phone animation callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlIPhoneAnimationCallback_HasCorrectAttributeAndSignature()
         {
@@ -97,6 +121,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl i phone animation callback can be created
+        /// </summary>
         [Fact]
         public void SdlIPhoneAnimationCallback_CanBeCreated()
         {
@@ -105,6 +132,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl log output function has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlLogOutputFunction_HasCorrectAttributeAndSignature()
         {
@@ -114,6 +144,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl log output function can be created
+        /// </summary>
         [Fact]
         public void SdlLogOutputFunction_CanBeCreated()
         {
@@ -122,6 +155,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl main func can be created
+        /// </summary>
         [Fact]
         public void SdlMainFunc_CanBeCreated()
         {
@@ -130,6 +166,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl main func has no unmanaged function pointer attribute
+        /// </summary>
         [Fact]
         public void SdlMainFunc_HasNoUnmanagedFunctionPointerAttribute()
         {
@@ -138,6 +177,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Null(attr);
         }
 
+        /// <summary>
+        /// Tests that sdl timer callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlTimerCallback_HasCorrectAttributeAndSignature()
         {
@@ -147,6 +189,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl timer callback can be created
+        /// </summary>
         [Fact]
         public void SdlTimerCallback_CanBeCreated()
         {
@@ -155,6 +200,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl windows message hook has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWindowsMessageHook_HasCorrectAttributeAndSignature()
         {
@@ -164,6 +212,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl windows message hook can be created
+        /// </summary>
         [Fact]
         public void SdlWindowsMessageHook_CanBeCreated()
         {
@@ -172,6 +223,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl wops close callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWopsCloseCallback_HasCorrectAttributeAndSignature()
         {
@@ -181,6 +235,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl wops close callback can be created
+        /// </summary>
         [Fact]
         public void SdlWopsCloseCallback_CanBeCreated()
         {
@@ -189,6 +246,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl wops read callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWopsReadCallback_HasCorrectAttributeAndSignature()
         {
@@ -198,6 +258,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl wops read callback can be created
+        /// </summary>
         [Fact]
         public void SdlWopsReadCallback_CanBeCreated()
         {
@@ -206,6 +269,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl wops seek callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWopsSeekCallback_HasCorrectAttributeAndSignature()
         {
@@ -215,6 +281,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl wops seek callback can be created
+        /// </summary>
         [Fact]
         public void SdlWopsSeekCallback_CanBeCreated()
         {
@@ -223,6 +292,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl wops size callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWopsSizeCallback_HasCorrectAttributeAndSignature()
         {
@@ -232,6 +304,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl wops size callback can be created
+        /// </summary>
         [Fact]
         public void SdlWopsSizeCallback_CanBeCreated()
         {
@@ -240,6 +315,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(callback);
         }
 
+        /// <summary>
+        /// Tests that sdl wops write callback has correct attribute and signature
+        /// </summary>
         [Fact]
         public void SdlWopsWriteCallback_HasCorrectAttributeAndSignature()
         {
@@ -249,6 +327,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
 
+        /// <summary>
+        /// Tests that sdl wops write callback can be created
+        /// </summary>
         [Fact]
         public void SdlWopsWriteCallback_CanBeCreated()
         {

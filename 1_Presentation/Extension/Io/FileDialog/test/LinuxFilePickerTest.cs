@@ -3,20 +3,32 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The linux file picker test class
+    /// </summary>
     public class LinuxFilePickerTest
     {
+        /// <summary>
+        /// Tests that escape shell string null returns null
+        /// </summary>
         [Fact]
         public void EscapeShellString_Null_ReturnsNull()
         {
             Assert.Null(LinuxFilePicker.EscapeShellString(null));
         }
 
+        /// <summary>
+        /// Tests that escape shell string empty returns empty
+        /// </summary>
         [Fact]
         public void EscapeShellString_Empty_ReturnsEmpty()
         {
             Assert.Equal(string.Empty, LinuxFilePicker.EscapeShellString(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that escape shell string with double quote returns escaped
+        /// </summary>
         [Fact]
         public void EscapeShellString_WithDoubleQuote_ReturnsEscaped()
         {
@@ -24,6 +36,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("hello\\\"world", result);
         }
 
+        /// <summary>
+        /// Tests that escape shell string with single quote returns escaped
+        /// </summary>
         [Fact]
         public void EscapeShellString_WithSingleQuote_ReturnsEscaped()
         {
@@ -31,6 +46,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("it\\'s", result);
         }
 
+        /// <summary>
+        /// Tests that escape shell string with dollar sign returns escaped
+        /// </summary>
         [Fact]
         public void EscapeShellString_WithDollarSign_ReturnsEscaped()
         {
@@ -38,6 +56,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("\\$PATH", result);
         }
 
+        /// <summary>
+        /// Tests that escape shell string without special chars returns same
+        /// </summary>
         [Fact]
         public void EscapeShellString_WithoutSpecialChars_ReturnsSame()
         {
@@ -45,6 +66,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("hello.txt", result);
         }
 
+        /// <summary>
+        /// Tests that build zenity file dialog arguments with all options adds correct args
+        /// </summary>
         [Fact]
         public void BuildZenityFileDialogArguments_WithAllOptions_AddsCorrectArgs()
         {
@@ -66,6 +90,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--file-filter=\"All files | *\"", args);
         }
 
+        /// <summary>
+        /// Tests that build zenity file dialog arguments without title skips title
+        /// </summary>
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutTitle_SkipsTitle()
         {
@@ -80,6 +107,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--multiple", args);
         }
 
+        /// <summary>
+        /// Tests that build zenity file dialog arguments without default path skips filename
+        /// </summary>
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutDefaultPath_SkipsFilename()
         {
@@ -93,6 +123,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--filename", args);
         }
 
+        /// <summary>
+        /// Tests that build zenity file dialog arguments without filters skips filters
+        /// </summary>
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutFilters_SkipsFilters()
         {
@@ -104,6 +137,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--file-filter", args);
         }
 
+        /// <summary>
+        /// Tests that build zenity file dialog arguments with empty filters skips filters
+        /// </summary>
         [Fact]
         public void BuildZenityFileDialogArguments_WithEmptyFilters_SkipsFilters()
         {
@@ -118,6 +154,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--file-filter", args);
         }
 
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments with multiple adds get open filenames
+        /// </summary>
         [Fact]
         public void BuildKdialogFileDialogArguments_WithMultiple_AddsGetOpenFilenames()
         {
@@ -135,6 +174,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--title \"Open Files\"", args);
         }
 
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments without multiple adds get open filename
+        /// </summary>
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutMultiple_AddsGetOpenFilename()
         {
@@ -147,6 +189,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--getopenfilenames", args);
         }
 
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments without default path adds tilde
+        /// </summary>
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutDefaultPath_AddsTilde()
         {
@@ -158,6 +203,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("~/", args);
         }
 
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments without title skips title
+        /// </summary>
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutTitle_SkipsTitle()
         {
@@ -169,6 +217,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--title", args);
         }
 
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments without filters skips filter arg
+        /// </summary>
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutFilters_SkipsFilterArg()
         {
@@ -180,6 +231,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Single(args, a => a.Contains("/tmp"));
         }
 
+        /// <summary>
+        /// Tests that build file dialog arguments with zenity returns zenity args
+        /// </summary>
         [Fact]
         public void BuildFileDialogArguments_WithZenity_ReturnsZenityArgs()
         {
@@ -191,6 +245,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--title=\"Test\"", result);
         }
 
+        /// <summary>
+        /// Tests that build file dialog arguments with kdialog returns kdialog args
+        /// </summary>
         [Fact]
         public void BuildFileDialogArguments_WithKdialog_ReturnsKdialogArgs()
         {
@@ -201,6 +258,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--getopenfilename", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments zenity with all options returns correct args
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithAllOptions_ReturnsCorrectArgs()
         {
@@ -217,16 +277,22 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--filename=\"/home/user\"", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments zenity without title skips title
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithoutTitle_SkipsTitle()
         {
-            var options = new FilePickerOptions { DefaultPath = "/tmp" };
+            var options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("zenity", options);
 
             Assert.DoesNotContain("--title", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments zenity without default path skips filename
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithoutDefaultPath_SkipsFilename()
         {
@@ -237,6 +303,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.DoesNotContain("--filename", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments kdialog with all options returns correct args
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithAllOptions_ReturnsCorrectArgs()
         {
@@ -252,6 +321,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("--title", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments kdialog without default path adds tilde
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithoutDefaultPath_AddsTilde()
         {
@@ -262,16 +334,22 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("~/", result);
         }
 
+        /// <summary>
+        /// Tests that build folder dialog arguments kdialog without title skips title
+        /// </summary>
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithoutTitle_SkipsTitle()
         {
-            var options = new FilePickerOptions { DefaultPath = "/tmp" };
+            var options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("kdialog", options);
 
             Assert.DoesNotContain("--title", result);
         }
 
+        /// <summary>
+        /// Tests that parse result null returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Null_ReturnsCancelled()
         {
@@ -281,6 +359,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.False(result.IsSuccess);
         }
 
+        /// <summary>
+        /// Tests that parse result empty returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Empty_ReturnsCancelled()
         {
@@ -289,6 +370,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result whitespace returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_Whitespace_ReturnsCancelled()
         {
@@ -297,6 +381,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that parse result single path returns success
+        /// </summary>
         [Fact]
         public void ParseResult_SinglePath_ReturnsSuccess()
         {
@@ -307,6 +394,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("/home/user/file.txt", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that parse result multiple paths with allow multiple returns multiple
+        /// </summary>
         [Fact]
         public void ParseResult_MultiplePaths_WithAllowMultiple_ReturnsMultiple()
         {
@@ -316,6 +406,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal(2, result.SelectedPaths.Count);
         }
 
+        /// <summary>
+        /// Tests that parse result multiple paths without allow multiple treats as single
+        /// </summary>
         [Fact]
         public void ParseResult_MultiplePaths_WithoutAllowMultiple_TreatsAsSingle()
         {
@@ -325,6 +418,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Single(result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that parse result empty paths returns cancelled
+        /// </summary>
         [Fact]
         public void ParseResult_EmptyPaths_ReturnsCancelled()
         {
@@ -333,6 +429,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(result.IsCancelled);
         }
 
+        /// <summary>
+        /// Tests that get available dialog tool on non linux returns null
+        /// </summary>
         [Fact]
         public void GetAvailableDialogTool_OnNonLinux_ReturnsNull()
         {
@@ -341,6 +440,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Null(tool);
         }
 
+        /// <summary>
+        /// Tests that pick file on non linux returns error
+        /// </summary>
         [Fact]
         public void PickFile_OnNonLinux_ReturnsError()
         {
@@ -353,6 +455,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick files on non linux returns error
+        /// </summary>
         [Fact]
         public void PickFiles_OnNonLinux_ReturnsError()
         {
@@ -365,6 +470,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick folder on non linux returns error
+        /// </summary>
         [Fact]
         public void PickFolder_OnNonLinux_ReturnsError()
         {

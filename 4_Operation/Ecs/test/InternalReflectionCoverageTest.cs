@@ -10,8 +10,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The internal reflection coverage test class
+    /// </summary>
     public class InternalReflectionCoverageTest
     {
+        /// <summary>
+        /// Tests that update runner arity 7 instantiated and run invoked
+        /// </summary>
         [Fact]
         public void Update_Runner_Arity7_InstantiatedAndRun_Invoked()
         {
@@ -39,6 +45,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that update runner arity 8 instantiated and run invoked
+        /// </summary>
         [Fact]
         public void Update_Runner_Arity8_InstantiatedAndRun_Invoked()
         {
@@ -67,6 +76,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that update runner arity 9 instantiated and run invoked
+        /// </summary>
         [Fact]
         public void Update_Runner_Arity9_InstantiatedAndRun_Invoked()
         {
@@ -96,6 +108,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that update runner arity 7 run partial invoked
+        /// </summary>
         [Fact]
         public void Update_Runner_Arity7_RunPartial_Invoked()
         {
@@ -117,6 +132,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that fields get component data reference invoked no throw
+        /// </summary>
         [Fact]
         public void Fields_GetComponentDataReference_Invoked_NoThrow()
         {
@@ -132,6 +150,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(fields.Components);
         }
 
+        /// <summary>
+        /// Tests that archetype t id field accessible
+        /// </summary>
         [Fact]
         public void ArchetypeT_IdField_Accessible()
         {
@@ -147,6 +168,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(id);
         }
 
+        /// <summary>
+        /// Tests that archetype t archetype component i ds accessible
+        /// </summary>
         [Fact]
         public void ArchetypeT_ArchetypeComponentIDs_Accessible()
         {
@@ -163,6 +187,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(val);
         }
 
+        /// <summary>
+        /// Tests that archetype t create new or get existing invoked
+        /// </summary>
         [Fact]
         public void ArchetypeT_CreateNewOrGetExisting_Invoked()
         {
@@ -180,6 +207,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that enum data all arities verify types
+        /// </summary>
         [Fact]
         public void EnumData_AllArities_VerifyTypes()
         {
@@ -192,6 +222,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(typeof(GameObjectQueryEnumerator<Position>).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that component store and get handle works
+        /// </summary>
         [Fact]
         public void Component_StoreAndGet_HandleWorks()
         {
@@ -202,6 +235,9 @@ namespace Alis.Core.Ecs.Test
             handle.Dispose();
         }
 
+        /// <summary>
+        /// Tests that scene create without event works
+        /// </summary>
         [Fact]
         public void Scene_CreateWithoutEvent_Works()
         {
@@ -213,6 +249,9 @@ namespace Alis.Core.Ecs.Test
         }
     }
 
+    /// <summary>
+    /// The update comp stub
+    /// </summary>
     internal struct UpdateCompStub : IOnUpdate,
         IOnUpdate<Velocity>,
         IOnUpdate<Velocity, Health>,
@@ -223,14 +262,86 @@ namespace Alis.Core.Ecs.Test
         IOnUpdate<Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>,
         IOnUpdate<Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor, Position>
     {
+        /// <summary>
+        /// Ons the update using the specified self
+        /// </summary>
+        /// <param name="self">The self</param>
         public void OnUpdate(IGameObject self) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg">The arg</param>
         public void Update(IGameObject self, ref Velocity arg) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3, ref TestComponent arg4) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3, ref TestComponent arg4, ref AnotherComponent arg5) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3, ref TestComponent arg4, ref AnotherComponent arg5, ref Damage arg6) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3, ref TestComponent arg4, ref AnotherComponent arg5, ref Damage arg6, ref Armor arg7) { }
+        /// <summary>
+        /// Updates the self
+        /// </summary>
+        /// <param name="self">The self</param>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <param name="arg5">The arg</param>
+        /// <param name="arg6">The arg</param>
+        /// <param name="arg7">The arg</param>
+        /// <param name="arg8">The arg</param>
         public void Update(IGameObject self, ref Velocity arg1, ref Health arg2, ref Transform arg3, ref TestComponent arg4, ref AnotherComponent arg5, ref Damage arg6, ref Armor arg7, ref Position arg8) { }
     }
 }

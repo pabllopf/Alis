@@ -4,10 +4,20 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui cs remaining coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class ImGuiCsP1P2RemainingCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         internal readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiCsP1P2RemainingCoverageTests"/> class
+        /// </summary>
         public ImGuiCsP1P2RemainingCoverageTests()
         {
             _ctx = ImGui.CreateContext();
@@ -17,11 +27,17 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGuiNative.igDestroyContext(_ctx);
         }
 
+        /// <summary>
+        /// Tests that slider int all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderInt_AllOverloads_ShouldExecute()
         {
@@ -38,6 +54,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that slider int 2 all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderInt2_AllOverloads_ShouldExecute()
         {
@@ -54,6 +73,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that slider int 3 all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderInt3_AllOverloads_ShouldExecute()
         {
@@ -70,6 +92,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that slider int 4 all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderInt4_AllOverloads_ShouldExecute()
         {
@@ -86,6 +111,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that slider scalar all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderScalar_AllOverloads_ShouldExecute()
         {
@@ -117,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that slider scalar n all overloads should execute
+        /// </summary>
         [Fact]
         public void SliderScalarN_AllOverloads_ShouldExecute()
         {
@@ -148,6 +179,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that small button should execute
+        /// </summary>
         [Fact]
         public void SmallButton_ShouldExecute()
         {
@@ -159,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that spacing should execute
+        /// </summary>
         [Fact]
         public void Spacing_ShouldExecute()
         {
@@ -169,6 +206,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that style colors classic all overloads should execute
+        /// </summary>
         [Fact]
         public void StyleColorsClassic_AllOverloads_ShouldExecute()
         {
@@ -180,6 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that style colors dark all overloads should execute
+        /// </summary>
         [Fact]
         public void StyleColorsDark_AllOverloads_ShouldExecute()
         {
@@ -191,6 +234,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that style colors light all overloads should execute
+        /// </summary>
         [Fact]
         public void StyleColorsLight_AllOverloads_ShouldExecute()
         {
@@ -202,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that tab item button all overloads should execute
+        /// </summary>
         [Fact]
         public void TabItemButton_AllOverloads_ShouldExecute()
         {
@@ -219,6 +268,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that table functions should execute
+        /// </summary>
         [Fact]
         public void TableFunctions_ShouldExecute()
         {
@@ -261,6 +313,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that menu item with enabled should execute
+        /// </summary>
         [Fact]
         public void MenuItem_WithEnabled_ShouldExecute()
         {
@@ -274,6 +329,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that dock builder all methods should execute
+        /// </summary>
         [Fact]
         public void DockBuilder_AllMethods_ShouldExecute()
         {
@@ -291,6 +349,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that combo all overloads should execute
+        /// </summary>
         [Fact]
         public void Combo_AllOverloads_ShouldExecute()
         {
@@ -305,6 +366,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that create context with font atlas should execute
+        /// </summary>
         [Fact]
         public void CreateContext_WithFontAtlas_ShouldExecute()
         {
@@ -314,6 +378,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiNative.igDestroyContext(ctx);
         }
 
+        /// <summary>
+        /// Tests that debug check version and data layout should execute
+        /// </summary>
         [Fact]
         public void DebugCheckVersionAndDataLayout_ShouldExecute()
         {
@@ -328,6 +395,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             _ = result;
         }
 
+        /// <summary>
+        /// Tests that debug text encoding should execute
+        /// </summary>
         [Fact]
         public void DebugTextEncoding_ShouldExecute()
         {
@@ -336,6 +406,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that dock space all overloads should execute
+        /// </summary>
         [Fact]
         public void DockSpace_AllOverloads_ShouldExecute()
         {
@@ -352,6 +425,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that dock space over viewport all overloads should execute
+        /// </summary>
         [Fact]
         public void DockSpaceOverViewport_AllOverloads_ShouldExecute()
         {
@@ -368,6 +444,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag float all overloads should execute
+        /// </summary>
         [Fact]
         public void DragFloat_AllOverloads_ShouldExecute()
         {
@@ -390,6 +469,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag float 2 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragFloat2_AllOverloads_ShouldExecute()
         {
@@ -412,6 +494,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag float 3 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragFloat3_AllOverloads_ShouldExecute()
         {
@@ -434,6 +519,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag float range 2 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragFloatRange2_AllOverloads_ShouldExecute()
         {
@@ -459,6 +547,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag int all overloads should execute
+        /// </summary>
         [Fact]
         public void DragInt_AllOverloads_ShouldExecute()
         {
@@ -481,6 +572,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag int 2 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragInt2_AllOverloads_ShouldExecute()
         {
@@ -503,6 +597,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag int 3 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragInt3_AllOverloads_ShouldExecute()
         {
@@ -525,6 +622,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag int 4 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragInt4_AllOverloads_ShouldExecute()
         {
@@ -547,6 +647,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag int range 2 all overloads should execute
+        /// </summary>
         [Fact]
         public void DragIntRange2_AllOverloads_ShouldExecute()
         {
@@ -572,6 +675,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag scalar all overloads should execute
+        /// </summary>
         [Fact]
         public void DragScalar_AllOverloads_ShouldExecute()
         {
@@ -609,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.Render();
         }
 
+        /// <summary>
+        /// Tests that drag scalar n all overloads should execute
+        /// </summary>
         [Fact]
         public void DragScalarN_AllOverloads_ShouldExecute()
         {

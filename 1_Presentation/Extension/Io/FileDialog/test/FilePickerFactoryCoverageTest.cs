@@ -4,18 +4,31 @@ using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
+    /// <summary>
+    /// The file picker factory coverage test class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class FilePickerFactoryCoverageTest : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FilePickerFactoryCoverageTest"/> class
+        /// </summary>
         public FilePickerFactoryCoverageTest()
         {
             PlatformHelper.IsOSPlatform = RuntimeInformation.IsOSPlatform;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             PlatformHelper.IsOSPlatform = RuntimeInformation.IsOSPlatform;
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with open file dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithOpenFileDialogType_ShouldReturnValidInstance()
         {
@@ -27,6 +40,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with save file dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSaveFileDialogType_ShouldReturnValidInstance()
         {
@@ -38,6 +54,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with select folder dialog type should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSelectFolderDialogType_ShouldReturnValidInstance()
         {
@@ -49,6 +68,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker with options with allow multiple should return valid instance
+        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithAllowMultiple_ShouldReturnValidInstance()
         {
@@ -63,6 +85,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker behaves as windows on mocked windows
+        /// </summary>
         [Fact]
         public void CreateFilePicker_BehavesAsWindows_OnMockedWindows()
         {
@@ -73,6 +98,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsType<WindowsFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker behaves as mac on mocked mac
+        /// </summary>
         [Fact]
         public void CreateFilePicker_BehavesAsMac_OnMockedMac()
         {
@@ -83,6 +111,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsType<MacFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker behaves as linux on mocked linux
+        /// </summary>
         [Fact]
         public void CreateFilePicker_BehavesAsLinux_OnMockedLinux()
         {
@@ -93,6 +124,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsType<LinuxFilePicker>(picker);
         }
 
+        /// <summary>
+        /// Tests that create file picker on unsupported platform throws not supported exception
+        /// </summary>
         [Fact]
         public void CreateFilePicker_OnUnsupportedPlatform_ThrowsNotSupportedException()
         {
@@ -101,6 +135,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Throws<NotSupportedException>(() => FilePickerFactory.CreateFilePicker());
         }
 
+        /// <summary>
+        /// Tests that get platform name returns windows on mocked windows
+        /// </summary>
         [Fact]
         public void GetPlatformName_ReturnsWindows_OnMockedWindows()
         {
@@ -111,6 +148,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("Windows", name);
         }
 
+        /// <summary>
+        /// Tests that get platform name returns mac os on mocked mac
+        /// </summary>
         [Fact]
         public void GetPlatformName_ReturnsMacOS_OnMockedMac()
         {
@@ -121,6 +161,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("macOS", name);
         }
 
+        /// <summary>
+        /// Tests that get platform name returns linux on mocked linux
+        /// </summary>
         [Fact]
         public void GetPlatformName_ReturnsLinux_OnMockedLinux()
         {
@@ -131,6 +174,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("Linux", name);
         }
 
+        /// <summary>
+        /// Tests that get platform name returns unknown on unsupported platform
+        /// </summary>
         [Fact]
         public void GetPlatformName_ReturnsUnknown_OnUnsupportedPlatform()
         {
@@ -141,6 +187,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Equal("Unknown", name);
         }
 
+        /// <summary>
+        /// Tests that is platform supported returns true on mocked windows
+        /// </summary>
         [Fact]
         public void IsPlatformSupported_ReturnsTrue_OnMockedWindows()
         {
@@ -149,6 +198,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(FilePickerFactory.IsPlatformSupported());
         }
 
+        /// <summary>
+        /// Tests that is platform supported returns true on mocked mac
+        /// </summary>
         [Fact]
         public void IsPlatformSupported_ReturnsTrue_OnMockedMac()
         {
@@ -157,6 +209,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(FilePickerFactory.IsPlatformSupported());
         }
 
+        /// <summary>
+        /// Tests that is platform supported returns true on mocked linux
+        /// </summary>
         [Fact]
         public void IsPlatformSupported_ReturnsTrue_OnMockedLinux()
         {
@@ -165,6 +220,9 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.True(FilePickerFactory.IsPlatformSupported());
         }
 
+        /// <summary>
+        /// Tests that is platform supported returns false on unsupported platform
+        /// </summary>
         [Fact]
         public void IsPlatformSupported_ReturnsFalse_OnUnsupportedPlatform()
         {

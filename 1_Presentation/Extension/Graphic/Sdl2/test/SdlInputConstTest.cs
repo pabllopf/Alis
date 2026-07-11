@@ -32,14 +32,23 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl input const test class
+    /// </summary>
     public class SdlInputConstTest
     {
+        /// <summary>
+        /// Tests that k scancode mask is correct
+        /// </summary>
         [Fact]
         public void KScancodeMask_IsCorrect()
         {
             Assert.Equal(1 << 30, SdlInputConst.KScancodeMask);
         }
 
+        /// <summary>
+        /// Tests that button constants are correct
+        /// </summary>
         [Fact]
         public void ButtonConstants_AreCorrect()
         {
@@ -48,12 +57,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(3u, SdlInputConst.ButtonRight);
         }
 
+        /// <summary>
+        /// Tests that touch mouse id is max value
+        /// </summary>
         [Fact]
         public void TouchMouseId_IsMaxValue()
         {
             Assert.Equal(uint.MaxValue, SdlInputConst.TouchMouseId);
         }
 
+        /// <summary>
+        /// Tests that hat constants are correct
+        /// </summary>
         [Fact]
         public void HatConstants_AreCorrect()
         {
@@ -64,6 +79,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0x0C, SdlInputConst.HatLeftDown);
         }
 
+        /// <summary>
+        /// Tests that haptic effect constants are correct
+        /// </summary>
         [Fact]
         public void HapticEffectConstants_AreCorrect()
         {
@@ -74,6 +92,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(1u << 15, SdlInputConst.HapticPauseVar);
         }
 
+        /// <summary>
+        /// Tests that haptic direction constants are correct
+        /// </summary>
         [Fact]
         public void HapticDirectionConstants_AreCorrect()
         {
@@ -83,6 +104,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(3, SdlInputConst.HapticSteeringAxis);
         }
 
+        /// <summary>
+        /// Tests that iphone max g force is correct
+        /// </summary>
         [Fact]
         public void IphoneMaxGForce_IsCorrect()
         {
