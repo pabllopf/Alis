@@ -113,12 +113,24 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
             /// </summary>
             public ISystem MonoThreadStashSystem { get; }
 
+            /// <summary>
+            ///     The padding 1 record struct
+            /// </summary>
             private record struct Padding1 : IComponent;
 
+            /// <summary>
+            ///     The padding 2 record struct
+            /// </summary>
             private record struct Padding2 : IComponent;
 
+            /// <summary>
+            ///     The padding 3 record struct
+            /// </summary>
             private record struct Padding3 : IComponent;
 
+            /// <summary>
+            ///     The padding 4 record struct
+            /// </summary>
             private record struct Padding4 : IComponent;
 
             /// <summary>
