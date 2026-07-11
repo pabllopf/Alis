@@ -6,6 +6,9 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
 {
+    /// <summary>
+    ///     The objective c interop test class
+    /// </summary>
     public class ObjectiveCInteropTest
     {
         [Fact]
