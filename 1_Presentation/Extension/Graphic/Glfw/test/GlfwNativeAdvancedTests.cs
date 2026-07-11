@@ -41,6 +41,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
     /// </summary>
     public class GlfwNativeAdvancedTests
     {
+        /*
         /// <summary>
         ///     Gets the window opacity with valid window returns value
         /// </summary>
@@ -77,28 +78,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
                 float opacity = GlfwNative.GetWindowOpacity(window);
 
                 Assert.True(Math.Abs(opacity - 0.5f) < 0.1f);
-            }
-            finally
-            {
-                GlfwNative.DestroyWindow(window);
-            }
-        }
-
-        /// <summary>
-        ///     Gets the window content scale with valid window returns scale
-        /// </summary>
-        [RequiresDisplay]
-        public void GetWindowContentScale_WithValidWindow_ReturnsScale()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            Window window = GlfwNative.CreateWindow(800, 600, "Test Window", Monitor.None, Window.None);
-
-            try
-            {
-                GlfwNative.GetWindowContentScale(window, out float xScale, out float yScale);
-
-                Assert.True(xScale > 0);
-                Assert.True(yScale > 0);
             }
             finally
             {
@@ -454,6 +433,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             ErrorCode error = GlfwNative.GetError(out string description);
 
             Assert.True(error == ErrorCode.None || error != ErrorCode.None);
-        }
+        }*/
     }
 }

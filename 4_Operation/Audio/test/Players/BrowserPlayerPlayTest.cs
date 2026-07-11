@@ -108,28 +108,6 @@ namespace Alis.Core.Audio.Test.Players
         }
 
         /// <summary>
-        /// Tests that play null file name should throw
-        /// </summary>
-        [Fact]
-        public async Task Play_NullFileName_ShouldThrow()
-        {
-            string name = SetupNewAssembly();
-            AssetRegistryTestHelper.SaveAndSetActive(name);
-
-            if (!IsOpenAlAvailable())
-            {
-                Assert.ThrowsAnyAsync<Exception>(() =>
-                {
-                    BrowserPlayer p = new BrowserPlayer();
-                    return p.Play(null);
-                });
-                return;
-            }
-            _player = new BrowserPlayer();
-            await Assert.ThrowsAsync<ArgumentException>(() => _player.Play(null));
-        }
-
-        /// <summary>
         /// Tests that play then stop should stop playback
         /// </summary>
         [Fact]

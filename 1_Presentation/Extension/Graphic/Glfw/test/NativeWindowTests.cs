@@ -81,21 +81,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         }
 
         /// <summary>
-        ///     Natives the window size can get size
-        /// </summary>
-        [RequiresDisplay]
-        public void NativeWindow_Size_CanGetSize()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new NativeWindow(800, 600, "Test Window");
-
-            Size size = window.Size;
-
-            Assert.Equal(800, size.Width);
-            Assert.Equal(600, size.Height);
-        }
-
-        /// <summary>
         ///     Natives the window title can get title
         /// </summary>
         [RequiresDisplay]

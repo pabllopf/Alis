@@ -101,6 +101,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
         {
             GlfwNative.WindowHint(Hint.Visible, false);
             window = new GameWindow();
+            
+            window.Close();
 
             Assert.IsAssignableFrom<NativeWindow>(window);
         }
@@ -115,6 +117,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
             window = new GameWindow(800, 600, "Disposable Window");
 
             window.Dispose();
+            
+            Assert.True(window.IsInvalid);
         }
 
         /// <summary>

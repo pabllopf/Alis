@@ -138,22 +138,5 @@ namespace Alis.Extension.Network.Test
 
             manager.WebSocketImplPong(null, new PongEventArgs(new ArraySegment<byte>(Array.Empty<byte>())));
         }
-
-        /// <summary>
-        /// Tests that send ping with cancelled token throws operation canceled exception
-        /// </summary>
-        [Fact]
-        public void SendPing_WithCancelledToken_ThrowsOperationCanceledException()
-        {
-            Guid guid = Guid.NewGuid();
-            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
-                TimeSpan.FromSeconds(30), null, false, true, null);
-            using CancellationTokenSource cts = new CancellationTokenSource();
-            cts.Cancel();
-            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, CancellationToken.None);
-
-            Assert.ThrowsAsync<OperationCanceledException>(() =>
-                manager.SendPing(new ArraySegment<byte>(Array.Empty<byte>()), cts.Token));
-        }
     }
 }

@@ -95,8 +95,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
 
             Assert.NotNull(adaptor);
             Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
-
-            adaptor.Dispose();
+            
         }
 
         /// <summary>
@@ -116,8 +115,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
 
             Assert.NotNull(adaptor);
             Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
-
-            adaptor.Dispose();
         }
 
         /// <summary>
@@ -135,9 +132,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(adaptor1.InputStreamPtr);
             Assert.NotNull(adaptor2.InputStreamPtr);
             Assert.NotEqual(adaptor1.InputStreamPtr, adaptor2.InputStreamPtr);
-
-            adaptor1.Dispose();
-            adaptor2.Dispose();
         }
 
         /// <summary>
@@ -152,8 +146,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
 
             Assert.NotNull(adaptor);
             Assert.NotEqual(IntPtr.Zero, adaptor.InputStreamPtr);
-
-            adaptor.Dispose();
         }
     }
 }
