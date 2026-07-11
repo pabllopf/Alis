@@ -105,6 +105,8 @@ namespace Alis.Extension.Network.Test
             CancellationTokenSource cts = new CancellationTokenSource();
             PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.Zero, cts.Token);
 
+            // Ensure the internal Clock has advanced past zero ticks
+            await Task.Delay(1);
             await manager.SendPing();
 
             Assert.True(manager.PingSentTicksExist());

@@ -1,5 +1,6 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         /// Tests that music is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Music_IsAssignableFromObjectBase()
         {
             var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);
@@ -22,7 +23,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         /// Tests that music class exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Music_Class_Exists()
         {
             var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);
@@ -32,7 +33,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         /// <summary>
         /// Tests that music implements i disposable
         /// </summary>
-        [Fact]
+        [RequireCSfmlAudioFact]
         public void Music_ImplementsIDisposable()
         {
             var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);

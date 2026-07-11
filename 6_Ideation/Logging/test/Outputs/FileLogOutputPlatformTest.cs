@@ -142,6 +142,8 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             string fullPath = Path.GetFullPath(relativePath);
             string dir = Path.GetDirectoryName(fullPath);
 
+            Directory.CreateDirectory(dir);
+
             using (FileLogOutput output = new FileLogOutput(relativePath))
             {
                 output.Write(new LogEntry(LogLevel.Info, "Relative path test", "Logger"));
