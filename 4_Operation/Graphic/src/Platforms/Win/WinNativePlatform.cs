@@ -791,6 +791,11 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         /// <param name="errorCode">The error code</param>
         /// <returns>The string</returns>
+        /// <summary>
+        ///     Gets the meaning of a Win32 error code.
+        /// </summary>
+        /// <param name="errorCode">The error code.</param>
+        /// <returns>A human-readable description of the error.</returns>
         internal string GetWin32ErrorMeaning(int errorCode)
         {
             switch (errorCode)
@@ -841,6 +846,10 @@ namespace Alis.Core.Graphic.Platforms.Win
             return false;
         }
 
+        /// <summary>
+        ///     Gets the window position on the X axis.
+        /// </summary>
+        /// <returns>The X position of the window.</returns>
         public int GetWindowPositionX()
         {
             if (hWnd != IntPtr.Zero)
@@ -855,6 +864,10 @@ namespace Alis.Core.Graphic.Platforms.Win
             return 0;
         }
 
+        /// <summary>
+        ///     Gets the window position on the Y axis.
+        /// </summary>
+        /// <returns>The Y position of the window.</returns>
         public int GetWindowPositionY()
         {
             if (hWnd != IntPtr.Zero)
@@ -869,6 +882,15 @@ namespace Alis.Core.Graphic.Platforms.Win
             return 0;
         }
 
+        /// <summary>
+        ///     Gets the window metrics including position, size, and framebuffer size.
+        /// </summary>
+        /// <param name="winX">The window X position.</param>
+        /// <param name="winY">The window Y position.</param>
+        /// <param name="winW">The window width.</param>
+        /// <param name="winH">The window height.</param>
+        /// <param name="fbW">The framebuffer width.</param>
+        /// <param name="fbH">The framebuffer height.</param>
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
             winX = GetWindowPositionX();
@@ -879,6 +901,11 @@ namespace Alis.Core.Graphic.Platforms.Win
             fbH = winH;
         }
 
+        /// <summary>
+        ///     Gets the mouse position relative to the view.
+        /// </summary>
+        /// <param name="x">The mouse X position.</param>
+        /// <param name="y">The mouse Y position.</param>
         public void GetMousePositionInView(out float x, out float y)
         {
             GetMouseState(out int mouseX, out int mouseY, out bool[] buttons);
