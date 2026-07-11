@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="SfmlTime.Zero" /> is not equal to the default value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Zero_IsNotEmpty()
         {
             Assert.Equal(default(SfmlTime), SfmlTime.Zero);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="SfmlTime.Zero" /> equals itself.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_ReturnsTrueForSameValues()
         {
             SfmlTime t1 = SfmlTime.Zero;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="SfmlTime.GetHashCode" /> returns consistent values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void GetHashCode_ReturnsConsistentValue()
         {
             SfmlTime t1 = SfmlTime.Zero;
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the less-than operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorLessThan_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the greater-than operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorGreaterThan_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the addition operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorAddition_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the subtraction operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorSubtraction_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the multiplication operator with a scalar.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorMultiply_Scalar_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the multiplication operator with a long.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorMultiply_Long_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the multiplication operator with a scalar on the left.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorMultiply_LeftScalar_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the multiplication operator with a long on the left.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorMultiply_LeftLong_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the division operator between two time values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorDivision_Time_Works()
         {
             SfmlTime t1 = SfmlTime.FromSeconds(10.0f);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the division operator with a scalar.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorDivision_Scalar_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the division operator with a long.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorDivision_Long_Works()
         {
             SfmlTime zero = SfmlTime.Zero;
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests the modulo operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void OperatorModulo_Works()
         {
             SfmlTime t1 = SfmlTime.FromSeconds(10.0f);
