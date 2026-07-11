@@ -37,29 +37,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
     /// <summary>
     ///     Tests the <see cref="Clock"/> class.
     /// </summary>
-    public class ClockTest : IDisposable
+    public class ClockTest
     {
-        /// <summary>
-        ///     The clock instance.
-        /// </summary>
-        private Clock _clock;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ClockTest"/> class.
-        /// </summary>
-        public ClockTest()
-        {
-            _clock = new Clock();
-        }
-
-        /// <summary>
-        ///     Disposes this instance.
-        /// </summary>
-        public void Dispose()
-        {
-            _clock?.Destroy(true);
-        }
-
         /// <summary>
         ///     Tests that the Clock constructor creates a valid instance.
         /// </summary>

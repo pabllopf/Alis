@@ -42,6 +42,7 @@ namespace Alis.Core.Aspect.Logging.Test
     ///     Validates backward compatibility methods, default logger initialization,
     ///     custom logger injection, and exception logging behavior.
     /// </summary>
+    [Collection("LoggerStaticCollection")]
     public class LoggerTest
     {
         /// <summary>

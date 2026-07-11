@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -40,65 +38,16 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
     /// <summary>
     ///     Unit tests for the <see cref="CircleShape"/> class.
     /// </summary>
-    public class CircleShapeTest : IDisposable
+    public class CircleShapeTest
     {
-        /// <summary>
-        ///     The circle shape instance.
-        /// </summary>
-        private CircleShape? _circle;
-
-        /// <summary>
-        ///     Static constructor that pre-loads SFML native libraries using absolute paths.
-        /// </summary>
-        static CircleShapeTest()
-        {
-            string assemblyDir = Path.GetDirectoryName(typeof(CircleShapeTest).Assembly.Location) ?? string.Empty;
-            string libDir = Path.Combine(assemblyDir, "lib");
-
-            if (Directory.Exists(libDir))
-            {
-                foreach (string libFile in Directory.GetFiles(libDir, "libcsfml-*.dylib"))
-                {
-                    string name = Path.GetFileNameWithoutExtension(Path.GetFileName(libFile));
-                    // Strip "lib" prefix for NativeLibrary.Load
-                    if (name.StartsWith("lib", StringComparison.Ordinal))
-                        name = name[3..];
-                    NativeLibrary.Load(Path.Combine(libDir, Path.GetFileName(libFile)));
-                }
-
-                foreach (string libFile in Directory.GetFiles(libDir, "sfml-*.dylib"))
-                {
-                    NativeLibrary.Load(Path.Combine(libDir, Path.GetFileName(libFile)));
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="CircleShapeTest"/> class
-        ///     with default circle (radius=0, pointCount=30).
-        /// </summary>
-        public CircleShapeTest()
-        {
-            _circle = new CircleShape();
-        }
-
-        /// <summary>
-        ///     Disposes the circle shape instance.
-        /// </summary>
-        public void Dispose()
-        {
-            _circle?.Destroy(true);
-            _circle = null;
-        }
-
         /// <summary>
         ///     Tests that the default constructor creates a valid instance.
         /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_ShouldCreateValidInstance()
         {
-            // Act & Assert - no exception thrown
-            Assert.NotNull(_circle);
+            using CircleShape circle = new CircleShape();
+            Assert.NotNull(circle);
         }
 
         /// <summary>
@@ -107,10 +56,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_DefaultPointCount_ShouldBe30()
         {
-            // Act
-            uint pointCount = _circle!.GetPointCount();
-
-            // Assert
+            using CircleShape circle = new CircleShape();
+            uint pointCount = circle.GetPointCount();
             Assert.Equal(30u, pointCount);
         }
 
@@ -120,10 +67,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_DefaultRadius_ShouldBe0()
         {
-            // Act
-            float radius = _circle!.Radius;
-
-            // Assert
+            using CircleShape circle = new CircleShape();
+            float radius = circle.Radius;
             Assert.Equal(0f, radius);
         }
 
@@ -240,11 +185,17 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void SetPointCount_NewValue_ShouldUpdateCount()
         {
+            // Arrange
+            CircleShape circle = new CircleShape();
+
             // Act
-            _circle!.SetPointCount(60u);
+            circle.SetPointCount(60u);
 
             // Assert
-            Assert.Equal(60u, _circle.GetPointCount());
+            Assert.Equal(60u, circle.GetPointCount());
+
+            // Cleanup
+            circle.Destroy(true);
         }
 
         /// <summary>
@@ -253,11 +204,17 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void SetPointCount_SmallerValue_ShouldUpdateCount()
         {
+            // Arrange
+            CircleShape circle = new CircleShape();
+
             // Act
-            _circle!.SetPointCount(15u);
+            circle.SetPointCount(15u);
 
             // Assert
-            Assert.Equal(15u, _circle.GetPointCount());
+            Assert.Equal(15u, circle.GetPointCount());
+
+            // Cleanup
+            circle.Destroy(true);
         }
 
         /// <summary>
@@ -385,11 +342,17 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Radius_SetNewValue_ShouldUpdateRadius()
         {
+            // Arrange
+            CircleShape circle = new CircleShape();
+
             // Act
-            _circle!.Radius = 75f;
+            circle.Radius = 75f;
 
             // Assert
-            Assert.Equal(75f, _circle.Radius);
+            Assert.Equal(75f, circle.Radius);
+
+            // Cleanup
+            circle.Destroy(true);
         }
 
         /// <summary>
@@ -399,13 +362,17 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Radius_Getter_ShouldReturnCurrentRadius()
         {
             // Arrange
-            _circle!.Radius = 42f;
+            CircleShape circle = new CircleShape();
+            circle.Radius = 42f;
 
             // Act
-            float radius = _circle.Radius;
+            float radius = circle.Radius;
 
             // Assert
             Assert.Equal(42f, radius);
+
+            // Cleanup
+            circle.Destroy(true);
         }
 
         /// <summary>

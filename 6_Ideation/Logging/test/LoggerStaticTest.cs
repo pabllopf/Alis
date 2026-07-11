@@ -39,6 +39,7 @@ namespace Alis.Core.Aspect.Logging.Test
     ///     Comprehensive unit tests for the static Logger class (backward compatibility).
     ///     Validates legacy API functionality and default logger behavior.
     /// </summary>
+    [Collection("LoggerStaticCollection")]
     public class LoggerStaticTest
     {
         /// <summary>
