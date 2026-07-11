@@ -74,8 +74,18 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         public static extern void objc_msgSend_stret(out NsRect ret, IntPtr receiver, IntPtr selector);
 
 
+        /// <summary>
+        ///     Gets the frame rectangle of an NSView.
+        /// </summary>
+        /// <param name="view">The NSView pointer.</param>
+        /// <returns>The frame rectangle.</returns>
         public static NsRect NSViewGetFrame(IntPtr view) => objc_msgSend_NSRect(view, Sel("frame"));
 
+        /// <summary>
+        ///     Gets the frame rectangle of an NSWindow in screen coordinates.
+        /// </summary>
+        /// <param name="nsWindow">The NSWindow pointer.</param>
+        /// <returns>The frame rectangle.</returns>
         public static NsRect GetWindowFrame(IntPtr nsWindow)
         {
 #if osxarm64 || osxarm
