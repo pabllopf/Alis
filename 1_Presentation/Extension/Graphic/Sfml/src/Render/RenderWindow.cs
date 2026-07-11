@@ -700,6 +700,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public override void Destroy(bool disposing)
         {
             sfRenderWindow_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

@@ -249,6 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
         public override void Destroy(bool disposing)
         {
+            CPointer = IntPtr.Zero;
         }
     }
 }

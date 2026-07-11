@@ -29,6 +29,8 @@
 
 using Xunit;
 
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+
 namespace Alis.Core.Aspect.Logging.Test
 {
     /// <summary>

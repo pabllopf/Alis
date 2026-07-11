@@ -468,6 +468,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         public override void Destroy(bool disposing)
         {
             sfWindow_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
         ////////////////////////////////////////////////////////////

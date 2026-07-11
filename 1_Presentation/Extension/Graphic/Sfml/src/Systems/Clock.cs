@@ -61,6 +61,7 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         public override void Destroy(bool disposing)
         {
             sfClock_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

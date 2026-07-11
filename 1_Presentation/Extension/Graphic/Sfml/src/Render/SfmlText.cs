@@ -325,6 +325,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public override void Destroy(bool disposing)
         {
             sfText_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

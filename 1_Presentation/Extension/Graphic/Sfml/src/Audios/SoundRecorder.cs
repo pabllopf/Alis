@@ -244,6 +244,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         {
             sfSoundRecorder_destroy(CPointer);
             _pinnedCallbacks.Clear();
+            CPointer = IntPtr.Zero;
         }
 
 

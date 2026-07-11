@@ -289,6 +289,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         public override void Destroy(bool disposing)
         {
             sfSound_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

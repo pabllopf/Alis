@@ -344,6 +344,8 @@ namespace Alis.Extension.Graphic.Sfml.Audios
             {
                 _pinnedObjects.Clear();
             }
+
+            CPointer = IntPtr.Zero;
         }
 
 

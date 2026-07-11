@@ -193,6 +193,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public override void Destroy(bool disposing)
         {
             sfSprite_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

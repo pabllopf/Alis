@@ -269,6 +269,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         public override void Destroy(bool disposing)
         {
             sfVertexBuffer_destroy(CPointer);
+            CPointer = IntPtr.Zero;
         }
 
 

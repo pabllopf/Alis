@@ -217,6 +217,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
             {
                 _pinnedObjects.Clear();
             }
+
+            CPointer = IntPtr.Zero;
         }
 
 

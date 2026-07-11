@@ -207,6 +207,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
             {
                 sfView_destroy(CPointer);
             }
+
+            CPointer = IntPtr.Zero;
         }
 
 

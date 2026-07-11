@@ -720,6 +720,8 @@ namespace Alis.Extension.Graphic.Sfml.Render
             {
                 Context.Global.SetActive(false);
             }
+
+            CPointer = IntPtr.Zero;
         }
 
 

@@ -236,6 +236,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         {
             sfShape_destroy(CPointer);
             _pinnedCallbacks.Clear();
+            CPointer = IntPtr.Zero;
         }
 
 
