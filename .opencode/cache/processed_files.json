@@ -58,5 +58,25 @@
     "xml_updated": 0,
     "comments_removed": 0,
     "commit_message": ""
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/SystemWithTwoComponentsMultipleComposition/Arch.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T14:35:32Z",
+    "last_processed_at": "2026-07-11T14:35:32Z",
+    "modified": true,
+    "xml_added": 4,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": "docs: Arch.cs add XML documentation for Padding record structs"
+  },
+  "1_Presentation/Benchmark/src/EntityComponentSystem/SystemWithTwoComponentsMultipleComposition/DefaultEcs.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-11T14:35:49Z",
+    "last_processed_at": "2026-07-11T14:35:49Z",
+    "modified": true,
+    "xml_added": 4,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit_message": "docs: DefaultEcs.cs add XML documentation for Padding record structs"
   }
 }

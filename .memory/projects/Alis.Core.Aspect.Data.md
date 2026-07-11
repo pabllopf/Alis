@@ -2,69 +2,54 @@
 title: Alis.Core.Aspect.Data
 tags:
   - project
-  - documentation
-  - reference
-
+  - data
+  - serialization
+  - json
+  - layer-6
 status: Draft
-
 license: GPLv3
-
 ---
 
-
-**Status**: ✅ Documented  
-**Type**: Library / Aspect  
-**Layer**: 6_Ideation  
-**Target Frameworks**: 15+ (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
+# Alis.Core.Aspect.Data
 
 ## Overview
 
-JSON serialization/deserialization library for AOT environments. Provides reflection-free JSON handling through interface-based contracts.
+Data serialization and deserialization library (Layer 6 - Ideation). Provides JSON serialization/deserialization capabilities.
 
-## Key Features
+## Properties
 
-- ✅ AOT-compatible (no System.Reflection.Emit)
-- ✅ Multi-targeted to 15+ frameworks
-- ✅ Pure .NET, no NuGet dependencies
-- ✅ Thread-safe lazy initialization
-- ✅ File I/O with automatic directory creation
-
-## Public API
-
-| Type | Purpose |
+| Property | Value |
 |---|---|
-| `JsonNativeAot` | Static facade for all JSON operations |
-| `IJsonSerializable` | Serialization contract |
-| `IJsonDesSerializable<T>` | Deserialization contract |
-| `JsonNativeIgnoreAttribute` | Exclude properties from serialization |
-| `JsonNativePropertyNameAttribute` | Custom property names |
+| **Layer** | 6 - Ideation |
+| **Project Path** | `6_Ideation/Data/src/` |
+| **Test Project** | `Alis.Core.Aspect.Data.Test` |
+| **Generator** | `Alis.Core.Aspect.Data.Generator` |
+| **Has Samples** | Yes (`Alis.Core.Aspect.Data.Sample`) |
 
-## Documentation
+## Dependencies
 
-- [[Domain/Data/Overview]] - Complete overview
-- [[Domain/Data/Serialization/Serialization-Contract]] - Serialization API
-- [[Domain/Data/Deserialization/Deserialization-Contract]] - Deserialization API
-- [[Domain/Data/Parsing/Parsing-Contract]] - Low-level parsing
-- [[Domain/Data/File-Operations/File-Operations]] - File I/O
-- [[Domain/Data/JsonNativeAot-Facade]] - Main facade
-- [[Domain/Data/Exceptions/Exceptions]] - Error handling
-- [[Domain/Data/Architecture]] - Architecture patterns
+- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
+- **Used By**: All upper layers
 
-## Tests
+## Architecture
 
-See: `6_Ideation/Data/test/Alis.Core.Aspect.Data.Test.csproj`
+- `src/Json/` - JSON serialization/deserialization logic
+- Has a paired source generator project
 
-## Related Projects
+## Source Structure
 
-- [[Alis.Core.Aspect.Memory]] - Memory persistence
-- [[Alis.Core.Aspect.Fluent]] - Fluent validation
-- [[Alis.Core.Aspect.Time]] - Time aspects
-- [[Alis.Core.Aspect.Logging]] - Logging
+```
+src/
+  Json/
+```
 
-## License
+## Testing
 
-GNU GPL v3.0
+- Test project: `Alis.Core.Aspect.Data.Test`
+- Located at `6_Ideation/Data/test/`
 
-## Author
+## Related
 
-Pablo Perdomo Falcón
+- [[Alis.Core.Aspect]]
+- [[Data Domain]]
+- [[Projects Index]]

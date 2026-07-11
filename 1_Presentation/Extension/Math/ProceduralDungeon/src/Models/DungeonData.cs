@@ -148,7 +148,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
 
             if (_board.GetLength(0) <= 0 || _board.GetLength(1) <= 0)
             {
-                throw new ArgumentException("Board dimensions must be greater than zero.", nameof(_board));
+                throw new InvalidOperationException("Board dimensions must be greater than zero.");
             }
 
             if (_rooms == null)

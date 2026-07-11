@@ -2,100 +2,54 @@
 title: Alis.Core.Aspect.Memory
 tags:
   - project
-  - documentation
-  - reference
-
+  - memory
+  - assets
+  - layer-6
 status: Draft
-
 license: GPLv3
-
 ---
 
-
-**Status**: ✅ Documented  
-**Type**: Asset Registry / ZIP Management  
-**Layer**: 6_Ideation  
-**Target Frameworks**: 15+ (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
+# Alis.Core.Aspect.Memory
 
 ## Overview
 
-Asset registry system for managing embedded asset packages (.pack/.zip) across assemblies. Provides thread-safe caching, resource resolution, and automatic extraction to temporary files.
-
-## Key Features
-
-- ✅ Thread-safe asset registration
-- ✅ Per-assembly cache management
-- ✅ O(1) resource lookup with dictionaries
-- ✅ Automatic file extraction with validation
-- ✅ SHA-256 unique file naming
-- ✅ Multi-assembly support
-
-## Public API
-
-| Type | Purpose |
-|---|---|
-| `AssetRegistry` | Static asset registry |
-
-## Internal Types
-
-| Type | Purpose |
-|---|---|
-| `ZipCacheEntry` | Archive cache with dictionaries |
-| `ZipEntryInfo` | Entry metadata |
+Memory and asset management library (Layer 6 - Ideation). Provides asset registry, ZIP entry caching, and memory management utilities.
 
 ## Properties
 
-- `ActiveAssemblyName` - Current active assembly (internal)
+| Property | Value |
+|---|---|
+| **Layer** | 6 - Ideation |
+| **Project Path** | `6_Ideation/Memory/src/` |
+| **Test Project** | `Alis.Core.Aspect.Memory.Test` |
+| **Generator** | `Alis.Core.Aspect.Memory.Generator` |
+| **Has Samples** | Yes (`Alis.Core.Aspect.Memory.Sample`) |
 
-## Methods
+## Dependencies
 
-- `RegisterAssembly(string, Func<Stream>)` - Register assembly
-- `GetResourceMemoryStreamByName(string)` - Get as MemoryStream
-- `GetResourcePathByName(string)` - Get file path
+- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
+- **Used By**: [[Alis.Core.Ecs]]
 
-## Documentation
+## Architecture
 
-- [[Domain/Memory/Overview]] - Complete overview
-- [[Domain/Memory/Asset-Registry-API]] - API reference
+- Flat file structure in `src/`
+- Key classes: `AssetRegistry`, `ZipCacheEntry`, `ZipEntryInfo`
 
-## File Structure
+## Source Structure
 
 ```
-6_Ideation/Memory/src/
-├── AssetRegistry.cs - Main implementation (619 lines)
-├── ZipCacheEntry.cs - Cache entry (63 lines)
-├── ZipEntryInfo.cs - Entry metadata (60 lines)
-└── .docs/
-    ├── architecture.md
-    ├── usage_examples.md
-    └── testing_strategy.md
+src/
+  (flat files)
 ```
 
-## Thread Safety
+## Testing
 
-**Thread-safe** - All public methods use proper locking.
+- Test project: `Alis.Core.Aspect.Memory.Test`
+- Located at `6_Ideation/Memory/test/`
 
-## Caching
+## Related
 
-- **Archive caching**: Per-assembly, lazy-loaded
-- **File caching**: Path validation with size/timestamp
-- **Dictionary lookups**: O(1) performance
-
-## Tests
-
-See: `6_Ideation/Memory/test/Alis.Core.Aspect.Memory.Test.csproj`
-
-## Related Projects
-
-- [[Alis.Core.Aspect.Data]] - JSON persistence
-- [[Alis.Core.Aspect.Time]] - Time measurement
-- [[Alis.Core.Aspect.Fluent]] - Fluent builder system
-- [[Alis.Core.Aspect.Logging]] - Debug logging
-
-## License
-
-GNU GPL v3.0
-
-## Author
-
-Pablo Perdomo Falcón
+- [[Alis.Core.Aspect]]
+- [[Alis.Core.Ecs]]
+- [[Memory Domain]]
+- [[Projects Index]]

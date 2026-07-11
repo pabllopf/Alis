@@ -2,86 +2,53 @@
 title: Alis.Core.Aspect.Fluent
 tags:
   - project
-  - documentation
-  - reference
-
+  - fluent
+  - builder
+  - layer-6
 status: Draft
-
 license: GPLv3
-
 ---
 
-
-**Status**: ✅ Documented  
-**Type**: Game Entity System / Fluent Builder  
-**Layer**: 6_Ideation  
-**Target Frameworks**: 15+ (netstandard2.0–2.1, netcoreapp2.0–3.1, net5.0–10.0, net461–481)
+# Alis.Core.Aspect.Fluent
 
 ## Overview
 
-Fluent game entity component system with AOT-compatible builder patterns. Provides O(1) component access and lifecycle hooks.
+Fluent API builder pattern library (Layer 6 - Ideation). Provides builder pattern abstractions for constructing objects using a fluent interface.
 
-## Key Features
+## Properties
 
-- ✅ AOT-compatible (no reflection)
-- ✅ Multi-targeted to 15+ frameworks
-- ✅ Fluent builder pattern
-- ✅ O(1) component access
-- ✅ 80+ builder "words"
-- ✅ 20+ lifecycle hooks
-
-## Public API
-
-| Type | Purpose |
+| Property | Value |
 |---|---|
-| `IComponentBase` | Marker interface for components |
-| `IGameObject` | Entity handle with component access |
-| `IAction<T>` | Fluent action delegates (1-8 args) |
-| `IBuild<T>` | Terminal build operation |
-| `IRun` | Execute builder pipeline |
-| `IOnAwake` - `IOnDestroy` | Lifecycle hooks |
-| `IWithName`, `IPosition2D`, etc. | Builder "words" |
+| **Layer** | 6 - Ideation |
+| **Project Path** | `6_Ideation/Fluent/src/` |
+| **Test Project** | `Alis.Core.Aspect.Fluent.Test` |
+| **Generator** | `Alis.Core.Aspect.Fluent.Generator` |
+| **Has Samples** | Yes (`Alis.Core.Aspect.Fluent.Sample`) |
 
-## Documentation
+## Dependencies
 
-- [[Domain/Fluent/Overview]] - Complete overview
-- [[Domain/Fluent/Components/Component-System]] - Component architecture
-- [[Domain/Fluent/Builders/Fluent-Builders]] - Builder pattern
-- [[Domain/Fluent/Words/Words-Index]] - All builder words
-- [[Domain/Fluent/Lifecycle/Lifecycle-Hooks]] - Lifecycle methods
+- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
 
-## File Structure
+## Architecture
+
+- `src/Components/` - Fluent component builders
+- `src/Words/` - Fluent API word definitions
+
+## Source Structure
 
 ```
-6_Ideation/Fluent/src/
-├── IBuild.cs
-├── IHasBuilder.cs
-├── Components/
-│   ├── IComponentBase.cs
-│   ├── IGameObject.cs
-│   ├── IAction.cs (partial, 1-8 args)
-│   └── Lifecycle hooks (20+ interfaces)
-└── Words/
-    ├── IRun.cs
-    ├── IWithName.cs
-    └── 80+ builder interfaces
+src/
+  Components/
+  Words/
 ```
 
-## Tests
+## Testing
 
-See: `6_Ideation/Fluent/test/Alis.Core.Aspect.Fluent.Test.csproj`
+- Test project: `Alis.Core.Aspect.Fluent.Test`
+- Located at `6_Ideation/Fluent/test/`
 
-## Related Projects
+## Related
 
-- [[Alis.Core.Aspect.Data]] - JSON persistence
-- [[Alis.Core.Aspect.Memory]] - Memory management
-- [[Alis.Core.Aspect.Time]] - Time system
-- [[Alis.Core.Aspect.Logging]] - Debug logging
-
-## License
-
-GNU GPL v3.0
-
-## Author
-
-Pablo Perdomo Falcón
+- [[Alis.Core.Aspect]]
+- [[Fluent Domain]]
+- [[Projects Index]]
