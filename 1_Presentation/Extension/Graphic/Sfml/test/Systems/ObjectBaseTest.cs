@@ -44,14 +44,14 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         private class TestObjectBase : ObjectBase
         {
             /// <summary>
-            ///     Gets a value indicating whether <see cref="Destroy" /> was called.
+            ///     Gets or sets a value indicating whether <see cref="Destroy" /> was called.
             /// </summary>
-            public bool DestroyCalled { get; private set; }
+            public bool DestroyCalled { get; set; }
 
             /// <summary>
-            ///     Gets the parameter passed to <see cref="Destroy" />.
+            ///     Gets or sets the parameter passed to <see cref="Destroy" />.
             /// </summary>
-            public bool DisposingParameter { get; private set; }
+            public bool DisposingParameter { get; set; }
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="TestObjectBase" /> class.
@@ -136,9 +136,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
             obj.Dispose();
-            // Use reflection to reset DestroyCalled
-            var field = typeof(TestObjectBase).GetField("<DestroyCalled>k__BackingField", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            field.SetValue(obj, false);
+            obj.DestroyCalled = false;
             obj.Dispose();
             Assert.False(obj.DestroyCalled);
         }

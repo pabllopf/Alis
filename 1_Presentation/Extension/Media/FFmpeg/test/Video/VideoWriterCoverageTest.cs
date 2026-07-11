@@ -1,0 +1,185 @@
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading;
+using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Video;
+using Xunit;
+
+namespace Alis.Extension.Media.FFmpeg.Test.Video
+{
+    public class VideoWriterCoverageTest : IDisposable
+    {
+        private readonly string _tempDir;
+        private readonly string _fakeFfmpegPath;
+        private bool _disposed;
+
+        public VideoWriterCoverageTest()
+        {
+            _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(_tempDir);
+
+            _fakeFfmpegPath = Path.Combine(_tempDir, "ffmpeg");
+            File.WriteAllText(_fakeFfmpegPath,
+                "#!/bin/bash\nwhile [ \"$1\" ]; do shift; done\nexec cat > /dev/null 2>/dev/null");
+            using Process chmod = Process.Start("chmod", $"+x \"{_fakeFfmpegPath}\"");
+            chmod.WaitForExit();
+        }
+
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                _disposed = true;
+                if (Directory.Exists(_tempDir))
+                {
+                    try { Directory.Delete(_tempDir, recursive: true); } catch { }
+                }
+            }
+        }
+
+        [Fact]
+        public void OpenWrite_FileMode_WithFakeFfmpeg_ShouldSetOpenedForWriting()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+
+            Exception ex = Record.Exception(() => writer.OpenWrite());
+
+            Assert.Null(ex);
+            Assert.True(writer.OpenedForWriting);
+            Assert.NotNull(writer.CurrentFFmpegProcess);
+            Assert.NotNull(writer.InputDataStream);
+
+            writer.CloseWrite();
+        }
+
+        [Fact]
+        public void OpenWrite_FileMode_WithExistingFile_ShouldDeleteFirst()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            File.WriteAllText(testFile, "dummy");
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+
+            writer.OpenWrite();
+            Assert.False(File.Exists(testFile));
+            writer.CloseWrite();
+        }
+
+        [Fact]
+        public void OpenWrite_FileMode_WithShowFFmpegOutput_ShouldWork()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+
+            Exception ex = Record.Exception(() => writer.OpenWrite(showFFmpegOutput: true));
+
+            Assert.Null(ex);
+            Assert.True(writer.OpenedForWriting);
+
+            writer.CloseWrite();
+        }
+
+        [Fact]
+        public void OpenWrite_AlreadyOpened_ShouldThrow()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+
+            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
+                BindingFlags.Public | BindingFlags.Instance);
+            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
+
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => writer.OpenWrite());
+            Assert.Contains("already opened", ex.Message);
+
+            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { false });
+        }
+
+        [Fact]
+        public void CloseWrite_WithFakeFfmpeg_ShouldResetFlag()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+            writer.OpenWrite();
+
+            writer.CloseWrite();
+            Assert.False(writer.OpenedForWriting);
+        }
+
+        [Fact]
+        public void CloseWrite_StreamMode_ShouldDisposeOutputStream()
+        {
+            using MemoryStream dest = new MemoryStream();
+            using VideoWriter writer = new VideoWriter(dest, 640, 480, 30, null, _fakeFfmpegPath);
+            writer.OpenWrite();
+            Stream outputStream = writer.OutputDataStream;
+            Assert.NotNull(outputStream);
+
+            writer.CloseWrite();
+
+            Assert.False(writer.OpenedForWriting);
+            Assert.Throws<ObjectDisposedException>(() => outputStream.ReadByte());
+        }
+
+        [Fact]
+        public void Dispose_WhenOpened_ShouldCallCloseWrite()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
+            writer.OpenWrite();
+
+            writer.Dispose();
+            Assert.False(writer.OpenedForWriting);
+        }
+
+        [Fact]
+        public void Dispose_ShouldDisposeDestinationStream()
+        {
+            MemoryStream dest = new MemoryStream();
+            VideoWriter writer = new VideoWriter(dest, 640, 480, 30, null, _fakeFfmpegPath);
+
+            writer.Dispose();
+
+            Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
+        }
+
+        [Fact]
+        public void CloseWrite_WhenFfmpegpIsNull_ShouldThrow()
+        {
+            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
+
+            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
+                BindingFlags.Public | BindingFlags.Instance);
+            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
+
+            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
+                BindingFlags.Public | BindingFlags.Instance);
+            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
+
+            NullReferenceException ex = Assert.Throws<NullReferenceException>(() => writer.CloseWrite());
+            Assert.False(writer.OpenedForWriting);
+            writer.Dispose();
+        }
+
+        [Fact]
+        public void OpenWrite_WithCustomEncoderOptions_ShouldBuildCorrectCommand()
+        {
+            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
+            EncoderOptions options = new EncoderOptions
+            {
+                Format = "matroska",
+                EncoderName = "libx265",
+                EncoderArguments = "-preset fast -crf 23"
+            };
+            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, options, _fakeFfmpegPath);
+
+            Exception ex = Record.Exception(() => writer.OpenWrite());
+
+            Assert.Null(ex);
+            Assert.True(writer.OpenedForWriting);
+            writer.CloseWrite();
+        }
+    }
+}

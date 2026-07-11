@@ -163,7 +163,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the PowerShell script for opening a file.
         /// </summary>
-        private static string BuildOpenFileScript(FilePickerOptions options)
+        internal static string BuildOpenFileScript(FilePickerOptions options)
         {
             Logger.Trace("Building OpenFile PowerShell script.");
 
@@ -197,7 +197,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the PowerShell script for selecting a folder.
         /// </summary>
-        private static string BuildFolderSelectScript(FilePickerOptions options)
+        internal static string BuildFolderSelectScript(FilePickerOptions options)
         {
             Logger.Trace("Building FolderSelect PowerShell script.");
 
@@ -218,7 +218,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Builds the filter string for Windows file dialogs.
         /// </summary>
-        private static string BuildFilterString(List<FilePickerFilter> filters)
+        internal static string BuildFilterString(List<FilePickerFilter> filters)
         {
             Logger.Trace($"Building filter string for {filters?.Count ?? 0} filter(s).");
 
@@ -237,7 +237,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Executes a PowerShell script and returns the output.
         /// </summary>
-        private static string ExecuteScript(string script)
+        internal static string ExecuteScript(string script)
         {
             Logger.Trace("Executing PowerShell script.");
 
@@ -255,7 +255,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Parses the dialog result.
         /// </summary>
-        private static FilePickerResult ParseResult(string output, bool allowMultiple)
+        internal static FilePickerResult ParseResult(string output, bool allowMultiple)
         {
             Logger.Trace($"Parsing result from dialog output: {output ?? "(null)"}");
 
@@ -292,7 +292,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
         /// <summary>
         ///     Escapes special characters in PowerShell strings.
         /// </summary>
-        private static string EscapeScriptString(string input)
+        internal static string EscapeScriptString(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

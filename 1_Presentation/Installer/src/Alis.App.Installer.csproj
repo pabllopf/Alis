@@ -10,6 +10,12 @@
         <SonarQubeExclude>true</SonarQubeExclude>
     </PropertyGroup>
 
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>Alis.App.Installer.Test</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
      <PropertyGroup>
         <DefineConstants Condition="'$(RuntimeIdentifier)' != ''">$(DefineConstants);$([System.String]::Copy('$(RuntimeIdentifier)').Replace('-',''));</DefineConstants>
 

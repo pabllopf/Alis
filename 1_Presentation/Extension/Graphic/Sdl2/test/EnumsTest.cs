@@ -294,9 +294,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
                 Assert.Equal(-1, (int)GameControllerAxis.SdlControllerAxisInvalid);
                 Assert.Equal(0, (int)GameControllerAxis.SdlControllerAxisLeftX);
                 Assert.Equal(1, (int)GameControllerAxis.SdlControllerAxisLeftY);
-                Assert.Equal(5, (int)GameControllerAxis.SdlControllerAxisTriggerLeft);
-                Assert.Equal(6, (int)GameControllerAxis.SdlControllerAxisTriggerRight);
-                Assert.Equal(7, (int)GameControllerAxis.SdlControllerAxisMax);
+                Assert.Equal(4, (int)GameControllerAxis.SdlControllerAxisTriggerLeft);
+                Assert.Equal(5, (int)GameControllerAxis.SdlControllerAxisTriggerRight);
+                Assert.Equal(6, (int)GameControllerAxis.SdlControllerAxisMax);
             }
         }
 
@@ -862,7 +862,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
                 Assert.Equal(2, (int)SystemCursor.SdlSystemCursorWait);
                 Assert.Equal(10, (int)SystemCursor.SdlSystemCursorNo);
                 Assert.Equal(5, (int)SystemCursor.SdlSystemCursorSizeNwSe);
-                Assert.Equal(13, (int)SystemCursor.SdlNumSystemCursors);
+                Assert.Equal(12, (int)SystemCursor.SdlNumSystemCursors);
             }
         }
 

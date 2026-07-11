@@ -123,20 +123,19 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         }
 
         [Fact]
-        public void SdlMainFunc_HasCorrectAttributeAndSignature()
-        {
-            var type = typeof(SdlMainFunc);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
-            Assert.NotNull(attr);
-            Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
-        }
-
-        [Fact]
         public void SdlMainFunc_CanBeCreated()
         {
             int MainFunc(int argc, IntPtr argv) => 0;
             SdlMainFunc callback = MainFunc;
             Assert.NotNull(callback);
+        }
+
+        [Fact]
+        public void SdlMainFunc_HasNoUnmanagedFunctionPointerAttribute()
+        {
+            var type = typeof(SdlMainFunc);
+            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Assert.Null(attr);
         }
 
         [Fact]

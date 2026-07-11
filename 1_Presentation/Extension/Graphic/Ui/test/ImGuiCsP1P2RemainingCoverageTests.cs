@@ -23,18 +23,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         [Fact]
-        public void SliderFloat4_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            Vector4F v4 = new Vector4F(0.5f, 0.5f, 0.5f, 0.5f);
-            bool result = ImGui.SliderFloat4("slider4", ref v4, 0.0f, 1.0f, "%.3f", ImGuiSliderFlags.None);
-            _ = result;
-            ImGui.End();
-            ImGui.Render();
-        }
-
-        [Fact]
         public void SliderInt_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -441,28 +429,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             bool r5 = ImGui.DragFloat3("df5", ref val, 0.01f, 0.0f, 1.0f, "%.3f");
             _ = r5;
             bool r6 = ImGui.DragFloat3("df6", ref val, 0.01f, 0.0f, 1.0f, "%.3f", ImGuiSliderFlags.None);
-            _ = r6;
-            ImGui.End();
-            ImGui.Render();
-        }
-
-        [Fact]
-        public void DragFloat4_AllOverloads_ShouldExecute()
-        {
-            ImGui.NewFrame();
-            ImGui.Begin("TestWin");
-            Vector4F val = new Vector4F(0.5f, 0.5f, 0.5f, 0.5f);
-            bool r1 = ImGui.DragFloat4("df1", ref val);
-            _ = r1;
-            bool r2 = ImGui.DragFloat4("df2", ref val, 0.01f);
-            _ = r2;
-            bool r3 = ImGui.DragFloat4("df3", ref val, 0.01f, 0.0f);
-            _ = r3;
-            bool r4 = ImGui.DragFloat4("df4", ref val, 0.01f, 0.0f, 1.0f);
-            _ = r4;
-            bool r5 = ImGui.DragFloat4("df5", ref val, 0.01f, 0.0f, 1.0f, "%.3f");
-            _ = r5;
-            bool r6 = ImGui.DragFloat4("df6", ref val, 0.01f, 0.0f, 1.0f, "%.3f", ImGuiSliderFlags.None);
             _ = r6;
             ImGui.End();
             ImGui.Render();

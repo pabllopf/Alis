@@ -124,11 +124,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         [Fact]
-        public void PlayInBackground_WithRunPureBackground_ReturnsProcess()
+        public void PlayInBackground_WithRunPureBackground_DoesNotAssignFfplayp()
         {
             VideoPlayer player = new VideoPlayer("test.mp4", _fakeFfplayPath);
             Process process = player.PlayInBackground(runPureBackground: true);
-            Assert.NotNull(process);
+
+            FieldInfo ffplaypField = typeof(VideoPlayer).GetField("ffplayp",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            Assert.Null(ffplaypField.GetValue(player));
+
             player.Dispose();
         }
 

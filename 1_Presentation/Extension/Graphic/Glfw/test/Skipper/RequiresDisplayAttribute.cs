@@ -134,7 +134,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Skipper
                         if (process != null)
                         {
                             process.WaitForExit();
-                            return false; // 0 significa que WindowServer está corriendo
+                            return process.ExitCode == 0;
                         }
                     }
                     catch

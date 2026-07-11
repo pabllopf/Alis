@@ -43,6 +43,13 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         [Fact]
+        public void ImplicitConversion_ToIntPtr_Works()
+        {
+            IntPtr ptr = NSOpenGLContext.None;
+            Assert.Equal(IntPtr.Zero, ptr);
+        }
+
+        [Fact]
         public void ToString_ReturnsHandleString()
         {
             NSOpenGLContext context = NSOpenGLContext.None;

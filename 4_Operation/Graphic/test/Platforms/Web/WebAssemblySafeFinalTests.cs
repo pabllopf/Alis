@@ -108,9 +108,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [Fact] public void GetPlatform_Invalid_Throws() => Assert.Throws<PlatformNotSupportedException>(() => WebAssemblyPlatformIntegration.GetPlatform("Invalid"));
         [Fact] public void RegisterPlatform_Works() { WebAssemblyPlatformIntegration.RegisterPlatform("Custom", typeof(WebAssemblyPlatform)); Assert.NotNull(WebAssemblyPlatformIntegration.GetPlatform("Custom")); }
         [Fact] public void CreateOptimizedPlatform_Default_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default));
-        [Fact] public void CreateOptimizedPlatform_Game2D_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
-        [Fact] public void CreateOptimizedPlatform_HighEnd_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
-        [Fact] public void CreateOptimizedPlatform_Mobile_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
+        [Fact] public void CreateOptimizedPlatform_Game2D_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
+        [Fact] public void CreateOptimizedPlatform_HighEnd_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
+        [Fact] public void CreateOptimizedPlatform_Mobile_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
 
         [Fact]
         public void OptimizationProfile_AllDefined()

@@ -1,45 +1,21 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:FilePickerFactoryCoverageTest.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
 using System;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Io.FileDialog.Test
 {
-    /// <summary>
-    /// The file picker factory coverage test class
-    /// </summary>
-    public class FilePickerFactoryCoverageTest
+    public class FilePickerFactoryCoverageTest : IDisposable
     {
-        /// <summary>
-        /// Tests that create file picker with options with open file dialog type should return valid instance
-        /// </summary>
+        public FilePickerFactoryCoverageTest()
+        {
+            PlatformHelper.IsOSPlatform = RuntimeInformation.IsOSPlatform;
+        }
+
+        public void Dispose()
+        {
+            PlatformHelper.IsOSPlatform = RuntimeInformation.IsOSPlatform;
+        }
+
         [Fact]
         public void CreateFilePickerWithOptions_WithOpenFileDialogType_ShouldReturnValidInstance()
         {
@@ -51,9 +27,6 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
-        /// <summary>
-        /// Tests that create file picker with options with save file dialog type should return valid instance
-        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSaveFileDialogType_ShouldReturnValidInstance()
         {
@@ -65,9 +38,6 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
-        /// <summary>
-        /// Tests that create file picker with options with select folder dialog type should return valid instance
-        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithSelectFolderDialogType_ShouldReturnValidInstance()
         {
@@ -79,9 +49,6 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
-        /// <summary>
-        /// Tests that create file picker with options with allow multiple should return valid instance
-        /// </summary>
         [Fact]
         public void CreateFilePickerWithOptions_WithAllowMultiple_ShouldReturnValidInstance()
         {
@@ -96,37 +63,114 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.IsAssignableFrom<IFilePicker>(picker);
         }
 
-        /// <summary>
-        /// Tests that get platform name should be current platform
-        /// </summary>
         [Fact]
-        public void GetPlatformName_ShouldBeCurrentPlatform()
+        public void CreateFilePicker_BehavesAsWindows_OnMockedWindows()
         {
-            string platformName = FilePickerFactory.GetPlatformName();
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Windows;
 
-            Assert.NotNull(platformName);
-        }
-
-        /// <summary>
-        /// Tests that is platform supported should return boolean
-        /// </summary>
-        [Fact]
-        public void IsPlatformSupported_ShouldReturnBoolean()
-        {
-            bool result = FilePickerFactory.IsPlatformSupported();
-
-            Assert.IsType<bool>(result);
-        }
-
-        /// <summary>
-        /// Tests that create file picker should return mac file picker on mac
-        /// </summary>
-        [Fact]
-        public void CreateFilePicker_ShouldReturnMacFilePicker_OnMac()
-        {
             IFilePicker picker = FilePickerFactory.CreateFilePicker();
 
-            Assert.NotNull(picker);
+            Assert.IsType<WindowsFilePicker>(picker);
+        }
+
+        [Fact]
+        public void CreateFilePicker_BehavesAsMac_OnMockedMac()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.OSX;
+
+            IFilePicker picker = FilePickerFactory.CreateFilePicker();
+
+            Assert.IsType<MacFilePicker>(picker);
+        }
+
+        [Fact]
+        public void CreateFilePicker_BehavesAsLinux_OnMockedLinux()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Linux;
+
+            IFilePicker picker = FilePickerFactory.CreateFilePicker();
+
+            Assert.IsType<LinuxFilePicker>(picker);
+        }
+
+        [Fact]
+        public void CreateFilePicker_OnUnsupportedPlatform_ThrowsNotSupportedException()
+        {
+            PlatformHelper.IsOSPlatform = p => false;
+
+            Assert.Throws<NotSupportedException>(() => FilePickerFactory.CreateFilePicker());
+        }
+
+        [Fact]
+        public void GetPlatformName_ReturnsWindows_OnMockedWindows()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Windows;
+
+            string name = FilePickerFactory.GetPlatformName();
+
+            Assert.Equal("Windows", name);
+        }
+
+        [Fact]
+        public void GetPlatformName_ReturnsMacOS_OnMockedMac()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.OSX;
+
+            string name = FilePickerFactory.GetPlatformName();
+
+            Assert.Equal("macOS", name);
+        }
+
+        [Fact]
+        public void GetPlatformName_ReturnsLinux_OnMockedLinux()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Linux;
+
+            string name = FilePickerFactory.GetPlatformName();
+
+            Assert.Equal("Linux", name);
+        }
+
+        [Fact]
+        public void GetPlatformName_ReturnsUnknown_OnUnsupportedPlatform()
+        {
+            PlatformHelper.IsOSPlatform = p => false;
+
+            string name = FilePickerFactory.GetPlatformName();
+
+            Assert.Equal("Unknown", name);
+        }
+
+        [Fact]
+        public void IsPlatformSupported_ReturnsTrue_OnMockedWindows()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Windows;
+
+            Assert.True(FilePickerFactory.IsPlatformSupported());
+        }
+
+        [Fact]
+        public void IsPlatformSupported_ReturnsTrue_OnMockedMac()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.OSX;
+
+            Assert.True(FilePickerFactory.IsPlatformSupported());
+        }
+
+        [Fact]
+        public void IsPlatformSupported_ReturnsTrue_OnMockedLinux()
+        {
+            PlatformHelper.IsOSPlatform = p => p == OSPlatform.Linux;
+
+            Assert.True(FilePickerFactory.IsPlatformSupported());
+        }
+
+        [Fact]
+        public void IsPlatformSupported_ReturnsFalse_OnUnsupportedPlatform()
+        {
+            PlatformHelper.IsOSPlatform = p => false;
+
+            Assert.False(FilePickerFactory.IsPlatformSupported());
         }
     }
 }

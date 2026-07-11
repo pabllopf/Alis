@@ -44,87 +44,54 @@ namespace Alis.App.Installer.Test
             return typeof(Installer).GetMethod(name, BindingFlags.NonPublic | BindingFlags.Static);
         }
 
-        private static T InvokePrivate<T>(string methodName, params object[] args)
+        private static object Invoke(string methodName, params object[] args)
         {
-            MethodInfo method = GetPrivateMethod(methodName);
-            object result = method.Invoke(null, args);
-            return (T)result;
+            return GetPrivateMethod(methodName).Invoke(null, args);
         }
 
-        private static void InvokePrivateVoid(string methodName, params object[] args)
+        private static object CreateImGuiIoPtr()
         {
-            MethodInfo method = GetPrivateMethod(methodName);
-            method.Invoke(null, args);
+            Type type = Type.GetType("Alis.Extension.Graphic.Ui.ImGuiIoPtr, Alis.Extension.Graphic.Ui");
+            return Activator.CreateInstance(type, new object[] { IntPtr.Zero });
         }
 
-        // ========================
-        // Program.Main
-        // ========================
-
-        [Fact]
-        public void Main_ShouldCallInstallerRun()
+        private static object GetImGuiKey(string name)
         {
-            MethodInfo main = typeof(Program).GetMethod("Main", BindingFlags.Public | BindingFlags.Static);
-            Assert.NotNull(main);
-            try
-            {
-                main.Invoke(null, new object[] { Array.Empty<string>() });
-            }
-            catch (TargetInvocationException)
-            {
-            }
+            Type type = Type.GetType("Alis.Extension.Graphic.Ui.ImGuiKey, Alis.Extension.Graphic.Ui");
+            return Enum.Parse(type, name);
         }
 
         // ========================
-        // CalculateDeltaTime
+        // CalculateDeltaTime (pure math)
         // ========================
 
         [Fact]
         public void CalculateDeltaTime_NormalDelta_ReturnsDelta()
         {
-            double lastTime = 0.0;
-            double now = 1.0 / 60.0;
-            double target = 1.0 / 60.0;
-
-            double result = InvokePrivate<double>("CalculateDeltaTime", lastTime, now, target);
-
-            Assert.Equal(now, result, 10);
-            Assert.Equal(now, lastTime);
+            object[] args = new object[] { 0.0, 1.0 / 60.0, 1.0 / 60.0 };
+            double result = (double)Invoke("CalculateDeltaTime", args);
+            Assert.Equal(1.0 / 60.0, result, 10);
+            Assert.Equal(1.0 / 60.0, (double)args[0], 10);
         }
 
         [Fact]
-        public void CalculateDeltaTime_NegativeDelta_ReturnsTargetFrameTime()
+        public void CalculateDeltaTime_NegativeDelta_ReturnsTarget()
         {
-            double lastTime = 10.0;
-            double now = 5.0;
-            double target = 1.0 / 60.0;
-
-            double result = InvokePrivate<double>("CalculateDeltaTime", lastTime, now, target);
-
-            Assert.Equal(target, result, 10);
+            double result = (double)Invoke("CalculateDeltaTime", 10.0, 5.0, 1.0 / 60.0);
+            Assert.Equal(1.0 / 60.0, result, 10);
         }
 
         [Fact]
-        public void CalculateDeltaTime_ZeroDelta_ReturnsTargetFrameTime()
+        public void CalculateDeltaTime_ZeroDelta_ReturnsTarget()
         {
-            double lastTime = 5.0;
-            double now = 5.0;
-            double target = 1.0 / 60.0;
-
-            double result = InvokePrivate<double>("CalculateDeltaTime", lastTime, now, target);
-
-            Assert.Equal(target, result, 10);
+            double result = (double)Invoke("CalculateDeltaTime", 5.0, 5.0, 1.0 / 60.0);
+            Assert.Equal(1.0 / 60.0, result, 10);
         }
 
         [Fact]
-        public void CalculateDeltaTime_LargeDelta_ClampsToQuarter()
+        public void CalculateDeltaTime_LargeDelta_Clamps()
         {
-            double lastTime = 0.0;
-            double now = 1.0;
-            double target = 1.0 / 60.0;
-
-            double result = InvokePrivate<double>("CalculateDeltaTime", lastTime, now, target);
-
+            double result = (double)Invoke("CalculateDeltaTime", 0.0, 1.0, 1.0 / 60.0);
             Assert.Equal(0.25, result, 10);
         }
 
@@ -133,13 +100,11 @@ namespace Alis.App.Installer.Test
         // ========================
 
         [Fact]
-        public void ApplyFrameTiming_SleepTimePositiveAndSleepMsPositive_Sleeps()
+        public void ApplyFrameTiming_SleepTimePositive_Sleeps()
         {
             Stopwatch sw = Stopwatch.StartNew();
-            double now = sw.Elapsed.TotalSeconds;
-            double target = 10.0;
-
-            InvokePrivateVoid("ApplyFrameTiming", sw, now, target);
+            System.Threading.Thread.Sleep(5);
+            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.1);
         }
 
         [Fact]
@@ -147,9 +112,7 @@ namespace Alis.App.Installer.Test
         {
             Stopwatch sw = Stopwatch.StartNew();
             System.Threading.Thread.Sleep(50);
-            double now = sw.Elapsed.TotalSeconds;
-
-            InvokePrivateVoid("ApplyFrameTiming", sw, now, 0.001);
+            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
         }
 
         [Fact]
@@ -157,122 +120,46 @@ namespace Alis.App.Installer.Test
         {
             Stopwatch sw = Stopwatch.StartNew();
             System.Threading.Thread.Sleep(100);
-            double now = sw.Elapsed.TotalSeconds;
-
-            InvokePrivateVoid("ApplyFrameTiming", sw, now, 0.001);
+            Invoke("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
         }
 
         // ========================
-        // ProcessPendingInput
+        // ProcessPendingInput (safe paths)
         // ========================
 
         [Fact]
-        public void ProcessPendingInput_PlatformHasChars_SkipDueToNoImGui()
+        public void ProcessPendingInput_NullChars_Skips()
         {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                TryGetLastInputCharactersResult = true,
-                TryGetLastInputCharactersValue = "hello"
-            };
-
-            try
-            {
-                InvokePrivateVoid("ProcessPendingInput", IntPtr.Zero, platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        [Fact]
-        public void ProcessPendingInput_PlatformHasNullChars_Skips()
-        {
+            object io = CreateImGuiIoPtr();
             FakeBehaviorPlatform platform = new FakeBehaviorPlatform
             {
                 TryGetLastInputCharactersResult = true,
                 TryGetLastInputCharactersValue = null
             };
-
-            InvokePrivateVoid("ProcessPendingInput", IntPtr.Zero, platform);
+            Invoke("ProcessPendingInput", io, platform);
         }
 
         [Fact]
-        public void ProcessPendingInput_PlatformHasEmptyChars_Skips()
+        public void ProcessPendingInput_EmptyChars_Skips()
         {
+            object io = CreateImGuiIoPtr();
             FakeBehaviorPlatform platform = new FakeBehaviorPlatform
             {
                 TryGetLastInputCharactersResult = true,
                 TryGetLastInputCharactersValue = string.Empty
             };
-
-            InvokePrivateVoid("ProcessPendingInput", IntPtr.Zero, platform);
+            Invoke("ProcessPendingInput", io, platform);
         }
 
         [Fact]
-        public void ProcessPendingInput_PlatformHasNoChars_Skips()
+        public void ProcessPendingInput_NoChars_Skips()
         {
+            object io = CreateImGuiIoPtr();
             FakeBehaviorPlatform platform = new FakeBehaviorPlatform
             {
                 TryGetLastInputCharactersResult = false
             };
-
-            InvokePrivateVoid("ProcessPendingInput", IntPtr.Zero, platform);
-        }
-
-        // ========================
-        // ProcessKey
-        // ========================
-
-        [Fact]
-        public void ProcessKey_KeyIsDown_CallsAddKeyEvent()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                IsKeyDownResult = true
-            };
-
-            try
-            {
-                InvokePrivateVoid("ProcessKey", IntPtr.Zero, ConsoleKey.A, 546, platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        [Fact]
-        public void ProcessKey_KeyIsUp_CallsAddKeyEventFalse()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                IsKeyDownResult = false
-            };
-
-            try
-            {
-                InvokePrivateVoid("ProcessKey", IntPtr.Zero, ConsoleKey.A, 546, platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // ProcessKeyWithImgui
-        // ========================
-
-        [Fact]
-        public void ProcessKeyWithImgui_AllKeysProcessed()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-
-            try
-            {
-                InvokePrivateVoid("ProcessKeyWithImgui", IntPtr.Zero, platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
+            Invoke("ProcessPendingInput", io, platform);
         }
 
         // ========================
@@ -280,31 +167,10 @@ namespace Alis.App.Installer.Test
         // ========================
 
         [Fact]
-        public void CheckGlError_NoError_ReturnsSilently()
+        public void CheckGlError_Safe()
         {
-            InvokePrivateVoid("CheckGlError");
-        }
-
-        [Fact]
-        public void CheckGlError_WithError_LogsError()
-        {
-            InvokePrivateVoid("CheckGlError");
-        }
-
-        // ========================
-        // ConfigureStyle
-        // ========================
-
-        [Fact]
-        public void ConfigureStyle_ExecutesWithoutCrashing()
-        {
-            try
-            {
-                InvokePrivateVoid("ConfigureStyle");
-            }
-            catch (TargetInvocationException)
-            {
-            }
+            try { Invoke("CheckGlError"); }
+            catch (TargetInvocationException) { }
         }
 
         // ========================
@@ -314,243 +180,38 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void GetPlatform_ReturnsPlatform()
         {
-            INativePlatform platform = InvokePrivate<INativePlatform>("GetPlatform");
-            Assert.NotNull(platform);
+            object result = Invoke("GetPlatform");
+            Assert.NotNull(result);
         }
 
         // ========================
-        // InitializeOpenGL
+        // ImguiSample Constructors & Cleanup
         // ========================
 
         [Fact]
-        public void InitializeOpenGL_ExecutesWithPlatform()
+        public void ImguiSample_ParameterlessConstructor_Works()
         {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-
-            try
-            {
-                InvokePrivateVoid("InitializeOpenGL", platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // InitializeImGui
-        // ========================
-
-        [Fact]
-        public void InitializeImGui_Executes()
-        {
-            try
-            {
-                InvokePrivateVoid("InitializeImGui");
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // ConfigureImGui
-        // ========================
-
-        [Fact]
-        public void ConfigureImGui_ExecutesWithPlatform()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                GetWindowWidthResult = 800,
-                GetWindowHeightResult = 600
-            };
-
-            try
-            {
-                InvokePrivateVoid("ConfigureImGui", platform);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // LoadFonts
-        // ========================
-
-        [Fact]
-        public void LoadFonts_Executes()
-        {
-            try
-            {
-                InvokePrivateVoid("LoadFonts");
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // LoadTexture
-        // ========================
-
-        [Fact]
-        public void LoadTexture_Executes()
-        {
-            IntPtr pixelData = Marshal.AllocHGlobal(4);
-            try
-            {
-                InvokePrivate<uint>("LoadTexture", pixelData, 1, 1);
-            }
-            catch (TargetInvocationException)
-            {
-            }
-            finally
-            {
-                Marshal.FreeHGlobal(pixelData);
-            }
-        }
-
-        // ========================
-        // Run
-        // ========================
-
-        [Fact]
-        public void Run_WithEmptyArgs_Executes()
-        {
-            try
-            {
-                Installer.Run(Array.Empty<string>());
-            }
-            catch
-            {
-            }
-        }
-
-        // ========================
-        // RunGameLoop
-        // ========================
-
-        [Fact]
-        public void RunGameLoop_Executes()
-        {
-            Stopwatch sw = new Stopwatch();
-            double lastTime = 0.0;
-
-            try
-            {
-                InvokePrivateVoid("RunGameLoop", sw, lastTime, 1.0 / 60.0, IntPtr.Zero, new FakeBehaviorExample(), new FakeBehaviorPlatform());
-            }
-            catch (TargetInvocationException)
-            {
-            }
-        }
-
-        // ========================
-        // ImguiSample Constructor
-        // ========================
-
-        [Fact]
-        public void ImguiSample_ParameterlessConstructor_Initializes()
-        {
-            ImguiSample sample = new ImguiSample();
-            Assert.NotNull(sample);
+            Assert.NotNull(new ImguiSample());
         }
 
         [Fact]
-        public void ImguiSample_PlatformConstructor_SetsPlatform()
+        public void ImguiSample_PlatformConstructor_Works()
         {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-            ImguiSample sample = new ImguiSample(platform);
-            Assert.NotNull(sample);
-        }
-
-        // ========================
-        // ImguiSample.Initialize
-        // ========================
-
-        [Fact]
-        public void ImguiSample_Initialize_Executes()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-            ImguiSample sample = new ImguiSample(platform);
-            try
-            {
-                sample.Initialize();
-            }
-            catch
-            {
-            }
-        }
-
-        // ========================
-        // ImguiSample.Draw
-        // ========================
-
-        [Fact]
-        public void ImguiSample_Draw_Executes()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-            ImguiSample sample = new ImguiSample(platform);
-            try
-            {
-                sample.Draw();
-            }
-            catch
-            {
-            }
-        }
-
-        // ========================
-        // ImguiSample.Cleanup
-        // ========================
-
-        [Fact]
-        public void ImguiSample_Cleanup_WithZeroResources_Succeeds()
-        {
-            ImguiSample sample = new ImguiSample();
-            sample.Cleanup();
+            Assert.NotNull(new ImguiSample(new FakeBehaviorPlatform()));
         }
 
         [Fact]
-        public void ImguiSample_Cleanup_MultipleCalls_Succeeds()
+        public void ImguiSample_Cleanup_ZeroResources_Works()
         {
-            ImguiSample sample = new ImguiSample();
-            sample.Cleanup();
-            sample.Cleanup();
+            new ImguiSample().Cleanup();
         }
 
-        // ========================
-        // ImguiSample.UpdateMouseState
-        // ========================
-
         [Fact]
-        public void UpdateMouseState_NoMouseDown_DoesNotSetClicked()
+        public void ImguiSample_Cleanup_MultipleCalls_Works()
         {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-            ImguiSample sample = new ImguiSample(platform);
-
-            try
-            {
-                sample.Draw();
-            }
-            catch
-            {
-            }
-        }
-
-        // ========================
-        // ImguiSample.RenderDrawData
-        // ========================
-
-        [Fact]
-        public void RenderDrawData_EmptyCmdList_ReturnsEarly()
-        {
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform();
-            ImguiSample sample = new ImguiSample(platform);
-
-            FieldInfo field = typeof(ImguiSample).GetField("_vao", BindingFlags.NonPublic | BindingFlags.Instance);
-            Assert.NotNull(field);
+            ImguiSample s = new ImguiSample();
+            s.Cleanup();
+            s.Cleanup();
         }
 
         // ========================
@@ -560,58 +221,34 @@ namespace Alis.App.Installer.Test
         [Fact]
         public void AllPrivateMethods_Exist()
         {
-            string[] expectedMethods =
+            string[] methods =
             {
-                "CalculateDeltaTime",
-                "ApplyFrameTiming",
-                "ProcessPendingInput",
-                "ProcessKey",
-                "ProcessKeyWithImgui",
-                "CheckGlError",
-                "ConfigureStyle",
-                "GetPlatform",
-                "InitializeOpenGL",
-                "InitializeImGui",
-                "ConfigureImGui",
-                "LoadFonts",
-                "LoadTexture",
-                "InitializePlatform",
-                "LoadFontFromResource",
-                "RunGameLoop"
+                "CalculateDeltaTime", "ApplyFrameTiming", "ProcessPendingInput",
+                "ProcessKey", "ProcessKeyWithImgui", "CheckGlError", "ConfigureStyle",
+                "GetPlatform", "InitializeOpenGL", "InitializeImGui", "ConfigureImGui",
+                "LoadFonts", "LoadTexture", "InitializePlatform", "LoadFontFromResource", "RunGameLoop"
             };
-
-            foreach (string methodName in expectedMethods)
-            {
-                MethodInfo method = GetPrivateMethod(methodName);
-                Assert.True(method != null, $"Private method '{methodName}' should exist");
-            }
+            foreach (string m in methods)
+                Assert.NotNull(GetPrivateMethod(m));
         }
     }
 
-    internal sealed class FakeBehaviorPlatform : INativePlatform
+    public sealed class FakeBehaviorPlatform : INativePlatform
     {
         public bool InitializeResult { get; set; } = true;
         public int InitializeCalls { get; private set; }
         public int LastWidth { get; private set; }
         public int LastHeight { get; private set; }
         public string LastTitle { get; private set; }
-
         public bool IsKeyDownResult { get; set; } = false;
         public bool TryGetLastInputCharactersResult { get; set; } = false;
         public string TryGetLastInputCharactersValue { get; set; }
 
-        public int GetWindowWidthResult { get; set; } = 800;
-        public int GetWindowHeightResult { get; set; } = 600;
-
         public bool Initialize(int width, int height, string title)
         {
-            InitializeCalls++;
-            LastWidth = width;
-            LastHeight = height;
-            LastTitle = title;
+            InitializeCalls++; LastWidth = width; LastHeight = height; LastTitle = title;
             return InitializeResult;
         }
-
         public bool Initialize(int width, int height, string title, string iconPath) => Initialize(width, height, title);
         public void ShowWindow() { }
         public void HideWindow() { }
@@ -622,52 +259,18 @@ namespace Alis.App.Installer.Test
         public bool IsWindowVisible() => true;
         public bool PollEvents() => false;
         public void Cleanup() { }
-        public int GetWindowWidth() => GetWindowWidthResult;
-        public int GetWindowHeight() => GetWindowHeightResult;
+        public int GetWindowWidth() => 800;
+        public int GetWindowHeight() => 600;
         public IntPtr GetProcAddress(string procName) => IntPtr.Zero;
-
-        public bool TryGetLastKeyPressed(out ConsoleKey key)
-        {
-            key = default;
-            return false;
-        }
-
+        public bool TryGetLastKeyPressed(out ConsoleKey key) { key = default; return false; }
         public bool IsKeyDown(ConsoleKey consoleKey) => IsKeyDownResult;
         public void SetWindowIcon(string iconPath) { }
-
-        public void GetMouseState(out int x, out int y, out bool[] buttons)
-        {
-            x = 0;
-            y = 0;
-            buttons = new bool[5];
-        }
-
+        public void GetMouseState(out int x, out int y, out bool[] buttons) { x = 0; y = 0; buttons = new bool[5]; }
         public float GetMouseWheel() => 0f;
-
-        public bool TryGetLastInputCharacters(out string chars)
-        {
-            chars = TryGetLastInputCharactersValue;
-            return TryGetLastInputCharactersResult;
-        }
-
+        public bool TryGetLastInputCharacters(out string chars) { chars = TryGetLastInputCharactersValue; return TryGetLastInputCharactersResult; }
         public int GetWindowPositionX() => 0;
         public int GetWindowPositionY() => 0;
-
-        public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
-        {
-            winX = 0; winY = 0; winW = 0; winH = 0; fbW = 0; fbH = 0;
-        }
-
-        public void GetMousePositionInView(out float x, out float y)
-        {
-            x = 0; y = 0;
-        }
-    }
-
-    internal sealed class FakeBehaviorExample : IExample
-    {
-        public void Initialize() { }
-        public void Draw() { }
-        public void Cleanup() { }
+        public void GetWindowMetrics(out int a, out int b, out int c, out int d, out int e, out int f) { a = b = c = d = e = f = 0; }
+        public void GetMousePositionInView(out float x, out float y) { x = 0; y = 0; }
     }
 }

@@ -43,6 +43,13 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
         }
 
         [Fact]
+        public void ImplicitConversion_ToIntPtr_Works()
+        {
+            IntPtr ptr = EglDisplay.None;
+            Assert.Equal(IntPtr.Zero, ptr);
+        }
+
+        [Fact]
         public void ToString_ReturnsHandleString()
         {
             EglDisplay display = EglDisplay.None;

@@ -32,7 +32,7 @@ namespace Alis.App.Installer
     /// <summary>
     ///     The example interface
     /// </summary>
-    internal interface IExample
+    public interface IExample
     {
         /// <summary>
         ///     Initializes this instance
