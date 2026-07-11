@@ -109,12 +109,24 @@ namespace Alis.Benchmark.EntityComponentSystem.SystemWithTwoComponentsMultipleCo
                 query = World.QueryBuilder().With<Component1>().With<Component2>().Build();
             }
 
+            /// <summary>
+            ///     The padding 1 record struct
+            /// </summary>
             private record struct Padding1;
 
+            /// <summary>
+            ///     The padding 2 record struct
+            /// </summary>
             private record struct Padding2;
 
+            /// <summary>
+            ///     The padding 3 record struct
+            /// </summary>
             private record struct Padding3;
 
+            /// <summary>
+            ///     The padding 4 record struct
+            /// </summary>
             private record struct Padding4;
         }
     }
