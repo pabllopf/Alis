@@ -1447,6 +1447,10 @@ namespace Alis.Core.Graphic.Platforms.Linux
             return false;
         }
 
+        /// <summary>
+        ///     Gets the window position on the X axis.
+        /// </summary>
+        /// <returns>The X position of the window.</returns>
         public int GetWindowPositionX()
         {
             if (TryGetWindowPosition(out int x, out _))
@@ -1457,6 +1461,10 @@ namespace Alis.Core.Graphic.Platforms.Linux
             return 0;
         }
 
+        /// <summary>
+        ///     Gets the window position on the Y axis.
+        /// </summary>
+        /// <returns>The Y position of the window.</returns>
         public int GetWindowPositionY()
         {
             if (TryGetWindowPosition(out _, out int y))
@@ -1467,6 +1475,15 @@ namespace Alis.Core.Graphic.Platforms.Linux
             return 0;
         }
 
+        /// <summary>
+        ///     Gets the window metrics including position, size, and framebuffer size.
+        /// </summary>
+        /// <param name="winX">The window X position.</param>
+        /// <param name="winY">The window Y position.</param>
+        /// <param name="winW">The window width.</param>
+        /// <param name="winH">The window height.</param>
+        /// <param name="fbW">The framebuffer width.</param>
+        /// <param name="fbH">The framebuffer height.</param>
         public void GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH)
         {
             winX = 0;
@@ -1490,6 +1507,11 @@ namespace Alis.Core.Graphic.Platforms.Linux
             }
         }
 
+        /// <summary>
+        ///     Gets the mouse position relative to the view.
+        /// </summary>
+        /// <param name="x">The mouse X position.</param>
+        /// <param name="y">The mouse Y position.</param>
         public void GetMousePositionInView(out float x, out float y)
         {
             GetMouseState(out int mouseX, out int mouseY, out _);
