@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Buffers the move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        private void BufferMove(int proxyId)
+        internal void BufferMove(int proxyId)
         {
             if (_moveCount == _moveCapacity)
             {
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Uns the buffer move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        private void UnBufferMove(int proxyId)
+        internal void UnBufferMove(int proxyId)
         {
             for (int i = 0; i < _moveCount; ++i)
             {

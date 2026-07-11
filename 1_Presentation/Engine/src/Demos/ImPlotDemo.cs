@@ -66,7 +66,7 @@ namespace Alis.App.Engine.Demos
         ///     Defaults the demo
         /// </summary>
         [Conditional("DEBUG")]
-        private void DefaultDemo()
+        internal void DefaultDemo()
         {
             ImPlot.ShowDemoWindow();
         }
@@ -75,7 +75,7 @@ namespace Alis.App.Engine.Demos
         ///     Simples the plot
         /// </summary>
         [Conditional("DEBUG")]
-        private void SimplePlot()
+        internal void SimplePlot()
         {
             ImGui.Begin("Simple plot");
             ImGui.Text("Demonstrating a basic bar plot with horizontal and vertical bars.");

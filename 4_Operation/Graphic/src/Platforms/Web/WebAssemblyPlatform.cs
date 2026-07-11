@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Initializes default key states for all console keys
         /// </summary>
-        private void InitializeDefaultKeyStates()
+        internal void InitializeDefaultKeyStates()
         {
             _keyStates.Clear();
             foreach (ConsoleKey key in Enum.GetValues(typeof(ConsoleKey)))
@@ -181,7 +181,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Initializes the EGL rendering context for WebAssembly
         /// </summary>
-        private void InitializeEglContext()
+        internal void InitializeEglContext()
         {
             _eglDisplay = EGL.GetDisplay(IntPtr.Zero);
             if (_eglDisplay == IntPtr.Zero)
@@ -248,7 +248,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Registers input event handlers for keyboard, mouse, and gamepad
         /// </summary>
-        private void RegisterInputEvents()
+        internal void RegisterInputEvents()
         {
             RegisterKeyboardEvents();
             RegisterMouseEvents();
@@ -259,7 +259,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Registers keyboard event listeners via JavaScript interop
         /// </summary>
-        private void RegisterKeyboardEvents()
+        internal void RegisterKeyboardEvents()
         {
             try
             {
@@ -278,7 +278,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Registers mouse event listeners via JavaScript interop
         /// </summary>
-        private void RegisterMouseEvents()
+        internal void RegisterMouseEvents()
         {
             try
             {
@@ -298,7 +298,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Registers gamepad event listeners via JavaScript interop
         /// </summary>
-        private void RegisterGamepadEvents()
+        internal void RegisterGamepadEvents()
         {
             try
             {
@@ -319,7 +319,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Registers window event listeners via JavaScript interop
         /// </summary>
-        private void RegisterWindowEvents()
+        internal void RegisterWindowEvents()
         {
             try
             {
@@ -341,7 +341,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for keyboard key down events
         /// </summary>
-        private void OnKeyDown(int keyCode, int location)
+        internal void OnKeyDown(int keyCode, int location)
         {
             ConsoleKey key = ConvertKeyCode(keyCode);
             if (!_keyStates.TryGetValue(key, out bool isDown) || !isDown)
@@ -354,7 +354,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for keyboard key up events
         /// </summary>
-        private void OnKeyUp(int keyCode, int location)
+        internal void OnKeyUp(int keyCode, int location)
         {
             ConsoleKey key = ConvertKeyCode(keyCode);
             if (_keyStates.ContainsKey(key))
@@ -366,7 +366,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for character input events
         /// </summary>
-        private void OnCharInput(uint charCode)
+        internal void OnCharInput(uint charCode)
         {
             try
             {
@@ -384,7 +384,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for mouse movement events
         /// </summary>
-        private void OnMouseMove(int x, int y, int clientX, int clientY)
+        internal void OnMouseMove(int x, int y, int clientX, int clientY)
         {
             _mouseX = clientX;
             _mouseY = clientY;
@@ -393,7 +393,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for mouse button down events
         /// </summary>
-        private void OnMouseDown(int button, int x, int y, int clientX, int clientY)
+        internal void OnMouseDown(int button, int x, int y, int clientX, int clientY)
         {
             if ((button >= 0) && (button < _mouseButtons.Length))
             {
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for mouse button up events
         /// </summary>
-        private void OnMouseUp(int button, int x, int y, int clientX, int clientY)
+        internal void OnMouseUp(int button, int x, int y, int clientX, int clientY)
         {
             if ((button >= 0) && (button < _mouseButtons.Length))
             {
@@ -419,7 +419,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for mouse wheel events
         /// </summary>
-        private void OnMouseWheel(int deltaX, int deltaY)
+        internal void OnMouseWheel(int deltaX, int deltaY)
         {
             _mouseWheelDelta = deltaY;
         }
@@ -427,7 +427,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for gamepad connection events
         /// </summary>
-        private void OnGamepadConnect(int gamepadIndex)
+        internal void OnGamepadConnect(int gamepadIndex)
         {
             if (!_gamepadStates.ContainsKey(gamepadIndex))
             {
@@ -439,7 +439,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for gamepad disconnection events
         /// </summary>
-        private void OnGamepadDisconnect(int gamepadIndex)
+        internal void OnGamepadDisconnect(int gamepadIndex)
         {
             if (_gamepadStates.ContainsKey(gamepadIndex))
             {
@@ -450,7 +450,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for window resize events
         /// </summary>
-        private void OnWindowResize(int width, int height)
+        internal void OnWindowResize(int width, int height)
         {
             _windowWidth = width;
             _windowHeight = height;
@@ -459,7 +459,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for window close events
         /// </summary>
-        private void OnWindowClose()
+        internal void OnWindowClose()
         {
             _windowShouldClose = true;
         }
@@ -467,7 +467,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Callback for window focus change events
         /// </summary>
-        private void OnWindowFocus(bool focused)
+        internal void OnWindowFocus(bool focused)
         {
             _isWindowVisible = focused;
         }
@@ -519,7 +519,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Updates gamepad states from the browser
         /// </summary>
-        private void UpdateGamepadStates()
+        internal void UpdateGamepadStates()
         {
             try
             {
@@ -547,7 +547,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// Updates the single gamepad state using the specified index
         /// </summary>
         /// <param name="index">The index</param>
-        private void UpdateSingleGamepadState(int index)
+        internal void UpdateSingleGamepadState(int index)
         {
             GamepadState state;
             if (!_gamepadStates.TryGetValue(index, out state))

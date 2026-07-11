@@ -68,7 +68,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Setup the assembly
         /// </summary>
-        private void SetupAssembly()
+        internal void SetupAssembly()
         {
             _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
             byte[] wavBytes = CreateRealWavBytes();

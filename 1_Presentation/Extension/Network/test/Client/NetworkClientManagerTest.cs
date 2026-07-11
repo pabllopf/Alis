@@ -276,36 +276,36 @@ namespace Alis.Extension.Network.Test.Client
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnPlayerJoined(object sender, PlayerEventArgs e) { }
+        internal void OnPlayerJoined(object sender, PlayerEventArgs e) { }
         /// <summary>
         /// Ons the player left using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnPlayerLeft(object sender, PlayerEventArgs e) { }
+        internal void OnPlayerLeft(object sender, PlayerEventArgs e) { }
         /// <summary>
         /// Ons the connected using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnConnected(object sender, EventArgs e) { }
+        internal void OnConnected(object sender, EventArgs e) { }
         /// <summary>
         /// Ons the disconnected using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnDisconnected(object sender, EventArgs e) { }
+        internal void OnDisconnected(object sender, EventArgs e) { }
         /// <summary>
         /// Ons the error using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnError(object sender, NetworkErrorEventArgs e) { }
+        internal void OnError(object sender, NetworkErrorEventArgs e) { }
         /// <summary>
         /// Ons the server message received using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnServerMessageReceived(object sender, ServerMessageEventArgs e) { }
+        internal void OnServerMessageReceived(object sender, ServerMessageEventArgs e) { }
     }
 }

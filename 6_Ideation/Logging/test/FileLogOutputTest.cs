@@ -471,7 +471,7 @@ namespace Alis.Core.Aspect.Logging.Test
         /// <summary>
         ///     Cleanups this instance
         /// </summary>
-        private void Cleanup()
+        internal void Cleanup()
         {
             if (Directory.Exists(_testDir))
             {

@@ -172,7 +172,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Displays the tutorials
         /// </summary>
-        private void DisplayTutorials()
+        internal void DisplayTutorials()
         {
             ImGui.Text("Step-by-Step Tutorials");
             ImGui.Separator();
@@ -224,7 +224,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Displays the videos
         /// </summary>
-        private void DisplayVideos()
+        internal void DisplayVideos()
         {
             ImGui.Text("Learning Videos");
             ImGui.Separator();

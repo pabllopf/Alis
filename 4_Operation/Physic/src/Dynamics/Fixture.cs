@@ -249,7 +249,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     flagged for filtering.
         ///     This methods flags all contacts associated with the body for filtering.
         /// </summary>
-        private void Refilter()
+        internal void Refilter()
         {
             // Flag associated contacts for filtering.
             ContactEdge edge = GetBody.ContactList;

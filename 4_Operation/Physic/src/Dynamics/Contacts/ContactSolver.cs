@@ -462,7 +462,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
-        private void SolveVelocityConstraints(int start, int end)
+        internal void SolveVelocityConstraints(int start, int end)
         {
             for (int i = start; i < end; ++i)
             {
@@ -518,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>
-        private void AcquireContactLocks(int indexA, int indexB)
+        internal void AcquireContactLocks(int indexA, int indexB)
         {
             while (true)
             {
@@ -541,7 +541,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="indexB">The index</param>
         /// <param name="indexA">The index</param>
-        private void ReleaseContactLocks(int indexB, int indexA)
+        internal void ReleaseContactLocks(int indexB, int indexA)
         {
             Interlocked.Exchange(ref Locks[indexB], 0);
             Interlocked.Exchange(ref Locks[indexA], 0);
@@ -844,7 +844,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="orderedIndexA">The ordered index</param>
         /// <param name="orderedIndexB">The ordered index</param>
-        private void LockBodies(int orderedIndexA, int orderedIndexB)
+        internal void LockBodies(int orderedIndexA, int orderedIndexB)
         {
             while (true)
             {
@@ -867,7 +867,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         /// <param name="orderedIndexA">The ordered index</param>
         /// <param name="orderedIndexB">The ordered index</param>
-        private void UnlockBodies(int orderedIndexA, int orderedIndexB)
+        internal void UnlockBodies(int orderedIndexA, int orderedIndexB)
         {
             Interlocked.Exchange(ref Locks[orderedIndexB], 0);
             Interlocked.Exchange(ref Locks[orderedIndexA], 0);

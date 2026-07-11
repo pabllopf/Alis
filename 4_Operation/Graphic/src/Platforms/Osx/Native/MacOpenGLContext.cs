@@ -66,7 +66,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         ///     Crears the contexto using the specified window
         /// </summary>
         /// <param name="window">The window</param>
-        private void CrearContexto(MacWindow window)
+        internal void CrearContexto(MacWindow window)
         {
             int[] attrs =
             {

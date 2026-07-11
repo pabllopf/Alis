@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     Clears the buckets
         /// </summary>
-        private void ClearBuckets()
+        internal void ClearBuckets()
         {
             for (int i = 0; i < BucketCount; i++)
             {

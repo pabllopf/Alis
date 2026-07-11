@@ -270,7 +270,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the search bar
         /// </summary>
-        private void RenderSearchBar()
+        internal void RenderSearchBar()
         {
             ImGui.SameLine();
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
@@ -295,7 +295,7 @@ namespace Alis.App.Engine.Windows
         ///     Renders the files on folder using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        private void RenderFilesOnFolder(string text)
+        internal void RenderFilesOnFolder(string text)
         {
             string path = $"{SpaceWork.Project.Path}{currentPath}";
 
@@ -338,7 +338,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the directory item
         /// </summary>
-        private void RenderDirectoryItem(string directory, float itemWidth, float itemHeight, float itemPadding)
+        internal void RenderDirectoryItem(string directory, float itemWidth, float itemHeight, float itemPadding)
         {
             ImGui.TableNextColumn();
             string folderName = Path.GetFileName(directory);
@@ -369,7 +369,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the file item
         /// </summary>
-        private void RenderFileItem(string file, float itemWidth, float itemHeight, float itemPadding)
+        internal void RenderFileItem(string file, float itemWidth, float itemHeight, float itemPadding)
         {
             ImGui.TableNextColumn();
             string extension = Path.GetExtension(file).ToLower();
@@ -414,7 +414,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the assets
         /// </summary>
-        private void RenderAssets()
+        internal void RenderAssets()
         {
             ImGui.SameLine();
             ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X - 30);
@@ -478,7 +478,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the folders
         /// </summary>
-        private void RenderFolders()
+        internal void RenderFolders()
         {
             string path = Path.Combine(SpaceWork.Project.Path, "Assets");
 
@@ -494,7 +494,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         /// <param name="path">The path</param>
         /// <param name="isRoot">The is root</param>
-        private void RenderDirectory(string path, bool isRoot = false)
+        internal void RenderDirectory(string path, bool isRoot = false)
         {
             if (isRoot)
             {
@@ -518,7 +518,7 @@ namespace Alis.App.Engine.Windows
         ///     Renders the non root directory
         /// </summary>
         /// <param name="path">The path</param>
-        private void RenderNonRootDirectory(string path)
+        internal void RenderNonRootDirectory(string path)
         {
             string folderName = Path.GetFileName(path);
             string[] subDirectories = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
@@ -549,7 +549,7 @@ namespace Alis.App.Engine.Windows
         /// </summary>
         /// <param name="path">The path</param>
         /// <param name="folderName">The folder name</param>
-        private void RenderLeafDirectory(string path, string folderName)
+        internal void RenderLeafDirectory(string path, string folderName)
         {
             ImGui.TreeNodeEx($"{FontAwesome5.Folder} {folderName}", ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.NoTreePushOnOpen);
             if (ImGui.IsItemHovered() && ImGui.IsMouseDoubleClicked(ImGuiMouseButton.Left) && !isMoveDirectory)
@@ -564,7 +564,7 @@ namespace Alis.App.Engine.Windows
         ///     Renders the sub directories using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void RenderSubDirectories(string path)
+        internal void RenderSubDirectories(string path)
         {
             string[] folders = Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly);
 
@@ -577,7 +577,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the path of folder
         /// </summary>
-        private void RenderPathOfFolder()
+        internal void RenderPathOfFolder()
         {
             string[] folders = currentPath.Split(new[] {Path.DirectorySeparatorChar}, StringSplitOptions.RemoveEmptyEntries);
 
@@ -613,7 +613,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the files on folder
         /// </summary>
-        private void RenderFilesOnFolder()
+        internal void RenderFilesOnFolder()
         {
             string path = $"{SpaceWork.Project.Path}{currentPath}";
 

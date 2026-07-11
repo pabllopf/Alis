@@ -229,7 +229,7 @@ var options = new FilePickerOptions("Select Output Folder", FileDialogType.Selec
 ### Example 1: Open Image Files
 
 ```csharp
-private void OpenImages()
+internal void OpenImages()
 {
     var options = new FilePickerOptions("Open Images", FileDialogType.OpenFile)
         .WithDefaultPath(
@@ -252,7 +252,7 @@ private void OpenImages()
 ### Example 2: Save Document
 
 ```csharp
-private void SaveDocument()
+internal void SaveDocument()
 {
     var options = new FilePickerOptions("Save Document", FileDialogType.SaveFile)
         .WithDefaultPath(
@@ -278,7 +278,7 @@ private void SaveDocument()
 ### Example 3: Select Project Folder
 
 ```csharp
-private void SelectProject()
+internal void SelectProject()
 {
     var options = new FilePickerOptions("Select Project Folder", FileDialogType.SelectFolder)
         .WithDefaultPath(

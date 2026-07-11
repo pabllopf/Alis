@@ -495,7 +495,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Frees the node using the specified node id
         /// </summary>
         /// <param name="nodeId">The node id</param>
-        private void FreeNode(int nodeId)
+        internal void FreeNode(int nodeId)
         {
             _nodes[nodeId].Parent = _freeList;
             _nodes[nodeId].Height = -1;
@@ -507,7 +507,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Inserts the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void InsertLeaf(int leaf)
+        internal void InsertLeaf(int leaf)
         {
             if (_root == NullNode)
             {
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Creates a new parent node and attaches the leaf to the sibling.
         /// </summary>
-        private void AttachNewParent(int leaf, int sibling, Aabb leafAabb)
+        internal void AttachNewParent(int leaf, int sibling, Aabb leafAabb)
         {
             // Create a new parent.
             int oldParent = _nodes[sibling].Parent;
@@ -638,7 +638,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     Walks back up the tree fixing heights and AABBs.
         /// </summary>
-        private void UpdateUpward(int leaf)
+        internal void UpdateUpward(int leaf)
         {
             int index = _nodes[leaf].Parent;
             while (index != NullNode)
@@ -659,7 +659,7 @@ namespace Alis.Core.Physic.Collisions
         ///     Removes the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
-        private void RemoveLeaf(int leaf)
+        internal void RemoveLeaf(int leaf)
         {
             if (leaf == _root)
             {
@@ -820,7 +820,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="parentIndex">The parent index</param>
         /// <param name="oldChild">The old child</param>
         /// <param name="newChild">The new child</param>
-        private void UpdateParentPointer(int parentIndex, int oldChild, int newChild)
+        internal void UpdateParentPointer(int parentIndex, int oldChild, int newChild)
         {
             if (parentIndex != NullNode)
             {
@@ -993,7 +993,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="count">The count</param>
         /// <param name="iMin">The min</param>
         /// <param name="jMin">The min</param>
-        private void FindBestPair(int[] nodes, int count, out int iMin, out int jMin)
+        internal void FindBestPair(int[] nodes, int count, out int iMin, out int jMin)
         {
             float minCost = SettingEnv.MaxFloat;
             iMin = -1;

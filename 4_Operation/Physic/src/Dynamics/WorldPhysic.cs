@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
-        private void Solve(ref TimeStep step)
+        internal void Solve(ref TimeStep step)
         {
             GetIsland.Reset(BodyList.Count,
                 ContactManager.ContactCount,
@@ -362,7 +362,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="step">The step</param>
-        private void ProcessBodyAt(int index, ref TimeStep step)
+        internal void ProcessBodyAt(int index, ref TimeStep step)
         {
             Body seed = BodyList.List[index];
 
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Clears the island flags for static bodies
         /// </summary>
-        private void ClearIslandFlagsForStaticBodies()
+        internal void ClearIslandFlagsForStaticBodies()
         {
             for (int i = 0; i < GetIsland.BodyCount; ++i)
             {
@@ -395,7 +395,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Synchronizes the non static island bodies
         /// </summary>
-        private void SynchronizeNonStaticIslandBodies()
+        internal void SynchronizeNonStaticIslandBodies()
         {
             foreach (Body b in BodyList)
             {
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Clears the island flags
         /// </summary>
-        private void ClearIslandFlags()
+        internal void ClearIslandFlags()
         {
             foreach (Body b in BodyList)
             {
@@ -433,7 +433,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Builds the island dfs using the specified seed
         /// </summary>
         /// <param name="seed">The seed</param>
-        private void BuildIslandDFS(Body seed)
+        internal void BuildIslandDFS(Body seed)
         {
             int stackCount = 0;
             _stack[stackCount++] = seed;
@@ -460,7 +460,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="b">The </param>
         /// <param name="stackCount">The stack count</param>
-        private void ProcessContactEdges(Body b, ref int stackCount)
+        internal void ProcessContactEdges(Body b, ref int stackCount)
         {
             for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
             {
@@ -501,7 +501,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="b">The </param>
         /// <param name="stackCount">The stack count</param>
-        private void ProcessJointEdges(Body b, ref int stackCount)
+        internal void ProcessJointEdges(Body b, ref int stackCount)
         {
             for (JointEdge je = b.JointList; je != null; je = je.Next)
             {
@@ -539,7 +539,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="iterations">The iterations</param>
-        private void SolveToi(ref TimeStep step, ref SolverIterations iterations)
+        internal void SolveToi(ref TimeStep step, ref SolverIterations iterations)
         {
             GetIsland.Reset(2 * SettingEnv.MaxToiContacts, SettingEnv.MaxToiContacts, 0, ContactManager);
 
@@ -637,7 +637,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Resets the TOI state for all bodies and contacts.
         /// </summary>
-        private void ResetToiState()
+        internal void ResetToiState()
         {
             if (!_stepComplete)
             {
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Finds the contact with the minimum time of impact.
         /// </summary>
-        private void FindMinAlphaContact(ref Contact minContact, ref float minAlpha)
+        internal void FindMinAlphaContact(ref Contact minContact, ref float minAlpha)
         {
             for (Contact c = ContactManager.ContactList.Next; c != ContactManager.ContactList; c = c.Next)
             {
@@ -768,7 +768,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Builds the island for TOI solving by collecting relevant contacts and bodies.
         /// </summary>
-        private void BuildToiIsland(Body bA0, Body bB0, float minAlpha)
+        internal void BuildToiIsland(Body bA0, Body bB0, float minAlpha)
         {
             Body[] bodies = {bA0, bB0};
             for (int i = 0; i < 2; ++i)
@@ -790,7 +790,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="ce">The ce</param>
         /// <param name="body">The body</param>
         /// <param name="minAlpha">The min alpha</param>
-        private void ProcessToiContact(ContactEdge ce, Body body, float minAlpha)
+        internal void ProcessToiContact(ContactEdge ce, Body body, float minAlpha)
         {
             Contact contact = ce.Contact;
 
@@ -1935,7 +1935,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="dt">The dt</param>
         /// <param name="step">The step</param>
         /// <param name="iterations">The iterations</param>
-        private void ExecuteStepPhysics(float dt, ref TimeStep step, ref SolverIterations iterations)
+        internal void ExecuteStepPhysics(float dt, ref TimeStep step, ref SolverIterations iterations)
         {
             for (int i = 0; i < ControllerList.List.Count; i++)
             {

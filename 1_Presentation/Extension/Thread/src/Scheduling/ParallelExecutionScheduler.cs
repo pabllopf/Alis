@@ -101,7 +101,7 @@ namespace Alis.Extension.Thread.Scheduling
         /// <param name="count">The number of items</param>
         /// <param name="action">The action to execute</param>
         /// <param name="partitions">The number of partitions</param>
-        private void ExecuteParallel(int startIndex, int count, Action<int, int> action, int partitions)
+        internal void ExecuteParallel(int startIndex, int count, Action<int, int> action, int partitions)
         {
             int itemsPerPartition = count / partitions;
             int remainder = count % partitions;

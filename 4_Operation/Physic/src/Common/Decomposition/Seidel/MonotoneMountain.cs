@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     Triangulates this instance
         /// </summary>
-        private void Triangulate()
+        internal void Triangulate()
         {
             while (_convexPoints.Count != 0)
             {
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     Gens the mono poly
         /// </summary>
-        private void GenMonoPoly()
+        internal void GenMonoPoly()
         {
             Point p = _head;
             while (p != null)

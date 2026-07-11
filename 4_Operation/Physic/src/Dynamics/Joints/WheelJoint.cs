@@ -458,7 +458,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="qA">The </param>
         /// <param name="rA">The </param>
         /// <param name="rB">The </param>
-        private void InitSpringConstraint(SolverData data, float mA, float mB, float iA, float iB, Vector2F d1, Complex qA, Vector2F rA, Vector2F rB)
+        internal void InitSpringConstraint(SolverData data, float mA, float mB, float iA, float iB, Vector2F d1, Complex qA, Vector2F rA, Vector2F rB)
         {
             _springMass = 0.0f;
             _bias = 0.0f;
@@ -506,7 +506,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void InitRotationalMotor(float iA, float iB)
+        internal void InitRotationalMotor(float iA, float iB)
         {
             if (_enableMotor)
             {
@@ -613,7 +613,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void SolveSpringConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
+        internal void SolveSpringConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
         {
             float cdot = Vector2F.Dot(_ax, vB - vA) + _sBx * wB - _sAx * wA;
             float impulse = -_springMass * (cdot + _bias + _gamma * _springImpulse);
@@ -638,7 +638,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
         /// <param name="data">The data</param>
-        private void SolveRotationalMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
+        internal void SolveRotationalMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
         {
             float cdot = wB - wA - _motorSpeed;
             float impulse = -_motorMass * cdot;
@@ -663,7 +663,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void SolvePointToLineConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
+        internal void SolvePointToLineConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB)
         {
             float cdot = Vector2F.Dot(_ay, vB - vA) + _sBy * wB - _sAy * wA;
             float impulse = -_mass * cdot;

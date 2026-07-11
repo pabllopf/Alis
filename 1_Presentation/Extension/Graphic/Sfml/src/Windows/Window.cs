@@ -476,7 +476,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         /// <param name="e">Event to dispatch</param>
         ////////////////////////////////////////////////////////////
-        private void CallEventHandler(Event e)
+        internal void CallEventHandler(Event e)
         {
             switch (e.Type)
             {
@@ -578,7 +578,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// Invokes the event handler using the specified handler
         /// </summary>
         /// <param name="handler">The handler</param>
-        private void InvokeEventHandler(EventHandler handler) => handler?.Invoke(this, EventArgs.Empty);
+        internal void InvokeEventHandler(EventHandler handler) => handler?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
         /// Invokes the event handler using the specified handler
@@ -586,7 +586,7 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// <typeparam name="TEventArgs">The event args</typeparam>
         /// <param name="handler">The handler</param>
         /// <param name="args">The args</param>
-        private void InvokeEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs args) where TEventArgs : EventArgs => handler?.Invoke(this, args);
+        internal void InvokeEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, TEventArgs args) where TEventArgs : EventArgs => handler?.Invoke(this, args);
 
         /// <summary>Event handler for the Closed event</summary>
         public event EventHandler Closed;

@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Releases the resources used by this instance.
         /// </summary>
         /// <param name="disposing">Whether this is called from Dispose() (true) or the finalizer (false).</param>
-        private void Dispose(bool disposing)
+        internal void Dispose(bool disposing)
         {
             if (ProgramId != 0)
             {
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         ///     Parses all of the parameters (attributes/uniforms) from the two attached shaders
         ///     and then loads their location by passing this shader program into the parameter object.
         /// </summary>
-        private void GetParams()
+        internal void GetParams()
         {
             shaderParams = new Dictionary<string, GlShaderProgramParam>();
 

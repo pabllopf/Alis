@@ -313,7 +313,7 @@ namespace Alis.Core.Aspect.Logging.Core
         ///     Processes a log entry through filters and outputs.
         /// </summary>
         
-        private void ProcessEntry(ILogEntry entry)
+        internal void ProcessEntry(ILogEntry entry)
         {
             try
             {

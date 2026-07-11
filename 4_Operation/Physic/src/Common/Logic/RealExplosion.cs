@@ -266,7 +266,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Processes ray cast results to populate the internal shape data list.
         /// </summary>
-        private void ProcessRayCastResults(float[] vals, int valIndex, Vector2F pos, float radius)
+        internal void ProcessRayCastResults(float[] vals, int valIndex, Vector2F pos, float radius)
         {
             bool rayMissed = true;
 
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="valIndex">The val index</param>
         /// <param name="body">The body</param>
         /// <param name="rayMissed">The ray missed</param>
-        private void ProcessRayHit(float[] vals, int i, int valIndex, Body body, ref bool rayMissed)
+        internal void ProcessRayHit(float[] vals, int i, int valIndex, Body body, ref bool rayMissed)
         {
             int iplus = i == valIndex - 1 ? 0 : i + 1;
 
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// Updates the last shape data using the specified max
         /// </summary>
         /// <param name="max">The max</param>
-        private void UpdateLastShapeData(float max)
+        internal void UpdateLastShapeData(float max)
         {
             int laPos = _data.Count - 1;
             ShapeData la = _data[laPos];
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="body">The body</param>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        private void AddNewShapeData(Body body, float min, float max)
+        internal void AddNewShapeData(Body body, float min, float max)
         {
             ShapeData d = new() { Body = body, Min = min, Max = max };
             _data.Add(d);
@@ -378,7 +378,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         /// Merges the circular data
         /// </summary>
-        private void MergeCircularData()
+        internal void MergeCircularData()
         {
             if (_data.Count <= 1) return;
             if (ListLast(_data).Body != ListFirst(_data).Body) return;
@@ -399,7 +399,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         /// Adjusts the wrapped data
         /// </summary>
-        private void AdjustWrappedData()
+        internal void AdjustWrappedData()
         {
             int lastPos = _data.Count - 1;
             ShapeData last = _data[lastPos];
@@ -413,7 +413,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         /// Adjusts the overlapping data
         /// </summary>
-        private void AdjustOverlappingData()
+        internal void AdjustOverlappingData()
         {
             AdjustWrappedData();
         }
@@ -421,7 +421,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Applies explosion impulses to bodies hit by ray casts.
         /// </summary>
-        private void ApplyExplosionImpulses(Vector2F pos, float radius, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        internal void ApplyExplosionImpulses(Vector2F pos, float radius, float maxForce, Dictionary<Fixture, Vector2F> exploded)
         {
             for (int i = 0; i < _data.Count; ++i)
             {
@@ -473,7 +473,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="insertedRays">The inserted rays</param>
         /// <param name="maxForce">The max force</param>
         /// <param name="exploded">The exploded</param>
-        private void ApplyImpulsesForArc(int i, Vector2F pos, float radius, float arclen, float first, float offset, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        internal void ApplyImpulsesForArc(int i, Vector2F pos, float radius, float arclen, float first, float offset, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
         {
             for (float j = _data[i].Min + first;
                  j < _data[i].Max || MathUtils.FloatEquals(j, _data[i].Max, 0.0001f);
@@ -494,7 +494,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <param name="insertedRays">The inserted rays</param>
         /// <param name="maxForce">The max force</param>
         /// <param name="exploded">The exploded</param>
-        private void ApplyRayImpulses(int i, Vector2F pos, float radius, float angle, float arclen, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
+        internal void ApplyRayImpulses(int i, Vector2F pos, float radius, float angle, float arclen, int insertedRays, float maxForce, Dictionary<Fixture, Vector2F> exploded)
         {
             Vector2F p1 = pos;
             Vector2F p2 = pos + radius * new Vector2F((float)Math.Cos(angle), (float)Math.Sin(angle));
@@ -554,7 +554,7 @@ namespace Alis.Core.Physic.Common.Logic
         /// <summary>
         ///     Applies impulses to shapes that contain the explosion origin.
         /// </summary>
-        private void ApplyContainedShapeImpulses(Vector2F pos, float maxForce, Fixture[] containedShapes, int containedShapeCount, Dictionary<Fixture, Vector2F> exploded)
+        internal void ApplyContainedShapeImpulses(Vector2F pos, float maxForce, Fixture[] containedShapes, int containedShapeCount, Dictionary<Fixture, Vector2F> exploded)
         {
             for (int i = 0; i < containedShapeCount; ++i)
             {

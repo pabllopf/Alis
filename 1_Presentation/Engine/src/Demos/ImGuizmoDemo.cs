@@ -145,7 +145,7 @@ namespace Alis.App.Engine.Demos
         ///     Simples the sample
         /// </summary>
         [Conditional("DEBUG")]
-     private void SimpleSample()
+     internal void SimpleSample()
         {
             if (ImGui.Begin("Gizmo", ref isOpen))
             {

@@ -468,7 +468,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="intoIndex">The into index</param>
         /// <param name="outoIndex">The outo index</param>
-        private void AdjustSingleDiveIndices(ref int intoIndex, ref int outoIndex)
+        internal void AdjustSingleDiveIndices(ref int intoIndex, ref int outoIndex)
         {
             if (intoIndex == -1)
                 intoIndex = Vertices.Count - 1;

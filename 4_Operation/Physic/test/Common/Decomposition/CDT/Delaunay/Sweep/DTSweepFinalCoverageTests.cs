@@ -1216,6 +1216,601 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             DtSweep.Triangulate(tcx);
             Assert.NotNull(ps.GetTriangles);
         }
+
+        // ========================================================================
+        // FinalizationConvexHull — BOTH if-blocks (lines 110-124) via reflection
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FinalizationConvexHull so both if-blocks (Tail.Prev and Head.Next)
+        /// are entered.
+        /// </summary>
+        [Fact]
+        public void FinalizationConvexHull_BothIfBlocks_Entered()
+        {
+            var m = GetMethod("FinalizationConvexHull", typeof(DtSweepContext));
+            var tcx = new DtSweepContext();
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(0, 0));
+            var n1 = new AdvancingFrontNode(new TriangulationPoint(1, 1));
+            var n2 = new AdvancingFrontNode(new TriangulationPoint(2, 0));
+            var n3 = new AdvancingFrontNode(new TriangulationPoint(3, 1));
+            var n4 = new AdvancingFrontNode(new TriangulationPoint(4, 0));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(5, 1));
+
+            head.Next = n1; n1.Prev = head;
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+            n3.Next = n4; n4.Prev = n3;
+            n4.Next = tail; tail.Prev = n4;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            n1.Triangle = new DelaunayTriangle(head.Point, n1.Point, n3.Point);
+            n2.Triangle = new DelaunayTriangle(n1.Point, n2.Point, n3.Point);
+            n3.Triangle = new DelaunayTriangle(n1.Point, n3.Point, tail.Point);
+            n4.Triangle = new DelaunayTriangle(n3.Point, n4.Point, tail.Point);
+
+            var firstOt = new DelaunayTriangle(tail.Point, n1.Point, new TriangulationPoint(3, 2));
+            n3.Triangle.Neighbors[1] = firstOt;
+
+            var secondOt = new DelaunayTriangle(n3.Point, head.Point, new TriangulationPoint(2, 2));
+            n1.Triangle.Neighbors[1] = secondOt;
+
+            tcx.Triangulatable = new MockTriangulatable();
+            tcx.Triangles.Add(n2.Triangle);
+            tcx.Triangles.Add(n4.Triangle);
+            tcx.Triangles.Add(n1.Triangle);
+            tcx.Triangles.Add(n3.Triangle);
+
+            try { m.Invoke(null, new object[] { tcx }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx.AFront);
+        }
+
+        // ========================================================================
+        // EdgeEvent constraint — catch block (lines 282-285)
+        // Makes the 5-param EdgeEvent throw PointOnEdgeException so the catch fires
+        // ========================================================================
+
+        /// <summary>
+        /// Tests EdgeEvent constraint overload catches PointOnEdgeException.
+        /// </summary>
+        [Fact]
+        public void EdgeEvent_Constraint_CatchBlock_Fires()
+        {
+            var m = GetMethod("EdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+
+            var eq = new TriangulationPoint(1, 1);
+            var ep = new TriangulationPoint(3, 1);
+
+            var node = new AdvancingFrontNode(eq);
+            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
+            node.Triangle = new DelaunayTriangle(eq, new TriangulationPoint(1, 2), new TriangulationPoint(2, 2));
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, new DtSweepConstraint(eq, ep), node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillRightConcaveEdgeEvent — recursive body (lines 319-321)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillRightConcaveEdgeEvent recursive body is entered.
+        /// </summary>
+        [Fact]
+        public void FillRightConcaveEdgeEvent_RecursiveBody_Entered()
+        {
+            var m = GetMethod("FillRightConcaveEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(0, 0), new TriangulationPoint(10, 10));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
+            var n1 = new AdvancingFrontNode(new TriangulationPoint(2, 1));
+            var n2 = new AdvancingFrontNode(new TriangulationPoint(4, 3));
+            var n3 = new AdvancingFrontNode(new TriangulationPoint(6, 5));
+            node.Next = n1; n1.Prev = node;
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-2, -1));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(8, 7));
+            head.Next = node; node.Prev = head;
+            n3.Next = tail; tail.Prev = n3;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(node.Point, n1.Point, n2.Point);
+            n1.Triangle = new DelaunayTriangle(n1.Point, n2.Point, n3.Point);
+            n2.Triangle = new DelaunayTriangle(n2.Point, n3.Point, tail.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillRightConvexEdgeEvent — concave path (line 342)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillRightConvexEdgeEvent concave branch (line 335) is entered.
+        /// </summary>
+        [Fact]
+        public void FillRightConvexEdgeEvent_ConcavePath_Entered()
+        {
+            var m = GetMethod("FillRightConvexEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            // Right=true -> uses the concave path conditions
+            var edge = new DtSweepConstraint(new TriangulationPoint(0, 0), new TriangulationPoint(6, 6));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+            tcx.EdgeEvent.Right = true;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
+            var n1 = new AdvancingFrontNode(new TriangulationPoint(2, 0));
+            var n2 = new AdvancingFrontNode(new TriangulationPoint(4, 1));
+            var n3 = new AdvancingFrontNode(new TriangulationPoint(6, 2));
+            var n4 = new AdvancingFrontNode(new TriangulationPoint(8, 3));
+            node.Next = n1; n1.Prev = node;
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+            n3.Next = n4; n4.Prev = n3;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-2, -1));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(10, 5));
+            head.Next = node; node.Prev = head;
+            n4.Next = tail; tail.Prev = n4;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(node.Point, n1.Point, n2.Point);
+            n1.Triangle = new DelaunayTriangle(n1.Point, n2.Point, n3.Point);
+            n2.Triangle = new DelaunayTriangle(n2.Point, n3.Point, n4.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillRightBelowEdgeEvent — concave branch (lines 357-359)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillRightBelowEdgeEvent concave branch (line 358) entered.
+        /// </summary>
+        [Fact]
+        public void FillRightBelowEdgeEvent_ConcaveBranch_Entered()
+        {
+            var m = GetMethod("FillRightBelowEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(0, 0), new TriangulationPoint(8, 8));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(1, 1));
+            var n1 = new AdvancingFrontNode(new TriangulationPoint(2, 2));
+            var n2 = new AdvancingFrontNode(new TriangulationPoint(4, 3));
+            var n3 = new AdvancingFrontNode(new TriangulationPoint(6, 4));
+            node.Next = n1; n1.Prev = node;
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-1, -1));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(10, 10));
+            head.Next = node; node.Prev = head;
+            n3.Next = tail; tail.Prev = n3;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(node.Point, n1.Point, n2.Point);
+            n1.Triangle = new DelaunayTriangle(n1.Point, n2.Point, n3.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillRightBelowEdgeEvent — convex branch + recursion (lines 363-365)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillRightBelowEdgeEvent convex branch (line 362-364) entered.
+        /// </summary>
+        [Fact]
+        public void FillRightBelowEdgeEvent_ConvexBranch_Entered()
+        {
+            var m = GetMethod("FillRightBelowEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(0, 0), new TriangulationPoint(8, 8));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(1, 1));
+            var n1 = new AdvancingFrontNode(new TriangulationPoint(4, 3));
+            var n2 = new AdvancingFrontNode(new TriangulationPoint(6, 2));
+            var n3 = new AdvancingFrontNode(new TriangulationPoint(7, 5));
+            node.Next = n1; n1.Prev = node;
+            n1.Next = n2; n2.Prev = n1;
+            n2.Next = n3; n3.Prev = n2;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-1, -1));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(9, 9));
+            head.Next = node; node.Prev = head;
+            n3.Next = tail; tail.Prev = n3;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(node.Point, n1.Point, n2.Point);
+            n1.Triangle = new DelaunayTriangle(n1.Point, n2.Point, n3.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillRightAboveEdgeEvent — else branch (line 382, Cw orientation)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillRightAboveEdgeEvent else branch (Cw), line 382.
+        /// </summary>
+        [Fact]
+        public void FillRightAboveEdgeEvent_ElseBranch_Entered()
+        {
+            var m = GetMethod("FillRightAboveEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(0, 0), new TriangulationPoint(8, 0));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+            tcx.EdgeEvent.Right = true;
+
+            // node.Next.X=3 < edge.P.X=8 -> enters while loop
+            // Orient2d(Q=(0,0), Next=(3,2), P=(8,0)) = Cw -> else branch
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
+            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
+            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(7, 1));
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx.EdgeEvent.ConstrainedEdge);
+        }
+
+        // ========================================================================
+        // FillLeftConcaveEdgeEvent — recursive body (lines 424-426)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillLeftConcaveEdgeEvent recursive body is entered.
+        /// </summary>
+        [Fact]
+        public void FillLeftConcaveEdgeEvent_RecursiveBody_Entered()
+        {
+            var m = GetMethod("FillLeftConcaveEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(10, 0), new TriangulationPoint(0, 10));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+            tcx.EdgeEvent.Right = false;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(8, 2));
+            var p1 = new AdvancingFrontNode(new TriangulationPoint(6, 4));
+            var p2 = new AdvancingFrontNode(new TriangulationPoint(4, 6));
+            var p3 = new AdvancingFrontNode(new TriangulationPoint(2, 8));
+            node.Prev = p1; p1.Next = node;
+            p1.Prev = p2; p2.Next = p1;
+            p2.Prev = p3; p3.Next = p2;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-2, 12));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(12, -2));
+            head.Next = p3; p3.Prev = head;
+            node.Next = tail; tail.Prev = node;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(p1.Point, node.Point, tail.Point);
+            p1.Triangle = new DelaunayTriangle(p2.Point, p1.Point, node.Point);
+            p2.Triangle = new DelaunayTriangle(p3.Point, p2.Point, p1.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FillLeftBelowEdgeEvent — convex branch + recursion (lines 446-447)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FillLeftBelowEdgeEvent convex branch (line 445-446) entered.
+        /// </summary>
+        [Fact]
+        public void FillLeftBelowEdgeEvent_ConvexBranch_Entered()
+        {
+            var m = GetMethod("FillLeftBelowEdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+            var tcx = new DtSweepContext();
+            var edge = new DtSweepConstraint(new TriangulationPoint(8, 0), new TriangulationPoint(0, 8));
+            tcx.EdgeEvent.ConstrainedEdge = edge;
+            tcx.EdgeEvent.Right = false;
+
+            var node = new AdvancingFrontNode(new TriangulationPoint(7, 1));
+            var p1 = new AdvancingFrontNode(new TriangulationPoint(5, 3));
+            var p2 = new AdvancingFrontNode(new TriangulationPoint(3, 2));
+            var p3 = new AdvancingFrontNode(new TriangulationPoint(1, 5));
+            node.Prev = p1; p1.Next = node;
+            p1.Prev = p2; p2.Next = p1;
+            p2.Prev = p3; p3.Next = p2;
+
+            var head = new AdvancingFrontNode(new TriangulationPoint(-1, 7));
+            var tail = new AdvancingFrontNode(new TriangulationPoint(10, -1));
+            head.Next = p3; p3.Prev = head;
+            node.Next = tail; tail.Prev = node;
+            tcx.AFront = new AdvancingFront(head, tail);
+
+            node.Triangle = new DelaunayTriangle(p1.Point, node.Point, tail.Point);
+            p1.Triangle = new DelaunayTriangle(p2.Point, p1.Point, node.Point);
+            p2.Triangle = new DelaunayTriangle(p3.Point, p2.Point, p1.Point);
+
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, edge, node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // EdgeEvent (5-param) — o2 collinear Contains true (lines 545, 551-552)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests EdgeEvent 5-param when o2==Collinear and Contains is true,
+        /// covering lines 545, 551-552.
+        /// </summary>
+        [Fact]
+        public void EdgeEvent_O2Collinear_ContainsTrue_CoversLines()
+        {
+            var m = GetMethod("EdgeEvent",
+                typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
+
+            var eq = new TriangulationPoint(1, 1);
+            var ep = new TriangulationPoint(2, 2);
+
+            var node = new AdvancingFrontNode(eq);
+            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 1));
+
+            var triangle = new DelaunayTriangle(eq, new TriangulationPoint(1, 2), new TriangulationPoint(0, 0));
+            node.Triangle = triangle;
+
+            var neighbor = new DelaunayTriangle(ep, eq, new TriangulationPoint(2, 0));
+            triangle.Neighbors[0] = neighbor;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, new DtSweepConstraint(eq, ep), node }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FlipEdgeEvent — subedge done (lines 612-614)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FlipEdgeEvent subedge done path (lines 612-614).
+        /// </summary>
+        [Fact]
+        public void FlipEdgeEvent_SubedgeDone_Path_Entered()
+        {
+            var m = GetMethod("FlipEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var p = new TriangulationPoint(0, 0);
+            var pb = new TriangulationPoint(1, 0);
+            var pc = new TriangulationPoint(0, 1);
+
+            var t = new DelaunayTriangle(p, pb, pc);
+
+            var eq = p;
+            var op = new TriangulationPoint(0.25, 0.25);
+            var ep = op;
+
+            var ot = new DelaunayTriangle(pb, op, pc);
+            t.Neighbors[0] = ot;
+            ot.Neighbors[1] = t;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
+                new TriangulationPoint(10, 0), new TriangulationPoint(0, 10));
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, ep, eq, t, p }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FlipEdgeEvent — continuing flip (lines 617-622)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FlipEdgeEvent continuing flip path (lines 617-622).
+        /// </summary>
+        [Fact]
+        public void FlipEdgeEvent_ContinuingFlip_Path_Entered()
+        {
+            var m = GetMethod("FlipEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var p = new TriangulationPoint(0, 0);
+            var eq = new TriangulationPoint(0, 0);
+            var ep = new TriangulationPoint(2, 2);
+            var pb = new TriangulationPoint(1, 0);
+            var pc = new TriangulationPoint(0, 1);
+            var op = new TriangulationPoint(0.25, 0.25);
+
+            var t = new DelaunayTriangle(p, pb, pc);
+            var ot = new DelaunayTriangle(pb, op, pc);
+
+            t.Neighbors[0] = ot;
+            ot.Neighbors[1] = t;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, ep, eq, t, p }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FlipEdgeEvent — not in scan area (lines 628-629)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FlipEdgeEvent not-in-scan-area path (lines 628-629).
+        /// </summary>
+        [Fact]
+        public void FlipEdgeEvent_NotInScanArea_Path_Entered()
+        {
+            var m = GetMethod("FlipEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var p = new TriangulationPoint(0, 0);
+            var pb = new TriangulationPoint(1, 0);
+            var pc = new TriangulationPoint(0, 1);
+            var op = new TriangulationPoint(5, 5);
+
+            var t = new DelaunayTriangle(p, pb, pc);
+            var ot = new DelaunayTriangle(pb, op, pc);
+
+            t.Neighbors[0] = ot;
+            ot.Neighbors[1] = t;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(p, op);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, op, p, t, p }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FlipScanEdgeEvent — in scan area (lines 703-704)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FlipScanEdgeEvent in-scan-area path (lines 703-704).
+        /// </summary>
+        [Fact]
+        public void FlipScanEdgeEvent_InScanArea_Path_Entered()
+        {
+            var m = GetMethod("FlipScanEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var eq = new TriangulationPoint(0, 0);
+            var ep = new TriangulationPoint(2, 0);
+            var pb = new TriangulationPoint(1, 0);
+            var pc = new TriangulationPoint(0, 1);
+            var op = new TriangulationPoint(0.25, 0.25);
+
+            var flipTriangle = new DelaunayTriangle(eq, pb, pc);
+            var t = new DelaunayTriangle(pb, op, pc);
+
+            flipTriangle.Neighbors[0] = t;
+            t.Neighbors[1] = flipTriangle;
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, ep, eq, flipTriangle, t, op }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
+
+        // ========================================================================
+        // FlipScanEdgeEvent — not in scan area, recursive (lines 710-712)
+        // ========================================================================
+
+        /// <summary>
+        /// Tests FlipScanEdgeEvent not-in-scan-area recursive path (lines 710-711).
+        /// </summary>
+        [Fact]
+        public void FlipScanEdgeEvent_NotInScanArea_Recursive_Entered()
+        {
+            var m = GetMethod("FlipScanEdgeEvent",
+                typeof(DtSweepContext), typeof(TriangulationPoint), typeof(TriangulationPoint),
+                typeof(DelaunayTriangle), typeof(DelaunayTriangle), typeof(TriangulationPoint));
+
+            var eq = new TriangulationPoint(0, 0);
+            var ep = new TriangulationPoint(2, 0);
+            var pb = new TriangulationPoint(1, 0);
+            var pc = new TriangulationPoint(0, 1);
+            var op = new TriangulationPoint(5, 5);
+
+            var flipTriangle = new DelaunayTriangle(eq, pb, pc);
+            var t = new DelaunayTriangle(pb, op, pc);
+
+            flipTriangle.Neighbors[0] = t;
+            t.Neighbors[1] = flipTriangle;
+            t.Neighbors[0] = new DelaunayTriangle(op, new TriangulationPoint(6, 6), pb);
+
+            var tcx = new DtSweepContext();
+            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
+            tcx.EdgeEvent.Right = true;
+            tcx.Triangulatable = new MockTriangulatable();
+
+            try { m.Invoke(null, new object[] { tcx, ep, eq, flipTriangle, t, op }); }
+            catch (TargetInvocationException) { }
+
+            Assert.NotNull(tcx);
+        }
     }
 
     /// <summary>

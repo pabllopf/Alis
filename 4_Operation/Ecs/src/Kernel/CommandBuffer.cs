@@ -259,7 +259,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Processes all pending create entity commands.
         /// </summary>
-        private void ProcessCreateEntities()
+        internal void ProcessCreateEntities()
         {
             while (CreateEntityBuffer.TryPop(out CreateCommand createCommand))
             {
@@ -290,7 +290,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Processes all pending delete entity commands.
         /// </summary>
-        private void ProcessDeleteEntities()
+        internal void ProcessDeleteEntities()
         {
             while (DeleteEntityBuffer.TryPop(out GameObjectIdOnly item))
             {
@@ -306,7 +306,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Processes all pending remove component commands.
         /// </summary>
-        private void ProcessRemoveComponents()
+        internal void ProcessRemoveComponents()
         {
             while (RemoveComponentBuffer.TryPop(out DeleteComponent item))
             {
@@ -322,7 +322,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Processes all pending add component commands.
         /// </summary>
-        private void ProcessAddComponents()
+        internal void ProcessAddComponents()
         {
             while (AddComponentBuffer.TryPop(out AddComponent command))
             {
@@ -355,7 +355,7 @@ namespace Alis.Core.Ecs.Kernel
         ///     Asserts the creating gameObject
         /// </summary>
         /// <exception cref="InvalidOperationException">Use CommandBuffer.GameObject() to begin creating an gameObject!</exception>
-        private void AssertCreatingEntity()
+        internal void AssertCreatingEntity()
         {
             if (LastCreateEntityComponentsBufferIndex < 0)
             {
@@ -372,7 +372,7 @@ namespace Alis.Core.Ecs.Kernel
         /// <summary>
         ///     Sets the is active
         /// </summary>
-        private void SetIsActive()
+        internal void SetIsActive()
         {
             IsInactive = false;
         }

@@ -221,7 +221,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Cleanups the graphics resources
         /// </summary>
-        private void CleanupGraphicsResources()
+        internal void CleanupGraphicsResources()
         {
             if (_vbo != 0)
             {
@@ -252,7 +252,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Runs the game loop
         /// </summary>
-        private void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime)
+        internal void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime)
         {
             while (_spaceWork.IsRunning)
             {
@@ -303,7 +303,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Processes the pending input
         /// </summary>
-        private void ProcessPendingInput()
+        internal void ProcessPendingInput()
         {
             if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
             {
@@ -349,7 +349,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Initializes the engine
         /// </summary>
-        private void InitializeEngine()
+        internal void InitializeEngine()
         {
             if (!InitializePlatform(platform, (int) resolutionProgramX, (int) resolutionProgramY, "Alis Hub - by @pabllopf"))
             {
@@ -388,7 +388,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the open gl context
         /// </summary>
-        private void SetupOpenGLContext()
+        internal void SetupOpenGLContext()
         {
             platform.MakeContextCurrent();
             Gl.Initialize(platform.GetProcAddress);
@@ -399,7 +399,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the im gui backend
         /// </summary>
-        private void SetupImGuiBackend()
+        internal void SetupImGuiBackend()
         {
             imguiContext= ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
@@ -442,7 +442,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the shaders
         /// </summary>
-        private void SetupShaders()
+        internal void SetupShaders()
         {
             const string vertexShaderSource = "#version 330 core\n" +
                                               "layout (location = 0) in vec2 Position;\n" +
@@ -492,7 +492,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the buffers
         /// </summary>
-        private void SetupBuffers()
+        internal void SetupBuffers()
         {
             _vao = Gl.GenVertexArray();
             _vbo = Gl.GenBuffer();
@@ -517,7 +517,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the window
         /// </summary>
-        private void SetupWindow()
+        internal void SetupWindow()
         {
             Debug.Assert(platform != null, nameof(platform) + " != null");
             platform.ShowWindow();
@@ -550,7 +550,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Setup the im gui context
         /// </summary>
-        private void SetupImGuiContext()
+        internal void SetupImGuiContext()
         {
             imguiContext = ImGui.CreateContext();
             ImGui.SetCurrentContext(imguiContext);
@@ -559,7 +559,7 @@ namespace Alis.App.Engine
         /// <summary>
         /// Cleanups the engine
         /// </summary>
-        private void CleanupEngine()
+        internal void CleanupEngine()
         {
             if (_vbo != 0)
             {
@@ -592,7 +592,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Updates the mouse pos and buttons
         /// </summary>
-        private void UpdateMousePosAndButtons()
+        internal void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
@@ -663,7 +663,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Draws the left sidebar
         /// </summary>
-        private void DrawLeftSidebar()
+        internal void DrawLeftSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -720,7 +720,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Draws the right sidebar
         /// </summary>
-        private void DrawRightSidebar()
+        internal void DrawRightSidebar()
         {
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0);
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new Vector4F(0.098f, 0.102f, 0.114f, 1.0f));
@@ -777,7 +777,7 @@ namespace Alis.App.Engine
       /// <summary>
         ///     Processes the key with imgui
         /// </summary>
-        private void ProcessKeyWithImgui()
+        internal void ProcessKeyWithImgui()
         {
             ImGuiIoPtr io = ImGui.GetIo();
 
@@ -868,7 +868,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Processes a single key mapping
         /// </summary>
-    private void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
+    internal void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
         {
             io.AddKeyEvent(imguiKey, platform.IsKeyDown(consoleKey));
         }
@@ -876,7 +876,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Loads the fonts
         /// </summary>
-        private void LoadFonts()
+        internal void LoadFonts()
         {
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
@@ -1074,7 +1074,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     Sets the style
         /// </summary>
-        private void SetStyle()
+        internal void SetStyle()
         {
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
@@ -1364,7 +1364,7 @@ namespace Alis.App.Engine
         ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
-        private void RenderDrawData(ImDrawData drawData)
+        internal void RenderDrawData(ImDrawData drawData)
         {
             if (drawData.CmdListsCount == 0)
             {

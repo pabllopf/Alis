@@ -70,7 +70,7 @@ namespace Alis.App.Engine.Demos
         ///     Simples the icons
         /// </summary>
         [Conditional("DEBUG")]
-        private void SimpleIcons()
+        internal void SimpleIcons()
         {
             if (ImGui.Begin(Name))
             {

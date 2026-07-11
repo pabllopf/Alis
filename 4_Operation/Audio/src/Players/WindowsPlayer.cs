@@ -281,7 +281,7 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The elapsed event arguments.</param>
-        private void HandlePlaybackFinished(object sender, ElapsedEventArgs e)
+        internal void HandlePlaybackFinished(object sender, ElapsedEventArgs e)
         {
             Playing = false;
             PlaybackFinished?.Invoke(this, e);
@@ -294,7 +294,7 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         /// <param name="commandString">The command string</param>
         /// <exception cref="Exception"></exception>
-        private void ExecuteMsiCommand(string commandString)
+        internal void ExecuteMsiCommand(string commandString)
         {
             StringBuilder sb = new StringBuilder();
 

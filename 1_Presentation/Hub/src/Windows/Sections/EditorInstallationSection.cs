@@ -93,7 +93,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Renders the install new version popup
         /// </summary>
-        private void RenderInstallNewVersionPopup()
+        internal void RenderInstallNewVersionPopup()
         {
             ImGui.SetNextWindowSize(new Vector2F(500, 250));
             ImGui.SetNextWindowPos(new Vector2F(ImGui.GetIo().DisplaySize.X / 2 - 250, ImGui.GetIo().DisplaySize.Y / 2 - 125));
@@ -142,7 +142,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Starts the installation using the specified version
         /// </summary>
         /// <param name="version">The version</param>
-        private void StartInstallation(string version)
+        internal void StartInstallation(string version)
         {
             string installerPath = GetInstallerPath();
 
@@ -186,7 +186,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Reveals the in finder using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void RevealInFinder(string path)
+        internal void RevealInFinder(string path)
         {
             ValidateFilePath(path);
             Process.Start(new ProcessStartInfo("/usr/bin/open", path) { UseShellExecute = true });
@@ -196,7 +196,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Opens the in terminal using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void OpenInTerminal(string path)
+        internal void OpenInTerminal(string path)
         {
             ValidateFilePath(path);
             Process.Start(new ProcessStartInfo("/usr/bin/open", "-a Terminal " + path) { UseShellExecute = true });
@@ -282,7 +282,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Detects the installed versions
         /// </summary>
-        private void DetectInstalledVersions()
+        internal void DetectInstalledVersions()
         {
             installedVersions = new List<InstalledVersion>();
             string dirProject = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Editor");
@@ -334,7 +334,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Renders the installations table
         /// </summary>
-        private void RenderInstallationsTable()
+        internal void RenderInstallationsTable()
         {
             if (!ImGui.BeginTable("InstallsTable", 3, ImGuiTableFlags.Borders | ImGuiTableFlags.RowBg))
             {
@@ -357,7 +357,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Renders a single installation row
         /// </summary>
-        private void RenderInstallationRow(InstalledVersion version)
+        internal void RenderInstallationRow(InstalledVersion version)
         {
             ImGui.TableNextRow();
 

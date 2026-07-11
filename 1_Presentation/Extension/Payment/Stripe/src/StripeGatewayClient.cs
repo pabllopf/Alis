@@ -251,7 +251,7 @@ namespace Alis.Extension.Payment.Stripe
         ///     Ensures the configured
         /// </summary>
         /// <exception cref="InvalidOperationException">StripeGatewayClient is not configured. Call Configure first.</exception>
-        private void EnsureConfigured()
+        internal void EnsureConfigured()
         {
             if (string.IsNullOrWhiteSpace(_configuredApiKey))
             {

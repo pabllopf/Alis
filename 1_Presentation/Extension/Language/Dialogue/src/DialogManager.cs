@@ -304,7 +304,7 @@ namespace Alis.Extension.Language.Dialogue
         ///     Changes the dialog state
         /// </summary>
         /// <param name="newState">The new state</param>
-        private void ChangeState(DialogStateType newState)
+        internal void ChangeState(DialogStateType newState)
         {
             if ((_currentContext != null) && (_currentContext.State != newState))
             {

@@ -137,7 +137,7 @@ namespace Alis.Core.Ecs.Updating
         /// <summary>
         ///     Registers the new components
         /// </summary>
-        private void RegisterNewComponents()
+        internal void RegisterNewComponents()
         {
             if (_filter is null &&
                 !GenerationServices.TypeAttributeCache.TryGetValue(_attributeType, out _filter))

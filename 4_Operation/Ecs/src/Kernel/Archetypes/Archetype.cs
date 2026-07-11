@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     Resizes the new len
         /// </summary>
         /// <param name="newLen">The new len</param>
-        private void Resize(int newLen)
+        internal void Resize(int newLen)
         {
             Array.Resize(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
@@ -360,7 +360,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <summary>
         ///     Resizes the create component buffers
         /// </summary>
-        private void ResizeCreateComponentBuffers()
+        internal void ResizeCreateComponentBuffers()
         {
             int newLen = checked(Math.Max(1, _entities.Length) * 2);
             //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity

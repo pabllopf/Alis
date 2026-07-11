@@ -350,7 +350,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         ///     Removes an item to the Node-cache to allow for many methods to be O(1) or O(log n) (assuming no duplicates)
         /// </summary>
         
-        private void RemoveFromNodeCache(SimpleNode node)
+        internal void RemoveFromNodeCache(SimpleNode node)
         {
             if (EqualityComparer<TItem>.Default.Equals(node.Data, default(TItem)))
             {

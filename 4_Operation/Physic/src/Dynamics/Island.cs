@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="h">The </param>
         /// <param name="gravity">The gravity</param>
-        private void IntegrateVelocities(float h, ref Vector2F gravity)
+        internal void IntegrateVelocities(float h, ref Vector2F gravity)
         {
             for (int i = 0; i < BodyCount; ++i)
             {
@@ -278,7 +278,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Initializes the solver data using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        private void InitializeSolverData(TimeStep step)
+        internal void InitializeSolverData(TimeStep step)
         {
             SolverData solverData = new SolverData();
             solverData.Step = step;
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        private void SolveVelocityConstraints(TimeStep step)
+        internal void SolveVelocityConstraints(TimeStep step)
         {
             SolverData solverData = new SolverData();
             solverData.Step = step;
@@ -337,7 +337,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Solves the joint velocity constraints using the specified solver data
         /// </summary>
         /// <param name="solverData">The solver data</param>
-        private void SolveJointVelocityConstraints(ref SolverData solverData)
+        internal void SolveJointVelocityConstraints(ref SolverData solverData)
         {
             for (int j = 0; j < JointCount; ++j)
             {
@@ -354,7 +354,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="joint">The joint</param>
         /// <param name="solverData">The solver data</param>
-        private void SolveEnabledJointVelocity(Joint joint, ref SolverData solverData)
+        internal void SolveEnabledJointVelocity(Joint joint, ref SolverData solverData)
         {
             if (SettingEnv.EnableDiagnostics)
                 _watch.Start();
@@ -370,7 +370,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Integrates the positions using the specified h
         /// </summary>
         /// <param name="h">The </param>
-        private void IntegratePositions(float h)
+        internal void IntegratePositions(float h)
         {
             for (int i = 0; i < BodyCount; ++i)
             {
@@ -472,7 +472,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Records the joint update time
         /// </summary>
-        private void RecordJointUpdateTime()
+        internal void RecordJointUpdateTime()
         {
             if (SettingEnv.EnableDiagnostics)
             {
@@ -484,7 +484,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// Synchronizes the body states
         /// </summary>
-        private void SynchronizeBodyStates()
+        internal void SynchronizeBodyStates()
         {
             for (int i = 0; i < BodyCount; ++i)
             {
@@ -502,7 +502,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="h">The </param>
         /// <param name="positionSolved">The position solved</param>
-        private void UpdateSleepState(float h, bool positionSolved)
+        internal void UpdateSleepState(float h, bool positionSolved)
         {
             if (!SettingEnv.AllowSleep)
             {
@@ -659,7 +659,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
-        private void Report(ContactVelocityConstraint[] constraints)
+        internal void Report(ContactVelocityConstraint[] constraints)
         {
             if (_contactManager == null)
             {

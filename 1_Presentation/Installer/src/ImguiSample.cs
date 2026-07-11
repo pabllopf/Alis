@@ -327,7 +327,7 @@ namespace Alis.App.Installer
         /// <summary>
         ///     Updates mouse state from platform input.
         /// </summary>
-        private void UpdateMouseState(ImGuiIoPtr io)
+        internal void UpdateMouseState(ImGuiIoPtr io)
         {
             double now = (double) Stopwatch.GetTimestamp() / Stopwatch.Frequency;
 
@@ -405,7 +405,7 @@ namespace Alis.App.Installer
         ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
-        private void RenderDrawData(ImDrawData drawData)
+        internal void RenderDrawData(ImDrawData drawData)
         {
             if (drawData.CmdListsCount == 0)
             {

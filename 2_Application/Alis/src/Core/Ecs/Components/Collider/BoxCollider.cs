@@ -344,7 +344,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="fixtureA">The fixture</param>
         /// <param name="fixtureB">The fixture</param>
         /// <param name="contact">The contact</param>
-        private void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        internal void OnSeparation(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
             GameObject fixtureGameObject = (GameObject) fixtureA.GetBody.Tag;
             GameObject fixtureBGameObject = (GameObject) fixtureB.GetBody.Tag;
@@ -380,7 +380,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <summary>
         ///     Initializes the shaders
         /// </summary>
-        private void InitializeShaders()
+        internal void InitializeShaders()
         {
             string version = "";
             if (Context.Setting.Graphic.PreviewMode)
@@ -475,7 +475,7 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <param name="cameraPosition">The camera position</param>
         /// <param name="cameraResolution">The camera resolution</param>
         /// <param name="pixelsPerMeter">The pixels per meter</param>
-        private void RenderBoxCollider(
+        internal void RenderBoxCollider(
             GameObject gameobject,
             Vector2F cameraPosition,
             Vector2F cameraResolution,

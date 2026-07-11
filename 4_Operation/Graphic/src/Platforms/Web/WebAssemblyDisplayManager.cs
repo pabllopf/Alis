@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Initializes the list of supported display modes
         /// </summary>
-        private void InitializeSupportedModes()
+        internal void InitializeSupportedModes()
         {
             _supportedModes.Clear();
 

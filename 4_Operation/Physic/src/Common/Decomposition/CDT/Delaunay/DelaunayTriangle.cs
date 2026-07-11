@@ -301,7 +301,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay
         /// <summary>
         ///     Rotates the cw
         /// </summary>
-        private void RotateCw()
+        internal void RotateCw()
         {
             TriangulationPoint t = Points[2];
             Points[2] = Points[1];

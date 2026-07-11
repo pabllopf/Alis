@@ -116,7 +116,7 @@ namespace Alis.Extension.Network.Test.Samples
         ///     Processes the tcp client using the specified tcp client
         /// </summary>
         /// <param name="tcpClient">The tcp client</param>
-        private void ProcessTcpClient(TcpClient tcpClient)
+        internal void ProcessTcpClient(TcpClient tcpClient)
         {
             Task.Run(() => ProcessTcpClientAsync(tcpClient));
         }

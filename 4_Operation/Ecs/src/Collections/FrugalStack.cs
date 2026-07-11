@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Collections
         ///     Resizes the and push using the specified comp
         /// </summary>
         /// <param name="comp">The comp</param>
-        private void ResizeAndPush(in T comp)
+        internal void ResizeAndPush(in T comp)
         {
             FastestArrayPool<T>.ResizeArrayFromPool(ref _buffer,
                 _buffer.Length > 16 ? _buffer.Length << 1 : _buffer.Length + 2);

@@ -318,7 +318,7 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Initialize the ads manager
         /// </summary>
         /// <param name="configuration">The ads configuration</param>
-        private void Initialize(AdConfiguration configuration)
+        internal void Initialize(AdConfiguration configuration)
         {
             if (configuration == null)
             {
@@ -341,7 +341,7 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Load banner ad
         /// </summary>
         /// <param name="adUnitId">The ad unit ID</param>
-        private void LoadBannerAd(string adUnitId)
+        internal void LoadBannerAd(string adUnitId)
         {
             if (!_isInitialized)
             {
@@ -377,7 +377,7 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Load interstitial ad
         /// </summary>
         /// <param name="adUnitId">The ad unit ID</param>
-        private void LoadInterstitialAd(string adUnitId)
+        internal void LoadInterstitialAd(string adUnitId)
         {
             if (!_isInitialized)
             {
@@ -413,7 +413,7 @@ namespace Alis.Extension.Ads.GoogleAds
         ///     Load rewarded video ad
         /// </summary>
         /// <param name="adUnitId">The ad unit ID</param>
-        private void LoadRewardedVideoAd(string adUnitId)
+        internal void LoadRewardedVideoAd(string adUnitId)
         {
             if (!_isInitialized)
             {

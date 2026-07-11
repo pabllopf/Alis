@@ -274,7 +274,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Processes an action
         /// </summary>
-        private void ProcessAction<T>(IAction<T> action, ref T value)
+        internal void ProcessAction<T>(IAction<T> action, ref T value)
         {
             action.Run(ref value);
         }

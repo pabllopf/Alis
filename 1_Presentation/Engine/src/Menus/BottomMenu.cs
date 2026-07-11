@@ -157,7 +157,7 @@ namespace Alis.App.Engine.Menus
         /// <summary>
         /// Setup the next window properties
         /// </summary>
-        private void SetupNextWindowProperties()
+        internal void SetupNextWindowProperties()
         {
             if (!SpaceWork.IsMacOs)
             {

@@ -787,7 +787,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <param name="prefix">The prefix</param>
         /// <param name="info">The info</param>
         /// <param name="ptr">The ptr</param>
-        private void PrintXVisualInfo(string prefix, XVisualInfo info, IntPtr ptr)
+        internal void PrintXVisualInfo(string prefix, XVisualInfo info, IntPtr ptr)
         {
             Logger.Info($"{prefix} visual: ptr=0x{ptr.ToInt64():X}, visualid={info.visualid}, depth={info.depth}, class={info.cclass}, screen={info.screen}, colormap_size={info.colormap_size}, bits_per_rgb={info.bits_per_rgb}, red_mask=0x{info.red_mask:X}, green_mask=0x{info.green_mask:X}, blue_mask=0x{info.blue_mask:X}");
         }
@@ -1221,7 +1221,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// <summary>
         /// Safely attempts to set the window icon from a BMP file
         /// </summary>
-        private void SetWindowIconSafe(string iconPath)
+        internal void SetWindowIconSafe(string iconPath)
         {
             try
             {
@@ -1522,7 +1522,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// </summary>
         /// <param name="keyEvent">The native X11 key event.</param>
         /// <param name="isPressed">Whether the event is a press or release.</param>
-        private void HandleKeyEvent(ref XKeyEvent keyEvent, bool isPressed)
+        internal void HandleKeyEvent(ref XKeyEvent keyEvent, bool isPressed)
         {
             byte[] buffer = new byte[32];
             int length = XLookupString(ref keyEvent, buffer, buffer.Length, out IntPtr keysymPtr, IntPtr.Zero);
@@ -1554,7 +1554,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// </summary>
         /// <param name="buttonEvent">The native X11 button event.</param>
         /// <param name="isPressed">Whether the event is a press or release.</param>
-        private void HandleButtonEvent(ref XButtonEvent buttonEvent, bool isPressed)
+        internal void HandleButtonEvent(ref XButtonEvent buttonEvent, bool isPressed)
         {
             switch (buttonEvent.button)
             {
@@ -1582,7 +1582,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// </summary>
         /// <param name="button">The X11 button number.</param>
         /// <param name="isPressed">Whether the button is pressed.</param>
-        private void UpdateMouseButtonState(uint button, bool isPressed)
+        internal void UpdateMouseButtonState(uint button, bool isPressed)
         {
             switch (button)
             {
@@ -1608,7 +1608,7 @@ namespace Alis.Core.Graphic.Platforms.Linux
         /// Adds printable characters to the pending text input buffer.
         /// </summary>
         /// <param name="text">The text to append.</param>
-        private void AppendInputCharacters(string text)
+        internal void AppendInputCharacters(string text)
         {
             if (string.IsNullOrEmpty(text))
             {

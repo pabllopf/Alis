@@ -1916,7 +1916,7 @@ namespace Alis.Core.Ecs
         /// <param name="gameObject">The game object</param>
         /// <param name="componentHandles">The component handles</param>
         /// <param name="hasGenericRemoveEvent">The has generic remove event</param>
-        private void FireComponentRemovedGenericEvent(
+        internal void FireComponentRemovedGenericEvent(
             GameObject gameObject, Span<ComponentHandle> componentHandles,
             bool hasGenericRemoveEvent)
         {

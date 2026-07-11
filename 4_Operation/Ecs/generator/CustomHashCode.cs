@@ -461,7 +461,7 @@ namespace Alis.Core.Ecs.Generator
         ///     Adds the value
         /// </summary>
         /// <param name="value">The value</param>
-        private void Add(int value)
+        internal void Add(int value)
         {
             // 3. Accumulate remaining blocks of length 1 into the hash.
 

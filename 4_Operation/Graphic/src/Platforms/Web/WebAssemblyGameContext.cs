@@ -204,7 +204,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     The main game loop
         /// </summary>
-        private void RunGameLoop(Action<WebAssemblyGameContext> updateCallback)
+        internal void RunGameLoop(Action<WebAssemblyGameContext> updateCallback)
         {
             while (_platform.PollEvents() && _isRunning)
             {

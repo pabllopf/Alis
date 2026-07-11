@@ -460,7 +460,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="localAnchorB">The local anchor</param>
         /// <param name="axis">The axis</param>
         /// <param name="useWorldCoordinates">The use world coordinates</param>
-        private void Initialize(Vector2F localAnchorA, Vector2F localAnchorB, Vector2F axis, bool useWorldCoordinates)
+        internal void Initialize(Vector2F localAnchorA, Vector2F localAnchorB, Vector2F axis, bool useWorldCoordinates)
         {
             JointType = JointType.Prismatic;
 
@@ -844,7 +844,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void ComputeMotorJacobian(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
+        internal void ComputeMotorJacobian(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
         {
             _axis = Complex.Multiply(ref _localXAxis, ref qA);
             _a1 = MathUtils.Cross(d + rA, _axis);
@@ -868,7 +868,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void ComputePrismaticConstraint(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
+        internal void ComputePrismaticConstraint(ref Complex qA, Vector2F d, Vector2F rA, Vector2F rB, float mA, float mB, float iA, float iB)
         {
             _perp = Complex.Multiply(ref _localYAxisA, ref qA);
 
@@ -897,7 +897,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// Applies the limit state using the specified d
         /// </summary>
         /// <param name="d">The </param>
-        private void ApplyLimitState(Vector2F d)
+        internal void ApplyLimitState(Vector2F d)
         {
             float jointTranslation = Vector2F.Dot(_axis, d);
             if (Math.Abs(_upperTranslation - _lowerTranslation) < 2.0f * SettingEnv.LinearSlop)

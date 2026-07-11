@@ -706,7 +706,7 @@ namespace Alis.Extension.Graphic.Sfml.Render
         /// <summary>
         ///     Do common initializations
         /// </summary>
-        private void Initialize()
+        internal void Initialize()
         {
             myDefaultView = new View(sfRenderWindow_getDefaultView(CPointer));
         }

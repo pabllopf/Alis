@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Releases the unmanaged resources used by this instance.
         /// </summary>
-        private void ReleaseUnmanagedResources()
+        internal void ReleaseUnmanagedResources()
         {
             if (ShaderId != 0)
             {

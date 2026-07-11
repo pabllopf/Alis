@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep
         ///     Meshes the clean req using the specified triangle
         /// </summary>
         /// <param name="triangle">The triangle</param>
-        private void MeshCleanReq(DelaunayTriangle triangle)
+        internal void MeshCleanReq(DelaunayTriangle triangle)
         {
             if ((triangle != null) && !triangle.IsInterior)
             {

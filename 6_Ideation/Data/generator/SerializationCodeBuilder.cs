@@ -98,7 +98,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the file header with pragma directives.
         /// </summary>
-        private void AddFileHeader()
+        internal void AddFileHeader()
         {
             _stringBuilder.AppendLine("#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member");
             _stringBuilder.AppendLine("#pragma warning disable CS8603 // Possible null reference return");
@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the namespace declaration.
         /// </summary>
-        private void AddNamespaceBegin()
+        internal void AddNamespaceBegin()
         {
             _stringBuilder.AppendLine($"namespace {_typeSymbol.ContainingNamespace}");
             _stringBuilder.AppendLine("{");
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the class declaration with the necessary interfaces.
         /// </summary>
-        private void AddClassDeclaration()
+        internal void AddClassDeclaration()
         {
             string typeKeyword = _typeSymbol.TypeKind == TypeKind.Struct ? "struct" : "class";
             _stringBuilder.AppendLine("    /// <summary>");
@@ -137,7 +137,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the GetSerializableProperties method implementation.
         /// </summary>
-        private void AddGetSerializablePropertiesMethod()
+        internal void AddGetSerializablePropertiesMethod()
         {
             _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Gets the serializable properties of this instance.");
@@ -174,7 +174,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the CreateFromProperties method implementation.
         /// </summary>
-        private void AddCreateFromPropertiesMethod()
+        internal void AddCreateFromPropertiesMethod()
         {
             _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Creates an instance from a dictionary of properties.");
@@ -215,7 +215,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the extension methods for JSON conversion.
         /// </summary>
-       private void AddExtensionMethods()
+       internal void AddExtensionMethods()
         {
             _stringBuilder.AppendLine(XmlSummary);
             _stringBuilder.AppendLine("        ///     Converts this instance to its JSON string representation.");
@@ -237,7 +237,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the helper methods for serialization and deserialization.
         /// </summary>
-        private void AddHelperMethods()
+        internal void AddHelperMethods()
         {
             _stringBuilder.Append(HelperMethodsGenerator.GenerateHelperMethods());
         }
@@ -245,7 +245,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Closes the class declaration.
         /// </summary>
-        private void AddClassEnd()
+        internal void AddClassEnd()
         {
             _stringBuilder.AppendLine("    }");
         }
@@ -253,7 +253,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Closes the namespace.
         /// </summary>
-        private void AddNamespaceEnd()
+        internal void AddNamespaceEnd()
         {
             _stringBuilder.AppendLine("}");
         }
@@ -261,7 +261,7 @@ namespace Alis.Core.Aspect.Data.Generator
         /// <summary>
         ///     Adds the file footer with pragma restore directives.
         /// </summary>
-        private void AddFileFooter()
+        internal void AddFileFooter()
         {
             _stringBuilder.AppendLine("#pragma warning restore CS8618");
             _stringBuilder.AppendLine("#pragma warning restore CS8604");

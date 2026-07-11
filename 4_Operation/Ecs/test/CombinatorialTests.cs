@@ -139,7 +139,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         /// <param name="go">The go</param>
         /// <param name="type">The type</param>
-        private void AddComponentByType(GameObject go, int type)
+        internal void AddComponentByType(GameObject go, int type)
         {
             switch (type)
             {
@@ -205,7 +205,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         /// <param name="go">The go</param>
         /// <param name="type">The type</param>
-        private void RemoveComponentByType(GameObject go, int type)
+        internal void RemoveComponentByType(GameObject go, int type)
         {
             switch (type)
             {

@@ -1044,7 +1044,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// <summary>
         ///     Binds the callbacks
         /// </summary>
-        private void BindCallbacks()
+        internal void BindCallbacks()
         {
             PositionCallback windowPositionCallback = (_, x, y) => OnPositionChanged(x, y);
             _pinnedCallbacks.Add(windowPositionCallback);
@@ -1099,7 +1099,7 @@ namespace Alis.Extension.Graphic.Glfw
         /// </summary>
         /// <param name="count">The count</param>
         /// <param name="pointer">The pointer</param>
-        private void OnFileDrop(int count, IntPtr pointer)
+        internal void OnFileDrop(int count, IntPtr pointer)
         {
             string[] paths = new string[count];
             int offset = 0;

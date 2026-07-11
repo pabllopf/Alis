@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Controllers
         /// Applies the body gravity using the specified world body
         /// </summary>
         /// <param name="worldBody">The world body</param>
-        private void ApplyBodyGravity(Body worldBody)
+        internal void ApplyBodyGravity(Body worldBody)
         {
             Vector2F f = Vector2F.Zero;
 
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Controllers
         /// Applies the point gravity using the specified world body
         /// </summary>
         /// <param name="worldBody">The world body</param>
-        private void ApplyPointGravity(Body worldBody)
+        internal void ApplyPointGravity(Body worldBody)
         {
             Vector2F f = Vector2F.Zero;
 

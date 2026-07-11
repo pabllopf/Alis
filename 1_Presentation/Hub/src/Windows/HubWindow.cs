@@ -148,7 +148,7 @@ namespace Alis.App.Hub.Windows
         /// </summary>
         /// <param name="scale">The scale</param>
         /// <param name="screenSize">The screen size</param>
-        private void RenderSidebar(float scale, Vector2F screenSize)
+        internal void RenderSidebar(float scale, Vector2F screenSize)
         {
             ImGui.BeginChild("Sidebar", new Vector2F(220 * scale, screenSize.Y - 20 * scale), true);
 
@@ -171,7 +171,7 @@ namespace Alis.App.Hub.Windows
         /// </summary>
         /// <param name="scale">The scale</param>
         /// <param name="screenSize">The screen size</param>
-        private void RenderMainContentArea(float scale, Vector2F screenSize)
+        internal void RenderMainContentArea(float scale, Vector2F screenSize)
         {
             ImGui.SameLine();
             ImGui.BeginChild("MainContent", new Vector2F(screenSize.X - 220 * scale, screenSize.Y - 20 * scale), false);
@@ -242,7 +242,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Buttonses the left menu
         /// </summary>
-        private void ButtonsLeftMenu(float scale)
+        internal void ButtonsLeftMenu(float scale)
         {
             for (int i = 0; i < menuItems.Length; i++)
             {
@@ -262,7 +262,7 @@ namespace Alis.App.Hub.Windows
         /// <summary>
         ///     Renders the main content
         /// </summary>
-        private void RenderMainContent(float scale)
+        internal void RenderMainContent(float scale)
         {
             ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4F(0.15f, 0.15f, 0.15f, 1.0f));
             switch (selectedMenuItem)

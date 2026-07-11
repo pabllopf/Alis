@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         /// <param name="sink">The sink</param>
         /// <param name="node">The node</param>
-        private void Replace(Sink sink, Node node)
+        internal void Replace(Sink sink, Node node)
         {
             if (sink.ParentList.Count == 0)
             {

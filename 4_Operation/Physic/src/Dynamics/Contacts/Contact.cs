@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="indexA">The index</param>
         /// <param name="fB">The </param>
         /// <param name="indexB">The index</param>
-        private void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
+        internal void Reset(Fixture fA, int indexA, Fixture fB, int indexB)
         {
             Enabled = true;
             IsTouching = false;
@@ -392,7 +392,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Reports collision to both participants.
         /// </summary>
-        private void ReportCollision(Body bodyA, Body bodyB, ContactManager contactManager)
+        internal void ReportCollision(Body bodyA, Body bodyB, ContactManager contactManager)
         {
             bool enabledA = true, enabledB = true;
 
@@ -447,7 +447,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Reports separation to both participants.
         /// </summary>
-        private void ReportSeparation(Body bodyA, Body bodyB, ContactManager contactManager)
+        internal void ReportSeparation(Body bodyA, Body bodyB, ContactManager contactManager)
         {
             //Report the separation to both participants:
             OnSeparationEventHandler onFixtureSeparationHandlerA = FixtureA.OnSeparation;
@@ -489,7 +489,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Processes the pre-solve callback.
         /// </summary>
-        private void ProcessPreSolve(ContactManager contactManager, Manifold oldManifold)
+        internal void ProcessPreSolve(ContactManager contactManager, Manifold oldManifold)
         {
             PreSolveDelegate preSolveHandler = contactManager.PreSolve;
             if (preSolveHandler != null)
@@ -504,7 +504,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="manifold">The manifold.</param>
         /// <param name="controllerTransformA">The first transform.</param>
         /// <param name="controllerTransformB">The second transform.</param>
-        private void Evaluate(ref Manifold manifold, ref ControllerTransform controllerTransformA, ref ControllerTransform controllerTransformB)
+        internal void Evaluate(ref Manifold manifold, ref ControllerTransform controllerTransformA, ref ControllerTransform controllerTransformB)
         {
             switch (_type)
             {

@@ -72,7 +72,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.FileOperations
         /// <summary>
         ///     Cleanups this instance
         /// </summary>
-        private void Cleanup()
+        internal void Cleanup()
         {
             if (Directory.Exists(_testDirectory))
             {

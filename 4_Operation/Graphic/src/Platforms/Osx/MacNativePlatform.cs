@@ -219,7 +219,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             return IsWindowVisible();
         }
 
-        private void UpdateMousePosition(IntPtr evt)
+        internal void UpdateMousePosition(IntPtr evt)
         {
             IntPtr locationPtr = ObjectiveCInterop.objc_msgSend(evt, ObjectiveCInterop.Sel("locationInWindow"));
             long lx = Marshal.ReadInt64(locationPtr, 0);
@@ -230,7 +230,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             mouseY = (int) Math.Round(py);
         }
 
-        private void HandleKeyDownEvent(IntPtr evt)
+        internal void HandleKeyDownEvent(IntPtr evt)
         {
             int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
             char c = ExtractCharacterFromEvent(evt);
@@ -246,7 +246,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             pressedKeys.Add(mappedKey);
         }
 
-        private void HandleKeyUpEvent(IntPtr evt)
+        internal void HandleKeyUpEvent(IntPtr evt)
         {
             int keyCode = ObjectiveCInterop.objc_msgSend_Int(evt, ObjectiveCInterop.Sel("keyCode"));
             char c = ExtractCharacterFromEvent(evt);
@@ -318,7 +318,7 @@ namespace Alis.Core.Graphic.Platforms.Osx
             }
         }
 
-        private void MapCharacterKey(char c, bool isKeyDown)
+        internal void MapCharacterKey(char c, bool isKeyDown)
         {
             ConsoleKey? mapped = null;
 

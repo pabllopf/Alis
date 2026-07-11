@@ -228,7 +228,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         [Conditional("DEBUG")]
-        private void EnsureType<T>()
+        internal void EnsureType<T>()
         {
             Debug.Assert(Type == typeof(T), $"Expected type {typeof(T).Name} but was {Type.Name}");
         }

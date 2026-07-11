@@ -556,7 +556,7 @@ namespace Alis.Extension.Language.Translator
         ///     Notifies observers that the language has changed
         /// </summary>
         /// <param name="language">The newly selected language</param>
-        private void NotifyLanguageChanged(ILanguage language)
+        internal void NotifyLanguageChanged(ILanguage language)
         {
             List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
             foreach (ITranslationObserver observer in observersCopy)
@@ -570,7 +570,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="languageCode">The language code that was updated</param>
         
-        private void NotifyTranslationsUpdated(string languageCode)
+        internal void NotifyTranslationsUpdated(string languageCode)
         {
             List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
             foreach (ITranslationObserver observer in observersCopy)
@@ -584,7 +584,7 @@ namespace Alis.Extension.Language.Translator
         /// </summary>
         /// <param name="languageCode">The language code</param>
         /// <param name="key">The translation key that was not found</param>
-        private void NotifyTranslationNotFound(string languageCode, string key)
+        internal void NotifyTranslationNotFound(string languageCode, string key)
         {
             List<ITranslationObserver> observersCopy = new List<ITranslationObserver>(observers);
             foreach (ITranslationObserver observer in observersCopy)

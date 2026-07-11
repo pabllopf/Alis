@@ -264,7 +264,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         /// <param name="node">The node</param>
         
-        private void CascadeUp(T node)
+        internal void CascadeUp(T node)
         {
             int parent;
             if (node.QueueIndex > 1)
@@ -311,7 +311,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         /// <param name="node">The node</param>
         
-        private void CascadeDown(T node)
+        internal void CascadeDown(T node)
         {
             int finalQueueIndex = node.QueueIndex;
 
@@ -377,7 +377,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// <param name="nodeIndex">The node index</param>
         /// <param name="childIndex">The child index</param>
         
-        private void Swap(T node, T child, int nodeIndex, int childIndex)
+        internal void Swap(T node, T child, int nodeIndex, int childIndex)
         {
             _nodes[nodeIndex] = child;
             child.QueueIndex = nodeIndex;
@@ -397,7 +397,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue
         /// </summary>
         /// <param name="node">The node</param>
         
-        private void OnNodeUpdated(T node)
+        internal void OnNodeUpdated(T node)
         {
             //Bubble the updated node up or down as appropriate
             int parentIndex = node.QueueIndex >> 1;

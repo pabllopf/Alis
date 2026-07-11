@@ -351,7 +351,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Runs the game loop
         /// </summary>
-        private void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io)
+        internal void RunGameLoop(Stopwatch frameTimer, ref double lastTime, double targetFrameTime, ImGuiIoPtr io)
         {
             while (_spaceWork.IsRunning)
             {
@@ -397,7 +397,7 @@ namespace Alis.App.Hub
         /// <summary>
         /// Processes the pending input
         /// </summary>
-        private void ProcessPendingInput()
+        internal void ProcessPendingInput()
         {
             if (platform.TryGetLastInputCharacters(out string pendingChars) && !string.IsNullOrEmpty(pendingChars))
             {
@@ -443,7 +443,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Updates the mouse pos and buttons
         /// </summary>
-        private void UpdateMousePosAndButtons()
+        internal void UpdateMousePosAndButtons()
         {
             ImGuiIoPtr io = ImGui.GetIo();
             Debug.Assert(io.NativePtr != IntPtr.Zero, "ImGui IO no inicializado");
@@ -500,7 +500,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Processes the key with imgui
         /// </summary>
-        private void ProcessKeyWithImgui()
+        internal void ProcessKeyWithImgui()
         {
             ProcessKey(_spaceWork.io, ConsoleKey.Backspace, ImGuiKey.Backspace);
             ProcessKey(_spaceWork.io, ConsoleKey.Tab, ImGuiKey.Tab);
@@ -589,7 +589,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Processes a single key mapping
         /// </summary>
-        private void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
+        internal void ProcessKey(ImGuiIoPtr io, ConsoleKey consoleKey, ImGuiKey imguiKey)
         {
             io.AddKeyEvent(imguiKey, platform.IsKeyDown(consoleKey));
         }
@@ -599,7 +599,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Loads the fonts
         /// </summary>
-        private void LoadFonts()
+        internal void LoadFonts()
         {
             ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
@@ -796,7 +796,7 @@ namespace Alis.App.Hub
         /// <summary>
         ///     Sets the style
         /// </summary>
-        private void SetStyle()
+        internal void SetStyle()
         {
             ref ImGuiStyle style = ref ImGui.GetStyle();
 
@@ -999,7 +999,7 @@ namespace Alis.App.Hub
         ///     Renders the draw data using the specified draw data
         /// </summary>
         /// <param name="drawData">The draw data</param>
-        private void RenderDrawData(ImDrawData drawData)
+        internal void RenderDrawData(ImDrawData drawData)
         {
             if (drawData.CmdListsCount == 0)
             {

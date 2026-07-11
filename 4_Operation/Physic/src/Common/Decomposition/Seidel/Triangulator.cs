@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     Processes this instance
         /// </summary>
-        private void Process()
+        internal void Process()
         {
             foreach (Edge edge in _edgeList)
             {
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// </summary>
         /// <param name="t">The </param>
         /// <param name="edge">The edge</param>
-        private void ProcessTrapezoid(Trapezoid t, Edge edge)
+        internal void ProcessTrapezoid(Trapezoid t, Edge edge)
         {
             _trapezoidalMap.Map.Remove(t);
 
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         /// <summary>
         ///     Creates the mountains
         /// </summary>
-        private void CreateMountains()
+        internal void CreateMountains()
         {
             foreach (Edge edge in _edgeList)
             {
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Common.Decomposition.Seidel
         ///     Marks the outside using the specified t
         /// </summary>
         /// <param name="t">The </param>
-        private void MarkOutside(Trapezoid t)
+        internal void MarkOutside(Trapezoid t)
         {
             if (t.Top == _boundingBox.Top || t.Bottom == _boundingBox.Bottom)
             {

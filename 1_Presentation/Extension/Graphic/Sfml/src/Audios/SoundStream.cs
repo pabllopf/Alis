@@ -331,7 +331,7 @@ namespace Alis.Extension.Graphic.Sfml.Audios
         /// <param name="sfmlTimeOffset">New position</param>
         /// <param name="userData">User data -- unused</param>
         /// <returns>If false is returned, the playback is aborted</returns>
-        private void Seek(SfmlTime sfmlTimeOffset, IntPtr userData)
+        internal void Seek(SfmlTime sfmlTimeOffset, IntPtr userData)
         {
             OnSeek(sfmlTimeOffset);
         }

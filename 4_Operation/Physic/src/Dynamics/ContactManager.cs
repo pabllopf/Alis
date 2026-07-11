@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="proxyIdA">The proxy id</param>
         /// <param name="proxyIdB">The proxy id</param>
-        private void AddPair(int proxyIdA, int proxyIdB)
+        internal void AddPair(int proxyIdA, int proxyIdB)
         {
             FixtureProxy proxyA = BroadPhase.GetProxy(proxyIdA);
             FixtureProxy proxyB = BroadPhase.GetProxy(proxyIdB);
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="contact">The contact</param>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
-        private void RemoveFromWorld(Contact contact, Body bodyA, Body bodyB)
+        internal void RemoveFromWorld(Contact contact, Body bodyA, Body bodyB)
         {
             // Remove from the world.
             contact.Prev.Next = contact.Next;
@@ -379,7 +379,7 @@ namespace Alis.Core.Physic.Dynamics
         /// Inserts the contact into world using the specified c
         /// </summary>
         /// <param name="c">The </param>
-        private void InsertContactIntoWorld(Contact c)
+        internal void InsertContactIntoWorld(Contact c)
         {
             c.Prev = ContactList;
             c.Next = c.Prev.Next;
@@ -670,7 +670,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="c">The </param>
         /// <exception cref="InvalidOperationException">Bodies cannot have the same lock order.</exception>
-        private void UpdateContactWithLock(Contact c)
+        internal void UpdateContactWithLock(Contact c)
         {
             Fixture fixtureA = c.FixtureA;
             Fixture fixtureB = c.FixtureB;

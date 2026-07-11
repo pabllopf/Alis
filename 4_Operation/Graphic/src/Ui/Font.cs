@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     Initializes the shaders
         /// </summary>
-        private void InitializeShaders()
+        internal void InitializeShaders()
         {
             string vertexShaderSource = @"
              #version 330 core
@@ -219,7 +219,7 @@ namespace Alis.Core.Graphic.Ui
         /// <summary>
         ///     Setup the buffers
         /// </summary>
-        private void SetupBuffers()
+        internal void SetupBuffers()
         {
             int windowWidth = 800;
             int windowHeight = 600;
@@ -271,7 +271,7 @@ namespace Alis.Core.Graphic.Ui
         /// <param name="charsPerRow">The chars per row</param>
         /// <param name="xSpacing">The spacing</param>
         /// <param name="ySpacing">The spacing</param>
-        private void InitializeCharacterRectsFromAtlas(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
+        internal void InitializeCharacterRectsFromAtlas(int charWidth, int charHeight, int charsPerRow, int xSpacing, int ySpacing)
         {
             CharacterRects.Clear();
             Dictionary<char, RectangleI> characterRects = new Dictionary<char, RectangleI>();

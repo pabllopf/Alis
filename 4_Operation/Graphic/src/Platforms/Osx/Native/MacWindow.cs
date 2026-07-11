@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <summary>
         ///     Crears the ventana
         /// </summary>
-        private void CrearVentana()
+        internal void CrearVentana()
         {
             Handle = ObjectiveCInterop.objc_msgSend(ObjectiveCInterop.Class("NSWindow"), ObjectiveCInterop.Sel("alloc"));
             Handle = ObjectiveCInterop.objc_msgSend_NSRect_UL_UL_Bool(

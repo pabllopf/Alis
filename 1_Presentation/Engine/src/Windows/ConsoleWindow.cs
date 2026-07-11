@@ -164,7 +164,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// Renders the console toolbar
         /// </summary>
-        private void RenderConsoleToolbar()
+        internal void RenderConsoleToolbar()
         {
             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
             ImGui.PushStyleColor(ImGuiCol.FrameBg, new Vector4F(0.13f, 0.14f, 0.15f, 1.0f));
@@ -183,7 +183,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         /// Renders the filter and action buttons
         /// </summary>
-        private void RenderFilterAndActionButtons()
+        internal void RenderFilterAndActionButtons()
         {
             float buttonWidth = 32 + ImGui.GetStyle().ItemSpacing.X;
             float remainingButtonsWidth = buttonWidth * 4f;
@@ -213,7 +213,7 @@ namespace Alis.App.Engine.Windows
         /// <summary>
         ///     Renders the console output
         /// </summary>
-        private void RenderConsoleOutput()
+        internal void RenderConsoleOutput()
         {
             ImGui.BeginChild("ScrollingRegion", ImGui.GetContentRegionAvail(), false, ImGuiWindowFlags.HorizontalScrollbar);
 

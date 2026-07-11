@@ -410,7 +410,7 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         /// <param name="item">The item</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
-        private void PushWithResize(T item)
+        internal void PushWithResize(T item)
         {
             Grow(_size + 1);
             _array[_size] = item;
@@ -463,7 +463,7 @@ namespace Alis.Core.Ecs.Collections
         ///     Grows the capacity
         /// </summary>
         /// <param name="capacity">The capacity</param>
-        private void Grow(int capacity)
+        internal void Grow(int capacity)
         {
             int newcapacity = _array.Length == 0 ? DefaultCapacity : 2 * _array.Length;
 
@@ -625,7 +625,7 @@ namespace Alis.Core.Ecs.Collections
             ///     Throws the enumeration not started or ended
             /// </summary>
             /// <exception cref="InvalidOperationException"></exception>
-            private void ThrowEnumerationNotStartedOrEnded()
+            internal void ThrowEnumerationNotStartedOrEnded()
             {
                 throw new InvalidOperationException(_index == -2
                     ? "InvalidOperation_EnumNotStarted"

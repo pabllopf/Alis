@@ -679,7 +679,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             ///     Resizes the array to accommodate the specified capacity requirement.
             /// </summary>
             /// <param name="capacity">The required capacity.</param>
-            private void EnsureCapacity(int capacity)
+            internal void EnsureCapacity(int capacity)
             {
                 if (_elements.Length < capacity)
                 {
@@ -936,7 +936,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             /// <typeparam name="TDerived">The type of source elements.</typeparam>
             /// <param name="items">The source array.</param>
             /// <param name="length">The number of elements to add to this array.</param>
-            private void AddRange<TDerived>(TDerived[] items, int length) where TDerived : T
+            internal void AddRange<TDerived>(TDerived[] items, int length) where TDerived : T
             {
                 EnsureCapacity(Count + length);
 
@@ -954,7 +954,7 @@ namespace Alis.Core.Ecs.Generator.Collections
             ///     Removes the at range using the specified indices to remove
             /// </summary>
             /// <param name="indicesToRemove">The indices to remove</param>
-            private void RemoveAtRange(ICollection<int> indicesToRemove)
+            internal void RemoveAtRange(ICollection<int> indicesToRemove)
             {
                 if (indicesToRemove.Count == 0)
                 {
@@ -1291,7 +1291,7 @@ namespace Alis.Core.Ecs.Generator.Collections
         ///     on a default instance of <see cref="FastImmutableArray{T}" />.
         ///     This is intended for explicitly implemented interface method and property implementations.
         /// </summary>
-        private void ThrowInvalidOperationIfNotInitialized()
+        internal void ThrowInvalidOperationIfNotInitialized()
         {
             if (IsDefault)
             {

@@ -152,7 +152,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Updates gamepad states and tracks changes
         /// </summary>
-        private void UpdateGamepadStates()
+        internal void UpdateGamepadStates()
         {
             int[] connectedIndices = _platform.GetConnectedGamepadIndices();
 
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.Platforms.Web
         /// <summary>
         ///     Updates mouse state
         /// </summary>
-        private void UpdateMouseState()
+        internal void UpdateMouseState()
         {
             _platform.GetMouseState(out _, out _, out _);
             _lastMouseWheelDelta = _platform.GetMouseWheel();

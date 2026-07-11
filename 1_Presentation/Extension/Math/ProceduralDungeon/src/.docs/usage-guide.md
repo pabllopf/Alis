@@ -307,7 +307,7 @@ public class DungeonLevel
         InitializeGameObjects();
     }
     
-    private void InitializeGameObjects()
+    internal void InitializeGameObjects()
     {
         RoomData firstRoom = _dungeonData.Rooms[0];
         PlacePlayer(firstRoom.XPos + firstRoom.Width / 2, 

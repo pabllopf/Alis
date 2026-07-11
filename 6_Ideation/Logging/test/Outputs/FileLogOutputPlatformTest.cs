@@ -227,7 +227,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         ///     Cleanups the path
         /// </summary>
         /// <param name="path">The path</param>
-        private void Cleanup(string path)
+        internal void Cleanup(string path)
         {
             try
             {

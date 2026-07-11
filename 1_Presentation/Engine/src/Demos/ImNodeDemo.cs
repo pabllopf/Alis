@@ -65,7 +65,7 @@ namespace Alis.App.Engine.Demos
         ///     Defaults the demo
         /// </summary>
         [Conditional("DEBUG")]
-        private void DefaultDemo()
+        internal void DefaultDemo()
         {
             ImGui.Begin("simple node editor");
 

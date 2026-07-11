@@ -466,7 +466,7 @@ namespace Alis.Extension.Payment.Stripe
         ///     Ensures the initialized
         /// </summary>
         /// <exception cref="InvalidOperationException">StoreManager is not initialized. Call InitializeAsync first.</exception>
-        private void EnsureInitialized()
+        internal void EnsureInitialized()
         {
             if (!IsInitialized)
             {

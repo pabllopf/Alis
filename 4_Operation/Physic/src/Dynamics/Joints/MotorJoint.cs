@@ -341,7 +341,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="iB">The </param>
         /// <param name="h">The </param>
         /// <param name="invH">The inv</param>
-        private void SolveAngularFriction(ref float wA, ref float wB, float iA, float iB, float h, float invH)
+        internal void SolveAngularFriction(ref float wA, ref float wB, float iA, float iB, float h, float invH)
         {
             float cdot = wB - wA + invH * CorrectionFactor * _angularError;
             float impulse = -_angularMass * cdot;
@@ -368,7 +368,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="iB">The </param>
         /// <param name="h">The </param>
         /// <param name="invH">The inv</param>
-        private void SolveLinearFriction(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float h, float invH)
+        internal void SolveLinearFriction(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB, float mA, float mB, float iA, float iB, float h, float invH)
         {
             Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA) + invH * CorrectionFactor * _linearError;
 

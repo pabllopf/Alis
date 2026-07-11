@@ -462,7 +462,7 @@ namespace Alis.Core.Aspect.Math
         ///     Adds an integer hash value to the internal accumulator state.
         /// </summary>
         /// <param name="value">The integer hash value to add.</param>
-        private void Add(int value)
+        internal void Add(int value)
         {
             // 3. Accumulate remaining blocks of length 1 into the hash.
 

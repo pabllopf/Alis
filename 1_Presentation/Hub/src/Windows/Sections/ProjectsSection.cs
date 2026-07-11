@@ -111,7 +111,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Opens the project using the specified project
         /// </summary>
         /// <param name="project">The project</param>
-        private void OpenProject(Project project)
+        internal void OpenProject(Project project)
         {
             Logger.Info($"Opening project: {project.Name}");
 
@@ -162,7 +162,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Reveals the in finder using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void RevealInFinder(string path)
+        internal void RevealInFinder(string path)
         {
             ValidateFilePath(path);
             Process.Start(new ProcessStartInfo("/usr/bin/open", path) { UseShellExecute = true });
@@ -172,7 +172,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Opens the in terminal using the specified path
         /// </summary>
         /// <param name="path">The path</param>
-        private void OpenInTerminal(string path)
+        internal void OpenInTerminal(string path)
         {
             ValidateFilePath(path);
             Process.Start(new ProcessStartInfo("/usr/bin/open", "-a Terminal " + path) { UseShellExecute = true });
@@ -253,7 +253,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="buttonWidth">The button width</param>
         /// <param name="elementHeight">The element height</param>
         /// <param name="spaceBetween">The space between</param>
-        private void RenderSearchBar(float buttonWidth, float elementHeight, float spaceBetween)
+        internal void RenderSearchBar(float buttonWidth, float elementHeight, float spaceBetween)
         {
             float searchBarWidth = ImGui.GetContentRegionAvail().X - (buttonWidth * 4 + spaceBetween * 2);
             float iconHeight = ImGui.GetTextLineHeight();
@@ -290,7 +290,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <param name="buttonWidth">The button width</param>
         /// <param name="elementHeight">The element height</param>
         /// <param name="verticalOffset">The vertical offset</param>
-        private void RenderButtons(float buttonWidth, float elementHeight, float verticalOffset)
+        internal void RenderButtons(float buttonWidth, float elementHeight, float verticalOffset)
         {
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() - verticalOffset);
             if (ImGui.Button("Create", new Vector2F(buttonWidth, elementHeight)))
@@ -335,7 +335,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// <summary>
         ///     Renders the create project popup
         /// </summary>
-        private void RenderCreateProjectPopup()
+        internal void RenderCreateProjectPopup()
         {
             ImGui.SetNextWindowSize(new Vector2F(600, 350));
             ImGui.SetNextWindowPos(new Vector2F(ImGui.GetIo().DisplaySize.X / 2 - 300, ImGui.GetIo().DisplaySize.Y / 2 - 175));
@@ -408,7 +408,7 @@ namespace Alis.App.Hub.Windows.Sections
         ///     Renders the project table using the specified element height
         /// </summary>
         /// <param name="elementHeight">The element height</param>
-        private void RenderProjectTable(float elementHeight)
+        internal void RenderProjectTable(float elementHeight)
         {
             if (ImGui.BeginTable("ProjectTable", 4, ImGuiTableFlags.Borders | ImGuiTableFlags.Resizable))
             {
@@ -434,7 +434,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="elementHeight">The element height</param>
-        private void RenderProjectRow(int index, float elementHeight)
+        internal void RenderProjectRow(int index, float elementHeight)
         {
             Project project = projects[index];
             ImGui.TableNextRow();
@@ -483,7 +483,7 @@ namespace Alis.App.Hub.Windows.Sections
         /// </summary>
         /// <param name="project">The project</param>
         /// <param name="index">The index</param>
-        private void RenderContextMenu(Project project, int index)
+        internal void RenderContextMenu(Project project, int index)
         {
             if (ImGui.MenuItem("Reveal in Finder"))
             {

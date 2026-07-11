@@ -496,7 +496,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="fixedRotation">The fixed rotation</param>
         /// <param name="aA">The </param>
         /// <param name="aB">The </param>
-        private void UpdateLimitState(bool fixedRotation, float aA, float aB)
+        internal void UpdateLimitState(bool fixedRotation, float aA, float aB)
         {
             if (_enableLimit && !fixedRotation)
             {
@@ -639,7 +639,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
         /// <param name="data">The data</param>
-        private void SolveMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
+        internal void SolveMotorConstraint(ref float wA, ref float wB, float iA, float iB, SolverData data)
         {
             if (!_enableMotor || _limitState == LimitState.Equal) return;
 
@@ -665,7 +665,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void SolveLimitConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+        internal void SolveLimitConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             float mA, float mB, float iA, float iB)
         {
             if (!_enableLimit || _limitState == LimitState.Inactive) return;
@@ -699,7 +699,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="impulse">The impulse</param>
         /// <param name="cdot1">The cdot</param>
-        private void SolveAtLower(ref Vector3F impulse, ref Vector2F cdot1)
+        internal void SolveAtLower(ref Vector3F impulse, ref Vector2F cdot1)
         {
             float newImpulse = _impulse.Z + impulse.Z;
             if (newImpulse < 0.0f)
@@ -724,7 +724,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="impulse">The impulse</param>
         /// <param name="cdot1">The cdot</param>
-        private void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1)
+        internal void SolveAtUpper(ref Vector3F impulse, ref Vector2F cdot1)
         {
             float newImpulse = _impulse.Z + impulse.Z;
             if (newImpulse > 0.0f)
@@ -755,7 +755,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="mB">The </param>
         /// <param name="iA">The </param>
         /// <param name="iB">The </param>
-        private void SolvePointToPointConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
+        internal void SolvePointToPointConstraint(ref Vector2F vA, ref float wA, ref Vector2F vB, ref float wB,
             float mA, float mB, float iA, float iB)
         {
             Vector2F cdot = vB + MathUtils.Cross(wB, ref _rB) - vA - MathUtils.Cross(wA, ref _rA);
@@ -779,7 +779,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="aA">The </param>
         /// <param name="cB">The </param>
         /// <param name="aB">The </param>
-        private void SolvePositionPointToPointConstraint(ref Vector2F cA, out float positionError, ref float aA, ref Vector2F cB, ref float aB)
+        internal void SolvePositionPointToPointConstraint(ref Vector2F cA, out float positionError, ref float aA, ref Vector2F cB, ref float aB)
         {
             Complex qA = Complex.FromAngle(aA);
             Complex qB = Complex.FromAngle(aB);

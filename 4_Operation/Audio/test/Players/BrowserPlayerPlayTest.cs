@@ -79,7 +79,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Setup the player
         /// </summary>
-        private void SetupPlayer()
+        internal void SetupPlayer()
         {
             string name = SetupNewAssembly();
             AssetRegistryTestHelper.SaveAndSetActive(name);

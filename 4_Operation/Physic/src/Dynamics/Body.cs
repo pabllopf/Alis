@@ -655,7 +655,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     OnDestroy the attached contacts.
         /// </summary>
-        private void DestroyContacts()
+        internal void DestroyContacts()
         {
             ContactEdge ce = ContactList;
             while (ce != null)

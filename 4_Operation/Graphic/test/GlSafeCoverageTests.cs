@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.Test
         /// <summary>
         /// Inits this instance
         /// </summary>
-        private void Init() => Gl.Initialize(_ => IntPtr.Zero);
+        internal void Init() => Gl.Initialize(_ => IntPtr.Zero);
 
         /// <summary>
         /// Tests that initialize stores delegate

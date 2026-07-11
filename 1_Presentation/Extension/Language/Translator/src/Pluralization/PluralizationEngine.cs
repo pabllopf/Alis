@@ -123,7 +123,7 @@ namespace Alis.Extension.Language.Translator.Pluralization
         ///     Initializes the default pluralization rules for common languages
         /// </summary>
         
-        private void InitializeDefaultRules()
+        internal void InitializeDefaultRules()
         {
             Func<int, int> englishRule = quantity => quantity == 1 ? 0 : 1;
             RegisterPluralizationRule("en", englishRule);
