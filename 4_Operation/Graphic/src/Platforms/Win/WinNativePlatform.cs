@@ -730,6 +730,9 @@ namespace Alis.Core.Graphic.Platforms.Win
         
         private static extern bool TranslateMessage(ref Msg lpMsg);
 
+        /// <summary>
+        ///     The point structure
+        /// </summary>
         [StructLayout(LayoutKind.Sequential)]
         internal struct POINT
         {
