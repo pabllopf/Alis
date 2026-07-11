@@ -12,8 +12,17 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 {
+    /// <summary>
+    /// The graphic manager event processing test class
+    /// </summary>
     public class GraphicManagerEventProcessingTest
     {
+        /// <summary>
+        /// Creates the game object with component using the specified component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="component">The component</param>
+        /// <returns>The go</returns>
         private static GameObject CreateGameObjectWithComponent<T>(T component) where T : class
         {
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
@@ -22,6 +31,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             return go;
         }
 
+        /// <summary>
+        /// Tests that on start does not throw
+        /// </summary>
         [Fact]
         public void OnStart_DoesNotThrow()
         {
@@ -31,6 +43,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnStart();
         }
 
+        /// <summary>
+        /// Tests that on before draw does not throw
+        /// </summary>
         [Fact]
         public void OnBeforeDraw_DoesNotThrow()
         {
@@ -40,6 +55,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnBeforeDraw();
         }
 
+        /// <summary>
+        /// Tests that on draw with preview mode throws exception
+        /// </summary>
         [Fact]
         public void OnDraw_WithPreviewMode_ThrowsException()
         {
@@ -53,6 +71,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.ThrowsAny<Exception>(() => manager.OnDraw());
         }
 
+        /// <summary>
+        /// Tests that render preview without scene throws exception
+        /// </summary>
         [Fact]
         public void RenderPreview_WithoutScene_ThrowsException()
         {
@@ -68,6 +89,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             });
         }
 
+        /// <summary>
+        /// Tests that on init with preview mode does not throw
+        /// </summary>
         [Fact]
         public void OnInit_WithPreviewMode_DoesNotThrow()
         {
@@ -78,6 +102,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnInit();
         }
 
+        /// <summary>
+        /// Tests that process key event for component with on press key calls on press key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnPressKey_CallsOnPressKey()
         {
@@ -99,6 +126,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.True(wasCalled);
         }
 
+        /// <summary>
+        /// Tests that process key event for component with on hold key calls on hold key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnHoldKey_CallsOnHoldKey()
         {
@@ -120,6 +150,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.True(wasCalled);
         }
 
+        /// <summary>
+        /// Tests that process key event for component with on release key calls on release key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_WithOnReleaseKey_CallsOnReleaseKey()
         {
@@ -142,21 +175,54 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         }
     }
 
+    /// <summary>
+    /// The test press key component class
+    /// </summary>
+    /// <seealso cref="IOnPressKey"/>
     public class TestPressKeyComponent : IOnPressKey
     {
+        /// <summary>
+        /// Gets or sets the value of the on press key action
+        /// </summary>
         public Action<KeyEventInfo> OnPressKeyAction { get; set; }
+        /// <summary>
+        /// Ons the press key using the specified key event info
+        /// </summary>
+        /// <param name="keyEventInfo">The key event info</param>
         public void OnPressKey(KeyEventInfo keyEventInfo) => OnPressKeyAction(keyEventInfo);
     }
 
+    /// <summary>
+    /// The test hold key component class
+    /// </summary>
+    /// <seealso cref="IOnHoldKey"/>
     public class TestHoldKeyComponent : IOnHoldKey
     {
+        /// <summary>
+        /// Gets or sets the value of the on hold key action
+        /// </summary>
         public Action<KeyEventInfo> OnHoldKeyAction { get; set; }
+        /// <summary>
+        /// Ons the hold key using the specified key event info
+        /// </summary>
+        /// <param name="keyEventInfo">The key event info</param>
         public void OnHoldKey(KeyEventInfo keyEventInfo) => OnHoldKeyAction(keyEventInfo);
     }
 
+    /// <summary>
+    /// The test release key component class
+    /// </summary>
+    /// <seealso cref="IOnReleaseKey"/>
     public class TestReleaseKeyComponent : IOnReleaseKey
     {
+        /// <summary>
+        /// Gets or sets the value of the on release key action
+        /// </summary>
         public Action<KeyEventInfo> OnReleaseKeyAction { get; set; }
+        /// <summary>
+        /// Ons the release key using the specified key event info
+        /// </summary>
+        /// <param name="keyEventInfo">The key event info</param>
         public void OnReleaseKey(KeyEventInfo keyEventInfo) => OnReleaseKeyAction(keyEventInfo);
     }
 }
