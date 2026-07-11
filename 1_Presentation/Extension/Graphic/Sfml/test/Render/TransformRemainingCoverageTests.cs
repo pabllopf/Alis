@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that TransformPoint with float parameters delegates correctly.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void TransformPoint_WithXY_ReturnsTransformedPoint()
         {
             Transform t = Transform.Identity;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Translate with Vector2F offset modifies the transform.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Translate_WithVector2F_ModifiesTransform()
         {
             Transform t = Transform.Identity;
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Rotate with angle and Vector2F center modifies the transform.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Rotate_WithAngleAndVector2FCenter_ModifiesTransform()
         {
             Transform t = Transform.Identity;
@@ -81,29 +82,29 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
 
         /// <summary>
-        ///     Tests that Scale with Vector2F factors modifies the transform.
+        ///     Tests that Scale with Vector2F RequireCSfmlWindowsFactors modifies the transform.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Scale_WithVector2F_ModifiesTransform()
         {
             Transform t = Transform.Identity;
-            Vector2F factors = new Vector2F(3f, 4f);
-            t.Scale(factors);
+            Vector2F RequireCSfmlWindowsFactors = new Vector2F(3f, 4f);
+            t.Scale(RequireCSfmlWindowsFactors);
 
             Assert.Equal(3f, t.m00);
             Assert.Equal(4f, t.m11);
         }
 
         /// <summary>
-        ///     Tests that Scale with Vector2F factors and center modifies the transform.
+        ///     Tests that Scale with Vector2F RequireCSfmlWindowsFactors and center modifies the transform.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Scale_WithVector2FAndCenter_ModifiesTransform()
         {
             Transform t = Transform.Identity;
-            Vector2F factors = new Vector2F(2f, 3f);
+            Vector2F RequireCSfmlWindowsFactors = new Vector2F(2f, 3f);
             Vector2F center = new Vector2F(50f, 100f);
-            t.Scale(factors, center);
+            t.Scale(RequireCSfmlWindowsFactors, center);
 
             Assert.Equal(2f, t.m00);
             Assert.Equal(3f, t.m11);
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals with object of type Transform returns correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_ObjectIsTransform_ReturnsTrue()
         {
             Transform t1 = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals with object of type Transform returns false for different values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Equals_ObjectIsDifferentTransform_ReturnsFalse()
         {
             Transform t1 = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that operator * combines two transforms.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Operator_MultiplyTransformTransform_CombinesTransforms()
         {
             Transform t1 = Transform.Identity;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that operator * transforms a point.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Operator_MultiplyTransformVector2F_TransformsPoint()
         {
             Transform t = Transform.Identity;
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that operator * transforms a point with a translated transform.
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void Operator_MultiplyTransformVector2F_WithTranslation_TransformsPoint()
         {
             Transform t = new Transform(1, 0, 5, 0, 1, 10, 0, 0, 1);

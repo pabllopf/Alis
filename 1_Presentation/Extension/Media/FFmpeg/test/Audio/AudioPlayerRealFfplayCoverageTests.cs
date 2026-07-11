@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -49,7 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with run pure background returns null field
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void PlayInBackground_WithRunPureBackground_ReturnsNullField()
         {
             _player = new AudioPlayer("input.wav", StubFfplay);
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write after play in background kills previous process
         /// </summary>
-        [Fact]
+        [WindowsOnly]
         public void OpenWrite_AfterPlayInBackground_KillsPreviousProcess()
         {
             AudioPlayer stubPlayer = new AudioPlayer("input.wav", StubFfplay);
