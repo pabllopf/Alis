@@ -280,7 +280,7 @@ namespace Alis.Extension.Io.FileDialog
         /// <summary>
         ///     Escapes special characters in AppleScript strings.
         /// </summary>
-        private static string EscapeAppleScript(string input)
+        internal static string EscapeAppleScript(string input)
         {
             if (string.IsNullOrEmpty(input))
             {

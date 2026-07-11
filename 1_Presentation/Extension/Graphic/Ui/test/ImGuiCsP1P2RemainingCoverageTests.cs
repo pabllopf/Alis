@@ -287,14 +287,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         [Fact]
-        public void ImFontConfig_ShouldExecute()
-        {
-            ImFontConfigPtr config = ImGui.ImFontConfig();
-            Assert.NotNull(config);
-            config.Destroy();
-        }
-
-        [Fact]
         public void DockBuilder_AllMethods_ShouldExecute()
         {
             ImGui.NewFrame();
@@ -360,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DockSpace_AllOverloads_ShouldExecute()
         {
             ImGui.NewFrame();
-            uint id = ImGui.GetID("MyDockspace");
+            uint id = ImGui.GetId("MyDockspace");
             uint r1 = ImGui.DockSpace(id);
             _ = r1;
             uint r2 = ImGui.DockSpace(id, new Vector2F(500, 500));

@@ -136,7 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
             obj.Dispose();
-            obj.DestroyCalled = false;
+            // Use reflection to reset DestroyCalled
+            var field = typeof(TestObjectBase).GetField("<DestroyCalled>k__BackingField", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+            field.SetValue(obj, false);
             obj.Dispose();
             Assert.False(obj.DestroyCalled);
         }
