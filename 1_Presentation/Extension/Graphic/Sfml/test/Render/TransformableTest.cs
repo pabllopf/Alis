@@ -27,6 +27,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, t.Origin.Y);
         }
 
+        
         /// <summary>
         /// Tests that position setter updates value
         /// </summary>
