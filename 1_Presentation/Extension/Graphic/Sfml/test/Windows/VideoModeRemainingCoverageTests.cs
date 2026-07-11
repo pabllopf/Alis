@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that desktop mode returns non zero width
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void DesktopMode_ReturnsNonZeroWidth()
         {
             VideoMode vm = VideoMode.DesktopMode;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that desktop mode returns non zero height
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void DesktopMode_ReturnsNonZeroHeight()
         {
             VideoMode vm = VideoMode.DesktopMode;
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that desktop mode returns non zero bits per pixel
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void DesktopMode_ReturnsNonZeroBitsPerPixel()
         {
             VideoMode vm = VideoMode.DesktopMode;
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that fullscreen modes returns non null array
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullscreenModes_ReturnsNonNullArray()
         {
             VideoMode[] modes = VideoMode.FullscreenModes;
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that fullscreen modes returns at least one mode
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullscreenModes_ReturnsAtLeastOneMode()
         {
             VideoMode[] modes = VideoMode.FullscreenModes;
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that each fullscreen mode has valid dimensions
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void FullscreenModes_EachModeHasValidDimensions()
         {
             VideoMode[] modes = VideoMode.FullscreenModes;
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that isValid returns true for valid video mode
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsValid_WithDesktopMode_ReturnsTrue()
         {
             VideoMode vm = VideoMode.DesktopMode;
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that isValid returns true for common resolution
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsValid_WithCommonResolution_ReturnsTrue()
         {
             VideoMode vm = new VideoMode(1920, 1080);
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that isValid returns false for zero resolution
         /// </summary>
-        [Fact]
+        [RequireCSfmlWindowsFact]
         public void IsValid_WithZeroResolution_ReturnsFalse()
         {
             VideoMode vm = new VideoMode(0, 0, 0);

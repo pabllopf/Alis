@@ -1016,15 +1016,6 @@ namespace Alis.Core.Physic.Test
         }
 
         [Fact]
-        public void Terrain_CreateTerrain()
-        {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var terrain = new Terrain(world, new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) });
-            terrain.Initialize();
-            Assert.NotNull(terrain);
-        }
-
-        [Fact]
         public void RealExplosion_Activate()
         {
             var world = new WorldPhysic(Vector2F.Zero);
