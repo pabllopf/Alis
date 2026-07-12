@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
@@ -706,50 +705,6 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
 
         /// <summary>
-        /// Tests that should skip angle pair with equal angles returns true
-        /// </summary>
-        [Fact]
-        public void ShouldSkipAnglePair_WithEqualAngles_ReturnsTrue()
-        {
-            float[] vals = { 1.0f, 1.0f };
-            bool result = RealExplosionRemainingCoverageTestsHelper.ShouldSkipAnglePair(vals, 0, 2);
-            Assert.True(result || !result);
-        }
-
-        /// <summary>
-        /// Tests that normalize angle difference with negative diff wraps correctly
-        /// </summary>
-        [Fact]
-        public void NormalizeAngleDifference_WithNegativeDiff_WrapsCorrectly()
-        {
-            MethodInfo method = typeof(RealExplosion).GetMethod("NormalizeAngleDifference", BindingFlags.Static | BindingFlags.NonPublic);
-            float result = (float)method.Invoke(null, new object[] { -0.5f });
-            Assert.True(result >= -(float)Math.PI && result <= (float)Math.PI);
-        }
-
-        /// <summary>
-        /// Tests that compute inserted rays negative result returns zero
-        /// </summary>
-        [Fact]
-        public void ComputeInsertedRays_NegativeResult_ReturnsZero()
-        {
-            MethodInfo method = typeof(RealExplosion).GetMethod("ComputeInsertedRays", BindingFlags.Static | BindingFlags.NonPublic);
-            int result = (int)method.Invoke(null, new object[] { 0.1f, 0.3f, 5, 0.2f });
-            Assert.Equal(0, result);
-        }
-
-        /// <summary>
-        /// Tests that compute ray offset computes correct offset
-        /// </summary>
-        [Fact]
-        public void ComputeRayOffset_ComputesCorrectOffset()
-        {
-            MethodInfo method = typeof(RealExplosion).GetMethod("ComputeRayOffset", BindingFlags.Static | BindingFlags.NonPublic);
-            float result = (float)method.Invoke(null, new object[] { 10f, 1f, 3, 5 });
-            Assert.True(result > 0);
-        }
-
-        /// <summary>
         /// Tests that activate with contained circle shape processes contained shapes
         /// </summary>
         [Fact]
@@ -780,118 +735,276 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
 
         // ========================================================================
-        // MergeCircularData — wrapping merge logic (lines 384-396)
+        // Internal method tests
         // ========================================================================
 
         /// <summary>
-        /// Tests that merge circular data wraps min when data wraps around circle
+        /// Tests that add new shape data adds entry with correct values
         /// </summary>
         [Fact]
-        public void MergeCircularData_WrappingMerge_AdjustsMin()
+        public void AddNewShapeData_AddsEntryWithCorrectValues()
         {
-            MethodInfo method = typeof(RealExplosion).GetMethod("MergeCircularData",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
 
-            FieldInfo dataField = typeof(RealExplosion).GetField("_data",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            var data = (System.Collections.IList)dataField.GetValue(explosion);
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
 
-            Type shapeDataType = typeof(RealExplosion).Assembly.GetType("Alis.Core.Physic.Common.Logic.ShapeData");
-            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-
-            // First: Min=0.1f, Max=1.0f
-            object sd1 = Activator.CreateInstance(shapeDataType);
-            shapeDataType.GetField("Body").SetValue(sd1, body);
-            shapeDataType.GetField("Min").SetValue(sd1, 0.1f);
-            shapeDataType.GetField("Max").SetValue(sd1, 1.0f);
-
-            // Middle
-            object sd2 = Activator.CreateInstance(shapeDataType);
-            shapeDataType.GetField("Body").SetValue(sd2, body);
-            shapeDataType.GetField("Min").SetValue(sd2, 2.0f);
-            shapeDataType.GetField("Max").SetValue(sd2, 3.0f);
-
-            // Last: same body, Max ~ first.Min (0.1f) so |last.Max - first.Min| < Epsilon
-            object sd3 = Activator.CreateInstance(shapeDataType);
-            shapeDataType.GetField("Body").SetValue(sd3, body);
-            shapeDataType.GetField("Min").SetValue(sd3, 2.5f);
-            shapeDataType.GetField("Max").SetValue(sd3, 0.1f + 0.5f * float.Epsilon);
-
-            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd1 });
-            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd2 });
-            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd3 });
-
-            method.Invoke(explosion, null);
-
-            int count = (int)data.GetType().GetProperty("Count").GetValue(data);
-            // After merge: last is absorbed into first → 2 elements remain
-            Assert.Equal(2, count);
+            Assert.Single(explosion._data);
+            Assert.Same(body, explosion._data[0].Body);
+            Assert.Equal(0.1f, explosion._data[0].Min);
+            Assert.Equal(1.0f, explosion._data[0].Max);
         }
 
         /// <summary>
-        /// Tests that merge circular data while loop adjusts min by subtracting 2*Pi
+        /// Tests that update last shape data updates max of last entry
         /// </summary>
         [Fact]
-        public void MergeCircularData_WhileLoop_AdjustsMinByTwoPi()
+        public void UpdateLastShapeData_UpdatesMaxOfLastEntry()
         {
-            MethodInfo method = typeof(RealExplosion).GetMethod("MergeCircularData",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
 
-            FieldInfo dataField = typeof(RealExplosion).GetField("_data",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            var data = (System.Collections.IList)dataField.GetValue(explosion);
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
+            explosion.UpdateLastShapeData(2.0f);
+            explosion.UpdateLastShapeData(3.0f);
 
-            Type shapeDataType = typeof(RealExplosion).Assembly.GetType("Alis.Core.Physic.Common.Logic.ShapeData");
-            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-
-            // First: Min=0.1f, Max=1.0f
-            object sd1 = Activator.CreateInstance(shapeDataType);
-            shapeDataType.GetField("Body").SetValue(sd1, body);
-            shapeDataType.GetField("Min").SetValue(sd1, 0.1f);
-            shapeDataType.GetField("Max").SetValue(sd1, 1.0f);
-
-            // Last: same body, Min=2.0f (>= first.Max=1.0f for while loop),
-            // Max ~ first.Min (0.1f) so |last.Max - first.Min| < Epsilon
-            object sd2 = Activator.CreateInstance(shapeDataType);
-            shapeDataType.GetField("Body").SetValue(sd2, body);
-            shapeDataType.GetField("Min").SetValue(sd2, 2.0f);
-            shapeDataType.GetField("Max").SetValue(sd2, 0.1f + 0.5f * float.Epsilon);
-
-            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd1 });
-            data.GetType().GetMethod("Add").Invoke(data, new object[] { sd2 });
-
-            method.Invoke(explosion, null);
-
-            // After merge: last absorbed into first → 1 element remains
-            // Then while loop triggered: fi.Min (2.0f) >= first.Max (1.0f)
-            // fi.Min -= 2*Pi → 2.0 - 6.283 = -4.283 → loop ends
-            int count = (int)data.GetType().GetProperty("Count").GetValue(data);
-            Assert.Equal(1, count);
+            Assert.Equal(3.0f, explosion._data[0].Max);
         }
-    }
 
-    /// <summary>
-    /// The real explosion remaining coverage tests helper class
-    /// </summary>
-    internal static class RealExplosionRemainingCoverageTestsHelper
-    {
         /// <summary>
-        /// Shoulds the skip angle pair using the specified vals
+        /// Tests that process ray hit with no existing data adds new entry
         /// </summary>
-        /// <param name="vals">The vals</param>
-        /// <param name="i">The </param>
-        /// <param name="valIndex">The val index</param>
-        /// <returns>The bool</returns>
-        internal static bool ShouldSkipAnglePair(float[] vals, int i, int valIndex)
+        [Fact]
+        public void ProcessRayHit_WithNoExistingData_AddsNewEntry()
         {
-            MethodInfo method = typeof(RealExplosion).GetMethod("ShouldSkipAnglePair", BindingFlags.Static | BindingFlags.NonPublic);
-            return (bool)method.Invoke(null, new object[] { vals, i, valIndex });
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            float[] vals = { 0.1f, 1.0f };
+            bool rayMissed = true;
+
+            explosion.ProcessRayHit(vals, 0, 2, body, ref rayMissed);
+
+            Assert.Single(explosion._data);
+            Assert.Same(body, explosion._data[0].Body);
+            Assert.Equal(vals[0], explosion._data[0].Min);
+            Assert.Equal(vals[1], explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that process ray hit with existing same body data updates last using iplus as max
+        /// </summary>
+        [Fact]
+        public void ProcessRayHit_WithExistingSameBody_UpdatesLast()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            float[] vals = { 0.1f, 1.0f, 1.5f, 2.5f };
+            bool rayMissed = false;
+
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
+            explosion.ProcessRayHit(vals, 2, 4, body, ref rayMissed);
+
+            Assert.Single(explosion._data);
+            Assert.Equal(3, explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that merge circular data with matching endpoints merges entries
+        /// </summary>
+        [Fact]
+        public void MergeCircularData_WithMatchingEndpoints_MergesEntries()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
+            explosion.AddNewShapeData(body, 2.0f, 0.1f + 0.5f * float.Epsilon);
+
+            explosion.MergeCircularData();
+
+            Assert.Single(explosion._data);
+            Assert.True(explosion._data[0].Min < explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that merge circular data with single entry does nothing
+        /// </summary>
+        [Fact]
+        public void MergeCircularData_WithSingleEntry_DoesNothing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
+            explosion.MergeCircularData();
+
+            Assert.Single(explosion._data);
+        }
+
+        /// <summary>
+        /// Tests that merge circular data with different bodies does nothing
+        /// </summary>
+        [Fact]
+        public void MergeCircularData_WithDifferentBodies_DoesNothing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body1 = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body body2 = world.CreateCircle(5f, 1f, new Vector2F(10f, 0), BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body1, 0.1f, 1.0f);
+            explosion.AddNewShapeData(body2, 2.0f, 0.1f + 0.5f * float.Epsilon);
+            explosion.MergeCircularData();
+
+            Assert.Equal(2, explosion._data.Count);
+        }
+
+        /// <summary>
+        /// Tests that adjust wrapped data when min greater or equal max adjusts min
+        /// </summary>
+        [Fact]
+        public void AdjustWrappedData_WhenMinGreaterOrEqualMax_AdjustsMin()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body, 2.0f, 1.0f);
+            explosion.AdjustWrappedData();
+
+            Assert.True(explosion._data[0].Min < explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that adjust wrapped data with normal entry does nothing
+        /// </summary>
+        [Fact]
+        public void AdjustWrappedData_WithNormalEntry_DoesNothing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body, 0.1f, 1.0f);
+            explosion.AdjustWrappedData();
+
+            Assert.Equal(0.1f, explosion._data[0].Min);
+            Assert.Equal(1.0f, explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that adjust overlapping data calls adjust wrapped data
+        /// </summary>
+        [Fact]
+        public void AdjustOverlappingData_WithWrappedEntry_AdjustsMin()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            RealExplosion explosion = new RealExplosion(world);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+
+            explosion.AddNewShapeData(body, 2.0f, 1.0f);
+            explosion.AdjustOverlappingData();
+
+            Assert.True(explosion._data[0].Min < explosion._data[0].Max);
+        }
+
+        /// <summary>
+        /// Tests that apply contained shape impulses with dynamic body adds to dictionary
+        /// </summary>
+        [Fact]
+        public void ApplyContainedShapeImpulses_WithDynamicBody_AddsToDictionary()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Fixture fixture = body.FixtureList[0];
+            Fixture[] containedShapes = { fixture };
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>();
+
+            explosion.ApplyContainedShapeImpulses(Vector2F.Zero, 100f, containedShapes, 1, exploded);
+
+            Assert.NotEmpty(exploded);
+            Assert.Contains(fixture, exploded);
+        }
+
+        /// <summary>
+        /// Tests that apply contained shape impulses with static body adds nothing
+        /// </summary>
+        [Fact]
+        public void ApplyContainedShapeImpulses_WithStaticBody_DoesNothing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Static);
+            RealExplosion explosion = new RealExplosion(world);
+            Fixture fixture = body.FixtureList[0];
+            Fixture[] containedShapes = { fixture };
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>();
+
+            explosion.ApplyContainedShapeImpulses(Vector2F.Zero, 100f, containedShapes, 1, exploded);
+
+            Assert.Empty(exploded);
+        }
+
+        /// <summary>
+        /// Tests that apply contained shape impulses with ignored controller adds nothing
+        /// </summary>
+        [Fact]
+        public void ApplyContainedShapeImpulses_WithIgnoredController_DoesNothing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            body.ControllerFilter.IgnoreController(ControllerCategories.Cat01);
+            RealExplosion explosion = new RealExplosion(world);
+            Fixture fixture = body.FixtureList[0];
+            Fixture[] containedShapes = { fixture };
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>();
+
+            explosion.ApplyContainedShapeImpulses(Vector2F.Zero, 100f, containedShapes, 1, exploded);
+
+            Assert.Empty(exploded);
+        }
+
+        /// <summary>
+        /// Tests that apply contained shape impulses with circle shape calls impulse for circle
+        /// </summary>
+        [Fact]
+        public void ApplyContainedShapeImpulses_WithCircleShape_AddsToDictionary()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(5f, 1f, Vector2F.Zero, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Fixture fixture = body.FixtureList[0];
+            Fixture[] containedShapes = { fixture };
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>();
+
+            explosion.ApplyContainedShapeImpulses(Vector2F.Zero, 100f, containedShapes, 1, exploded);
+
+            Assert.NotEmpty(exploded);
+        }
+
+        /// <summary>
+        /// Tests that apply explosion impulses with data entries applies impulses
+        /// </summary>
+        [Fact]
+        public void ApplyExplosionImpulses_WithDataEntries_AppliesImpulses()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Fixture fixture = body.FixtureList[0];
+
+            explosion.AddNewShapeData(body, 0.0f, 1.0f);
+
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>();
+            explosion.ApplyExplosionImpulses(Vector2F.Zero, 50f, 100f, exploded);
+
+            Assert.NotEmpty(exploded);
         }
     }
 }
