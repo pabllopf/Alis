@@ -1,6 +1,7 @@
 ---
 title: Manual Edits
 tags:
+  - system
   - tracking
   - manual
 status: Draft
@@ -9,11 +10,10 @@ license: GPLv3
 
 # Manual Edits
 
-Preserve manual content between these markers.
+This file tracks manually edited documents that should be preserved during regeneration.
 
-<!-- MANUAL NOTES START -->
+## Protected Documents
 
-<!-- MANUAL NOTES END -->
-
-| File | Editor | Date | Notes |
-|---|---|---|---|
+| Path | Type | Protected Since |
+|---|---|---|
+| None | - | - |

@@ -3,13 +3,24 @@ title: Resume Points
 tags:
   - system
   - state
-  - resume
+  - resumable
 status: Draft
 license: GPLv3
 ---
 
 # Resume Points
 
-| Checkpoint | Batch | Completed | Timestamp |
-|---|---|---|---|
-| initial | setup | no | - |
+## Latest Resume Point
+
+```text
+Batch: system-state
+Completed: 2026-07-12
+Next: solution-structure-analysis
+```
+
+## Available Checkpoints
+
+| Checkpoint | Status | Date |
+|---|---|---|
+| directory-structure | Completed | 2026-07-12 |
+| system-state-files | Completed | 2026-07-12 |

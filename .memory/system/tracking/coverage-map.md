@@ -1,6 +1,7 @@
 ---
 title: Coverage Map
 tags:
+  - system
   - tracking
   - coverage
 status: Draft
@@ -9,13 +10,11 @@ license: GPLv3
 
 # Coverage Map
 
-| Area | Total Projects | Documented | Coverage % |
+## Analysis Coverage
+
+| Area | Total | Analyzed | Coverage |
 |---|---|---|---|
-| Layer 1: Presentation | 23 | 21 | 91% |
-| Layer 2: Application | 1 | 1 | 100% |
-| Layer 3: Structuration | 1 | 1 | 100% |
-| Layer 4: Operation | 4 | 4 | 100% |
-| Layer 5: Declaration | 1 | 1 | 100% |
-| Layer 6: Ideation | 6 | 6 | 100% |
-| Samples (Alis) | 13 | 13 | 100% |
-| Generators | 12 | 13 | 100% |
+| Projects | 81 | 0 | 0% |
+| Test Projects | 13 | 0 | 0% |
+| Source Files | - | 0 | 0% |
+| Solutions | 11 | 0 | 0% |

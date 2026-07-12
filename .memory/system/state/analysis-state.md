@@ -10,39 +10,24 @@ license: GPLv3
 
 # Analysis State
 
-| Project | Status | Hash | Last Updated |
-|---|---|---|---|
-| Alis.Core | Pending | - | - |
-| Alis.Core.Aspect | Pending | - | - |
-| Alis.Core.Aspect.Data | Pending | - | - |
-| Alis.Core.Aspect.Fluent | Pending | - | - |
-| Alis.Core.Aspect.Logging | Pending | - | - |
-| Alis.Core.Aspect.Math | Pending | - | - |
-| Alis.Core.Aspect.Memory | Pending | - | - |
-| Alis.Core.Aspect.Time | Pending | - | - |
-| Alis.Core.Audio | Pending | - | - |
-| Alis.Core.Ecs | Pending | - | - |
-| Alis.Core.Graphic | Pending | - | - |
-| Alis.Core.Physic | Pending | - | - |
-| Alis.App.Engine | Pending | - | - |
-| Alis.App.Hub | Pending | - | - |
-| Alis.App.Installer | Pending | - | - |
-| Alis.Benchmark | Pending | - | - |
-| Alis.Extension.Network | Pending | - | - |
-| Alis.Extension.Security | Pending | - | - |
-| Alis.Extension.Profile | Pending | - | - |
-| Alis.Extension.Updater | Pending | - | - |
-| Alis.Extension.Thread | Pending | - | - |
-| Alis.Extension.Media.FFmpeg | Pending | - | - |
-| Alis.Extension.Graphic.Sdl2 | Pending | - | - |
-| Alis.Extension.Graphic.Sfml | Pending | - | - |
-| Alis.Extension.Graphic.Glfw | Pending | - | - |
-| Alis.Extension.Graphic.Ui | Pending | - | - |
-| Alis.Extension.Io.FileDialog | Pending | - | - |
-| Alis.Extension.Cloud.GoogleDrive | Pending | - | - |
-| Alis.Extension.Cloud.DropBox | Pending | - | - |
-| Alis.Extension.Payment.Stripe | Pending | - | - |
-| Alis.Extension.Ads.GoogleAds | Pending | - | - |
-| Alis.Extension.Language.Dialogue | Pending | - | - |
-| Alis.Extension.Language.Translator | Pending | - | - |
-| Alis.Extension.Math.HighSpeedPriorityQueue | Pending | - | - |
+| Area | Status | Last Updated |
+|---|---|---|
+| Solution Structure | Initialized | 2026-07-12 |
+| Project Graph | Initialized | 2026-07-12 |
+| Architecture | Pending | - |
+| Dependencies | Pending | - |
+| Projects | Pending | - |
+| Testing | Pending | - |
+| Security | Pending | - |
+| Performance | Pending | - |
+
+## Bounded Contexts
+
+| Context | Layer | Status |
+|---|---|---|
+| Presentation | 1_Presentation | Initialized |
+| Application | 2_Application | Initialized |
+| Structuration | 3_Structuration | Initialized |
+| Operation | 4_Operation | Initialized |
+| Declaration | 5_Declaration | Initialized |
+| Ideation | 6_Ideation | Initialized |

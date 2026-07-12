@@ -1,14 +1,13 @@
 ---
 title: Completed Projects
 tags:
+  - system
   - queue
-  - projects
-  - completed
+  - tracking
 status: Draft
 license: GPLv3
 ---
 
 # Completed Projects
 
-| Project | Completed | Docs Generated |
-|---|---|---|
+None yet.

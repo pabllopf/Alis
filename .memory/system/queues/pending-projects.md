@@ -1,6 +1,7 @@
 ---
 title: Pending Projects
 tags:
+  - system
   - queue
   - projects
 status: Draft
@@ -9,40 +10,55 @@ license: GPLv3
 
 # Pending Projects
 
-## Main Projects
+## High Priority
+
+- [ ] 6_Ideation (core foundation)
+- [ ] 5_Declaration
+- [ ] 4_Operation
+- [ ] 3_Structuration
+- [ ] 2_Application
+- [ ] 1_Presentation
+
+## Per Layer
+
+### 1_Presentation
+
+- [ ] Alis.Benchmark
+- [ ] Alis.App.Engine
+- [ ] Alis.Extension.Network
+- [ ] Alis.Extension.Profile
+- [ ] Alis.Extension.Security
+- [ ] Alis.Extension.Thread
+- [ ] Alis.Extension.Updater
+- [ ] Alis.App.Hub
+- [ ] Alis.App.Installer
+
+### 2_Application
+
+- [ ] Alis
+- [ ] Alis.Generator
+
+### 3_Structuration
+
+- [ ] Alis.Core
+- [ ] Alis.Core.Generator
+
+### 4_Operation
+
+- [ ] Alis.Core.Audio
+- [ ] Alis.Core.Ecs
+- [ ] Alis.Core.Graphic
+- [ ] Alis.Core.Physic
+
+### 5_Declaration
 
 - [ ] Alis.Core.Aspect
+
+### 6_Ideation
+
 - [ ] Alis.Core.Aspect.Data
 - [ ] Alis.Core.Aspect.Fluent
 - [ ] Alis.Core.Aspect.Logging
 - [ ] Alis.Core.Aspect.Math
 - [ ] Alis.Core.Aspect.Memory
 - [ ] Alis.Core.Aspect.Time
-- [ ] Alis.Core.Audio
-- [ ] Alis.Core.Ecs
-- [ ] Alis.Core.Graphic
-- [ ] Alis.Core.Physic
-- [ ] Alis.Core
-- [ ] Alis (main)
-- [ ] Alis.App.Engine
-- [ ] Alis.App.Hub
-- [ ] Alis.App.Installer
-- [ ] Alis.Benchmark
-- [ ] Alis.Extension.Network
-- [ ] Alis.Extension.Security
-- [ ] Alis.Extension.Profile
-- [ ] Alis.Extension.Updater
-- [ ] Alis.Extension.Thread
-- [ ] Alis.Extension.Media.FFmpeg
-- [ ] Alis.Extension.Graphic.Sdl2
-- [ ] Alis.Extension.Graphic.Sfml
-- [ ] Alis.Extension.Graphic.Glfw
-- [ ] Alis.Extension.Graphic.Ui
-- [ ] Alis.Extension.Io.FileDialog
-- [ ] Alis.Extension.Cloud.GoogleDrive
-- [ ] Alis.Extension.Cloud.DropBox
-- [ ] Alis.Extension.Payment.Stripe
-- [ ] Alis.Extension.Ads.GoogleAds
-- [ ] Alis.Extension.Language.Dialogue
-- [ ] Alis.Extension.Language.Translator
-- [ ] Alis.Extension.Math.HighSpeedPriorityQueue

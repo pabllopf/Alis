@@ -10,6 +10,6 @@ license: GPLv3
 
 # Session History
 
-| Session ID | Date | Mode | Projects Analyzed | Status |
+| Session | Date | Mode | Items Processed | Status |
 |---|---|---|---|---|
-| 2026-07-11-001 | 2026-07-11 | full | 0 | running |
+| session-2026-07-12 | 2026-07-12 | Full Analysis | - | Running |

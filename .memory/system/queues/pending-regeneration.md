@@ -1,6 +1,7 @@
 ---
 title: Pending Regeneration
 tags:
+  - system
   - queue
   - regeneration
 status: Draft
@@ -9,5 +10,4 @@ license: GPLv3
 
 # Pending Regeneration
 
-| Document | Reason | Priority |
-|---|---|---|
+Nothing pending for regeneration.

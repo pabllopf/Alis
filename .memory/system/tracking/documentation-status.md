@@ -1,14 +1,22 @@
 ---
 title: Documentation Status
 tags:
+  - system
   - tracking
   - documentation
-  - status
 status: Draft
 license: GPLv3
 ---
 
 # Documentation Status
 
-| File | Status | Stability | Manual Edits |
+| Section | Status | Files | Quality |
 |---|---|---|---|
+| System | Generated | 13 | Draft |
+| Architecture | Pending | 0 | - |
+| Projects | Pending | 0 | - |
+| Dependencies | Pending | 0 | - |
+| Indexes | Pending | 0 | - |
+| Security | Pending | 0 | - |
+| Testing | Pending | 0 | - |
+| Context | Pending | 0 | - |

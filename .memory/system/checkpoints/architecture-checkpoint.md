@@ -1,6 +1,7 @@
 ---
 title: Architecture Checkpoint
 tags:
+  - system
   - checkpoint
   - architecture
 status: Draft
@@ -9,9 +10,8 @@ license: GPLv3
 
 # Architecture Checkpoint
 
-| Component | Status | Last Verified |
-|---|---|---|
-| Layer Structure | Pending | - |
-| Module Boundaries | Pending | - |
-| Dependency Rules | Pending | - |
-| Architecture Docs | Pending | - |
+| Property | Value |
+|---|---|
+| Status | Pending |
+| Last Analyzed | - |
+| Architecture Version | - |

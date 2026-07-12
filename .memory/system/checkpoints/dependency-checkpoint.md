@@ -1,6 +1,7 @@
 ---
 title: Dependency Checkpoint
 tags:
+  - system
   - checkpoint
   - dependencies
 status: Draft
@@ -9,8 +10,8 @@ license: GPLv3
 
 # Dependency Checkpoint
 
-| Dependency Map | Status | Last Verified |
-|---|---|---|
-| Inter-project deps | Pending | - |
-| Cyclic deps | Pending | - |
-| Layer violations | Pending | - |
+| Property | Value |
+|---|---|
+| Status | Pending |
+| Last Analyzed | - |
+| Total Dependencies | - |

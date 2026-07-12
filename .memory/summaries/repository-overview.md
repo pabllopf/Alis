@@ -1,83 +1,116 @@
 ---
 title: Repository Overview
 tags:
+  - summary
   - overview
-  - architecture
   - repository
 status: Draft
 license: GPLv3
 ---
 
-# Repository Overview
+# Alis Repository Overview
 
-> ALIS Game Engine - Cross-platform C# game engine framework
+## Description
 
-## High-Level Architecture
-
-The repository is organized as a **6-layer clean architecture** monorepo with **140+ projects**:
-
-| Layer | Directory | Projects | Purpose |
-|---|---|---|---|
-| 1 - Presentation | `1_Presentation/` | 22+ | User-facing apps, extensions, samples |
-| 2 - Application | `2_Application/` | 1+ | Application composition |
-| 3 - Structuration | `3_Structuration/` | 1+ | Core structuration |
-| 4 - Operation | `4_Operation/` | 4 | Runtime operations |
-| 5 - Declaration | `5_Declaration/` | 1 | Aspect-oriented contracts |
-| 6 - Ideation | `6_Ideation/` | 6 | Experimental/utility modules |
+Alis is a **cross-platform C# game framework** designed for Windows, macOS, Linux, Web (WASM), Android, and iOS. It is structured as a strict 6-layer clean architecture monorepo with 81+ projects.
 
 ## Technology Stack
 
 | Component | Technology |
 |---|---|
-| Language | C# (.NET) |
-| Frameworks | net461 through net10.0, netstandard2.0-2.1, netcoreapp2.0-3.1 |
-| Architecture Patterns | ECS, Aspect-Oriented, CQRS, Clean Architecture |
-| Source Generators | Roslyn-based (14 generator projects) |
-| Graphics Backends | SDL2, SFML, GLFW, Custom UI, Vulkan |
-| Build System | MSBuild with custom .props/.targets |
-| Testing | xUnit (34 test projects) |
-| CI/CD | GitHub Actions |
+| Language | C# 13 |
+| Framework | .NET 10.0 (multi-targets back to net461) |
+| SDK | .NET 10.0 SDK (roll forward allowed) |
+| Build | MSBuild with centralized Config.props |
+| Testing | xUnit + Moq + Xunit.StaFact + coverlet |
+| Source Generators | Roslyn (netstandard2.0 analyzers) |
+| IDE | Rider / Visual Studio |
+| Version | 1.0.8 |
+| License | GPL-3.0 |
 
-## Bounded Contexts
+## Architecture
 
-| Context | Layer | Key Projects |
+### 6-Layer Strict Dependency Rule
+
+```
+1_Presentation → 2_Application → 3_Structuration → 4_Operation → 5_Declaration → 6_Ideation
+```
+
+Reverse dependencies are forbidden and enforced via MSBuild configuration in `.config/Config.props`.
+
+### Layer Map
+
+| Layer | Name | Role | Projects |
+|---|---|---|---|
+| 1 | Presentation | Apps, Extensions, Benchmarks | 9 |
+| 2 | Application | Main game framework assembly | 3 |
+| 3 | Structuration | Core abstractions and ECS foundation | 3 |
+| 4 | Operation | Audio, ECS, Graphics, Physics engines | 12 |
+| 5 | Declaration | Aspect-oriented contracts | 3 |
+| 6 | Ideation | Foundation: Data, Math, Memory, Time, Logging, Fluent | 18 |
+
+### Solution Files
+
+| Solution | Focus | Scope |
 |---|---|---|
-| Engine Core | Presentation | Alis.App.Engine, Alis.App.Hub |
-| Runtime | Operation | ECS, Audio, Graphic, Physic |
-| Aspect Framework | Declaration | Alis.Core.Aspect |
-| Utility | Ideation | Data, Fluent, Logging, Math, Memory, Time |
-| Extensions | Presentation | Network, Security, Graphic.*, Payment.*, etc. |
-| Samples | Application | 12 sample games |
+| alis.slnx | Full solution | All projects |
+| alis_design.slnx | Design-time | All projects |
+| alis.core.slnx | Core | Core libraries |
+| alis.core.aspect.slnx | Core Aspect | Aspect-oriented layer |
+| alis.extensions.slnx | Extensions | Extension projects |
+| alis.apps.slnx | Applications | App projects |
+| alis.test.slnx | Testing | Test projects |
+| alis.samples.slnx | Samples | Sample projects |
+| alis.benchmark.slnx | Benchmarks | Benchmark projects |
 
-## Architectural Rules
+### Multi-Targeting
 
-1. **Strict Layer Dependency**: Each layer depends only on the layer directly below it
-2. **Aspect Foundation**: Layer 6 (Ideation) provides fundamental aspects used by all layers
-3. **Generator Pattern**: Each module has a paired source generator project
-4. **Multi-Platform**: Built for Windows, macOS, Linux, Web (WASM), Android, iOS
-5. **Multi-Framework**: Targets 15+ .NET frameworks simultaneously
+| Configuration | Target Frameworks |
+|---|---|
+| Debug | netcoreapp2.0;net5.0;net8.0;net10.0;netstandard2.0;net461 |
+| Release | 19+ TFMs (netcoreapp2.0 → net10.0, netstandard2.0/2.1, net461→net481) |
+| Win/Osx/Linux | Platform-specific subsets |
+| Browser/Ios/Android | net8.0;net10.0;netstandard2.0 |
 
-## Key Architectural Patterns
+### Runtime Identifiers
 
-- **Entity-Component System (ECS)**: Core architectural pattern in `Alis.Core.Ecs`
-- **Aspect-Oriented Programming**: Cross-cutting concerns via `Alis.Core.Aspect`
-- **Source Generators**: Roslyn generators for code generation at compile time
-- **Service Pattern**: Modular services for audio, graphics, physics, networking
-- **Extension Pattern**: Pluggable extensions for graphics backends, cloud services, payments
+browser-wasm, win-x64/86, linux-x64/arm64/arm, osx-x64/arm64, android-arm64/x64, ios-arm64, iossimulator-arm64/x64
 
-## Risk Areas
+## Repository Stats
 
-| Risk | Severity | Description |
-|---|---|---|
-| Build Complexity | High | Complex MSBuild props/targets with conditional compilation |
-| Multi-Framework | High | Supporting 15+ frameworks simultaneously |
-| Cross-Platform | High | Supporting 8+ platforms with native bindings |
-| Test Coverage | Medium | 34 test projects but need coverage analysis |
-| Generator Coupling | Medium | Source generators tightly coupled to their modules |
+| Metric | Count |
+|---|---|
+| Source projects | 48 |
+| Test projects | 13 |
+| Sample projects | 16 |
+| Generator projects | 8 |
+| Benchmark projects | 1 |
+| Solutions | 11 |
+| Total `.csproj` | 86+ |
+| Lines of code | 200k+ (estimated) |
 
-## Related
+## Key Patterns
 
-- [[Architecture Overview]]
-- [[Projects Index]]
-- [[Dependency Index]]
-- [[Technology Stack]]
+- **CQRS** via MediatR (in Application layer)
+- **ECS** (Entity Component System) in Operation/ECS
+- **Source Generators** for serialization (JSON), logging, math, memory, time, fluent
+- **DI** via standard .NET DI patterns
+- **DDD** tactical patterns in domain projects
+- **Strict layering** enforced at build level
+- **Conditional compilation** via RuntimeIdentifier-based DefineConstants (WIN, OSX, LINUX)
+
+## Security
+
+- GPL-3.0 licensed
+- SonarCloud analysis active
+- No external dependencies in core (except SourceLink)
+- Conditional NuGet dependencies only in specific Extension projects (Stripe, Google Ads, Google Drive, Dropbox)
+- Nullable: disabled (project-wide)
+- Warnings as errors enabled
+
+## Related Documents
+
+- [[architecture-overview]]
+- [[dependency-graph]]
+- [[project-index]]
+- [[conventions-overview]]

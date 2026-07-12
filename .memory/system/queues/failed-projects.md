@@ -1,8 +1,8 @@
 ---
 title: Failed Projects
 tags:
+  - system
   - queue
-  - projects
   - failures
 status: Draft
 license: GPLv3
@@ -10,5 +10,4 @@ license: GPLv3
 
 # Failed Projects
 
-| Project | Error | Timestamp |
-|---|---|---|
+None.

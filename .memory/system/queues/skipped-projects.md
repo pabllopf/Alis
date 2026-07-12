@@ -1,13 +1,13 @@
 ---
 title: Skipped Projects
 tags:
+  - system
   - queue
-  - projects
+  - tracking
 status: Draft
 license: GPLv3
 ---
 
 # Skipped Projects
 
-| Project | Reason | Timestamp |
-|---|---|---|
+None.

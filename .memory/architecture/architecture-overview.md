@@ -3,67 +3,78 @@ title: Architecture Overview
 tags:
   - architecture
   - overview
-  - design
+  - layers
 status: Draft
 license: GPLv3
 ---
 
 # Architecture Overview
 
-## 6-Layer Clean Architecture
+## 6-Layer Architecture
+
+Alis enforces a strict 6-layer dependency architecture via MSBuild configuration.
 
 ```mermaid
 graph TD
-    subgraph "Layer 1: Presentation"
-        Engine[Alis.App.Engine]
-        Hub[Alis.App.Hub]
-        Installer[Alis.App.Installer]
-        Benchmark[Alis.Benchmark]
-        Extensions[Extensions*]
+    subgraph "1_Presentation"
+        Engine
+        Hub
+        Installer
+        Benchmark
+        Extension_Network
+        Extension_Profile
+        Extension_Security
+        Extension_Thread
+        Extension_Updater
     end
     
-    subgraph "Layer 2: Application"
-        Main[Alis (Main)]
+    subgraph "2_Application"
+        Alis["Alis (Main Assembly)"]
     end
     
-    subgraph "Layer 3: Structuration"
-        Core[Alis.Core]
+    subgraph "3_Structuration"
+        Core["Alis.Core"]
     end
     
-    subgraph "Layer 4: Operation"
-        ECS[Alis.Core.Ecs]
-        Audio[Alis.Core.Audio]
-        Graphic[Alis.Core.Graphic]
-        Physic[Alis.Core.Physic]
+    subgraph "4_Operation"
+        Audio
+        Ecs
+        Graphic
+        Physic
     end
     
-    subgraph "Layer 5: Declaration"
-        Aspect[Alis.Core.Aspect]
+    subgraph "5_Declaration"
+        Aspect["Alis.Core.Aspect"]
     end
     
-    subgraph "Layer 6: Ideation"
-        Data[Alis.Core.Aspect.Data]
-        Fluent[Alis.Core.Aspect.Fluent]
-        Logging[Alis.Core.Aspect.Logging]
-        Math[Alis.Core.Aspect.Math]
-        Memory[Alis.Core.Aspect.Memory]
-        Time[Alis.Core.Aspect.Time]
+    subgraph "6_Ideation"
+        Data
+        Fluent
+        Logging
+        Math
+        Memory
+        Time
     end
     
-    Engine --> Main
-    Hub --> Main
-    Installer --> Main
-    Benchmark --> Main
+    Engine --> Alis
+    Hub --> Alis
+    Installer --> Alis
+    Benchmark --> Alis
+    Extension_Network --> Alis
+    Extension_Profile --> Alis
+    Extension_Security --> Alis
+    Extension_Thread --> Alis
+    Extension_Updater --> Alis
     
-    Main --> Core
+    Alis --> Core
     
-    Core --> ECS
     Core --> Audio
+    Core --> Ecs
     Core --> Graphic
     Core --> Physic
     
-    ECS --> Aspect
     Audio --> Aspect
+    Ecs --> Aspect
     Graphic --> Aspect
     Physic --> Aspect
     
@@ -77,51 +88,78 @@ graph TD
 
 ## Dependency Flow
 
-Dependencies flow strictly downward:
+Each layer can only reference the layer immediately below it (and transitively, all layers below).
 
-```mermaid
-flowchart LR
-    P1[Layer 1: Presentation] --> P2[Layer 2: Application]
-    P2 --> P3[Layer 3: Structuration]
-    P3 --> P4[Layer 4: Operation]
-    P4 --> P5[Layer 5: Declaration]
-    P5 --> P6[Layer 6: Ideation]
+```
+Presentation (apps, extensions)
+    ↓
+Application (main Alis assembly)
+    ↓
+Structuration (Core abstractions)
+    ↓
+Operation (Audio, ECS, Graphics, Physics)
+    ↓
+Declaration (Aspect contracts)
+    ↓
+Ideation (Data, Math, Memory, Time, Logging, Fluent)
 ```
 
-## Build Modes
+## Source Generator Flow
 
-### Debug Mode
-- Standard MSBuild ProjectReference chain
-- Each layer references the next layer down explicitly
-- Generator projects referenced as analyzers
+Source generators (netstandard2.0 analyzers) are referenced from higher layers down:
 
-### Release Mode
-- **Source file merging**: Source files from lower layers are compiled directly into higher-layer assemblies via `<Compile Include="...">`
-- **Link strategy**: Files are linked with relative path rewrites
-- **Single assembly output**: Enables producing a single merged assembly
-
-## Generator Pattern
-
-Each module has a paired generator project:
-
-```mermaid
-flowchart LR
-    Module[Module] --> Generator[Module.Generator]
-    Generator -->|Roslyn Source Generator| Module
+```
+Presentation → all generators
+Application → generators from layers 3-6
+Structuration → generators from layers 4-6
+Operation → generators from layers 5-6
+Declaration → generators from layer 6
 ```
 
-## Key Design Decisions
+## Project Template Pattern
 
-1. **Aspect-First Design**: All cross-cutting concerns are defined in Layer 6 (Ideation) and consumed upward
-2. **ECS for Game Logic**: Entity-Component System separates data (components) from behavior (systems)
-3. **Pluggable Graphics Backends**: SDL2, SFML, GLFW implementations via common interfaces
-4. **Multi-Framework Support**: Builds for 15+ .NET frameworks from the same codebase
-5. **Source Generators for Code Gen**: 14 Roslyn generators reduce boilerplate
+Every module follows the same structure:
 
-## Related
+```
+<module>/
+├── generator/     (Roslyn source generator, netstandard2.0)
+├── sample/        (usage example project)
+├── src/           (main library source)
+└── test/          (xUnit test project)
+```
 
-- [[Repository Overview]]
-- [[Projects Index]]
-- [[Dependency Index]]
-- [[Architecture Rules]]
-- [[Technology Stack]]
+## Build Pipeline
+
+```mermaid
+graph LR
+    A[Source Files] --> B[Roslyn Compiler]
+    B --> C[Source Generators]
+    C --> B
+    B --> D[Multi-target Build]
+    D --> E[Debug TFMs]
+    D --> F[Release TFMs]
+    D --> G[Platform-specific]
+    E --> H[Unit Tests]
+    H --> I[Test Results .test/]
+```
+
+## Architectural Constraints
+
+1. **No reverse layer dependencies** - enforced by MSBuild Config.props
+2. **No external NuGet dependencies in core** - only SourceLink
+3. **No LINQ in hot paths**
+4. **No boxing, reflection, runtime emit in hot paths**
+5. **AOT compatibility required** - no Reflection.Emit
+6. **Prefer Span<T>, SIMD, data-oriented design**
+7. **Expression-bodied members preferred**
+8. **No `var` for built-in types**
+9. **No comments** - only XML doc comments
+10. **Block-scoped namespaces**
+
+## Related Documents
+
+- [[repository-overview]]
+- [[dependency-graph]]
+- [[source-generator-architecture]]
+- [[multi-targeting-strategy]]
+- [[build-pipeline]]
