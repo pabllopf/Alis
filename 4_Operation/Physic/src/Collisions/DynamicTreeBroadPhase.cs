@@ -254,18 +254,9 @@ namespace Alis.Core.Physic.Collisions
             Array.Sort(_pairBuffer, 0, _pairCount);
 
             // Send the pairs back to the client.
-            // Skip duplicates: after sorting, identical pairs are adjacent.
             for (int i = 0; i < _pairCount; i++)
             {
-                int proxyIdA = _pairBuffer[i].ProxyIdA;
-                int proxyIdB = _pairBuffer[i].ProxyIdB;
-
-                if (i > 0 && proxyIdA == _pairBuffer[i - 1].ProxyIdA && proxyIdB == _pairBuffer[i - 1].ProxyIdB)
-                {
-                    continue;
-                }
-
-                callback(proxyIdA, proxyIdB);
+                callback(_pairBuffer[i].ProxyIdA, _pairBuffer[i].ProxyIdB);
             }
         }
 

@@ -1,9 +1,8 @@
 # Issues Index
 
-| Issue Key | Rule | File | Line | Severity | Status | Commit Hash |
-|-----------|------|------|------|----------|--------|-------------|
-| AZ7ud83Q7oTRF9lfUdEv | csharpsquid:S2376 | AudioSource.cs | 59 | MAJOR | FIXED | b94470b5f |
-| AZ7pmgwT8gEfmPgleLrm | csharpsquid:S3928 | DungeonData.cs | 145 | MAJOR | FIXED | 10506bb37 |
-| AZ7pmgwT8gEfmPgleLrn | csharpsquid:S3928 | DungeonData.cs | 150 | MAJOR | FIXED | cb08bb3ae |
-| AZ7pmgwT8gEfmPgleLro | csharpsquid:S3928 | DungeonData.cs | 155 | MAJOR | FIXED | df174c9e6 |
-| AZ7pmgwT8gEfmPgleLrp | csharpsquid:S3928 | DungeonData.cs | 160 | MAJOR | FIXED | 45178204c |
+Initialized: 2026-07-12T13:02:00Z
+
+| Issue | Rule | File | Line | Severity | Status |
+|-------|------|------|------|----------|--------|
+| AZ9WLQR9b3Yg5Wvlzs0z | S2292 | AudioSource.cs | 59 | MINOR | pending |
+

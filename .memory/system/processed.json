@@ -201,5 +201,6 @@
   "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/System/VideoGameBuilder.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/WebSocketClientOptions.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameCommon.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs"
 ]

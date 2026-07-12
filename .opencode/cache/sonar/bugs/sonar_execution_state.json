@@ -1,10 +1,10 @@
 {
-  "status": "initialized",
-  "totalIssues": 5,
-  "processedCount": 0,
+  "status": "in_progress",
+  "totalIssues": 1,
+  "processedCount": 1,
   "failedCount": 0,
   "skippedCount": 0,
-  "lastProcessedKey": null,
+  "lastProcessedKey": "AZ7fFnnsqjt04IrTJ5SH",
   "startedAt": "2026-07-10T07:54:12Z",
   "completedAt": null
 }
