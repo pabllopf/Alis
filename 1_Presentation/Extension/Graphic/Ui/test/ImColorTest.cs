@@ -50,6 +50,7 @@
 
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Value_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set hsv should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetHsv_ShouldSetCorrectValues()
         {
             // Arrange
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set hsv with alpha should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetHsv_WithAlpha_ShouldSetCorrectValues()
         {
             // Arrange
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Value_Should_SetAndGetCorrectly()
         {
             ImColor color = new ImColor();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set hsv should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
@@ -133,7 +134,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set hsv with alpha should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that v 3 set hsv should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void V3_SetHsv_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that v 3 set hsv with alpha should set correct values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void V3_SetHsv_WithAlpha_Should_SetCorrectValues()
         {
             ImColor color = new ImColor();

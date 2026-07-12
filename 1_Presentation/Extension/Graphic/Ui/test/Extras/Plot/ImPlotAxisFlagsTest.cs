@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImPlotAxisFlags.None);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that lock and no-decorations aliases map to their documented compositions.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AliasCompositions_ShouldMatchExpectedValues()
         {
             ImPlotAxisFlags expectedLock = ImPlotAxisFlags.LockMin | ImPlotAxisFlags.LockMax;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that auxiliary defaults map to opposite plus no-grid-lines.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AuxDefault_ShouldMatchExpectedComposition()
         {
             ImPlotAxisFlags expected = ImPlotAxisFlags.Opposite | ImPlotAxisFlags.NoGridLines;

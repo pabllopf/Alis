@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoAlpha has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoAlpha_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoAlpha;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoPicker has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoPicker_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoPicker;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoOptions has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoOptions_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoOptions;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoSmallPreview has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoSmallPreview_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoSmallPreview;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoInputs has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoInputs_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoInputs;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoTooltip has the expected value of 64.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoTooltip_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoTooltip;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoLabel has the expected value of 128.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoLabel_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoLabel;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoSidePreview has the expected value of 256.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoSidePreview_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoSidePreview;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoDragDrop has the expected value of 512.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoDragDrop_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoDragDrop;
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoBorder has the expected value of 1024.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoBorder_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.NoBorder;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AlphaBar has the expected value of 65536.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlphaBar_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.AlphaBar;
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AlphaPreview has the expected value of 131072.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlphaPreview_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.AlphaPreview;
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AlphaPreviewHalf has the expected value of 262144.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlphaPreviewHalf_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.AlphaPreviewHalf;
@@ -179,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Hdr has the expected value of 524288.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Hdr_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.Hdr;
@@ -189,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DisplayRgb has the expected value of 1048576.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayRgb_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.DisplayRgb;
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DisplayHsv has the expected value of 2097152.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayHsv_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.DisplayHsv;
@@ -209,7 +210,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DisplayHex has the expected value of 4194304.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayHex_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.DisplayHex;
@@ -219,7 +220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Uint8 has the expected value of 8388608.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Uint8_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.Uint8;
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Float has the expected value of 16777216.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Float_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.Float;
@@ -239,7 +240,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PickerHueBar has the expected value of 33554432.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PickerHueBar_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.PickerHueBar;
@@ -249,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PickerHueWheel has the expected value of 67108864.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PickerHueWheel_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.PickerHueWheel;
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that InputRgb has the expected value of 134217728.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputRgb_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.InputRgb;
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that InputHsv has the expected value of 268435456.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputHsv_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.InputHsv;
@@ -279,7 +280,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DefaultOptions has the expected value of 177209344.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DefaultOptions_ShouldHaveCorrectValue()
         {
             ImGuiColorEditFlags flag = ImGuiColorEditFlags.DefaultOptions;
@@ -289,7 +290,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiColorEditFlags combined = ImGuiColorEditFlags.NoAlpha | ImGuiColorEditFlags.NoPicker;

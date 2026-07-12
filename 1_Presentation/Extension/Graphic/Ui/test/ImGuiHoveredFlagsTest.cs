@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ChildWindows has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildWindows_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.ChildWindows;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RootWindow has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RootWindow_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.RootWindow;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AnyWindow has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnyWindow_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.AnyWindow;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoPopupHierarchy has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoPopupHierarchy_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.NoPopupHierarchy;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DockHierarchy has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockHierarchy_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.DockHierarchy;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AllowWhenBlockedByPopup has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AllowWhenBlockedByPopup_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.AllowWhenBlockedByPopup;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AllowWhenBlockedByActiveItem has the expected value of 128.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AllowWhenBlockedByActiveItem_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.AllowWhenBlockedByActiveItem;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AllowWhenOverlapped has the expected value of 256.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AllowWhenOverlapped_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.AllowWhenOverlapped;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AllowWhenDisabled has the expected value of 512.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AllowWhenDisabled_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.AllowWhenDisabled;
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoNavOverride has the expected value of 1024.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoNavOverride_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.NoNavOverride;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RectOnly has the expected value of 416.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RectOnly_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.RectOnly;
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RootAndChildWindows has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RootAndChildWindows_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.RootAndChildWindows;
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DelayNormal has the expected value of 2048.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DelayNormal_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.DelayNormal;
@@ -179,7 +180,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DelayShort has the expected value of 4096.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DelayShort_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.DelayShort;
@@ -189,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoSharedDelay has the expected value of 8192.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoSharedDelay_ShouldHaveCorrectValue()
         {
             ImGuiHoveredFlags flag = ImGuiHoveredFlags.NoSharedDelay;
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiHoveredFlags combined = ImGuiHoveredFlags.ChildWindows | ImGuiHoveredFlags.RootWindow;

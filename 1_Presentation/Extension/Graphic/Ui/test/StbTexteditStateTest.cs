@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cursor should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Cursor_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {Cursor = 5};
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that select start should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectStart_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {SelectStart = 10};
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that select end should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectEnd_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {SelectEnd = 15};
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that insert mode should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InsertMode_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {InsertMode = 1};
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that row count per page should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RowCountPerPage_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {RowCountPerPage = 20};
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cursor at end of line should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CursorAtEndOfLine_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {CursorAtEndOfLine = 1};
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that initialized should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Initialized_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {Initialized = 1};
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that has preferred x should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HasPreferredX_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {HasPreferredX = 1};
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that single line should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SingleLine_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {SingleLine = 1};
@@ -156,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that padding 1 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Padding1_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {Padding1 = 1};
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that padding 2 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Padding2_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {Padding2 = 1};
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that padding 3 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Padding3_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {Padding3 = 1};
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that preferred x should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PreferredX_ShouldBeInitializedCorrectly()
         {
             StbTexteditState texteditState = new StbTexteditState {PreferredX = 1.0f};
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo state should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoState_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState();

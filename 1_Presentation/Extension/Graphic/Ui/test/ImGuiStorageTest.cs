@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_Should_SetAndGetCorrectly()
         {
             ImGuiStorage storage = new ImGuiStorage();

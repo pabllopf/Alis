@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies the native wrapper type is static.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStaticClass()
         {
             Type type = typeof(ImGuiZmoNative);
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies native library constant points to cimgui.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativeLibraryConstant_ShouldBeCimgui()
         {
             FieldInfo field = typeof(ImGuiZmoNative).GetField("NativeLibrary", BindingFlags.NonPublic | BindingFlags.Static);
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies all managed native bindings preserve expected entry points.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativeMethods_ShouldKeepExpectedEntryPoints()
         {
             Dictionary<string, string> expectedEntryPoints = new Dictionary<string, string>
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that externally exposed native methods are the intended two APIs.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PublicNativeMethods_ShouldBeLimitedToPublicInteropSurface()
         {
             MethodInfo[] publicMethods = typeof(ImGuiZmoNative).GetMethods(BindingFlags.Public | BindingFlags.Static);

@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that line weight should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LineWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Marker_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker weight should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fill alpha should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FillAlpha_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that error bar size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that error bar weight should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that digital bit height should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitHeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that digital bit gap should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitGap_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot border size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotBorderSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor alpha should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorAlpha_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major tick len should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorTickLen_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor tick len should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorTickLen_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major tick size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorTickSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor tick size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorTickSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major grid size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorGridSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor grid size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorGridSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -221,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that label padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LabelPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend inner padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendInnerPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend spacing should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendSpacing_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -261,7 +262,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that mouse pos padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MousePosPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -271,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that annotation padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnnotationPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -281,7 +282,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fit padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FitPadding_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -291,7 +292,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot default size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotDefaultSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -301,7 +302,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot min size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotMinSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -311,7 +312,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 0 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors0_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 1 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors1_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -331,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 2 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors2_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 3 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors3_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -351,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 4 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors4_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -361,7 +362,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 5 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors5_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -371,7 +372,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 6 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors6_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 7 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors7_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 8 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors8_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -401,7 +402,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 9 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors9_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -411,7 +412,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 10 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors10_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -421,7 +422,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 11 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors11_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -431,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 12 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors12_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -441,7 +442,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 13 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors13_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -451,7 +452,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 14 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors14_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -461,7 +462,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 15 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors15_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -471,7 +472,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 16 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors16_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -481,7 +482,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 17 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors17_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -491,7 +492,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 18 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors18_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -501,7 +502,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 19 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors19_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -511,7 +512,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 20 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors20_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -521,7 +522,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colormap should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colormap_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -531,7 +532,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use local time should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseLocalTime_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -541,7 +542,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use iso 8601 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseIso8601_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -551,7 +552,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use 24 hour clock should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Use24HourClock_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -561,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that line weight should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LineWeight_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -573,7 +574,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Marker_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -585,7 +586,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -597,7 +598,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that marker weight should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerWeight_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -609,7 +610,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fill alpha should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FillAlpha_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -621,7 +622,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that error bar size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -633,7 +634,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that error bar weight should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarWeight_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -645,7 +646,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that digital bit height should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitHeight_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -657,7 +658,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that digital bit gap should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitGap_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -669,7 +670,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotBorderSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -681,7 +682,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor alpha should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorAlpha_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -693,7 +694,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major tick len should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorTickLen_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -705,7 +706,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor tick len should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorTickLen_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -717,7 +718,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major tick size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorTickSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -729,7 +730,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor tick size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorTickSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -741,7 +742,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that major grid size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MajorGridSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -753,7 +754,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that minor grid size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorGridSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -765,7 +766,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -777,7 +778,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that label padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LabelPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -789,7 +790,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -801,7 +802,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend inner padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendInnerPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -813,7 +814,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that legend spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendSpacing_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -825,7 +826,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that mouse pos padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MousePosPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -837,7 +838,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that annotation padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnnotationPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -849,7 +850,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fit padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FitPadding_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -861,7 +862,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot default size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotDefaultSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -873,7 +874,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that plot min size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotMinSize_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -885,7 +886,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors0_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -897,7 +898,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors1_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -909,7 +910,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 2 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors2_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -921,7 +922,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 3 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors3_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -933,7 +934,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 4 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors4_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -945,7 +946,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 5 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors5_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -957,7 +958,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 6 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors6_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -969,7 +970,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 7 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors7_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -981,7 +982,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 8 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors8_Should_SetAndGetCorrectly()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -993,7 +994,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 9 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors9_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1005,7 +1006,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 10 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors10_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1017,7 +1018,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 11 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors11_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1029,7 +1030,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 12 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors12_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1041,7 +1042,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 13 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors13_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1053,7 +1054,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 14 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors14_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1065,7 +1066,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 15 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors15_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1077,7 +1078,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 16 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors16_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1089,7 +1090,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 17 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors17_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1101,7 +1102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 18 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors18_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1113,7 +1114,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 19 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors19_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1125,7 +1126,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colors 20 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors20_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1137,7 +1138,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that colormap set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colormap_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1149,7 +1150,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use local time set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseLocalTime_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1161,7 +1162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use iso 8601 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseIso8601_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();
@@ -1173,7 +1174,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that use 24 hour clock set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Use24HourClock_SetAndGet_ReturnsCorrectValue()
         {
             ImPlotStyle obj = new ImPlotStyle();

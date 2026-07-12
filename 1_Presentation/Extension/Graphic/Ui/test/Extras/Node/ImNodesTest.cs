@@ -51,6 +51,7 @@
 
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginInputAttribute starts an input attribute with default shape
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginInputAttribute_ShouldStartInputAttributeWithDefaultShape()
         {
             int id = 1;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginInputAttribute starts an input attribute with specified shape
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginInputAttribute_ShouldStartInputAttributeWithSpecifiedShape()
         {
             int id = 1;
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginNode starts a node with the specified id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginNode_ShouldStartNodeWithSpecifiedId()
         {
             int id = 1;
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginNodeEditor starts the node editor
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginNodeEditor_ShouldStartNodeEditor()
         {
             // Add assertions to verify the behavior
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginNodeTitleBar starts the node title bar
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginNodeTitleBar_ShouldStartNodeTitleBar()
         {
             // Add assertions to verify the behavior
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginOutputAttribute starts an output attribute with default shape
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginOutputAttribute_ShouldStartOutputAttributeWithDefaultShape()
         {
             int id = 1;
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginOutputAttribute starts an output attribute with specified shape
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginOutputAttribute_ShouldStartOutputAttributeWithSpecifiedShape()
         {
             int id = 1;
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that BeginStaticAttribute starts a static attribute with the specified id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginStaticAttribute_ShouldStartStaticAttributeWithSpecifiedId()
         {
             int id = 1;
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that ClearLinkSelection clears the link selection
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClearLinkSelection_ShouldClearLinkSelection()
         {
             // Add assertions to verify the behavior
@@ -156,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that ClearLinkSelection clears the link selection with specified link id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClearLinkSelection_ShouldClearLinkSelectionWithSpecifiedLinkId()
         {
             int linkId = 1;
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that ClearNodeSelection clears the node selection
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClearNodeSelection_ShouldClearNodeSelection()
         {
             // Add assertions to verify the behavior
@@ -176,7 +177,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that ClearNodeSelection clears the node selection with specified node id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClearNodeSelection_ShouldClearNodeSelectionWithSpecifiedNodeId()
         {
             int nodeId = 1;
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that CreateContext creates a new context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CreateContext_ShouldCreateNewContext()
         {
         }
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that DestroyContext destroys the context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DestroyContext_ShouldDestroyContext()
         {
             // Add assertions to verify the behavior
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextCreate creates a new editor context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextCreate_ShouldCreateNewEditorContext()
         {
         }
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextFree frees the editor context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextFree_ShouldFreeEditorContext()
         {
             // Add assertions to verify the behavior
@@ -221,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextGetPanning gets the panning of the editor context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextGetPanning_ShouldGetPanningOfEditorContext()
         {
             // Add assertions to verify the behavior
@@ -230,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextMoveToNode moves the editor context to the specified node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextMoveToNode_ShouldMoveEditorContextToSpecifiedNode()
         {
             int nodeId = 1;
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextResetPanning resets the panning of the editor context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextResetPanning_ShouldResetPanningOfEditorContext()
         {
         }
@@ -249,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EditorContextSet sets the editor context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EditorContextSet_ShouldSetEditorContext()
         {
         }
@@ -257,7 +258,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndInputAttribute ends the input attribute
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndInputAttribute_ShouldEndInputAttribute()
         {
             // Add assertions to verify the behavior
@@ -266,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndNode ends the node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndNode_ShouldEndNode()
         {
             // Add assertions to verify the behavior
@@ -275,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndNodeEditor ends the node editor
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndNodeEditor_ShouldEndNodeEditor()
         {
             // Add assertions to verify the behavior
@@ -284,7 +285,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndNodeTitleBar ends the node title bar
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndNodeTitleBar_ShouldEndNodeTitleBar()
         {
             // Add assertions to verify the behavior
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndOutputAttribute ends the output attribute
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndOutputAttribute_ShouldEndOutputAttribute()
         {
             // Add assertions to verify the behavior
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that EndStaticAttribute ends the static attribute
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndStaticAttribute_ShouldEndStaticAttribute()
         {
             // Add assertions to verify the behavior
@@ -311,7 +312,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetCurrentContext gets the current context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetCurrentContext_ShouldGetCurrentContext()
         {
         }
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetNodeDimensions gets the dimensions of the node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetNodeDimensions_ShouldGetDimensionsOfNode()
         {
             // Add assertions to verify the behavior
@@ -328,7 +329,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetNodeEditorSpacePos gets the editor space position of the node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetNodeEditorSpacePos_ShouldGetEditorSpacePositionOfNode()
         {
             int nodeId = 1;
@@ -339,7 +340,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetNodeGridSpacePos gets the grid space position of the node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetNodeGridSpacePos_ShouldGetGridSpacePositionOfNode()
         {
             int nodeId = 1;
@@ -350,7 +351,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetNodeScreenSpacePos gets the screen space position of the node
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetNodeScreenSpacePos_ShouldGetScreenSpacePositionOfNode()
         {
             int nodeId = 1;
@@ -361,7 +362,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetSelectedLinks gets the selected links
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetSelectedLinks_ShouldGetSelectedLinks()
         {
             int linkIds = 0;
@@ -372,7 +373,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that GetSelectedNodes gets the selected nodes
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetSelectedNodes_ShouldGetSelectedNodes()
         {
             int nodeIds = 0;
@@ -383,7 +384,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsAnyAttributeActive returns whether any attribute is active
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsAnyAttributeActive_ShouldReturnWhetherAnyAttributeIsActive()
         {
             // Add assertions to verify the behavior
@@ -393,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsAnyAttributeActive returns whether any attribute is active with specified attribute id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsAnyAttributeActive_ShouldReturnWhetherAnyAttributeIsActiveWithSpecifiedAttributeId()
         {
             int attributeId = 1;
@@ -404,7 +405,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsAttributeActive returns whether the attribute is active
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsAttributeActive_ShouldReturnWhetherAttributeIsActive()
         {
             // Add assertions to verify the behavior
@@ -413,7 +414,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsEditorHovered returns whether the editor is hovered
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsEditorHovered_ShouldReturnWhetherEditorIsHovered()
         {
             // Add assertions to verify the behavior
@@ -422,7 +423,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkCreated_ShouldReturnWhetherLinkIsCreated()
         {
             int startedAtAttributeId = 1;
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified snap
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkCreated_ShouldReturnWhetherLinkIsCreatedWithSpecifiedSnap()
         {
             int startedAtAttributeId = 1;
@@ -447,7 +448,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified node and attribute ids
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkCreated_ShouldReturnWhetherLinkIsCreatedWithSpecifiedNodeAndAttributeIds()
         {
             int startedAtNodeId = 1;
@@ -461,7 +462,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkCreated returns whether a link is created with specified node and attribute ids and snap
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkCreated_ShouldReturnWhetherLinkIsCreatedWithSpecifiedNodeAndAttributeIdsAndSnap()
         {
             int startedAtNodeId = 1;
@@ -476,7 +477,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkDestroyed returns whether a link is destroyed
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkDestroyed_ShouldReturnWhetherLinkIsDestroyed()
         {
             int linkId = 1;
@@ -487,7 +488,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkDropped_ShouldReturnWhetherLinkIsDropped()
         {
             // Add assertions to verify the behavior
@@ -496,7 +497,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped with specified attribute id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkDropped_ShouldReturnWhetherLinkIsDroppedWithSpecifiedAttributeId()
         {
             int startedAtAttributeId = 1;
@@ -507,7 +508,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkDropped returns whether a link is dropped with specified attribute id and detached links
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkDropped_ShouldReturnWhetherLinkIsDroppedWithSpecifiedAttributeIdAndDetachedLinks()
         {
             int startedAtAttributeId = 1;
@@ -519,7 +520,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkHovered returns whether a link is hovered
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkHovered_ShouldReturnWhetherLinkIsHovered()
         {
             int linkId = 1;
@@ -530,7 +531,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkSelected returns whether a link is selected
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkSelected_ShouldReturnWhetherLinkIsSelected()
         {
             int linkId = 1;
@@ -541,7 +542,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsLinkStarted returns whether a link is started
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsLinkStarted_ShouldReturnWhetherLinkIsStarted()
         {
             int startedAtAttributeId = 1;
@@ -552,7 +553,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsNodeHovered returns whether a node is hovered
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsNodeHovered_ShouldReturnWhetherNodeIsHovered()
         {
             int nodeId = 1;
@@ -563,7 +564,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsNodeSelected returns whether a node is selected
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsNodeSelected_ShouldReturnWhetherNodeIsSelected()
         {
             int nodeId = 1;
@@ -574,7 +575,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that IsPinHovered returns whether a pin is hovered
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsPinHovered_ShouldReturnWhetherPinIsHovered()
         {
             int attributeId = 1;
@@ -585,7 +586,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that Link links the specified attributes
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Link_ShouldLinkSpecifiedAttributes()
         {
             int id = 1;
@@ -598,7 +599,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that LoadCurrentEditorStateFromIniFile loads the current editor state from ini file
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadCurrentEditorStateFromIniFile_ShouldLoadCurrentEditorStateFromIniFile()
         {
             string fileName = "test.ini";
@@ -609,7 +610,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that LoadCurrentEditorStateFromIniString loads the current editor state from ini string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadCurrentEditorStateFromIniString_ShouldLoadCurrentEditorStateFromIniString()
         {
             string data = "test";
@@ -621,7 +622,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that LoadEditorStateFromIniFile loads the editor state from ini file
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadEditorStateFromIniFile_ShouldLoadEditorStateFromIniFile()
         {
             // Add assertions to verify the behavior
@@ -630,7 +631,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that LoadEditorStateFromIniString loads the editor state from ini string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadEditorStateFromIniString_ShouldLoadEditorStateFromIniString()
         {
         }
@@ -638,7 +639,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that num selected links throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NumSelectedLinks_ThrowsDllNotFoundException()
         {
         }
@@ -646,7 +647,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that num selected nodes throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NumSelectedNodes_ThrowsDllNotFoundException()
         {
         }
@@ -654,7 +655,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pop attribute flag throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopAttributeFlag_ThrowsDllNotFoundException()
         {
         }
@@ -662,7 +663,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pop color style throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopColorStyle_ThrowsDllNotFoundException()
         {
         }
@@ -670,7 +671,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pop style var throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleVar_ThrowsDllNotFoundException()
         {
         }
@@ -678,7 +679,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pop style var with count throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleVar_WithCount_ThrowsDllNotFoundException()
         {
         }
@@ -686,7 +687,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that push attribute flag throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushAttributeFlag_ThrowsDllNotFoundException()
         {
         }
@@ -694,7 +695,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that push color style throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushColorStyle_ThrowsDllNotFoundException()
         {
         }
@@ -702,7 +703,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that push style var float throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleVar_Float_ThrowsDllNotFoundException()
         {
         }
@@ -710,7 +711,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that push style var vector 2 throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleVar_Vector2_ThrowsDllNotFoundException()
         {
         }
@@ -718,7 +719,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that save current editor state to ini file throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveCurrentEditorStateToIniFile_ThrowsDllNotFoundException()
         {
         }
@@ -726,7 +727,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that save current editor state to ini string throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveCurrentEditorStateToIniString_ThrowsDllNotFoundException()
         {
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString());
@@ -735,7 +736,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that save current editor state to ini string with data size throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveCurrentEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
         {
             uint dataSize = 0;
@@ -745,7 +746,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that save editor state to ini file throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveEditorStateToIniFile_ThrowsDllNotFoundException()
         {
         }
@@ -754,7 +755,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that save editor state to ini string with data size throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveEditorStateToIniString_WithDataSize_ThrowsDllNotFoundException()
         {
             uint dataSize = 0;
@@ -764,7 +765,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that select link throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectLink_ThrowsDllNotFoundException()
         {
         }
@@ -772,7 +773,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that select node throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectNode_ThrowsDllNotFoundException()
         {
         }
@@ -780,7 +781,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set current context throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetCurrentContext_ThrowsDllNotFoundException()
         {
         }
@@ -788,7 +789,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set im gui context throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetImGuiContext_ThrowsDllNotFoundException()
         {
         }
@@ -796,7 +797,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set node draggable throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNodeDraggable_ThrowsDllNotFoundException()
         {
         }
@@ -804,7 +805,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set node editor space pos throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNodeEditorSpacePos_ThrowsDllNotFoundException()
         {
         }
@@ -812,7 +813,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set node grid space pos throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNodeGridSpacePos_ThrowsDllNotFoundException()
         {
         }
@@ -820,7 +821,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that set node screen space pos throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNodeScreenSpacePos_ThrowsDllNotFoundException()
         {
         }
@@ -828,7 +829,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that snap node to grid throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SnapNodeToGrid_ThrowsDllNotFoundException()
         {
         }

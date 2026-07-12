@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that navigation input values are defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Activate_ShouldBeDefined()
         {
             ImGuiNavInput input = ImGuiNavInput.Activate;

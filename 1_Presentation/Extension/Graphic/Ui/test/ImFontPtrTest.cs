@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the constructor from a native pointer preserves its value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Constructor_WithIntPtr_ShouldPreserveNativePointer()
         {
             IntPtr native = new IntPtr(1234);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the constructor from <see cref="ImFont" /> allocates an unmanaged block.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Constructor_WithImFont_ShouldAllocateNativePointer()
         {
             ImFont font = new ImFont
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that setting <see cref="ImFontPtr.ConfigData" /> updates the underlying structure.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigData_Setter_ShouldPersistInNativeStructure()
         {
             ImFont font = new ImFont

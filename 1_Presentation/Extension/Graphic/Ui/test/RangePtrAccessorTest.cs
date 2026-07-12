@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_ShouldBeInitializedCorrectly()
         {
             IntPtr data = new IntPtr(123);
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldBeInitializedCorrectly()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldReturnCorrectValue()
         {
             int[] data = {1, 2, 3, 4, 5};
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should throw index out of range exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldThrowIndexOutOfRangeException()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should throw when index is negative
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldThrow_WhenIndexIsNegative()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 10);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should throw when count is zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldThrow_WhenCountIsZero()
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(123), 0);

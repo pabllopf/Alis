@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImPlotScatterFlags.None);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that no-clip mode uses a non-zero value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoClip_ShouldBeNonZero()
         {
             Assert.True((int) ImPlotScatterFlags.NoClip > 0);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that b should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void B_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that e should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void E_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();

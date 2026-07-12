@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that direction values are properly defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             ImGuiDir dir = ImGuiDir.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that different directions have distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImGuiDir left = ImGuiDir.Left;

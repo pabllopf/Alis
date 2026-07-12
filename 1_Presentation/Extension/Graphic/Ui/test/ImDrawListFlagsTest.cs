@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImDrawListFlags flag = ImDrawListFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AntiAliasedLines has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedLines_ShouldHaveCorrectValue()
         {
             ImDrawListFlags flag = ImDrawListFlags.AntiAliasedLines;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AntiAliasedLinesUseTex has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedLinesUseTex_ShouldHaveCorrectValue()
         {
             ImDrawListFlags flag = ImDrawListFlags.AntiAliasedLinesUseTex;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AntiAliasedFill has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedFill_ShouldHaveCorrectValue()
         {
             ImDrawListFlags flag = ImDrawListFlags.AntiAliasedFill;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AllowVtxOffset has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AllowVtxOffset_ShouldHaveCorrectValue()
         {
             ImDrawListFlags flag = ImDrawListFlags.AllowVtxOffset;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImDrawListFlags combined = ImDrawListFlags.AntiAliasedLines | ImDrawListFlags.AntiAliasedFill;

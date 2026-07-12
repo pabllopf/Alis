@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies input APIs expose expected overload families.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputFamilies_ShouldExposeOverloads()
         {
             MethodInfo[] inputFloat4 = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "InputFloat4").ToArray();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies InvisibleButton exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InvisibleButton_ShouldExist()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "InvisibleButton").ToArray();
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsAnyItem query methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsAnyItem_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("IsAnyItemActive"));
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsItem query methods expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsItemMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("IsItemActivated"));
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsKey methods expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsKeyMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("IsKeyDown"));
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsMouse methods expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsMouseMethods_ShouldExist()
         {
             MethodInfo[] isMouseClicked = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "IsMouseClicked").ToArray();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsPopupOpen and IsRectVisible expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsPopupOpen_AndIsRectVisible_ShouldExist()
         {
             MethodInfo[] isPopupOpen = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "IsPopupOpen").ToArray();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies IsWindow state methods expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsWindowMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("IsWindowAppearing"));
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies LabelText and ListBox exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LabelText_AndListBox_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("LabelText"));
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies LoadIniSettings methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LoadIniSettings_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("LoadIniSettingsFromDisk"));
@@ -202,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Log methods expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("LogButtons"));
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies MemAlloc and MemFree exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MemAlloc_AndMemFree_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("MemAlloc"));
@@ -232,7 +233,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies MenuItem exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuItem_ShouldExist()
         {
             MethodInfo[] menuItem = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "MenuItem").ToArray();

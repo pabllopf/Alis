@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that ImGuizMo is generated as a static class.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStaticClass()
         {
             Type type = typeof(ImGuizMo);
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that key API methods exist with expected parameter contracts.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeExpectedMethodContracts()
         {
             AssertMethod("AllowAxisFlip", typeof(void), typeof(bool));
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that manipulate keeps the managed wrapper signature over arrays and enums.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Manipulate_ShouldExposeExpectedSignature()
         {
             MethodInfo method = typeof(ImGuizMo).GetMethod(
@@ -94,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that internal matrix buffers are initialized with expected dimensions.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InternalBuffers_ShouldUseExpectedSizes()
         {
             float[] cameraProjection = GetPrivateArray("cameraProjection");
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that identity and camera view matrices keep canonical diagonal values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CanonicalMatrices_ShouldKeepIdentityDiagonal()
         {
             float[] cameraView = GetPrivateArray("cameraView");

@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Size_ShouldBeInitializedCorrectly()
         {
             ImVector vector = new ImVector {Size = 10, Capacity = 20, Data = IntPtr.Zero};
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that capacity should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Capacity_ShouldBeInitializedCorrectly()
         {
             ImVector vector = new ImVector {Size = 10, Capacity = 20, Data = IntPtr.Zero};
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_ShouldBeInitializedCorrectly()
         {
             IntPtr data = new IntPtr(123);
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldReturnCorrectValue()
         {
             int[] data = {1, 2, 3, 4, 5};
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer should throw index out of range exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_ShouldThrowIndexOutOfRangeException()
         {
             ImVectorG<int> imVectorG = new ImVectorG<int>(10, 20, IntPtr.Zero);
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that direct constructor should initialize all fields correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DirectConstructor_ShouldInitializeAllFields()
         {
             IntPtr data = new IntPtr(42);

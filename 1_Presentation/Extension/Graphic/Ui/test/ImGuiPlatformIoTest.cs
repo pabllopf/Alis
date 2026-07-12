@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform destroy window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform show window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformShowWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window pos should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window pos should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window focus should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window focus should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window minimized should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window title should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window alpha should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform update window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform render window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRenderWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform swap buffers should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window dpi scale should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -200,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform on changed viewport should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create vk surface should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer create window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererCreateWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -230,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer destroy window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererDestroyWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer set window size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSetWindowSize_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -250,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer render window should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererRenderWindow_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -260,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer swap buffers should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSwapBuffers_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -270,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that monitors should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Monitors_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that viewports should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Viewports_ShouldBeInitialized()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform destroy window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform show window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformShowWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -326,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window pos set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -338,7 +339,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window pos set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -350,7 +351,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -362,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window focus set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window focus set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window minimized set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -410,7 +411,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window title set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -422,7 +423,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window alpha set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform update window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -446,7 +447,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform render window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRenderWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -458,7 +459,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform swap buffers set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -470,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window dpi scale set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -482,7 +483,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform on changed viewport set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -494,7 +495,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create vk surface set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -506,7 +507,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer create window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererCreateWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -518,7 +519,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer destroy window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererDestroyWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -530,7 +531,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer set window size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSetWindowSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -542,7 +543,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer render window set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererRenderWindow_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -554,7 +555,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer swap buffers set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSwapBuffers_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -566,7 +567,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that monitors set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Monitors_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();
@@ -578,7 +579,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that viewports set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Viewports_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiPlatformIo io = new ImGuiPlatformIo();

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies first and last sentinel values remain stable.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Boundaries_ShouldMatchExpectedOrdinals()
         {
             Assert.Equal(0, (int) ImPlotStyleVar.LineWeight);
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies selected style variables stay in ascending order.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeValues_ShouldBeAscending()
         {
             Assert.True((int) ImPlotStyleVar.Marker > (int) ImPlotStyleVar.LineWeight);

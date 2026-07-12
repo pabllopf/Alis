@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that docking and context API overloads are available on ImGui.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockingAndContextApi_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] createContext = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "CreateContext").ToArray();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Combo overload family exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Combo_ShouldExposeMultipleOverloads()
         {
             MethodInfo[] combo = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Combo").ToArray();
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragFloat family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragFloat_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat").ToArray();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragFloat2 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragFloat2_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat2").ToArray();
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragFloat3 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragFloat3_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat3").ToArray();
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragFloat4 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragFloat4_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloat4").ToArray();
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragFloatRange2 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragFloatRange2_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloatRange2").ToArray();

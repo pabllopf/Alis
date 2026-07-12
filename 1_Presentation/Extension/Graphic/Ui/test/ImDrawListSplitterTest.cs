@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that current should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Current_Should_SetAndGetCorrectly()
         {
             ImDrawListSplitter splitter = new ImDrawListSplitter();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that count should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_Should_SetAndGetCorrectly()
         {
             ImDrawListSplitter splitter = new ImDrawListSplitter();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that channels should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Channels_Should_SetAndGetCorrectly()
         {
             ImDrawListSplitter splitter = new ImDrawListSplitter();

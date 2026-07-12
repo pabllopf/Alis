@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NavEnableKeyboard has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NavEnableKeyboard_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NavEnableKeyboard;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NavEnableGamepad has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NavEnableGamepad_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NavEnableGamepad;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NavEnableSetMousePos has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NavEnableSetMousePos_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NavEnableSetMousePos;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NavNoCaptureKeyboard has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NavNoCaptureKeyboard_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NavNoCaptureKeyboard;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoMouse has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoMouse_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NoMouse;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoMouseCursorChange has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoMouseCursorChange_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.NoMouseCursorChange;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DockingEnable has the expected value of 64.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockingEnable_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.DockingEnable;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ViewportsEnable has the expected value of 1024.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ViewportsEnable_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.ViewportsEnable;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DpiEnableScaleViewports has the expected value of 16384.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DpiEnableScaleViewports_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.DpiEnableScaleViewports;
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DpiEnableScaleFonts has the expected value of 32768.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DpiEnableScaleFonts_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.DpiEnableScaleFonts;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that IsSrgb has the expected value of 1048576.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsSrgb_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.IsSrgb;
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that IsTouchScreen has the expected value of 2097152.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsTouchScreen_ShouldHaveCorrectValue()
         {
             ImGuiConfigFlags flag = ImGuiConfigFlags.IsTouchScreen;
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiConfigFlags combined = ImGuiConfigFlags.NavEnableKeyboard | ImGuiConfigFlags.DockingEnable;

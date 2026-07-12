@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     The native ptr should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativePtr_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(new IntPtr(1));
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     The implicit operator should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitOperator_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformIoPtr platformIoPtr = new ImGuiPlatformIoPtr(new IntPtr(1));
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that native ptr should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativePtr_Should_SetAndGetCorrectly_v2()
         {
             IntPtr ptr = new IntPtr(123);
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit conversion to int ptr should work correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionToIntPtr_Should_WorkCorrectly()
         {
             IntPtr ptr = new IntPtr(123);
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit conversion from int ptr should work correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionFromIntPtr_Should_WorkCorrectly()
         {
             IntPtr ptr = new IntPtr(123);
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateWindow_Should_GetCorrectValue()
         {
         }
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform destroy window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_Should_GetCorrectValue()
         {
         }
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform show window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformShowWindow_Should_GetCorrectValue()
         {
         }
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window pos should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_Should_GetCorrectValue()
         {
         }
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window pos should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_Should_GetCorrectValue()
         {
         }
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window size should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_Should_GetCorrectValue()
         {
         }
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window size should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_Should_GetCorrectValue()
         {
         }
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window focus should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_Should_GetCorrectValue()
         {
         }
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window focus should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_Should_GetCorrectValue()
         {
         }
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window minimized should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_Should_GetCorrectValue()
         {
         }
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window title should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_Should_GetCorrectValue()
         {
         }
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window alpha should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_Should_GetCorrectValue()
         {
         }
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform update window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_Should_GetCorrectValue()
         {
         }
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform render window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRenderWindow_Should_GetCorrectValue()
         {
         }
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform swap buffers should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_Should_GetCorrectValue()
         {
         }
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window dpi scale should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_Should_GetCorrectValue()
         {
         }
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform on changed viewport should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_Should_GetCorrectValue()
         {
         }
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create vk surface should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_Should_GetCorrectValue()
         {
         }
@@ -239,7 +240,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer create window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererCreateWindow_Should_GetCorrectValue()
         {
         }
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer destroy window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererDestroyWindow_Should_GetCorrectValue()
         {
         }
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer set window size should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSetWindowSize_Should_GetCorrectValue()
         {
         }
@@ -263,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer render window should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererRenderWindow_Should_GetCorrectValue()
         {
         }
@@ -271,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer swap buffers should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSwapBuffers_Should_GetCorrectValue()
         {
         }
@@ -279,7 +280,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that monitors should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Monitors_Should_GetCorrectValue()
         {
         }
@@ -287,7 +288,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that viewports should get correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Viewports_Should_GetCorrectValue()
         {
         }
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform destroy window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform show window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformShowWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -334,7 +335,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window pos throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -347,7 +348,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window pos throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -360,7 +361,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window size throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -373,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window size throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window focus throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -399,7 +400,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window focus throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -412,7 +413,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window minimized throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -425,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window title throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -438,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform set window alpha throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -451,7 +452,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform update window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -464,7 +465,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform render window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRenderWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -477,7 +478,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform swap buffers throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -490,7 +491,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform get window dpi scale throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -503,7 +504,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform on changed viewport throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -516,7 +517,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform create vk surface throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -529,7 +530,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer create window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererCreateWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -542,7 +543,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer destroy window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererDestroyWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -555,7 +556,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer set window size throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSetWindowSize_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -568,7 +569,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer render window throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererRenderWindow_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -581,7 +582,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer swap buffers throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererSwapBuffers_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -594,7 +595,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that monitors throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Monitors_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);
@@ -607,7 +608,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that viewports throws null reference exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Viewports_ThrowsNullReferenceException()
         {
             ImGuiPlatformIoPtr ioPtr = new ImGuiPlatformIoPtr(IntPtr.Zero);

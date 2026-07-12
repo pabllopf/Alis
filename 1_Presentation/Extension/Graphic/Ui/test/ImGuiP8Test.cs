@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies diagnostic window APIs expose bool-ref and parameterless overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DiagnosticWindowApis_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] showDemoWindow = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowDemoWindow").ToArray();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowAboutWindow overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowAboutWindow_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowAboutWindow").ToArray();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowDebugLogWindow overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowDebugLogWindow_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowDebugLogWindow").ToArray();
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowStyleEditor overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowStyleEditor_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowStyleEditor").ToArray();
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowFontSelector method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowFontSelector_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("ShowFontSelector", BindingFlags.Public | BindingFlags.Static));
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowStackToolWindow overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowStackToolWindow_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ShowStackToolWindow").ToArray();
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowStyleSelector method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowStyleSelector_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("ShowStyleSelector", BindingFlags.Public | BindingFlags.Static));
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ShowUserGuide method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowUserGuide_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("ShowUserGuide", BindingFlags.Public | BindingFlags.Static));
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies slider-angle API keeps multiple overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderAngle_ShouldExposeMultipleOverloads()
         {
             MethodInfo[] sliderAngle = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderAngle").ToArray();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderFloat overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat").ToArray();
@@ -142,7 +143,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderFloat2 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat2_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat2").ToArray();
@@ -152,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderFloat3 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat3_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat3").ToArray();
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderFloat4 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat4_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat4").ToArray();

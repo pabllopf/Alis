@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImGuiModFlags.None);
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that modifier values are distinct bit flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifiers_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImGuiModFlags.Ctrl, (int) ImGuiModFlags.Shift);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that combining modifiers with OR preserves both bits.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CombinedModifiers_ShouldContainBothBits()
         {
             ImGuiModFlags combo = ImGuiModFlags.Ctrl | ImGuiModFlags.Shift;

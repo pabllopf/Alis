@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that keyboard key values are properly defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Tab_ShouldBeDefined()
         {
             ImGuiKey key = ImGuiKey.Tab;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that different keys have distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImGuiKey tab = ImGuiKey.Tab;

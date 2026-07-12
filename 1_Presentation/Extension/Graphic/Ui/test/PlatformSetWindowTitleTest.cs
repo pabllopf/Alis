@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the delegate receives the expected title pointer.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Invoke_ShouldReceiveExpectedTitlePointer()
         {
             IntPtr expectedTitle = Marshal.StringToHGlobalAnsi("UI Test Window");

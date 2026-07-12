@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that modifier should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_ShouldBeInitialized()
         {
             EmulateThreeButtonMouse emulateThreeButtonMouse = new EmulateThreeButtonMouse();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that modifier should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_Should_SetAndGetCorrectly()
         {
             EmulateThreeButtonMouse emulateThreeButtonMouse = new EmulateThreeButtonMouse();

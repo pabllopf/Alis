@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that local mode uses value 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Local_ShouldBeZero()
         {
             Assert.Equal(0, (int) Mode.Local);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that world mode uses value 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void World_ShouldBeOne()
         {
             Assert.Equal(1, (int) Mode.World);

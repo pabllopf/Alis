@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that ImPlot is generated as a static class.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStaticClass()
         {
             Type type = typeof(ImPlot);
@@ -57,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all public ImPlot methods are static API wrappers.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PublicMethods_ShouldBeStatic()
         {
             MethodInfo[] methods = typeof(ImPlot).GetMethods(BindingFlags.Public | BindingFlags.Static);
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that PlotStems exposes a broad set of overloads for different numeric types.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotStems_ShouldExposeMultipleNumericOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotStems");
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that ShowDemoWindow includes both simple and ref-bool overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowDemoWindow_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("ShowDemoWindow");
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that ShowMetricsWindow includes both simple and ref-bool overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ShowMetricsWindow_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("ShowMetricsWindow");
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SetupLegend supports both default and custom flag configurations.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetupLegend_ShouldExposeDefaultAndFlagsOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("SetupLegend");
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SetupMouseText supports both default and custom flag configurations.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetupMouseText_ShouldExposeDefaultAndFlagsOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("SetupMouseText");
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that TagX includes bool and formatting-string overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TagX_ShouldExposeBooleanAndStringOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("TagX");
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that TagY includes bool and formatting-string overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TagY_ShouldExposeBooleanAndStringOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("TagY");
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SetupAxisTicks includes the overload accepting labels.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetupAxisTicks_ShouldExposeLabelOverload()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("SetupAxisTicks");

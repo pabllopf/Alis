@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that x should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X_ShouldBeInitialized()
         {
             ImPlotRect rect = new ImPlotRect();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that y should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y_ShouldBeInitialized()
         {
             ImPlotRect rect = new ImPlotRect();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that x should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X_Should_SetAndGetCorrectly()
         {
             ImPlotRect rect = new ImPlotRect();
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that y should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y_Should_SetAndGetCorrectly()
         {
             ImPlotRect rect = new ImPlotRect();

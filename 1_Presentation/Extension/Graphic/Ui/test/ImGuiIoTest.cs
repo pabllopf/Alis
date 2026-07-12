@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that keys data 407 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void KeysData407_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that keys data 408 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void KeysData408_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that want capture mouse unless popup close should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WantCaptureMouseUnlessPopupClose_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse pos prev should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MousePosPrev_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse clicked pos 0 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseClickedPos0_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse clicked time should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseClickedTime_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse clicked should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseClicked_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse double clicked should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDoubleClicked_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse clicked count should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseClickedCount_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse clicked last count should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseClickedLastCount_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse released should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseReleased_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse down owned should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDownOwned_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse down owned unless popup close should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDownOwnedUnlessPopupClose_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse down duration should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDownDuration_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -185,7 +186,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse down duration prev should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDownDurationPrev_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse drag max distance abs 0 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDragMaxDistanceAbs0_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse drag max distance sqr should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDragMaxDistanceSqr_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pen pressure should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PenPressure_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that app focus lost should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AppFocusLost_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -235,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that app accepting events should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AppAcceptingEvents_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -245,7 +246,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that backend using legacy key arrays should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BackendUsingLegacyKeyArrays_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that backend using legacy nav input array should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BackendUsingLegacyNavInputArray_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input queue surrogate should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputQueueSurrogate_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -275,7 +276,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input queue characters should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputQueueCharacters_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config flags set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigFlags_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -297,7 +298,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that backend flags set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BackendFlags_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -309,7 +310,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplaySize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that delta time set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DeltaTime_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -333,7 +334,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ini saving rate set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IniSavingRate_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -345,7 +346,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ini filename set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IniFilename_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -357,7 +358,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that log filename set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogFilename_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -369,7 +370,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse double click time set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDoubleClickTime_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -381,7 +382,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse double click max dist set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDoubleClickMaxDist_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -393,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse drag threshold set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseDragThreshold_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -405,7 +406,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that key repeat delay set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void KeyRepeatDelay_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -417,7 +418,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that key repeat rate set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void KeyRepeatRate_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -429,7 +430,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that hover delay normal set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HoverDelayNormal_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -441,7 +442,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that hover delay short set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HoverDelayShort_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -453,7 +454,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user data set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -465,7 +466,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fonts set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Fonts_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -477,7 +478,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font global scale set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontGlobalScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -489,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font allow user scaling set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontAllowUserScaling_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -501,7 +502,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font default set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontDefault_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -513,7 +514,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display framebuffer scale set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayFramebufferScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -525,7 +526,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config docking no split set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDockingNoSplit_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -537,7 +538,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config docking with shift set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDockingWithShift_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -549,7 +550,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config docking always tab bar set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDockingAlwaysTabBar_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();
@@ -561,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config docking transparent payload set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDockingTransparentPayload_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiIo obj = new ImGuiIo();

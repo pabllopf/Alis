@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clip rect should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClipRect_ShouldBeInitializedCorrectly()
         {
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that texture id should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TextureId_ShouldBeInitializedCorrectly()
         {
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {TextureId = new IntPtr(123)};
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vtx offset should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VtxOffset_ShouldBeInitializedCorrectly()
         {
             ImDrawCmdHeader drawCmdHeader = new ImDrawCmdHeader {VtxOffset = 10};

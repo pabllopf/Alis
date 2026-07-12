@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that mouse button values are defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Left_ShouldBeZero()
         {
             ImGuiMouseButton button = ImGuiMouseButton.Left;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that different mouse buttons have distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImGuiMouseButton left = ImGuiMouseButton.Left;

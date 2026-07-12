@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that width should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Width_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that height should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Height_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that y should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph id should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphId_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph advance x should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphAdvanceX_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph offset should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphOffset_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Font_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that width should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Width_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that height should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Height_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that y should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph id should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphId_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -176,7 +177,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph advance x should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphAdvanceX_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph offset should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphOffset_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Font_Should_SetAndGetCorrectly()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();

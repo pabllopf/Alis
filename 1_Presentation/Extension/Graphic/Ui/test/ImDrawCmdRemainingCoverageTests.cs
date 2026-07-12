@@ -1,4 +1,5 @@
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -11,7 +12,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that get tex id should call native method
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetTexId_ShouldCallNativeMethod()
         {
             ImDrawCmd cmd = new ImDrawCmd();

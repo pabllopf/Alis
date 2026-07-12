@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that none keeps the sentinel negative value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeNegativeOne()
         {
             Assert.Equal(-1, (int) ImGuiMouseCursor.None);
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that count is one step after the last defined cursor.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldFollowNotAllowed()
         {
             Assert.Equal((int) ImGuiMouseCursor.NotAllowed + 1, (int) ImGuiMouseCursor.Count);

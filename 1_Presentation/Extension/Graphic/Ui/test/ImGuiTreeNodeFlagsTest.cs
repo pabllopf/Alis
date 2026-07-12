@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that collapsing-header alias matches its documented composition.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CollapsingHeader_ShouldMatchComposition()
         {
             ImGuiTreeNodeFlags expected = ImGuiTreeNodeFlags.Framed

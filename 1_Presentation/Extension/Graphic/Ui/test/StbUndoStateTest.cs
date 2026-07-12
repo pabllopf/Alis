@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 0 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec0_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 1 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec1_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 2 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec2_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 3 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec3_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 4 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec4_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 5 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec5_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 6 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec6_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 7 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec7_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 8 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec8_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 9 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec9_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 10 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec10_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 11 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec11_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 12 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec12_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 13 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec13_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 14 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec14_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 15 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec15_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -200,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 16 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec16_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 17 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec17_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 18 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec18_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -230,7 +231,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 19 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec19_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 20 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec20_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -250,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 21 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec21_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -260,7 +261,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 22 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec22_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -270,7 +271,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 23 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec23_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 24 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec24_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 25 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec25_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -300,7 +301,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 26 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec26_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -310,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 27 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec27_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 28 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec28_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -331,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 29 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec29_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 30 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec30_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -351,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 31 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec31_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec31 = new StbUndoRecord()};
@@ -364,7 +365,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 32 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec32_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec32 = new StbUndoRecord()};
@@ -377,7 +378,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 33 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec33_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec33 = new StbUndoRecord()};
@@ -390,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 34 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec34_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec34 = new StbUndoRecord()};
@@ -403,7 +404,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 35 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec35_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec35 = new StbUndoRecord()};
@@ -416,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 36 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec36_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec36 = new StbUndoRecord()};
@@ -429,7 +430,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 37 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec37_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec37 = new StbUndoRecord()};
@@ -442,7 +443,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 38 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec38_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec38 = new StbUndoRecord()};
@@ -455,7 +456,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 39 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec39_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec39 = new StbUndoRecord()};
@@ -468,7 +469,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 40 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec40_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec40 = new StbUndoRecord()};
@@ -481,7 +482,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 41 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec41_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec41 = new StbUndoRecord()};
@@ -494,7 +495,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 42 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec42_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec42 = new StbUndoRecord()};
@@ -507,7 +508,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 43 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec43_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec43 = new StbUndoRecord()};
@@ -520,7 +521,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 44 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec44_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec44 = new StbUndoRecord()};
@@ -533,7 +534,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 45 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec45_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec45 = new StbUndoRecord()};
@@ -546,7 +547,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 46 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec46_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec46 = new StbUndoRecord()};
@@ -559,7 +560,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 47 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec47_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec47 = new StbUndoRecord()};
@@ -572,7 +573,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 48 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec48_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec48 = new StbUndoRecord()};
@@ -585,7 +586,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 49 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec49_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec49 = new StbUndoRecord()};
@@ -598,7 +599,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 50 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec50_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec50 = new StbUndoRecord()};
@@ -611,7 +612,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 51 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec51_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec51 = new StbUndoRecord()};
@@ -624,7 +625,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 52 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec52_ShouldBeInitializedCorrectly()
         {
             StbUndoState undoState = new StbUndoState {UndoRec52 = new StbUndoRecord()};
@@ -637,7 +638,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 53 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec53_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -647,7 +648,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 54 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec54_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -657,7 +658,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 55 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec55_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -667,7 +668,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 56 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec56_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -679,7 +680,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 57 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec57_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -691,7 +692,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 58 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec58_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -703,7 +704,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 59 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec59_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -715,7 +716,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 60 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec60_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -727,7 +728,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 61 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec61_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -739,7 +740,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 62 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec62_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -751,7 +752,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 63 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec63_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -763,7 +764,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 64 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec64_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -775,7 +776,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 65 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec65_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -787,7 +788,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 66 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec66_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -799,7 +800,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 67 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec67_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -811,7 +812,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 68 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec68_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -823,7 +824,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 69 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec69_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -835,7 +836,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 70 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec70_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -847,7 +848,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 71 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec71_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -859,7 +860,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 72 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec72_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -871,7 +872,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 73 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec73_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -883,7 +884,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 74 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec74_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -895,7 +896,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 75 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec75_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -907,7 +908,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 76 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec76_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -919,7 +920,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 77 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec77_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -931,7 +932,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 78 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec78_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -943,7 +944,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 79 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec79_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -955,7 +956,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 80 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec80_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -967,7 +968,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 81 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec81_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -979,7 +980,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 82 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec82_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -991,7 +992,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 83 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec83_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1003,7 +1004,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 84 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec84_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1015,7 +1016,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 85 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec85_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1027,7 +1028,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 86 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec86_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1039,7 +1040,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 87 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec87_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1051,7 +1052,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 88 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec88_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1063,7 +1064,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 89 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec89_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1075,7 +1076,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 90 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec90_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1087,7 +1088,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 91 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec91_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1099,7 +1100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 92 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec92_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1111,7 +1112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 93 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec93_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1123,7 +1124,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 94 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec94_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1135,7 +1136,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 95 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec95_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1147,7 +1148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 96 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec96_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1159,7 +1160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 97 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec97_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1171,7 +1172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 98 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec98_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1183,7 +1184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo char set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoChar_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1195,7 +1196,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo point set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoPoint_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1207,7 +1208,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that redo point set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RedoPoint_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1219,7 +1220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo char point set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoCharPoint_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1231,7 +1232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that redo char point set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RedoCharPoint_SetAndGet_ReturnsCorrectValue()
         {
             StbUndoState obj = new StbUndoState();
@@ -1243,7 +1244,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 53 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec53_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1255,7 +1256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 54 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec54_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1267,7 +1268,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 55 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec55_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1279,7 +1280,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 0 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec0_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1291,7 +1292,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 1 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec1_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1303,7 +1304,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 2 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec2_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1315,7 +1316,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 3 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec3_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1327,7 +1328,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 4 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec4_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1339,7 +1340,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 5 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec5_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1351,7 +1352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 6 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec6_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1363,7 +1364,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 7 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec7_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1375,7 +1376,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 8 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec8_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1387,7 +1388,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 9 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec9_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1399,7 +1400,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 10 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec10_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1411,7 +1412,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 11 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec11_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1423,7 +1424,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 12 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec12_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1435,7 +1436,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 13 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec13_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1447,7 +1448,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 14 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec14_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1459,7 +1460,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 15 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec15_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1471,7 +1472,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 16 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec16_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1483,7 +1484,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 17 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec17_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1495,7 +1496,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 18 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec18_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1507,7 +1508,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 19 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec19_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1519,7 +1520,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 20 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec20_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1531,7 +1532,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 21 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec21_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1543,7 +1544,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 22 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec22_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1555,7 +1556,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 23 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec23_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1567,7 +1568,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 24 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec24_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1579,7 +1580,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 25 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec25_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1591,7 +1592,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 26 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec26_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1603,7 +1604,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 27 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec27_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1615,7 +1616,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 28 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec28_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1627,7 +1628,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 29 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec29_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();
@@ -1639,7 +1640,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that undo rec 30 get set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UndoRec30_GetSet_ReturnsCorrectValue()
         {
             StbUndoState state = new StbUndoState();

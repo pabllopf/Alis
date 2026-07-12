@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the type is a class (reference type).
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeClass()
         {
             Type type = typeof(ImNodesMiniMapNodeHoveringCallbackUserData);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that a new instance can be created via the default constructor.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DefaultConstructor_ShouldCreateInstance()
         {
             ImNodesMiniMapNodeHoveringCallbackUserData instance = new ImNodesMiniMapNodeHoveringCallbackUserData();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that multiple instances are independent.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MultipleInstances_ShouldBeIndependent()
         {
             ImNodesMiniMapNodeHoveringCallbackUserData instance1 = new ImNodesMiniMapNodeHoveringCallbackUserData();

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colored should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colored_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that visible should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Visible_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that codepoint should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Codepoint_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that advance x should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AdvanceX_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X0_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that y 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y0_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X1_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that y 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y1_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that u 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U0_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that v 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void V0_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that u 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U1_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that v 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void V1_Should_SetAndGetCorrectly()
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();

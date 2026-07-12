@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DragInt family exposes a broad overload set.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragIntFamily_ShouldExposeManyOverloads()
         {
             MethodInfo[] dragInt = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragInt").ToArray();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragInt4 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragInt4_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragInt4").ToArray();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragIntRange2 family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragIntRange2_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragIntRange2").ToArray();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragScalar family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragScalar_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragScalar").ToArray();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragScalarN family exposes expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragScalarN_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragScalarN").ToArray();

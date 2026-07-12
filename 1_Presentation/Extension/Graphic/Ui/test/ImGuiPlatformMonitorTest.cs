@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that main pos should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MainPos_ShouldBeInitializedCorrectly()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainPos = new Vector2F(1, 2)};
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that main size should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MainSize_ShouldBeInitializedCorrectly()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {MainSize = new Vector2F(3, 4)};
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkPos_ShouldBeInitializedCorrectly()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkPos = new Vector2F(5, 6)};
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkSize_ShouldBeInitializedCorrectly()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {WorkSize = new Vector2F(7, 8)};
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DpiScale_ShouldBeInitializedCorrectly()
         {
             ImGuiPlatformMonitor monitor = new ImGuiPlatformMonitor {DpiScale = 1.5f};

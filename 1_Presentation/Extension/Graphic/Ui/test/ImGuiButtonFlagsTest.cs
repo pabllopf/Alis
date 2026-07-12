@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that MouseButtonLeft has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseButtonLeft_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.MouseButtonLeft;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that MouseButtonRight has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseButtonRight_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.MouseButtonRight;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that MouseButtonMiddle has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseButtonMiddle_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.MouseButtonMiddle;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that MouseButtonMask has the expected value of 7.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseButtonMask_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.MouseButtonMask;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that MouseButtonDefault has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseButtonDefault_ShouldHaveCorrectValue()
         {
             ImGuiButtonFlags flag = ImGuiButtonFlags.MouseButtonDefault;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiButtonFlags combined = ImGuiButtonFlags.MouseButtonLeft | ImGuiButtonFlags.MouseButtonRight;

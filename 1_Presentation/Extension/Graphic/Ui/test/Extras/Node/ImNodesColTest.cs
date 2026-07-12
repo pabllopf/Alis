@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that NodeBackground is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeBackground_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImNodesCol.NodeBackground);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that Count matches the expected number of entries.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldBeExpectedValue()
         {
             Assert.Equal(29, (int) ImNodesCol.Count);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that selected color entries use distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImNodesCol.NodeBackground, (int) ImNodesCol.TitleBar);

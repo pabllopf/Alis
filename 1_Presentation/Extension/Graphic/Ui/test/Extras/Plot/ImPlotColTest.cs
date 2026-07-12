@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Line has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Line_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.Line;
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Fill has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Fill_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.Fill;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that MarkerOutline has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerOutline_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.MarkerOutline;
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that MarkerFill has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerFill_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.MarkerFill;
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that ErrorBar has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBar_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.ErrorBar;
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that FrameBg has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FrameBg_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.FrameBg;
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that PlotBg has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotBg_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.PlotBg;
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that PlotBorder has the expected value of 7.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotBorder_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.PlotBorder;
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that LegendBg has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendBg_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.LegendBg;
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that LegendBorder has the expected value of 9.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendBorder_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.LegendBorder;
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that LegendText has the expected value of 10.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LegendText_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.LegendText;
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that TitleText has the expected value of 11.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TitleText_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.TitleText;
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that InlayText has the expected value of 12.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InlayText_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.InlayText;
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisText has the expected value of 13.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisText_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisText;
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisGrid has the expected value of 14.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisGrid_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisGrid;
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisTick has the expected value of 15.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisTick_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisTick;
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisBg has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisBg_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisBg;
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisBgHovered has the expected value of 17.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisBgHovered_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisBgHovered;
@@ -221,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that AxisBgActive has the expected value of 18.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AxisBgActive_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.AxisBgActive;
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Selection has the expected value of 19.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Selection_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.Selection;
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Crosshairs has the expected value of 20.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Crosshairs_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.Crosshairs;
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Count has the expected value of 21.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldHaveCorrectValue()
         {
             ImPlotCol color = ImPlotCol.Count;
@@ -261,7 +262,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are sequential from 0 to Count.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeSequential()
         {
             ImPlotCol[] values = (ImPlotCol[])Enum.GetValues(typeof(ImPlotCol));

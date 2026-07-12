@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderFloat4 overload exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat4_ShouldExist()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat4").ToArray();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderInt overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt").ToArray();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderInt2 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt2_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt2").ToArray();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderInt3 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt3_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt3").ToArray();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderInt4 overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt4_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt4").ToArray();
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderScalar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderScalar_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderScalar").ToArray();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SliderScalarN overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderScalarN_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderScalarN").ToArray();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SmallButton method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SmallButton_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SmallButton", BindingFlags.Public | BindingFlags.Static));
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Spacing method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Spacing_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("Spacing", BindingFlags.Public | BindingFlags.Static));
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies StyleColorsClassic overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsClassic_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "StyleColorsClassic").ToArray();
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies StyleColorsDark overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsDark_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "StyleColorsDark").ToArray();
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies StyleColorsLight overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleColorsLight_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "StyleColorsLight").ToArray();
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TabItemButton overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TabItemButton_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TabItemButton").ToArray();
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetColumnCount method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnCount_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableGetColumnCount", BindingFlags.Public | BindingFlags.Static));
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetColumnFlags overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnFlags_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TableGetColumnFlags").ToArray();
@@ -188,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetColumnIndex method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnIndex_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableGetColumnIndex", BindingFlags.Public | BindingFlags.Static));
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetColumnName overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetColumnName_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TableGetColumnName").ToArray();
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetRowIndex method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetRowIndex_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableGetRowIndex", BindingFlags.Public | BindingFlags.Static));
@@ -216,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableGetSortSpecs method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableGetSortSpecs_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableGetSortSpecs", BindingFlags.Public | BindingFlags.Static));
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableHeader method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableHeader_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableHeader", BindingFlags.Public | BindingFlags.Static));
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableHeadersRow method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableHeadersRow_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableHeadersRow", BindingFlags.Public | BindingFlags.Static));
@@ -243,7 +244,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableNextColumn method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableNextColumn_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableNextColumn", BindingFlags.Public | BindingFlags.Static));
@@ -252,7 +253,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableNextRow overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableNextRow_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TableNextRow").ToArray();
@@ -262,7 +263,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableSetBgColor overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetBgColor_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TableSetBgColor").ToArray();
@@ -272,7 +273,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableSetColumnEnabled method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetColumnEnabled_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableSetColumnEnabled", BindingFlags.Public | BindingFlags.Static));
@@ -281,7 +282,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TableSetColumnIndex method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetColumnIndex_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableSetColumnIndex", BindingFlags.Public | BindingFlags.Static));
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ImFontConfig method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImFontConfig_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("ImFontConfig", BindingFlags.Public | BindingFlags.Static));
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderRemoveNode method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderRemoveNode_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderRemoveNode", BindingFlags.Public | BindingFlags.Static));
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderAddNode method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderAddNode_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderAddNode", BindingFlags.Public | BindingFlags.Static));
@@ -317,7 +318,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderSetNodeSize method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderSetNodeSize_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderSetNodeSize", BindingFlags.Public | BindingFlags.Static));
@@ -326,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderSplitNode method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderSplitNode_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderSplitNode", BindingFlags.Public | BindingFlags.Static));
@@ -335,7 +336,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderDockWindow method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderDockWindow_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderDockWindow", BindingFlags.Public | BindingFlags.Static));
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderFinish method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderFinish_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderFinish", BindingFlags.Public | BindingFlags.Static));
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DockBuilderSetNodeFlags method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderSetNodeFlags_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("DockBuilderSetNodeFlags", BindingFlags.Public | BindingFlags.Static));

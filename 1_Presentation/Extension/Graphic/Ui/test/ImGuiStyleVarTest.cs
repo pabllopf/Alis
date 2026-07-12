@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that style variable indices are defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Alpha_ShouldBeDefined()
         {
             ImGuiStyleVar styleVar = ImGuiStyleVar.Alpha;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that different style variables have distinct indices.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImGuiStyleVar alpha = ImGuiStyleVar.Alpha;

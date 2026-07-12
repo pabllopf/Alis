@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd buffer should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdBuffer_ShouldBeInitializedCorrectly()
         {
             ImDrawChannel drawChannel = new ImDrawChannel();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx buffer should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IdxBuffer_ShouldBeInitializedCorrectly()
         {
             ImDrawChannel drawChannel = new ImDrawChannel();
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd buffer ptr should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdBufferPtr_ShouldReturnCorrectValue()
         {
             ImDrawChannel drawChannel = new ImDrawChannel
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx buffer ptr should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IdxBufferPtr_ShouldReturnCorrectValue()
         {
             ImDrawChannel drawChannel = new ImDrawChannel

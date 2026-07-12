@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that KeepAliveOnly has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void KeepAliveOnly_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.KeepAliveOnly;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoDockingInCentralNode has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoDockingInCentralNode_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.NoDockingInCentralNode;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PassthruCentralNode has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PassthruCentralNode_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.PassthruCentralNode;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoSplit has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoSplit_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.NoSplit;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoResize has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoResize_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.NoResize;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AutoHideTabBar has the expected value of 64.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AutoHideTabBar_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.AutoHideTabBar;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoTabBar has the expected value of 128.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoTabBar_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.NoTabBar;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoWindowMenuButton has the expected value of 256.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoWindowMenuButton_ShouldHaveCorrectValue()
         {
             ImGuiDockNodeFlags flag = ImGuiDockNodeFlags.NoWindowMenuButton;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiDockNodeFlags combined = ImGuiDockNodeFlags.NoSplit | ImGuiDockNodeFlags.NoResize;

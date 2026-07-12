@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies table setup APIs expose overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetupColumn_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TableSetupColumn").ToArray();
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies table setup APIs expose overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableSetupScrollFreeze_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TableSetupScrollFreeze", BindingFlags.Public | BindingFlags.Static));
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies tree-node methods expose pointer and string variants.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TreeNodeMethods_ShouldExposePointerAndStringVariants()
         {
             MethodInfo[] treeNode = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TreeNode").ToArray();
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TreePush pointer and string variants exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TreePush_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "TreePush").ToArray();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies TreePop method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TreePop_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("TreePop", BindingFlags.Public | BindingFlags.Static));
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Text methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TextMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("Text", BindingFlags.Public | BindingFlags.Static));
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Unindent overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Unindent_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Unindent").ToArray();
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies UpdatePlatformWindows method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UpdatePlatformWindows_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("UpdatePlatformWindows", BindingFlags.Public | BindingFlags.Static));
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Value overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Value_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Value").ToArray();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies VSliderFloat overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VSliderFloat_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "VSliderFloat").ToArray();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies VSliderInt overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VSliderInt_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "VSliderInt").ToArray();
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies VSliderScalar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VSliderScalar_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "VSliderScalar").ToArray();
@@ -168,7 +169,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies InputText overload families exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputText_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "InputText").ToArray();
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies InputTextMultiline overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputTextMultiline_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "InputTextMultiline").ToArray();
@@ -188,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies InputTextWithHint overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputTextWithHint_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "InputTextWithHint").ToArray();
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies CalcTextSize overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CalcTextSize_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "CalcTextSize").ToArray();

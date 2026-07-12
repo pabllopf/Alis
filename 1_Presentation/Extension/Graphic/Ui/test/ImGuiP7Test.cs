@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies popup APIs expose expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopupApis_ShouldExposeOverloads()
         {
             MethodInfo[] openPopup = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "OpenPopup").ToArray();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies representative frame navigation methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FrameNavigationMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("NewFrame", BindingFlags.Public | BindingFlags.Static));
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies NewLine method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NewLine_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("NewLine", BindingFlags.Public | BindingFlags.Static));
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies MenuItem overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuItem_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "MenuItem").ToArray();
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PlotHistogram overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotHistogram_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PlotHistogram").ToArray();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PlotLines overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLines_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PlotLines").ToArray();
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Pop* methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("PopAllowKeyboardFocus", BindingFlags.Public | BindingFlags.Static));
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PopStyleColor and PopStyleVar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleMethods_ShouldExposeOverloads()
         {
             MethodInfo[] popStyleColor = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PopStyleColor").ToArray();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ProgressBar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ProgressBar_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ProgressBar").ToArray();
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Push* methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("PushAllowKeyboardFocus", BindingFlags.Public | BindingFlags.Static));
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PushId overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushId_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushId").ToArray();
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PushStyleColor and PushStyleVar overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleMethods_ShouldExposeOverloads()
         {
             MethodInfo[] pushStyleColor = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushStyleColor").ToArray();
@@ -177,7 +178,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies PushTextWrapPos overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushTextWrapPos_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "PushTextWrapPos").ToArray();
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies RadioButton overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RadioButton_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "RadioButton").ToArray();
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Render methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RenderMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("Render", BindingFlags.Public | BindingFlags.Static));
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies RenderPlatformWindowsDefault overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RenderPlatformWindowsDefault_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "RenderPlatformWindowsDefault").ToArray();
@@ -216,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies ResetMouseDragDelta overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ResetMouseDragDelta_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "ResetMouseDragDelta").ToArray();
@@ -226,7 +227,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SameLine overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SameLine_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SameLine").ToArray();
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SaveIniSettings methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveIniSettingsMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SaveIniSettingsToDisk", BindingFlags.Public | BindingFlags.Static));
@@ -245,7 +246,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SaveIniSettingsToMemory overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SaveIniSettingsToMemory_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SaveIniSettingsToMemory").ToArray();
@@ -255,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Selectable overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Selectable_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "Selectable").ToArray();
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies Separator method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Separator_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("Separator", BindingFlags.Public | BindingFlags.Static));
@@ -274,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetAllocatorFunctions overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetAllocatorFunctions_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetAllocatorFunctions").ToArray();
@@ -284,7 +285,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetClipboardText method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetClipboardText_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetClipboardText", BindingFlags.Public | BindingFlags.Static));
@@ -293,7 +294,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetColorEditOptions method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetColorEditOptions_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetColorEditOptions", BindingFlags.Public | BindingFlags.Static));
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetColumn methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetColumnMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetColumnOffset", BindingFlags.Public | BindingFlags.Static));
@@ -312,7 +313,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetCurrentContext method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetCurrentContext_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetCurrentContext", BindingFlags.Public | BindingFlags.Static));
@@ -321,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetCursorPos methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetCursorPosMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetCursorPos", BindingFlags.Public | BindingFlags.Static));
@@ -333,7 +334,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetDragDropPayload overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetDragDropPayload_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetDragDropPayload").ToArray();
@@ -343,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetItem methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetItemMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetItemAllowOverlap", BindingFlags.Public | BindingFlags.Static));
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetKeyboardFocusHere overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetKeyboardFocusHere_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetKeyboardFocusHere").ToArray();
@@ -363,7 +364,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetMouseCursor method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetMouseCursor_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetMouseCursor", BindingFlags.Public | BindingFlags.Static));
@@ -372,7 +373,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetNextFrameWantCapture methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextFrameWantCaptureMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetNextFrameWantCaptureKeyboard", BindingFlags.Public | BindingFlags.Static));
@@ -382,7 +383,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetNextItem overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextItemMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetNextItemWidth", BindingFlags.Public | BindingFlags.Static));
@@ -393,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetNextWindow methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetNextWindowBgAlpha", BindingFlags.Public | BindingFlags.Static));
@@ -407,7 +408,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetNextWindowCollapsed and SetNextWindowDockId overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowCollapsedDock_ShouldExposeOverloads()
         {
             MethodInfo[] collapsed = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetNextWindowCollapsed").ToArray();
@@ -426,7 +427,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetScrollFromPos overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollFromPosMethods_ShouldExposeOverloads()
         {
             MethodInfo[] fromPosX = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollFromPosX").ToArray();
@@ -439,7 +440,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetScrollHere overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollHereMethods_ShouldExposeOverloads()
         {
             MethodInfo[] hereX = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetScrollHereX").ToArray();
@@ -452,7 +453,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetScrollX and SetScrollY methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollXYMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetScrollX", BindingFlags.Public | BindingFlags.Static));
@@ -462,7 +463,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetStateStorage method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetStateStorage_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetStateStorage", BindingFlags.Public | BindingFlags.Static));
@@ -471,7 +472,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetTabItemClosed method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetTabItemClosed_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetTabItemClosed", BindingFlags.Public | BindingFlags.Static));
@@ -480,7 +481,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetTooltip method exists.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetTooltip_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetTooltip", BindingFlags.Public | BindingFlags.Static));
@@ -489,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetWindow methods exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowMethods_ShouldExist()
         {
             Assert.NotNull(typeof(ImGui).GetMethod("SetWindowFontScale", BindingFlags.Public | BindingFlags.Static));
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetWindowCollapsed overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowCollapsed_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowCollapsed").ToArray();
@@ -508,7 +509,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetWindowFocus overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowFocus_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowFocus").ToArray();
@@ -518,7 +519,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetWindowPos overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowPos_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowPos").ToArray();
@@ -528,7 +529,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies SetWindowSize overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowSize_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SetWindowSize").ToArray();

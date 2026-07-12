@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceNoPreviewTooltip has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceNoPreviewTooltip_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceNoPreviewTooltip;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceNoDisableHover has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceNoDisableHover_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceNoDisableHover;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceNoHoldToOpenOthers has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceNoHoldToOpenOthers_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceNoHoldToOpenOthers;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceAllowNullId has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceAllowNullId_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceAllowNullId;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceExtern has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceExtern_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceExtern;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SourceAutoExpirePayload has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceAutoExpirePayload_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.SourceAutoExpirePayload;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AcceptBeforeDelivery has the expected value of 1024.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptBeforeDelivery_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.AcceptBeforeDelivery;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AcceptNoDrawDefaultRect has the expected value of 2048.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptNoDrawDefaultRect_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.AcceptNoDrawDefaultRect;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AcceptNoPreviewTooltip has the expected value of 4096.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptNoPreviewTooltip_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.AcceptNoPreviewTooltip;
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AcceptPeekOnly has the expected value of 3072.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptPeekOnly_ShouldHaveCorrectValue()
         {
             ImGuiDragDropFlags flag = ImGuiDragDropFlags.AcceptPeekOnly;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiDragDropFlags combined = ImGuiDragDropFlags.SourceNoPreviewTooltip | ImGuiDragDropFlags.SourceNoDisableHover;

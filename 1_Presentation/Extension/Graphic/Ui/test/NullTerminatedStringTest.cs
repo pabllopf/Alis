@@ -29,6 +29,7 @@
 
 using System;
 using System.Text;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should set and get correctly with int ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_Should_SetAndGetCorrectly_WithIntPtr()
         {
             IntPtr data = new IntPtr(123);
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should set and get correctly with byte array
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_Should_SetAndGetCorrectly_WithByteArray()
         {
             byte[] byteArray = {65, 66, 67}; // "ABC"
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string should return empty string when data is null
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_Should_ReturnEmptyString_WhenDataIsNull()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string should return correct string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_Should_ReturnCorrectString()
         {
             byte[] byteArray = {72, 101, 108, 108, 111}; // "Hello"
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string data is null returns empty string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_DataIsNull_ReturnsEmptyString()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string data is empty returns empty string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_DataIsEmpty_ReturnsEmptyString()
         {
             byte[] data = {0};
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string data is not empty returns string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_DataIsNotEmpty_ReturnsString()
         {
             byte[] data = Encoding.UTF8.GetBytes("test");
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string data has null terminator returns string
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_DataHasNullTerminator_ReturnsString()
         {
             byte[] data = Encoding.UTF8.GetBytes("test\0more");
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that to string data has multiple null terminators returns string up to first null
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ToString_DataHasMultipleNullTerminators_ReturnsStringUpToFirstNull()
         {
             byte[] data = Encoding.UTF8.GetBytes("test\0more\0data");
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator converts to string correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitOperator_ShouldConvertToString()
         {
             byte[] data = Encoding.UTF8.GetBytes("Hello");
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit operator returns empty when data is null
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitOperator_ShouldReturnEmpty_WhenDataIsNull()
         {
             NullTerminatedString nts = new NullTerminatedString(IntPtr.Zero);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that want visible should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WantVisible_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformImeData platformImeData = new ImGuiPlatformImeData();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input pos should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputPos_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformImeData platformImeData = new ImGuiPlatformImeData();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input line height should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputLineHeight_Should_SetAndGetCorrectly()
         {
             ImGuiPlatformImeData platformImeData = new ImGuiPlatformImeData();

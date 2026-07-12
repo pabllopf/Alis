@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Size_ShouldBeInitialized()
         {
             ImVector vector = new ImVector();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that capacity should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Capacity_ShouldBeInitialized()
         {
             ImVector vector = new ImVector();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_ShouldBeInitialized()
         {
             ImVector vector = new ImVector();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that constructor should initialize fields
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Constructor_ShouldInitializeFields()
         {
             IntPtr data = new IntPtr(123);
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ref should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ref_ShouldReturnCorrectValue()
         {
             IntPtr data = Marshal.AllocHGlobal(4);
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that address should return correct pointer
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Address_ShouldReturnCorrectPointer()
         {
             IntPtr data = new IntPtr(123);

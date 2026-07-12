@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Fonts;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Fonts
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that the type is generated as a static class.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStaticClass()
         {
             Type type = typeof(FontAwesome5);
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that font file names are set and end with .ttf.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontNames_ShouldBeTtfFiles()
         {
             Assert.EndsWith(".ttf", FontAwesome5.NameRegular, StringComparison.OrdinalIgnoreCase);
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies icon range constants are coherent.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IconRange_ShouldBeCoherent()
         {
             Assert.True(FontAwesome5.IconMin > 0);
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies that icon string catalog remains broad and non-empty.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IconCatalog_ShouldContainManyNonEmptyConstants()
         {
             FieldInfo[] iconFields = typeof(FontAwesome5)
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Fonts
         /// <summary>
         ///     Verifies a representative subset of known icon constants.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeIcons_ShouldMatchExpectedGlyphs()
         {
             Assert.Equal("\uf641", FontAwesome5.Ad);

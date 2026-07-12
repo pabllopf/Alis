@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Min and Max should be initialized correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinAndMax_ShouldBeInitializedCorrectly()
         {
             ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 100.0 };
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Min should be set correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Min_ShouldBeSetCorrectly()
         {
             ImPlotRange range = new ImPlotRange { Min = -50.5, Max = 100.0 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Max should be set correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Max_ShouldBeSetCorrectly()
         {
             ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 999.99 };
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Min and Max can be modified after initialization.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinAndMax_ShouldBeModifiable()
         {
             ImPlotRange range = new ImPlotRange { Min = 0.0, Max = 100.0 };
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that default struct initialization sets Min and Max to 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DefaultInitialization_ShouldSetMinAndMaxToZero()
         {
             ImPlotRange range = new ImPlotRange();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Min should be less than Max for valid range.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValidRange_ShouldHaveMinLessThanMax()
         {
             ImPlotRange range = new ImPlotRange { Min = 10.0, Max = 20.0 };
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Min can equal Max for zero-width range.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZeroWidthRange_ShouldAllowMinEqualToMax()
         {
             ImPlotRange range = new ImPlotRange { Min = 50.0, Max = 50.0 };
@@ -125,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that negative values can be used for Min and Max.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NegativeValues_ShouldBeSupported()
         {
             ImPlotRange range = new ImPlotRange { Min = -1000.0, Max = -500.0 };
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that struct equality works correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Equality_ShouldWorkCorrectly()
         {
             ImPlotRange range1 = new ImPlotRange { Min = 0.0, Max = 100.0 };
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that large double values are supported.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LargeDoubleValues_ShouldBeSupported()
         {
             ImPlotRange range = new ImPlotRange 
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that small double values are supported.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SmallDoubleValues_ShouldBeSupported()
         {
             ImPlotRange range = new ImPlotRange 

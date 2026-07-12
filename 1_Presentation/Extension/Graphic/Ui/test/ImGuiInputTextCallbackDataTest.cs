@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event flag should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventFlag_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UserData_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event char should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventChar_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event key should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventKey_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Buf_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf text len should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufTextLen_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufSize_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf dirty should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufDirty_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cursor pos should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CursorPos_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that selection start should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectionStart_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that selection end should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectionEnd_ShouldBeInitialized()
         {
             ImGuiInputTextCallbackData data = new ImGuiInputTextCallbackData();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event flag set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventFlag_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user data set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event char set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventChar_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that event key set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EventKey_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Buf_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -232,7 +233,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf text len set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufTextLen_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that buf dirty set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BufDirty_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -268,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cursor pos set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CursorPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that selection start set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectionStart_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();
@@ -292,7 +293,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that selection end set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectionEnd_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiInputTextCallbackData obj = new ImGuiInputTextCallbackData();

@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Deep has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Deep_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Deep;
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Dark has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Dark_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Dark;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Pastel has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pastel_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Pastel;
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Paired has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Paired_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Paired;
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Viridis has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Viridis_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Viridis;
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Plasma has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Plasma_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Plasma;
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Hot has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Hot_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Hot;
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Cool has the expected value of 7.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Cool_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Cool;
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Pink has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pink_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Pink;
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Jet has the expected value of 9.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Jet_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Jet;
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Twilight has the expected value of 10.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Twilight_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Twilight;
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that RdBu has the expected value of 11.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RdBu_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.RdBu;
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that BrBg has the expected value of 12.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BrBg_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.BrBg;
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that PiYg has the expected value of 13.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PiYg_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.PiYg;
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Spectral has the expected value of 14.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Spectral_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Spectral;
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Greys has the expected value of 15.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Greys_ShouldHaveCorrectValue()
         {
             ImPlotColormap colormap = ImPlotColormap.Greys;
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are sequential from 0 to Greys.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeSequential()
         {
             ImPlotColormap[] values = (ImPlotColormap[])Enum.GetValues(typeof(ImPlotColormap));

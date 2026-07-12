@@ -29,6 +29,7 @@
 
 using System;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the builder is implemented as a value type.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStruct()
         {
             Type type = typeof(ImFontGlyphRangesBuilder);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars" /> starts with default value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UsedChars_ShouldBeDefaultOnNewInstance()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that <see cref="ImFontGlyphRangesBuilder.UsedChars" /> can be assigned and read back.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UsedChars_ShouldRoundTripAssignedValue()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies method signatures for native-backed operations remain stable.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativeBackedMethods_ShouldKeepExpectedSignatures()
         {
             AssertMethod("AddChar", typeof(void), typeof(ushort));
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that all API methods in the builder are public instance members.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ApiMethods_ShouldBePublicInstanceMethods()
         {
             MethodInfo addChar = typeof(ImFontGlyphRangesBuilder).GetMethod("AddChar");
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the UsedChars property has a public getter and setter.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UsedChars_ShouldHavePublicGetterAndSetter()
         {
             PropertyInfo prop = typeof(ImFontGlyphRangesBuilder).GetProperty(nameof(ImFontGlyphRangesBuilder.UsedChars));
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that a newly created builder has the expected default state.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NewBuilder_ShouldHaveDefaultState()
         {
             ImFontGlyphRangesBuilder builder = new ImFontGlyphRangesBuilder();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that multiple builder instances are independent value types.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MultipleInstances_ShouldBeIndependent()
         {
             ImFontGlyphRangesBuilder builder1 = new ImFontGlyphRangesBuilder();
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the struct is marked as public.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBePublic()
         {
             Assert.True(typeof(ImFontGlyphRangesBuilder).IsPublic);
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the struct exposes all expected members.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Members_ShouldContainExpectedCount()
         {
             MemberInfo[] members = typeof(ImFontGlyphRangesBuilder).GetMembers(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static);

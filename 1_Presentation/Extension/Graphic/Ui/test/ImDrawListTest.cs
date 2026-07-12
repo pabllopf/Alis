@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd buffer should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdBuffer_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx buffer should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IdxBuffer_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vtx buffer should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VtxBuffer_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vtx current idx should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VtxCurrentIdx_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that data should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that owner name should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OwnerName_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vtx write ptr should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VtxWritePtr_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx write ptr should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IdxWritePtr_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clip rect stack should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClipRectStack_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that texture id stack should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TextureIdStack_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that path should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Path_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd header should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdHeader_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that splitter should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Splitter_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fringe scale should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FringeScale_Should_SetAndGetCorrectly()
         {
             ImDrawList drawList = new ImDrawList();

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that ChildWindows has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildWindows_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.ChildWindows;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RootWindow has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RootWindow_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.RootWindow;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that AnyWindow has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnyWindow_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.AnyWindow;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoPopupHierarchy has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoPopupHierarchy_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.NoPopupHierarchy;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DockHierarchy has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockHierarchy_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.DockHierarchy;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RootAndChildWindows has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RootAndChildWindows_ShouldHaveCorrectValue()
         {
             ImGuiFocusedFlags flag = ImGuiFocusedFlags.RootAndChildWindows;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiFocusedFlags combined = ImGuiFocusedFlags.ChildWindows | ImGuiFocusedFlags.RootWindow;

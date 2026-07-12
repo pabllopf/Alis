@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -13,7 +14,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that default values should be zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DefaultValues_ShouldBeZero()
         {
             ImDrawData drawData = new ImDrawData();
@@ -32,7 +33,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that cmd lists range with non zero ptr should return accessor
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdListsRange_WithNonZeroPtr_ShouldReturnAccessor()
         {
             int size = Marshal.SizeOf<ImDrawListPtr>();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should invoke native
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldInvokeNative()
         {
             ImDrawData drawData = new ImDrawData { Valid = 1 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set and get properties should roundtrip
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetAndGetProperties_ShouldRoundtrip()
         {
             ImDrawData drawData = new ImDrawData();
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that de index all buffers should invoke native
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DeIndexAllBuffers_ShouldInvokeNative()
         {
             ImDrawData drawData = new ImDrawData();
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that scale clip rects should invoke native
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ScaleClipRects_ShouldInvokeNative()
         {
             ImDrawData drawData = new ImDrawData();

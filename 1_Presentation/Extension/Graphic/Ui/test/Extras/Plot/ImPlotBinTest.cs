@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Sqrt bin mode is defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Sqrt_ShouldBeDefined()
         {
             ImPlotBin bin = ImPlotBin.Sqrt;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies enum values are distinct.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImPlotBin sqrt = ImPlotBin.Sqrt;

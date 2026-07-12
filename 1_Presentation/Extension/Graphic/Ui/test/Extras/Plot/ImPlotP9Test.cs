@@ -31,6 +31,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotLine</c> exposes all expected overloads from this partial segment.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLine_ShouldExposeExpectedOverloadCount()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotLine</c> includes by-ref overloads for all integer families.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLine_ShouldExposeAllExpectedByRefNumericFamilies()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotLine</c> contains overloads with flags, offset and stride parameters.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLine_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotLineG</c> exposes both default and flags overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLineG_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLineG");
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotPieChart</c> exposes a large overload matrix.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_ShouldExposeExpectedOverloadCount()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotPieChart</c> supports multiple values array element types.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_ShouldExposeExpectedValueArrayFamilies()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that <c>PlotPieChart</c> includes formatting, angle and flags overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_ShouldExposeLabelFormatAngleAndFlagsOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that passing a null label to <c>PlotLine</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLine_WithNullLabel_ShouldThrowArgumentNullException()
         {
             int xs = 1;
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that passing a null label to <c>PlotLineG</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotLineG_WithNullLabel_ShouldThrowArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>((Action) (() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1)));
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that a null labels array in <c>PlotPieChart</c> fails before native invocation.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_WithNullLabelsArray_ShouldThrowNullReferenceException()
         {
             float[] values = {1f, 2f};
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that a null label element in <c>PlotPieChart</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_WithNullLabelItem_ShouldThrowArgumentNullException()
         {
             string[] labels = {"A", null};
@@ -178,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that a null label format in <c>PlotPieChart</c> throws before native invocation.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotPieChart_WithNullLabelFormat_ShouldThrowArgumentNullException()
         {
             string[] labels = {"A", "B"};

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that headers row flag keeps value one.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Headers_ShouldBeOne()
         {
             Assert.Equal(1, (int) ImGuiTableRowFlags.Headers);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that none should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeInitializedCorrectly()
         {
             ImGuiModFlags flag = ImGuiModFlags.None;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ctrl should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ctrl_ShouldBeInitializedCorrectly()
         {
             ImGuiModFlags flag = ImGuiModFlags.Ctrl;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that shift should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Shift_ShouldBeInitializedCorrectly()
         {
             ImGuiModFlags flag = ImGuiModFlags.Shift;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that alt should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Alt_ShouldBeInitializedCorrectly()
         {
             ImGuiModFlags flag = ImGuiModFlags.Alt;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that super should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Super_ShouldBeInitializedCorrectly()
         {
             ImGuiModFlags flag = ImGuiModFlags.Super;

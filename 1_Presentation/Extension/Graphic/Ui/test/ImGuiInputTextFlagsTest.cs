@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImGuiInputTextFlags.None);
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies representative flags use distinct bit values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImGuiInputTextFlags.CharsDecimal, (int) ImGuiInputTextFlags.CharsHexadecimal);

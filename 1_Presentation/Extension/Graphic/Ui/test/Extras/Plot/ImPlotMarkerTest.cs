@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that None has the expected value of -1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.None;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Circle has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Circle_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Circle;
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Square has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Square_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Square;
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Diamond has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Diamond_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Diamond;
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Up has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Up_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Up;
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Down has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Down_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Down;
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Left has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Left_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Left;
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Right has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Right_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Right;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Cross has the expected value of 7.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Cross_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Cross;
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Plus has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Plus_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Plus;
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Asterisk has the expected value of 9.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Asterisk_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Asterisk;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Count has the expected value of 10.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldHaveCorrectValue()
         {
             ImPlotMarker marker = ImPlotMarker.Count;

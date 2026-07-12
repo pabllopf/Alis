@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that X1 has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X1_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.X1;
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that X2 has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X2_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.X2;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that X3 has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X3_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.X3;
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Y1 has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y1_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.Y1;
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Y2 has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y2_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.Y2;
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Y3 has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y3_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.Y3;
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Count has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldHaveCorrectValue()
         {
             ImAxis axis = ImAxis.Count;
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are sequential from 0 to Count.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeSequential()
         {
             ImAxis[] values = (ImAxis[])Enum.GetValues(typeof(ImAxis));

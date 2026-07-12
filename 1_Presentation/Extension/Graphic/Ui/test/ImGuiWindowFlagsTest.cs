@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that none should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.None;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no title bar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoTitleBar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoTitleBar;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no resize should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoResize_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoResize;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no move should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoMove_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoMove;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no scrollbar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoScrollbar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoScrollbar;
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no scroll with mouse should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoScrollWithMouse_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoScrollWithMouse;
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no collapse should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoCollapse_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoCollapse;
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that always auto resize should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlwaysAutoResize_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysAutoResize;
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no background should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoBackground_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoBackground;
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no saved settings should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoSavedSettings_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoSavedSettings;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no mouse inputs should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoMouseInputs_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoMouseInputs;
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that menu bar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuBar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.MenuBar;
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that horizontal scrollbar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HorizontalScrollbar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.HorizontalScrollbar;
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no focus on appearing should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoFocusOnAppearing_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoFocusOnAppearing;
@@ -193,7 +194,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no bring to front on focus should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoBringToFrontOnFocus_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.NoBringToFrontOnFocus;
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that always vertical scrollbar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlwaysVerticalScrollbar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysVerticalScrollbar;
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that always horizontal scrollbar should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlwaysHorizontalScrollbar_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysHorizontalScrollbar;
@@ -226,7 +227,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that always use window padding should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlwaysUseWindowPadding_ShouldBeInitializedCorrectly()
         {
             ImGuiWindowFlags flag = ImGuiWindowFlags.AlwaysUseWindowPadding;
@@ -237,7 +238,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no nav inputs should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoNavInputs_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -250,7 +251,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no nav focus should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoNavFocus_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -263,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that unsaved document should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UnsavedDocument_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -276,7 +277,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no docking should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoDocking_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -289,7 +290,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no nav should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoNav_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no decoration should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoDecoration_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -315,7 +316,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no inputs should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoInputs_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -328,7 +329,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that nav flattened should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NavFlattened_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that child window should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildWindow_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tooltip should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Tooltip_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that popup should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Popup_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -380,7 +381,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that modal should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modal_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -393,7 +394,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that child menu should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildMenu_ShouldBeInitializedCorrectly()
         {
             // Arrange
@@ -406,7 +407,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dock node host should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockNodeHost_ShouldBeInitializedCorrectly()
         {
             // Arrange

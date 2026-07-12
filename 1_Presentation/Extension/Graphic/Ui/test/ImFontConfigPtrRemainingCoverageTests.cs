@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr()
         {
             IntPtr nativePtr = new IntPtr(42);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that implicit conversion from int ptr returns im font config ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionFromIntPtr_ReturnsImFontConfigPtr()
         {
             IntPtr nativePtr = new IntPtr(99);
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h setter sets value to true
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SnapH_Setter_SetsValueToTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that snap h setter sets value to false
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SnapH_Setter_SetsValueToFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph ranges setter sets value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphRanges_Setter_SetsValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that glyph min advance x setter sets value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphMinAdvanceX_Setter_SetsValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode setter sets value to true
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MergeMode_Setter_SetsValueToTrue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that merge mode setter sets value to false
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MergeMode_Setter_SetsValueToFalse()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFontConfig>());
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with im font config allocates memory
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConstructorWithImFontConfig_AllocatesMemory()
         {
             ImFontConfig config = new ImFontConfig
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that constructor with im font config zero pointer throws access violation
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConstructorWithImFontConfig_ZeroPointer_ThrowsAccessViolation()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);

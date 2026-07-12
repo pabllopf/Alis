@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that native ptr should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativePtr_ShouldBeInitialized()
         {
             ImFontConfigPtr ptr = new ImFontConfigPtr(IntPtr.Zero);
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontData_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font data size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontDataSize_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font data owned by atlas should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontDataOwnedByAtlas_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font no should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontNo_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size pixels should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SizePixels_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that oversample h should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OversampleH_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that oversample v should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OversampleV_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that snap h should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SnapH_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph extra spacing should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphExtraSpacing_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph offset should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphOffset_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph ranges should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphRanges_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph min advance x should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphMinAdvanceX_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyph max advance x should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GlyphMaxAdvanceX_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that merge mode should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MergeMode_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font builder flags should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontBuilderFlags_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -216,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that rasterizer multiply should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RasterizerMultiply_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -227,7 +228,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ellipsis char should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EllipsisChar_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -238,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dst font should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DstFont_ShouldBeInitialized()
         {
             ImFontConfig config = new ImFontConfig();
@@ -249,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test constructor with native ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_Constructor_WithNativePtr()
         {
             ImFontPtr result = new ImFontPtr(IntPtr.Zero);
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test add glyph v 1
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_AddGlyph_v1()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -268,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test add remap char v 1
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_AddRemapChar_v1()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test add remap char v 1
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_AddRemapChar_v3()
         {
             ImFontPtr ptr = new ImFontPtr(new ImFont());
@@ -286,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test add remap char v 2
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_AddRemapChar_v2()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test build lookup table
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_BuildLookupTable()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -304,7 +305,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test clear output data
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_ClearOutputData()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test find glyph
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_FindGlyph()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -322,7 +323,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test find glyph no fallback
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_FindGlyphNoFallback()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -331,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test get char advance
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_GetCharAdvance()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -340,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test get debug name
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_GetDebugName()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -350,7 +351,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test grow index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_GrowIndex()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -359,7 +360,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test is loaded
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_IsLoaded()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test render char
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_RenderChar()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -377,7 +378,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that test set glyph visible
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Test_SetGlyphVisible()
         {
             ImFontPtr ptr = new ImFontPtr(IntPtr.Zero);
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit conversion to int ptr returns native ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionToIntPtr_ReturnsNativePtr()
         {
             IntPtr nativePtr = new IntPtr(123);
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that implicit conversion from int ptr returns im font ptr
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImplicitConversionFromIntPtr_ReturnsImFontPtr()
         {
             IntPtr nativePtr = new IntPtr(123);
@@ -410,7 +411,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback advance x returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackAdvanceX_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -424,7 +425,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font size returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontSize_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -438,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that container atlas returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ContainerAtlas_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -452,7 +453,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data get and set returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigData_GetAndSet_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -470,7 +471,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data count returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDataCount_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -484,7 +485,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback char returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackChar_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ellipsis char returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EllipsisChar_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -512,7 +513,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dot char returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DotChar_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -526,7 +527,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dirty lookup tables returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DirtyLookupTables_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -540,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scale returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Scale_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -554,7 +555,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ascent returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ascent_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -568,7 +569,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that descent returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Descent_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -582,7 +583,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that metrics total surface returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MetricsTotalSurface_ReturnsCorrectValue()
         {
             IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImFont>());
@@ -596,7 +597,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that index advance x throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndexAdvanceX_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -609,7 +610,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback advance x throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackAdvanceX_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -622,7 +623,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font size throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontSize_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -635,7 +636,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that index lookup throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndexLookup_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -648,7 +649,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that container atlas throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ContainerAtlas_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -661,7 +662,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigData_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -674,7 +675,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data count throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDataCount_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -687,7 +688,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback char throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackChar_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -700,7 +701,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ellipsis char throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EllipsisChar_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -713,7 +714,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dot char throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DotChar_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -726,7 +727,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dirty lookup tables throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DirtyLookupTables_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -739,7 +740,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scale throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Scale_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -752,7 +753,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ascent throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ascent_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -765,7 +766,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that descent throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Descent_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);
@@ -778,7 +779,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that metrics total surface throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MetricsTotalSurface_ThrowsDllNotFoundException()
         {
             ImFontPtr fontPtr = new ImFontPtr(IntPtr.Zero);

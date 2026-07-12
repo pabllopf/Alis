@@ -30,6 +30,7 @@
 using System;
 using System.Linq;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Center has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Center_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.Center;
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that North has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void North_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.North;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that South has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void South_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.South;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that West has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void West_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.West;
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that East has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void East_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.East;
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that NorthWest has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NorthWest_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.NorthWest;
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that NorthEast has the expected value of 9.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NorthEast_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.NorthEast;
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SouthWest has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SouthWest_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.SouthWest;
@@ -122,7 +123,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SouthEast has the expected value of 10.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SouthEast_ShouldHaveCorrectValue()
         {
             ImPlotLocation location = ImPlotLocation.SouthEast;
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that locations can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Locations_ShouldBeCombinable()
         {
             ImPlotLocation combined = ImPlotLocation.North | ImPlotLocation.West;
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that NorthWest is the combination of North and West.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NorthWest_ShouldBeCombinationOfNorthAndWest()
         {
             ImPlotLocation combined = ImPlotLocation.North | ImPlotLocation.West;
@@ -153,7 +154,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SouthEast is the combination of South and East.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SouthEast_ShouldBeCombinationOfSouthAndEast()
         {
             ImPlotLocation combined = ImPlotLocation.South | ImPlotLocation.East;
@@ -163,7 +164,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are unique.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeUnique()
         {
             ImPlotLocation[] values = (ImPlotLocation[])Enum.GetValues(typeof(ImPlotLocation));

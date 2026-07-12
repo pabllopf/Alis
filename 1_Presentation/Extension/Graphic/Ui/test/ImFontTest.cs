@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that index advance x should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndexAdvanceX_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {IndexAdvanceX = new ImVector()};
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback advance x should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackAdvanceX_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {FallbackAdvanceX = 1.0f};
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that font size should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FontSize_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {FontSize = 12.0f};
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that index lookup should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndexLookup_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {IndexLookup = new ImVector()};
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that glyphs should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Glyphs_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {Glyphs = new ImVector()};
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback glyph should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackGlyph_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {FallbackGlyph = IntPtr.Zero};
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that container atlas should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ContainerAtlas_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {ContainerAtlas = IntPtr.Zero};
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigData_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {ConfigData = IntPtr.Zero};
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that config data count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ConfigDataCount_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {ConfigDataCount = 10};
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that fallback char should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FallbackChar_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {FallbackChar = 65};
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ellipsis char should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EllipsisChar_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {EllipsisChar = 46};
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dot char should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DotChar_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {DotChar = 46};
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dirty lookup tables should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DirtyLookupTables_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {DirtyLookupTables = 1};
@@ -209,7 +210,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scale should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Scale_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {Scale = 1.0f};
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ascent should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ascent_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {Ascent = 1.0f};
@@ -235,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that descent should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Descent_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {Descent = 1.0f};
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that metrics total surface should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MetricsTotalSurface_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {MetricsTotalSurface = 100};
@@ -261,7 +262,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that used 4 k pages map should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Used4KPagesMap_ShouldBeInitializedCorrectly()
         {
             ImFont font = new ImFont {Used4KPagesMap = new byte[] {1, 2}};

@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clip rect should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ClipRect_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that texture id should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TextureId_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {TextureId = new IntPtr(123)};
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that vtx offset should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void VtxOffset_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {VtxOffset = 10};
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that idx offset should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IdxOffset_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {IdxOffset = 20};
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that elem count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ElemCount_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {ElemCount = 30};
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user callback should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UserCallback_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallback = new IntPtr(456)};
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that user callback data should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UserCallbackData_ShouldBeInitializedCorrectly()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallbackData = new IntPtr(789)};
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get clip rect should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetClipRect_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {ClipRect = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f)};
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get texture id should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetTextureId_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {TextureId = new IntPtr(123)};
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get vtx offset should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetVtxOffset_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {VtxOffset = 10};
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get idx offset should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetIdxOffset_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {IdxOffset = 20};
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get elem count should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetElemCount_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {ElemCount = 30};
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get user callback should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetUserCallback_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallback = new IntPtr(456)};
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get user callback data should return correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetUserCallbackData_ShouldReturnCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd {UserCallbackData = new IntPtr(789)};
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set user callback data should set correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetUserCallbackData_ShouldSetCorrectValue()
         {
             ImDrawCmd drawCmd = new ImDrawCmd();
@@ -237,7 +238,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get clip rect returns clip rect
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetClipRect_ReturnsClipRect()
         {
             ImDrawCmd cmd = new ImDrawCmd {ClipRect = new Vector4F(1, 2, 3, 4)};
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get texture id returns texture id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetTextureId_ReturnsTextureId()
         {
             ImDrawCmd cmd = new ImDrawCmd {TextureId = new IntPtr(123)};
@@ -257,7 +258,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get vtx offset returns vtx offset
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetVtxOffset_ReturnsVtxOffset()
         {
             ImDrawCmd cmd = new ImDrawCmd {VtxOffset = 123};
@@ -267,7 +268,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get idx offset returns idx offset
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetIdxOffset_ReturnsIdxOffset()
         {
             ImDrawCmd cmd = new ImDrawCmd {IdxOffset = 123};
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get elem count returns elem count
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetElemCount_ReturnsElemCount()
         {
             ImDrawCmd cmd = new ImDrawCmd {ElemCount = 123};
@@ -287,7 +288,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get user callback returns user callback
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetUserCallback_ReturnsUserCallback()
         {
             ImDrawCmd cmd = new ImDrawCmd {UserCallback = new IntPtr(123)};
@@ -297,7 +298,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get user callback data returns user callback data
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetUserCallbackData_ReturnsUserCallbackData()
         {
             ImDrawCmd cmd = new ImDrawCmd {UserCallbackData = new IntPtr(123)};
@@ -307,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that set user callback data sets user callback data
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetUserCallbackData_SetsUserCallbackData()
         {
             ImDrawCmd cmd = new ImDrawCmd();
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that get tex id returns tex id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GetTexId_ReturnsTexId()
         {
             ImDrawCmd cmd = new ImDrawCmd();

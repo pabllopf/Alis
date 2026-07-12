@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that where should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Where_ShouldBeInitializedCorrectly()
         {
             StbUndoRecord undoRecord = new StbUndoRecord {Where = 10};
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that insert length should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InsertLength_ShouldBeInitializedCorrectly()
         {
             StbUndoRecord undoRecord = new StbUndoRecord {InsertLength = 20};
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that delete length should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DeleteLength_ShouldBeInitializedCorrectly()
         {
             StbUndoRecord undoRecord = new StbUndoRecord {DeleteLength = 30};
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that char storage should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CharStorage_ShouldBeInitializedCorrectly()
         {
             StbUndoRecord undoRecord = new StbUndoRecord {CharStorage = 40};

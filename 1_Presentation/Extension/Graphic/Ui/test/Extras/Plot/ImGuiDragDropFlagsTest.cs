@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImGuiDragDropFlags.None);
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that source and accept flags remain distinct.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SourceAndAcceptFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImGuiDragDropFlags.SourceExtern, (int) ImGuiDragDropFlags.AcceptBeforeDelivery);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that accept-peek-only matches expected composition.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AcceptPeekOnly_ShouldMatchExpectedComposition()
         {
             ImGuiDragDropFlags expected = ImGuiDragDropFlags.AcceptBeforeDelivery | ImGuiDragDropFlags.AcceptNoDrawDefaultRect;

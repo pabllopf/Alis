@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.GuizMo;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that translate is the composition of X, Y and Z translate flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Translate_ShouldCombineTranslateAxes()
         {
             Operations expected = Operations.TranslateX | Operations.TranslateY | Operations.TranslateZ;
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that rotate is the composition of all rotate flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Rotate_ShouldCombineRotateAxes()
         {
             Operations expected = Operations.RotateX | Operations.RotateY | Operations.RotateZ | Operations.RotateScreen;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         /// <summary>
         ///     Verifies that scale is the composition of all scale flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Scale_ShouldCombineScaleAxes()
         {
             Operations expected = Operations.ScaleX | Operations.ScaleY | Operations.ScaleZ;

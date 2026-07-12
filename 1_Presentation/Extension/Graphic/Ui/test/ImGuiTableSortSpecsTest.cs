@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that specs should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Specs_Should_SetAndGetCorrectly()
         {
             ImGuiTableSortSpecs tableSortSpecs = new ImGuiTableSortSpecs();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that specs count should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SpecsCount_Should_SetAndGetCorrectly()
         {
             ImGuiTableSortSpecs tableSortSpecs = new ImGuiTableSortSpecs();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that specs dirty should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SpecsDirty_Should_SetAndGetCorrectly()
         {
             ImGuiTableSortSpecs tableSortSpecs = new ImGuiTableSortSpecs();

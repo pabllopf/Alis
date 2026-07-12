@@ -30,6 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that valid should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Valid_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {Valid = 1};
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd lists count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdListsCount_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {CmdListsCount = 5};
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that total idx count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TotalIdxCount_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {TotalIdxCount = 100};
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that total vtx count should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TotalVtxCount_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {TotalVtxCount = 200};
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd lists ptr should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdListsPtr_ShouldBeInitializedCorrectly()
         {
             IntPtr ptr = new IntPtr(123);
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display pos should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayPos_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {DisplayPos = new Vector2F(1.0f, 2.0f)};
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display size should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplaySize_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {DisplaySize = new Vector2F(3.0f, 4.0f)};
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that framebuffer scale should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FramebufferScale_ShouldBeInitializedCorrectly()
         {
             ImDrawData drawData = new ImDrawData {FramebufferScale = new Vector2F(5.0f, 6.0f)};
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that owner viewport ptr should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OwnerViewportPtr_ShouldBeInitializedCorrectly()
         {
             IntPtr ptr = new IntPtr(456);
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clear should clear data
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldClearData()
         {
             ImDrawData drawData = new ImDrawData {Valid = 1, CmdListsCount = 5};
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that de index all buffers should de index buffers
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DeIndexAllBuffers_ShouldDeIndexBuffers()
         {
             ImDrawData drawData = new ImDrawData {CmdListsCount = 1, CmdListsPtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>())};
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scale clip rects should scale clip rects
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ScaleClipRects_ShouldScaleClipRects()
         {
             ImDrawData drawData = new ImDrawData {CmdListsCount = 1, CmdListsPtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>())};
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that clear throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that de index all buffers throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DeIndexAllBuffers_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
@@ -213,7 +214,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scale clip rects throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ScaleClipRects_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cmd lists range throws dll not found exception
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CmdListsRange_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();

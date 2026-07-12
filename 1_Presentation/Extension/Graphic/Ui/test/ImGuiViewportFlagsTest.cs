@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that representative viewport flags are distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImGuiViewportFlags.IsPlatformWindow, (int) ImGuiViewportFlags.IsPlatformMonitor);

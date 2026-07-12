@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that down should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Down_Should_SetAndGetCorrectly()
         {
             ImGuiKeyData keyData = new ImGuiKeyData();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that down duration should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DownDuration_Should_SetAndGetCorrectly()
         {
             ImGuiKeyData keyData = new ImGuiKeyData();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that down duration prev should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DownDurationPrev_Should_SetAndGetCorrectly()
         {
             ImGuiKeyData keyData = new ImGuiKeyData();
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that analog value should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnalogValue_Should_SetAndGetCorrectly()
         {
             ImGuiKeyData keyData = new ImGuiKeyData();

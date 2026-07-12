@@ -32,6 +32,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that the native binding type exists and is static.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldExistAsStaticClass()
         {
             Type nativeType = ResolveNativeType();
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that the native library constant is cimgui.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DllName_ShouldBeCimgui()
         {
             Type nativeType = ResolveNativeType();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that a representative subset of bindings keeps stable entry points.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeBindings_ShouldHaveExpectedDllImportMetadata()
         {
             Type nativeType = ResolveNativeType();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that the native binding surface is broad enough to cover generated wrappers.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NativeSurface_ShouldContainManyExternMethods()
         {
             Type nativeType = ResolveNativeType();

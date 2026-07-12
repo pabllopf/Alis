@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImGuiSliderFlags.None);
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that invalid mask keeps a large non-zero reserved value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InvalidMask_ShouldBeLargeNonZeroValue()
         {
             Assert.True((int) ImGuiSliderFlags.InvalidMask > 1000000);

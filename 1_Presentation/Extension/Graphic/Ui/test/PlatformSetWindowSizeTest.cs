@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the delegate receives the requested size.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Invoke_ShouldReceiveExpectedSize()
         {
             Vector2F expected = new Vector2F(1280.0f, 720.0f);

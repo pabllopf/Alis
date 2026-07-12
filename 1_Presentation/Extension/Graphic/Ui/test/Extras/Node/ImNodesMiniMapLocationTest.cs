@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that BottomLeft is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BottomLeft_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImNodesMiniMapLocation.BottomLeft);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that locations use distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Locations_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImNodesMiniMapLocation.BottomLeft, (int) ImNodesMiniMapLocation.BottomRight);

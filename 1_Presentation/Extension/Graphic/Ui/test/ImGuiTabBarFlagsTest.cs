@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that fitting policy aliases are coherent.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FittingPolicyAliases_ShouldBeCoherent()
         {
             ImGuiTabBarFlags expectedMask = ImGuiTabBarFlags.FittingPolicyResizeDown | ImGuiTabBarFlags.FittingPolicyScroll;

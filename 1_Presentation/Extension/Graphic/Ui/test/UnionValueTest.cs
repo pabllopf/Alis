@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value i 32 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValueI32_ShouldBeInitializedCorrectly()
         {
             UnionValue unionValue = new UnionValue {ValueI32 = 42};
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value f 32 should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValueF32_ShouldBeInitializedCorrectly()
         {
             UnionValue unionValue = new UnionValue {ValueF32 = 42.0f};
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value ptr should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValuePtr_ShouldBeInitializedCorrectly()
         {
             IntPtr ptr = new IntPtr(42);
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value i 32 should overwrite value f 32
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValueI32_ShouldOverwriteValueF32()
         {
             UnionValue unionValue = new UnionValue {ValueF32 = 42.0f};
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value f 32 should overwrite value i 32
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValueF32_ShouldOverwriteValueI32()
         {
             UnionValue unionValue = new UnionValue {ValueI32 = 42};
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that value ptr should overwrite value i 32
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ValuePtr_ShouldOverwriteValueI32()
         {
             UnionValue unionValue = new UnionValue {ValueI32 = 42};

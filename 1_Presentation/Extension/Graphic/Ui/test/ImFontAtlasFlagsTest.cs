@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImFontAtlasFlags flag = ImFontAtlasFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoPowerOfTwoHeight has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoPowerOfTwoHeight_ShouldHaveCorrectValue()
         {
             ImFontAtlasFlags flag = ImFontAtlasFlags.NoPowerOfTwoHeight;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoMouseCursors has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoMouseCursors_ShouldHaveCorrectValue()
         {
             ImFontAtlasFlags flag = ImFontAtlasFlags.NoMouseCursors;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoBakedLines has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoBakedLines_ShouldHaveCorrectValue()
         {
             ImFontAtlasFlags flag = ImFontAtlasFlags.NoBakedLines;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImFontAtlasFlags combined = ImFontAtlasFlags.NoPowerOfTwoHeight | ImFontAtlasFlags.NoMouseCursors;

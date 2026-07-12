@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that row and cell background targets keep stable ordinals.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Targets_ShouldKeepExpectedOrder()
         {
             Assert.Equal(0, (int) ImGuiTableBgTarget.None);

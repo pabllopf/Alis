@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display start should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayStart_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display end should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayEnd_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that items count should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ItemsCount_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that items height should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ItemsHeight_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that start pos y should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StartPosY_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that temp data should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TempData_Should_SetAndGetCorrectly()
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();

@@ -29,6 +29,7 @@
 
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the editor context is represented as an empty marker struct.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Struct_ShouldHaveZeroMarshalSize()
         {
             Assert.Equal(1, Marshal.SizeOf<ImNodesEditorContext>());

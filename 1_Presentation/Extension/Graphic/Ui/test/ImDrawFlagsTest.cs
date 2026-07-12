@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that none should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.None;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that closed should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Closed_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.Closed;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners top left should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersTopLeft_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersTopLeft;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners top right should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersTopRight_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersTopRight;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners bottom left should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersBottomLeft_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottomLeft;
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners bottom right should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersBottomRight_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottomRight;
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners none should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersNone_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersNone;
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners top should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersTop_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersTop;
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners bottom should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersBottom_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersBottom;
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners left should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersLeft_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersLeft;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners right should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersRight_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersRight;
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners all should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersAll_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersAll;
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners default should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersDefault_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersDefault;
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that round corners mask should have correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RoundCornersMask_ShouldHaveCorrectValue()
         {
             ImDrawFlags flag = ImDrawFlags.RoundCornersMask;

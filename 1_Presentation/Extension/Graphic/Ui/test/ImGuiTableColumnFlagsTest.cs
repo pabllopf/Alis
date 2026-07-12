@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that is visible should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsVisible_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsVisible;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that is sorted should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsSorted_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsSorted;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that is hovered should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsHovered_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IsHovered;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that width mask should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WidthMask_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.WidthMask;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indent mask should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndentMask_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.IndentMask;
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that status mask should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StatusMask_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.StatusMask;
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that no direct resize should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoDirectResize_ShouldBeInitializedCorrectly()
         {
             ImGuiTableColumnFlags flag = ImGuiTableColumnFlags.NoDirectResize;

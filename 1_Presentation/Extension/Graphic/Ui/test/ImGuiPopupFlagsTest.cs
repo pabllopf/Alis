@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that none and left mouse button alias use value zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoneAndLeftAlias_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImGuiPopupFlags.None);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that any-popup alias combines id and level flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AnyPopup_ShouldMatchComposition()
         {
             ImGuiPopupFlags expected = ImGuiPopupFlags.AnyPopupId | ImGuiPopupFlags.AnyPopupLevel;

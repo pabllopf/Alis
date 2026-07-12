@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that three button mouse should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ThreeButtonMouse_ShouldBeInitialized()
         {
             ImNodesIo io = new ImNodesIo();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that detach with modifier click should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DetachWithModifierClick_ShouldBeInitialized()
         {
             ImNodesIo io = new ImNodesIo();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that select modifier should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectModifier_ShouldBeInitialized()
         {
             ImNodesIo io = new ImNodesIo();
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that alt mouse button should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AltMouseButton_ShouldBeInitialized()
         {
             ImNodesIo io = new ImNodesIo();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that auto panning speed should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AutoPanningSpeed_ShouldBeInitialized()
         {
             ImNodesIo io = new ImNodesIo();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that three button mouse should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ThreeButtonMouse_Should_SetAndGetCorrectly()
         {
             ImNodesIo io = new ImNodesIo();
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that detach with modifier click should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DetachWithModifierClick_Should_SetAndGetCorrectly()
         {
             ImNodesIo io = new ImNodesIo();
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that select modifier should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectModifier_Should_SetAndGetCorrectly()
         {
             ImNodesIo io = new ImNodesIo();
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that alt mouse button should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AltMouseButton_Should_SetAndGetCorrectly()
         {
             ImNodesIo io = new ImNodesIo();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that auto panning speed should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AutoPanningSpeed_Should_SetAndGetCorrectly()
         {
             ImNodesIo io = new ImNodesIo();

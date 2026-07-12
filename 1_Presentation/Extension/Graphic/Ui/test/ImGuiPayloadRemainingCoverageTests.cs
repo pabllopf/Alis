@@ -1,5 +1,6 @@
 using System;
 using System.Text;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset data to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetDataToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { Data = new IntPtr(123), DataSize = 100 };
@@ -23,7 +24,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset data size to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetDataSizeToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { DataSize = 100, DataFrameCount = 5 };
@@ -34,7 +35,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset source id to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetSourceIdToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { SourceId = 123u };
@@ -45,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset source parent id to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetSourceParentIdToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { SourceParentId = 456u };
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset data frame count to negative one
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetDataFrameCountToNegativeOne()
         {
             ImGuiPayload payload = new ImGuiPayload { DataFrameCount = 789 };
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset preview to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetPreviewToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { Preview = 1 };
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that clear should reset delivery to zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Clear_ShouldResetDeliveryToZero()
         {
             ImGuiPayload payload = new ImGuiPayload { Delivery = 1 };
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is data type should return true for matching type
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsDataType_ShouldReturnTrueForMatchingType()
         {
             byte[] typeBytes = Encoding.UTF8.GetBytes("test\0");
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is data type should return false for non matching type
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsDataType_ShouldReturnFalseForNonMatchingType()
         {
             byte[] typeBytes = Encoding.UTF8.GetBytes("other\0");
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is data type empty type should return false
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsDataType_EmptyType_ShouldReturnFalse()
         {
             byte[] typeBytes = new byte[33];
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is delivery should return true when delivery is set
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsDelivery_ShouldReturnTrueWhenDeliveryIsSet()
         {
             ImGuiPayload payload = new ImGuiPayload { Delivery = 1 };
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is delivery should return false when delivery is not set
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsDelivery_ShouldReturnFalseWhenDeliveryIsNotSet()
         {
             ImGuiPayload payload = new ImGuiPayload { Delivery = 0 };
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is preview should return true when preview is set
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsPreview_ShouldReturnTrueWhenPreviewIsSet()
         {
             ImGuiPayload payload = new ImGuiPayload { Preview = 1 };
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that is preview should return false when preview is not set
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IsPreview_ShouldReturnFalseWhenPreviewIsNotSet()
         {
             ImGuiPayload payload = new ImGuiPayload { Preview = 0 };
@@ -164,7 +165,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that data with non zero int ptr should roundtrip
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Data_WithNonZeroIntPtr_ShouldRoundtrip()
         {
             IntPtr expected = new IntPtr(12345);
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that data type array of max size should roundtrip
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DataType_ArrayOfMaxSize_ShouldRoundtrip()
         {
             byte[] expected = new byte[33];
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that preview default value should be zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Preview_DefaultValue_ShouldBeZero()
         {
             ImGuiPayload payload = new ImGuiPayload();
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that delivery default value should be zero
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Delivery_DefaultValue_ShouldBeZero()
         {
             ImGuiPayload payload = new ImGuiPayload();
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that data size negative value should roundtrip
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DataSize_NegativeValue_ShouldRoundtrip()
         {
             ImGuiPayload payload = new ImGuiPayload { DataSize = -1 };
@@ -221,7 +222,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that data frame count negative value should roundtrip
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DataFrameCount_NegativeValue_ShouldRoundtrip()
         {
             ImGuiPayload payload = new ImGuiPayload { DataFrameCount = -100 };

@@ -50,6 +50,7 @@
 
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that condition values are defined.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Always_ShouldBeDefined()
         {
             ImPlotCond cond = ImPlotCond.Always;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that different conditions have distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImPlotCond always = ImPlotCond.Always;

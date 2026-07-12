@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pos should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pos_ShouldBeInitializedCorrectly()
         {
             ImDrawVert vert = new ImDrawVert {Pos = new Vector2F(1, 2)};
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that uv should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Uv_ShouldBeInitializedCorrectly()
         {
             ImDrawVert vert = new ImDrawVert {Uv = new Vector2F(3, 4)};
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that col should be initialized correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Col_ShouldBeInitializedCorrectly()
         {
             ImDrawVert vert = new ImDrawVert {Col = 0xFFFFFFFF};

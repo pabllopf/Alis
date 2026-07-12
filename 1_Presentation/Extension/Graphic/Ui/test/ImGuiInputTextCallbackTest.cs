@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the callback can be invoked with expected parameters.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Invoke_ShouldCallAssignedCallback()
         {
             bool called = false;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the callback can return different result codes.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Invoke_ShouldReturnExpectedResultCode()
         {
             Func<ImGuiInputTextCallbackData, int> callback = _ => 42;

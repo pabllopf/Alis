@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that grid spacing should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GridSpacing_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node corner rounding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeCornerRounding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodePadding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node border thickness should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeBorderThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link thickness should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link line segments per length should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkLineSegmentsPerLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link hover distance should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkHoverDistance_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin circle radius should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinCircleRadius_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin quad side length should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinQuadSideLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin triangle side length should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinTriangleSideLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin line thickness should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinLineThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin hover radius should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinHoverRadius_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin offset should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinOffset_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that mini map padding should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MiniMapPadding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that mini map offset should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MiniMapOffset_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that colors should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that grid spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GridSpacing_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node corner rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeCornerRounding_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -235,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodePadding_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node border thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeBorderThickness_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkThickness_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -271,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link line segments per length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkLineSegmentsPerLength_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -283,7 +284,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link hover distance should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkHoverDistance_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin circle radius should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinCircleRadius_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -307,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin quad side length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinQuadSideLength_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin triangle side length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinTriangleSideLength_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -331,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin line thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinLineThickness_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -343,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin hover radius should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinHoverRadius_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin offset should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinOffset_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that mini map padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MiniMapPadding_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -379,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that mini map offset should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MiniMapOffset_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();
@@ -403,7 +404,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that colors should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors_Should_SetAndGetCorrectly()
         {
             ImNodesStyle style = new ImNodesStyle();

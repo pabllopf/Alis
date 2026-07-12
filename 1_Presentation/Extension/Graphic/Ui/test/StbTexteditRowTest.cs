@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 0 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X0_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 1 should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X1_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that baseline y delta should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BaselineYDelta_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ymin should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ymin_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ymax should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ymax_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that num chars should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NumChars_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X0_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that x 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X1_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that baseline y delta should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BaselineYDelta_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ymin should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ymin_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that ymax should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Ymax_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that num chars should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NumChars_Should_SetAndGetCorrectly()
         {
             StbTexteditRow row = new StbTexteditRow();

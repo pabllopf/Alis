@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that input buf should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void InputBuf_Should_SetAndGetCorrectly()
         {
             ImGuiTextFilter textFilter = new ImGuiTextFilter();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that filters should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Filters_Should_SetAndGetCorrectly()
         {
             ImGuiTextFilter textFilter = new ImGuiTextFilter();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that count grep should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CountGrep_Should_SetAndGetCorrectly()
         {
             ImGuiTextFilter textFilter = new ImGuiTextFilter();

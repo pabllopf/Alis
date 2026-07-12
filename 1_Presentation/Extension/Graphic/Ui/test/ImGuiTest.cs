@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderFloat4 has the expected overload.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderFloat4_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderFloat4").ToArray();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderInt has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt").ToArray();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderInt2 has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt2_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt2").ToArray();
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderInt3 has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt3_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt3").ToArray();
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderInt4 has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderInt4_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderInt4").ToArray();
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderScalar has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderScalar_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderScalar").ToArray();
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that SliderScalarN has the expected overloads.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SliderScalarN_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "SliderScalarN").ToArray();
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that style helper methods are exposed.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleMethods_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] styleColorsClassic = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "StyleColorsClassic").ToArray();
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Table API methods are exposed.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TableApi_ShouldExposeExpectedMethods()
         {
             Assert.True(typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Any(m => m.Name == "TableGetColumnCount"));
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that DockBuilder API methods are exposed.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DockBuilderApi_ShouldExposeExpectedMethods()
         {
             Assert.True(typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Any(m => m.Name == "DockBuilderRemoveNode"));
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that utility methods are exposed.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UtilityMethods_ShouldBeExposed()
         {
             Assert.True(typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Any(m => m.Name == "SmallButton"));

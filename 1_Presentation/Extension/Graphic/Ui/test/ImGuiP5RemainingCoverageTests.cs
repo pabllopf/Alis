@@ -1,5 +1,6 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that align text to frame padding test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AlignTextToFramePadding_Test()
         {
             ImGui.NewFrame();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that arrow button test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ArrowButton_Test()
         {
             ImGui.NewFrame();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin window test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Begin_Window_Test()
         {
             ImGui.NewFrame();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin child string test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginChild_String_Test()
         {
             ImGui.NewFrame();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin child uint test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginChild_Uint_Test()
         {
             ImGui.NewFrame();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin child frame test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginChildFrame_Test()
         {
             ImGui.NewFrame();
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin combo test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginCombo_Test()
         {
             ImGui.NewFrame();
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin disabled test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginDisabled_Test()
         {
             ImGui.NewFrame();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin drag drop source test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginDragDropSource_Test()
         {
             ImGui.NewFrame();
@@ -192,7 +193,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin drag drop target test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginDragDropTarget_Test()
         {
             ImGui.NewFrame();
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin group test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginGroup_Test()
         {
             ImGui.NewFrame();
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin list box test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginListBox_Test()
         {
             ImGui.NewFrame();
@@ -242,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin main menu bar test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginMainMenuBar_Test()
         {
             ImGui.NewFrame();
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin menu test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginMenu_Test()
         {
             ImGui.NewFrame();
@@ -278,7 +279,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin menu bar test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginMenuBar_Test()
         {
             ImGui.NewFrame();
@@ -294,7 +295,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin popup context item test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginPopupContextItem_Test()
         {
             ImGui.NewFrame();
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin popup context void test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginPopupContextVoid_Test()
         {
             ImGui.NewFrame();
@@ -343,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin popup context window test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginPopupContextWindow_Test()
         {
             ImGui.NewFrame();
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin tab bar test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTabBar_Test()
         {
             ImGui.NewFrame();
@@ -387,7 +388,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin table test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTable_Test()
         {
             ImGui.NewFrame();
@@ -415,7 +416,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that begin tooltip test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BeginTooltip_Test()
         {
             ImGui.NewFrame();
@@ -429,7 +430,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that bullet test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Bullet_Test()
         {
             ImGui.NewFrame();
@@ -443,7 +444,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that button test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Button_Test()
         {
             ImGui.NewFrame();
@@ -457,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that calc item width test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CalcItemWidth_Test()
         {
             ImGui.NewFrame();
@@ -471,7 +472,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that close current popup test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CloseCurrentPopup_Test()
         {
             ImGui.NewFrame();
@@ -487,7 +488,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color button test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorButton_Test()
         {
             ImGui.NewFrame();
@@ -503,7 +504,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color convert float 4 to u 32 test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorConvertFloat4ToU32_Test()
         {
             var col = new Vector4F(0.2f, 0.4f, 0.6f, 1.0f);
@@ -514,7 +515,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color convert hs vto rgb test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorConvertHsVtoRgb_Test()
         {
             float r, g, b;
@@ -527,7 +528,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color convert rg bto hsv test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorConvertRgBtoHsv_Test()
         {
             float h, s, v;
@@ -540,7 +541,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color convert u 32 to float 4 test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorConvertU32ToFloat4_Test()
         {
             Vector4F result = ImGui.ColorConvertU32ToFloat4(0xFF4080C0u);
@@ -553,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that color edit 4 test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorEdit4_Test()
         {
             ImGui.NewFrame();
@@ -576,7 +577,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that columns test
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Columns_Test()
         {
             ImGui.NewFrame();

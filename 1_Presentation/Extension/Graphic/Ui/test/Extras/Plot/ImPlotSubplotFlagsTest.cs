@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImPlotSubplotFlags.None);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that link-all values are distinct and ordered.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkAllFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImPlotSubplotFlags.LinkAllX, (int) ImPlotSubplotFlags.LinkAllY);
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that representative subplot flags do not overlap in value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RepresentativeFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImPlotSubplotFlags.NoResize, (int) ImPlotSubplotFlags.NoAlign);

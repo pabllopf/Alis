@@ -30,6 +30,7 @@
 using System;
 using System.Linq;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Linear has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Linear_ShouldHaveCorrectValue()
         {
             ImPlotScale scale = ImPlotScale.Linear;
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Time has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Time_ShouldHaveCorrectValue()
         {
             ImPlotScale scale = ImPlotScale.Time;
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that Log10 has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Log10_ShouldHaveCorrectValue()
         {
             ImPlotScale scale = ImPlotScale.Log10;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that SymLog has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SymLog_ShouldHaveCorrectValue()
         {
             ImPlotScale scale = ImPlotScale.SymLog;
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are sequential from 0 to SymLog.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeSequential()
         {
             ImPlotScale[] values = (ImPlotScale[])Enum.GetValues(typeof(ImPlotScale));
@@ -96,7 +97,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that all enum values are unique.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Values_ShouldBeUnique()
         {
             ImPlotScale[] values = (ImPlotScale[])Enum.GetValues(typeof(ImPlotScale));

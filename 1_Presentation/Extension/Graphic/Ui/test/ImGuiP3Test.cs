@@ -29,6 +29,7 @@
 
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies representative End* methods are exposed as void static methods.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EndMethods_ShouldBeAvailable()
         {
             string[] names = {"End", "EndChild", "EndCombo", "EndFrame", "EndMenu", "EndPopup"};
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies DragScalarN overloads exist.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DragScalarN_ShouldExposeOverloads()
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragScalarN").ToArray();

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that column user id should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColumnUserId_ShouldBeInitialized()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that column index should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColumnIndex_ShouldBeInitialized()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that sort order should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SortOrder_ShouldBeInitialized()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that sort direction should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SortDirection_ShouldBeInitialized()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that column user id should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColumnUserId_Should_SetAndGetCorrectly()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that column index should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColumnIndex_Should_SetAndGetCorrectly()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that sort order should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SortOrder_Should_SetAndGetCorrectly()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that sort direction should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SortDirection_Should_SetAndGetCorrectly()
         {
             ImGuiTableColumnSortSpecs specs = new ImGuiTableColumnSortSpecs();

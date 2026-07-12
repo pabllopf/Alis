@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that grid spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GridSpacing_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node corner rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeCornerRounding_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node padding horizontal should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodePaddingHorizontal_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node padding vertical should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodePaddingVertical_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that node border thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NodeBorderThickness_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkThickness_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link line segments per length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkLineSegmentsPerLength_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link hover distance should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkHoverDistance_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin circle radius should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinCircleRadius_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin quad side length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinQuadSideLength_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin triangle side length should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinTriangleSideLength_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin line thickness should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinLineThickness_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin hover radius should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinHoverRadius_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that pin offset should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PinOffset_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that flags should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_Should_SetAndGetCorrectly()
         {
             Style style = new Style();
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that colors should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors_Should_SetAndGetCorrectly()
         {
             Style style = new Style();

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the delegate can return an expected byte result.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Invoke_ShouldReturnExpectedValue()
         {
             PlatformGetWindowMinimized callback = _ => 0;

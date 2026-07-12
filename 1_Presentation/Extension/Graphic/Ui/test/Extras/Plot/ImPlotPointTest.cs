@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that X and Y should be initialized correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void XAndY_ShouldBeInitializedCorrectly()
         {
             ImPlotPoint point = new ImPlotPoint { X = 10.0, Y = 20.0 };
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that X should be set correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void X_ShouldBeSetCorrectly()
         {
             ImPlotPoint point = new ImPlotPoint { X = -50.5, Y = 100.0 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that Y should be set correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Y_ShouldBeSetCorrectly()
         {
             ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 999.99 };
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that X and Y can be modified after initialization.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void XAndY_ShouldBeModifiable()
         {
             ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 100.0 };
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that default struct initialization sets X and Y to 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DefaultInitialization_ShouldSetXAndYToZero()
         {
             ImPlotPoint point = new ImPlotPoint();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that negative values can be used for X and Y.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NegativeValues_ShouldBeSupported()
         {
             ImPlotPoint point = new ImPlotPoint { X = -1000.0, Y = -500.0 };
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that struct equality works correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Equality_ShouldWorkCorrectly()
         {
             ImPlotPoint point1 = new ImPlotPoint { X = 0.0, Y = 100.0 };
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that large double values are supported.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LargeDoubleValues_ShouldBeSupported()
         {
             ImPlotPoint point = new ImPlotPoint 
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zero values are supported.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZeroValues_ShouldBeSupported()
         {
             ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 0.0 };
@@ -155,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that struct with only X set works correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OnlyXSet_ShouldWorkCorrectly()
         {
             ImPlotPoint point = new ImPlotPoint { X = 42.0 };
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that struct with only Y set works correctly.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OnlyYSet_ShouldWorkCorrectly()
         {
             ImPlotPoint point = new ImPlotPoint { Y = 42.0 };

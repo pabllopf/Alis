@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that the type is a value type (struct).
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Type_ShouldBeStruct()
         {
             Type type = typeof(LinkDetachWithModifierClick);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that a default instance has a null Modifier.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_ShouldBeNullOnDefaultInstance()
         {
             LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that Modifier can be assigned and read back.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_ShouldRoundTripAssignedValue()
         {
             LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that Modifier can be set to an empty array.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_ShouldAllowEmptyArray()
         {
             LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that Modifier can be reassigned to a different value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Modifier_ShouldAllowReassignment()
         {
             LinkDetachWithModifierClick instance = new LinkDetachWithModifierClick();

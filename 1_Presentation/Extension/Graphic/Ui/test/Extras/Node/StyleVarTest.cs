@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that style var values should be as expected
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleVar_Values_Should_Be_As_Expected()
         {
             Assert.Equal(6, (int) StyleVar.LinkLineSegmentsPerLength);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that S8 has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void S8_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.S8;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that U8 has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U8_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.U8;
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that S16 has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void S16_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.S16;
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that U16 has the expected value of 3.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U16_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.U16;
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that S32 has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void S32_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.S32;
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that U32 has the expected value of 5.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U32_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.U32;
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that S64 has the expected value of 6.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void S64_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.S64;
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that U64 has the expected value of 7.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void U64_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.U64;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Float has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Float_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.Float;
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Double has the expected value of 9.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Double_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.Double;
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that Count has the expected value of 10.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldHaveCorrectValue()
         {
             ImGuiDataType value = ImGuiDataType.Count;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that all enum values are distinct.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EnumValues_ShouldBeDistinct()
         {
             ImGuiDataType[] values = (ImGuiDataType[])Enum.GetValues(typeof(ImGuiDataType));

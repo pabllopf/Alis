@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that id should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Id_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pos should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pos_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Size_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkPos_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkSize_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DpiScale_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that parent viewport id should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ParentViewportId_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that draw data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DrawData_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer user data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererUserData_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform user data should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUserData_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformHandle_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle raw should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformHandleRaw_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform window created should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformWindowCreated_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request move should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestMove_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request resize should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestResize_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -201,7 +202,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request close should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestClose_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
@@ -211,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that id set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Id_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that flags set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -235,7 +236,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that pos set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Size_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work pos set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkPos_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -271,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that work size set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WorkSize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -283,7 +284,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that dpi scale set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DpiScale_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that parent viewport id set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ParentViewportId_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -307,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that draw data set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DrawData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -319,7 +320,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that renderer user data set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererUserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -331,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform user data set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformUserData_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -343,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformHandle_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -355,7 +356,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform handle raw set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformHandleRaw_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -367,7 +368,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform window created set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformWindowCreated_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -379,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request move set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestMove_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request resize set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestResize_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();
@@ -403,7 +404,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that platform request close set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformRequestClose_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiViewport obj = new ImGuiViewport();

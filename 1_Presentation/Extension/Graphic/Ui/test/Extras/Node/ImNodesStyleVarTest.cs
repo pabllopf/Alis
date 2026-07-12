@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that GridSpacing is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GridSpacing_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImNodesStyleVar.GridSpacing);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that Count matches the expected number of entries.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Count_ShouldBeExpectedValue()
         {
             Assert.Equal(15, (int) ImNodesStyleVar.Count);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Verifies that selected style var entries use distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StyleVars_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImNodesStyleVar.GridSpacing, (int) ImNodesStyleVar.NodeCornerRounding);

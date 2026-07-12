@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HasGamepad has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HasGamepad_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.HasGamepad;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HasMouseCursors has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HasMouseCursors_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.HasMouseCursors;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HasSetMousePos has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HasSetMousePos_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.HasSetMousePos;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RendererHasVtxOffset has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererHasVtxOffset_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.RendererHasVtxOffset;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PlatformHasViewports has the expected value of 1024.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlatformHasViewports_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.PlatformHasViewports;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HasMouseHoveredViewport has the expected value of 2048.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HasMouseHoveredViewport_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.HasMouseHoveredViewport;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that RendererHasViewports has the expected value of 4096.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RendererHasViewports_ShouldHaveCorrectValue()
         {
             ImGuiBackendFlags flag = ImGuiBackendFlags.RendererHasViewports;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiBackendFlags combined = ImGuiBackendFlags.HasGamepad | ImGuiBackendFlags.HasMouseCursors;

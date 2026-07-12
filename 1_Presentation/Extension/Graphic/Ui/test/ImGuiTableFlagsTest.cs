@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that border aliases match their component compositions.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void BorderAliases_ShouldMatchComposition()
         {
             Assert.Equal(ImGuiTableFlags.BordersInnerH | ImGuiTableFlags.BordersOuterH, ImGuiTableFlags.BordersH);
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that sizing mask includes all sizing-related options.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SizingMask_ShouldContainSizingModes()
         {
             ImGuiTableFlags sizingModes = ImGuiTableFlags.SizingFixedFit

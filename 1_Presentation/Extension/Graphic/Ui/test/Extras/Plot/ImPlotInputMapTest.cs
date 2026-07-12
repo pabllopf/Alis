@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pan_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PanMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fit should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Fit_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Select_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select cancel should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectCancel_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select horz mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectHorzMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select vert mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectVertMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that menu should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Menu_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that override mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OverrideMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom mod should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZoomMod_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom rate should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZoomRate_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Pan_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -172,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that pan mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PanMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that fit should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Fit_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Select_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -208,7 +209,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select cancel should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectCancel_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -232,7 +233,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select horz mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectHorzMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that select vert mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectVertMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that menu should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Menu_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -268,7 +269,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that override mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OverrideMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom mod should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZoomMod_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
@@ -292,7 +293,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that zoom rate should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ZoomRate_Should_SetAndGetCorrectly()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();

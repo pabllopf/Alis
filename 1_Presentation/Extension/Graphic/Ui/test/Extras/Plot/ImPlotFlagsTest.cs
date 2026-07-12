@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that none is zero.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldBeZero()
         {
             Assert.Equal(0, (int) ImPlotFlags.None);
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that canvas-only is the expected combination of interaction-disabling flags.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CanvasOnly_ShouldMatchExpectedComposition()
         {
             ImPlotFlags expected = ImPlotFlags.NoTitle
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Verifies that selected standalone flags use distinct values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void StandaloneFlags_ShouldBeDistinct()
         {
             Assert.NotEqual((int) ImPlotFlags.NoFrame, (int) ImPlotFlags.Crosshairs);

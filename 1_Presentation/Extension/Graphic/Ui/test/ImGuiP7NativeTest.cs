@@ -1,5 +1,6 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -38,7 +39,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that menu item
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MenuItem()
         {
             ImGui.NewFrame();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that new frame and render
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NewFrame_And_Render()
         {
             ImGui.NewFrame();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that new line
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NewLine()
         {
             ImGui.NewFrame();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that next column
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NextColumn()
         {
             ImGui.NewFrame();
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopup_Str()
         {
             ImGui.NewFrame();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup str with flags
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopup_StrWithFlags()
         {
             ImGui.NewFrame();
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup u 32
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopup_U32()
         {
             ImGui.NewFrame();
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup u 32 with flags
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopup_U32WithFlags()
         {
             ImGui.NewFrame();
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup on item click
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick()
         {
             ImGui.NewFrame();
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup on item click str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick_Str()
         {
             ImGui.NewFrame();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that open popup on item click str with flags
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void OpenPopupOnItemClick_StrWithFlags()
         {
             ImGui.NewFrame();
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop allow keyboard focus
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopAllowKeyboardFocus()
         {
             ImGui.NewFrame();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop button repeat
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopButtonRepeat()
         {
             ImGui.NewFrame();
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop clip rect
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopClipRect()
         {
             ImGui.NewFrame();
@@ -195,7 +196,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopId()
         {
             ImGui.NewFrame();
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop item width
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopItemWidth()
         {
             ImGui.NewFrame();
@@ -219,7 +220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop style color
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleColor()
         {
             ImGui.NewFrame();
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop style color with count
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleColor_WithCount()
         {
             ImGui.NewFrame();
@@ -244,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop style var
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleVar()
         {
             ImGui.NewFrame();
@@ -256,7 +257,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop style var with count
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopStyleVar_WithCount()
         {
             ImGui.NewFrame();
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that pop text wrap pos
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopTextWrapPos()
         {
             ImGui.NewFrame();
@@ -281,7 +282,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that progress bar
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ProgressBar()
         {
             ImGui.NewFrame();
@@ -292,7 +293,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that progress bar with size
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ProgressBar_WithSize()
         {
             ImGui.NewFrame();
@@ -303,7 +304,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that progress bar with size overlay
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ProgressBar_WithSizeOverlay()
         {
             ImGui.NewFrame();
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push allow keyboard focus
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushAllowKeyboardFocus()
         {
             ImGui.NewFrame();
@@ -326,7 +327,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push button repeat
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushButtonRepeat()
         {
             ImGui.NewFrame();
@@ -338,7 +339,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push clip rect
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushClipRect()
         {
             ImGui.NewFrame();
@@ -350,7 +351,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push id str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushId_Str()
         {
             ImGui.NewFrame();
@@ -362,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push item width
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushItemWidth()
         {
             ImGui.NewFrame();
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push style color u 32
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleColor_U32()
         {
             ImGui.NewFrame();
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push style color vec 4
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleColor_Vec4()
         {
             ImGui.NewFrame();
@@ -398,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push style var float
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleVar_Float()
         {
             ImGui.NewFrame();
@@ -410,7 +411,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push style var vec 2
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushStyleVar_Vec2()
         {
             ImGui.NewFrame();
@@ -422,7 +423,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push text wrap pos
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushTextWrapPos()
         {
             ImGui.NewFrame();
@@ -434,7 +435,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that push text wrap pos with value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PushTextWrapPos_WithValue()
         {
             ImGui.NewFrame();
@@ -446,7 +447,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that radio button
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void RadioButton()
         {
             ImGui.NewFrame();
@@ -457,7 +458,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that render
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Render()
         {
             ImGui.NewFrame();
@@ -467,7 +468,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that separator
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Separator()
         {
             ImGui.NewFrame();
@@ -478,7 +479,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set color edit options
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetColorEditOptions()
         {
             ImGui.NewFrame();
@@ -489,7 +490,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set current context
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetCurrentContext()
         {
             ImGui.SetCurrentContext(_ctx);
@@ -498,7 +499,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set keyboard focus here
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetKeyboardFocusHere()
         {
             ImGui.NewFrame();
@@ -509,7 +510,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set keyboard focus here with offset
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetKeyboardFocusHere_WithOffset()
         {
             ImGui.NewFrame();
@@ -520,7 +521,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set mouse cursor
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetMouseCursor()
         {
             ImGui.NewFrame();
@@ -531,7 +532,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next frame want capture keyboard
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextFrameWantCaptureKeyboard()
         {
             ImGui.NewFrame();
@@ -542,7 +543,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next frame want capture mouse
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextFrameWantCaptureMouse()
         {
             ImGui.NewFrame();
@@ -553,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next item open
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextItemOpen()
         {
             ImGui.NewFrame();
@@ -564,7 +565,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next item open with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextItemOpen_WithCond()
         {
             ImGui.NewFrame();
@@ -575,7 +576,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next item width
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextItemWidth()
         {
             ImGui.NewFrame();
@@ -586,7 +587,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window bg alpha
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowBgAlpha()
         {
             ImGui.NewFrame();
@@ -597,7 +598,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window content size
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowContentSize()
         {
             ImGui.NewFrame();
@@ -608,7 +609,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window focus
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowFocus()
         {
             ImGui.NewFrame();
@@ -619,7 +620,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window pos
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowPos()
         {
             ImGui.NewFrame();
@@ -630,7 +631,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window pos with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowPos_WithCond()
         {
             ImGui.NewFrame();
@@ -641,7 +642,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window pos with cond pivot
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowPos_WithCondPivot()
         {
             ImGui.NewFrame();
@@ -652,7 +653,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window scroll
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowScroll()
         {
             ImGui.NewFrame();
@@ -663,7 +664,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window size
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowSize()
         {
             ImGui.NewFrame();
@@ -674,7 +675,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window size with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowSize_WithCond()
         {
             ImGui.NewFrame();
@@ -685,7 +686,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window viewport
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowViewport()
         {
             ImGui.NewFrame();
@@ -696,7 +697,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll from pos x
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollFromPosX()
         {
             ImGui.NewFrame();
@@ -707,7 +708,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll from pos x with ratio
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollFromPosX_WithRatio()
         {
             ImGui.NewFrame();
@@ -718,7 +719,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll from pos y
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollFromPosY()
         {
             ImGui.NewFrame();
@@ -729,7 +730,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll from pos y with ratio
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollFromPosY_WithRatio()
         {
             ImGui.NewFrame();
@@ -740,7 +741,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll here x
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollHereX()
         {
             ImGui.NewFrame();
@@ -751,7 +752,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll here x with ratio
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollHereX_WithRatio()
         {
             ImGui.NewFrame();
@@ -762,7 +763,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll here y
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollHereY()
         {
             ImGui.NewFrame();
@@ -773,7 +774,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll here y with ratio
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollHereY_WithRatio()
         {
             ImGui.NewFrame();
@@ -784,7 +785,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll x
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollX()
         {
             ImGui.NewFrame();
@@ -795,7 +796,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set scroll y
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetScrollY()
         {
             ImGui.NewFrame();
@@ -806,7 +807,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window focus
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowFocus()
         {
             ImGui.NewFrame();
@@ -817,7 +818,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window font scale
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowFontScale()
         {
             ImGui.NewFrame();
@@ -828,7 +829,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window pos
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowPos()
         {
             ImGui.NewFrame();
@@ -839,7 +840,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window pos with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowPos_WithCond()
         {
             ImGui.NewFrame();
@@ -850,7 +851,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window size
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowSize()
         {
             ImGui.NewFrame();
@@ -861,7 +862,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window size with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowSize_WithCond()
         {
             ImGui.NewFrame();
@@ -872,7 +873,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that reset mouse drag delta
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ResetMouseDragDelta()
         {
             ImGui.NewFrame();
@@ -883,7 +884,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window collapsed
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowCollapsed()
         {
             ImGui.NewFrame();
@@ -894,7 +895,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window collapsed with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowCollapsed_WithCond()
         {
             ImGui.NewFrame();
@@ -905,7 +906,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window dock id
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowDockId()
         {
             ImGui.NewFrame();
@@ -916,7 +917,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window dock id with cond
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowDockId_WithCond()
         {
             ImGui.NewFrame();
@@ -927,7 +928,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set next window size constraints
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetNextWindowSizeConstraints()
         {
             ImGui.NewFrame();
@@ -938,7 +939,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set tab item closed
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetTabItemClosed()
         {
             ImGui.NewFrame();
@@ -949,7 +950,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window collapsed
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowCollapsed()
         {
             ImGui.NewFrame();
@@ -960,7 +961,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window focus str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowFocus_Str()
         {
             ImGui.NewFrame();
@@ -971,7 +972,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window pos str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowPos_Str()
         {
             ImGui.NewFrame();
@@ -982,7 +983,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         /// Tests that set window size str
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SetWindowSize_Str()
         {
             ImGui.NewFrame();

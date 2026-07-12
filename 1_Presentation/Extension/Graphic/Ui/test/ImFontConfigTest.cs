@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that the name buffer can be assigned with 40 bytes.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Name_ShouldAcceptFixedBufferSize()
         {
             ImFontConfig config = new ImFontConfig
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that marshal roundtrip keeps the configured field values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarshalRoundtrip_ShouldPreserveValues()
         {
             ImFontConfig expected = new ImFontConfig

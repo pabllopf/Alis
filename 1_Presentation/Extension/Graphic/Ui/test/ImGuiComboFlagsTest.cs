@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that None has the expected value of 0.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void None_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.None;
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that PopupAlignLeft has the expected value of 1.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopupAlignLeft_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.PopupAlignLeft;
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HeightSmall has the expected value of 2.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HeightSmall_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.HeightSmall;
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HeightRegular has the expected value of 4.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HeightRegular_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.HeightRegular;
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HeightLarge has the expected value of 8.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HeightLarge_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.HeightLarge;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HeightLargest has the expected value of 16.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HeightLargest_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.HeightLargest;
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoArrowButton has the expected value of 32.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoArrowButton_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.NoArrowButton;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that NoPreview has the expected value of 64.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void NoPreview_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.NoPreview;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that HeightMask has the expected value of 30.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void HeightMask_ShouldHaveCorrectValue()
         {
             ImGuiComboFlags flag = ImGuiComboFlags.HeightMask;
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Verifies that flags can be combined with bitwise OR.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Flags_ShouldBeCombinable()
         {
             ImGuiComboFlags combined = ImGuiComboFlags.PopupAlignLeft | ImGuiComboFlags.HeightSmall;

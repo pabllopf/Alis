@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that alpha should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Alpha_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that disabled alpha should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisabledAlpha_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -75,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowBorderSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window min size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowMinSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window title align should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowTitleAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that window menu button position should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void WindowMenuButtonPosition_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that child rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that child border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ChildBorderSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that popup rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopupRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -165,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that popup border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PopupBorderSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -176,7 +177,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that frame padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FramePadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -188,7 +189,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that frame rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FrameRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that frame border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FrameBorderSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -210,7 +211,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that item spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ItemSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that item inner spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ItemInnerSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that cell padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CellPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -246,7 +247,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that touch extra padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TouchExtraPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -258,7 +259,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indent spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void IndentSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that columns min spacing should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColumnsMinSpacing_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scrollbar size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ScrollbarSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -291,7 +292,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that scrollbar rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ScrollbarRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that grab min size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GrabMinSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that grab rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GrabRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that log slider deadzone should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LogSliderDeadzone_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -335,7 +336,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tab rounding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TabRounding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tab border size should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TabBorderSize_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -357,7 +358,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that tab min width for close button should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TabMinWidthForCloseButton_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that color button position should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ColorButtonPosition_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -379,7 +380,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that button text align should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ButtonTextAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that selectable text align should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SelectableTextAlign_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -403,7 +404,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display window padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplayWindowPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -415,7 +416,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that display safe area padding should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DisplaySafeAreaPadding_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -427,7 +428,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that mouse cursor scale should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MouseCursorScale_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -438,7 +439,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that anti aliased lines should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedLines_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -449,7 +450,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that anti aliased lines use tex should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedLinesUseTex_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -460,7 +461,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that anti aliased fill should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void AntiAliasedFill_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -471,7 +472,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that curve tessellation tol should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CurveTessellationTol_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -482,7 +483,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that circle tessellation max error should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void CircleTessellationMaxError_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -493,7 +494,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 0 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors0_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -505,7 +506,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 1 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors1_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -517,7 +518,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 2 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors2_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -529,7 +530,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 3 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors3_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -541,7 +542,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 4 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors4_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -553,7 +554,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 5 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors5_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -565,7 +566,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 6 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors6_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -577,7 +578,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 7 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors7_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -589,7 +590,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 8 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors8_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -601,7 +602,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 9 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors9_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -613,7 +614,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 10 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors10_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -625,7 +626,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 11 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors11_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -637,7 +638,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 12 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors12_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -649,7 +650,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 13 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors13_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -661,7 +662,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 14 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors14_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -673,7 +674,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 15 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors15_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -685,7 +686,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 16 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors16_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -697,7 +698,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 17 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors17_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -709,7 +710,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 18 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors18_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -721,7 +722,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 19 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors19_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -733,7 +734,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 20 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors20_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -745,7 +746,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 21 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors21_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -757,7 +758,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 22 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors22_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -769,7 +770,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 23 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors23_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -781,7 +782,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 24 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors24_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -793,7 +794,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 25 should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors25_Should_SetAndGetCorrectly()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -805,7 +806,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 26 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors26_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -817,7 +818,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 27 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors27_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -829,7 +830,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 28 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors28_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -841,7 +842,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 29 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors29_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -853,7 +854,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 30 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors30_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -865,7 +866,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 31 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors31_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -877,7 +878,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 32 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors32_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -889,7 +890,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 33 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors33_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -901,7 +902,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 34 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors34_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -913,7 +914,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 35 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors35_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -925,7 +926,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 36 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors36_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -937,7 +938,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 37 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors37_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -949,7 +950,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 38 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors38_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -961,7 +962,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 39 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors39_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -973,7 +974,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 40 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors40_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -985,7 +986,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 41 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors41_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -997,7 +998,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 42 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors42_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1009,7 +1010,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 43 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors43_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1021,7 +1022,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 44 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors44_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1033,7 +1034,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 45 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors45_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1045,7 +1046,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 46 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors46_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1057,7 +1058,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 47 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors47_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1069,7 +1070,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 48 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors48_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1081,7 +1082,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 49 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors49_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1093,7 +1094,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 50 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors50_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1105,7 +1106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 51 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors51_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1117,7 +1118,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 52 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors52_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1129,7 +1130,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 53 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors53_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1141,7 +1142,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that colors 54 set and get returns correct value
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors54_SetAndGet_ReturnsCorrectValue()
         {
             ImGuiStyle obj = new ImGuiStyle();
@@ -1153,7 +1154,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer get returns correct color for valid index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Get_ShouldReturnCorrectColorForIndex0()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1165,7 +1166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer get returns correct color for last index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Get_ShouldReturnCorrectColorForIndex54()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1177,7 +1178,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer set should set correct color for valid index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Set_ShouldSetColorForIndex0()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1189,7 +1190,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer get throws for negative index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Get_ShouldThrowForNegativeIndex()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1199,7 +1200,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer get throws for index out of range
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Get_ShouldThrowForIndexOutOfRange()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1209,7 +1210,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer set throws for negative index
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Set_ShouldThrowForNegativeIndex()
         {
             ImGuiStyle style = new ImGuiStyle();
@@ -1219,7 +1220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that indexer set throws for index out of range
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Indexer_Set_ShouldThrowForIndexOutOfRange()
         {
             ImGuiStyle style = new ImGuiStyle();

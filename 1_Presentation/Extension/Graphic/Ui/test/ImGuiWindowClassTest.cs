@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui window class should initialize with default values
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiWindowClass_ShouldInitializeWithDefaultValues()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass();
@@ -57,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         /// <summary>
         ///     Tests that im gui window class should set and get properties
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ImGuiWindowClass_ShouldSetAndGetProperties()
         {
             ImGuiWindowClass windowClass = new ImGuiWindowClass

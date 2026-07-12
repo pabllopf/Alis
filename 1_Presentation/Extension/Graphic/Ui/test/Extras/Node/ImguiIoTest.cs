@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that emulate three button mouse should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EmulateThreeButtonMouse_ShouldBeInitialized()
         {
             ImguiIo imguiIo = new ImguiIo();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link detach with modifier click should be initialized
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkDetachWithModifierClick_ShouldBeInitialized()
         {
             ImguiIo imguiIo = new ImguiIo();
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that emulate three button mouse should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void EmulateThreeButtonMouse_Should_SetAndGetCorrectly()
         {
             ImguiIo imguiIo = new ImguiIo();
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         /// <summary>
         ///     Tests that link detach with modifier click should set and get correctly
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LinkDetachWithModifierClick_Should_SetAndGetCorrectly()
         {
             ImguiIo imguiIo = new ImguiIo();
