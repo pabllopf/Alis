@@ -185,7 +185,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             // Sleep to trigger FPS counter branch (newTime - lastTime >= 1.0)
             // and fixed-update while-loop (accumulator >= 0.016f)
-            Thread.Sleep(1100);
+            Thread.Sleep(1001);
 
             Assert.Throws<InvalidOperationException>(() => handler.Preview());
         }

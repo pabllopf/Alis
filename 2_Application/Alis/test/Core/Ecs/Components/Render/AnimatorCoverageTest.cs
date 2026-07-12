@@ -64,7 +64,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         }
 
         /// <summary>
-        ///     Tests that OnUpdate advances frame with normal speed (1f) after sufficient elapsed time.
+        ///     Tests that OnUpdate advances frame after sufficient elapsed time.
         /// </summary>
         [Fact]
         public void OnUpdate_WithNormalSpeed_AdvancesFrameAfterDelay()
@@ -75,7 +75,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
                 new Animation
                 {
                     Name = "TestAnim",
-                    Speed = 1f,
+                    Speed = 1000f,
                     Frames = new List<Frame>
                     {
                         new Frame { NameFile = "f1" },
@@ -86,7 +86,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.Play("TestAnim");
             animator.OnStart(null!);
 
-            System.Threading.Thread.Sleep(20);
+            System.Threading.Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.True(animator.CurrentFrameIndex > 0);
@@ -105,7 +105,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
                 new Animation
                 {
                     Name = "TestAnim",
-                    Speed = 60f,
+                    Speed = 1000f,
                     Frames = new List<Frame>
                     {
                         new Frame { NameFile = "f1" },
@@ -118,7 +118,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.Play("TestAnim");
             animator.OnStart(null!);
 
-            System.Threading.Thread.Sleep(40);
+            System.Threading.Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.True(animator.CurrentFrameIndex >= 0);

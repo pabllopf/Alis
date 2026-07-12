@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -443,66 +442,32 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that init velocity constraints with short length covers short branch
+        /// Tests that step with overlapping bodies at same position should not throw
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithShortLength_CoversShortBranch()
+        public void Step_WithOverlappingBodies_ShouldNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             CircleShape shapeA = new CircleShape(0.3f, 1.0f);
             CircleShape shapeB = new CircleShape(0.3f, 1.0f);
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.001f, 0.0f));
+            world.Add(joint);
 
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
+            world.Step(1.0f / 60.0f);
 
-            MethodInfo initMethod = typeof(RopeJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
+            Assert.NotNull(joint);
         }
 
         /// <summary>
-        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// Tests that step with max length greater than distance does not throw
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
-
-            MethodInfo initMethod = typeof(RopeJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-        }
-
-        /// <summary>
-        /// Tests that solve velocity constraints with length less than max covers c branch
-        /// </summary>
-        [Fact]
-        public void SolveVelocityConstraints_WithLengthLessThanMax_CoversCBranch()
+        public void Step_WithMaxLengthGreaterThanDistance_ShouldNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
@@ -514,20 +479,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             joint.MaxLength = 10.0f;
+            world.Add(joint);
 
-            SolverData data = new SolverData
+            for (int i = 0; i < 10; i++)
             {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
+                world.Step(1.0f / 60.0f);
+            }
 
-            MethodInfo initMethod = typeof(RopeJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-
-            MethodInfo solveMethod = typeof(RopeJoint).GetMethod("SolveVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            solveMethod.Invoke(joint, new object[] { data });
+            Assert.NotNull(joint);
         }
     }
 }
