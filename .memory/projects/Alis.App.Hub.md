@@ -1,58 +1,44 @@
 ---
 title: Alis.App.Hub
 tags:
-  - project
+  - presentation
   - hub
   - launcher
-  - layer-1
 status: Draft
 license: GPLv3
 ---
 
 # Alis.App.Hub
 
-## Overview
+**Layer:** 1_Presentation
+**Path:** `1_Presentation/Hub/src/Alis.App.Hub.csproj`
 
-Application hub/launcher (Layer 1 - Presentation). Acts as the main distribution and update hub for the Alis game engine.
+## Purpose
 
-## Properties
+Hub/launcher application for managing Alis installations, projects, and community resources.
 
-| Property | Value |
-|---|---|
-| **Layer** | 1 - Presentation |
-| **Project Path** | `1_Presentation/Hub/src/` |
-| **Test Project** | `Alis.App.Hub.Test` |
-| **Generator** | Referenced from lower layers |
-| **Has Samples** | No |
+## Features
 
-## Dependencies
-
-- **Depends On**: [[Alis]] (Layer 2 - Application)
+- Gallery of installed games/examples
+- Project management
+- Learning resources
+- Community section
+- Editor installation management
+- GitHub releases integration
 
 ## Architecture
 
-- `src/Assets/` - Hub assets
-- `src/Core/` - Hub core logic
-- `src/Entity/` - Entity definitions
-- `src/Properties/` - Build properties (Info.plist, logo)
-- `src/Utils/` - Utility classes
-- `src/Windows/` - Window management
+- `HubEngine.cs` — Main hub class
+- `Windows/` — Window management (Hub main window, sections)
+- `Entity/` — Data models (Gallery, GalleryItem, InstalledVersion, LearningResource, Project)
+- `Core/` — Runtime abstractions
+- `Utils/` — Utilities (ImageLoader)
 
-## Build Integration
+## Dependencies
 
-The Hub orchestrates the build of Engine and Installer projects via MSBuild targets:
-1. After its own build, triggers Engine and Installer builds
-2. Copies Engine output to `Editor/` subdirectory
-3. Copies Installer output to `Installer/` subdirectory
+- Alis (2_Application)
 
-## Testing
+## Related Documents
 
-- Test project: `Alis.App.Hub.Test`
-- Located at `1_Presentation/Hub/test/`
-
-## Related
-
-- [[Alis.App.Engine]]
-- [[Alis.App.Installer]]
 - [[Alis]]
-- [[Projects Index]]
+- [[Alis.App.Engine]]

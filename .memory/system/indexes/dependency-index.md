@@ -3,31 +3,45 @@ title: Dependency Index
 tags:
   - index
   - dependencies
+  - tracking
 status: Draft
 license: GPLv3
 ---
 
 # Dependency Index
 
-| Project | Depends On | Used By |
+## Layer Dependency Matrix
+
+| Layer | Depends On | Depended By |
 |---|---|---|
-| Alis.Core.Aspect | - | All layers |
-| Alis.Core.Aspect.Data | Alis.Core.Aspect | Alis.Core |
-| Alis.Core.Aspect.Fluent | Alis.Core.Aspect | Alis.Core |
-| Alis.Core.Aspect.Logging | Alis.Core.Aspect | All layers |
-| Alis.Core.Aspect.Math | Alis.Core.Aspect | Alis.Core.Physic, Alis.Core.Graphic |
-| Alis.Core.Aspect.Memory | Alis.Core.Aspect | Alis.Core.Ecs |
-| Alis.Core.Aspect.Time | Alis.Core.Aspect | Alis.Core.Ecs |
-| Alis.Core.Audio | Alis.Core.Aspect | Alis.App.Engine |
-| Alis.Core.Ecs | Alis.Core.Aspect | Alis.App.Engine |
-| Alis.Core.Graphic | Alis.Core.Aspect | Alis.App.Engine |
-| Alis.Core.Physic | Alis.Core.Aspect, Alis.Core.Aspect.Math | Alis.App.Engine |
-| Alis.Core | Multiple | Alis (app) |
-| Alis.App.Engine | Alis.Core.* | - |
-| Alis.App.Hub | - | - |
-| Alis.App.Installer | - | - |
-| Alis.Extension.Network | Alis.Core.Aspect | Samples |
-| Alis.Extension.Security | Alis.Core.Aspect | - |
-| Alis.Extension.Graphic.Sdl2 | Alis.Core.Graphic | Samples |
-| Alis.Extension.Graphic.Sfml | Alis.Core.Graphic | Samples |
-| Alis.Extension.Graphic.Glfw | Alis.Core.Graphic | Samples |
+| 6_Ideation | (BCL only) | 5_Declaration |
+| 5_Declaration | 6_Ideation | 4_Operation |
+| 4_Operation | 5_Declaration | 3_Structuration |
+| 3_Structuration | 4_Operation | 2_Application |
+| 2_Application | 3_Structuration | 1_Presentation |
+| 1_Presentation | 2_Application | (external) |
+
+## Project Dependency Counts
+
+| Project | Direct Dependencies | Dependents |
+|---|---|---|
+| Alis.Core.Aspect.Data | 0 | 5+ |
+| Alis.Core.Aspect.Math | 0 | 5+ |
+| Alis.Core.Aspect (5_Declaration) | 6 | 4+ |
+| Alis.Core (3_Structuration) | 5 | 1+ |
+| Alis (2_Application) | 1+ | 9+ |
+
+## External Dependency Count
+
+| Type | Count |
+|---|---|
+| NuGet packages (conditional) | 4 |
+| Legacy compatibility packages | 4 |
+| SourceLink | 1 |
+| **Total unique external packages** | **5** |
+
+## Related Documents
+
+- [[dependency-graph]]
+- [[layer-violations]]
+- [[projects-index]]

@@ -1,71 +1,42 @@
 ---
 title: Alis.Benchmark
 tags:
-  - project
+  - presentation
   - benchmark
   - performance
-  - testing
-  - layer-1
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Benchmark
 
-## Overview
+**Layer:** 1_Presentation
+**Path:** `1_Presentation/Benchmark/src/Alis.Benchmark.csproj`
 
-Performance benchmarking application (Layer 1 - Presentation). Measures and compares performance of various engine systems and data structures.
+## Purpose
 
-## Properties
+Performance benchmarks for the Alis framework using BenchmarkDotNet.
 
-| Property | Value |
-|---|---|
-| **Layer** | 1 - Presentation |
-| **Project Path** | `1_Presentation/Benchmark/src/` |
-| **Has Tests** | No |
-| **Output Type** | Exe |
+## Benchmarks
+
+- **ECS Performance**: Alis ECS vs Frent ECS comparison
+- **Entity Component System**: Create, update, destroy operations with 1-3 components
+- **Neighbor Cache**: Alis vs Frent neighbor cache
+- **Collections**: FastArray vs FastestArray vs NativeArray
+- **Class vs Struct**: Performance comparison
+- **Interface vs Abstract**: Dispatch overhead
+- **Iterators**: Loop iteration patterns
+- **Strings**: String manipulation
+- **IDs**: ID storage
+- **Loop**: Loop constructs
+- **RemoveAt**: RemoveAt vs RemoveUnorderedAt
 
 ## Dependencies
 
-- **Depends On**: [[Alis]] (Layer 2 - Application)
+- Alis (2_Application)
 
-## Architecture
-
-- `src/ClassVsStruct/` - Class vs struct performance comparison
-- `src/CustomCollections/` - Custom collection benchmarks
-- `src/CustomEcs/` - Custom ECS benchmarks
-- `src/CustomNeighborCache/` - Neighbor cache benchmarks
-- `src/EntityComponentSystem/` - ECS performance tests
-- `src/IDs/` - ID generation benchmarks
-- `src/InterfaceVsAbstract/` - Interface vs abstract class comparison
-- `src/Iterators/` - Iterator performance comparison
-- `src/Loop/` - Loop optimization benchmarks
-- `src/Release/` - Release mode benchmarks
-- `src/RemoveAtVsRemoveUnnorderAt/` - Collection removal comparison
-- `src/Results/` - Benchmark results storage
-- `src/Strings/` - String operation benchmarks
-
-## Source Structure
-
-```
-src/
-  ClassVsStruct/
-  CustomCollections/
-  CustomEcs/
-  CustomNeighborCache/
-  EntityComponentSystem/
-  IDs/
-  InterfaceVsAbstract/
-  Iterators/
-  Loop/
-  Release/
-  RemoveAtVsRemoveUnnorderAt/
-  Results/
-  Strings/
-```
-
-## Related
+## Related Documents
 
 - [[Alis]]
-- [[Performance Overview]]
-- [[Projects Index]]
+- [[Alis.Core.Ecs]]
+- [[performance-overview]]

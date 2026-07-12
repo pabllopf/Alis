@@ -3,45 +3,65 @@ title: Tests Index
 tags:
   - index
   - tests
+  - testing
 status: Draft
 license: GPLv3
 ---
 
 # Tests Index
 
-| Test Project | Tested Project | Test Type | Framework |
-|---|---|---|---|
-| Alis.Core.Aspect.Test | Alis.Core.Aspect | Unit | xUnit |
-| Alis.Core.Aspect.Data.Test | Alis.Core.Aspect.Data | Unit | xUnit |
-| Alis.Core.Aspect.Fluent.Test | Alis.Core.Aspect.Fluent | Unit | xUnit |
-| Alis.Core.Aspect.Logging.Test | Alis.Core.Aspect.Logging | Unit | xUnit |
-| Alis.Core.Aspect.Math.Test | Alis.Core.Aspect.Math | Unit | xUnit |
-| Alis.Core.Aspect.Memory.Test | Alis.Core.Aspect.Memory | Unit | xUnit |
-| Alis.Core.Aspect.Time.Test | Alis.Core.Aspect.Time | Unit | xUnit |
-| Alis.Core.Audio.Test | Alis.Core.Audio | Unit | xUnit |
-| Alis.Core.Ecs.Test | Alis.Core.Ecs | Unit | xUnit |
-| Alis.Core.Graphic.Test | Alis.Core.Graphic | Unit | xUnit |
-| Alis.Core.Physic.Test | Alis.Core.Physic | Unit | xUnit |
-| Alis.Core.Test | Alis.Core | Unit | xUnit |
-| Alis.App.Engine.Test | Alis.App.Engine | Unit | xUnit |
-| Alis.App.Hub.Test | Alis.App.Hub | Unit | xUnit |
-| Alis.App.Installer.Test | Alis.App.Installer | Unit | xUnit |
-| Alis.Test | Alis | Unit | xUnit |
-| Alis.Extension.Network.Test | Alis.Extension.Network | Unit | xUnit |
-| Alis.Extension.Security.Test | Alis.Extension.Security | Unit | xUnit |
-| Alis.Extension.Profile.Test | Alis.Extension.Profile | Unit | xUnit |
-| Alis.Extension.Media.FFmpeg.Test | Alis.Extension.Media.FFmpeg | Unit | xUnit |
-| Alis.Extension.Graphic.Sdl2.Test | Alis.Extension.Graphic.Sdl2 | Unit | xUnit |
-| Alis.Extension.Graphic.Sfml.Test | Alis.Extension.Graphic.Sfml | Unit | xUnit |
-| Alis.Extension.Graphic.Glfw.Test | Alis.Extension.Graphic.Glfw | Unit | xUnit |
-| Alis.Extension.Graphic.Ui.Test | Alis.Extension.Graphic.Ui | Unit | xUnit |
-| Alis.Extension.Io.FileDialog.Test | Alis.Extension.Io.FileDialog | Unit | xUnit |
-| Alis.Extension.Cloud.GoogleDrive.Test | Alis.Extension.Cloud.GoogleDrive | Unit | xUnit |
-| Alis.Extension.Cloud.DropBox.Test | Alis.Extension.Cloud.DropBox | Unit | xUnit |
-| Alis.Extension.Payment.Stripe.Test | Alis.Extension.Payment.Stripe | Unit | xUnit |
-| Alis.Extension.Ads.GoogleAds.Test | Alis.Extension.Ads.GoogleAds | Unit | xUnit |
-| Alis.Extension.Language.Dialogue.Test | Alis.Extension.Language.Dialogue | Unit | xUnit |
-| Alis.Extension.Language.Translator.Test | Alis.Extension.Language.Translator | Unit | xUnit |
-| Alis.Extension.Math.HighSpeedPriorityQueue.Test | Alis.Extension.Math.HighSpeedPriorityQueue | Unit | xUnit |
-| Alis.Extension.Thread.Test | Alis.Extension.Thread | Unit | xUnit |
-| Alis.Extension.Updater.Test | Alis.Extension.Updater | Unit | xUnit |
+## Test Infrastructure
+
+| Aspect | Detail |
+|---|---|
+| Framework | xUnit |
+| Mocking | Moq |
+| WPF/Synchronization | Xunit.StaFact |
+| Code Coverage | coverlet |
+| Results Directory | `.test/<TargetFramework>/` |
+| Test Runner | `dotnet test` |
+
+## Test Counts by Project
+
+| Project | Test Files (approx.) |
+|---|---|
+| Alis.Core.Aspect.Data.Test | 38 |
+| Alis.Core.Aspect.Fluent.Test | 75 |
+| Alis.Core.Aspect.Logging.Test | 78 |
+| Alis.Core.Aspect.Math.Test | 45 |
+| Alis.Core.Aspect.Memory.Test | 7 |
+| Alis.Core.Aspect.Time.Test | 3 |
+| Alis.Core.Aspect.Test | 1 |
+| Alis.Core.Audio.Test | 40 |
+| Alis.Core.Ecs.Test | 190 |
+| Alis.Core.Graphic.Test | 90 |
+| Alis.Core.Physic.Test | 225 |
+| Alis.Core.Test | - |
+| Alis.Test | - |
+| Alis.App.Engine.Test | - |
+| Alis.App.Hub.Test | - |
+| Alis.App.Installer.Test | - |
+
+## Test Patterns
+
+- **Unit tests**: Individual class/method tests following AAA pattern
+- **Extensive tests**: Comprehensive parameterized tests
+- **Coverage tests**: Branch/edge-case focused tests
+- **Platform-specific**: Conditional test execution via attributes (WindowsOnly, MacOsOnly, LinuxOnly, BrowserOnly, UnixOnly)
+- **Integration tests**: Cross-component interaction tests
+- **Stress tests**: Thread safety and performance tests
+
+## Platform-Specific Test Attributes
+
+Custom attributes for conditional test execution:
+- `WindowsOnlyAttribute`
+- `MacOsOnlyAttribute`
+- `LinuxOnlyAttribute`
+- `BrowserOnlyAttribute`
+- `UnixOnlyAttribute`
+
+## Related Documents
+
+- [[testing-overview]]
+- [[projects-index]]
+- [[conventions-overview]]

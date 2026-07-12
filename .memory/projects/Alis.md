@@ -1,80 +1,72 @@
 ---
-title: Alis (Main Application)
+title: Alis (Application)
 tags:
-  - project
   - application
-  - composition
-  - layer-2
+  - main
+  - framework
+  - game-engine
 status: Draft
 license: GPLv3
 ---
 
-# Alis (Main Application)
+# Alis (Application Assembly)
 
-## Overview
+**Layer:** 2_Application
+**Path:** `2_Application/Alis/src/Alis.csproj`
 
-Main application composition project (Layer 2 - Application). Serves as the root composition root that assembles all engine systems into a cohesive application.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 2 - Application |
-| **Project Path** | `2_Application/Alis/src/` |
-| **Test Project** | `Alis.Test` |
-| **Generator** | `Alis.Generator` |
-| **Has Samples** | Yes (12 sample projects) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core]] (Layer 3 - Structuration)
-- **Used By**: All Layer 1 projects ([[Alis.App.Engine]], [[Alis.App.Hub]], [[Alis.App.Installer]], [[Alis.Benchmark]])
+The main game framework assembly. Orchestrates all subsystems (audio, graphics, physics, ECS, input, networking) and provides the public API surface for game development.
 
 ## Architecture
 
-- `src/Builder/` - Application builder
-- `src/Core/` - Core composition
-  - `src/Core/Ecs/` - ECS integration
-    - `Components/` - Built-in ECS components
-    - `Systems/` - Built-in ECS systems
+### Builder Pattern
+- `Builder/Core/Ecs/Components/` — Component builders (Light, Audio, Collider, Render, Body, UI)
+- `Builder/Core/Ecs/Entity/` — Entity construction
+- `Builder/Core/Ecs/System/` — System configuration builders (ManagerBuilders, ConfigurationBuilders)
 
-## Source Structure
+### Core ECS Integration
+- `Core/Ecs/Systems/` — System definitions for:
+  - Scope, Execution
+  - Manager (Scene, Physic, Audio, Graphic, Time, Network, Input)
+  - Configuration
+- `Core/Ecs/Components/` — Game-ready component types:
+  - Light, Audio, Collider, Render, Body, UI
+  - `Transform`, `Info`
 
-```
-src/
-  Builder/
-    Core/
-  Core/
-    Ecs/
-      Components/
-      Systems/
-```
+## Dependencies
+
+- Alis.Core (3_Structuration)
+- All generators (via Config.props)
+
+## Upstream Dependents
+
+- All Presentation projects (1_Presentation)
+- All Extension projects
+
+## Source Generator
+
+**Path:** `2_Application/Alis/generator/`
+
+- `Alis.Generator.csproj` — Application-level code generation
 
 ## Samples
 
-The Alis project includes 12 sample games:
-- [[Alis.Sample.Asteroid]]
-- [[Alis.Sample.Dino]]
-- [[Alis.Sample.Egg]]
-- [[Alis.Sample.Empty]]
-- [[Alis.Sample.FlappyBird]]
-- [[Alis.Sample.Inefable]]
-- [[Alis.Sample.KingPlatform]]
-- [[Alis.Sample.Pong]]
-- [[Alis.Sample.Rogue]]
-- [[Alis.Sample.RuinsOfTartarus]]
-- [[Alis.Sample.Snake]]
-- [[Alis.Sample.SpaceSimulator]]
-- [[Alis.Sample.SplitCamera]]
+12 C# sample games demonstrating engine capabilities:
+- Asteroid, Dino, Egg, Empty, FlappyBird, Inefable
+- KingPlatform, Pong, Rogue, RuinsOfTartarus, Snake
+- SpaceSimulator, SplitCamera
 
 ## Testing
 
-- Test project: `Alis.Test`
-- Located at `2_Application/Alis/test/`
+**Path:** `2_Application/Alis/test/`
 
-## Related
+- `Alis.Test.csproj` — Integration and unit tests for the application assembly
+- Tests cover ECS systems, configuration, and game object lifecycle
+
+## Related Documents
 
 - [[Alis.Core]]
+- [[Alis.Core.Ecs]]
 - [[Alis.App.Engine]]
-- [[Samples Index]]
-- [[Projects Index]]
+- [[repository-overview]]

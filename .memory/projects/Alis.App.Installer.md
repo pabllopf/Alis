@@ -1,50 +1,40 @@
 ---
 title: Alis.App.Installer
 tags:
-  - project
+  - presentation
   - installer
-  - setup
-  - layer-1
 status: Draft
 license: GPLv3
 ---
 
 # Alis.App.Installer
 
-## Overview
+**Layer:** 1_Presentation
+**Path:** `1_Presentation/Installer/src/Alis.App.Installer.csproj`
 
-Installation and setup application (Layer 1 - Presentation). Provides cross-platform installation experience for the Alis engine.
+## Purpose
 
-## Properties
+Platform installer application for the Alis framework.
 
-| Property | Value |
-|---|---|
-| **Layer** | 1 - Presentation |
-| **Project Path** | `1_Presentation/Installer/src/` |
-| **Test Project** | `Alis.App.Installer.Test` |
-| **Generator** | Referenced from lower layers |
-| **Has Samples** | No |
+## Features
 
-## Dependencies
-
-- **Depends On**: [[Alis]] (Layer 2 - Application)
+- ImGui-based installation UI
+- Sample/demo content
+- Cross-platform installation support
 
 ## Architecture
 
-- `src/Assets/` - Installer assets
-- Flat file structure with installer logic
+- `Installer.cs` — Main installer class
+- `ImguiSample.cs` — ImGui sample
+- `IExample.cs` — Example interface
+- `Program.cs` — Entry point
 
-## Build Integration
+## Dependencies
 
-Built as part of the Hub build pipeline, bundled into the installer directory.
+- Alis (2_Application)
 
-## Testing
+## Related Documents
 
-- Test project: `Alis.App.Installer.Test`
-- Located at `1_Presentation/Installer/test/`
-
-## Related
-
-- [[Alis.App.Hub]]
+- [[Alis]]
 - [[Alis.App.Engine]]
-- [[Projects Index]]
+- [[Alis.App.Hub]]

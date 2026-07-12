@@ -1,56 +1,57 @@
 ---
 title: Alis.Core
 tags:
-  - project
-  - core
   - structuration
-  - layer-3
+  - core
+  - abstractions
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core
 
-## Overview
+**Layer:** 3_Structuration
+**Path:** `3_Structuration/Core/src/Alis.Core.csproj`
 
-Core structuration layer (Layer 3 - Structuration). Acts as the structural foundation that bridges Application and Operation layers.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 3 - Structuration |
-| **Project Path** | `3_Structuration/Core/src/` |
-| **Test Project** | `Alis.Core.Test` |
-| **Generator** | `Alis.Core.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Audio]], [[Alis.Core.Graphic]], [[Alis.Core.Physic]], [[Alis.Core.Ecs]] (Layer 4 - Operation)
-- **Used By**: [[Alis]] (Layer 2 - Application)
+Core abstractions and foundational types serving as the bridge between the Application layer (2) and Operation layer (4). Provides re-exports and type forwarding from lower layers.
 
 ## Architecture
 
-- Empty `src/` directory - only contains `.csproj`
-- In Debug builds, references Layer 4 projects via `Config.props`
-- In Release builds, compiles Layer 4 source files directly via `<Compile Include="...">`
+This project provides centralized type forwarding from the Operation (4) and Declaration (5) layers to the Application (2) layer. It ensures the dependency chain:
 
-## Build Mode Notes
+```
+Application → Core → Operation → Declaration → Ideation
+```
 
-- **Debug Mode**: Standard ProjectReference chain to Layer 4
-- **Release Mode**: Source files from Layer 4 are compiled directly into Alis.Core assembly using `<Compile Include="$(SolutionDir)4_Operation/**/src/**/*.cs">`
+## Dependencies
+
+- Alis.Core.Audio (4_Operation)
+- Alis.Core.Ecs (4_Operation)
+- Alis.Core.Graphic (4_Operation)
+- Alis.Core.Physic (4_Operation)
+- Alis.Core.Aspect (5_Declaration)
+
+## Upstream Dependents
+
+- Alis (2_Application)
+
+## Source Generator
+
+**Path:** `3_Structuration/Core/generator/`
+
+Generates code for core abstractions.
 
 ## Testing
 
-- Test project: `Alis.Core.Test`
-- Located at `3_Structuration/Core/test/`
+**Path:** `3_Structuration/Core/test/`
 
-## Related
+Standard test suite with unit and integration tests.
 
-- [[Alis]]
+## Related Documents
+
+- [[Alis.Core.Aspect]]
 - [[Alis.Core.Ecs]]
-- [[Alis.Core.Graphic]]
 - [[Alis.Core.Physic]]
-- [[Alis.Core.Audio]]
-- [[Projects Index]]
+- [[layer-architecture]]
