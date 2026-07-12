@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor with archetype and index initializes correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Constructor_WithArchetypeAndIndex_ShouldInitializeCorrectly()
         {
             // Arrange
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor with flags initializes all fields correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Constructor_WithFlags_ShouldInitializeAllFields()
         {
             // Arrange
@@ -84,7 +84,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that archetype id returns correct archetype id.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ArchetypeId_ShouldReturnCorrectId()
         {
             // Arrange
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that default property returns valid default location.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Default_ShouldReturnValidDefaultLocation()
         {
             // Act
@@ -118,7 +118,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with no flags returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void HasEvent_WithNoFlags_ShouldReturnFalse()
         {
             // Arrange
@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with matching flag returns true.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void HasEvent_WithMatchingFlag_ShouldReturnTrue()
         {
             // Arrange
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with non matching flag returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void HasEvent_WithNonMatchingFlag_ShouldReturnFalse()
         {
             // Arrange
@@ -178,7 +178,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with multiple flags returns true if any match.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void HasEvent_WithMultipleFlags_ShouldReturnTrueIfAnyMatch()
         {
             // Arrange
@@ -201,7 +201,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that version field can be set and retrieved.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Version_SetAndGet_ShouldWorkCorrectly()
         {
             // Arrange
@@ -221,7 +221,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that index can be negative.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Index_WithNegativeValue_ShouldBeStored()
         {
             // Arrange
