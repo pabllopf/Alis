@@ -274,5 +274,8 @@
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioFrame.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkTuple.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/Chunk.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/Chunk.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentAlreadyExistsException.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentNotFoundException.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentID.cs"
 ]

@@ -173,3 +173,12 @@ Total blocked: 129
 - **Tests Added**: 12
 - **Commit**: `97b44a302`
 - **Status**: SUCCESS
+
+### ECS Exceptions (ComponentAlreadyExistsException, ComponentNotFoundException)
+- **Timestamp**: 2026-07-12 21:05:00
+- **Files**: `4_Operation/Ecs/src/Exceptions/ComponentAlreadyExistsException.cs`, `4_Operation/Ecs/src/Exceptions/ComponentNotFoundException.cs`
+- **Coverage Before**: 0.0%, 50.0%
+- **Coverage After**: 100%, 100%
+- **Tests Added**: 12
+- **Commit**: `8c1459df8`
+- **Status**: SUCCESS
