@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that a newly created FrugalStack has no elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_StartsEmpty()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that Any property correctly reports when elements exist.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_AnyReturnsTrueAfterPush()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests basic push and pop operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_CanPushAndPopSingleElement()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that elements are retrieved in Last-In-First-Out order.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_MaintainsLifoOrder()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -117,7 +117,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests pushing beyond initial buffer size to verify resizing.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_CanPushMultipleElements()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -142,7 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that TryPop safely handles empty stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_TryPopReturnsFalseWhenEmpty()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -159,7 +159,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests successful TryPop operation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_TryPopReturnsTrueWithValue()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates the Remove method removes a specific item.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_CanRemoveElement()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that Remove safely handles missing elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_RemoveDoesNothingIfElementNotFound()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -219,7 +219,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that AsSpan returns the correct data range.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_AsSpanReturnsCorrectRange()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -241,7 +241,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that FrugalStack works with reference types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_WorksWithReferenceTypes()
         {
             FrugalStack<string> stack = new FrugalStack<string>();
@@ -261,7 +261,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests pop/push interleaved operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_PopAfterMultipleOperations()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -282,7 +282,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that all elements are removed after clear.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_ClearRemovesAllElements()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -301,7 +301,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests FrugalStack with negative integer values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_WithNegativeValues()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -321,7 +321,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests FrugalStack performance with many elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_LargeNumberOfElements()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
@@ -347,7 +347,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that AsSpan length matches the number of pushed elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void FrugalStack_AsSpanLengthMatchesPushedElements()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
