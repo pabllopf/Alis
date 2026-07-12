@@ -10,103 +10,79 @@ license: GPLv3
 
 # Testing Overview
 
-## Test Projects
+## Test Framework
 
-The repository contains **34 test projects** across all layers:
-
-### Layer 1: Presentation (14 test projects)
-| Test Project | Source Project |
+| Component | Tool |
 |---|---|
-| Alis.App.Engine.Test | Alis.App.Engine |
-| Alis.App.Hub.Test | Alis.App.Hub |
-| Alis.App.Installer.Test | Alis.App.Installer |
-| Alis.Extension.Network.Test | Alis.Extension.Network |
-| Alis.Extension.Security.Test | Alis.Extension.Security |
-| Alis.Extension.Profile.Test | Alis.Extension.Profile |
-| Alis.Extension.Media.FFmpeg.Test | Alis.Extension.Media.FFmpeg |
-| Alis.Extension.Graphic.Sdl2.Test | Alis.Extension.Graphic.Sdl2 |
-| Alis.Extension.Graphic.Sfml.Test | Alis.Extension.Graphic.Sfml |
-| Alis.Extension.Graphic.Glfw.Test | Alis.Extension.Graphic.Glfw |
-| Alis.Extension.Graphic.Ui.Test | Alis.Extension.Graphic.Ui |
-| Alis.Extension.Io.FileDialog.Test | Alis.Extension.Io.FileDialog |
-| Alis.Extension.Cloud.GoogleDrive.Test | Alis.Extension.Cloud.GoogleDrive |
-| Alis.Extension.Cloud.DropBox.Test | Alis.Extension.Cloud.DropBox |
-
-### Layer 2: Application (1 test project)
-| Test Project | Source Project |
-|---|---|
-| Alis.Test | Alis |
-
-### Layer 3: Structuration (1 test project)
-| Test Project | Source Project |
-|---|---|
-| Alis.Core.Test | Alis.Core |
-
-### Layer 4: Operation (4 test projects)
-| Test Project | Source Project |
-|---|---|
-| Alis.Core.Ecs.Test | Alis.Core.Ecs |
-| Alis.Core.Audio.Test | Alis.Core.Audio |
-| Alis.Core.Graphic.Test | Alis.Core.Graphic |
-| Alis.Core.Physic.Test | Alis.Core.Physic |
-
-### Layer 5: Declaration (1 test project)
-| Test Project | Source Project |
-|---|---|
-| Alis.Core.Aspect.Test | Alis.Core.Aspect |
-
-### Layer 6: Ideation (6 test projects)
-| Test Project | Source Project |
-|---|---|
-| Alis.Core.Aspect.Data.Test | Alis.Core.Aspect.Data |
-| Alis.Core.Aspect.Fluent.Test | Alis.Core.Aspect.Fluent |
-| Alis.Core.Aspect.Logging.Test | Alis.Core.Aspect.Logging |
-| Alis.Core.Aspect.Math.Test | Alis.Core.Aspect.Math |
-| Alis.Core.Aspect.Memory.Test | Alis.Core.Aspect.Memory |
-| Alis.Core.Aspect.Time.Test | Alis.Core.Aspect.Time |
-
-### Other
-| Test Project | Source Project |
-|---|---|
-| Alis.Extension.Payment.Stripe.Test | Alis.Extension.Payment.Stripe |
-| Alis.Extension.Ads.GoogleAds.Test | Alis.Extension.Ads.GoogleAds |
-| Alis.Extension.Language.Dialogue.Test | Alis.Extension.Language.Dialogue |
-| Alis.Extension.Language.Translator.Test | Alis.Extension.Language.Translator |
-| Alis.Extension.Math.HighSpeedPriorityQueue.Test | Alis.Extension.Math.HighSpeedPriorityQueue |
-| Alis.Extension.Thread.Test | Alis.Extension.Thread |
-| Alis.Extension.Updater.Test | Alis.Extension.Updater |
-
-## Test Infrastructure
-
-| Component | Technology |
-|---|---|
-| Test Framework | xUnit |
+| Unit Testing | xUnit |
 | Mocking | Moq |
-| STA Tests | Xunit.StaFact |
+| WPF/Sync Context | Xunit.StaFact |
 | Code Coverage | coverlet |
-| Test Output | TRX format in `.test/<TFM>/` |
+| Test Results | `.test/<TargetFramework>/*.trx` |
 
-## Test Configuration
+## Test Distribution
 
-- `InternalsVisibleTo` attribute auto-added to all projects for test access
-- Test configuration in `.config/xunit.runner.json`
-- Coverage configuration in `.config/coverlet.runsettings`
+| Layer | Module | Test Files | Test Density |
+|---|---|---|---|
+| 6_Ideation | Data | 38 | High |
+| 6_Ideation | Fluent | 75 | Very High |
+| 6_Ideation | Logging | 78 | Very High |
+| 6_Ideation | Math | 45 | High |
+| 6_Ideation | Memory | 7 | Medium |
+| 6_Ideation | Time | 3 | Low |
+| 5_Declaration | Aspect | 1 | Minimal |
+| 4_Operation | Audio | 40 | High |
+| 4_Operation | Ecs | 190 | Very High |
+| 4_Operation | Graphic | 90 | Very High |
+| 4_Operation | Physic | 225 | Very High |
 
-## Testing Conventions
+## Test Patterns
 
-- Unit tests preferred over integration tests
-- Test projects auto-reference their source project by naming convention
-- TDD approach recommended for development
-- Test projects excluded from NuGet packaging
+### Naming Convention
+- `{Class}Test.cs` — Primary test class
+- `{Class}ExtensiveTest.cs` — Parameterized exhaustive tests
+- `{Class}CoverageTest.cs` — Branch/edge-case coverage
+- `{Class}RemainingCoverageTests.cs` — Final coverage push
+- `{Class}EdgeCaseTest.cs` — Edge case scenarios
+- `{Class}SafeTests.cs` — Tests safe for all environments
 
-## Missing Test Areas
+### Platform-Specific Testing
+Custom xUnit attributes for platform-dependent tests:
+- `WindowsOnlyAttribute`
+- `MacOsOnlyAttribute`
+- `LinuxOnlyAttribute`
+- `BrowserOnlyAttribute`
+- `UnixOnlyAttribute`
 
-- Sample projects lack dedicated tests
-- Benchmark project has no test project
-- Generator projects are not directly tested
+These ensure platform-specific code (P/Invoke, native interop) is only tested on the appropriate platform.
 
-## Related
+### Coverage Approach
+- Physics and ECS modules have the highest coverage (likely >95%)
+- Edge case and branch coverage tests indicate strong emphasis on reliability
+- Some modules (Time, Memory) have lower test counts relative to complexity
 
-- [[Tests Index]]
-- [[Testing Checkpoint]]
-- [[Repository Overview]]
+## Coverage Gaps
+
+| Area | Risk |
+|---|---|
+| Presentation layer apps (Engine, Hub, Installer) | Lower test density |
+| Extension projects | Minimal testing (some have no tests) |
+| Sample projects | Not tested |
+| Generator projects | Limited testing |
+| Platform-specific code (non-Browser) | Lower test coverage on non-macOS platforms |
+
+## Running Tests
+
+```bash
+# Quick test
+dotnet test alis_design.sln -c Release -f net8.0
+
+# Full test suite
+./docs/scripts/macos/run_tests.sh
+```
+
+## Related Documents
+
+- [[tests-index]]
+- [[security-overview]]
+- [[conventions-overview]]

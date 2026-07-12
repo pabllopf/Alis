@@ -8,9 +8,9 @@
     "type": "SECURITY_HOTSPOT",
     "message": "Validate data in this deserialization constructor.",
     "line": 75,
-    "status": "pending",
+    "status": "completed",
     "assignedWorker": null,
-    "attemptCount": 0,
+    "attemptCount": 1,
     "lastError": null
   }
 }

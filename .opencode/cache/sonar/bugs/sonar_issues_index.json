@@ -8,9 +8,9 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": 261,
-    "status": "in_progress",
-    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-1",
-    "attemptCount": 0,
+    "status": "completed",
+    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-2",
+    "attemptCount": 1,
     "lastError": null
   },
   "AZ7Wga6T8Znd_eTQxpai": {
@@ -22,9 +22,9 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "skipped",
-    "assignedWorker": null,
-    "attemptCount": 0,
+    "status": "completed",
+    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-2",
+    "attemptCount": 1,
     "lastError": null
   },
   "AZ7SNQ04GxvN3xmv4SmI": {
@@ -36,9 +36,9 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "skipped",
-    "assignedWorker": null,
-    "attemptCount": 0,
+    "status": "completed",
+    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-2",
+    "attemptCount": 1,
     "lastError": null
   },
   "AZ6mihJTkNcRXyPBxty3": {
@@ -50,9 +50,9 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "skipped",
-    "assignedWorker": null,
-    "attemptCount": 0,
+    "status": "completed",
+    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-2",
+    "attemptCount": 1,
     "lastError": null
   },
   "AZ7KU79QgfB4D_M8MD1M": {
@@ -64,7 +64,7 @@
     "type": "BUG",
     "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'.",
     "line": null,
-    "status": "skipped",
+    "status": "completed",
     "assignedWorker": null,
     "attemptCount": 0,
     "lastError": null

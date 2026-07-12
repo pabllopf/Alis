@@ -203,5 +203,10 @@
   "pabllopf-official_alis:1_Presentation/Extension/Network/src/Internal/WebSocketFrameCommon.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WeldJoint.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
-  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs"
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs"
 ]

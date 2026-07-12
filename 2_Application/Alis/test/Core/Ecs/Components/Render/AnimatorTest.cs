@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;
@@ -36,14 +37,8 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
-    /// <summary>
-    ///     Tests for the Animator component struct
-    /// </summary>
     public class AnimatorTest
     {
-        /// <summary>
-        ///     Tests that the constructor creates an Animator with default values
-        /// </summary>
         [Fact]
         public void Animator_DefaultConstructor_ShouldCreateWithDefaultValues()
         {
@@ -55,9 +50,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that Animator implements IAnimator interface
-        /// </summary>
         [Fact]
         public void Animator_ShouldImplementIAnimatorInterface()
         {
@@ -66,9 +58,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.IsAssignableFrom<IAnimator>(animator);
         }
 
-        /// <summary>
-        ///     Tests that Animator properties are gettable and settable
-        /// </summary>
         [Fact]
         public void Animator_Properties_ShouldBeGetAndSettable()
         {
@@ -85,9 +74,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(3, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that Animator methods are callable
-        /// </summary>
         [Fact]
         public void Animator_Methods_ShouldBeCallable()
         {
@@ -99,9 +85,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.GetCurrentFrame();
         }
 
-        /// <summary>
-        ///     Tests that Animator can be created without exceptions
-        /// </summary>
         [Fact]
         public void Animator_Constructor_ShouldNotThrow()
         {
@@ -110,9 +93,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotNull(animator);
         }
 
-        /// <summary>
-        ///     Tests that Animator properties can be modified
-        /// </summary>
         [Fact]
         public void Animator_Properties_ShouldBeModifiable()
         {
@@ -134,9 +114,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(2, animator.Animations.Count);
         }
 
-        /// <summary>
-        ///     Tests that Animator default state is valid
-        /// </summary>
         [Fact]
         public void Animator_DefaultState_ShouldBeValid()
         {
@@ -148,9 +125,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that Animator has expected public members
-        /// </summary>
         [Fact]
         public void Animator_ShouldHaveExpectedPublicMembers()
         {
@@ -166,9 +140,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotNull(animator.GetCurrentFrame);
         }
 
-        /// <summary>
-        ///     Tests that the list constructor sets animations without starting the clock
-        /// </summary>
         [Fact]
         public void Animator_ListConstructor_ShouldSetAnimations()
         {
@@ -185,9 +156,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that AddAnimation adds to the list
-        /// </summary>
         [Fact]
         public void Animator_AddAnimation_ShouldGrowList()
         {
@@ -202,9 +170,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(2, animator.Animations.Count);
         }
 
-        /// <summary>
-        ///     Tests that Play finds animation by name and sets CurrentAnimationIndex
-        /// </summary>
         [Fact]
         public void Animator_Play_ShouldFindByName()
         {
@@ -219,9 +184,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that Play with non-existent name does not change index
-        /// </summary>
         [Fact]
         public void Animator_Play_WithNonExistentName_ShouldNotChangeIndex()
         {
@@ -233,9 +195,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentAnimationIndex);
         }
 
-        /// <summary>
-        ///     Tests that NextFrame advances the frame index
-        /// </summary>
         [Fact]
         public void Animator_NextFrame_ShouldAdvanceFrameIndex()
         {
@@ -253,9 +212,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(2, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that NextFrame wraps around at the end of the frame list
-        /// </summary>
         [Fact]
         public void Animator_NextFrame_ShouldWrapAround()
         {
@@ -271,9 +227,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that NextFrame does not crash when the current animation has no frames
-        /// </summary>
         [Fact]
         public void Animator_NextFrame_WithEmptyFrames_ShouldNotCrash()
         {
@@ -285,9 +238,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that NextFrame does not crash when there are no animations
-        /// </summary>
         [Fact]
         public void Animator_NextFrame_WithNoAnimations_ShouldNotCrash()
         {
@@ -298,9 +248,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that GetCurrentFrame returns the current frame
-        /// </summary>
         [Fact]
         public void Animator_GetCurrentFrame_ShouldReturnCurrentFrame()
         {
@@ -319,9 +266,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal("frame2.png", animator.GetCurrentFrame().NameFile);
         }
 
-        /// <summary>
-        ///     Tests that GetCurrentFrame returns default when animation has no frames
-        /// </summary>
         [Fact]
         public void Animator_GetCurrentFrame_WithEmptyFrames_ShouldReturnDefault()
         {
@@ -333,9 +277,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Null(frame.NameFile);
         }
 
-        /// <summary>
-        ///     Tests that CurrentAnimation returns the active animation
-        /// </summary>
         [Fact]
         public void Animator_CurrentAnimation_ShouldReturnActiveAnimation()
         {
@@ -359,9 +300,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(2f, current.Speed);
         }
 
-        /// <summary>
-        ///     Tests that CurrentAnimation returns default when the animation list is empty
-        /// </summary>
         [Fact]
         public void Animator_CurrentAnimation_WithEmptyList_ShouldReturnDefault()
         {
@@ -375,9 +313,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Null(current.Frames);
         }
 
-        /// <summary>
-        ///     Tests that Context property can be set and read
-        /// </summary>
         [Fact]
         public void Animator_Context_ShouldBeSettable()
         {
@@ -389,9 +324,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Same(context, animator.Context);
         }
 
-        /// <summary>
-        ///     Tests that OnStart does not throw (does not depend on IGameObject)
-        /// </summary>
         [Fact]
         public void Animator_OnStart_ShouldNotThrow()
         {
@@ -400,9 +332,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.OnStart(null!);
         }
 
-        /// <summary>
-        ///     Tests that OnExit does not throw and resets elapsed time
-        /// </summary>
         [Fact]
         public void Animator_OnExit_ShouldNotThrow()
         {
@@ -411,9 +340,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.OnExit(null!);
         }
 
-        /// <summary>
-        ///     Tests that Animator implements IOnStart, IOnUpdate, and IOnExit lifecycle interfaces
-        /// </summary>
         [Fact]
         public void Animator_ShouldImplementLifecycleInterfaces()
         {
@@ -423,9 +349,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.IsAssignableFrom<IOnUpdate>(animator);
         }
 
-        /// <summary>
-        ///     Tests that OnUpdate advances frames when elapsed time exceeds frame duration
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_ShouldAdvanceFrame_WhenElapsedTimeExceedsFrameDuration()
         {
@@ -446,15 +369,12 @@ namespace Alis.Test.Core.Ecs.Components.Render
             };
             animator.Play("TestAnim");
             animator.OnStart(null!);
-            System.Threading.Thread.Sleep(15);
+            Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.True(animator.CurrentFrameIndex > 0, "OnUpdate should have advanced the frame");
         }
 
-        /// <summary>
-        ///     Tests that OnUpdate with zero speed does not advance frames
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_WithZeroSpeed_ShouldNotAdvanceFrame()
         {
@@ -474,15 +394,12 @@ namespace Alis.Test.Core.Ecs.Components.Render
             };
             animator.Play("TestAnim");
             animator.OnStart(null!);
-            System.Threading.Thread.Sleep(15);
+            Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that OnUpdate wraps around to first frame after last frame
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_ShouldWrapAround_AfterLastFrame()
         {
@@ -502,19 +419,16 @@ namespace Alis.Test.Core.Ecs.Components.Render
             };
             animator.Play("TestAnim");
             animator.OnStart(null!);
-            System.Threading.Thread.Sleep(15);
+            Thread.Sleep(1);
             animator.OnUpdate(null!);
             int frameAfterFirst = animator.CurrentFrameIndex;
 
-            System.Threading.Thread.Sleep(15);
+            Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.NotEqual(frameAfterFirst, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that OnUpdate returns early when clock is null (default struct)
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_WithDefaultStruct_ShouldNotThrow()
         {
@@ -523,9 +437,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.OnUpdate(null!);
         }
 
-        /// <summary>
-        ///     Tests that DrawAnimation does not call LoadTexture when sprite.NameFile matches current frame
-        /// </summary>
         [Fact]
         public void Animator_DrawAnimation_WithMatchingNameFile_ShouldNotThrow()
         {
@@ -550,9 +461,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.DrawAnimation(ref sprite);
         }
 
-        /// <summary>
-        ///     Tests that DrawAnimation calls LoadTexture when sprite.NameFile differs from current frame
-        /// </summary>
         [Fact]
         public void Animator_DrawAnimation_WithDifferentNameFile_ShouldThrow()
         {
@@ -577,9 +485,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
-        /// <summary>
-        ///     Tests that OnUpdate does not advance frame when called immediately after OnStart (elapsed time ~0)
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_ImmediatelyAfterOnStart_ShouldNotAdvanceFrame()
         {
@@ -605,9 +510,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        ///     Tests that CurrentAnimation throws when Animator is default-initialized
-        /// </summary>
         [Fact]
         public void Animator_CurrentAnimation_WithDefaultStruct_ShouldThrowNullReference()
         {
@@ -616,9 +518,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => _ = animator.CurrentAnimation);
         }
 
-        /// <summary>
-        ///     Tests that DrawAnimation with default frame (null NameFile) and non-default sprite triggers LoadTexture
-        /// </summary>
         [Fact]
         public void Animator_DrawAnimation_WithNullFrameTexture_ShouldThrow()
         {
@@ -643,9 +542,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
-        /// <summary>
-        /// Tests that animator get current frame on default struct throws null reference
-        /// </summary>
         [Fact]
         public void Animator_GetCurrentFrame_OnDefaultStruct_ThrowsNullReference()
         {
@@ -654,9 +550,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => _ = animator.GetCurrentFrame());
         }
 
-        /// <summary>
-        /// Tests that animator play on default struct throws null reference
-        /// </summary>
         [Fact]
         public void Animator_Play_OnDefaultStruct_ThrowsNullReference()
         {
@@ -665,9 +558,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => animator.Play("test"));
         }
 
-        /// <summary>
-        /// Tests that animator next frame on default struct throws null reference
-        /// </summary>
         [Fact]
         public void Animator_NextFrame_OnDefaultStruct_ThrowsNullReference()
         {
@@ -676,9 +566,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<NullReferenceException>(() => animator.NextFrame());
         }
 
-        /// <summary>
-        /// Tests that animator on start after on exit clock restarts
-        /// </summary>
         [Fact]
         public void Animator_OnStart_AfterOnExit_ClockRestarts()
         {
@@ -705,9 +592,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
-        /// <summary>
-        /// Tests that animator on update with high speed multiple updates
-        /// </summary>
         [Fact]
         public void Animator_OnUpdate_WithHighSpeed_MultipleUpdates()
         {
@@ -728,15 +612,12 @@ namespace Alis.Test.Core.Ecs.Components.Render
             };
             animator.Play("TestAnim");
             animator.OnStart(null!);
-            System.Threading.Thread.Sleep(30);
+            Thread.Sleep(1);
             animator.OnUpdate(null!);
 
             Assert.InRange(animator.CurrentFrameIndex, 1, 2);
         }
 
-        /// <summary>
-        /// Tests that animator add animation with multiple animations orders correctly
-        /// </summary>
         [Fact]
         public void Animator_AddAnimation_WithMultipleAnimations_OrdersCorrectly()
         {

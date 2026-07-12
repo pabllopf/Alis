@@ -1,8 +1,1 @@
-{
-  "AZ7fFnnsqjt04IrTJ5SH": {
-    "worker": "worker-MacBook-Pro-de.Pablo.local-1",
-    "lockedAt": 1783867268.006958,
-    "issueType": "BUG",
-    "rule": "csharpsquid:S2583"
-  }
-}
+{}

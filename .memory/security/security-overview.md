@@ -3,52 +3,67 @@ title: Security Overview
 tags:
   - security
   - overview
-  - analysis
+  - audit
 status: Draft
 license: GPLv3
 ---
 
 # Security Overview
 
-## Security-Sensitive Areas
+## Analysis Scope
 
-| Area | Project | Risk Level | Notes |
-|---|---|---|---|
-| Payment Processing | Alis.Extension.Payment.Stripe | High | Handles payment data through Stripe API |
-| Network Communication | Alis.Extension.Network | Medium | WebSocket-based client-server communication |
-| Cloud Storage | Alis.Extension.Cloud.GoogleDrive | Medium | OAuth-based Google Drive access |
-| Cloud Storage | Alis.Extension.Cloud.DropBox | Medium | OAuth-based Dropbox access |
-| Secure Types | Alis.Extension.Security | Medium | SecureByte, SecureString, SecureRandom implementations |
-| Advertising | Alis.Extension.Ads.GoogleAds | Low | Google Ads integration |
+Security analysis of the Alis game framework repository.
 
-## Hardcoded Secrets Detection
+## Observations
 
-No hardcoded secrets detected in source code. API keys and tokens should be stored in environment variables or configuration files.
+### External NuGet Dependencies (Limited)
+Only 4 specific extension projects have external dependencies:
+- `Alis.Extension.Payment.Stripe` → Stripe.net
+- `Alis.Extension.Ads.GoogleAds` → Google.Ads.Common
+- `Alis.Extension.Cloud.GoogleDrive` → Google.Apis.Drive.v3
+- `Alis.Extension.Cloud.DropBox` → Dropbox.Api
 
-## Authentication Boundaries
+All core projects have zero external dependencies (except SourceLink).
 
-| Boundary | Mechanism | Notes |
+### Build Security
+- `TreatWarningsAsErrors` = true
+- `AnalysisMode` = AllEnabledByDefault
+- `AnalysisLevel` = latest
+- `Nullable` = disabled (project-wide)
+- `AllowUnsafeBlocks` = false
+- SonarCloud analysis active
+
+### Code Quality
+- Warnings as errors enforced
+- .NET analyzers enabled at highest level
+- SonarCloud static analysis active (bugs + security hotspots tracked)
+- Extensive test coverage for critical modules
+
+### Platform Native Interop
+- P/Invoke usage in:
+  - Windows: User32, Gdi32, Opengl32, Kernel32
+  - macOS: Objective-C interop
+  - Linux: X11 interop
+- Browser: WebAssembly/JS interop via Emscripten
+- Native methods are wrapped following the `S4200` suppression pattern
+
+### SonarCloud Issues Tracked
+
+| Category | Count | Status |
 |---|---|---|
-| Cloud Services | OAuth 2.0 | Google Drive, Dropbox |
-| Payment | Stripe API Keys | Server-side only |
-| Ads | Google Ads API | Service account |
+| Bugs | 5 | 0 pending (all resolved) |
+| Security Hotspots | 1 | Resolved |
+| Code Smells | - | Not tracked in this session |
 
-## Input Validation
+## Risk Areas
 
-- Network protocols implement message framing and validation
-- File dialog extensions validate file paths
-- Translator/pluralization handles boundary cases
+1. **Native interop surface** — platform-specific P/Invoke calls could be exploited if input validation is insufficient
+2. **Deserialization** — JSON deserialization in `Alis.Core.Aspect.Data` has been hardened with validation in deserialization constructors
+3. **Asset loading** — ZIP-based asset packing in `Alis.Core.Aspect.Memory` could be an attack vector for malformed archives
+4. **Network extension** — requires code review for common network security issues
 
-## Recommendations
+## Related Documents
 
-1. Ensure Stripe API keys are never committed to source control
-2. Review WebSocket implementation for message injection vulnerabilities
-3. Validate all cloud storage file paths before access
-4. Ensure proper disposal of `SecureString` instances
-5. Review network packet handling for buffer overflow risks
-
-## Related
-
-- [[Security Index]]
-- [[Analysis]]
-- [[Security Diagrams]]
+- [[testing-overview]]
+- [[Alis.Core.Aspect.Data]]
+- [[conventions-overview]]
