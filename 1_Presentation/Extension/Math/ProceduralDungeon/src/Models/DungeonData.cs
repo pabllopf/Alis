@@ -140,6 +140,17 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
         /// <seealso cref="JsonNativeAot" />
         public void Validate()
         {
+            ValidateBoard();
+            ValidateRooms();
+            ValidateCorridors();
+        }
+
+        /// <summary>
+        ///     Validates that the board is not null and has positive dimensions.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when the board is null or has non-positive dimensions.</exception>
+        private void ValidateBoard()
+        {
             if (_board == null)
             {
                 throw new InvalidOperationException("_board cannot be null.");
@@ -149,7 +160,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             {
                 throw new InvalidOperationException("Board dimensions must be greater than zero.");
             }
+        }
 
+        /// <summary>
+        ///     Validates that the rooms list is not null and each room has valid position and dimensions.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when rooms list is null or a room has invalid data.</exception>
+        private void ValidateRooms()
+        {
             if (_rooms == null)
             {
                 throw new InvalidOperationException("_rooms cannot be null.");
@@ -168,7 +186,14 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
                     throw new InvalidOperationException($"Room at index {i} has invalid dimensions ({room.Width},{room.Height}).");
                 }
             }
+        }
 
+        /// <summary>
+        ///     Validates that the corridors list is not null and each corridor has valid position and dimensions.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">Thrown when corridors list is null or a corridor has invalid data.</exception>
+        private void ValidateCorridors()
+        {
             if (_corridors == null)
             {
                 throw new InvalidOperationException("_corridors cannot be null.");
