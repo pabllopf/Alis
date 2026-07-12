@@ -8,8 +8,8 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": 261,
-    "status": "pending",
-    "assignedWorker": null,
+    "status": "in_progress",
+    "assignedWorker": "worker-MacBook-Pro-de.Pablo.local-1",
     "attemptCount": 0,
     "lastError": null
   },
@@ -22,7 +22,7 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "pending",
+    "status": "skipped",
     "assignedWorker": null,
     "attemptCount": 0,
     "lastError": null
@@ -36,7 +36,7 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "pending",
+    "status": "skipped",
     "assignedWorker": null,
     "attemptCount": 0,
     "lastError": null
@@ -50,7 +50,7 @@
     "type": "BUG",
     "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
     "line": null,
-    "status": "pending",
+    "status": "skipped",
     "assignedWorker": null,
     "attemptCount": 0,
     "lastError": null
@@ -64,7 +64,7 @@
     "type": "BUG",
     "message": "Use an immutable collection or reduce the accessibility of the non-private readonly field 'Items'.",
     "line": null,
-    "status": "pending",
+    "status": "skipped",
     "assignedWorker": null,
     "attemptCount": 0,
     "lastError": null

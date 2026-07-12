@@ -1,31 +1,106 @@
-# Coverage Orchestrator Session Status
 
-## Current State
-- **Total SonarCloud files**: 1,471
-- **Files in processed.json**: 203
-- **Files needing tests**: 113 (64 with significant business logic)
-- **Overall project coverage**: 63.3%
-- **Uncovered lines remaining**: ~21,607
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 39 files) Outputting AI-ready tasks:
 
-## What Was Done This Session
 
-1. **Cache refreshed** (2026-07-11T10:34:48)
-2. **Cleared processed.json** of 263 files that still had <100% coverage
-3. **Categorized 263 uncovered files**:
-   - 141 P/Invoke native wrappers → BLOCKED_BY_PRODUCTION_CODE
-   - 49 tiny artifacts (enums, constants, small structs) → added to processed.json
-   - 64 files with real business logic → need tests
-4. **Wrote tests for SimplePriorityQueue.cs**: coverage 84.4% → ~95.2%
-5. **Committed progress**: `002216a23` test: SimplePriorityQueue.cs
+    ## COVERAGE TASK
 
-## Next Steps
+    ### File
+    pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
 
-Process the 64 files with real business logic that still need coverage improvement.
-Top priorities:
-- WorldPhysic.cs (61.8%, 350 uncovered lines)
-- RealExplosion.cs (0%, 252 unc)
-- DTSweep.cs (60.2%, 255 unc)
-- SceneManager.cs (14.7%, 215 unc)
-- GameObject.cs (75.0%, 207 unc)
-- Collision.cs (70.4%, 201 unc)
-- And 58 more files
+    ### Language
+    cs
+
+    ### Coverage
+    0.0% (Line: 0.0%, Branch: 0.0%)
+
+    ### Uncovered Lines
+    126
+
+    ### Uncovered Branches
+    95
+
+    ### Method
+    GLShaderProgram
+
+    ### Complexity / LOC
+    90 / 188 lines
+
+    ### Source Code
+    ```csharp
+    // --------------------------------------------------------------------------
+// 
+//                               ââââ âââââ âââ ââââââ
+//                              âââââ âââââ âââ ââââââ
+//                              âââââ âââââ âââ ââââââ
+// 
+//  --------------------------------------------------------------------------
+//  File:GLShaderProgram.cs
+// 
+//  Author:Pablo Perdomo FalcÃ³n
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Type = System.Type;
+
+namespace Alis.Core.Graphic.OpenGL.Constructs
+{
+    /// <summary>
+    ///     The gl shader program class
+    /// </summary>
+    /// <seealso cref="IDisposable" />
+    public sealed class GlShaderProgram : IDisposable
+    {
+        /// <summary>
+        ///     Specifies whether this program will dispose of the child
+        ///     vertex/fragment programs when the IDisposable method is called.
+        /// </summary>
+        public readonly bool DisposeChildren;
+
+        /// <summary>
+        ///     Specifies the fragment shader used in this program.
+        /// </summary>
+        public readonly GlShader FragmentShader;
+
+        /// <summary>
+        ///     Specifies the vertex shader used in this program.
+        /// </summary>
+        public readonly GlShader VertexShader;
+    ```
+    
+    ### Test File Hint
+    pabllopf-official_alis:4_Operation/Graphic/test/OpenGL/Constructs/GLShaderProgramTests.cs
+
+    Priority
+    CRITICAL (NEW)
+
+    AI Execution Instructions
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
+    Follow Arrange/Act/Assert pattern
+    Use real objects first, Moq ONLY if interface/external dependency
+    Target: net8.0 (compatible with netstandard2.0 production)
+    Commit format: test: coverage GLShaderProgram.cs
+    Update ./.memory/coverage/state/coverage-index.md after completion
+            
+==================================================

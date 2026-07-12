@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
@@ -49,10 +51,7 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp = GetComp<T>(archetypeTable, comps, eloc.Index);
+            comp = GetComp<T>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -67,11 +66,8 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -88,12 +84,9 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -113,13 +106,10 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
-            comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp4 = GetComp<T4>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -141,14 +131,11 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
-            comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
-            comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp4 = GetComp<T4>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp5 = GetComp<T5>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -172,15 +159,12 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
-            comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
-            comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
-            comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp4 = GetComp<T4>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp5 = GetComp<T5>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp6 = GetComp<T6>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -206,16 +190,13 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
-            comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
-            comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
-            comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
-            comp7 = GetComp<T7>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp4 = GetComp<T4>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp5 = GetComp<T5>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp6 = GetComp<T6>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp7 = GetComp<T7>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -244,17 +225,14 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            ComponentStorageBase[] comps = eloc.Archetype.Components;
-            byte[] archetypeTable = eloc.Archetype.ComponentTagTable;
-
-            comp1 = GetComp<T1>(archetypeTable, comps, eloc.Index);
-            comp2 = GetComp<T2>(archetypeTable, comps, eloc.Index);
-            comp3 = GetComp<T3>(archetypeTable, comps, eloc.Index);
-            comp4 = GetComp<T4>(archetypeTable, comps, eloc.Index);
-            comp5 = GetComp<T5>(archetypeTable, comps, eloc.Index);
-            comp6 = GetComp<T6>(archetypeTable, comps, eloc.Index);
-            comp7 = GetComp<T7>(archetypeTable, comps, eloc.Index);
-            comp8 = GetComp<T8>(archetypeTable, comps, eloc.Index);
+            comp1 = GetComp<T1>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp2 = GetComp<T2>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp3 = GetComp<T3>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp4 = GetComp<T4>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp5 = GetComp<T5>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp6 = GetComp<T6>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp7 = GetComp<T7>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp8 = GetComp<T8>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
         }
 
         /// <summary>
@@ -270,6 +248,16 @@ namespace Alis.Core.Ecs
         {
             int compIndex = Unsafe.Add(ref archetypeTable[0], Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
             return new Ref<TC>(Unsafe.As<ComponentStorage<TC>>(Unsafe.Add(ref comps[0], compIndex)), index);
+        }
+
+        /// <summary>
+        ///     Gets a component reference using ReadOnlySpan for zero-allocation access
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static Ref<TC> GetComp<TC>(ReadOnlySpan<byte> archetypeTable, ReadOnlySpan<ComponentStorageBase> comps, int index)
+        {
+            int compIndex = Unsafe.Add(ref MemoryMarshal.GetReference(archetypeTable), Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+            return new Ref<TC>(Unsafe.As<ComponentStorage<TC>>(Unsafe.Add(ref MemoryMarshal.GetReference(comps), compIndex)), index);
         }
     }
 }

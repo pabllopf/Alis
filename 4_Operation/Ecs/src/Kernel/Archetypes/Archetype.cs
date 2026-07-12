@@ -85,6 +85,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// </summary>
         internal readonly ComponentStorageBase[] Components = components;
 
+        /// <summary>
+        ///     Gets a read-only span over the components array
+        /// </summary>
+        internal ReadOnlySpan<ComponentStorageBase> ComponentsSpan => Components;
+
 
         //we include version
         //this is so we dont need to lookup
@@ -115,6 +120,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         ///     The raw index
         /// </summary>
         internal byte[] ComponentTagTable = GlobalWorldTables.ComponentTagLocationTable[archetypeId.RawIndex];
+
+        /// <summary>
+        ///     Gets a read-only span over the component tag table
+        /// </summary>
+        internal ReadOnlySpan<byte> ComponentTagTableSpan => ComponentTagTable;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Archetype" /> class
