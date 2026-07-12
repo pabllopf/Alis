@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             MethodInfo method = typeof(RealExplosion).GetMethod("ShouldSkipAnglePair",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            float[] vals = { 3.0f, 1.0f, 2.0f, 3.0f };
+            float[] vals = { 1.0f, 2.0f, 3.0f, 5.0f };
             bool result = (bool)method.Invoke(null, new object[] { vals, 3, 4 });
 
             Assert.False(result);
