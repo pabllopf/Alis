@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("cimgui"))
             {
-                Skip = "Native library (cimgui) not detected. Install SFML to run this test.";  
+                Skip = "Native library (cimgui) not detected. Install cimgui to run this test.";  
             }
         }
 
