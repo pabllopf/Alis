@@ -191,3 +191,17 @@ Total blocked: 129
 - **Tests Added**: 10
 - **Commit**: `29d2e63e4`
 - **Status**: SUCCESS
+
+### ECS Kernel Batch (ArchetypeEdgeKey, ComponentEvent, AddComponent)
+- **Timestamp**: 2026-07-12 21:15:00
+- **Files**: `4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs`, `4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs`, `4_Operation/Ecs/src/Kernel/AddComponent.cs`
+- **Tests Added**: 16
+- **Commit**: `5039bd3c6`
+- **Status**: SUCCESS
+
+### FFmpeg Audio Models (AudioFormat, AudioMetadata)
+- **Timestamp**: 2026-07-12 21:15:00
+- **Files**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioFormat.cs`, `1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioMetadata.cs`
+- **Tests Added**: 34
+- **Commit**: `1f1b2920e`
+- **Status**: SUCCESS

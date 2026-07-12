@@ -277,5 +277,10 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/Chunk.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentAlreadyExistsException.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Exceptions/ComponentNotFoundException.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentID.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentID.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/AddComponent.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioFormat.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioMetadata.cs"
 ]
