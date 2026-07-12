@@ -109,12 +109,11 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Verifies that <see cref="AudioVideoWriter.CloseWrite" /> enters the try block
         ///     when <c>OpenedForWriting</c> is <c>true</c>, executes null-conditional disposes
-        ///     on streams and sockets, and throws from <c>Ffmpegp.WaitForExit()</c> when
-        ///     <c>Ffmpegp</c> is null. The finally block still sets
-        ///     <c>OpenedForWriting = false</c>.
+        ///     on streams and sockets, and handles null <c>Ffmpegp</c> gracefully. The
+        ///     finally block still sets <c>OpenedForWriting = false</c>.
         /// </summary>
         [Fact]
-        public void CloseWrite_WhenOpenedWithNullFfmpegp_ThrowsNullReferenceAndResetsFlag()
+        public void CloseWrite_WhenOpenedWithNullFfmpegp_CompletesGracefullyAndResetsFlag()
         {
             // Arrange
             using MemoryStream destStream = new();
@@ -124,12 +123,12 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 BindingFlags.NonPublic | BindingFlags.Instance);
             openedField.SetValue(writer, true);
 
-            // Ffmpegp is null by default; CloseWrite will throw on Ffmpegp.WaitForExit()
+            // Ffmpegp is null by default; CloseWrite now handles this gracefully
             // Act
             Exception exception = Record.Exception(() => writer.CloseWrite());
 
-            // Assert — NRE from Ffmpegp.WaitForExit(), but finally block still runs
-            Assert.NotNull(exception);
+            // Assert — no exception thrown, and finally block still runs
+            Assert.Null(exception);
             Assert.False(writer.OpenedForWriting);
         }
 

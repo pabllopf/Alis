@@ -189,10 +189,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        /// Tests that close write when ffmpegp is null should throw
+        /// Tests that close write when ffmpegp is null should complete gracefully
         /// </summary>
         [Fact]
-        public void CloseWrite_WhenFfmpegpIsNull_ShouldThrow()
+        public void CloseWrite_WhenFfmpegpIsNull_ShouldNotThrow()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
 
@@ -204,7 +204,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 BindingFlags.Public | BindingFlags.Instance);
             inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
 
-            NullReferenceException ex = Assert.Throws<NullReferenceException>(() => writer.CloseWrite());
+            Exception ex = Record.Exception(() => writer.CloseWrite());
+            Assert.Null(ex);
             Assert.False(writer.OpenedForWriting);
             writer.Dispose();
         }

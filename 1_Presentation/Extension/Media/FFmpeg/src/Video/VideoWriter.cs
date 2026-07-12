@@ -271,8 +271,6 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 {
                     OutputDataStream?.Dispose();
                 }
-
-                Ffmpegp?.Dispose();
             }
             finally
             {

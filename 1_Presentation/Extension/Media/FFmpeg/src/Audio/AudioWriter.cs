@@ -270,8 +270,6 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 {
                     OutputDataStream?.Dispose();
                 }
-
-                Ffmpegp?.Dispose();
             }
             finally
             {

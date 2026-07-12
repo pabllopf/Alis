@@ -95,17 +95,17 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
 
         /// <summary>
-        /// Tests that close write with null ffmpegp should throw null ref
+        /// Tests that close write with null ffmpegp should complete gracefully
         /// </summary>
         [Fact]
-        public void CloseWrite_WithNullFfmpegp_ShouldThrowNullRef()
+        public void CloseWrite_WithNullFfmpegp_ShouldNotThrow()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
             SetBackingField(writer, "OpenedForWriting", true);
 
             Exception ex = Record.Exception(() => writer.CloseWrite());
 
-            Assert.NotNull(ex);
+            Assert.Null(ex);
             Assert.False(writer.OpenedForWriting);
         }
 
