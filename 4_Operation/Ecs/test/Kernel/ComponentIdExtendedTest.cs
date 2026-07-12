@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that ComponentId can be instantiated with a raw index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_CanBeCreated()
         {
             ComponentId componentId = new ComponentId(0);
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the RawIndex field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_RawIndexIsPreserved()
         {
             ComponentId componentId = new ComponentId(42);
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with zero index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_WithZeroIndex()
         {
             ComponentId componentId = new ComponentId(0);
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with maximum ushort index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_WithMaxIndex()
         {
             ComponentId componentId = new ComponentId(ushort.MaxValue);
@@ -104,7 +104,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests equality comparison with same index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_EqualsWithSameIndex()
         {
             ComponentId componentId1 = new ComponentId(5);
@@ -120,7 +120,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests inequality comparison with different indices.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_NotEqualsWithDifferentIndex()
         {
             ComponentId componentId1 = new ComponentId(1);
@@ -136,7 +136,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that hash codes are equal for same indices.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_HashCodeEqualsWithSameIndex()
         {
             ComponentId componentId1 = new ComponentId(10);
@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the == operator for ComponentId.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_EqualityOperator()
         {
             ComponentId componentId1 = new ComponentId(7);
@@ -168,7 +168,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the != operator for ComponentId.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_InequalityOperator()
         {
             ComponentId componentId1 = new ComponentId(7);
@@ -185,7 +185,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the Equals(object) method.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ComponentId_EqualsObjectMethod()
         {
             ComponentId componentId1 = new ComponentId(5);
@@ -196,6 +196,20 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.False(componentId1.Equals((object) componentId3));
             Assert.False(componentId1.Equals(null));
             Assert.False(componentId1.Equals("string"));
+        }
+
+        /// <summary>
+        ///     Tests that the explicit ITypeId.Value returns RawIndex.
+        /// </summary>
+        [Fact]
+        public void ComponentId_ExplicitITypeId_ReturnsRawIndex()
+        {
+            ComponentId componentId = new ComponentId(99);
+            ITypeId typedId = componentId;
+
+            ushort value = typedId.Value;
+
+            Assert.Equal((ushort)99, value);
         }
     }
 }
