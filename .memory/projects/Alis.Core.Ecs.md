@@ -1,78 +1,113 @@
 ---
 title: Alis.Core.Ecs
 tags:
-  - project
+  - operation
   - ecs
   - entity
   - component
   - system
-  - layer-4
+  - game-object
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Ecs
 
-## Overview
+**Layer:** 4_Operation
+**Path:** `4_Operation/Ecs/src/Alis.Core.Ecs.csproj`
 
-Entity-Component-System (ECS) architecture implementation (Layer 4 - Operation). Core game object model with entities, components, systems, and queries.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 4 - Operation |
-| **Project Path** | `4_Operation/Ecs/src/` |
-| **Test Project** | `Alis.Core.Ecs.Test` |
-| **Generator** | `Alis.Core.Ecs.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Ecs.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Aspect]] (via Layer 3/5 chain)
-- **Depends On**: [[Alis.Core.Aspect.Memory]], [[Alis.Core.Aspect.Time]]
-- **Used By**: [[Alis.App.Engine]]
+High-performance Entity Component System (ECS) framework — the core gameplay programming model for the Alis engine.
 
 ## Architecture
 
-- `src/Collections/` - Specialized collections for ECS (entity queries, archetypes)
-- `src/Exceptions/` - ECS-specific exceptions
-- `src/Kernel/` - Core ECS kernel (GameObject, Scene, EntityData)
-- `src/Marshalling/` - Data marshalling utilities
-- `src/Redifinition/` - Type redefinition
-- `src/Systems/` - System base classes and implementations
-- `src/Updating/` - Update loop management
+### Core Types
+- `GameObject` — Primary game entity
+- `Scene` — Container of game objects
+- `Component` — Attachable behavior
+- `EntityData` / `EntityHighLow` — Entity identity system
 
-## Source Structure
+### Kernel
+- `ComponentRegistry` — Component type registration
+- `ComponentHandle` — Type-safe component access
+- `Archetype` / `ArchetypeData` — Component storage archetypes
+- `CommandBuffer` — Deferred structural changes
+- `Ref<T>` — Component reference
 
-```
-src/
-  Collections/
-  Exceptions/
-  Kernel/
-  Marshalling/
-  Redifinition/
-  Systems/
-  Updating/
-```
+### Systems
+- `Query` / `QueryEnumerator` — Entity querying
+- `Rule` / `RuleTypes` — Query rules and filters
+- `With<T>` / `Not<T>` / `IncludeDisabled` — Query modifiers
+- `GameObjectQueryEnumerator` — Optimized enumeration
 
-## Key Types
+### Updating
+- `ComponentStorage` — Per-archetype component storage
+- `UpdateRunnerFactory` / `GameObjectUpdate` — Update pipeline
+- `SceneUpdateFilter` — Update filtering
+- `UpdateOrderAttribute` — Update ordering
 
-- `GameObject` - Core entity type
-- `Scene` - Scene management
-- `EntityData` - Entity data storage
-- `QueryEnumerable` - Entity query system
-- `NeighborCache` - Spatial neighbor caching
+### Collections
+- `FastestArrayPool` — Allocation pool
+- `FastestTable` — High-performance hash table
+- `FastestStack` — Stack data structure
+- `FrugalStack` — Memory-efficient stack
+- `IDTable` — Identity mapping
+- `Chunk` — Archetype chunk storage
+- `SparseSet` / `ShortSparseSet` — Sparse index sets
+
+### Events
+- `Event` / `GenericEvent` / `ComponentEvent` — ECS event system
+- `GameObjectOnlyEvent` — Entity-scoped events
+
+### Marshalling
+- `GameObjectMarshal` / `SceneMarshal` — Interop marshalling
+
+## Source Generator
+
+**Path:** `4_Operation/Ecs/generator/`
+
+Generates ECS-related code for component registration and query optimization.
+
+## Dependencies
+
+- Alis.Core.Aspect (5_Declaration)
 
 ## Testing
 
-- Test project: `Alis.Core.Ecs.Test`
-- Located at `4_Operation/Ecs/test/`
+**Path:** `4_Operation/Ecs/test/`
 
-## Related
+~190 test files — largest test suite in the repository. Covers:
+- All component lifecycle operations
+- Query and filtering
+- Scene management
+- Edge cases and stress tests
+- All collection types
+- Archetype management
+- Event system
+- Marshalling
+- System/update pipeline
 
-- [[ECS Architecture]]
-- [[Alis.Core.Aspect.Memory]]
-- [[Alis.Core.Aspect.Time]]
-- [[Alis.App.Engine]]
-- [[Projects Index]]
+## Performance Design
+
+- Archetype-based component storage (cache-friendly)
+- Custom allocation-efficient collections
+- No LINQ in hot paths
+- SIMD-friendly data layouts
+- Query optimization through archetype graph
+
+## Key Files
+
+| Component | Description |
+|---|---|
+| `WorldArchetypeTableItem` | Archetype table entry |
+| `NeighborCache` | Archetype neighbor lookup |
+| `ArchetypeNeighborCache` | Graph edge traversal |
+| `IArchetypeGraphEdge` | Edge interface |
+
+## Related Documents
+
+- [[Alis.Core.Aspect]]
+- [[Alis.Core.Physic]]
+- [[Alis.Core.Graphic]]
+- [[testing-overview]]

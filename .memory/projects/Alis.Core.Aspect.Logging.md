@@ -1,61 +1,76 @@
 ---
 title: Alis.Core.Aspect.Logging
 tags:
-  - project
+  - ideation
   - logging
   - diagnostics
-  - layer-6
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Aspect.Logging
 
-## Overview
+**Layer:** 6_Ideation
+**Path:** `6_Ideation/Logging/src/Alis.Core.Aspect.Logging.csproj`
 
-Logging infrastructure library (Layer 6 - Ideation). Provides configurable logging with filters, formatters, and multiple output targets.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 6 - Ideation |
-| **Project Path** | `6_Ideation/Logging/src/` |
-| **Test Project** | `Alis.Core.Aspect.Logging.Test` |
-| **Generator** | `Alis.Core.Aspect.Logging.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Aspect.Logging.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
-- **Used By**: All upper layers
+Comprehensive logging framework with multiple output targets, formatters, and filtering capabilities.
 
 ## Architecture
 
-- `src/Abstractions/` - Logging abstractions and interfaces
-- `src/Core/` - Core logging engine
-- `src/Filters/` - Log filtering mechanisms
-- `src/Formatters/` - Log message formatting
-- `src/Outputs/` - Log output targets (console, file, etc.)
+### Core
+- `ILogger` — Main logging interface
+- `Logger` / `CoreLogger` — Logger implementations
+- `LoggerFactory` — Logger creation and configuration
+- `ILogEntry` / `LogEntry` — Log entry data model
+- `LogLevel` — Severity enumeration
+- `LoggerScope` — Scoped logging context
 
-## Source Structure
+### Outputs
+- `ConsoleLogOutput` — Console output
+- `FileLogOutput` — File output
+- `MemoryLogOutput` — In-memory buffer
+- `AsyncLogOutput` — Async-wrapped output
+- `DebugLogOutput` — Debug output
 
-```
-src/
-  Abstractions/
-  Core/
-  Filters/
-  Formatters/
-  Outputs/
-```
+### Formatters
+- `SimpleLogFormatter` — Plain text
+- `JsonLogFormatter` — Structured JSON
+- `CompactLogFormatter` — Minimal format
+
+### Filters
+- `LogLevelFilter` — Level-based filtering
+- `LoggerNameFilter` — Name-based filtering
+- `CompositeLogFilter` — Combined filters
+- `ConditionalLogFilter` — Predicate-based
+- `SamplingLogFilter` — Sampling/rate limiting
+
+## Dependencies
+
+None (leaf layer)
 
 ## Testing
 
-- Test project: `Alis.Core.Aspect.Logging.Test`
-- Located at `6_Ideation/Logging/test/`
+**Path:** `6_Ideation/Logging/test/`
 
-## Related
+78 test files — very extensive test suite covering:
+- Unit tests for all outputs, formatters, filters, core
+- Integration tests
+- Stress tests (thread safety, performance)
+- Platform-specific tests (Windows, macOS, Linux)
+- Edge case and branch coverage tests
+- Contract tests for all abstractions
+
+## Observations
+
+- Most thoroughly tested module in the repository
+- Pattern: ILogXxx abstraction → XxxLog concrete implementation
+- All outputs follow open/closed principle via ILogOutput
+- Platform-specific file output tests for macOS, Windows, Linux
+
+## Related Documents
 
 - [[Alis.Core.Aspect]]
-- [[Logging Domain]]
-- [[Projects Index]]
+- [[testing-overview]]
+- [[Alis.Core.Aspect.Math]]

@@ -1,62 +1,89 @@
 ---
 title: Alis.Core.Graphic
 tags:
-  - project
+  - operation
   - graphic
-  - rendering
   - opengl
-  - layer-4
+  - rendering
+  - platform
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Graphic
 
-## Overview
+**Layer:** 4_Operation
+**Path:** `4_Operation/Graphic/src/Alis.Core.Graphic.csproj`
 
-Graphics rendering library (Layer 4 - Operation). Provides OpenGL-based rendering pipeline with platform abstraction and UI integration.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 4 - Operation |
-| **Project Path** | `4_Operation/Graphic/src/` |
-| **Test Project** | `Alis.Core.Graphic.Test` |
-| **Generator** | `Alis.Core.Graphic.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Graphic.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Aspect]] (via Layer 3/5 chain)
-- **Depends On**: [[Alis.Core.Aspect.Math]]
-- **Used By**: [[Alis.App.Engine]], Graphic extensions (SDL2, SFML, GLFW, UI)
+Cross-platform graphics rendering system based on OpenGL, supporting Windows, macOS, Linux, Web (WebAssembly/Emscripten), and Android targets.
 
 ## Architecture
 
-- `src/OpenGL/` - OpenGL bindings and abstractions
-- `src/Platforms/` - Platform-specific rendering (Mac, Windows, Linux, WebAssembly)
-- `src/Ui/` - UI rendering system
+### Core
+- `Gl` — OpenGL bindings
+- `Image` — Image/texture loading
 
-## Source Structure
+### OpenGL Constructs
+- `GLShader` / `GLShaderProgram` — Shader management
+- `GLShaderProgramParam` — Uniform/attribute parameters
+- `ParamType` — Parameter type enum
 
-```
-src/
-  OpenGL/
-  Platforms/
-  Ui/
-```
+### OpenGL Delegates (functions)
+Function pointer delegates for all GL entry points (50+ delegates):
+- `Clear`, `ClearColor`, `Viewport`, `Scissor`
+- `CreateShader`, `CompileShader`, `ShaderSourceDel`, `LinkProgram`
+- `GenBuffers`, `GenTextures`, `GenVertexArrays`
+- `BindBuffer`, `BindTexture`, `BindVertexArray`
+- `BufferData`, `TexImage2D`, `TexParameteri`
+- `Uniform1F` through `Uniform4Fv`
+- `VertexAttribPointerDel`, `EnableVertexAttribArrayDel`
+- `DrawArrays`, `DrawElements`, `DrawElementsBaseVertex`
+- And more
+
+### OpenGL Enums
+20+ enum types for GL constants (BeginMode, BufferTarget, ShaderType, TextureTarget, etc.)
+
+### Platforms
+- **Windows**: `WinNativePlatform` + Win32 P/Invoke (`User32`, `Gdi32`, `Opengl32`, `Kernel32`)
+- **macOS**: `MacNativePlatform` + Objective-C interop (`MacWindow`, `MacOpenGLContext`, `ObjectiveCInterop`)
+- **Linux**: `LinuxNativePlatform` + X11 interop (`XEvent`, `XButtonEvent`, `XKeyEvent`, etc.)
+- **Web**: `WebAssemblyPlatform` + Emscripten/JS interop (`EGL`, `Emscripten`, `WebAssembly*`)
+- **Android**: `EGLDroid`
+
+### UI
+- `Font` / `FontManager` — Font rendering
+
+## Dependencies
+
+- Alis.Core.Aspect (5_Declaration)
 
 ## Testing
 
-- Test project: `Alis.Core.Graphic.Test`
-- Located at `4_Operation/Graphic/test/`
+**Path:** `4_Operation/Graphic/test/`
 
-## Related
+90+ test files covering:
+- GL construct tests (Shader, ShaderProgram, Parameters)
+- Platform-specific tests (Windows, macOS, WebAssembly)
+- Image loading and manipulation
+- All GL delegate and enum tests
+- Font rendering tests
+- Extensive platform interop tests
 
-- [[Alis.Core.Aspect.Math]]
-- [[Alis.Extension.Graphic.Sdl2]]
-- [[Alis.Extension.Graphic.Sfml]]
-- [[Alis.Extension.Graphic.Glfw]]
-- [[Alis.Extension.Graphic.Ui]]
-- [[Projects Index]]
+## Platform Support
+
+| Platform | Graphics API | Test Coverage |
+|---|---|---|
+| Windows | OpenGL via Win32 | Moderate |
+| macOS | OpenGL via Cocoa/ObjC | Moderate |
+| Linux | OpenGL via X11 | Minimal |
+| Web | WebGL via Emscripten | Extensive |
+| Android | OpenGL ES via EGL | Minimal |
+
+## Related Documents
+
+- [[Alis.Core.Aspect]]
+- [[Alis.Core.Ecs]]
+- [[Alis.Core.Physic]]
+- [[testing-overview]]

@@ -1,48 +1,51 @@
 ---
 title: Alis.Core.Aspect
 tags:
-  - project
-  - aspect
   - declaration
-  - layer-5
+  - aspect
+  - contracts
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Aspect
 
-## Overview
+**Layer:** 5_Declaration
+**Path:** `5_Declaration/Aspect/src/Alis.Core.Aspect.csproj`
 
-Core aspect-oriented programming framework serving as Layer 5 (Declaration). Provides the foundational contract layer for all cross-cutting concerns.
+## Purpose
 
-## Properties
+Aspect-oriented contract assembly. Serves as the declaration layer bridging Operation (4) to Ideation (6). Provides type forwarding and contract re-exports from the foundation layer.
 
-| Property | Value |
-|---|---|
-| **Layer** | 5 - Declaration |
-| **Project Path** | `5_Declaration/Aspect/src/` |
-| **Test Project** | `Alis.Core.Aspect.Test` |
-| **Generator** | None (no generator project) |
-| **Has Samples** | Yes (`Alis.Core.Aspect.Sample`) |
+## Design
+
+This layer acts as a **facade/proxy** between the Operation modules and the Ideation foundation. It re-exports core types from `Alis.Core.Aspect.*` (Data, Math, Memory, Time, Logging, Fluent) to provide a unified API surface for upstream consumers.
 
 ## Dependencies
 
-- **Upstream**: Depends on [[Alis.Core.Aspect.Data]], [[Alis.Core.Aspect.Fluent]], [[Alis.Core.Aspect.Logging]], [[Alis.Core.Aspect.Math]], [[Alis.Core.Aspect.Memory]], [[Alis.Core.Aspect.Time]] (Layer 6)
+- Alis.Core.Aspect.Data
+- Alis.Core.Aspect.Fluent
+- Alis.Core.Aspect.Logging
+- Alis.Core.Aspect.Math
+- Alis.Core.Aspect.Memory
+- Alis.Core.Aspect.Time
 
-## Architecture
+## Upstream Dependents
 
-- Empty `src/` directory - only contains `.csproj`
-- In Debug builds, references Layer 6 projects via `Config.props`
-- In Release builds, compiles Layer 6 source files directly via `<Compile Include="...">`
+- Alis.Core (3_Structuration)
+- Alis.Core.Audio (4_Operation)
+- Alis.Core.Ecs (4_Operation)
+- Alis.Core.Graphic (4_Operation)
+- Alis.Core.Physic (4_Operation)
 
 ## Testing
 
-- Test project: `Alis.Core.Aspect.Test`
-- Located at `5_Declaration/Aspect/test/`
+**Path:** `5_Declaration/Aspect/test/`
 
-## Related
+Minimal test suite — 1 test file (DefaultTest.cs).
 
-- [[Aspect-Oriented Design]]
-- [[Layered Architecture]]
-- [[Projects Index]]
-- [[Dependency Index]]
+## Related Documents
+
+- [[Alis.Core.Aspect.Data]]
+- [[Alis.Core.Aspect.Math]]
+- [[layer-architecture]]

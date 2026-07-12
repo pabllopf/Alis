@@ -1,55 +1,37 @@
 ---
 title: Alis.Core.Aspect.Time
 tags:
-  - project
+  - ideation
   - time
   - clock
-  - layer-6
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Aspect.Time
 
-## Overview
+**Layer:** 6_Ideation
+**Path:** `6_Ideation/Time/src/Alis.Core.Aspect.Time.csproj`
 
-Time measurement and tracking library (Layer 6 - Ideation). Provides clock and time utilities for game loop timing.
+## Purpose
 
-## Properties
+Time measurement and clock management for game loop timing.
 
-| Property | Value |
-|---|---|
-| **Layer** | 6 - Ideation |
-| **Project Path** | `6_Ideation/Time/src/` |
-| **Test Project** | `Alis.Core.Aspect.Time.Test` |
-| **Generator** | `Alis.Core.Aspect.Time.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Aspect.Time.Sample`) |
+## Types
+
+- `Clock` — Game clock providing delta time, total time, and frame timing
 
 ## Dependencies
 
-- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
-- **Used By**: [[Alis.Core.Ecs]]
-
-## Architecture
-
-- Flat file structure in `src/`
-- Key classes: `Clock`
-
-## Source Structure
-
-```
-src/
-  (flat files)
-```
+None (leaf layer)
 
 ## Testing
 
-- Test project: `Alis.Core.Aspect.Time.Test`
-- Located at `6_Ideation/Time/test/`
+**Path:** `6_Ideation/Time/test/`
 
-## Related
+3 test files covering Clock unit and extensive tests.
+
+## Related Documents
 
 - [[Alis.Core.Aspect]]
 - [[Alis.Core.Ecs]]
-- [[Time Domain]]
-- [[Projects Index]]

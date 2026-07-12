@@ -1,55 +1,90 @@
 ---
 title: Alis.Core.Aspect.Data
 tags:
-  - project
+  - ideation
   - data
-  - serialization
   - json
-  - layer-6
+  - serialization
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Aspect.Data
 
-## Overview
+**Layer:** 6_Ideation
+**Path:** `6_Ideation/Data/src/Alis.Core.Aspect.Data.csproj`
 
-Data serialization and deserialization library (Layer 6 - Ideation). Provides JSON serialization/deserialization capabilities.
+## Purpose
 
-## Properties
+JSON serialization and deserialization framework with AOT-compatible source generator integration. Provides a high-performance, allocation-sensitive JSON pipeline for the Alis game framework.
 
-| Property | Value |
-|---|---|
-| **Layer** | 6 - Ideation |
-| **Project Path** | `6_Ideation/Data/src/` |
-| **Test Project** | `Alis.Core.Aspect.Data.Test` |
-| **Generator** | `Alis.Core.Aspect.Data.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Aspect.Data.Sample`) |
+## Public API
+
+### Core Entry Points
+- `JsonNativeAot` — Static facade for serialization/deserialization
+- `IJsonSerializable` — Serialization contract
+- `IJsonDesSerializable<T>` — Deserialization contract
+
+### Parsing
+- `IJsonParser` / `JsonParser` — JSON tokenization and parsing
+- `EscapeSequenceHandler` / `IEscapeSequenceHandler` — String escaping
+
+### Serialization
+- `IJsonSerializer` / `JsonSerializer` — Object → JSON conversion
+
+### Deserialization
+- `IJsonDeserializer` / `JsonDeserializer` — JSON → Object conversion
+
+### File Operations
+- `IJsonFileHandler` / `JsonFileHandler` — File-based JSON IO
+
+### Exceptions
+- `JsonSerializationException`
+- `JsonDeserializationException`
+- `JsonParsingException`
+
+## Source Generator
+
+**Path:** `6_Ideation/Data/generator/`
+
+Generates partial class implementations of `IJsonSerializable` and `IJsonDesSerializable<T>` at compile time for types marked with the interfaces.
+
+Key classes:
+- `SerializableSourceGenerator` — Main incremental generator
+- `SerializationCodeBuilder` — Code generation for serialization/deserialization methods
+- `HelperMethodsGenerator` — Auxiliary conversion helpers
+- `TypeConversionHelper` — Type detection utilities
+- `SerializableSyntaxReceiver` — Syntax tree scanning
 
 ## Dependencies
 
-- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
-- **Used By**: All upper layers
+None (leaf layer — depends only on .NET BCL)
 
-## Architecture
+## Dependents (Upstream)
 
-- `src/Json/` - JSON serialization/deserialization logic
-- Has a paired source generator project
-
-## Source Structure
-
-```
-src/
-  Json/
-```
+- Alis.Core.Aspect (5_Declaration)
+- All projects transitively via Config.props
 
 ## Testing
 
-- Test project: `Alis.Core.Aspect.Data.Test`
-- Located at `6_Ideation/Data/test/`
+**Path:** `6_Ideation/Data/test/`
 
-## Related
+23 test files covering:
+- Unit tests for parser, serializer, deserializer
+- Advanced integration tests
+- Model serialization contracts (24 model types)
+- Edge case and regression tests
+- File operations
+- AOT compatibility
+
+## Risks
+
+- Large number of test model types may indicate over-testing of simple types
+- Source generator AOT compatibility may break with new TFMs
+- Exception handling overhead in hot deserialization paths
+
+## Related Documents
 
 - [[Alis.Core.Aspect]]
-- [[Data Domain]]
-- [[Projects Index]]
+- [[source-generator-architecture]]
+- [[Alis.Core.Aspect.Fluent]]

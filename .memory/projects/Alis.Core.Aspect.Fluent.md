@@ -1,54 +1,81 @@
 ---
 title: Alis.Core.Aspect.Fluent
 tags:
-  - project
+  - ideation
   - fluent
+  - api
   - builder
-  - layer-6
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Aspect.Fluent
 
-## Overview
+**Layer:** 6_Ideation
+**Path:** `6_Ideation/Fluent/src/Alis.Core.Aspect.Fluent.csproj`
 
-Fluent API builder pattern library (Layer 6 - Ideation). Provides builder pattern abstractions for constructing objects using a fluent interface.
+## Purpose
 
-## Properties
+Fluent API builder infrastructure for constructing game objects, components, and configurations using a type-safe, chainable interface pattern.
 
-| Property | Value |
-|---|---|
-| **Layer** | 6 - Ideation |
-| **Project Path** | `6_Ideation/Fluent/src/` |
-| **Test Project** | `Alis.Core.Aspect.Fluent.Test` |
-| **Generator** | `Alis.Core.Aspect.Fluent.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Aspect.Fluent.Sample`) |
+## Structure
+
+### Core Interfaces
+- `IBuild` — Build execution marker
+- `IHasBuilder` — Builder ownership
+
+### Component Interfaces (38 files)
+Action, Game object lifecycle hooks:
+- `IAction` (8 overloads for arity) — Generic action component
+- `IComponentBase` — Base component
+- `IGameObject` — Game object
+- `IOnAwake`, `IOnStart`, `IOnUpdate` (8 overloads), `IOnDestroy`, `IOnDraw`
+- `IOnCollisionEnter`, `IOnCollisionExit`
+- `IOnFixedUpdate`, `IOnPhysicUpdate`
+- `IOnPressKey`, `IOnHoldKey`, `IOnReleaseKey`
+- `IOnBeforeDraw`, `IOnAfterDraw`
+- `IOnBeforeUpdate`, `IOnAfterUpdate`
+- `IOnBeforeFixedUpdate`, `IOnAfterFixedUpdate`
+- `IOnInit`, `IOnExit`, `IOnProcessPendingChanges`
+
+### Word Interfaces (85 files)
+Domain-specific language words for configuration:
+- `ICreate`, `IAdd`, `ISet`, `IWith`, `IHas`, `IWhere`
+- `IName`, `IIcon`, `IDescription`, `IVersion`, `IAuthor`, `ILicense`
+- `IPosition2D`, `IRotation`, `IScale2D`, `ITransform`
+- `IAudio`, `IGraphic`, `IPhysic`, `INetwork`, `IInput`
+- `IBackground`, `IBackgroundColor`, `IDebug`, `IDebugColor`
+- `IConfiguration`, `ISettings`, `IGeneral`, `IWorld`
+- `IWindow`, `IResolution`, `IScreenMode`, `IStyle`, `IOrder`
+- And many more domain-specific words
+
+### Miscellaneous
+- `KeyEventInfo` — Input event data
+
+## Source Generator
+
+**Path:** `6_Ideation/Fluent/generator/`
+
+- `AotReflectionAnalyzer` — AOT-compatible reflection analysis for fluent builder resolution
 
 ## Dependencies
 
-- **Depends On**: [[Alis.Core.Aspect]] (Layer 5 reference chain)
-
-## Architecture
-
-- `src/Components/` - Fluent component builders
-- `src/Words/` - Fluent API word definitions
-
-## Source Structure
-
-```
-src/
-  Components/
-  Words/
-```
+None (leaf layer)
 
 ## Testing
 
-- Test project: `Alis.Core.Aspect.Fluent.Test`
-- Located at `6_Ideation/Fluent/test/`
+**Path:** `6_Ideation/Fluent/test/`
 
-## Related
+75 test files covering all component and word interface implementations.
+
+## Observations
+
+- Extremely large interface surface (105+ interfaces)
+- High test coverage with per-interface unit tests
+- Some interfaces may be redundant (e.g., `IOnUpdate` with 8 overloads)
+
+## Related Documents
 
 - [[Alis.Core.Aspect]]
-- [[Fluent Domain]]
-- [[Projects Index]]
+- [[architecture-overview]]
+- [[Alis.Core.Aspect.Data]]

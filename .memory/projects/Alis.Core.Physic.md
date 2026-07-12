@@ -1,61 +1,105 @@
 ---
 title: Alis.Core.Physic
 tags:
-  - project
+  - operation
   - physic
   - collision
   - dynamics
-  - layer-4
+  - simulation
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Physic
 
-## Overview
+**Layer:** 4_Operation
+**Path:** `4_Operation/Physic/src/Alis.Core.Physic.csproj`
 
-Physics simulation library (Layer 4 - Operation). Provides collision detection, rigid body dynamics, and physics constraint solving.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 4 - Operation |
-| **Project Path** | `4_Operation/Physic/src/` |
-| **Test Project** | `Alis.Core.Physic.Test` |
-| **Generator** | `Alis.Core.Physic.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Physic.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Aspect]] (via Layer 3/5 chain)
-- **Depends On**: [[Alis.Core.Aspect.Math]]
-- **Used By**: [[Alis.App.Engine]]
+2D physics simulation engine with collision detection, rigid body dynamics, joints, controllers, and decomposition utilities.
 
 ## Architecture
 
-- `src/Collisions/` - Collision detection algorithms (broadphase, narrowphase)
-- `src/Common/` - Common physics utilities
-- `src/Controllers/` - Physics controllers
-- `src/Dynamics/` - Rigid body dynamics, joints, contacts
+### Collision Detection
+- `DynamicTree` / `DynamicTreeBroadPhase` — Broad-phase spatial partitioning
+- `AABB` — Axis-aligned bounding boxes
+- `Collision` / `Distance` / `TimeOfImpact` — Narrow-phase collision
+- `Manifold` / `ManifoldPoint` — Contact manifold
+- `Simplex` / `SimplexCache` — GJK algorithm support
+- `IBroadPhase` — Broad-phase interface
+- `RayCastInput` / `RayCastOutput` — Ray casting
 
-## Source Structure
+### Collision Shapes
+- `CircleShape`, `PolygonShape`, `EdgeShape`, `ChainShape`
+- `Shape` / `ShapeType` — Shape base
 
-```
-src/
-  Collisions/
-  Common/
-  Controllers/
-  Dynamics/
-```
+### Dynamics
+- `Body` / `BodyCollection` — Physics bodies
+- `Fixture` / `FixtureCollection` — Shape attachment
+- `WorldPhysic` — Physics world simulation
+- `ContactManager` — Contact resolution
+- `ContactSolver` — Constraint solving
+- `Island` — Simulation island grouping
+- `SolverData` / `SolverIterations` — Solver configuration
+
+### Joints
+- `RevoluteJoint`, `PrismaticJoint`, `DistanceJoint`
+- `AngleJoint`, `WeldJoint`, `WheelJoint`
+- `FrictionJoint`, `MotorJoint`, `RopeJoint`
+- `PulleyJoint`, `GearJoint`, `FixedMouseJoint`
+
+### Controllers
+- `BuoyancyController`, `GravityController`, `VelocityLimitController`
+
+### Decomposition
+- `BayazitDecomposer`, `CDTDecomposer`, `EarclipDecomposer`
+- `FlipcodeDecomposer`, `SeidelDecomposer`
+- CDT (Constrained Delaunay Triangulation) implementation
+
+### Utilities
+- `Vertices` — Polygon vertex management
+- `SimplifyTools` — Polygon simplification
+- `CuttingTools` — Polygon cutting
+- `RealExplosion` / `SimpleExplosion` — Explosion physics
+- `MarchingSquares` / `Terrain` — Terrain generation
+- `PolygonTools` — Polygon operations
+- `LineTools` — Line geometry
+
+### Math
+- `Mat22`, `Mat33` — 2D/3D matrices
+- `Sweep` — CCD sweep
+- `FixedArray2/3/4/8` — Fixed-size arrays
+
+## Dependencies
+
+- Alis.Core.Aspect (5_Declaration)
 
 ## Testing
 
-- Test project: `Alis.Core.Physic.Test`
-- Located at `4_Operation/Physic/test/`
+**Path:** `4_Operation/Physic/test/`
 
-## Related
+~225+ test files — the most extensive test suite. Covers:
+- All collision types and algorithms
+- Every joint type
+- Body dynamics and fixtures
+- Decomposition algorithms (all 5)
+- Controllers
+- All utility classes
+- Edge case and coverage tests
 
+## Complexity
+
+This is the most complex module in the repository, implementing a full 2D physics engine with:
+- Continuous collision detection (CCD)
+- Multiple constraint solver types
+- Delaunay triangulation
+- Convex decomposition
+- Terrain generation
+
+## Related Documents
+
+- [[Alis.Core.Ecs]]
 - [[Alis.Core.Aspect.Math]]
-- [[Alis.App.Engine]]
-- [[Projects Index]]
+- [[testing-overview]]
+- [[Alis.Core.Graphic]]

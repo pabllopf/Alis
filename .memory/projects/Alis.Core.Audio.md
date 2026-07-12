@@ -1,54 +1,62 @@
 ---
 title: Alis.Core.Audio
 tags:
-  - project
+  - operation
   - audio
   - sound
-  - layer-4
+  - platform
 status: Draft
 license: GPLv3
 ---
 
 # Alis.Core.Audio
 
-## Overview
+**Layer:** 4_Operation
+**Path:** `4_Operation/Audio/src/Alis.Core.Audio.csproj`
 
-Audio playback library (Layer 4 - Operation). Provides audio management and playback capabilities.
+## Purpose
 
-## Properties
-
-| Property | Value |
-|---|---|
-| **Layer** | 4 - Operation |
-| **Project Path** | `4_Operation/Audio/src/` |
-| **Test Project** | `Alis.Core.Audio.Test` |
-| **Generator** | `Alis.Core.Audio.Generator` |
-| **Has Samples** | Yes (`Alis.Core.Audio.Sample`) |
-
-## Dependencies
-
-- **Depends On**: [[Alis.Core.Aspect]] (via Layer 3/5 chain)
-- **Used By**: [[Alis.App.Engine]]
+Cross-platform audio playback system supporting Windows, macOS, Linux, and Browser targets.
 
 ## Architecture
 
-- `src/Interfaces/` - Audio service interfaces
-- `src/Players/` - Audio player implementations
+- `IPlayer` — Audio player interface
+- `Player` — Main player implementation
+- Platform-specific implementations:
+  - `WindowsPlayer` — Win32 API-based
+  - `MacPlayer` — macOS CoreAudio-based
+  - `LinuxPlayer` — Linux ALSA-based
+  - `UnixPlayerBase` — Shared POSIX implementation
+  - `BrowserPlayer` — WebAssembly/JS interop
+  - `OpenAL` — OpenAL abstraction
 
-## Source Structure
+## Dependencies
 
-```
-src/
-  Interfaces/
-  Players/
-```
+- Alis.Core.Aspect (5_Declaration)
 
 ## Testing
 
-- Test project: `Alis.Core.Audio.Test`
-- Located at `4_Operation/Audio/test/`
+**Path:** `4_Operation/Audio/test/`
 
-## Related
+40 test files covering:
+- Platform-specific player tests (Windows, macOS, Linux, Browser)
+- Edge case and error coverage
+- Static method tests
+- WAV parsing tests
+- Player lifecycle and state tests
 
-- [[Alis.App.Engine]]
-- [[Projects Index]]
+## Platform Support
+
+| Platform | Implementation | Test Coverage |
+|---|---|---|
+| Windows | Win32 API | Extensive |
+| macOS | CoreAudio | Moderate |
+| Linux | ALSA/POSIX | Extensive |
+| Browser | WebAssembly/JS | Extensive |
+| Cross-platform | OpenAL fallback | Moderate |
+
+## Related Documents
+
+- [[Alis.Core.Aspect]]
+- [[Alis.Core.Graphic]]
+- [[testing-overview]]
