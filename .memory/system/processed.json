@@ -265,5 +265,6 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryEnumerator.cs",
   "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Body.cs",
   "pabllopf-official_alis:2_Application/Alis/src/Builder/Core/Ecs/Entity/GameObjectBuilder.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectQueryEnumerator.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectQueryEnumerator.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs"
 ]

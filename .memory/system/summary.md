@@ -92,3 +92,12 @@ Total blocked: 129
 - **Tests improved**: Reflection removed from 9 files
 - **Commits**: 9 commits across Physic, Ecs, Network, FileDialog, Cloud, Updater modules
 - **Details**: See `.memory/system/results/summary.md`
+
+### ImGuiIO.cs
+- **Timestamp**: 2026-07-12 18:30:00
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~45%
+- **Tests Added**: 80
+- **Commit**: `88747f1a2`
+- **Status**: SUCCESS
