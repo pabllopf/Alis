@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_IsValueType()
         {
             Type type = typeof(DeleteComponent);
@@ -54,7 +54,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component has sequential struct layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_HasSequentialStructLayout()
         {
             StructLayoutAttribute layout = typeof(DeleteComponent).StructLayoutAttribute;
@@ -65,7 +65,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component stores entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_StoresEntity()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component stores component id
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_StoresComponentId()
         {
             ComponentId compId = Component<Position>.Id;
@@ -91,7 +91,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component equality works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_EqualityWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
@@ -105,7 +105,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that delete component with different entities are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void DeleteComponent_DifferentEntities_AreNotEqual()
         {
             DeleteComponent cmd1 = new DeleteComponent(new GameObjectIdOnly(1, 0), default);

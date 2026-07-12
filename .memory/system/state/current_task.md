@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 56 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 144 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs
+    pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: 0.0%)
+    41.7% (Line: 45.7%, Branch: 18.8%)
 
     ### Uncovered Lines
-    53
+    151
 
     ### Uncovered Branches
-    16
+    39
 
     ### Method
-    PolygonGenerator
+    BoxCollider
 
     ### Complexity / LOC
-    10 / 71 lines
+    72 / 314 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:PolygonGenerator.cs
+//  File:BoxCollider.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -57,50 +57,50 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Security.Cryptography;
-using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 
-namespace Alis.Core.Physic.Common.Decomposition.CDT.Util
+namespace Alis.Core.Ecs.Components.Collider
 {
     /// <summary>
-    ///     The polygon generator class
+    ///     The box collider class
     /// </summary>
-    internal static class PolygonGenerator
+    /// <seealso cref="IBoxCollider" />
+    /// <seealso cref="IOnInit" />
+    /// <seealso cref="IOnUpdate" />
+    public class BoxCollider : IBoxCollider
     {
         /// <summary>
-        ///     The random
+        ///     The vertices
         /// </summary>
-        internal static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
-
-        /// <summary>
-        ///     Randoms the circle sweep using the specified scale
-        /// </summary>
-        /// <param name="scale">The scale</param>
-        /// <param name="vertexCount">The vertex count</param>
-        /// <returns>The polygon polygon</returns>
-        public static Polygon.Polygon RandomCircleSweep(double scale, int vertexCount)
+        private static readonly float[] Vertices =
         {
-            PolygonPoint point;
-            PolygonPoint[] points;
-            double radius = scale / 4;
+            -0.5f, -0.5f,
+            0.5f, -0.5f,
+            0.0f, 0.5f
+        };
 
-            points = new PolygonPoint[vertexCount];
-
-            using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Physic/test/Common/Decomposition/CDT/Util/PolygonGeneratorTests.cs
+    pabllopf-official_alis:2_Application/Alis/test/Core/Ecs/Components/Collider/BoxColliderTests.cs
 
     Priority
-    CRITICAL (NEW)
+    HIGH (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs
+    Generate xUnit test targeting pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage PolygonGenerator.cs
+    Commit format: test: coverage BoxCollider.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

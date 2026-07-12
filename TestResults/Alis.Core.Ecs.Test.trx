@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="0f23d2ac-6f12-4e1c-838a-8570c8c3805f" name="@MacBook-Pro-de-Pablo 2026-07-12 15:12:40" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-07-12T15:12:40.7695070+01:00" queuing="2026-07-12T15:12:40.7695070+01:00" start="2026-07-12T15:12:39.6662990+01:00" finish="2026-07-12T15:12:41.0193290+01:00" />
+  <TestSettings name="default" id="34b7bd69-6334-4393-9a1f-c70045d3fd87">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-07-12_15_12_40" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ec4d299e-522f-4656-ae08-2219813c4375" testId="334b54f7-31b5-aa38-57ec-9de05f8ff5d3" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0101374" startTime="2026-07-12T15:12:40.7153800+01:00" endTime="2026-07-12T15:12:40.7153800+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec4d299e-522f-4656-ae08-2219813c4375" />
+    <UnitTestResult executionId="8cf539fc-87e8-42fb-b176-63d64fbb3f0b" testId="6223002e-249c-8a54-bee1-693f67d1554b" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.MultipleCallbacks_AllExecuteAfterFinalization" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0032144" startTime="2026-07-12T15:12:40.7498410+01:00" endTime="2026-07-12T15:12:40.7498410+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8cf539fc-87e8-42fb-b176-63d64fbb3f0b" />
+    <UnitTestResult executionId="0a4c7f41-222c-4017-a1e0-bf9dc7fc221f" testId="ff5779f4-760e-b451-02d3-aa658d71ade7" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.StaticEvent_FiresAfterGCFinalization" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0068870" startTime="2026-07-12T15:12:40.7570180+01:00" endTime="2026-07-12T15:12:40.7570180+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a4c7f41-222c-4017-a1e0-bf9dc7fc221f" />
+    <UnitTestResult executionId="3f6f9011-26d1-4ca3-aee5-6e9abfc5765f" testId="e9d9abe1-8b84-4a3d-0a4a-3f93f5f5201b" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_FuncBool_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000618" startTime="2026-07-12T15:12:40.7050310+01:00" endTime="2026-07-12T15:12:40.7050310+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f6f9011-26d1-4ca3-aee5-6e9abfc5765f" />
+    <UnitTestResult executionId="022c6c04-5457-46e1-8f88-186360fe8299" testId="5e9a5f46-bd09-4f1d-5339-5e3cb671efb2" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.FuncBoolReturningFalse_ExecutesOnceAfterFinalization" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0023950" startTime="2026-07-12T15:12:40.7257460+01:00" endTime="2026-07-12T15:12:40.7257470+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="022c6c04-5457-46e1-8f88-186360fe8299" />
+    <UnitTestResult executionId="32b08556-beb8-49d6-b5d9-2c58357efa54" testId="918d07b5-cebf-e7ff-514e-8274e10438b6" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithAliveTargetReturningTrue_Reschedules" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0069243" startTime="2026-07-12T15:12:40.7228700+01:00" endTime="2026-07-12T15:12:40.7228710+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32b08556-beb8-49d6-b5d9-2c58357efa54" />
+    <UnitTestResult executionId="e253f98b-5a13-4d86-b8db-ad2cb71cd791" testId="c404274d-7b11-a9e2-85a2-dc8dde06f9dc" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithAliveTargetReturningFalse_ExecutesOnce" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0102758" startTime="2026-07-12T15:12:40.7043510+01:00" endTime="2026-07-12T15:12:40.7043510+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e253f98b-5a13-4d86-b8db-ad2cb71cd791" />
+    <UnitTestResult executionId="bd2471d3-35e0-4319-88e3-7dcf2860875d" testId="28062488-def2-f1e0-f3a6-ba05bb8834dc" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.RapidSuccessiveRegistrations_DoNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0018774" startTime="2026-07-12T15:12:40.6934730+01:00" endTime="2026-07-12T15:12:40.6934730+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bd2471d3-35e0-4319-88e3-7dcf2860875d" />
+    <UnitTestResult executionId="0e88b370-1843-4a2a-bd7f-571ba565a850" testId="4d3270c9-7a37-4a28-c279-d679474d8dd8" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_WithNullTarget_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001357" startTime="2026-07-12T15:12:40.7463080+01:00" endTime="2026-07-12T15:12:40.7463080+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e88b370-1843-4a2a-bd7f-571ba565a850" />
+    <UnitTestResult executionId="8a3d76bf-aac8-4330-b8e5-07e2efff4aa9" testId="cc1784e4-31a6-9367-c136-ff4f74770a54" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.FuncBoolReturningTrue_ReschedulesAfterFinalization" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0080408" startTime="2026-07-12T15:12:40.7342250+01:00" endTime="2026-07-12T15:12:40.7342250+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a3d76bf-aac8-4330-b8e5-07e2efff4aa9" />
+    <UnitTestResult executionId="edb1a332-c632-45d6-af91-481e1b11a250" testId="59527256-e77c-12b8-144e-0263c904db52" testName="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_FuncObjectBool_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001027" startTime="2026-07-12T15:12:40.7047980+01:00" endTime="2026-07-12T15:12:40.7047980+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="edb1a332-c632-45d6-af91-481e1b11a250" />
+    <UnitTestResult executionId="3d4f0ba7-3b38-42a3-b4ae-1553824a38ee" testId="6fc39a22-1526-57e7-ef19-99a7d2a237c7" testName="Alis.Core.Ecs.Test.UncoveredPathsTest.Gen2GcCallback_Register_CanBeCalled" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0010000" startTime="2026-07-12T15:12:40.6820410+01:00" endTime="2026-07-12T15:12:40.6820510+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d4f0ba7-3b38-42a3-b4ae-1553824a38ee">
+      <Output>
+        <ErrorInfo>
+          <Message>Known ECS source bug - IndexOutOfRangeException/ArgumentNullException</Message>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="334b54f7-31b5-aa38-57ec-9de05f8ff5d3">
+      <Execution id="ec4d299e-522f-4656-ae08-2219813c4375" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.RapidSuccessiveRegistrations_DoNotThrow" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="28062488-def2-f1e0-f3a6-ba05bb8834dc">
+      <Execution id="bd2471d3-35e0-4319-88e3-7dcf2860875d" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="RapidSuccessiveRegistrations_DoNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.FuncBoolReturningTrue_ReschedulesAfterFinalization" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="cc1784e4-31a6-9367-c136-ff4f74770a54">
+      <Execution id="8a3d76bf-aac8-4330-b8e5-07e2efff4aa9" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="FuncBoolReturningTrue_ReschedulesAfterFinalization" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.MultipleCallbacks_AllExecuteAfterFinalization" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="6223002e-249c-8a54-bee1-693f67d1554b">
+      <Execution id="8cf539fc-87e8-42fb-b176-63d64fbb3f0b" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="MultipleCallbacks_AllExecuteAfterFinalization" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.UncoveredPathsTest.Gen2GcCallback_Register_CanBeCalled" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="6fc39a22-1526-57e7-ef19-99a7d2a237c7">
+      <Execution id="3d4f0ba7-3b38-42a3-b4ae-1553824a38ee" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.UncoveredPathsTest" name="Gen2GcCallback_Register_CanBeCalled" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.StaticEvent_FiresAfterGCFinalization" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="ff5779f4-760e-b451-02d3-aa658d71ade7">
+      <Execution id="0a4c7f41-222c-4017-a1e0-bf9dc7fc221f" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="StaticEvent_FiresAfterGCFinalization" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithAliveTargetReturningTrue_Reschedules" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="918d07b5-cebf-e7ff-514e-8274e10438b6">
+      <Execution id="32b08556-beb8-49d6-b5d9-2c58357efa54" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="ObjectCallbackWithAliveTargetReturningTrue_Reschedules" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.ObjectCallbackWithAliveTargetReturningFalse_ExecutesOnce" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="c404274d-7b11-a9e2-85a2-dc8dde06f9dc">
+      <Execution id="e253f98b-5a13-4d86-b8db-ad2cb71cd791" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="ObjectCallbackWithAliveTargetReturningFalse_ExecutesOnce" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.FuncBoolReturningFalse_ExecutesOnceAfterFinalization" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="5e9a5f46-bd09-4f1d-5339-5e3cb671efb2">
+      <Execution id="022c6c04-5457-46e1-8f88-186360fe8299" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="FuncBoolReturningFalse_ExecutesOnceAfterFinalization" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_FuncBool_DoesNotThrow" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="e9d9abe1-8b84-4a3d-0a4a-3f93f5f5201b">
+      <Execution id="3f6f9011-26d1-4ca3-aee5-6e9abfc5765f" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="Register_FuncBool_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_WithNullTarget_DoesNotThrow" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="4d3270c9-7a37-4a28-c279-d679474d8dd8">
+      <Execution id="0e88b370-1843-4a2a-bd7f-571ba565a850" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="Register_WithNullTarget_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest.Register_FuncObjectBool_DoesNotThrow" storage="/users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_operation/ecs/test/bin/debug/lib/alis.core.ecs.test.dll" id="59527256-e77c-12b8-144e-0263c904db52">
+      <Execution id="edb1a332-c632-45d6-af91-481e1b11a250" />
+      <TestMethod codeBase="/Users/pabllopf/.local/share/opencode/worktree/4090f4e9f3ffdaff486c37b4685e5667e84637e4/tidy-tiger/4_Operation/Ecs/test/bin/Debug/lib/Alis.Core.Ecs.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Core.Ecs.Test.Redifinition.Gen2GcCallbackTest" name="Register_FuncObjectBool_DoesNotThrow" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="334b54f7-31b5-aa38-57ec-9de05f8ff5d3" executionId="ec4d299e-522f-4656-ae08-2219813c4375" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6223002e-249c-8a54-bee1-693f67d1554b" executionId="8cf539fc-87e8-42fb-b176-63d64fbb3f0b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ff5779f4-760e-b451-02d3-aa658d71ade7" executionId="0a4c7f41-222c-4017-a1e0-bf9dc7fc221f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9d9abe1-8b84-4a3d-0a4a-3f93f5f5201b" executionId="3f6f9011-26d1-4ca3-aee5-6e9abfc5765f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e9a5f46-bd09-4f1d-5339-5e3cb671efb2" executionId="022c6c04-5457-46e1-8f88-186360fe8299" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="918d07b5-cebf-e7ff-514e-8274e10438b6" executionId="32b08556-beb8-49d6-b5d9-2c58357efa54" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c404274d-7b11-a9e2-85a2-dc8dde06f9dc" executionId="e253f98b-5a13-4d86-b8db-ad2cb71cd791" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28062488-def2-f1e0-f3a6-ba05bb8834dc" executionId="bd2471d3-35e0-4319-88e3-7dcf2860875d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d3270c9-7a37-4a28-c279-d679474d8dd8" executionId="0e88b370-1843-4a2a-bd7f-571ba565a850" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc1784e4-31a6-9367-c136-ff4f74770a54" executionId="8a3d76bf-aac8-4330-b8e5-07e2efff4aa9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="59527256-e77c-12b8-144e-0263c904db52" executionId="edb1a332-c632-45d6-af91-481e1b11a250" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6fc39a22-1526-57e7-ef19-99a7d2a237c7" executionId="3d4f0ba7-3b38-42a3-b4ae-1553824a38ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="12" executed="11" passed="11" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.05]   Discovering: Alis.Core.Ecs.Test (method display = ClassAndMethod, method display options = None)
+[xUnit.net 00:00:00.23]   Discovered:  Alis.Core.Ecs.Test (found 3684 test cases)
+[xUnit.net 00:00:00.23]   Starting:    Alis.Core.Ecs.Test (parallel test collections = off, stop on fail = off)
+[xUnit.net 00:00:00.25]       Known ECS source bug - IndexOutOfRangeException/ArgumentNullException
+Se ha omitido la prueba 'Alis.Core.Ecs.Test.UncoveredPathsTest.Gen2GcCallback_Register_CanBeCalled' en la serie de pruebas.
+[xUnit.net 00:00:00.33]   Finished:    Alis.Core.Ecs.Test
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="MacBook-Pro-de-Pablo" outcome="Warning" timestamp="2026-07-12T15:12:40.6818880+01:00">
+        <Text>[xUnit.net 00:00:00.25]     Alis.Core.Ecs.Test.UncoveredPathsTest.Gen2GcCallback_Register_CanBeCalled [SKIP]</Text>
+      </RunInfo>
+    </RunInfos>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>

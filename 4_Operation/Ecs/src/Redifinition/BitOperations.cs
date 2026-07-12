@@ -30,7 +30,7 @@
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
-#if !NETCOREAPP3_0_OR_GREATER
+#if !NET6_0_OR_GREATER
 namespace System.Numerics
 {
     /// <summary>

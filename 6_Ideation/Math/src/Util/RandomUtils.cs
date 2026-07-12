@@ -37,9 +37,6 @@ namespace Alis.Core.Aspect.Math.Util
     /// </summary>
     public static class RandomUtils
     {
-        /// <summary>
-        ///     The cryptographic random number generator instance used for all operations.
-        /// </summary>
 #if !NET6_0_OR_GREATER
         private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
 #endif

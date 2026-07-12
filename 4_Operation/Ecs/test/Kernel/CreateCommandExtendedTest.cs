@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_IsValueType()
         {
             Type type = typeof(CreateCommand);
@@ -53,7 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command has sequential struct layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_HasSequentialStructLayout()
         {
             StructLayoutAttribute layout = typeof(CreateCommand).StructLayoutAttribute;
@@ -64,7 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command stores entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_StoresEntity()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command stores buffer index
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_StoresBufferIndex()
         {
             CreateCommand cmd = new CreateCommand(default, 42, 1);
@@ -88,7 +88,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command stores buffer length
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_StoresBufferLength()
         {
             CreateCommand cmd = new CreateCommand(default, 0, 10);
@@ -99,7 +99,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command equality works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_EqualityWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create command with different values are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void CreateCommand_DifferentValues_AreNotEqual()
         {
             CreateCommand cmd1 = new CreateCommand(default, 0, 1);

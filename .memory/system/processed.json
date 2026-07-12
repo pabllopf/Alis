@@ -205,5 +205,20 @@
   "pabllopf-official_alis:4_Operation/Physic/src/Common/Logic/RealExplosion.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs",
   "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs",
-  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs"
+  "pabllopf-official_alis:4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs",
+  "pabllopf-official_alis:4_Operation/Graphic/src/OpenGL/Gl.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/RopeJoint.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/SceneManager.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/WheelJoint.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Cloud/GoogleDrive/src/GoogleDriveCloudManager.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/PulleyJoint.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Manager/Graphic/GraphicManager.cs",
+  "pabllopf-official_alis:4_Operation/Physic/src/Dynamics/Joints/MotorJoint.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Systems/Scope/ContextHandler.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Client/NetworkClientManager.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Network/src/Core/WebSocketNetworkTransport.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Cloud/DropBox/src/DropBoxCloudManager.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/Gen2GcCallback.cs",
+  "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Collider/BoxCollider.cs"
 ]

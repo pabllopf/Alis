@@ -43,7 +43,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that enumerating a single entity yields exactly one entity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Enumerate_SingleEntity_YieldsOneEntity()
         {
             using Scene scene = new Scene();
@@ -62,7 +62,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that enumerating multiple entities yields the expected count.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Enumerate_MultipleEntities_YieldsExpectedCount()
         {
             using Scene scene = new Scene();
@@ -81,7 +81,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that enumerating twice produces the same entity IDs in the same order.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Enumerate_Twice_ProducesSameIds()
         {
             using Scene scene = new Scene();
@@ -106,7 +106,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that enumerating after setting span values returns entities with the correct component data.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
         {
             using Scene scene = new Scene();
@@ -134,7 +134,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that current throws when accessed before the first MoveNext call.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Current_AccessedBeforeMoveNext_Throws()
         {
             using Scene scene = new Scene();
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that enumerating a mixed-archetype scene only enumerates the entities in the requested chunk.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
         {
             using Scene scene = new Scene();
