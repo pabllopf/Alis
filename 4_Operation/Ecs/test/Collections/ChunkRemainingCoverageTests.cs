@@ -96,6 +96,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(111, chunk[0]);
             chunk.Return();
         }
+        
 
         /// <summary>
         ///     Tests that AsSpan with start and length returns the correct slice.
