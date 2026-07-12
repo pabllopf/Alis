@@ -69,3 +69,11 @@ Total blocked: 129
 - **Commit**: (pending)
 - **File**: 1_Presentation/Extension/Math/HighSpeedPriorityQueue/src/SimplePriorityQueue.cs
 - **Timestamp**: 2026-07-11 12:03:44
+
+### RealExplosion.cs
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~65.0%
+- **Tests Added**: 12
+- **Commit**: `506108277`
+- **File**: 4_Operation/Physic/src/Common/Logic/RealExplosion.cs
+- **Timestamp**: 2026-07-12 00:00:00
