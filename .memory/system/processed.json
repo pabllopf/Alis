@@ -272,5 +272,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlas.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioFrame.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkTuple.cs"
 ]
