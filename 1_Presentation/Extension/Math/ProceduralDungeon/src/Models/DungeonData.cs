@@ -155,9 +155,37 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
                 throw new InvalidOperationException("_rooms cannot be null.");
             }
 
+            for (int i = 0; i < _rooms.Count; i++)
+            {
+                RoomData room = _rooms[i];
+                if (room.XPos < 0 || room.YPos < 0)
+                {
+                    throw new InvalidOperationException($"Room at index {i} has negative position ({room.XPos},{room.YPos}).");
+                }
+
+                if (room.Width <= 0 || room.Height <= 0)
+                {
+                    throw new InvalidOperationException($"Room at index {i} has invalid dimensions ({room.Width},{room.Height}).");
+                }
+            }
+
             if (_corridors == null)
             {
                 throw new InvalidOperationException("_corridors cannot be null.");
+            }
+
+            for (int i = 0; i < _corridors.Count; i++)
+            {
+                CorridorData corridor = _corridors[i];
+                if (corridor.XPos < 0 || corridor.YPos < 0)
+                {
+                    throw new InvalidOperationException($"Corridor at index {i} has negative position ({corridor.XPos},{corridor.YPos}).");
+                }
+
+                if (corridor.Width <= 0 || corridor.Height <= 0)
+                {
+                    throw new InvalidOperationException($"Corridor at index {i} has invalid dimensions ({corridor.Width},{corridor.Height}).");
+                }
             }
         }
     }
