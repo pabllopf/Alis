@@ -256,8 +256,8 @@ namespace Alis.Core.Ecs
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static Ref<TC> GetComp<TC>(ReadOnlySpan<byte> archetypeTable, ReadOnlySpan<ComponentStorageBase> comps, int index)
         {
-            int compIndex = Unsafe.Add(ref MemoryMarshal.GetReference(archetypeTable), Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
-            return new Ref<TC>(Unsafe.As<ComponentStorage<TC>>(Unsafe.Add(ref MemoryMarshal.GetReference(comps), compIndex)), index);
+            int compIndex = Unsafe.Add(ref MemoryMarshal.GetReference<byte>(archetypeTable), Component<TC>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+            return new Ref<TC>(Unsafe.As<ComponentStorage<TC>>(Unsafe.Add(ref MemoryMarshal.GetReference<ComponentStorageBase>(comps), compIndex)), index);
         }
     }
 }

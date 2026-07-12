@@ -27,8 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if (NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
+#if (NETSTANDARD || NETFRAMEWORK || NETCOREAPP) && !NET6_0_OR_GREATER
 // ReSharper disable once CheckNamespace
+using System.Runtime.CompilerServices;
+
 namespace System.Runtime.InteropServices
 {
     /// <summary>
@@ -44,6 +46,14 @@ namespace System.Runtime.InteropServices
         /// <param name="span">The span to get the reference from.</param>
         /// <returns>A reference to the first element of the span.</returns>
         public static ref T GetReference<T>(Span<T> span) => ref span.GetPinnableReference();
+
+        /// <summary>
+        ///     Gets a reference to the first element of a <see cref="ReadOnlySpan{T}" />.
+        /// </summary>
+        /// <typeparam name="T">The type of elements in the span.</typeparam>
+        /// <param name="span">The read-only span to get the reference from.</param>
+        /// <returns>A reference to the first element of the span.</returns>
+        public static ref T GetReference<T>(ReadOnlySpan<T> span) => ref Unsafe.AsRef<T>(in span.GetPinnableReference());
 
         /// <summary>
         ///     Gets a reference to the first element of an array.
