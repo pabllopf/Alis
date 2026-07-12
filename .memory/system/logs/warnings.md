@@ -10,4 +10,8 @@ license: GPLv3
 
 # Warnings
 
-None.
+No warnings recorded.
+
+| Date | Area | Warning | Resolution |
+|---|---|---|---|
+| - | - | - | - |

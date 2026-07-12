@@ -10,55 +10,27 @@ license: GPLv3
 
 # Pending Projects
 
-## High Priority
+All core projects have been documented. Only sample projects with no dedicated docs remain.
 
-- [ ] 6_Ideation (core foundation)
-- [ ] 5_Declaration
-- [ ] 4_Operation
-- [ ] 3_Structuration
-- [ ] 2_Application
-- [ ] 1_Presentation
+## Pending
 
-## Per Layer
+- [ ] Alis.Sample.Asteroid (dedicated doc)
+- [ ] Alis.Sample.Dino (dedicated doc)
+- [ ] Alis.Sample.Egg (dedicated doc)
+- [ ] Alis.Sample.Empty (dedicated doc)
+- [ ] Alis.Sample.FlappyBird (dedicated doc)
+- [ ] Alis.Sample.Inefable (dedicated doc)
+- [ ] Alis.Sample.KingPlatform (dedicated doc)
+- [ ] Alis.Sample.Pong (dedicated doc)
+- [ ] Alis.Sample.Rogue (dedicated doc)
+- [ ] Alis.Sample.RuinsOfTartarus (dedicated doc)
+- [ ] Alis.Sample.Snake (dedicated doc)
+- [ ] Alis.Sample.SpaceSimulator (dedicated doc)
+- [ ] Alis.Sample.SplitCamera (dedicated doc)
+- [ ] Extension sample projects (64 total)
 
-### 1_Presentation
+## Notes
 
-- [ ] Alis.Benchmark
-- [ ] Alis.App.Engine
-- [ ] Alis.Extension.Network
-- [ ] Alis.Extension.Profile
-- [ ] Alis.Extension.Security
-- [ ] Alis.Extension.Thread
-- [ ] Alis.Extension.Updater
-- [ ] Alis.App.Hub
-- [ ] Alis.App.Installer
-
-### 2_Application
-
-- [ ] Alis
-- [ ] Alis.Generator
-
-### 3_Structuration
-
-- [ ] Alis.Core
-- [ ] Alis.Core.Generator
-
-### 4_Operation
-
-- [ ] Alis.Core.Audio
-- [ ] Alis.Core.Ecs
-- [ ] Alis.Core.Graphic
-- [ ] Alis.Core.Physic
-
-### 5_Declaration
-
-- [ ] Alis.Core.Aspect
-
-### 6_Ideation
-
-- [ ] Alis.Core.Aspect.Data
-- [ ] Alis.Core.Aspect.Fluent
-- [ ] Alis.Core.Aspect.Logging
-- [ ] Alis.Core.Aspect.Math
-- [ ] Alis.Core.Aspect.Memory
-- [ ] Alis.Core.Aspect.Time
+Sample projects are documented in batch under `.memory/projects/` with
+individual markdown files. Extension samples are covered by their
+parent extension documentation.

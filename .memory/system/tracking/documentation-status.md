@@ -12,11 +12,23 @@ license: GPLv3
 
 | Section | Status | Files | Quality |
 |---|---|---|---|
-| System | Generated | 13 | Draft |
-| Architecture | Pending | 0 | - |
-| Projects | Pending | 0 | - |
-| Dependencies | Pending | 0 | - |
-| Indexes | Pending | 0 | - |
-| Security | Pending | 0 | - |
-| Testing | Pending | 0 | - |
-| Context | Pending | 0 | - |
+| System State | Completed | 10 | Substantial |
+| Sessions | Completed | 6 | Substantial |
+| Queues | Completed | 8 | Substantial |
+| Checkpoints | Completed | 6 | Substantial |
+| Logs | Completed | 6 | Substantial |
+| Tracking | Completed | 8 | Substantial |
+| Metadata | Completed | 2 | Substantial |
+| Architecture | Completed | 13 | Substantial |
+| Projects | Completed | 100+ | Substantial |
+| Dependencies | Completed | 3 | Substantial |
+| Indexes | Completed | 14 | Substantial |
+| Security | Completed | 4 | Substantial |
+| Testing | Completed | 3 | Substantial |
+| Performance | Completed | 1 | Substantial |
+| Context/AI | Completed | 14 | Substantial |
+| Onboarding | Completed | 2 | Substantial |
+| Glossary | Completed | 28 | Substantial |
+| Diagrams | Completed | 10 | Substantial |
+| Domain | Completed | 10 | Substantial |
+| Knowledge Graph | Completed | 1 | Substantial |

@@ -10,4 +10,8 @@ license: GPLv3
 
 # Failures
 
-None.
+No failures recorded.
+
+| Date | Action | Error | Resolution |
+|---|---|---|---|
+| - | - | - | - |
