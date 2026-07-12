@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;
 using Xunit;
 
