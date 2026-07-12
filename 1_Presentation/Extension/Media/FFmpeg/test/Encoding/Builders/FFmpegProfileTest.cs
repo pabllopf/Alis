@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile auto should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_Auto_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.Auto;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile baseline should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_Baseline_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.Baseline;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile main should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_Main_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.Main;
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile high should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_High_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.High;
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile high 10 should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_High10_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.High10;
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile high 442 should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_High442_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.High442;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile high 444 should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_High444_ShouldHaveCorrectValue()
         {
             FFmpegProfile profile = FFmpegProfile.High444;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile enum should have seven values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_Enum_ShouldHaveSevenValues()
         {
             FFmpegProfile[] values = (FFmpegProfile[]) Enum.GetValues(typeof(FFmpegProfile));
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldBeConvertibleToString()
         {
             FFmpegProfile auto = FFmpegProfile.Auto;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldBeParseableFromString()
         {
             FFmpegProfile main = (FFmpegProfile) Enum.Parse(typeof(FFmpegProfile), "Main");
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldSupportEqualityComparison()
         {
             FFmpegProfile high1 = FFmpegProfile.High;
@@ -177,7 +178,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile to lower invariant should work correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ToLowerInvariant_ShouldWorkCorrectly()
         {
             FFmpegProfile baseline = FFmpegProfile.Baseline;
@@ -196,7 +197,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile all values should be defined
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_AllValues_ShouldBeDefined()
         {
             Assert.True(Enum.IsDefined(typeof(FFmpegProfile), FFmpegProfile.Auto));
@@ -211,7 +212,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldHaveUniqueValues()
         {
             int[] values = new[]
@@ -231,7 +232,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldBeCastableToInt()
         {
             FFmpegProfile profile = FFmpegProfile.High10;
@@ -244,7 +245,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldBeCastableFromInt()
         {
             int value = 3;
@@ -257,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that ffmpeg profile should be usable in switch statement
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFmpegProfile_ShouldBeUsableInSwitchStatement()
         {
             FFmpegProfile profile = FFmpegProfile.Baseline;

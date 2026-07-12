@@ -70,7 +70,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with disposing false should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingFalse_ShouldNotThrow()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -87,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with disposing false should not clear frame buffer
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingFalse_ShouldNotClearFrameBuffer()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -104,7 +104,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save should complete without exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Save_ShouldCompleteWithoutException()
         {
             VideoFrame frame = new VideoFrame(2, 2);
@@ -136,7 +136,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save with existing output file should delete and complete
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Save_WithExistingOutputFile_ShouldDeleteAndComplete()
         {
             VideoFrame frame = new VideoFrame(2, 2);
@@ -165,7 +165,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save with custom encoder should complete without exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Save_WithCustomEncoder_ShouldCompleteWithoutException()
         {
             VideoFrame frame = new VideoFrame(2, 2);
@@ -193,7 +193,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save with extra parameters should complete without exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Save_WithExtraParameters_ShouldCompleteWithoutException()
         {
             VideoFrame frame = new VideoFrame(2, 2);
@@ -221,7 +221,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that save with non existent ffmpeg should throw win 32 exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Save_WithNonExistentFfmpeg_ShouldThrowWin32Exception()
         {
             VideoFrame frame = new VideoFrame(2, 2);
@@ -247,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that get pixels with specific coordinates should return correct bytes
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetPixels_WithSpecificCoordinates_ShouldReturnCorrectBytes()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -270,7 +270,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that get pixels with last pixel should return correct bytes
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetPixels_WithLastPixel_ShouldReturnCorrectBytes()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -293,7 +293,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that get pixels with multiple pixels should return correct count
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetPixels_WithMultiplePixels_ShouldReturnCorrectCount()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -312,7 +312,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that load with chunked stream should accumulate data
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithChunkedStream_ShouldAccumulateData()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -338,7 +338,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that load with small chunks should accumulate correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithSmallChunks_ShouldAccumulateCorrectly()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -362,7 +362,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that load partial data in chunks should resize raw data
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_PartialDataInChunks_ShouldResizeRawData()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -380,7 +380,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that raw data after dispose should still be accessible
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void RawData_AfterDispose_ShouldStillBeAccessible()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -395,7 +395,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor with maximum dimensions should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithMaximumDimensions_ShouldNotThrow()
         {
             VideoFrame frame = new VideoFrame(3840, 2160);
@@ -408,7 +408,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that load with partial data exactly half should resize correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithPartialDataExactlyHalf_ShouldResizeCorrectly()
         {
             VideoFrame frame = new VideoFrame(10, 10);

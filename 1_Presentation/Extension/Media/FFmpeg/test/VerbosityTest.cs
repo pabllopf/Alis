@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity quiet should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Quiet_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Quiet;
@@ -53,7 +54,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity info should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Info_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Info;
@@ -64,7 +65,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity verbose should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Verbose_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Verbose;
@@ -75,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity debug should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Debug_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Debug;
@@ -86,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity warning should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Warning_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Warning;
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity error should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Error_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Error;
@@ -108,7 +109,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity fatal should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Fatal_ShouldHaveCorrectValue()
         {
             Verbosity verbosity = Verbosity.Fatal;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity enum should have seven values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_Enum_ShouldHaveSevenValues()
         {
             Verbosity[] values = (Verbosity[]) Enum.GetValues(typeof(Verbosity));
@@ -130,7 +131,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldBeConvertibleToString()
         {
             Verbosity quiet = Verbosity.Quiet;
@@ -149,7 +150,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldBeParseableFromString()
         {
             Verbosity quiet = (Verbosity) Enum.Parse(typeof(Verbosity), "Quiet");
@@ -164,7 +165,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldSupportEqualityComparison()
         {
             Verbosity info1 = Verbosity.Info;
@@ -178,7 +179,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should be usable in switch statement
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldBeUsableInSwitchStatement()
         {
             Verbosity verbosity = Verbosity.Warning;
@@ -215,7 +216,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity all values should be defined
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_AllValues_ShouldBeDefined()
         {
             Assert.True(Enum.IsDefined(typeof(Verbosity), Verbosity.Quiet));
@@ -230,7 +231,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldHaveUniqueValues()
         {
             int[] values = new[]
@@ -250,7 +251,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldBeCastableToInt()
         {
             Verbosity verbosity = Verbosity.Error;
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ShouldBeCastableFromInt()
         {
             int value = 3;
@@ -276,7 +277,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that verbosity to lower invariant should work correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Verbosity_ToLowerInvariant_ShouldWorkCorrectly()
         {
             Verbosity quiet = Verbosity.Quiet;

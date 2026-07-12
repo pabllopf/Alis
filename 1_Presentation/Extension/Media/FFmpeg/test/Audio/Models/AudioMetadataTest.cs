@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that constructor creates an empty metadata instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_ShouldCreateEmptyMetadata()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that SampleFormat property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void SampleFormat_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that CodecLongName property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CodecLongName_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -77,7 +78,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Codec property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Codec_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -89,7 +90,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Channels property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Channels_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that SampleRate property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void SampleRate_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -113,7 +114,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Duration property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Duration_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that BitRate property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void BitRate_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -137,7 +138,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that BitDepth property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void BitDepth_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -149,7 +150,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that PredictedSampleCount property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PredictedSampleCount_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -161,7 +162,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Streams property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Streams_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -180,7 +181,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Streams is null by default
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Streams_Default_ShouldBeNull()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Format property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Format_ShouldBeSettable()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -210,7 +211,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Format is null by default
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Format_Default_ShouldBeNull()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -221,7 +222,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstVideoStream returns null when no video streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenNoVideoStreams_ShouldReturnNull()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -239,7 +240,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstVideoStream returns first video stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenVideoStreamsExist_ShouldReturnFirst()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -258,7 +259,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstAudioStream returns null when no audio streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenNoAudioStreams_ShouldReturnNull()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -276,7 +277,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstAudioStream returns first audio stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenAudioStreamsExist_ShouldReturnFirst()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -295,7 +296,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstAudioStream returns first audio stream when mixed with video
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_MixedStreams_ShouldReturnFirstAudio()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -317,7 +318,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that GetFirstVideoStream returns first video stream when mixed with audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_MixedStreams_ShouldReturnFirstVideo()
         {
             AudioMetadata metadata = new AudioMetadata();
@@ -339,7 +340,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that all properties can be set together
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AllProperties_ShouldBeSettableTogether()
         {
             AudioMetadata metadata = new AudioMetadata
@@ -369,7 +370,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that PredictedSampleCount is calculated correctly from Duration and SampleRate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PredictedSampleCount_ShouldMatchDurationTimesSampleRate()
         {
             AudioMetadata metadata = new AudioMetadata
@@ -386,7 +387,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that PredictedSampleCount with fractional duration is rounded correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PredictedSampleCount_WithFractionalDuration_ShouldRoundCorrectly()
         {
             AudioMetadata metadata = new AudioMetadata

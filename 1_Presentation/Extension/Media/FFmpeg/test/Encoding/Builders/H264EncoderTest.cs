@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder constructor should create instance with default cqp
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
         {
             H264Encoder encoder = new H264Encoder();
@@ -55,7 +56,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder name property should return libx 264
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_NameProperty_ShouldReturnLibx264()
         {
             H264Encoder encoder = new H264Encoder();
@@ -68,7 +69,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder format property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_FormatProperty_ShouldBeSettable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -82,7 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder default format should be mp 4
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_DefaultFormat_ShouldBeMp4()
         {
             H264Encoder encoder = new H264Encoder();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder encoder preset property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_EncoderPresetProperty_ShouldBeSettable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -107,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder default preset should be medium
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_DefaultPreset_ShouldBeMedium()
         {
             H264Encoder encoder = new H264Encoder();
@@ -118,7 +119,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder encoder tune property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_EncoderTuneProperty_ShouldBeSettable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder default tune should be auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_DefaultTune_ShouldBeAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder encoder ffmpeg profile property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_EncoderFFmpegProfileProperty_ShouldBeSettable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -157,7 +158,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder default profile should be auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_DefaultProfile_ShouldBeAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -168,7 +169,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder set cqp should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_SetCqp_ShouldSetQualitySettings()
         {
             H264Encoder encoder = new H264Encoder();
@@ -183,7 +184,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder set cbr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_SetCbr_ShouldSetQualitySettings()
         {
             H264Encoder encoder = new H264Encoder();
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder set vbv should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_SetVbv_ShouldSetQualitySettings()
         {
             H264Encoder encoder = new H264Encoder();
@@ -218,7 +219,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder set abr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_SetAbr_ShouldSetQualitySettings()
         {
             H264Encoder encoder = new H264Encoder();
@@ -233,7 +234,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should return encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldReturnEncoderOptions()
         {
             H264Encoder encoder = new H264Encoder();
@@ -249,7 +250,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include preset in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludePresetInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should not include tune when auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldNotIncludeTuneWhenAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include tune when not auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeTuneWhenNotAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -292,7 +293,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should not include profile when auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldNotIncludeProfileWhenAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -306,7 +307,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include profile when not auto
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeProfileWhenNotAuto()
         {
             H264Encoder encoder = new H264Encoder();
@@ -321,7 +322,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder should support all presets
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_ShouldSupportAllPresets()
         {
             foreach (Preset preset in Enum.GetValues(typeof(Preset)))
@@ -336,7 +337,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder should support all tunes
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_ShouldSupportAllTunes()
         {
             foreach (Tune tune in Enum.GetValues(typeof(Tune)))
@@ -351,7 +352,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder should support all profiles
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_ShouldSupportAllProfiles()
         {
             foreach (FFmpegProfile profile in Enum.GetValues(typeof(FFmpegProfile)))
@@ -366,7 +367,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder set vbv with crf max should include in settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_SetVbvWithCrfMax_ShouldIncludeInSettings()
         {
             H264Encoder encoder = new H264Encoder();
@@ -380,7 +381,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder should inherit from encoder options builder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_ShouldInheritFromEncoderOptionsBuilder()
         {
             H264Encoder encoder = new H264Encoder();
@@ -391,7 +392,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include default crf in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeDefaultCrfInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -405,7 +406,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include custom crf in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeCustomCrfInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -420,7 +421,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include cbr settings in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeCbrSettingsInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -435,7 +436,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include vbv settings in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeVbvSettingsInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -450,7 +451,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include abr settings in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeAbrSettingsInArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -465,7 +466,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include baseline profile
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeBaselineProfile()
         {
             H264Encoder encoder = new H264Encoder();
@@ -480,7 +481,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that h 264 encoder create should include main profile
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void H264Encoder_Create_ShouldIncludeMainProfile()
         {
             H264Encoder encoder = new H264Encoder();

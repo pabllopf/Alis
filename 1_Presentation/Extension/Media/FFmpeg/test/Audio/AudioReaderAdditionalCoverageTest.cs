@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -45,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadata_ShouldWork()
         {
             if (!File.Exists(_realAudioFile))
@@ -61,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async with real audio should populate metadata
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_WithRealAudio_ShouldPopulateMetadata()
         {
             if (!File.Exists(_realAudioFile))
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async with ignore stream errors should succeed
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_WithIgnoreStreamErrors_ShouldSucceed()
         {
             if (!File.Exists(_realAudioFile))
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async when already loaded should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrow()
         {
             if (!File.Exists(_realAudioFile))
@@ -110,7 +111,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async with non existent ffprobe should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_WithNonExistentFfprobe_ShouldThrow()
         {
             if (!File.Exists(_realAudioFile))
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata with non existent ffprobe should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadata_WithNonExistentFfprobe_ShouldThrow()
         {
             if (!File.Exists(_realAudioFile))
@@ -140,7 +141,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load after metadata load should open data stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_AfterMetadataLoad_ShouldOpenDataStream()
         {
             if (!File.Exists(_realAudioFile))
@@ -155,7 +156,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load with bit depth 24 should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithBitDepth24_ShouldWork()
         {
             if (!File.Exists(_realAudioFile))
@@ -170,7 +171,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load with bit depth 32 should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithBitDepth32_ShouldWork()
         {
             if (!File.Exists(_realAudioFile))
@@ -185,7 +186,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that metadata loaded default should be false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MetadataLoaded_Default_ShouldBeFalse()
         {
             using AudioReader reader = new AudioReader(_tempFile);
@@ -195,7 +196,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that metadata default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Metadata_Default_ShouldBeNull()
         {
             using AudioReader reader = new AudioReader(_tempFile);

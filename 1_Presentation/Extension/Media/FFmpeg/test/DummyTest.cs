@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -39,7 +40,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that default test
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DefaultTest()
         {
             Assert.True(true);

@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose with data stream set disposes data stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDataStreamSet_DisposesDataStream()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -140,7 +141,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose with data stream set multiple calls safe
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDataStreamSet_MultipleCalls_Safe()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -155,7 +156,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose when data stream is null no exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenDataStreamIsNull_NoException()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -166,7 +167,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that next frame frame when stream has data returns frame and updates offset
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_Frame_WhenStreamHasData_ReturnsFrameAndUpdatesOffset()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -195,7 +196,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that next frame frame when stream is empty returns null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_Frame_WhenStreamIsEmpty_ReturnsNull()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -214,7 +215,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that next frame frame when stream has partial data returns with one sample
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_Frame_WhenStreamHasPartialData_ReturnsWithOneSample()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -233,7 +234,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that next frame frame when not opened for reading throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_Frame_WhenNotOpenedForReading_Throws()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -246,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that copy to when data stream is null throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CopyTo_WhenDataStreamIsNull_Throws()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -259,7 +260,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that copy to when writer not opened throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CopyTo_WhenWriterNotOpened_Throws()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);
@@ -275,7 +276,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that LoadMetadataAsync succeeds with a real WAV file using ffprobe.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadataAsync_WithRealAudioFile_Succeeds()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -288,7 +289,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that LoadMetadataAsync with ignoreStreamErrors=true succeeds with real audio file.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadataAsync_WithIgnoreStreamErrors_AndRealFile_Succeeds()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -302,7 +303,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that Load prepares the reader for reading frames after metadata is loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_AfterMetadata_OpensDataStream()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -316,7 +317,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that Load with 24-bit depth works after metadata load.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithBitDepth24_Succeeds()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -331,7 +332,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that Load with invalid bit depth (8) throws.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithInvalidBitDepth8_Throws()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -345,7 +346,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that Load when already opened throws.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WhenAlreadyOpened_Throws()
         {
             using AudioReader reader = new AudioReader(_realAudioFile);
@@ -360,7 +361,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that copy to when both reader and writer ready copies data
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CopyTo_WhenBothReaderAndWriterReady_CopiesData()
         {
             TestableAudioReader reader = new TestableAudioReader(_tempFile);

@@ -29,6 +29,7 @@
 
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder format property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_FormatProperty_ShouldBeSettable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder name property should be readable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_NameProperty_ShouldBeReadable()
         {
             H264Encoder encoder = new H264Encoder();
@@ -70,7 +71,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder create method should return options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_CreateMethod_ShouldReturnOptions()
         {
             H264Encoder encoder = new H264Encoder();
@@ -84,7 +85,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder create should include format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_Create_ShouldIncludeFormat()
         {
             H264Encoder encoder = new H264Encoder();
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder create should include encoder name
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_Create_ShouldIncludeEncoderName()
         {
             H264Encoder encoder = new H264Encoder();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder create should include encoder arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_Create_ShouldIncludeEncoderArguments()
         {
             H264Encoder encoder = new H264Encoder();
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that different encoder builders should have different names
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_DifferentEncoders_ShouldHaveDifferentNames()
         {
             H264Encoder h264 = new H264Encoder();
@@ -144,7 +145,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that different encoder builders should have different formats
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_DifferentEncoders_ShouldHaveDifferentDefaultFormats()
         {
             H264Encoder h264 = new H264Encoder();
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder should create valid encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_ShouldCreateValidEncoderOptions()
         {
             H264Encoder encoder = new H264Encoder();
@@ -181,7 +182,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder format should be mutable before create
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_FormatShouldBeMutableBeforeCreate()
         {
             H264Encoder encoder = new H264Encoder();
@@ -197,7 +198,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder should support multiple calls to create
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_ShouldSupportMultipleCallsToCreate()
         {
             H264Encoder encoder = new H264Encoder();
@@ -214,7 +215,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder mp 3 encoder should create mp 3 options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_Mp3Encoder_ShouldCreateMp3Options()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -228,7 +229,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options builder vp 9 encoder should create vp 9 options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptionsBuilder_Vp9Encoder_ShouldCreateVp9Options()
         {
             Vp9Encoder encoder = new Vp9Encoder();

@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates channels and sample rate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_ZeroChannels_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates channels and sample rate negative values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_NegativeChannels_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -88,7 +89,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates zero sample rate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_ZeroSampleRate_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -111,7 +112,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates negative sample rate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_NegativeSampleRate_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -134,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates invalid bit depth 8
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_BitDepth8_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -157,7 +158,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates invalid bit depth 64
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_BitDepth64_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -180,7 +181,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates empty filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_Empty_ShouldThrowArgumentException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -203,7 +204,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename validates null filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_Null_ShouldThrowArgumentException()
         {
             try
@@ -220,7 +221,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithFilename_ShouldSetProperties()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -247,7 +248,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with stream validates null stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithStream_Null_ShouldThrowArgumentNullException()
         {
             using MemoryStream stream = new();
@@ -260,7 +261,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with stream sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithStream_ShouldSetProperties()
         {
             using MemoryStream stream = new();
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with stream and custom options sets encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithStream_CustomOptions_ShouldSetEncoderOptions()
         {
             using MemoryStream stream = new();
@@ -291,7 +292,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose does not throw on fresh instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Dispose_ShouldNotThrowOnFreshInstance()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -324,7 +325,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose can be called multiple times without throwing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_MultipleDispose_ShouldNotThrow()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -360,7 +361,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_CloseWrite_NotOpened_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -385,7 +386,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CurrentFFmpegProcess is initially null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_CurrentFFmpegProcess_InitialState_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -408,7 +409,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that DestinationStream is initially null for filename constructor
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_DestinationStream_FilenameConstructor_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -431,7 +432,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that DestinationStream is set for stream constructor
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_DestinationStream_StreamConstructor_ShouldBeSet()
         {
             using MemoryStream stream = new();
@@ -444,7 +445,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OutputDataStream is initially null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OutputDataStream_InitialState_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -467,7 +468,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with custom ffmpeg executable sets it correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_CustomFfmpeg_ShouldAcceptPath()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -490,7 +491,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with stream and custom ffmpeg executable sets it correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_WithStream_CustomFfmpeg_ShouldAcceptPath()
         {
             using MemoryStream stream = new();
@@ -503,7 +504,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename and bit depth 24 works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_BitDepth24_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -526,7 +527,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename and bit depth 32 works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_BitDepth32_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -549,7 +550,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename and single channel works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_SingleChannel_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -573,7 +574,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor with filename and high sample rate works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Constructor_HighSampleRate_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -597,7 +598,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -625,7 +626,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite command string contains correct parameters for 16-bit depth.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OpenWrite_CommandString_ContainsBitDepth16()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -652,7 +653,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite command string contains correct parameters for 24-bit depth.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OpenWrite_CommandString_ContainsBitDepth24()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -677,7 +678,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite command string contains correct parameters for 32-bit depth.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OpenWrite_CommandString_ContainsBitDepth32()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -702,7 +703,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OutputDataStream is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_OutputDataStream_BeforeOpenWrite_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -725,7 +726,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that EncoderOptions is never null (defaults to Mp3Encoder).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_EncoderOptions_NeverNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -748,7 +749,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that EncoderOptions with custom options is not null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_EncoderOptions_CustomNotnull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -771,7 +772,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Filename property is set for filename constructor.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_Filename_SetByFilenameConstructor()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -794,7 +795,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that DestinationStream is set for stream constructor.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_DestinationStream_SetByStreamConstructor()
         {
             using MemoryStream stream = new();
@@ -808,7 +809,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that UseFilename is true for filename constructor.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_UseFilename_TrueForFilenameConstructor()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp3");
@@ -831,7 +832,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that UseFilename is false for stream constructor.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioWriter_UseFilename_FalseForStreamConstructor()
         {
             using MemoryStream stream = new();

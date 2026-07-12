@@ -45,7 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper log level property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_LogLevelProperty_ShouldBeSettable()
         {
             // Arrange
@@ -70,7 +70,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper default log level should be info
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_DefaultLogLevel_ShouldBeInfo()
         {
             // Arrange & Act
@@ -83,7 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper hide ff mpeg banner property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_HideFFmpegBannerProperty_ShouldBeSettable()
         {
             // Arrange
@@ -108,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper default hide banner should be true
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_DefaultHideBanner_ShouldBeTrue()
         {
             // Arrange & Act
@@ -121,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper should support all verbosity levels
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ShouldSupportAllVerbosityLevels()
         {
             // Arrange
@@ -146,7 +146,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper should allow toggling hide banner
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ShouldAllowTogglingHideBanner()
         {
             // Arrange
@@ -176,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper should maintain log level across multiple settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ShouldMaintainLogLevelAcrossMultipleSettings()
         {
             // Arrange
@@ -203,7 +203,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper should maintain banner setting across multiple settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ShouldMaintainBannerSettingAcrossMultipleSettings()
         {
             // Arrange
@@ -230,7 +230,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper log level property should be readable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_LogLevelProperty_ShouldBeReadable()
         {
             // Arrange & Act
@@ -243,7 +243,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ff mpeg wrapper hide banner property should be readable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_HideBannerProperty_ShouldBeReadable()
         {
             // Arrange & Act

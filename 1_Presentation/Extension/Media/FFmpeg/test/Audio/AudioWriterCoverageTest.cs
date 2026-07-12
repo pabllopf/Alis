@@ -35,6 +35,7 @@ using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose() calls Dispose(true) and suppresses finalization.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_ShouldCallDisposeTrueAndSuppressFinalize()
         {
             // Arrange
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=false does not release resources.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingFalse_ShouldNotReleaseResources()
         {
             // Arrange
@@ -118,7 +119,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=true releases DestinationStream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldReleaseDestinationStream()
         {
             // Arrange
@@ -139,7 +140,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose(bool) disposes csc (CancellationTokenSource) when disposing=true.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldDisposeCsc()
         {
             // Arrange
@@ -165,7 +166,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=true and OpenedForWriting=false skips CloseWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_AndOpenedForWritingFalse_ShouldSkipCloseWrite()
         {
             // Arrange
@@ -195,7 +196,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -222,7 +223,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite throws when not opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -240,7 +241,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite sets OpenedForWriting to false in finally block.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_FinallyBlock_ShouldSetOpenedForWritingToFalse()
         {
             // Arrange
@@ -257,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite calls Ffmpegp.WaitForExit when Process exists.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenFfmpegpExists_ShouldCallWaitForExit()
         {
             // Arrange
@@ -281,7 +282,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite calls csc?.Cancel() when csc exists.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenCscExists_ShouldCallCancel()
         {
             // Arrange
@@ -305,7 +306,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite disposes OutputDataStream when UseFilename is false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenUseFilenameFalse_ShouldDisposeOutputDataStream()
         {
             // Arrange
@@ -328,7 +329,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite has try/catch block that swallows exceptions.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_TryCatchBlock_ShouldSwallowExceptions()
         {
             // Arrange
@@ -353,7 +354,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ffmpeg field exists and is accessible via reflection.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Ffmpeg_Field_ShouldBeAccessibleViaReflection()
         {
             // Arrange
@@ -372,7 +373,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that csc (CancellationTokenSource) field exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Csc_Field_ShouldBeNullInitially()
         {
             // Arrange
@@ -390,7 +391,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Ffmpegp field exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Ffmpegp_Field_ShouldBeNullInitially()
         {
             // Arrange
@@ -408,7 +409,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that InputDataStream property exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStream_Property_ShouldBeNullInitially()
         {
             // Arrange
@@ -426,7 +427,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OutputDataStream property exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OutputDataStream_Property_ShouldBeNullInitially()
         {
             // Arrange
@@ -448,7 +449,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that stream constructor sets DestinationStream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_ShouldSetDestinationStream()
         {
             // Arrange
@@ -461,7 +462,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that stream mode sets UseFilename to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamMode_ShouldSetUseFilenameToFalse()
         {
             // Arrange
@@ -474,7 +475,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that filename mode sets DestinationStream to null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameMode_ShouldSetDestinationStreamToNull()
         {
             // Arrange
@@ -491,7 +492,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that default encoder options create an MP3 encoder.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DefaultEncoderOptions_ShouldCreateMp3Encoder()
         {
             // Arrange
@@ -506,7 +507,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that custom encoder options are used when provided.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CustomEncoderOptions_ShouldBeUsed()
         {
             // Arrange
@@ -521,7 +522,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that EncoderOptions.EncoderArguments is accessible.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_EncoderArguments_ShouldBeAccessible()
         {
             // Arrange
@@ -544,7 +545,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor validates bitDepth is 16.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth16_ShouldSucceed()
         {
             // Arrange
@@ -558,7 +559,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor validates bitDepth is 24.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth24_ShouldSucceed()
         {
             // Arrange
@@ -572,7 +573,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor validates bitDepth is 32.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth32_ShouldSucceed()
         {
             // Arrange
@@ -590,7 +591,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CurrentFFmpegProcess returns Ffmpegp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_ShouldReturnFfmpegp()
         {
             // Arrange
@@ -611,7 +612,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Tests that OpenWrite in filename mode runs the command building and file-deletion logic
         ///     before throwing when ffmpeg executable is not found.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FilenameMode_WithoutFFmpeg_ThrowsAndBuildsCommand()
         {
             // Arrange
@@ -641,7 +642,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Tests that OpenWrite in stream mode runs the command building and csc creation
         ///     before throwing when ffmpeg executable is not found.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_StreamMode_WithoutFFmpeg_ThrowsAndCreatesCsc()
         {
             // Arrange
@@ -663,7 +664,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Tests that CloseWrite body runs to completion in filename mode,
         ///     disposing InputDataStream and resetting OpenedForWriting.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenOpenedInFilenameMode_ShouldCompleteWriteCycle()
         {
             // Arrange
@@ -717,7 +718,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CloseWrite in stream mode (UseFilename=false) also disposes OutputDataStream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenOpenedInStreamMode_ShouldDisposeOutputDataStream()
         {
             // Arrange
@@ -776,7 +777,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that WriteFrame writes frame data to InputDataStream when opened.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_WhenOpenedForWriting_ShouldWriteToInputDataStream()
         {
             // Arrange

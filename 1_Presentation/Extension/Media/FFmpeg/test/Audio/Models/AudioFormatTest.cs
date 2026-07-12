@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.Audio.Models;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
@@ -40,7 +41,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that constructor creates an empty format instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_ShouldCreateEmptyFormat()
         {
             AudioFormat format = new AudioFormat();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Filename property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that NbStreams property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NbStreams_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -75,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that NbPrograms property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NbPrograms_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that FormatName property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FormatName_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -99,7 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that FormatLongName property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FormatLongName_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -111,7 +112,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that StartTime property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StartTime_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -123,7 +124,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Duration property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Duration_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -135,7 +136,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that Size property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Size_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -147,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that BitRate property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void BitRate_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -159,7 +160,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that ProbeScore property can be set and retrieved
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ProbeScore_ShouldBeSettable()
         {
             AudioFormat format = new AudioFormat();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that all properties can be set together
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AllProperties_ShouldBeSettableTogether()
         {
             AudioFormat format = new AudioFormat
@@ -203,7 +204,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that default values are correct
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DefaultValues_ShouldBeCorrect()
         {
             AudioFormat format = new AudioFormat();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that string properties can be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StringProperties_CanBeNull()
         {
             AudioFormat format = new AudioFormat();
@@ -248,7 +249,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that large values are handled correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LargeValues_ShouldBeHandledCorrectly()
         {
             AudioFormat format = new AudioFormat
@@ -266,7 +267,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that negative values are handled for numeric properties
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NegativeValues_ShouldBeHandledForNumericProperties()
         {
             AudioFormat format = new AudioFormat

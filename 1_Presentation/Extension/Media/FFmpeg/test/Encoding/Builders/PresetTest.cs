@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset ultra fast should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_UltraFast_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.UltraFast;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset super fast should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_SuperFast_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.SuperFast;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset very fast should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_VeryFast_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.VeryFast;
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset faster should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Faster_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.Faster;
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset fast should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Fast_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.Fast;
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset medium should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Medium_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.Medium;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset slow should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Slow_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.Slow;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset slower should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Slower_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.Slower;
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset very slow should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_VerySlow_ShouldHaveCorrectValue()
         {
             Preset preset = Preset.VerySlow;
@@ -142,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset enum should have nine values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_Enum_ShouldHaveNineValues()
         {
             Preset[] values = (Preset[]) Enum.GetValues(typeof(Preset));
@@ -153,7 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldBeConvertibleToString()
         {
             Preset ultraFast = Preset.UltraFast;
@@ -172,7 +173,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldBeParseableFromString()
         {
             Preset fast = (Preset) Enum.Parse(typeof(Preset), "Fast");
@@ -185,7 +186,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldSupportEqualityComparison()
         {
             Preset medium1 = Preset.Medium;
@@ -199,7 +200,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset to lower invariant should work correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ToLowerInvariant_ShouldWorkCorrectly()
         {
             Preset ultraFast = Preset.UltraFast;
@@ -218,7 +219,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset all values should be defined
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_AllValues_ShouldBeDefined()
         {
             Assert.True(Enum.IsDefined(typeof(Preset), Preset.UltraFast));
@@ -235,7 +236,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldHaveUniqueValues()
         {
             int[] values = new[]
@@ -257,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldBeCastableToInt()
         {
             Preset preset = Preset.Medium;
@@ -270,7 +271,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldBeCastableFromInt()
         {
             int value = 4;
@@ -283,7 +284,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that preset should be usable in arrays
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Preset_ShouldBeUsableInArrays()
         {
             Preset[] presets = new[] {Preset.Fast, Preset.Medium, Preset.Slow};

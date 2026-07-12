@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Test.Extension.Media.FFmpeg.Audio
@@ -47,7 +48,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the constructor throws when the specified file does not exist.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WhenFileDoesNotExist_ThrowsFileNotFoundException()
         {
             // Act
@@ -60,7 +61,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the constructor accepts a valid existing file path.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithValidFile_SetsProperties()
         {
             // Arrange — create a temporary file
@@ -89,7 +90,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the constructor accepts custom ffmpeg and ffprobe executable paths.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithCustomExecutables_SetsExecutablePaths()
         {
             // Arrange — create a temporary file
@@ -123,7 +124,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that all read-only properties return their default values for a fresh reader.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PropertyAccessors_DefaultValuesAreCorrect()
         {
             // Arrange — create a temporary file
@@ -156,7 +157,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that <see cref="AudioReader.Dispose" /> does not throw on a fresh reader.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNeverUsed_NoException()
         {
             // Arrange — create a temporary file
@@ -182,7 +183,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that calling Dispose multiple times is safe.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_CalledMultipleTimes_NoException()
         {
             // Arrange — create a temporary file
@@ -215,7 +216,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that calling <see cref="AudioReader.Load" /> with invalid bit depth
         ///     throws <see cref="InvalidOperationException" />.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
@@ -247,7 +248,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that calling <see cref="AudioReader.Load" /> without loading metadata first
         ///     throws <see cref="InvalidOperationException" />.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WhenMetadataNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
@@ -281,7 +282,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that calling <see cref="AudioReader.NextFrame" /> without loading audio first
         ///     throws <see cref="InvalidOperationException" />.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WhenAudioNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file
@@ -311,7 +312,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that calling <see cref="AudioReader.NextFrame(int)" /> without loading audio first
         ///     throws <see cref="InvalidOperationException" />.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WithSamples_WhenAudioNotLoaded_ThrowsInvalidOperationException()
         {
             // Arrange — create a temporary file

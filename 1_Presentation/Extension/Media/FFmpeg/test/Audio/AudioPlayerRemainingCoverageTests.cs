@@ -31,6 +31,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the <see cref="AudioPlayer.Play" /> method body after the guards pass.
         ///     <c>FfMpegWrapper.RunCommand</c> is called with the constructed command string.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WhenGuardsPass_CallsFfMpegWrapperRunCommand()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -68,7 +69,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Exercises the <see cref="AudioPlayer.Play" /> body with custom extra parameters.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithExtraParameters_CallsFfMpegWrapperRunCommand()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -83,7 +84,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the <see cref="AudioPlayer.Play" /> body with <c>showWindow = true</c>
         ///     (the "-nodisp" suffix is omitted from the command).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithShowWindowTrue_CallsFfMpegWrapperRunCommand()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -102,7 +103,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the <see cref="AudioPlayer.PlayInBackground" /> method body after the guards pass.
         ///     <c>FfMpegWrapper.OpenOutput</c> is called.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WhenGuardsPass_CallsFfMpegWrapperOpenOutput()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Since the method throws before the <c>ffplayp = p</c> assignment, the returned value
         ///     (which would be the field's value) stays null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithRunPureBackgroundTrue_GuardsSkipped()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -138,7 +139,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the <see cref="AudioPlayer.OpenWrite" /> method body after the guard clauses pass.
         ///     The <c>ffplayp.Kill()</c> try/catch and <c>FfMpegWrapper.OpenInput</c> call are executed.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WhenGuardsPass_CallsFfMpegWrapperOpenInput()
         {
             AudioPlayer player = new AudioPlayer(null, FakeFfplay);
@@ -153,7 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises <see cref="AudioPlayer.OpenWrite" /> with <c>showWindow = true</c>.
         ///     The command string omits the "-nodisp" suffix.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithShowWindowTrue_CommandOmitsNodisp()
         {
             AudioPlayer player = new AudioPlayer(null, FakeFfplay);
@@ -167,7 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Exercises <see cref="AudioPlayer.OpenWrite" /> with <c>showFFplayOutput = true</c>.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithShowFFplayOutputTrue_ThrowsWin32Exception()
         {
             AudioPlayer player = new AudioPlayer(null, FakeFfplay);
@@ -186,7 +187,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the static <see cref="AudioPlayer.GetStreamForWriting" /> method.
         ///     <c>FfMpegWrapper.OpenInput</c> is called with the constructed command.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetStreamForWriting_WithFakeExecutable_ThrowsWin32Exception()
         {
             Win32Exception ex = Assert.Throws<Win32Exception>(() =>
@@ -202,7 +203,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     This still exercises the command construction path (will fail because ffplay likely not installed,
         ///     but the method body is reached).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetStreamForWriting_WithDefaultExecutable_ThrowsWin32Exception()
         {
             Exception ex = Record.Exception(() =>
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     The <c>ffplayp</c> field stays null and the inner try/catch swallows the
         ///     <c>NullReferenceException</c> from <c>ffplayp.HasExited</c>.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenOpenedWithStateSetup_ResetsFlagAndDisposesStream()
         {
             TestableAudioPlayer player = new TestableAudioPlayer(null, FakeFfplay);
@@ -240,7 +241,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Exercises the <see cref="AudioPlayer.Dispose()" /> path where <c>OpenedForWriting</c> is true.
         ///     <c>Dispose(bool)</c> calls <c>CloseWrite()</c>, which cleans up and resets the flag.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_ClosesWriteAndResetsFlag()
         {
             TestableAudioPlayer player = new TestableAudioPlayer("input.wav", FakeFfplay);
@@ -265,7 +266,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///
         ///     Note: This test requires a real short-lived process (dotnet --version).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WhenPreviousProcessExists_KillsItBeforeOpen()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);
@@ -280,7 +281,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         ///     Verifies that Dispose enters the else block (OpenedForWriting = false)
         ///     and that the else block handles a null ffplayp safely.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNotOpenedForWriting_ElseBlockHandlesNullFfplayp()
         {
             AudioPlayer player = new AudioPlayer("input.wav", FakeFfplay);

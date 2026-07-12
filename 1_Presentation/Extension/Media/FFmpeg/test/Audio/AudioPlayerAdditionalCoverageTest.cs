@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -59,7 +60,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that close write with running ffplayp kills process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithRunningFfplayp_KillsProcess()
         {
             TestableAudioPlayer player = new TestableAudioPlayer(null, _fakeFfplayPath);
@@ -90,7 +91,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that get stream for writing with fake ffplay returns stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetStreamForWriting_WithFakeFfplay_ReturnsStream()
         {
             Stream stream = AudioPlayer.GetStreamForWriting("s16le", "-channels 2 -sample_rate 44100",
@@ -107,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that get stream for writing with show f fplay output returns stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetStreamForWriting_WithShowFFplayOutput_ReturnsStream()
         {
             Stream stream = AudioPlayer.GetStreamForWriting("s16le", "-channels 2 -sample_rate 44100",
@@ -123,7 +124,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with run pure background does not assign ffplayp
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithRunPureBackground_DoesNotAssignFfplayp()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -140,7 +141,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background without pure background assigns ffplayp
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithoutPureBackground_AssignsFfplayp()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -161,7 +162,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with extra params should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithExtraParams_ShouldWork()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -178,7 +179,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play in background with show window true should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithShowWindowTrue_ShouldWork()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -195,7 +196,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play with show window true should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithShowWindowTrue_ShouldNotThrow()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that play with extra parameters should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Play_WithExtraParameters_ShouldNotThrow()
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose when not opened for writing with running process kills it
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNotOpenedForWriting_WithRunningProcess_KillsIt()
         {
             AudioPlayer player = new AudioPlayer(null, _fakeFfplayPath);

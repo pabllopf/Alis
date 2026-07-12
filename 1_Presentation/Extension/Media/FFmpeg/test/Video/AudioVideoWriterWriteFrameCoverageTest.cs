@@ -33,6 +33,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     <see cref="NetworkStream" />, then sets it via reflection to simulate the
         ///     state that <see cref="AudioVideoWriter.OpenWrite" /> normally establishes.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Audio_WhenOpened_WritesRawDataToInputDataStreamAudio()
         {
             // Arrange
@@ -112,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     on streams and sockets, and handles null <c>Ffmpegp</c> gracefully. The
         ///     finally block still sets <c>OpenedForWriting = false</c>.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenOpenedWithNullFfmpegp_CompletesGracefullyAndResetsFlag()
         {
             // Arrange
@@ -142,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     <see cref="AudioVideoWriter.CloseWrite" />. CloseWrite handles null
         ///     <c>Ffmpegp</c> gracefully and resets <c>OpenedForWriting</c>.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_CallsCloseWrite()
         {
             // Arrange

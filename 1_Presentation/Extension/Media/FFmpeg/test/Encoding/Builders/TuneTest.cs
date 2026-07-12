@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune auto should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_Auto_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.Auto;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune film should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_Film_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.Film;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune animation should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_Animation_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.Animation;
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune grain should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_Grain_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.Grain;
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune still image should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_StillImage_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.StillImage;
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune fast decode should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_FastDecode_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.FastDecode;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune zero latency should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ZeroLatency_ShouldHaveCorrectValue()
         {
             Tune tune = Tune.ZeroLatency;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune enum should have seven values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_Enum_ShouldHaveSevenValues()
         {
             Tune[] values = (Tune[]) Enum.GetValues(typeof(Tune));
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldBeConvertibleToString()
         {
             Tune auto = Tune.Auto;
@@ -150,7 +151,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldBeParseableFromString()
         {
             Tune grain = (Tune) Enum.Parse(typeof(Tune), "Grain");
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldSupportEqualityComparison()
         {
             Tune film1 = Tune.Film;
@@ -177,7 +178,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune to lower invariant should work correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ToLowerInvariant_ShouldWorkCorrectly()
         {
             Tune auto = Tune.Auto;
@@ -196,7 +197,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune all values should be defined
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_AllValues_ShouldBeDefined()
         {
             Assert.True(Enum.IsDefined(typeof(Tune), Tune.Auto));
@@ -211,7 +212,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldHaveUniqueValues()
         {
             int[] values = new[]
@@ -231,7 +232,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldBeCastableToInt()
         {
             Tune tune = Tune.Animation;
@@ -244,7 +245,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldBeCastableFromInt()
         {
             int value = 5;
@@ -257,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that tune should be usable in switch statement
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tune_ShouldBeUsableInSwitchStatement()
         {
             Tune tune = Tune.Film;

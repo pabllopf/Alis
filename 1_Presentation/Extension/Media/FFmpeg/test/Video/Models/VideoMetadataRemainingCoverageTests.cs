@@ -1,4 +1,5 @@
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first video stream when video stream exists returns stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenVideoStreamExists_ReturnsStream()
         {
             var videoStream = new MediaStream { CodecType = "video" };
@@ -30,7 +31,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first video stream when no video stream returns null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenNoVideoStream_ReturnsNull()
         {
             var audioStream = new MediaStream { CodecType = "audio" };
@@ -47,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first audio stream when audio stream exists returns stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenAudioStreamExists_ReturnsStream()
         {
             var audioStream = new MediaStream { CodecType = "audio" };
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first audio stream when no audio stream returns null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenNoAudioStream_ReturnsNull()
         {
             var videoStream = new MediaStream { CodecType = "video" };
@@ -82,7 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first video stream with multiple streams returns first video
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstVideoStream_WithMultipleStreams_ReturnsFirstVideo()
         {
             var audioStream = new MediaStream { CodecType = "audio" };
@@ -102,7 +103,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         /// Tests that get first audio stream with multiple streams returns first audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void GetFirstAudioStream_WithMultipleStreams_ReturnsFirstAudio()
         {
             var videoStream = new MediaStream { CodecType = "video" };

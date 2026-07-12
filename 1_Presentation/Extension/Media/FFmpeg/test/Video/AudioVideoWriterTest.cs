@@ -26,6 +26,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -39,7 +40,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates video dimensions
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_ZeroWidth_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -62,7 +63,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates negative video height
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_NegativeHeight_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -85,7 +86,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates video framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_ZeroFramerate_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -108,7 +109,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates negative video framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_NegativeFramerate_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates empty filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_Empty_ShouldThrowArgumentException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -154,7 +155,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates null audio channels
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_ZeroAudioChannels_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -177,7 +178,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates zero audio sample rate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_ZeroAudioSampleRate_ShouldThrowInvalidDataException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates invalid audio bit depth 8
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_AudioBitDepth8_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates invalid audio bit depth 64
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_AudioBitDepth64_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -246,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_ShouldSetProperties()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -276,7 +277,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with stream validates null stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithNullStream_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => new AudioVideoWriter((Stream)null, 640, 480, 30, 2, 44100, 16, null, null));
@@ -285,7 +286,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates zero video framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithZeroFramerate_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -297,7 +298,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates negative video framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithNegativeFramerate_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -309,7 +310,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates zero audio channels
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithZeroAudioChannels_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -321,7 +322,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates zero audio sample rate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithZeroSampleRate_ThrowsInvalidDataException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -333,7 +334,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates invalid bit depth (8)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithBitDepth8_ThrowsInvalidOperationException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -345,7 +346,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor validates invalid bit depth (64)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConstructorWithStream_WithBitDepth64_ThrowsInvalidOperationException()
         {
             using MemoryStream ms = new MemoryStream();
@@ -357,7 +358,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with stream sets properties correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithStream_ShouldSetProperties()
         {
             using MemoryStream stream = new();
@@ -374,7 +375,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose does not throw on fresh instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Dispose_ShouldNotThrowOnFreshInstance()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -407,7 +408,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose can be called multiple times without throwing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_MultipleDispose_ShouldNotThrow()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -442,7 +443,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_CloseWrite_NotOpened_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -467,7 +468,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CurrentFFmpegProcess is initially null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_CurrentFFmpegProcess_InitialState_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -490,7 +491,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that DestinationStream is initially null for filename constructor
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_DestinationStream_FilenameConstructor_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -513,7 +514,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that DestinationStream is set for stream constructor
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_DestinationStream_StreamConstructor_ShouldBeSet()
         {
             using MemoryStream stream = new();
@@ -526,7 +527,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that InputDataStreamVideo is initially null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_InputDataStreamVideo_InitialState_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -549,7 +550,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OutputDataStream is initially null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_OutputDataStream_InitialState_ShouldBeNull()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -572,7 +573,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with custom ffmpeg executable sets it correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_CustomFfmpeg_ShouldAcceptPath()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -595,7 +596,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with stream and custom ffmpeg executable sets it correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithStream_CustomFfmpeg_ShouldAcceptPath()
         {
             using MemoryStream stream = new();
@@ -608,7 +609,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with different video resolutions works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_DifferentResolutions_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -636,7 +637,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with 4K resolution works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_4K_ShouldSetCorrectly()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -661,7 +662,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_WriteFrame_Audio_NotOpened_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -687,7 +688,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame with video frame throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_WriteFrame_Video_NotOpened_ShouldThrowInvalidOperationException()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -713,7 +714,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with filename validates null filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithFilename_Null_ShouldThrowArgumentException()
         {
             Assert.Throws<ArgumentException>(() => new AudioVideoWriter((string)null, 1920, 1080, 30.0, 2, 44100, 16, null, null));
@@ -722,7 +723,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with stream validates zero video width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithStream_ZeroWidth_ShouldThrowInvalidDataException()
         {
             using MemoryStream stream = new();
@@ -736,7 +737,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor with stream validates negative video width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_Constructor_WithStream_NegativeWidth_ShouldThrowInvalidDataException()
         {
             using MemoryStream stream = new();
@@ -750,7 +751,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OpenedForWriting is initially false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_OpenedForWriting_InitialState_ShouldBeFalse()
         {
             string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString() + ".mp4");
@@ -778,7 +779,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     writer is opened. Uses reflection to set preconditions that would normally
         ///     be set by <see cref="AudioVideoWriter.OpenWrite" /> (which requires ffmpeg).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Video_WhenOpened_WritesRawDataToInputDataStreamVideo()
         {
             // Arrange

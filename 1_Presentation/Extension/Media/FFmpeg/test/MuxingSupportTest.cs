@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support mux demux should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_MuxDemux_ShouldHaveCorrectValue()
         {
             MuxingSupport support = MuxingSupport.MuxDemux;
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support mux should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_Mux_ShouldHaveCorrectValue()
         {
             MuxingSupport support = MuxingSupport.Mux;
@@ -63,7 +64,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support demux should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_Demux_ShouldHaveCorrectValue()
         {
             MuxingSupport support = MuxingSupport.Demux;
@@ -74,7 +75,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support enum should have three values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_Enum_ShouldHaveThreeValues()
         {
             MuxingSupport[] values = (MuxingSupport[]) Enum.GetValues(typeof(MuxingSupport));
@@ -85,7 +86,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldBeConvertibleToString()
         {
             MuxingSupport muxDemux = MuxingSupport.MuxDemux;
@@ -104,7 +105,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldBeParseableFromString()
         {
             MuxingSupport muxDemux = (MuxingSupport) Enum.Parse(typeof(MuxingSupport), "MuxDemux");
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldSupportEqualityComparison()
         {
             MuxingSupport mux1 = MuxingSupport.Mux;
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should be usable in switch statement
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldBeUsableInSwitchStatement()
         {
             MuxingSupport support = MuxingSupport.Mux;
@@ -158,7 +159,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldHaveUniqueValues()
         {
             int muxDemuxValue = (int) MuxingSupport.MuxDemux;
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldBeCastableToInt()
         {
             MuxingSupport support = MuxingSupport.Demux;
@@ -186,7 +187,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_ShouldBeCastableFromInt()
         {
             int value = 1;
@@ -201,7 +202,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that muxing support all values should be defined
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MuxingSupport_AllValues_ShouldBeDefined()
         {
             // Arrange & Act & Assert

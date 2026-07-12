@@ -33,6 +33,7 @@ using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write filename mode with fake ffmpeg should build command and set opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FilenameMode_WithFakeFfmpeg_ShouldBuildCommandAndSetOpenedForWriting()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write stream mode with fake ffmpeg should build command and set state
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_StreamMode_WithFakeFfmpeg_ShouldBuildCommandAndSetState()
         {
             using MemoryStream dest = new();
@@ -139,7 +140,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write already opened with fake ffmpeg should throw invalid operation exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_WithFakeFfmpeg_ShouldThrowInvalidOperationException()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -157,7 +158,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that close write filename mode with fake ffmpeg should complete write cycle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_FilenameMode_WithFakeFfmpeg_ShouldCompleteWriteCycle()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that close write stream mode with fake ffmpeg should dispose output data stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_StreamMode_WithFakeFfmpeg_ShouldDisposeOutputDataStream()
         {
             using MemoryStream dest = new();
@@ -192,7 +193,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose when opened for writing filename mode should call close write
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_FilenameMode_ShouldCallCloseWrite()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose when opened for writing stream mode should close write and dispose resources
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_StreamMode_ShouldCloseWriteAndDisposeResources()
         {
             MemoryStream dest = new();
@@ -226,7 +227,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that open write with show ffmpeg output true should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithShowFfmpegOutputTrue_ShouldNotThrow()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -243,7 +244,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that write frame when opened for writing should write to input data stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_WhenOpenedForWriting_ShouldWriteToInputDataStream()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -261,7 +262,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that current f fmpeg process after open write should not be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_AfterOpenWrite_ShouldNotBeNull()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");
@@ -279,7 +280,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose when not opened with custom encoder options should succeed
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNotOpened_WithCustomEncoderOptions_ShouldSucceed()
         {
             EncoderOptions customOptions = new Mp3Encoder().Create();
@@ -293,7 +294,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose called multiple times after open write should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_CalledMultipleTimes_AfterOpenWrite_ShouldNotThrow()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid().ToString() + ".mp3");

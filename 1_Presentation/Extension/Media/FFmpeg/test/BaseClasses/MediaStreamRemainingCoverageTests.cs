@@ -1,4 +1,5 @@
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -11,7 +12,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that avg frame rate number default should be zero
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AvgFrameRateNumber_Default_ShouldBeZero()
         {
             MediaStream stream = new MediaStream();
@@ -21,7 +22,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that avg frame rate number should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AvgFrameRateNumber_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { AvgFrameRateNumber = 29.97 };
@@ -31,7 +32,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that is avc should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IsAvc_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { IsAvc = "true" };
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that profile should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Profile_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { Profile = "High" };
@@ -51,7 +52,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that codec long name should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CodecLongName_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { CodecLongName = "H.264 / AVC" };
@@ -61,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that pix fmt should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PixFmt_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { PixFmt = "yuv420p" };
@@ -71,7 +72,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that level should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Level_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { Level = 51 };

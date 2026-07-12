@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_Constructor_ShouldCreateInstance()
         {
             MediaStream stream = new MediaStream();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream codec name property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_CodecNameProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -67,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream codec type property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_CodecTypeProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is audio should return true for audio codec type
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsAudio_ShouldReturnTrueForAudioCodecType()
         {
             MediaStream stream = new MediaStream {CodecType = "audio"};
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is video should return true for video codec type
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsVideo_ShouldReturnTrueForVideoCodecType()
         {
             MediaStream stream = new MediaStream {CodecType = "video"};
@@ -107,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is audio should be case insensitive
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsAudio_ShouldBeCaseInsensitive()
         {
             MediaStream stream1 = new MediaStream {CodecType = "AUDIO"};
@@ -122,7 +123,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is video should be case insensitive
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsVideo_ShouldBeCaseInsensitive()
         {
             MediaStream stream1 = new MediaStream {CodecType = "VIDEO"};
@@ -137,7 +138,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream width property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_WidthProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -151,7 +152,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream height property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_HeightProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -165,7 +166,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream sample rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_SampleRateProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -179,7 +180,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream sample rate number should parse string correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_SampleRateNumber_ShouldParseStringCorrectly()
         {
             MediaStream stream = new MediaStream {SampleRate = "44100"};
@@ -192,7 +193,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream sample rate number should return negative one for null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForNull()
         {
             MediaStream stream = new MediaStream {SampleRate = null};
@@ -205,7 +206,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream sample rate number should return negative one for empty string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_SampleRateNumber_ShouldReturnNegativeOneForEmptyString()
         {
             MediaStream stream = new MediaStream {SampleRate = string.Empty};
@@ -218,7 +219,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream channels property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_ChannelsProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -232,7 +233,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream bit rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_BitRateProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -246,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream tags property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_TagsProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -260,7 +261,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream should support common video codecs
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_ShouldSupportCommonVideoCodecs()
         {
             MediaStream h264Stream = new MediaStream {CodecName = "h264", CodecType = "video"};
@@ -275,7 +276,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream should support common audio codecs
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_ShouldSupportCommonAudioCodecs()
         {
             MediaStream mp3Stream = new MediaStream {CodecName = "mp3", CodecType = "audio"};
@@ -290,7 +291,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream index property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IndexProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -304,7 +305,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream duration property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_DurationProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -318,7 +319,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream should support initializer syntax
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_ShouldSupportInitializerSyntax()
         {
             MediaStream stream = new MediaStream
@@ -340,7 +341,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is audio should handle whitespace
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsAudio_ShouldHandleWhitespace()
         {
             MediaStream stream = new MediaStream {CodecType = "  audio  "};
@@ -353,7 +354,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is video should handle whitespace
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsVideo_ShouldHandleWhitespace()
         {
             MediaStream stream = new MediaStream {CodecType = "  video  "};
@@ -366,7 +367,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is audio should return false for subtitle codec type
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsAudio_ShouldReturnFalseForSubtitleCodecType()
         {
             MediaStream stream = new MediaStream {CodecType = "subtitle"};
@@ -379,7 +380,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream is video should return false for subtitle codec type
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_IsVideo_ShouldReturnFalseForSubtitleCodecType()
         {
             MediaStream stream = new MediaStream {CodecType = "subtitle"};
@@ -392,7 +393,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream disposition property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_DispositionProperty_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream();
@@ -406,7 +407,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that media stream default disposition should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaStream_DefaultDisposition_ShouldBeNull()
         {
             MediaStream stream = new MediaStream();

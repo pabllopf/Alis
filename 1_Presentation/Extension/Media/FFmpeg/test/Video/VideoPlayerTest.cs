@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video player constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_Constructor_ShouldCreateInstance()
         {
             VideoPlayer player = new VideoPlayer();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video player should be disposable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_ShouldBeDisposable()
         {
             VideoPlayer player = new VideoPlayer();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video player should be disposable multiple times
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_ShouldBeDisposableMultipleTimes()
         {
             VideoPlayer player = new VideoPlayer();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video player play should throw when no filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_Play_ShouldThrowWhenNoFilename()
         {
             VideoPlayer player = new VideoPlayer();
@@ -92,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video player close write should throw when not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_CloseWrite_ShouldThrowWhenNotOpened()
         {
             VideoPlayer player = new VideoPlayer();
@@ -103,7 +104,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video player constructor should set filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_Constructor_ShouldSetFilename()
         {
             VideoPlayer player = new VideoPlayer("test.mp4");
@@ -114,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video player constructor should default filename to null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoPlayer_Constructor_ShouldDefaultFilenameToNull()
         {
             VideoPlayer player = new VideoPlayer();

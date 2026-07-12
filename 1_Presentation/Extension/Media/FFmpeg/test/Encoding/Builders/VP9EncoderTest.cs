@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder constructor should create instance with default cqp
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -55,7 +56,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder name property should return libvpx vp 9
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_NameProperty_ShouldReturnLibvpxVp9()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -68,7 +69,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder default format should be webm
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_DefaultFormat_ShouldBeWebm()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder encoder quality property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_EncoderQualityProperty_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder default quality should be good
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_DefaultQuality_ShouldBeGood()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -104,7 +105,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder encoder tune property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_EncoderTuneProperty_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -118,7 +119,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder cpu used property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_CpuUsedProperty_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder default cpu used should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_DefaultCpuUsed_ShouldBeNull()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -143,7 +144,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder row based multithreading property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_RowBasedMultithreadingProperty_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -156,7 +157,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder default row based multithreading should be false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_DefaultRowBasedMultithreading_ShouldBeFalse()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -167,7 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set cvbr with crf should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetCvbrWithCrf_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set cvbr with bitrates should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetCvbrWithBitrates_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -202,7 +203,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set abr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetAbr_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -217,7 +218,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set cqp with custom value should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetCqpWithCustomValue_ShouldWork()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -233,7 +234,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set cbr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetCbr_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -249,7 +250,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder set lossless should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_SetLossless_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -262,7 +263,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should return encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldReturnEncoderOptions()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include cpu used when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeCpuUsedWhenSet()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -292,7 +293,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include row mt when enabled
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeRowMtWhenEnabled()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -306,7 +307,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder tune enum should have three values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_TuneEnum_ShouldHaveThreeValues()
         {
             Vp9Encoder.Tune[] values = (Vp9Encoder.Tune[]) Enum.GetValues(typeof(Vp9Encoder.Tune));
@@ -317,7 +318,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder should inherit from encoder options builder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_ShouldInheritFromEncoderOptionsBuilder()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -328,7 +329,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include tune content in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeTuneContentInArguments()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -342,7 +343,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include deadline in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeDeadlineInArguments()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -356,7 +357,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should not include row mt when disabled
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldNotIncludeRowMtWhenDisabled()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -370,7 +371,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should not include cpu used when null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldNotIncludeCpuUsedWhenNull()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -384,7 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include film tune content
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeFilmTuneContent()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -398,7 +399,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include screen tune content
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeScreenTuneContent()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -412,7 +413,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include best deadline
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeBestDeadline()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -426,7 +427,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that vp 9 encoder create should include realtime deadline
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Vp9Encoder_Create_ShouldIncludeRealtimeDeadline()
         {
             Vp9Encoder encoder = new Vp9Encoder();

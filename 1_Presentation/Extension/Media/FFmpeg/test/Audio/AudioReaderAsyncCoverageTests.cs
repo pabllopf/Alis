@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -27,7 +28,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async with real audio file loads successfully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_WithRealAudioFile_LoadsSuccessfully()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -45,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async with ogg file loads successfully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_WithOggFile_LoadsSuccessfully()
         {
             string audioFile = GetAssetPath("horse.ogg");
@@ -63,7 +64,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata with real audio file loads successfully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadata_WithRealAudioFile_LoadsSuccessfully()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata already loaded throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadata_AlreadyLoaded_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load metadata async already loaded throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task LoadMetadataAsync_AlreadyLoaded_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -114,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load after metadata opens stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_AfterMetadata_OpensStream()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load without metadata throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithoutMetadata_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -149,7 +150,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load already loaded throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_AlreadyLoaded_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -168,7 +169,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that load invalid bit depth throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_InvalidBitDepth_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that next frame without load throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WithoutLoad_Throws()
         {
             string audioFile = GetAssetPath("horse.mp3");
@@ -201,7 +202,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that resolve bit depth with various formats sets correct depth
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithVariousFormats_SetsCorrectDepth()
         {
             var m = () => new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata();
@@ -216,7 +217,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that resolve bit depth when bit depth already set does not change
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WhenBitDepthAlreadySet_DoesNotChange()
         {
             Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata metadata =
@@ -228,7 +229,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that resolve bit depth with empty sample format does not change
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithEmptySampleFormat_DoesNotChange()
         {
             Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata metadata =
@@ -240,7 +241,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that constructor with non existent file throws
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithNonExistentFile_Throws()
         {
             FileNotFoundException ex = Assert.Throws<FileNotFoundException>(() => new AudioReader("nonexistent_file.mp3"));
@@ -250,7 +251,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that dispose should cleanup
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_ShouldCleanup()
         {
             string audioFile = GetAssetPath("horse.mp3");

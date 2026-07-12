@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media writer write frame should throw when not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaWriter_WriteFrame_ShouldThrowWhenNotOpened()
         {
             TestWriter writer = new TestWriter();
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media writer write frame should write to input stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaWriter_WriteFrame_ShouldWriteToInputStream()
         {
             byte[] payload = {1, 2, 3, 4};

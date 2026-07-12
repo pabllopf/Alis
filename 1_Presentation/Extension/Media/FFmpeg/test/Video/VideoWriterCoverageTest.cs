@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -61,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode with fake ffmpeg should set opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_WithFakeFfmpeg_ShouldSetOpenedForWriting()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode with existing file should delete first
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_WithExistingFile_ShouldDeleteFirst()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -95,7 +96,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write file mode with show f fmpeg output should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_FileMode_WithShowFFmpegOutput_ShouldWork()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -112,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write already opened should throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_ShouldThrow()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write with fake ffmpeg should reset flag
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithFakeFfmpeg_ShouldResetFlag()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -145,7 +146,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write stream mode should dispose output stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_StreamMode_ShouldDisposeOutputStream()
         {
             using MemoryStream dest = new MemoryStream();
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose when opened should call close write
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpened_ShouldCallCloseWrite()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
@@ -177,7 +178,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose should dispose destination stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_ShouldDisposeDestinationStream()
         {
             MemoryStream dest = new MemoryStream();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write when ffmpegp is null should complete gracefully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenFfmpegpIsNull_ShouldNotThrow()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
@@ -213,7 +214,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that open write with custom encoder options should build correct command
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WithCustomEncoderOptions_ShouldBuildCorrectCommand()
         {
             string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");

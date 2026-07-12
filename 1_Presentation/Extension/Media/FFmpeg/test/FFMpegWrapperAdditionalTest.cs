@@ -113,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ExecuteCommand returns a valid process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ExecuteCommand_ShouldReturnProcess()
         {
             // Arrange
@@ -135,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ExecuteCommand with showOutput false does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ExecuteCommand_ShowOutputFalse_ShouldNotThrow()
         {
             // Arrange
@@ -155,7 +155,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenOutput returns a valid stream and process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenOutput_ShouldReturnValidStream()
         {
             // Arrange
@@ -178,7 +178,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenOutput without out parameter works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenOutput_WithoutOutParameter_ShouldReturnStream()
         {
             // Arrange
@@ -194,7 +194,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenInput without out parameter works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenInput_WithoutOutParameter_ShouldReturnStream()
         {
             // Arrange
@@ -210,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Open returns valid input and output streams with process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_Open_ShouldReturnValidStreams()
         {
             // Arrange
@@ -234,7 +234,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Open without out parameter works correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_Open_WithoutOutParameter_ShouldReturnStreams()
         {
             // Arrange
@@ -251,7 +251,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMediaTypeFromTypeChar returns Audio for 'A'
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMediaTypeFromTypeChar_Audio_ShouldReturnAudio()
         {
             // Arrange
@@ -268,7 +268,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMediaTypeFromTypeChar returns Video for 'V'
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMediaTypeFromTypeChar_Video_ShouldReturnVideo()
         {
             // Arrange
@@ -285,7 +285,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMediaTypeFromTypeChar returns Subtitle for unknown char
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMediaTypeFromTypeChar_Unknown_ShouldReturnSubtitle()
         {
             // Arrange
@@ -302,7 +302,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMuxingSupportFromType returns MuxDemux for "DE"
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMuxingSupportFromType_DE_ShouldReturnMuxDemux()
         {
             // Arrange
@@ -319,7 +319,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMuxingSupportFromType returns Demux for "D"
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMuxingSupportFromType_D_ShouldReturnDemux()
         {
             // Arrange
@@ -336,7 +336,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetMuxingSupportFromType returns Mux for unknown type
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetMuxingSupportFromType_Unknown_ShouldReturnMux()
         {
             // Arrange
@@ -385,7 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that ExecuteCommand with showOutput true does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_ExecuteCommand_ShowOutputTrue_ShouldNotThrow()
         {
             // Arrange
@@ -405,7 +405,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenOutput with showOutput true does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenOutput_ShowOutputTrue_ShouldNotThrow()
         {
             // Arrange
@@ -425,7 +425,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenInput with showOutput true does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenInput_ShowOutputTrue_ShouldNotThrow()
         {
             // Arrange
@@ -445,7 +445,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Open with showOutput true does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_Open_ShowOutputTrue_ShouldNotThrow()
         {
             // Arrange
@@ -466,7 +466,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenInput with showOutput false does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_OpenInput_ShowOutputFalse_ShouldNotThrow()
         {
             // Arrange
@@ -486,7 +486,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Open with showOutput false does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_Open_ShowOutputFalse_ShouldNotThrow()
         {
             // Arrange

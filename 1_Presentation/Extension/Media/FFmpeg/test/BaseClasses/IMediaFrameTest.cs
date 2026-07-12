@@ -30,6 +30,7 @@
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that audio frame should implement i media frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldImplementIMediaFrame()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -55,7 +56,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that video frame should implement i media frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ShouldImplementIMediaFrame()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame raw data should not be null for audio frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_RawDataShouldNotBeNullForAudioFrame()
         {
             IMediaFrame frame = new AudioFrame(2);
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame raw data should not be null for video frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_RawDataShouldNotBeNullForVideoFrame()
         {
             IMediaFrame frame = new VideoFrame(1920, 1080);
@@ -92,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame load should work with empty stream for audio frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_LoadShouldWorkWithEmptyStreamForAudioFrame()
         {
             IMediaFrame frame = new AudioFrame(2);
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame load should work with empty stream for video frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_LoadShouldWorkWithEmptyStreamForVideoFrame()
         {
             IMediaFrame frame = new VideoFrame(1920, 1080);
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame load should work with data stream for audio frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_LoadShouldWorkWithDataStreamForAudioFrame()
         {
             IMediaFrame frame = new AudioFrame(2, 100);
@@ -135,7 +136,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that i media frame load should work with data stream for video frame
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void IMediaFrame_LoadShouldWorkWithDataStreamForVideoFrame()
         {
             IMediaFrame frame = new VideoFrame(10, 10);

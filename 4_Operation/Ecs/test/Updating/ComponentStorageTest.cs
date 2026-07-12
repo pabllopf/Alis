@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Ecs.Kernel.Events;
+using Alis.Core.Ecs.Updating;
 using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 

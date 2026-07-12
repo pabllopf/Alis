@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_Constructor_ShouldCreateInstance()
         {
             EncoderOptions options = new EncoderOptions();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options format property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_FormatProperty_ShouldBeSettable()
         {
             EncoderOptions options = new EncoderOptions();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options encoder name property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_EncoderNameProperty_ShouldBeSettable()
         {
             EncoderOptions options = new EncoderOptions();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options encoder arguments property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_EncoderArgumentsProperty_ShouldBeSettable()
         {
             EncoderOptions options = new EncoderOptions();
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should allow null format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldAllowNullFormat()
         {
             EncoderOptions options = new EncoderOptions();
@@ -107,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should allow null encoder name
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldAllowNullEncoderName()
         {
             EncoderOptions options = new EncoderOptions();
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should allow null encoder arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldAllowNullEncoderArguments()
         {
             EncoderOptions options = new EncoderOptions();
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should allow empty strings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldAllowEmptyStrings()
         {
             EncoderOptions options = new EncoderOptions();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options all properties should be independent
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_AllProperties_ShouldBeIndependent()
         {
             EncoderOptions options = new EncoderOptions();
@@ -167,7 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should support common video formats
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldSupportCommonVideoFormats()
         {
             EncoderOptions mp4Options = new EncoderOptions {Format = "mp4"};
@@ -182,7 +183,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should support common audio formats
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldSupportCommonAudioFormats()
         {
             EncoderOptions mp3Options = new EncoderOptions {Format = "mp3"};
@@ -197,7 +198,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should support common video encoders
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldSupportCommonVideoEncoders()
         {
             EncoderOptions h264Options = new EncoderOptions {EncoderName = "libx264"};
@@ -212,7 +213,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should support common audio encoders
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldSupportCommonAudioEncoders()
         {
             EncoderOptions mp3Options = new EncoderOptions {EncoderName = "libmp3lame"};
@@ -227,7 +228,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should allow complex encoder arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldAllowComplexEncoderArguments()
         {
             EncoderOptions options = new EncoderOptions();
@@ -241,7 +242,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options properties should be mutable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_Properties_ShouldBeMutable()
         {
             EncoderOptions options = new EncoderOptions
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding
         /// <summary>
         ///     Tests that encoder options should support initializer syntax
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void EncoderOptions_ShouldSupportInitializerSyntax()
         {
             EncoderOptions options = new EncoderOptions

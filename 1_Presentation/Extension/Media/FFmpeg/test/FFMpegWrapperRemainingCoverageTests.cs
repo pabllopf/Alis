@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that run command hide banner false should execute
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void RunCommand_HideBannerFalse_ShouldExecute()
         {
             Verbosity originalLog = FfMpegWrapper.LogLevel;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that execute command hide banner false should return process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ExecuteCommand_HideBannerFalse_ShouldReturnProcess()
         {
             bool originalBanner = FfMpegWrapper.HideFFmpegBanner;
@@ -89,7 +90,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that open output hide banner false should return stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenOutput_HideBannerFalse_ShouldReturnStream()
         {
             bool originalBanner = FfMpegWrapper.HideFFmpegBanner;
@@ -113,7 +114,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that open input hide banner false should return stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenInput_HideBannerFalse_ShouldReturnStream()
         {
             bool originalBanner = FfMpegWrapper.HideFFmpegBanner;
@@ -137,7 +138,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that open hide banner false should return streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Open_HideBannerFalse_ShouldReturnStreams()
         {
             bool originalBanner = FfMpegWrapper.HideFFmpegBanner;

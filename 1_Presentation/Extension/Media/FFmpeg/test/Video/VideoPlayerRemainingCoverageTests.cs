@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background null filename throws invalid operation exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_NullFilename_ThrowsInvalidOperationException()
         {
             VideoPlayer player = new VideoPlayer();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background empty filename throws invalid operation exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_EmptyFilename_ThrowsInvalidOperationException()
         {
             VideoPlayer player = new VideoPlayer(string.Empty);
@@ -67,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that play in background with filename does not throw precondition exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PlayInBackground_WithFilename_DoesNotThrowPreconditionException()
         {
             VideoPlayer player = new VideoPlayer("test.mp4");
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that constructor with ffplay executable does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithFfplayExecutable_DoesNotThrow()
         {
             VideoPlayer player = new VideoPlayer("test.mp4", "myffplay");

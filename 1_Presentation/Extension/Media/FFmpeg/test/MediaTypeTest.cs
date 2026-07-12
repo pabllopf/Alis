@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type video should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_Video_ShouldHaveCorrectValue()
         {
             MediaType mediaType = MediaType.Video;
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type audio should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_Audio_ShouldHaveCorrectValue()
         {
             MediaType mediaType = MediaType.Audio;
@@ -63,7 +64,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type subtitle should have correct value
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_Subtitle_ShouldHaveCorrectValue()
         {
             MediaType mediaType = MediaType.Subtitle;
@@ -74,7 +75,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type enum should have three values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_Enum_ShouldHaveThreeValues()
         {
             MediaType[] values = (MediaType[]) Enum.GetValues(typeof(MediaType));
@@ -85,7 +86,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type enum should contain video audio and subtitle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_Enum_ShouldContainVideoAudioAndSubtitle()
         {
             bool hasVideo = Enum.IsDefined(typeof(MediaType), MediaType.Video);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should be convertible to string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldBeConvertibleToString()
         {
             MediaType video = MediaType.Video;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should be parseable from string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldBeParseableFromString()
         {
             MediaType video = (MediaType) Enum.Parse(typeof(MediaType), "Video");
@@ -134,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should support equality comparison
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldSupportEqualityComparison()
         {
             MediaType video1 = MediaType.Video;
@@ -148,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should be usable in switch statement
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldBeUsableInSwitchStatement()
         {
             MediaType mediaType = MediaType.Audio;
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should have unique values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldHaveUniqueValues()
         {
             int videoValue = (int) MediaType.Video;
@@ -188,7 +189,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should be castable to int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldBeCastableToInt()
         {
             MediaType mediaType = MediaType.Video;
@@ -201,7 +202,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that media type should be castable from int
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaType_ShouldBeCastableFromInt()
         {
             int value = 1;

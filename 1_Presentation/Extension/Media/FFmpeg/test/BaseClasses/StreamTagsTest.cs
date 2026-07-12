@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags default constructor should create instance with empty strings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_DefaultConstructor_ShouldCreateInstanceWithEmptyStrings()
         {
             StreamTags tags = new StreamTags();
@@ -55,7 +56,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags parameterized constructor should create instance with values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_ParameterizedConstructor_ShouldCreateInstanceWithValues()
         {
             string creationTime = "2021-01-01T00:00:00.000000Z";
@@ -72,7 +73,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags creation time property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_CreationTimeProperty_ShouldBeSettable()
         {
             StreamTags tags = new StreamTags();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags language property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_LanguageProperty_ShouldBeSettable()
         {
             StreamTags tags = new StreamTags();
@@ -100,7 +101,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags handler name property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_HandlerNameProperty_ShouldBeSettable()
         {
             StreamTags tags = new StreamTags();
@@ -114,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags should allow null values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_ShouldAllowNullValues()
         {
             StreamTags tags = new StreamTags();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags should support common language codes
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_ShouldSupportCommonLanguageCodes()
         {
             StreamTags engTags = new StreamTags {Language = "eng"};
@@ -146,7 +147,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags properties should be independent
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_Properties_ShouldBeIndependent()
         {
             StreamTags tags = new StreamTags();
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags should support initializer syntax
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_ShouldSupportInitializerSyntax()
         {
             StreamTags tags = new StreamTags
@@ -181,7 +182,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags properties should be mutable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_Properties_ShouldBeMutable()
         {
             StreamTags tags = new StreamTags("2021-01-01", "eng", "VideoHandler");
@@ -198,7 +199,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         ///     Tests that stream tags constructor with null parameters should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamTags_ConstructorWithNullParameters_ShouldWork()
         {
             StreamTags tags = new StreamTags(null, null, null);

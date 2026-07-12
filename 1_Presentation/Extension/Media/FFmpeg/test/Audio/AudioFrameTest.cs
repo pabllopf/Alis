@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -44,7 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with valid parameters should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithValidParameters_ShouldCreateInstance()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with invalid bit depth should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithInvalidBitDepth_ShouldThrowException()
         {
             Assert.Throws<InvalidOperationException>(() => new AudioFrame(2, 1024, 8));
@@ -67,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with zero channels should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithZeroChannels_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new AudioFrame(0));
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with negative channels should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithNegativeChannels_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new AudioFrame(-1));
@@ -85,7 +86,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with zero sample count should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithZeroSampleCount_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new AudioFrame(2, 0));
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with negative sample count should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithNegativeSampleCount_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new AudioFrame(2, -1));
@@ -103,7 +104,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support 16 bit depth
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupport16BitDepth()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -114,7 +115,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support 24 bit depth
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupport24BitDepth()
         {
             AudioFrame frame = new AudioFrame(2, 1024, 24);
@@ -125,7 +126,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support 32 bit depth
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupport32BitDepth()
         {
             AudioFrame frame = new AudioFrame(2, 1024, 32);
@@ -136,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame raw data should not be null after construction
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_RawData_ShouldNotBeNullAfterConstruction()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -147,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame raw data length should be correct
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_RawDataLength_ShouldBeCorrect()
         {
             int channels = 2;
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame loaded samples should be zero initially
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_LoadedSamples_ShouldBeZeroInitially()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -174,7 +175,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame load from empty stream should return false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_LoadFromEmptyStream_ShouldReturnFalse()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -188,7 +189,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame load from stream with data should return true
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_LoadFromStreamWithData_ShouldReturnTrue()
         {
             AudioFrame frame = new AudioFrame(2, 100);
@@ -203,7 +204,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame load should update loaded samples
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_Load_ShouldUpdateLoadedSamples()
         {
             AudioFrame frame = new AudioFrame(2, 100);
@@ -218,7 +219,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame get sample should return correct byte array
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_GetSample_ShouldReturnCorrectByteArray()
         {
             AudioFrame frame = new AudioFrame(2, 10);
@@ -241,7 +242,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame get sample from second channel should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_GetSampleFromSecondChannel_ShouldWork()
         {
             AudioFrame frame = new AudioFrame(2, 10);
@@ -264,7 +265,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame dispose should clear frame buffer
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_Dispose_ShouldClearFrameBuffer()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support mono audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupportMonoAudio()
         {
             AudioFrame frame = new AudioFrame(1);
@@ -288,7 +289,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support stereo audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupportStereoAudio()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -299,7 +300,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should support multi channel audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldSupportMultiChannelAudio()
         {
             AudioFrame frame = new AudioFrame(8);
@@ -310,7 +311,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame load from partial stream should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_LoadFromPartialStream_ShouldWork()
         {
             AudioFrame frame = new AudioFrame(2, 100);
@@ -326,7 +327,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should implement i media frame interface
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldImplementIMediaFrameInterface()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -337,7 +338,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame should implement i disposable interface
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ShouldImplementIDisposableInterface()
         {
             AudioFrame frame = new AudioFrame(2);
@@ -348,7 +349,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame multiple load calls should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_MultipleLoadCalls_ShouldWork()
         {
             AudioFrame frame = new AudioFrame(2, 100);
@@ -367,7 +368,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio frame constructor with different sample counts should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioFrame_ConstructorWithDifferentSampleCounts_ShouldWork()
         {
             AudioFrame frame512 = new AudioFrame(2, 512);

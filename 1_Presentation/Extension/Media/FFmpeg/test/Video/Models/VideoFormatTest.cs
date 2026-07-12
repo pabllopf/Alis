@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_Constructor_ShouldCreateInstance()
         {
             VideoFormat format = new VideoFormat();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format filename property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_FilenameProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format nb streams property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_NbStreamsProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format nb programs property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_NbProgramsProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format format name property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_FormatNameProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -108,7 +109,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format format long name property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_FormatLongNameProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format start time property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_StartTimeProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -136,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format duration property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_DurationProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -150,7 +151,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format size property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_SizeProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -164,7 +165,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format bit rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_BitRateProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -178,7 +179,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format probe score property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_ProbeScoreProperty_ShouldBeSettable()
         {
             VideoFormat format = new VideoFormat();
@@ -192,7 +193,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format should support null values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_ShouldSupportNullValues()
         {
             VideoFormat format = new VideoFormat();
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format should support initializer syntax
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_ShouldSupportInitializerSyntax()
         {
             VideoFormat format = new VideoFormat
@@ -229,7 +230,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format properties should be mutable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_Properties_ShouldBeMutable()
         {
             VideoFormat format = new VideoFormat
@@ -248,7 +249,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format should support common video formats
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_ShouldSupportCommonVideoFormats()
         {
             VideoFormat mp4 = new VideoFormat {FormatName = "mp4"};
@@ -263,7 +264,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format probe score should support valid range
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormat_ProbeScore_ShouldSupportValidRange()
         {
             VideoFormat lowScore = new VideoFormat {ProbeScore = 0};

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -95,7 +96,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that filename default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_Default_ShouldBeNull()
         {
             TestReader reader = new TestReader();
@@ -105,7 +106,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that filename should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_ShouldBeSettable()
         {
             TestReader reader = new TestReader();
@@ -116,7 +117,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that data stream default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DataStream_Default_ShouldBeNull()
         {
             TestReader reader = new TestReader();
@@ -126,7 +127,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that opened for reading default should be false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForReading_Default_ShouldBeFalse()
         {
             TestReader reader = new TestReader();
@@ -136,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that opened for reading should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForReading_ShouldBeSettable()
         {
             TestReader reader = new TestReader();

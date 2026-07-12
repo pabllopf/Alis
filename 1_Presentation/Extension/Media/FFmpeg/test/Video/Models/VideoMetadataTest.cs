@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_Constructor_ShouldCreateInstance()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata width property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_WidthProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata height property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_HeightProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -81,7 +82,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata duration property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_DurationProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -95,7 +96,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata bit rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_BitRateProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata codec property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_CodecProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -124,7 +125,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata format property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_FormatProperty_ShouldBeSettable()
         {
             VideoMetadata metadata = new VideoMetadata();
@@ -138,7 +139,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata should support common resolutions
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_ShouldSupportCommonResolutions()
         {
             VideoMetadata hd720 = new VideoMetadata {Width = 1280, Height = 720};
@@ -156,7 +157,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video metadata should support common codecs
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoMetadata_ShouldSupportCommonCodecs()
         {
             VideoMetadata h264 = new VideoMetadata {Codec = "h264"};

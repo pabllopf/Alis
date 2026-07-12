@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame constructor with valid parameters should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ConstructorWithValidParameters_ShouldCreateInstance()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -57,7 +58,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame constructor with zero width should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ConstructorWithZeroWidth_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(0, 1080));
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame constructor with zero height should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ConstructorWithZeroHeight_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(1920, 0));
@@ -75,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame constructor with negative width should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ConstructorWithNegativeWidth_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(-1920, 1080));
@@ -84,7 +85,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame constructor with negative height should throw exception
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ConstructorWithNegativeHeight_ShouldThrowException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(1920, -1080));
@@ -93,7 +94,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame raw data should not be null after construction
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_RawData_ShouldNotBeNullAfterConstruction()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -104,7 +105,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame raw data length should be correct for rgb 24
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_RawDataLength_ShouldBeCorrectForRgb24()
         {
             int width = 1920;
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame load from empty stream should return false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_LoadFromEmptyStream_ShouldReturnFalse()
         {
             VideoFrame frame = new VideoFrame(100, 100);
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame load from stream with data should return true
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_LoadFromStreamWithData_ShouldReturnTrue()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -148,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame load from partial stream should return true
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_LoadFromPartialStream_ShouldReturnTrue()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -163,7 +164,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame dispose should clear frame buffer
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_Dispose_ShouldClearFrameBuffer()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -176,7 +177,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame should implement i media frame interface
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ShouldImplementIMediaFrameInterface()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -187,7 +188,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame should implement i disposable interface
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ShouldImplementIDisposableInterface()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);
@@ -198,7 +199,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame get pixels should return correct byte array
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_GetPixels_ShouldReturnCorrectByteArray()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -219,7 +220,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame get pixels with length should return correct size
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_GetPixelsWithLength_ShouldReturnCorrectSize()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -235,7 +236,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame should support common resolutions
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ShouldSupportCommonResolutions()
         {
             VideoFrame frame720p = new VideoFrame(1280, 720);
@@ -253,7 +254,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame multiple load calls should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_MultipleLoadCalls_ShouldWork()
         {
             VideoFrame frame = new VideoFrame(10, 10);
@@ -272,7 +273,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame should support small dimensions
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_ShouldSupportSmallDimensions()
         {
             VideoFrame frame = new VideoFrame(1, 1);
@@ -285,7 +286,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that video frame dispose multiple times should be safe
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFrame_DisposeMultipleTimes_ShouldBeSafe()
         {
             VideoFrame frame = new VideoFrame(1920, 1080);

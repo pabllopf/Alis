@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write with null ffmpegp should complete gracefully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithNullFfmpegp_ShouldNotThrow()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -112,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with opened for writing should complete
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWriting_ShouldComplete()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -127,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose without opened for writing should not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithoutOpenedForWriting_ShouldNotThrow()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -138,7 +139,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with csc should dispose csc
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithCsc_ShouldDisposeCsc()
         {
             AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -150,7 +151,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that write frame video when opened writes to stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Video_WhenOpened_WritesToStream()
         {
             AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -175,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write with exited process disposes streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithExitedProcess_DisposesStreams()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -191,7 +192,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write stream mode with exited process disposes output data stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_StreamMode_WithExitedProcess_DisposesOutputDataStream()
         {
             using MemoryStream outputStream = new MemoryStream();
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that dispose with opened for writing filename mode should close write
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWritingFilenameMode_ShouldCloseWrite()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that close write with exited process and socket should complete
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithExitedProcessAndSocket_ShouldComplete()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_tempFile, 640, 480, 30.0, 2, 44100, 16, null, null);

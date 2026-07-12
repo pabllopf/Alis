@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Test.Extension.Media.FFmpeg.Audio
@@ -48,7 +49,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when channels is zero.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenChannelsIsZero_ThrowsInvalidDataException()
         {
             // Act
@@ -64,7 +65,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when channels is negative.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenChannelsIsNegative_ThrowsInvalidDataException()
         {
             // Act
@@ -80,7 +81,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when sample rate is zero.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenSampleRateIsZero_ThrowsInvalidDataException()
         {
             // Act
@@ -96,7 +97,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when sample rate is negative.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenSampleRateIsNegative_ThrowsInvalidDataException()
         {
             // Act
@@ -112,7 +113,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when bit depth is not 16, 24, or 32.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Act — 8-bit depth
@@ -145,7 +146,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor throws when filename is null or empty.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WhenFilenameIsNullOrEmpty_ThrowsArgumentException()
         {
             // Act — null filename
@@ -168,7 +169,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor accepts valid 16, 24, and 32 bit depths.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WithValidBitDepths_Succeeds()
         {
             // Act — 16-bit (default)
@@ -215,7 +216,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor accepts a custom FFmpeg executable path.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WithCustomFfmpegPath_SetsFfmpegExecutable()
         {
             // Act
@@ -234,7 +235,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor creates default EncoderOptions when none provided.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WithNullEncoderOptions_CreatesDefaultEncoderOptions()
         {
             // Act
@@ -250,7 +251,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the filename constructor accepts custom EncoderOptions.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameConstructor_WithCustomEncoderOptions_UsesProvidedOptions()
         {
             // Arrange
@@ -282,7 +283,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor throws when the destination stream is null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WhenStreamIsNull_ThrowsArgumentNullException()
         {
             // Act
@@ -298,7 +299,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor throws when channels is zero.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WhenChannelsIsZero_ThrowsInvalidDataException()
         {
             // Act
@@ -314,7 +315,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor throws when sample rate is zero.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WhenSampleRateIsZero_ThrowsInvalidDataException()
         {
             // Act
@@ -330,7 +331,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor throws when bit depth is invalid.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WhenBitDepthIsInvalid_ThrowsInvalidOperationException()
         {
             // Act
@@ -347,7 +348,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor accepts valid parameters and sets UseFilename to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WithValidParameters_SetsUseFilenameFalse()
         {
             // Act
@@ -369,7 +370,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream constructor accepts custom EncoderOptions.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_WithCustomEncoderOptions_UsesProvidedOptions()
         {
             // Arrange
@@ -401,7 +402,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that all read-only properties return the values set by the constructor.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void PropertyAccessors_AllPropertiesReturnConstructorValues()
         {
             // Arrange
@@ -454,7 +455,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the DestinationStream property returns the provided stream for stream-based writers.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_DestinationStreamProperty_ReturnsProvidedStream()
         {
             // Arrange
@@ -478,7 +479,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the OpenedForWriting property defaults to false for both constructors.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForWriting_DefaultValue_IsFalse()
         {
             // Arrange
@@ -499,7 +500,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     would fail — but we verify the property state instead since we can't call OpenWrite
         ///     without FFmpeg.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_WhenNotOpenedForWriting_PropertStateIsFalse()
         {
             // Arrange
@@ -522,7 +523,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that calling <see cref="AudioWriter.CloseWrite" /> when not opened
         ///     for writing throws <see cref="InvalidOperationException" />.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -541,7 +542,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that CloseWrite throws for stream-based writers too when not opened.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_StreamBased_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -565,7 +566,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         ///     Verifies that <see cref="AudioWriter.Dispose" /> can be called without throwing
         ///     on a writer that was never opened or started.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNeverOpened_NoException()
         {
             // Arrange
@@ -581,7 +582,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that the stream-based writer's Dispose does not throw.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_StreamBased_NoException()
         {
             // Arrange
@@ -597,7 +598,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that calling Dispose multiple times is safe.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_CalledMultipleTimes_NoException()
         {
             // Arrange
@@ -616,7 +617,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
         /// <summary>
         ///     Verifies that a stream-based writer's Dispose does not throw on multiple calls.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_StreamBased_MultipleCalls_NoException()
         {
             // Arrange

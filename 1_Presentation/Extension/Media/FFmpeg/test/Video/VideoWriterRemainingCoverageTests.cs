@@ -33,6 +33,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that file constructor sets UseFilename to true.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ShouldSetUseFilenameToTrue()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -91,7 +92,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that file constructor sets Filename property.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ShouldSetFilename()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -102,7 +103,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that file constructor sets DestinationStream to null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_ShouldSetDestinationStreamToNull()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -113,7 +114,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that file constructor with custom encoder options uses provided options.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_WithCustomEncoderOptions_ShouldUseProvidedOptions()
         {
             EncoderOptions options = new EncoderOptions
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that file constructor with custom ffmpeg executable sets private ffmpeg field.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileCtor_WithCustomFfmpeg_ShouldSetFfmpegField()
         {
             VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30, null, "custom-ffmpeg");
@@ -153,7 +154,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor sets UseFilename to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ShouldSetUseFilenameToFalse()
         {
             using VideoWriter writer = new VideoWriter(_testStream, 640, 480, 30);
@@ -164,7 +165,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor with custom encoder options uses provided options.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_WithCustomEncoderOptions_ShouldUseProvidedOptions()
         {
             EncoderOptions options = new EncoderOptions
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor with custom ffmpeg executable sets private ffmpeg field.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_WithCustomFfmpeg_ShouldSetFfmpegField()
         {
             VideoWriter writer = new VideoWriter(_testStream, 640, 480, 30, null, "my-ffmpeg");
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor sets DestinationStream to the provided stream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamCtor_ShouldSetDestinationStream()
         {
             using VideoWriter writer = new VideoWriter(_testStream, 640, 480, 30);
@@ -215,7 +216,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CurrentFFmpegProcess returns the Ffmpegp field (null before OpenWrite).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_ShouldReturnFfmpegpValue()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -226,7 +227,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OutputDataStream is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OutputDataStream_ShouldBeNullInitially()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -241,7 +242,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose() completes without exception.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_ShouldNotThrow()
         {
             VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -254,7 +255,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=false does not release resources.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingFalse_ShouldNotThrow()
         {
             VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -272,7 +273,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=true completes without exception.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldNotThrow()
         {
             VideoWriter writer = new VideoWriter(_testStream, 640, 480, 30);
@@ -290,7 +291,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=true disposes csc (CancellationTokenSource).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldDisposeCsc()
         {
             VideoWriter writer = new VideoWriter(_testStream, 640, 480, 30);
@@ -312,7 +313,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) calls CloseWrite when OpenedForWriting is true.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWriting_ShouldCallCloseWrite()
         {
             // Arrange
@@ -358,7 +359,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -388,7 +389,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite sets OpenedForWriting to false in finally block even when exception occurs in try block.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenExceptionInTry_ShouldSetOpenedForWritingToFalse()
         {
             // Arrange
@@ -420,7 +421,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite completes normally in file mode with an exited process.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_FileMode_WithExitedProcess_ShouldComplete()
         {
             // Arrange
@@ -460,7 +461,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite completes normally in stream mode with an exited process.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_StreamMode_WithExitedProcess_ShouldComplete()
         {
             // Arrange
@@ -512,7 +513,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that csc field is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Csc_Field_ShouldBeNullInitially()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
@@ -526,7 +527,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Ffmpegp field is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Ffmpegp_Field_ShouldBeNullInitially()
         {
             using VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);

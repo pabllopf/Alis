@@ -30,6 +30,7 @@
 using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder constructor should create instance with default vbr
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Constructor_ShouldCreateInstanceWithDefaultVbr()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder name property should return libopus
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_NameProperty_ShouldReturnLibopus()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -69,7 +70,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder default format should be ogg
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_DefaultFormat_ShouldBeOgg()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder channel count property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_ChannelCountProperty_ShouldBeSettable()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder sample rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SampleRateProperty_ShouldBeSettable()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -108,7 +109,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder codec application property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_CodecApplicationProperty_ShouldBeSettable()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -122,7 +123,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder default application should be audio
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_DefaultApplication_ShouldBeAudio()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -133,7 +134,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder compression level property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_CompressionLevelProperty_ShouldBeSettable()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -147,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder default compression level should be 10
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_DefaultCompressionLevel_ShouldBe10()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -158,7 +159,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder set cbr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SetCbr_ShouldSetQualitySettings()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -174,7 +175,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder set vbr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SetVbr_ShouldSetQualitySettings()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -190,7 +191,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder set cvbr should set quality settings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SetCvbr_ShouldSetQualitySettings()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -206,7 +207,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should return encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldReturnEncoderOptions()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -221,7 +222,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include application in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeApplicationInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -236,7 +237,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include compression level in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeCompressionLevelInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -251,7 +252,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include channel count when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeChannelCountWhenSet()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -266,7 +267,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder application enum should have three values
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_ApplicationEnum_ShouldHaveThreeValues()
         {
             OpusEncoder.Application[] values = (OpusEncoder.Application[]) Enum.GetValues(typeof(OpusEncoder.Application));
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder should inherit from encoder options builder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_ShouldInheritFromEncoderOptionsBuilder()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -288,7 +289,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder compression level should support valid range
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_CompressionLevel_ShouldSupportValidRange()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -303,7 +304,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include default vbr in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeDefaultVbrInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -316,7 +317,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include default bitrate in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeDefaultBitrateInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -329,7 +330,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include audio application in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeAudioApplicationInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -342,7 +343,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include lowdelay application in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeLowdelayApplicationInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -356,7 +357,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include default compression level in arguments
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeDefaultCompressionLevelInArguments()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -369,7 +370,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should not include channel count when null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldNotIncludeChannelCountWhenNull()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -383,7 +384,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should not include sample rate when null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldNotIncludeSampleRateWhenNull()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -397,7 +398,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder create should include sample rate when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_Create_ShouldIncludeSampleRateWhenSet()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -412,7 +413,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder set cbr should override default vbr
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SetCbr_ShouldOverrideDefaultVbr()
         {
             OpusEncoder encoder = new OpusEncoder();
@@ -427,7 +428,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that opus encoder set cvbr should override default vbr
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpusEncoder_SetCvbr_ShouldOverrideDefaultVbr()
         {
             OpusEncoder encoder = new OpusEncoder();

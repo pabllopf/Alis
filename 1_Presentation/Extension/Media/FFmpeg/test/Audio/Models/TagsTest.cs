@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Media.FFmpeg.Audio.Models;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_Constructor_ShouldCreateInstance()
         {
             Tags tags = new Tags();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags encoder property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_EncoderProperty_ShouldBeSettable()
         {
             Tags tags = new Tags();
@@ -66,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags encoder property should accept null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_EncoderProperty_ShouldAcceptNull()
         {
             Tags tags = new Tags();
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags encoder property should accept empty string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_EncoderProperty_ShouldAcceptEmptyString()
         {
             Tags tags = new Tags();
@@ -92,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags should support initializer syntax
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_ShouldSupportInitializerSyntax()
         {
             Tags tags = new Tags
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags encoder property should be mutable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_EncoderProperty_ShouldBeMutable()
         {
             Tags tags = new Tags {Encoder = "Lavf58.29.100"};
@@ -119,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
         /// <summary>
         ///     Tests that tags should support common encoder strings
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Tags_ShouldSupportCommonEncoderStrings()
         {
             Tags lavfTags = new Tags {Encoder = "Lavf58.29.100"};

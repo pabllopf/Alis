@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Audio.Models;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -67,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor throws when file does not exist
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
             Assert.Throws<FileNotFoundException>(() => new AudioReader("/nonexistent/file.mp3"));
@@ -76,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor works with existing file
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithExistingFile_ShouldNotThrow()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -87,7 +88,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that constructor accepts custom ffmpeg executable name
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithCustomFfmpeg_ShouldNotThrow()
         {
             AudioReader reader = new AudioReader(_tempFile, "custom-ffmpeg", "custom-probe");
@@ -98,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Filename property is set correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_ShouldBeSetCorrectly()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that CurrentSampleOffset is zero by default
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentSampleOffset_Default_ShouldBeZero()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that MetadataLoaded is false by default
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MetadataLoaded_Default_ShouldBeFalse()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Metadata is null by default
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Metadata_Default_ShouldBeNull()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -142,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose does not throw when metadata not loaded
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WhenNotLoaded_ShouldNotThrow()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -155,7 +156,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that multiple Dispose calls do not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MultipleDisposeCalls_ShouldNotThrow()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -170,7 +171,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth does nothing when bit depth is already set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WhenAlreadySet_ShouldNotChange()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 32, SampleFormat = "s16" };
@@ -183,7 +184,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth sets 64-bit depth for 64 format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With64Format_ShouldSet64Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "fltp64" };
@@ -196,7 +197,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth sets 32-bit depth for 32 format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With32Format_ShouldSet32Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "fltp32" };
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth sets 24-bit depth for 24 format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With24Format_ShouldSet24Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "s24" };
@@ -222,7 +223,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth sets 16-bit depth for 16 format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With16Format_ShouldSet16Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "s16" };
@@ -235,7 +236,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth sets 8-bit depth for 8 format
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With8Format_ShouldSet8Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "u8" };
@@ -248,7 +249,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth does nothing when sample format is null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithNullSampleFormat_ShouldNotChange()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = null };
@@ -261,7 +262,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth does nothing when sample format is empty
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithEmptySampleFormat_ShouldNotChange()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "" };
@@ -274,7 +275,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth does nothing when sample format has no bit depth indicator
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithUnknownFormat_ShouldNotChange()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "unknown" };
@@ -287,7 +288,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth handles format with 64 in the middle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With64InMiddle_ShouldSet64Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "double64le" };
@@ -300,7 +301,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth handles format with 32 in the middle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With32InMiddle_ShouldSet32Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "float32be" };
@@ -313,7 +314,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth handles format with 24 in the middle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With24InMiddle_ShouldSet24Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "planar24le" };
@@ -326,7 +327,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth handles format with 16 in the middle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With16InMiddle_ShouldSet16Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "signed16le" };
@@ -339,7 +340,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth handles format with 8 in the middle
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_With8InMiddle_ShouldSet8Bit()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 0, SampleFormat = "unsigned8" };
@@ -352,7 +353,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth prefers first match when multiple indicators present
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithMultipleIndicators_ShouldSetFirstMatch()
         {
             // Format contains both "16" and "32" - should match 64 first, then 32, etc.
@@ -368,7 +369,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that ResolveBitDepth with already set bit depth and valid format does nothing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ResolveBitDepth_WithExistingBitDepthAndValidFormat_ShouldNotChange()
         {
             AudioMetadata metadata = new AudioMetadata { BitDepth = 24, SampleFormat = "s16" };
@@ -381,7 +382,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that LoadMetadataAsync throws when metadata is already loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -394,7 +395,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that LoadMetadata throws when metadata is already loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void LoadMetadata_WhenAlreadyLoaded_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -407,7 +408,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load throws with invalid bit depth 8.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithInvalidBitDepth8_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -420,7 +421,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load throws with invalid bit depth 64.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithInvalidBitDepth64_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -433,7 +434,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load throws with invalid bit depth 20.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithInvalidBitDepth20_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -446,7 +447,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load with valid bit depth 16 still throws when metadata not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithValidBitDepth16_ShouldThrowWhenMetadataNotLoaded()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -459,7 +460,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load with valid bit depth 24 still throws when metadata not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithValidBitDepth24_ShouldThrowWhenMetadataNotLoaded()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -472,7 +473,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Load with valid bit depth 32 still throws when metadata not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Load_WithValidBitDepth32_ShouldThrowWhenMetadataNotLoaded()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -485,7 +486,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that NextFrame() throws NullReferenceException when metadata is not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WhenNotLoaded_ShouldThrowNullReferenceException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -498,7 +499,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that NextFrame(int) throws NullReferenceException when metadata is not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WithSamples_WhenNotLoaded_ShouldThrowNullReferenceException()
         {
             AudioReader reader = new AudioReader(_tempFile);
@@ -512,7 +513,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that NextFrame(AudioFrame) throws when audio is not loaded.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void NextFrame_WithBuffer_WhenNotLoaded_ShouldThrowInvalidOperationException()
         {
             AudioReader reader = new AudioReader(_tempFile);

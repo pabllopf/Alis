@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio player constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_ShouldCreateInstance()
         {
             AudioPlayer player = new AudioPlayer();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio player should be disposable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_ShouldBeDisposable()
         {
             AudioPlayer player = new AudioPlayer();
@@ -64,7 +65,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that audio player should be disposabl multiple times
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_ShouldBeDisposableMultipleTimes()
         {
             AudioPlayer player = new AudioPlayer();
@@ -77,7 +78,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that audio player play should throw when no filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_ShouldThrowWhenNoFilename()
         {
             AudioPlayer player = new AudioPlayer();
@@ -90,7 +91,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that audio player close write should throw when not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_CloseWrite_ShouldThrowWhenNotOpened()
         {
             AudioPlayer player = new AudioPlayer();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that audio player constructor should set filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_ShouldSetFilename()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -112,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that audio player constructor should default filename to null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_ShouldDefaultFilenameToNull()
         {
             AudioPlayer player = new AudioPlayer();
@@ -123,7 +124,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         /// Tests that audio player open write should throw on invalid bit depth
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_ShouldThrowOnInvalidBitDepth()
         {
             AudioPlayer player = new AudioPlayer();
@@ -134,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that WriteFrame throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_WriteFrame_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -148,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Play throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -161,7 +162,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that PlayInBackground throws when already opened for writing (with !runPureBackground).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that PlayInBackground with runPureBackground=true returns process without assigning to ffplayp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_RunPureBackground_ReturnsProcessWithoutAssigningFfplayp()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -186,7 +187,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -198,7 +199,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that OpenWrite accepts valid bit depths (16, 24, 32).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_ValidBitDepths_ShouldNotThrowOnValidation()
         {
             AudioPlayer player = new AudioPlayer("test.mp3");
@@ -237,7 +238,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that GetStreamForWriting returns a stream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_GetStreamForWriting_ReturnsStream()
         {
             // GetStreamForWriting is a static method that calls FfMpegWrapper.OpenInput
@@ -248,7 +249,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that GetStreamForWriting with default ffplayExecutable works.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_GetStreamForWriting_DefaultExecutable_ShouldAcceptParameters()
         {
             // Verify the method signature accepts format and arguments
@@ -258,7 +259,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose kills non-exited ffplayp when not opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_KillsNonExitedProcess()
         {
             AudioPlayer player = new AudioPlayer();
@@ -271,7 +272,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         /// <summary>
         ///     Tests that Dispose calls CloseWrite when opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_CallsCloseWriteWhenOpened()
         {
             AudioPlayer player = new AudioPlayer();

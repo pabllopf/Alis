@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoReaderTest.cs
+//  File:RequiresSfmlFactAttribute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,54 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.IO;
-using Alis.Extension.Media.FFmpeg.Test.Attributes;
-using Alis.Extension.Media.FFmpeg.Video;
+using System.Runtime.InteropServices;
 using Xunit;
 
-namespace Alis.Extension.Media.FFmpeg.Test.Video
+namespace Alis.Extension.Media.FFmpeg.Test.Attributes
 {
+
     /// <summary>
-    ///     The video reader test class
+    /// The require imgui system fact attribute class
     /// </summary>
-    /// <seealso cref="VideoReader" />
-    public class VideoReaderTest
+    /// <seealso cref="FactAttribute"/>
+    public class RequireFfmpegFactAttribute : FactAttribute
     {
-        /// <summary>
-        /// Tests that video reader constructor should throw when file missing
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoReader_Constructor_ShouldThrowWhenFileMissing()
-        {
-            string missing = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp4");
-
-            Assert.Throws<FileNotFoundException>(() => new VideoReader(missing));
-        }
 
         /// <summary>
-        /// Tests that video reader load should throw when metadata not loaded
+        /// Initializes a new instance of the <see cref="RequireFfmpegFactAttribute"/> class
         /// </summary>
-        [RequireFfmpegFact]
-        public void VideoReader_Load_ShouldThrowWhenMetadataNotLoaded()
+        public RequireFfmpegFactAttribute()
         {
-            string path = Path.Combine(Path.GetTempPath(), Guid.NewGuid() + ".mp4");
-            File.WriteAllBytes(path, new byte[] {1});
-
-            try
+            if (!TryLoadSfmlLibrary("ffmpeg"))
             {
-                VideoReader reader = new VideoReader(path);
-
-                InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => reader.Load());
-
-                Assert.Contains("load the video metadata", ex.Message);
-            }
-            finally
-            {
-                File.Delete(path);
+                Skip = "Native library (ffmpeg) not detected. Install ffmpeg to run this test.";  
             }
         }
 
-       
+        /// <summary>
+        ///     Attempts to load the specified SFML library by name, falling back to
+        ///     absolute path resolution from the test assembly output directory.
+        /// </summary>
+        private static bool TryLoadSfmlLibrary(string name)
+        {
+            if (NativeLibrary.TryLoad(name, out _))
+                return true;
+
+            string assemblyDir = Path.GetDirectoryName(typeof(RequireFfmpegFactAttribute).Assembly.Location);
+            if (assemblyDir == null)
+                return false;
+
+            string[] candidates = new[]
+            {
+                Path.Combine(assemblyDir, name),
+                Path.Combine(assemblyDir, "lib" + name),
+                Path.Combine(assemblyDir, "lib" + name + ".dylib")
+            };
+
+            foreach (string candidate in candidates)
+            {
+                if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

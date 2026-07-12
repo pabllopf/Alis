@@ -29,6 +29,7 @@
 
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -42,7 +43,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder constructor should create instance with default cbr
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_Constructor_ShouldCreateInstanceWithDefaultCbr()
         {
             AacEncoder encoder = new AacEncoder();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder name property should return aac
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_NameProperty_ShouldReturnAac()
         {
             AacEncoder encoder = new AacEncoder();
@@ -67,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder default format should be m 4 a
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_DefaultFormat_ShouldBeM4a()
         {
             AacEncoder encoder = new AacEncoder();
@@ -78,7 +79,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder format property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_FormatProperty_ShouldBeSettable()
         {
             AacEncoder encoder = new AacEncoder();
@@ -92,7 +93,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder channel count property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_ChannelCountProperty_ShouldBeSettable()
         {
             AacEncoder encoder = new AacEncoder();
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder default channel count should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_DefaultChannelCount_ShouldBeNull()
         {
             AacEncoder encoder = new AacEncoder();
@@ -117,7 +118,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder sample rate property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_SampleRateProperty_ShouldBeSettable()
         {
             AacEncoder encoder = new AacEncoder();
@@ -131,7 +132,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder default sample rate should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_DefaultSampleRate_ShouldBeNull()
         {
             AacEncoder encoder = new AacEncoder();
@@ -142,7 +143,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder set cbr with custom bitrate should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_SetCbrWithCustomBitrate_ShouldWork()
         {
             AacEncoder encoder = new AacEncoder();
@@ -157,7 +158,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder set cbr default should be 128 k
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_SetCbrDefault_ShouldBe128k()
         {
             AacEncoder encoder = new AacEncoder();
@@ -170,7 +171,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder create should return encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_Create_ShouldReturnEncoderOptions()
         {
             AacEncoder encoder = new AacEncoder();
@@ -185,7 +186,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder create should include channel count when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_Create_ShouldIncludeChannelCountWhenSet()
         {
             AacEncoder encoder = new AacEncoder();
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder create should include sample rate when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_Create_ShouldIncludeSampleRateWhenSet()
         {
             AacEncoder encoder = new AacEncoder();
@@ -215,7 +216,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder should inherit from encoder options builder
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_ShouldInheritFromEncoderOptionsBuilder()
         {
             AacEncoder encoder = new AacEncoder();
@@ -226,7 +227,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder set cbr with different bitrates should work
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_SetCbrWithDifferentBitrates_ShouldWork()
         {
             AacEncoder encoder64k = new AacEncoder();
@@ -246,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that aac encoder create should include both channel count and sample rate when set
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AacEncoder_Create_ShouldIncludeBothChannelCountAndSampleRateWhenSet()
         {
             AacEncoder encoder = new AacEncoder();

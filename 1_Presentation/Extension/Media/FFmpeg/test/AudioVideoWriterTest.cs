@@ -34,6 +34,7 @@ using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Video;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -82,7 +83,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for zero video width.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithZeroVideoWidth_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -95,7 +96,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for negative video width.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithNegativeVideoWidth_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -108,7 +109,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for zero video height.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithZeroVideoHeight_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -121,7 +122,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for negative video height.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithNegativeVideoHeight_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -134,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for zero video framerate.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithZeroVideoFramerate_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -147,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for negative video framerate.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithNegativeVideoFramerate_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -160,7 +161,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws ArgumentException for empty filename.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithEmptyFilename_ShouldThrowArgumentException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -173,7 +174,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for zero audio channels.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithZeroAudioChannels_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -186,7 +187,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidDataException for zero audio sample rate.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithZeroAudioSampleRate_ShouldThrowInvalidDataException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -199,7 +200,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidOperationException for invalid audio bit depth (not 16, 24, or 32).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithInvalidAudioBitDepth_ShouldThrowInvalidOperationException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -212,7 +213,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor throws InvalidOperationException for another invalid bit depth.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithInvalidAudioBitDepth24_ShouldThrowInvalidOperationException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -231,7 +232,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor with valid parameters creates an AudioVideoWriter.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithValidParameters_ShouldNotThrow()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -246,7 +247,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the stream constructor with valid parameters creates an AudioVideoWriter.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithValidStreamParameters_ShouldNotThrow()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -261,7 +262,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the filename constructor sets UseFilename to true.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_FilenameMode_ShouldSetUseFilenameToTrue()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -276,7 +277,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the stream constructor sets UseFilename to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_StreamMode_ShouldSetUseFilenameToFalse()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -295,7 +296,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that CurrentFFmpegProcess returns Ffmpegp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_ShouldReturnFfmpegp()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -310,7 +311,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that DestinationStream returns the set stream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void DestinationStream_ShouldReturnSetStream()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -324,7 +325,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Filename returns the set filename.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_ShouldReturnSetFilename()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -338,7 +339,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that VideoWidth returns the set width.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWidth_ShouldReturnSetWidth()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -352,7 +353,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that VideoHeight returns the set height.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoHeight_ShouldReturnSetHeight()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -366,7 +367,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that VideoFramerate returns the set framerate.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFramerate_ShouldReturnSetFramerate()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -380,7 +381,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioChannels returns the set channels.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioChannels_ShouldReturnSetChannels()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -394,7 +395,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioSampleRate returns the set sample rate.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioSampleRate_ShouldReturnSetSampleRate()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -408,7 +409,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioBitDepth returns the set bit depth.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioBitDepth_ShouldReturnSetBitDepth()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -422,7 +423,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioEncoderOptions returns the set options.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioEncoderOptions_ShouldReturnSetOptions()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -436,7 +437,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that VideoEncoderOptions returns the set options.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoEncoderOptions_ShouldReturnSetOptions()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -454,7 +455,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenedForWriting returns false before OpenWrite().
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForWriting_ShouldReturnFalseBeforeOpenWrite()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -469,7 +470,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that CloseWrite() throws InvalidOperationException when not opened.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -483,7 +484,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that WriteFrame(AudioFrame) throws InvalidOperationException when not opened.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -499,7 +500,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that WriteFrame(VideoFrame) throws InvalidOperationException when not opened.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_WhenNotOpened_ShouldThrowInvalidOperationException_v2()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -519,7 +520,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioVideoWriter implements IDisposable.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioVideoWriter_ShouldImplementIDisposable()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -537,7 +538,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -553,7 +554,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that InputDataStreamVideo is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStreamVideo_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -567,7 +568,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that InputDataStreamAudio is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStreamAudio_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -581,7 +582,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OutputDataStream is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OutputDataStream_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -595,7 +596,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Ffmpegp (internal Process field) is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Ffmpegp_InternalField_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -609,7 +610,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that csc (CancellationTokenSource) is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Csc_InternalField_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -625,7 +626,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that socket is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Socket_InternalField_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -640,7 +641,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that connectedSocket is null before OpenWrite.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConnectedSocket_InternalField_BeforeOpenWrite_ShouldBeNull()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -65,7 +66,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that filename default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_Default_ShouldBeNull()
         {
             TestWriter writer = new TestWriter();
@@ -75,7 +76,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that filename should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Filename_ShouldBeSettable()
         {
             TestWriter writer = new TestWriter();
@@ -86,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that input data stream default should be null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStream_Default_ShouldBeNull()
         {
             TestWriter writer = new TestWriter();
@@ -96,7 +97,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that opened for writing default should be false
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenedForWriting_Default_ShouldBeFalse()
         {
             TestWriter writer = new TestWriter();
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that file to file with echo should return process
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileToFile_WithEcho_ShouldReturnProcess()
         {
             EncoderOptions options = new EncoderOptions
@@ -127,7 +128,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that stream to file with echo should return stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamToFile_WithEcho_ShouldReturnStream()
         {
             EncoderOptions options = new EncoderOptions
@@ -147,7 +148,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that file to stream with echo should return stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FileToStream_WithEcho_ShouldReturnStream()
         {
             EncoderOptions options = new EncoderOptions
@@ -167,7 +168,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that stream to stream with echo should return streams
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamToStream_WithEcho_ShouldReturnStreams()
         {
             EncoderOptions options = new EncoderOptions

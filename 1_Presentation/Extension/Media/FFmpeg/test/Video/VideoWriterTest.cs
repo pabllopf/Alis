@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -43,7 +44,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on null filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnNullFilename()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter((string)null, 1920, 1080, 30));
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on empty filename
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnEmptyFilename()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter("", 1920, 1080, 30));
@@ -61,7 +62,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on zero width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroWidth()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 0, 1080, 30));
@@ -70,7 +71,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on negative width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeWidth()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", -1, 1080, 30));
@@ -79,7 +80,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on zero height
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroHeight()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 0, 30));
@@ -88,7 +89,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on negative height
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeHeight()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, -1, 30));
@@ -97,7 +98,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on zero framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnZeroFramerate()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, 0));
@@ -106,7 +107,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should throw on negative framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldThrowOnNegativeFramerate()
         {
             Assert.Throws<InvalidDataException>(() => new VideoWriter("out.mp4", 1920, 1080, -1));
@@ -115,7 +116,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on null stream
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnNullStream()
         {
             Assert.Throws<ArgumentNullException>(() => new VideoWriter((Stream)null, 1920, 1080, 30));
@@ -124,7 +125,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on zero width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroWidth()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -136,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on negative width
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnNegativeWidth()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -148,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on zero height
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroHeight()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -160,7 +161,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on negative height
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnNegativeHeight()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -172,7 +173,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on zero framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnZeroFramerate()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -184,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should throw on negative framerate
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldThrowOnNegativeFramerate()
         {
             using (MemoryStream ms = new MemoryStream())
@@ -196,7 +197,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer close write should throw when not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_CloseWrite_ShouldThrowWhenNotOpened()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 1920, 1080, 30);
@@ -207,7 +208,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer file ctor should create with default encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_FileCtor_ShouldCreateWithDefaultEncoderOptions()
         {
             VideoWriter writer = new VideoWriter("out.mp4", 1920, 1080, 30);
@@ -222,7 +223,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         /// Tests that video writer stream ctor should create with default encoder options
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoWriter_StreamCtor_ShouldCreateWithDefaultEncoderOptions()
         {
             using (MemoryStream ms = new MemoryStream())

@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test
@@ -81,7 +82,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor sets the filename correctly
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_WithFilename_SetsFilename()
         {
             // Arrange & Act
@@ -94,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor with null filename sets filename to null
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_WithNullFilename_SetsFilenameToNull()
         {
             // Arrange & Act
@@ -107,7 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor sets a default filename when none provided
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_WithoutFilename_SetsFilenameToNull()
         {
             // Arrange & Act
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that the constructor sets custom ffplay executable path
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Constructor_WithCustomFfplay_SetsExecutable()
         {
             // Arrange & Act
@@ -134,7 +135,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Dispose does not throw when player is not opened for writing and no process exists
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_WhenNotOpened_DoesNotThrow()
         {
             // Arrange
@@ -148,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Dispose calls CloseWrite when opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_WhenOpenedForWriting_CallsCloseWrite()
         {
             // Arrange
@@ -169,7 +170,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Dispose handles exception from Kill() gracefully
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_WhenProcessKillThrows_DoesNotThrow()
         {
             // Arrange & Act
@@ -183,7 +184,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Play throws when player is already opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_WhenAlreadyOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -200,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Play throws when no filename is specified
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_WhenNoFilename_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -216,7 +217,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Play throws when filename is empty string
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_WhenEmptyFilename_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -232,7 +233,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Play does NOT throw for whitespace filenames (string.IsNullOrEmpty ignores whitespace)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Play_WhenWhitespaceFilename_DoesNotThrowOnValidation()
         {
             // Arrange
@@ -252,7 +253,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that PlayInBackground throws when already opened for writing and not pure background
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_WhenAlreadyOpenedForWritingAndNotPureBackground_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -269,7 +270,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that PlayInBackground does NOT throw when already opened but runPureBackground is true
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_WhenAlreadyOpenedForWritingButPureBackground_DoesNotThrowOnValidation()
         {
             // Arrange
@@ -291,7 +292,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that PlayInBackground throws when no filename is specified
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_WhenNoFilename_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -307,7 +308,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenWrite throws when bit depth is invalid (not 16, 24, or 32)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_WhenInvalidBitDepth_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -323,7 +324,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenWrite throws when bit depth is 0 (invalid)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_WhenBitDepthZero_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -339,7 +340,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_WhenAlreadyOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -357,7 +358,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         ///     Tests that OpenWrite with valid parameters passes validation (via reflection on testable)
         ///     Note: This will fail if ffplay is not installed, but validates the validation path passes
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_OpenWrite_WhenValidParameters_PassesValidation()
         {
             // Arrange
@@ -378,7 +379,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that CloseWrite throws when not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_CloseWrite_WhenNotOpenedForWriting_ThrowsInvalidOperationException()
         {
             // Arrange
@@ -394,7 +395,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that CloseWrite sets OpenedForWriting to false after completion
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_CloseWrite_WhenCalled_SetsOpenedForWritingToFalse()
         {
             // Arrange
@@ -418,7 +419,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         ///     Tests that GetStreamForWriting returns a stream (static method)
         ///     Note: This will fail if ffplay is not installed, but validates the method is callable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_GetStreamForWriting_WhenCalled_ReturnsStream()
         {
             // Arrange — this is a static method that calls FfMpegWrapper.OpenInput
@@ -437,7 +438,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that AudioPlayer implements IDisposable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_ImplementsIDisposable()
         {
             // Arrange & Act
@@ -450,7 +451,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Dispose calls Kill when ffplayp is running and not opened for writing
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_WhenFfplaypRunningAndNotOpened_KillsProcess()
         {
             // Arrange — use a process that waits as ffplayp, then dispose
@@ -481,7 +482,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that Dispose when ffplayp already exited does not throw
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioPlayer_Dispose_WhenFfplaypAlreadyExited_DoesNotThrow()
         {
             // Arrange

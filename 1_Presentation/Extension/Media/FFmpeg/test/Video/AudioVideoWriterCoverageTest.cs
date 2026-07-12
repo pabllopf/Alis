@@ -35,6 +35,7 @@ using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Video;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
@@ -80,7 +81,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose() calls Dispose(true) and suppresses finalization.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_ShouldCallDisposeTrueAndSuppressFinalize()
         {
             // Arrange
@@ -99,7 +100,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=false does not release resources.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingFalse_ShouldNotReleaseResources()
         {
             // Arrange
@@ -123,7 +124,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) with disposing=true releases DestinationStream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldReleaseDestinationStream()
         {
             // Arrange
@@ -146,7 +147,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that Dispose(bool) disposes csc (CancellationTokenSource) when disposing=true.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithDisposingTrue_ShouldDisposeCsc()
         {
             // Arrange
@@ -179,7 +180,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OpenWrite throws when already opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -209,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite throws when not opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -230,7 +231,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite sets OpenedForWriting to false in finally block.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_FinallyBlock_ShouldSetOpenedForWritingToFalse()
         {
             // Arrange
@@ -250,7 +251,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite throws when not opened before entering try block.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WhenNotOpened_ShouldThrowBeforeTryBlock()
         {
             // Arrange
@@ -272,7 +273,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CloseWrite throws when not opened, even with null Ffmpegp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithNullFfmpegp_ShouldThrowBeforeProcessCheck()
         {
             // Arrange
@@ -303,7 +304,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame(AudioFrame) throws when not opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Audio_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -326,7 +327,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame(VideoFrame) throws when not opened for writing.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Video_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
             // Arrange
@@ -349,7 +350,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame extracts RawData from AudioFrame.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Audio_ShouldExtractRawData()
         {
             // Arrange
@@ -372,7 +373,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that WriteFrame(VideoFrame) extracts RawData from VideoFrame.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void WriteFrame_Video_ShouldExtractRawData()
         {
             // Arrange
@@ -398,7 +399,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that ffmpeg field exists and is accessible via reflection.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Ffmpeg_Field_ShouldBeAccessibleViaReflection()
         {
             // Arrange
@@ -420,7 +421,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that socket field exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Socket_Field_ShouldBeNullInitially()
         {
             // Arrange
@@ -441,7 +442,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that connectedSocket field exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void ConnectedSocket_Field_ShouldBeNullInitially()
         {
             // Arrange
@@ -462,7 +463,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that csc (CancellationTokenSource) field exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Csc_Field_ShouldBeNullInitially()
         {
             // Arrange
@@ -483,7 +484,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that InputDataStreamVideo property exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStreamVideo_Property_ShouldBeNullInitially()
         {
             // Arrange
@@ -504,7 +505,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that InputDataStreamAudio property exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void InputDataStreamAudio_Property_ShouldBeNullInitially()
         {
             // Arrange
@@ -525,7 +526,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that OutputDataStream property exists and is null initially.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void OutputDataStream_Property_ShouldBeNullInitially()
         {
             // Arrange
@@ -550,7 +551,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream constructor sets DestinationStream.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamConstructor_ShouldSetDestinationStream()
         {
             // Arrange
@@ -570,7 +571,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that stream mode sets UseFilename to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void StreamMode_ShouldSetUseFilenameToFalse()
         {
             // Arrange
@@ -588,7 +589,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that filename mode sets DestinationStream to null.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void FilenameMode_ShouldSetDestinationStreamToNull()
         {
             // Arrange
@@ -612,7 +613,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that AudioEncoderOptions.EncoderName is accessible.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioEncoderOptions_EncoderName_ShouldBeAccessible()
         {
             // Arrange
@@ -628,7 +629,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that AudioEncoderOptions.EncoderArguments is accessible.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void AudioEncoderOptions_EncoderArguments_ShouldBeAccessible()
         {
             // Arrange
@@ -649,7 +650,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that VideoEncoderOptions.EncoderName is accessible.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoEncoderOptions_EncoderName_ShouldBeAccessible()
         {
             // Arrange
@@ -670,7 +671,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that VideoEncoderOptions.Format is accessible.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoEncoderOptions_Format_ShouldBeAccessible()
         {
             // Arrange
@@ -694,7 +695,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor validates audioBitDepth is 16.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth16_ShouldSucceed()
         {
             // Arrange
@@ -712,7 +713,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor validates audioBitDepth is 24.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth24_ShouldSucceed()
         {
             // Arrange
@@ -730,7 +731,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that constructor validates audioBitDepth is 32.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_WithBitDepth32_ShouldSucceed()
         {
             // Arrange
@@ -752,7 +753,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Tests that CurrentFFmpegProcess returns Ffmpegp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CurrentFFmpegProcess_ShouldReturnFfmpegp()
         {
             // Arrange

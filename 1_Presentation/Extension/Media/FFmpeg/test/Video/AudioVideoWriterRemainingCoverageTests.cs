@@ -34,6 +34,7 @@ using System.Reflection;
 using System.Threading;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Encoding;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;
 
@@ -100,7 +101,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     Tests that the filename constructor assigns non-null <see cref="EncoderOptions" />
         ///     for both video and audio, ensuring the property assignment paths are exercised.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_Filename_WithNonNullEncoderOptions_ShouldAssignProperties()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264", EncoderArguments = "-preset fast" };
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     Tests that the stream constructor assigns non-null <see cref="EncoderOptions" />
         ///     for both video and audio, and correctly sets <c>UseFilename</c> to false.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_Stream_WithNonNullEncoderOptions_ShouldAssignProperties()
         {
             EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
@@ -138,7 +139,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     Tests that the stream constructor assigns null <see cref="EncoderOptions" />
         ///     correctly (regression check).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Constructor_Stream_WithNullEncoderOptions_ShouldAssignNull()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -160,7 +161,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     - <c>!UseFilename</c> evaluating to false (line 373, OutputDataStream skipped)<br />
         ///     - The finally block setting <c>OpenedForWriting = false</c> (line 395)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithExitedProcessAndFilenameMode_ShouldCompleteSuccessfully()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testFile, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -187,7 +188,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     - <c>!UseFilename</c> evaluating to true (line 373)<br />
         ///     - <c>OutputDataStream?.Dispose()</c> (line 375)
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void CloseWrite_WithExitedProcessAndStreamMode_ShouldDisposeOutputDataStream()
         {
             using MemoryStream outputStream = new MemoryStream();
@@ -223,7 +224,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     <see cref="AudioVideoWriter.CloseWrite" /> (with non-null Ffmpegp), and
         ///     then disposes <c>DestinationStream</c> and <c>csc</c>.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWritingAndExitedProcess_ShouldCompleteSuccessfully()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -248,7 +249,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     <c>csc</c> completes without exception, covering the
         ///     <c>csc?.Dispose()</c> branch (line 290).
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWritingNonNullCsc_ShouldDisposeCsc()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testStream, 640, 480, 30.0, 2, 44100, 16, null, null);
@@ -277,7 +278,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         ///     <c>OpenedForWriting = true</c> branch even in filename mode with a
         ///     non-null Ffmpegp.
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void Dispose_WithOpenedForWritingFilenameMode_ShouldCloseWriteSuccessfully()
         {
             using AudioVideoWriter writer = new AudioVideoWriter(_testFile, 640, 480, 30.0, 2, 44100, 16, null, null);

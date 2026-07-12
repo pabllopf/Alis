@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
@@ -120,7 +121,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to should throw when reader not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaReader_CopyTo_ShouldThrowWhenReaderNotOpened()
         {
             TestReader reader = new TestReader();
@@ -136,7 +137,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to should throw when writer not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaReader_CopyTo_ShouldThrowWhenWriterNotOpened()
         {
             TestReader reader = new TestReader();
@@ -151,7 +152,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to should copy stream to writer
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void MediaReader_CopyTo_ShouldCopyStreamToWriter()
         {
             byte[] payload = System.Text.Encoding.UTF8.GetBytes("copy-me");
@@ -171,7 +172,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to async should copy stream to writer
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task MediaReader_CopyToAsync_ShouldCopyStreamToWriter()
         {
             byte[] payload = System.Text.Encoding.UTF8.GetBytes("copy-async");
@@ -191,7 +192,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to async should throw when reader not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task MediaReader_CopyToAsync_ShouldThrowWhenReaderNotOpened()
         {
             TestReader reader = new TestReader();
@@ -207,7 +208,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that media reader copy to async should throw when writer not opened
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public async Task MediaReader_CopyToAsync_ShouldThrowWhenWriterNotOpened()
         {
             TestReader reader = new TestReader();

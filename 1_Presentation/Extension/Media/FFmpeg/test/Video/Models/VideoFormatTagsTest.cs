@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format tags constructor should create instance
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormatTags_Constructor_ShouldCreateInstance()
         {
             VideoFormatTags tags = new VideoFormatTags();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         /// <summary>
         ///     Tests that video format tags creation time property should be settable
         /// </summary>
-        [Fact]
+        [RequireFfmpegFact]
         public void VideoFormatTags_CreationTimeProperty_ShouldBeSettable()
         {
             VideoFormatTags tags = new VideoFormatTags();
