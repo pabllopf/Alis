@@ -1,15 +1,20 @@
 # Coverage Summary
 
-## Gl.cs
+## RopeJoint.cs
 
-- File: `4_Operation/Graphic/src/OpenGL/Gl.cs`
-- Coverage before: 8.4%
-- Coverage after: ~17%
-- Tests added: 10
+- File: `4_Operation/Physic/src/Dynamics/Joints/RopeJoint.cs`
+- Coverage before: 11.2%
+- Coverage after: ~80%
+- Tests added: 12
 - Status: SUCCESS
 
+Commit: 5c299c669
+
 Details:
-- Covered 49 previously uncovered property accessor lines
-- Added mock-based tests for `GlGetString`, `GetShaderCompileStatus`, `GetProgramLinkStatus`, `GetShaderInfoLog`, `GetProgramInfoLog`
-- Tests use `Marshal.GetFunctionPointerForDelegate` to create valid OpenGL function mocks
-- All 329 tests pass (10 new + 319 existing)
+- Added tests covering InitVelocityConstraints with WarmStarting (both true and false)
+- Added tests covering State transitions (AtUpper, Inactive)
+- Added tests for zero-mass path (static bodies)
+- Added tests for SolveVelocityConstraints impulse computation
+- Added tests for SolvePositionConstraints (true and false returns)
+- Added full simulation tests covering the solver pipeline
+- All 43 RopeJoint tests pass (12 new + 31 existing)
