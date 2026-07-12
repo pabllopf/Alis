@@ -201,10 +201,12 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
-                    // Ignore exception during close
+                    /// Ignore exception during close
                 }
 
-                InputDataStream.Dispose();
+                ffplayp.WaitForExit();
+                InputDataStream?.Dispose();
+                ffplayp?.Dispose();
             }
             finally
             {

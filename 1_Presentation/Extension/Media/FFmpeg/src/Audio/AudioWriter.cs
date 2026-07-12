@@ -245,8 +245,25 @@ namespace Alis.Extension.Media.FFmpeg.Audio
 
             try
             {
-                InputDataStream.Dispose();
-                Ffmpegp.WaitForExit();
+                InputDataStream?.Dispose();
+
+                if (Ffmpegp != null && !Ffmpegp.WaitForExit(5000))
+                {
+                    try
+                    {
+                        if (!Ffmpegp.HasExited)
+                        {
+                            Ffmpegp.Kill();
+                        }
+                    }
+                    catch
+                    {
+                        /// Ignore exception during dispose
+                    }
+
+                    Ffmpegp.WaitForExit();
+                }
+
                 csc?.Cancel();
 
                 if (!UseFilename)
@@ -254,17 +271,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                     OutputDataStream?.Dispose();
                 }
 
-                try
-                {
-                    if (Ffmpegp is { HasExited: false })
-                    {
-                        Ffmpegp.Kill();
-                    }
-                }
-                catch
-                {
-                    // Ignore exception during dispose
-                }
+                Ffmpegp?.Dispose();
             }
             finally
             {

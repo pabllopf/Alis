@@ -367,7 +367,23 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 connectedSocket?.Close();
                 socket?.Close();
 
-                Ffmpegp.WaitForExit();
+                if (Ffmpegp != null && !Ffmpegp.WaitForExit(5000))
+                {
+                    try
+                    {
+                        if (!Ffmpegp.HasExited)
+                        {
+                            Ffmpegp.Kill();
+                        }
+                    }
+                    catch
+                    {
+                        /// Swallow exception
+                    }
+
+                    Ffmpegp.WaitForExit();
+                }
+
                 csc?.Cancel();
 
                 if (!UseFilename)
@@ -375,20 +391,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                     OutputDataStream?.Dispose();
                 }
 
-                try
-                {
-                    if (Ffmpegp?.HasExited == false)
-                    {
-                        Ffmpegp.Kill();
-                    }
-                }
-                catch
-
-                {
-
-                    // Swallow exception
-
-                }
+                Ffmpegp?.Dispose();
             }
             finally
             {
