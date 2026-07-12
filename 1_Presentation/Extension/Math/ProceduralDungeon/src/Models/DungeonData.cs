@@ -150,14 +150,54 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
                 throw new InvalidOperationException("Board dimensions must be greater than zero.");
             }
 
+            for (int i = 0; i < _board.GetLength(0); i++)
+            {
+                for (int j = 0; j < _board.GetLength(1); j++)
+                {
+                    BoardSquareType type = _board[i, j].Type;
+                    if (type < BoardSquareType.Empty || type > BoardSquareType.CornerInternalRightUp)
+                    {
+                        throw new InvalidOperationException("Board contains invalid square type.");
+                    }
+                }
+            }
+
             if (_rooms == null)
             {
                 throw new InvalidOperationException("_rooms cannot be null.");
             }
 
+            for (int i = 0; i < _rooms.Count; i++)
+            {
+                RoomData room = _rooms[i];
+                if (room.Width <= 0 || room.Height <= 0)
+                {
+                    throw new InvalidOperationException($"Room at index {i} has invalid dimensions.");
+                }
+
+                if (room.Direction < Direction.None || room.Direction > Direction.West)
+                {
+                    throw new InvalidOperationException($"Room at index {i} has invalid direction.");
+                }
+            }
+
             if (_corridors == null)
             {
                 throw new InvalidOperationException("_corridors cannot be null.");
+            }
+
+            for (int i = 0; i < _corridors.Count; i++)
+            {
+                CorridorData corridor = _corridors[i];
+                if (corridor.Width <= 0 || corridor.Height <= 0)
+                {
+                    throw new InvalidOperationException($"Corridor at index {i} has invalid dimensions.");
+                }
+
+                if (corridor.Direction < Direction.None || corridor.Direction > Direction.West)
+                {
+                    throw new InvalidOperationException($"Corridor at index {i} has invalid direction.");
+                }
             }
         }
     }
