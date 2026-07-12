@@ -39,7 +39,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             Assert.True(context.IsRunning);
 
-            Thread.Sleep(1500);
+            Thread.Sleep(10);
 
             handler.Exit();
 
@@ -76,7 +76,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             handler.InitPreview();
 
-            Thread.Sleep(200);
+            Thread.Sleep(20);
 
             Assert.ThrowsAny<Exception>(() => handler.Preview());
         }

@@ -1,5 +1,3 @@
-using System;
-using System.Reflection;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Manager.Scene;
 using Alis.Core.Ecs.Systems.Scope;
@@ -12,36 +10,6 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
     /// </summary>
     public class SceneManagerLifecycleCoverageTest
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManagerLifecycleCoverageTest"/> class
-        /// </summary>
-        static SceneManagerLifecycleCoverageTest() => EnsureEcsInitialized();
-
-        /// <summary>
-        /// Ensures the ecs initialized
-        /// </summary>
-        private static void EnsureEcsInitialized()
-        {
-            Type globalWorldTables = Type.GetType("Alis.Core.Ecs.Kernel.Archetypes.GlobalWorldTables, Alis.Core.Ecs");
-            if (globalWorldTables == null) return;
-
-            FieldInfo tableField = globalWorldTables.GetField("ComponentTagLocationTable",
-                BindingFlags.Public | BindingFlags.Static);
-            if (tableField == null) return;
-
-            byte[][] table = (byte[][])tableField.GetValue(null);
-            if (table == null || table.Length < 64)
-            {
-                tableField.SetValue(null, new byte[64][]);
-            }
-
-            PropertyInfo bufferProp = globalWorldTables.GetProperty("ComponentTagTableBufferSize",
-                BindingFlags.NonPublic | BindingFlags.Static);
-            if (bufferProp != null && (int)(bufferProp.GetValue(null) ?? 0) < 64)
-            {
-                bufferProp.SetValue(null, 64);
-            }
-        }
 
         /// <summary>
         /// Tests that on init with loaded scene sets current world
