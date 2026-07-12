@@ -12,7 +12,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with single component uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Query_WithSingleComponent_UsesHashCache()
         {
             using Scene scene = new();
@@ -24,7 +24,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with two components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Query_WithTwoComponents_UsesHashCache()
         {
             using Scene scene = new();
@@ -36,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with three components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Query_WithThreeComponents_UsesHashCache()
         {
             using Scene scene = new();
@@ -48,7 +48,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with four components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void Query_WithFourComponents_UsesHashCache()
         {
             using Scene scene = new();

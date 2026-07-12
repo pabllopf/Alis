@@ -41,7 +41,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ToString returns null when the wrapped reference is null.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
         public void ToString_NullValue_ReturnsNull()
         {
             string[] arr = { null };
