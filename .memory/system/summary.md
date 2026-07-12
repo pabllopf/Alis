@@ -77,3 +77,12 @@ Total blocked: 129
 - **Commit**: `506108277`
 - **File**: 4_Operation/Physic/src/Common/Logic/RealExplosion.cs
 - **Timestamp**: 2026-07-12 00:00:00
+
+### GLShaderProgram.cs
+- **Coverage Before**: 0.0%
+- **Coverage After**: N/A
+- **Tests Added**: 0
+- **Commit**: N/A
+- **Status**: BLOCKED_BY_PRODUCTION_CODE
+- **File**: 4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs
+- **Timestamp**: 2026-07-12 00:00:00
