@@ -69,8 +69,15 @@
 - **Coverage Before**: 0.0%
 - **Coverage After**: ~65%
 - **Tests Added**: 16
-- **Commit**: `06ba21685`
+- **Commit**: `a23afff8f`
 - **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgram.cs`
+
+### GLShaderProgramParam.cs
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~70%
+- **Tests Added**: 4
+- **Commit**: `48cb10a1b`
+- **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs`
 
 ## Batch Blocked (2026-07-11 11:47:26)
 Blocked 128 P/Invoke native wrapper files.
