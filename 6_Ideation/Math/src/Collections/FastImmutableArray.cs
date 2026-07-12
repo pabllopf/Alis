@@ -839,7 +839,7 @@ namespace Alis.Core.Aspect.Math.Collections
             {
                 if (Count > 1)
                 {
-#if NET
+#if NET || NETSTANDARD2_1_OR_GREATER
                     _elements.AsSpan(0, _count).Sort(comparison);
 #else
                     System.Array.Sort(_elements, 0, _count, Comparer<T>.Create(comparison));

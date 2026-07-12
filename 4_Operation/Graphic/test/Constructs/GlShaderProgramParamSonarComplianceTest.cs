@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IsExternalInit.cs
+//  File:GlShaderProgramParamSonarComplianceTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
-// ReSharper disable once CheckNamespace
+using System;
+using System.Reflection;
+using Alis.Core.Graphic.OpenGL.Constructs;
+using Xunit;
 
-#if !NET5_0_OR_GREATER
-namespace System.Runtime.CompilerServices
+namespace Alis.Core.Graphic.Test.Constructs
 {
     /// <summary>
+    ///     Regression tests preventing SonarCloud S1186 (empty methods) from reappearing.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event, Inherited = false)]
-#pragma warning disable S3376 // Attribute name convention (compiler-required name for init accessors)
-    public class IsExternalInit : Attribute;
-#pragma warning restore S3376
+    public class GlShaderProgramParamSonarComplianceTest
+    {
+        /// <summary>
+        ///     Tests that EnsureType method exists and is accessible.
+        /// </summary>
+        [Fact]
+        public void EnsureType_Method_Exists()
+        {
+            Type paramType = typeof(GlShaderProgramParam);
+            MethodInfo method = paramType.GetMethod("EnsureType", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            Assert.NotNull(method);
+        }
+
+        /// <summary>
+        ///     Tests that EnsureType method body is not empty.
+        /// </summary>
+        [Fact]
+        public void EnsureType_MethodBody_NotEmpty()
+        {
+            Type paramType = typeof(GlShaderProgramParam);
+            MethodInfo method = paramType.GetMethod("EnsureType", BindingFlags.NonPublic | BindingFlags.Instance);
+
+            Assert.NotNull(method);
+            MethodBody body = method.GetMethodBody();
+            Assert.NotNull(body);
+            Assert.NotEmpty(body.GetILAsByteArray());
+        }
+    }
 }
-#endif

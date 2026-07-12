@@ -40,7 +40,9 @@ namespace Alis.Core.Aspect.Math.Util
         /// <summary>
         ///     The cryptographic random number generator instance used for all operations.
         /// </summary>
+#if !NET6_0_OR_GREATER
         private static readonly RandomNumberGenerator Rng = RandomNumberGenerator.Create();
+#endif
 
         /// <summary>
         ///     Generates a cryptographically random 32-bit signed integer within the specified inclusive range.

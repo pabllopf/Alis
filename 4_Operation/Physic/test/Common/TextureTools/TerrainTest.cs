@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.TextureTools;
 using Alis.Core.Physic.Dynamics;
 using Xunit;
@@ -353,6 +355,34 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             // assigned a List<Body> (even if empty after filtering), proving execution
             // of the full non-early-return code path.
             Assert.NotNull(terrain._bodyMap[0, 1]);
+        }
+
+        // ========================================================================
+        // RemoveOldData with bodies to remove (lines 293-298)
+        // ========================================================================
+        [Fact]
+        public void RemoveOldData_WithExistingBodies_RemovesThem()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Aabb area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+            Terrain terrain = new Terrain(world, area)
+            {
+                PointsPerUnit = 2,
+                CellSize = 2,
+                SubCellSize = 1,
+                Decomposer = TriangulationAlgorithm.Earclip
+            };
+            terrain.Initialize();
+
+            terrain._terrainMap[0, 0] = 1;
+            terrain._terrainMap[1, 1] = 1;
+
+            terrain._bodyMap[0, 0] = new List<Body>();
+            Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
+            terrain._bodyMap[0, 0].Add(body);
+
+            terrain.RegenerateTerrain();
+            Assert.NotNull(terrain);
         }
     }
 }

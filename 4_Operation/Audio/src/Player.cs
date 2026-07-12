@@ -136,16 +136,14 @@ namespace Alis.Core.Audio
         /// <returns>The player instance for the current operating system.</returns>
         internal static IPlayer CheckOs()
         {
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+#if osxarm64 || osxx64
             return new MacPlayer();
-#elif winx64 || winx86 || winarm64 || winarm || win
+#elif winx64 || winx86 || winarm64
             return new WindowsPlayer();
-#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm
             return new LinuxPlayer();
-#elif webassembly || browser
-            return new WebPlayer();
 #else
-            return null;
+            throw new PlatformNotSupportedException("No audio player implementation for the current platform.");
 #endif
         }
 

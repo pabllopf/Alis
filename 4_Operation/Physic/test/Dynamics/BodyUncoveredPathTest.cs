@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Common.Logic;
@@ -1189,5 +1190,178 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         #endregion
+
+        // ========================================================================
+        // GetBodyType setter — locked world throws (lines 228-229)
+        // ========================================================================
+        [Fact]
+        public void SetBodyType_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.GetBodyType = BodyType.Dynamic);
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Enabled setter — locked world throws (lines 413-414)
+        // ========================================================================
+        [Fact]
+        public void Enabled_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.Enabled = false);
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // LocalCenter setter — locked world throws (lines 545-546)
+        // ========================================================================
+        [Fact]
+        public void LocalCenter_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.LocalCenter = Vector2F.Zero);
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Mass setter — locked world throws (lines 577-578)
+        // ========================================================================
+        [Fact]
+        public void Mass_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.Mass = 5.0f);
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Inertia setter — locked world throws (lines 609-610)
+        // ========================================================================
+        [Fact]
+        public void Inertia_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.Inertia = 5.0f);
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Add fixture — locked world throws (lines 691-692)
+        // ========================================================================
+        [Fact]
+        public void AddFixture_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            Fixture fixture = new Fixture();
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.Add(fixture));
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Remove fixture — locked world throws (lines 759-760)
+        // ========================================================================
+        [Fact]
+        public void RemoveFixture_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Fixture firstFixture = null;
+            foreach (var f in body.FixtureList) { firstFixture = f; break; }
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.Remove(firstFixture));
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // ApplyLinearImpulse(ref) non-dynamic early return (lines 1019-1021)
+        // ========================================================================
+        [Fact]
+        public void ApplyLinearImpulse_RefNonDynamic_DoesNothing()
+        {
+            Body body = new Body();
+            Vector2F impulse = new Vector2F(10.0f, 0.0f);
+            body.ApplyLinearImpulse(ref impulse);
+            Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
+        }
+
+        // ========================================================================
+        // Event add/remove for OnCollision/OnSeparation (lines 1287, 1296)
+        // ========================================================================
+        [Fact]
+        public void OnCollisionEvent_AddRemove_Works()
+        {
+            Body body = new Body();
+            OnCollisionEventHandler handler = (a, b, c) => true;
+            body.OnCollision += handler;
+            body.OnCollision -= handler;
+        }
+
+        [Fact]
+        public void OnSeparationEvent_AddRemove_Works()
+        {
+            Body body = new Body();
+            OnSeparationEventHandler handler = (a, b, c) => { };
+            body.OnSeparation += handler;
+            body.OnSeparation -= handler;
+        }
+
+        // ========================================================================
+        // SetTransformIgnoreContacts — locked world throws (lines 856-857)
+        // ========================================================================
+        [Fact]
+        public void SetTransformIgnoreContacts_LockedWorld_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody();
+            Vector2F pos = Vector2F.Zero;
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => body.SetTransformIgnoreContacts(ref pos, 0f));
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // Remove fixture — FixtureRemoved handler fires (lines 809-811)
+        // ========================================================================
+        [Fact]
+        public void RemoveFixture_FiresFixtureRemoved()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            int removedCount = 0;
+            world.FixtureRemoved = (w, b, f) => removedCount++;
+            Fixture firstFixture = null;
+            foreach (var f in body.FixtureList) { firstFixture = f; break; }
+            body.Remove(firstFixture);
+            Assert.Equal(1, removedCount);
+        }
     }
 }

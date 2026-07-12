@@ -35,6 +35,7 @@ using System.Threading.Tasks;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Interfaces;
 
+#if winx64 || winx86 || winarm64
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
@@ -393,6 +394,6 @@ namespace Alis.Core.Audio.Players
             Console.WriteLine($"[WAV] Bits no soportados: {bits}");
             Console.WriteLine("[WAV] SUGERENCIA: Convierte el archivo WAV a PCM 16 bits usando Audacity, ffmpeg o sox.");
             return false;
-        }
     }
 }
+#endif

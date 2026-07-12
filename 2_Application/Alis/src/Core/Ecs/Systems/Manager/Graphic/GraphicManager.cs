@@ -116,14 +116,16 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
 
-#if osxarm64 || osxarm || osxx64 || osx
+#if osxarm64 || osxx64
             platform = new MacNativePlatform();
-#elif winx64 || winx86 || winarm64 || winarm || win
+#elif winx64 || winx86 || winarm64
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
 #elif linuxarm64 || linuxarm || linuxx64
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
+#elif browserwasm
+            platform = new Alis.Core.Graphic.Platforms.Web.WebAssemblyPlatform();
 #else
-            platform = null;
+            throw new PlatformNotSupportedException("No native platform implementation for the current platform.");
 #endif
             if (Context.Setting.Graphic.WindowSize != default(Vector2F))
             {

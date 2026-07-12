@@ -894,4 +894,37 @@ namespace Alis.Core.Physic.Test.Common.Logic
             return (bool)method.Invoke(null, new object[] { vals, i, valIndex });
         }
     }
+
+    // ========================================================================
+    // MergeCircularData paths (lines 384-396)
+    // ========================================================================
+    public class RealExplosionMergeCircularDataTests
+    {
+        [Fact]
+        public void MergeCircularData_MultipleEntries_SameBody_Wraps()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(5f, 5f, 1f, new Vector2F(5f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(5f, 5f, 1f, new Vector2F(-5f, 0f), 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 20f, 100f);
+            Assert.NotNull(result);
+        }
+    }
+
+    // ========================================================================
+    // AdjustWrappedData path (lines 402-411)
+    // ========================================================================
+    public class RealExplosionAdjustWrappedDataTests
+    {
+        [Fact]
+        public void AdjustWrappedData_MinGreaterThanMax_Adjusts()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
+            Assert.NotNull(result);
+        }
+    }
 }

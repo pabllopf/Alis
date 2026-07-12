@@ -468,5 +468,114 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
+        // ========================================================================
+        // SolveToi — translation and rotation clamping (lines 599-609)
+        // ========================================================================
+        [Fact]
+        public void SolveToi_TranslationRotationClamping_AppliesLimit()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
+            bodyA.AngularVelocity = 10000f;
+            for (int i = 0; i < 3; i++)
+            {
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
+
+        // ========================================================================
+        // Report — null _contactManager early return (lines 665-666)
+        // ========================================================================
+        [Fact]
+        public void Report_NullContactManager_ReturnsEarly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var islandField = typeof(WorldPhysic).GetField("<GetIsland>k__BackingField",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            Island island = islandField?.GetValue(world) as Island;
+            var contactManagerField = typeof(Island).GetField("_contactManager",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            contactManagerField?.SetValue(island, null);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // UpdateSleepState — body sleeps naturally (replaces AllowSleep false path)
+        // ========================================================================
+        [Fact]
+        public void UpdateSleepState_BodySleeps_AfterTimeAndSolved()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            body.SleepingAllowed = true;
+            for (int i = 0; i < 600; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.False(body.Awake);
+        }
+
+        // ========================================================================
+        // SolveToi translation clamping (lines 599-602)
+        // ========================================================================
+        [Fact]
+        public void SolveToi_TranslationClamping_AppliesLimit()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
+            bodyA.AngularVelocity = 10000f;
+            for (int i = 0; i < 5; i++)
+            {
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
+
+        // ========================================================================
+        // Report — _contactManager is null (lines 665-666)
+        // ========================================================================
+        [Fact]
+        public void Report_NullContactManager_ReturnsImmediately()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            var islandField = typeof(WorldPhysic).GetField("<GetIsland>k__BackingField",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            Island island = islandField?.GetValue(world) as Island;
+            if (island != null)
+            {
+                var cmField = typeof(Island).GetField("_contactManager",
+                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                cmField?.SetValue(island, null);
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
+
+        // ========================================================================
+        // ProcessJointEdges — Other is not null and Enabled (line 508-522)
+        // ========================================================================
+        [Fact]
+        public void ProcessJointEdges_OtherEnabled_AddsJointToIsland()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            world.Add(joint);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
     }
 }

@@ -1094,14 +1094,14 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
         /// <returns>The native platform</returns>
         private static INativePlatform GetPlatform()
         {
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+#if osxarm64 || osxx64
             return new MacNativePlatform();
-#elif winx64 || winx86 || winarm64 || winarm || win
+#elif winx64 || winx86 || winarm64
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm
             return new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
-            return null;
+            throw new PlatformNotSupportedException("No native platform implementation for the current platform.");
 #endif
         }
 

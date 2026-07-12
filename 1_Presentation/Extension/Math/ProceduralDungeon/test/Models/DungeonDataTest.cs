@@ -232,6 +232,19 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
             Assert.Equal(20, data.Height);
         }
 
+        private static BoardSquare[,] CreateBoard(int rows, int cols)
+        {
+            BoardSquare[,] board = new BoardSquare[rows, cols];
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    board[i, j] = new BoardSquare(BoardSquareType.Empty);
+                }
+            }
+            return board;
+        }
+
         /// <summary>
         ///     Tests that Validate passes with valid data.
         /// </summary>
@@ -239,9 +252,17 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_WithValidData_DoesNotThrow()
         {
             DungeonData data = new DungeonData();
-            data.Board = new BoardSquare[10, 10];
             data.Rooms = new List<RoomData>();
             data.Corridors = new List<CorridorData>();
+            BoardSquare[,] board = new BoardSquare[10, 10];
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    board[i, j] = new BoardSquare(BoardSquareType.Empty);
+                }
+            }
+            data.Board = board;
 
             data.Validate();
         }
@@ -292,17 +313,108 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         }
 
         /// <summary>
-        ///     Tests that Validate throws when corridors is null.
+        ///     Tests that Validate throws when a board square has an invalid type value.
+        ///     Prevents regression of the S5766 security hotspot.
         /// </summary>
         [Fact]
-        public void Validate_WithNullCorridors_ThrowsInvalidOperationException()
+        public void Validate_WithInvalidBoardSquareType_ThrowsInvalidOperationException()
         {
             DungeonData data = new DungeonData();
-            data.Board = new BoardSquare[10, 10];
+            BoardSquare[,] board = new BoardSquare[2, 2];
+            board[0, 0] = new BoardSquare { Type = (BoardSquareType)99 };
+            data.Board = board;
             data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData>();
 
-            System.Reflection.FieldInfo field = typeof(DungeonData).GetField("_corridors", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            field.SetValue(data, null);
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a room has zero width.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithRoomZeroWidth_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData> { new RoomData(0, 0, 0, 5, Direction.North) };
+            data.Corridors = new List<CorridorData>();
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a room has zero height.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithRoomZeroHeight_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData> { new RoomData(0, 0, 5, 0, Direction.North) };
+            data.Corridors = new List<CorridorData>();
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a corridor has zero width.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithCorridorZeroWidth_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData> { new CorridorData(0, 0, 0, 5, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a corridor has zero height.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithCorridorZeroHeight_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData> { new CorridorData(0, 0, 5, 0, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a room has an invalid direction.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithRoomInvalidDirection_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData> { new RoomData(0, 0, 5, 5, (Direction)99) };
+            data.Corridors = new List<CorridorData>();
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a corridor has an invalid direction.
+        ///     Prevents regression of the S5766 security hotspot validation.
+        /// </summary>
+        [Fact]
+        public void Validate_WithCorridorInvalidDirection_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = CreateBoard(10, 10);
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData> { new CorridorData(0, 0, 5, 5, (Direction)99) };
 
             Assert.Throws<InvalidOperationException>(() => data.Validate());
         }

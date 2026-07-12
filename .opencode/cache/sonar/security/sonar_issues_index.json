@@ -8,9 +8,9 @@
     "type": "SECURITY_HOTSPOT",
     "message": "Validate data in this deserialization constructor.",
     "line": 75,
-    "status": "pending",
-    "assignedWorker": null,
-    "attemptCount": 0,
+    "status": "resolved",
+    "assignedWorker": "worker-pabllopf-mac-1",
+    "attemptCount": 1,
     "lastError": null
   }
 }

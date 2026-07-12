@@ -431,5 +431,86 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(0, hitCount);
         }
+
+        /// <summary>
+        ///     Tests that update pairs with a single overlapping proxy pair reports exactly one callback.
+        ///     Guards against regression of the always-false condition in the duplicate-skip loop
+        ///     where the first pair must always be reported.
+        /// </summary>
+        [Fact]
+        public void UpdatePairs_SingleOverlappingPair_ReportsExactlyOne()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabbA = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 2.0f));
+            Aabb aabbB = new Aabb(new Vector2F(1.0f, 1.0f), new Vector2F(3.0f, 3.0f));
+
+            int idA = broadPhase.AddProxy(ref aabbA);
+            int idB = broadPhase.AddProxy(ref aabbB);
+            broadPhase.SetProxy(idA, ref idA);
+            broadPhase.SetProxy(idB, ref idB);
+
+            List<(int, int)> pairs = new List<(int, int)>();
+            broadPhase.UpdatePairs((id1, id2) => pairs.Add((id1, id2)));
+
+            Assert.Single(pairs);
+        }
+
+        /// <summary>
+        ///     Tests that update pairs with three overlapping proxies reports exactly three unique pairs (C(3,2)).
+        ///     Validates the inner skip-while loop correctly advances past duplicates
+        ///     and that all unique pairs are still delivered.
+        /// </summary>
+        [Fact]
+        public void UpdatePairs_ThreeOverlappingProxies_ReportsThreeUniquePairs()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            List<(int, int)> pairs = new List<(int, int)>();
+            int[] ids = new int[3];
+
+            for (int i = 0; i < 3; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(0.0f, 0.0f),
+                    new Vector2F(5.0f, 5.0f));
+                ids[i] = broadPhase.AddProxy(ref aabb);
+                broadPhase.SetProxy(ids[i], ref ids[i]);
+            }
+
+            broadPhase.UpdatePairs((idA, idB) => pairs.Add((idA, idB)));
+
+            Assert.Equal(3, pairs.Count);
+
+            for (int i = 0; i < pairs.Count; i++)
+            {
+                for (int j = i + 1; j < pairs.Count; j++)
+                {
+                    Assert.False(
+                        pairs[i].Item1 == pairs[j].Item1 &&
+                        pairs[i].Item2 == pairs[j].Item2,
+                        $"Duplicate pair found: ({pairs[i].Item1}, {pairs[i].Item2})");
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Tests that update pairs with proxy ID zero does not cause issues
+        ///     in the duplicate-skip logic. Zero is a valid proxy ID and the inner
+        ///     while loop must correctly handle zero-valued pairs.
+        /// </summary>
+        [Fact]
+        public void UpdatePairs_WithZeroProxyId_HandlesCorrectly()
+        {
+            DynamicTreeBroadPhase<int> broadPhase = new DynamicTreeBroadPhase<int>();
+            Aabb aabb = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(10.0f, 10.0f));
+
+            int id = broadPhase.AddProxy(ref aabb);
+            int zero = 0;
+            broadPhase.SetProxy(id, ref zero);
+
+            List<(int, int)> pairs = new List<(int, int)>();
+            broadPhase.UpdatePairs((idA, idB) => pairs.Add((idA, idB)));
+
+            Assert.Empty(pairs);
+        }
     }
 }

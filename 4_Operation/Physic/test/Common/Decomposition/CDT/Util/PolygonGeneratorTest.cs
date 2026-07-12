@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Util;
 using Xunit;
 
@@ -120,6 +121,90 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void Rng_StaticField_ShouldBeAccessible()
         {
             Assert.NotNull(PolygonGenerator.Rng);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep with minimum vertex count returns correct vertex count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithMinimumVertexCount_ReturnsCorrectCount()
+        {
+            const int vertexCount = 3;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep with 51 vertices returns correct count (covers i%50 branch)
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithFiftyOneVertices_ReturnsCorrectCount()
+        {
+            const int vertexCount = 51;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep with 251 vertices returns correct count (covers i%250 branch)
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_WithTwoHundredFiftyOneVertices_ReturnsCorrectCount()
+        {
+            const int vertexCount = 251;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep returns points with finite coordinates
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep_AllPointsHaveFiniteCoordinates()
+        {
+            const int vertexCount = 10;
+            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+
+            foreach (TriangulationPoint point in polygon.GetPoints)
+            {
+                Assert.False(double.IsNaN(point.X));
+                Assert.False(double.IsNaN(point.Y));
+                Assert.False(double.IsInfinity(point.X));
+                Assert.False(double.IsInfinity(point.Y));
+            }
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 with minimum vertex count returns correct vertex count
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_WithMinimumVertexCount_ReturnsCorrectCount()
+        {
+            const int vertexCount = 3;
+            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+
+            Assert.Equal(vertexCount, polygon.GetPoints.Count);
+        }
+
+        /// <summary>
+        /// Tests that RandomCircleSweep2 returns points with finite coordinates
+        /// </summary>
+        [Fact]
+        public void RandomCircleSweep2_AllPointsHaveFiniteCoordinates()
+        {
+            const int vertexCount = 10;
+            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+
+            foreach (TriangulationPoint point in polygon.GetPoints)
+            {
+                Assert.False(double.IsNaN(point.X));
+                Assert.False(double.IsNaN(point.Y));
+                Assert.False(double.IsInfinity(point.X));
+                Assert.False(double.IsInfinity(point.Y));
+            }
         }
     }
 }

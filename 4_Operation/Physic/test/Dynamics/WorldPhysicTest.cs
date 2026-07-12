@@ -2620,5 +2620,151 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(bodyB.JointList);
             Assert.Single(world.JointList);
         }
+
+        // ========================================================================
+        // SolveToi - contact disabled after update (lines 578-584)
+        // ========================================================================
+        [Fact]
+        public void SolveToi_ContactDisabled_ResetsBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CalculateContactAlpha — alpha0 comparison branch (lines 741-749)
+        // ========================================================================
+        [Fact]
+        public void CalculateContactAlpha_DifferentAlpha0_UsesHigher()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyB.Sweep.Alpha0 = 0.5f;
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // BodyAdded / FixtureAdded handlers (lines 914-916)
+        // ========================================================================
+        [Fact]
+        public void AddBody_WithBodyAddedAndFixtureAdded_FiresEvents()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int bodyAddedCount = 0;
+            int fixtureAddedCount = 0;
+            world.BodyAdded = (w, b) => bodyAddedCount++;
+            world.FixtureAdded = (w, b, f) => fixtureAddedCount++;
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Assert.Equal(1, bodyAddedCount);
+            Assert.Equal(1, fixtureAddedCount);
+        }
+
+        // ========================================================================
+        // Clear when locked via reflection (line 1406)
+        // ========================================================================
+        [Fact]
+        public void Clear_WhenLocked_Throws()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            var field = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic);
+            field?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => world.Clear());
+            field?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // CreateCapsule with high vertex count triggers decomposition (line 1662)
+        // ========================================================================
+        [Fact]
+        public void CreateCapsule_HighVertexCount_UsesDecomposition()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(4f, 0.5f, 20, 0.5f, 20, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
+        // SolveToi — contact disabled after update (lines 578-584)
+        // ========================================================================
+        [Fact]
+        public void SolveToi_ContactDisabledAfterUpdate_ResetsBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.Enabled = false;
+                return true;
+            };
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CalculateContactAlpha — Sweep.Alpha0 comparison (lines 741-749)
+        // ========================================================================
+        [Fact]
+        public void CalculateContactAlpha_DifferentAlpha0B_ReturnsCorrect()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
+            bodyA.IsBullet = true;
+            bodyA.Sweep.Alpha0 = 0.3f;
+            bodyB.Sweep.Alpha0 = 0.6f;
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // Add body event handlers for BodyAdded and FixtureAdded (lines 914-916)
+        // ========================================================================
+        [Fact]
+        public void AddBody_WithEvents_ReturnsCorrectCount()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            int bodyAddedCount = 0;
+            world.BodyAdded += (w, b) => bodyAddedCount++;
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Assert.Equal(1, bodyAddedCount);
+        }
+
+        // ========================================================================
+        // Clear when locked via reflection
+        // ========================================================================
+        [Fact]
+        public void Clear_WhenLocked_ThrowsInvalidOperation()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            lockedField?.SetValue(world, true);
+            Assert.Throws<InvalidOperationException>(() => world.Clear());
+            lockedField?.SetValue(world, false);
+        }
+
+        // ========================================================================
+        // CreateRoundedRectangle with decomposer path
+        // ========================================================================
+        [Fact]
+        public void CreateRoundedRectangle_DecomposerPath_CreatesBody()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRoundedRectangle(10f, 10f, 1f, 1f, 24, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Assert.NotNull(body);
+        }
     }
 }

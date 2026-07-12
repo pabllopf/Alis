@@ -718,5 +718,54 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
+
+        // ========================================================================
+        // AcquireContactLocks with contention (lines 532-536)
+        // ========================================================================
+        [Fact]
+        public void AcquireContactLocks_WithContention_Retries()
+        {
+            ContactSolver solver = new ContactSolver();
+            int[] locks = new int[] { 1, 0 };
+            typeof(ContactSolver).GetField("Locks", BindingFlags.Instance | BindingFlags.NonPublic)
+                ?.SetValue(solver, locks);
+            MethodInfo acquireMethod = typeof(ContactSolver).GetMethod("AcquireContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            MethodInfo releaseMethod = typeof(ContactSolver).GetMethod("ReleaseContactLocks",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            Exception ex = Record.Exception(() =>
+            {
+                releaseMethod.Invoke(solver, new object[] { 0, 1 });
+                acquireMethod.Invoke(solver, new object[] { 0, 1 });
+                releaseMethod.Invoke(solver, new object[] { 0, 1 });
+            });
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolveTwoPointNormal — all xn/vn negative path (lines 692-694)
+        // ========================================================================
+        [Fact]
+        public void SolveTwoPointNormal_ThroughWorld_LastPathExecutes()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(-0.6f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(0.6f, 0.0f), 0.0f, BodyType.Dynamic);
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // InitializeVelocityConstraints — two-point contact redundant (lines 326-330)
+        // ========================================================================
+        [Fact]
+        public void InitializeVelocityConstraints_RedundantConstraint_UsesSingle()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            Body bodyB = world.CreateRectangle(1.0f, 1.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
     }
 }

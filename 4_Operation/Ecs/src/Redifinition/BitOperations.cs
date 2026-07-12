@@ -30,6 +30,7 @@
 using System.Runtime.CompilerServices;
 
 // ReSharper disable once CheckNamespace
+#if !NETCOREAPP3_0_OR_GREATER
 namespace System.Numerics
 {
     /// <summary>
@@ -96,3 +97,4 @@ namespace System.Numerics
         public static uint RotateLeft(uint value, int offset) => (value << offset) | (value >> (32 - offset));
     }
 }
+#endif

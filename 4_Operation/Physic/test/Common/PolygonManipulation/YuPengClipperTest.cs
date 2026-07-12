@@ -796,5 +796,113 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotEmpty(result);
             Assert.Equal(PolyClipError.None, error);
         }
+
+        // ========================================================================
+        // RemoveCoincidentVertices (lines 202-204) — trigger removal
+        // ========================================================================
+        [Fact]
+        public void RemoveCoincidentVertices_RemovesDuplicates()
+        {
+            Vertices verts = new Vertices();
+            verts.Add(new Vector2F(0f, 0f));
+            verts.Add(new Vector2F(0f, 0f));
+            verts.Add(new Vector2F(1f, 0f));
+            var method = typeof(YuPengClipper).GetMethod("RemoveCoincidentVertices",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            method.Invoke(null, new object[] { verts });
+            Assert.Equal(2, verts.Count);
+        }
+
+        // ========================================================================
+        // InsertIntersectionPoint while loop (lines 183-185) — multiple intersections
+        // ========================================================================
+        [Fact]
+        public void InsertIntersectionPoint_SortsByAlpha()
+        {
+            Vertices verts = new Vertices();
+            verts.Add(new Vector2F(0f, 0f));
+            verts.Add(new Vector2F(10f, 0f));
+            var method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            method.Invoke(null, new object[] { verts, new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(3f, 0f) });
+            method.Invoke(null, new object[] { verts, new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(7f, 0f) });
+            Assert.Equal(4, verts.Count);
+        }
+
+        // ========================================================================
+        // Edge.Equals with null (line 639)
+        // ========================================================================
+        [Fact]
+        public void EdgeEquals_Null_ReturnsFalse()
+        {
+            var edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            var edge = Activator.CreateInstance(edgeType, new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            var equalsMethod = edgeType.GetMethod("Equals", new[] { typeof(object) });
+            bool result = (bool)equalsMethod.Invoke(edge, new object[] { null });
+            Assert.False(result);
+        }
+
+        // ========================================================================
+        // CalculateSimplexCoefficient zero case (line 550 — isLeft == 0)
+        // ========================================================================
+        [Fact]
+        public void CalculateSimplexCoefficient_Collinear_ReturnsZero()
+        {
+            var method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            float result = (float)method.Invoke(null, new object[] {
+                Vector2F.Zero, new Vector2F(1f, 0f), new Vector2F(2f, 0f)
+            });
+            Assert.Equal(0f, result);
+        }
+
+        // ========================================================================
+        // CalculateBeta — PointOnLineSegment path (lines 518-521)
+        // ========================================================================
+        [Fact]
+        public void CalculateBeta_PointOnLine_ReturnsHalfCoefficient()
+        {
+            var method = typeof(YuPengClipper).GetMethod("CalculateBeta",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            var edge = Activator.CreateInstance(edgeType, new Vector2F(1f, 0f), new Vector2F(2f, 0f));
+            float result = (float)method.Invoke(null, new object[] { Vector2F.Zero, edge, 2.0f });
+            Assert.Equal(1.0f, result);
+        }
+
+        // ========================================================================
+        // BuildPolygonsFromChain — degenerated output (lines 396-399)
+        // ========================================================================
+        [Fact]
+        public void BuildPolygonsFromChain_WithEdgeOnly_ReturnsDegenerated()
+        {
+            Vertices square1 = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f), new Vector2F(2f, 0f),
+                new Vector2F(2f, 2f), new Vector2F(0f, 2f)
+            });
+            Vertices square2 = new Vertices(new[]
+            {
+                new Vector2F(1f, 1f), new Vector2F(3f, 1f),
+                new Vector2F(3f, 3f), new Vector2F(1f, 3f)
+            });
+            PolyClipError error;
+            List<Vertices> result = YuPengClipper.Intersect(square1, square2, out error);
+            Assert.NotNull(result);
+        }
+
+        // ========================================================================
+        // PointInSimplex — returns 1 for a point inside the simplex (line 568)
+        // ========================================================================
+        [Fact]
+        public void CalculateBeta_PointInSimplex_ReturnsCoefficient()
+        {
+            var method = typeof(YuPengClipper).GetMethod("CalculateBeta",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
+            var edge = Activator.CreateInstance(edgeType, new Vector2F(2f, 0f), new Vector2F(0f, 2f));
+            float result = (float)method.Invoke(null, new object[] { new Vector2F(0.5f, 0.5f), edge, 2.0f });
+            Assert.Equal(2.0f, result);
+        }
     }
 }

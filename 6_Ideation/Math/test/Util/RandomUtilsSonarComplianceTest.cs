@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IsExternalInit.cs
+//  File:RandomUtilsSonarComplianceTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,16 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-// ReSharper disable once CheckNamespace
+using System.Reflection;
+using Alis.Core.Aspect.Math.Util;
+using Xunit;
 
-#if !NET5_0_OR_GREATER
-namespace System.Runtime.CompilerServices
+namespace Alis.Core.Aspect.Math.Test.Util
 {
     /// <summary>
+    ///     Regression tests preventing SonarCloud S1144 (unused private members) from reappearing.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event, Inherited = false)]
-#pragma warning disable S3376 // Attribute name convention (compiler-required name for init accessors)
-    public class IsExternalInit : Attribute;
-#pragma warning restore S3376
-}
+    public class RandomUtilsSonarComplianceTest
+    {
+        /// <summary>
+        ///     Tests that Rng field exists only on target frameworks where it's needed.
+        ///     On NET6.0+ the field should be excluded by conditional compilation.
+        /// </summary>
+        [Fact]
+        public void RngField_ConditionalCompilation_CorrectlyApplied()
+        {
+            FieldInfo rngField = typeof(RandomUtils).GetField("Rng", BindingFlags.NonPublic | BindingFlags.Static);
+
+#if NET6_0_OR_GREATER
+            Assert.Null(rngField);
+#else
+            Assert.NotNull(rngField);
 #endif
+        }
+    }
+}

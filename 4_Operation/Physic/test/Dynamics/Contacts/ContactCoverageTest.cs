@@ -821,5 +821,204 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 Assert.Equal(0, contact.Manifold.PointCount);
             }
         }
+
+        [Fact]
+        public void Destroy_NonSensorContactWithPoints_AwakensBodies()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            Assert.NotNull(contact);
+            Assert.True(contact.Manifold.PointCount > 0);
+
+            bodyA.Awake = false;
+            bodyB.Awake = false;
+            contact.FixtureA.GetIsSensor = false;
+            contact.FixtureB.GetIsSensor = false;
+
+            contact.Destroy();
+
+            Assert.True(bodyA.Awake);
+            Assert.True(bodyB.Awake);
+        }
+
+        [Fact]
+        public void ReportSeparation_WithNoHandlers_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact => true;
+            world.ContactManager.EndContact = null;
+
+            world.Step(1.0f / 60.0f);
+
+            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
+
+            world.Step(1.0f / 60.0f);
+        }
+
+        [Fact]
+        public void ReportCollision_DisabledByBeginContact_DisablesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact => false;
+
+            world.Step(1.0f / 60.0f);
+
+            Contact contact = world.ContactManager.ContactList.Next;
+            if (contact != null)
+            {
+                Assert.False(contact.Enabled);
+                Assert.False(contact.IsTouching);
+            }
+        }
+
+        [Fact]
+        public void ProcessNonSensorContact_WakesBodiesOnStateChange()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(bodyA.Awake);
+            Assert.True(bodyB.Awake);
+        }
+
+        [Fact]
+        public void Create_WithPolygonAndPolygon_UsesPolygonType()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
+            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void ReportSeparation_AllHandlersSet_FiresAll()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+            int fixtureASepCount = 0;
+            int fixtureBSepCount = 0;
+            int bodyASepCount = 0;
+            int bodyBSepCount = 0;
+            int endContactCount = 0;
+
+            bodyA.FixtureList[0].OnSeparation = (_, _, _) => fixtureASepCount++;
+            bodyB.FixtureList[0].OnSeparation = (_, _, _) => fixtureBSepCount++;
+            bodyA.OnSeparation += (_, _, _) => bodyASepCount++;
+            bodyB.OnSeparation += (_, _, _) => bodyBSepCount++;
+            world.ContactManager.EndContact = contact => endContactCount++;
+
+            world.Step(1.0f / 60.0f);
+
+            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
+            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
+
+            world.Step(1.0f / 60.0f);
+
+            Assert.Equal(1, fixtureASepCount);
+            Assert.Equal(1, fixtureBSepCount);
+            Assert.Equal(1, bodyASepCount);
+            Assert.Equal(1, bodyBSepCount);
+            Assert.Equal(1, endContactCount);
+        }
+
+        [Fact]
+        public void Create_FromPoolWithSwappedFixtures_ReusesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body rectBody = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            rectBody.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+
+            rectBody.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void Create_FromPoolWithSwappedEdgePolygon_ReusesContact()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
+            Body rectBody = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
+
+            world.Step(1.0f / 60.0f);
+            Assert.True(world.ContactManager.ContactCount > 0);
+
+            rectBody.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+            Assert.Equal(0, world.ContactManager.ContactCount);
+
+            rectBody.SetTransform(new Vector2F(0.0f, -1.0f), 0.0f);
+            world.Step(1.0f / 60.0f);
+
+            Assert.True(world.ContactManager.ContactCount > 0);
+        }
+
+        [Fact]
+        public void ReportSeparation_Reflection_CoversAllBranches()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Contact contact = world.ContactManager.ContactList.Next;
+            if (contact != null)
+            {
+                var reportSeparation = typeof(Contact).GetMethod("ReportSeparation",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                int handlerCount = 0;
+                bodyA.FixtureList[0].OnSeparation = (_, _, _) => handlerCount++;
+                bodyB.FixtureList[0].OnSeparation = (_, _, _) => handlerCount++;
+                bodyA.OnSeparation += (_, _, _) => handlerCount++;
+                bodyB.OnSeparation += (_, _, _) => handlerCount++;
+                world.ContactManager.EndContact = _ => handlerCount++;
+                reportSeparation.Invoke(contact, new object[] { bodyA, bodyB, world.ContactManager });
+                Assert.Equal(5, handlerCount);
+            }
+        }
+
+        [Fact]
+        public void ReportSeparation_Reflection_WithNullHandlers_DoesNotThrow()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+            world.Step(1.0f / 60.0f);
+            Contact contact = world.ContactManager.ContactList.Next;
+            if (contact != null)
+            {
+                var reportSeparation = typeof(Contact).GetMethod("ReportSeparation",
+                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                reportSeparation.Invoke(contact, new object[] { bodyA, bodyB, world.ContactManager });
+            }
+        }
     }
 }

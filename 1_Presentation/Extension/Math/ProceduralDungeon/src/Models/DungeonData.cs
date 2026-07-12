@@ -154,8 +154,13 @@ namespace Alis.Extension.Math.ProceduralDungeon.Models
             {
                 for (int j = 0; j < _board.GetLength(1); j++)
                 {
-                    BoardSquareType type = _board[i, j].Type;
-                    if (type < BoardSquareType.Empty || type > BoardSquareType.CornerInternalRightUp)
+                    BoardSquare square = _board[i, j];
+                    if (square == null)
+                    {
+                        throw new InvalidOperationException("Board contains null square.");
+                    }
+
+                    if (square.Type < BoardSquareType.Empty || square.Type > BoardSquareType.CornerInternalRightUp)
                     {
                         throw new InvalidOperationException("Board contains invalid square type.");
                     }

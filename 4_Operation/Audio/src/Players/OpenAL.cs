@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
+#if winx64 || winx86 || winarm64 || winarm || win
 namespace Alis.Core.Audio.Players
 {
     /// <summary>
@@ -147,3 +148,4 @@ namespace Alis.Core.Audio.Players
         public static extern void alSourceQueueBuffers(uint source, int nb, ref uint buffers);
     }
 }
+#endif
