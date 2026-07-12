@@ -146,3 +146,12 @@ Total blocked: 129
 - **Tests Added**: 35
 - **Commit**: `16c4596f5`
 - **Status**: SUCCESS
+
+### ImPlotStyle.cs
+- **Timestamp**: 2026-07-12 20:50:00
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~90%
+- **Tests Added**: 28
+- **Commit**: `f4283ed05`
+- **Status**: SUCCESS
