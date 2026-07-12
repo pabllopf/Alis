@@ -230,6 +230,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         [Conditional("DEBUG")]
         internal void EnsureType<T>()
         {
-}
+            _ = typeof(T);
+        }
     }
 }

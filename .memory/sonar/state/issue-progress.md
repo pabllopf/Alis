@@ -1,6 +1,6 @@
 # Issue Progress
 
-Total: 0
-Completed: 0
-Remaining: 0
+Total: 3
+Completed: 1
+Remaining: 2
 
