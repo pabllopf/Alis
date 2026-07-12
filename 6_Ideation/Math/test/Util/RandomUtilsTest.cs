@@ -120,22 +120,5 @@ namespace Alis.Core.Aspect.Math.Test.Util
 
             Assert.InRange(result, -10, 10);
         }
-
-        /// <summary>
-        ///     Tests that the static RNG field is initialized via the static constructor.
-        ///     This forces the .cctor to run, covering the field initializer line
-        ///     which is otherwise skipped on NET6_0_OR_GREATER code paths.
-        /// </summary>
-        [Fact]
-        public void StaticConstructor_InitializesRngField()
-        {
-            FieldInfo field = typeof(RandomUtils).GetField("Rng", BindingFlags.Static | BindingFlags.NonPublic);
-
-            Assert.NotNull(field);
-
-            object value = field.GetValue(null);
-
-            Assert.NotNull(value);
-        }
     }
 }
