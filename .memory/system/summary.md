@@ -2,6 +2,13 @@
 
 ## Recently Processed Files
 
+### RealExplosion.cs
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~35%
+- **Tests Added**: 42
+- **Commit**: `(pending)`
+- **File**: `4_Operation/Physic/src/Common/Logic/RealExplosion.cs`
+
 ### Collision.cs
 - **Coverage Before**: 70.4%
 - **Coverage After**: ~85.8%
