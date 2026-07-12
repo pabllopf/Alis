@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IShaderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Shaders;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IShaderTest
     {
         [Fact]
         public void Interface_ShouldBePublic()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            Assert.True(typeof(IShader).IsInterface);
+            Assert.True(typeof(IShader).IsPublic);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void ShaderCode_Property_ShouldBeString()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.Equal(typeof(string), typeof(IShader).GetProperty("ShaderCode")?.PropertyType);
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByFragmentShader()
+        {
+            Assert.IsAssignableFrom<IShader>(new FragmentShader());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByVertexShader()
+        {
+            Assert.IsAssignableFrom<IShader>(new VertexShader());
         }
     }
 }

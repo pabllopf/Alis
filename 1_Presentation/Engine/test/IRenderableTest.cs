@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IRenderableTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Core;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IRenderableTest
     {
         [Fact]
         public void Interface_ShouldBePublic()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            Assert.True(typeof(IRenderable).IsInterface);
+            Assert.True(typeof(IRenderable).IsPublic);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Render_Method_ShouldExist()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.NotNull(typeof(IRenderable).GetMethod("Render"));
         }
     }
 }

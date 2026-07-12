@@ -101,40 +101,15 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that Dispose(true) protected virtual method can be called via reflection
+        ///     Tests that Dispose can be called without throwing
         /// </summary>
         [Fact]
-        public void Dispose_True_ShouldNotThrow()
+        public void Dispose_ShouldNotThrow()
         {
             Context context = CreateMockContext();
             DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
-            // Use reflection to call protected Dispose(bool)
-            MethodInfo disposeMethod = typeof(DropBoxCloudManager)
-                .GetMethod("Dispose", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotNull(disposeMethod);
-
-            Exception exception = Record.Exception(() =>
-                disposeMethod.Invoke(manager, new object[] { true }));
-
-            Assert.Null(exception);
-        }
-
-        /// <summary>
-        ///     Tests that Dispose(false) does not throw (unmanaged resources only)
-        /// </summary>
-        [Fact]
-        public void Dispose_False_ShouldNotThrow()
-        {
-            Context context = CreateMockContext();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
-
-            MethodInfo disposeMethod = typeof(DropBoxCloudManager)
-                .GetMethod("Dispose", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Exception exception = Record.Exception(() =>
-                disposeMethod.Invoke(manager, new object[] { false }));
+            Exception exception = Record.Exception(() => manager.Dispose());
 
             Assert.Null(exception);
         }

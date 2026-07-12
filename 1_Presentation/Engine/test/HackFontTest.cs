@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:HackFontTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Fonts;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class HackFontTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            HackFont font = new HackFont();
+
+            Assert.NotNull(font);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Class_ShouldImplementIFont()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IFont>(new HackFont());
+        }
+
+        [Fact]
+        public void Class_ShouldBeSealed()
+        {
+            Assert.True(typeof(HackFont).IsSealed);
         }
     }
 }

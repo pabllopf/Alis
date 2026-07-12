@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:SegoeIconTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Fonts;
+using Alis.App.Engine.Icons;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class SegoeIconTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            SegoeIcon icon = new SegoeIcon();
+
+            Assert.NotNull(icon);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Class_ShouldImplementIIcon()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IIcon>(new SegoeIcon());
         }
     }
 }

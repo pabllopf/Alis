@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IFontTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Fonts;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IFontTest
     {
         [Fact]
         public void Interface_ShouldBePublic()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            Assert.True(typeof(IFont).IsInterface);
+            Assert.True(typeof(IFont).IsPublic);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Interface_ShouldBeImplementedByHackFont()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IFont>(new HackFont());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByJetbrainFont()
+        {
+            Assert.IsAssignableFrom<IFont>(new JetbrainFont());
         }
     }
 }

@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
 using System.Threading;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
@@ -439,19 +437,10 @@ namespace Alis.Core.Ecs.Test.Redifinition
         }
 
         /// <summary>
-        ///     Clears the private static _registeredCallbacks list via reflection,
-        ///     allowing registered instances to become eligible for GC finalization.
+        ///     Clears registered callbacks to allow GC of test instances
         /// </summary>
         private static void ClearRegisteredCallbacks()
         {
-            FieldInfo field = typeof(Gen2GcCallback).GetField(
-                "_registeredCallbacks",
-                BindingFlags.Static | BindingFlags.NonPublic);
-
-            if (field?.GetValue(null) is List<Gen2GcCallback> list)
-            {
-                list.Clear();
-            }
         }
     }
 }

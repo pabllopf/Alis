@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IDemoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,66 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Demos;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IDemoTest
     {
         [Fact]
         public void Interface_ShouldBePublic()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            Assert.True(typeof(IDemo).IsInterface);
+            Assert.True(typeof(IDemo).IsPublic);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Initialize_Method_ShouldExist()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.NotNull(typeof(IDemo).GetMethod("Initialize"));
+        }
+
+        [Fact]
+        public void Start_Method_ShouldExist()
+        {
+            Assert.NotNull(typeof(IDemo).GetMethod("Start"));
+        }
+
+        [Fact]
+        public void Run_Method_ShouldExist()
+        {
+            Assert.NotNull(typeof(IDemo).GetMethod("Run"));
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByIconDemo()
+        {
+            Assert.IsAssignableFrom<IDemo>(new IconDemo());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByImGuiDemo()
+        {
+            Assert.IsAssignableFrom<IDemo>(new ImGuiDemo());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByImGuizmoDemo()
+        {
+            Assert.IsAssignableFrom<IDemo>(new ImGuizmoDemo());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByImNodeDemo()
+        {
+            Assert.IsAssignableFrom<IDemo>(new ImNodeDemo());
+        }
+
+        [Fact]
+        public void Interface_ShouldBeImplementedByImPlotDemo()
+        {
+            Assert.IsAssignableFrom<IDemo>(new ImPlotDemo());
         }
     }
 }

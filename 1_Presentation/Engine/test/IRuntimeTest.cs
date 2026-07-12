@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IRuntimeTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Core;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IRuntimeTest
     {
         [Fact]
         public void Interface_ShouldBePublic()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            Assert.True(typeof(IRuntime).IsInterface);
+            Assert.True(typeof(IRuntime).IsPublic);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Initialize_Method_ShouldExist()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.NotNull(typeof(IRuntime).GetMethod("Initialize"));
+        }
+
+        [Fact]
+        public void Update_Method_ShouldExist()
+        {
+            Assert.NotNull(typeof(IRuntime).GetMethod("Update"));
+        }
+
+        [Fact]
+        public void Render_Method_ShouldExist()
+        {
+            Assert.NotNull(typeof(IRuntime).GetMethod("Render"));
         }
     }
 }

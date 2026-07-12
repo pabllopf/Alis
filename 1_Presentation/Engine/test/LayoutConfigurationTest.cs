@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:LayoutConfigurationTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Configuration;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class LayoutConfigurationTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            LayoutConfiguration config = new LayoutConfiguration();
+
+            Assert.NotNull(config);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Class_ShouldImplementIConfiguration()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IConfiguration>(new LayoutConfiguration());
         }
     }
 }

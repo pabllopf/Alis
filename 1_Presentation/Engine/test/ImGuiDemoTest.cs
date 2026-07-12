@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:ImGuiDemoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Demos;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class ImGuiDemoTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            ImGuiDemo demo = new ImGuiDemo();
+
+            Assert.NotNull(demo);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Class_ShouldImplementIDemo()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IDemo>(new ImGuiDemo());
+        }
+
+        [Fact]
+        public void Initialize_ShouldNotThrow()
+        {
+            ImGuiDemo demo = new ImGuiDemo();
+
+            demo.Initialize();
+        }
+
+        [Fact]
+        public void Start_ShouldNotThrow()
+        {
+            ImGuiDemo demo = new ImGuiDemo();
+
+            demo.Start();
         }
     }
 }

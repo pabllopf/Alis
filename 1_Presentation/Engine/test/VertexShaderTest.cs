@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:VertexShaderTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,47 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Shaders;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class VertexShaderTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            VertexShader shader = new VertexShader();
+
+            Assert.NotNull(shader);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Struct_ShouldBeReadOnly()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.True(typeof(VertexShader).IsValueType);
+        }
+
+        [Fact]
+        public void ShaderCode_ShouldReturnNonEmptyString()
+        {
+            VertexShader shader = new VertexShader();
+
+            Assert.False(string.IsNullOrEmpty(shader.ShaderCode));
+        }
+
+        [Fact]
+        public void ShaderCode_ShouldContainGLSLVersion()
+        {
+            VertexShader shader = new VertexShader();
+
+            Assert.Contains("#version", shader.ShaderCode);
+        }
+
+        [Fact]
+        public void Class_ShouldImplementIShader()
+        {
+            Assert.IsAssignableFrom<IShader>(new VertexShader());
         }
     }
 }

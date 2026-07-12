@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITypeIdTest.cs
+//  File:IconDemoTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,24 +27,47 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs.Kernel;
+using Alis.App.Engine.Demos;
 using Xunit;
 
-namespace Alis.Core.Ecs.Test.Kernel
+namespace Alis.App.Engine.Test
 {
-    public class ITypeIdTest
+    public class IconDemoTest
     {
         [Fact]
-        public void Interface_ShouldBePublic()
+        public void Constructor_ShouldCreateInstance()
         {
-            Assert.True(typeof(ITypeId).IsInterface);
-            Assert.True(typeof(ITypeId).IsPublic);
+            IconDemo demo = new IconDemo();
+
+            Assert.NotNull(demo);
         }
 
         [Fact]
-        public void Interface_ShouldBeImplementedByComponentId()
+        public void Class_ShouldImplementIDemo()
         {
-            Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
+            Assert.IsAssignableFrom<IDemo>(new IconDemo());
+        }
+
+        [Fact]
+        public void Name_ShouldReturnNonNullString()
+        {
+            Assert.NotNull(IconDemo.Name);
+        }
+
+        [Fact]
+        public void Initialize_ShouldNotThrow()
+        {
+            IconDemo demo = new IconDemo();
+
+            demo.Initialize();
+        }
+
+        [Fact]
+        public void Start_ShouldNotThrow()
+        {
+            IconDemo demo = new IconDemo();
+
+            demo.Start();
         }
     }
 }
