@@ -79,6 +79,13 @@
 - **Commit**: `48cb10a1b`
 - **File**: `4_Operation/Graphic/src/OpenGL/Constructs/GLShaderProgramParam.cs`
 
+### PolygonGenerator.cs
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~70%
+- **Tests Added**: 6
+- **Commit**: `eb9a2b7c1`
+- **File**: `4_Operation/Physic/src/Common/Decomposition/CDT/Util/PolygonGenerator.cs`
+
 ## Batch Blocked (2026-07-11 11:47:26)
 Blocked 128 P/Invoke native wrapper files.
 Total blocked: 129
