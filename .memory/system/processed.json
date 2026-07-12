@@ -287,5 +287,8 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/DeleteComponent.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/EventRecord.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/EncoderOptions.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/EmulateThreeButtonMouse.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/EmulateThreeButtonMouse.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FrugalStack.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs"
 ]
