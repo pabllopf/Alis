@@ -282,5 +282,10 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Archetypes/ArchetypeEdgeKey.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/ComponentEvent.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioFormat.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioMetadata.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/AudioMetadata.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/CreateCommand.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/DeleteComponent.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/EventRecord.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/EncoderOptions.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/EmulateThreeButtonMouse.cs"
 ]

@@ -205,3 +205,17 @@ Total blocked: 129
 - **Tests Added**: 34
 - **Commit**: `1f1b2920e`
 - **Status**: SUCCESS
+
+### ECS Kernel Commands (CreateCommand, DeleteComponent, EventRecord)
+- **Timestamp**: 2026-07-12 21:20:00
+- **Files**: `4_Operation/Ecs/src/Kernel/CreateCommand.cs`, `4_Operation/Ecs/src/Kernel/DeleteComponent.cs`, `4_Operation/Ecs/src/Kernel/Events/EventRecord.cs`
+- **Tests Added**: 14
+- **Commit**: `148dc6d91`
+- **Status**: SUCCESS
+
+### EncoderOptions + EmulateThreeButtonMouse
+- **Timestamp**: 2026-07-12 21:20:00
+- **Files**: `1_Presentation/Extension/Media/FFmpeg/src/Encoding/EncoderOptions.cs`, `1_Presentation/Extension/Graphic/Ui/src/Extras/Node/EmulateThreeButtonMouse.cs`
+- **Tests Added**: 9
+- **Commit**: `b6571b615`
+- **Status**: SUCCESS
