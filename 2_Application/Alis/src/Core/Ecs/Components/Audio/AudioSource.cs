@@ -49,19 +49,14 @@ namespace Alis.Core.Ecs.Components.Audio
         internal readonly bool loop = loop;
 
         /// <summary>
-        ///     The player
-        /// </summary>
-        private IPlayer player = new Player();
-
-        /// <summary>
         ///     Sets the player for testing purposes
         /// </summary>
-        internal IPlayer PlayerForTest { get => player; set => player = value; }
+        internal IPlayer PlayerForTest { get; set; } = new Player();
 
         /// <summary>
         ///     Gets or sets the value of the is playing
         /// </summary>
-        public bool IsPlaying => player.Playing;
+        public bool IsPlaying => PlayerForTest.Playing;
 
         /// <summary>
         ///     Gets or sets the value of the play on awake
@@ -105,11 +100,11 @@ namespace Alis.Core.Ecs.Components.Audio
 
             if (!IsLooping)
             {
-                _ = player.Play(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile);
+                _ = PlayerForTest.Play(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile);
             }
             else
             {
-                _ = player.PlayLoop(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile, true);
+                _ = PlayerForTest.PlayLoop(string.IsNullOrEmpty(FullPathAudioFile) ? NameFile : FullPathAudioFile, true);
             }
         }
 
@@ -118,9 +113,9 @@ namespace Alis.Core.Ecs.Components.Audio
         /// </summary>
         public void Stop()
         {
-            if (player.Playing)
+            if (PlayerForTest.Playing)
             {
-                _ = player.Stop();
+                _ = PlayerForTest.Stop();
             }
         }
 
@@ -129,9 +124,9 @@ namespace Alis.Core.Ecs.Components.Audio
         /// </summary>
         public void Resume()
         {
-            if (!player.Playing)
+            if (!PlayerForTest.Playing)
             {
-                _ = player.Resume();
+                _ = PlayerForTest.Resume();
             }
         }
 
