@@ -50,7 +50,7 @@ namespace Alis.Extension.Profile.Test.Models
             long memoryUsage = 1024000;
             int gcCount = 5;
             int threadCount = 10;
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
 
             ResourceMetrics metrics = new ResourceMetrics(cpuUsage, memoryUsage, gcCount, threadCount, timestamp);
 
@@ -68,7 +68,7 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_ThrowsArgumentException_WhenCpuUsageIsNegative()
         {
             ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-                new ResourceMetrics(-1, 1000, 5, 10, DateTime.Now));
+                new ResourceMetrics(-1, 1000, 5, 10, DateTime.UtcNow));
 
             Assert.Contains("CPU usage cannot be negative", ex.Message);
         }
@@ -80,7 +80,7 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_ThrowsArgumentException_WhenMemoryUsageIsNegative()
         {
             ArgumentException ex = Assert.Throws<ArgumentException>(() =>
-                new ResourceMetrics(100, -1, 5, 10, DateTime.Now));
+                new ResourceMetrics(100, -1, 5, 10, DateTime.UtcNow));
 
             Assert.Contains("Memory usage cannot be negative", ex.Message);
         }
@@ -121,7 +121,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsTrueForIdenticalMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
@@ -134,7 +134,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentCpuUsage()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 1000, 5, 10, timestamp);
 
@@ -147,7 +147,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentMemoryUsage()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 2000, 5, 10, timestamp);
 
@@ -160,7 +160,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentGarbageCollectionCount()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 10, 10, timestamp);
 
@@ -173,7 +173,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentThreadCount()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 20, timestamp);
 
@@ -186,8 +186,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentTimestamp()
         {
-            DateTime timestamp1 = DateTime.Now;
-            DateTime timestamp2 = DateTime.Now.AddSeconds(1);
+            DateTime timestamp1 = DateTime.UtcNow;
+            DateTime timestamp2 = DateTime.UtcNow.AddSeconds(1);
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp1);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp2);
 
@@ -200,7 +200,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualsObject_ReturnsTrueForIdenticalMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             object metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
@@ -213,7 +213,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualsObject_ReturnsFalseForNonResourceMetricsObject()
         {
-            ResourceMetrics metrics = new ResourceMetrics(100, 1000, 5, 10, DateTime.Now);
+            ResourceMetrics metrics = new ResourceMetrics(100, 1000, 5, 10, DateTime.UtcNow);
 
             Assert.False(metrics.Equals((object)"not a ResourceMetrics"));
         }
@@ -224,7 +224,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualsObject_ReturnsFalseForNull()
         {
-            ResourceMetrics metrics = new ResourceMetrics(100, 1000, 5, 10, DateTime.Now);
+            ResourceMetrics metrics = new ResourceMetrics(100, 1000, 5, 10, DateTime.UtcNow);
 
             Assert.False(metrics.Equals((object)null));
         }
@@ -235,7 +235,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsSameValueForIdenticalMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
@@ -251,7 +251,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsDifferentValueForDifferentMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2000, 10, 20, timestamp);
 
@@ -267,7 +267,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualityOperator_ReturnsTrueForIdenticalMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
@@ -280,7 +280,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualityOperator_ReturnsFalseForDifferentMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2000, 10, 20, timestamp);
 
@@ -293,7 +293,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void InequalityOperator_ReturnsTrueForDifferentMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(200, 2000, 10, 20, timestamp);
 
@@ -306,7 +306,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void InequalityOperator_ReturnsFalseForIdenticalMetrics()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics1 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
             ResourceMetrics metrics2 = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
@@ -352,7 +352,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Properties_AreReadOnly()
         {
-            DateTime timestamp = DateTime.Now;
+            DateTime timestamp = DateTime.UtcNow;
             ResourceMetrics metrics = new ResourceMetrics(100, 1000, 5, 10, timestamp);
 
             double cpu = metrics.CpuUsageMilliseconds;
@@ -397,7 +397,7 @@ namespace Alis.Extension.Profile.Test.Models
         [InlineData(999.999)]
         public void Constructor_PreservesFloatingPointPrecision(double cpuUsage)
         {
-            ResourceMetrics metrics = new ResourceMetrics(cpuUsage, 0, 0, 0, DateTime.Now);
+            ResourceMetrics metrics = new ResourceMetrics(cpuUsage, 0, 0, 0, DateTime.UtcNow);
 
             Assert.Equal(cpuUsage, metrics.CpuUsageMilliseconds);
         }
@@ -408,7 +408,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_AllowsNegativeGcAndThreadCount()
         {
-            ResourceMetrics metrics = new ResourceMetrics(100, 1000, -1, -1, DateTime.Now);
+            ResourceMetrics metrics = new ResourceMetrics(100, 1000, -1, -1, DateTime.UtcNow);
 
             Assert.Equal(-1, metrics.GarbageCollectionCount);
             Assert.Equal(-1, metrics.ThreadCount);

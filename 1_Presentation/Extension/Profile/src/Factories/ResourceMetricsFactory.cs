@@ -66,7 +66,7 @@ namespace Alis.Extension.Profile.Factories
             resourceMonitor.GetMemoryUsage(),
             resourceMonitor.GetGarbageCollectionCount(),
             resourceMonitor.GetThreadCount(),
-            DateTime.Now
+            DateTime.UtcNow
         );
 
         /// <summary>

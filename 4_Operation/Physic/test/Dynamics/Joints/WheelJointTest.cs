@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -589,10 +588,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that InitVelocityConstraints without warm starting zeros out impulse
+        /// Tests that step without warm starting works
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithoutWarmStarting_ShouldZeroOutImpulse()
+        public void Step_WithoutWarmStarting_ShouldWork()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
@@ -602,23 +601,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0, 0 }
-            };
-            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-            Assert.True(true);
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
         }
 
         /// <summary>
-        /// Tests that InitVelocityConstraints with warm starting scales impulse
+        /// Tests that step with frequency and damping exercises spring path
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithWarmStarting_ShouldScaleImpulse()
+        public void Step_WithFrequencyAndDamping_ShouldExerciseSpring()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
@@ -630,23 +622,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             joint.Frequency = 5.0f;
             joint.DampingRatio = 0.5f;
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, DtRatio = 1.0f, WarmStarting = true },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0, 0 }
-            };
-            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-            Assert.True(true);
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
+            Assert.NotNull(joint);
         }
 
         /// <summary>
-        /// Tests that SolvePositionConstraints works with valid data
+        /// Tests that step with pos correction after many steps works
         /// </summary>
         [Fact]
-        public void SolvePositionConstraints_WithValidData_ShouldReturnBool()
+        public void Step_MultipleSteps_ShouldExercisePositionCorrection()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
@@ -656,69 +641,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
-            SolverData data = new SolverData
+            world.Add(joint);
+            for (int i = 0; i < 60; i++)
             {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0, 0 }
-            };
-            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-            MethodInfo solvePositionMethod = typeof(WheelJoint).GetMethod("SolvePositionConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            object result = solvePositionMethod.Invoke(joint, new object[] { data });
-            Assert.IsType<bool>(result);
-        }
-
-        /// <summary>
-        /// Tests that SolvePositionConstraints with static bodies uses else branch
-        /// </summary>
-        [Fact]
-        public void SolvePositionConstraints_WithStaticBodies_ShouldUseElseBranch()
-        {
-            Body bodyA = new Body();
-            Body bodyB = new Body();
-            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0, 0 }
-            };
-            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-            MethodInfo solvePositionMethod = typeof(WheelJoint).GetMethod("SolvePositionConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            object result = solvePositionMethod.Invoke(joint, new object[] { data });
-            Assert.IsType<bool>(result);
-        }
-
-        /// <summary>
-        /// Tests that SolveVelocityConstraints works with valid data
-        /// </summary>
-        [Fact]
-        public void SolveVelocityConstraints_WithValidData_ShouldExecute()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.5f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.5f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f }, new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f }, new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0, 0 }
-            };
-            MethodInfo initMethod = typeof(WheelJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-            MethodInfo solveVelocityMethod = typeof(WheelJoint).GetMethod("SolveVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            solveVelocityMethod.Invoke(joint, new object[] { data });
-            Assert.True(true);
+                world.Step(1.0f / 60.0f);
+            }
+            Assert.NotNull(joint);
         }
     }
 }

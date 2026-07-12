@@ -91,7 +91,7 @@ namespace Alis.Extension.Profile
         /// </summary>
         public void StartProfiling()
         {
-            sessionStartTime = DateTime.Now;
+            sessionStartTime = DateTime.UtcNow;
             startMetrics = metricsFactory.CreateSnapshot();
             timeTracker.Start();
         }
@@ -114,7 +114,7 @@ namespace Alis.Extension.Profile
 
             timeTracker.Stop();
             ResourceMetrics endMetrics = metricsFactory.CreateSnapshot();
-            DateTime sessionEndTime = DateTime.Now;
+            DateTime sessionEndTime = DateTime.UtcNow;
 
             return new ProfileSnapshot(
                 timeTracker.GetElapsedTime(),
@@ -135,7 +135,7 @@ namespace Alis.Extension.Profile
         public ProfileSnapshot GetCurrentSnapshot()
         {
             ResourceMetrics currentMetrics = metricsFactory.CreateSnapshot();
-            DateTime currentTime = DateTime.Now;
+            DateTime currentTime = DateTime.UtcNow;
 
             return new ProfileSnapshot(
                 timeTracker.GetElapsedTime(),

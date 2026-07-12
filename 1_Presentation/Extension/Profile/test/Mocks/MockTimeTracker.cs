@@ -95,7 +95,7 @@ namespace Alis.Extension.Profile.Test.Mocks
         {
             StartCalled = true;
             IsRunning = true;
-            StartTime = DateTime.Now;
+            StartTime = DateTime.UtcNow;
         }
 
         /// <summary>

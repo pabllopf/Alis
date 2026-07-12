@@ -73,7 +73,7 @@ namespace Alis.Extension.Profile.Implementations
         /// </summary>
         public void Start()
         {
-            startTime = DateTime.Now;
+            startTime = DateTime.UtcNow;
             stopwatch.Restart();
         }
 
