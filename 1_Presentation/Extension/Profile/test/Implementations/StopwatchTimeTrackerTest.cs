@@ -73,11 +73,11 @@ namespace Alis.Extension.Profile.Test.Implementations
         public void Start_SetsStartTime_ToCurrentTime()
         {
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
-            DateTime beforeStart = DateTime.Now;
+            DateTime beforeStart = DateTime.UtcNow;
 
             tracker.Start();
 
-            DateTime afterStart = DateTime.Now;
+            DateTime afterStart = DateTime.UtcNow;
             Assert.True(tracker.GetStartTime() >= beforeStart);
             Assert.True(tracker.GetStartTime() <= afterStart);
         }

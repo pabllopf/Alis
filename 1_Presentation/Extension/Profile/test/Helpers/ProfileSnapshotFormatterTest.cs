@@ -72,7 +72,7 @@ namespace Alis.Extension.Profile.Test.Helpers
         [Fact]
         public void FormatCompact_ReturnsSingleLineString()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, now);
             ResourceMetrics endMetrics = new ResourceMetrics(200, 2048, 7, 3, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(
@@ -121,7 +121,7 @@ namespace Alis.Extension.Profile.Test.Helpers
         [Fact]
         public void FormatDetailed_IncludesAllMetricSections()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics metrics = new ResourceMetrics(100, 1024, 5, 2, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(
                 TimeSpan.FromMilliseconds(500),
@@ -143,7 +143,7 @@ namespace Alis.Extension.Profile.Test.Helpers
         [Fact]
         public void FormatCompact_IncludesAllKeyMetrics()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(100, 1024, 5, 2, now);
             ResourceMetrics endMetrics = new ResourceMetrics(200, 2048, 7, 3, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(

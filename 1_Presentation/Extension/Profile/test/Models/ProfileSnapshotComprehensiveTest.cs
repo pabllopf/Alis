@@ -47,8 +47,8 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_InitializesWithValidParameters()
         {
             TimeSpan elapsedTime = TimeSpan.FromMilliseconds(100);
-            DateTime startTime = DateTime.Now.AddSeconds(-1);
-            DateTime endTime = DateTime.Now;
+            DateTime startTime = DateTime.UtcNow.AddSeconds(-1);
+            DateTime endTime = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, startTime);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, endTime);
 
@@ -67,8 +67,8 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_ThrowsArgumentException_WhenElapsedTimeIsNegative()
         {
-            DateTime startTime = DateTime.Now;
-            DateTime endTime = DateTime.Now.AddSeconds(1);
+            DateTime startTime = DateTime.UtcNow;
+            DateTime endTime = DateTime.UtcNow.AddSeconds(1);
             ResourceMetrics startMetrics = ResourceMetrics.Empty;
             ResourceMetrics endMetrics = ResourceMetrics.Empty;
 
@@ -85,8 +85,8 @@ namespace Alis.Extension.Profile.Test.Models
         public void Constructor_ThrowsArgumentException_WhenEndTimeIsBeforeStartTime()
         {
             TimeSpan elapsedTime = TimeSpan.FromMilliseconds(100);
-            DateTime startTime = DateTime.Now;
-            DateTime endTime = DateTime.Now.AddSeconds(-1);
+            DateTime startTime = DateTime.UtcNow;
+            DateTime endTime = DateTime.UtcNow.AddSeconds(-1);
             ResourceMetrics startMetrics = ResourceMetrics.Empty;
             ResourceMetrics endMetrics = ResourceMetrics.Empty;
 
@@ -102,7 +102,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_AcceptsZeroElapsedTime()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = ResourceMetrics.Empty;
             ResourceMetrics endMetrics = ResourceMetrics.Empty;
 
@@ -132,7 +132,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void CpuUsageDelta_CalculatesCorrectly()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(50, 0, 0, 0, now);
             ResourceMetrics endMetrics = new ResourceMetrics(150, 0, 0, 0, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(TimeSpan.FromMilliseconds(100), startMetrics, endMetrics, now, now);
@@ -148,7 +148,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void MemoryUsageDelta_CalculatesCorrectly()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(0, 1000000, 0, 0, now);
             ResourceMetrics endMetrics = new ResourceMetrics(0, 2000000, 0, 0, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(TimeSpan.FromMilliseconds(100), startMetrics, endMetrics, now, now);
@@ -164,7 +164,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GarbageCollectionsDuringProfiling_CalculatesCorrectly()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(0, 0, 5, 0, now);
             ResourceMetrics endMetrics = new ResourceMetrics(0, 0, 12, 0, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(TimeSpan.FromMilliseconds(100), startMetrics, endMetrics, now, now);
@@ -180,7 +180,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void DeltaCalculations_HandleNegativeDeltas()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(100, 2000000, 10, 0, now);
             ResourceMetrics endMetrics = new ResourceMetrics(50, 1000000, 5, 0, now);
             ProfileSnapshot snapshot = new ProfileSnapshot(TimeSpan.FromMilliseconds(100), startMetrics, endMetrics, now, now);
@@ -200,7 +200,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsTrueForIdenticalSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));
@@ -217,7 +217,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Equals_ReturnsFalseForDifferentSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed1 = TimeSpan.FromMilliseconds(100);
             TimeSpan elapsed2 = TimeSpan.FromMilliseconds(200);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
@@ -235,7 +235,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualsObject_ReturnsTrueForIdenticalSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));
@@ -263,7 +263,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void GetHashCode_ReturnsSameValueForIdenticalSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));
@@ -283,7 +283,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void EqualityOperator_ReturnsTrueForIdenticalSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));
@@ -300,7 +300,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void InequalityOperator_ReturnsTrueForDifferentSnapshots()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed1 = TimeSpan.FromMilliseconds(100);
             TimeSpan elapsed2 = TimeSpan.FromMilliseconds(200);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
@@ -341,7 +341,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Properties_AreReadOnly()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));
@@ -367,7 +367,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void DeltaProperties_WorkWithLargeValues()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics startMetrics = new ResourceMetrics(0, 0, 0, 0, now);
             ResourceMetrics endMetrics = new ResourceMetrics(double.MaxValue, long.MaxValue, int.MaxValue, 0, now);
 
@@ -388,7 +388,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void Constructor_AcceptsSameStartAndEndTime()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             ResourceMetrics metrics = ResourceMetrics.Empty;
 
             ProfileSnapshot snapshot = new ProfileSnapshot(TimeSpan.Zero, metrics, metrics, now, now);
@@ -404,7 +404,7 @@ namespace Alis.Extension.Profile.Test.Models
         [Fact]
         public void MultipleSnapshots_WithSameData_AreEqual()
         {
-            DateTime now = DateTime.Now;
+            DateTime now = DateTime.UtcNow;
             TimeSpan elapsed = TimeSpan.FromMilliseconds(100);
             ResourceMetrics startMetrics = new ResourceMetrics(50, 1000000, 5, 10, now);
             ResourceMetrics endMetrics = new ResourceMetrics(100, 2000000, 10, 15, now.AddMilliseconds(100));

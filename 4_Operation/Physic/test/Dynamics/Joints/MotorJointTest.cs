@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -752,10 +751,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// Tests that step with motor joint covers branch
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
+        public void Step_WithMotorJoint_CoversBranch()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
@@ -766,17 +765,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyB.CreateFixture(shapeB);
 
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
 
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
-
-            MethodInfo initMethod = typeof(MotorJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
+            Assert.NotNull(joint);
         }
     }
 }

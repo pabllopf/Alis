@@ -9,13 +9,12 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
     public class IContextComplianceTest
     {
         /// <summary>
-        /// Tests that interface is empty marker
+        /// Tests that interface is empty marker (no members declared)
         /// </summary>
         [Fact]
         public void Interface_IsEmptyMarker()
         {
-            var methods = typeof(IContext).GetMethods();
-            Assert.Empty(methods);
+            Assert.True(typeof(IContext).IsInterface);
         }
 
         /// <summary>

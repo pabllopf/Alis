@@ -74,10 +74,10 @@ namespace Alis.Extension.Profile.Test.Implementations
         public void Start_RecordsStartTime()
         {
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
-            DateTime beforeStart = DateTime.Now;
+            DateTime beforeStart = DateTime.UtcNow;
 
             tracker.Start();
-            DateTime afterStart = DateTime.Now;
+            DateTime afterStart = DateTime.UtcNow;
 
             DateTime startTime = tracker.GetStartTime();
             Assert.True(startTime >= beforeStart);
@@ -340,11 +340,11 @@ namespace Alis.Extension.Profile.Test.Implementations
         public void GetStartTime_IsAccurateAfterStart()
         {
             StopwatchTimeTracker tracker = new StopwatchTimeTracker();
-            DateTime beforeStart = DateTime.Now;
+            DateTime beforeStart = DateTime.UtcNow;
 
             tracker.Start();
             DateTime recordedStartTime = tracker.GetStartTime();
-            DateTime afterStart = DateTime.Now;
+            DateTime afterStart = DateTime.UtcNow;
 
             Assert.True(recordedStartTime >= beforeStart);
             Assert.True(recordedStartTime <= afterStart);

@@ -420,12 +420,12 @@ namespace Alis.Extension.Profile.Test
             MockResourceMonitor resourceMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(resourceMonitor);
             ProfilerService service = new ProfilerService(timeTracker, factory);
-            DateTime beforeStart = DateTime.Now;
+            DateTime beforeStart = DateTime.UtcNow;
 
             service.StartProfiling();
             Thread.Sleep(10);
             ProfileSnapshot snapshot = service.StopProfiling();
-            DateTime afterEnd = DateTime.Now;
+            DateTime afterEnd = DateTime.UtcNow;
 
             Assert.True(snapshot.StartTime >= beforeStart);
             Assert.True(snapshot.EndTime <= afterEnd);

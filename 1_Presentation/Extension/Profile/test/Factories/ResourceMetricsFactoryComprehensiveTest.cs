@@ -110,10 +110,10 @@ namespace Alis.Extension.Profile.Test.Factories
         {
             IResourceMonitor monitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(monitor);
-            DateTime beforeCreation = DateTime.Now;
+            DateTime beforeCreation = DateTime.UtcNow;
 
             ResourceMetrics metrics = factory.CreateSnapshot();
-            DateTime afterCreation = DateTime.Now;
+            DateTime afterCreation = DateTime.UtcNow;
 
             Assert.True(metrics.Timestamp >= beforeCreation);
             Assert.True(metrics.Timestamp <= afterCreation);
@@ -276,7 +276,7 @@ namespace Alis.Extension.Profile.Test.Factories
 
             ResourceMetrics metrics1 = factory.CreateSnapshot();
             ResourceMetrics metrics2 = metrics1;
-            metrics2 = new ResourceMetrics(999, 999, 999, 999, DateTime.Now);
+            metrics2 = new ResourceMetrics(999, 999, 999, 999, DateTime.UtcNow);
 
             Assert.NotEqual(999, metrics1.CpuUsageMilliseconds);
         }

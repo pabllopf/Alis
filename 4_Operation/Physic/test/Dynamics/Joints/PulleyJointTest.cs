@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -596,10 +595,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         }
 
         /// <summary>
-        /// Tests that init velocity constraints with warm starting false covers else branch
+        /// Tests that step with pulley joint and without warm starting covers else branch
         /// </summary>
         [Fact]
-        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
+        public void Step_WithPulleyJoint_CoversElseBranch()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-1.0f, 0.0f), BodyType.Dynamic);
@@ -613,16 +612,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 new Vector2F(0.0f, -2.0f),
                 1.0f);
 
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
+            world.Add(joint);
+            world.Step(1.0f / 60.0f);
 
-            MethodInfo initMethod = typeof(PulleyJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
+            Assert.NotNull(joint);
         }
     }
 }

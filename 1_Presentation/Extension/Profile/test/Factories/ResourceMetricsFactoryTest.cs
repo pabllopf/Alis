@@ -110,13 +110,13 @@ namespace Alis.Extension.Profile.Test.Factories
             // Arrange
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
-            DateTime beforeSnapshot = DateTime.Now;
+            DateTime beforeSnapshot = DateTime.UtcNow;
 
             // Act
             ResourceMetrics metrics = factory.CreateSnapshot();
 
             // Assert
-            DateTime afterSnapshot = DateTime.Now;
+            DateTime afterSnapshot = DateTime.UtcNow;
             Assert.True(metrics.Timestamp >= beforeSnapshot);
             Assert.True(metrics.Timestamp <= afterSnapshot);
         }
