@@ -269,5 +269,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiIO.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryIterationExtensions.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/ChunkQueryEnumerator.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlas.cs"
 ]
