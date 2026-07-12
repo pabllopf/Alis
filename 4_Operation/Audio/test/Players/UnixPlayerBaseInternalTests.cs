@@ -44,7 +44,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished with playing true should set playing false
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_WithPlayingTrue_ShouldSetPlayingFalse()
         {
             // Arrange
@@ -65,7 +65,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished with playing false should not change state
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_WithPlayingFalse_ShouldNotChangeState()
         {
             // Arrange
@@ -86,7 +86,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished should invoke playback finished event
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_ShouldInvokePlaybackFinishedEvent()
         {
             // Arrange
@@ -110,7 +110,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished with null event args should not throw
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_WithNullEventArgs_ShouldNotThrow()
         {
             // Arrange
@@ -129,7 +129,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished with custom event args should pass event args
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_WithCustomEventArgs_ShouldPassEventArgs()
         {
             // Arrange
@@ -155,7 +155,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Handles the playback finished multiple invocations should only fire once per playing state
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void HandlePlaybackFinished_MultipleInvocations_ShouldOnlyFireOncePerPlayingState()
         {
             // Arrange
@@ -180,7 +180,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Playings the property should be private set
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void Playing_Property_ShouldBePrivateSet()
         {
             // Arrange
@@ -198,7 +198,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Pauseds the property should be private set
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void Paused_Property_ShouldBePrivateSet()
         {
             // Arrange
@@ -216,7 +216,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Pauses the process command constant should be defined
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void PauseProcessCommand_Constant_ShouldBeDefined()
         {
             // Arrange
@@ -231,7 +231,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Resumes the process command constant should be defined
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void ResumeProcessCommand_Constant_ShouldBeDefined()
         {
             // Arrange
@@ -242,15 +242,11 @@ namespace Alis.Core.Audio.Test.Players
             // Assert
             Assert.NotNull(resumeCommandField);
         }
-
-       
-
-
-
+        
         /// <summary>
         /// Gets the audio duration with valid file should return positive value
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void GetAudioDuration_WithValidFile_ShouldReturnPositiveValue()
         {
             // Arrange
@@ -281,7 +277,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Gets the audio duration with null file should throw exception
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void GetAudioDuration_WithNullFile_ShouldThrowException()
         {
             // Arrange
@@ -298,7 +294,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Extracts the wav from resources async with null file name should throw exception
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void ExtractWavFromResourcesAsync_WithNullFileName_ShouldThrowException()
         {
             // Arrange
@@ -315,7 +311,7 @@ namespace Alis.Core.Audio.Test.Players
         /// <summary>
         /// Extracts the wav from resources async with empty file name should throw exception
         /// </summary>
-        [MacOsOnly]
+        [UnixOnly]
         public void ExtractWavFromResourcesAsync_WithEmptyFileName_ShouldThrowException()
         {
             // Arrange

@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
+using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting line weight returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void LineWeight_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting marker size returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerSize_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting marker weight returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MarkerWeight_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting fill alpha returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FillAlpha_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting error bar size returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarSize_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting error bar weight returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void ErrorBarWeight_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting digital bit height returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitHeight_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting digital bit gap returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void DigitalBitGap_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting plot border size returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PlotBorderSize_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting minor alpha returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void MinorAlpha_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting marker returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Marker_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting tick length properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TickLenProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -199,7 +200,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting tick size properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void TickSizeProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting grid size properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void GridSizeProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting padding properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void PaddingProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting spacing and annotation padding properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void SpacingAndAnnotationPaddingProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting fit and plot size properties returns the same values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void FitAndPlotSizeProperties_SetValues_ReturnsSameValues()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -282,7 +283,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting Colors0 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors0_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -298,7 +299,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting Colors5 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors5_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting Colors10 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors10_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -330,7 +331,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting Colors15 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors15_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -346,7 +347,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting Colors20 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colors20_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -362,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting colormap to a non-default value returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colormap_SetNonDefaultValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -375,7 +376,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that the default colormap is the default enum value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Colormap_Default_IsDefaultEnum()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting use local time returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseLocalTime_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -399,7 +400,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting use iso 8601 returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void UseIso8601_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -412,7 +413,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that setting use 24 hour clock returns the same value.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Use24HourClock_SetValue_ReturnsSameValue()
         {
             ImPlotStyle style = new ImPlotStyle();
@@ -425,7 +426,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         /// <summary>
         ///     Tests that the default im plot style has expected default values.
         /// </summary>
-        [Fact]
+        [RequireCImguiSystemFact]
         public void Default_Constructor_HasExpectedDefaults()
         {
             ImPlotStyle style = new ImPlotStyle();
