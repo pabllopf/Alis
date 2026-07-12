@@ -30,418 +30,208 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Threading;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Redifinition
 {
-    /// <summary>
-    ///     The gen 2 gc callback test class
-    /// </summary>
-    /// <remarks>
-    ///     Tests the Gen2GcCallback class which schedules callbacks to be executed
-    ///     during Generation 2 garbage collections. This is critical for memory
-    ///     management and cleanup operations in the ECS.
-    /// </remarks>
     [CollectionDefinition("Gen2GcCallbackTest", DisableParallelization = true)]
+    public class Gen2GcCallbackTestDefinition
+    {
+    }
+
+    [Collection("Gen2GcCallbackTest")]
     public class Gen2GcCallbackTest
     {
-        /// <summary>
-        ///     Tests that Gen2GcCallback can be registered without errors
-        /// </summary>
-        /// <remarks>
-        ///     Validates that registering a simple callback doesn't throw exceptions
-        ///     and completes successfully.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_RegisterSimpleCallback_DoesNotThrow()
+        [Fact]
+        public void Register_FuncBool_DoesNotThrow()
         {
-            bool callbackExecuted = false;
-
-            Exception exception = Record.Exception(() =>
-            {
-                Gen2GcCallback.Register(() =>
-                {
-                    callbackExecuted = true;
-                    return false; // Don't reschedule
-                });
-            });
+            Exception exception = Record.Exception(() => Gen2GcCallback.Register(() => false));
 
             Assert.Null(exception);
         }
 
-        /// <summary>
-        ///     Tests that callback is eventually called after GC
-        /// </summary>
-        /// <remarks>
-        ///     Validates that registered callbacks are executed when a
-        ///     Generation 2 garbage collection occurs.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_CallbackExecutesAfterGC()
+        [Fact]
+        public void Register_FuncObjectBool_DoesNotThrow()
         {
-            bool callbackCalled = false;
+            object target = new object();
 
-            Gen2GcCallback.Register(() =>
-            {
-                callbackCalled = true;
-                return false;
-            });
-
-            for (int i = 0; i < 3; i++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                Thread.Sleep(10);
-            }
-
-            Assert.True(true); // Test passes if no exception thrown
-        }
-
-        /// <summary>
-        ///     Tests that callback with target object can be registered
-        /// </summary>
-        /// <remarks>
-        ///     Validates that callbacks with associated target objects
-        ///     can be registered successfully.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_RegisterWithTargetObject_DoesNotThrow()
-        {
-            object targetObject = new object();
-
-            Exception exception = Record.Exception(() => { Gen2GcCallback.Register(obj => { return false; }, targetObject); });
+            Exception exception = Record.Exception(() => Gen2GcCallback.Register(obj => false, target));
 
             Assert.Null(exception);
         }
 
-        /// <summary>
-        ///     Tests that callback stops when returning false
-        /// </summary>
-        /// <remarks>
-        ///     Validates that callbacks that return false are not rescheduled
-        ///     for subsequent garbage collections.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_CallbackReturningFalse_StopsExecution()
+        [Fact]
+        public void Register_WithNullTarget_DoesNotThrow()
+        {
+            Exception exception = Record.Exception(() => Gen2GcCallback.Register(obj => false, null));
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void FuncBoolReturningFalse_ExecutesOnceAfterFinalization()
         {
             int callCount = 0;
-
             Gen2GcCallback.Register(() =>
             {
                 callCount++;
-                return false; // Stop after first call
+                return false;
             });
+            ClearRegisteredCallbacks();
 
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                Thread.Sleep(10);
-            }
+            ForceGc();
 
-            Assert.True(callCount <= 1);
+            Assert.Equal(1, callCount);
         }
 
-        /// <summary>
-        ///     Tests that static Gen2CollectionOccured event can be set
-        /// </summary>
-        /// <remarks>
-        ///     Validates that the static event handler for Generation 2 collections
-        ///     can be assigned and doesn't cause errors.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_StaticEventCanBeAssigned()
+        [Fact]
+        public void FuncBoolReturningTrue_ReschedulesAfterFinalization()
+        {
+            int callCount = 0;
+            Gen2GcCallback.Register(() =>
+            {
+                callCount++;
+                return true;
+            });
+            ClearRegisteredCallbacks();
+
+            ForceGc();
+            ForceGc();
+            ForceGc();
+
+            Assert.True(callCount >= 2, $"Expected at least 2 invocations, got {callCount}");
+        }
+
+        [Fact]
+        public void ObjectCallbackWithAliveTargetReturningFalse_ExecutesOnce()
+        {
+            int callCount = 0;
+            object target = new object();
+            Gen2GcCallback.Register(obj =>
+            {
+                callCount++;
+                return false;
+            }, target);
+            ClearRegisteredCallbacks();
+
+            ForceGc();
+
+            Assert.Equal(1, callCount);
+            GC.KeepAlive(target);
+        }
+
+        [Fact]
+        public void ObjectCallbackWithAliveTargetReturningTrue_Reschedules()
+        {
+            int callCount = 0;
+            object target = new object();
+            Gen2GcCallback.Register(obj =>
+            {
+                callCount++;
+                return true;
+            }, target);
+            ClearRegisteredCallbacks();
+
+            ForceGc();
+            ForceGc();
+            ForceGc();
+
+            Assert.True(callCount >= 2, $"Expected at least 2 invocations, got {callCount}");
+            GC.KeepAlive(target);
+        }
+
+        [Fact]
+        public void ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback()
+        {
+            Boolean[] callbackCalled = { false };
+            RegisterWithDeadTarget(callbackCalled);
+            ClearRegisteredCallbacks();
+
+            ForceGc();
+            ForceGc();
+            ForceGc();
+
+            Assert.False(callbackCalled[0], "Callback should not execute when target is dead");
+        }
+
+        [Fact]
+        public void StaticEvent_FiresAfterGCFinalization()
         {
             bool eventFired = false;
-            Action originalHandler = Gen2GcCallback.Gen2CollectionOccured;
+            Action original = Gen2GcCallback.Gen2CollectionOccured;
 
             try
             {
                 Gen2GcCallback.Gen2CollectionOccured = () => { eventFired = true; };
+                ClearRegisteredCallbacks();
 
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                Thread.Sleep(10);
+                ForceGc();
+                ForceGc();
+                ForceGc();
 
-                Assert.NotNull(Gen2GcCallback.Gen2CollectionOccured);
+                Assert.True(eventFired, "Static event should fire after GC finalization");
             }
             finally
             {
-                Gen2GcCallback.Gen2CollectionOccured = originalHandler;
+                Gen2GcCallback.Gen2CollectionOccured = original;
             }
         }
 
-        /// <summary>
-        ///     Tests that multiple callbacks can coexist
-        /// </summary>
-        /// <remarks>
-        ///     Validates that multiple Gen2 callbacks can be registered
-        ///     simultaneously without conflicts.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_MultipleCallbacks_CanCoexist()
+        [Fact]
+        public void MultipleCallbacks_AllExecuteAfterFinalization()
         {
-            int callback1Count = 0;
-            int callback2Count = 0;
-            int callback3Count = 0;
+            int callCount1 = 0;
+            int callCount2 = 0;
 
             Gen2GcCallback.Register(() =>
             {
-                callback1Count++;
+                callCount1++;
                 return false;
             });
-
             Gen2GcCallback.Register(() =>
             {
-                callback2Count++;
+                callCount2++;
                 return false;
             });
+            ClearRegisteredCallbacks();
 
-            Gen2GcCallback.Register(() =>
-            {
-                callback3Count++;
-                return false;
-            });
+            ForceGc();
 
-            for (int i = 0; i < 3; i++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                Thread.Sleep(10);
-            }
-
-            Assert.True(true);
+            Assert.Equal(1, callCount1);
+            Assert.Equal(1, callCount2);
         }
 
-        /// <summary>
-        ///     Tests callback with dead target object
-        /// </summary>
-        /// <remarks>
-        ///     Validates that callbacks associated with dead target objects
-        ///     are properly cleaned up and don't cause memory leaks.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_WithDeadTargetObject_CleansUp()
-        {
-            WeakReference weakRef;
-
-            void CreateAndRegisterCallback()
-            {
-                object targetObj = new object();
-                weakRef = new WeakReference(targetObj);
-
-                Gen2GcCallback.Register(obj =>
-                {
-                    return true; // Try to keep alive
-                }, targetObj);
-
-            }
-
-            CreateAndRegisterCallback();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                Thread.Sleep(10);
-            }
-
-            Assert.True(true); // Test passes if no exception
-        }
-
-        /// <summary>
-        ///     Tests callback with null target object
-        /// </summary>
-        /// <remarks>
-        ///     Validates behavior when null is passed as the target object.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_WithNullTargetObject_HandlesGracefully()
-        {
-            Exception exception = Record.Exception(() => { Gen2GcCallback.Register(obj => { return false; }, null); });
-
-            Assert.Null(exception);
-        }
-
-        /// <summary>
-        ///     Tests rapid successive registrations
-        /// </summary>
-        /// <remarks>
-        ///     Validates that many callbacks can be registered in quick succession
-        ///     without causing performance issues or errors.
-        /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_RapidSuccessiveRegistrations_HandlesCorrectly()
+        [Fact]
+        public void RapidSuccessiveRegistrations_DoNotThrow()
         {
             Exception exception = Record.Exception(() =>
             {
-                for (int i = 0; i < 100; i++)
+                for (Int32 i = 0; i < 100; i++)
                 {
                     Gen2GcCallback.Register(() => false);
                 }
             });
 
             Assert.Null(exception);
+        }
 
-            GC.Collect();
+        private static void ForceGc()
+        {
+            GC.Collect(2, GCCollectionMode.Forced, blocking: true);
             GC.WaitForPendingFinalizers();
         }
 
-        /// <summary>
-        ///     Tests that Func&lt;bool&gt; callback returning false executes exactly once after finalization
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_FuncBoolReturningFalse_ExecutesOnceAfterFinalization()
-        {
-            int callCount = 0;
-
-            Gen2GcCallback.Register(() =>
-            {
-                callCount++;
-                return false;
-            });
-
-            ClearRegisteredCallbacks();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
-            }
-
-            Assert.Equal(1, callCount);
-        }
-
-        /// <summary>
-        ///     Tests that Func&lt;bool&gt; callback returning true is rescheduled after finalization
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_FuncBoolReturningTrue_ReschedulesAfterFinalization()
-        {
-            int callCount = 0;
-
-            Gen2GcCallback.Register(() =>
-            {
-                callCount++;
-                return true;
-            });
-
-            ClearRegisteredCallbacks();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
-            }
-
-            Assert.True(callCount >= 2, $"Callback should have been called at least twice (was {callCount})");
-        }
-
-        /// <summary>
-        ///     Tests that Func&lt;object, bool&gt; callback with alive target executes after finalization
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_ObjectCallbackWithAliveTarget_ExecutesAfterFinalization()
-        {
-            int callCount = 0;
-            object target = new object();
-
-            Gen2GcCallback.Register(obj =>
-            {
-                callCount++;
-                return false;
-            }, target);
-
-            ClearRegisteredCallbacks();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
-            }
-
-            Assert.Equal(1, callCount);
-            GC.KeepAlive(target);
-        }
-
-        /// <summary>
-        ///     Tests that Func&lt;object, bool&gt; callback with dead target frees GCHandle without invoking callback
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_ObjectCallbackWithDeadTarget_FreesHandleWithoutCallback()
-        {
-            bool[] called = { false };
-
-            RegisterWithDeadTarget(called);
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
-            }
-
-            ClearRegisteredCallbacks();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                GC.WaitForPendingFinalizers();
-            }
-
-            Assert.False(called[0], "Callback should not be called when target object is collected");
-        }
-
-        /// <summary>
-        /// Registers the with dead target using the specified called
-        /// </summary>
-        /// <param name="called">The called</param>
-        private static void RegisterWithDeadTarget(bool[] called)
+        private static void RegisterWithDeadTarget(Boolean[] callbackCalled)
         {
             object target = new object();
             Gen2GcCallback.Register(obj =>
             {
-                called[0] = true;
+                callbackCalled[0] = true;
                 return false;
             }, target);
         }
 
-        /// <summary>
-        ///     Tests that static Gen2CollectionOccured event fires via the default static constructor callback
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Gen2GcCallback_StaticEvent_FiresAfterGCFinalization()
-        {
-            bool eventFired = false;
-            Action originalHandler = Gen2GcCallback.Gen2CollectionOccured;
-
-            try
-            {
-                Gen2GcCallback.Gen2CollectionOccured = () => { eventFired = true; };
-
-                ClearRegisteredCallbacks();
-
-                for (int i = 0; i < 5; i++)
-                {
-                    GC.Collect(2, GCCollectionMode.Forced, blocking: true);
-                    GC.WaitForPendingFinalizers();
-                }
-
-                Assert.True(eventFired, "Gen2CollectionOccured event should have fired after GC finalization");
-            }
-            finally
-            {
-                Gen2GcCallback.Gen2CollectionOccured = originalHandler;
-            }
-        }
-
-        /// <summary>
-        ///     Clears the private static _registeredCallbacks list via reflection,
-        ///     allowing registered instances to become eligible for GC finalization.
-        /// </summary>
         private static void ClearRegisteredCallbacks()
         {
             FieldInfo field = typeof(Gen2GcCallback).GetField(
