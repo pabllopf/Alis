@@ -85,5 +85,18 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Audio
             AudioSetting setting = new AudioSetting();
             Assert.IsAssignableFrom<IAudioSetting>(setting);
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(50)]
+        [InlineData(99)]
+        [InlineData(100)]
+        public void AudioSetting_VolumeBoundary_ShouldStoreValue(int volume)
+        {
+            AudioSetting setting = new AudioSetting(volume, false);
+
+            Assert.Equal(volume, setting.Volume);
+        }
     }
 }

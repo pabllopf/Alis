@@ -18,7 +18,7 @@ namespace Alis.Core.Graphic.Test
             string tempPath = Path.GetTempFileName() + ".bmp";
             try
             {
-                byte[] bmpData = CreateMinimalBmp24Bit(2, 2).ToArray();
+                byte[] bmpData = CreateMinimalBmp24Bit(2, 2);
                 File.WriteAllBytes(tempPath, bmpData);
 
                 Image image = Image.Load(tempPath);
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test
             string tempPath = Path.GetTempFileName() + ".bmp";
             try
             {
-                byte[] bmpData = CreateMinimalBmp24Bit(3, 4).ToArray();
+                byte[] bmpData = CreateMinimalBmp24Bit(3, 4);
                 File.WriteAllBytes(tempPath, bmpData);
 
                 Image image = Image.Load(tempPath);
@@ -134,7 +134,7 @@ namespace Alis.Core.Graphic.Test
             string tempPath = Path.GetTempFileName() + ".bmp";
             try
             {
-                byte[] bmpData = CreateMinimalBmp24Bit(3, 4).ToArray();
+                byte[] bmpData = CreateMinimalBmp24Bit(3, 4);
                 File.WriteAllBytes(tempPath, bmpData);
 
                 Image image = Image.Load(tempPath);

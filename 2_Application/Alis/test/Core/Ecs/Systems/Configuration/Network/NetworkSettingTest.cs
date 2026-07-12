@@ -72,5 +72,18 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Network
             NetworkSetting setting = new NetworkSetting();
             Assert.IsAssignableFrom<INetworkSetting>(setting);
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(1024)]
+        [InlineData(65534)]
+        [InlineData(65535)]
+        public void NetworkSetting_PortBoundary_ShouldStoreValue(int port)
+        {
+            NetworkSetting setting = new NetworkSetting(port, "127.0.0.1", "localhost", "http");
+
+            Assert.Equal(port, setting.Port);
+        }
     }
 }

@@ -70,5 +70,41 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
             TimeSetting setting = new TimeSetting();
             Assert.IsAssignableFrom<ITimeSetting>(setting);
         }
+
+        [Theory]
+        [InlineData(0.001f)]
+        [InlineData(0.016f)]
+        [InlineData(0.033f)]
+        [InlineData(0.1f)]
+        public void TimeSetting_FixedTimeStepBoundary_ShouldStoreValue(float fixedTimeStep)
+        {
+            TimeSetting setting = new TimeSetting(fixedTimeStep, 0.25f, 1.0f);
+
+            Assert.Equal(fixedTimeStep, setting.FixedTimeStep);
+        }
+
+        [Theory]
+        [InlineData(0.01f)]
+        [InlineData(0.25f)]
+        [InlineData(0.5f)]
+        [InlineData(1.0f)]
+        public void TimeSetting_MaxAllowedTimeStepBoundary_ShouldStoreValue(float maxStep)
+        {
+            TimeSetting setting = new TimeSetting(0.016f, maxStep, 1.0f);
+
+            Assert.Equal(maxStep, setting.MaximumAllowedTimeStep);
+        }
+
+        [Theory]
+        [InlineData(0.0f)]
+        [InlineData(0.5f)]
+        [InlineData(1.0f)]
+        [InlineData(2.0f)]
+        public void TimeSetting_TimeScaleBoundary_ShouldStoreValue(float timeScale)
+        {
+            TimeSetting setting = new TimeSetting(0.016f, 0.25f, timeScale);
+
+            Assert.Equal(timeScale, setting.TimeScale);
+        }
     }
 }
