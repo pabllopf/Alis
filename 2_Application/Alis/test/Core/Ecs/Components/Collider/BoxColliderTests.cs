@@ -28,11 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Systems.Scope;
 using Alis.Core.Physic.Dynamics;
 using Moq;
 using Xunit;
@@ -527,6 +529,393 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(5f, transform.Position.X);
             Assert.Equal(5f, transform.Position.Y);
             Assert.Equal(1.0f, transform.Rotation);
+        }
+
+        #endregion
+
+        #region OnStart — No-Op and Full Path
+
+        /// <summary>
+        ///     Verifies that OnStart is a no-op when the GameObject lacks a Transform.
+        /// </summary>
+        [Fact]
+        public void OnStart_WhenGameObjectLacksTransform_DoesNotCreateBody()
+        {
+            BoxCollider collider = new BoxCollider();
+            collider.Context = new Context();
+
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
+            mockGameObject.Setup(g => g.Has<Transform>()).Returns(false);
+
+            collider.OnStart(mockGameObject.Object);
+
+            Assert.Null(collider.Body);
+        }
+
+        /// <summary>
+        ///     Verifies that OnStart throws NullReferenceException when Context is null
+        ///     and the GameObject has a Transform.
+        /// </summary>
+        [Fact]
+        public void OnStart_WhenContextIsNullAndTransformExists_ThrowsNullReferenceException()
+        {
+            BoxCollider collider = new BoxCollider();
+
+            Transform transform = new Transform(new Vector2F(1f, 2f), 0.5f);
+            MockGameObject gameObject = new MockGameObject(transform);
+
+            Exception exception = Record.Exception(() => collider.OnStart(gameObject));
+
+            Assert.IsAssignableFrom<NullReferenceException>(exception);
+        }
+
+        /// <summary>
+        ///     Verifies that OnStart creates a physics body with configured properties
+        ///     when Context and Transform are present.
+        /// </summary>
+        [Fact]
+        public void OnStart_WithContextAndTransform_CreatesBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(10f, 20f), 0.5f, new Vector2F(2f, 3f)));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(5f, 6f),
+                Rotation = 1.0f,
+                RelativePosition = new Vector2F(1f, -1f),
+                BodyType = BodyType.Dynamic,
+                Restitution = 0.3f,
+                Friction = 0.7f,
+                FixedRotation = true,
+                Mass = 2.5f,
+                IgnoreGravity = true,
+                LinearVelocity = new Vector2F(1f, 2f),
+                IsTrigger = true
+            };
+
+            collider.OnStart(gameObject);
+
+            Assert.NotNull(collider.Body);
+            Assert.NotNull(collider.Body.Tag);
+        }
+
+        /// <summary>
+        ///     Verifies that OnStart with Static body type creates a body.
+        /// </summary>
+        [Fact]
+        public void OnStart_WithStaticBody_CreatesStaticBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(15f, 25f), 0f, new Vector2F(1f, 1f)));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(8f, 8f),
+                BodyType = BodyType.Static,
+                IgnoreGravity = false,
+                IsTrigger = false
+            };
+
+            collider.OnStart(gameObject);
+
+            Assert.NotNull(collider.Body);
+            Assert.NotNull(collider.Body.Tag);
+        }
+
+        #endregion
+
+        #region OnUpdate — Full Path with Body
+
+        /// <summary>
+        ///     Verifies that OnUpdate syncs Transform Position and Rotation from Body
+        ///     when both Transform and Body are present.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WhenTransformAndBodyPresent_SyncsTransformFromBody()
+        {
+            BoxCollider collider = new BoxCollider();
+
+            Alis.Core.Physic.Dynamics.Body body = new Alis.Core.Physic.Dynamics.Body();
+            body.Position = new Vector2F(42f, 99f);
+            body.Rotation = 1.57f;
+            collider.Body = body;
+
+            Transform transform = new Transform(Vector2F.Zero, 0f);
+            MockGameObject gameObject = new MockGameObject(transform);
+
+            collider.OnUpdate(gameObject);
+
+            Transform updatedTransform = gameObject.GetStoredTransform();
+            Assert.Equal(42f, updatedTransform.Position.X);
+            Assert.Equal(99f, updatedTransform.Position.Y);
+            Assert.Equal(1.57f, updatedTransform.Rotation);
+        }
+
+        /// <summary>
+        ///     Verifies that OnUpdate after OnStart syncs the Transform from the body.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_AfterOnStart_SyncsTransformFromBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(100f, 200f), 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(10f, 10f),
+                BodyType = BodyType.Dynamic
+            };
+
+            collider.OnStart(gameObject);
+            Assert.NotNull(collider.Body);
+
+            collider.Body.Position = new Vector2F(300f, 400f);
+            collider.Body.Rotation = 2.5f;
+
+            collider.OnUpdate(gameObject);
+
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(300f, transform.Position.X, 5);
+            Assert.Equal(400f, transform.Position.Y, 5);
+            Assert.Equal(2.5f, transform.Rotation, 5);
+        }
+
+        /// <summary>
+        ///     Verifies that multiple OnUpdate calls keep the Transform synchronized.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_MultipleCallsAfterOnStart_KeepsSyncing()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(0f, 0f), 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(10f, 10f),
+                BodyType = BodyType.Dynamic
+            };
+
+            collider.OnStart(gameObject);
+
+            collider.Body.Position = new Vector2F(50f, 60f);
+            collider.Body.Rotation = 1.5f;
+            collider.OnUpdate(gameObject);
+
+            ref Transform t1 = ref gameObject.Get<Transform>();
+            Assert.Equal(50f, t1.Position.X, 5);
+            Assert.Equal(60f, t1.Position.Y, 5);
+
+            collider.Body.Position = new Vector2F(70f, 80f);
+            collider.Body.Rotation = 3.0f;
+            collider.OnUpdate(gameObject);
+
+            ref Transform t2 = ref gameObject.Get<Transform>();
+            Assert.Equal(70f, t2.Position.X, 5);
+            Assert.Equal(80f, t2.Position.Y, 5);
+            Assert.Equal(3.0f, t2.Rotation, 5);
+        }
+
+        /// <summary>
+        ///     Verifies that manually replacing the Body after OnStart causes OnUpdate
+        ///     to sync from the new body.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_AfterBodyReplacement_SyncsFromNewBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(10f, 10f), 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(10f, 10f),
+                BodyType = BodyType.Dynamic
+            };
+
+            collider.OnStart(gameObject);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body newBody = new Alis.Core.Physic.Dynamics.Body
+            {
+                Position = new Vector2F(999f, 888f),
+                Rotation = 4.5f
+            };
+            collider.Body = newBody;
+
+            collider.OnUpdate(gameObject);
+
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(999f, transform.Position.X, 5);
+            Assert.Equal(888f, transform.Position.Y, 5);
+            Assert.Equal(4.5f, transform.Rotation, 5);
+        }
+
+        #endregion
+
+        #region OnExit — Full Path
+
+        /// <summary>
+        ///     Verifies that OnExit removes the body from the physics world
+        ///     and sets Body to null when both Context and Body are present.
+        /// </summary>
+        [Fact]
+        public void OnExit_WhenBodyAndContextArePresent_RemovesBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(3f, 4f), 0.5f, new Vector2F(2f, 3f)));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(5f, 6f),
+                Rotation = 1.0f,
+                RelativePosition = new Vector2F(1f, -1f),
+                BodyType = BodyType.Dynamic,
+                Restitution = 0.3f,
+                Friction = 0.7f,
+                FixedRotation = true,
+                Mass = 2f,
+                IgnoreGravity = false,
+                LinearVelocity = new Vector2F(1f, 2f),
+                IsTrigger = false
+            };
+
+            collider.OnStart(gameObject);
+            Assert.NotNull(collider.Body);
+
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
+            Exception exception = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+
+            Assert.Null(collider.Body);
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Verifies that calling OnExit twice is safe: the second call is a no-op.
+        /// </summary>
+        [Fact]
+        public void OnExit_CalledTwice_SecondCallIsNoOp()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(
+                new Transform(new Vector2F(1f, 1f), 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(3f, 4f),
+                BodyType = BodyType.Static,
+            };
+
+            collider.OnStart(gameObject);
+            Assert.NotNull(collider.Body);
+
+            Mock<IGameObject> mockGameObject = new Mock<IGameObject>();
+
+            Exception firstException = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Assert.Null(firstException);
+
+            Exception secondException = Record.Exception(() => collider.OnExit(mockGameObject.Object));
+            Assert.Null(collider.Body);
+            Assert.Null(secondException);
+        }
+
+        #endregion
+
+        #region BoxColliderSettings — With Expression
+
+        /// <summary>
+        ///     Verifies that the with expression on BoxColliderSettings creates a modified copy.
+        /// </summary>
+        [Fact]
+        public void BoxColliderSettings_WithExpression_CreatesModifiedCopy()
+        {
+            BoxCollider.BoxColliderSettings original = new BoxCollider.BoxColliderSettings(
+                IsTrigger: false,
+                Width: 10f,
+                Height: 20f,
+                Rotation: 0f,
+                RelativePosition: Vector2F.Zero,
+                AutoTilling: false,
+                BodyType: BodyType.Static,
+                Restitution: 0.5f,
+                Friction: 0.5f,
+                FixedRotation: false,
+                Mass: 1.0f,
+                IgnoreGravity: false,
+                LinearVelocity: Vector2F.Zero,
+                AngularVelocity: 0f);
+
+            BoxCollider.BoxColliderSettings modified = original with
+            {
+                Width = 99f,
+                Height = 55f,
+                IsTrigger = true
+            };
+
+            Assert.Equal(10f, original.Width);
+            Assert.Equal(20f, original.Height);
+            Assert.False(original.IsTrigger);
+
+            Assert.Equal(99f, modified.Width);
+            Assert.Equal(55f, modified.Height);
+            Assert.True(modified.IsTrigger);
+
+            Assert.Equal(original.Rotation, modified.Rotation);
+            Assert.Equal(original.BodyType, modified.BodyType);
+            Assert.Equal(original.Restitution, modified.Restitution);
+            Assert.Equal(original.Mass, modified.Mass);
+        }
+
+        #endregion
+
+        #region Helper Classes
+
+        /// <summary>
+        ///     A concrete implementation of IGameObject that stores a Transform
+        ///     and returns it by reference.
+        /// </summary>
+        internal sealed class MockGameObject : IGameObject
+        {
+            private Transform _transform;
+
+            public MockGameObject(Transform transform) => _transform = transform;
+
+            public ref T Get<T>() where T : notnull
+            {
+                if (typeof(T) == typeof(Transform))
+                {
+                    return ref Unsafe.As<Transform, T>(ref _transform);
+                }
+
+                throw new InvalidOperationException($"Component type {typeof(T).Name} not found.");
+            }
+
+            public bool Has<T>() => typeof(T) == typeof(Transform);
+
+            public bool Has(Type type) => type == typeof(Transform);
+
+            public bool TryHas<T>() => typeof(T) == typeof(Transform);
+
+            public Transform GetStoredTransform() => _transform;
         }
 
         #endregion
