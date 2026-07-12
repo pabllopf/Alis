@@ -194,7 +194,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
             {
                 try
                 {
-                    if (!ffplayp.HasExited)
+                    if (ffplayp != null && !ffplayp.HasExited)
                     {
                         ffplayp.Kill();
                     }
@@ -204,9 +204,8 @@ namespace Alis.Extension.Media.FFmpeg.Video
                     /// Ignore exception during close
                 }
 
-                ffplayp.WaitForExit();
+                ffplayp?.WaitForExit();
                 InputDataStream?.Dispose();
-                ffplayp?.Dispose();
             }
             finally
             {

@@ -139,8 +139,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         /// <summary>
         ///     Verifies that <see cref="AudioVideoWriter.Dispose" /> enters the
         ///     <c>OpenedForWriting</c> branch when the writer is opened, which calls
-        ///     <see cref="AudioVideoWriter.CloseWrite" />. The exception from
-        ///     <c>CloseWrite</c> propagates through <c>Dispose</c>.
+        ///     <see cref="AudioVideoWriter.CloseWrite" />. CloseWrite handles null
+        ///     <c>Ffmpegp</c> gracefully and resets <c>OpenedForWriting</c>.
         /// </summary>
         [Fact]
         public void Dispose_WhenOpenedForWriting_CallsCloseWrite()
@@ -156,8 +156,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             // Act — Dispose calls Dispose(true) which checks OpenedForWriting, calls CloseWrite
             Exception exception = Record.Exception(() => writer.Dispose());
 
-            // Assert — CloseWrite throws NRE from null Ffmpegp, but OpenedForWriting is reset
-            Assert.NotNull(exception);
+            // Assert — CloseWrite handles null Ffmpegp gracefully, OpenedForWriting is reset
+            Assert.Null(exception);
             Assert.False(writer.OpenedForWriting);
         }
 
