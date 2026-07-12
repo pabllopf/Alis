@@ -230,6 +230,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         [Conditional("DEBUG")]
         internal void EnsureType<T>()
         {
-}
+            Debug.Assert(Type == typeof(T), $"Type mismatch for parameter '{Name}': expected {typeof(T)}, got {Type}.");
+        }
     }
 }
