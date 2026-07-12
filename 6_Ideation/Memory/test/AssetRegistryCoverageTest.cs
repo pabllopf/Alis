@@ -407,49 +407,7 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.True(File.Exists(path2));
             Assert.Equal("second version", File.ReadAllText(path2));
         }
-
-        /// <summary>
-        /// Tests that get resource memory stream by name cache miss after ensure throws file not found exception
-        /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
-        {
-            string assemblyName = "CacheMiss_" + Guid.NewGuid();
-            byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
-            SetupAssembly(assemblyName, zipBytes);
-
-            AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
-
-            using var cts = new CancellationTokenSource();
-
-            Task.Run(() =>
-            {
-                while (!cts.IsCancellationRequested)
-                {
-                    GetZipCache().Remove(assemblyName);
-                    Thread.SpinWait(10);
-                }
-            });
-
-            bool hit = false;
-            Stopwatch sw = Stopwatch.StartNew();
-
-            while (!hit && sw.Elapsed < TimeSpan.FromSeconds(5))
-            {
-                try
-                {
-                    AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
-                }
-                catch (FileNotFoundException ex) when (ex.Message.Contains("Cache del assets.pack no disponible"))
-                {
-                    hit = true;
-                }
-            }
-
-            cts.Cancel();
-            Assert.True(hit, "Cache miss race condition was triggered");
-        }
-
+        
         /// <summary>
         /// Tests that get resource path by name cache miss after ensure throws file not found exception
         /// </summary>

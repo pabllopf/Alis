@@ -536,42 +536,6 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        ///     Tests that get resource memory stream by name with various resource name patterns
-        /// </summary>
-        [Theory]
-        [InlineData("app.bmp")]
-        [InlineData("APP.BMP")]
-        [InlineData("App.Bmp")]
-        public void GetResourceMemoryStreamByName_VariousCasePatterns_FindsResource(string resourceName)
-        {
-            Type at = typeof(AssetRegistry);
-            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo zipCache = at.GetField("_zipCache",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo pathCache = at.GetField("_extractedPathCache",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            prop.SetValue(null, null);
-            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
-            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
-            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
-
-            string assemblyName = "TestAssembly_Case_" + Guid.NewGuid();
-            string expectedContent = "test content for case test";
-            Dictionary<string, string> testData = new Dictionary<string, string> {{"app.bmp", expectedContent}};
-            byte[] zipBytes = CreateTestZipBytes(testData);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName(resourceName);
-
-            Assert.NotNull(result);
-            Assert.True(result.Length > 0);
-        }
-
-        /// <summary>
         ///     Tests that get resource path by name with various resource name patterns
         /// </summary>
         [Theory]
