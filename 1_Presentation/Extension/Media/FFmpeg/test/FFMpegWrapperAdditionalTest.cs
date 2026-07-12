@@ -46,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand executes a simple command and returns output
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RunCommand_WithEcho_ShouldReturnOutput()
         {
             // Arrange & Act
@@ -61,7 +61,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand respects HideFFmpegBanner setting
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RunCommand_HideBannerTrue_ShouldIncludeHideBanner()
         {
             // Arrange
@@ -87,7 +87,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand respects custom log level
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RunCommand_CustomLogLevel_ShouldExecute()
         {
             // Arrange
@@ -353,7 +353,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand with prettify false does not add newlines
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RunCommand_PrettifyFalse_ShouldNotAddNewlines()
         {
             // Arrange
@@ -369,7 +369,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that RunCommand with prettify true adds newlines
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RunCommand_PrettifyTrue_ShouldAddNewlines()
         {
             // Arrange
@@ -507,7 +507,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetEncoders returns a non-empty dictionary when ffmpeg is available.
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetEncoders_ShouldReturnEncoders()
         {
             // Arrange & Act
@@ -523,7 +523,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         ///     Tests that GetDecoders returns a non-empty dictionary when ffmpeg is available.
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetDecoders_ShouldReturnDecoders()
         {
             // Arrange & Act
@@ -540,7 +540,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         ///     Tests that GetFormats processes ffmpeg output when ffmpeg is available.
         ///     Note: GetFormats uses ToDictionary which may throw on duplicate keys from ffmpeg output.
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_GetFormats_ShouldProcessOutput()
         {
             // Arrange & Act

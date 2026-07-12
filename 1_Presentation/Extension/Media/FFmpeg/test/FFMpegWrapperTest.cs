@@ -258,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         /// <summary>
         /// Tests that ff mpeg wrapper register progress tracker should clamp at 100
         /// </summary>
-        [MacOsOnly]
+        [RequireFfmpegFact]
         public void FFMpegWrapper_RegisterProgressTracker_ShouldClampAt100()
         {
             double reportedProgress = 0;
