@@ -62,7 +62,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         [Fact]
         public void InternalConstructor_WithValidParameters_CreatesInstance()
         {
-            BoardSquare[,] board = new BoardSquare[10, 10];
+            BoardSquare[,] board = CreateBoard(10, 10);
             List<RoomData> rooms = new List<RoomData> { new RoomData(0, 0, 5, 5, Direction.North) };
             List<CorridorData> corridors = new List<CorridorData> { new CorridorData(0, 0, 3, 3, Direction.North) };
 
@@ -303,7 +303,7 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
         public void Validate_WithNullRooms_ThrowsInvalidOperationException()
         {
             DungeonData data = new DungeonData();
-            data.Board = new BoardSquare[10, 10];
+            data.Board = CreateBoard(10, 10);
             data.Corridors = new List<CorridorData>();
 
             System.Reflection.FieldInfo field = typeof(DungeonData).GetField("_rooms", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
