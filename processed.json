@@ -1,0 +1,8 @@
+{
+  "file": "2_Application/Alis/src/Core/Ecs/Systems/Manager/Scene/SceneManager.cs",
+  "coverage_before": 14.7,
+  "coverage_after": 78.0,
+  "tests_added": 20,
+  "tests_total": 74,
+  "status": "SUCCESS"
+}
