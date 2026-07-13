@@ -317,5 +317,8 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/IDTable.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/GenerationServices.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiOnceUponAFrame.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformImeData.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformImeData.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/Vp9Encoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/OpusEncoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs"
 ]
