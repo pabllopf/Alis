@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    /// The component id test class
+    /// </summary>
     public class ComponentIdTest
     {
+        /// <summary>
+        /// Tests that type should be struct
+        /// </summary>
         [Fact]
         public void Type_ShouldBeStruct()
         {
@@ -41,24 +47,36 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.False(typeof(ComponentId).IsClass);
         }
 
+        /// <summary>
+        /// Tests that struct should be read only
+        /// </summary>
         [Fact]
         public void Struct_ShouldBeReadOnly()
         {
             Assert.True(typeof(ComponentId).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that struct should implement i type id
+        /// </summary>
         [Fact]
         public void Struct_ShouldImplementITypeId()
         {
             Assert.IsAssignableFrom<ITypeId>(default(ComponentId));
         }
 
+        /// <summary>
+        /// Tests that struct should implement i equatable
+        /// </summary>
         [Fact]
         public void Struct_ShouldImplementIEquatable()
         {
             Assert.Contains(typeof(System.IEquatable<>).MakeGenericType(typeof(ComponentId)), typeof(ComponentId).GetInterfaces());
         }
 
+        /// <summary>
+        /// Tests that default instance should have zero value
+        /// </summary>
         [Fact]
         public void DefaultInstance_ShouldHaveZeroValue()
         {
@@ -67,6 +85,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(0, id.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that equals same default should be true
+        /// </summary>
         [Fact]
         public void Equals_SameDefault_ShouldBeTrue()
         {
@@ -76,6 +97,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that operator equals same default should be true
+        /// </summary>
         [Fact]
         public void OperatorEquals_SameDefault_ShouldBeTrue()
         {
@@ -85,6 +109,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(a == b);
         }
 
+        /// <summary>
+        /// Tests that operator not equals different values should be true
+        /// </summary>
         [Fact]
         public void OperatorNotEquals_DifferentValues_ShouldBeTrue()
         {
@@ -94,6 +121,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.False(a != b);
         }
 
+        /// <summary>
+        /// Tests that equals object should be true for same type
+        /// </summary>
         [Fact]
         public void Equals_Object_ShouldBeTrueForSameType()
         {
@@ -103,6 +133,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(a.Equals(b));
         }
 
+        /// <summary>
+        /// Tests that equals object should be false for different type
+        /// </summary>
         [Fact]
         public void Equals_Object_ShouldBeFalseForDifferentType()
         {

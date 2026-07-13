@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The font test class
+    /// </summary>
     public class IFontTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,12 +47,18 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IFont).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by hack font
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByHackFont()
         {
             Assert.IsAssignableFrom<IFont>(new HackFont());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by jetbrain font
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByJetbrainFont()
         {

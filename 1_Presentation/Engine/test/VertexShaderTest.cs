@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The vertex shader test class
+    /// </summary>
     public class VertexShaderTest
     {
+        /// <summary>
+        /// Tests that constructor should create instance
+        /// </summary>
         [Fact]
         public void Constructor_ShouldCreateInstance()
         {
@@ -42,12 +48,18 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(shader);
         }
 
+        /// <summary>
+        /// Tests that struct should be read only
+        /// </summary>
         [Fact]
         public void Struct_ShouldBeReadOnly()
         {
             Assert.True(typeof(VertexShader).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that shader code should return non empty string
+        /// </summary>
         [Fact]
         public void ShaderCode_ShouldReturnNonEmptyString()
         {
@@ -56,6 +68,9 @@ namespace Alis.App.Engine.Test
             Assert.False(string.IsNullOrEmpty(shader.ShaderCode));
         }
 
+        /// <summary>
+        /// Tests that shader code should contain glsl version
+        /// </summary>
         [Fact]
         public void ShaderCode_ShouldContainGLSLVersion()
         {
@@ -64,6 +79,9 @@ namespace Alis.App.Engine.Test
             Assert.Contains("#version", shader.ShaderCode);
         }
 
+        /// <summary>
+        /// Tests that class should implement i shader
+        /// </summary>
         [Fact]
         public void Class_ShouldImplementIShader()
         {

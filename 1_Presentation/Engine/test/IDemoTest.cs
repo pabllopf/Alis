@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The demo test class
+    /// </summary>
     public class IDemoTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,48 +47,72 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IDemo).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that initialize method should exist
+        /// </summary>
         [Fact]
         public void Initialize_Method_ShouldExist()
         {
             Assert.NotNull(typeof(IDemo).GetMethod("Initialize"));
         }
 
+        /// <summary>
+        /// Tests that start method should exist
+        /// </summary>
         [Fact]
         public void Start_Method_ShouldExist()
         {
             Assert.NotNull(typeof(IDemo).GetMethod("Start"));
         }
 
+        /// <summary>
+        /// Tests that run method should exist
+        /// </summary>
         [Fact]
         public void Run_Method_ShouldExist()
         {
             Assert.NotNull(typeof(IDemo).GetMethod("Run"));
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by icon demo
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByIconDemo()
         {
             Assert.IsAssignableFrom<IDemo>(new IconDemo());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by im gui demo
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByImGuiDemo()
         {
             Assert.IsAssignableFrom<IDemo>(new ImGuiDemo());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by im guizmo demo
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByImGuizmoDemo()
         {
             Assert.IsAssignableFrom<IDemo>(new ImGuizmoDemo());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by im node demo
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByImNodeDemo()
         {
             Assert.IsAssignableFrom<IDemo>(new ImNodeDemo());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by im plot demo
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByImPlotDemo()
         {

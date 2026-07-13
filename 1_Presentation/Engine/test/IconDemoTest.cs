@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The icon demo test class
+    /// </summary>
     public class IconDemoTest
     {
+        /// <summary>
+        /// Tests that constructor should create instance
+        /// </summary>
         [Fact]
         public void Constructor_ShouldCreateInstance()
         {
@@ -42,18 +48,27 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(demo);
         }
 
+        /// <summary>
+        /// Tests that class should implement i demo
+        /// </summary>
         [Fact]
         public void Class_ShouldImplementIDemo()
         {
             Assert.IsAssignableFrom<IDemo>(new IconDemo());
         }
 
+        /// <summary>
+        /// Tests that name should return non null string
+        /// </summary>
         [Fact]
         public void Name_ShouldReturnNonNullString()
         {
             Assert.NotNull(IconDemo.Name);
         }
 
+        /// <summary>
+        /// Tests that initialize should not throw
+        /// </summary>
         [Fact]
         public void Initialize_ShouldNotThrow()
         {
@@ -62,6 +77,9 @@ namespace Alis.App.Engine.Test
             demo.Initialize();
         }
 
+        /// <summary>
+        /// Tests that start should not throw
+        /// </summary>
         [Fact]
         public void Start_ShouldNotThrow()
         {

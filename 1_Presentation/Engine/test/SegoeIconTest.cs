@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The segoe icon test class
+    /// </summary>
     public class SegoeIconTest
     {
+        /// <summary>
+        /// Tests that constructor should create instance
+        /// </summary>
         [Fact]
         public void Constructor_ShouldCreateInstance()
         {
@@ -43,6 +49,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(icon);
         }
 
+        /// <summary>
+        /// Tests that class should implement i icon
+        /// </summary>
         [Fact]
         public void Class_ShouldImplementIIcon()
         {

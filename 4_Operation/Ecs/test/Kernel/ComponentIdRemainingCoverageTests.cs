@@ -33,6 +33,9 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    /// The component id remaining coverage tests class
+    /// </summary>
     public class ComponentIdRemainingCoverageTests
     {
         /// <summary>

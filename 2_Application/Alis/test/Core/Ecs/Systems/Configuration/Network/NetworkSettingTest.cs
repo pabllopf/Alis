@@ -73,6 +73,10 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Network
             Assert.IsAssignableFrom<INetworkSetting>(setting);
         }
 
+        /// <summary>
+        /// Tests that network setting port boundary should store value
+        /// </summary>
+        /// <param name="port">The port</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]

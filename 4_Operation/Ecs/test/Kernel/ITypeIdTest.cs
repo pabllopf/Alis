@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    /// The type id test class
+    /// </summary>
     public class ITypeIdTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,6 +47,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(typeof(ITypeId).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by component id
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByComponentId()
         {

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The shader test class
+    /// </summary>
     public class IShaderTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,18 +47,27 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IShader).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that shader code property should be string
+        /// </summary>
         [Fact]
         public void ShaderCode_Property_ShouldBeString()
         {
             Assert.Equal(typeof(string), typeof(IShader).GetProperty("ShaderCode")?.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by fragment shader
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByFragmentShader()
         {
             Assert.IsAssignableFrom<IShader>(new FragmentShader());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by vertex shader
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByVertexShader()
         {

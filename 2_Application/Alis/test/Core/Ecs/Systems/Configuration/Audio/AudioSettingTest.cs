@@ -86,6 +86,10 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Audio
             Assert.IsAssignableFrom<IAudioSetting>(setting);
         }
 
+        /// <summary>
+        /// Tests that audio setting volume boundary should store value
+        /// </summary>
+        /// <param name="volume">The volume</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The hack font test class
+    /// </summary>
     public class HackFontTest
     {
+        /// <summary>
+        /// Tests that constructor should create instance
+        /// </summary>
         [Fact]
         public void Constructor_ShouldCreateInstance()
         {
@@ -42,12 +48,18 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(font);
         }
 
+        /// <summary>
+        /// Tests that class should implement i font
+        /// </summary>
         [Fact]
         public void Class_ShouldImplementIFont()
         {
             Assert.IsAssignableFrom<IFont>(new HackFont());
         }
 
+        /// <summary>
+        /// Tests that class should be sealed
+        /// </summary>
         [Fact]
         public void Class_ShouldBeSealed()
         {

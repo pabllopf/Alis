@@ -71,6 +71,10 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
             Assert.IsAssignableFrom<ITimeSetting>(setting);
         }
 
+        /// <summary>
+        /// Tests that time setting fixed time step boundary should store value
+        /// </summary>
+        /// <param name="fixedTimeStep">The fixed time step</param>
         [Theory]
         [InlineData(0.001f)]
         [InlineData(0.016f)]
@@ -83,6 +87,10 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
             Assert.Equal(fixedTimeStep, setting.FixedTimeStep);
         }
 
+        /// <summary>
+        /// Tests that time setting max allowed time step boundary should store value
+        /// </summary>
+        /// <param name="maxStep">The max step</param>
         [Theory]
         [InlineData(0.01f)]
         [InlineData(0.25f)]
@@ -95,6 +103,10 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
             Assert.Equal(maxStep, setting.MaximumAllowedTimeStep);
         }
 
+        /// <summary>
+        /// Tests that time setting time scale boundary should store value
+        /// </summary>
+        /// <param name="timeScale">The time scale</param>
         [Theory]
         [InlineData(0.0f)]
         [InlineData(0.5f)]

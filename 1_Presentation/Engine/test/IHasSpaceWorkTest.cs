@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The has space work test class
+    /// </summary>
     public class IHasSpaceWorkTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,6 +47,9 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IHasSpaceWork).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that space work property should exist
+        /// </summary>
         [Fact]
         public void SpaceWork_Property_ShouldExist()
         {

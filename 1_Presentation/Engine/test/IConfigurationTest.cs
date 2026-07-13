@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The configuration test class
+    /// </summary>
     public class IConfigurationTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,6 +47,9 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IConfiguration).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by layout configuration
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByLayoutConfiguration()
         {

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The renderable test class
+    /// </summary>
     public class IRenderableTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,6 +47,9 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IRenderable).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that render method should exist
+        /// </summary>
         [Fact]
         public void Render_Method_ShouldExist()
         {

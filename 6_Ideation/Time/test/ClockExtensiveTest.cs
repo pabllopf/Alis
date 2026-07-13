@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
 {
+    /// <summary>
+    /// The clock extensive test class
+    /// </summary>
     public class ClockExtensiveTest
     {
+        /// <summary>
+        /// Tests that clock creation succeeds
+        /// </summary>
         [Fact]
         public void Clock_Creation_Succeeds()
         {
@@ -41,6 +47,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotNull(clock);
         }
 
+        /// <summary>
+        /// Tests that clock creation with multiple instances
+        /// </summary>
         [Fact]
         public void Clock_Creation_WithMultipleInstances()
         {
@@ -53,6 +62,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotNull(clock3);
         }
 
+        /// <summary>
+        /// Tests that delta time after initialization is zero or small
+        /// </summary>
         [Fact]
         public void DeltaTime_AfterInitialization_IsZeroOrSmall()
         {
@@ -62,6 +74,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that delta time after delay increases with time
+        /// </summary>
         [Fact]
         public void DeltaTime_AfterDelay_IncreasesWith_Time()
         {
@@ -73,6 +88,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that elapsed increments over time
+        /// </summary>
         [Fact]
         public void Elapsed_IncrementsOverTime()
         {
@@ -86,6 +104,9 @@ namespace Alis.Core.Aspect.Time.Test
         }
 
 
+        /// <summary>
+        /// Tests that start can be called
+        /// </summary>
         [Fact]
         public void Start_CanBeCalled()
         {
@@ -95,6 +116,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotNull(clock);
         }
 
+        /// <summary>
+        /// Tests that stop can be called
+        /// </summary>
         [Fact]
         public void Stop_CanBeCalled()
         {
@@ -105,6 +129,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotNull(clock);
         }
 
+        /// <summary>
+        /// Tests that start stop start works
+        /// </summary>
         [Fact]
         public void Start_Stop_Start_Works()
         {
@@ -123,6 +150,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsed2 >= elapsed1);
         }
 
+        /// <summary>
+        /// Tests that reset clears time
+        /// </summary>
         [Fact]
         public void Reset_ClearsTime()
         {
@@ -133,6 +163,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0, clock.ElapsedMilliseconds);
         }
 
+        /// <summary>
+        /// Tests that reset multiple timer works
+        /// </summary>
         [Fact]
         public void Reset_MultipleTimer_Works()
         {
@@ -147,6 +180,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0, clock.ElapsedMilliseconds);
         }
 
+        /// <summary>
+        /// Tests that multiple clocks are independent
+        /// </summary>
         [Fact]
         public void Multiple_Clocks_AreIndependent()
         {
@@ -165,6 +201,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsed2 >= 0);
         }
 
+        /// <summary>
+        /// Tests that precision millisecond accuracy
+        /// </summary>
         [Fact]
         public void Precision_MillisecondAccuracy()
         {
@@ -178,6 +217,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(delta >= 0);
         }
 
+        /// <summary>
+        /// Tests that precision sub millisecond can be measured
+        /// </summary>
         [Fact]
         public void Precision_SubMillisecond_CanBeMeasured()
         {
@@ -191,6 +233,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsed2 >= 0);
         }
 
+        /// <summary>
+        /// Tests that extreme long duration stays positive
+        /// </summary>
         [Fact]
         public void ExtremeLongDuration_StaysPositive()
         {
@@ -202,6 +247,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsed >= 0);
         }
 
+        /// <summary>
+        /// Tests that is running after start is true
+        /// </summary>
         [Fact]
         public void IsRunning_AfterStart_IsTrue()
         {
@@ -211,6 +259,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.IsRunning);
         }
 
+        /// <summary>
+        /// Tests that is running after stop is false
+        /// </summary>
         [Fact]
         public void IsRunning_AfterStop_IsFalse()
         {
@@ -221,6 +272,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.False(clock.IsRunning);
         }
 
+        /// <summary>
+        /// Tests that elapsed timespan returns valid timespan
+        /// </summary>
         [Fact]
         public void ElapsedTimespan_ReturnsValidTimespan()
         {

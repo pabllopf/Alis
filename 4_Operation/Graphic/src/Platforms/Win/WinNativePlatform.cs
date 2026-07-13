@@ -786,16 +786,6 @@ namespace Alis.Core.Graphic.Platforms.Win
             return User32.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
-        /// <summary>
-        ///     Gets the win 32 error meaning using the specified error code
-        /// </summary>
-        /// <param name="errorCode">The error code</param>
-        /// <returns>The string</returns>
-        /// <summary>
-        ///     Gets the meaning of a Win32 error code.
-        /// </summary>
-        /// <param name="errorCode">The error code.</param>
-        /// <returns>A human-readable description of the error.</returns>
         internal string GetWin32ErrorMeaning(int errorCode)
         {
             switch (errorCode)

@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The layout configuration test class
+    /// </summary>
     public class LayoutConfigurationTest
     {
+        /// <summary>
+        /// Tests that constructor should create instance
+        /// </summary>
         [Fact]
         public void Constructor_ShouldCreateInstance()
         {
@@ -42,6 +48,9 @@ namespace Alis.App.Engine.Test
             Assert.NotNull(config);
         }
 
+        /// <summary>
+        /// Tests that class should implement i configuration
+        /// </summary>
         [Fact]
         public void Class_ShouldImplementIConfiguration()
         {

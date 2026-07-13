@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Time.Test
 {
+    /// <summary>
+    /// The clock test class
+    /// </summary>
     public class ClockTest
     {
+        /// <summary>
+        /// Tests that start should start stopwatch
+        /// </summary>
         [Fact]
         public void Start_ShouldStartStopwatch()
         {
@@ -44,6 +50,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that stop should stop stopwatch
+        /// </summary>
         [Fact]
         public void Stop_ShouldStopStopwatch()
         {
@@ -55,6 +64,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that reset should reset stopwatch
+        /// </summary>
         [Fact]
         public void Reset_ShouldResetStopwatch()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds == 0);
         }
 
+        /// <summary>
+        /// Tests that elapsed should return elapsed time
+        /// </summary>
         [Fact]
         public void Elapsed_ShouldReturnElapsedTime()
         {
@@ -77,6 +92,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.Elapsed.TotalSeconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that elapsed milliseconds should return elapsed milliseconds
+        /// </summary>
         [Fact]
         public void ElapsedMilliseconds_ShouldReturnElapsedMilliseconds()
         {
@@ -88,6 +106,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that elapsed ticks should return elapsed ticks
+        /// </summary>
         [Fact]
         public void ElapsedTicks_ShouldReturnElapsedTicks()
         {
@@ -99,6 +120,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedTicks >= 0);
         }
 
+        /// <summary>
+        /// Tests that elapsed seconds should return elapsed seconds
+        /// </summary>
         [Fact]
         public void ElapsedSeconds_ShouldReturnElapsedSeconds()
         {
@@ -110,6 +134,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedSeconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that constructor should initialize clock in reset state
+        /// </summary>
         [Fact]
         public void Constructor_ShouldInitializeClockInResetState()
         {
@@ -120,6 +147,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(TimeSpan.Zero, clock.Elapsed);
         }
 
+        /// <summary>
+        /// Tests that is running should return false when clock is not running
+        /// </summary>
         [Fact]
         public void IsRunning_ShouldReturnFalseWhenClockIsNotRunning()
         {
@@ -128,6 +158,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.False(clock.IsRunning);
         }
 
+        /// <summary>
+        /// Tests that is running should return true when clock is running
+        /// </summary>
         [Fact]
         public void IsRunning_ShouldReturnTrueWhenClockIsRunning()
         {
@@ -138,6 +171,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.IsRunning);
         }
 
+        /// <summary>
+        /// Tests that create should return running clock instance
+        /// </summary>
         [Fact]
         public void Create_ShouldReturnRunningClockInstance()
         {
@@ -148,6 +184,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds >= 0);
         }
 
+        /// <summary>
+        /// Tests that restart should reset and start clock
+        /// </summary>
         [Fact]
         public void Restart_ShouldResetAndStartClock()
         {
@@ -162,6 +201,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(clock.ElapsedMilliseconds <= elapsedBefore);
         }
 
+        /// <summary>
+        /// Tests that to string should return elapsed time as string
+        /// </summary>
         [Fact]
         public void ToString_ShouldReturnElapsedTimeAsString()
         {
@@ -174,6 +216,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.NotEmpty(result);
         }
 
+        /// <summary>
+        /// Tests that start on running clock should be no op
+        /// </summary>
         [Fact]
         public void Start_OnRunningClock_ShouldBeNoOp()
         {
@@ -188,6 +233,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsedSecond >= elapsedFirst);
         }
 
+        /// <summary>
+        /// Tests that stop on stopped clock should be no op
+        /// </summary>
         [Fact]
         public void Stop_OnStoppedClock_ShouldBeNoOp()
         {
@@ -203,6 +251,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(elapsedFirst, elapsedSecond);
         }
 
+        /// <summary>
+        /// Tests that elapsed should update while clock is running
+        /// </summary>
         [Fact]
         public void Elapsed_ShouldUpdateWhileClockIsRunning()
         {
@@ -220,6 +271,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsedSecond >= elapsedFirst);
         }
 
+        /// <summary>
+        /// Tests that elapsed should not update while clock is stopped
+        /// </summary>
         [Fact]
         public void Elapsed_ShouldNotUpdateWhileClockIsStopped()
         {
@@ -233,6 +287,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(elapsedFirst, elapsedSecond);
         }
 
+        /// <summary>
+        /// Tests that multiple cycles should accumulate elapsed time
+        /// </summary>
         [Fact]
         public void MultipleCycles_ShouldAccumulateElapsedTime()
         {
@@ -249,6 +306,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.True(elapsedAfterSecondCycle >= elapsedAfterFirstCycle);
         }
 
+        /// <summary>
+        /// Tests that reset should clear elapsed time
+        /// </summary>
         [Fact]
         public void Reset_ShouldClearElapsedTime()
         {
@@ -264,6 +324,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0, clock.ElapsedTicks);
         }
 
+        /// <summary>
+        /// Tests that elapsed milliseconds should be zero for new clock
+        /// </summary>
         [Fact]
         public void ElapsedMilliseconds_ShouldBeZeroForNewClock()
         {
@@ -272,6 +335,9 @@ namespace Alis.Core.Aspect.Time.Test
             Assert.Equal(0, clock.ElapsedMilliseconds);
         }
 
+        /// <summary>
+        /// Tests that elapsed ticks should be zero for new clock
+        /// </summary>
         [Fact]
         public void ElapsedTicks_ShouldBeZeroForNewClock()
         {

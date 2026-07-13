@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test
 {
+    /// <summary>
+    /// The icon test class
+    /// </summary>
     public class IIconTest
     {
+        /// <summary>
+        /// Tests that interface should be public
+        /// </summary>
         [Fact]
         public void Interface_ShouldBePublic()
         {
@@ -41,12 +47,18 @@ namespace Alis.App.Engine.Test
             Assert.True(typeof(IIcon).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by folder icon
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedByFolderIcon()
         {
             Assert.IsAssignableFrom<IIcon>(new FolderIcon());
         }
 
+        /// <summary>
+        /// Tests that interface should be implemented by segoe icon
+        /// </summary>
         [Fact]
         public void Interface_ShouldBeImplementedBySegoeIcon()
         {
