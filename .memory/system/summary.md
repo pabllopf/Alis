@@ -235,3 +235,10 @@ Total blocked: 129
 - **Tests Added**: 4
 - **Commit**: `14a402fd0`
 - **Status**: SUCCESS
+
+### ECS GameObject batch (GameObjectIdOnly, GameObjectLocation, GameObjectMarshal, Event<T>)
+- **Timestamp**: 2026-07-12 21:35:00
+- **Files**: `4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs`, `4_Operation/Ecs/src/GameObjectLocation.cs`, `4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs`, `4_Operation/Ecs/src/Kernel/Events/Event.cs`
+- **Tests Added**: 23
+- **Commit**: `6ab1fe968`
+- **Status**: SUCCESS
