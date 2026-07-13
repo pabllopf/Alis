@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Matrix;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
