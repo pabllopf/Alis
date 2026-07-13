@@ -123,6 +123,9 @@ namespace Alis.Extension.Updater
         /// </summary>
         internal int ContinueDelayMilliseconds { get; set; } = 1000;
 
+        /// <summary>
+        ///     Occurs when the update progress changes
+        /// </summary>
         public event UpdateProgressEventHandler UpdateProgressChanged;
 
         /// <summary>
