@@ -256,6 +256,19 @@ Total blocked: 129
 - **Commit**: `d1fef4685`
 - **Status**: SUCCESS
 
+### Ui Structs Batch 2 (ImDrawList, ImFont, ImGuiKeyData, ImGuiListClipper, ImguiIo)
+- **Timestamp**: 2026-07-12 21:55:00
+- **Tests Added**: 19
+- **Commit**: `217c5c6df`
+- **Status**: SUCCESS
+
+### IDTable + GenerationServices
+- **Timestamp**: 2026-07-12 21:55:00
+- **Files**: `4_Operation/Ecs/src/Collections/IDTable.cs`, `4_Operation/Ecs/src/Updating/GenerationServices.cs`
+- **Tests Added**: 12
+- **Commit**: `18c586148`
+- **Status**: SUCCESS
+
 ### EntityUpdate.cs
 - **Timestamp**: 2026-07-13 00:00:00
 - **File**: `4_Operation/Ecs/src/EntityUpdate.cs`
