@@ -11,6 +11,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
     /// </summary>
     public class ObjectiveCInteropTest
     {
+        /// <summary>
+        ///     Class_ReturnsNonZero_ForKnownClass
+        /// </summary>
         [Fact]
         public void Class_ReturnsNonZero_ForKnownClass()
         {
@@ -18,6 +21,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, result);
         }
 
+        /// <summary>
+        ///     Class_ReturnsZero_ForUnknownClass
+        /// </summary>
         [Fact]
         public void Class_ReturnsZero_ForUnknownClass()
         {
@@ -25,6 +31,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal(IntPtr.Zero, result);
         }
 
+        /// <summary>
+        ///     Sel_ReturnsNonZero_ForKnownSelector
+        /// </summary>
         [Fact]
         public void Sel_ReturnsNonZero_ForKnownSelector()
         {
@@ -32,6 +41,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, result);
         }
 
+        /// <summary>
+        ///     Sel_ReturnsNonZero_ForAnyString
+        /// </summary>
         [Fact]
         public void Sel_ReturnsNonZero_ForAnyString()
         {
@@ -39,6 +51,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, result);
         }
 
+        /// <summary>
+        ///     selMouseLocationOutside_IsNonZero
+        /// </summary>
         [Fact]
         public void selMouseLocationOutside_IsNonZero()
         {
@@ -48,6 +63,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, val);
         }
 
+        /// <summary>
+        ///     selConvertPointFromView_IsNonZero
+        /// </summary>
         [Fact]
         public void selConvertPointFromView_IsNonZero()
         {
@@ -57,18 +75,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, val);
         }
 
+        /// <summary>
+        ///     Objc_Constant_IsCorrect
+        /// </summary>
         [Fact]
         public void Objc_Constant_IsCorrect()
         {
             Assert.Equal("/usr/lib/libobjc.A.dylib", ObjectiveCInterop.Objc);
         }
 
+        /// <summary>
+        ///     NSApplicationLoad_DoesNotThrow
+        /// </summary>
         [Fact]
         public void NSApplicationLoad_DoesNotThrow()
         {
             ObjectiveCInterop.NSApplicationLoad();
         }
 
+        /// <summary>
+        ///     objc_getClass_NSObject_ReturnsNonZero
+        /// </summary>
         [Fact]
         public void objc_getClass_NSObject_ReturnsNonZero()
         {
@@ -76,6 +103,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, cls);
         }
 
+        /// <summary>
+        ///     sel_registerName_alloc_ReturnsNonZero
+        /// </summary>
         [Fact]
         public void sel_registerName_alloc_ReturnsNonZero()
         {
@@ -83,6 +113,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, sel);
         }
 
+        /// <summary>
+        ///     StaticMethods_AreExported
+        /// </summary>
         [Fact]
         public void StaticMethods_AreExported()
         {
@@ -95,6 +128,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotNull(typeof(ObjectiveCInterop).GetMethod("CFRelease", BindingFlags.Public | BindingFlags.Static));
         }
 
+        /// <summary>
+        ///     Dlopen_OpenGL_ReturnsNonZero
+        /// </summary>
         [Fact]
         public void Dlopen_OpenGL_ReturnsNonZero()
         {
