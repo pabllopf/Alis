@@ -34,225 +34,226 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Marshalling
 {
-    /// <summary>
-    ///     Tests the <see cref="SceneMarshal" /> class.
-    /// </summary>
     public class SceneMarshalTest
     {
-        /// <summary>
-        ///     Tests that get component returns correct component reference.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponent_WithValidEntity_ShouldReturnCorrectReference()
+        [Fact]
+        public void GetComponent_WithValidEntity_ReturnsCorrectReference()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            Position position = new Position {X = 10, Y = 20};
-            entity.Add(position);
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
-            ref Position retrieved = ref SceneMarshal.GetComponent<Position>(world, entity);
+            ref Position retrieved = ref SceneMarshal.GetComponent<Position>(scene, entity);
 
-            Assert.Equal(10, retrieved.X);
-            Assert.Equal(20, retrieved.Y);
-
-            world.Dispose();
+            Assert.Equal(10f, retrieved.X);
+            Assert.Equal(20f, retrieved.Y);
         }
 
-        /// <summary>
-        ///     Tests that get component allows modification through reference.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponent_ModifyThroughReference_ShouldUpdateComponent()
+        [Fact]
+        public void GetComponent_ModifyThroughReference_UpdatesComponent()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Position {X = 10, Y = 20});
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position { X = 10, Y = 20 });
 
-            ref Position retrieved = ref SceneMarshal.GetComponent<Position>(world, entity);
+            ref Position retrieved = ref SceneMarshal.GetComponent<Position>(scene, entity);
             retrieved.X = 100;
             retrieved.Y = 200;
 
             Position updated = entity.Get<Position>();
-            Assert.Equal(100, updated.X);
-            Assert.Equal(200, updated.Y);
-
-            world.Dispose();
+            Assert.Equal(100f, updated.X);
+            Assert.Equal(200f, updated.Y);
         }
 
-        /// <summary>
-        ///     Tests that get raw buffer returns correct span and index.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetRawBuffer_WithValidEntity_ShouldReturnSpanAndIndex()
+        [Fact]
+        public void GetComponent_WithStructComponent_WorksCorrectly()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Position {X = 5, Y = 10});
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Health { Value = 100 });
 
-            Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(world, entity, out int index);
+            ref Health retrieved = ref SceneMarshal.GetComponent<Health>(scene, entity);
+
+            Assert.Equal(100, retrieved.Value);
+        }
+
+        [Fact]
+        public void GetComponent_WithMultipleEntities_ReturnsCorrectComponents()
+        {
+            using Scene scene = new Scene();
+            GameObject entity1 = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entity2 = scene.Create(new Position { X = 30, Y = 40 });
+
+            ref Position pos1 = ref SceneMarshal.GetComponent<Position>(scene, entity1);
+            ref Position pos2 = ref SceneMarshal.GetComponent<Position>(scene, entity2);
+
+            Assert.Equal(10f, pos1.X);
+            Assert.Equal(20f, pos1.Y);
+            Assert.Equal(30f, pos2.X);
+            Assert.Equal(40f, pos2.Y);
+        }
+
+        [Fact]
+        public void GetComponent_ModificationsVisibleThroughNormalAccess()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position { X = 0, Y = 0 });
+
+            ref Position pos = ref SceneMarshal.GetComponent<Position>(scene, entity);
+            pos.X = 999;
+            pos.Y = 888;
+
+            Assert.Equal(999f, entity.Get<Position>().X);
+            Assert.Equal(888f, entity.Get<Position>().Y);
+        }
+
+        [Fact]
+        public void GetRawBuffer_WithValidEntity_ReturnsSpanAndIndex()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
+
+            Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(scene, entity, out int index);
 
             Assert.True(buffer.Length > 0);
             Assert.True(index >= 0);
-            Assert.Equal(5, buffer[index].X);
-            Assert.Equal(10, buffer[index].Y);
-
-            world.Dispose();
+            Assert.Equal(5f, buffer[index].X);
+            Assert.Equal(10f, buffer[index].Y);
         }
 
-        /// <summary>
-        ///     Tests that get raw buffer allows modification through span.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetRawBuffer_ModifyThroughSpan_ShouldUpdateComponent()
+        [Fact]
+        public void GetRawBuffer_ModifyThroughSpan_UpdatesComponent()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Position {X = 5, Y = 10});
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
 
-            Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(world, entity, out int index);
-            buffer[index] = new Position {X = 50, Y = 100};
+            Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(scene, entity, out int index);
+            buffer[index] = new Position { X = 50, Y = 100 };
 
             Position updated = entity.Get<Position>();
-            Assert.Equal(50, updated.X);
-            Assert.Equal(100, updated.Y);
-
-            world.Dispose();
+            Assert.Equal(50f, updated.X);
+            Assert.Equal(100f, updated.Y);
         }
 
-        /// <summary>
-        ///     Tests that get with entity id returns correct component.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithEntityId_ShouldReturnCorrectComponent()
+        [Fact]
+        public void GetRawBuffer_WithMultipleEntitiesInSameArchetype_Works()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Velocity {X = 1, Y = 2});
+            using Scene scene = new Scene();
+            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
 
-            ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(world, entity.EntityID);
+            Span<Position> buffer1 = SceneMarshal.GetRawBuffer<Position>(scene, entity1, out int index1);
+            Span<Position> buffer2 = SceneMarshal.GetRawBuffer<Position>(scene, entity2, out int index2);
 
-            Assert.Equal(1, retrieved.X);
-            Assert.Equal(2, retrieved.Y);
-
-            world.Dispose();
+            Assert.Equal(1f, buffer1[index1].X);
+            Assert.Equal(2f, buffer1[index1].Y);
+            Assert.Equal(3f, buffer2[index2].X);
+            Assert.Equal(4f, buffer2[index2].Y);
         }
 
-        /// <summary>
-        ///     Tests that get with entity id allows modification.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
+        public void Get_WithEntityId_ReturnsCorrectComponent()
+        {
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Velocity { X = 1, Y = 2 });
+
+            ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(scene, entity.EntityID);
+
+            Assert.Equal(1f, retrieved.X);
+            Assert.Equal(2f, retrieved.Y);
+        }
+
+        [Fact]
         public void Get_WithEntityId_AllowsModification()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Velocity {X = 1, Y = 2});
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(new Velocity { X = 1, Y = 2 });
 
-            ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(world, entity.EntityID);
+            ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(scene, entity.EntityID);
             retrieved.X = 10;
             retrieved.Y = 20;
 
             Velocity updated = entity.Get<Velocity>();
-            Assert.Equal(10, updated.X);
-            Assert.Equal(20, updated.Y);
-
-            world.Dispose();
+            Assert.Equal(10f, updated.X);
+            Assert.Equal(20f, updated.Y);
         }
 
-        /// <summary>
-        ///     Tests that get component with multiple entities returns correct components.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponent_WithMultipleEntities_ShouldReturnCorrectComponents()
+        [Fact]
+        public void Get_WithMultipleEntityIds_ReturnsCorrectComponents()
         {
-            Scene world = new Scene();
-            GameObject entity1 = world.Create();
-            GameObject entity2 = world.Create();
-            entity1.Add(new Position {X = 10, Y = 20});
-            entity2.Add(new Position {X = 30, Y = 40});
+            using Scene scene = new Scene();
+            GameObject entity1 = scene.Create(new Velocity { X = 1, Y = 2 });
+            GameObject entity2 = scene.Create(new Velocity { X = 3, Y = 4 });
 
-            ref Position pos1 = ref SceneMarshal.GetComponent<Position>(world, entity1);
-            ref Position pos2 = ref SceneMarshal.GetComponent<Position>(world, entity2);
+            ref Velocity vel1 = ref SceneMarshal.Get<Velocity>(scene, entity1.EntityID);
+            ref Velocity vel2 = ref SceneMarshal.Get<Velocity>(scene, entity2.EntityID);
 
-            Assert.Equal(10, pos1.X);
-            Assert.Equal(20, pos1.Y);
-            Assert.Equal(30, pos2.X);
-            Assert.Equal(40, pos2.Y);
-
-            world.Dispose();
+            Assert.Equal(1f, vel1.X);
+            Assert.Equal(2f, vel1.Y);
+            Assert.Equal(3f, vel2.X);
+            Assert.Equal(4f, vel2.Y);
         }
 
-        /// <summary>
-        ///     Tests that get raw buffer with multiple entities in same archetype.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetRawBuffer_WithMultipleEntitiesInSameArchetype_ShouldWork()
+        [Fact]
+        public void Get_WithInvalidEntityId_Throws()
         {
-            Scene world = new Scene();
-            GameObject entity1 = world.Create();
-            GameObject entity2 = world.Create();
-            entity1.Add(new Position {X = 1, Y = 2});
-            entity2.Add(new Position {X = 3, Y = 4});
+            using Scene scene = new Scene();
 
-            Span<Position> buffer1 = SceneMarshal.GetRawBuffer<Position>(world, entity1, out int index1);
-            Span<Position> buffer2 = SceneMarshal.GetRawBuffer<Position>(world, entity2, out int index2);
-
-            Assert.Equal(1, buffer1[index1].X);
-            Assert.Equal(2, buffer1[index1].Y);
-            Assert.Equal(3, buffer2[index2].X);
-            Assert.Equal(4, buffer2[index2].Y);
-
-            world.Dispose();
+            Assert.Throws<NullReferenceException>(() => SceneMarshal.Get<Position>(scene, -1));
         }
 
-        /// <summary>
-        ///     Tests that get component with struct component works correctly.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponent_WithStructComponent_ShouldWorkCorrectly()
+        [Fact]
+        public void GetComponent_GetAndSetDifferentTypes_Works()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            Health health = new Health {Value = 100};
-            entity.Add(health);
+            using Scene scene = new Scene();
+            GameObject entity = scene.Create(
+                new Position { X = 1, Y = 2 },
+                new Health { Value = 50 },
+                new Velocity { X = 3, Y = 4 });
 
-            ref Health retrieved = ref SceneMarshal.GetComponent<Health>(world, entity);
+            ref Position pos = ref SceneMarshal.GetComponent<Position>(scene, entity);
+            ref Health health = ref SceneMarshal.GetComponent<Health>(scene, entity);
+            ref Velocity vel = ref SceneMarshal.GetComponent<Velocity>(scene, entity);
 
-            Assert.Equal(100, retrieved.Value);
+            Assert.Equal(1f, pos.X);
+            Assert.Equal(50, health.Value);
+            Assert.Equal(3f, vel.X);
 
-            world.Dispose();
+            pos.X = 10;
+            health.Value = 99;
+            vel.Y = 40;
+
+            Assert.Equal(10f, entity.Get<Position>().X);
+            Assert.Equal(99, entity.Get<Health>().Value);
+            Assert.Equal(40f, entity.Get<Velocity>().Y);
         }
 
-        /// <summary>
-        ///     Tests that get with invalid entity id does not throw immediately.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithInvalidEntityId_ShouldNotThrowImmediately()
+        [Fact]
+        public void GetRawBuffer_MultipleBuffersInDifferentArchetypes_AreIndependent()
         {
-            Scene world = new Scene();
+            using Scene scene = new Scene();
+            GameObject entityPos = scene.Create(new Position { X = 10, Y = 20 });
+            GameObject entityVel = scene.Create(new Velocity { X = 30, Y = 40 });
 
-            Assert.NotNull(world);
+            Span<Position> posBuffer = SceneMarshal.GetRawBuffer<Position>(scene, entityPos, out int posIndex);
+            Span<Velocity> velBuffer = SceneMarshal.GetRawBuffer<Velocity>(scene, entityVel, out int velIndex);
 
-            world.Dispose();
+            Assert.Equal(10f, posBuffer[posIndex].X);
+            Assert.Equal(20f, posBuffer[posIndex].Y);
+            Assert.Equal(30f, velBuffer[velIndex].X);
+            Assert.Equal(40f, velBuffer[velIndex].Y);
         }
 
-        /// <summary>
-        ///     Tests that modifications through get component are visible through normal access.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponent_ModificationsAreVisibleThroughNormalAccess()
+        [Fact]
+        public void GetRawBuffer_BufferLengthReflectsArchetypeCapacity()
         {
-            Scene world = new Scene();
-            GameObject entity = world.Create();
-            entity.Add(new Position {X = 0, Y = 0});
+            using Scene scene = new Scene();
+            GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
+            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
 
-            ref Position pos = ref SceneMarshal.GetComponent<Position>(world, entity);
-            pos.X = 999;
-            pos.Y = 888;
+            Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(scene, entity1, out int index);
 
-            Assert.Equal(999, entity.Get<Position>().X);
-            Assert.Equal(888, entity.Get<Position>().Y);
-
-            world.Dispose();
+            Assert.Equal(2, buffer.Length);
+            Assert.True(index >= 0);
+            Assert.Equal(1f, buffer[0].X);
+            Assert.Equal(3f, buffer[1].X);
         }
     }
 }
