@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Buffers;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -52,98 +54,83 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <param name="vertices">The list of points describing the polygon</param>
         public static List<Vertices> ConvexPartition(Vertices vertices)
         {
-            int[] polygon = new int[vertices.Count];
+            int count = vertices.Count;
+            int[] polygon = count <= 256
+                ? System.Buffers.ArrayPool<int>.Shared.Rent(count)
+                : new int[count];
 
-            for (int v = 0; v < vertices.Count; v++)
+            try
             {
-                polygon[v] = v;
-            }
-
-            int nv = vertices.Count;
-
-            // Remove nv-2 Vertices, creating 1 triangle every time
-            int count = 2 * nv; /* error detection */
-
-            List<Vertices> result = new List<Vertices>();
-            Vector2F tmpA = default, tmpB = default, tmpC = default;
-
-            for (int v = nv - 1; nv > 2;)
-            {
-                // If we loop, it is probably a non-simple polygon 
-                if (0 >= count--)
+                for (int v = 0; v < count; v++)
                 {
-                    // Triangulate: ERROR - probable bad polygon!
-                    return new List<Vertices>();
+                    polygon[v] = v;
                 }
 
-                // Three consecutive vertices in current polygon, <u,v,w>
-                int u = v;
-                if (nv <= u)
+                int nv = count;
+
+                // Remove nv-2 Vertices, creating 1 triangle every time
+                int errorCount = 2 * nv;
+
+                List<Vertices> result = new List<Vertices>();
+                Vector2F tmpA = default, tmpB = default, tmpC = default;
+
+                for (int v = nv - 1; nv > 2;)
                 {
-                    u = 0; // Previous 
-                }
-
-                v = u + 1;
-                if (nv <= v)
-                {
-                    v = 0; // New v   
-                }
-
-                int w = v + 1;
-                if (nv <= w)
-                {
-                    w = 0; // Next 
-                }
-
-                tmpA = vertices[polygon[u]];
-                tmpB = vertices[polygon[v]];
-                tmpC = vertices[polygon[w]];
-
-                if (Snip(vertices, u, v, w, nv, polygon, ref tmpA, ref tmpB, ref tmpC))
-                {
-                    int s, t;
-
-                    // Output Triangle
-                    Vertices triangle = new Vertices(3);
-                    triangle.Add(tmpA);
-                    triangle.Add(tmpB);
-                    triangle.Add(tmpC);
-                    result.Add(triangle);
-
-                    // Remove v from remaining polygon 
-                    for (s = v, t = v + 1; t < nv; s++, t++)
+                    if (0 >= errorCount--)
                     {
-                        polygon[s] = polygon[t];
+                        return new List<Vertices>();
                     }
 
-                    nv--;
+                    int u = v;
+                    if (nv <= u) u = 0;
 
-                    // Reset error detection counter
-                    count = 2 * nv;
+                    v = u + 1;
+                    if (nv <= v) v = 0;
+
+                    int w = v + 1;
+                    if (nv <= w) w = 0;
+
+                    tmpA = vertices[polygon[u]];
+                    tmpB = vertices[polygon[v]];
+                    tmpC = vertices[polygon[w]];
+
+                    if (Snip(vertices, u, v, w, nv, polygon.AsSpan(0, count), ref tmpA, ref tmpB, ref tmpC))
+                    {
+                        Vertices triangle = new Vertices(3);
+                        triangle.Add(tmpA);
+                        triangle.Add(tmpB);
+                        triangle.Add(tmpC);
+                        result.Add(triangle);
+
+                        for (int s = v, t = v + 1; t < nv; s++, t++)
+                        {
+                            polygon[s] = polygon[t];
+                        }
+
+                        nv--;
+                        errorCount = 2 * nv;
+                    }
+                }
+
+                return result;
+            }
+            finally
+            {
+                if (count <= 256)
+                {
+                    System.Buffers.ArrayPool<int>.Shared.Return(polygon);
                 }
             }
-
-            return result;
         }
 
         /// <summary>
         ///     Check if the point P is inside the triangle defined by
         ///     the points A, B, C
         /// </summary>
-        /// <param name="a">The A point.</param>
-        /// <param name="b">The B point.</param>
-        /// <param name="c">The C point.</param>
-        /// <param name="p">The point to be tested.</param>
-        /// <returns>True if the point is inside the triangle</returns>
         internal static bool InsideTriangle(ref Vector2F a, ref Vector2F b, ref Vector2F c, ref Vector2F p)
         {
-            //A cross bp
             float abp = (c.X - b.X) * (p.Y - b.Y) - (c.Y - b.Y) * (p.X - b.X);
-
-            //A cross ap
             float aap = (b.X - a.X) * (p.Y - a.Y) - (b.Y - a.Y) * (p.X - a.X);
-
-            //b cross cp
             float bcp = (a.X - c.X) * (p.Y - c.Y) - (a.Y - c.Y) * (p.X - c.X);
 
             return (abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f);
@@ -153,14 +140,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         ///     Cut a the contour and add a triangle into V to describe the
         ///     location of the cut
         /// </summary>
-        /// <param name="contour">The list of points defining the polygon</param>
-        /// <param name="u">The index of the first point</param>
-        /// <param name="v">The index of the second point</param>
-        /// <param name="w">The index of the third point</param>
-        /// <param name="n">The number of elements in the array.</param>
-        /// <param name="vertices"></param>
-        /// <returns>True if a triangle was found</returns>
-        internal static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vertices, ref Vector2F a, ref Vector2F b, ref Vector2F c)
+        internal static bool Snip(Vertices contour, int u, int v, int w, int n, ReadOnlySpan<int> vertices, ref Vector2F a, ref Vector2F b, ref Vector2F c)
         {
             if (SettingEnv.Epsilon > MathUtils.Area(ref a, ref b, ref c))
             {

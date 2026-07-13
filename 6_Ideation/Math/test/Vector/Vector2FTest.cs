@@ -1376,5 +1376,37 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             Assert.Contains("1.5", result);
             Assert.Contains("2.5", result);
         }
+
+        /// <summary>
+        ///     Tests that copy to span copies x and y to correct positions
+        /// </summary>
+        [Fact]
+        public void CopyTo_Span_CopiesXAndYToCorrectPositions()
+        {
+            Vector2F v = new Vector2F(3.5f, 7.2f);
+            Span<float> destination = stackalloc float[4];
+
+            v.CopyTo(destination, 1);
+
+            Assert.Equal(0f, destination[0]);
+            Assert.Equal(3.5f, destination[1]);
+            Assert.Equal(7.2f, destination[2]);
+            Assert.Equal(0f, destination[3]);
+        }
+
+        /// <summary>
+        ///     Tests that copy to span with zero index writes at start
+        /// </summary>
+        [Fact]
+        public void CopyTo_Span_ZeroIndex_WritesAtStart()
+        {
+            Vector2F v = new Vector2F(1f, 2f);
+            Span<float> destination = stackalloc float[2];
+
+            v.CopyTo(destination, 0);
+
+            Assert.Equal(1f, destination[0]);
+            Assert.Equal(2f, destination[1]);
+        }
     }
 }

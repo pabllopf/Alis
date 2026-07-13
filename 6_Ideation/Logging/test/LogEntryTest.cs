@@ -368,5 +368,33 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Single(entry.Scopes);
             Assert.Equal(complexScope, entry.Scopes[0]);
         }
+
+        /// <summary>
+        ///     Tests that log entry null scopes uses empty read only list instead of new list allocation
+        /// </summary>
+        [Fact]
+        public void LogEntry_NullScopes_UsesEmptyReadOnlyList()
+        {
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger");
+
+            Assert.NotNull(entry.Scopes);
+            Assert.Empty(entry.Scopes);
+        }
+
+        /// <summary>
+        ///     Tests that log entry scopes property is immutable
+        /// </summary>
+        [Fact]
+        public void LogEntry_Scopes_IsImmutable()
+        {
+            List<object> originalScopes = new List<object> { "scope1", "scope2" };
+            LogEntry entry = new LogEntry(LogLevel.Info, "Message", "Logger", scopes: originalScopes);
+
+            IReadOnlyList<object> scopes = entry.Scopes;
+
+            Assert.Equal(2, scopes.Count);
+            Assert.Equal("scope1", scopes[0]);
+            Assert.Equal("scope2", scopes[1]);
+        }
     }
 }

@@ -191,10 +191,31 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         [RequireFfmpegFact]
         public void VideoFrame_ShouldImplementIDisposableInterface()
         {
-            VideoFrame frame = new VideoFrame(1920, 1080);
+            VideoFrame frame = new VideoFrame();
 
             Assert.IsAssignableFrom<IDisposable>(frame);
         }
+
+        /// <summary>
+        ///     Tests that GetPixels with span overload writes to pre-allocated buffer
+        /// </summary>
+        [RequireFfmpegFact]
+        public void GetPixels_SpanOverload_WritesToPreallocatedBuffer()
+        {
+            VideoFrame frame = new VideoFrame();
+            byte[] testData = new byte[Width * Height * 3];
+            MemoryStream stream = new MemoryStream(testData);
+            frame.Load(stream);
+
+            Span<byte> destination = new byte[3]; // length=1 * 3 channels
+
+            frame.GetPixels(0, 0, destination, 1);
+
+            byte[] expected = frame.GetPixels(0, 0, 1);
+            Assert.Equal(expected, destination.ToArray());
+        }
+    }
+}
 
         /// <summary>
         ///     Tests that video frame get pixels should return correct byte array

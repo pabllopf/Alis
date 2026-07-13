@@ -439,5 +439,123 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-vbr constrained", options.EncoderArguments);
             Assert.Contains("192k", options.EncoderArguments);
         }
+
+        /// <summary>
+        ///     Tests that opus encoder constructor default values
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Constructor_ShouldSetDefaultValues()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            Assert.Equal("libopus", encoder.Name);
+            Assert.Equal("ogg", encoder.Format);
+            Assert.Equal(OpusEncoder.Application.Audio, encoder.CodecApplication);
+            Assert.Equal(10, encoder.CompressionLevel);
+            Assert.Null(encoder.ChannelCount);
+            Assert.Null(encoder.SampleRate);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder format property should be settable
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_FormatProperty_ShouldBeSettable()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            encoder.Format = "webm";
+
+            Assert.Equal("webm", encoder.Format);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder implements encoder options builder
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_ImplementsIEncoderOptionsBuilder()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            Assert.IsAssignableFrom<IEncoderOptionsBuilder>(encoder);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder application enum should have correct int values
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_ApplicationEnum_ShouldHaveCorrectIntValues()
+        {
+            Assert.Equal(0, (int)OpusEncoder.Application.VoIp);
+            Assert.Equal(1, (int)OpusEncoder.Application.Audio);
+            Assert.Equal(2, (int)OpusEncoder.Application.LowDelay);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should include all properties when set
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldIncludeAllPropertiesWhenSet()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.ChannelCount = 2;
+            encoder.SampleRate = 44100;
+            encoder.CodecApplication = OpusEncoder.Application.LowDelay;
+            encoder.CompressionLevel = 5;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.NotNull(options);
+            Assert.Equal("ogg", options.Format);
+            Assert.Equal("libopus", options.EncoderName);
+            Assert.Contains("-b:a", options.EncoderArguments);
+            Assert.Contains("-vbr on", options.EncoderArguments);
+            Assert.Contains("-application lowdelay", options.EncoderArguments);
+            Assert.Contains("-compression_level 5", options.EncoderArguments);
+            Assert.Contains("-ac 2", options.EncoderArguments);
+            Assert.Contains("-ar 44100", options.EncoderArguments);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder set cbr should format quality settings
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_SetCbr_ShouldFormatQualitySettings()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            encoder.SetCbr("320k");
+
+            Assert.Equal("-b:a 320k -vbr off", encoder.CurrentQualitySettings);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder set cvbr should format quality settings
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_SetCvbr_ShouldFormatQualitySettings()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+
+            encoder.SetCvbr("64k");
+
+            Assert.Equal("-b:a 64k -vbr constrained", encoder.CurrentQualitySettings);
+        }
+
+        /// <summary>
+        ///     Tests that opus encoder create should not include channel count and sample rate when null
+        /// </summary>
+        [Fact]
+        public void OpusEncoder_Create_ShouldNotIncludeChannelCountAndSampleRateWhenNull()
+        {
+            OpusEncoder encoder = new OpusEncoder();
+            encoder.ChannelCount = null;
+            encoder.SampleRate = null;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.DoesNotContain("-ac", options.EncoderArguments);
+            Assert.DoesNotContain("-ar", options.EncoderArguments);
+        }
     }
 }

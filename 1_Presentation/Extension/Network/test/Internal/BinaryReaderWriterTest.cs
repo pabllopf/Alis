@@ -680,5 +680,50 @@ namespace Alis.Extension.Network.Test.Internal
         #region Thread Safety Tests
 
         #endregion
+        #endregion
+
+        #region Span Overload Tests
+
+        /// <summary>
+        ///     Tests that GetBytesInCorrectEndianness span overload writes correct data
+        /// </summary>
+        [Fact]
+        public void GetBytesInCorrectEndianness_Span_LittleEndian_WritesCorrectly()
+        {
+            // Arrange: Create span and test value
+            Span<byte> destination = stackalloc byte[4];
+            int testValue = 0x12345678;
+
+            // Act: Write int to span in little endian format
+            BinaryReaderWriter.GetBytesInCorrectEndianness(testValue, true, destination);
+
+            // Assert: Data is written correctly
+            byte[] expected = BitConverter.GetBytes(testValue);
+            Assert.Equal(expected, destination.ToArray());
+        }
+
+        /// <summary>
+        ///     Tests that GetBytesInCorrectEndianness span overload with big endian reverses bytes
+        /// </summary>
+        [Fact]
+        public void GetBytesInCorrectEndianness_Span_BigEndian_ReversesBytes()
+        {
+            // Arrange: Create span and test value
+            Span<byte> destination = stackalloc byte[4];
+            int testValue = 0x12345678;
+
+            // Act: Write int to span in big endian format
+            BinaryReaderWriter.GetBytesInCorrectEndianness(testValue, false, destination);
+
+            // Assert: Data is reversed correctly
+            byte[] expected = BitConverter.GetBytes(testValue);
+            if (BitConverter.IsLittleEndian)
+            {
+                Array.Reverse(expected);
+            }
+            Assert.Equal(expected, destination.ToArray());
+        }
+
+        #endregion
     }
 }
