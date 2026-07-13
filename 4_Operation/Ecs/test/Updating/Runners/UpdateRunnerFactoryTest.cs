@@ -41,102 +41,11 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateRunnerFactoryTest
     {
-        /// <summary>
-        ///     Tests that update runner factory arity 0 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity0_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp0>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 1 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity1_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp1, Arg1> factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
-            AssertFactoryMapping(factory, factory, 6, typeof(GameObjectUpdate<UpdateComp1, Arg1>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 2 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity2_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp2, Arg1, Arg2> factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp2, Arg1, Arg2>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 3 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity3_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3> factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp3, Arg1, Arg2, Arg3>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 4 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity4_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4> factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp4, Arg1, Arg2, Arg3, Arg4>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 5 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity5_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5> factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
-            AssertFactoryMapping(factory, factory, 6, typeof(EntityUpdate<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 6 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity6_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6> factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 7 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity7_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7> factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 8 creates expected types
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateRunnerFactory_Arity8_CreatesExpectedTypes()
-        {
-            UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
-            AssertFactoryMapping(factory, factory, 6, typeof(Update<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>));
-        }
-
-        /// <summary>
-        ///     Tests that update runner factory arity 0 forwards capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        [Theory, InlineData(0), InlineData(1), InlineData(32)]
-        public void UpdateRunnerFactory_Arity0_ForwardsCapacity(int capacity)
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(32)]
+        public void UpdateRunnerFactory_Arity0_Create_ForwardsCapacity(int capacity)
         {
             UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
             IComponentStorageBaseFactory baseFactory = factory;
@@ -149,11 +58,225 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
-        /// <summary>
-        ///     Tests that update runner factory arity 8 forwards capacity
-        /// </summary>
-        /// <param name="capacity">The capacity</param>
-        [Theory, InlineData(0), InlineData(5), InlineData(21)]
+        [Fact]
+        public void UpdateRunnerFactory_Arity0_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp0> factory = new UpdateRunnerFactory<UpdateComp0>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp0>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(5)]
+        [InlineData(21)]
+        public void UpdateRunnerFactory_Arity1_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp1, Arg1> factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp1> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp1> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity1_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp1, Arg1> factory = new UpdateRunnerFactory<UpdateComp1, Arg1>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp1>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(7)]
+        [InlineData(15)]
+        public void UpdateRunnerFactory_Arity2_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp2, Arg1, Arg2> factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp2> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp2> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity2_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp2, Arg1, Arg2> factory = new UpdateRunnerFactory<UpdateComp2, Arg1, Arg2>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp2>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(3)]
+        [InlineData(42)]
+        public void UpdateRunnerFactory_Arity3_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3> factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp3> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp3> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity3_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3> factory = new UpdateRunnerFactory<UpdateComp3, Arg1, Arg2, Arg3>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp3>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(8)]
+        [InlineData(64)]
+        public void UpdateRunnerFactory_Arity4_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4> factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp4> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp4> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity4_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4> factory = new UpdateRunnerFactory<UpdateComp4, Arg1, Arg2, Arg3, Arg4>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp4>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10)]
+        [InlineData(99)]
+        public void UpdateRunnerFactory_Arity5_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5> factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp5> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp5> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity5_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5> factory = new UpdateRunnerFactory<UpdateComp5, Arg1, Arg2, Arg3, Arg4, Arg5>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp5>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(12)]
+        [InlineData(50)]
+        public void UpdateRunnerFactory_Arity6_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6> factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp6> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp6> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity6_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6> factory = new UpdateRunnerFactory<UpdateComp6, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp6>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(2)]
+        [InlineData(128)]
+        public void UpdateRunnerFactory_Arity7_ForwardsCapacity(int capacity)
+        {
+            UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7> factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
+            IComponentStorageBaseFactory baseFactory = factory;
+            IComponentStorageBaseFactory<UpdateComp7> typedFactory = factory;
+
+            ComponentStorageBase storage = baseFactory.Create(capacity);
+            ComponentStorage<UpdateComp7> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+
+            Assert.Equal(capacity, storage.Buffer.Length);
+            Assert.Equal(capacity, strongStorage.Buffer.Length);
+        }
+
+        [Fact]
+        public void UpdateRunnerFactory_Arity7_CreateStack_ReturnsIdTable()
+        {
+            UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7> factory = new UpdateRunnerFactory<UpdateComp7, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
+            IdTable stack = baseFactory.CreateStack();
+
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp7>>(stack);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(5)]
+        [InlineData(21)]
         public void UpdateRunnerFactory_Arity8_ForwardsCapacity(int capacity)
         {
             UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
@@ -167,31 +290,16 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
-        /// <summary>
-        ///     Asserts the factory mapping using the specified base factory
-        /// </summary>
-        /// <typeparam name="TComp">The comp</typeparam>
-        /// <param name="baseFactory">The base factory</param>
-        /// <param name="typedFactory">The typed factory</param>
-        /// <param name="capacity">The capacity</param>
-        /// <param name="expectedStorageType">The expected storage type</param>
-        private static void AssertFactoryMapping<TComp>(
-            IComponentStorageBaseFactory baseFactory,
-            IComponentStorageBaseFactory<TComp> typedFactory,
-            int capacity,
-            Type expectedStorageType)
+        [Fact]
+        public void UpdateRunnerFactory_Arity8_CreateStack_ReturnsIdTable()
         {
-            ComponentStorageBase storage = baseFactory.Create(capacity);
-            ComponentStorage<TComp> strongStorage = typedFactory.CreateStronglyTyped(capacity);
+            UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8> factory = new UpdateRunnerFactory<UpdateComp8, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, Arg8>();
+            IComponentStorageBaseFactory baseFactory = factory;
+
             IdTable stack = baseFactory.CreateStack();
 
-            Assert.Equal(expectedStorageType, storage.GetType());
-            Assert.Equal(expectedStorageType, strongStorage.GetType());
-            Assert.IsType<IdTable<TComp>>(stack);
-
-            Assert.Equal(capacity, storage.Buffer.Length);
-            Assert.Equal(capacity, strongStorage.Buffer.Length);
-            Assert.IsAssignableFrom<ComponentStorage<TComp>>(storage);
+            Assert.NotNull(stack);
+            Assert.IsType<IdTable<UpdateComp8>>(stack);
         }
 
         /// <summary>
