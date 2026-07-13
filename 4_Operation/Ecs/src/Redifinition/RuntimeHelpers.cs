@@ -34,6 +34,7 @@ using System.Reflection;
 namespace System.Runtime.CompilerServices
 {
     /// <summary>
+    ///     The runtime helpers class
     /// </summary>
     
     public static class RuntimeHelpers
