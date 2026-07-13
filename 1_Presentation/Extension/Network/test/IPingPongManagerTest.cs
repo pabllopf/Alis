@@ -45,6 +45,9 @@ namespace Alis.Extension.Network.Test
         /// <seealso cref="IPingPongManager"/>
         internal class TestPingPongManager : IPingPongManager
         {
+            /// <summary>
+            ///     Occurs when a pong is received
+            /// </summary>
             public event EventHandler<PongEventArgs> Pong;
             
             /// <summary>
