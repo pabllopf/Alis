@@ -27,6 +27,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             return new MacWindow(width, height, title);
         }
 
+        /// <summary>
+        ///     MacWindow_Constructor_WithValidValues_SetsProperties
+        /// </summary>
         [Fact]
         public void MacWindow_Constructor_WithValidValues_SetsProperties()
         {
@@ -37,6 +40,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal("Test Window", window.Title);
         }
 
+        /// <summary>
+        ///     MacWindow_Constructor_WithNegativeValues_CreatesOrThrows
+        /// </summary>
         [Fact]
         public void MacWindow_Constructor_WithNegativeValues_CreatesOrThrows()
         {
@@ -49,6 +55,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacWindow_Handle_IsNonZero
+        /// </summary>
         [Fact]
         public void MacWindow_Handle_IsNonZero()
         {
@@ -57,6 +66,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotEqual(IntPtr.Zero, window.Handle);
         }
 
+        /// <summary>
+        ///     MacWindow_IsVisible_ReturnsBool
+        /// </summary>
         [Fact]
         public void MacWindow_IsVisible_ReturnsBool()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.False(visible);
         }
 
+        /// <summary>
+        ///     MacWindow_Show_DoesNotThrow
+        /// </summary>
         [Fact]
         public void MacWindow_Show_DoesNotThrow()
         {
@@ -74,6 +89,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             window.Show();
         }
 
+        /// <summary>
+        ///     MacWindow_Hide_DoesNotThrow
+        /// </summary>
         [Fact]
         public void MacWindow_Hide_DoesNotThrow()
         {
@@ -82,6 +100,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             window.Hide();
         }
 
+        /// <summary>
+        ///     MacWindow_GetFrame_ReturnsNonZeroDimensions
+        /// </summary>
         [Fact]
         public void MacWindow_GetFrame_ReturnsNonZeroDimensions()
         {
@@ -92,6 +113,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.True(frame.height > 0);
         }
 
+        /// <summary>
+        ///     MacWindow_SetTitle_ChangesTitle
+        /// </summary>
         [Fact]
         public void MacWindow_SetTitle_ChangesTitle()
         {
@@ -101,6 +125,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal("Updated Title", window.Title);
         }
 
+        /// <summary>
+        ///     MacWindow_SetSize_ChangesWidthAndHeight
+        /// </summary>
         [Fact]
         public void MacWindow_SetSize_ChangesWidthAndHeight()
         {
@@ -111,6 +138,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal(768, window.Height);
         }
 
+        /// <summary>
+        ///     MacWindow_WidthGetter_ReturnsCorrectValue
+        /// </summary>
         [Fact]
         public void MacWindow_WidthGetter_ReturnsCorrectValue()
         {
@@ -119,6 +149,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal(1920, window.Width);
         }
 
+        /// <summary>
+        ///     MacWindow_HeightGetter_ReturnsCorrectValue
+        /// </summary>
         [Fact]
         public void MacWindow_HeightGetter_ReturnsCorrectValue()
         {
@@ -127,12 +160,18 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal(1080, window.Height);
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_Constructor_WithNullWindow_ThrowsNullReferenceException
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_Constructor_WithNullWindow_ThrowsNullReferenceException()
         {
             Assert.Throws<NullReferenceException>(() => new MacOpenGLContext(null));
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_Constructor_WithValidWindow_CreatesOrThrows
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_Constructor_WithValidWindow_CreatesOrThrows()
         {
@@ -145,6 +184,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_View_PropertyExists
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_View_PropertyExists()
         {
@@ -155,6 +197,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_Context_PropertyExists
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_Context_PropertyExists()
         {
@@ -165,6 +210,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_PixelFormat_PropertyExists
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_PixelFormat_PropertyExists()
         {
@@ -175,6 +223,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_MakeCurrent_CanBeCalled
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_MakeCurrent_CanBeCalled()
         {
@@ -189,6 +240,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_SwapBuffers_CanBeCalled
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_SwapBuffers_CanBeCalled()
         {
@@ -203,6 +257,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             }
         }
 
+        /// <summary>
+        ///     MacWindow_IsInternalClass
+        /// </summary>
         [Fact]
         public void MacWindow_IsInternalClass()
         {
@@ -211,6 +268,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.True(type.IsNotPublic);
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_IsInternalClass
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_IsInternalClass()
         {
@@ -219,6 +279,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.True(type.IsNotPublic);
         }
 
+        /// <summary>
+        ///     MacWindow_Properties_Exist_Reflection
+        /// </summary>
         [Fact]
         public void MacWindow_Properties_Exist_Reflection()
         {
@@ -228,6 +291,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotNull(typeof(MacWindow).GetProperty("Title"));
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_Properties_Exist_Reflection
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_Properties_Exist_Reflection()
         {
@@ -236,6 +302,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotNull(typeof(MacOpenGLContext).GetProperty("PixelFormat"));
         }
 
+        /// <summary>
+        ///     MacWindow_Methods_Exist_Reflection
+        /// </summary>
         [Fact]
         public void MacWindow_Methods_Exist_Reflection()
         {
@@ -247,6 +316,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.NotNull(typeof(MacWindow).GetMethod("GetFrame"));
         }
 
+        /// <summary>
+        ///     MacOpenGLContext_Methods_Exist_Reflection
+        /// </summary>
         [Fact]
         public void MacOpenGLContext_Methods_Exist_Reflection()
         {
