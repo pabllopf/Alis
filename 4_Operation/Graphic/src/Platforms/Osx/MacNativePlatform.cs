@@ -45,8 +45,14 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private static IntPtr _openGlHandle = IntPtr.Zero;
 
+        /// <summary>
+        ///     The mouse buttons
+        /// </summary>
         internal readonly bool[] mouseButtons = new bool[5];
 
+        /// <summary>
+        ///     The pressed keys
+        /// </summary>
         internal readonly HashSet<ConsoleKey> pressedKeys = new HashSet<ConsoleKey>();
 
         /// <summary>
@@ -57,9 +63,19 @@ namespace Alis.Core.Graphic.Platforms.Osx
         /// </summary>
         private ConsoleKey? lastKeyPressed;
 
+        /// <summary>
+        ///     The mouse wheel
+        /// </summary>
         internal float mouseWheel;
 
+        /// <summary>
+        ///     The mouse x
+        /// </summary>
         internal int mouseX;
+
+        /// <summary>
+        ///     The mouse y
+        /// </summary>
         internal int mouseY;
 
         /// <summary>
@@ -568,14 +584,16 @@ namespace Alis.Core.Graphic.Platforms.Osx
 
 
         /// <summary>
+        ///     Determines whether the specified console key is pressed
         /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
+        /// <param name="consoleKey">The console key</param>
+        /// <returns>The <see cref="bool"/></returns>
         public bool IsKeyDown(ConsoleKey consoleKey) => pressedKeys.Contains(consoleKey);
 
         /// <summary>
+        ///     Gets the proc address using the specified proc name
         /// </summary>
-        /// <param name="procName"></param>
+        /// <param name="procName">The proc name</param>
         /// <returns></returns>
 #pragma warning disable S2696
         public IntPtr GetProcAddress(string procName)
