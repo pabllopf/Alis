@@ -355,5 +355,14 @@
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VorbisEncoder.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/AACEncoder.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/Models/VideoFormatTags.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/StreamTags.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/StreamTags.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Audio/Models/Tags.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/UpdateOrderAttribute.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdate.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/NoneUpdateRunnerFactory.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/IncludeDisabled.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryHash.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Ref.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/SceneMarshal.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs"
 ]
