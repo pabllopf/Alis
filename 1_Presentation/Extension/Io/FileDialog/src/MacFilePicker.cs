@@ -50,11 +50,16 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace($"PickFile() called with options - Title: {options?.Title}");
 
+            if (options == null)
+            {
+                return FilePickerResult.CreateError("Options cannot be null.");
+            }
+
             try
             {
                 FilePickerValidator.ValidateOptions(options);
 
-                options.AllowMultiple = false;
+                options!.AllowMultiple = false;
 
                 string script = BuildOpenFileScript(options, false);
                 string result = ExecuteAppleScript(script);
@@ -77,11 +82,16 @@ namespace Alis.Extension.Io.FileDialog
         {
             Logger.Trace($"PickFiles() called with options - Title: {options?.Title}");
 
+            if (options == null)
+            {
+                return FilePickerResult.CreateError("Options cannot be null.");
+            }
+
             try
             {
                 FilePickerValidator.ValidateOptions(options);
 
-                options.AllowMultiple = true;
+                options!.AllowMultiple = true;
 
                 string script = BuildOpenFileScript(options, true);
                 string result = ExecuteAppleScript(script);
@@ -103,6 +113,11 @@ namespace Alis.Extension.Io.FileDialog
         public FilePickerResult PickFolder(FilePickerOptions options)
         {
             Logger.Trace($"PickFolder() called with options - Title: {options?.Title}");
+
+            if (options == null)
+            {
+                return FilePickerResult.CreateError("Options cannot be null.");
+            }
 
             try
             {
