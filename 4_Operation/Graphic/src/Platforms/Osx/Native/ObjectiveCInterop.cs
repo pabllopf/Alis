@@ -44,9 +44,15 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         ///     The objc
         /// </summary>
         public const string Objc = "/usr/lib/libobjc.A.dylib";
+        /// <summary>
+        ///     Gets the selMouseLocationOutside
+        /// </summary>
 
         internal static readonly IntPtr selMouseLocationOutside =
             Sel("mouseLocationOutsideOfEventStream");
+        /// <summary>
+        ///     Gets the selConvertPointFromView
+        /// </summary>
 
         internal static readonly IntPtr selConvertPointFromView =
             Sel("convertPoint:fromView:");
@@ -66,9 +72,21 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The int ptr</returns>
         [DllImport(Objc, EntryPoint = "sel_registerName", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern IntPtr sel_registerName(string name);
+        /// <summary>
+        ///     objc_msgSend_NSRect
+        /// </summary>
+        /// <param name="receiver">The receiver</param>
+        /// <param name="selector">The selector</param>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
         public static extern NsRect objc_msgSend_NSRect(IntPtr receiver, IntPtr selector);
+        /// <summary>
+        ///     objc_msgSend_stret
+        /// </summary>
+        /// <param name="ret">The ret</param>
+        /// <param name="receiver">The receiver</param>
+        /// <param name="selector">The selector</param>
 
         [DllImport("libobjc.A.dylib", EntryPoint = "objc_msgSend_stret"), ExcludeFromCodeCoverage]
         public static extern void objc_msgSend_stret(out NsRect ret, IntPtr receiver, IntPtr selector);
@@ -95,9 +113,19 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
             return frame;
 #endif
         }
+        /// <summary>
+        ///     objc_msgSend_NSPoint
+        /// </summary>
+        /// <param name="receiver">The receiver</param>
+        /// <param name="selector">The selector</param>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern NsPoint objc_msgSend_NSPoint(IntPtr receiver, IntPtr selector);
+        /// <summary>
+        ///     objc_msgSend_NSPoint_NSPoint_IntPtr
+        /// </summary>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern NsPoint objc_msgSend_NSPoint_NSPoint_IntPtr(
@@ -274,12 +302,26 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns>The ulong</returns>
         [DllImport(Objc, EntryPoint = "objc_msgSend", CallingConvention = CallingConvention.Cdecl), ExcludeFromCodeCoverage]
         public static extern ulong objc_msgSend_UL(IntPtr recv, IntPtr sel);
+        /// <summary>
+        ///     CGEventGetLocation
+        /// </summary>
+        /// <param name="eventRef">The eventRef</param>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"), ExcludeFromCodeCoverage]
         public static extern CGPoint CGEventGetLocation(IntPtr eventRef);
+        /// <summary>
+        ///     CGEventCreate
+        /// </summary>
+        /// <param name="source">The source</param>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics"), ExcludeFromCodeCoverage]
         public static extern IntPtr CGEventCreate(IntPtr source);
+        /// <summary>
+        ///     CFRelease
+        /// </summary>
+        /// <param name="cf">The cf</param>
 
         [DllImport("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation"), ExcludeFromCodeCoverage]
         public static extern void CFRelease(IntPtr cf);
@@ -292,6 +334,12 @@ namespace Alis.Core.Graphic.Platforms.Osx.Native
         /// <returns></returns>
         [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
         public static extern IntPtr objc_msgSend(IntPtr receiver, IntPtr selector, IntPtr arg1);
+        /// <summary>
+        ///     objc_msgSend_double
+        /// </summary>
+        /// <param name="receiver">The receiver</param>
+        /// <param name="selector">The selector</param>
+        /// <returns>A value indicating the result of the operation</returns>
 
         [DllImport("/usr/lib/libobjc.A.dylib", EntryPoint = "objc_msgSend"), ExcludeFromCodeCoverage]
         public static extern double objc_msgSend_double(IntPtr receiver, IntPtr selector);
