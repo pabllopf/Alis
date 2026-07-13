@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
@@ -99,6 +100,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformCreateWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(42);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformCreateWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformCreateWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -107,6 +121,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformDestroyWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(43);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformDestroyWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformDestroyWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -115,6 +142,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformShowWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(44);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformShowWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformShowWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -123,6 +163,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSetWindowPos_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(45);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSetWindowPos = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSetWindowPos);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -131,6 +184,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformGetWindowPos_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(46);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformGetWindowPos = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformGetWindowPos);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -139,6 +205,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSetWindowSize_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(47);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSetWindowSize = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSetWindowSize);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -147,6 +226,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformGetWindowSize_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(48);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformGetWindowSize = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformGetWindowSize);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -155,6 +247,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSetWindowFocus_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(49);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSetWindowFocus = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSetWindowFocus);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -163,6 +268,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformGetWindowFocus_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(50);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformGetWindowFocus = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformGetWindowFocus);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -171,6 +289,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformGetWindowMinimized_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(51);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformGetWindowMinimized = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformGetWindowMinimized);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -179,6 +310,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSetWindowTitle_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(52);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSetWindowTitle = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSetWindowTitle);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -187,6 +331,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSetWindowAlpha_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(53);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSetWindowAlpha = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSetWindowAlpha);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -195,6 +352,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformUpdateWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(54);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformUpdateWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformUpdateWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -203,6 +373,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformRenderWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(55);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformRenderWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformRenderWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -211,6 +394,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformSwapBuffers_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(56);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformSwapBuffers = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformSwapBuffers);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -219,6 +415,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformGetWindowDpiScale_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(57);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformGetWindowDpiScale = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformGetWindowDpiScale);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -227,6 +436,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformOnChangedViewport_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(58);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformOnChangedViewport = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformOnChangedViewport);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -235,6 +457,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PlatformCreateVkSurface_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(59);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { PlatformCreateVkSurface = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.PlatformCreateVkSurface);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -243,6 +478,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void RendererCreateWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(60);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { RendererCreateWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.RendererCreateWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -251,6 +499,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void RendererDestroyWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(61);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { RendererDestroyWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.RendererDestroyWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -259,6 +520,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void RendererSetWindowSize_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(62);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { RendererSetWindowSize = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.RendererSetWindowSize);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -267,6 +541,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void RendererRenderWindow_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(63);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { RendererRenderWindow = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.RendererRenderWindow);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -275,6 +562,19 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void RendererSwapBuffers_Should_GetCorrectValue()
         {
+            IntPtr expected = new IntPtr(64);
+            ImGuiPlatformIo io = new ImGuiPlatformIo { RendererSwapBuffers = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(io, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                Assert.Equal(expected, ptr.RendererSwapBuffers);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -283,6 +583,22 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void Monitors_Should_GetCorrectValue()
         {
+            ImVector expected = new ImVector(3, 5, new IntPtr(789));
+            ImGuiPlatformIo plat = new ImGuiPlatformIo { Monitors = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(plat, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                ImVectorG<ImGuiPlatformMonitor> result = ptr.Monitors;
+                Assert.Equal(expected.Size, result.Size);
+                Assert.Equal(expected.Capacity, result.Capacity);
+                Assert.Equal(expected.Data, result.Data);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>
@@ -291,6 +607,22 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void Viewports_Should_GetCorrectValue()
         {
+            ImVector expected = new ImVector(1, 2, new IntPtr(111));
+            ImGuiPlatformIo plat = new ImGuiPlatformIo { Viewports = expected };
+            IntPtr nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiPlatformIo>());
+            try
+            {
+                Marshal.StructureToPtr(plat, nativePtr, false);
+                ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
+                ImVectorG<ImGuiViewportPtr> result = ptr.Viewports;
+                Assert.Equal(expected.Size, result.Size);
+                Assert.Equal(expected.Capacity, result.Capacity);
+                Assert.Equal(expected.Data, result.Data);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(nativePtr);
+            }
         }
 
         /// <summary>

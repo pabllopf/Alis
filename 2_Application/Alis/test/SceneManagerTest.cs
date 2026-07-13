@@ -289,5 +289,37 @@ namespace Alis.Test
 
             Assert.NotNull(sceneManager);
         }
+
+        /// <summary>
+        ///     Tests that ReadOnlySpan constructor creates manager with scenes
+        /// </summary>
+        [Fact]
+        public void SceneManager_ReadOnlySpanConstructor_CreatesWithScenes()
+        {
+            Context context = new Context(new Setting());
+            Scene scene1 = new Scene();
+            Scene scene2 = new Scene();
+            ReadOnlySpan<Scene> scenes = new Scene[] { scene1, scene2 };
+
+            SceneManager sceneManager = new SceneManager(context, scenes);
+
+            Assert.Equal(2, sceneManager.LoadedScenes.Count);
+            Assert.Equal(scene1, sceneManager.CurrentWorld);
+        }
+
+        /// <summary>
+        ///     Tests that LoadedScenes property returns read only list
+        /// </summary>
+        [Fact]
+        public void LoadedScenes_ReturnsReadOnlyList()
+        {
+            Context context = new Context(new Setting());
+            SceneManager sceneManager = new SceneManager(context);
+
+            IReadOnlyList<Scene> loadedScenes = sceneManager.LoadedScenes;
+
+            Assert.NotNull(loadedScenes);
+            Assert.Empty(loadedScenes);
+        }
     }
 }
