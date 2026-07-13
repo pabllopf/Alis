@@ -104,6 +104,9 @@ namespace Alis.Core.Graphic.Platforms.Win
         /// </summary>
         private IntPtr wndProcPtr;
 
+        /// <summary>
+        ///     The input char buffer
+        /// </summary>
         internal string inputCharBuffer = null;
 
 
@@ -555,6 +558,11 @@ namespace Alis.Core.Graphic.Platforms.Win
             return false;
         }
 
+        /// <summary>
+        ///     Determines whether the specified console key is pressed
+        /// </summary>
+        /// <param name="consoleKey">The console key</param>
+        /// <returns>The <see cref="bool"/></returns>
         public bool IsKeyDown(ConsoleKey consoleKey)
         {
             return pressedKeys.Contains(consoleKey);
@@ -736,7 +744,14 @@ namespace Alis.Core.Graphic.Platforms.Win
         [StructLayout(LayoutKind.Sequential)]
         internal struct POINT
         {
+            /// <summary>
+            ///     The x
+            /// </summary>
             public int X;
+
+            /// <summary>
+            ///     The y
+            /// </summary>
             public int Y;
         }
 
@@ -786,6 +801,11 @@ namespace Alis.Core.Graphic.Platforms.Win
             return User32.DefWindowProc(hWnd, msg, wParam, lParam);
         }
 
+        /// <summary>
+        ///     Gets the win 32 error meaning using the specified error code
+        /// </summary>
+        /// <param name="errorCode">The error code</param>
+        /// <returns>The win 32 error meaning</returns>
         internal string GetWin32ErrorMeaning(int errorCode)
         {
             switch (errorCode)
