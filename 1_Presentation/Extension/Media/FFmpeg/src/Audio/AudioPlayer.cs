@@ -210,7 +210,7 @@ namespace Alis.Extension.Media.FFmpeg.Audio
                 }
                 catch
                 {
-                    /// Ignore exception during close
+                    // Ignore exception during close
                 }
 
                 ffplayp?.WaitForExit();

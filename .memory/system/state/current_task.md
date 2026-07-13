@@ -1,29 +1,29 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 67 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 75 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs
+    pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs
 
     ### Language
     cs
 
     ### Coverage
-    0.0% (Line: 0.0%, Branch: None%)
+    0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    52
+    45
 
     ### Uncovered Branches
-    0
+    4
 
     ### Method
-    ImPlotStyle
+    EntityUpdate
 
     ### Complexity / LOC
-    104 / 59 lines
+    4 / 58 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImPlotStyle.cs
+//  File:EntityUpdate.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
+using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
+using Alis.Core.Ecs.Updating;
 
-namespace Alis.Extension.Graphic.Ui.Extras.Plot
+namespace Alis.Core.Ecs
 {
     /// <summary>
-    ///     The im plot style
+    ///     Handles update logic for entities that have a specific component and up to five dependency arguments.
     /// </summary>
-    public struct ImPlotStyle
+    /// <typeparam name="TComp">The component type that implements <see cref="IOnUpdate{TArg1,TArg2,TArg3,TArg4,TArg5}"/>.</typeparam>
+    /// <typeparam name="TArg1">The type of the first update argument.</typeparam>
+    /// <typeparam name="TArg2">The type of the second update argument.</typeparam>
+    /// <typeparam name="TArg3">The type of the third update argument.</typeparam>
+    /// <typeparam name="TArg4">The type of the fourth update argument.</typeparam>
+    /// <typeparam name="TArg5">The type of the fifth update argument.</typeparam>
+    /// <seealso cref="ComponentStorage{TComp}" />
+    public class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
+        where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
     {
         /// <summary>
-        ///     The line weight
+        ///     Runs the update logic for all entities of this archetype.
         /// </summary>
-        public float LineWeight { get; set; }
+        /// <param name="scene">The scene containing the entities to update.</param>
+        /// <param name="b">The archetype representing the set of entities to update.</param>
+        internal override void Run(Scene scene, Archetype b)
+        {
+            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
+            ref TComp comp = ref GetComponentStorageDataReference();
 
-        /// <summary>
-        ///     The marker
-        /// </summary>
-        public int Marker { get; set; }
-
-        /// <summary>
-        ///     The marker size
-        /// </summary>
-        public float MarkerSize { get; set; }
-
-        /// <summary>
-        ///     The marker weight
-        /// </summary>
-        public float MarkerWeight { get; set; }
-
-        /// <summary>
-        ///     The fill alpha
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotStyleTests.cs
+    pabllopf-official_alis:4_Operation/Ecs/test/EntityUpdateTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotStyle.cs
+    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImPlotStyle.cs
+    Commit format: test: coverage EntityUpdate.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

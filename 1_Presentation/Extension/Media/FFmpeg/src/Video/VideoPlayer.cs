@@ -201,7 +201,7 @@ namespace Alis.Extension.Media.FFmpeg.Video
                 }
                 catch
                 {
-                    /// Ignore exception during close
+                    // Ignore exception during close
                 }
 
                 ffplayp?.WaitForExit();
