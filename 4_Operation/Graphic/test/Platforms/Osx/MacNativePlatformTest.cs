@@ -41,6 +41,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
     /// </summary>
     public class MacNativePlatformTest
     {
+        /// <summary>
+        ///     MacNativePlatform_DefaultState_IsSafe
+        /// </summary>
         [Fact]
         public void MacNativePlatform_DefaultState_IsSafe()
         {
@@ -56,6 +59,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(string.Empty, chars);
         }
 
+        /// <summary>
+        ///     TryGetLastKeyPressed_NoKey_ReturnsFalse
+        /// </summary>
         [Fact]
         public void TryGetLastKeyPressed_NoKey_ReturnsFalse()
         {
@@ -65,6 +71,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(default(ConsoleKey), key);
         }
 
+        /// <summary>
+        ///     TryGetLastKeyPressed_KeySet_ReturnsTrueAndClears
+        /// </summary>
         [Fact]
         public void TryGetLastKeyPressed_KeySet_ReturnsTrueAndClears()
         {
@@ -80,6 +89,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(secondResult);
         }
 
+        /// <summary>
+        ///     GetMouseWheel_Default_ReturnsZero
+        /// </summary>
         [Fact]
         public void GetMouseWheel_Default_ReturnsZero()
         {
@@ -87,6 +99,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(0.0f, platform.GetMouseWheel(), 5);
         }
 
+        /// <summary>
+        ///     GetMouseWheel_InternalFieldSet_ReturnsValueAndResets
+        /// </summary>
         [Fact]
         public void GetMouseWheel_InternalFieldSet_ReturnsValueAndResets()
         {
@@ -98,6 +113,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(0.0f, platform.mouseWheel, 5);
         }
 
+        /// <summary>
+        ///     GetMouseWheel_NegativeValue_ReturnsValueAndResets
+        /// </summary>
         [Fact]
         public void GetMouseWheel_NegativeValue_ReturnsValueAndResets()
         {
@@ -109,6 +127,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(0.0f, platform.mouseWheel, 5);
         }
 
+        /// <summary>
+        ///     IsKeyDown_KeyNotPressed_ReturnsFalse
+        /// </summary>
         [Fact]
         public void IsKeyDown_KeyNotPressed_ReturnsFalse()
         {
@@ -118,6 +139,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsKeyDown(ConsoleKey.Enter));
         }
 
+        /// <summary>
+        ///     IsKeyDown_KeyAddedViaReflection_ReturnsTrue
+        /// </summary>
         [Fact]
         public void IsKeyDown_KeyAddedViaReflection_ReturnsTrue()
         {
@@ -130,6 +154,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        ///     IsKeyDown_MultipleKeys_ReturnsCorrectly
+        /// </summary>
         [Fact]
         public void IsKeyDown_MultipleKeys_ReturnsCorrectly()
         {
@@ -149,6 +176,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsKeyDown(ConsoleKey.LeftWindows));
         }
 
+        /// <summary>
+        ///     TryGetLastInputCharacters_ReturnsFalseAndEmptyString
+        /// </summary>
         [Fact]
         public void TryGetLastInputCharacters_ReturnsFalseAndEmptyString()
         {
@@ -159,6 +189,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(string.Empty, chars);
         }
 
+        /// <summary>
+        ///     IsWindowVisible_NotInitialized_ReturnsFalse
+        /// </summary>
         [Fact]
         public void IsWindowVisible_NotInitialized_ReturnsFalse()
         {
@@ -166,6 +199,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsWindowVisible());
         }
 
+        /// <summary>
+        ///     GetWindowWidth_NotInitialized_ReturnsZero
+        /// </summary>
         [Fact]
         public void GetWindowWidth_NotInitialized_ReturnsZero()
         {
@@ -173,6 +209,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(0, platform.GetWindowWidth());
         }
 
+        /// <summary>
+        ///     GetWindowHeight_NotInitialized_ReturnsZero
+        /// </summary>
         [Fact]
         public void GetWindowHeight_NotInitialized_ReturnsZero()
         {
@@ -180,6 +219,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(0, platform.GetWindowHeight());
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_LeftArrow_ReturnsLeftArrow
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_LeftArrow_ReturnsLeftArrow()
         {
@@ -190,6 +232,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.LeftArrow, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_RightArrow_ReturnsRightArrow
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_RightArrow_ReturnsRightArrow()
         {
@@ -200,6 +245,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.RightArrow, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_DownArrow_ReturnsDownArrow
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_DownArrow_ReturnsDownArrow()
         {
@@ -210,6 +258,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.DownArrow, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_UpArrow_ReturnsUpArrow
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_UpArrow_ReturnsUpArrow()
         {
@@ -220,6 +271,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.UpArrow, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Home_ReturnsHome
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Home_ReturnsHome()
         {
@@ -230,6 +284,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Home, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_End_ReturnsEnd
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_End_ReturnsEnd()
         {
@@ -240,6 +297,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.End, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_PageUp_ReturnsPageUp
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_PageUp_ReturnsPageUp()
         {
@@ -250,6 +310,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.PageUp, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_PageDown_ReturnsPageDown
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_PageDown_ReturnsPageDown()
         {
@@ -260,6 +323,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.PageDown, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Backspace_ReturnsBackspace
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Backspace_ReturnsBackspace()
         {
@@ -270,6 +336,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Backspace, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Delete_ReturnsDelete
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Delete_ReturnsDelete()
         {
@@ -280,6 +349,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Delete, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Enter_ReturnsEnter
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Enter_ReturnsEnter()
         {
@@ -290,6 +362,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Enter, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Tab_ReturnsTab
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Tab_ReturnsTab()
         {
@@ -300,6 +375,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Tab, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_Escape_ReturnsEscape
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_Escape_ReturnsEscape()
         {
@@ -310,6 +388,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Escape, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F1_ReturnsF1
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F1_ReturnsF1()
         {
@@ -320,6 +401,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F1, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F2_ReturnsF2
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F2_ReturnsF2()
         {
@@ -330,6 +414,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F2, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F3_ReturnsF3
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F3_ReturnsF3()
         {
@@ -340,6 +427,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F3, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F4_ReturnsF4
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F4_ReturnsF4()
         {
@@ -350,6 +440,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F4, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F5_ReturnsF5
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F5_ReturnsF5()
         {
@@ -360,6 +453,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F5, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F6_ReturnsF6
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F6_ReturnsF6()
         {
@@ -370,6 +466,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F6, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F7_ReturnsF7
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F7_ReturnsF7()
         {
@@ -380,6 +479,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F7, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F8_ReturnsF8
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F8_ReturnsF8()
         {
@@ -390,6 +492,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F8, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F9_ReturnsF9
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F9_ReturnsF9()
         {
@@ -400,6 +505,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F9, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F10_ReturnsF10
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F10_ReturnsF10()
         {
@@ -410,6 +518,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F10, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F11_ReturnsF11
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F11_ReturnsF11()
         {
@@ -420,6 +531,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F11, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_F12_ReturnsF12
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_F12_ReturnsF12()
         {
@@ -430,6 +544,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.F12, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_LeftWindows_ReturnsLeftWindows
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_LeftWindows_ReturnsLeftWindows()
         {
@@ -440,6 +557,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.LeftWindows, (ConsoleKey)parameters[1]);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_UnknownKeyCode_ReturnsFalse
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_UnknownKeyCode_ReturnsFalse()
         {
@@ -449,6 +569,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(result);
         }
 
+        /// <summary>
+        ///     TryMapSpecialKey_ZeroKeyCode_ReturnsFalse
+        /// </summary>
         [Fact]
         public void TryMapSpecialKey_ZeroKeyCode_ReturnsFalse()
         {
@@ -458,6 +581,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Space_ReturnsSpacebar
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Space_ReturnsSpacebar()
         {
@@ -466,6 +592,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Spacebar, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_NewLine_ReturnsEnter
+        /// </summary>
         [Fact]
         public void MapSymbolKey_NewLine_ReturnsEnter()
         {
@@ -474,6 +603,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Enter, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_CarriageReturn_ReturnsEnter
+        /// </summary>
         [Fact]
         public void MapSymbolKey_CarriageReturn_ReturnsEnter()
         {
@@ -482,6 +614,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Enter, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Tab_ReturnsTab
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Tab_ReturnsTab()
         {
@@ -490,6 +625,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Tab, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Escape_ReturnsEscape
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Escape_ReturnsEscape()
         {
@@ -498,6 +636,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Escape, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Backspace_ReturnsBackspace
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Backspace_ReturnsBackspace()
         {
@@ -506,6 +647,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Backspace, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Delete_ReturnsDelete
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Delete_ReturnsDelete()
         {
@@ -514,6 +658,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Delete, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Minus_ReturnsOemMinus
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Minus_ReturnsOemMinus()
         {
@@ -522,6 +669,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.OemMinus, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Plus_ReturnsOemPlus
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Plus_ReturnsOemPlus()
         {
@@ -530,6 +680,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.OemPlus, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Comma_ReturnsOemComma
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Comma_ReturnsOemComma()
         {
@@ -538,6 +691,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.OemComma, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Period_ReturnsOemPeriod
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Period_ReturnsOemPeriod()
         {
@@ -546,6 +702,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.OemPeriod, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Slash_ReturnsOem2
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Slash_ReturnsOem2()
         {
@@ -554,6 +713,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem2, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Semicolon_ReturnsOem1
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Semicolon_ReturnsOem1()
         {
@@ -562,6 +724,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem1, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Backslash_ReturnsOem5
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Backslash_ReturnsOem5()
         {
@@ -570,6 +735,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem5, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_OpenBracket_ReturnsOem4
+        /// </summary>
         [Fact]
         public void MapSymbolKey_OpenBracket_ReturnsOem4()
         {
@@ -578,6 +746,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem4, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_CloseBracket_ReturnsOem6
+        /// </summary>
         [Fact]
         public void MapSymbolKey_CloseBracket_ReturnsOem6()
         {
@@ -586,6 +757,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem6, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Backtick_ReturnsOem3
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Backtick_ReturnsOem3()
         {
@@ -594,6 +768,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(ConsoleKey.Oem3, result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_UnknownChar_ReturnsNull
+        /// </summary>
         [Fact]
         public void MapSymbolKey_UnknownChar_ReturnsNull()
         {
@@ -602,6 +779,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Null(result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Letter_ReturnsNull
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Letter_ReturnsNull()
         {
@@ -610,6 +790,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Null(result);
         }
 
+        /// <summary>
+        ///     MapSymbolKey_Digit_ReturnsNull
+        /// </summary>
         [Fact]
         public void MapSymbolKey_Digit_ReturnsNull()
         {
@@ -618,6 +801,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Null(result);
         }
 
+        /// <summary>
+        ///     MapCharacterKey_Digit_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys
+        /// </summary>
         [Fact]
         public void MapCharacterKey_Digit_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys()
         {
@@ -631,6 +817,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.True(platform.IsKeyDown(ConsoleKey.D5));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_UppercaseLetter_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys
+        /// </summary>
         [Fact]
         public void MapCharacterKey_UppercaseLetter_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys()
         {
@@ -644,6 +833,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.True(platform.IsKeyDown(ConsoleKey.M));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_LowercaseLetter_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys
+        /// </summary>
         [Fact]
         public void MapCharacterKey_LowercaseLetter_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys()
         {
@@ -657,6 +849,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.True(platform.IsKeyDown(ConsoleKey.Z));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_Symbol_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys
+        /// </summary>
         [Fact]
         public void MapCharacterKey_Symbol_WhenKeyDown_SetsLastKeyPressedAndAddsToPressedKeys()
         {
@@ -670,6 +865,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.True(platform.IsKeyDown(ConsoleKey.OemComma));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_WhenKeyUp_RemovesFromPressedKeys
+        /// </summary>
         [Fact]
         public void MapCharacterKey_WhenKeyUp_RemovesFromPressedKeys()
         {
@@ -683,6 +881,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsKeyDown(ConsoleKey.A));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_KeyUp_DoesNotSetLastKeyPressed
+        /// </summary>
         [Fact]
         public void MapCharacterKey_KeyUp_DoesNotSetLastKeyPressed()
         {
@@ -694,6 +895,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.TryGetLastKeyPressed(out ConsoleKey _));
         }
 
+        /// <summary>
+        ///     MapCharacterKey_UnknownChar_DoesNothing
+        /// </summary>
         [Fact]
         public void MapCharacterKey_UnknownChar_DoesNothing()
         {
@@ -706,6 +910,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(platform.IsKeyDown(ConsoleKey.Oem3));
         }
 
+        /// <summary>
+        ///     TryGetLastKeyPressed_AfterConsume_ReturnsFalse
+        /// </summary>
         [Fact]
         public void TryGetLastKeyPressed_AfterConsume_ReturnsFalse()
         {
@@ -720,6 +927,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Equal(default(ConsoleKey), key2);
         }
 
+        /// <summary>
+        ///     GetMouseWheel_ConsecutiveCalls_SecondReturnsZero
+        /// </summary>
         [Fact]
         public void GetMouseWheel_ConsecutiveCalls_SecondReturnsZero()
         {
