@@ -56,6 +56,9 @@ namespace Alis.Core.Ecs.Test
          InlineData(10, 1, 1, 1, 2), InlineData(10, 1, 1, 1, 3), InlineData(10, 1, 1, 2, 1), InlineData(10, 1, 1, 2, 2), InlineData(10, 1, 1, 2, 3), InlineData(10, 1, 2, 1, 1), InlineData(10, 1, 2, 1, 2), InlineData(10, 1, 2, 1, 3), InlineData(10, 1, 2, 2, 1), InlineData(10, 1, 2, 2, 2), InlineData(10, 1, 2, 2, 3), InlineData(10, 2, 1, 1, 1), InlineData(10, 2, 1, 1, 2),
          InlineData(10, 2, 1, 1, 3), InlineData(10, 2, 1, 2, 1), InlineData(10, 2, 1, 2, 2), InlineData(10, 2, 1, 2, 3), InlineData(10, 2, 2, 1, 1), InlineData(10, 2, 2, 1, 2), InlineData(10, 2, 2, 1, 3), InlineData(10, 2, 2, 2, 1), InlineData(10, 2, 2, 2, 2), InlineData(10, 2, 2, 2, 3), InlineData(20, 1, 1, 1, 1), InlineData(20, 1, 1, 2, 2), InlineData(20, 1, 2, 1, 3),
          InlineData(20, 1, 2, 2, 1), InlineData(20, 2, 1, 1, 2), InlineData(20, 2, 1, 2, 3), InlineData(20, 2, 2, 1, 1), InlineData(20, 2, 2, 2, 2), InlineData(50, 1, 1, 1, 1), InlineData(50, 1, 1, 2, 2), InlineData(50, 1, 2, 1, 3), InlineData(50, 2, 1, 1, 1), InlineData(50, 2, 2, 2, 2), InlineData(100, 1, 1, 1, 1), InlineData(100, 2, 2, 2, 2)]
+        /// <summary>
+        ///     UltraComp_ComplexMatrix
+        /// </summary>
         public void UltraComp_ComplexMatrix(int e, int c, int o, int m, int q)
         {
             using Scene scene = new Scene();
@@ -82,6 +85,9 @@ namespace Alis.Core.Ecs.Test
         /// <param name="count">The count</param>
         [Theory, InlineData(1), InlineData(2), InlineData(3), InlineData(4), InlineData(5), InlineData(6), InlineData(7), InlineData(8), InlineData(9), InlineData(10), InlineData(11), InlineData(12), InlineData(13), InlineData(14), InlineData(15), InlineData(16), InlineData(17), InlineData(18), InlineData(19), InlineData(20), InlineData(25), InlineData(30), InlineData(35), InlineData(40),
          InlineData(45), InlineData(50), InlineData(60), InlineData(70), InlineData(80), InlineData(90), InlineData(100), InlineData(150), InlineData(200)]
+        /// <summary>
+        ///     UltraComp_SeriesCreation
+        /// </summary>
         public void UltraComp_SeriesCreation(int count)
         {
             using Scene scene = new Scene();
@@ -106,6 +112,9 @@ namespace Alis.Core.Ecs.Test
         /// <param name="b">The </param>
         [Theory, InlineData(1, 1), InlineData(1, 2), InlineData(1, 3), InlineData(2, 1), InlineData(2, 2), InlineData(2, 3), InlineData(3, 1), InlineData(3, 2), InlineData(3, 3), InlineData(5, 1), InlineData(5, 2), InlineData(5, 3), InlineData(10, 1), InlineData(10, 2), InlineData(10, 3), InlineData(20, 1), InlineData(20, 2), InlineData(20, 3), InlineData(50, 1), InlineData(50, 2),
          InlineData(50, 3), InlineData(100, 1), InlineData(100, 2), InlineData(100, 3)]
+        /// <summary>
+        ///     UltraComp_DualParametrized
+        /// </summary>
         public void UltraComp_DualParametrized(int a, int b)
         {
             using Scene scene = new Scene();
