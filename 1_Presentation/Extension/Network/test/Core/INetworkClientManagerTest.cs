@@ -143,12 +143,31 @@ namespace Alis.Extension.Network.Test.Core
             /// <returns>The network player</returns>
             public NetworkPlayer GetPlayer(string playerId) => null;
             
+            /// <summary>
+            ///     Occurs when a player joins
+            /// </summary>
             public event EventHandler<PlayerEventArgs> PlayerJoined;
+
+            /// <summary>
+            ///     Occurs when a player leaves
+            /// </summary>
             public event EventHandler<PlayerEventArgs> PlayerLeft;
+
+            /// <summary>
+            ///     Occurs when connected
+            /// </summary>
             public event EventHandler<EventArgs> Connected;
+
+            /// <summary>
+            ///     Occurs when disconnected
+            /// </summary>
             public event EventHandler<EventArgs> Disconnected;
+
+            /// <summary>
+            ///     Occurs when an error is encountered
+            /// </summary>
             public event EventHandler<NetworkErrorEventArgs> Error;
-            
+
             /// <summary>
             /// Connects the server uri
             /// </summary>
@@ -157,14 +176,17 @@ namespace Alis.Extension.Network.Test.Core
             /// <param name="cancellationToken">The cancellation token</param>
             public Task ConnectAsync(Uri serverUri, string playerName, CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
-            
+
             /// <summary>
             /// Disconnects the cancellation token
             /// </summary>
             /// <param name="cancellationToken">The cancellation token</param>
             public Task DisconnectAsync(CancellationToken cancellationToken = default)
                 => Task.CompletedTask;
-            
+
+            /// <summary>
+            ///     Occurs when a server message is received
+            /// </summary>
             public event EventHandler<ServerMessageEventArgs> ServerMessageReceived;
             
             /// <summary>
