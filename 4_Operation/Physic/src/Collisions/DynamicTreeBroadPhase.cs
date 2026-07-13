@@ -254,7 +254,7 @@ namespace Alis.Core.Physic.Collisions
             Array.Sort(_pairBuffer, 0, _pairCount);
 
             // Send the pairs back to the client.
-            for (int i = 0; i < _pairCount; i++)
+            for (int i = 0; _pairCount > 0 && i < _pairCount; i++)
             {
                 int proxyIdA = _pairBuffer[i].ProxyIdA;
                 int proxyIdB = _pairBuffer[i].ProxyIdB;
