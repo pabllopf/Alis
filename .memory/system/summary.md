@@ -243,6 +243,13 @@ Total blocked: 129
 - **Commit**: `6ab1fe968`
 - **Status**: SUCCESS
 
+### FastestTable + GameObjectType
+- **Timestamp**: 2026-07-12 21:40:00
+- **Files**: `4_Operation/Ecs/src/Collections/FastestTable.cs`, `4_Operation/Ecs/src/Kernel/GameObjectType.cs`
+- **Tests Added**: 24
+- **Commit**: `e04988e8b`
+- **Status**: SUCCESS
+
 ### EntityUpdate.cs
 - **Timestamp**: 2026-07-13 00:00:00
 - **File**: `4_Operation/Ecs/src/EntityUpdate.cs`
