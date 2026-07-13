@@ -195,6 +195,9 @@ namespace Alis.Extension.Network.Internal
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
 
+        /// <summary>
+        ///     Occurs when a pong is received
+        /// </summary>
         public event EventHandler<PongEventArgs> Pong;
 
         /// <summary>
