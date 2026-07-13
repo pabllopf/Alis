@@ -295,5 +295,9 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectLocation.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/Event.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/Event.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestTable.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectType.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs"
 ]

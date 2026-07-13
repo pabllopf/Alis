@@ -1,16 +1,75 @@
 {
   "project": "pabllopf-official_alis",
-  "total": 5,
-  "fetched": 5,
-  "fetchedAt": "2026-07-10T07:54:12Z",
+  "total": 12,
+  "fetched": 12,
+  "fetchedAt": "2026-07-13T10:45:48Z",
   "issues": [
+    {
+      "key": "AZ9WLQoab3Yg5Wvlzs06",
+      "rule": "csharpsquid:S2583",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+      "project": "pabllopf-official_alis",
+      "line": 257,
+      "hash": "ea80884f2cf37ce898cefce3bec5fe73",
+      "textRange": {
+        "startLine": 257,
+        "endLine": 257,
+        "startOffset": 28,
+        "endOffset": 42
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
+              "textRange": {
+                "startLine": 257,
+                "endLine": 271,
+                "startOffset": 44,
+                "endOffset": 45
+              }
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "pabllopf-fj3X7@github",
+      "author": "pabloperdomofalcon@gmail.com",
+      "tags": [
+        "cwe",
+        "pitfall",
+        "suspicious",
+        "symbolic-execution",
+        "unused"
+      ],
+      "creationDate": "2026-07-10T07:52:27+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "a41c51fb-a96d-4278-94e7-f49009732ea7",
+      "lastChangeSource": "ANALYSIS"
+    },
     {
       "key": "AZ7fFnnsqjt04IrTJ5SH",
       "rule": "csharpsquid:S2583",
       "severity": "MAJOR",
       "component": "pabllopf-official_alis:4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs",
       "project": "pabllopf-official_alis",
-      "line": 261,
       "hash": "d64e63e69b415d5967089f1f19040700",
       "textRange": {
         "startLine": 261,
@@ -33,7 +92,8 @@
           ]
         }
       ],
-      "status": "OPEN",
+      "resolution": "FIXED",
+      "status": "CLOSED",
       "message": "Change this condition so that it does not always evaluate to 'False'. Some code paths are unreachable.",
       "effort": "15min",
       "debt": "15min",
@@ -47,7 +107,8 @@
         "unused"
       ],
       "creationDate": "2026-06-19T08:53:02+0000",
-      "updateDate": "2026-06-19T08:53:02+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "closeDate": "2026-07-12T11:51:39+0000",
       "type": "BUG",
       "organization": "pabllopf-official",
       "cleanCodeAttribute": "LOGICAL",
@@ -58,10 +119,10 @@
           "severity": "MEDIUM"
         }
       ],
-      "issueStatus": "OPEN",
+      "issueStatus": "FIXED",
       "projectName": "Alis",
       "internalTags": [],
-      "lastChangeAnalysisUuid": "f8294cdf-c9fd-4d64-8623-3982513bf484",
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
       "lastChangeSource": "ANALYSIS"
     },
     {
@@ -245,6 +306,420 @@
       "projectName": "Alis",
       "internalTags": [],
       "lastChangeAnalysisUuid": "43fa2326-a7d8-4cf4-8702-b64a71bc6c54",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQkSb3Yg5Wvlzs02",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 67,
+      "hash": "cfdb2758d60403d748d45cb591fb44ce",
+      "textRange": {
+        "startLine": 67,
+        "endLine": 67,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+              "textRange": {
+                "startLine": 67,
+                "endLine": 67,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+              "textRange": {
+                "startLine": 61,
+                "endLine": 61,
+                "startOffset": 68,
+                "endOffset": 75
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQkSb3Yg5Wvlzs03",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 92,
+      "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
+      "textRange": {
+        "startLine": 92,
+        "endLine": 92,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+              "textRange": {
+                "startLine": 92,
+                "endLine": 92,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs",
+              "textRange": {
+                "startLine": 86,
+                "endLine": 86,
+                "startOffset": 69,
+                "endOffset": 76
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQkob3Yg5Wvlzs05",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 57,
+      "hash": "cfdb2758d60403d748d45cb591fb44ce",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+              "textRange": {
+                "startLine": 57,
+                "endLine": 57,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+              "textRange": {
+                "startLine": 51,
+                "endLine": 51,
+                "startOffset": 68,
+                "endOffset": 75
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQkob3Yg5Wvlzs04",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 84,
+      "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
+      "textRange": {
+        "startLine": 84,
+        "endLine": 84,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+              "textRange": {
+                "startLine": 84,
+                "endLine": 84,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs",
+              "textRange": {
+                "startLine": 78,
+                "endLine": 78,
+                "startOffset": 69,
+                "endOffset": 76
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQjFb3Yg5Wvlzs01",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 85,
+      "hash": "cfdb2758d60403d748d45cb591fb44ce",
+      "textRange": {
+        "startLine": 85,
+        "endLine": 85,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+              "textRange": {
+                "startLine": 85,
+                "endLine": 85,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+              "textRange": {
+                "startLine": 79,
+                "endLine": 79,
+                "startOffset": 68,
+                "endOffset": 75
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
+      "lastChangeSource": "ANALYSIS"
+    },
+    {
+      "key": "AZ9WLQjFb3Yg5Wvlzs00",
+      "rule": "csharpsquid:S2259",
+      "severity": "MAJOR",
+      "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+      "project": "pabllopf-official_alis",
+      "line": 112,
+      "hash": "0a8b4d9c73eb523e43f00600a744cfb7",
+      "textRange": {
+        "startLine": 112,
+        "endLine": 112,
+        "startOffset": 16,
+        "endOffset": 23
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+              "textRange": {
+                "startLine": 112,
+                "endLine": 112,
+                "startOffset": 16,
+                "endOffset": 23
+              },
+              "msg": "Then a 'NullReferenceException' is thrown"
+            },
+            {
+              "component": "pabllopf-official_alis:1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs",
+              "textRange": {
+                "startLine": 106,
+                "endLine": 106,
+                "startOffset": 69,
+                "endOffset": 76
+              },
+              "msg": "If 'options' is 'null'"
+            }
+          ],
+          "description": "Execution Flow",
+          "type": "EXECUTION"
+        }
+      ],
+      "status": "OPEN",
+      "message": "'options' is null on at least one execution path.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "raul.lozano.ponce@hotmail.com",
+      "tags": [
+        "cwe",
+        "symbolic-execution"
+      ],
+      "creationDate": "2026-02-20T00:00:00+0000",
+      "updateDate": "2026-07-12T11:51:39+0000",
+      "type": "BUG",
+      "organization": "pabllopf-official",
+      "cleanCodeAttribute": "LOGICAL",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "RELIABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN",
+      "projectName": "Alis",
+      "internalTags": [],
+      "lastChangeAnalysisUuid": "c0f6690a-049a-4e28-9f67-57725d655619",
       "lastChangeSource": "ANALYSIS"
     },
     {
