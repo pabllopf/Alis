@@ -46,6 +46,9 @@ namespace Alis.Core.Ecs.Test
         /// <param name="comp2">The comp</param>
         [Theory, InlineData(1, 1), InlineData(1, 2), InlineData(1, 3), InlineData(1, 4), InlineData(1, 5), InlineData(2, 1), InlineData(2, 2), InlineData(2, 3), InlineData(2, 4), InlineData(2, 5), InlineData(3, 1), InlineData(3, 2), InlineData(3, 3), InlineData(3, 4), InlineData(3, 5), InlineData(4, 1), InlineData(4, 2), InlineData(4, 3), InlineData(4, 4), InlineData(4, 5),
          InlineData(5, 1), InlineData(5, 2), InlineData(5, 3), InlineData(5, 4), InlineData(5, 5)]
+        /// <summary>
+        ///     Combinatorial_ComponentPairInteractions
+        /// </summary>
         public void Combinatorial_ComponentPairInteractions(int comp1, int comp2)
         {
             using Scene scene = new Scene();
@@ -65,6 +68,9 @@ namespace Alis.Core.Ecs.Test
         /// <param name="componentType">The component type</param>
         [Theory, InlineData(1, 1), InlineData(2, 1), InlineData(3, 1), InlineData(5, 1), InlineData(10, 1), InlineData(1, 2), InlineData(2, 2), InlineData(3, 2), InlineData(5, 2), InlineData(10, 2), InlineData(1, 3), InlineData(2, 3), InlineData(3, 3), InlineData(5, 3), InlineData(10, 3), InlineData(1, 4), InlineData(2, 4), InlineData(3, 4), InlineData(5, 4), InlineData(10, 4),
          InlineData(1, 5), InlineData(2, 5), InlineData(3, 5), InlineData(5, 5), InlineData(10, 5)]
+        /// <summary>
+        ///     Combinatorial_EntityCountWithComponentType
+        /// </summary>
         public void Combinatorial_EntityCountWithComponentType(int entityCount, int componentType)
         {
             using Scene scene = new Scene();
