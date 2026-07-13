@@ -299,5 +299,6 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FastestTable.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectType.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs"
 ]

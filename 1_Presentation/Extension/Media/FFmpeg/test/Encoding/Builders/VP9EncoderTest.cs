@@ -30,7 +30,6 @@
 using System;
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
-using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -41,111 +40,69 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
     /// <seealso cref="Vp9Encoder" />
     public class Vp9EncoderTest
     {
-        /// <summary>
-        ///     Tests that vp 9 encoder constructor should create instance with default cqp
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
+        [Fact]
+        public void Vp9Encoder_Constructor_ShouldSetDefaultCurrentQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
-            Assert.NotNull(encoder);
-            Assert.Contains("-crf", encoder.CurrentQualitySettings);
+            Assert.Equal("-crf 31 -b:v 0", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder name property should return libvpx vp 9
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_NameProperty_ShouldReturnLibvpxVp9()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
-            string name = encoder.Name;
-
-            Assert.Equal("libvpx-vp9", name);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder default format should be webm
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_DefaultFormat_ShouldBeWebm()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
-            Assert.Equal("webm", encoder.Format);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder encoder quality property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_EncoderQualityProperty_ShouldBeSettable()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-            Quality quality = Quality.Best;
-
-            encoder.EncoderQuality = quality;
-
-            Assert.Equal(quality, encoder.EncoderQuality);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder default quality should be good
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_DefaultQuality_ShouldBeGood()
+        [Fact]
+        public void Vp9Encoder_Constructor_ShouldSetDefaults()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
             Assert.Equal(Quality.Good, encoder.EncoderQuality);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder encoder tune property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_EncoderTuneProperty_ShouldBeSettable()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-            Vp9Encoder.Tune tune = Vp9Encoder.Tune.Film;
-
-            encoder.EncoderTune = tune;
-
-            Assert.Equal(tune, encoder.EncoderTune);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder cpu used property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_CpuUsedProperty_ShouldBeSettable()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-            int cpuUsed = 4;
-
-            encoder.CpuUsed = cpuUsed;
-
-            Assert.Equal(cpuUsed, encoder.CpuUsed);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder default cpu used should be null
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_DefaultCpuUsed_ShouldBeNull()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
+            Assert.Equal(Vp9Encoder.Tune.Default, encoder.EncoderTune);
             Assert.Null(encoder.CpuUsed);
+            Assert.False(encoder.RowBasedMultithreading);
+            Assert.Equal("webm", encoder.Format);
+            Assert.Equal("libvpx-vp9", encoder.Name);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder row based multithreading property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_RowBasedMultithreadingProperty_ShouldBeSettable()
+        [Fact]
+        public void Vp9Encoder_EncoderQuality_ShouldBeSettable()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.EncoderQuality = Quality.Best;
+
+            Assert.Equal(Quality.Best, encoder.EncoderQuality);
+        }
+
+        [Fact]
+        public void Vp9Encoder_EncoderTune_ShouldBeSettable()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.EncoderTune = Vp9Encoder.Tune.Film;
+
+            Assert.Equal(Vp9Encoder.Tune.Film, encoder.EncoderTune);
+        }
+
+        [Fact]
+        public void Vp9Encoder_CpuUsed_ShouldBeSettable()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.CpuUsed = 4;
+
+            Assert.Equal(4, encoder.CpuUsed);
+        }
+
+        [Fact]
+        public void Vp9Encoder_CpuUsed_ShouldAcceptNegativeValues()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.CpuUsed = -8;
+
+            Assert.Equal(-8, encoder.CpuUsed);
+        }
+
+        [Fact]
+        public void Vp9Encoder_RowBasedMultithreading_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
@@ -154,117 +111,116 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.True(encoder.RowBasedMultithreading);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder default row based multithreading should be false
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_DefaultRowBasedMultithreading_ShouldBeFalse()
+        [Fact]
+        public void Vp9Encoder_Format_ShouldBeSettable()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
-            Assert.False(encoder.RowBasedMultithreading);
+            encoder.Format = "mkv";
+
+            Assert.Equal("mkv", encoder.Format);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set cvbr with crf should set quality settings
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_SetCvbrWithCrf_ShouldSetQualitySettings()
+        [Fact]
+        public void Vp9Encoder_Name_ShouldReturnLibvpxVp9()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            int crf = 31;
-            string maxBitrate = "2M";
 
-            encoder.SetCvbr(crf, maxBitrate);
-
-            Assert.Contains("-crf", encoder.CurrentQualitySettings);
-            Assert.Contains("31", encoder.CurrentQualitySettings);
-            Assert.Contains("2M", encoder.CurrentQualitySettings);
+            Assert.Equal("libvpx-vp9", encoder.Name);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set cvbr with bitrates should set quality settings
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_SetCvbrWithBitrates_ShouldSetQualitySettings()
+        [Fact]
+        public void Vp9Encoder_SetCvbr_WithCrfAndMaxBitrate_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            string targetBitrate = "1M";
-            string minBitrate = "500k";
-            string maxBitrate = "2M";
 
-            encoder.SetCvbr(targetBitrate, minBitrate, maxBitrate);
+            encoder.SetCvbr(25, "2M");
 
-            Assert.Contains("-minrate", encoder.CurrentQualitySettings);
-            Assert.Contains("-b:v", encoder.CurrentQualitySettings);
-            Assert.Contains("-maxrate", encoder.CurrentQualitySettings);
+            Assert.Equal("-crf 25 -b:v 2M", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set abr should set quality settings
-        /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
+        public void Vp9Encoder_SetCvbr_WithBitrates_ShouldSetQualitySettings()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.SetCvbr("1M", "500k", "2M");
+
+            Assert.Equal("-minrate 500k -b:v 1M -maxrate 2M", encoder.CurrentQualitySettings);
+        }
+
+        [Fact]
         public void Vp9Encoder_SetAbr_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            string bitrate = "1M";
 
-            encoder.SetAbr(bitrate);
+            encoder.SetAbr("1M");
 
-            Assert.Contains("-b:v", encoder.CurrentQualitySettings);
-            Assert.Contains("1M", encoder.CurrentQualitySettings);
+            Assert.Equal("-b:v 1M", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set cqp with custom value should work
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_SetCqpWithCustomValue_ShouldWork()
+        [Fact]
+        public void Vp9Encoder_SetCqp_WithDefault_ShouldUseCrf31()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            int crf = 40;
 
-            encoder.SetCqp(crf);
+            encoder.SetCqp();
 
-            Assert.Contains("-crf", encoder.CurrentQualitySettings);
-            Assert.Contains("40", encoder.CurrentQualitySettings);
-            Assert.Contains("-b:v 0", encoder.CurrentQualitySettings);
+            Assert.Equal("-crf 31 -b:v 0", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set cbr should set quality settings
-        /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
+        public void Vp9Encoder_SetCqp_WithCustomCrf_ShouldSetQualitySettings()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.SetCqp(40);
+
+            Assert.Equal("-crf 40 -b:v 0", encoder.CurrentQualitySettings);
+        }
+
+        [Fact]
+        public void Vp9Encoder_SetCqp_WithCrfZero_ShouldSetQualitySettings()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.SetCqp(0);
+
+            Assert.Equal("-crf 0 -b:v 0", encoder.CurrentQualitySettings);
+        }
+
+        [Fact]
+        public void Vp9Encoder_SetCqp_WithCrf63_ShouldSetQualitySettings()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            encoder.SetCqp(63);
+
+            Assert.Equal("-crf 63 -b:v 0", encoder.CurrentQualitySettings);
+        }
+
+        [Fact]
         public void Vp9Encoder_SetCbr_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            string bitrate = "2M";
 
-            encoder.SetCbr(bitrate);
+            encoder.SetCbr("2M");
 
-            Assert.Contains("-minrate", encoder.CurrentQualitySettings);
-            Assert.Contains("-maxrate", encoder.CurrentQualitySettings);
-            Assert.Contains("-b:v", encoder.CurrentQualitySettings);
+            Assert.Equal("-minrate 2M -maxrate 2M -b:v 2M", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder set lossless should set quality settings
-        /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Vp9Encoder_SetLossless_ShouldSetQualitySettings()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
             encoder.SetLossless();
 
-            Assert.Contains("-lossless 1", encoder.CurrentQualitySettings);
+            Assert.Equal("-lossless 1", encoder.CurrentQualitySettings);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should return encoder options
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldReturnEncoderOptions()
+        [Fact]
+        public void Vp9Encoder_Create_ShouldReturnEncoderOptionsWithCorrectFormatAndName()
         {
             Vp9Encoder encoder = new Vp9Encoder();
 
@@ -275,10 +231,82 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvpx-vp9", options.EncoderName);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include cpu used when set
-        /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeQualitySettingsInArguments()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.SetCqp(25);
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-crf 25 -b:v 0", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeTuneContentDefault()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-tune-content default", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeTuneContentFilm()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderTune = Vp9Encoder.Tune.Film;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-tune-content film", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeTuneContentScreen()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderTune = Vp9Encoder.Tune.Screen;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-tune-content screen", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeDeadlineGoodByDefault()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-deadline good", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeDeadlineBest()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderQuality = Quality.Best;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-deadline best", options.EncoderArguments);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeDeadlineRealtime()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.EncoderQuality = Quality.RealTime;
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Contains("-deadline realtime", options.EncoderArguments);
+        }
+
+        [Fact]
         public void Vp9Encoder_Create_ShouldIncludeCpuUsedWhenSet()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -286,92 +314,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
 
             EncoderOptions options = encoder.Create();
 
-            Assert.Contains("-cpu-used", options.EncoderArguments);
-            Assert.Contains("5", options.EncoderArguments);
+            Assert.Contains("-cpu-used 5", options.EncoderArguments);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include row mt when enabled
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeRowMtWhenEnabled()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-            encoder.RowBasedMultithreading = true;
-
-            EncoderOptions options = encoder.Create();
-
-            Assert.Contains("-row-mt 1", options.EncoderArguments);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder tune enum should have three values
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_TuneEnum_ShouldHaveThreeValues()
-        {
-            Vp9Encoder.Tune[] values = (Vp9Encoder.Tune[]) Enum.GetValues(typeof(Vp9Encoder.Tune));
-
-            Assert.Equal(3, values.Length);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder should inherit from encoder options builder
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_ShouldInheritFromEncoderOptionsBuilder()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
-            Assert.IsAssignableFrom<Vp9Encoder>(encoder);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include tune content in arguments
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeTuneContentInArguments()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
-            EncoderOptions options = encoder.Create();
-
-            Assert.Contains("-tune-content", options.EncoderArguments);
-            Assert.Contains("default", options.EncoderArguments);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include deadline in arguments
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeDeadlineInArguments()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-
-            EncoderOptions options = encoder.Create();
-
-            Assert.Contains("-deadline", options.EncoderArguments);
-            Assert.Contains("good", options.EncoderArguments);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder create should not include row mt when disabled
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldNotIncludeRowMtWhenDisabled()
-        {
-            Vp9Encoder encoder = new Vp9Encoder();
-            encoder.RowBasedMultithreading = false;
-
-            EncoderOptions options = encoder.Create();
-
-            Assert.DoesNotContain("-row-mt", options.EncoderArguments);
-        }
-
-        /// <summary>
-        ///     Tests that vp 9 encoder create should not include cpu used when null
-        /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Vp9Encoder_Create_ShouldNotIncludeCpuUsedWhenNull()
         {
             Vp9Encoder encoder = new Vp9Encoder();
@@ -382,60 +328,72 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-cpu-used", options.EncoderArguments);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include film tune content
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeFilmTuneContent()
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeRowMtWhenEnabled()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            encoder.EncoderTune = Vp9Encoder.Tune.Film;
+            encoder.RowBasedMultithreading = true;
 
             EncoderOptions options = encoder.Create();
 
-            Assert.Contains("film", options.EncoderArguments);
+            Assert.Contains("-row-mt 1", options.EncoderArguments);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include screen tune content
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeScreenTuneContent()
+        [Fact]
+        public void Vp9Encoder_Create_ShouldNotIncludeRowMtWhenDisabled()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            encoder.EncoderTune = Vp9Encoder.Tune.Screen;
+            encoder.RowBasedMultithreading = false;
 
             EncoderOptions options = encoder.Create();
 
-            Assert.Contains("screen", options.EncoderArguments);
+            Assert.DoesNotContain("-row-mt", options.EncoderArguments);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include best deadline
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeBestDeadline()
+        [Fact]
+        public void Vp9Encoder_Create_ShouldIncludeCustomFormat()
+        {
+            Vp9Encoder encoder = new Vp9Encoder();
+            encoder.Format = "mkv";
+
+            EncoderOptions options = encoder.Create();
+
+            Assert.Equal("mkv", options.Format);
+        }
+
+        [Fact]
+        public void Vp9Encoder_Create_IncludeAllFeatures()
         {
             Vp9Encoder encoder = new Vp9Encoder();
             encoder.EncoderQuality = Quality.Best;
+            encoder.EncoderTune = Vp9Encoder.Tune.Film;
+            encoder.CpuUsed = 2;
+            encoder.RowBasedMultithreading = true;
+            encoder.SetCbr("5M");
 
             EncoderOptions options = encoder.Create();
 
-            Assert.Contains("best", options.EncoderArguments);
+            Assert.Contains("-minrate 5M -maxrate 5M -b:v 5M", options.EncoderArguments);
+            Assert.Contains("-tune-content film", options.EncoderArguments);
+            Assert.Contains("-deadline best", options.EncoderArguments);
+            Assert.Contains("-cpu-used 2", options.EncoderArguments);
+            Assert.Contains("-row-mt 1", options.EncoderArguments);
         }
 
-        /// <summary>
-        ///     Tests that vp 9 encoder create should include realtime deadline
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Vp9Encoder_Create_ShouldIncludeRealtimeDeadline()
+        [Fact]
+        public void Vp9Encoder_TuneEnum_ShouldHaveDefaultScreenFilm()
+        {
+            Assert.Equal(0, (int)Vp9Encoder.Tune.Default);
+            Assert.Equal(1, (int)Vp9Encoder.Tune.Screen);
+            Assert.Equal(2, (int)Vp9Encoder.Tune.Film);
+        }
+
+        [Fact]
+        public void Vp9Encoder_ImplementsIEncoderOptionsBuilder()
         {
             Vp9Encoder encoder = new Vp9Encoder();
-            encoder.EncoderQuality = Quality.RealTime;
 
-            EncoderOptions options = encoder.Create();
-
-            Assert.Contains("realtime", options.EncoderArguments);
+            Assert.IsAssignableFrom<IEncoderOptionsBuilder>(encoder);
         }
     }
 }

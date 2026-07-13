@@ -178,7 +178,7 @@ namespace Alis.Core.Aspect.Logging.Outputs
         {
             lock (_lock)
             {
-                return new List<ILogEntry>(_entries);
+                return _entries.ToArray();
             }
         }
 

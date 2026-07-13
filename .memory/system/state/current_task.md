@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 75 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 78 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    45
+    39
 
     ### Uncovered Branches
     4
 
     ### Method
-    EntityUpdate
+    VP9Encoder
 
     ### Complexity / LOC
-    4 / 58 lines
+    23 / 57 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:EntityUpdate.cs
+//  File:VP9Encoder.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -56,51 +56,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.CompilerServices;
-using Alis.Core.Aspect.Fluent.Components;
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetypes;
-using Alis.Core.Ecs.Updating;
-
-namespace Alis.Core.Ecs
+namespace Alis.Extension.Media.FFmpeg.Encoding.Builders
 {
     /// <summary>
-    ///     Handles update logic for entities that have a specific component and up to five dependency arguments.
+    ///     The vp encoder class
     /// </summary>
-    /// <typeparam name="TComp">The component type that implements <see cref="IOnUpdate{TArg1,TArg2,TArg3,TArg4,TArg5}"/>.</typeparam>
-    /// <typeparam name="TArg1">The type of the first update argument.</typeparam>
-    /// <typeparam name="TArg2">The type of the second update argument.</typeparam>
-    /// <typeparam name="TArg3">The type of the third update argument.</typeparam>
-    /// <typeparam name="TArg4">The type of the fourth update argument.</typeparam>
-    /// <typeparam name="TArg5">The type of the fifth update argument.</typeparam>
-    /// <seealso cref="ComponentStorage{TComp}" />
-    public class EntityUpdate<TComp, TArg1, TArg2, TArg3, TArg4, TArg5>(int capacity) : ComponentStorage<TComp>(capacity)
-        where TComp : IOnUpdate<TArg1, TArg2, TArg3, TArg4, TArg5>
+    /// <seealso cref="IEncoderOptionsBuilder" />
+    public class Vp9Encoder : IEncoderOptionsBuilder
     {
         /// <summary>
-        ///     Runs the update logic for all entities of this archetype.
+        ///     The tune enum
         /// </summary>
-        /// <param name="scene">The scene containing the entities to update.</param>
-        /// <param name="b">The archetype representing the set of entities to update.</param>
-        internal override void Run(Scene scene, Archetype b)
+        public enum Tune
         {
-            ref GameObjectIdOnly entityIds = ref b.GetEntityDataReference();
-            ref TComp comp = ref GetComponentStorageDataReference();
+            /// <summary>
+            ///     The default tune
+            /// </summary>
+            Default = 0,
 
+            /// <summary>
+            ///     Screen capture content
+            /// </summary>
+            Screen = 1,
+
+            /// <summary>
+            ///     Film content; improves grain retention
+            /// </summary>
+            Film = 2
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Vp9Encoder" /> class
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:4_Operation/Ecs/test/EntityUpdateTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/test/Encoding/Builders/VP9EncoderTests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage EntityUpdate.cs
+    Commit format: test: coverage VP9Encoder.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

@@ -37938,5 +37938,95 @@
     "xml_updated": 0,
     "comments_removed": 0,
     "commit": "docs: WebSocketImplementation.cs add XML documentation for Pong event"
+  },
+  "./1_Presentation/Extension/Network/src/Server/NetworkServerManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:52:37.297Z",
+    "last_processed_at": "2026-07-13T10:52:37.298Z",
+    "modified": true,
+    "xml_added": 21,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: NetworkServerManager.cs add XML documentation for events"
+  },
+  "./1_Presentation/Extension/Network/test/Core/INetworkClientManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:52:53.058Z",
+    "last_processed_at": "2026-07-13T10:52:53.059Z",
+    "modified": true,
+    "xml_added": 18,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: INetworkClientManagerTest.cs add XML documentation for events"
+  },
+  "./1_Presentation/Extension/Network/test/Core/INetworkManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:53:32.662Z",
+    "last_processed_at": "2026-07-13T10:53:32.663Z",
+    "modified": true,
+    "xml_added": 15,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: INetworkManagerTest.cs add XML documentation for events"
+  },
+  "./1_Presentation/Extension/Network/test/Core/INetworkServerManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:53:32.742Z",
+    "last_processed_at": "2026-07-13T10:53:32.742Z",
+    "modified": true,
+    "xml_added": 21,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: INetworkServerManagerTest.cs add XML documentation for events"
+  },
+  "./1_Presentation/Extension/Network/test/IPingPongManagerTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:53:32.842Z",
+    "last_processed_at": "2026-07-13T10:53:32.842Z",
+    "modified": true,
+    "xml_added": 3,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: IPingPongManagerTest.cs add XML documentation for event"
+  },
+  "./1_Presentation/Extension/Payment/Stripe/test/PaymentStatusTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:54:18.358Z",
+    "last_processed_at": "2026-07-13T10:54:18.364Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./1_Presentation/Extension/Updater/src/UpdateManager.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:54:18.538Z",
+    "last_processed_at": "2026-07-13T10:54:18.538Z",
+    "modified": true,
+    "xml_added": 3,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: UpdateManager.cs add XML documentation for event"
+  },
+  "./4_Operation/Audio/src/Players/BrowserPlayer.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:54:18.712Z",
+    "last_processed_at": "2026-07-13T10:54:18.712Z",
+    "modified": true,
+    "xml_added": 3,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: BrowserPlayer.cs add XML documentation for event"
+  },
+  "./4_Operation/Audio/src/Players/WindowsPlayer.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:54:18.831Z",
+    "last_processed_at": "2026-07-13T10:54:18.831Z",
+    "modified": true,
+    "xml_added": 3,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: WindowsPlayer.cs add XML documentation for event"
   }
 }

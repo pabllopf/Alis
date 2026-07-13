@@ -294,7 +294,7 @@ namespace Alis.Core.Aspect.Logging.Core
         {
             lock (_scopeLock)
             {
-                return _scopeStack.Count > 0 ? new List<object>(_scopeStack) : new List<object>();
+                return _scopeStack.Count > 0 ? _scopeStack.ToArray() : Array.Empty<object>();
             }
         }
 

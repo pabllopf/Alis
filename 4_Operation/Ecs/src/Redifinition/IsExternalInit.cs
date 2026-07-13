@@ -32,6 +32,7 @@
 namespace System.Runtime.CompilerServices
 {
     /// <summary>
+    ///     The IsExternalInit attribute
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Interface | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Property | AttributeTargets.Event, Inherited = false)]
 #pragma warning disable S3376 // Attribute name convention (compiler-required name for init accessors)
