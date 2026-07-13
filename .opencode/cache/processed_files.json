@@ -38028,5 +38028,175 @@
     "xml_updated": 0,
     "comments_removed": 0,
     "commit": "docs: WindowsPlayer.cs add XML documentation for event"
+  },
+  "./4_Operation/Ecs/src/Redifinition/RuntimeHelpers.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:55:56.829Z",
+    "last_processed_at": "2026-07-13T10:55:56.830Z",
+    "modified": true,
+    "xml_added": 1,
+    "xml_updated": 1,
+    "comments_removed": 0,
+    "commit": "docs: RuntimeHelpers.cs add XML documentation for class"
+  },
+  "./4_Operation/Graphic/src/Platforms/Osx/MacNativePlatform.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:58:15.030Z",
+    "last_processed_at": "2026-07-13T10:58:15.031Z",
+    "modified": true,
+    "xml_added": 18,
+    "xml_updated": 8,
+    "comments_removed": 0,
+    "commit": "docs: MacNativePlatform.cs add XML documentation for fields and methods"
+  },
+  "./4_Operation/Graphic/src/Platforms/Osx/Native/ObjectiveCInterop.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:56:49.623Z",
+    "last_processed_at": "2026-07-13T10:56:49.623Z",
+    "modified": true,
+    "xml_added": 48,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: ObjectiveCInterop.cs add XML documentation"
+  },
+  "./4_Operation/Graphic/src/Platforms/Win/WinNativePlatform.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:59:25.720Z",
+    "last_processed_at": "2026-07-13T10:59:25.721Z",
+    "modified": true,
+    "xml_added": 15,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: WinNativePlatform.cs add XML documentation"
+  },
+  "./4_Operation/Physic/src/Common/TextureTools/GeomPolyVal.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T10:59:56.109Z",
+    "last_processed_at": "2026-07-13T10:59:56.120Z",
+    "modified": true,
+    "xml_added": 3,
+    "xml_updated": 0,
+    "comments_removed": 3,
+    "commit": "docs: GeomPolyVal.cs add XML documentation"
+  },
+  "./4_Operation/Ecs/src/NeighborCache.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:00:25.208Z",
+    "last_processed_at": "2026-07-13T11:00:25.209Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/src/Redifinition/IsExternalInit.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:00:25.223Z",
+    "last_processed_at": "2026-07-13T11:00:25.223Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/src/Redifinition/SkipLocalsInitAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:00:25.225Z",
+    "last_processed_at": "2026-07-13T11:00:25.225Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/src/Updating/UpdateOrderAttribute.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:00:25.226Z",
+    "last_processed_at": "2026-07-13T11:00:25.226Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/src/Platforms/Web/EGL.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:00:50.067Z",
+    "last_processed_at": "2026-07-13T11:00:50.075Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/CombinatorialTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:01:59.961Z",
+    "last_processed_at": "2026-07-13T11:01:59.969Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/UltraComprehensiveTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:01:59.973Z",
+    "last_processed_at": "2026-07-13T11:01:59.973Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Ecs/test/Updating/Runners/EntityUpdateCoverageTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:01:59.980Z",
+    "last_processed_at": "2026-07-13T11:01:59.980Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformRemainingCoverageTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:01:59.988Z",
+    "last_processed_at": "2026-07-13T11:01:59.988Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Osx/MacNativePlatformTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:01:59.992Z",
+    "last_processed_at": "2026-07-13T11:01:59.992Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
+  },
+  "./4_Operation/Graphic/test/Platforms/Osx/Native/MacNativeWindowContextTests.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:02:00.154Z",
+    "last_processed_at": "2026-07-13T11:02:00.154Z",
+    "modified": true,
+    "xml_added": 72,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": "docs: MacNativeWindowContextTests.cs add XML documentation"
+  },
+  "./4_Operation/Graphic/test/Platforms/Osx/Native/ObjectiveCInteropTest.cs": {
+    "status": "completed",
+    "first_read_at": "2026-07-13T11:02:00.158Z",
+    "last_processed_at": "2026-07-13T11:02:00.158Z",
+    "modified": false,
+    "xml_added": 0,
+    "xml_updated": 0,
+    "comments_removed": 0,
+    "commit": null
   }
 }

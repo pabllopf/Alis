@@ -101,8 +101,24 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <param name="scenes">The scenes</param>
         public SceneManager(Context context, params Ecs.Scene[] scenes) : base(context)
         {
-            LoadedScenes = new List<Ecs.Scene>(scenes);
+            loadedScenes = new List<Ecs.Scene>(scenes);
             CurrentWorld = LoadedScenes[0];
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class with a span of scenes.
+        /// </summary>
+        /// <param name="context">The context</param>
+        /// <param name="scenes">The scenes as a readonly span.</param>
+        public SceneManager(Context context, ReadOnlySpan<Ecs.Scene> scenes) : base(context)
+        {
+            List<Ecs.Scene> list = new List<Ecs.Scene>(scenes.Length);
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                list.Add(scenes[i]);
+            }
+            loadedScenes = list;
+            CurrentWorld = loadedScenes[0];
         }
 
 
@@ -469,7 +485,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         /// <param name="scene">The scene</param>
         public void AddScene(Ecs.Scene scene)
         {
-            LoadedScenes.Add(scene);
+            loadedScenes.Add(scene);
         }
     }
 }

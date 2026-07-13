@@ -308,5 +308,12 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiInputTextCallbackData.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/H264Encoder.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/H264Encoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawList.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFont.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiKeyData.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiListClipper.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/ImguiIo.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/IDTable.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/GenerationServices.cs"
 ]

@@ -174,5 +174,11 @@ namespace Alis.Extension.Media.FFmpeg.Audio
             Array.Copy(RawData, i, sample, 0, BytesPerSample);
             return sample;
         }
+
+        public void GetSample(int index, int channel, Span<byte> destination)
+        {
+            int i = (index * Channels + channel) * BytesPerSample;
+            new ReadOnlySpan<byte>(RawData, i, BytesPerSample).CopyTo(destination);
+        }
     }
 }

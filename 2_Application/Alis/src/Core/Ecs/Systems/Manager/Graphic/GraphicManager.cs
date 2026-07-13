@@ -289,6 +289,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             return pressed;
         }
 
+        internal static void ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys, ISet<ConsoleKey> destination)
+        {
+            destination.Clear();
+            destination.UnionWith(newKeys);
+            destination.ExceptWith(currentKeys);
+        }
+
         /// <summary>
         /// Computes the held keys using the specified new keys
         /// </summary>
@@ -302,6 +309,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             return held;
         }
 
+        internal static void ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys, ISet<ConsoleKey> destination)
+        {
+            destination.Clear();
+            destination.UnionWith(newKeys);
+            destination.IntersectWith(currentKeys);
+        }
+
         /// <summary>
         /// Computes the released keys using the specified current keys
         /// </summary>
@@ -313,6 +327,13 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             HashSet<ConsoleKey> released = new HashSet<ConsoleKey>(currentKeys);
             released.ExceptWith(newKeys);
             return released;
+        }
+
+        internal static void ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys, ISet<ConsoleKey> destination)
+        {
+            destination.Clear();
+            destination.UnionWith(currentKeys);
+            destination.ExceptWith(newKeys);
         }
 
         /// <summary>
