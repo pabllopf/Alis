@@ -250,6 +250,12 @@ Total blocked: 129
 - **Commit**: `e04988e8b`
 - **Status**: SUCCESS
 
+### Ui Structs Batch (ImDrawChannel, ImDrawCmdHeader, ImDrawListSplitter, ImDrawVert, ImFontAtlasCustomRect, ImFontGlyph, ImGuiInputTextCallbackData)
+- **Timestamp**: 2026-07-12 21:50:00
+- **Tests Added**: 35
+- **Commit**: `d1fef4685`
+- **Status**: SUCCESS
+
 ### EntityUpdate.cs
 - **Timestamp**: 2026-07-13 00:00:00
 - **File**: `4_Operation/Ecs/src/EntityUpdate.cs`

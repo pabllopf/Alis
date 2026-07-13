@@ -300,5 +300,13 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectType.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectExtensions.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectQueryEnumerator.1.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VP9Encoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawChannel.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmdHeader.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawListSplitter.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawVert.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasCustomRect.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyph.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiInputTextCallbackData.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/H264Encoder.cs"
 ]
