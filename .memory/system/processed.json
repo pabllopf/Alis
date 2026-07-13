@@ -322,5 +322,8 @@
   "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/OpusEncoder.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPlatformIOPtr.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/GameObjectOnlyEvent.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/Models/VideoFormat.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/SparseSet.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/MP3Encoder.cs"
 ]

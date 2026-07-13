@@ -275,6 +275,13 @@ Total blocked: 129
 - **Commit**: `dc3f307f3`
 - **Status**: SUCCESS
 
+### GameObjectOnlyEvent + GenericEvent
+- **Timestamp**: 2026-07-12 22:05:00
+- **Files**: `4_Operation/Ecs/src/Kernel/Events/GameObjectOnlyEvent.cs`, `4_Operation/Ecs/src/Kernel/Events/GenericEvent.cs`
+- **Tests Added**: 25
+- **Commit**: `9349754d4`
+- **Status**: SUCCESS
+
 ### EntityUpdate.cs
 - **Timestamp**: 2026-07-13 00:00:00
 - **File**: `4_Operation/Ecs/src/EntityUpdate.cs`
