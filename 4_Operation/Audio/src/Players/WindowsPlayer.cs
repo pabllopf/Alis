@@ -83,6 +83,9 @@ namespace Alis.Core.Audio.Players
             }
         }
 
+        /// <summary>
+        ///     Occurs when playback is finished
+        /// </summary>
         public event EventHandler PlaybackFinished;
 
         /// <summary>
