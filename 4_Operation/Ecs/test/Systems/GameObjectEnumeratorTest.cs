@@ -35,14 +35,90 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
-    /// <summary>
-    ///     Tests for the <see cref="GameObjectEnumerator" /> type.
-    /// </summary>
     public class GameObjectEnumeratorTest
     {
-        /// <summary>
-        ///     Tests that enumerating a single entity yields exactly one entity.
-        /// </summary>
+        [Fact]
+        public void GameObjectEnumerator_IsRefStruct_ValueType()
+        {
+            Assert.True(typeof(GameObjectEnumerator).IsValueType);
+        }
+
+        [Fact]
+        public void EntityEnumerable_IsRefStruct_ValueType()
+        {
+            Assert.True(typeof(GameObjectEnumerator.EntityEnumerable).IsValueType);
+        }
+
+        [Fact]
+        public void MoveNext_Empty_ReturnsFalse()
+        {
+            GameObjectEnumerator.EntityEnumerable enumerable = default;
+            GameObjectEnumerator enumerator = enumerable.GetEnumerator();
+
+            Assert.False(enumerator.MoveNext());
+        }
+
+        [Fact]
+        public void MoveNext_AfterExhaustion_StillReturnsFalse()
+        {
+            GameObjectEnumerator.EntityEnumerable enumerable = default;
+            GameObjectEnumerator enumerator = enumerable.GetEnumerator();
+
+            _ = enumerator.MoveNext();
+            Assert.False(enumerator.MoveNext());
+        }
+
+        [Fact]
+        public void Current_AccessedBeforeMoveNext_ThrowsIndexOutOfRangeException()
+        {
+            GameObjectEnumerator.EntityEnumerable enumerable = default;
+            GameObjectEnumerator enumerator = enumerable.GetEnumerator();
+
+            bool threw = false;
+            try
+            {
+                _ = enumerator.Current;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                threw = true;
+            }
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void Current_AccessedAfterMoveNextReturnsFalse_ThrowsIndexOutOfRangeException()
+        {
+            GameObjectEnumerator.EntityEnumerable enumerable = default;
+            GameObjectEnumerator enumerator = enumerable.GetEnumerator();
+
+            _ = enumerator.MoveNext();
+            bool threw = false;
+            try
+            {
+                _ = enumerator.Current;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                threw = true;
+            }
+
+            Assert.True(threw);
+        }
+
+        [Fact]
+        public void GetEnumerator_MultipleTimes_EachIndependent()
+        {
+            GameObjectEnumerator.EntityEnumerable enumerable = default;
+
+            GameObjectEnumerator e1 = enumerable.GetEnumerator();
+            GameObjectEnumerator e2 = enumerable.GetEnumerator();
+
+            Assert.False(e1.MoveNext());
+            Assert.False(e2.MoveNext());
+        }
+
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Enumerate_SingleEntity_YieldsOneEntity()
         {
@@ -59,9 +135,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(1, count);
         }
 
-        /// <summary>
-        ///     Tests that enumerating multiple entities yields the expected count.
-        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Enumerate_MultipleEntities_YieldsExpectedCount()
         {
@@ -78,9 +151,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(5, count);
         }
 
-        /// <summary>
-        ///     Tests that enumerating twice produces the same entity IDs in the same order.
-        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Enumerate_Twice_ProducesSameIds()
         {
@@ -103,9 +173,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(firstIds, secondIds);
         }
 
-        /// <summary>
-        ///     Tests that enumerating after setting span values returns entities with the correct component data.
-        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
         {
@@ -131,9 +198,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(3, index);
         }
 
-        /// <summary>
-        ///     Tests that current throws when accessed before the first MoveNext call.
-        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Current_AccessedBeforeMoveNext_Throws()
         {
@@ -155,9 +219,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
-        /// <summary>
-        ///     Tests that enumerating a mixed-archetype scene only enumerates the entities in the requested chunk.
-        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
         public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
         {
