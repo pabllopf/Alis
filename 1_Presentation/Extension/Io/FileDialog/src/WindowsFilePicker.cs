@@ -119,7 +119,7 @@ if ($dialog.ShowDialog() -eq 'OK') {{
             {
                 FilePickerValidator.ValidateOptions(options);
 
-                options.AllowMultiple = true;
+                options!.AllowMultiple = true;
 
                 string script = BuildOpenFileScript(options);
                 string result = ExecuteScript(script);
