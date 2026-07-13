@@ -29,7 +29,6 @@
 
 using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Encoding.Builders;
-using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
@@ -43,7 +42,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder constructor should create instance with default cqp
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -55,7 +54,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder name property should return libmp 3 lame
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_NameProperty_ShouldReturnLibmp3lame()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -68,7 +67,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder default format should be mp 3
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_DefaultFormat_ShouldBeMp3()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -79,7 +78,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder format property should be settable
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_FormatProperty_ShouldBeSettable()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -93,7 +92,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder channel count property should be settable
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_ChannelCountProperty_ShouldBeSettable()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -107,7 +106,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder default channel count should be null
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_DefaultChannelCount_ShouldBeNull()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -118,7 +117,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder sample rate property should be settable
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SampleRateProperty_ShouldBeSettable()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -132,7 +131,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder default sample rate should be null
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_DefaultSampleRate_ShouldBeNull()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -143,7 +142,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set cbr should set quality settings
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetCbr_ShouldSetQualitySettings()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -158,7 +157,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set abr should set quality settings
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetAbr_ShouldSetQualitySettings()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -174,7 +173,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set cqp with custom quality should work
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetCqpWithCustomQuality_ShouldWork()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -189,7 +188,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should include channel count when set
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldIncludeChannelCountWhenSet()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -204,7 +203,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should include sample rate when set
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldIncludeSampleRateWhenSet()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -219,7 +218,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should not include channel count when null
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldNotIncludeChannelCountWhenNull()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -233,7 +232,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder should inherit from encoder options builder
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_ShouldInheritFromEncoderOptionsBuilder()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -244,7 +243,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set cqp with boundary values should work
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetCqpWithBoundaryValues_ShouldWork()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -259,7 +258,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should not include sample rate when null
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldNotIncludeSampleRateWhenNull()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -273,7 +272,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should include default quality in arguments
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldIncludeDefaultQualityInArguments()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -287,7 +286,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set cbr should override default cqp
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetCbr_ShouldOverrideDefaultCqp()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -302,7 +301,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder set abr should override default cqp
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_SetAbr_ShouldOverrideDefaultCqp()
         {
             Mp3Encoder encoder = new Mp3Encoder();
@@ -318,7 +317,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
         /// <summary>
         ///     Tests that mp 3 encoder create should include both channel count and sample rate when set
         /// </summary>
-        [RequireFfmpegFact]
+        [Fact]
         public void Mp3Encoder_Create_ShouldIncludeBothChannelCountAndSampleRateWhenSet()
         {
             Mp3Encoder encoder = new Mp3Encoder();

@@ -191,7 +191,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         [RequireFfmpegFact]
         public void VideoFrame_ShouldImplementIDisposableInterface()
         {
-            VideoFrame frame = new VideoFrame();
+            VideoFrame frame = new VideoFrame(1, 1);
 
             Assert.IsAssignableFrom<IDisposable>(frame);
         }

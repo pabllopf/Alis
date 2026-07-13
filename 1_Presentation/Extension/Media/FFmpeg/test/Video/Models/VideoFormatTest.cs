@@ -27,253 +27,349 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
 {
+/// <summary>
+///     The video format test class
+/// </summary>
+/// <seealso cref="VideoFormat" />
+public class VideoFormatTest
+{
     /// <summary>
-    ///     The video format test class
+    ///     Tests that video format constructor should create instance
     /// </summary>
-    /// <seealso cref="VideoFormat" />
-    public class VideoFormatTest
+    [Fact]
+    public void VideoFormat_Constructor_ShouldCreateInstance()
     {
-        /// <summary>
-        ///     Tests that video format constructor should create instance
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_Constructor_ShouldCreateInstance()
-        {
-            VideoFormat format = new VideoFormat();
+        VideoFormat format = new VideoFormat();
 
-            Assert.NotNull(format);
-        }
-
-        /// <summary>
-        ///     Tests that video format filename property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_FilenameProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string filename = "video.mp4";
-
-            format.Filename = filename;
-
-            Assert.Equal(filename, format.Filename);
-        }
-
-        /// <summary>
-        ///     Tests that video format nb streams property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_NbStreamsProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            long nbStreams = 2;
-
-            format.NbStreams = nbStreams;
-
-            Assert.Equal(nbStreams, format.NbStreams);
-        }
-
-        /// <summary>
-        ///     Tests that video format nb programs property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_NbProgramsProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            long nbPrograms = 0;
-
-            format.NbPrograms = nbPrograms;
-
-            Assert.Equal(nbPrograms, format.NbPrograms);
-        }
-
-        /// <summary>
-        ///     Tests that video format format name property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_FormatNameProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string formatName = "mov,mp4,m4a,3gp,3g2,mj2";
-
-            format.FormatName = formatName;
-
-            Assert.Equal(formatName, format.FormatName);
-        }
-
-        /// <summary>
-        ///     Tests that video format format long name property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_FormatLongNameProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string formatLongName = "QuickTime / MOV";
-
-            format.FormatLongName = formatLongName;
-
-            Assert.Equal(formatLongName, format.FormatLongName);
-        }
-
-        /// <summary>
-        ///     Tests that video format start time property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_StartTimeProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string startTime = "0.000000";
-
-            format.StartTime = startTime;
-
-            Assert.Equal(startTime, format.StartTime);
-        }
-
-        /// <summary>
-        ///     Tests that video format duration property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_DurationProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string duration = "120.000000";
-
-            format.Duration = duration;
-
-            Assert.Equal(duration, format.Duration);
-        }
-
-        /// <summary>
-        ///     Tests that video format size property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_SizeProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string size = "50000000";
-
-            format.Size = size;
-
-            Assert.Equal(size, format.Size);
-        }
-
-        /// <summary>
-        ///     Tests that video format bit rate property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_BitRateProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            string bitRate = "5000000";
-
-            format.BitRate = bitRate;
-
-            Assert.Equal(bitRate, format.BitRate);
-        }
-
-        /// <summary>
-        ///     Tests that video format probe score property should be settable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_ProbeScoreProperty_ShouldBeSettable()
-        {
-            VideoFormat format = new VideoFormat();
-            long probeScore = 100;
-
-            format.ProbeScore = probeScore;
-
-            Assert.Equal(probeScore, format.ProbeScore);
-        }
-
-        /// <summary>
-        ///     Tests that video format should support null values
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_ShouldSupportNullValues()
-        {
-            VideoFormat format = new VideoFormat();
-
-            format.Filename = null;
-            format.FormatName = null;
-            format.FormatLongName = null;
-
-            Assert.Null(format.Filename);
-            Assert.Null(format.FormatName);
-            Assert.Null(format.FormatLongName);
-        }
-
-        /// <summary>
-        ///     Tests that video format should support initializer syntax
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_ShouldSupportInitializerSyntax()
-        {
-            VideoFormat format = new VideoFormat
-            {
-                Filename = "video.mp4",
-                FormatName = "mp4",
-                Duration = "120.000000",
-                BitRate = "5000000"
-            };
-
-            Assert.Equal("video.mp4", format.Filename);
-            Assert.Equal("mp4", format.FormatName);
-            Assert.Equal("120.000000", format.Duration);
-            Assert.Equal("5000000", format.BitRate);
-        }
-
-        /// <summary>
-        ///     Tests that video format properties should be mutable
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_Properties_ShouldBeMutable()
-        {
-            VideoFormat format = new VideoFormat
-            {
-                Filename = "video1.mp4",
-                FormatName = "mp4"
-            };
-
-            format.Filename = "video2.mkv";
-            format.FormatName = "matroska";
-
-            Assert.Equal("video2.mkv", format.Filename);
-            Assert.Equal("matroska", format.FormatName);
-        }
-
-        /// <summary>
-        ///     Tests that video format should support common video formats
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_ShouldSupportCommonVideoFormats()
-        {
-            VideoFormat mp4 = new VideoFormat {FormatName = "mp4"};
-            VideoFormat mkv = new VideoFormat {FormatName = "matroska"};
-            VideoFormat webm = new VideoFormat {FormatName = "webm"};
-
-            Assert.Equal("mp4", mp4.FormatName);
-            Assert.Equal("matroska", mkv.FormatName);
-            Assert.Equal("webm", webm.FormatName);
-        }
-
-        /// <summary>
-        ///     Tests that video format probe score should support valid range
-        /// </summary>
-        [RequireFfmpegFact]
-        public void VideoFormat_ProbeScore_ShouldSupportValidRange()
-        {
-            VideoFormat lowScore = new VideoFormat {ProbeScore = 0};
-            VideoFormat mediumScore = new VideoFormat {ProbeScore = 50};
-            VideoFormat highScore = new VideoFormat {ProbeScore = 100};
-
-            Assert.Equal(0, lowScore.ProbeScore);
-            Assert.Equal(50, mediumScore.ProbeScore);
-            Assert.Equal(100, highScore.ProbeScore);
-        }
+        Assert.NotNull(format);
     }
+
+    /// <summary>
+    ///     Tests that video format filename property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_FilenameProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string filename = "video.mp4";
+
+        format.Filename = filename;
+
+        Assert.Equal(filename, format.Filename);
+    }
+
+    /// <summary>
+    ///     Tests that video format nb streams property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_NbStreamsProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        long nbStreams = 2;
+
+        format.NbStreams = nbStreams;
+
+        Assert.Equal(nbStreams, format.NbStreams);
+    }
+
+    /// <summary>
+    ///     Tests that video format nb programs property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_NbProgramsProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        long nbPrograms = 0;
+
+        format.NbPrograms = nbPrograms;
+
+        Assert.Equal(nbPrograms, format.NbPrograms);
+    }
+
+    /// <summary>
+    ///     Tests that video format format name property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_FormatNameProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string formatName = "mov,mp4,m4a,3gp,3g2,mj2";
+
+        format.FormatName = formatName;
+
+        Assert.Equal(formatName, format.FormatName);
+    }
+
+    /// <summary>
+    ///     Tests that video format format long name property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_FormatLongNameProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string formatLongName = "QuickTime / MOV";
+
+        format.FormatLongName = formatLongName;
+
+        Assert.Equal(formatLongName, format.FormatLongName);
+    }
+
+    /// <summary>
+    ///     Tests that video format start time property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_StartTimeProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string startTime = "0.000000";
+
+        format.StartTime = startTime;
+
+        Assert.Equal(startTime, format.StartTime);
+    }
+
+    /// <summary>
+    ///     Tests that video format duration property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_DurationProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string duration = "120.000000";
+
+        format.Duration = duration;
+
+        Assert.Equal(duration, format.Duration);
+    }
+
+    /// <summary>
+    ///     Tests that video format size property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_SizeProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string size = "50000000";
+
+        format.Size = size;
+
+        Assert.Equal(size, format.Size);
+    }
+
+    /// <summary>
+    ///     Tests that video format bit rate property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_BitRateProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        string bitRate = "5000000";
+
+        format.BitRate = bitRate;
+
+        Assert.Equal(bitRate, format.BitRate);
+    }
+
+    /// <summary>
+    ///     Tests that video format probe score property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ProbeScoreProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        long probeScore = 100;
+
+        format.ProbeScore = probeScore;
+
+        Assert.Equal(probeScore, format.ProbeScore);
+    }
+
+    /// <summary>
+    ///     Tests that video format should support null values
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ShouldSupportNullValues()
+    {
+        VideoFormat format = new VideoFormat();
+
+        format.Filename = null;
+        format.FormatName = null;
+        format.FormatLongName = null;
+
+        Assert.Null(format.Filename);
+        Assert.Null(format.FormatName);
+        Assert.Null(format.FormatLongName);
+    }
+
+    /// <summary>
+    ///     Tests that video format should support initializer syntax
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ShouldSupportInitializerSyntax()
+    {
+        VideoFormat format = new VideoFormat
+        {
+            Filename = "video.mp4",
+            FormatName = "mp4",
+            Duration = "120.000000",
+            BitRate = "5000000"
+        };
+
+        Assert.Equal("video.mp4", format.Filename);
+        Assert.Equal("mp4", format.FormatName);
+        Assert.Equal("120.000000", format.Duration);
+        Assert.Equal("5000000", format.BitRate);
+    }
+
+    /// <summary>
+    ///     Tests that video format properties should be mutable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_Properties_ShouldBeMutable()
+    {
+        VideoFormat format = new VideoFormat
+        {
+            Filename = "video1.mp4",
+            FormatName = "mp4"
+        };
+
+        format.Filename = "video2.mkv";
+        format.FormatName = "matroska";
+
+        Assert.Equal("video2.mkv", format.Filename);
+        Assert.Equal("matroska", format.FormatName);
+    }
+
+    /// <summary>
+    ///     Tests that video format should support common video formats
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ShouldSupportCommonVideoFormats()
+    {
+        VideoFormat mp4 = new VideoFormat {FormatName = "mp4"};
+        VideoFormat mkv = new VideoFormat {FormatName = "matroska"};
+        VideoFormat webm = new VideoFormat {FormatName = "webm"};
+
+        Assert.Equal("mp4", mp4.FormatName);
+        Assert.Equal("matroska", mkv.FormatName);
+        Assert.Equal("webm", webm.FormatName);
+    }
+
+    /// <summary>
+    ///     Tests that video format probe score should support valid range
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ProbeScore_ShouldSupportValidRange()
+    {
+        VideoFormat lowScore = new VideoFormat {ProbeScore = 0};
+        VideoFormat mediumScore = new VideoFormat {ProbeScore = 50};
+        VideoFormat highScore = new VideoFormat {ProbeScore = 100};
+
+        Assert.Equal(0, lowScore.ProbeScore);
+        Assert.Equal(50, mediumScore.ProbeScore);
+        Assert.Equal(100, highScore.ProbeScore);
+    }
+
+    /// <summary>
+    ///     Tests that video format parameterized constructor should set all properties
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ParameterizedConstructor_ShouldSetAllProperties()
+    {
+        VideoFormatTags tags = new VideoFormatTags("isom", "512", "isom,iso2,mp41", "2021-01-01", "Lavf60.0.0");
+        VideoFormat format = new VideoFormat(
+            "video.mp4",
+            2,
+            1,
+            "mov,mp4,m4a,3gp,3g2,mj2",
+            "QuickTime / MOV",
+            "0.000000",
+            "120.000000",
+            "50000000",
+            "5000000",
+            100,
+            tags
+        );
+
+        Assert.Equal("video.mp4", format.Filename);
+        Assert.Equal(2, format.NbStreams);
+        Assert.Equal(1, format.NbPrograms);
+        Assert.Equal("mov,mp4,m4a,3gp,3g2,mj2", format.FormatName);
+        Assert.Equal("QuickTime / MOV", format.FormatLongName);
+        Assert.Equal("0.000000", format.StartTime);
+        Assert.Equal("120.000000", format.Duration);
+        Assert.Equal("50000000", format.Size);
+        Assert.Equal("5000000", format.BitRate);
+        Assert.Equal(100, format.ProbeScore);
+        Assert.Same(tags, format.Tags);
+    }
+
+    /// <summary>
+    ///     Tests that video format parameterized constructor with empty strings should not throw
+    /// </summary>
+    [Fact]
+    public void VideoFormat_ParameterizedConstructor_WithEmptyStrings_ShouldNotThrow()
+    {
+        VideoFormatTags tags = new VideoFormatTags();
+        VideoFormat format = new VideoFormat(
+            string.Empty,
+            0,
+            0,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            0,
+            tags
+        );
+
+        Assert.Equal(string.Empty, format.Filename);
+        Assert.Equal(0, format.NbStreams);
+        Assert.Equal(0, format.NbPrograms);
+        Assert.Equal(string.Empty, format.FormatName);
+        Assert.Equal(string.Empty, format.FormatLongName);
+        Assert.Equal(string.Empty, format.StartTime);
+        Assert.Equal(string.Empty, format.Duration);
+        Assert.Equal(string.Empty, format.Size);
+        Assert.Equal(string.Empty, format.BitRate);
+        Assert.Equal(0, format.ProbeScore);
+        Assert.Same(tags, format.Tags);
+    }
+
+    /// <summary>
+    ///     Tests that video format tags property should be settable
+    /// </summary>
+    [Fact]
+    public void VideoFormat_TagsProperty_ShouldBeSettable()
+    {
+        VideoFormat format = new VideoFormat();
+        VideoFormatTags tags = new VideoFormatTags("isom", "512", "isom,iso2,mp41", "2021-01-01", "Lavf60.0.0");
+
+        format.Tags = tags;
+
+        Assert.Same(tags, format.Tags);
+    }
+
+    /// <summary>
+    ///     Tests that video format tags property getter should return set value
+    /// </summary>
+    [Fact]
+    public void VideoFormat_TagsProperty_ShouldReturnSetValue()
+    {
+        VideoFormatTags tags = new VideoFormatTags();
+        VideoFormat format = new VideoFormat
+        {
+            Tags = tags
+        };
+
+        Assert.Same(tags, format.Tags);
+    }
+}
 }
