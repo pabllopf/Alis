@@ -352,5 +352,8 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditState.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoRecord.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VorbisEncoder.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VorbisEncoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/AACEncoder.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Video/Models/VideoFormatTags.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/BaseClasses/StreamTags.cs"
 ]
