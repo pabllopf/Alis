@@ -35,6 +35,7 @@ using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Test.Models;
+using Alis.Core.Ecs.Updating;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Redifinition
