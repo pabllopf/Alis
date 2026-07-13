@@ -107,6 +107,9 @@ namespace Alis.Core.Audio.Players
         /// </summary>
         public bool Paused => _paused;
 
+        /// <summary>
+        ///     Occurs when playback is finished
+        /// </summary>
         public event EventHandler PlaybackFinished;
 
         /// <summary>
