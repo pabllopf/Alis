@@ -39,6 +39,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
     /// </summary>
     public class MacNativePlatformRemainingCoverageTests
     {
+        /// <summary>
+        ///     ShowWindow_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void ShowWindow_NotInitialized_DoesNotThrow()
         {
@@ -46,6 +49,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.ShowWindow();
         }
 
+        /// <summary>
+        ///     HideWindow_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void HideWindow_NotInitialized_DoesNotThrow()
         {
@@ -53,6 +59,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.HideWindow();
         }
 
+        /// <summary>
+        ///     SetTitle_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void SetTitle_NotInitialized_DoesNotThrow()
         {
@@ -60,6 +69,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.SetTitle("TestTitle");
         }
 
+        /// <summary>
+        ///     SetTitle_Null_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void SetTitle_Null_NotInitialized_DoesNotThrow()
         {
@@ -67,6 +79,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.SetTitle(null);
         }
 
+        /// <summary>
+        ///     SetSize_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void SetSize_NotInitialized_DoesNotThrow()
         {
@@ -74,6 +89,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.SetSize(800, 600);
         }
 
+        /// <summary>
+        ///     MakeContextCurrent_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void MakeContextCurrent_NotInitialized_DoesNotThrow()
         {
@@ -81,6 +99,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.MakeContextCurrent();
         }
 
+        /// <summary>
+        ///     SwapBuffers_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void SwapBuffers_NotInitialized_DoesNotThrow()
         {
@@ -88,6 +109,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.SwapBuffers();
         }
 
+        /// <summary>
+        ///     Cleanup_NotInitialized_DoesNotThrow
+        /// </summary>
         [Fact]
         public void Cleanup_NotInitialized_DoesNotThrow()
         {
@@ -95,6 +119,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             platform.Cleanup();
         }
 
+        /// <summary>
+        ///     PollEvents_NotInitialized_ReturnsFalse
+        /// </summary>
         [Fact]
         public void PollEvents_NotInitialized_ReturnsFalse()
         {
@@ -103,6 +130,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.False(result);
         }
 
+        /// <summary>
+        ///     GetWindowPositionX_NotInitialized_ThrowsNullReferenceException
+        /// </summary>
         [Fact]
         public void GetWindowPositionX_NotInitialized_ThrowsNullReferenceException()
         {
@@ -110,6 +140,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Throws<NullReferenceException>(() => platform.GetWindowPositionX());
         }
 
+        /// <summary>
+        ///     GetWindowPositionY_NotInitialized_ThrowsNullReferenceException
+        /// </summary>
         [Fact]
         public void GetWindowPositionY_NotInitialized_ThrowsNullReferenceException()
         {
@@ -117,6 +150,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
             Assert.Throws<NullReferenceException>(() => platform.GetWindowPositionY());
         }
 
+        /// <summary>
+        ///     GetWindowMetrics_NotInitialized_ThrowsNullReferenceException
+        /// </summary>
         [Fact]
         public void GetWindowMetrics_NotInitialized_ThrowsNullReferenceException()
         {
@@ -125,6 +161,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
                 platform.GetWindowMetrics(out _, out _, out _, out _, out _, out _));
         }
 
+        /// <summary>
+        ///     GetMouseState_ReturnsValidState
+        /// </summary>
         [Fact]
         public void GetMouseState_ReturnsValidState()
         {
