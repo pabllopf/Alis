@@ -351,5 +351,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditRow.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbTexteditState.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoRecord.cs",
-  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs"
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Media/FFmpeg/src/Encoding/Builders/VorbisEncoder.cs"
 ]

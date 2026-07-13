@@ -27,7 +27,7 @@ namespace Alis.Test.Builder.Core.Ecs.System
             context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
 
             Scene scene = new Scene();
-            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.AddScene(scene);
             context.SceneManager.CurrentWorld = scene;
 
             context.Exit();

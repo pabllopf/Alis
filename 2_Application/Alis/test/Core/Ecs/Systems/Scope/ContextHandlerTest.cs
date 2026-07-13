@@ -113,7 +113,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         {
             Context context = new Context(new Setting());
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.AddScene(scene);
             context.SceneManager.CurrentWorld = scene;
             return context;
         }

@@ -20,7 +20,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
 
             manager.OnInit();
 
@@ -36,7 +36,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnAwake();
@@ -51,7 +51,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnStart();
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnPhysicUpdate();
@@ -81,7 +81,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnBeforeUpdate();
@@ -96,7 +96,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnAfterUpdate();
@@ -111,7 +111,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnBeforeFixedUpdate();
@@ -126,7 +126,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnFixedUpdate();
@@ -141,7 +141,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnAfterFixedUpdate();
@@ -156,7 +156,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnProcessPendingChanges();
@@ -171,7 +171,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnBeforeDraw();
@@ -186,7 +186,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnDraw();
@@ -201,7 +201,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnAfterDraw();
@@ -216,7 +216,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene);
+            manager.AddScene(scene);
             manager.CurrentWorld = scene;
 
             manager.OnExit();
@@ -232,8 +232,8 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
             Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene1);
-            manager.LoadedScenes.Add(scene2);
+            manager.AddScene(scene1);
+            manager.AddScene(scene2);
             manager.CurrentWorld = scene1;
 
             manager.LoadScene(1);
@@ -251,8 +251,8 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
             Alis.Core.Ecs.Scene scene2 = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene1);
-            manager.LoadedScenes.Add(scene2);
+            manager.AddScene(scene1);
+            manager.AddScene(scene2);
             manager.CurrentWorld = scene1;
 
             manager.LoadScene("1");
@@ -269,7 +269,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Scene
             Context context = new Context();
             SceneManager manager = new SceneManager(context);
             Alis.Core.Ecs.Scene scene1 = new Alis.Core.Ecs.Scene();
-            manager.LoadedScenes.Add(scene1);
+            manager.AddScene(scene1);
             manager.CurrentWorld = scene1;
 
             manager.LoadScene("invalid");

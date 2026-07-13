@@ -21,7 +21,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         {
             Context context = new Context(new Setting());
             Scene scene = new Scene();
-            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.AddScene(scene);
             context.SceneManager.CurrentWorld = scene;
             return context;
         }

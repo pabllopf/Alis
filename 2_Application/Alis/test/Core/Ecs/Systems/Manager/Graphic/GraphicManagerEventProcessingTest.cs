@@ -64,7 +64,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Context context = new Context(new Setting());
             context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
             Alis.Core.Ecs.Scene scene = new Alis.Core.Ecs.Scene();
-            context.SceneManager.LoadedScenes.Add(scene);
+            context.SceneManager.AddScene(scene);
             context.SceneManager.CurrentWorld = scene;
             GraphicManager manager = new GraphicManager(context);
 
