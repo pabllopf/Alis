@@ -7,6 +7,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 {
     public class EntityUpdateCoverageTest
     {
+        /// <summary>
+        ///     Constructor_CreatesInstance
+        /// </summary>
         [Fact]
         public void Constructor_CreatesInstance()
         {
@@ -16,6 +19,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.NotNull(update);
         }
 
+        /// <summary>
+        ///     Constructor_ZeroCapacity_CreatesInstance
+        /// </summary>
         [Fact]
         public void Constructor_ZeroCapacity_CreatesInstance()
         {
@@ -25,6 +31,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.NotNull(update);
         }
 
+        /// <summary>
+        ///     Constructor_NegativeCapacity_ThrowsOverflowException
+        /// </summary>
         [Fact]
         public void Constructor_NegativeCapacity_ThrowsOverflowException()
         {
@@ -32,6 +41,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(-1));
         }
 
+        /// <summary>
+        ///     AsSpan_ReturnsSpan
+        /// </summary>
         [Fact]
         public void AsSpan_ReturnsSpan()
         {
@@ -43,6 +55,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(8, span.Length);
         }
 
+        /// <summary>
+        ///     AsSpanLength_ReturnsSpanWithSpecifiedLength
+        /// </summary>
         [Fact]
         public void AsSpanLength_ReturnsSpanWithSpecifiedLength()
         {
@@ -54,6 +69,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(4, span.Length);
         }
 
+        /// <summary>
+        ///     GetComponentStorageDataReference_ReturnsReference
+        /// </summary>
         [Fact]
         public void GetComponentStorageDataReference_ReturnsReference()
         {
@@ -65,6 +83,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.NotNull(comp);
         }
 
+        /// <summary>
+        ///     Indexer_Get_Set_Works
+        /// </summary>
         [Fact]
         public void Indexer_Get_Set_Works()
         {
@@ -78,6 +99,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        ///     Dispose_DoesNotThrow
+        /// </summary>
         [Fact]
         public void Dispose_DoesNotThrow()
         {
@@ -87,6 +111,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             update.Dispose();
         }
 
+        /// <summary>
+        ///     Run_WithSceneAndArchetype_DoesNotThrow
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException in Archetype.GetComponentDataReference")]
         public void Run_WithSceneAndArchetype_DoesNotThrow()
         {
@@ -99,6 +126,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             update.Run(scene, archetype);
         }
 
+        /// <summary>
+        ///     Run_WithStartAndLength_DoesNotThrow
+        /// </summary>
         [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException in Archetype.GetComponentDataReference")]
         public void Run_WithStartAndLength_DoesNotThrow()
         {
@@ -114,6 +144,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
     internal struct StubComp : IOnUpdate<StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>
     {
+        /// <summary>
+        ///     Update
+        /// </summary>
         public void Update(IGameObject self, ref StubArg1 arg1, ref StubArg2 arg2, ref StubArg3 arg3, ref StubArg4 arg4, ref StubArg5 arg5)
         {
         }
