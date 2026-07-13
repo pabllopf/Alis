@@ -291,5 +291,9 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/BitOperations.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/FrugalStack.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Math/ProceduralDungeon/src/Models/DungeonData.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/EntityUpdate.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/GameObjectIdOnly.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectLocation.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/GameObjectMarshal.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Events/Event.cs"
 ]
