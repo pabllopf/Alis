@@ -139,10 +139,29 @@ namespace Alis.Extension.Network.Test.Core
             /// <returns>The network player</returns>
             public NetworkPlayer GetPlayer(string playerId) => null;
             
+            /// <summary>
+            ///     Occurs when a player joins
+            /// </summary>
             public event EventHandler<PlayerEventArgs> PlayerJoined;
+
+            /// <summary>
+            ///     Occurs when a player leaves
+            /// </summary>
             public event EventHandler<PlayerEventArgs> PlayerLeft;
+
+            /// <summary>
+            ///     Occurs when connected
+            /// </summary>
             public event EventHandler<EventArgs> Connected;
+
+            /// <summary>
+            ///     Occurs when disconnected
+            /// </summary>
             public event EventHandler<EventArgs> Disconnected;
+
+            /// <summary>
+            ///     Occurs when an error is encountered
+            /// </summary>
             public event EventHandler<NetworkErrorEventArgs> Error;
             
             /// <summary>
