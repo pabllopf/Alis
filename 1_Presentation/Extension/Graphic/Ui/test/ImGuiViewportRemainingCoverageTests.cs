@@ -144,5 +144,263 @@ namespace Alis.Extension.Graphic.Ui.Test
             viewport.DpiScale = 1.5f;
             Assert.Equal(1.5f, viewport.DpiScale);
         }
+        /// <summary>
+        ///     Tests that default work pos should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultWorkPos_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(default(Vector2F), viewport.WorkPos);
+        }
+
+        /// <summary>
+        ///     Tests that work pos set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void WorkPos_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            Vector2F value = new Vector2F(5.0f, 6.0f);
+            viewport.WorkPos = value;
+            Assert.Equal(value, viewport.WorkPos);
+        }
+
+        /// <summary>
+        ///     Tests that default work size should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultWorkSize_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(default(Vector2F), viewport.WorkSize);
+        }
+
+        /// <summary>
+        ///     Tests that work size set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void WorkSize_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            Vector2F value = new Vector2F(7.0f, 8.0f);
+            viewport.WorkSize = value;
+            Assert.Equal(value, viewport.WorkSize);
+        }
+
+        /// <summary>
+        ///     Tests that default parent viewport id should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultParentViewportId_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(0u, viewport.ParentViewportId);
+        }
+
+        /// <summary>
+        ///     Tests that parent viewport id set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void ParentViewportId_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            viewport.ParentViewportId = 456u;
+            Assert.Equal(456u, viewport.ParentViewportId);
+        }
+
+        /// <summary>
+        ///     Tests that default draw data should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultDrawData_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(IntPtr.Zero, viewport.DrawData);
+        }
+
+        /// <summary>
+        ///     Tests that draw data set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void DrawData_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            IntPtr value = new IntPtr(789);
+            viewport.DrawData = value;
+            Assert.Equal(value, viewport.DrawData);
+        }
+
+        /// <summary>
+        ///     Tests that default renderer user data should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultRendererUserData_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(IntPtr.Zero, viewport.RendererUserData);
+        }
+
+        /// <summary>
+        ///     Tests that renderer user data set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void RendererUserData_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            IntPtr value = new IntPtr(101112);
+            viewport.RendererUserData = value;
+            Assert.Equal(value, viewport.RendererUserData);
+        }
+
+        /// <summary>
+        ///     Tests that default platform user data should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformUserData_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(IntPtr.Zero, viewport.PlatformUserData);
+        }
+
+        /// <summary>
+        ///     Tests that platform user data set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformUserData_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            IntPtr value = new IntPtr(131415);
+            viewport.PlatformUserData = value;
+            Assert.Equal(value, viewport.PlatformUserData);
+        }
+
+        /// <summary>
+        ///     Tests that default platform handle should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformHandle_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(IntPtr.Zero, viewport.PlatformHandle);
+        }
+
+        /// <summary>
+        ///     Tests that platform handle set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformHandle_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            IntPtr value = new IntPtr(161718);
+            viewport.PlatformHandle = value;
+            Assert.Equal(value, viewport.PlatformHandle);
+        }
+
+        /// <summary>
+        ///     Tests that default platform handle raw should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformHandleRaw_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal(IntPtr.Zero, viewport.PlatformHandleRaw);
+        }
+
+        /// <summary>
+        ///     Tests that platform handle raw set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformHandleRaw_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            IntPtr value = new IntPtr(192021);
+            viewport.PlatformHandleRaw = value;
+            Assert.Equal(value, viewport.PlatformHandleRaw);
+        }
+
+        /// <summary>
+        ///     Tests that default platform window created should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformWindowCreated_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal((byte)0, viewport.PlatformWindowCreated);
+        }
+
+        /// <summary>
+        ///     Tests that platform window created set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformWindowCreated_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            viewport.PlatformWindowCreated = 1;
+            Assert.Equal((byte)1, viewport.PlatformWindowCreated);
+        }
+
+        /// <summary>
+        ///     Tests that default platform request move should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformRequestMove_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal((byte)0, viewport.PlatformRequestMove);
+        }
+
+        /// <summary>
+        ///     Tests that platform request move set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformRequestMove_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            viewport.PlatformRequestMove = 1;
+            Assert.Equal((byte)1, viewport.PlatformRequestMove);
+        }
+
+        /// <summary>
+        ///     Tests that default platform request resize should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformRequestResize_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal((byte)0, viewport.PlatformRequestResize);
+        }
+
+        /// <summary>
+        ///     Tests that platform request resize set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformRequestResize_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            viewport.PlatformRequestResize = 1;
+            Assert.Equal((byte)1, viewport.PlatformRequestResize);
+        }
+
+        /// <summary>
+        ///     Tests that default platform request close should be zero
+        /// </summary>
+        [Fact]
+        public void DefaultPlatformRequestClose_ShouldBeZero()
+        {
+            ImGuiViewport viewport = default;
+            Assert.Equal((byte)0, viewport.PlatformRequestClose);
+        }
+
+        /// <summary>
+        ///     Tests that platform request close set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PlatformRequestClose_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiViewport viewport = default;
+            viewport.PlatformRequestClose = 1;
+            Assert.Equal((byte)1, viewport.PlatformRequestClose);
+        }
     }
 }

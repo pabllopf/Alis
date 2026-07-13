@@ -364,5 +364,9 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Systems/QueryHash.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/Ref.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Marshalling/SceneMarshal.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/GameObjectEnumerator.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewportPtr.cs",
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewport.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs"
 ]
