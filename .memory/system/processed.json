@@ -372,5 +372,10 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentHandle.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ArchetypeNeighborCache.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/Query.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/SceneQueryExtensions.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Systems/RefTuple.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/GameObjectRefTuple.cs",
+  "pabllopf-official_alis:6_Ideation/Math/src/Util/Quaternion.cs"
 ]
