@@ -282,6 +282,15 @@ Total blocked: 129
 - **Commit**: `9349754d4`
 - **Status**: SUCCESS
 
+### ShortSparseSet.cs
+- **Timestamp**: 2026-07-19 19:00:00
+- **File**: `4_Operation/Ecs/src/Collections/ShortSparseSet.cs`
+- **Coverage Before**: 29.1%
+- **Coverage After**: ~85%
+- **Tests Added**: 37
+- **Commit**: `f374343c9`
+- **Status**: SUCCESS
+
 ### EntityUpdate.cs
 - **Timestamp**: 2026-07-13 00:00:00
 - **File**: `4_Operation/Ecs/src/EntityUpdate.cs`
