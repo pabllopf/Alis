@@ -368,5 +368,6 @@
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewportPtr.cs",
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiViewport.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ShortSparseSet.cs"
 ]
