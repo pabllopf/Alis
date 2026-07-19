@@ -282,6 +282,15 @@ Total blocked: 129
 - **Commit**: `9349754d4`
 - **Status**: SUCCESS
 
+### ArchetypeNeighborCache.cs
+- **Timestamp**: 2026-07-19 19:30:00
+- **File**: `4_Operation/Ecs/src/Collections/ArchetypeNeighborCache.cs`
+- **Coverage Before**: 55.5%
+- **Coverage After**: ~90%
+- **Tests Added**: 10
+- **Commit**: `87beeb47c`
+- **Status**: SUCCESS
+
 ### ComponentHandle.cs
 - **Timestamp**: 2026-07-19 19:15:00
 - **File**: `4_Operation/Ecs/src/Kernel/ComponentHandle.cs`
