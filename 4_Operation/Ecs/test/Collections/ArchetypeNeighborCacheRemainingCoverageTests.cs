@@ -28,174 +28,182 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
     /// <summary>
-    ///     Coverage for remaining uncovered paths in <see cref="ArchetypeNeighborCache" />.
+    ///     Remaining coverage tests for <see cref="ArchetypeNeighborCache" />.
     /// </summary>
     public class ArchetypeNeighborCacheRemainingCoverageTests
     {
+        /// <summary>
+        ///     Verifies that a newly created cache has all keys zero, all values zero, and _nextIndex is zero.
+        /// </summary>
         [Fact]
-        public void Traverse_Empty_Returns32()
+        public void DefaultState_AllSlotsEmpty_NextIndexZero()
         {
             ArchetypeNeighborCache cache = default;
+
             Assert.Equal(32, cache.Traverse(42));
+            Assert.Equal(0, cache.Lookup(0));
+            Assert.Equal(0, cache.Lookup(1));
+            Assert.Equal(0, cache.Lookup(2));
+            Assert.Equal(0, cache.Lookup(3));
         }
 
+        /// <summary>
+        ///     Verifies that Set followed by Traverse returns the correct slot index.
+        /// </summary>
         [Fact]
-        public void Traverse_FindsKeyInSlot0()
+        public void Set_ThenTraverse_ReturnsSlotIndex()
         {
             ArchetypeNeighborCache cache = default;
-            cache.Set(10, (ushort)100);
-            Assert.Equal(0, cache.Traverse(10));
+            cache.Set(1, 100);
+
+            int slot = cache.Traverse(1);
+
+            Assert.Equal(0, slot);
         }
 
+        /// <summary>
+        ///     Verifies that Traverse returns 32 when the key is not present.
+        /// </summary>
         [Fact]
-        public void Traverse_FindsKeyInSlot1()
+        public void Traverse_MissingKey_Returns32()
         {
             ArchetypeNeighborCache cache = default;
-            cache.Set(10, 100);
-            cache.Set(20, 200);
-            Assert.Equal(1, cache.Traverse(20));
+            cache.Set(1, 100);
+
+            int slot = cache.Traverse(999);
+
+            Assert.Equal(32, slot);
         }
 
+        /// <summary>
+        ///     Verifies that Lookup returns the stored value for a given slot index.
+        /// </summary>
         [Fact]
-        public void Traverse_FindsKeyInSlot2()
+        public void Set_ThenLookup_ReturnsStoredValue()
         {
             ArchetypeNeighborCache cache = default;
-            cache.Set(10, 100);
-            cache.Set(20, 200);
-            cache.Set(30, 300);
-            Assert.Equal(2, cache.Traverse(30));
+            cache.Set(1, 100);
+
+            ushort value = cache.Lookup(0);
+
+            Assert.Equal(100, value);
         }
 
+        /// <summary>
+        ///     Verifies that four sets fill all slots and the fifth set wraps to slot 0 (round-robin eviction).
+        /// </summary>
         [Fact]
-        public void Traverse_FindsKeyInSlot3()
+        public void RoundRobinEviction_FiveSets_WrapsToSlotZero()
         {
             ArchetypeNeighborCache cache = default;
-            cache.Set(10, 100);
-            cache.Set(20, 200);
-            cache.Set(30, 300);
-            cache.Set(40, 400);
-            Assert.Equal(3, cache.Traverse(40));
-        }
 
-        [Fact]
-        public void Traverse_Miss_Returns32()
-        {
-            ArchetypeNeighborCache cache = default;
-            cache.Set(10, 100);
-            cache.Set(20, 200);
-            cache.Set(30, 300);
-            cache.Set(40, 400);
-            Assert.Equal(32, cache.Traverse(99));
-        }
-
-        [Fact]
-        public void TraverseArchetype_Empty_ReturnsNull()
-        {
-            ArchetypeNeighborCache cache = default;
-            Assert.Null(cache.TraverseArchetype(42));
-        }
-
-        [Fact]
-        public void TraverseArchetype_Miss_ReturnsNull()
-        {
-            ArchetypeNeighborCache cache = default;
-            cache.Set(10, (ushort)100);
-            Assert.Null(cache.TraverseArchetype(99));
-        }
-
-        [Fact]
-        public void Lookup_ReturnsValuesForAllSlots()
-        {
-            ArchetypeNeighborCache cache = default;
             cache.Set(10, 100);
             cache.Set(20, 200);
             cache.Set(30, 300);
             cache.Set(40, 400);
-            Assert.Equal((ushort)100, cache.Lookup(0));
-            Assert.Equal((ushort)200, cache.Lookup(1));
-            Assert.Equal((ushort)300, cache.Lookup(2));
-            Assert.Equal((ushort)400, cache.Lookup(3));
+            cache.Set(50, 500);
+
+            Assert.Equal(32, cache.Traverse(10));
+            Assert.Equal(0, cache.Traverse(50));
         }
 
+        /// <summary>
+        ///     Verifies that after round-robin eviction an older key is gone and a newer key is found.
+        /// </summary>
         [Fact]
-        public void Lookup_IndexOutOfRange_ReturnsSlot3()
+        public void TraverseAfterEviction_OldKeyEvicted_NewKeyFound()
         {
             ArchetypeNeighborCache cache = default;
+
             cache.Set(10, 100);
             cache.Set(20, 200);
             cache.Set(30, 300);
             cache.Set(40, 400);
-            Assert.Equal((ushort)400, cache.Lookup(42));
+            cache.Set(50, 500);
+
+            int oldSlot = cache.Traverse(10);
+            int newSlot = cache.Traverse(50);
+
+            Assert.Equal(32, oldSlot);
+            Assert.Equal(0, newSlot);
         }
 
+        /// <summary>
+        ///     Verifies that setting into the same slot via round-robin overwrites the previous entry.
+        /// </summary>
         [Fact]
-        public void Set_UshortOnly_SetsNullArchetype()
+        public void MultipleSetOverwrite_SameSlot_Overwrites()
         {
             ArchetypeNeighborCache cache = default;
-            cache.Set(10, (ushort)100);
-            Assert.Null(cache.TraverseArchetype(10));
-        }
 
-        [Fact]
-        public void RoundRobin_WrapsAround()
-        {
-            ArchetypeNeighborCache cache = default;
-            for (int i = 0; i < 8; i++)
-            {
-                cache.Set((ushort)(i + 1), (ushort)((i + 1) * 10));
-            }
-            Assert.Equal((ushort)50, cache.Lookup(0));
-            Assert.Equal((ushort)60, cache.Lookup(1));
-            Assert.Equal((ushort)70, cache.Lookup(2));
-            Assert.Equal((ushort)80, cache.Lookup(3));
-        }
-
-        [Fact]
-        public void RoundRobin_EvictsOldEntries()
-        {
-            ArchetypeNeighborCache cache = default;
-            cache.Set(1, 10);
-            cache.Set(2, 20);
-            cache.Set(3, 30);
-            cache.Set(4, 40);
-            cache.Set(5, 50);
-            Assert.Equal(0, cache.Traverse(5));
-            Assert.Equal(32, cache.Traverse(1));
-        }
-
-        [Fact]
-        public void WorksWithZeroKey()
-        {
-            ArchetypeNeighborCache cache = default;
-            cache.Set(0, (ushort)100);
-            Assert.Equal(0, cache.Traverse(0));
-            Assert.Equal((ushort)100, cache.Lookup(0));
-        }
-
-        [Fact]
-        public void WorksWithMaxKey()
-        {
-            ArchetypeNeighborCache cache = default;
-            cache.Set(ushort.MaxValue, (ushort)1);
-            Assert.Equal(0, cache.Traverse(ushort.MaxValue));
-        }
-
-        [Fact]
-        public void SameKeyOverwritesSlot()
-        {
-            ArchetypeNeighborCache cache = default;
             cache.Set(1, 100);
             cache.Set(2, 200);
             cache.Set(3, 300);
             cache.Set(4, 400);
-            cache.Set(1, 999);
-            Assert.Equal(999, cache.Lookup(0));
-            Assert.Equal(0, cache.Traverse(1));
+            cache.Set(5, 500);
+
+            Assert.Equal(32, cache.Traverse(1));
+            Assert.Equal(0, cache.Traverse(5));
+            Assert.Equal(500, cache.Lookup(0));
+        }
+
+        /// <summary>
+        ///     Verifies that Lookup returns correct values for all four slot indices.
+        /// </summary>
+        [Fact]
+        public void Lookup_AllFourSlots_ReturnsCorrectValues()
+        {
+            ArchetypeNeighborCache cache = default;
+
+            cache.Set(10, 100);
+            cache.Set(20, 200);
+            cache.Set(30, 300);
+            cache.Set(40, 400);
+
+            Assert.Equal(100, cache.Lookup(0));
+            Assert.Equal(200, cache.Lookup(1));
+            Assert.Equal(300, cache.Lookup(2));
+            Assert.Equal(400, cache.Lookup(3));
+        }
+
+        /// <summary>
+        ///     Verifies that each of the four slots can be hit via Traverse.
+        /// </summary>
+        [Fact]
+        public void Traverse_AllFourSlots_EachSlotHittable()
+        {
+            ArchetypeNeighborCache cache = default;
+
+            cache.Set(10, 100);
+            cache.Set(20, 200);
+            cache.Set(30, 300);
+            cache.Set(40, 400);
+
+            Assert.Equal(0, cache.Traverse(10));
+            Assert.Equal(1, cache.Traverse(20));
+            Assert.Equal(2, cache.Traverse(30));
+            Assert.Equal(3, cache.Traverse(40));
+        }
+
+        /// <summary>
+        ///     Verifies that TraverseArchetype returns null when keys were stored via the ushort-only overload.
+        /// </summary>
+        [Fact]
+        public void TraverseArchetype_AfterUshortSet_ReturnsNull()
+        {
+            ArchetypeNeighborCache cache = default;
+
+            cache.Set(1, 100);
+
+            Archetype result = cache.TraverseArchetype(1);
+
+            Assert.Null(result);
         }
     }
 }

@@ -370,5 +370,6 @@
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/Runners/UpdateRunnerFactory.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Updating/ComponentStorageBase.cs",
   "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ShortSparseSet.cs",
-  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentHandle.cs"
+  "pabllopf-official_alis:4_Operation/Ecs/src/Kernel/ComponentHandle.cs",
+  "pabllopf-official_alis:4_Operation/Ecs/src/Collections/ArchetypeNeighborCache.cs"
 ]

@@ -282,6 +282,15 @@ Total blocked: 129
 - **Commit**: `9349754d4`
 - **Status**: SUCCESS
 
+### ComponentHandle.cs
+- **Timestamp**: 2026-07-19 19:15:00
+- **File**: `4_Operation/Ecs/src/Kernel/ComponentHandle.cs`
+- **Coverage Before**: 37.0%
+- **Coverage After**: ~82%
+- **Tests Added**: 19
+- **Commit**: `94120e76e`
+- **Status**: SUCCESS
+
 ### ShortSparseSet.cs
 - **Timestamp**: 2026-07-19 19:00:00
 - **File**: `4_Operation/Ecs/src/Collections/ShortSparseSet.cs`
