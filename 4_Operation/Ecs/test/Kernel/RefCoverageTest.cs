@@ -27,21 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Test.Models;
+using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
-    /// <summary>
-    ///     Coverage tests for the <see cref="Ref{T}" /> ref struct.
-    ///     Targets uncovered conditions: <see cref="Ref{T}.ToString" /> null branch.
-    /// </summary>
     public class RefCoverageTest
     {
-        /// <summary>
-        ///     Tests that ToString returns null when the wrapped reference is null.
-        /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact]
+        public void ToString_NonNullValue_ReturnsValueString()
+        {
+            int[] arr = { 42 };
+            Ref<int> refValue = new Ref<int>(arr, 0);
+
+            string result = refValue.ToString();
+
+            Assert.Equal("42", result);
+        }
+
+        [Fact]
         public void ToString_NullValue_ReturnsNull()
         {
             string[] arr = { null };
@@ -50,6 +58,87 @@ namespace Alis.Core.Ecs.Test.Kernel
             string result = refValue.ToString();
 
             Assert.Null(result);
+        }
+
+        [Fact]
+        public void ToString_ReferenceType_ReturnsValueString()
+        {
+            string[] arr = { "hello" };
+            Ref<string> refValue = new Ref<string>(arr, 0);
+
+            string result = refValue.ToString();
+
+            Assert.Equal("hello", result);
+        }
+
+        [Fact]
+        public void Ref_CreatedFromSpan_AccessValue()
+        {
+            int[] arr = { 10, 20, 30 };
+            Span<int> span = arr.AsSpan();
+            Ref<int> refValue = new Ref<int>(span, 1);
+
+            Assert.Equal(20, refValue.Value);
+        }
+
+        [Fact]
+        public void Ref_CreatedFromSpan_ModifyValue()
+        {
+            int[] arr = { 1, 2, 3 };
+            Span<int> span = arr.AsSpan();
+            Ref<int> refValue = new Ref<int>(span, 2);
+
+            refValue.Value = 999;
+
+            Assert.Equal(999, arr[2]);
+        }
+
+        [Fact]
+        public void Ref_CreatedFromComponentStorage_AccessValue()
+        {
+            using ComponentStorage<TestStruct> storage = new Update<TestStruct>(8);
+            storage[0] = new TestStruct { X = 42, Y = 84 };
+
+            Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
+
+            Assert.Equal(42, refValue.Value.X);
+            Assert.Equal(84, refValue.Value.Y);
+        }
+
+        [Fact]
+        public void Ref_CreatedFromComponentStorage_ModifyValue()
+        {
+            using ComponentStorage<TestStruct> storage = new Update<TestStruct>(8);
+            storage[0] = new TestStruct { X = 10, Y = 20 };
+
+            Ref<TestStruct> refValue = new Ref<TestStruct>(storage, 0);
+            refValue.Value = new TestStruct { X = 100, Y = 200 };
+
+            Assert.Equal(100, storage[0].X);
+            Assert.Equal(200, storage[0].Y);
+        }
+
+        [Fact]
+        public void ImplicitOperator_ConvertsRefToValue()
+        {
+            int[] arr = { 77 };
+            Ref<int> refValue = new Ref<int>(arr, 0);
+
+            int value = refValue;
+
+            Assert.Equal(77, value);
+        }
+
+        [Fact]
+        public void ImplicitOperator_WithStructType_ConvertsCorrectly()
+        {
+            TestStruct[] arr = { new TestStruct { X = 5, Y = 10 } };
+            Ref<TestStruct> refValue = new Ref<TestStruct>(arr, 0);
+
+            TestStruct value = refValue;
+
+            Assert.Equal(5, value.X);
+            Assert.Equal(10, value.Y);
         }
     }
 }
