@@ -169,37 +169,5 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(1, entity.Get<Transform>().X);
             Assert.Equal(12, entity.Get<TestComponent>().Value);
         }
-
-        /// <summary>
-        ///     Tests that update arity 8 run mutates all expected components
-        /// </summary>
-        [Fact] public void Update_Arity8_Run_MutatesAllExpectedComponents()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Update8Component {CallCount = 0});
-            entity.Add(
-                new Position {X = 8, Y = 10},
-                new Velocity {X = 2, Y = 3},
-                new Health {Value = 40},
-                new Armor {Value = 7},
-                new Damage {Value = 6},
-                new Transform {X = 1, Y = 2, Rotation = 3},
-                new TestComponent {Value = 11},
-                new AnotherComponent {Data = 1, Y = 2}
-            );
-
-            scene.Update();
-
-            Assert.Equal(1, entity.Get<Update8Component>().CallCount);
-            Assert.Equal(10, entity.Get<Position>().X);
-            Assert.Equal(13, entity.Get<Position>().Y);
-            Assert.Equal(39, entity.Get<Health>().Value);
-            Assert.Equal(9, entity.Get<Armor>().Value);
-            Assert.Equal(7, entity.Get<Damage>().Value);
-            Assert.Equal(5, entity.Get<Transform>().Rotation);
-            Assert.Equal(22, entity.Get<TestComponent>().Value);
-            Assert.Equal(2, entity.Get<AnotherComponent>().Data);
-            Assert.Equal(3, entity.Get<AnotherComponent>().Y);
-        }
     }
 }

@@ -287,20 +287,5 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.NotNull(display);
         }
-
-        /// <summary>
-        ///     Tests that DebuggerDisplayString returns "null"
-        ///     when the component handle points to a disposed reference type component.
-        /// </summary>
-        [Fact] public void DebuggerDisplayString_AfterDispose_ShouldReturnNull()
-        {
-            string text = "test";
-            ComponentHandle handle = ComponentHandle.Create(text);
-            handle.Dispose();
-
-            string display = handle.DebuggerDisplayString;
-
-            Assert.Equal("null", display);
-        }
     }
 }

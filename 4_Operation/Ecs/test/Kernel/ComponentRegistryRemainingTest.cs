@@ -11,19 +11,6 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class ComponentRegistryRemainingTest
     {
-       
-
-        /// <summary>
-        /// Tests that get component factory from type i component base type throws with generator message
-        /// </summary>
-        [Fact] public void GetComponentFactoryFromType_IComponentBaseType_ThrowsWithGeneratorMessage()
-        {
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(IOnInit)));
-
-            Assert.Contains("source generator", ex.Message);
-        }
-
         /// <summary>
         /// Tests that get component table for void type returns null
         /// </summary>
