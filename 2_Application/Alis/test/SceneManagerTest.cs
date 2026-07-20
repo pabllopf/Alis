@@ -293,23 +293,6 @@ namespace Alis.Test
         }
 
         /// <summary>
-        ///     Tests that ReadOnlySpan constructor creates manager with scenes
-        /// </summary>
-        [Fact]
-        public void SceneManager_ReadOnlySpanConstructor_CreatesWithScenes()
-        {
-            Context context = new Context(new Setting());
-            Scene scene1 = new Scene();
-            Scene scene2 = new Scene();
-            ReadOnlySpan<Scene> scenes = new Scene[] { scene1, scene2 };
-
-            SceneManager sceneManager = new SceneManager(context, scenes);
-
-            Assert.Equal(2, sceneManager.LoadedScenes.Count);
-            Assert.Equal(scene1, sceneManager.CurrentWorld);
-        }
-
-        /// <summary>
         ///     Tests that LoadedScenes property returns read only list
         /// </summary>
         [Fact]

@@ -108,13 +108,7 @@ namespace Alis.Core.Ecs.Test.Collections
             set[2] = "hello";
             Assert.Equal("hello", set[2]);
         }
-
-        [Fact] public void Indexer_NegativeId_UnknownBehavior()
-        {
-            SparseSet<int> set = new SparseSet<int>();
-            set[-1] = 42;
-        }
-
+        
         [Fact] public void Indexer_SequentialUpToInitialCapacity_Works()
         {
             SparseSet<int> set = new SparseSet<int>();

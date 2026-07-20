@@ -77,7 +77,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         ///     Scenes are added via <see cref="AddScene" /> and can be switched at runtime
         ///     using <see cref="LoadScene" />. This list persists across scene transitions.
         /// </remarks>
-        public IReadOnlyList<Ecs.Scene> LoadedScenes
+        public List<Ecs.Scene> LoadedScenes
         {
             get => loadedScenes;
             internal set => loadedScenes = (List<Ecs.Scene>)value;

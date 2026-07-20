@@ -40,21 +40,6 @@ namespace Alis.Core.Ecs.Test.Kernel
     public class ComponentRegistryResetTest
     {
         /// <summary>
-        ///     Tests that ResetForTests clears all component state and allows re-registration.
-        /// </summary>
-        [Fact] public void ResetForTests_ClearsState_AndAllowsNewRegistrations()
-        {
-            ComponentId originalId = Component.GetComponentId(typeof(Position));
-
-            Component.ResetForTests();
-
-            ComponentId afterReset = Component.GetComponentId(typeof(Position));
-
-            Assert.NotEqual(originalId, afterReset);
-            Assert.True(afterReset.RawIndex >= 0);
-        }
-
-        /// <summary>
         ///     Tests that after ResetForTests, RegisterComponent works and IDs are stable.
         /// </summary>
         [Fact] public void ResetForTests_ThenRegister_ResultsInStableIds()

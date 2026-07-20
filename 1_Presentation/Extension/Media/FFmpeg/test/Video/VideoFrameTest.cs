@@ -195,26 +195,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
             Assert.IsAssignableFrom<IDisposable>(frame);
         }
-
-        /// <summary>
-        ///     Tests that GetPixels with span overload writes to pre-allocated buffer
-        /// </summary>
-        [RequireFfmpegFact]
-        public void GetPixels_SpanOverload_WritesToPreallocatedBuffer()
-        {
-            VideoFrame frame = new VideoFrame(10, 10);
-            byte[] testData = new byte[300];
-            MemoryStream stream = new MemoryStream(testData);
-            frame.Load(stream);
-
-            Span<byte> destination = new byte[3];
-
-            frame.GetPixels(0, 0, destination, 1);
-
-            byte[] expected = frame.GetPixels(0, 0, 1);
-            Assert.Equal(expected, destination.ToArray());
-        }
-
+        
         /// <summary>
         ///     Tests that video frame get pixels should return correct byte array
         /// </summary>

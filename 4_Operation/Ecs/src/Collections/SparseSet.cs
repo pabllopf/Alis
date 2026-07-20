@@ -47,12 +47,12 @@ namespace Alis.Core.Ecs.Collections
         /// <summary>
         ///     The next available index in the dense array
         /// </summary>
-        internal int _nextIndex;
+        private int _nextIndex;
 
         /// <summary>
         ///     The sparse array mapping external IDs to dense indices
         /// </summary>
-        internal int[] _sparse;
+        private int[] _sparse;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SparseSet{T}" /> class with default capacity

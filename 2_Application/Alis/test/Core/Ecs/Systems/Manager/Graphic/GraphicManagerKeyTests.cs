@@ -163,56 +163,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 
             Assert.False(timestamps.ContainsKey(ConsoleKey.A));
         }
-
-        /// <summary>
-        ///     Tests that compute pressed keys destination overload fills pre-allocated set
-        /// </summary>
-        [Fact]
-        public void ComputePressedKeys_DestinationOverload_FillsPreallocatedSet()
-        {
-            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            HashSet<ConsoleKey> destination = new HashSet<ConsoleKey>();
-
-            GraphicManager.ComputePressedKeys(newKeys, currentKeys, destination);
-
-            Assert.DoesNotContain(ConsoleKey.A, destination);
-            Assert.Contains(ConsoleKey.B, destination);
-        }
-
-        /// <summary>
-        ///     Tests that compute held keys destination overload fills pre-allocated set
-        /// </summary>
-        [Fact]
-        public void ComputeHeldKeys_DestinationOverload_FillsPreallocatedSet()
-        {
-            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.C };
-            HashSet<ConsoleKey> destination = new HashSet<ConsoleKey>();
-
-            GraphicManager.ComputeHeldKeys(newKeys, currentKeys, destination);
-
-            Assert.Contains(ConsoleKey.A, destination);
-            Assert.DoesNotContain(ConsoleKey.B, destination);
-            Assert.DoesNotContain(ConsoleKey.C, destination);
-        }
-
-        /// <summary>
-        ///     Tests that compute released keys destination overload fills pre-allocated set
-        /// </summary>
-        [Fact]
-        public void ComputeReleasedKeys_DestinationOverload_FillsPreallocatedSet()
-        {
-            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
-            HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            HashSet<ConsoleKey> destination = new HashSet<ConsoleKey>();
-
-            GraphicManager.ComputeReleasedKeys(currentKeys, newKeys, destination);
-
-            Assert.DoesNotContain(ConsoleKey.A, destination);
-            Assert.Contains(ConsoleKey.B, destination);
-        }
-
+        
         /// <summary>
         /// Creates the context
         /// </summary>

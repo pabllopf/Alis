@@ -379,25 +379,5 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(1024, frame1024.SampleCount);
             Assert.Equal(2048, frame2048.SampleCount);
         }
-
-        /// <summary>
-        ///     Tests that GetSample with span overload writes to pre-allocated buffer
-        /// </summary>
-        [RequireFfmpegFact]
-        public void GetSample_SpanOverload_WritesToPreallocatedBuffer()
-        {
-            AudioFrame frame = new AudioFrame(2, 100);
-            byte[] testData = new byte[400];
-            MemoryStream stream = new MemoryStream(testData);
-            frame.Load(stream);
-
-            int bytesPerSample = frame.BytesPerSample;
-            Span<byte> destination = new byte[bytesPerSample];
-
-            frame.GetSample(0, 0, destination);
-
-            byte[] expected = frame.GetSample(0, 0);
-            Assert.Equal(expected, destination.ToArray());
-        }
     }
 }

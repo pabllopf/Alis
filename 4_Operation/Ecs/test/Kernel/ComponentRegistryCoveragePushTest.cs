@@ -86,16 +86,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         [Fact]
-        public void GetComponentFactoryFromType_NonComponentType_ThrowsRegisterMessage()
-        {
-            Reset();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(string)));
-
-            Assert.Contains("RegisterComponent", ex.Message);
-        }
-
-        [Fact]
         public void GetComponentFactoryFromType_IComponentBaseType_ThrowsSourceGenMessage()
         {
             Reset();

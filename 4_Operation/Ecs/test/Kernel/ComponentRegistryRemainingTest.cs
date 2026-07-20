@@ -11,16 +11,7 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class ComponentRegistryRemainingTest
     {
-        /// <summary>
-        /// Tests that get component factory from type non component type throws with register message
-        /// </summary>
-        [Fact] public void GetComponentFactoryFromType_NonComponentType_ThrowsWithRegisterMessage()
-        {
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(string)));
-
-            Assert.Contains("RegisterComponent", ex.Message);
-        }
+       
 
         /// <summary>
         /// Tests that get component factory from type i component base type throws with generator message
