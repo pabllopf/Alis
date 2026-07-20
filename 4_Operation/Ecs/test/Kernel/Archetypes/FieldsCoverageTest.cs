@@ -50,6 +50,26 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         }
 
         /// <summary>
+        /// Tests that GetComponentDataReference on Fields from the correct archetype
+        /// successfully invokes GetComponentStorageDataReference, covering all code paths.
+        /// </summary>
+        [Fact]
+        public void GetComponentDataReference_OnProperArchetype_CoversAllLines()
+        {
+            using Scene scene = new();
+            scene.Create(new Alis.Core.Ecs.Test.Models.Position { X = 42, Y = 84 });
+
+            var worldItem = Archetype<Alis.Core.Ecs.Test.Models.Position>.CreateNewOrGetExistingArchetypes(scene);
+            Archetype arch = worldItem.Archetype;
+            Fields fields = arch.Data;
+
+            ref Alis.Core.Ecs.Test.Models.Position pos = ref fields.GetComponentDataReference<Alis.Core.Ecs.Test.Models.Position>();
+
+            Assert.Equal(42f, pos.X);
+            Assert.Equal(84f, pos.Y);
+        }
+
+        /// <summary>
         /// The position
         /// </summary>
         private struct Position
