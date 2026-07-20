@@ -604,5 +604,38 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(0, lockField.GetValue(bodyA));
             Assert.Equal(0, lockField.GetValue(bodyB));
         }
+
+        // ========================================================================
+        // Lines 180-181: AddPair when Contact.Create returns null
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that add pair handles null contact from create gracefully
+        /// </summary>
+        [Fact]
+        public void AddPair_HandlesNullContact_FromCreate()
+        {
+            FieldInfo returnNullField = typeof(Contact).GetField("ReturnNullOverride",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+
+            try
+            {
+                returnNullField.SetValue(null, true);
+
+                Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
+                Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
+
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+
+                Assert.Null(ex);
+                Assert.Equal(0, world.ContactManager.ContactCount);
+            }
+            finally
+            {
+                returnNullField.SetValue(null, false);
+            }
+        }
     }
 }

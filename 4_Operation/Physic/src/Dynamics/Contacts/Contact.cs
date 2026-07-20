@@ -43,6 +43,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public class Contact
     {
         /// <summary>
+        ///     Test hook: when set to true, Create returns null.
+        /// </summary>
+        internal static bool ReturnNullOverride;
+
+        /// <summary>
         ///     The edge shape
         /// </summary>
         private static readonly EdgeShape Edge = new EdgeShape();
@@ -590,6 +595,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
+
+            if (ReturnNullOverride)
+            {
+                return null;
+            }
 
             c._type = Registers[(int) type1, (int) type2];
 
