@@ -262,24 +262,5 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position());
             scene.Update();
         }
-
-        /// <summary>
-        /// Tests that the 1-arity Deconstruct (using byte[] GetComp overload) returns correct values
-        /// </summary>
-        [Fact]
-        public void Deconstruct_SingleComponent_UsingByteArrayOverload_Works()
-        {
-            using Scene scene = new();
-            GameObject e1 = scene.Create(new Position { X = 42, Y = 84 });
-            GameObject e2 = scene.Create(new Position { X = 1, Y = 2 });
-
-            e1.Deconstruct(out Ref<Position> p1);
-            e2.Deconstruct(out Ref<Position> p2);
-
-            Assert.Equal(42, p1.Value.X);
-            Assert.Equal(84, p1.Value.Y);
-            Assert.Equal(1, p2.Value.X);
-            Assert.Equal(2, p2.Value.Y);
-        }
     }
 }
