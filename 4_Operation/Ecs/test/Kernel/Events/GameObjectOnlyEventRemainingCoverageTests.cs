@@ -217,5 +217,45 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
 
             Assert.Equal(3, counter);
         }
+
+        /// <summary>
+        ///     Tests that <see cref="GameObjectOnlyEvent.Invoke" /> with a single listener calls only that listener and
+        ///     covers the <c>_second is null</c> branch in <see cref="GameObjectOnlyEvent.Execute" />.
+        /// </summary>
+        [Fact]
+        public void Invoke_SingleListener_CallsOnlyThatListener()
+        {
+            GameObjectOnlyEvent evt = new GameObjectOnlyEvent();
+            int counter = 0;
+            evt.Add(_ => counter++);
+            evt.Invoke(default(GameObject));
+
+            Assert.Equal(1, counter);
+        }
+
+        /// <summary>
+        ///     Tests that removing the first listener when the invokation list is not empty
+        ///     pops the invokation list and promotes it to <c>_first</c>,
+        ///     covering the <c>TryPop</c> success path in <see cref="GameObjectOnlyEvent.Remove" />.
+        /// </summary>
+        [Fact]
+        public void Remove_FirstListener_WithInvokationList_PromotesFromStack()
+        {
+            GameObjectOnlyEvent evt = new GameObjectOnlyEvent();
+            int counter = 0;
+            Action<GameObject> first = _ => counter++;
+            Action<GameObject> second = _ => counter++;
+            Action<GameObject> third = _ => counter++;
+            evt.Add(first);
+            evt.Add(second);
+            evt.Add(third);
+            evt.Remove(first);
+
+            Assert.True(evt.HasListeners);
+
+            evt.Invoke(default(GameObject));
+
+            Assert.Equal(2, counter);
+        }
     }
 }
