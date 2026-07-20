@@ -559,7 +559,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
             builder.AddRange(1, 2, 3, 2, 4);
 
-            builder.RemoveRange(new[] { 2 });
+            builder.RemoveRange((System.Collections.Generic.IEnumerable<int>)new[] { 2 });
 
             Assert.Equal(3, builder.Count);
             Assert.Equal(1, builder[0]);
@@ -1126,7 +1126,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(3);
             builder.AddRange("A", "B", "A");
 
-            builder.RemoveRange(new[] { "a" }, StringComparer.OrdinalIgnoreCase);
+            builder.RemoveRange((System.Collections.Generic.IEnumerable<string>)new[] { "a" }, StringComparer.OrdinalIgnoreCase);
 
             Assert.Single(builder);
             Assert.Equal("B", builder[0]);
@@ -1494,7 +1494,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
             builder.Add(1);
 
-            builder.RemoveRange(System.Array.Empty<int>(), EqualityComparer<int>.Default);
+            builder.RemoveRange((System.Collections.Generic.IEnumerable<int>)System.Array.Empty<int>(), EqualityComparer<int>.Default);
 
             Assert.Equal(1, builder.Count);
         }

@@ -41,16 +41,11 @@ namespace Alis.Benchmark.EntityComponentSystem
     internal static class BenchmarkOperations
     {
         /// <summary>
-        ///     The dispose
-        /// </summary>
-        private static readonly MethodInfo _disposeMethod = typeof(IDisposable).GetMethod(nameof(IDisposable.Dispose));
-
-        /// <summary>
         ///     Gets the context fields
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>An enumerable of field info</returns>
-        private static IEnumerable<FieldInfo> GetContextFields<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.NonPublicFields)] T>() => typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(f => f.GetCustomAttribute<ContextAttribute>() != null);
+        private static IEnumerable<FieldInfo> GetContextFields<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.NonPublicFields)] T>() => typeof(T).GetFields(BindingFlags.NonPublic | BindingFlags.Instance).Where(static f => f.GetCustomAttribute<ContextAttribute>() != null);
 
         /// <summary>
         ///     Setup the contexts using the specified benchmark
@@ -75,7 +70,10 @@ namespace Alis.Benchmark.EntityComponentSystem
         {
             foreach (FieldInfo field in GetContextFields<T>())
             {
-                _disposeMethod.Invoke(field.GetValue(benchmark), null);
+                if (field.GetValue(benchmark) is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
             }
         }
     }
