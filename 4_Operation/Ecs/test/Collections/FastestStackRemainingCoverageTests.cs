@@ -1085,5 +1085,51 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("world", stack.Pop());
             Assert.Equal("hello", stack.Pop());
         }
+
+        /// <summary>
+        /// Tests that Grow with MaxArrayLength overflow path triggers when 2 * _array.Length
+        /// exceeds MaxArrayLength. Uses reflection to set up internal state for boundary condition.
+        /// FastestStack is a struct so must box/unbox through reflection.
+        /// </summary>
+        [Fact]
+        public void Grow_MaxArrayLengthOverflow_TriggersCap()
+        {
+            const int requiredLength = 0x40000000;
+            FastestStack<byte> stack = new FastestStack<byte>();
+            object boxed = stack;
+            System.Reflection.FieldInfo arrayField = typeof(FastestStack<byte>)
+                .GetField("_array", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            byte[] largeArray = new byte[requiredLength];
+            arrayField.SetValue(boxed, largeArray);
+            System.Reflection.FieldInfo sizeField = typeof(FastestStack<byte>)
+                .GetField("_size", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            sizeField.SetValue(boxed, requiredLength);
+            stack = (FastestStack<byte>)boxed;
+            stack.Push(42);
+            Assert.True(stack.Capacity >= 0X7FEFFFFF,
+                $"Grow overflow: after Push, Capacity={stack.Capacity}, expected>={0X7FEFFFFF}");
+        }
+
+        /// <summary>
+        /// Tests that Peek empty stack throws InvalidOperationException and covers the throw path
+        /// </summary>
+        [Fact]
+        public void Peek_EmptyStack_ThrowsAndCoversThrowPath()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => stack.Peek());
+            Assert.Equal("InvalidOperation_EmptyStack", ex.Message);
+        }
+
+        /// <summary>
+        /// Tests that Pop empty stack throws InvalidOperationException and covers the throw path
+        /// </summary>
+        [Fact]
+        public void Pop_EmptyStack_ThrowsAndCoversThrowPath()
+        {
+            FastestStack<int> stack = new FastestStack<int>();
+            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => stack.Pop());
+            Assert.Equal("InvalidOperation_EmptyStack", ex.Message);
+        }
     }
 }
