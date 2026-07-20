@@ -1158,7 +1158,7 @@ namespace Alis.Core.Physic.Test.Collisions
         // ========================================================================
 
         /// <summary>
-        /// Tests that CalculateTimeOfImpact reaches max iterations with crossing sweeps.
+        ///     Tests that CalculateTimeOfImpact reaches max iterations with crossing sweeps.
         /// </summary>
         [Fact]
         public void CalculateTimeOfImpact_SlowConvergence_MaxIterations()
@@ -1194,6 +1194,151 @@ namespace Alis.Core.Physic.Test.Collisions
             TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
 
             Assert.True(output.T >= 0.0f && output.T <= 1.0f);
+        }
+
+        // ========================================================================
+        // Coverage: CalculateTimeOfImpact — iter == kMaxIterations ==> Failed (L163-167)
+        //
+        // To hit the kMaxIterations (20) exit we need every main-loop iteration to
+        // satisfy:
+        //   (a) distance >= target + tolerance  (TryHandleDistanceResult returns false),
+        //   (b) pushback returns "not-done".
+        //
+        // For circles with UseRadii=false, GJK distance == SeparationFunction result
+        // (both equal centre-centre distance).  Condition (b) requires
+        // target - tolerance < s2 <= target + tolerance AND also s2 <= target + tolerance
+        // (otherwise Separated).  Combined with (a) we need:
+        //   distance >= target + tolerance   AND   distance <= target + tolerance
+        // i.e. distance == target + tolerance (exact float equality).
+        //
+        // We achieve this by computing `target + tolerance` inside the test and using
+        // the *same* arithmetic to place the circle centres.  Because `dist * 0.5f`
+        // followed by `2 * halfDist` is exact for IEEE 754 floats (multiplying by 0.5
+        // only decrements the exponent), the GJK distance equals `dist` exactly.
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that CalculateTimeOfImpact reaches kMaxIterations and returns Failed.
+        /// </summary>
+        [Fact]
+        public void CalculateTimeOfImpact_MaxIterations_ReturnsFailed()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+
+            float totalRadius = circleA.GetRadius + circleB.GetRadius;
+            float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
+            float tolerance = 0.25f * SettingEnv.LinearSlop;
+            float dist = target + tolerance;
+            float halfDist = dist * 0.5f;
+
+            ToiInput input = new ToiInput
+            {
+                ProxyA = new DistanceProxy(circleA, 0),
+                ProxyB = new DistanceProxy(circleB, 0),
+                SweepA = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(-halfDist, 0.0f),
+                    C = new Vector2F(-halfDist, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                SweepB = new Sweep
+                {
+                    LocalCenter = Vector2F.Zero,
+                    C0 = new Vector2F(halfDist, 0.0f),
+                    C = new Vector2F(halfDist, 0.0f),
+                    A0 = 0.0f,
+                    A = 0.0f,
+                    Alpha0 = 0.0f
+                },
+                TMax = 1.0f
+            };
+
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
+
+            Assert.Equal(ToiOutputState.Failed, output.State);
+        }
+
+        // ========================================================================
+        // Coverage: TryPushBackIterations — s1 <= target + tolerance ==> Touching (L245-249)
+        //
+        // This path lives inside the pushback while-loop at line 245.  The normal
+        // CalculateTimeOfImpact flow gates entry with TryHandleDistanceResult, which
+        // catches the Touching case first when distance < target+tolerance.  To bypass
+        // that gate we invoke TryPushBackIterations directly via reflection.
+        //
+        // Setup:
+        //   s2 = FindMinSeparation(t2=tMax=1) evaluates the sweeps at the final time;
+        //       we make sweepB move so the circles are closer at t=1:
+        //         center_distance(t=1) <= target - tolerance   (so s2 <= target - tolerance)
+        //   s1 = Evaluate(indexA, indexB, t1=0) evaluates the *same* cached features
+        //       at the initial time, where sweepB is farther away:
+        //         s1 in [target - tolerance , target + tolerance]
+        //   → the s1 < target - tolerance guard (Failed) is false,
+        //     the s1 <= target + tolerance guard (Touching) fires → return true.
+        // ========================================================================
+
+        /// <summary>
+        ///     Tests that TryPushBackIterations returns Touching via the inner s1 check.
+        /// </summary>
+        [Fact]
+        public void TryPushBackIterations_InnerS1WithinTargetPlusTolerance_ReturnsTouching()
+        {
+            CircleShape circleA = new CircleShape(0.5f, 1.0f);
+            CircleShape circleB = new CircleShape(0.5f, 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(circleA, 0);
+            DistanceProxy proxyB = new DistanceProxy(circleB, 0);
+
+            float totalRadius = proxyA.Radius + proxyB.Radius;
+            float target = Math.Max(SettingEnv.LinearSlop, totalRadius - 3.0f * SettingEnv.LinearSlop);
+            float tolerance = 0.25f * SettingEnv.LinearSlop;
+
+            float t1HalfDist = (target + tolerance) * 0.5f;
+
+            // B at t=1 must give s2 = center_distance <= target - tolerance
+            // so that the s2 > target - tolerance check at line 230 does NOT fire.
+            // center_distance(t=1) = B_x(t=1) - A_x = (t2HalfDist) - (-t1HalfDist)
+            // We need: t2HalfDist + t1HalfDist <= target - tolerance
+            float t2HalfDist = (target - tolerance) - t1HalfDist - 0.001f;
+
+            Sweep sweepA = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(-t1HalfDist, 0.0f),
+                C = new Vector2F(-t1HalfDist, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+            Sweep sweepB = new Sweep
+            {
+                LocalCenter = Vector2F.Zero,
+                C0 = new Vector2F(t1HalfDist, 0.0f),
+                C = new Vector2F(t2HalfDist, 0.0f),
+                A0 = 0.0f,
+                A = 0.0f,
+                Alpha0 = 0.0f
+            };
+
+            SimplexCache cache = new SimplexCache { Count = 1 };
+            cache.IndexA[0] = 0;
+            cache.IndexB[0] = 0;
+            SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
+
+            ToiOutput output = new ToiOutput();
+            float t1 = 0.0f;
+            float tMax = 1.0f;
+
+            MethodInfo method = typeof(TimeOfImpact).GetMethod("TryPushBackIterations", BindingFlags.NonPublic | BindingFlags.Static);
+            object[] args = new object[] { tMax, target, tolerance, t1, output };
+            bool result = (bool)method.Invoke(null, args);
+
+            ToiOutput outputOut = (ToiOutput)args[4];
+            Assert.True(result);
+            Assert.Equal(ToiOutputState.Touching, outputOut.State);
         }
     }
 }
