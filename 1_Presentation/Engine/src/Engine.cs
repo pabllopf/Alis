@@ -1465,7 +1465,7 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
         /// <returns>The native platform</returns>
         private static INativePlatform GetPlatform()
         {
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+#if osxarm64 || osxarm || osxx64 || osx
             return new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();

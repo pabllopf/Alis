@@ -136,7 +136,7 @@ namespace Alis.Core.Audio
         /// <returns>The player instance for the current operating system.</returns>
         internal static IPlayer CheckOs()
         {
-#if osxarm64 || osxarm || osxx64 || osx || osxarm || osxx64 || osx
+#if osxarm64 || osxarm || osxx64 || osx
             return new MacPlayer();
 #elif winx64 || winx86 || winarm64 || winarm || win
             return new WindowsPlayer();

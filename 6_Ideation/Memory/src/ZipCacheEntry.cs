@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 
 namespace Alis.Core.Aspect.Memory
@@ -44,6 +45,11 @@ namespace Alis.Core.Aspect.Memory
         /// </summary>
         /// <value>The raw byte array containing the full compressed archive content.</value>
         internal byte[] PackBytes { get; set; }
+
+        /// <summary>
+        ///     Gets a <see cref="ReadOnlyMemory{T}" /> view over <see cref="PackBytes" />.
+        /// </summary>
+        internal ReadOnlyMemory<byte> PackBytesMemory => PackBytes;
 
         /// <summary>
         ///     Gets a dictionary that maps lower-cased full entry paths (using forward slashes)

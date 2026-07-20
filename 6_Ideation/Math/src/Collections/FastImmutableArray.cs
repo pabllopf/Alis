@@ -349,29 +349,51 @@ namespace Alis.Core.Aspect.Math.Collections
                 return new FastImmutableArray<T>(result);
             }
 
-            /// <summary>
-            ///     Inserts the elements of the specified <see cref="FastImmutableArray{T}" /> at the given index.
-            /// </summary>
-            /// <param name="index">The zero-based index at which to insert the values.</param>
-            /// <param name="items">The elements to insert.</param>
-            public void InsertRange(int index, FastImmutableArray<T> items)
+        /// <summary>
+        ///     Inserts the elements of the specified <see cref="FastImmutableArray{T}" /> at the given index.
+        /// </summary>
+        /// <param name="index">The zero-based index at which to insert the values.</param>
+        /// <param name="items">The elements to insert.</param>
+        public void InsertRange(int index, FastImmutableArray<T> items)
+        {
+            if (items.IsEmpty)
             {
-                if (items.IsEmpty)
-                {
-                    return;
-                }
-
-                EnsureCapacity(Count + items.Length);
-
-                if (index != Count)
-                {
-                    System.Array.Copy(_elements, index, _elements, index + items.Length, _count - index);
-                }
-
-                System.Array.Copy(items.Array!, 0, _elements, index, items.Length);
-
-                _count += items.Length;
+                return;
             }
+
+            EnsureCapacity(Count + items.Length);
+
+            if (index != Count)
+            {
+                System.Array.Copy(_elements, index, _elements, index + items.Length, _count - index);
+            }
+
+            System.Array.Copy(items.Array!, 0, _elements, index, items.Length);
+
+            _count += items.Length;
+        }
+
+        /// <summary>
+        ///     Inserts elements from a readonly span at the given index.
+        /// </summary>
+        public void InsertRange(int index, ReadOnlySpan<T> items)
+        {
+            if (items.Length == 0)
+            {
+                return;
+            }
+
+            EnsureCapacity(Count + items.Length);
+
+            if (index != Count)
+            {
+                System.Array.Copy(_elements, index, _elements, index + items.Length, _count - index);
+            }
+
+            items.CopyTo(_elements.AsSpan(index));
+
+            _count += items.Length;
+        }
 
         /// <summary>
         ///     Adds the specified items to the end of the array.
@@ -411,6 +433,20 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
+            ///     Adds the specified items derived from <typeparamref name="T" /> from a readonly span.
+            /// </summary>
+            public void AddRange<TDerived>(ReadOnlySpan<TDerived> items) where TDerived : T
+            {
+                int offset = Count;
+                Count += items.Length;
+
+                for (int i = 0; i < items.Length; i++)
+                {
+                    _elements[offset + i] = items[i];
+                }
+            }
+
+            /// <summary>
             ///     Adds the specified items to the end of the array up to the given length.
             /// </summary>
             /// <param name="items">The items to add.</param>
@@ -421,6 +457,17 @@ namespace Alis.Core.Aspect.Math.Collections
                 Count += length;
 
                 System.Array.Copy(items, 0, _elements, offset, length);
+            }
+
+            /// <summary>
+            ///     Adds items from a span to the end of the array up to the given length.
+            /// </summary>
+            public void AddRange(ReadOnlySpan<T> items, int length)
+            {
+                int offset = Count;
+                Count += length;
+
+                items.Slice(0, length).CopyTo(_elements.AsSpan(offset));
             }
 
             /// <summary>
@@ -509,7 +556,7 @@ namespace Alis.Core.Aspect.Math.Collections
                 {
                     if (match(_elements[i]))
                     {
-                        removeIndices ??= new List<int>();
+                        removeIndices ??= new List<int>(_count / 4);
                         removeIndices.Add(i);
                     }
                 }
@@ -567,6 +614,41 @@ namespace Alis.Core.Aspect.Math.Collections
                 SortedSet<int> indicesToRemove = new SortedSet<int>();
                 foreach (T item in items)
                 {
+                    int index = IndexOf(item, 0, _count, equalityComparer);
+                    while (index >= 0)
+                    {
+                        indicesToRemove.Add(index);
+                        index++;
+                        if (index >= _count)
+                        {
+                            break;
+                        }
+
+                        index = IndexOf(item, index, _count - index, equalityComparer);
+                    }
+                }
+
+                RemoveAtRange(indicesToRemove);
+            }
+
+            /// <summary>
+            ///     Removes all occurrences of the specified items from a readonly span.
+            /// </summary>
+            public void RemoveRange(ReadOnlySpan<T> items)
+            {
+                RemoveRange(items, EqualityComparer<T>.Default);
+            }
+
+            /// <summary>
+            ///     Removes all occurrences of the specified items from a readonly span using a custom equality comparer.
+            /// </summary>
+            public void RemoveRange(ReadOnlySpan<T> items, IEqualityComparer<T> equalityComparer)
+            {
+                SortedSet<int> indicesToRemove = new SortedSet<int>();
+                equalityComparer ??= EqualityComparer<T>.Default;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    T item = items[j];
                     int index = IndexOf(item, 0, _count, equalityComparer);
                     while (index >= 0)
                     {
@@ -647,6 +729,14 @@ namespace Alis.Core.Aspect.Math.Collections
             public void CopyTo(int sourceIndex, T[] destination, int destinationIndex, int length)
             {
                 System.Array.Copy(_elements, sourceIndex, destination, destinationIndex, length);
+            }
+
+            /// <summary>
+            ///     Copies a range of elements from this array to the specified destination span.
+            /// </summary>
+            public void CopyTo(int sourceIndex, Span<T> destination, int destinationIndex, int length)
+            {
+                new ReadOnlySpan<T>(_elements, sourceIndex, length).CopyTo(destination.Slice(destinationIndex));
             }
 
             /// <summary>
@@ -874,15 +964,6 @@ namespace Alis.Core.Aspect.Math.Collections
                 {
                     System.Array.Sort(_elements, index, count, comparer);
                 }
-            }
-
-            /// <summary>
-            ///     Copies the current contents to the specified <see cref="Span{T}" />.
-            /// </summary>
-            /// <param name="destination">The <see cref="Span{T}" /> to copy to.</param>
-            public void CopyTo(Span<T> destination)
-            {
-                new ReadOnlySpan<T>(_elements, 0, Count).CopyTo(destination);
             }
 
             /// <summary>
