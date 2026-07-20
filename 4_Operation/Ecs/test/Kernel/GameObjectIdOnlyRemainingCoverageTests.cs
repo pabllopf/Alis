@@ -97,5 +97,71 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(77, dst.ID);
             Assert.Equal((ushort)2, dst.Version);
         }
+
+        /// <summary>
+        ///     Tests that <see cref="GameObjectIdOnly.ToEntity" /> creates a <see cref="GameObject" /> with correct
+        ///     scene ID, version, and entity ID.
+        /// </summary>
+        [Fact]
+        public void ToEntity_CreatesGameObject_WithCorrectValues()
+        {
+            using Scene scene = new Scene();
+            GameObjectIdOnly idOnly = new GameObjectIdOnly(25, 3);
+
+            GameObject result = idOnly.ToEntity(scene);
+
+            Assert.Equal(scene.Id, result.WorldID);
+            Assert.Equal((ushort)3, result.EntityVersion);
+            Assert.Equal(25, result.EntityID);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="GameObjectIdOnly.ToEntity" /> works with default version and zero ID.
+        /// </summary>
+        [Fact]
+        public void ToEntity_WithDefaultVersion_WorksCorrectly()
+        {
+            using Scene scene = new Scene();
+            GameObjectIdOnly idOnly = new GameObjectIdOnly(0, 0);
+
+            GameObject result = idOnly.ToEntity(scene);
+
+            Assert.Equal(scene.Id, result.WorldID);
+            Assert.Equal((ushort)0, result.EntityVersion);
+            Assert.Equal(0, result.EntityID);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="GameObjectIdOnly.ToEntity" /> works with max ushort version.
+        /// </summary>
+        [Fact]
+        public void ToEntity_WithMaxVersion_WorksCorrectly()
+        {
+            using Scene scene = new Scene();
+            GameObjectIdOnly idOnly = new GameObjectIdOnly(42, ushort.MaxValue);
+
+            GameObject result = idOnly.ToEntity(scene);
+
+            Assert.Equal(scene.Id, result.WorldID);
+            Assert.Equal(ushort.MaxValue, result.EntityVersion);
+            Assert.Equal(42, result.EntityID);
+        }
+
+        /// <summary>
+        ///     Tests that calling <see cref="GameObjectIdOnly.ToEntity" /> on a default struct returns
+        ///     a <see cref="GameObject" /> with zero values.
+        /// </summary>
+        [Fact]
+        public void ToEntity_DefaultStruct_ReturnsZeroValues()
+        {
+            using Scene scene = new Scene();
+            GameObjectIdOnly idOnly = default;
+
+            GameObject result = idOnly.ToEntity(scene);
+
+            Assert.Equal(scene.Id, result.WorldID);
+            Assert.Equal((ushort)0, result.EntityVersion);
+            Assert.Equal(0, result.EntityID);
+        }
     }
 }
