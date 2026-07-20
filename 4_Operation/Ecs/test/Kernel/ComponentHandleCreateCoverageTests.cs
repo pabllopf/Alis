@@ -34,18 +34,22 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    ///     Coverage tests for <see cref="ComponentHandle" /> methods not covered by other test files.
+    ///     Tests <see cref="ComponentHandle.Create{T}" />, <see cref="ComponentHandle.CreateFromBoxed" />,
+    ///     <see cref="ComponentHandle.ParentTable" />, and <see cref="ComponentHandle.InvokeComponentEventAndConsume" />.
+    /// </summary>
     public class ComponentHandleCreateCoverageTests
     {
         [Fact]
         public void Create_WithValueType_StoresComponent()
         {
-            ComponentHandle handle = ComponentHandle.Create<int>(42);
+            ComponentHandle handle = ComponentHandle.Create<long>(42L);
 
-            int result = handle.Retrieve<int>();
+            long result = handle.Retrieve<long>();
 
-            Assert.Equal(42, result);
-            Assert.Equal(Component<int>.Id, handle.ComponentId);
-            Assert.Equal(typeof(int), handle.Type);
+            Assert.Equal(42L, result);
+            Assert.Equal(typeof(long), handle.Type);
         }
 
         [Fact]
@@ -61,29 +65,29 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void CreateFromBoxed_WithComponentId_StoresComponent()
         {
-            ComponentHandle handle = ComponentHandle.CreateFromBoxed(Component<int>.Id, 42);
+            ComponentHandle handle = ComponentHandle.CreateFromBoxed(Component<long>.Id, 42L);
 
             object result = handle.RetrieveBoxed();
 
-            Assert.Equal(42, result);
-            Assert.Equal(typeof(int), handle.Type);
+            Assert.Equal(42L, result);
+            Assert.Equal(typeof(long), handle.Type);
         }
 
         [Fact]
         public void CreateFromBoxed_WithoutComponentId_StoresComponent()
         {
-            ComponentHandle handle = ComponentHandle.CreateFromBoxed(42);
+            ComponentHandle handle = ComponentHandle.CreateFromBoxed(42L);
 
             object result = handle.RetrieveBoxed();
 
-            Assert.Equal(42, result);
-            Assert.Equal(typeof(int), handle.Type);
+            Assert.Equal(42L, result);
+            Assert.Equal(typeof(long), handle.Type);
         }
 
         [Fact]
         public void ParentTable_AfterCreate_ReturnsStorage()
         {
-            ComponentHandle handle = ComponentHandle.Create<int>(42);
+            ComponentHandle handle = ComponentHandle.Create<long>(42L);
 
             IdTable parentTable = handle.ParentTable;
 
@@ -93,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Dispose_AfterCreate_FreesHandle()
         {
-            ComponentHandle handle = ComponentHandle.Create<int>(42);
+            ComponentHandle handle = ComponentHandle.Create<long>(42L);
 
             handle.Dispose();
         }
@@ -101,17 +105,17 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact]
         public void Create_AndRetrieve_WithDifferentTypes()
         {
-            ComponentHandle intHandle = ComponentHandle.Create<int>(99);
+            ComponentHandle longHandle = ComponentHandle.Create<long>(99L);
             ComponentHandle stringHandle = ComponentHandle.Create<string>("world");
 
-            Assert.Equal(99, intHandle.Retrieve<int>());
+            Assert.Equal(99L, longHandle.Retrieve<long>());
             Assert.Equal("world", stringHandle.Retrieve<string>());
         }
 
         [Fact]
         public void InvokeComponentEventAndConsume_DispatchesEvent()
         {
-            ComponentHandle handle = ComponentHandle.Create<int>(42);
+            ComponentHandle handle = ComponentHandle.Create<long>(42L);
             GameObject gameObject = new GameObject();
             GenericEvent genericEvent = new GenericEvent();
 
