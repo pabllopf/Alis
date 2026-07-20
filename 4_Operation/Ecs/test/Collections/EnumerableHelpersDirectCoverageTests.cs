@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Collections
     /// </summary>
     public class EnumerableHelpersDirectCoverageTests
     {
+        /// <summary>
+        /// Tests that get empty enumerator returns empty
+        /// </summary>
         [Fact]
         public void GetEmptyEnumerator_ReturnsEmpty()
         {
@@ -46,6 +49,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(en.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that get empty enumerator string returns empty
+        /// </summary>
         [Fact]
         public void GetEmptyEnumerator_String_ReturnsEmpty()
         {
@@ -53,6 +59,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(en.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that to array from list returns array
+        /// </summary>
         [Fact]
         public void ToArray_FromList_ReturnsArray()
         {
@@ -62,6 +71,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, result.Length);
         }
 
+        /// <summary>
+        /// Tests that to array from empty list returns empty
+        /// </summary>
         [Fact]
         public void ToArray_FromEmptyList_ReturnsEmpty()
         {
@@ -71,6 +83,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that to array from enumerable returns array
+        /// </summary>
         [Fact]
         public void ToArray_FromEnumerable_ReturnsArray()
         {
@@ -82,6 +97,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(4, result[3]);
         }
 
+        /// <summary>
+        /// Tests that to array from empty enumerable returns empty
+        /// </summary>
         [Fact]
         public void ToArray_FromEmptyEnumerable_ReturnsEmpty()
         {
@@ -91,6 +109,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that to array from single element returns array
+        /// </summary>
         [Fact]
         public void ToArray_FromSingleElement_ReturnsArray()
         {
@@ -100,6 +121,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, result[0]);
         }
 
+        /// <summary>
+        /// Tests that to array from array returns copy
+        /// </summary>
         [Fact]
         public void ToArray_FromArray_ReturnsCopy()
         {
@@ -110,6 +134,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(50, result[4]);
         }
 
+        /// <summary>
+        /// Tests that to array from empty array returns empty
+        /// </summary>
         [Fact]
         public void ToArray_FromEmptyArray_ReturnsEmpty()
         {
@@ -119,6 +146,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Empty(result);
         }
 
+        /// <summary>
+        /// Tests that to array from hash set returns array
+        /// </summary>
         [Fact]
         public void ToArray_FromHashSet_ReturnsArray()
         {
@@ -131,6 +161,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Contains(3, result);
         }
 
+        /// <summary>
+        /// Tests that to array from large enumerable grows correctly
+        /// </summary>
         [Fact]
         public void ToArray_FromLargeEnumerable_GrowsCorrectly()
         {

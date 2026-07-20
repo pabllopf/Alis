@@ -39,6 +39,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
     /// <seealso cref="VorbisEncoder" />
     public class VorbisEncoderTest
     {
+        /// <summary>
+        /// Tests that vorbis encoder constructor should create instance with default cqp
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Constructor_ShouldCreateInstanceWithDefaultCqp()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a 3.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder name should return libvorbis
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Name_ShouldReturnLibvorbis()
         {
@@ -56,6 +62,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvorbis", encoder.Name);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder default format should be ogg
+        /// </summary>
         [Fact]
         public void VorbisEncoder_DefaultFormat_ShouldBeOgg()
         {
@@ -64,6 +73,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("ogg", encoder.Format);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder format should be settable
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Format_ShouldBeSettable()
         {
@@ -75,6 +87,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(format, encoder.Format);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder channel count should be settable
+        /// </summary>
         [Fact]
         public void VorbisEncoder_ChannelCount_ShouldBeSettable()
         {
@@ -86,6 +101,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(channelCount, encoder.ChannelCount);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder default channel count should be null
+        /// </summary>
         [Fact]
         public void VorbisEncoder_DefaultChannelCount_ShouldBeNull()
         {
@@ -94,6 +112,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Null(encoder.ChannelCount);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder sample rate should be settable
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SampleRate_ShouldBeSettable()
         {
@@ -105,6 +126,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(sampleRate, encoder.SampleRate);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder default sample rate should be null
+        /// </summary>
         [Fact]
         public void VorbisEncoder_DefaultSampleRate_ShouldBeNull()
         {
@@ -113,6 +137,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Null(encoder.SampleRate);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cbr should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCbr_ShouldSetQualitySettings()
         {
@@ -124,6 +151,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-b:a 192k", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cbr with different bitrates should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCbr_WithDifferentBitrates_ShouldSetQualitySettings()
         {
@@ -141,6 +171,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-b:a 320k", encoder320k.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cqp with default should set quality 3
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCqp_WithDefault_ShouldSetQuality3()
         {
@@ -151,6 +184,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a 3.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cqp with custom quality should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCqp_WithCustomQuality_ShouldSetQualitySettings()
         {
@@ -162,6 +198,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a 5.50", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cqp with minus one should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCqp_WithMinusOne_ShouldSetQualitySettings()
         {
@@ -172,6 +211,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a -1.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cqp with ten should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCqp_WithTen_ShouldSetQualitySettings()
         {
@@ -182,6 +224,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a 10.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cqp with zero should set quality settings
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCqp_WithZero_ShouldSetQualitySettings()
         {
@@ -192,6 +237,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-q:a 0.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should return encoder options
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldReturnEncoderOptions()
         {
@@ -204,6 +252,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvorbis", options.EncoderName);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should include default quality in arguments
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldIncludeDefaultQualityInArguments()
         {
@@ -214,6 +265,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-q:a 3.00", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should not include channel count when null
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldNotIncludeChannelCountWhenNull()
         {
@@ -225,6 +279,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-ac", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should include channel count when set
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldIncludeChannelCountWhenSet()
         {
@@ -237,6 +294,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("2", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should not include sample rate when null
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldNotIncludeSampleRateWhenNull()
         {
@@ -248,6 +308,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-ar", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should include sample rate when set
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldIncludeSampleRateWhenSet()
         {
@@ -260,6 +323,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("44100", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder create should include both channel count and sample rate when set
+        /// </summary>
         [Fact]
         public void VorbisEncoder_Create_ShouldIncludeBothChannelCountAndSampleRateWhenSet()
         {
@@ -273,6 +339,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-ar 48000", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder set cbr should override default cqp
+        /// </summary>
         [Fact]
         public void VorbisEncoder_SetCbr_ShouldOverrideDefaultCqp()
         {
@@ -285,6 +354,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-q:a", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vorbis encoder implements i encoder options builder
+        /// </summary>
         [Fact]
         public void VorbisEncoder_ImplementsIEncoderOptionsBuilder()
         {

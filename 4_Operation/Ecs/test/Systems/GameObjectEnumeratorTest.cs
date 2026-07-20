@@ -35,18 +35,30 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Systems
 {
+    /// <summary>
+    /// The game object enumerator test class
+    /// </summary>
     public class GameObjectEnumeratorTest
     {
+        /// <summary>
+        /// Tests that game object enumerator is ref struct value type
+        /// </summary>
         [Fact] public void GameObjectEnumerator_IsRefStruct_ValueType()
         {
             Assert.True(typeof(GameObjectEnumerator).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that entity enumerable is ref struct value type
+        /// </summary>
         [Fact] public void EntityEnumerable_IsRefStruct_ValueType()
         {
             Assert.True(typeof(GameObjectEnumerator.EntityEnumerable).IsValueType);
         }
 
+        /// <summary>
+        /// Tests that move next empty returns false
+        /// </summary>
         [Fact] public void MoveNext_Empty_ReturnsFalse()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
@@ -55,6 +67,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that move next after exhaustion still returns false
+        /// </summary>
         [Fact] public void MoveNext_AfterExhaustion_StillReturnsFalse()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
@@ -64,6 +79,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(enumerator.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that current accessed before move next throws index out of range exception
+        /// </summary>
         [Fact] public void Current_AccessedBeforeMoveNext_ThrowsIndexOutOfRangeException()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
@@ -82,6 +100,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that current accessed after move next returns false throws index out of range exception
+        /// </summary>
         [Fact] public void Current_AccessedAfterMoveNextReturnsFalse_ThrowsIndexOutOfRangeException()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
@@ -101,6 +122,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that get enumerator multiple times each independent
+        /// </summary>
         [Fact] public void GetEnumerator_MultipleTimes_EachIndependent()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
@@ -112,6 +136,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(e2.MoveNext());
         }
 
+        /// <summary>
+        /// Tests that enumerate single entity yields one entity
+        /// </summary>
         [Fact] public void Enumerate_SingleEntity_YieldsOneEntity()
         {
             using Scene scene = new Scene();
@@ -127,6 +154,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(1, count);
         }
 
+        /// <summary>
+        /// Tests that enumerate multiple entities yields expected count
+        /// </summary>
         [Fact] public void Enumerate_MultipleEntities_YieldsExpectedCount()
         {
             using Scene scene = new Scene();
@@ -142,6 +172,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(5, count);
         }
 
+        /// <summary>
+        /// Tests that enumerate twice produces same ids
+        /// </summary>
         [Fact] public void Enumerate_Twice_ProducesSameIds()
         {
             using Scene scene = new Scene();
@@ -163,6 +196,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(firstIds, secondIds);
         }
 
+        /// <summary>
+        /// Tests that enumerate after setting span values returns correct component data
+        /// </summary>
         [Fact] public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
         {
             using Scene scene = new Scene();
@@ -187,6 +223,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(3, index);
         }
 
+        /// <summary>
+        /// Tests that current accessed before move next throws
+        /// </summary>
         [Fact] public void Current_AccessedBeforeMoveNext_Throws()
         {
             using Scene scene = new Scene();
@@ -207,6 +246,9 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
+        /// <summary>
+        /// Tests that enumerate with previous and new entities enumerates only new ones
+        /// </summary>
         [Fact] public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
         {
             using Scene scene = new Scene();

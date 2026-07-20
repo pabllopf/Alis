@@ -39,6 +39,9 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class ComponentHandleRetrieveErrorPathTest
     {
+        /// <summary>
+        /// Tests that retrieve mismatched type throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Retrieve_MismatchedType_ThrowsInvalidOperationException()
         {
@@ -47,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal("Wrong component handle type!", exception.Message);
         }
 
+        /// <summary>
+        /// Tests that retrieve mismatched type different index throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Retrieve_MismatchedTypeDifferentIndex_ThrowsInvalidOperationException()
         {
@@ -55,6 +61,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal("Wrong component handle type!", exception.Message);
         }
 
+        /// <summary>
+        /// Tests that retrieve mismatched type with string throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Retrieve_MismatchedTypeWithString_ThrowsInvalidOperationException()
         {

@@ -38,6 +38,9 @@ namespace Alis.Core.Ecs.Test.Updating
     /// </summary>
     public class UpdateOrderAttributeTest
     {
+        /// <summary>
+        /// Tests that constructor with zero creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithZero_CreatesInstance()
         {
@@ -47,6 +50,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.IsAssignableFrom<Attribute>(attribute);
         }
 
+        /// <summary>
+        /// Tests that constructor with positive value creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithPositiveValue_CreatesInstance()
         {
@@ -55,6 +61,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.NotNull(attribute);
         }
 
+        /// <summary>
+        /// Tests that constructor with negative value creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithNegativeValue_CreatesInstance()
         {
@@ -63,6 +72,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.NotNull(attribute);
         }
 
+        /// <summary>
+        /// Tests that constructor with max value creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithMaxValue_CreatesInstance()
         {
@@ -71,6 +83,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.NotNull(attribute);
         }
 
+        /// <summary>
+        /// Tests that constructor with min value creates instance
+        /// </summary>
         [Fact]
         public void Constructor_WithMinValue_CreatesInstance()
         {
@@ -79,6 +94,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.NotNull(attribute);
         }
 
+        /// <summary>
+        /// Tests that inherits from attribute
+        /// </summary>
         [Fact]
         public void InheritsFromAttribute()
         {
@@ -87,6 +105,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.IsAssignableFrom<Attribute>(attribute);
         }
 
+        /// <summary>
+        /// Tests that implements i component update order attribute
+        /// </summary>
         [Fact]
         public void Implements_IComponentUpdateOrderAttribute()
         {
@@ -95,6 +116,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.IsAssignableFrom<IComponentUpdateOrderAttribute>(attribute);
         }
 
+        /// <summary>
+        /// Tests that attribute usage targets methods only
+        /// </summary>
         [Fact]
         public void AttributeUsage_TargetsMethodsOnly()
         {
@@ -107,6 +131,9 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(usage.Inherited);
         }
 
+        /// <summary>
+        /// Tests that multiple instances are independent
+        /// </summary>
         [Fact]
         public void MultipleInstances_AreIndependent()
         {

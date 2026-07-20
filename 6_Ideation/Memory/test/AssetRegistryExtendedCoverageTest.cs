@@ -49,23 +49,50 @@ namespace Alis.Core.Aspect.Memory.Test
     [Collection("AssetRegistryCollection")]
     public class AssetRegistryExtendedCoverageTest : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly PropertyInfo ActiveAssemblyProp = typeof(AssetRegistry).GetProperty("ActiveAssemblyName",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo LoadersField = typeof(AssetRegistry).GetField("RegisteredAssetLoaders",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo ZipCacheField = typeof(AssetRegistry).GetField("_zipCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo PathCacheField = typeof(AssetRegistry).GetField("_extractedPathCache",
             BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The saved assembly
+        /// </summary>
         internal readonly string _savedAssembly;
+        /// <summary>
+        /// The saved loaders
+        /// </summary>
         internal readonly Dictionary<object, object> _savedLoaders = new();
+        /// <summary>
+        /// The saved zip cache
+        /// </summary>
         internal readonly Dictionary<object, object> _savedZipCache = new();
+        /// <summary>
+        /// The saved path cache
+        /// </summary>
         internal readonly Dictionary<object, object> _savedPathCache = new();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AssetRegistryExtendedCoverageTest"/> class
+        /// </summary>
         public AssetRegistryExtendedCoverageTest()
         {
             _savedAssembly = (string)ActiveAssemblyProp.GetValue(null);
@@ -74,6 +101,9 @@ namespace Alis.Core.Aspect.Memory.Test
             foreach (DictionaryEntry e in GetPathCache()) _savedPathCache[e.Key] = e.Value;
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ActiveAssemblyProp.SetValue(null, _savedAssembly);
@@ -82,6 +112,11 @@ namespace Alis.Core.Aspect.Memory.Test
             Restore(GetPathCache(), _savedPathCache);
         }
 
+        /// <summary>
+        /// Restores the target
+        /// </summary>
+        /// <param name="target">The target</param>
+        /// <param name="saved">The saved</param>
         private static void Restore(IDictionary target, Dictionary<object, object> saved)
         {
             target.Clear();
@@ -89,10 +124,27 @@ namespace Alis.Core.Aspect.Memory.Test
                 target[kvp.Key] = kvp.Value;
         }
 
+        /// <summary>
+        /// Gets the loaders
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetLoaders() => (IDictionary)LoadersField.GetValue(null);
+        /// <summary>
+        /// Gets the zip cache
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetZipCache() => (IDictionary)ZipCacheField.GetValue(null);
+        /// <summary>
+        /// Gets the path cache
+        /// </summary>
+        /// <returns>The dictionary</returns>
         private static IDictionary GetPathCache() => (IDictionary)PathCacheField.GetValue(null);
 
+        /// <summary>
+        /// Creates the test zip bytes using the specified entries
+        /// </summary>
+        /// <param name="entries">The entries</param>
+        /// <returns>The byte array</returns>
         private static byte[] CreateTestZipBytes(Dictionary<string, string> entries)
         {
             using MemoryStream ms = new MemoryStream();
@@ -110,6 +162,11 @@ namespace Alis.Core.Aspect.Memory.Test
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Setup the assembly using the specified assembly name
+        /// </summary>
+        /// <param name="assemblyName">The assembly name</param>
+        /// <param name="zipBytes">The zip bytes</param>
         private static void SetupAssembly(string assemblyName, byte[] zipBytes)
         {
             ActiveAssemblyProp.SetValue(null, null);

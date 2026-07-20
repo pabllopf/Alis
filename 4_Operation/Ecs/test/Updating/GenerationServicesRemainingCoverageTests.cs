@@ -224,10 +224,17 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private partial struct CoverageInitDestroyProbe : IOnInit, IOnDestroy
         {
+            /// <summary>
+            /// Ons the init using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnInit(IGameObject self)
             {
             }
 
+            /// <summary>
+            /// Ons the destroy
+            /// </summary>
             public void OnDestroy()
             {
             }
@@ -243,6 +250,10 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private partial struct CoverageOnUpdateProbe : IOnUpdate
         {
+            /// <summary>
+            /// Ons the update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)
             {
             }
@@ -253,6 +264,10 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private partial struct CoverageSameFactoryProbe : IOnUpdate
         {
+            /// <summary>
+            /// Ons the update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)
             {
             }
@@ -263,6 +278,10 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private partial struct CoverageDiffFactoryProbe : IOnUpdate
         {
+            /// <summary>
+            /// Ons the update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)
             {
             }
@@ -273,6 +292,10 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         private partial struct CoverageAnotherUpdateProbe : IOnUpdate
         {
+            /// <summary>
+            /// Ons the update using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnUpdate(IGameObject self)
             {
             }

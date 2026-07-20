@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Marshalling
 {
+    /// <summary>
+    /// The scene marshal test class
+    /// </summary>
     public class SceneMarshalTest
     {
+        /// <summary>
+        /// Tests that get component with valid entity returns correct reference
+        /// </summary>
         [Fact]
         public void GetComponent_WithValidEntity_ReturnsCorrectReference()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(20f, retrieved.Y);
         }
 
+        /// <summary>
+        /// Tests that get component modify through reference updates component
+        /// </summary>
         [Fact]
         public void GetComponent_ModifyThroughReference_UpdatesComponent()
         {
@@ -63,6 +72,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(200f, updated.Y);
         }
 
+        /// <summary>
+        /// Tests that get component with struct component works correctly
+        /// </summary>
         [Fact]
         public void GetComponent_WithStructComponent_WorksCorrectly()
         {
@@ -74,6 +86,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(100, retrieved.Value);
         }
 
+        /// <summary>
+        /// Tests that get component with multiple entities returns correct components
+        /// </summary>
         [Fact]
         public void GetComponent_WithMultipleEntities_ReturnsCorrectComponents()
         {
@@ -90,6 +105,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(40f, pos2.Y);
         }
 
+        /// <summary>
+        /// Tests that get component modifications visible through normal access
+        /// </summary>
         [Fact]
         public void GetComponent_ModificationsVisibleThroughNormalAccess()
         {
@@ -104,6 +122,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(888f, entity.Get<Position>().Y);
         }
 
+        /// <summary>
+        /// Tests that get raw buffer with valid entity returns span and index
+        /// </summary>
         [Fact]
         public void GetRawBuffer_WithValidEntity_ReturnsSpanAndIndex()
         {
@@ -118,6 +139,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(10f, buffer[index].Y);
         }
 
+        /// <summary>
+        /// Tests that get raw buffer modify through span updates component
+        /// </summary>
         [Fact]
         public void GetRawBuffer_ModifyThroughSpan_UpdatesComponent()
         {
@@ -132,6 +156,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(100f, updated.Y);
         }
 
+        /// <summary>
+        /// Tests that get raw buffer with multiple entities in same archetype works
+        /// </summary>
         [Fact]
         public void GetRawBuffer_WithMultipleEntitiesInSameArchetype_Works()
         {
@@ -148,6 +175,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(4f, buffer2[index2].Y);
         }
 
+        /// <summary>
+        /// Tests that get with entity id returns correct component
+        /// </summary>
         [Fact]
         public void Get_WithEntityId_ReturnsCorrectComponent()
         {
@@ -160,6 +190,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(2f, retrieved.Y);
         }
 
+        /// <summary>
+        /// Tests that get with entity id allows modification
+        /// </summary>
         [Fact]
         public void Get_WithEntityId_AllowsModification()
         {
@@ -175,6 +208,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(20f, updated.Y);
         }
 
+        /// <summary>
+        /// Tests that get with multiple entity ids returns correct components
+        /// </summary>
         [Fact]
         public void Get_WithMultipleEntityIds_ReturnsCorrectComponents()
         {
@@ -191,6 +227,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(4f, vel2.Y);
         }
 
+        /// <summary>
+        /// Tests that get with invalid entity id throws
+        /// </summary>
         [Fact]
         public void Get_WithInvalidEntityId_Throws()
         {
@@ -199,6 +238,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Throws<NullReferenceException>(() => SceneMarshal.Get<Position>(scene, -1));
         }
 
+        /// <summary>
+        /// Tests that get component get and set different types works
+        /// </summary>
         [Fact]
         public void GetComponent_GetAndSetDifferentTypes_Works()
         {
@@ -225,6 +267,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(40f, entity.Get<Velocity>().Y);
         }
 
+        /// <summary>
+        /// Tests that get raw buffer multiple buffers in different archetypes are independent
+        /// </summary>
         [Fact]
         public void GetRawBuffer_MultipleBuffersInDifferentArchetypes_AreIndependent()
         {
@@ -241,6 +286,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(40f, velBuffer[velIndex].Y);
         }
 
+        /// <summary>
+        /// Tests that get raw buffer buffer length reflects archetype capacity
+        /// </summary>
         [Fact]
         public void GetRawBuffer_BufferLengthReflectsArchetypeCapacity()
         {

@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The short sparse set coverage test class
+    /// </summary>
     public class ShortSparseSetCoverageTest
     {
+        /// <summary>
+        /// Tests that constructor default sets capacity four and count zero
+        /// </summary>
         [Fact]
         public void Constructor_Default_SetsCapacityFourAndCountZero()
         {
@@ -45,6 +51,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, set.Count);
         }
 
+        /// <summary>
+        /// Tests that constructor default does not throw
+        /// </summary>
         [Fact]
         public void Constructor_Default_DoesNotThrow()
         {
@@ -53,6 +62,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.NotNull(set);
         }
 
+        /// <summary>
+        /// Tests that indexer new id auto vivifies and stores
+        /// </summary>
         [Fact]
         public void Indexer_NewId_AutoVivifiesAndStores()
         {
@@ -64,6 +76,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that indexer multiple ids all accessible
+        /// </summary>
         [Fact]
         public void Indexer_MultipleIds_AllAccessible()
         {
@@ -79,6 +94,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, set.Count);
         }
 
+        /// <summary>
+        /// Tests that indexer overwrite existing count does not change
+        /// </summary>
         [Fact]
         public void Indexer_OverwriteExisting_CountDoesNotChange()
         {
@@ -91,6 +109,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that indexer ref return mutation persists
+        /// </summary>
         [Fact]
         public void Indexer_RefReturn_MutationPersists()
         {
@@ -103,6 +124,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(200, set[5]);
         }
 
+        /// <summary>
+        /// Tests that indexer ref return increment persists
+        /// </summary>
         [Fact]
         public void Indexer_RefReturn_IncrementPersists()
         {
@@ -115,6 +139,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(15, set[0]);
         }
 
+        /// <summary>
+        /// Tests that indexer large id resizes sparse
+        /// </summary>
         [Fact]
         public void Indexer_LargeId_ResizesSparse()
         {
@@ -126,6 +153,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that indexer sparse ids all correct
+        /// </summary>
         [Fact]
         public void Indexer_SparseIds_AllCorrect()
         {
@@ -140,6 +170,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(30, set[100]);
         }
 
+        /// <summary>
+        /// Tests that indexer default value returns zero
+        /// </summary>
         [Fact]
         public void Indexer_DefaultValue_ReturnsZero()
         {
@@ -148,6 +181,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, set[99]);
         }
 
+        /// <summary>
+        /// Tests that indexer sequential up to capacity works
+        /// </summary>
         [Fact]
         public void Indexer_SequentialUpToCapacity_Works()
         {
@@ -163,6 +199,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that indexer sequential beyond capacity works
+        /// </summary>
         [Fact]
         public void Indexer_SequentialBeyondCapacity_Works()
         {
@@ -178,6 +217,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that indexer reading non existent id auto vivifies
+        /// </summary>
         [Fact]
         public void Indexer_ReadingNonExistentId_AutoVivifies()
         {
@@ -189,6 +231,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that count starts at zero
+        /// </summary>
         [Fact]
         public void Count_StartsAtZero()
         {
@@ -197,6 +242,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, set.Count);
         }
 
+        /// <summary>
+        /// Tests that count increments with new ids
+        /// </summary>
         [Fact]
         public void Count_IncrementsWithNewIds()
         {
@@ -212,6 +260,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, set.Count);
         }
 
+        /// <summary>
+        /// Tests that count decrements on remove
+        /// </summary>
         [Fact]
         public void Count_DecrementsOnRemove()
         {
@@ -225,6 +276,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that has existing id returns true
+        /// </summary>
         [Fact]
         public void Has_ExistingId_ReturnsTrue()
         {
@@ -235,6 +289,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(set.Has(10));
         }
 
+        /// <summary>
+        /// Tests that has non existent id in range returns false
+        /// </summary>
         [Fact]
         public void Has_NonExistentIdInRange_ReturnsFalse()
         {
@@ -245,6 +302,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(set.Has(5));
         }
 
+        /// <summary>
+        /// Tests that has id beyond sparse length returns false
+        /// </summary>
         [Fact]
         public void Has_IdBeyondSparseLength_ReturnsFalse()
         {
@@ -255,6 +315,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that has negative id returns false
+        /// </summary>
         [Fact]
         public void Has_NegativeId_ReturnsFalse()
         {
@@ -265,6 +328,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that get existing id returns ref
+        /// </summary>
         [Fact]
         public void Get_ExistingId_ReturnsRef()
         {
@@ -276,6 +342,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(123, value);
         }
 
+        /// <summary>
+        /// Tests that get existing id allows modification through ref
+        /// </summary>
         [Fact]
         public void Get_ExistingId_AllowsModificationThroughRef()
         {
@@ -288,6 +357,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, set.Get(0));
         }
 
+        /// <summary>
+        /// Tests that get non existent id beyond sparse throws argument out of range
+        /// </summary>
         [Fact]
         public void Get_NonExistentIdBeyondSparse_ThrowsArgumentOutOfRange()
         {
@@ -296,6 +368,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => set.Get(100));
         }
 
+        /// <summary>
+        /// Tests that get non existent id in sparse range throws argument out of range
+        /// </summary>
         [Fact]
         public void Get_NonExistentIdInSparseRange_ThrowsArgumentOutOfRange()
         {
@@ -304,6 +379,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Throws<ArgumentOutOfRangeException>(() => set.Get(0));
         }
 
+        /// <summary>
+        /// Tests that try get existing id returns false but sets value
+        /// </summary>
         [Fact]
         public void TryGet_ExistingId_ReturnsFalseButSetsValue()
         {
@@ -316,6 +394,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(42, value);
         }
 
+        /// <summary>
+        /// Tests that try get non existent id returns false
+        /// </summary>
         [Fact]
         public void TryGet_NonExistentId_ReturnsFalse()
         {
@@ -327,6 +408,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, value);
         }
 
+        /// <summary>
+        /// Tests that try get non existent id in sparse range returns false
+        /// </summary>
         [Fact]
         public void TryGet_NonExistentIdInSparseRange_ReturnsFalse()
         {
@@ -338,6 +422,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, value);
         }
 
+        /// <summary>
+        /// Tests that remove existing id returns true
+        /// </summary>
         [Fact]
         public void Remove_ExistingId_ReturnsTrue()
         {
@@ -349,6 +436,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(removed);
         }
 
+        /// <summary>
+        /// Tests that remove existing id decrements count
+        /// </summary>
         [Fact]
         public void Remove_ExistingId_DecrementsCount()
         {
@@ -362,6 +452,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, set.Count);
         }
 
+        /// <summary>
+        /// Tests that remove non existent id beyond sparse returns false
+        /// </summary>
         [Fact]
         public void Remove_NonExistentIdBeyondSparse_ReturnsFalse()
         {
@@ -372,6 +465,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that remove non existent id in sparse range returns false
+        /// </summary>
         [Fact]
         public void Remove_NonExistentIdInSparseRange_ReturnsFalse()
         {
@@ -382,6 +478,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that remove last element decrements count
+        /// </summary>
         [Fact]
         public void Remove_LastElement_DecrementsCount()
         {
@@ -396,6 +495,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set[0]);
         }
 
+        /// <summary>
+        /// Tests that clear empty set count zero
+        /// </summary>
         [Fact]
         public void Clear_EmptySet_CountZero()
         {
@@ -406,6 +508,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, set.Count);
         }
 
+        /// <summary>
+        /// Tests that clear after adds count zero and has false
+        /// </summary>
         [Fact]
         public void Clear_AfterAdds_CountZeroAndHasFalse()
         {
@@ -422,6 +527,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(set.Has(2));
         }
 
+        /// <summary>
+        /// Tests that clear allows re add
+        /// </summary>
         [Fact]
         public void Clear_AllowsReAdd()
         {
@@ -435,6 +543,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(1, set.Count);
         }
 
+        /// <summary>
+        /// Tests that clear reference type resets dense
+        /// </summary>
         [Fact]
         public void Clear_ReferenceType_ResetsDense()
         {
@@ -449,6 +560,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.False(set.Has(1));
         }
 
+        /// <summary>
+        /// Tests that as span on new set returns empty
+        /// </summary>
         [Fact]
         public void AsSpan_OnNewSet_ReturnsEmpty()
         {
@@ -459,6 +573,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(span.IsEmpty);
         }
 
+        /// <summary>
+        /// Tests that as span after adds returns populated span
+        /// </summary>
         [Fact]
         public void AsSpan_AfterAdds_ReturnsPopulatedSpan()
         {
@@ -475,6 +592,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(30, span[2]);
         }
 
+        /// <summary>
+        /// Tests that as span after remove reflects new state
+        /// </summary>
         [Fact]
         public void AsSpan_AfterRemove_ReflectsNewState()
         {
@@ -489,6 +609,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, span.Length);
         }
 
+        /// <summary>
+        /// Tests that capacity starts at four
+        /// </summary>
         [Fact]
         public void Capacity_StartsAtFour()
         {
@@ -497,6 +620,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(4, set.Capacity);
         }
 
+        /// <summary>
+        /// Tests that capacity grows as needed
+        /// </summary>
         [Fact]
         public void Capacity_GrowsAsNeeded()
         {
@@ -511,6 +637,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(set.Capacity > initial);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity when larger resizes
+        /// </summary>
         [Fact]
         public void EnsureCapacity_WhenLarger_Resizes()
         {
@@ -521,6 +650,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.True(set.Capacity >= 100);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity when smaller does not shrink
+        /// </summary>
         [Fact]
         public void EnsureCapacity_WhenSmaller_DoesNotShrink()
         {
@@ -531,6 +663,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(4, set.Capacity);
         }
 
+        /// <summary>
+        /// Tests that ensure capacity after adds keeps values
+        /// </summary>
         [Fact]
         public void EnsureCapacity_AfterAdds_KeepsValues()
         {
@@ -544,6 +679,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, set[1]);
         }
 
+        /// <summary>
+        /// Tests that value type int roundtrip
+        /// </summary>
         [Fact]
         public void ValueType_Int_Roundtrip()
         {
@@ -554,6 +692,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(int.MaxValue, set[0]);
         }
 
+        /// <summary>
+        /// Tests that reference type string roundtrip
+        /// </summary>
         [Fact]
         public void ReferenceType_String_Roundtrip()
         {
@@ -564,6 +705,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("hello", set[0]);
         }
 
+        /// <summary>
+        /// Tests that reference type string multiple entries
+        /// </summary>
         [Fact]
         public void ReferenceType_String_MultipleEntries()
         {
@@ -578,6 +722,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", set[2]);
         }
 
+        /// <summary>
+        /// Tests that reference type null value stores null
+        /// </summary>
         [Fact]
         public void ReferenceType_NullValue_StoresNull()
         {
@@ -588,6 +735,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Null(set[0]);
         }
 
+        /// <summary>
+        /// Tests that value type struct roundtrip
+        /// </summary>
         [Fact]
         public void ValueType_Struct_Roundtrip()
         {
@@ -600,6 +750,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, set[0].Value);
         }
 
+        /// <summary>
+        /// Tests that large sparse gap auto vivifies intermediate
+        /// </summary>
         [Fact]
         public void LargeSparseGap_AutoVivifiesIntermediate()
         {
@@ -612,6 +765,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(2, set[10000]);
         }
 
+        /// <summary>
+        /// Tests that remove from middle shifts last element
+        /// </summary>
         [Fact]
         public void Remove_FromMiddle_ShiftsLastElement()
         {
@@ -627,6 +783,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(30, set[2]);
         }
 
+        /// <summary>
+        /// Tests that remove only element clears dense for reference type
+        /// </summary>
         [Fact]
         public void Remove_OnlyElement_ClearsDenseForReferenceType()
         {
@@ -638,6 +797,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, set.Count);
         }
 
+        /// <summary>
+        /// Tests that indexer dense resize preserves values
+        /// </summary>
         [Fact]
         public void Indexer_DenseResize_PreservesValues()
         {

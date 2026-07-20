@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    /// The ref coverage test class
+    /// </summary>
     public class RefCoverageTest
     {
+        /// <summary>
+        /// Tests that to string non null value returns value string
+        /// </summary>
         [Fact]
         public void ToString_NonNullValue_ReturnsValueString()
         {
@@ -49,6 +55,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal("42", result);
         }
 
+        /// <summary>
+        /// Tests that to string null value returns null
+        /// </summary>
         [Fact]
         public void ToString_NullValue_ReturnsNull()
         {
@@ -60,6 +69,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that to string reference type returns value string
+        /// </summary>
         [Fact]
         public void ToString_ReferenceType_ReturnsValueString()
         {
@@ -71,6 +83,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal("hello", result);
         }
 
+        /// <summary>
+        /// Tests that ref created from span access value
+        /// </summary>
         [Fact]
         public void Ref_CreatedFromSpan_AccessValue()
         {
@@ -81,6 +96,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(20, refValue.Value);
         }
 
+        /// <summary>
+        /// Tests that ref created from span modify value
+        /// </summary>
         [Fact]
         public void Ref_CreatedFromSpan_ModifyValue()
         {
@@ -93,6 +111,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(999, arr[2]);
         }
 
+        /// <summary>
+        /// Tests that ref created from component storage access value
+        /// </summary>
         [Fact]
         public void Ref_CreatedFromComponentStorage_AccessValue()
         {
@@ -105,6 +126,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(84, refValue.Value.Y);
         }
 
+        /// <summary>
+        /// Tests that ref created from component storage modify value
+        /// </summary>
         [Fact]
         public void Ref_CreatedFromComponentStorage_ModifyValue()
         {
@@ -118,6 +142,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(200, storage[0].Y);
         }
 
+        /// <summary>
+        /// Tests that implicit operator converts ref to value
+        /// </summary>
         [Fact]
         public void ImplicitOperator_ConvertsRefToValue()
         {
@@ -129,6 +156,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(77, value);
         }
 
+        /// <summary>
+        /// Tests that implicit operator with struct type converts correctly
+        /// </summary>
         [Fact]
         public void ImplicitOperator_WithStructType_ConvertsCorrectly()
         {

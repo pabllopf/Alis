@@ -41,6 +41,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
     /// </summary>
     public class UpdateRunnerFactoryTest
     {
+        /// <summary>
+        /// Tests that update runner factory arity 0 create forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -58,6 +62,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 0 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity0_CreateStack_ReturnsIdTable()
         {
@@ -70,6 +77,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp0>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 1 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(5)]
@@ -87,6 +98,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 1 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity1_CreateStack_ReturnsIdTable()
         {
@@ -99,6 +113,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp1>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 2 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(7)]
@@ -116,6 +134,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 2 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity2_CreateStack_ReturnsIdTable()
         {
@@ -128,6 +149,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp2>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 3 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(3)]
@@ -145,6 +170,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 3 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity3_CreateStack_ReturnsIdTable()
         {
@@ -157,6 +185,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp3>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 4 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(8)]
@@ -174,6 +206,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 4 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity4_CreateStack_ReturnsIdTable()
         {
@@ -186,6 +221,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp4>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 5 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(10)]
@@ -203,6 +242,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 5 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity5_CreateStack_ReturnsIdTable()
         {
@@ -215,6 +257,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp5>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 6 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(12)]
@@ -232,6 +278,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 6 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity6_CreateStack_ReturnsIdTable()
         {
@@ -244,6 +293,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp6>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 7 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(2)]
@@ -261,6 +314,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 7 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity7_CreateStack_ReturnsIdTable()
         {
@@ -273,6 +329,10 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.IsType<IdTable<UpdateComp7>>(stack);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 8 forwards capacity
+        /// </summary>
+        /// <param name="capacity">The capacity</param>
         [Theory]
         [InlineData(0)]
         [InlineData(5)]
@@ -290,6 +350,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             Assert.Equal(capacity, strongStorage.Buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that update runner factory arity 8 create stack returns id table
+        /// </summary>
         [Fact]
         public void UpdateRunnerFactory_Arity8_CreateStack_ReturnsIdTable()
         {

@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator edge case tests class
+    /// </summary>
     public class AnimatorEdgeCaseTests
     {
+        /// <summary>
+        /// Tests that play with empty list should not throw
+        /// </summary>
         [Fact]
         public void Play_WithEmptyList_ShouldNotThrow()
         {
@@ -43,6 +49,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentAnimationIndex);
         }
 
+        /// <summary>
+        /// Tests that play with multiple animations same name should find first
+        /// </summary>
         [Fact]
         public void Play_WithMultipleAnimationsSameName_ShouldFindFirst()
         {
@@ -53,6 +62,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentAnimationIndex);
         }
 
+        /// <summary>
+        /// Tests that next frame with single frame should stay on zero
+        /// </summary>
         [Fact]
         public void NextFrame_WithSingleFrame_ShouldStayOnZero()
         {
@@ -63,6 +75,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(0, animator.CurrentFrameIndex);
         }
 
+        /// <summary>
+        /// Tests that get current frame with no animations returns default
+        /// </summary>
         [Fact]
         public void GetCurrentFrame_WithNoAnimations_ReturnsDefault()
         {
@@ -71,6 +86,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Null(frame.NameFile);
         }
 
+        /// <summary>
+        /// Tests that add animation default should add to list
+        /// </summary>
         [Fact]
         public void AddAnimation_Default_ShouldAddToList()
         {
@@ -79,6 +97,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Single(animator.Animations);
         }
 
+        /// <summary>
+        /// Tests that on update multiple cycles should not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_MultipleCycles_ShouldNotThrow()
         {
@@ -105,6 +126,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             }
         }
 
+        /// <summary>
+        /// Tests that draw animation with empty animation list should throw
+        /// </summary>
         [Fact]
         public void DrawAnimation_WithEmptyAnimationList_ShouldThrow()
         {
@@ -113,6 +137,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<System.Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
+        /// <summary>
+        /// Tests that draw animation with zero frame animation should throw
+        /// </summary>
         [Fact]
         public void DrawAnimation_WithZeroFrameAnimation_ShouldThrow()
         {
@@ -131,6 +158,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<System.Exception>(() => animator.DrawAnimation(ref sprite));
         }
 
+        /// <summary>
+        /// Tests that on start then on exit then on update should not throw
+        /// </summary>
         [Fact]
         public void OnStart_ThenOnExit_ThenOnUpdate_ShouldNotThrow()
         {
@@ -153,6 +183,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             animator.OnUpdate(null!);
         }
 
+        /// <summary>
+        /// Tests that list constructor with null animations should set null
+        /// </summary>
         [Fact]
         public void ListConstructor_WithNullAnimations_ShouldSetNull()
         {
@@ -160,6 +193,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Null(animator.Animations);
         }
 
+        /// <summary>
+        /// Tests that current animation out of range index should throw
+        /// </summary>
         [Fact]
         public void CurrentAnimation_OutOfRangeIndex_ShouldThrow()
         {
@@ -172,6 +208,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.ThrowsAny<System.Exception>(() => _ = animator.CurrentAnimation);
         }
 
+        /// <summary>
+        /// Tests that on update after play with no animations should not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_AfterPlayWithNoAnimations_ShouldNotThrow()
         {

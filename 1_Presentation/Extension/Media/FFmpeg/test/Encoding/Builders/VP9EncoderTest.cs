@@ -40,6 +40,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
     /// <seealso cref="Vp9Encoder" />
     public class Vp9EncoderTest
     {
+        /// <summary>
+        /// Tests that vp 9 encoder constructor should set default current quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Constructor_ShouldSetDefaultCurrentQualitySettings()
         {
@@ -48,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 31 -b:v 0", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder constructor should set defaults
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Constructor_ShouldSetDefaults()
         {
@@ -61,6 +67,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvpx-vp9", encoder.Name);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder encoder quality should be settable
+        /// </summary>
         [Fact]
         public void Vp9Encoder_EncoderQuality_ShouldBeSettable()
         {
@@ -71,6 +80,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Quality.Best, encoder.EncoderQuality);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder encoder tune should be settable
+        /// </summary>
         [Fact]
         public void Vp9Encoder_EncoderTune_ShouldBeSettable()
         {
@@ -81,6 +93,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Vp9Encoder.Tune.Film, encoder.EncoderTune);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder cpu used should be settable
+        /// </summary>
         [Fact]
         public void Vp9Encoder_CpuUsed_ShouldBeSettable()
         {
@@ -91,6 +106,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(4, encoder.CpuUsed);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder cpu used should accept negative values
+        /// </summary>
         [Fact]
         public void Vp9Encoder_CpuUsed_ShouldAcceptNegativeValues()
         {
@@ -101,6 +119,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(-8, encoder.CpuUsed);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder row based multithreading should be settable
+        /// </summary>
         [Fact]
         public void Vp9Encoder_RowBasedMultithreading_ShouldBeSettable()
         {
@@ -111,6 +132,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.True(encoder.RowBasedMultithreading);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder format should be settable
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Format_ShouldBeSettable()
         {
@@ -121,6 +145,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("mkv", encoder.Format);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder name should return libvpx vp 9
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Name_ShouldReturnLibvpxVp9()
         {
@@ -129,6 +156,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvpx-vp9", encoder.Name);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cvbr with crf and max bitrate should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCvbr_WithCrfAndMaxBitrate_ShouldSetQualitySettings()
         {
@@ -139,6 +169,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 25 -b:v 2M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cvbr with bitrates should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCvbr_WithBitrates_ShouldSetQualitySettings()
         {
@@ -149,6 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-minrate 500k -b:v 1M -maxrate 2M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set abr should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetAbr_ShouldSetQualitySettings()
         {
@@ -159,6 +195,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-b:v 1M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cqp with default should use crf 31
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCqp_WithDefault_ShouldUseCrf31()
         {
@@ -169,6 +208,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 31 -b:v 0", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cqp with custom crf should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCqp_WithCustomCrf_ShouldSetQualitySettings()
         {
@@ -179,6 +221,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 40 -b:v 0", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cqp with crf zero should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCqp_WithCrfZero_ShouldSetQualitySettings()
         {
@@ -189,6 +234,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 0 -b:v 0", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cqp with crf 63 should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCqp_WithCrf63_ShouldSetQualitySettings()
         {
@@ -199,6 +247,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-crf 63 -b:v 0", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set cbr should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetCbr_ShouldSetQualitySettings()
         {
@@ -209,6 +260,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-minrate 2M -maxrate 2M -b:v 2M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder set lossless should set quality settings
+        /// </summary>
         [Fact]
         public void Vp9Encoder_SetLossless_ShouldSetQualitySettings()
         {
@@ -219,6 +273,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("-lossless 1", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should return encoder options with correct format and name
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldReturnEncoderOptionsWithCorrectFormatAndName()
         {
@@ -231,6 +288,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libvpx-vp9", options.EncoderName);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include quality settings in arguments
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeQualitySettingsInArguments()
         {
@@ -242,6 +302,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf 25 -b:v 0", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include tune content default
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeTuneContentDefault()
         {
@@ -252,6 +315,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune-content default", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include tune content film
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeTuneContentFilm()
         {
@@ -263,6 +329,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune-content film", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include tune content screen
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeTuneContentScreen()
         {
@@ -274,6 +343,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune-content screen", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include deadline good by default
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeDeadlineGoodByDefault()
         {
@@ -284,6 +356,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-deadline good", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include deadline best
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeDeadlineBest()
         {
@@ -295,6 +370,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-deadline best", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include deadline realtime
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeDeadlineRealtime()
         {
@@ -306,6 +384,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-deadline realtime", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include cpu used when set
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeCpuUsedWhenSet()
         {
@@ -317,6 +398,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-cpu-used 5", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should not include cpu used when null
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldNotIncludeCpuUsedWhenNull()
         {
@@ -328,6 +412,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-cpu-used", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include row mt when enabled
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeRowMtWhenEnabled()
         {
@@ -339,6 +426,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-row-mt 1", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should not include row mt when disabled
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldNotIncludeRowMtWhenDisabled()
         {
@@ -350,6 +440,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-row-mt", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create should include custom format
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_ShouldIncludeCustomFormat()
         {
@@ -361,6 +454,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("mkv", options.Format);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder create include all features
+        /// </summary>
         [Fact]
         public void Vp9Encoder_Create_IncludeAllFeatures()
         {
@@ -380,6 +476,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-row-mt 1", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder tune enum should have default screen film
+        /// </summary>
         [Fact]
         public void Vp9Encoder_TuneEnum_ShouldHaveDefaultScreenFilm()
         {
@@ -388,6 +487,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(2, (int)Vp9Encoder.Tune.Film);
         }
 
+        /// <summary>
+        /// Tests that vp 9 encoder implements i encoder options builder
+        /// </summary>
         [Fact]
         public void Vp9Encoder_ImplementsIEncoderOptionsBuilder()
         {

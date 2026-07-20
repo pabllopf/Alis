@@ -6,6 +6,9 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners
 {
+    /// <summary>
+    /// The entity update coverage test class
+    /// </summary>
     public class EntityUpdateCoverageTest
     {
         /// <summary>
@@ -133,6 +136,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 
+    /// <summary>
+    /// The stub comp
+    /// </summary>
     internal struct StubComp : IOnUpdate<StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>
     {
         /// <summary>
@@ -143,9 +149,24 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
     }
 
+    /// <summary>
+    /// The stub arg
+    /// </summary>
     internal struct StubArg1 { }
+    /// <summary>
+    /// The stub arg
+    /// </summary>
     internal struct StubArg2 { }
+    /// <summary>
+    /// The stub arg
+    /// </summary>
     internal struct StubArg3 { }
+    /// <summary>
+    /// The stub arg
+    /// </summary>
     internal struct StubArg4 { }
+    /// <summary>
+    /// The stub arg
+    /// </summary>
     internal struct StubArg5 { }
 }

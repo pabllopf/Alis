@@ -38,6 +38,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
     /// </summary>
     public class Gen2GcCallbackDirectTest
     {
+        /// <summary>
+        /// Tests that register func bool does not throw
+        /// </summary>
         [Fact]
         public void Register_FuncBool_DoesNotThrow()
         {
@@ -49,12 +52,18 @@ namespace Alis.Core.Ecs.Test.Redifinition
             });
         }
 
+        /// <summary>
+        /// Tests that register func bool callback with false does not throw
+        /// </summary>
         [Fact]
         public void Register_FuncBoolCallback_WithFalse_DoesNotThrow()
         {
             Gen2GcCallback.Register(() => false);
         }
 
+        /// <summary>
+        /// Tests that register func object bool does not throw
+        /// </summary>
         [Fact]
         public void Register_FuncObjectBool_DoesNotThrow()
         {
@@ -67,12 +76,18 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }, target);
         }
 
+        /// <summary>
+        /// Tests that register func object bool with null target does not throw
+        /// </summary>
         [Fact]
         public void Register_FuncObjectBool_WithNullTarget_DoesNotThrow()
         {
             Gen2GcCallback.Register((obj) => true, null);
         }
 
+        /// <summary>
+        /// Tests that register func object bool with false does not throw
+        /// </summary>
         [Fact]
         public void Register_FuncObjectBool_WithFalse_DoesNotThrow()
         {
@@ -80,6 +95,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Gen2GcCallback.Register((obj) => false, target);
         }
 
+        /// <summary>
+        /// Tests that gen 2 collection occured can be subscribed
+        /// </summary>
         [Fact]
         public void Gen2CollectionOccured_CanBeSubscribed()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Gen2GcCallback.Gen2CollectionOccured -= () => invoked = true;
         }
 
+        /// <summary>
+        /// Tests that register multiple callbacks does not throw
+        /// </summary>
         [Fact]
         public void Register_MultipleCallbacks_DoesNotThrow()
         {
@@ -100,6 +121,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that register multiple object callbacks does not throw
+        /// </summary>
         [Fact]
         public void Register_MultipleObjectCallbacks_DoesNotThrow()
         {
@@ -110,12 +134,18 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that register null func bool does not throw at registration
+        /// </summary>
         [Fact]
         public void Register_NullFuncBool_DoesNotThrowAtRegistration()
         {
             Gen2GcCallback.Register((Func<bool>)null);
         }
 
+        /// <summary>
+        /// Tests that register null func object bool does not throw at registration
+        /// </summary>
         [Fact]
         public void Register_NullFuncObjectBool_DoesNotThrowAtRegistration()
         {
@@ -123,6 +153,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Gen2GcCallback.Register((Func<object, bool>)null, target);
         }
 
+        /// <summary>
+        /// Tests that gen 2 collection occured invoke when null does not throw
+        /// </summary>
         [Fact]
         public void Gen2CollectionOccured_InvokeWhenNull_DoesNotThrow()
         {
@@ -138,12 +171,18 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that register with callback returning true does not throw
+        /// </summary>
         [Fact]
         public void Register_WithCallbackReturningTrue_DoesNotThrow()
         {
             Gen2GcCallback.Register(() => true);
         }
 
+        /// <summary>
+        /// Tests that register with object callback returning true does not throw
+        /// </summary>
         [Fact]
         public void Register_WithObjectCallbackReturningTrue_DoesNotThrow()
         {

@@ -5,14 +5,23 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Marshalling
 {
+    /// <summary>
+    /// The marshal coverage test class
+    /// </summary>
     public class MarshalCoverageTest
     {
+        /// <summary>
+        /// Tests that scene marshal exists
+        /// </summary>
         [Fact]
         public void SceneMarshal_Exists()
         {
             Assert.NotNull(typeof(SceneMarshal));
         }
 
+        /// <summary>
+        /// Tests that scene marshal get component returns reference
+        /// </summary>
         [Fact]
         public void SceneMarshal_GetComponent_ReturnsReference()
         {
@@ -22,6 +31,9 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Assert.Equal(10f, pos.X);
         }
 
+        /// <summary>
+        /// Tests that scene marshal get raw buffer returns span
+        /// </summary>
         [Fact]
         public void SceneMarshal_GetRawBuffer_ReturnsSpan()
         {

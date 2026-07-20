@@ -32,14 +32,23 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The sparse set coverage test class
+    /// </summary>
     public class SparseSetCoverageTest
     {
+        /// <summary>
+        /// Tests that constructor default does not throw
+        /// </summary>
         [Fact] public void Constructor_Default_DoesNotThrow()
         {
             SparseSet<int> set = new SparseSet<int>();
             Assert.NotNull(set);
         }
 
+        /// <summary>
+        /// Tests that indexer new id stores and retrieves int
+        /// </summary>
         [Fact] public void Indexer_NewId_StoresAndRetrievesInt()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -47,6 +56,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(42, set[0]);
         }
 
+        /// <summary>
+        /// Tests that indexer multiple new ids all accessible
+        /// </summary>
         [Fact] public void Indexer_MultipleNewIds_AllAccessible()
         {
             SparseSet<string> set = new SparseSet<string>();
@@ -58,6 +70,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", set[2]);
         }
 
+        /// <summary>
+        /// Tests that indexer existing id overwrites
+        /// </summary>
         [Fact] public void Indexer_ExistingId_Overwrites()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -66,6 +81,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, set[3]);
         }
 
+        /// <summary>
+        /// Tests that indexer large id resizes
+        /// </summary>
         [Fact] public void Indexer_LargeId_Resizes()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -73,6 +91,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(999, set[1000]);
         }
 
+        /// <summary>
+        /// Tests that indexer sparse ids all correct
+        /// </summary>
         [Fact] public void Indexer_SparseIds_AllCorrect()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -84,6 +105,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(30, set[100]);
         }
 
+        /// <summary>
+        /// Tests that indexer ref return mutation persists
+        /// </summary>
         [Fact] public void Indexer_RefReturn_MutationPersists()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -93,6 +117,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(200, set[5]);
         }
 
+        /// <summary>
+        /// Tests that indexer ref return increment persists
+        /// </summary>
         [Fact] public void Indexer_RefReturn_IncrementPersists()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -102,6 +129,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(15, set[0]);
         }
 
+        /// <summary>
+        /// Tests that indexer string type stores and retrieves
+        /// </summary>
         [Fact] public void Indexer_StringType_StoresAndRetrieves()
         {
             SparseSet<string> set = new SparseSet<string>();
@@ -109,6 +139,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("hello", set[2]);
         }
         
+        /// <summary>
+        /// Tests that indexer sequential up to initial capacity works
+        /// </summary>
         [Fact] public void Indexer_SequentialUpToInitialCapacity_Works()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -122,6 +155,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that indexer sequential beyond capacity works
+        /// </summary>
         [Fact] public void Indexer_SequentialBeyondCapacity_Works()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -135,6 +171,9 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
+        /// <summary>
+        /// Tests that indexer access default value returns zero
+        /// </summary>
         [Fact] public void Indexer_AccessDefaultValue_ReturnsZero()
         {
             SparseSet<int> set = new SparseSet<int>();

@@ -40,11 +40,20 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Redifinition
 {
+    /// <summary>
+    /// The memory helpers test class
+    /// </summary>
     public class MemoryHelpersTest
     {
+        /// <summary>
+        /// Tests that max component count is 127
+        /// </summary>
         [Fact]
         public void MaxComponentCount_Is127() => Assert.Equal(127, MemoryHelpers.MaxComponentCount);
 
+        /// <summary>
+        /// Tests that shared temp component handle buffer initialized on get
+        /// </summary>
         [Fact]
         public void SharedTempComponentHandleBuffer_InitializedOnGet()
         {
@@ -53,6 +62,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(8, buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that shared temp component storage buffer initialized on get
+        /// </summary>
         [Fact]
         public void SharedTempComponentStorageBuffer_InitializedOnGet()
         {
@@ -61,6 +73,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(8, buffer.Length);
         }
 
+        /// <summary>
+        /// Tests that round down to power of two values
+        /// </summary>
         [Fact]
         public void RoundDownToPowerOfTwo_Values()
         {
@@ -76,6 +91,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(1073741824u, MemoryHelpers.RoundDownToPowerOfTwo(2000000000u));
         }
 
+        /// <summary>
+        /// Tests that round down to power of two monotonic
+        /// </summary>
         [Fact]
         public void RoundDownToPowerOfTwo_Monotonic()
         {
@@ -89,6 +107,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that round up to next multiple of 16 values
+        /// </summary>
         [Fact]
         public void RoundUpToNextMultipleOf16_Values()
         {
@@ -102,6 +123,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(48, MemoryHelpers.RoundUpToNextMultipleOf16(33));
         }
 
+        /// <summary>
+        /// Tests that round up to next multiple of 16 idempotent
+        /// </summary>
         [Fact]
         public void RoundUpToNextMultipleOf16_Idempotent()
         {
@@ -111,6 +135,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that round down to next multiple of 16 values
+        /// </summary>
         [Fact]
         public void RoundDownToNextMultipleOf16_Values()
         {
@@ -124,6 +151,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(32, MemoryHelpers.RoundDownToNextMultipleOf16(47));
         }
 
+        /// <summary>
+        /// Tests that round down to next multiple of 16 idempotent
+        /// </summary>
         [Fact]
         public void RoundDownToNextMultipleOf16_Idempotent()
         {
@@ -133,6 +163,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that rounding consistent
+        /// </summary>
         [Fact]
         public void Rounding_Consistent()
         {
@@ -146,6 +179,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that rounding boundary
+        /// </summary>
         [Fact]
         public void Rounding_Boundary()
         {
@@ -157,6 +193,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(32, MemoryHelpers.RoundUpToNextMultipleOf16(17));
         }
 
+        /// <summary>
+        /// Tests that bool to byte converts
+        /// </summary>
         [Fact]
         public void BoolToByte_Converts()
         {
@@ -164,6 +203,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(0, MemoryHelpers.BoolToByte(false));
         }
 
+        /// <summary>
+        /// Tests that bool to byte consistent
+        /// </summary>
         [Fact]
         public void BoolToByte_Consistent()
         {
@@ -172,6 +214,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.NotEqual(MemoryHelpers.BoolToByte(true), MemoryHelpers.BoolToByte(false));
         }
 
+        /// <summary>
+        /// Tests that read only span to immutable array creates
+        /// </summary>
         [Fact]
         public void ReadOnlySpanToImmutableArray_Creates()
         {
@@ -182,6 +227,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Velocity>.Id, result[1]);
         }
 
+        /// <summary>
+        /// Tests that read only span to immutable array empty
+        /// </summary>
         [Fact]
         public void ReadOnlySpanToImmutableArray_Empty()
         {
@@ -189,6 +237,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(0, result.Length);
         }
 
+        /// <summary>
+        /// Tests that concat single to empty
+        /// </summary>
         [Fact]
         public void Concat_Single_ToEmpty()
         {
@@ -197,6 +248,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Position>.Id, result[0]);
         }
 
+        /// <summary>
+        /// Tests that concat single to existing
+        /// </summary>
         [Fact]
         public void Concat_Single_ToExisting()
         {
@@ -208,6 +262,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Velocity>.Id, result[1]);
         }
 
+        /// <summary>
+        /// Tests that concat single duplicate throws
+        /// </summary>
         [Fact]
         public void Concat_Single_Duplicate_Throws()
         {
@@ -216,6 +273,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Throws<InvalidOperationException>(() => MemoryHelpers.Concat(start, Component<Position>.Id));
         }
 
+        /// <summary>
+        /// Tests that concat span to empty
+        /// </summary>
         [Fact]
         public void Concat_Span_ToEmpty()
         {
@@ -225,6 +285,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Velocity>.Id, result[1]);
         }
 
+        /// <summary>
+        /// Tests that concat span to existing
+        /// </summary>
         [Fact]
         public void Concat_Span_ToExisting()
         {
@@ -237,6 +300,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Health>.Id, result[2]);
         }
 
+        /// <summary>
+        /// Tests that concat span duplicate throws
+        /// </summary>
         [Fact]
         public void Concat_Span_Duplicate_Throws()
         {
@@ -245,6 +311,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Throws<InvalidOperationException>(() => MemoryHelpers.Concat(start, new ComponentId[] { Component<Velocity>.Id }.AsSpan()));
         }
 
+        /// <summary>
+        /// Tests that remove single type
+        /// </summary>
         [Fact]
         public void Remove_SingleType()
         {
@@ -255,6 +324,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Velocity>.Id, result[0]);
         }
 
+        /// <summary>
+        /// Tests that remove single type not found throws
+        /// </summary>
         [Fact]
         public void Remove_SingleType_NotFound_Throws()
         {
@@ -263,6 +335,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Throws<ComponentNotFoundException>(() => MemoryHelpers.Remove(types, Component<Velocity>.Id));
         }
 
+        /// <summary>
+        /// Tests that remove span
+        /// </summary>
         [Fact]
         public void Remove_Span()
         {
@@ -273,6 +348,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Velocity>.Id, result[0]);
         }
 
+        /// <summary>
+        /// Tests that remove span not found throws
+        /// </summary>
         [Fact]
         public void Remove_Span_NotFound_Throws()
         {
@@ -281,6 +359,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Throws<ComponentNotFoundException>(() => MemoryHelpers.Remove(types, new ComponentId[] { Component<Velocity>.Id }.AsSpan()));
         }
 
+        /// <summary>
+        /// Tests that remove span all empty
+        /// </summary>
         [Fact]
         public void Remove_Span_All_Empty()
         {
@@ -290,6 +371,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(0, result.Length);
         }
 
+        /// <summary>
+        /// Tests that remove single last element
+        /// </summary>
         [Fact]
         public void Remove_Single_Last_Element()
         {
@@ -300,6 +384,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(Component<Position>.Id, result[0]);
         }
 
+        /// <summary>
+        /// Tests that get or add new new key
+        /// </summary>
         [Fact]
         public void GetOrAddNew_NewKey()
         {
@@ -310,6 +397,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Same(value, dict[1]);
         }
 
+        /// <summary>
+        /// Tests that get or add new existing key
+        /// </summary>
         [Fact]
         public void GetOrAddNew_ExistingKey()
         {
@@ -320,6 +410,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Same(original, retrieved);
         }
 
+        /// <summary>
+        /// Tests that get or add new multiple keys
+        /// </summary>
         [Fact]
         public void GetOrAddNew_MultipleKeys()
         {
@@ -332,6 +425,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(2, dict.Count);
         }
 
+        /// <summary>
+        /// Tests that get value or resize valid index
+        /// </summary>
         [Fact]
         public void GetValueOrResize_ValidIndex()
         {
@@ -342,6 +438,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(25, arr[1]);
         }
 
+        /// <summary>
+        /// Tests that get value or resize first index
+        /// </summary>
         [Fact]
         public void GetValueOrResize_FirstIndex()
         {
@@ -352,6 +451,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(99, arr[0]);
         }
 
+        /// <summary>
+        /// Tests that get value or resize last index
+        /// </summary>
         [Fact]
         public void GetValueOrResize_LastIndex()
         {
@@ -360,6 +462,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(30, val);
         }
 
+        /// <summary>
+        /// Tests that get value or resize out of range
+        /// </summary>
         [Fact]
         public void GetValueOrResize_OutOfRange()
         {
@@ -370,6 +475,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(50, arr[5]);
         }
 
+        /// <summary>
+        /// Tests that get value or resize out of range large
+        /// </summary>
         [Fact]
         public void GetValueOrResize_OutOfRange_Large()
         {
@@ -380,6 +488,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(999, arr[100]);
         }
 
+        /// <summary>
+        /// Tests that get value or resize empty array
+        /// </summary>
         [Fact]
         public void GetValueOrResize_EmptyArray()
         {
@@ -390,6 +501,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(42, arr[0]);
         }
 
+        /// <summary>
+        /// Tests that poison value type does not throw
+        /// </summary>
         [Fact]
         public void Poison_ValueType_DoesNotThrow()
         {
@@ -398,6 +512,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Equal(42, v);
         }
 
+        /// <summary>
+        /// Tests that poison struct type does not throw
+        /// </summary>
         [Fact]
         public void Poison_StructType_DoesNotThrow()
         {
@@ -405,6 +522,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             MemoryHelpers.Poison(ref p);
         }
 
+        /// <summary>
+        /// Tests that poison reference type throws
+        /// </summary>
         [Fact]
         public void Poison_ReferenceType_Throws()
         {
@@ -412,18 +532,33 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.Throws<NotSupportedException>(() => MemoryHelpers.Poison(ref s));
         }
 
+        /// <summary>
+        /// Tests that block 2 size
+        /// </summary>
         [Fact]
         public void Block2_Size() => Assert.Equal(2, Marshal.SizeOf<MemoryHelpers.Block2>());
 
+        /// <summary>
+        /// Tests that block 4 size
+        /// </summary>
         [Fact]
         public void Block4_Size() => Assert.Equal(4, Marshal.SizeOf<MemoryHelpers.Block4>());
 
+        /// <summary>
+        /// Tests that block 8 size
+        /// </summary>
         [Fact]
         public void Block8_Size() => Assert.Equal(8, Marshal.SizeOf<MemoryHelpers.Block8>());
 
+        /// <summary>
+        /// Tests that block 16 size
+        /// </summary>
         [Fact]
         public void Block16_Size() => Assert.Equal(16, Marshal.SizeOf<MemoryHelpers.Block16>());
 
+        /// <summary>
+        /// Tests that memory helpers t pool not null
+        /// </summary>
         [Fact]
         public void MemoryHelpersT_Pool_NotNull()
         {
@@ -432,8 +567,14 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.NotNull(MemoryHelpers<object>.Pool);
         }
 
+        /// <summary>
+        /// The test helper class
+        /// </summary>
         internal class TestHelper
         {
+            /// <summary>
+            /// Gets or sets the value of the value
+            /// </summary>
             public int Value { get; set; }
         }
     }

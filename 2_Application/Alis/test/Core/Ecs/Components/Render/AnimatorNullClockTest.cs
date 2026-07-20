@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The animator null clock test class
+    /// </summary>
     public class AnimatorNullClockTest
     {
+        /// <summary>
+        /// Tests that on update with default animator does not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_WithDefaultAnimator_DoesNotThrow()
         {
