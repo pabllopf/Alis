@@ -313,6 +313,66 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         // ─────────────────────────────────────────────────────────────────────
+        // GetComponentSize<T> — additional edge-case types
+        // ─────────────────────────────────────────────────────────────────────
+
+        /// <summary><c>nint</c> (<see cref="IntPtr" />) is 8 bytes on 64-bit → returns 8.</summary>
+        [Fact]
+        public void GetComponentSize_IntPtr_Returns8()
+        {
+            int result = ComponentStorageBase.GetComponentSize<nint>();
+            Assert.Equal(8, result);
+        }
+
+        /// <summary><c>nuint</c> (<see cref="UIntPtr" />) is 8 bytes on 64-bit → returns 8.</summary>
+        [Fact]
+        public void GetComponentSize_UIntPtr_Returns8()
+        {
+            int result = ComponentStorageBase.GetComponentSize<nuint>();
+            Assert.Equal(8, result);
+        }
+
+        /// <summary><c>Guid</c> is 16 bytes → returns 16.</summary>
+        [Fact]
+        public void GetComponentSize_Guid_Returns16()
+        {
+            int result = ComponentStorageBase.GetComponentSize<Guid>();
+            Assert.Equal(16, result);
+        }
+
+        /// <summary><c>Half</c> is 2 bytes → returns 2.</summary>
+        [Fact]
+        public void GetComponentSize_Half_Returns2()
+        {
+            int result = ComponentStorageBase.GetComponentSize<Half>();
+            Assert.Equal(2, result);
+        }
+
+        /// <summary><c>Int128</c> is 16 bytes → returns 16.</summary>
+        [Fact]
+        public void GetComponentSize_Int128_Returns16()
+        {
+            int result = ComponentStorageBase.GetComponentSize<Int128>();
+            Assert.Equal(16, result);
+        }
+
+        /// <summary>A custom class (reference type) → returns -1.</summary>
+        [Fact]
+        public void GetComponentSize_CustomClass_ReturnsMinusOne()
+        {
+            int result = ComponentStorageBase.GetComponentSize<CustomClass>();
+            Assert.Equal(-1, result);
+        }
+
+        /// <summary>An empty struct has size 1 (less than 2) → returns -1.</summary>
+        [Fact]
+        public void GetComponentSize_EmptyStruct_ReturnsMinusOne()
+        {
+            int result = ComponentStorageBase.GetComponentSize<EmptyStruct>();
+            Assert.Equal(-1, result);
+        }
+
+        // ─────────────────────────────────────────────────────────────────────
         // PullComponentFromAndClearTryDevirt
         // ─────────────────────────────────────────────────────────────────────
 
@@ -632,5 +692,16 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     The c
         /// </summary>
         public int C;
+    }
+
+    /// <summary>Custom class for testing GetComponentSize with a reference type.</summary>
+    internal class CustomClass
+    {
+    }
+
+    /// <summary>Empty struct (size 1) for testing the size &lt; 2 branch.</summary>
+    [StructLayout(LayoutKind.Sequential)]
+    internal struct EmptyStruct
+    {
     }
 }
