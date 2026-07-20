@@ -644,5 +644,61 @@ namespace Alis.Core.Ecs.Test
 
             Assert.True(scene.AllowStructualChanges);
         }
+    /// <summary>
+    /// Tests that arity 1 multiple entities enumeration exercises the quick-return path in MoveNext
+    /// Verifies that MoveNext returns true when incrementing component index within the same archetype
+    /// </summary>
+    [Fact]
+    public void Arity1_MultipleEntities_QuickReturnPath()
+    {
+        using Scene scene = new Scene();
+        scene.Create(new Position { X = 10, Y = 20 });
+        scene.Create(new Position { X = 30, Y = 40 });
+        scene.Create(new Position { X = 50, Y = 60 });
+
+        Query query = scene.Query<With<Position>>();
+        QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
+        GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
+
+        Assert.True(enumerator.MoveNext());
+        Assert.Equal(10, enumerator.Current.Item1.Value.X);
+
+        Assert.True(enumerator.MoveNext());
+        Assert.Equal(30, enumerator.Current.Item1.Value.X);
+
+        Assert.True(enumerator.MoveNext());
+        Assert.Equal(50, enumerator.Current.Item1.Value.X);
+
+        Assert.False(enumerator.MoveNext());
+
+        enumerator.Dispose();
+    }
+
+    /// <summary>
+    /// Tests that arity 1 enumerator handles entity with only the queried component
+    /// when other archetypes exist without that component
+    /// </summary>
+    [Fact]
+    public void Arity1_MultipleArchetypes_SkipsNonMatching()
+    {
+        using Scene scene = new Scene();
+        scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
+        scene.Create(new Position { X = 5, Y = 6 });
+        scene.Create(new Velocity { X = 7, Y = 8 });
+
+        Query query = scene.Query<With<Position>>();
+        QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
+        GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
+
+        Assert.True(enumerator.MoveNext());
+        Assert.Equal(1, enumerator.Current.Item1.Value.X);
+
+        Assert.True(enumerator.MoveNext());
+        Assert.Equal(5, enumerator.Current.Item1.Value.X);
+
+        Assert.False(enumerator.MoveNext());
+
+        enumerator.Dispose();
+    }
     }
 }
