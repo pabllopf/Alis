@@ -51,7 +51,7 @@ namespace Alis.Core.Ecs
         {
             GameObjectLocation eloc = e.AssertIsAlive(out _);
 
-            comp = GetComp<T>(eloc.Archetype.ComponentTagTableSpan, eloc.Archetype.ComponentsSpan, eloc.Index);
+            comp = GetComp<T>(eloc.Archetype.ComponentTagTable, eloc.Archetype.Components, eloc.Index);
         }
 
         /// <summary>
