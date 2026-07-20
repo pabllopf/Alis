@@ -248,5 +248,57 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.False(stack.Any);
         }
+
+        /// <summary>
+        ///     Tests that Pop on reference type clears internal slot
+        /// </summary>
+        [Fact]
+        public void Pop_ReferenceType_ClearsInternalSlot()
+        {
+            FrugalStack<string> stack = new FrugalStack<string>();
+            stack.Push("hello");
+            stack.Push("world");
+
+            string result = stack.Pop();
+
+            Assert.Equal("world", result);
+            Assert.True(stack.Any);
+        }
+
+        /// <summary>
+        ///     Tests that TryPop on empty reference type returns null
+        /// </summary>
+        [Fact]
+        public void TryPop_EmptyReferenceType_ReturnsNull()
+        {
+            FrugalStack<string> stack = new FrugalStack<string>();
+
+            bool result = stack.TryPop(out string value);
+
+            Assert.False(result);
+            Assert.Null(value);
+        }
+
+        /// <summary>
+        ///     Tests that pushing beyond 17 items triggers buffer doubling
+        /// </summary>
+        [Fact]
+        public void Push_Beyond17Items_TriggersBufferDoubling()
+        {
+            FrugalStack<int> stack = new FrugalStack<int>();
+
+            for (int i = 0; i < 20; i++)
+            {
+                stack.Push(i);
+            }
+
+            Assert.True(stack.Any);
+            for (int i = 19; i >= 0; i--)
+            {
+                Assert.Equal(i, stack.Pop());
+            }
+
+            Assert.False(stack.Any);
+        }
     }
 }
