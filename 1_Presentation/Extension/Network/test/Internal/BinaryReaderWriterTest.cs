@@ -676,12 +676,7 @@ namespace Alis.Extension.Network.Test.Internal
         }
 
         #endregion
-
-        #region Thread Safety Tests
-
-        #endregion
-        #endregion
-
+        
         #region Span Overload Tests
 
         /// <summary>
