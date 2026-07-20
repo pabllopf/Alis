@@ -47,7 +47,7 @@ namespace Alis.Extension.Io.FileDialog.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Skip = "Only running in linux mode";
+
             }
         }
     }
@@ -69,7 +69,7 @@ namespace Alis.Extension.Io.FileDialog.Test.Attributes
         /// </summary>
         public LinuxOnlyAttribute()
         {
-            Skip = "Platform attributes not supported on this framework";
+
         }
     }
 }

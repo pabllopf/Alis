@@ -48,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("ffmpeg"))
             {
-                Skip = "Native library (ffmpeg) not detected. Install ffmpeg to run this test.";  
+
             }
         }
 

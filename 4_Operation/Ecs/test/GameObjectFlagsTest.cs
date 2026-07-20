@@ -47,12 +47,10 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that the None flag has a value of zero, which is the default state.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void None_Flag_HasZeroValue()
+        [Fact] public void None_Flag_HasZeroValue()
         {
             Assert.Equal(0, (int) GameObjectFlags.None);
         }
-
 
         /// <summary>
         ///     Tests that add comp flag has correct bit position
@@ -60,12 +58,10 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the AddComp flag is set to the third bit position.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComp_Flag_HasCorrectBitPosition()
+        [Fact] public void AddComp_Flag_HasCorrectBitPosition()
         {
             Assert.Equal(4, (int) GameObjectFlags.AddComp);
         }
-
 
         /// <summary>
         ///     Tests that events flag combines multiple flags
@@ -73,8 +69,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the Events flag is a combination of multiple other flags.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Events_Flag_CombinesMultipleFlags()
+        [Fact] public void Events_Flag_CombinesMultipleFlags()
         {
             GameObjectFlags events = GameObjectFlags.Events;
 
@@ -92,8 +87,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that individual flags can be checked using the HasFlag method.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Flags_CanBeCheckedWithHasFlag()
+        [Fact] public void Flags_CanBeCheckedWithHasFlag()
         {
             GameObjectFlags flags = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
 
@@ -101,15 +95,13 @@ namespace Alis.Core.Ecs.Test
             Assert.True(flags.HasFlag(GameObjectFlags.RemoveComp));
         }
 
-
         /// <summary>
         ///     Tests that world create flag has correct value
         /// </summary>
         /// <remarks>
         ///     Validates the WorldCreate flag has the expected bit value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldCreate_Flag_HasCorrectValue()
+        [Fact] public void WorldCreate_Flag_HasCorrectValue()
         {
             Assert.Equal(128, (int) GameObjectFlags.WorldCreate);
         }
@@ -120,8 +112,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates the HasWorldCommandBufferRemove flag has the expected bit value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasWorldCommandBufferRemove_Flag_HasCorrectValue()
+        [Fact] public void HasWorldCommandBufferRemove_Flag_HasCorrectValue()
         {
             Assert.Equal(256, (int) GameObjectFlags.HasWorldCommandBufferRemove);
         }
@@ -132,8 +123,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates the HasWorldCommandBufferAdd flag has the expected bit value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasWorldCommandBufferAdd_Flag_HasCorrectValue()
+        [Fact] public void HasWorldCommandBufferAdd_Flag_HasCorrectValue()
         {
             Assert.Equal(512, (int) GameObjectFlags.HasWorldCommandBufferAdd);
         }
@@ -144,8 +134,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that the GameObjectFlags enum has the Flags attribute applied.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_HasFlagsAttribute()
+        [Fact] public void GameObjectFlags_HasFlagsAttribute()
         {
             Type flagsType = typeof(GameObjectFlags);
 
@@ -160,8 +149,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Confirms that the None flag is equal to the default enum value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void None_Flag_EqualsDefaultValue()
+        [Fact] public void None_Flag_EqualsDefaultValue()
         {
             GameObjectFlags defaultValue = default(GameObjectFlags);
 

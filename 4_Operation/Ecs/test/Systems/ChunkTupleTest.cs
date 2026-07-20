@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 1 deconstruct returns underlying span
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple1_Deconstruct_ReturnsUnderlyingSpan()
+        [Fact] public void ChunkTuple1_Deconstruct_ReturnsUnderlyingSpan()
         {
             int[] a1 = [1, 2, 3];
             ChunkTuple<int> tuple = new ChunkTuple<int> {Span = a1.AsSpan()};
@@ -57,8 +56,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 2 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple2_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple2_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1, 2];
             float[] a2 = [3, 4];
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 3 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple3_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple3_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];
@@ -97,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 4 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple4_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple4_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];
@@ -121,8 +117,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 5 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple5_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple5_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];
@@ -147,8 +142,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 6 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple6_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple6_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];
@@ -177,8 +171,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 7 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple7_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple7_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];
@@ -209,8 +202,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that chunk tuple 8 deconstruct returns mapped spans
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple8_Deconstruct_ReturnsMappedSpans()
+        [Fact] public void ChunkTuple8_Deconstruct_ReturnsMappedSpans()
         {
             int[] a1 = [1];
             int[] a2 = [2];

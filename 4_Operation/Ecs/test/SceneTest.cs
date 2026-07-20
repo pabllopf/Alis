@@ -51,8 +51,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that a Scene can be instantiated with the default constructor.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanBeCreated()
+        [Fact] public void Scene_CanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that each Scene instance receives a unique identifier.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_HasUniqueId()
+        [Fact] public void Scene_HasUniqueId()
         {
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
@@ -80,8 +78,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Confirms that a newly created Scene has no entities initially.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_StartsWithZeroEntities()
+        [Fact] public void Scene_StartsWithZeroEntities()
         {
             using Scene scene = new Scene();
 
@@ -94,8 +91,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a Scene can create an entity with a single component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanCreateEntityWithComponent()
+        [Fact] public void Scene_CanCreateEntityWithComponent()
         {
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 42};
@@ -112,8 +108,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the entity count properly increments when entities are created.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityCountIncreasesWhenCreatingEntities()
+        [Fact] public void Scene_EntityCountIncreasesWhenCreatingEntities()
         {
             using Scene scene = new Scene();
 
@@ -130,8 +125,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a Scene can create multiple entities at once using CreateMany.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanCreateMultipleEntities()
+        [Fact] public void Scene_CanCreateMultipleEntities()
         {
             using Scene scene = new Scene();
 
@@ -140,15 +134,13 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(5, scene.EntityCount);
         }
 
-
         /// <summary>
         ///     Tests that scene has default archetype
         /// </summary>
         /// <remarks>
         ///     Confirms that a Scene has a default archetype upon creation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_HasDefaultArchetype()
+        [Fact] public void Scene_HasDefaultArchetype()
         {
             using Scene scene = new Scene();
 
@@ -161,8 +153,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that a Scene has a default world GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_HasDefaultWorldGameObject()
+        [Fact] public void Scene_HasDefaultWorldGameObject()
         {
             using Scene scene = new Scene();
 
@@ -175,8 +166,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that AllowStructuralChanges property is true for a new Scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_AllowStructuralChangesReturnsTrueByDefault()
+        [Fact] public void Scene_AllowStructuralChangesReturnsTrueByDefault()
         {
             using Scene scene = new Scene();
 
@@ -189,8 +179,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a Scene can be properly disposed without throwing exceptions.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanBeDisposed()
+        [Fact] public void Scene_CanBeDisposed()
         {
             Scene scene = new Scene();
 
@@ -203,8 +192,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the EntityCreated event is properly invoked when an entity is created.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityCreatedEventIsInvoked()
+        [Fact] public void Scene_EntityCreatedEventIsInvoked()
         {
             using Scene scene = new Scene();
             bool eventInvoked = false;
@@ -215,15 +203,13 @@ namespace Alis.Core.Ecs.Test
             Assert.True(eventInvoked);
         }
 
-
         /// <summary>
         ///     Tests that scene recycled entity ids stack exists
         /// </summary>
         /// <remarks>
         ///     Validates that the RecycledEntityIds collection is properly initialized.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_RecycledEntityIdsStackExists()
+        [Fact] public void Scene_RecycledEntityIdsStackExists()
         {
             using Scene scene = new Scene();
 
@@ -236,8 +222,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Confirms that a Scene has a WorldUpdateCommandBuffer initialized.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CommandBufferExists()
+        [Fact] public void Scene_CommandBufferExists()
         {
             using Scene scene = new Scene();
 
@@ -250,8 +235,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that the EntityTable is properly initialized in a new Scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityTableIsInitialized()
+        [Fact] public void Scene_EntityTableIsInitialized()
         {
             using Scene scene = new Scene();
 
@@ -264,8 +248,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the ArchetypeGraphEdges dictionary is initialized.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_ArchetypeGraphEdgesIsInitialized()
+        [Fact] public void Scene_ArchetypeGraphEdgesIsInitialized()
         {
             using Scene scene = new Scene();
 
@@ -278,8 +261,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that the QueryCache dictionary is properly initialized.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_QueryCacheIsInitialized()
+        [Fact] public void Scene_QueryCacheIsInitialized()
         {
             using Scene scene = new Scene();
 
@@ -292,8 +274,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Confirms that the SharedCountdown is properly initialized.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_SharedCountdownIsInitialized()
+        [Fact] public void Scene_SharedCountdownIsInitialized()
         {
             using Scene scene = new Scene();
 
@@ -306,8 +287,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a Scene can create entities with multiple different components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanCreateEntityWithMultipleComponents()
+        [Fact] public void Scene_CanCreateEntityWithMultipleComponents()
         {
             using Scene scene = new Scene();
             TestComponent comp1 = new TestComponent {Value = 100};
@@ -325,8 +305,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that CreateMany throws an exception when count is zero or negative.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CreateMany_WithZeroCount_ThrowsException()
+        [Fact] public void CreateMany_WithZeroCount_ThrowsException()
         {
             using Scene scene = new Scene();
 
@@ -339,8 +318,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that CreateMany throws an exception when count is negative.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CreateMany_WithNegativeCount_ThrowsException()
+        [Fact] public void CreateMany_WithNegativeCount_ThrowsException()
         {
             using Scene scene = new Scene();
 
@@ -353,8 +331,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a Scene can manage a large number of entities efficiently.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanHandleLargeNumberOfEntities()
+        [Fact] public void Scene_CanHandleLargeNumberOfEntities()
         {
             using Scene scene = new Scene();
             const int entityCount = 1000;
@@ -373,8 +350,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Validates that WorldEventFlags is initialized properly.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Scene_WorldEventFlagsStartsAsNone()
+    [Fact] public void Scene_WorldEventFlagsStartsAsNone()
     {
         using Scene scene = new Scene();
 
@@ -388,8 +364,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that Create() with no arguments creates an entity in the default archetype.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Create_WithoutComponents_CreatesEntityInDefaultArchetype()
+    [Fact] public void Create_WithoutComponents_CreatesEntityInDefaultArchetype()
     {
         using Scene scene = new Scene();
         GameObject entity = scene.Create();
@@ -405,8 +380,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that CreateEntityWithoutEvent does not trigger the EntityCreated event.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void CreateEntityWithoutEvent_DoesNotInvokeEntityCreated()
+    [Fact] public void CreateEntityWithoutEvent_DoesNotInvokeEntityCreated()
     {
         using Scene scene = new Scene();
         bool eventInvoked = false;
@@ -425,8 +399,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that InvokeEntityCreated manually fires the EntityCreated event.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void InvokeEntityCreated_TriggersEvent()
+    [Fact] public void InvokeEntityCreated_TriggersEvent()
     {
         using Scene scene = new Scene();
         bool eventInvoked = false;
@@ -444,8 +417,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that CreateFromObjects accepts a span of boxed components and creates an entity.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void CreateFromObjects_WithMultipleComponents_CreatesEntity()
+    [Fact] public void CreateFromObjects_WithMultipleComponents_CreatesEntity()
     {
         using Scene scene = new Scene();
         ReadOnlySpan<object> components = [new TestComponent { Value = 42 }, new AnotherComponent { Name = "Test" }];
@@ -462,8 +434,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that CreateFromObjects throws ArgumentException when exceeding the maximum component count.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void CreateFromObjects_WithTooManyComponents_ThrowsArgumentException()
+    [Fact] public void CreateFromObjects_WithTooManyComponents_ThrowsArgumentException()
     {
         using Scene scene = new Scene();
         object[] manyComponents = new object[128];
@@ -482,8 +453,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that EnsureCapacity returns early without throwing when count is less than 1.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void EnsureCapacity_WithZeroCount_DoesNothing()
+    [Fact] public void EnsureCapacity_WithZeroCount_DoesNothing()
     {
         using Scene scene = new Scene();
         GameObjectType entityType = default;
@@ -497,8 +467,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that EnsureCapacityCore throws ArgumentOutOfRangeException when count is less than 1.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void EnsureCapacityCore_WithZeroCount_ThrowsArgumentOutOfRangeException()
+    [Fact] public void EnsureCapacityCore_WithZeroCount_ThrowsArgumentOutOfRangeException()
     {
         using Scene scene = new Scene();
         Archetype archetype = scene.DefaultArchetype;
@@ -512,8 +481,7 @@ namespace Alis.Core.Ecs.Test
     /// <remarks>
     ///     Verifies that calling Update() on a scene with no enabled archetypes completes without error.
     /// </remarks>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Update_OnEmptyScene_DoesNotThrow()
+    [Fact] public void Update_OnEmptyScene_DoesNotThrow()
     {
         using Scene scene = new Scene();
 

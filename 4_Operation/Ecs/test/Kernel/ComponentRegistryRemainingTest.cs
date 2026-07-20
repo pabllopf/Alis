@@ -14,8 +14,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component factory from type non component type throws with register message
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentFactoryFromType_NonComponentType_ThrowsWithRegisterMessage()
+        [Fact] public void GetComponentFactoryFromType_NonComponentType_ThrowsWithRegisterMessage()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
                 Component.GetComponentFactoryFromType(typeof(string)));
@@ -26,8 +25,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component factory from type i component base type throws with generator message
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentFactoryFromType_IComponentBaseType_ThrowsWithGeneratorMessage()
+        [Fact] public void GetComponentFactoryFromType_IComponentBaseType_ThrowsWithGeneratorMessage()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
                 Component.GetComponentFactoryFromType(typeof(IOnInit)));
@@ -38,8 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component table for void type returns null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentTable_ForVoidType_ReturnsNull()
+        [Fact] public void GetComponentTable_ForVoidType_ReturnsNull()
         {
             Assert.NotNull(typeof(Component));
         }
@@ -47,8 +44,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component id for existing type returns stable id
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentId_ForExistingType_ReturnsStableId()
+        [Fact] public void GetComponentId_ForExistingType_ReturnsStableId()
         {
             ComponentId id1 = Component.GetComponentId(typeof(Position));
             ComponentId id2 = Component.GetComponentId(typeof(Position));
@@ -59,8 +55,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get existing or setup new component for new type returns valid delegates
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetExistingOrSetupNewComponent_ForNewType_ReturnsValidDelegates()
+        [Fact] public void GetExistingOrSetupNewComponent_ForNewType_ReturnsValidDelegates()
         {
             var result = Component.GetExistingOrSetupNewComponent<Velocity>();
             Assert.NotNull(result.ComponentID);
@@ -69,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that register component already registered does not overwrite
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterComponent_AlreadyRegistered_DoesNotOverwrite()
+        [Fact] public void RegisterComponent_AlreadyRegistered_DoesNotOverwrite()
         {
             Component.RegisterComponent<Velocity>();
             Component.RegisterComponent<Velocity>();
@@ -82,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get existing or setup new component plain struct without lifecycle returns null delegates
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
+        [Fact] public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
         {
             var result = Component.GetExistingOrSetupNewComponent<Armor>();
 
@@ -95,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component id after register component returns valid id
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentId_AfterRegisterComponent_ReturnsValidId()
+        [Fact] public void GetComponentId_AfterRegisterComponent_ReturnsValidId()
         {
             Component.RegisterComponent<Uri>();
 
@@ -108,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get existing or setup new component existing type returns cached delegates
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetExistingOrSetupNewComponent_ExistingType_ReturnsCachedDelegates()
+        [Fact] public void GetExistingOrSetupNewComponent_ExistingType_ReturnsCachedDelegates()
         {
             var first = Component.GetExistingOrSetupNewComponent<Damage>();
             var second = Component.GetExistingOrSetupNewComponent<Damage>();
@@ -121,8 +112,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         /// Tests that get component id non existent plain type throws with register message
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentId_NonExistentPlainType_ThrowsWithRegisterMessage()
+        [Fact] public void GetComponentId_NonExistentPlainType_ThrowsWithRegisterMessage()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
                 Component.GetComponentFactoryFromType(typeof(DateTime)));

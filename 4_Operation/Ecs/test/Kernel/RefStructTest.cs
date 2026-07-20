@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that Ref can be instantiated from an array.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanBeCreatedFromArray()
+        [Fact] public void Ref_CanBeCreatedFromArray()
         {
             int[] arr = {1, 2, 3, 4, 5};
 
@@ -64,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Ref correctly accesses different array indices.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanAccessDifferentIndices()
+        [Fact] public void Ref_CanAccessDifferentIndices()
         {
             int[] arr = {10, 20, 30, 40, 50};
 
@@ -84,8 +82,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Ref allows modifying the referenced value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanModifyValue()
+        [Fact] public void Ref_CanModifyValue()
         {
             int[] arr = {1, 2, 3};
             Ref<int> refValue = new Ref<int>(arr, 1);
@@ -101,8 +98,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests implicit conversion from Ref to T.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_ImplicitConversionToValue()
+        [Fact] public void Ref_ImplicitConversionToValue()
         {
             int[] arr = {42};
             Ref<int> refValue = new Ref<int>(arr, 0);
@@ -118,8 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that ToString() returns the string representation of the value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_ToStringReturnsValueStringRepresentation()
+        [Fact] public void Ref_ToStringReturnsValueStringRepresentation()
         {
             int[] arr = {123};
             Ref<int> refValue = new Ref<int>(arr, 0);
@@ -135,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests Ref with reference type (string).
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_WithStringType()
+        [Fact] public void Ref_WithStringType()
         {
             string[] arr = {"hello", "world"};
             Ref<string> refValue = new Ref<string>(arr, 0);
@@ -150,8 +144,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that Ref can be created from a Span.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanBeCreatedFromSpan()
+        [Fact] public void Ref_CanBeCreatedFromSpan()
         {
             int[] arr = {1, 2, 3, 4, 5};
             Span<int> span = arr.AsSpan();
@@ -167,8 +160,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests Ref with null string value.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_WithNullValue()
+        [Fact] public void Ref_WithNullValue()
         {
             string[] arr = {null, "test"};
             Ref<string> refValue = new Ref<string>(arr, 0);
@@ -182,8 +174,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates multiple modifications through the same Ref.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_MultipleModifications()
+        [Fact] public void Ref_MultipleModifications()
         {
             int[] arr = {0};
             Ref<int> refValue = new Ref<int>(arr, 0);

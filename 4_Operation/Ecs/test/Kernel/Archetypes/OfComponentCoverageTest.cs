@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that multiple arities compile and execute
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleArities_CompileAndExecute()
+        [Fact] public void MultipleArities_CompileAndExecute()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health());
@@ -26,8 +25,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that archetype edge key is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ArchetypeEdgeKey_IsValueType()
+        [Fact] public void ArchetypeEdgeKey_IsValueType()
         {
             Assert.True(typeof(ArchetypeEdgeKey).IsValueType);
         }

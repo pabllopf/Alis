@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Verifies that Rule class can be instantiated.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_CanBeAccessedAsStaticClass()
+        [Fact] public void Rule_CanBeAccessedAsStaticClass()
         {
             Assert.NotNull(typeof(Rule));
         }
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that Rule provides static utility methods.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_HasStaticMethods()
+        [Fact] public void Rule_HasStaticMethods()
         {
             MethodInfo[] methods = typeof(Rule).GetMethods(
                 BindingFlags.Public | BindingFlags.Static);
@@ -76,8 +74,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that Rule.With method exists.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_WithMethodExists()
+        [Fact] public void Rule_WithMethodExists()
         {
             MethodInfo method = typeof(Rule).GetMethod("With", BindingFlags.Public | BindingFlags.Static);
 
@@ -90,8 +87,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that Rule.Without method exists.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_WithoutMethodExists()
+        [Fact] public void Rule_WithoutMethodExists()
         {
             MethodInfo method = typeof(Rule).GetMethod("Without", BindingFlags.Public | BindingFlags.Static);
 
@@ -104,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that Rule.Tagged method exists.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_TaggedMethodExists()
+        [Fact] public void Rule_TaggedMethodExists()
         {
             MethodInfo method = typeof(Rule).GetMethod("Tagged", BindingFlags.Public | BindingFlags.Static);
 
@@ -118,8 +113,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that Rule.Untagged method exists.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_UntaggedMethodExists()
+        [Fact] public void Rule_UntaggedMethodExists()
         {
             MethodInfo method = typeof(Rule).GetMethod("Untagged", BindingFlags.Public | BindingFlags.Static);
 
@@ -132,8 +126,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Confirms that Rule is publicly accessible.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_IsPublic()
+        [Fact] public void Rule_IsPublic()
         {
             Type ruleType = typeof(Rule);
 

@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that <see cref="ComponentHandle.Retrieve{T}" /> throws
         ///     <see cref="InvalidOperationException" /> when the requested type does not match.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Retrieve_WithMismatchedType_ThrowsInvalidOperationException()
+        [Fact] public void Retrieve_WithMismatchedType_ThrowsInvalidOperationException()
         {
             Position position = new Position { X = 10, Y = 20 };
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that <see cref="ComponentHandle.Equals(object)" /> returns
         ///     <see langword="false" /> when comparing with an incompatible type.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithIncompatibleType_ReturnsFalse()
+        [Fact] public void Equals_WithIncompatibleType_ReturnsFalse()
         {
             Position position = new Position { X = 10, Y = 20 };
             ComponentHandle handle = ComponentHandle.Create(position);

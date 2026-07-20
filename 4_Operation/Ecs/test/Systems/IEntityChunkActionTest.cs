@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that interface can be implemented
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Interface_CanBeImplemented()
+        [Fact] public void Interface_CanBeImplemented()
         {
             var action = new TestEntityChunkAction();
             Assert.NotNull(action);
@@ -22,8 +21,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that run chunk with empty span does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunChunk_WithEmptySpan_DoesNotThrow()
+        [Fact] public void RunChunk_WithEmptySpan_DoesNotThrow()
         {
             var action = new TestEntityChunkAction();
             ReadOnlySpan<GameObject> span = [];

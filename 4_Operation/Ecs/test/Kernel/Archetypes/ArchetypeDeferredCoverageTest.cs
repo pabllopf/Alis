@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Exercises the CreateDeferredEntityLocation hot path
         ///     where futureSlot is within the existing array.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_SingleEntity()
+        [Fact] public void Archetype_DeferredCreate_SingleEntity()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -67,8 +66,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Exercises the temp buffer overflow path in
         ///     CreateDeferredEntityLocation when futureSlot exceeds _entities.Length.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_MultipleEntitiesOverflow()
+        [Fact] public void Archetype_DeferredCreate_MultipleEntitiesOverflow()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -96,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     First entity is created normally, then more are created in deferred mode,
         ///     which exercises the cold path when _entities.Length is exceeded.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_AfterNormalCreate()
+        [Fact] public void Archetype_DeferredCreate_AfterNormalCreate()
         {
             using Scene scene = new Scene();
             GameObject first = scene.Create(new Position { X = 1, Y = 2 });
@@ -117,8 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests deferred entity creation with multiple component types.
         ///     Exercises the deferred path with archetype of Position + Velocity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_MultiComponent()
+        [Fact] public void Archetype_DeferredCreate_MultiComponent()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -142,8 +138,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Creating many entities in deferred mode forces
         ///     multiple resizes of the temp buffer array.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_LargeBatchOverflow()
+        [Fact] public void Archetype_DeferredCreate_LargeBatchOverflow()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -161,8 +156,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests deferred entity creation with component addition during deferred state.
         ///     Exercises the deferred add component path which also uses deferred archetypes.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_WithComponentAdd()
+        [Fact] public void Archetype_DeferredCreate_WithComponentAdd()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -179,8 +173,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Uses the Archetype<T1,T2>.CreateNewOrGetExistingArchetypes
         ///     code path which creates archetypes with two components.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_AlternateArchetype()
+        [Fact] public void Archetype_DeferredCreate_AlternateArchetype()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -203,8 +196,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that deferred entity creation followed by component removal works.
         ///     Exercises the remove component code path after deferred resolution.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_ThenRemoveComponent()
+        [Fact] public void Archetype_DeferredCreate_ThenRemoveComponent()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -223,8 +215,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that deferred entity creation works with tag-only entities (no components).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_TagOnlyEntity()
+        [Fact] public void Archetype_DeferredCreate_TagOnlyEntity()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -239,8 +230,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests deferred creation with multiple sequential batches.
         ///     Exercises the clear and reuse of deferred creation archetypes.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_MultipleBatches()
+        [Fact] public void Archetype_DeferredCreate_MultipleBatches()
         {
             using Scene scene = new Scene();
 
@@ -261,8 +251,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that entity deletion preserves count after deferred creation resolution.
         ///     Exercises the DeleteEntity and ResolveDeferredEntityCreations interaction.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_ThenDelete()
+        [Fact] public void Archetype_DeferredCreate_ThenDelete()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -282,8 +271,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Exercises the ModifyComponentLocationTable resize path when many
         ///     archetypes are created and the table needs to grow.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_ModifyComponentLocationTable_ResizePath()
+        [Fact] public void Archetype_ModifyComponentLocationTable_ResizePath()
         {
             using Scene scene = new Scene();
             for (int i = 0; i < 20; i++)
@@ -310,8 +298,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests ArchetypeTable push in GetArchetypeId when a new archetype is created.
         ///     Exercises the cache-miss and push path in GetArchetypeId.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_GetArchetypeId_CacheMissPushesToTable()
+        [Fact] public void Archetype_GetArchetypeId_CacheMissPushesToTable()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
@@ -327,8 +314,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that the Archetype.EdgeKey and adjacent lookups work
         ///     after deferred creation resolution.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_AdjacentLookup()
+        [Fact] public void Archetype_DeferredCreate_AdjacentLookup()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -345,8 +331,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that nested EnterDisallowState/ExitDisallowState works correctly.
         ///     Exercises the re-entrant deferred creation path.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_NestedDisallowState()
+        [Fact] public void Archetype_DeferredCreate_NestedDisallowState()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -369,8 +354,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests that EnsureCapacity with pool-based resize works after deferred creation.
         ///     Exercises the FastestArrayPool.ResizeArrayFromPool path.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_EnsureCapacityPoolResize()
+        [Fact] public void Archetype_DeferredCreate_EnsureCapacityPoolResize()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -395,8 +379,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         ///     Tests EntityCount property after deferred creation and resolution.
         ///     Validates that EntityCount reflects the correct number after resolve.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_EntityCount_AfterDeferredResolve()
+        [Fact] public void Archetype_EntityCount_AfterDeferredResolve()
         {
             using Scene scene = new Scene();
 
@@ -412,8 +395,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that Archetype.Id is valid after deferred creation.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_Id_ValidAfterDeferredCreate()
+        [Fact] public void Archetype_Id_ValidAfterDeferredCreate()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -427,8 +409,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests Archetype.Data property after deferred creation and resolution.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_Data_ValidAfterDeferredCreate()
+        [Fact] public void Archetype_Data_ValidAfterDeferredCreate()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();
@@ -443,8 +424,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that ReleaseArrays in deferred archetype works after resolution.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DeferredCreate_ReleaseArrays()
+        [Fact] public void Archetype_DeferredCreate_ReleaseArrays()
         {
             using Scene scene = new Scene();
             scene.EnterDisallowState();

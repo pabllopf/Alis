@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("csfml-audio"))
             {
-                Skip = "SFML native library (csfml-audio) not detected. Install SFML to run this test.";
+
             }
         }
 

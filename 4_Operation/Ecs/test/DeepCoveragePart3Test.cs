@@ -16,8 +16,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that fields get component data reference invoked
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Fields_GetComponentDataReference_Invoked()
+        [Fact] public void Fields_GetComponentDataReference_Invoked()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 42 });
@@ -37,8 +36,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that component registry register and lookup consistent
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentRegistry_RegisterAndLookup_Consistent()
+        [Fact] public void ComponentRegistry_RegisterAndLookup_Consistent()
         {
             var posId = Component<Position>.Id;
             var velId = Component<Velocity>.Id;
@@ -51,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that fast lookup multiple cache misses works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastLookup_MultipleCacheMisses_Works()
+        [Fact] public void FastLookup_MultipleCacheMisses_Works()
         {
             using Scene scene = new();
             var go = scene.Create(new Position());
@@ -69,8 +66,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that command buffer multiple operations work
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_MultipleOperations_Work()
+        [Fact] public void CommandBuffer_MultipleOperations_Work()
         {
             using Scene scene = new();
             GameObject go1 = scene.Create(new Position());
@@ -86,8 +82,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that fastest array pool get bucket index various sizes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_GetBucketIndex_VariousSizes()
+        [Fact] public void FastestArrayPool_GetBucketIndex_VariousSizes()
         {
             var pool = FastestArrayPool<int>.Shared;
             int[] sizes = [0, 1, 15, 16, 17, 31, 32, 33, 255, 256, 257, 65535, 65536, int.MaxValue / 2];
@@ -102,8 +97,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that fastest array pool return clear ref type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_ReturnClearRefType()
+        [Fact] public void FastestArrayPool_ReturnClearRefType()
         {
             var pool = FastestArrayPool<object>.Shared;
             object[] arr = pool.Rent(20);
@@ -115,8 +109,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that fastest stack enumerator dispose works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestStack_EnumeratorDispose_Works()
+        [Fact] public void FastestStack_EnumeratorDispose_Works()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
@@ -129,8 +122,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that game object query enumerator all arities enumeration
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_AllArities_Enumeration()
+        [Fact] public void GameObjectQueryEnumerator_AllArities_Enumeration()
         {
             using Scene scene = new();
             var c8 = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
@@ -147,8 +139,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene query with not and include disabled works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_QueryWithNotAndIncludeDisabled_Works()
+        [Fact] public void Scene_QueryWithNotAndIncludeDisabled_Works()
         {
             using Scene scene = new();
             scene.Create(new Position());
@@ -160,8 +151,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene default archetype is not null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_DefaultArchetype_IsNotNull()
+        [Fact] public void Scene_DefaultArchetype_IsNotNull()
         {
             using Scene scene = new();
             Assert.NotNull(scene.DefaultArchetype);
@@ -170,8 +160,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene dispose while locked no throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_Dispose_WhileLocked_NoThrow()
+        [Fact] public void Scene_Dispose_WhileLocked_NoThrow()
         {
             Scene scene = new();
             scene.EnterDisallowState();
@@ -181,8 +170,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that component id equality works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentId_Equality_Works()
+        [Fact] public void ComponentId_Equality_Works()
         {
             var id1 = Component<Position>.Id;
             var id2 = Component<Position>.Id;
@@ -194,8 +182,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that component id equality operator works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentId_EqualityOperator_Works()
+        [Fact] public void ComponentId_EqualityOperator_Works()
         {
             var id1 = Component<Position>.Id;
             var id2 = Component<Velocity>.Id;

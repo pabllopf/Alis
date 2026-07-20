@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that component factory method creates valid key
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldCreateValidKeyWhenComponentFactoryCalled()
+        [Fact] public void ShouldCreateValidKeyWhenComponentFactoryCalled()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that equal keys are considered equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnTrueWhenKeysAreEqual()
+        [Fact] public void ShouldReturnTrueWhenKeysAreEqual()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -74,8 +72,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that different keys are not considered equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnFalseWhenKeysAreDifferent()
+        [Fact] public void ShouldReturnFalseWhenKeysAreDifferent()
         {
             ComponentId componentId1 = new ComponentId(1);
             ComponentId componentId2 = new ComponentId(2);
@@ -91,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that equal keys produce same hash code
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldProduceSameHashCodeWhenKeysAreEqual()
+        [Fact] public void ShouldProduceSameHashCodeWhenKeysAreEqual()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -107,8 +103,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that equals with object returns true for same key
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnTrueWhenEqualsWithObjectForSameKey()
+        [Fact] public void ShouldReturnTrueWhenEqualsWithObjectForSameKey()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -123,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that equals with object returns false for non-key
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnFalseWhenEqualsWithObjectForNonKey()
+        [Fact] public void ShouldReturnFalseWhenEqualsWithObjectForNonKey()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -138,8 +132,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that different keys are not considered equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnTrueWhenEqualsForEqualKeys()
+        [Fact] public void ShouldReturnTrueWhenEqualsForEqualKeys()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -154,8 +147,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that not equals returns true for different keys
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnTrueWhenNotEqualsForDifferentKeys()
+        [Fact] public void ShouldReturnTrueWhenNotEqualsForDifferentKeys()
         {
             ComponentId componentId1 = new ComponentId(1);
             ComponentId componentId2 = new ComponentId(2);
@@ -171,8 +163,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that different edge types produce different keys
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnFalseWhenEdgeTypesAreDifferent()
+        [Fact] public void ShouldReturnFalseWhenEdgeTypesAreDifferent()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from = new GameObjectType(10);
@@ -186,8 +177,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that different from types produce different keys
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnFalseWhenFromTypesAreDifferent()
+        [Fact] public void ShouldReturnFalseWhenFromTypesAreDifferent()
         {
             ComponentId componentId = new ComponentId(1);
             GameObjectType from1 = new GameObjectType(10);

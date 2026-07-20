@@ -60,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that GetKey combines id and archetype into a single uint key
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_CombinesIdAndArchetype()
+        [Fact] public void GetKey_CombinesIdAndArchetype()
         {
             // Arrange — id = 5, archetype RawIndex = 3
             ushort id = 5;
@@ -77,8 +76,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that GetKey with id = 0 uses only archetype RawIndex
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_WithIdZero_ReturnsArchetypeRawIndex()
+        [Fact] public void GetKey_WithIdZero_ReturnsArchetypeRawIndex()
         {
             // Arrange
             ushort id = 0;
@@ -90,13 +88,11 @@ namespace Alis.Core.Ecs.Test
             // Assert
             Assert.Equal(7u, key);
         }
-        
 
         /// <summary>
         ///     Tests that GetKey is deterministic (same inputs produce same key)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_IsDeterministic()
+        [Fact] public void GetKey_IsDeterministic()
         {
             // Arrange
             ushort id = 42;
@@ -113,8 +109,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that GetKey with different ids produces different keys (same archetype)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_DifferentIdsProduceDifferentKeys()
+        [Fact] public void GetKey_DifferentIdsProduceDifferentKeys()
         {
             // Arrange
             GameObjectType archetype = new GameObjectType(5);
@@ -130,8 +125,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that GetKey with different archetypes produces different keys (same id)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_DifferentArchetypesProduceDifferentKeys()
+        [Fact] public void GetKey_DifferentArchetypesProduceDifferentKeys()
         {
             // Arrange
             ushort id = 100;
@@ -151,8 +145,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex finds a key in slot 0
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_FindsKeyInSlotZero()
+        [Fact] public void LookupIndex_FindsKeyInSlotZero()
         {
             // Arrange
             FastLookup lookup = new FastLookup();
@@ -168,8 +161,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex finds a key in slot 7 (last slot)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_FindsKeyInSlotSeven()
+        [Fact] public void LookupIndex_FindsKeyInSlotSeven()
         {
             // Arrange
             FastLookup lookup = new FastLookup();
@@ -185,8 +177,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex returns 32 when key is not found (cache miss)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_KeyNotFound_ReturnsThirtyTwo()
+        [Fact] public void LookupIndex_KeyNotFound_ReturnsThirtyTwo()
         {
             // Arrange — all slots empty (default = 0)
             FastLookup lookup = new FastLookup();
@@ -201,8 +192,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex handles all 8 slots (0-7)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_HandlesAllEightSlots()
+        [Fact] public void LookupIndex_HandlesAllEightSlots()
         {
             // Arrange
             FastLookup lookup = new FastLookup();
@@ -228,8 +218,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex returns 32 when searching for key 0 (default value)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_SearchingForZero_ReturnsThirtyTwo()
+        [Fact] public void LookupIndex_SearchingForZero_ReturnsThirtyTwo()
         {
             // Arrange — default _data values are all 0
             FastLookup lookup = new FastLookup();
@@ -245,8 +234,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that LookupIndex handles duplicate keys (returns first match)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_DuplicateKeys_ReturnsFirstMatch()
+        [Fact] public void LookupIndex_DuplicateKeys_ReturnsFirstMatch()
         {
             // Arrange — duplicate key in slots 2 and 5
             FastLookup lookup = new FastLookup();
@@ -261,16 +249,13 @@ namespace Alis.Core.Ecs.Test
         }
 
         #endregion
-        
 
         #region FindAdjacentArchetypeId Tests
 
-  
         /// <summary>
         ///     Tests that FindAdjacentArchetypeId returns 32-index when not in cache (cache miss)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FindAdjacentArchetypeId_CacheMiss_TriesSceneGraph()
+        [Fact] public void FindAdjacentArchetypeId_CacheMiss_TriesSceneGraph()
         {
             // Arrange — cache miss (key not in any slot)
             FastLookup lookup = new FastLookup();
@@ -288,7 +273,6 @@ namespace Alis.Core.Ecs.Test
             // This test documents the cache miss behavior
         }
 
-
         #endregion
 
         #region Struct Layout Tests
@@ -296,8 +280,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that FastLookup has correct struct layout (Pack = 8)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastLookup_HasCorrectStructLayout()
+        [Fact] public void FastLookup_HasCorrectStructLayout()
         {
             // The struct is marked: [StructLayout(LayoutKind.Sequential, Pack = 8)]
             // Memory layout: Archetype[8] (8*8=64 bytes) + InlineArray8<uint> (32 bytes) 
@@ -308,8 +291,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that FastLookup is a struct (value type)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastLookup_IsValueType()
+        [Fact] public void FastLookup_IsValueType()
         {
             Assert.True(typeof(FastLookup).IsValueType);
         }
@@ -317,8 +299,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that FastLookup Archetypes array is initialized by default
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastLookup_ArchetypesInitializedByDefault()
+        [Fact] public void FastLookup_ArchetypesInitializedByDefault()
         {
             // Arrange — default struct value
             FastLookup lookup = new FastLookup();
@@ -331,8 +312,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that FastLookup index starts at 0 by default
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastLookup_IndexStartsAtZero()
+        [Fact] public void FastLookup_IndexStartsAtZero()
         {
             // Arrange — default struct value
             FastLookup lookup = new FastLookup();
@@ -344,13 +324,11 @@ namespace Alis.Core.Ecs.Test
         #endregion
 
         #region Edge Cases
-        
 
         /// <summary>
         ///     Tests that FastLookup GetKey with RawIndex = 0 works correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_WithArchetypeRawIndexZero()
+        [Fact] public void GetKey_WithArchetypeRawIndexZero()
         {
             // Arrange — archetype with RawIndex = 0
             ushort id = 100;

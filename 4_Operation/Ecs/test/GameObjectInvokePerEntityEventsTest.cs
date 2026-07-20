@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that invoke per entity events arity 1 invokes generic event
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InvokePerEntityEvents_Arity1_InvokesGenericEvent()
+        [Fact] public void InvokePerEntityEvents_Arity1_InvokesGenericEvent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 5, Y = 15});
@@ -58,12 +57,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Health), captureAction.SeenTypes);
         }
 
-
         /// <summary>
         ///     Tests that invoke per entity events arity 2 invokes generic events for both
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InvokePerEntityEvents_Arity2_InvokesGenericEventsForBoth()
+        [Fact] public void InvokePerEntityEvents_Arity2_InvokesGenericEventsForBoth()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -77,7 +74,6 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Velocity), captureAction.SeenTypes);
             Assert.Contains(typeof(Health), captureAction.SeenTypes);
         }
-
 
         /// <summary>
         ///     The capture generic action class

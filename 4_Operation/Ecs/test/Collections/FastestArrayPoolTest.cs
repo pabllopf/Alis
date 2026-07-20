@@ -47,8 +47,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that the singleton instance is available.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_InstanceIsAvailable()
+        [Fact] public void FastestArrayPool_InstanceIsAvailable()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
 
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that Rent method returns a valid array.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentReturnsArray()
+        [Fact] public void FastestArrayPool_RentReturnsArray()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
             int[] array = instance.Rent(10);
@@ -79,8 +77,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests Rent with zero requested size.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentWithZeroSize()
+        [Fact] public void FastestArrayPool_RentWithZeroSize()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
             int[] array = instance.Rent(0);
@@ -96,8 +93,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that Return method accepts a rented array.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_ReturnAcceptsArray()
+        [Fact] public void FastestArrayPool_ReturnAcceptsArray()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
             int[] array = instance.Rent(10);
@@ -111,8 +107,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests a complete rent and return cycle.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentAndReturnCycle()
+        [Fact] public void FastestArrayPool_RentAndReturnCycle()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
 
@@ -132,8 +127,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that the pool works with reference types and value types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_WorksWithDifferentTypes()
+        [Fact] public void FastestArrayPool_WorksWithDifferentTypes()
         {
             FastestArrayPool<int> intInstance = FastestArrayPool<int>.Instance;
             FastestArrayPool<string> stringInstance = FastestArrayPool<string>.Instance;
@@ -158,8 +152,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests multiple consecutive rent operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentMultipleTimes()
+        [Fact] public void FastestArrayPool_RentMultipleTimes()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
 
@@ -182,8 +175,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that a rented array can be used normally.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentedArrayIsUsable()
+        [Fact] public void FastestArrayPool_RentedArrayIsUsable()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
             int[] array = instance.Rent(5);
@@ -202,8 +194,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that rent reuses a previously returned array from the pool.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_RentReusesPooledArray()
+        [Fact] public void FastestArrayPool_RentReusesPooledArray()
         {
             FastestArrayPool<int> instance = FastestArrayPool<int>.Instance;
             int[] array1 = instance.Rent(16);
@@ -219,8 +210,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that return with clearArray clears reference type elements.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestArrayPool_ReturnWithClearClearsReferenceType()
+        [Fact] public void FastestArrayPool_ReturnWithClearClearsReferenceType()
         {
             FastestArrayPool<string> instance = FastestArrayPool<string>.Instance;
             string[] array = instance.Rent(16);

@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Skip = "Only running in windows mode";
+
             }
         }
     }

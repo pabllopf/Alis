@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ResetForTests clears all component state and allows re-registration.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ResetForTests_ClearsState_AndAllowsNewRegistrations()
+        [Fact] public void ResetForTests_ClearsState_AndAllowsNewRegistrations()
         {
             ComponentId originalId = Component.GetComponentId(typeof(Position));
 
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that after ResetForTests, RegisterComponent works and IDs are stable.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ResetForTests_ThenRegister_ResultsInStableIds()
+        [Fact] public void ResetForTests_ThenRegister_ResultsInStableIds()
         {
             Component.ResetForTests();
 
@@ -74,8 +72,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that after ResetForTests, the void type is properly re-initialized.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ResetForTests_VoidType_IsReinitialized()
+        [Fact] public void ResetForTests_VoidType_IsReinitialized()
         {
             Component.ResetForTests();
 
@@ -87,8 +84,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that after ResetForTests, component factory lookup still works for registered types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ResetForTests_ThenRegister_FactoryIsAvailable()
+        [Fact] public void ResetForTests_ThenRegister_FactoryIsAvailable()
         {
             Component.ResetForTests();
 
@@ -101,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that GetExistingOrSetupNewComponent allocates new IDs after ResetForTests.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetExistingOrSetupNewComponent_AfterReset_AllocatesFreshIds()
+        [Fact] public void GetExistingOrSetupNewComponent_AfterReset_AllocatesFreshIds()
         {
             Component.ResetForTests();
 

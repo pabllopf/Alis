@@ -47,7 +47,7 @@ namespace Alis.Extension.Updater.Test.Attributes
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) &&
                 !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
             {
-                Skip = "Only running in browser/webassembly mode";
+
             }
         }
     }

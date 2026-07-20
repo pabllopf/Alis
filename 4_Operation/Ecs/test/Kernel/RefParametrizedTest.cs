@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref create and access works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CreateAndAccess_Works()
+        [Fact] public void Ref_CreateAndAccess_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -55,8 +54,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref modify via ref changes are persisted
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_ModifyViaRef_ChangesArePersisted()
+        [Fact] public void Ref_ModifyViaRef_ChangesArePersisted()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -118,8 +116,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref health modify value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_Health_ModifyValue()
+        [Fact] public void Ref_Health_ModifyValue()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Health {Value = 100});
@@ -133,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref velocity modify both components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_Velocity_ModifyBothComponents()
+        [Fact] public void Ref_Velocity_ModifyBothComponents()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Velocity {X = 1, Y = 1});
@@ -150,8 +146,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref transform modify coordinates
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_Transform_ModifyCoordinates()
+        [Fact] public void Ref_Transform_ModifyCoordinates()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Transform {X = 0, Y = 0});
@@ -188,8 +183,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that ref chained modifications works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_ChainedModifications_Works()
+        [Fact] public void Ref_ChainedModifications_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(

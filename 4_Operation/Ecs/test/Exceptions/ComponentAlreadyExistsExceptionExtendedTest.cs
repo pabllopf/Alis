@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// <remarks>
         ///     Verifies that ComponentAlreadyExistsException can be instantiated with a type.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentAlreadyExistsException_CanBeCreatedWithType()
+        [Fact] public void ComponentAlreadyExistsException_CanBeCreatedWithType()
         {
             ComponentAlreadyExistsException ex = new ComponentAlreadyExistsException();
 
@@ -64,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// <remarks>
         ///     Validates that the exception message includes the type name.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentAlreadyExistsException_MessageContainsTypeName()
+        [Fact] public void ComponentAlreadyExistsException_MessageContainsTypeName()
         {
             Type testType = typeof(Position);
 
@@ -78,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// <remarks>
         ///     Tests creating the exception with a custom message.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentAlreadyExistsException_CanBeCreatedWithMessage()
+        [Fact] public void ComponentAlreadyExistsException_CanBeCreatedWithMessage()
         {
             string customMessage = "Custom error message";
 
@@ -95,8 +92,7 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// <remarks>
         ///     Validates that the exception can be caught as a base Exception.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentAlreadyExistsException_IsCatchableAsException()
+        [Fact] public void ComponentAlreadyExistsException_IsCatchableAsException()
         {
             Exception thrownException = null;
             try

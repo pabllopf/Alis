@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update type attribute is abstract and inherits attribute
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateTypeAttribute_IsAbstractAndInheritsAttribute()
+        [Fact] public void UpdateTypeAttribute_IsAbstractAndInheritsAttribute()
         {
             Assert.True(typeof(UpdateTypeAttribute).IsAbstract);
             Assert.True(typeof(Attribute).IsAssignableFrom(typeof(UpdateTypeAttribute)));
@@ -51,8 +50,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update type attribute declares method target usage
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateTypeAttribute_DeclaresMethodTargetUsage()
+        [Fact] public void UpdateTypeAttribute_DeclaresMethodTargetUsage()
         {
             AttributeUsageAttribute usage = (AttributeUsageAttribute) Attribute.GetCustomAttribute(
                 typeof(UpdateTypeAttribute),
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update type attribute can be extended and applied to method
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateTypeAttribute_CanBeExtendedAndAppliedToMethod()
+        [Fact] public void UpdateTypeAttribute_CanBeExtendedAndAppliedToMethod()
         {
             DummyUpdateTypeAttribute[] attrs =
                 (DummyUpdateTypeAttribute[]) typeof(TargetMethodHolder).GetMethod(nameof(TargetMethodHolder.Tick))

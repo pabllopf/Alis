@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that QueryEnumerable with 2 components can be instantiated.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_CanBeCreated()
+        [Fact] public void QueryEnumerable_WithTwoComponents_CanBeCreated()
         {
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that QueryEnumerable with 2 components works in foreach loops.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_CanBeUsedInForeach()
+        [Fact] public void QueryEnumerable_WithTwoComponents_CanBeUsedInForeach()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 0.5f, Y = 1.0f});
@@ -88,8 +86,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that both component types are accessible during enumeration.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_ProvidesAccessToBoth()
+        [Fact] public void QueryEnumerable_WithTwoComponents_ProvidesAccessToBoth()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 5, Y = 10});
@@ -110,8 +107,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that only entities with both components are enumerated.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_FiltersCorrectly()
+        [Fact] public void QueryEnumerable_WithTwoComponents_FiltersCorrectly()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
@@ -133,8 +129,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that both components can be modified during enumeration.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_AllowsModification()
+        [Fact] public void QueryEnumerable_WithTwoComponents_AllowsModification()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Velocity {X = 0, Y = 0});
@@ -161,8 +156,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates enumeration with multiple matching entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_WorksWithMultipleEntities()
+        [Fact] public void QueryEnumerable_WithTwoComponents_WorksWithMultipleEntities()
         {
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
@@ -187,8 +181,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates handling of empty queries with 2 components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_WorksWithEmptyQuery()
+        [Fact] public void QueryEnumerable_WithTwoComponents_WorksWithEmptyQuery()
         {
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>, With<Velocity>>();
@@ -208,8 +201,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that EnumerateWithEntities works with 2 components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_WithTwoComponents_ProvidesEntityAccess()
+        [Fact] public void QueryEnumerable_WithTwoComponents_ProvidesEntityAccess()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 5, Y = 10}, new Velocity {X = 2, Y = 3});

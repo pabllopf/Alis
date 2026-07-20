@@ -120,8 +120,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object location entity identity persists across operations
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectLocation_EntityIdentity_PersistsAcrossOperations()
+        [Fact] public void GameObjectLocation_EntityIdentity_PersistsAcrossOperations()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -186,8 +185,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object location entity location within scene accessible
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectLocation_EntityLocationWithinScene_Accessible()
+        [Fact] public void GameObjectLocation_EntityLocationWithinScene_Accessible()
         {
             using Scene scene = new Scene();
 

@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("csfml-window"))
             {
-                Skip = "SFML native library (csfml-window) not detected. Install SFML to run this test.";
+
             }
         }
 

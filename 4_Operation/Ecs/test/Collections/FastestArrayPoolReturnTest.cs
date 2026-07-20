@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that Return with a small array less than min bucket size does not add to buckets.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Return_WithSmallArray_DoesNotThrow()
+        [Fact] public void Return_WithSmallArray_DoesNotThrow()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array = new int[4];
@@ -52,8 +51,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that Return with clearArray true and reference type clears the array.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Return_WithClearArrayAndReferenceType_ClearsContent()
+        [Fact] public void Return_WithClearArrayAndReferenceType_ClearsContent()
         {
             FastestArrayPool<string> pool = FastestArrayPool<string>.Instance;
             string[] array = pool.Rent(100);
@@ -67,8 +65,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that Rent after Return with clear reuses slot and returns clean array.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RentAfterReturnWithClear_ReturnsCleanArray()
+        [Fact] public void RentAfterReturnWithClear_ReturnsCleanArray()
         {
             FastestArrayPool<string> pool = FastestArrayPool<string>.Instance;
             string[] array = pool.Rent(100);
@@ -82,8 +79,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that Return with clearArray true and value type does not clear content.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Return_WithClearArrayAndValueType_DoesNotClear()
+        [Fact] public void Return_WithClearArrayAndValueType_DoesNotClear()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array = pool.Rent(100);

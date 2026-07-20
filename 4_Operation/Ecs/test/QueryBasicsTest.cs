@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
@@ -68,8 +67,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query with single component filter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_FiltersBySingleComponent()
+        [Fact] public void Query_FiltersBySingleComponent()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -93,8 +91,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query with two component filters
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_FiltersByTwoComponents()
+        [Fact] public void Query_FiltersByTwoComponents()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -118,8 +115,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query on empty result set
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_ReturnsEmptyWhenNoMatches()
+        [Fact] public void Query_ReturnsEmptyWhenNoMatches()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -141,8 +137,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query enumeration consistency
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_IsConsistentAcrossIterations()
+        [Fact] public void Query_IsConsistentAcrossIterations()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -177,8 +172,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests accessing component data through query enumeration
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_CanAccessComponentDataInEnumeration()
+        [Fact] public void Query_CanAccessComponentDataInEnumeration()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -200,8 +194,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query with three component filters
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_FiltersByThreeComponents()
+        [Fact] public void Query_FiltersByThreeComponents()
         {
             // Arrange
             using Scene scene = new Scene();
@@ -225,8 +218,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query can be reused multiple times
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_CanBeReused()
+        [Fact] public void Query_CanBeReused()
         {
             // Arrange
             using Scene scene = new Scene();

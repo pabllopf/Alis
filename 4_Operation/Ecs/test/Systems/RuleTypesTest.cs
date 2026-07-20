@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that all enum values are defined with correct numeric values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_HasExpectedValues()
+        [Fact] public void RuleTypes_HasExpectedValues()
         {
             Assert.Equal(0, (int) RuleTypes.Have);
             Assert.Equal(1, (int) RuleTypes.DoesNotHave);
@@ -62,8 +61,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that all enum values are different from each other.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_AllValuesAreDistinct()
+        [Fact] public void RuleTypes_AllValuesAreDistinct()
         {
             Assert.NotEqual(RuleTypes.Have, RuleTypes.DoesNotHave);
         }
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that RuleTypes values can be assigned to variables
         ///     and compared correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeAssigned()
+        [Fact] public void RuleTypes_CanBeAssigned()
         {
             RuleTypes have = RuleTypes.Have;
             RuleTypes doesNotHave = RuleTypes.DoesNotHave;
@@ -91,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that enum values can be converted to their string representation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeConvertedToString()
+        [Fact] public void RuleTypes_CanBeConvertedToString()
         {
             string haveString = RuleTypes.Have.ToString();
             string doesNotHaveString = RuleTypes.DoesNotHave.ToString();
@@ -107,8 +103,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that integer values can be cast to RuleTypes enum.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeCastFromInt()
+        [Fact] public void RuleTypes_CanBeCastFromInt()
         {
             RuleTypes have = 0;
             RuleTypes doesNotHave = (RuleTypes) 1;
@@ -123,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that enum values work correctly in switch/case statements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_WorksInSwitchStatements()
+        [Fact] public void RuleTypes_WorksInSwitchStatements()
         {
             int haveResult = 0;
             int doesNotHaveResult = 0;
@@ -159,8 +153,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that the default enum value (0) corresponds to Have.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_DefaultValueIsHave()
+        [Fact] public void RuleTypes_DefaultValueIsHave()
         {
             RuleTypes defaultValue = default(RuleTypes);
 
@@ -174,8 +167,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that RuleTypes values can be stored and retrieved from collections.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeUsedInCollections()
+        [Fact] public void RuleTypes_CanBeUsedInCollections()
         {
             List<RuleTypes> list = new List<RuleTypes>
             {
@@ -194,8 +186,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that RuleTypes values can be used as dictionary keys.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeUsedAsDictionaryKey()
+        [Fact] public void RuleTypes_CanBeUsedAsDictionaryKey()
         {
             Dictionary<RuleTypes, string> dict = new Dictionary<RuleTypes, string>
             {
@@ -214,8 +205,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that the enum defines exactly the expected number of values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_HasExactlyTwoValues()
+        [Fact] public void RuleTypes_HasExactlyTwoValues()
         {
             // Act
             Array values = Enum.GetValues(typeof(RuleTypes));
@@ -230,8 +220,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that the RuleTypes enum has public visibility.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_IsPublic()
+        [Fact] public void RuleTypes_IsPublic()
         {
             // Act
             Type type = typeof(RuleTypes);
@@ -247,8 +236,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that enum equality operators work correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_EqualityComparisonWorks()
+        [Fact] public void RuleTypes_EqualityComparisonWorks()
         {
             // Arrange
             RuleTypes value1 = RuleTypes.Have;
@@ -268,8 +256,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that enum values can be compared using comparison operators.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_ComparisonOperatorsWork()
+        [Fact] public void RuleTypes_ComparisonOperatorsWork()
         {
             // Assert
             Assert.True(RuleTypes.Have < RuleTypes.DoesNotHave);
@@ -283,8 +270,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that RuleTypes values work correctly in if-else conditions.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_WorksInConditionalLogic()
+        [Fact] public void RuleTypes_WorksInConditionalLogic()
         {
             // Arrange
             RuleTypes ruleType = RuleTypes.Have;
@@ -312,8 +298,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that enum hash codes are consistent across calls.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_GetHashCodeIsConsistent()
+        [Fact] public void RuleTypes_GetHashCodeIsConsistent()
         {
             // Arrange
             RuleTypes value = RuleTypes.Have;
@@ -332,8 +317,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that different enum values produce different hash codes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_DifferentValues_HaveDifferentHashCodes()
+        [Fact] public void RuleTypes_DifferentValues_HaveDifferentHashCodes()
         {
             // Act
             int haveHash = RuleTypes.Have.GetHashCode();
@@ -349,8 +333,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that the Equals method properly compares enum values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_EqualsMethodWorksCorrectly()
+        [Fact] public void RuleTypes_EqualsMethodWorksCorrectly()
         {
             // Arrange
             RuleTypes value1 = RuleTypes.Have;
@@ -368,8 +351,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that string representations can be parsed back to enum values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_CanBeParsedFromString()
+        [Fact] public void RuleTypes_CanBeParsedFromString()
         {
             // Act
             RuleTypes have = (RuleTypes) Enum.Parse(typeof(RuleTypes), "Have");

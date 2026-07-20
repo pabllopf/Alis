@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that components can be added after entity creation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_CanBeAddedAfterCreation()
+        [Fact] public void Component_CanBeAddedAfterCreation()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0});
@@ -67,8 +66,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that components can be removed and will not be accessible.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_CanBeRemoved()
+        [Fact] public void Component_CanBeRemoved()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
@@ -85,8 +83,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that component data can be retrieved from entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_DataCanBeAccessed()
+        [Fact] public void Component_DataCanBeAccessed()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -104,8 +101,7 @@ namespace Alis.Core.Ecs.Test
         ///     Tests that TryGet returns true for present components
         ///     and false for absent ones.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_TryGetWorks()
+        [Fact] public void Component_TryGetWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 5, Y = 10});
@@ -124,8 +120,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that entities can have multiple components simultaneously.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_MultipleComponentsCanCoexist()
+        [Fact] public void Component_MultipleComponentsCanCoexist()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -145,8 +140,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that accessing components on deleted entities throws.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_DeadEntityThrowsOnAccess()
+        [Fact] public void Component_DeadEntityThrowsOnAccess()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0});

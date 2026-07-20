@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that a CommandBuffer can be instantiated with a Scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanBeCreatedWithScene()
+        [Fact] public void CommandBuffer_CanBeCreatedWithScene()
         {
             using Scene scene = new Scene();
 
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that a new CommandBuffer starts in inactive state.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_StartsInactive()
+        [Fact] public void CommandBuffer_StartsInactive()
         {
             using Scene scene = new Scene();
 
@@ -81,8 +79,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that DeleteEntity method adds the operation to the buffer.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteEntity_AddsToBuffer()
+        [Fact] public void DeleteEntity_AddsToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -99,8 +96,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Add method adds the operation to the buffer.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_AddsToBuffer()
+        [Fact] public void Add_AddsToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -117,8 +113,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that RemoveComponent method adds the operation to the buffer.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveComponent_AddsToBuffer()
+        [Fact] public void RemoveComponent_AddsToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -135,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Clear method removes all buffered commands.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Clear_RemovesAllCommands()
+        [Fact] public void Clear_RemovesAllCommands()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -154,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Playback method applies the DeleteEntity command to the scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_AppliesDeleteEntityCommand()
+        [Fact] public void Playback_AppliesDeleteEntityCommand()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -173,8 +166,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Playback method applies the Add command to the scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_AppliesAddCommand()
+        [Fact] public void Playback_AppliesAddCommand()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -192,8 +184,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Playback method applies the RemoveComponent command to the scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_AppliesRemoveComponentCommand()
+        [Fact] public void Playback_AppliesRemoveComponentCommand()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -211,8 +202,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Playback returns true when at least one command was applied.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_ReturnsTrueWhenCommandsWereApplied()
+        [Fact] public void Playback_ReturnsTrueWhenCommandsWereApplied()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -230,8 +220,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Playback returns false when the buffer has no commands.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_ReturnsFalseWhenBufferIsEmpty()
+        [Fact] public void Playback_ReturnsFalseWhenBufferIsEmpty()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -247,8 +236,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that CommandBuffer can handle multiple buffered commands.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanHandleMultipleCommands()
+        [Fact] public void CommandBuffer_CanHandleMultipleCommands()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -269,8 +257,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the buffer is cleared after successful playback.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_ClearsAfterPlayback()
+        [Fact] public void CommandBuffer_ClearsAfterPlayback()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -288,8 +275,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that RemoveComponent overload with ComponentId works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveComponent_WithComponentId_Works()
+        [Fact] public void RemoveComponent_WithComponentId_Works()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -307,8 +293,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that multiple operations can be queued for the same entity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanQueueMultipleOperationsOnSameEntity()
+        [Fact] public void CommandBuffer_CanQueueMultipleOperationsOnSameEntity()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -328,8 +313,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that CommandBuffer properly handles entity creation and deletion.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_HandlesEntityLifecycleCorrectly()
+        [Fact] public void CommandBuffer_HandlesEntityLifecycleCorrectly()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -348,8 +332,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Add overload with Type parameter works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithTypeParameter_Works()
+        [Fact] public void Add_WithTypeParameter_Works()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -365,8 +348,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component with object overload adds component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_WithObjectOverload_AddsComponent()
+        [Fact] public void AddComponent_WithObjectOverload_AddsComponent()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -382,8 +364,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that playback when scene does not allow changes throws invalid operation exception
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Playback_WhenSceneDoesNotAllowChanges_ThrowsInvalidOperationException()
+        [Fact] public void Playback_WhenSceneDoesNotAllowChanges_ThrowsInvalidOperationException()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -396,8 +377,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that with without entity throws invalid operation exception
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_WithoutEntity_ThrowsInvalidOperationException()
+        [Fact] public void With_WithoutEntity_ThrowsInvalidOperationException()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -408,8 +388,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that entity with end should add to buffer
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Entity_With_End_ShouldAddToBuffer()
+        [Fact] public void Entity_With_End_ShouldAddToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -422,8 +401,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that entity with end creates entity on playback
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Entity_With_End_CreatesEntityOnPlayback()
+        [Fact] public void Entity_With_End_CreatesEntityOnPlayback()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -438,8 +416,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that entity called twice throws invalid operation exception
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Entity_CalledTwice_ThrowsInvalidOperationException()
+        [Fact] public void Entity_CalledTwice_ThrowsInvalidOperationException()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -452,8 +429,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component with component id adds to buffer
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_WithComponentId_AddsToBuffer()
+        [Fact] public void AddComponent_WithComponentId_AddsToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);
@@ -467,8 +443,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that remove component with type adds to buffer
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveComponent_WithType_AddsToBuffer()
+        [Fact] public void RemoveComponent_WithType_AddsToBuffer()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(scene);

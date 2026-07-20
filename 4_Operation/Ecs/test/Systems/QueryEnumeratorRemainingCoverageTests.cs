@@ -13,8 +13,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 single entity returns correct values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_SingleEntity_ReturnsCorrectValues()
+        [Fact] public void QueryEnumerator_Arity6_SingleEntity_ReturnsCorrectValues()
         {
             using Scene scene = new();
             scene.Create(
@@ -44,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 multiple entities iterates all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_MultipleEntities_IteratesAll()
+        [Fact] public void QueryEnumerator_Arity6_MultipleEntities_IteratesAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -83,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 multiple archetypes iterates across all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_MultipleArchetypes_IteratesAcrossAll()
+        [Fact] public void QueryEnumerator_Arity6_MultipleArchetypes_IteratesAcrossAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -119,8 +116,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 empty query returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_EmptyQuery_ReturnsFalse()
+        [Fact] public void QueryEnumerator_Arity6_EmptyQuery_ReturnsFalse()
         {
             using Scene scene = new();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>>();
@@ -133,8 +129,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 dispose restores structural changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_Dispose_RestoresStructuralChanges()
+        [Fact] public void QueryEnumerator_Arity6_Dispose_RestoresStructuralChanges()
         {
             using Scene scene = new();
             scene.Create(
@@ -160,8 +155,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 foreach syntax iterates all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_ForeachSyntax_IteratesAll()
+        [Fact] public void QueryEnumerator_Arity6_ForeachSyntax_IteratesAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -185,8 +179,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 ref values are readable
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_RefValues_AreReadable()
+        [Fact] public void QueryEnumerator_Arity6_RefValues_AreReadable()
         {
             using Scene scene = new();
             scene.Create(
@@ -223,8 +216,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 single entity returns correct values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_SingleEntity_ReturnsCorrectValues()
+        [Fact] public void QueryEnumerator_Arity7_SingleEntity_ReturnsCorrectValues()
         {
             using Scene scene = new();
             scene.Create(
@@ -256,8 +248,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 multiple entities iterates all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_MultipleEntities_IteratesAll()
+        [Fact] public void QueryEnumerator_Arity7_MultipleEntities_IteratesAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -295,8 +286,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 multiple archetypes iterates across all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_MultipleArchetypes_IteratesAcrossAll()
+        [Fact] public void QueryEnumerator_Arity7_MultipleArchetypes_IteratesAcrossAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -333,8 +323,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 empty query returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_EmptyQuery_ReturnsFalse()
+        [Fact] public void QueryEnumerator_Arity7_EmptyQuery_ReturnsFalse()
         {
             using Scene scene = new();
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<Transform>, With<TestComponent>>();
@@ -347,8 +336,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 dispose restores structural changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_Dispose_RestoresStructuralChanges()
+        [Fact] public void QueryEnumerator_Arity7_Dispose_RestoresStructuralChanges()
         {
             using Scene scene = new();
             scene.Create(
@@ -375,8 +363,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 foreach syntax iterates all
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_ForeachSyntax_IteratesAll()
+        [Fact] public void QueryEnumerator_Arity7_ForeachSyntax_IteratesAll()
         {
             using Scene scene = new();
             scene.Create(
@@ -401,8 +388,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 ref values are readable
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_RefValues_AreReadable()
+        [Fact] public void QueryEnumerator_Arity7_RefValues_AreReadable()
         {
             using Scene scene = new();
             scene.Create(
@@ -442,8 +428,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 1 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity1_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity1_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(new Position {X = 1, Y = 2});
@@ -468,8 +453,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 2 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity2_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity2_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
@@ -491,8 +475,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 3 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity3_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity3_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5});
@@ -513,8 +496,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 4 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity4_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity4_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5}, new Armor {Value = 6});
@@ -535,8 +517,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 5 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity5_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity5_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4}, new Health {Value = 5}, new Armor {Value = 6}, new Damage {Value = 7});
@@ -557,8 +538,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 multiple entities crosses boundary with skip
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_MultipleEntities_CrossesBoundaryWithSkip()
+        [Fact] public void QueryEnumerator_Arity6_MultipleEntities_CrossesBoundaryWithSkip()
         {
             using Scene scene = new();
             scene.Create(
@@ -603,8 +583,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 multiple entities crosses boundary with skip
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_MultipleEntities_CrossesBoundaryWithSkip()
+        [Fact] public void QueryEnumerator_Arity7_MultipleEntities_CrossesBoundaryWithSkip()
         {
             using Scene scene = new();
             scene.Create(
@@ -652,8 +631,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 8 multiple archetypes crosses boundary
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity8_MultipleArchetypes_CrossesBoundary()
+        [Fact] public void QueryEnumerator_Arity8_MultipleArchetypes_CrossesBoundary()
         {
             using Scene scene = new();
             scene.Create(
@@ -691,8 +669,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 6 get enumerator direct call
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity6_GetEnumerator_DirectCall()
+        [Fact] public void QueryEnumerator_Arity6_GetEnumerator_DirectCall()
         {
             using Scene scene = new();
             scene.Create(
@@ -716,8 +693,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query enumerator arity 7 get enumerator direct call
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerator_Arity7_GetEnumerator_DirectCall()
+        [Fact] public void QueryEnumerator_Arity7_GetEnumerator_DirectCall()
         {
             using Scene scene = new();
             scene.Create(

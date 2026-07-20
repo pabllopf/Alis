@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that a single component can be deconstructed from a GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_SingleComponentWorks()
+        [Fact] public void GameObjectExtensionsDeconstruct_SingleComponentWorks()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 42, Y = 84};
@@ -68,8 +67,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction throws an exception if the required component is missing.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ThrowsOnMissingComponent()
+        [Fact] public void GameObjectExtensionsDeconstruct_ThrowsOnMissingComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -83,8 +81,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstructed component references can be modified.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_DeconstructedReferenceCanBeModified()
+        [Fact] public void GameObjectExtensionsDeconstruct_DeconstructedReferenceCanBeModified()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -104,8 +101,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction on a dead entity throws an exception.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ThrowsOnDeadEntity()
+        [Fact] public void GameObjectExtensionsDeconstruct_ThrowsOnDeadEntity()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -120,8 +116,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction works independently for different entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_MultipleEntitiesCanBeDeconstructed()
+        [Fact] public void GameObjectExtensionsDeconstruct_MultipleEntitiesCanBeDeconstructed()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
@@ -140,8 +135,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstructed references provide full read-write access.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ProvidesReadWriteAccess()
+        [Fact] public void GameObjectExtensionsDeconstruct_ProvidesReadWriteAccess()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 0, Y = 0});
@@ -163,8 +157,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction can be used in loop patterns.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_WorksInLoops()
+        [Fact] public void GameObjectExtensionsDeconstruct_WorksInLoops()
         {
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[5];
@@ -187,8 +180,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction reflects any modifications to the component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_WorksWithModifiedComponents()
+        [Fact] public void GameObjectExtensionsDeconstruct_WorksWithModifiedComponents()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 10, Y = 20};
@@ -210,8 +202,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the deconstructed reference points to the same entity component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ProvidesStableReference()
+        [Fact] public void GameObjectExtensionsDeconstruct_ProvidesStableReference()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 42, Y = 84});
@@ -229,8 +220,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that deconstruction on a null entity throws appropriately.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ThrowsOnNullEntity()
+        [Fact] public void GameObjectExtensionsDeconstruct_ThrowsOnNullEntity()
         {
             GameObject nullEntity = GameObject.Null;
 
@@ -243,8 +233,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that newly added components can be deconstructed.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_WorksAfterComponentAddition()
+        [Fact] public void GameObjectExtensionsDeconstruct_WorksAfterComponentAddition()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -262,8 +251,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that removed components cannot be deconstructed.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_FailsAfterComponentRemoval()
+        [Fact] public void GameObjectExtensionsDeconstruct_FailsAfterComponentRemoval()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -276,8 +264,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct two components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_TwoComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
@@ -293,8 +280,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct three components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_ThreeComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -312,8 +298,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct four components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_FourComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_FourComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -333,8 +318,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct five components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_FiveComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -361,8 +345,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct six components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_SixComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_SixComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -392,8 +375,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct seven components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_SevenComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -426,8 +408,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object extensions deconstruct eight components works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectExtensionsDeconstruct_EightComponents_Works()
+        [Fact] public void GameObjectExtensionsDeconstruct_EightComponents_Works()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(

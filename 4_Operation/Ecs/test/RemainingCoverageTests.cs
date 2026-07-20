@@ -13,8 +13,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that entity with 8 components exercises all paths
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EntityWith8Components_ExercisesAllPaths()
+        [Fact] public void EntityWith8Components_ExercisesAllPaths()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
@@ -33,8 +32,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that chunk tuple exercises chunk paths
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ChunkTuple_ExercisesChunkPaths()
+        [Fact] public void ChunkTuple_ExercisesChunkPaths()
         {
             using Scene scene = new();
             ChunkTuple<Position, Velocity> chunk = scene.CreateMany<Position, Velocity>(2);
@@ -45,8 +43,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene update exercises update paths
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneUpdate_ExercisesUpdatePaths()
+        [Fact] public void SceneUpdate_ExercisesUpdatePaths()
         {
             using Scene scene = new();
             for (int i = 0; i < 5; i++)
@@ -57,8 +54,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene update with multiple types exercises all update variants
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneUpdateWithMultipleTypes_ExercisesAllUpdateVariants()
+        [Fact] public void SceneUpdateWithMultipleTypes_ExercisesAllUpdateVariants()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health());
@@ -69,8 +65,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene query with include disabled works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneQuery_WithIncludeDisabled_Works()
+        [Fact] public void SceneQuery_WithIncludeDisabled_Works()
         {
             using Scene scene = new();
             scene.Create(new Position());
@@ -81,8 +76,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that scene query with not filters correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneQuery_WithNot_FiltersCorrectly()
+        [Fact] public void SceneQuery_WithNot_FiltersCorrectly()
         {
             using Scene scene = new();
             scene.Create(new Position());

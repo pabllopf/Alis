@@ -11,8 +11,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that grow component tag table with many components does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GrowComponentTagTable_WithManyComponents_DoesNotThrow()
+        [Fact] public void GrowComponentTagTable_WithManyComponents_DoesNotThrow()
         {
             using Scene scene = new();
             for (int i = 0; i < 20; i++)
@@ -25,8 +24,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that component index with multiple archetypes returns valid index
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentIndex_WithMultipleArchetypes_ReturnsValidIndex()
+        [Fact] public void ComponentIndex_WithMultipleArchetypes_ReturnsValidIndex()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 });
@@ -38,8 +36,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that has with populated scene works correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Has_WithPopulatedScene_WorksCorrectly()
+        [Fact] public void Has_WithPopulatedScene_WorksCorrectly()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 });
@@ -50,8 +47,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that world archetype table with entities updates correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldArchetypeTable_WithEntities_UpdatesCorrectly()
+        [Fact] public void WorldArchetypeTable_WithEntities_UpdatesCorrectly()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });

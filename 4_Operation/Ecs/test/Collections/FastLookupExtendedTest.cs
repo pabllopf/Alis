@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup can be created successfully.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_Default_CreatedSuccessfully()
+        [Fact] public void Constructor_Default_CreatedSuccessfully()
         {
             FastLookup lookup = new FastLookup();
 
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup properly stores and retrieves data.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_AfterGet_ReturnsValidIndex()
+        [Fact] public void GetKey_AfterGet_ReturnsValidIndex()
         {
             FastLookup lookup = new FastLookup();
 
@@ -68,8 +66,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup properly handles multiple different keys.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_DifferentInputs_DifferentKeys()
+        [Fact] public void GetKey_DifferentInputs_DifferentKeys()
         {
             FastLookup lookup = new FastLookup();
 
@@ -85,8 +82,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup can generate keys for boundary values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_BoundaryValues_GeneratesValidKeys()
+        [Fact] public void GetKey_BoundaryValues_GeneratesValidKeys()
         {
             FastLookup lookup = new FastLookup();
 
@@ -99,8 +95,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup generates consistent keys for same inputs.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_SameInputs_GeneratesSameKey()
+        [Fact] public void GetKey_SameInputs_GeneratesSameKey()
         {
             FastLookup lookup = new FastLookup();
             ushort id = 42;
@@ -115,8 +110,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup can handle many key generation requests.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetKey_ManyRequests_AllUnique()
+        [Fact] public void GetKey_ManyRequests_AllUnique()
         {
             FastLookup lookup = new FastLookup();
             HashSet<uint> keys = new HashSet<uint>();
@@ -133,8 +127,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup properly manages lookup index operations.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_AfterGetKey_ReturnsValidIndex()
+        [Fact] public void LookupIndex_AfterGetKey_ReturnsValidIndex()
         {
             FastLookup lookup = new FastLookup();
             uint key = FastLookup.GetKey(5, new GameObjectType(10));
@@ -147,8 +140,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup handles repeated lookups for same key.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_RepeatCalls_ReturnsSameIndex()
+        [Fact] public void LookupIndex_RepeatCalls_ReturnsSameIndex()
         {
             FastLookup lookup = new FastLookup();
             uint key = FastLookup.GetKey(15, new GameObjectType(20));
@@ -162,8 +154,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastLookup properly handles non-existent key lookups.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void LookupIndex_NonExistentKey_ReturnsNotFoundIndicator()
+        [Fact] public void LookupIndex_NonExistentKey_ReturnsNotFoundIndicator()
         {
             FastLookup lookup = new FastLookup();
 

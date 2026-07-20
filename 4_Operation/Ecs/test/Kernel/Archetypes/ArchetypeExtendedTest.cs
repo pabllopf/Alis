@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that an Archetype can store and track entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_CanStoreEntities()
+        [Fact] public void Archetype_CanStoreEntities()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -64,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that Archetype tracks the correct number of entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_MaintainsEntityCount()
+        [Fact] public void Archetype_MaintainsEntityCount()
         {
             using Scene scene = new Scene();
             int initialCount = scene.EntityCount;
@@ -82,8 +80,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that entities with same component set use same archetype.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_OrganizesEntitiesEfficiently()
+        [Fact] public void Archetype_OrganizesEntitiesEfficiently()
         {
             using Scene scene = new Scene();
 
@@ -100,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that entities can transition between archetypes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_HandlesTransitions()
+        [Fact] public void Archetype_HandlesTransitions()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -118,8 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that component data is preserved during archetype transitions.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_PreservesComponentData()
+        [Fact] public void Archetype_PreservesComponentData()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 42, Y = 84};
@@ -138,8 +133,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that Archetype correctly handles entity deletion.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_HandlesEntityRemoval()
+        [Fact] public void Archetype_HandlesEntityRemoval()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
@@ -159,8 +153,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that entities in archetype can be queried.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_SupportsQueries()
+        [Fact] public void Archetype_SupportsQueries()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -182,8 +175,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that entities with different component sets use different archetypes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_WithDifferentComponentsAreSeparate()
+        [Fact] public void Archetype_WithDifferentComponentsAreSeparate()
         {
             using Scene scene = new Scene();
 
@@ -204,8 +196,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that Archetype can manage many entities efficiently.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_HandlesLargeEntityCounts()
+        [Fact] public void Archetype_HandlesLargeEntityCounts()
         {
             using Scene scene = new Scene();
 
@@ -232,8 +223,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that Archetype correctly handles component removal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_HandlesComponentRemoval()
+        [Fact] public void Archetype_HandlesComponentRemoval()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -253,8 +243,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that entities with same components have same archetype ID.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_IDIsConsistent()
+        [Fact] public void Archetype_IDIsConsistent()
         {
             using Scene scene = new Scene();
 
@@ -271,8 +260,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <remarks>
         ///     Validates that Archetype handles creation, modification, and deletion together.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_HandlesMixedOperations()
+        [Fact] public void Archetype_HandlesMixedOperations()
         {
             using Scene scene = new Scene();
 

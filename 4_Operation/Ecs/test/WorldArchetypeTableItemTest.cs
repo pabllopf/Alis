@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor initializes archetype correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_ShouldInitializeArchetype()
+        [Fact] public void Constructor_ShouldInitializeArchetype()
         {
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
@@ -57,8 +56,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor initializes deferred creation archetype correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_ShouldInitializeDeferredCreationArchetype()
+        [Fact] public void Constructor_ShouldInitializeDeferredCreationArchetype()
         {
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
@@ -74,8 +72,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that archetype can be modified after construction.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_CanBeModified_AfterConstruction()
+        [Fact] public void Archetype_CanBeModified_AfterConstruction()
         {
             Scene world = new Scene();
             Archetype archetype1 = world.DefaultArchetype;
@@ -93,8 +90,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that deferred creation archetype can be modified after construction.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeferredCreationArchetype_CanBeModified_AfterConstruction()
+        [Fact] public void DeferredCreationArchetype_CanBeModified_AfterConstruction()
         {
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
@@ -112,8 +108,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that both archetypes can be the same instance.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BothArchetypes_CanBeTheSameInstance()
+        [Fact] public void BothArchetypes_CanBeTheSameInstance()
         {
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;
@@ -130,8 +125,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that multiple instances maintain separate data.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleInstances_ShouldMaintainSeparateData()
+        [Fact] public void MultipleInstances_ShouldMaintainSeparateData()
         {
             Scene world = new Scene();
             Archetype archetype1 = world.DefaultArchetype;
@@ -153,8 +147,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor with archetypes stores them correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithArchetypes_ShouldStoreCorrectly()
+        [Fact] public void Constructor_WithArchetypes_ShouldStoreCorrectly()
         {
             Scene world = new Scene();
             Archetype archetype = world.DefaultArchetype;

@@ -29,6 +29,7 @@
 
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Updating;
 
 namespace Alis.Core.Ecs.Kernel.Archetypes
@@ -61,7 +62,12 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ref T GetComponentDataReference<T>()
         {
-            int index = Unsafe.Add(ref Map[0], Component<T>.Id.RawIndex);
+            int index = Unsafe.Add(ref Map[0], Component<T>.Id.RawIndex) & GlobalWorldTables.IndexBits;
+            if (index == 0)
+            {
+                throw new ComponentNotFoundException(typeof(T));
+            }
+
             return ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                 .GetComponentStorageDataReference();
         }

@@ -13,8 +13,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that constructor should set id and component types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_ShouldSetIdAndComponentTypes()
+        [Fact] public void Constructor_ShouldSetIdAndComponentTypes()
         {
             GameObjectType id = new GameObjectType(1);
 
@@ -32,8 +31,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that constructor with empty types should set empty component types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithEmptyTypes_ShouldSetEmptyComponentTypes()
+        [Fact] public void Constructor_WithEmptyTypes_ShouldSetEmptyComponentTypes()
         {
             GameObjectType id = new GameObjectType(5);
             FastImmutableArray<ComponentId> types = FastImmutableArray<ComponentId>.Empty;
@@ -47,8 +45,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that deconstruct should return id and component types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Deconstruct_ShouldReturnIdAndComponentTypes()
+        [Fact] public void Deconstruct_ShouldReturnIdAndComponentTypes()
         {
             GameObjectType id = new GameObjectType(3);
             FastImmutableArray<ComponentId> types = FastImmutableArray<ComponentId>.Empty;
@@ -63,8 +60,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that equals same values should be equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_SameValues_ShouldBeEqual()
+        [Fact] public void Equals_SameValues_ShouldBeEqual()
         {
             GameObjectType id = new GameObjectType(1);
             FastImmutableArray<ComponentId> types = FastImmutableArray<ComponentId>.Empty;
@@ -78,8 +74,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that equals different id should not be equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_DifferentId_ShouldNotBeEqual()
+        [Fact] public void Equals_DifferentId_ShouldNotBeEqual()
         {
             GameObjectType id1 = new GameObjectType(1);
             GameObjectType id2 = new GameObjectType(2);

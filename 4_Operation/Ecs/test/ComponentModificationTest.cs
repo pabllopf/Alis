@@ -45,8 +45,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests adding component to entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanAddComponent()
+        [Fact] public void GameObject_CanAddComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests removing component from entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanRemoveComponent()
+        [Fact] public void GameObject_CanRemoveComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10}, new Health {Value = 100});
@@ -77,8 +75,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests adding and removing component updates queries
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_ReflectsComponentAddition()
+        [Fact] public void Query_ReflectsComponentAddition()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -98,8 +95,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests removing component updates queries
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_ReflectsComponentRemoval()
+        [Fact] public void Query_ReflectsComponentRemoval()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 5});
@@ -119,8 +115,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests adding multiple components sequentially
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanAddMultipleComponentsSequentially()
+        [Fact] public void GameObject_CanAddMultipleComponentsSequentially()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -137,8 +132,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests removing multiple components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanRemoveMultipleComponents()
+        [Fact] public void GameObject_CanRemoveMultipleComponents()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -157,8 +151,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests component data preserved when other components added
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_ComponentDataPreservedWhenAddingOtherComponents()
+        [Fact] public void GameObject_ComponentDataPreservedWhenAddingOtherComponents()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10, Y = 20});
@@ -171,12 +164,10 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(100, entity.Get<Health>().Value);
         }
 
-
         /// <summary>
         ///     Tests adding component to multiple entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanAddComponentToMultipleEntities()
+        [Fact] public void Scene_CanAddComponentToMultipleEntities()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();

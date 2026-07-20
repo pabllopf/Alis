@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that constructor initializes with correct capacity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_ShouldInitializeWithCorrectCapacity()
+        [Fact] public void Constructor_ShouldInitializeWithCorrectCapacity()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -53,8 +52,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that indexer sets and gets value correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Indexer_SetAndGet_ShouldWorkCorrectly()
+        [Fact] public void Indexer_SetAndGet_ShouldWorkCorrectly()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -68,8 +66,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that indexer with multiple ids works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Indexer_WithMultipleIds_ShouldWorkCorrectly()
+        [Fact] public void Indexer_WithMultipleIds_ShouldWorkCorrectly()
         {
             ShortSparseSet<string> set = new ShortSparseSet<string>();
 
@@ -86,8 +83,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that indexer overwrites existing value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Indexer_OverwriteExistingValue_ShouldUpdate()
+        [Fact] public void Indexer_OverwriteExistingValue_ShouldUpdate()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 42;
@@ -101,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get with valid id returns correct value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithValidId_ShouldReturnValue()
+        [Fact] public void Get_WithValidId_ShouldReturnValue()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[5] = 123;
@@ -115,8 +110,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get with invalid id throws exception.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithInvalidId_ShouldThrowException()
+        [Fact] public void Get_WithInvalidId_ShouldThrowException()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -126,8 +120,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get allows modifying value through reference.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_ModifyThroughReference_ShouldUpdateValue()
+        [Fact] public void Get_ModifyThroughReference_ShouldUpdateValue()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 10;
@@ -141,8 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that try get with valid id returns true and value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryGet_WithValidId_ShouldReturnTrueAndValue()
+        [Fact] public void TryGet_WithValidId_ShouldReturnTrueAndValue()
         {
             ShortSparseSet<string> set = new ShortSparseSet<string>();
             set[10] = "test";
@@ -156,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that try get with invalid id returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryGet_WithInvalidId_ShouldReturnFalse()
+        [Fact] public void TryGet_WithInvalidId_ShouldReturnFalse()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -169,8 +160,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that capacity increases when needed.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Capacity_ShouldIncreaseWhenNeeded()
+        [Fact] public void Capacity_ShouldIncreaseWhenNeeded()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             int initialCapacity = set.Capacity;
@@ -187,8 +177,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that count increments correctly with new ids.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Count_ShouldIncrementWithNewIds()
+        [Fact] public void Count_ShouldIncrementWithNewIds()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -204,8 +193,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that count does not increment when overwriting.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Count_ShouldNotIncrementWhenOverwriting()
+        [Fact] public void Count_ShouldNotIncrementWhenOverwriting()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
             set[0] = 1;
@@ -219,8 +207,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that works with reference types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShortSparseSet_WithReferenceTypes_ShouldWorkCorrectly()
+        [Fact] public void ShortSparseSet_WithReferenceTypes_ShouldWorkCorrectly()
         {
             ShortSparseSet<object> set = new ShortSparseSet<object>();
             object obj1 = new object();
@@ -236,8 +223,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that works with large id values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShortSparseSet_WithLargeIds_ShouldWorkCorrectly()
+        [Fact] public void ShortSparseSet_WithLargeIds_ShouldWorkCorrectly()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -252,8 +238,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that works with max ushort value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShortSparseSet_WithMaxUshortValue_ShouldWorkCorrectly()
+        [Fact] public void ShortSparseSet_WithMaxUshortValue_ShouldWorkCorrectly()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
@@ -266,8 +251,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that supports default values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShortSparseSet_WithDefaultValues_ShouldWorkCorrectly()
+        [Fact] public void ShortSparseSet_WithDefaultValues_ShouldWorkCorrectly()
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 

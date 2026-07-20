@@ -46,8 +46,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the same GameObject instance equals itself.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualityComparison()
+        [Fact] public void GameObject_EqualityComparison()
         {
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that different GameObject instances are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_DifferentObjectsNotEqual()
+        [Fact] public void GameObject_DifferentObjectsNotEqual()
         {
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
@@ -84,8 +82,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that GameObjects have proper null comparison behavior.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_NullComparison()
+        [Fact] public void GameObject_NullComparison()
         {
             Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -101,8 +98,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that GetHashCode returns consistent values for the same entity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_HashCodeConsistency()
+        [Fact] public void GameObject_HashCodeConsistency()
         {
             Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -121,8 +117,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that different GameObjects produce different hash codes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_DifferentObjectsDifferentHashCodes()
+        [Fact] public void GameObject_DifferentObjectsDifferentHashCodes()
         {
             Scene scene = new Scene();
             GameObject e1 = scene.Create();

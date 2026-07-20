@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that none flag is zero
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void None_IsZero()
+        [Fact] public void None_IsZero()
         {
             Assert.Equal(0, (int)GameObjectFlags.None);
         }
@@ -49,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add comp flag is power of two
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComp_IsPowerOfTwo()
+        [Fact] public void AddComp_IsPowerOfTwo()
         {
             int value = (int)GameObjectFlags.AddComp;
 
@@ -61,8 +59,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that remove comp flag is power of two
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveComp_IsPowerOfTwo()
+        [Fact] public void RemoveComp_IsPowerOfTwo()
         {
             int value = (int)GameObjectFlags.RemoveComp;
 
@@ -73,8 +70,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that on delete flag is power of two
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OnDelete_IsPowerOfTwo()
+        [Fact] public void OnDelete_IsPowerOfTwo()
         {
             int value = (int)GameObjectFlags.OnDelete;
 
@@ -85,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that events flag contains expected components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Events_ContainsExpectedComponents()
+        [Fact] public void Events_ContainsExpectedComponents()
         {
             GameObjectFlags events = GameObjectFlags.Events;
 
@@ -99,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that has world command buffer flags are powers of two
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasWorldCommandBufferFlags_ArePowersOfTwo()
+        [Fact] public void HasWorldCommandBufferFlags_ArePowersOfTwo()
         {
             int remove = (int)GameObjectFlags.HasWorldCommandBufferRemove;
             int add = (int)GameObjectFlags.HasWorldCommandBufferAdd;
@@ -114,8 +108,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that is unmerged entity flag is power of two
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsUnmergedEntity_IsPowerOfTwo()
+        [Fact] public void IsUnmergedEntity_IsPowerOfTwo()
         {
             int value = (int)GameObjectFlags.IsUnmergedEntity;
 
@@ -126,8 +119,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that flags can be combined with bitwise or
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Flags_CanBeCombinedWithBitwiseOr()
+        [Fact] public void Flags_CanBeCombinedWithBitwiseOr()
         {
             GameObjectFlags combined = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
 
@@ -139,8 +131,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that flags can be checked with has flag
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Flags_CanBeCheckedWithHasFlag()
+        [Fact] public void Flags_CanBeCheckedWithHasFlag()
         {
             GameObjectFlags flags = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
 
@@ -152,8 +143,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that flags are unique
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Flags_AreUnique()
+        [Fact] public void Flags_AreUnique()
         {
             int none = (int)GameObjectFlags.None;
             int addComp = (int)GameObjectFlags.AddComp;
@@ -182,8 +172,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that flags can be cleared
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Flags_CanBeCleared()
+        [Fact] public void Flags_CanBeCleared()
         {
             GameObjectFlags flags = GameObjectFlags.AddComp | GameObjectFlags.RemoveComp;
 
@@ -196,8 +185,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that flags enum is flags attribute
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FlagsEnum_HasFlagsAttribute()
+        [Fact] public void FlagsEnum_HasFlagsAttribute()
         {
             Type type = typeof(GameObjectFlags);
 

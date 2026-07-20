@@ -191,6 +191,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         internal ref T GetComponentDataReference<T>()
         {
             int index = GetComponentIndex<T>();
+            if (index == 0)
+            {
+                throw new ComponentNotFoundException(typeof(T));
+            }
+
             return ref Unsafe.As<ComponentStorage<T>>(Unsafe.Add(ref Components[0], index))
                 .GetComponentStorageDataReference();
         }
@@ -419,6 +424,11 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         [SuppressMessage("Design", "S3776:Cognitive complexity", Justification = "Goto-based unrolled switch required for high-performance ECS entity deletion")]
         internal GameObjectIdOnly DeleteEntity(int index)
         {
+            if (NextComponentIndex <= 0)
+            {
+                throw new InvalidOperationException("No entities to delete");
+            }
+
             NextComponentIndex--;
 
             DeleteComponentData args = new DeleteComponentData(index, NextComponentIndex);

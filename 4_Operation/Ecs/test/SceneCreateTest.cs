@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that a Scene can create an entity with no components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EmptyEntityCanBeCreated()
+        [Fact] public void SceneCreate_EmptyEntityCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -67,8 +66,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that an entity can be created with one component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityWithSingleComponentCanBeCreated()
+        [Fact] public void SceneCreate_EntityWithSingleComponentCanBeCreated()
         {
             using Scene scene = new Scene();
             Position pos = new Position {X = 10, Y = 20};
@@ -85,8 +83,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that an entity can be created with two components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityWithTwoComponentsCanBeCreated()
+        [Fact] public void SceneCreate_EntityWithTwoComponentsCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -106,8 +103,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that an entity can be created with three components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityWithThreeComponentsCanBeCreated()
+        [Fact] public void SceneCreate_EntityWithThreeComponentsCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -129,8 +125,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that an entity can be created with four components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityWithFourComponentsCanBeCreated()
+        [Fact] public void SceneCreate_EntityWithFourComponentsCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that an entity can be created with five components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityWithFiveComponentsCanBeCreated()
+        [Fact] public void SceneCreate_EntityWithFiveComponentsCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -181,8 +175,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that multiple entities can be created in sequence.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_MultipleEntitiesCanBeCreated()
+        [Fact] public void SceneCreate_MultipleEntitiesCanBeCreated()
         {
             using Scene scene = new Scene();
 
@@ -203,8 +196,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that each created entity has a unique ID.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_CreatedEntitiesHaveUniqueIdentities()
+        [Fact] public void SceneCreate_CreatedEntitiesHaveUniqueIdentities()
         {
             using Scene scene = new Scene();
 
@@ -223,8 +215,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the scene entity count increases with each creation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityCountIncreases()
+        [Fact] public void SceneCreate_EntityCountIncreases()
         {
             using Scene scene = new Scene();
             int initialCount = scene.EntityCount;
@@ -240,8 +231,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that component values set during creation are preserved.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_ComponentDataIsPreservedWhenCreated()
+        [Fact] public void SceneCreate_ComponentDataIsPreservedWhenCreated()
         {
             using Scene scene = new Scene();
             Position testPos = new Position {X = 42, Y = 84};
@@ -259,8 +249,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that each entity maintains its own component data.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_ComponentDataIsSeparateBetweenEntities()
+        [Fact] public void SceneCreate_ComponentDataIsSeparateBetweenEntities()
         {
             using Scene scene = new Scene();
 
@@ -279,8 +268,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that entities can be created after other entities are destroyed.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntityCanBeCreatedAfterDeletion()
+        [Fact] public void SceneCreate_EntityCanBeCreatedAfterDeletion()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
@@ -298,8 +286,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the scene can handle creation of many entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_LargeNumberOfEntitiesCanBeCreated()
+        [Fact] public void SceneCreate_LargeNumberOfEntitiesCanBeCreated()
         {
             using Scene scene = new Scene();
             int entityCount = 1000;
@@ -318,8 +305,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that newly created entities are ready to use immediately.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_CreatedEntitiesAreImmediatelyAlive()
+        [Fact] public void SceneCreate_CreatedEntitiesAreImmediatelyAlive()
         {
             using Scene scene = new Scene();
 
@@ -335,8 +321,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that newly created entities appear in queries immediately.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_CreatedEntityCanBeQueriedImmediately()
+        [Fact] public void SceneCreate_CreatedEntityCanBeQueriedImmediately()
         {
             using Scene scene = new Scene();
 
@@ -358,8 +343,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that entities with different archetype signatures can coexist.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneCreate_EntitiesWithDifferentComponentSetsCoexist()
+        [Fact] public void SceneCreate_EntitiesWithDifferentComponentSetsCoexist()
         {
             using Scene scene = new Scene();
 

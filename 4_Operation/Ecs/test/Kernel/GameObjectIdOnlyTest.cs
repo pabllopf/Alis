@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that constructor initializes id and version correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_ShouldInitializeIdAndVersion()
+        [Fact] public void Constructor_ShouldInitializeIdAndVersion()
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(42, 5);
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that to entity creates correct game object.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToEntity_ShouldCreateCorrectGameObject()
+        [Fact] public void ToEntity_ShouldCreateCorrectGameObject()
         {
             // Arrange
             Scene world = new Scene();
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that deconstruct extracts id and version correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Deconstruct_ShouldExtractIdAndVersion()
+        [Fact] public void Deconstruct_ShouldExtractIdAndVersion()
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(100, 10);
@@ -92,8 +89,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that set entity updates game object correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetEntity_ShouldUpdateGameObject()
+        [Fact] public void SetEntity_ShouldUpdateGameObject()
         {
             // Arrange
             Scene world = new Scene();
@@ -113,8 +109,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that init with game object copies values correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Init_WithGameObject_ShouldCopyValues()
+        [Fact] public void Init_WithGameObject_ShouldCopyValues()
         {
             // Arrange
             Scene world = new Scene();
@@ -134,8 +129,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that init with another game object id only copies values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Init_WithAnotherGameObjectIdOnly_ShouldCopyValues()
+        [Fact] public void Init_WithAnotherGameObjectIdOnly_ShouldCopyValues()
         {
             // Arrange
             GameObjectIdOnly source = new GameObjectIdOnly(75, 7);
@@ -152,8 +146,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that constructor with zero values works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithZeroValues_ShouldWorkCorrectly()
+        [Fact] public void Constructor_WithZeroValues_ShouldWorkCorrectly()
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(0, 0);
@@ -166,8 +159,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that constructor with negative id works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithNegativeId_ShouldWorkCorrectly()
+        [Fact] public void Constructor_WithNegativeId_ShouldWorkCorrectly()
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(-1, 5);
@@ -180,8 +172,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that constructor with max values works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithMaxValues_ShouldWorkCorrectly()
+        [Fact] public void Constructor_WithMaxValues_ShouldWorkCorrectly()
         {
             // Arrange & Act
             GameObjectIdOnly idOnly = new GameObjectIdOnly(int.MaxValue, ushort.MaxValue);
@@ -194,8 +185,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that id can be modified after construction.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ID_CanBeModified_AfterConstruction()
+        [Fact] public void ID_CanBeModified_AfterConstruction()
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);
@@ -210,8 +200,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that version can be modified after construction.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Version_CanBeModified_AfterConstruction()
+        [Fact] public void Version_CanBeModified_AfterConstruction()
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);
@@ -226,8 +215,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that set entity preserves world id.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetEntity_ShouldPreserveWorldId()
+        [Fact] public void SetEntity_ShouldPreserveWorldId()
         {
             // Arrange
             Scene world = new Scene();
@@ -247,8 +235,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that multiple init calls overwrite previous values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Init_MultipleCalls_ShouldOverwriteValues()
+        [Fact] public void Init_MultipleCalls_ShouldOverwriteValues()
         {
             // Arrange
             GameObjectIdOnly idOnly = new GameObjectIdOnly(10, 1);

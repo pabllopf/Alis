@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that constructor with valid scene and component creates filter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithValidSceneAndComponent_CreatesFilter()
+        [Fact] public void Constructor_WithValidSceneAndComponent_CreatesFilter()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -57,8 +56,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that constructor adds existing archetypes with matching component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_AddsExistingArchetypesWithMatchingComponent()
+        [Fact] public void Constructor_AddsExistingArchetypesWithMatchingComponent()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -72,8 +70,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update invokes on update for all entities with component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_InvokesOnUpdateForAllEntitiesWithComponent()
+        [Fact] public void Update_InvokesOnUpdateForAllEntitiesWithComponent()
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
@@ -89,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update with multiple archetypes updates all matching entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_WithMultipleArchetypes_UpdatesAllMatchingEntities()
+        [Fact] public void Update_WithMultipleArchetypes_UpdatesAllMatchingEntities()
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
@@ -106,8 +102,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update called multiple times accumulates call count
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_CalledMultipleTimes_AccumulatesCallCount()
+        [Fact] public void Update_CalledMultipleTimes_AccumulatesCallCount()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new UpdateComponent {CallCount = 0});
@@ -123,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update with no matching entities does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_WithNoMatchingEntities_DoesNotThrow()
+        [Fact] public void Update_WithNoMatchingEntities_DoesNotThrow()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -134,12 +128,10 @@ namespace Alis.Core.Ecs.Test.Updating
             Assert.True(true); // If we reach this point, no exception was thrown
         }
 
-
         /// <summary>
         ///     Tests that archetype added with matching component adds archetype to filter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ArchetypeAdded_WithMatchingComponent_AddsArchetypeToFilter()
+        [Fact] public void ArchetypeAdded_WithMatchingComponent_AddsArchetypeToFilter()
         {
             using Scene scene = new Scene();
             SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<UpdateComponent>.Id);
@@ -153,8 +145,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that archetype added with non matching component does not affect filter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ArchetypeAdded_WithNonMatchingComponent_DoesNotAffectFilter()
+        [Fact] public void ArchetypeAdded_WithNonMatchingComponent_DoesNotAffectFilter()
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});
@@ -171,8 +162,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update subset updates only specified range
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_UpdatesOnlySpecifiedRange()
+        [Fact] public void UpdateSubset_UpdatesOnlySpecifiedRange()
         {
             using Scene scene = new Scene();
             scene.Create(new UpdateComponent {CallCount = 0});
@@ -186,8 +176,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that update with mixed archetypes updates only matching component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_WithMixedArchetypes_UpdatesOnlyMatchingComponent()
+        [Fact] public void Update_WithMixedArchetypes_UpdatesOnlyMatchingComponent()
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create(new UpdateComponent {CallCount = 0});

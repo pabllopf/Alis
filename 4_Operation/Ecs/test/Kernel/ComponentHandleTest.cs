@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create with component returns valid handle.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Create_WithComponent_ShouldReturnValidHandle()
+        [Fact] public void Create_WithComponent_ShouldReturnValidHandle()
         {
             Position position = new Position {X = 10, Y = 20};
 
@@ -56,8 +55,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that retrieve returns correct component value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Retrieve_WithValidHandle_ShouldReturnCorrectValue()
+        [Fact] public void Retrieve_WithValidHandle_ShouldReturnCorrectValue()
         {
             Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -71,8 +69,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that retrieve boxed returns component as object.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RetrieveBoxed_WithValidHandle_ShouldReturnBoxedComponent()
+        [Fact] public void RetrieveBoxed_WithValidHandle_ShouldReturnBoxedComponent()
         {
             Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -89,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create from boxed with component id works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CreateFromBoxed_WithComponentId_ShouldCreateValidHandle()
+        [Fact] public void CreateFromBoxed_WithComponentId_ShouldCreateValidHandle()
         {
             object position = new Position {X = 10, Y = 20};
             ComponentId typeId = Component<Position>.Id;
@@ -104,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that create from boxed without component id works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CreateFromBoxed_WithoutComponentId_ShouldCreateValidHandle()
+        [Fact] public void CreateFromBoxed_WithoutComponentId_ShouldCreateValidHandle()
         {
             object velocity = new Velocity {X = 1, Y = 2};
 
@@ -117,8 +112,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that type property returns correct component type.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_ShouldReturnCorrectComponentType()
+        [Fact] public void Type_ShouldReturnCorrectComponentType()
         {
             Health health = new Health {Value = 100};
             ComponentHandle handle = ComponentHandle.Create(health);
@@ -131,8 +125,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component id property returns correct id.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentId_ShouldReturnCorrectId()
+        [Fact] public void ComponentId_ShouldReturnCorrectId()
         {
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -145,8 +138,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that equals with same handle returns true.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithSameHandle_ShouldReturnTrue()
+        [Fact] public void Equals_WithSameHandle_ShouldReturnTrue()
         {
             Position position = new Position {X = 10, Y = 20};
             ComponentHandle handle1 = ComponentHandle.Create(position);
@@ -160,8 +152,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that equals with different handles returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithDifferentHandles_ShouldReturnFalse()
+        [Fact] public void Equals_WithDifferentHandles_ShouldReturnFalse()
         {
             Position position1 = new Position {X = 10, Y = 20};
             Position position2 = new Position {X = 30, Y = 40};
@@ -176,8 +167,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that operator equals works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OperatorEquals_WithSameHandles_ShouldReturnTrue()
+        [Fact] public void OperatorEquals_WithSameHandles_ShouldReturnTrue()
         {
             Position position = new Position();
             ComponentHandle handle1 = ComponentHandle.Create(position);
@@ -191,8 +181,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that operator not equals works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OperatorNotEquals_WithDifferentHandles_ShouldReturnTrue()
+        [Fact] public void OperatorNotEquals_WithDifferentHandles_ShouldReturnTrue()
         {
             Position position1 = new Position();
             Position position2 = new Position();
@@ -207,8 +196,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that get hash code returns consistent value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetHashCode_ShouldReturnConsistentValue()
+        [Fact] public void GetHashCode_ShouldReturnConsistentValue()
         {
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -222,8 +210,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that dispose does not throw exception.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Dispose_ShouldNotThrowException()
+        [Fact] public void Dispose_ShouldNotThrowException()
         {
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -234,8 +221,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that handle works with reference type components.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_WithReferenceTypes_ShouldWork()
+        [Fact] public void ComponentHandle_WithReferenceTypes_ShouldWork()
         {
             string text = "test";
             ComponentHandle handle = ComponentHandle.Create(text);
@@ -248,8 +234,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that multiple create and retrieve operations work correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleCreateAndRetrieve_ShouldWorkCorrectly()
+        [Fact] public void MultipleCreateAndRetrieve_ShouldWorkCorrectly()
         {
             Position pos1 = new Position {X = 1, Y = 2};
             Position pos2 = new Position {X = 3, Y = 4};
@@ -275,8 +260,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that equals with object returns correct result.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithObject_ShouldReturnCorrectResult()
+        [Fact] public void Equals_WithObject_ShouldReturnCorrectResult()
         {
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -290,8 +274,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that equals with null object returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithNullObject_ShouldReturnFalse()
+        [Fact] public void Equals_WithNullObject_ShouldReturnFalse()
         {
             Position position = new Position();
             ComponentHandle handle = ComponentHandle.Create(position);

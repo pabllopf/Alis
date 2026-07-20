@@ -47,8 +47,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     Tests that the range-based Run overload processes only newly created
         ///     entities when called through SingleComponentUpdateFilter.UpdateSubset.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunRange_ThroughUpdateSubset_UpdatesOnlyNewEntities()
+        [Fact] public void RunRange_ThroughUpdateSubset_UpdatesOnlyNewEntities()
         {
             using Scene scene = new Scene();
             GameObject existing = scene.Create(
@@ -73,8 +72,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     Tests that the range-based Run overload correctly updates component
         ///     data (Position.X/Y) for deferred entities.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunRange_ThroughUpdateSubset_UpdatesComponentData()
+        [Fact] public void RunRange_ThroughUpdateSubset_UpdatesComponentData()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -99,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     Tests that the range-based Run overload processes multiple deferred
         ///     entities across potentially multiple archetypes.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunRange_ThroughUpdateSubset_MultipleDeferredEntities()
+        [Fact] public void RunRange_ThroughUpdateSubset_MultipleDeferredEntities()
         {
             using Scene scene = new Scene();
             scene.Create(

@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using Alis.Core.Ecs.Kernel;
 using Xunit;
 
@@ -69,8 +68,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that GameObjectType can be instantiated with a raw index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_CanBeCreated()
+        [Fact] public void GameObjectType_CanBeCreated()
         {
             // Act
             GameObjectType type = new GameObjectType(0);
@@ -85,8 +83,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the RawIndex field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_RawIndexIsPreserved()
+        [Fact] public void GameObjectType_RawIndexIsPreserved()
         {
             // Arrange
             ushort index = 42;
@@ -104,8 +101,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with zero index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_WithZeroIndex()
+        [Fact] public void GameObjectType_WithZeroIndex()
         {
             // Act
             GameObjectType type = new GameObjectType(0);
@@ -120,8 +116,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that maximum ushort index can be stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_WithMaxIndex()
+        [Fact] public void GameObjectType_WithMaxIndex()
         {
             // Act
             GameObjectType type = new GameObjectType(ushort.MaxValue);
@@ -136,8 +131,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that GameObjectType equality works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_EqualsWithSameIndex()
+        [Fact] public void GameObjectType_EqualsWithSameIndex()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(5);
@@ -154,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that GameObjectType inequality works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_NotEqualsWithDifferentIndex()
+        [Fact] public void GameObjectType_NotEqualsWithDifferentIndex()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(1);
@@ -172,8 +165,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that GameObjectType hash code is consistent.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_HashCodeEqualsWithSameIndex()
+        [Fact] public void GameObjectType_HashCodeEqualsWithSameIndex()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(10);
@@ -189,8 +181,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the == operator for GameObjectType.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_EqualityOperator()
+        [Fact] public void GameObjectType_EqualityOperator()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(7);
@@ -208,8 +199,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the != operator for GameObjectType.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_InequalityOperator()
+        [Fact] public void GameObjectType_InequalityOperator()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(7);
@@ -227,8 +217,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests the Equals(object) method.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectType_EqualsObjectMethod()
+        [Fact] public void GameObjectType_EqualsObjectMethod()
         {
             // Arrange
             GameObjectType type1 = new GameObjectType(5);

@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case create and query immediately works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_CreateAndQueryImmediately_Works()
+        [Fact] public void EdgeCase_CreateAndQueryImmediately_Works()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1});
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case delete and query after empty
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_DeleteAndQueryAfter_Empty()
+        [Fact] public void EdgeCase_DeleteAndQueryAfter_Empty()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Position {X = 1, Y = 1});
@@ -76,8 +74,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case multiple scenes independent states
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_MultipleScenes_IndependentStates()
+        [Fact] public void EdgeCase_MultipleScenes_IndependentStates()
         {
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
@@ -102,8 +99,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case component with same data multiple entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ComponentWithSameDataMultipleEntities()
+        [Fact] public void EdgeCase_ComponentWithSameDataMultipleEntities()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 5, Y = 5});
@@ -122,8 +118,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case remove component and add back
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_RemoveComponentAndAddBack()
+        [Fact] public void EdgeCase_RemoveComponentAndAddBack()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Position {X = 10, Y = 10});
@@ -137,8 +132,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case multiple component types independent queries
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_MultipleComponentTypes_IndependentQueries()
+        [Fact] public void EdgeCase_MultipleComponentTypes_IndependentQueries()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
@@ -185,8 +179,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case large component value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_LargeComponentValue()
+        [Fact] public void EdgeCase_LargeComponentValue()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Health {Value = int.MaxValue});
@@ -196,8 +189,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case negative component value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_NegativeComponentValue()
+        [Fact] public void EdgeCase_NegativeComponentValue()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Position {X = int.MinValue, Y = int.MinValue});
@@ -207,8 +199,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case zero component value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ZeroComponentValue()
+        [Fact] public void EdgeCase_ZeroComponentValue()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Position {X = 0, Y = 0});
@@ -219,8 +210,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case component reference modification
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ComponentReferenceModification()
+        [Fact] public void EdgeCase_ComponentReferenceModification()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create(new Position {X = 1, Y = 1});
@@ -232,8 +222,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case query empty scene multiple times
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_QueryEmptySceneMultipleTimes()
+        [Fact] public void EdgeCase_QueryEmptySceneMultipleTimes()
         {
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
@@ -277,8 +266,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case component with default values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ComponentWithDefaultValues()
+        [Fact] public void EdgeCase_ComponentWithDefaultValues()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create();
@@ -309,8 +297,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case many components on single entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ManyComponentsOnSingleEntity()
+        [Fact] public void EdgeCase_ManyComponentsOnSingleEntity()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create();
@@ -331,8 +318,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that edge case consecutive component additions removals combined
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeCase_ConsecutiveComponentAdditionsRemovalsCombined()
+        [Fact] public void EdgeCase_ConsecutiveComponentAdditionsRemovalsCombined()
         {
             using Scene scene = new Scene();
             GameObject go = scene.Create();

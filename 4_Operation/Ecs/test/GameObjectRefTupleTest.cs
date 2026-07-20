@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object ref tuple can be initialized with a game object and component reference.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_Initialize_ShouldSetGameObjectAndComponent()
+        [Fact] public void RefTuple1_Initialize_ShouldSetGameObjectAndComponent()
         {
             Scene world = new Scene();
             GameObject entity = world.Create();
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object ref tuple deconstruction works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_Deconstruct_ShouldReturnGameObjectAndRef()
+        [Fact] public void RefTuple1_Deconstruct_ShouldReturnGameObjectAndRef()
         {
             Scene world = new Scene();
             GameObject entity = world.Create();
@@ -89,8 +87,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that multiple tuples with different game objects work independently.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_MultipleTuples_ShouldMaintainSeparateState()
+        [Fact] public void RefTuple1_MultipleTuples_ShouldMaintainSeparateState()
         {
             Scene world = new Scene();
             GameObject entity1 = world.Create();
@@ -113,8 +110,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that ref tuple with different component types work correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_WithDifferentComponentTypes_ShouldWork()
+        [Fact] public void RefTuple1_WithDifferentComponentTypes_ShouldWork()
         {
             Scene world = new Scene();
             GameObject entity = world.Create();
@@ -135,8 +131,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object field is properly accessible.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_GameObjectField_ShouldBeAccessible()
+        [Fact] public void RefTuple1_GameObjectField_ShouldBeAccessible()
         {
             Scene world = new Scene();
             GameObject entity = world.Create();
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that item1 field can be accessed and used.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RefTuple1_Item1Field_ShouldBeAccessible()
+        [Fact] public void RefTuple1_Item1Field_ShouldBeAccessible()
         {
             Scene world = new Scene();
             GameObject entity = world.Create();

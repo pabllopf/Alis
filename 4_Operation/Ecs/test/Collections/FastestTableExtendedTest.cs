@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable automatically expands when accessing beyond capacity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Index_BeyondCapacity_AutomaticallyExpands()
+        [Fact] public void Index_BeyondCapacity_AutomaticallyExpands()
         {
             FastestTable<int> table = new FastestTable<int>(10);
 
@@ -56,8 +55,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable handles consecutive reads and writes correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ReadWrite_ConsecutiveOperations_DataConsistent()
+        [Fact] public void ReadWrite_ConsecutiveOperations_DataConsistent()
         {
             FastestTable<string> table = new FastestTable<string>(50);
 
@@ -76,8 +74,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable properly handles sparse index access.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Index_SparseAccess_AllIndexesAccessible()
+        [Fact] public void Index_SparseAccess_AllIndexesAccessible()
         {
             FastestTable<long> table = new FastestTable<long>(10);
             int[] sparseIndices = {5, 50, 500, 5000};
@@ -97,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable.EnsureCapacity works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EnsureCapacity_PreallocateSpace_ReducesExpansions()
+        [Fact] public void EnsureCapacity_PreallocateSpace_ReducesExpansions()
         {
             FastestTable<int> table = new FastestTable<int>(10);
 
@@ -110,8 +106,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable.UnsafeIndexNoResize works without expanding.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UnsafeIndexNoResize_WithinCapacity_Succeeds()
+        [Fact] public void UnsafeIndexNoResize_WithinCapacity_Succeeds()
         {
             FastestTable<int> table = new FastestTable<int>(100);
 
@@ -124,8 +119,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable properly initializes with Empty.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Empty_DefaultTable_HasEmptyBuffer()
+        [Fact] public void Empty_DefaultTable_HasEmptyBuffer()
         {
             FastestTable<int> emptyTable = FastestTable<int>.Empty;
 
@@ -136,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable handles large index values gracefully.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Index_LargeIndexValue_BufferExpandsAppropriately()
+        [Fact] public void Index_LargeIndexValue_BufferExpandsAppropriately()
         {
             FastestTable<int> table = new FastestTable<int>(10);
             int largeIndex = 100000;
@@ -152,8 +145,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable with reference types maintains proper references.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Index_ReferenceType_MaintainsReferenceIntegrity()
+        [Fact] public void Index_ReferenceType_MaintainsReferenceIntegrity()
         {
             FastestTable<object> table = new FastestTable<object>(10);
             var obj1 = new {ID = 1};
@@ -171,8 +163,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that FastestTable capacity is always power of 2.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Capacity_AlwaysPowerOfTwo_Valid()
+        [Fact] public void Capacity_AlwaysPowerOfTwo_Valid()
         {
             FastestTable<int> table1 = new FastestTable<int>(10);
             FastestTable<int> table2 = new FastestTable<int>(100);
@@ -186,8 +177,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that repeated resizing maintains data integrity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleResizings_DataIntegrity_Maintained()
+        [Fact] public void MultipleResizings_DataIntegrity_Maintained()
         {
             FastestTable<int> table = new FastestTable<int>(2);
 

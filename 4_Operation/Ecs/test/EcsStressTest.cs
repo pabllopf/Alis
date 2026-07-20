@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that frequent structural changes don't corrupt
         ///     entity state or cause performance issues.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EcsStress_RapidComponentCyclesDoNotCorrupt()
+        [Fact] public void EcsStress_RapidComponentCyclesDoNotCorrupt()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();

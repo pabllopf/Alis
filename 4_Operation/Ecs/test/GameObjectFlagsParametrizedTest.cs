@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags new entity is alive
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_NewEntity_IsAlive()
+        [Fact] public void GameObjectFlags_NewEntity_IsAlive()
         {
             using Scene scene = new Scene();
 
@@ -53,8 +52,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags new entity is not null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_NewEntity_IsNotNull()
+        [Fact] public void GameObjectFlags_NewEntity_IsNotNull()
         {
             using Scene scene = new Scene();
 
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags deleted entity is not alive
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_DeletedEntity_IsNotAlive()
+        [Fact] public void GameObjectFlags_DeletedEntity_IsNotAlive()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -76,7 +73,6 @@ namespace Alis.Core.Ecs.Test
 
             Assert.False(entity.IsAlive);
         }
-
 
         /// <summary>
         ///     Tests that game object flags multiple entities alive all are alive
@@ -128,8 +124,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags null constant is null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_NullConstant_IsNull()
+        [Fact] public void GameObjectFlags_NullConstant_IsNull()
         {
             GameObject nullEntity = GameObject.Null;
 
@@ -140,8 +135,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags default game object is null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_DefaultGameObject_IsNull()
+        [Fact] public void GameObjectFlags_DefaultGameObject_IsNull()
         {
             GameObject defaultEntity = new GameObject();
 
@@ -207,8 +201,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object flags compare deleted with null both not alive
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectFlags_CompareDeletedWithNull_BothNotAlive()
+        [Fact] public void GameObjectFlags_CompareDeletedWithNull_BothNotAlive()
         {
             using Scene scene = new Scene();
             GameObject created = scene.Create();

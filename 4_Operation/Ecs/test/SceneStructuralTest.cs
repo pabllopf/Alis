@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that adding a component causes the entity to transition to a new archetype.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_EntityArchetypeChangesWhenComponentAdded()
+        [Fact] public void SceneStructural_EntityArchetypeChangesWhenComponentAdded()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -66,8 +65,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that removing a component causes the entity to transition to a new archetype.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_EntityArchetypeChangesWhenComponentRemoved()
+        [Fact] public void SceneStructural_EntityArchetypeChangesWhenComponentRemoved()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -84,8 +82,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that component data is preserved when changing archetypes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_EntityDataIsPreservedDuringTransition()
+        [Fact] public void SceneStructural_EntityDataIsPreservedDuringTransition()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 42, Y = 84};
@@ -104,8 +101,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that multiple archetype transitions work correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_MultipleComponentsCanBeAddedSequentially()
+        [Fact] public void SceneStructural_MultipleComponentsCanBeAddedSequentially()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -125,8 +121,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that multiple removal operations work correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_MultipleComponentsCanBeRemovedSequentially()
+        [Fact] public void SceneStructural_MultipleComponentsCanBeRemovedSequentially()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -149,8 +144,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the GameObject reference remains valid after structural changes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_EntityIdentityIsPreservedDuringTransition()
+        [Fact] public void SceneStructural_EntityIdentityIsPreservedDuringTransition()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -168,8 +162,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that removing all components transitions to the empty archetype.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_RemovingAllComponentsReturnsToDefaultArchetype()
+        [Fact] public void SceneStructural_RemovingAllComponentsReturnsToDefaultArchetype()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(
@@ -191,8 +184,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that structural changes don't affect other entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_ArchetypeTransitionsPreserveOtherEntities()
+        [Fact] public void SceneStructural_ArchetypeTransitionsPreserveOtherEntities()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});
@@ -211,8 +203,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that structural changes work correctly with many entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_ArchetypeTransitionsWorkWithManyEntities()
+        [Fact] public void SceneStructural_ArchetypeTransitionsWorkWithManyEntities()
         {
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[100];
@@ -243,8 +234,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that structural changes can be applied after updates.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_StructuralChangesWorkAfterSceneUpdate()
+        [Fact] public void SceneStructural_StructuralChangesWorkAfterSceneUpdate()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -262,8 +252,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that removing and adding a component sequentially works.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_ReplacingComponentWorks()
+        [Fact] public void SceneStructural_ReplacingComponentWorks()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 1, Y = 2};
@@ -285,8 +274,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that transitions handle various component combinations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_ArchetypeTransitionsWorkWithMixedComponentTypes()
+        [Fact] public void SceneStructural_ArchetypeTransitionsWorkWithMixedComponentTypes()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -308,8 +296,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that structural changes can be deferred and applied later.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_DeferredStructuralChangesAreApplied()
+        [Fact] public void SceneStructural_DeferredStructuralChangesAreApplied()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -327,8 +314,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that archetype entity counts are maintained correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SceneStructural_EntityCountIsUpdatedAfterStructuralChanges()
+        [Fact] public void SceneStructural_EntityCountIsUpdatedAfterStructuralChanges()
         {
             using Scene scene = new Scene();
             int initialCount = scene.EntityCount;

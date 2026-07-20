@@ -14,8 +14,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that component event is struct
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentEvent_IsStruct()
+        [Fact] public void ComponentEvent_IsStruct()
         {
             var evt = new ComponentEvent();
             Assert.True(typeof(ComponentEvent).IsValueType);
@@ -24,8 +23,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that event record initialize creates new record when not exists
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EventRecord_Initialize_CreatesNewRecordWhenNotExists()
+        [Fact] public void EventRecord_Initialize_CreatesNewRecordWhenNotExists()
         {
             EventRecord record = default;
             EventRecord.Initalize(false, ref record);
@@ -35,8 +33,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that event record initialize does not overwrite when exists
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EventRecord_Initialize_DoesNotOverwriteWhenExists()
+        [Fact] public void EventRecord_Initialize_DoesNotOverwriteWhenExists()
         {
             EventRecord original = new EventRecord();
             EventRecord record = original;
@@ -47,8 +44,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that generic event can be constructed
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GenericEvent_CanBeConstructed()
+        [Fact] public void GenericEvent_CanBeConstructed()
         {
             var evt = new GenericEvent();
             Assert.NotNull(evt);
@@ -57,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that add component can process
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_CanProcess()
+        [Fact] public void AddComponent_CanProcess()
         {
             using Scene scene = new();
             scene.Create(new Position());
@@ -69,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that delete component can process
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_CanProcess()
+        [Fact] public void DeleteComponent_CanProcess()
         {
             using Scene scene = new();
             var go = scene.Create(new Position(), new Velocity());
@@ -81,8 +75,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that create command can process
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CreateCommand_CanProcess()
+        [Fact] public void CreateCommand_CanProcess()
         {
             using Scene scene = new();
             scene.Create(new Position());
@@ -92,8 +85,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that ref can create and read
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanCreateAndRead()
+        [Fact] public void Ref_CanCreateAndRead()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 42 });

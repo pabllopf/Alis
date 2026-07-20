@@ -1,4 +1,5 @@
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
 using Xunit;
@@ -10,8 +11,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     Constructor_CreatesInstance
         /// </summary>
-        [Fact]
-        public void Constructor_CreatesInstance()
+        [Fact] public void Constructor_CreatesInstance()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -22,8 +22,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     Constructor_ZeroCapacity_CreatesInstance
         /// </summary>
-        [Fact]
-        public void Constructor_ZeroCapacity_CreatesInstance()
+        [Fact] public void Constructor_ZeroCapacity_CreatesInstance()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(0);
@@ -34,8 +33,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     Constructor_NegativeCapacity_ThrowsOverflowException
         /// </summary>
-        [Fact]
-        public void Constructor_NegativeCapacity_ThrowsOverflowException()
+        [Fact] public void Constructor_NegativeCapacity_ThrowsOverflowException()
         {
             Assert.Throws<System.OverflowException>(() =>
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(-1));
@@ -44,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     AsSpan_ReturnsSpan
         /// </summary>
-        [Fact]
-        public void AsSpan_ReturnsSpan()
+        [Fact] public void AsSpan_ReturnsSpan()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -58,8 +55,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     AsSpanLength_ReturnsSpanWithSpecifiedLength
         /// </summary>
-        [Fact]
-        public void AsSpanLength_ReturnsSpanWithSpecifiedLength()
+        [Fact] public void AsSpanLength_ReturnsSpanWithSpecifiedLength()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -72,8 +68,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     GetComponentStorageDataReference_ReturnsReference
         /// </summary>
-        [Fact]
-        public void GetComponentStorageDataReference_ReturnsReference()
+        [Fact] public void GetComponentStorageDataReference_ReturnsReference()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -86,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     Indexer_Get_Set_Works
         /// </summary>
-        [Fact]
-        public void Indexer_Get_Set_Works()
+        [Fact] public void Indexer_Get_Set_Works()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -102,8 +96,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         /// <summary>
         ///     Dispose_DoesNotThrow
         /// </summary>
-        [Fact]
-        public void Dispose_DoesNotThrow()
+        [Fact] public void Dispose_DoesNotThrow()
         {
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
@@ -112,10 +105,9 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         }
 
         /// <summary>
-        ///     Run_WithSceneAndArchetype_DoesNotThrow
+        ///     Run_WithEmptyArchetype_ThrowsComponentNotFound
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException in Archetype.GetComponentDataReference")]
-        public void Run_WithSceneAndArchetype_DoesNotThrow()
+        [Fact] public void Run_WithEmptyArchetype_ThrowsComponentNotFound()
         {
             using Scene scene = new Scene();
             Archetype archetype = new Archetype(default, [], false);
@@ -123,14 +115,13 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
 
-            update.Run(scene, archetype);
+            Assert.Throws<ComponentNotFoundException>(() => update.Run(scene, archetype));
         }
 
         /// <summary>
-        ///     Run_WithStartAndLength_DoesNotThrow
+        ///     Run_WithStartAndLength_ThrowsComponentNotFound
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException in Archetype.GetComponentDataReference")]
-        public void Run_WithStartAndLength_DoesNotThrow()
+        [Fact] public void Run_WithStartAndLength_ThrowsComponentNotFound()
         {
             using Scene scene = new Scene();
             Archetype archetype = new Archetype(default, [], false);
@@ -138,7 +129,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5> update =
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
 
-            update.Run(scene, archetype, 0, 0);
+            Assert.Throws<ComponentNotFoundException>(() => update.Run(scene, archetype, 0, 0));
         }
     }
 

@@ -46,7 +46,7 @@ namespace Alis.Extension.Updater.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Skip = "Only running in macos mode";
+
             }
         }
     }

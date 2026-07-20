@@ -66,8 +66,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent returns 0 when distance equals radius (at boundary)
         /// </summary>
-        [Fact]
-        public void GetPercent_WhenDistanceEqualsRadius_ShouldReturnZero()
+        [Fact] public void GetPercent_WhenDistanceEqualsRadius_ShouldReturnZero()
         {
             // Arrange — create explosion with default power (1)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -82,8 +81,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent returns 0 when distance is zero (at center, max force)
         /// </summary>
-        [Fact]
-        public void GetPercent_WhenDistanceIsZero_ShouldReturnMaxValue()
+        [Fact] public void GetPercent_WhenDistanceIsZero_ShouldReturnMaxValue()
         {
             // Arrange — default power = 1 (linear)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -98,8 +96,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent returns 0 when distance exceeds radius (outside explosion)
         /// </summary>
-        [Fact]
-        public void GetPercent_WhenDistanceExceedsRadius_ShouldReturnZero()
+        [Fact] public void GetPercent_WhenDistanceExceedsRadius_ShouldReturnZero()
         {
             // Arrange — default power = 1 (linear)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -114,8 +111,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent handles NaN from negative base with even power
         /// </summary>
-        [Fact]
-        public void GetPercent_WithNegativeBaseAndEvenPower_ShouldReturnZero()
+        [Fact] public void GetPercent_WithNegativeBaseAndEvenPower_ShouldReturnZero()
         {
             // Arrange — set power to 2 (exponential)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -131,8 +127,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent returns clamped values between 0 and 1
         /// </summary>
-        [Fact]
-        public void GetPercent_ReturnsValuesBetweenZeroAndOne()
+        [Fact] public void GetPercent_ReturnsValuesBetweenZeroAndOne()
         {
             // Arrange — default power = 1 (linear)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -155,8 +150,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent with power=2 (exponential) gives different distribution than linear
         /// </summary>
-        [Fact]
-        public void GetPercent_ExponentialPowerGivesDifferentDistribution()
+        [Fact] public void GetPercent_ExponentialPowerGivesDifferentDistribution()
         {
             // Arrange — exponential power = 2
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -175,8 +169,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent with power=0.5 (sub-linear) gives different distribution
         /// </summary>
-        [Fact]
-        public void GetPercent_SubLinearPowerGivesMoreUniformDistribution()
+        [Fact] public void GetPercent_SubLinearPowerGivesMoreUniformDistribution()
         {
             // Arrange — sub-linear power = 0.5
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -194,8 +187,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent with power > 1 concentrates force near center
         /// </summary>
-        [Fact]
-        public void GetPercent_HighPowerConcentratesForceNearCenter()
+        [Fact] public void GetPercent_HighPowerConcentratesForceNearCenter()
         {
             // Arrange — high power = 5 (very concentrated)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -213,8 +205,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent returns 0 for NaN input (distance = radius, power = 0)
         /// </summary>
-        [Fact]
-        public void GetPercent_WhenPowerIsZeroAndDistanceEqualsRadius_ShouldReturnZero()
+        [Fact] public void GetPercent_WhenPowerIsZeroAndDistanceEqualsRadius_ShouldReturnZero()
         {
             // Arrange — power = 0, distance = radius → (1 - 0)^0 - 1 = 1 - 1 = 0
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -230,8 +221,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent handles very small radius values
         /// </summary>
-        [Fact]
-        public void GetPercent_VerySmallRadius_ShouldHandleGracefully()
+        [Fact] public void GetPercent_VerySmallRadius_ShouldHandleGracefully()
         {
             // Arrange — default power = 1
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -246,8 +236,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent handles very large radius values
         /// </summary>
-        [Fact]
-        public void GetPercent_VeryLargeRadius_ShouldHandleGracefully()
+        [Fact] public void GetPercent_VeryLargeRadius_ShouldHandleGracefully()
         {
             // Arrange — default power = 1
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -262,8 +251,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent with negative distance is handled (distance can't be negative in physics)
         /// </summary>
-        [Fact]
-        public void GetPercent_NegativeDistance_ShouldHandleGracefully()
+        [Fact] public void GetPercent_NegativeDistance_ShouldHandleGracefully()
         {
             // Arrange — distance should never be negative in physics (it's a magnitude)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -283,8 +271,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that constructor initializes Power to 1 (linear) by default
         /// </summary>
-        [Fact]
-        public void Constructor_ShouldInitializePowerToOne()
+        [Fact] public void Constructor_ShouldInitializePowerToOne()
         {
             // Arrange & Act
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -296,8 +283,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that constructor properly assigns WorldPhysic
         /// </summary>
-        [Fact]
-        public void Constructor_ShouldAssignWorldPhysic()
+        [Fact] public void Constructor_ShouldAssignWorldPhysic()
         {
             // Arrange & Act
             WorldPhysic mockWorld = CreateMockWorld();
@@ -310,8 +296,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Power property is get/settable after construction
         /// </summary>
-        [Fact]
-        public void Power_ShouldBeSettableAfterConstruction()
+        [Fact] public void Power_ShouldBeSettableAfterConstruction()
         {
             // Arrange & Act
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -324,8 +309,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Power can be set to zero (sub-linear explosion)
         /// </summary>
-        [Fact]
-        public void Power_Zero_ShouldBeValid()
+        [Fact] public void Power_Zero_ShouldBeValid()
         {
             // Arrange & Act
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -338,8 +322,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Power can be set to very high values (concentrated explosion)
         /// </summary>
-        [Fact]
-        public void Power_HighValue_ShouldBeValid()
+        [Fact] public void Power_HighValue_ShouldBeValid()
         {
             // Arrange & Act
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -352,8 +335,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Power can be set to fractional values (sub-linear)
         /// </summary>
-        [Fact]
-        public void Power_FractionalValue_ShouldBeValid()
+        [Fact] public void Power_FractionalValue_ShouldBeValid()
         {
             // Arrange & Act
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -371,8 +353,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Activate returns empty dictionary when no bodies are in range
         ///     SKIPPED — requires real WorldPhysic with QueryAabb implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with QueryAabb implementation")]
-        public void Activate_WithNoBodiesInRange_ShouldReturnEmptyDictionary()
+        [Fact] public void Activate_WithNoBodiesInRange_ShouldReturnEmptyDictionary()
         {
             // Arrange — create explosion with empty world (no bodies)
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -392,8 +373,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Activate with radius 0 returns empty dictionary
         ///     SKIPPED — requires real WorldPhysic with QueryAabb implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with QueryAabb implementation")]
-        public void Activate_WithZeroRadius_ShouldReturnEmptyDictionary()
+        [Fact] public void Activate_WithZeroRadius_ShouldReturnEmptyDictionary()
         {
             // Arrange
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -413,8 +393,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Activate with maxForce limits the applied force
         ///     SKIPPED — requires real WorldPhysic with QueryAabb implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with QueryAabb implementation")]
-        public void Activate_WithMaxForce_LimitsAppliedForce()
+        [Fact] public void Activate_WithMaxForce_LimitsAppliedForce()
         {
             // Arrange — create explosion with maxForce limit
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -437,8 +416,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Activate with very large force without maxForce applies full force
         ///     SKIPPED — requires real WorldPhysic with QueryAabb implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with QueryAabb implementation")]
-        public void Activate_WithVeryLargeForce_NoMaxForce_AppliesFullForce()
+        [Fact] public void Activate_WithVeryLargeForce_NoMaxForce_AppliesFullForce()
         {
             // Arrange
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -457,8 +435,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that ApplyImpulse (internal) returns dictionary with body-force pairs
         ///     SKIPPED — requires real WorldPhysic with QueryAabb implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with QueryAabb implementation")]
-        public void ApplyImpulse_ReturnsBodyForcePairs()
+        [Fact] public void ApplyImpulse_ReturnsBodyForcePairs()
         {
             // Arrange
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -479,8 +456,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that GetPercent is the core force distribution function used by Activate
         /// </summary>
-        [Fact]
-        public void GetPercent_IsCoreForceDistributionFunction()
+        [Fact] public void GetPercent_IsCoreForceDistributionFunction()
         {
             // Arrange — verify GetPercent is the mathematical core of explosion force distribution
             _explosion = new SimpleExplosion(CreateMockWorld());
@@ -499,8 +475,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that SimpleExplosion is sealed (cannot be inherited)
         /// </summary>
-        [Fact]
-        public void SimpleExplosion_ShouldBeSealed()
+        [Fact] public void SimpleExplosion_ShouldBeSealed()
         {
             Assert.True(typeof(SimpleExplosion).IsSealed);
         }
@@ -508,8 +483,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that multiple SimpleExplosion instances can coexist independently
         /// </summary>
-        [Fact]
-        public void MultipleInstances_ShouldBeIndependent()
+        [Fact] public void MultipleInstances_ShouldBeIndependent()
         {
             // Arrange
             SimpleExplosion explosion1 = new SimpleExplosion(CreateMockWorld());
@@ -537,9 +511,7 @@ namespace Alis.Core.Physic.Test
         /// </summary>
         private static WorldPhysic CreateMockWorld()
         {
-            // Returns a mock/stub WorldPhysic — QueryAabb returns no bodies in test env
-            // This is an integration-level stub; full testing requires physics engine
-            return null!;
+            return new WorldPhysic(Vector2F.Zero);
         }
 
         #endregion

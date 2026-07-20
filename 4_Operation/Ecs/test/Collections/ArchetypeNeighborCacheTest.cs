@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns the slot index when the key is in slot 0
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_FindsKeyInSlot0()
+        [Fact] public void Traverse_FindsKeyInSlot0()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
@@ -53,8 +52,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns the slot index when the key is in slot 1
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_FindsKeyInSlot1()
+        [Fact] public void Traverse_FindsKeyInSlot1()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
@@ -65,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns the slot index when the key is in slot 2
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_FindsKeyInSlot2()
+        [Fact] public void Traverse_FindsKeyInSlot2()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
@@ -78,8 +75,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns the slot index when the key is in slot 3
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_FindsKeyInSlot3()
+        [Fact] public void Traverse_FindsKeyInSlot3()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
@@ -92,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns 32 when the key is not present
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_Returns32_OnMiss()
+        [Fact] public void Traverse_Returns32_OnMiss()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             Assert.Equal(32, cache.Traverse(99));
@@ -102,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Traverse" /> returns 32 after a full set of different keys
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_Returns32_WhenKeyNotCached()
+        [Fact] public void Traverse_Returns32_WhenKeyNotCached()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 10);
@@ -116,8 +110,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.TraverseArchetype" /> returns null on miss
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TraverseArchetype_ReturnsNull_OnMiss()
+        [Fact] public void TraverseArchetype_ReturnsNull_OnMiss()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             Assert.Null(cache.TraverseArchetype(99));
@@ -126,8 +119,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Lookup" /> returns the value stored at each slot
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Lookup_ReturnsValue_ForEachSlot()
+        [Fact] public void Lookup_ReturnsValue_ForEachSlot()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 100);
@@ -144,8 +136,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, ushort)" /> stores ushort values in round-robin order
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Set_RoundRobin_StoresInSequentialSlots()
+        [Fact] public void Set_RoundRobin_StoresInSequentialSlots()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -161,13 +152,11 @@ namespace Alis.Core.Ecs.Test.Collections
             cache.Set(4, 40);
             Assert.Equal(40, cache.Lookup(3));
         }
-        
 
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, ushort)" /> can wrap multiple times
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Set_RoundRobin_WrapsMultipleTimes()
+        [Fact] public void Set_RoundRobin_WrapsMultipleTimes()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             for (int i = 0; i < 8; i++)
@@ -181,27 +170,21 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal((ushort)80, cache.Lookup(3));
         }
 
-
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache.Set(ushort, Archetype)" /> stores null Archetype reference in the
         ///     ushort-only overload
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Set_UshortOnly_SetsNullArchetype()
+        [Fact] public void Set_UshortOnly_SetsNullArchetype()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(10, 100);
             Assert.Null(cache.TraverseArchetype(10));
         }
 
-       
-       
-
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache" /> can handle all ushort key values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_WorksWithUshortMaxValueKey()
+        [Fact] public void Traverse_WorksWithUshortMaxValueKey()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(ushort.MaxValue, 1);
@@ -211,8 +194,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that <see cref="ArchetypeNeighborCache" /> can handle zero as a key
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_WorksWithZeroKey()
+        [Fact] public void Traverse_WorksWithZeroKey()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(0, 100);
@@ -223,8 +205,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="ArchetypeNeighborCache" /> can hold different values for the same key overwritten in
         ///     different round-robin passes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Set_SameKey_UpdatesValueAndSlot()
+        [Fact] public void Set_SameKey_UpdatesValueAndSlot()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             cache.Set(1, 100);

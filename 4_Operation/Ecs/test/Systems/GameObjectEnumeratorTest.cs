@@ -37,20 +37,17 @@ namespace Alis.Core.Ecs.Test.Systems
 {
     public class GameObjectEnumeratorTest
     {
-        [Fact]
-        public void GameObjectEnumerator_IsRefStruct_ValueType()
+        [Fact] public void GameObjectEnumerator_IsRefStruct_ValueType()
         {
             Assert.True(typeof(GameObjectEnumerator).IsValueType);
         }
 
-        [Fact]
-        public void EntityEnumerable_IsRefStruct_ValueType()
+        [Fact] public void EntityEnumerable_IsRefStruct_ValueType()
         {
             Assert.True(typeof(GameObjectEnumerator.EntityEnumerable).IsValueType);
         }
 
-        [Fact]
-        public void MoveNext_Empty_ReturnsFalse()
+        [Fact] public void MoveNext_Empty_ReturnsFalse()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
             GameObjectEnumerator enumerator = enumerable.GetEnumerator();
@@ -58,8 +55,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(enumerator.MoveNext());
         }
 
-        [Fact]
-        public void MoveNext_AfterExhaustion_StillReturnsFalse()
+        [Fact] public void MoveNext_AfterExhaustion_StillReturnsFalse()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
             GameObjectEnumerator enumerator = enumerable.GetEnumerator();
@@ -68,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(enumerator.MoveNext());
         }
 
-        [Fact]
-        public void Current_AccessedBeforeMoveNext_ThrowsIndexOutOfRangeException()
+        [Fact] public void Current_AccessedBeforeMoveNext_ThrowsIndexOutOfRangeException()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
             GameObjectEnumerator enumerator = enumerable.GetEnumerator();
@@ -87,8 +82,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
-        [Fact]
-        public void Current_AccessedAfterMoveNextReturnsFalse_ThrowsIndexOutOfRangeException()
+        [Fact] public void Current_AccessedAfterMoveNextReturnsFalse_ThrowsIndexOutOfRangeException()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
             GameObjectEnumerator enumerator = enumerable.GetEnumerator();
@@ -107,8 +101,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
-        [Fact]
-        public void GetEnumerator_MultipleTimes_EachIndependent()
+        [Fact] public void GetEnumerator_MultipleTimes_EachIndependent()
         {
             GameObjectEnumerator.EntityEnumerable enumerable = default;
 
@@ -119,8 +112,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.False(e2.MoveNext());
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Enumerate_SingleEntity_YieldsOneEntity()
+        [Fact] public void Enumerate_SingleEntity_YieldsOneEntity()
         {
             using Scene scene = new Scene();
 
@@ -135,8 +127,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(1, count);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Enumerate_MultipleEntities_YieldsExpectedCount()
+        [Fact] public void Enumerate_MultipleEntities_YieldsExpectedCount()
         {
             using Scene scene = new Scene();
 
@@ -151,8 +142,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(5, count);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Enumerate_Twice_ProducesSameIds()
+        [Fact] public void Enumerate_Twice_ProducesSameIds()
         {
             using Scene scene = new Scene();
 
@@ -173,8 +163,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(firstIds, secondIds);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
+        [Fact] public void Enumerate_AfterSettingSpanValues_ReturnsCorrectComponentData()
         {
             using Scene scene = new Scene();
 
@@ -198,8 +187,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(3, index);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Current_AccessedBeforeMoveNext_Throws()
+        [Fact] public void Current_AccessedBeforeMoveNext_Throws()
         {
             using Scene scene = new Scene();
             ChunkTuple<Position> chunk = scene.CreateMany<Position>(1);
@@ -219,8 +207,7 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.True(threw);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
+        [Fact] public void Enumerate_WithPreviousAndNewEntities_EnumeratesOnlyNewOnes()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});

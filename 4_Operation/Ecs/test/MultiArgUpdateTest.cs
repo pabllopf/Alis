@@ -11,8 +11,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that update with 6 args works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_With6Args_Works()
+        [Fact] public void Update_With6Args_Works()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
@@ -24,8 +23,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         /// Tests that update with 7 args works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Update_With7Args_Works()
+        [Fact] public void Update_With7Args_Works()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health(), new Transform(),

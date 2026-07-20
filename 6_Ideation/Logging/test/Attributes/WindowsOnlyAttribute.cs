@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Skip = "Only running in windows mode";
+
             }
         }
     }

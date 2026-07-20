@@ -47,8 +47,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that on delete unsubscribed handler is not invoked
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OnDelete_UnsubscribedHandler_IsNotInvoked()
+        [Fact] public void OnDelete_UnsubscribedHandler_IsNotInvoked()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -68,8 +67,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that on component added does not fire for other entity changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OnComponentAdded_DoesNotFire_ForOtherEntityChanges()
+        [Fact] public void OnComponentAdded_DoesNotFire_ForOtherEntityChanges()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
@@ -87,8 +85,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that on component removed does not fire for other entity changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void OnComponentRemoved_DoesNotFire_ForOtherEntityChanges()
+        [Fact] public void OnComponentRemoved_DoesNotFire_ForOtherEntityChanges()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});

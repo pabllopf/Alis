@@ -50,8 +50,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that all enum values are defined with correct numeric values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_HasExpectedValues()
+        [Fact] public void MemoryTrimming_HasExpectedValues()
         {
             Assert.Equal(0, (int) MemoryTrimming.Always);
             Assert.Equal(1, (int) MemoryTrimming.Normal);
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         ///     Validates that MemoryTrimming values can be assigned to variables
         ///     and compared correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_CanBeAssigned()
+        [Fact] public void MemoryTrimming_CanBeAssigned()
         {
             MemoryTrimming always = MemoryTrimming.Always;
             MemoryTrimming normal = MemoryTrimming.Normal;
@@ -83,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that all enum values are different from each other.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_AllValuesAreDistinct()
+        [Fact] public void MemoryTrimming_AllValuesAreDistinct()
         {
             Assert.NotEqual(MemoryTrimming.Always, MemoryTrimming.Normal);
             Assert.NotEqual(MemoryTrimming.Always, MemoryTrimming.Never);
@@ -97,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that enum values can be converted to their string representation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_CanBeConvertedToString()
+        [Fact] public void MemoryTrimming_CanBeConvertedToString()
         {
             string alwaysString = MemoryTrimming.Always.ToString();
             string normalString = MemoryTrimming.Normal.ToString();
@@ -115,8 +111,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that integer values can be cast to MemoryTrimming enum.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_CanBeCastFromInt()
+        [Fact] public void MemoryTrimming_CanBeCastFromInt()
         {
             MemoryTrimming always = 0;
             MemoryTrimming normal = (MemoryTrimming) 1;
@@ -133,8 +128,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that enum values work correctly in switch/case statements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_WorksInSwitchStatements()
+        [Fact] public void MemoryTrimming_WorksInSwitchStatements()
         {
             int alwaysResult = 0;
             int normalResult = 0;
@@ -172,8 +166,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that enum values can be compared using comparison operators.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_ComparisonWorksCorrectly()
+        [Fact] public void MemoryTrimming_ComparisonWorksCorrectly()
         {
             Assert.True(MemoryTrimming.Always < MemoryTrimming.Normal);
             Assert.True(MemoryTrimming.Normal < MemoryTrimming.Never);
@@ -187,8 +180,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that the default enum value (0) corresponds to Always.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_DefaultValueIsAlways()
+        [Fact] public void MemoryTrimming_DefaultValueIsAlways()
         {
             MemoryTrimming defaultValue = default(MemoryTrimming);
 
@@ -202,8 +194,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that MemoryTrimming values can be stored and retrieved from collections.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_CanBeUsedInCollections()
+        [Fact] public void MemoryTrimming_CanBeUsedInCollections()
         {
             List<MemoryTrimming> list = new List<MemoryTrimming>
             {
@@ -224,8 +215,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that MemoryTrimming values can be used as dictionary keys.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_CanBeUsedAsDictionaryKey()
+        [Fact] public void MemoryTrimming_CanBeUsedAsDictionaryKey()
         {
             Dictionary<MemoryTrimming, string> dict = new Dictionary<MemoryTrimming, string>
             {
@@ -246,8 +236,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that the enum defines exactly the expected number of values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_HasExactlyThreeValues()
+        [Fact] public void MemoryTrimming_HasExactlyThreeValues()
         {
             Array values = Enum.GetValues(typeof(MemoryTrimming));
 
@@ -260,8 +249,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that the MemoryTrimming enum has public visibility.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_IsPublic()
+        [Fact] public void MemoryTrimming_IsPublic()
         {
             Type type = typeof(MemoryTrimming);
 
@@ -275,8 +263,7 @@ namespace Alis.Core.Ecs.Test.Redifinition
         /// <remarks>
         ///     Validates that enum equality operators work correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MemoryTrimming_EqualityComparisonWorks()
+        [Fact] public void MemoryTrimming_EqualityComparisonWorks()
         {
             MemoryTrimming value1 = MemoryTrimming.Normal;
             MemoryTrimming value2 = MemoryTrimming.Normal;

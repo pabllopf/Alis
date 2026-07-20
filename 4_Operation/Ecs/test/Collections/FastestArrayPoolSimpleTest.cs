@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that renting and returning arrays maintains pool consistency.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RentAndReturn_SingleArray_PoolReusesProperly()
+        [Fact] public void RentAndReturn_SingleArray_PoolReusesProperly()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array1 = pool.Rent(100);
@@ -57,8 +56,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that arrays below minimum bucket size are not pooled.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rent_BelowMinimumBucketSize_CreatesNewArray()
+        [Fact] public void Rent_BelowMinimumBucketSize_CreatesNewArray()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
@@ -71,8 +69,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that renting increasingly larger arrays works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rent_ProgressivelyLargerSizes_AllSuccessful()
+        [Fact] public void Rent_ProgressivelyLargerSizes_AllSuccessful()
         {
             FastestArrayPool<long> pool = FastestArrayPool<long>.Instance;
             int[] sizes = {16, 32, 64, 128, 256, 512, 1024};
@@ -88,8 +85,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ResizeArrayFromPool properly copies data and maintains content.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ResizeArrayFromPool_DataPreservation_ContentIntact()
+        [Fact] public void ResizeArrayFromPool_DataPreservation_ContentIntact()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] arr = {1, 2, 3, 4, 5};
@@ -108,8 +104,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that returning arrays with clear flag works for reference types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Return_WithClearFlag_ReferencesCleared()
+        [Fact] public void Return_WithClearFlag_ReferencesCleared()
         {
             FastestArrayPool<string> pool = FastestArrayPool<string>.Instance;
             string[] array = pool.Rent(50);
@@ -123,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that multiple rental cycles work correctly without corruption.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleCycles_RentReturnRentPattern_Consistent()
+        [Fact] public void MultipleCycles_RentReturnRentPattern_Consistent()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
 
@@ -148,8 +142,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ValueType arrays work correctly through pooling cycles.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rent_ValueTypeArray_ProperlyPooled()
+        [Fact] public void Rent_ValueTypeArray_ProperlyPooled()
         {
             FastestArrayPool<byte> pool = FastestArrayPool<byte>.Instance;
 
@@ -167,8 +160,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Test that Return with clearArray=true for a struct type does not clear (no references to clear).
         ///     Exercises the branch where IsReferenceOrContainsReferences returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Return_WithClearFlag_StructType_DoesNotClear()
+        [Fact] public void Return_WithClearFlag_StructType_DoesNotClear()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array = pool.Rent(32);
@@ -182,8 +174,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that Rent with exact power-of-two at 2^4 boundary returns pooled bucket.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rent_ExactPowerOfTwo_AtBucketBoundary_ReturnsPooled()
+        [Fact] public void Rent_ExactPowerOfTwo_AtBucketBoundary_ReturnsPooled()
         {
             FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] array1 = pool.Rent(32);
@@ -198,8 +189,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that Instance property is consistent across calls.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Instance_SameReference_AcrossCalls()
+        [Fact] public void Instance_SameReference_AcrossCalls()
         {
             FastestArrayPool<int> pool1 = FastestArrayPool<int>.Instance;
             FastestArrayPool<int> pool2 = FastestArrayPool<int>.Instance;

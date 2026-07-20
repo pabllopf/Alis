@@ -34,23 +34,20 @@ namespace Alis.Core.Ecs.Test.Collections
 {
     public class SparseSetCoverageTest
     {
-        [Fact]
-        public void Constructor_Default_DoesNotThrow()
+        [Fact] public void Constructor_Default_DoesNotThrow()
         {
             SparseSet<int> set = new SparseSet<int>();
             Assert.NotNull(set);
         }
 
-        [Fact]
-        public void Indexer_NewId_StoresAndRetrievesInt()
+        [Fact] public void Indexer_NewId_StoresAndRetrievesInt()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[0] = 42;
             Assert.Equal(42, set[0]);
         }
 
-        [Fact]
-        public void Indexer_MultipleNewIds_AllAccessible()
+        [Fact] public void Indexer_MultipleNewIds_AllAccessible()
         {
             SparseSet<string> set = new SparseSet<string>();
             set[0] = "a";
@@ -61,8 +58,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", set[2]);
         }
 
-        [Fact]
-        public void Indexer_ExistingId_Overwrites()
+        [Fact] public void Indexer_ExistingId_Overwrites()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[3] = 10;
@@ -70,16 +66,14 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(20, set[3]);
         }
 
-        [Fact]
-        public void Indexer_LargeId_Resizes()
+        [Fact] public void Indexer_LargeId_Resizes()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[1000] = 999;
             Assert.Equal(999, set[1000]);
         }
 
-        [Fact]
-        public void Indexer_SparseIds_AllCorrect()
+        [Fact] public void Indexer_SparseIds_AllCorrect()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[1] = 10;
@@ -90,8 +84,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(30, set[100]);
         }
 
-        [Fact]
-        public void Indexer_RefReturn_MutationPersists()
+        [Fact] public void Indexer_RefReturn_MutationPersists()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[5] = 100;
@@ -100,8 +93,7 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(200, set[5]);
         }
 
-        [Fact]
-        public void Indexer_RefReturn_IncrementPersists()
+        [Fact] public void Indexer_RefReturn_IncrementPersists()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[0] = 10;
@@ -110,23 +102,20 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(15, set[0]);
         }
 
-        [Fact]
-        public void Indexer_StringType_StoresAndRetrieves()
+        [Fact] public void Indexer_StringType_StoresAndRetrieves()
         {
             SparseSet<string> set = new SparseSet<string>();
             set[2] = "hello";
             Assert.Equal("hello", set[2]);
         }
 
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Indexer_NegativeId_UnknownBehavior()
+        [Fact] public void Indexer_NegativeId_UnknownBehavior()
         {
             SparseSet<int> set = new SparseSet<int>();
             set[-1] = 42;
         }
 
-        [Fact]
-        public void Indexer_SequentialUpToInitialCapacity_Works()
+        [Fact] public void Indexer_SequentialUpToInitialCapacity_Works()
         {
             SparseSet<int> set = new SparseSet<int>();
             for (int i = 0; i < 4; i++)
@@ -139,8 +128,7 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
-        [Fact]
-        public void Indexer_SequentialBeyondCapacity_Works()
+        [Fact] public void Indexer_SequentialBeyondCapacity_Works()
         {
             SparseSet<int> set = new SparseSet<int>();
             for (int i = 0; i < 20; i++)
@@ -153,8 +141,7 @@ namespace Alis.Core.Ecs.Test.Collections
             }
         }
 
-        [Fact]
-        public void Indexer_AccessDefaultValue_ReturnsZero()
+        [Fact] public void Indexer_AccessDefaultValue_ReturnsZero()
         {
             SparseSet<int> set = new SparseSet<int>();
             Assert.Equal(0, set[99]);

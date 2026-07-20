@@ -60,13 +60,11 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that command buffer create command with component correct
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CreateCommandWithComponent_Correct()
+        [Fact] public void CommandBuffer_CreateCommandWithComponent_Correct()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
             Position pos = new Position {X = 10, Y = 20};
-
 
             buffer.Playback();
 
@@ -103,8 +101,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that command buffer dispose works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_Dispose_Works()
+        [Fact] public void CommandBuffer_Dispose_Works()
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);

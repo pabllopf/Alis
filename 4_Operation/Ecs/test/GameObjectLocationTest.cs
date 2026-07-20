@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor with archetype and index initializes correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithArchetypeAndIndex_ShouldInitializeCorrectly()
+        [Fact] public void Constructor_WithArchetypeAndIndex_ShouldInitializeCorrectly()
         {
             // Arrange
             Scene world = new Scene();
@@ -62,8 +61,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that constructor with flags initializes all fields correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithFlags_ShouldInitializeAllFields()
+        [Fact] public void Constructor_WithFlags_ShouldInitializeAllFields()
         {
             // Arrange
             Scene world = new Scene();
@@ -84,8 +82,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that archetype id returns correct archetype id.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ArchetypeId_ShouldReturnCorrectId()
+        [Fact] public void ArchetypeId_ShouldReturnCorrectId()
         {
             // Arrange
             Scene world = new Scene();
@@ -104,8 +101,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that default property returns valid default location.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Default_ShouldReturnValidDefaultLocation()
+        [Fact] public void Default_ShouldReturnValidDefaultLocation()
         {
             // Act
             GameObjectLocation defaultLocation = GameObjectLocation.Default;
@@ -118,8 +114,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with no flags returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasEvent_WithNoFlags_ShouldReturnFalse()
+        [Fact] public void HasEvent_WithNoFlags_ShouldReturnFalse()
         {
             // Arrange
             Scene world = new Scene();
@@ -138,8 +133,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with matching flag returns true.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasEvent_WithMatchingFlag_ShouldReturnTrue()
+        [Fact] public void HasEvent_WithMatchingFlag_ShouldReturnTrue()
         {
             // Arrange
             Scene world = new Scene();
@@ -158,8 +152,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with non matching flag returns false.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasEvent_WithNonMatchingFlag_ShouldReturnFalse()
+        [Fact] public void HasEvent_WithNonMatchingFlag_ShouldReturnFalse()
         {
             // Arrange
             Scene world = new Scene();
@@ -178,8 +171,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that has event with multiple flags returns true if any match.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasEvent_WithMultipleFlags_ShouldReturnTrueIfAnyMatch()
+        [Fact] public void HasEvent_WithMultipleFlags_ShouldReturnTrueIfAnyMatch()
         {
             // Arrange
             Scene world = new Scene();
@@ -201,8 +193,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that version field can be set and retrieved.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Version_SetAndGet_ShouldWorkCorrectly()
+        [Fact] public void Version_SetAndGet_ShouldWorkCorrectly()
         {
             // Arrange
             Scene world = new Scene();
@@ -221,8 +212,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that index can be negative.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Index_WithNegativeValue_ShouldBeStored()
+        [Fact] public void Index_WithNegativeValue_ShouldBeStored()
         {
             // Arrange
             Scene world = new Scene();

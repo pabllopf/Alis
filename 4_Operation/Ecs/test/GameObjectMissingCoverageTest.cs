@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object try get core when component exists returns writable reference
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryGetCore_WhenComponentExists_ReturnsWritableReference()
+        [Fact] public void GameObject_TryGetCore_WhenComponentExists_ReturnsWritableReference()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object try get core when component missing returns exists false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryGetCore_WhenComponentMissing_ReturnsExistsFalse()
+        [Fact] public void GameObject_TryGetCore_WhenComponentMissing_ReturnsExistsFalse()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object try get core when entity deleted returns exists false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryGetCore_WhenEntityDeleted_ReturnsExistsFalse()
+        [Fact] public void GameObject_TryGetCore_WhenEntityDeleted_ReturnsExistsFalse()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -90,8 +87,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object throw entity is dead throws invalid operation exception with expected message
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_ThrowEntityIsDead_ThrowsInvalidOperationExceptionWithExpectedMessage()
+        [Fact] public void GameObject_ThrowEntityIsDead_ThrowsInvalidOperationExceptionWithExpectedMessage()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(GameObject.Throw_EntityIsDead);
 
@@ -101,8 +97,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object unsubscribe event with null or dead entity does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_UnsubscribeEvent_WithNullOrDeadEntity_DoesNotThrow()
+        [Fact] public void GameObject_UnsubscribeEvent_WithNullOrDeadEntity_DoesNotThrow()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -119,8 +114,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object initalize event record with null or dead entity does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_InitalizeEventRecord_WithNullOrDeadEntity_DoesNotThrow()
+        [Fact] public void GameObject_InitalizeEventRecord_WithNullOrDeadEntity_DoesNotThrow()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -137,8 +131,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object on component generic properties on dead entity return null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_OnComponentGenericProperties_OnDeadEntity_ReturnNull()
+        [Fact] public void GameObject_OnComponentGenericProperties_OnDeadEntity_ReturnNull()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});

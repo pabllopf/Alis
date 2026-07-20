@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Skip = "Only running in macos mode";
+
             }
         }
     }

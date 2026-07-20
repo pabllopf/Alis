@@ -51,8 +51,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that adding a component that already exists throws ComponentAlreadyExistsException.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingSameComponentTwiceThrowsException()
+        [Fact] public void AddComponent_AddingSameComponentTwiceThrowsException()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -66,8 +65,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that adding a component to a dead entity throws an exception.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingComponentToDeadEntityThrows()
+        [Fact] public void AddComponent_AddingComponentToDeadEntityThrows()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -82,8 +80,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that multiple different components can be added to the same entity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingMultipleDifferentComponentsWorks()
+        [Fact] public void AddComponent_AddingMultipleDifferentComponentsWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -103,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the added component can be accessed right after addition.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddedComponentDataIsAccessibleImmediately()
+        [Fact] public void AddComponent_AddedComponentDataIsAccessibleImmediately()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -123,8 +119,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that entities with newly added components are included in queries.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingComponentAffectsQueries()
+        [Fact] public void AddComponent_AddingComponentAffectsQueries()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that components can be added to entities that already have components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingComponentToEntityWithExistingComponentsWorks()
+        [Fact] public void AddComponent_AddingComponentToEntityWithExistingComponentsWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -174,8 +168,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that adding a new component doesn't modify existing ones.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_PreservesExistingComponentData()
+        [Fact] public void AddComponent_PreservesExistingComponentData()
         {
             using Scene scene = new Scene();
             Position originalPos = new Position {X = 42, Y = 84};
@@ -194,8 +187,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that adding components to entities scales well.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_WorksWithManyEntities()
+        [Fact] public void AddComponent_WorksWithManyEntities()
         {
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[100];
@@ -226,8 +218,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that components with default values can be added.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_AddingDefaultComponentWorks()
+        [Fact] public void AddComponent_AddingDefaultComponentWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -246,8 +237,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that a component can be re-added after removal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_ReAddingComponentAfterRemovalWorks()
+        [Fact] public void AddComponent_ReAddingComponentAfterRemovalWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
@@ -267,8 +257,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that a specific sequence of component additions works.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_SequenceOfAdditionsWorks()
+        [Fact] public void AddComponent_SequenceOfAdditionsWorks()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -290,8 +279,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that components can be added safely within the same scene context.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_CanBeUsedInMixedScenario()
+        [Fact] public void AddComponent_CanBeUsedInMixedScenario()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1, Y = 2});

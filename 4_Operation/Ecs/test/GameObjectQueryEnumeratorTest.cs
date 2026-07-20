@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 1 is value type and by ref like
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity1_IsValueTypeAndByRefLike()
+        [Fact] public void GameObjectQueryEnumerator_Arity1_IsValueTypeAndByRefLike()
         {
             Assert.True(typeof(GameObjectQueryEnumerator<Position>).IsValueType);
         }
@@ -51,8 +50,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 8 is value type and by ref like
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity8_IsValueTypeAndByRefLike()
+        [Fact] public void GameObjectQueryEnumerator_Arity8_IsValueTypeAndByRefLike()
         {
             Assert.True(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>).IsValueType);
         }
@@ -60,8 +58,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator constructor and dispose toggle structural changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_ConstructorAndDispose_ToggleStructuralChanges()
+        [Fact] public void GameObjectQueryEnumerator_ConstructorAndDispose_ToggleStructuralChanges()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -78,8 +75,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator foreach completes exits disallow state
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_ForeachCompletes_ExitsDisallowState()
+        [Fact] public void GameObjectQueryEnumerator_ForeachCompletes_ExitsDisallowState()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
@@ -100,8 +96,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator foreach break still exits disallow state
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_ForeachBreak_StillExitsDisallowState()
+        [Fact] public void GameObjectQueryEnumerator_ForeachBreak_StillExitsDisallowState()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 1, Y = 1}, new Health {Value = 10});
@@ -122,8 +117,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator move next empty query returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_MoveNext_EmptyQuery_ReturnsFalse()
+        [Fact] public void GameObjectQueryEnumerator_MoveNext_EmptyQuery_ReturnsFalse()
         {
             using Scene scene = new Scene();
             Query query = scene.Query<With<Position>>();
@@ -136,12 +130,10 @@ namespace Alis.Core.Ecs.Test
             Assert.False(scene.AllowStructualChanges);
         }
 
-
         /// <summary>
         ///     Tests that game object query enumerator move next and current arity 1 works as expected
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_MoveNextAndCurrent_Arity1_WorksAsExpected()
+        [Fact] public void GameObjectQueryEnumerator_MoveNextAndCurrent_Arity1_WorksAsExpected()
         {
             using Scene scene = new Scene();
             GameObject created = scene.Create(new Position {X = 42, Y = 84});
@@ -160,8 +152,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator current arity 2 maps entity and refs
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Current_Arity2_MapsEntityAndRefs()
+        [Fact] public void GameObjectQueryEnumerator_Current_Arity2_MapsEntityAndRefs()
         {
             using Scene scene = new Scene();
             GameObject created = scene.Create(new Position {X = 10, Y = 20}, new Velocity {X = 30, Y = 40});
@@ -178,8 +169,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 4 current contains all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity4_CurrentContainsAllComponents()
+        [Fact] public void GameObjectQueryEnumerator_Arity4_CurrentContainsAllComponents()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -203,8 +193,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 5 can enumerate all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity5_CanEnumerateAllComponents()
+        [Fact] public void GameObjectQueryEnumerator_Arity5_CanEnumerateAllComponents()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -229,8 +218,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 6 can enumerate all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity6_CanEnumerateAllComponents()
+        [Fact] public void GameObjectQueryEnumerator_Arity6_CanEnumerateAllComponents()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -256,8 +244,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 7 can enumerate all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity7_CanEnumerateAllComponents()
+        [Fact] public void GameObjectQueryEnumerator_Arity7_CanEnumerateAllComponents()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -284,8 +271,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator arity 8 can enumerate all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_Arity8_CanEnumerateAllComponents()
+        [Fact] public void GameObjectQueryEnumerator_Arity8_CanEnumerateAllComponents()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -313,8 +299,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object query enumerator iterates across multiple archetypes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObjectQueryEnumerator_IteratesAcrossMultipleArchetypes()
+        [Fact] public void GameObjectQueryEnumerator_IteratesAcrossMultipleArchetypes()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1});

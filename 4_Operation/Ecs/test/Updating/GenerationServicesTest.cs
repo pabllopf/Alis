@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that register type with invalid factory throws invalid operation exception
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterType_WithInvalidFactory_ThrowsInvalidOperationException()
+        [Fact] public void RegisterType_WithInvalidFactory_ThrowsInvalidOperationException()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
                 GenerationServices.RegisterType(typeof(UpdateComponent), new object()));
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that register type with different factory type for same component throws exception
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterType_WithDifferentFactoryTypeForSameComponent_ThrowsException()
+        [Fact] public void RegisterType_WithDifferentFactoryTypeForSameComponent_ThrowsException()
         {
             Type componentType = typeof(GenerationServicesProbeComponent);
             GenerationServices.RegisterType(componentType, new UpdateRunnerFactory<UpdateComponent>());
@@ -76,8 +74,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that registering the same type with the same factory twice does not throw.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterType_SameFactoryTwice_DoesNotThrow()
+        [Fact] public void RegisterType_SameFactoryTwice_DoesNotThrow()
         {
             Type componentType = typeof(GenerationServicesProbeComponent);
 
@@ -89,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that register update method attribute adds component type to cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterUpdateMethodAttribute_AddsComponentTypeToCache()
+        [Fact] public void RegisterUpdateMethodAttribute_AddsComponentTypeToCache()
         {
             Type attributeType = typeof(GenerationServicesProbeAttribute);
             Type componentType = typeof(UpdateComponent);
@@ -107,8 +103,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that register init registers delegate that invokes on init
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterInit_RegistersDelegateThatInvokesOnInit()
+        [Fact] public void RegisterInit_RegistersDelegateThatInvokesOnInit()
         {
             GenerationServices.RegisterInit<GenerationServicesInitDestroyProbe>();
             IDictionary cache = (IDictionary) typeof(GenerationServices)
@@ -130,8 +125,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Tests that register destroy registers delegate that invokes on destroy
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterDestroy_RegistersDelegateThatInvokesOnDestroy()
+        [Fact] public void RegisterDestroy_RegistersDelegateThatInvokesOnDestroy()
         {
             GenerationServices.RegisterDestroy<GenerationServicesInitDestroyProbe>();
             IDictionary cache = (IDictionary) typeof(GenerationServices)

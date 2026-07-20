@@ -78,6 +78,12 @@ namespace Alis.Core.Ecs.Kernel
         /// <returns>The component storage base factory</returns>
         internal static IComponentStorageBaseFactory GetComponentFactoryFromType(Type t)
         {
+            if (t == null || t == typeof(void))
+            {
+                Throw_ComponentTypeNotInit(t);
+                return null!;
+            }
+
             if (GenerationServices.UserGeneratedTypeMap.TryGetValue(t,
                     out (IComponentStorageBaseFactory Factory, int UpdateOrder) type))
             {
@@ -232,6 +238,11 @@ namespace Alis.Core.Ecs.Kernel
         /// <exception cref="InvalidOperationException">{t.FullName} is not initalized. (Is the source generator working?)</exception>
         private static void Throw_ComponentTypeNotInit(Type t)
         {
+            if (t == null)
+            {
+                throw new InvalidOperationException("Component type is null or void. (Did you initalize T with Component.RegisterComponent<T>()?)");
+            }
+
             if (typeof(IComponentBase).IsAssignableFrom(t))
             {
                 throw new InvalidOperationException($"{t.FullName} is not initalized. (Is the source generator working?)");

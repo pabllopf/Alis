@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component id is unique per type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnUniqueIdPerType()
+        [Fact] public void ShouldReturnUniqueIdPerType()
         {
             ComponentId positionId = Component<Position>.Id;
             ComponentId velocityId = Component<Velocity>.Id;
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component id is stable across accesses
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnStableIdAcrossAccesses()
+        [Fact] public void ShouldReturnStableIdAcrossAccesses()
         {
             ComponentId first = Component<Position>.Id;
             ComponentId second = Component<Position>.Id;
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component id has valid raw index
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnNonNegativeRawIndex()
+        [Fact] public void ShouldReturnNonNegativeRawIndex()
         {
             ComponentId id = Component<Health>.Id;
 
@@ -77,8 +74,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that store component handle has correct component id
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnHandleWithCorrectComponentId()
+        [Fact] public void ShouldReturnHandleWithCorrectComponentId()
         {
             Position position = new Position { X = 5, Y = 15 };
 
@@ -90,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that get component id returns valid id for type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnValidIdWhenGetComponentIdCalled()
+        [Fact] public void ShouldReturnValidIdWhenGetComponentIdCalled()
         {
             ComponentId id = Component.GetComponentId(typeof(Position));
 
@@ -101,8 +96,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that get component id is consistent with generic version
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldReturnConsistentIdWithGenericVersion()
+        [Fact] public void ShouldReturnConsistentIdWithGenericVersion()
         {
             ComponentId genericId = Component<Health>.Id;
             ComponentId nonGenericId = Component.GetComponentId(typeof(Health));
@@ -113,8 +107,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that register component does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldNotThrowWhenRegisterComponentCalled()
+        [Fact] public void ShouldNotThrowWhenRegisterComponentCalled()
         {
             Exception exception = Record.Exception(() => Component.RegisterComponent<ComplexType>());
 
@@ -124,8 +117,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that register component is idempotent
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldBeIdempotentWhenRegisterComponentCalledTwice()
+        [Fact] public void ShouldBeIdempotentWhenRegisterComponentCalledTwice()
         {
             Exception exception = Record.Exception(() =>
             {
@@ -139,8 +131,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that register component makes get component id succeed
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldMakeGetComponentIdSucceedAfterRegistration()
+        [Fact] public void ShouldMakeGetComponentIdSucceedAfterRegistration()
         {
             Component.RegisterComponent<ComplexType>();
 
@@ -152,8 +143,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that different types get different ids
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldAssignDifferentIdsToDifferentTypes()
+        [Fact] public void ShouldAssignDifferentIdsToDifferentTypes()
         {
             ComponentId positionId = Component.GetComponentId(typeof(Position));
             ComponentId healthId = Component.GetComponentId(typeof(Health));

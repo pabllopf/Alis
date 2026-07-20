@@ -222,7 +222,15 @@ namespace Alis.Core.Ecs.Updating
         ///     Obtiene la referencia de datos de almacenamiento del componente
         /// </summary>
         /// <returns>La referencia al componente</returns>
-        public ref TComponent GetComponentStorageDataReference() => ref TypedBuffer[0];
+        public ref TComponent GetComponentStorageDataReference()
+        {
+            if (TypedBuffer.Length == 0)
+            {
+                throw new InvalidOperationException("Component storage buffer is empty");
+            }
+
+            return ref TypedBuffer[0];
+        }
 
         /// <summary>
         ///     Disposes this instance

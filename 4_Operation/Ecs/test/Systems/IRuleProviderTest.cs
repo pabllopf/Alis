@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With returns HasComponent rule
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_ReturnsHasComponentRule()
+        [Fact] public void With_ReturnsHasComponentRule()
         {
             With<Position> with = default;
             Rule rule = with.Rule;
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Not returns NotComponent rule
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Not_ReturnsNotComponentRule()
+        [Fact] public void Not_ReturnsNotComponentRule()
         {
             Not<Position> not = default;
             Rule rule = not.Rule;
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that IncludeDisabled returns IncludeDisabledRule
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IncludeDisabled_ReturnsIncludeDisabledRule()
+        [Fact] public void IncludeDisabled_ReturnsIncludeDisabledRule()
         {
             IncludeDisabled includeDisabled = default;
             Rule rule = includeDisabled.Rule;
@@ -78,8 +75,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With and Not with same type produce different rules
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WithAndNot_SameType_ProduceDifferentRules()
+        [Fact] public void WithAndNot_SameType_ProduceDifferentRules()
         {
             With<Position> with = default;
             Not<Position> not = default;
@@ -90,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With struct has sequential layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_HasSequentialLayout()
+        [Fact] public void With_HasSequentialLayout()
         {
             StructLayoutAttribute layout = typeof(With<Position>).StructLayoutAttribute;
 
@@ -101,8 +96,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Not struct has sequential layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Not_HasSequentialLayout()
+        [Fact] public void Not_HasSequentialLayout()
         {
             StructLayoutAttribute layout = typeof(Not<Position>).StructLayoutAttribute;
 
@@ -112,8 +106,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that IncludeDisabled struct has sequential layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IncludeDisabled_HasSequentialLayout()
+        [Fact] public void IncludeDisabled_HasSequentialLayout()
         {
             StructLayoutAttribute layout = typeof(IncludeDisabled).StructLayoutAttribute;
 
@@ -123,8 +116,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With struct is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_IsValueType()
+        [Fact] public void With_IsValueType()
         {
             Assert.True(typeof(With<Position>).IsValueType);
         }
@@ -132,8 +124,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Not struct is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Not_IsValueType()
+        [Fact] public void Not_IsValueType()
         {
             Assert.True(typeof(Not<Position>).IsValueType);
         }
@@ -141,8 +132,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that IncludeDisabled struct is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IncludeDisabled_IsValueType()
+        [Fact] public void IncludeDisabled_IsValueType()
         {
             Assert.True(typeof(IncludeDisabled).IsValueType);
         }
@@ -150,8 +140,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With implements IRuleProvider
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_ImplementsIRuleProvider()
+        [Fact] public void With_ImplementsIRuleProvider()
         {
             Assert.True(typeof(IRuleProvider).IsAssignableFrom(typeof(With<Position>)));
         }
@@ -159,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Not implements IRuleProvider
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Not_ImplementsIRuleProvider()
+        [Fact] public void Not_ImplementsIRuleProvider()
         {
             Assert.True(typeof(IRuleProvider).IsAssignableFrom(typeof(Not<Position>)));
         }
@@ -168,8 +156,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that IncludeDisabled implements IRuleProvider
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IncludeDisabled_ImplementsIRuleProvider()
+        [Fact] public void IncludeDisabled_ImplementsIRuleProvider()
         {
             Assert.True(typeof(IRuleProvider).IsAssignableFrom(typeof(IncludeDisabled)));
         }
@@ -177,8 +164,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that With with different types produce different rules
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_DifferentTypes_ProduceDifferentRules()
+        [Fact] public void With_DifferentTypes_ProduceDifferentRules()
         {
             With<Position> withPos = default;
             With<Velocity> withVel = default;
@@ -189,8 +175,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Not with different types produce different rules
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Not_DifferentTypes_ProduceDifferentRules()
+        [Fact] public void Not_DifferentTypes_ProduceDifferentRules()
         {
             Not<Position> notPos = default;
             Not<Velocity> notVel = default;
@@ -201,8 +186,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that RuleTypes enum has expected values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleTypes_HasExpectedValues()
+        [Fact] public void RuleTypes_HasExpectedValues()
         {
             Assert.Equal(0, (int)RuleTypes.Have);
             Assert.Equal(1, (int)RuleTypes.DoesNotHave);

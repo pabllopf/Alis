@@ -39,8 +39,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that always returns true
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AlwaysReturnsTrue()
+        [Fact] public void AlwaysReturnsTrue()
         {
             Assert.True(true);
         }

@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component data is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentData_IsValueType()
+        [Fact] public void ComponentData_IsValueType()
         {
             Type type = typeof(ComponentData);
 
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component data has sequential struct layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentData_HasSequentialStructLayout()
+        [Fact] public void ComponentData_HasSequentialStructLayout()
         {
             StructLayoutAttribute layout = typeof(ComponentData).StructLayoutAttribute;
 
@@ -65,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component data stores type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentData_StoresType()
+        [Fact] public void ComponentData_StoresType()
         {
             ComponentData data = new ComponentData(typeof(Position), null, null, null);
 
@@ -76,8 +73,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component data equality works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentData_EqualityWorks()
+        [Fact] public void ComponentData_EqualityWorks()
         {
             ComponentData data1 = new ComponentData(typeof(Position), null, null, null);
             ComponentData data2 = new ComponentData(typeof(Position), null, null, null);
@@ -88,8 +84,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that component data with different types are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentData_DifferentTypes_AreNotEqual()
+        [Fact] public void ComponentData_DifferentTypes_AreNotEqual()
         {
             ComponentData data1 = new ComponentData(typeof(Position), null, null, null);
             ComponentData data2 = new ComponentData(typeof(Velocity), null, null, null);

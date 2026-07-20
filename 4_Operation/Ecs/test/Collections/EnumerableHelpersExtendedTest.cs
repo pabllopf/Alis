@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get empty enumerator returns empty enumerator
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetEmptyEnumerator_ReturnsEmptyEnumerator()
+        [Fact] public void GetEmptyEnumerator_ReturnsEmptyEnumerator()
         {
             IEnumerator<int> enumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
 
@@ -53,8 +52,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that to array from empty enumerable returns empty array
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_EmptyEnumerable_ReturnsEmptyArray()
+        [Fact] public void ToArray_EmptyEnumerable_ReturnsEmptyArray()
         {
             IEnumerable<int> empty = Array.Empty<int>();
 
@@ -67,8 +65,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that to array from list returns correct array
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_FromList_ReturnsCorrectArray()
+        [Fact] public void ToArray_FromList_ReturnsCorrectArray()
         {
             List<int> list = new List<int> {1, 2, 3};
 
@@ -83,8 +80,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that to array from enumerable returns correct array
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_FromEnumerable_ReturnsCorrectArray()
+        [Fact] public void ToArray_FromEnumerable_ReturnsCorrectArray()
         {
             IEnumerable<int> enumerable = new List<int> {10, 20, 30, 40};
 
@@ -98,8 +94,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that to array from single element enumerable returns correct array
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_SingleElement_ReturnsCorrectArray()
+        [Fact] public void ToArray_SingleElement_ReturnsCorrectArray()
         {
             IEnumerable<string> enumerable = new List<string> {"hello"};
 
@@ -112,8 +107,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that to array length matches collection count
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_LengthMatchesCollectionCount()
+        [Fact] public void ToArray_LengthMatchesCollectionCount()
         {
             List<int> list = new List<int> {1, 2, 3, 4, 5};
 

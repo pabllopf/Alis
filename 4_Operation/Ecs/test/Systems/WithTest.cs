@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Verifies that With implements IRuleProvider interface.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_ImplementsRuleProvider()
+        [Fact] public void With_ImplementsRuleProvider()
         {
             With<Position> with = default(With<Position>);
 
@@ -62,8 +61,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that With.Rule returns a rule for HasComponent.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_RuleReturnsHasComponentRule()
+        [Fact] public void With_RuleReturnsHasComponentRule()
         {
             With<Position> with = default(With<Position>);
 
@@ -78,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that With can be used in Scene.Query.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_CanBeUsedInQuery()
+        [Fact] public void With_CanBeUsedInQuery()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1});
@@ -100,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Tests that With only includes entities with the specified component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_FiltersEntitiesCorrectly()
+        [Fact] public void With_FiltersEntitiesCorrectly()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1});
@@ -123,8 +119,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that multiple With filters can be combined in a query.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleWithFilters_WorkTogether()
+        [Fact] public void MultipleWithFilters_WorkTogether()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 1}, new Velocity {X = 1, Y = 1});
@@ -146,8 +141,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that default With instance produces a valid rule.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_DefaultInstanceHasValidRule()
+        [Fact] public void With_DefaultInstanceHasValidRule()
         {
             With<Position> with1 = default(With<Position>);
             With<Position> with2 = new With<Position>();
@@ -164,8 +158,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that With for different component types creates different rules.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void With_ForDifferentTypes_CreatesDifferentRules()
+        [Fact] public void With_ForDifferentTypes_CreatesDifferentRules()
         {
             With<Position> withPos = default(With<Position>);
             With<Velocity> withVel = default(With<Velocity>);

@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsAlive returns true immediately after the entity is created.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsAlive_ReturnsTrue_ForNewlyCreatedEntity()
+        [Fact] public void IsAlive_ReturnsTrue_ForNewlyCreatedEntity()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsAlive returns false after the entity has been deleted.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsAlive_ReturnsFalse_AfterDeletion()
+        [Fact] public void IsAlive_ReturnsFalse_AfterDeletion()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsAlive returns false for the default (null) GameObject.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsAlive_ReturnsFalse_ForDefaultGameObject()
+        [Fact] public void IsAlive_ReturnsFalse_ForDefaultGameObject()
         {
             GameObject gameObject = default(GameObject);
 
@@ -86,8 +83,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsAlive returns false for <see cref="GameObject.Null" />.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsAlive_ReturnsFalse_ForGameObjectNull()
+        [Fact] public void IsAlive_ReturnsFalse_ForGameObjectNull()
         {
             GameObject gameObject = GameObject.Null;
 
@@ -98,8 +94,7 @@ namespace Alis.Core.Ecs.Test
         ///     IsAlive stays true as long as the entity has not been deleted,
         ///     even after adding and removing components.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsAlive_RemainsTrue_AfterAddAndRemoveComponents()
+        [Fact] public void IsAlive_RemainsTrue_AfterAddAndRemoveComponents()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
@@ -115,8 +110,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsNull returns true for the default-constructed GameObject.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsNull_ReturnsTrue_ForDefaultConstructor()
+        [Fact] public void IsNull_ReturnsTrue_ForDefaultConstructor()
         {
             GameObject gameObject = new GameObject();
 
@@ -126,8 +120,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsNull returns true for <c>default(GameObject)</c>.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsNull_ReturnsTrue_ForDefaultKeyword()
+        [Fact] public void IsNull_ReturnsTrue_ForDefaultKeyword()
         {
             GameObject gameObject = default(GameObject);
 
@@ -137,8 +130,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsNull returns true for <see cref="GameObject.Null" />.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsNull_ReturnsTrue_ForStaticNullProperty()
+        [Fact] public void IsNull_ReturnsTrue_ForStaticNullProperty()
         {
             Assert.True(GameObject.Null.IsNull);
         }
@@ -146,8 +138,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     IsNull returns false for a real entity created inside a scene.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsNull_ReturnsFalse_ForCreatedEntity()
+        [Fact] public void IsNull_ReturnsFalse_ForCreatedEntity()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 5});
@@ -159,8 +150,7 @@ namespace Alis.Core.Ecs.Test
         ///     IsNull remains false after the entity is deleted (deletion does not
         ///     reset the packed value to zero).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IsNull_ReturnsFalse_EvenAfterDeletion()
+        [Fact] public void IsNull_ReturnsFalse_EvenAfterDeletion()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 7});
@@ -175,8 +165,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Scene returns the same scene instance that was used to create the entity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_ReturnsSameSceneInstance_ThatCreatedEntity()
+        [Fact] public void Scene_ReturnsSameSceneInstance_ThatCreatedEntity()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
@@ -187,8 +176,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Scene throws <see cref="InvalidOperationException" /> for the null GameObject.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_Throws_ForNullGameObject()
+        [Fact] public void Scene_Throws_ForNullGameObject()
         {
             GameObject gameObject = GameObject.Null;
 
@@ -198,8 +186,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Scene returns a non-null value for a live entity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_IsNotNull_ForLiveEntity()
+        [Fact] public void Scene_IsNotNull_ForLiveEntity()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Velocity {X = 2, Y = 3});
@@ -212,8 +199,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     ComponentTypes contains exactly the single component type the entity was created with.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentTypes_ContainsSingleComponentType_WhenCreatedWithOneComponent()
+        [Fact] public void ComponentTypes_ContainsSingleComponentType_WhenCreatedWithOneComponent()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 10, Y = 20});
@@ -226,8 +212,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     ComponentTypes contains all component types when the entity was created with several.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentTypes_ContainsAllComponentTypes_WhenCreatedWithMultiple()
+        [Fact] public void ComponentTypes_ContainsAllComponentTypes_WhenCreatedWithMultiple()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
@@ -245,8 +230,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     ComponentTypes updates after a new component is added.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentTypes_Updates_AfterComponentAdded()
+        [Fact] public void ComponentTypes_Updates_AfterComponentAdded()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
@@ -259,8 +243,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     ComponentTypes no longer contains a removed component.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentTypes_DoesNotContain_RemovedComponent()
+        [Fact] public void ComponentTypes_DoesNotContain_RemovedComponent()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
@@ -276,8 +259,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     ComponentTypes throws for a dead (deleted) entity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentTypes_Throws_ForDeadEntity()
+        [Fact] public void ComponentTypes_Throws_ForDeadEntity()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
@@ -291,8 +273,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Type matches <see cref="GameObject.EntityTypeOf" /> for the same component set.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_MatchesEntityTypeOf_ForSameComponentSet()
+        [Fact] public void Type_MatchesEntityTypeOf_ForSameComponentSet()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
@@ -305,8 +286,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Two entities with the same component set share the same <see cref="GameObjectType" />.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_IsSame_ForEntitiesWithIdenticalComponentSets()
+        [Fact] public void Type_IsSame_ForEntitiesWithIdenticalComponentSets()
         {
             using Scene scene = new Scene();
             GameObject a = scene.Create(new Velocity {X = 1, Y = 1});
@@ -318,8 +298,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Two entities with different component sets have different <see cref="GameObjectType" />s.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_IsDifferent_ForEntitiesWithDifferentComponentSets()
+        [Fact] public void Type_IsDifferent_ForEntitiesWithDifferentComponentSets()
         {
             using Scene scene = new Scene();
             GameObject a = scene.Create(new Position {X = 1, Y = 1});
@@ -331,8 +310,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Type changes after a component is added.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_Changes_AfterComponentAdded()
+        [Fact] public void Type_Changes_AfterComponentAdded()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 0, Y = 0});
@@ -346,8 +324,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Type changes after a component is removed.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Type_Changes_AfterComponentRemoved()
+        [Fact] public void Type_Changes_AfterComponentRemoved()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
@@ -364,8 +341,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Type throws for a dead (deleted) entity.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Type_Throws_ForDeadEntity()
+    [Fact] public void Type_Throws_ForDeadEntity()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});
@@ -377,8 +353,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Has with type returns true when the component exists.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Has_WithType_ReturnsTrue_WhenComponentExists()
+    [Fact] public void Has_WithType_ReturnsTrue_WhenComponentExists()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -389,8 +364,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Has with type returns false when the component does not exist.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Has_WithType_ReturnsFalse_WhenComponentDoesNotExist()
+    [Fact] public void Has_WithType_ReturnsFalse_WhenComponentDoesNotExist()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -401,8 +375,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     TryHas returns true when the component exists.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryHas_ReturnsTrue_WhenComponentExists()
+    [Fact] public void TryHas_ReturnsTrue_WhenComponentExists()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -413,8 +386,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     TryHas returns false for a dead entity without throwing.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryHas_ReturnsFalse_ForDeadEntity()
+    [Fact] public void TryHas_ReturnsFalse_ForDeadEntity()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -426,8 +398,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     TryHas with type returns true when the component exists.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryHas_WithType_ReturnsTrue_WhenComponentExists()
+    [Fact] public void TryHas_WithType_ReturnsTrue_WhenComponentExists()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -438,8 +409,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Get with component id returns a boxed component.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Get_WithComponentId_ReturnsBoxedComponent()
+    [Fact] public void Get_WithComponentId_ReturnsBoxedComponent()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 5, Y = 10});
@@ -454,8 +424,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Get with type returns a boxed component.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Get_WithType_ReturnsBoxedComponent()
+    [Fact] public void Get_WithType_ReturnsBoxedComponent()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 3, Y = 7});
@@ -470,8 +439,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Get with component id throws component not found exception when component does not exist.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Get_WithComponentId_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
+    [Fact] public void Get_WithComponentId_ThrowsComponentNotFoundException_WhenComponentDoesNotExist()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -482,8 +450,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Set with component id updates the component value.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Set_WithComponentId_SetsComponentValue()
+    [Fact] public void Set_WithComponentId_SetsComponentValue()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -499,8 +466,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Set with type updates the component value.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void Set_WithType_SetsComponentValue()
+    [Fact] public void Set_WithType_SetsComponentValue()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 5, Y = 5});
@@ -515,8 +481,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Try get returns true when the component exists.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryGet_ReturnsTrue_WhenComponentExists()
+    [Fact] public void TryGet_ReturnsTrue_WhenComponentExists()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -531,8 +496,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Try get returns false when the component does not exist.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryGet_ReturnsFalse_WhenComponentDoesNotExist()
+    [Fact] public void TryGet_ReturnsFalse_WhenComponentDoesNotExist()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -545,8 +509,7 @@ namespace Alis.Core.Ecs.Test
     /// <summary>
     ///     Try get returns false for a dead entity without throwing.
     /// </summary>
-    [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-    public void TryGet_ReturnsFalse_ForDeadEntity()
+    [Fact] public void TryGet_ReturnsFalse_ForDeadEntity()
     {
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});

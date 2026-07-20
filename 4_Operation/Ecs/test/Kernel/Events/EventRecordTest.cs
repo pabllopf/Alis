@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using System.Reflection;
 using Alis.Core.Ecs.Kernel.Events;
 using Xunit;
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize when exists is false initializes fields on an existing record
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_WhenExistsIsFalse_InitializesFields()
+        [Fact] public void Initalize_WhenExistsIsFalse_InitializesFields()
         {
             EventRecord record = new EventRecord();
 
@@ -93,8 +91,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize when exists is true leaves record reference unchanged
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_WhenExistsIsTrue_LeavesRecordReferenceUnchanged()
+        [Fact] public void Initalize_WhenExistsIsTrue_LeavesRecordReferenceUnchanged()
         {
             EventRecord record = new EventRecord();
             EventRecord original = record;
@@ -107,8 +104,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize when exists is true and record is null keeps null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_WhenExistsIsTrueAndRecordIsNull_KeepsNull()
+        [Fact] public void Initalize_WhenExistsIsTrueAndRecordIsNull_KeepsNull()
         {
             EventRecord record = null;
 
@@ -120,8 +116,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize can be called twice second call with exists true preserves initialized fields
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
+        [Fact] public void Initalize_CanBeCalledTwice_SecondCallWithExistsTruePreservesInitializedFields()
         {
             EventRecord record = new EventRecord();
             EventRecord.Initalize(false, ref record);

@@ -51,8 +51,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that a GameObject can be created using the default constructor.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanBeCreatedWithDefaultConstructor()
+        [Fact] public void GameObject_CanBeCreatedWithDefaultConstructor()
         {
             GameObject gameObject = new GameObject();
 
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that a default GameObject is considered null.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultGameObject_IsNull()
+        [Fact] public void DefaultGameObject_IsNull()
         {
             GameObject gameObject = default(GameObject);
 
@@ -79,8 +77,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that GameObject.Null is equivalent to the default GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_NullEqualsDefault()
+        [Fact] public void GameObject_NullEqualsDefault()
         {
             GameObject nullGameObject = GameObject.Null;
             GameObject defaultGameObject = default(GameObject);
@@ -94,8 +91,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that a GameObject created in a Scene is not null.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CreatedInScene_IsNotNull()
+        [Fact] public void GameObject_CreatedInScene_IsNotNull()
         {
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 42, Name = "Test"};
@@ -111,8 +107,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that a newly created GameObject is considered alive.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_IsAliveAfterCreation()
+        [Fact] public void GameObject_IsAliveAfterCreation()
         {
             using Scene scene = new Scene();
             TestComponent component = new TestComponent {Value = 10};
@@ -122,15 +117,13 @@ namespace Alis.Core.Ecs.Test
             Assert.True(gameObject.IsAlive);
         }
 
-
         /// <summary>
         ///     Tests that game object can check if has component
         /// </summary>
         /// <remarks>
         ///     Tests that Has method correctly identifies if a GameObject has a component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanCheckIfHasComponent()
+        [Fact] public void GameObject_CanCheckIfHasComponent()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 30});
@@ -144,8 +137,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that Has method returns false for components not present.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_ReturnsFalseForComponentItDoesNotHave()
+        [Fact] public void GameObject_ReturnsFalseForComponentItDoesNotHave()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 40});
@@ -159,8 +151,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that Get method retrieves the correct component from a GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanGetComponent()
+        [Fact] public void GameObject_CanGetComponent()
         {
             using Scene scene = new Scene();
             TestComponent original = new TestComponent {Value = 100, Name = "Original"};
@@ -178,8 +169,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that components can be modified through the reference returned by Get.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanModifyComponentThroughReference()
+        [Fact] public void GameObject_CanModifyComponentThroughReference()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 50});
@@ -196,8 +186,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that Equals method correctly compares two GameObject instances.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualsComparesCorrectly()
+        [Fact] public void GameObject_EqualsComparesCorrectly()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 1});
@@ -213,8 +202,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the == operator works correctly for GameObject comparison.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualityOperatorWorksCorrectly()
+        [Fact] public void GameObject_EqualityOperatorWorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 10});
@@ -231,8 +219,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the != operator works correctly for GameObject comparison.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_InequalityOperatorWorksCorrectly()
+        [Fact] public void GameObject_InequalityOperatorWorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 15});
@@ -247,8 +234,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that GetHashCode returns the same value for the same GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_GetHashCodeReturnsConsistentValue()
+        [Fact] public void GameObject_GetHashCodeReturnsConsistentValue()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 99});
@@ -265,8 +251,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that Equals method handles null GameObject correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualsHandlesNullCorrectly()
+        [Fact] public void GameObject_EqualsHandlesNullCorrectly()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 5});
@@ -281,8 +266,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that two null GameObjects are considered equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TwoNullGameObjects_AreEqual()
+        [Fact] public void TwoNullGameObjects_AreEqual()
         {
             GameObject null1 = GameObject.Null;
             GameObject null2 = GameObject.Null;
@@ -296,8 +280,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that TryHas method returns true when the component exists.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryHasReturnsTrueWhenComponentExists()
+        [Fact] public void GameObject_TryHasReturnsTrueWhenComponentExists()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 77});
@@ -311,8 +294,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that TryHas method returns false when the component doesn't exist.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryHasReturnsFalseWhenComponentDoesNotExist()
+        [Fact] public void GameObject_TryHasReturnsFalseWhenComponentDoesNotExist()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 88});
@@ -320,15 +302,13 @@ namespace Alis.Core.Ecs.Test
             Assert.False(gameObject.TryHas<AnotherComponent>());
         }
 
-
         /// <summary>
         ///     Tests that game object is value type
         /// </summary>
         /// <remarks>
         ///     Confirms that GameObject is a value type (struct) with value semantics.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_IsValueType()
+        [Fact] public void GameObject_IsValueType()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new TestComponent {Value = 1});
@@ -343,8 +323,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that GameObject can be stored and retrieved from collections.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanBeUsedInCollections()
+        [Fact] public void GameObject_CanBeUsedInCollections()
         {
             using Scene scene = new Scene();
             List<GameObject> entities = new List<GameObject>();
@@ -367,8 +346,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that Equals(object) correctly handles different object types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualsObjectHandlesDifferentTypes()
+        [Fact] public void GameObject_EqualsObjectHandlesDifferentTypes()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 100});
@@ -383,8 +361,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that components can be added to a GameObject after its creation.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanAddAfterCreation()
+        [Fact] public void GameObject_CanAddAfterCreation()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 50});
@@ -401,8 +378,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Tests that components can be removed from a GameObject.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanRemoveComponent()
+        [Fact] public void GameObject_CanRemoveComponent()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new TestComponent {Value = 60});
@@ -418,8 +394,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that GameObjects with multiple components can be properly queried.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_WithMultipleComponents_CanBeQueried()
+        [Fact] public void GameObject_WithMultipleComponents_CanBeQueried()
         {
             using Scene scene = new Scene();
             TestComponent comp1 = new TestComponent {Value = 123};
@@ -434,8 +409,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object has and try has by type and component id work
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_HasAndTryHas_ByTypeAndComponentId_Work()
+        [Fact] public void GameObject_HasAndTryHas_ByTypeAndComponentId_Work()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
@@ -457,8 +431,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object get set and try get non generic overloads work
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_GetSetAndTryGet_NonGenericOverloads_Work()
+        [Fact] public void GameObject_GetSetAndTryGet_NonGenericOverloads_Work()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 3, Y = 4});
@@ -482,8 +455,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object add boxed and add as can add components dynamically
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddBoxedAndAddAs_CanAddComponentsDynamically()
+        [Fact] public void GameObject_AddBoxedAndAddAs_CanAddComponentsDynamically()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create();
@@ -502,8 +474,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object remove by type and component id work
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Remove_ByTypeAndComponentId_Work()
+        [Fact] public void GameObject_Remove_ByTypeAndComponentId_Work()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
@@ -515,12 +486,10 @@ namespace Alis.Core.Ecs.Test
             Assert.False(gameObject.Has<Velocity>());
         }
 
-
         /// <summary>
         ///     Tests that game object generic component events are raised with concrete types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_GenericComponentEvents_AreRaisedWithConcreteTypes()
+        [Fact] public void GameObject_GenericComponentEvents_AreRaisedWithConcreteTypes()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 5, Y = 6});
@@ -541,8 +510,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object enumerate components visits all components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EnumerateComponents_VisitsAllComponents()
+        [Fact] public void GameObject_EnumerateComponents_VisitsAllComponents()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(
@@ -562,8 +530,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object metadata properties are consistent
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_MetadataProperties_AreConsistent()
+        [Fact] public void GameObject_MetadataProperties_AreConsistent()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 2, Y = 3});
@@ -576,8 +543,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that game object try has on deleted entity returns false without throwing
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_TryHas_OnDeletedEntity_ReturnsFalseWithoutThrowing()
+        [Fact] public void GameObject_TryHas_OnDeletedEntity_ReturnsFalseWithoutThrowing()
         {
             using Scene scene = new Scene();
             GameObject gameObject = scene.Create(new Position {X = 1, Y = 1});

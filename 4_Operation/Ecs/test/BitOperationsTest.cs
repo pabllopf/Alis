@@ -81,8 +81,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests Log2 returns correct values for powers of 2
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_Log2_WhenPowerOf2_ReturnsCorrectLog()
+        [Fact] public void BitOperations_Log2_WhenPowerOf2_ReturnsCorrectLog()
         {
             // Arrange & Act + Assert — test known powers of 2
             Assert.Equal(0, CallLog2(1u));       // 2^0
@@ -101,8 +100,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests Log2 for non-power-of-2 values (should return floor of log2)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_Log2_WhenNotPowerOf2_ReturnsFloorLog()
+        [Fact] public void BitOperations_Log2_WhenNotPowerOf2_ReturnsFloorLog()
         {
             // Arrange & Act + Assert — non-power-of-2 values should return floor(log2)
             Assert.Equal(1, CallLog2(3u));       // floor(log2(3)) = 1
@@ -115,8 +113,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests Log2 with maximum uint value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_Log2_WhenMaxValue_Returns31()
+        [Fact] public void BitOperations_Log2_WhenMaxValue_Returns31()
         {
             // Act + Assert
             Assert.Equal(31, CallLog2(uint.MaxValue));
@@ -125,8 +122,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RoundUpToPowerOf2 with exact powers of 2
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RoundUpToPowerOf2_WhenExactPowerOf2_ReturnsSameValue()
+        [Fact] public void BitOperations_RoundUpToPowerOf2_WhenExactPowerOf2_ReturnsSameValue()
         {
             // Arrange & Act + Assert
             Assert.Equal(1u, CallRoundUpToPowerOf2(1u));
@@ -141,8 +137,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RoundUpToPowerOf2 with non-power-of-2 values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RoundUpToPowerOf2_WhenNotPowerOf2_ReturnsNextPower()
+        [Fact] public void BitOperations_RoundUpToPowerOf2_WhenNotPowerOf2_ReturnsNextPower()
         {
             // Arrange & Act + Assert
             Assert.Equal(4u, CallRoundUpToPowerOf2(3u));       // 3 → 4 (standard: next power of 2)
@@ -155,8 +150,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RoundUpToPowerOf2 with edge case value 0
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RoundUpToPowerOf2_WhenZero_Returns0()
+        [Fact] public void BitOperations_RoundUpToPowerOf2_WhenZero_Returns0()
         {
             // Act + Assert — RoundUpToPowerOf2(0) = 0 (special case: --value wraps to uint.MaxValue, bit ops propagate, +1 wraps)
             Assert.Equal(0u, CallRoundUpToPowerOf2(0u));
@@ -165,8 +159,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RoundUpToPowerOf2 with maximum uint value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RoundUpToPowerOf2_WhenMaxValue_Returns0()
+        [Fact] public void BitOperations_RoundUpToPowerOf2_WhenMaxValue_Returns0()
         {
             // Act + Assert — project's implementation: --value wraps to uint.MaxValue, bit spread propagates 1s, +1 wraps → 0
             Assert.Equal(0u, CallRoundUpToPowerOf2(uint.MaxValue));
@@ -175,8 +168,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RotateLeft with basic rotation values
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RotateLeft_WhenBasicValues_ReturnsCorrectRotation()
+        [Fact] public void BitOperations_RotateLeft_WhenBasicValues_ReturnsCorrectRotation()
         {
             // Act + Assert
             Assert.Equal(2u, CallRotateLeft(1u, 1));       // 0b0001 << 1 | >> 31 = 2
@@ -188,8 +180,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RotateLeft with offset 0 (no rotation)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RotateLeft_WhenOffsetZero_ReturnsSameValue()
+        [Fact] public void BitOperations_RotateLeft_WhenOffsetZero_ReturnsSameValue()
         {
             // Act + Assert — rotating by 0 should return the original value
             uint value = 0x12345678u;
@@ -199,8 +190,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RotateLeft with offset 31 (maximum rotation for uint)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RotateLeft_WhenOffset31_ReturnsCorrectRotation()
+        [Fact] public void BitOperations_RotateLeft_WhenOffset31_ReturnsCorrectRotation()
         {
             // Act + Assert
             // 0x80000001u << 31 = 0x80000000u, 0x80000001u >> 1 = 0x40000000u
@@ -212,8 +202,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RotateLeft with offset greater than 32 (wraps around)
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RotateLeft_WhenOffsetGreaterThan32_WrapsCorrectly()
+        [Fact] public void BitOperations_RotateLeft_WhenOffsetGreaterThan32_WrapsCorrectly()
         {
             // Act + Assert — offset 33 is equivalent to offset 1 for uint
             uint value = 0x80000001u;
@@ -224,8 +213,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests RotateLeft with various bit patterns
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_RotateLeft_WhenVariousPatterns_ReturnsCorrectRotation()
+        [Fact] public void BitOperations_RotateLeft_WhenVariousPatterns_ReturnsCorrectRotation()
         {
             // Act + Assert
             // 0x80000001u << 1 = 0x00000002u, 0x80000001u >> 31 = 0x00000001u → 0x00000003u
@@ -246,8 +234,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that the project's BitOperations type is successfully resolved from Alis.Core.Ecs
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BitOperations_TypeResolution_Succeeds()
+        [Fact] public void BitOperations_TypeResolution_Succeeds()
         {
             // Act + Assert — verify the type exists in Alis.Core.Ecs assembly
             Assert.NotNull(BitOpsType);

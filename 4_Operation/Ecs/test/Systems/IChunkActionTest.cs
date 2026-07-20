@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that run chunk with int span executes action
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunChunk_WithIntSpan_ExecutesAction()
+        [Fact] public void RunChunk_WithIntSpan_ExecutesAction()
         {
             var action = new TestChunkAction();
             Span<int> span = [1, 2, 3];
@@ -24,8 +23,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that run chunk with empty span executes action
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RunChunk_WithEmptySpan_ExecutesAction()
+        [Fact] public void RunChunk_WithEmptySpan_ExecutesAction()
         {
             var action = new TestChunkAction();
             Span<int> span = [];

@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="EnumerableHelpers.ToArray{T}" /> returns an empty array
         ///     when given an empty <see cref="IEnumerable{T}" /> that is not an <see cref="ICollection{T}" />.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_EmptyNonCollectionEnumerable_ReturnsEmptyArray()
+        [Fact] public void ToArray_EmptyNonCollectionEnumerable_ReturnsEmptyArray()
         {
             IEnumerable<int> source = EmptyEnumerable();
 
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="EnumerableHelpers.ToArray{T}" /> returns correct array
         ///     for a non-ICollection enumerable with a single element.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_SingleElementNonCollectionEnumerable_ReturnsArrayWithElement()
+        [Fact] public void ToArray_SingleElementNonCollectionEnumerable_ReturnsArrayWithElement()
         {
             IEnumerable<int> source = SingleElementEnumerable();
 
@@ -73,8 +71,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="EnumerableHelpers.ToArray{T}" /> returns correct array
         ///     when the source is exactly the default capacity (4).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_ExactDefaultCapacity_ReturnsCorrectArray()
+        [Fact] public void ToArray_ExactDefaultCapacity_ReturnsCorrectArray()
         {
             IEnumerable<int> source = Enumerable.Range(1, 4);
 
@@ -91,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="EnumerableHelpers.ToArray{T}" /> grows the array correctly
         ///     when the source size triggers one resize step (5 elements, start at 4, grow to 8).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_GrowsFromDefaultToDouble_ReturnsCorrectArray()
+        [Fact] public void ToArray_GrowsFromDefaultToDouble_ReturnsCorrectArray()
         {
             IEnumerable<int> source = Enumerable.Range(1, 5);
 
@@ -107,8 +103,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Tests that <see cref="EnumerableHelpers.ToArray{T}" /> handles reference types
         ///     from a non-ICollection enumerable.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_NonCollectionEnumerableWithReferenceTypes_ReturnsCorrectArray()
+        [Fact] public void ToArray_NonCollectionEnumerableWithReferenceTypes_ReturnsCorrectArray()
         {
             IEnumerable<string> source = StringEnumerable();
 
@@ -123,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         /// Tests that to array nine elements triggers multiple resizes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_NineElements_TriggersMultipleResizes()
+        [Fact] public void ToArray_NineElements_TriggersMultipleResizes()
         {
             IEnumerable<int> source = NineElementEnumerable();
 
@@ -139,8 +133,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         /// Tests that to array seventeen elements triggers three resizes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_SeventeenElements_TriggersThreeResizes()
+        [Fact] public void ToArray_SeventeenElements_TriggersThreeResizes()
         {
             IEnumerable<int> source = SeventeenElementEnumerable();
 
@@ -155,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         /// Tests that to array empty i collection returns empty array
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_EmptyICollection_ReturnsEmptyArray()
+        [Fact] public void ToArray_EmptyICollection_ReturnsEmptyArray()
         {
             ICollection<int> source = new List<int>();
 
@@ -169,8 +161,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         /// Tests that reset on custom enumerator restores state
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Reset_OnCustomEnumerator_RestoresState()
+        [Fact] public void Reset_OnCustomEnumerator_RestoresState()
         {
             List<int> items = [1, 2, 3];
             IEnumerator<int> enumerator = items.GetEnumerator();

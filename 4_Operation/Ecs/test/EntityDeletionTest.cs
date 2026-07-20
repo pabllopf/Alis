@@ -45,8 +45,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entity can be deleted
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_CanBeDeleted()
+        [Fact] public void GameObject_CanBeDeleted()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 10});
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that deleted entity is not in queries
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_ExcludesDeletedEntities()
+        [Fact] public void Query_ExcludesDeletedEntities()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
@@ -86,8 +84,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests deleting multiple entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanDeleteMultipleEntities()
+        [Fact] public void Scene_CanDeleteMultipleEntities()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
@@ -111,8 +108,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests entity deleted event fires
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityDeletedEventFires()
+        [Fact] public void Scene_EntityDeletedEventFires()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
@@ -128,8 +124,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that deleted entity raises event with correct entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityDeletedEventIncludesCorrectEntity()
+        [Fact] public void Scene_EntityDeletedEventIncludesCorrectEntity()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
@@ -145,8 +140,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that all entities can be deleted
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanDeleteAllEntities()
+        [Fact] public void Scene_CanDeleteAllEntities()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position());

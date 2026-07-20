@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that ComponentHandle can be instantiated with valid parameters.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_CanBeCreatedWithParameters()
+        [Fact] public void ComponentHandle_CanBeCreatedWithParameters()
         {
             ComponentId id = new ComponentId(5);
 
@@ -66,8 +65,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the Index field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_ComponentIndexIsPreserved()
+        [Fact] public void ComponentHandle_ComponentIndexIsPreserved()
         {
             ComponentId id = new ComponentId(10);
 
@@ -82,8 +80,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the ComponentId field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_ComponentIdIsPreserved()
+        [Fact] public void ComponentHandle_ComponentIdIsPreserved()
         {
             ComponentId id = new ComponentId(25);
 
@@ -99,8 +96,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with zero component index and component ID.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_WithZeroIndices()
+        [Fact] public void ComponentHandle_WithZeroIndices()
         {
             ComponentId id = new ComponentId(0);
 
@@ -116,8 +112,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with maximum component index and component ID.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_WithMaxValues()
+        [Fact] public void ComponentHandle_WithMaxValues()
         {
             ComponentId id = new ComponentId(ushort.MaxValue);
 
@@ -133,8 +128,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests ComponentHandle equality comparison.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_Equality()
+        [Fact] public void ComponentHandle_Equality()
         {
             ComponentId id = new ComponentId(5);
             ComponentHandle handle1 = new ComponentHandle(10, id);
@@ -151,8 +145,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that hash codes are consistent for equal handles.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_HashCodeConsistency()
+        [Fact] public void ComponentHandle_HashCodeConsistency()
         {
             ComponentId id = new ComponentId(8);
             ComponentHandle handle1 = new ComponentHandle(15, id);
@@ -167,8 +160,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Confirms that ComponentHandle is a value type.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_IsValueType()
+        [Fact] public void ComponentHandle_IsValueType()
         {
             ComponentId id1 = new ComponentId(10);
             ComponentId id2 = new ComponentId(30);
@@ -184,8 +176,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests creation with negative component index.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_WithNegativeIndex()
+        [Fact] public void ComponentHandle_WithNegativeIndex()
         {
             ComponentId id = new ComponentId(10);
 
@@ -200,8 +191,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that handles with different component IDs are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_WithDifferentComponentIdsAreNotEqual()
+        [Fact] public void ComponentHandle_WithDifferentComponentIdsAreNotEqual()
         {
             ComponentId id1 = new ComponentId(5);
             ComponentId id2 = new ComponentId(10);
@@ -217,8 +207,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates string representation of ComponentHandle.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_ToStringWorks()
+        [Fact] public void ComponentHandle_ToStringWorks()
         {
             ComponentId id = new ComponentId(5);
             ComponentHandle handle = new ComponentHandle(10, id);
@@ -235,8 +224,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the equality operator works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_EqualityOperator()
+        [Fact] public void ComponentHandle_EqualityOperator()
         {
             ComponentId id = new ComponentId(5);
             ComponentHandle handle1 = new ComponentHandle(10, id);
@@ -253,8 +241,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the inequality operator works correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_InequalityOperator()
+        [Fact] public void ComponentHandle_InequalityOperator()
         {
             ComponentId id = new ComponentId(5);
             ComponentHandle handle1 = new ComponentHandle(10, id);
@@ -271,8 +258,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Type property reflects the component type.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ComponentHandle_TypeProperty()
+        [Fact] public void ComponentHandle_TypeProperty()
         {
             ComponentId id = new ComponentId(0);
             ComponentHandle handle = new ComponentHandle(5, id);
@@ -292,8 +278,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that DebuggerDisplayString returns the string representation
         ///     when the component handle has a valid component.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DebuggerDisplayString_WithValidComponent_ShouldReturnValue()
+        [Fact] public void DebuggerDisplayString_WithValidComponent_ShouldReturnValue()
         {
             Position position = new Position { X = 10, Y = 20 };
             ComponentHandle handle = ComponentHandle.Create(position);
@@ -307,8 +292,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Tests that DebuggerDisplayString returns "null"
         ///     when the component handle points to a disposed reference type component.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DebuggerDisplayString_AfterDispose_ShouldReturnNull()
+        [Fact] public void DebuggerDisplayString_AfterDispose_ShouldReturnNull()
         {
             string text = "test";
             ComponentHandle handle = ComponentHandle.Create(text);

@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_IsValueType()
+        [Fact] public void AddComponent_IsValueType()
         {
             Type type = typeof(AddComponent);
 
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component has sequential struct layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_HasSequentialStructLayout()
+        [Fact] public void AddComponent_HasSequentialStructLayout()
         {
             StructLayoutAttribute layout = typeof(AddComponent).StructLayoutAttribute;
 
@@ -65,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component stores entity
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_StoresEntity()
+        [Fact] public void AddComponent_StoresEntity()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
@@ -78,8 +75,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component stores component handle
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_StoresComponentHandle()
+        [Fact] public void AddComponent_StoresComponentHandle()
         {
             ComponentHandle handle = ComponentHandle.Create(new Position {X = 1, Y = 2});
 
@@ -91,8 +87,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <summary>
         ///     Tests that add component equality works
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddComponent_EqualityWorks()
+        [Fact] public void AddComponent_EqualityWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentHandle handle = ComponentHandle.Create(new Position {X = 1, Y = 2});

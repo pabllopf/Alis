@@ -50,8 +50,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that a CommandBuffer can be instantiated.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanBeCreated()
+        [Fact] public void CommandBuffer_CanBeCreated()
         {
             CommandBuffer buffer = new CommandBuffer(new Scene());
 
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Validates that CommandBuffer can queue multiple entity creations
         ///     to be applied later in batch.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanBatchEntityCreation()
+        [Fact] public void CommandBuffer_CanBatchEntityCreation()
         {
             Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(new Scene());
@@ -88,8 +86,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Verifies that CommandBuffer can defer component additions
         ///     without immediate structural changes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanDeferComponentAdditions()
+        [Fact] public void CommandBuffer_CanDeferComponentAdditions()
         {
             Scene scene = new Scene();
             CommandBuffer buffer = new CommandBuffer(new Scene());
@@ -109,8 +106,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Validates that using CommandBuffer doesn't interfere with
         ///     entity queries during deferred operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_DoesNotBreakQueriesDuringDeferredOps()
+        [Fact] public void CommandBuffer_DoesNotBreakQueriesDuringDeferredOps()
         {
             Scene scene = new Scene();
             GameObject e1 = scene.Create();
@@ -137,8 +133,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Verifies that CommandBuffer can be reset/cleared
         ///     if needed before applying pending operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_CanBeClearedIfNeeded()
+        [Fact] public void CommandBuffer_CanBeClearedIfNeeded()
         {
             CommandBuffer buffer1 = new CommandBuffer(new Scene());
             CommandBuffer buffer2 = new CommandBuffer(new Scene());
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Validates that multiple CommandBuffer instances can coexist
         ///     and be used independently.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_MultipleBuffersCanCoexist()
+        [Fact] public void CommandBuffer_MultipleBuffersCanCoexist()
         {
             Scene scene = new Scene();
             CommandBuffer buffer1 = new CommandBuffer(new Scene());
@@ -173,7 +167,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             scene.Dispose();
         }
 
-
         /// <summary>
         ///     Tests command buffer handles mixed operations
         /// </summary>
@@ -181,8 +174,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     Validates that CommandBuffer correctly processes a mix of
         ///     creates, deletes, and component operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CommandBuffer_HandlesMixedOperations()
+        [Fact] public void CommandBuffer_HandlesMixedOperations()
         {
             Scene scene = new Scene();
 

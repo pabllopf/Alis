@@ -70,14 +70,14 @@ namespace Alis.Core.Aspect.Memory
         ///     Caches <see cref="ZipCacheEntry" /> instances keyed by assembly name so that
         ///     each assembly's assets.pack is decompressed and indexed only once.
         /// </summary>
-        private static readonly Dictionary<string, ZipCacheEntry> _zipCache = new();
+        private static readonly ConcurrentDictionary<string, ZipCacheEntry> _zipCache = new();
 
         /// <summary>
         ///     Caches the disk paths of previously extracted resources keyed by a composite
         ///     of the assembly name and the normalized resource key, avoiding re-extraction
         ///     when the cached file on disk is still valid.
         /// </summary>
-        private static readonly Dictionary<string, string> _extractedPathCache = new();
+        private static readonly ConcurrentDictionary<string, string> _extractedPathCache = new();
 
         /// <summary>
         ///     Gets or sets the assembly name that is currently considered active.
@@ -107,11 +107,11 @@ namespace Alis.Core.Aspect.Memory
             lock (_globalLock)
             {
                 RegisteredAssetLoaders[assemblyName] = assetLoader;
-                _zipCache.Remove(assemblyName);
+                _zipCache.TryRemove(assemblyName, out _);
                 _extractedPathCache.Keys
                     .Where(k => k.StartsWith(assemblyName.ToLowerInvariant() + "|"))
                     .ToList()
-                    .ForEach(k => _extractedPathCache.Remove(k));
+                    .ForEach(k => _extractedPathCache.TryRemove(k, out _));
                 if (ActiveAssemblyName == null)
                 {
                     ActiveAssemblyName = assemblyName;
@@ -319,11 +319,11 @@ namespace Alis.Core.Aspect.Memory
                         return true;
                     }
 
-                    _extractedPathCache.Remove(compositeKey);
+                    _extractedPathCache.TryRemove(compositeKey, out _);
                 }
                 else
                 {
-                    _extractedPathCache.Remove(compositeKey);
+                    _extractedPathCache.TryRemove(compositeKey, out _);
                 }
             }
 

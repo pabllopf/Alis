@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -65,14 +64,12 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         private GameObject CreateEntity(Scene scene, params object[] components) => scene.Create(components);
 
-
         #region Add<T1..T5> Tests
 
         /// <summary>
         ///     Tests that Add with 5 components works sequentially
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_FiveComponents_Sequential_WorksCorrectly()
+        [Fact] public void GameObject_Add_FiveComponents_Sequential_WorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -94,8 +91,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that Add with 6 components works sequentially
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_SixComponents_Sequential_WorksCorrectly()
+        [Fact] public void GameObject_Add_SixComponents_Sequential_WorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -118,8 +114,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that Add with 7 components works sequentially
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_SevenComponents_Sequential_WorksCorrectly()
+        [Fact] public void GameObject_Add_SevenComponents_Sequential_WorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -143,8 +138,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that Add with 8 components works sequentially
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_EightComponents_Sequential_WorksCorrectly()
+        [Fact] public void GameObject_Add_EightComponents_Sequential_WorksCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -169,8 +163,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that Add with 1 component works correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_Single_AddsComponentSuccessfully()
+        [Fact] public void GameObject_Add_Single_AddsComponentSuccessfully()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -185,8 +178,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that Add with 1 component updates component data correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_Add_Single_UpdatesComponentDataCorrectly()
+        [Fact] public void GameObject_Add_Single_UpdatesComponentDataCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 0, Y = 0});
@@ -206,8 +198,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddBoxed adds component successfully
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddBoxed_AddsComponentSuccessfully()
+        [Fact] public void GameObject_AddBoxed_AddsComponentSuccessfully()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -221,8 +212,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddBoxed works with boxed value types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddBoxed_WorksWithBoxedValueTypes()
+        [Fact] public void GameObject_AddBoxed_WorksWithBoxedValueTypes()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -241,8 +231,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddAs with Type adds component successfully
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddAs_WithType_AddsComponentSuccessfully()
+        [Fact] public void GameObject_AddAs_WithType_AddsComponentSuccessfully()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -256,8 +245,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddAs with Type preserves component data
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddAs_WithType_PreservesComponentData()
+        [Fact] public void GameObject_AddAs_WithType_PreservesComponentData()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 10, Y = 20});
@@ -274,8 +262,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddAs with ComponentId adds component successfully
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddAs_WithComponentId_AddsComponentSuccessfully()
+        [Fact] public void GameObject_AddAs_WithComponentId_AddsComponentSuccessfully()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -289,8 +276,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that AddAs with ComponentId works with multiple adds
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddAs_WithComponentId_WorksWithMultipleAdds()
+        [Fact] public void GameObject_AddAs_WithComponentId_WorksWithMultipleAdds()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -304,14 +290,12 @@ namespace Alis.Core.Ecs.Test
 
         #endregion
 
-
         #region Integration Tests
 
         /// <summary>
         ///     Tests that Add and Remove work together correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AddRemove_WorkTogetherCorrectly()
+        [Fact] public void GameObject_AddRemove_WorkTogetherCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});
@@ -330,8 +314,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that all Add variants work correctly
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_AllAddVariants_WorkCorrectly()
+        [Fact] public void GameObject_AllAddVariants_WorkCorrectly()
         {
             using Scene scene = new Scene();
             GameObject go = CreateEntity(scene, new Position {X = 1, Y = 2});

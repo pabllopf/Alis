@@ -39,8 +39,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entity id can be set and retrieved correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EntityID_SetAndGet_ShouldWorkCorrectly()
+        [Fact] public void EntityID_SetAndGet_ShouldWorkCorrectly()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -52,8 +51,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entity low can be set and retrieved correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EntityLow_SetAndGet_ShouldWorkCorrectly()
+        [Fact] public void EntityLow_SetAndGet_ShouldWorkCorrectly()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -65,8 +63,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that both fields can be set independently.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void BothFields_SetIndependently_ShouldNotInterfere()
+        [Fact] public void BothFields_SetIndependently_ShouldNotInterfere()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -80,8 +77,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that default values are zero.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultValues_ShouldBeZero()
+        [Fact] public void DefaultValues_ShouldBeZero()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -92,8 +88,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that negative values can be stored.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void NegativeValues_ShouldBeStoredCorrectly()
+        [Fact] public void NegativeValues_ShouldBeStoredCorrectly()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -107,8 +102,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that maximum int values can be stored.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MaxValues_ShouldBeStoredCorrectly()
+        [Fact] public void MaxValues_ShouldBeStoredCorrectly()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 
@@ -122,8 +116,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that minimum int values can be stored.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MinValues_ShouldBeStoredCorrectly()
+        [Fact] public void MinValues_ShouldBeStoredCorrectly()
         {
             EntityHighLow entityHighLow = new EntityHighLow();
 

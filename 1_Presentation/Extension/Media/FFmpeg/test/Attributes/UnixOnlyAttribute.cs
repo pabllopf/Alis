@@ -46,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX) && !RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                Skip = "Only running on unix systems mode";
+
             }
         }
     }

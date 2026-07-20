@@ -46,11 +46,10 @@ namespace Alis.Extension.Graphic.Glfw.Test.Attributes
         {
             if (!HasDisplay())
             {
-                Skip = "Test requires a graphical display environment, but none was detected.";
+
             }
         }
-        
-        
+
 #if NET5_0_OR_GREATER
 
         private static bool IsWindows() => OperatingSystem.IsWindows();

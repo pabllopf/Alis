@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with single component uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_WithSingleComponent_UsesHashCache()
+        [Fact] public void Query_WithSingleComponent_UsesHashCache()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 });
@@ -24,8 +23,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with two components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_WithTwoComponents_UsesHashCache()
+        [Fact] public void Query_WithTwoComponents_UsesHashCache()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
@@ -36,8 +34,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with three components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_WithThreeComponents_UsesHashCache()
+        [Fact] public void Query_WithThreeComponents_UsesHashCache()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 }, new Health { Value = 5 });
@@ -48,8 +45,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         /// Tests that query with four components uses hash cache
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_WithFourComponents_UsesHashCache()
+        [Fact] public void Query_WithFourComponents_UsesHashCache()
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health(), new Transform());

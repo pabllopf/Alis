@@ -44,8 +44,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that default game object is null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_DefaultIsNull()
+        [Fact] public void GameObject_DefaultIsNull()
         {
             GameObject defaultEntity = default(GameObject);
 
@@ -56,8 +55,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests entity equality
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EqualityWorks()
+        [Fact] public void GameObject_EqualityWorks()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
@@ -70,8 +68,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests different entities are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_DifferentEntitiesAreNotEqual()
+        [Fact] public void GameObject_DifferentEntitiesAreNotEqual()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
@@ -84,8 +81,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entities from different scenes are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_EntitiesFromDifferentScenesAreNotEqual()
+        [Fact] public void GameObject_EntitiesFromDifferentScenesAreNotEqual()
         {
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
@@ -98,8 +94,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests entity hash code
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_GetHashCodeWorks()
+        [Fact] public void GameObject_GetHashCodeWorks()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create();
@@ -114,8 +109,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entity IDs are sequential
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_EntityIdsAreSequential()
+        [Fact] public void Scene_EntityIdsAreSequential()
         {
             using Scene scene = new Scene();
 
@@ -130,8 +124,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests checking if entity is null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_IsNullCheck()
+        [Fact] public void GameObject_IsNullCheck()
         {
             using Scene scene = new Scene();
             GameObject nullEntity = default(GameObject);
@@ -144,8 +137,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that entity maintains identity after component changes
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GameObject_MaintainsIdentityAfterComponentChanges()
+        [Fact] public void GameObject_MaintainsIdentityAfterComponentChanges()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();

@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that an InlineArray8 struct can be instantiated.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_CanBeCreated()
+        [Fact] public void InlineArray8_CanBeCreated()
         {
             InlineArray8<int> array = new InlineArray8<int>();
 
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that all 8 fields of InlineArray8 can be accessed and set.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_AllElementsCanBeAccessed()
+        [Fact] public void InlineArray8_AllElementsCanBeAccessed()
         {
             InlineArray8<int> array = new InlineArray8<int>();
 
@@ -93,8 +91,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that InlineArray8 works with reference type elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_CanStoreReferenceTypes()
+        [Fact] public void InlineArray8_CanStoreReferenceTypes()
         {
             InlineArray8<string> array = new InlineArray8<string>();
 
@@ -113,8 +110,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that InlineArray8 works with value type elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_CanStoreValueTypes()
+        [Fact] public void InlineArray8_CanStoreValueTypes()
         {
             InlineArray8<Position> array = new InlineArray8<Position>();
             Position p1 = new Position {X = 1, Y = 2};
@@ -134,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Validates that InlineArray8 is a value type that can be used on the stack
         ///     without allocating on the heap.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_IsStackAllocated()
+        [Fact] public void InlineArray8_IsStackAllocated()
         {
             InlineArray8<int> array = new InlineArray8<int>();
             for (int i = 0; i < 100; i++)
@@ -153,8 +148,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Verifies that each element of InlineArray8 maintains its own value
         ///     independently from others.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_PreservesValuesIndependently()
+        [Fact] public void InlineArray8_PreservesValuesIndependently()
         {
             InlineArray8<int> array1 = new InlineArray8<int>();
             InlineArray8<int> array2 = new InlineArray8<int>();
@@ -172,8 +166,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that InlineArray8 starts with default values when created.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_DefaultInitializes()
+        [Fact] public void InlineArray8_DefaultInitializes()
         {
             InlineArray8<int> array = default(InlineArray8<int>);
 
@@ -187,8 +180,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that InlineArray8 is generic and works with various types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void InlineArray8_WorksWithDifferentValueTypes()
+        [Fact] public void InlineArray8_WorksWithDifferentValueTypes()
         {
             InlineArray8<byte> byteArray = new InlineArray8<byte>();
             InlineArray8<long> longArray = new InlineArray8<long>();

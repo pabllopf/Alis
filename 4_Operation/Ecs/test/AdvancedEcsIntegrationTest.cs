@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that an entity correctly transitions through multiple archetypes
         ///     when components are added sequentially.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_ArchetypeMigrationWithMultipleComponents()
+        [Fact] public void AdvancedEcs_ArchetypeMigrationWithMultipleComponents()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -71,8 +70,7 @@ namespace Alis.Core.Ecs.Test
         ///     Verifies that creating many entities with the same components
         ///     reuses the same archetype for efficiency.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_BulkEntityCreationWithSameArchetype()
+        [Fact] public void AdvancedEcs_BulkEntityCreationWithSameArchetype()
         {
             using Scene scene = new Scene();
             const int entityCount = 100;
@@ -99,8 +97,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that the ECS correctly handles diverse entity archetypes
         ///     with different component combinations in the same scene.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_ComplexArchetypeTopology()
+        [Fact] public void AdvancedEcs_ComplexArchetypeTopology()
         {
             using Scene scene = new Scene();
 
@@ -132,8 +129,7 @@ namespace Alis.Core.Ecs.Test
         ///     Verifies that removing components causes the entity to move to
         ///     a simpler archetype.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_ComponentRemovalAndArchetypeDowngrade()
+        [Fact] public void AdvancedEcs_ComponentRemovalAndArchetypeDowngrade()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -156,8 +152,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that deferred component operations (add/remove)
         ///     don't break queries or entity integrity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_DeferredOperationsDoNotBreakState()
+        [Fact] public void AdvancedEcs_DeferredOperationsDoNotBreakState()
         {
             using Scene scene = new Scene();
             GameObject e1 = scene.Create();
@@ -181,8 +176,7 @@ namespace Alis.Core.Ecs.Test
         ///     Verifies that component data is preserved when an entity
         ///     transitions between archetypes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_ComponentDataPreservedAcrossArchetypeChanges()
+        [Fact] public void AdvancedEcs_ComponentDataPreservedAcrossArchetypeChanges()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -206,8 +200,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that quickly adding and removing components
         ///     doesn't introduce bugs or memory corruption.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_RapidAddRemoveCyclesDoNotCorruptState()
+        [Fact] public void AdvancedEcs_RapidAddRemoveCyclesDoNotCorruptState()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -231,8 +224,7 @@ namespace Alis.Core.Ecs.Test
         ///     Verifies that multiple Scene instances operate independently
         ///     without interfering with each other.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_MultipleScenesCoexistIndependently()
+        [Fact] public void AdvancedEcs_MultipleScenesCoexistIndependently()
         {
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
@@ -255,8 +247,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that component references obtained at different times
         ///     point to the same entity data.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AdvancedEcs_ComponentAccessConsistencyAcrossUpdates()
+        [Fact] public void AdvancedEcs_ComponentAccessConsistencyAcrossUpdates()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();

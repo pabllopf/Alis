@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     factory for a source-generated type (Position). This covers the
         ///     <see cref="GenerationServices.UserGeneratedTypeMap" /> resolution path.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentFactoryFromType_SourceGeneratedType_ReturnsFactory()
+        [Fact] public void GetComponentFactoryFromType_SourceGeneratedType_ReturnsFactory()
         {
             object factory = Component.GetComponentFactoryFromType(typeof(Position));
 
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     registered. This covers the <c>IComponentBase.IsAssignableFrom</c> branch of
         ///     <see cref="Component" />.Throw_ComponentTypeNotInit.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentFactoryFromType_IComponentBaseInterface_ThrowsWithSourceGenMessage()
+        [Fact] public void GetComponentFactoryFromType_IComponentBaseInterface_ThrowsWithSourceGenMessage()
         {
             InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
                 Component.GetComponentFactoryFromType(typeof(IOnInit)));
@@ -77,8 +75,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     <c>NoneComponentRunnerTable</c> when the type is already in
         ///     <see cref="GenerationServices.UserGeneratedTypeMap" /> (source-generated types).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterComponent_SourceGeneratedType_SkipsRegistration()
+        [Fact] public void RegisterComponent_SourceGeneratedType_SkipsRegistration()
         {
             Exception exception = Record.Exception(() => Component.RegisterComponent<Position>());
 
@@ -90,8 +87,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     non-null init and destroy delegates for a source-generated type that implements
         ///     <see cref="IOnInit" /> and <see cref="IOnDestroy" />.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetExistingOrSetupNewComponent_SourceGeneratedType_HasInitDelegate()
+        [Fact] public void GetExistingOrSetupNewComponent_SourceGeneratedType_HasInitDelegate()
         {
             (ComponentId id, _, ComponentDelegates<Health>.InitDelegate init, _) =
                 Component.GetExistingOrSetupNewComponent<Health>();
@@ -105,8 +101,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         ///     table entry with non-null init and destroy delegates for source-generated types
         ///     that have lifecycle methods.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentId_WithInitAndDestroyDelegates_PopulatesTable()
+        [Fact] public void GetComponentId_WithInitAndDestroyDelegates_PopulatesTable()
         {
             ComponentId id = Component.GetComponentId(typeof(Position));
 

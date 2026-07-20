@@ -12,8 +12,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         /// Tests that interface can be implemented
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Interface_CanBeImplemented()
+        [Fact] public void Interface_CanBeImplemented()
         {
             var filter = new TestUpdateFilter();
             Assert.NotNull(filter);
@@ -22,8 +21,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         /// Tests that update subset with empty span does not throw
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_WithEmptySpan_DoesNotThrow()
+        [Fact] public void UpdateSubset_WithEmptySpan_DoesNotThrow()
         {
             var filter = new TestUpdateFilter();
             ReadOnlySpan<ArchetypeDeferredUpdateRecord> span = [];
@@ -34,8 +32,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         /// Tests that interface can be used as parameter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Interface_CanBeUsedAsParameter()
+        [Fact] public void Interface_CanBeUsedAsParameter()
         {
             var filter = new TestUpdateFilter();
             UseFilter(filter);

@@ -42,8 +42,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 1 type parameter exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With1TypeParameter_Exists()
+        [Fact] public void QueryDelegate_With1TypeParameter_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`1");
 
@@ -55,8 +54,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 2 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With2TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With2TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`2");
 
@@ -67,8 +65,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 3 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With3TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With3TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`3");
 
@@ -79,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 4 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With4TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With4TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`4");
 
@@ -91,8 +87,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 5 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With5TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With5TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`5");
 
@@ -103,8 +98,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 6 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With6TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With6TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`6");
 
@@ -115,8 +109,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 7 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With7TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With7TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`7");
 
@@ -127,8 +120,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates with 8 type parameters exist
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate_With8TypeParameters_Exists()
+        [Fact] public void QueryDelegate_With8TypeParameters_Exists()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`8");
 
@@ -139,8 +131,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegates are all delegate types
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegates_AllAreDelegateTypes()
+        [Fact] public void QueryDelegates_AllAreDelegateTypes()
         {
             for (int i = 1; i <= 8; i++)
             {
@@ -152,8 +143,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegate has void return type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate1_HasVoidReturnType()
+        [Fact] public void QueryDelegate1_HasVoidReturnType()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`1");
             MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
@@ -164,8 +154,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegate with 1 type has 1 ref parameter
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate1_HasCorrectParameterCount()
+        [Fact] public void QueryDelegate1_HasCorrectParameterCount()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`1");
             MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
@@ -177,8 +166,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegate with 8 type has 8 parameters
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegate8_HasCorrectParameterCount()
+        [Fact] public void QueryDelegate8_HasCorrectParameterCount()
         {
             Type delegateType = typeof(QueryDelegates).GetNestedType("Query`8");
             MethodInfo invokeMethod = delegateType.GetMethod("Invoke");
@@ -190,8 +178,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Query delegate class is static
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryDelegatesClass_IsStatic()
+        [Fact] public void QueryDelegatesClass_IsStatic()
         {
             Type type = typeof(QueryDelegates);
 

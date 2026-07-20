@@ -47,7 +47,7 @@ namespace Alis.Extension.Io.FileDialog.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Skip = "Only running in macos mode";
+
             }
         }
     }
@@ -69,7 +69,7 @@ namespace Alis.Extension.Io.FileDialog.Test.Attributes
         /// </summary>
         public OSXOnlyAttribute()
         {
-            Skip = "Platform attributes not supported on this framework";
+
         }
     }
 }

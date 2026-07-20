@@ -48,8 +48,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction can be implemented with a simple value type
         ///     and the Run method executes correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithIntParameter_CanBeImplemented()
+        [Fact] public void IAction_WithIntParameter_CanBeImplemented()
         {
             IntIncrementAction action = new IntIncrementAction();
             int value = 5;
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that IAction works with custom structs as parameters.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithStructParameter_CanBeImplemented()
+        [Fact] public void IAction_WithStructParameter_CanBeImplemented()
         {
             StructModifyAction action = new StructModifyAction();
             TestStruct testStruct = new TestStruct {Value = 10};
@@ -83,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that the ref parameter allows modifications
         ///     that persist after the method call.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithRefParameter_ModifiesOriginalValue()
+        [Fact] public void IAction_WithRefParameter_ModifiesOriginalValue()
         {
             IntMultiplyAction action = new IntMultiplyAction(3);
             int value = 7;
@@ -101,8 +98,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction implementations can be used
         ///     in generic contexts.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_CanBeUsedInGenericMethod()
+        [Fact] public void IAction_CanBeUsedInGenericMethod()
         {
             IntIncrementAction action = new IntIncrementAction();
             int value = 100;
@@ -119,8 +115,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that different IAction implementations can be
         ///     used independently without conflicts.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_MultipleImplementations_CanCoexist()
+        [Fact] public void IAction_MultipleImplementations_CanCoexist()
         {
             IntIncrementAction incrementAction = new IntIncrementAction();
             IntMultiplyAction multiplyAction = new IntMultiplyAction(2);
@@ -141,8 +136,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction implementations can be reused
         ///     across multiple invocations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_CanBeCalledMultipleTimes()
+        [Fact] public void IAction_CanBeCalledMultipleTimes()
         {
             IntIncrementAction action = new IntIncrementAction();
             int value = 0;
@@ -162,8 +156,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction implementations can maintain internal state
         ///     across multiple calls.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithStatefulImplementation_MaintainsState()
+        [Fact] public void IAction_WithStatefulImplementation_MaintainsState()
         {
             CountingAction action = new CountingAction();
             int dummy = 0;
@@ -182,8 +175,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction can perform complex operations
         ///     beyond simple value modifications.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_CanHandleComplexOperations()
+        [Fact] public void IAction_CanHandleComplexOperations()
         {
             ComplexStructAction action = new ComplexStructAction();
             ComplexStruct complex = new ComplexStruct {A = 5, B = 10, C = 15};
@@ -202,8 +194,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that IAction can capture and use external values
         ///     similar to lambda expressions.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithCapturedValue_WorksCorrectly()
+        [Fact] public void IAction_WithCapturedValue_WorksCorrectly()
         {
             int multiplier = 5;
             IntMultiplyAction action = new IntMultiplyAction(multiplier);
@@ -220,8 +211,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that IAction handles edge case of zero input correctly.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithZeroValue_HandlesCorrectly()
+        [Fact] public void IAction_WithZeroValue_HandlesCorrectly()
         {
             IntIncrementAction action = new IntIncrementAction();
             int value = 0;
@@ -237,8 +227,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <remarks>
         ///     Validates that IAction works correctly with negative numbers.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_WithNegativeValue_HandlesCorrectly()
+        [Fact] public void IAction_WithNegativeValue_HandlesCorrectly()
         {
             IntIncrementAction action = new IntIncrementAction();
             int value = -5;
@@ -255,8 +244,7 @@ namespace Alis.Core.Ecs.Test.Systems
         ///     Validates that separate IAction instances can be used
         ///     independently in concurrent scenarios.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IAction_InParallelScenarios_WorksIndependently()
+        [Fact] public void IAction_InParallelScenarios_WorksIndependently()
         {
             IntIncrementAction action1 = new IntIncrementAction();
             IntIncrementAction action2 = new IntIncrementAction();
@@ -270,7 +258,6 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(21, value2);
         }
 
-
         /// <summary>
         ///     Processes an action
         /// </summary>
@@ -278,7 +265,6 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             action.Run(ref value);
         }
-
 
         /// <summary>
         ///     Test implementation that increments an integer

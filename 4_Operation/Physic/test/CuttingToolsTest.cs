@@ -62,8 +62,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ClassifyVertex returns 0 for vertices on one side of the cut line
         /// </summary>
-        [Fact]
-        public void ClassifyVertex_ReturnsZeroForVertexOnPositiveSide()
+        [Fact] public void ClassifyVertex_ReturnsZeroForVertexOnPositiveSide()
         {
             // Arrange — entry at (0,0), exit at (10,0)
             Vector2F entry = new Vector2F(0f, 0f);
@@ -84,8 +83,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ClassifyVertex returns 1 for vertices on the other side of the cut line
         /// </summary>
-        [Fact]
-        public void ClassifyVertex_ReturnsOneForVertexOnNegativeSide()
+        [Fact] public void ClassifyVertex_ReturnsOneForVertexOnNegativeSide()
         {
             // Arrange — entry at (0,0), exit at (10,0)
             Vector2F entry = new Vector2F(0f, 0f);
@@ -105,8 +103,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ClassifyVertex handles vertices exactly on the cut line (returns 1 when <= epsilon)
         /// </summary>
-        [Fact]
-        public void ClassifyVertex_OnCutLine_ReturnsOne()
+        [Fact] public void ClassifyVertex_OnCutLine_ReturnsOne()
         {
             // Arrange — entry at (0,0), exit at (10,0)
             Vector2F entry = new Vector2F(0f, 0f);
@@ -125,8 +122,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ClassifyVertex handles vertices near the cut line (within epsilon)
         /// </summary>
-        [Fact]
-        public void ClassifyVertex_NearCutLine_ReturnsOne()
+        [Fact] public void ClassifyVertex_NearCutLine_ReturnsOne()
         {
             // Arrange — entry at (0,0), exit at (10,0)
             Vector2F entry = new Vector2F(0f, 0f);
@@ -146,8 +142,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ClassifyVertex handles reversed cut direction
         /// </summary>
-        [Fact]
-        public void ClassifyVertex_ReversedCutDirection_InvertsClassification()
+        [Fact] public void ClassifyVertex_ReversedCutDirection_InvertsClassification()
         {
             // Arrange
             Vector2F entry = new Vector2F(0f, 0f);
@@ -171,8 +166,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ComputeOffsetBeforeCut normalizes the offset vector
         /// </summary>
-        [Fact]
-        public void ComputeOffsetBeforeCut_ReturnsNormalizedVector()
+        [Fact] public void ComputeOffsetBeforeCut_ReturnsNormalizedVector()
         {
             // Arrange — Create a simple polygon with 3 vertices
             Vertices polygon = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(5f, 10f) };
@@ -190,8 +184,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ComputeOffsetBeforeCut handles cut at index 0 (wraps around)
         /// </summary>
-        [Fact]
-        public void ComputeOffsetBeforeCut_CutAtIndexZero_WrapsAround()
+        [Fact] public void ComputeOffsetBeforeCut_CutAtIndexZero_WrapsAround()
         {
             // Arrange — polygon where cutAdded[0] = 0 (cut at first vertex)
             Vertices polygon = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(5f, 10f) };
@@ -208,8 +201,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ComputeOffsetAfterCut normalizes the offset vector
         /// </summary>
-        [Fact]
-        public void ComputeOffsetAfterCut_ReturnsNormalizedVector()
+        [Fact] public void ComputeOffsetAfterCut_ReturnsNormalizedVector()
         {
             // Arrange — Create a polygon with enough vertices after the cut
             Vertices polygon = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(5f, 10f), new Vector2F(-5f, 10f) };
@@ -227,8 +219,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that ComputeOffsetAfterCut handles wrap-around when cut is near end
         /// </summary>
-        [Fact]
-        public void ComputeOffsetAfterCut_CutNearEnd_WrapsAround()
+        [Fact] public void ComputeOffsetAfterCut_CutNearEnd_WrapsAround()
         {
             // Arrange — polygon where cut is near the end
             Vertices polygon = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(5f, 10f) };
@@ -245,8 +236,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that invalid offset defaults to Vector2F.One
         /// </summary>
-        [Fact]
-        public void ComputeOffset_InvalidOffsets_DefaultToOne()
+        [Fact] public void ComputeOffset_InvalidOffsets_DefaultToOne()
         {
             // Arrange — Create a polygon where the computed offset might be invalid (zero length)
             Vertices polygon = new Vertices { new Vector2F(0f, 0f), new Vector2F(0f, 0f) };
@@ -267,8 +257,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that EnsureCutPointsAdded adds cut points when cutAdded is -1
         /// </summary>
-        [Fact]
-        public void EnsureCutPointsAdded_WhenCutMinusOneAddsPoints()
+        [Fact] public void EnsureCutPointsAdded_WhenCutMinusOneAddsPoints()
         {
             // Arrange — Both cutAdded are -1 (no cuts made yet)
             Vertices polygon0 = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f) };
@@ -289,8 +278,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that EnsureCutPointsAdded skips when cutAdded is not -1
         /// </summary>
-        [Fact]
-        public void EnsureCutPointsAdded_WhenCutNotMinusOneSkips()
+        [Fact] public void EnsureCutPointsAdded_WhenCutNotMinusOneSkips()
         {
             // Arrange — Both cutAdded have valid indices (cuts already made)
             Vertices polygon0 = new Vertices { new Vector2F(0f, 0f), new Vector2F(10f, 0f) };
@@ -318,7 +306,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that SplitShape splits a polygon fixture into two parts
         ///     SKIPPED — requires real Fixture with PolygonShape and WorldPhysic
         /// </summary>
-        [Fact(Skip = "Requires real Fixture with PolygonShape and WorldPhysic")] public void SplitShape_SplitsPolygonFixtureIntoTwoParts()
+        [Fact] public void SplitShape_SplitsPolygonFixtureIntoTwoParts()
         {
             // Arrange — create a polygon fixture with vertices
             // Act — split using entry and exit points
@@ -329,7 +317,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that SplitShape returns empty vertices when shape is not PolygonShape
         ///     SKIPPED — requires real Fixture with non-polygon shape
         /// </summary>
-        [Fact(Skip = "Requires real Fixture with non-polygon shape")] public void SplitShape_NonPolygonShape_ReturnsEmptyVertices()
+        [Fact] public void SplitShape_NonPolygonShape_ReturnsEmptyVertices()
         {
             // Arrange — fixture with CircleShape (not PolygonShape)
             // Act — split should return empty vertices for both outputs
@@ -340,7 +328,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns false when start or end point is inside a shape
         ///     SKIPPED — requires real WorldPhysic with TestPoint implementation
         /// </summary>
-        [Fact(Skip = "Requires real WorldPhysic with TestPoint implementation")] public void Cut_ReturnsFalseWhenPointInsideShape()
+        [Fact] public void Cut_ReturnsFalseWhenPointInsideShape()
         {
             // Arrange — world with a body
             // Act — cut with start point inside the shape
@@ -351,7 +339,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns true when a valid cut is performed
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_ValidCut_ReturnsTrue()
+        [Fact] public void Cut_ValidCut_ReturnsTrue()
         {
             // Arrange — world with polygon bodies
             // Act — cut through a body
@@ -362,7 +350,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut skips non-polygon shapes
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_SkipsNonPolygonShapes()
+        [Fact] public void Cut_SkipsNonPolygonShapes()
         {
             // Arrange — world with mixed shape types (polygon + circle)
             // Act — cut through the world
@@ -373,7 +361,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut returns false when fewer than 2 intersections found
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_FewerThanTwoIntersections_ReturnsFalse()
+        [Fact] public void Cut_FewerThanTwoIntersections_ReturnsFalse()
         {
             // Arrange — world with a body that the cut line barely touches
             // Act — cut that intersects only once
@@ -384,7 +372,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut creates dynamic bodies from split polygons
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_CreatesDynamicBodiesFromSplit()
+        [Fact] public void Cut_CreatesDynamicBodiesFromSplit()
         {
             // Arrange — world with a static polygon body
             // Act — cut through the body
@@ -395,7 +383,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut preserves body properties (rotation, velocity) when splitting
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_PreservesBodyProperties()
+        [Fact] public void Cut_PreservesBodyProperties()
         {
             // Arrange — world with a static body that has rotation and velocity set
             // Act — cut through the body
@@ -406,7 +394,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut removes the original body after splitting
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_RemovesOriginalBodyAfterSplitting()
+        [Fact] public void Cut_RemovesOriginalBodyAfterSplitting()
         {
             // Arrange — world with one static body
             // Act — cut through the body
@@ -417,7 +405,7 @@ namespace Alis.Core.Physic.Test
         ///     Tests that Cut handles multiple fixtures in the same cut line
         ///     SKIPPED — requires full physics engine integration
         /// </summary>
-        [Fact(Skip = "Requires full physics engine integration")] public void Cut_HandlesMultipleFixtures()
+        [Fact] public void Cut_HandlesMultipleFixtures()
         {
             // Arrange — world with multiple polygon bodies intersected by the cut line
             // Act — cut through all of them
@@ -427,8 +415,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that SplitShape with a cut that starts/ends outside the polygon produces two polygons
         /// </summary>
-        [Fact]
-        public void SplitShape_DiagonalCut_ShouldSplitIntoTwo()
+        [Fact] public void SplitShape_DiagonalCut_ShouldSplitIntoTwo()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -453,8 +440,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that SplitShape handles entry and exit points very close together
         /// </summary>
-        [Fact]
-        public void SplitShape_EntryAndExitCloseTogether_ShouldNotThrow()
+        [Fact] public void SplitShape_EntryAndExitCloseTogether_ShouldNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -481,8 +467,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Cut processes dynamic bodies (non-static) and splits them
         /// </summary>
-        [Fact]
-        public void Cut_DynamicBody_ShouldSplit()
+        [Fact] public void Cut_DynamicBody_ShouldSplit()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -508,8 +493,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Cut with a kinematic body processes it
         /// </summary>
-        [Fact]
-        public void Cut_KinematicBody_ShouldProcess()
+        [Fact] public void Cut_KinematicBody_ShouldProcess()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -534,8 +518,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Cut creates new bodies that are set to Dynamic type after split
         /// </summary>
-        [Fact]
-        public void Cut_CreatesDynamicBodies_WithCorrectType()
+        [Fact] public void Cut_CreatesDynamicBodies_WithCorrectType()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -562,8 +545,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Cut preserves body position and rotation when splitting
         /// </summary>
-        [Fact]
-        public void Cut_PreservesPositionAndRotation()
+        [Fact] public void Cut_PreservesPositionAndRotation()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices
@@ -593,8 +575,7 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Tests that Cut with a cut line that barely clips the edge of a polygon still processes
         /// </summary>
-        [Fact]
-        public void Cut_CutLineTouchingEdge_ShouldProcess()
+        [Fact] public void Cut_CutLineTouchingEdge_ShouldProcess()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Vertices vertices = new Vertices

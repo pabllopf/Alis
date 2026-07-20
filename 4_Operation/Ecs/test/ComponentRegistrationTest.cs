@@ -46,8 +46,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that each component type gets unique ID
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_EachTypeGetsUniqueId()
+        [Fact] public void Component_EachTypeGetsUniqueId()
         {
             ComponentId positionId = Component<Position>.Id;
             ComponentId healthId = Component<Health>.Id;
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that component IDs are consistent across multiple accesses
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_IdIsConsistentAcrossAccesses()
+        [Fact] public void Component_IdIsConsistentAcrossAccesses()
         {
             ComponentId id1 = Component<Position>.Id;
             ComponentId id2 = Component<Position>.Id;
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests getting component ID by type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_GetComponentIdByType()
+        [Fact] public void Component_GetComponentIdByType()
         {
             Type positionType = typeof(Position);
             ComponentId genericId = Component<Position>.Id;
@@ -88,8 +85,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that component IDs are non-zero
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_IdsAreNonZero()
+        [Fact] public void Component_IdsAreNonZero()
         {
             ComponentId posId = Component<Position>.Id;
             ComponentId healthId = Component<Health>.Id;
@@ -101,8 +97,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests registering a component multiple times is idempotent
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RegisterComponent_MultipleTimes_IsIdempotent()
+        [Fact] public void RegisterComponent_MultipleTimes_IsIdempotent()
         {
             ComponentId id1 = Component<Damage>.Id;
             ComponentId id2 = Component<Damage>.Id;
@@ -113,8 +108,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that many component types get unique IDs
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_ManyTypesGetUniqueIds()
+        [Fact] public void Component_ManyTypesGetUniqueIds()
         {
             ComponentId posId = Component<Transform>.Id;
             ComponentId testId = Component<TestComponent>.Id;

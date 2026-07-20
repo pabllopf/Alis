@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Collections
         ///     Verifies that a FastestStack can be created with the default constructor
         ///     and starts with zero count.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestStack_CanBeCreatedWithDefaultConstructor()
+        [Fact] public void FastestStack_CanBeCreatedWithDefaultConstructor()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -63,8 +62,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that a FastestStack can be created with a specific initial capacity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestStack_CanBeCreatedWithCapacity()
+        [Fact] public void FastestStack_CanBeCreatedWithCapacity()
         {
             FastestStack<int> stack = new FastestStack<int>(10);
 
@@ -78,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that a FastestStack can be initialized from an IEnumerable collection.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void FastestStack_CanBeCreatedFromEnumerable()
+        [Fact] public void FastestStack_CanBeCreatedFromEnumerable()
         {
             int[] items = {1, 2, 3, 4, 5};
 
@@ -94,8 +91,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Verifies that Push method correctly adds items to the stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Push_AddsItemToStack()
+        [Fact] public void Push_AddsItemToStack()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -110,8 +106,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that Pop method removes and returns the top item from the stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Pop_RemovesAndReturnsTopItem()
+        [Fact] public void Pop_RemovesAndReturnsTopItem()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);
@@ -129,8 +124,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that Peek method returns the top item without removing it from the stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Peek_ReturnsTopItemWithoutRemoving()
+        [Fact] public void Peek_ReturnsTopItemWithoutRemoving()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(15);
@@ -147,8 +141,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that Clear method removes all items from the stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Clear_RemovesAllItems()
+        [Fact] public void Clear_RemovesAllItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
@@ -166,8 +159,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that Any property returns true when stack contains items.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Any_ReturnsTrueWhenStackHasItems()
+        [Fact] public void Any_ReturnsTrueWhenStackHasItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
@@ -181,8 +173,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that Any property returns false when stack is empty.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Any_ReturnsFalseWhenStackIsEmpty()
+        [Fact] public void Any_ReturnsFalseWhenStackIsEmpty()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -195,8 +186,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that CanPop method returns true when items are available.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CanPop_ReturnsTrueWhenStackHasItems()
+        [Fact] public void CanPop_ReturnsTrueWhenStackHasItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);
@@ -210,8 +200,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that CanPop method returns false when stack is empty.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void CanPop_ReturnsFalseWhenStackIsEmpty()
+        [Fact] public void CanPop_ReturnsFalseWhenStackIsEmpty()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -224,8 +213,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that TryPeek returns true and the correct value when items exist.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryPeek_ReturnsTrueAndValueWhenStackHasItems()
+        [Fact] public void TryPeek_ReturnsTrueAndValueWhenStackHasItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(25);
@@ -242,8 +230,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that TryPeek returns false when stack is empty.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryPeek_ReturnsFalseWhenStackIsEmpty()
+        [Fact] public void TryPeek_ReturnsFalseWhenStackIsEmpty()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -259,8 +246,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that TryPop returns true and removes the item when successful.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryPop_ReturnsTrueAndRemovesItemWhenStackHasItems()
+        [Fact] public void TryPop_ReturnsTrueAndRemovesItemWhenStackHasItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(30);
@@ -278,8 +264,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that TryPop returns false when stack is empty.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TryPop_ReturnsFalseWhenStackIsEmpty()
+        [Fact] public void TryPop_ReturnsFalseWhenStackIsEmpty()
         {
             FastestStack<int> stack = new FastestStack<int>();
 
@@ -295,8 +280,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that Contains method returns true when the specified item exists in the stack.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Contains_ReturnsTrueWhenItemExists()
+        [Fact] public void Contains_ReturnsTrueWhenItemExists()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(5);
@@ -312,8 +296,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that Contains method returns false when the specified item doesn't exist.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Contains_ReturnsFalseWhenItemDoesNotExist()
+        [Fact] public void Contains_ReturnsFalseWhenItemDoesNotExist()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(5);
@@ -327,8 +310,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that the stack maintains Last-In-First-Out (LIFO) order.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Stack_MaintainsLifoOrder()
+        [Fact] public void Stack_MaintainsLifoOrder()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
@@ -346,8 +328,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that ToArray method returns an array with all stack elements.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ToArray_ReturnsCorrectElements()
+        [Fact] public void ToArray_ReturnsCorrectElements()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
@@ -368,8 +349,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that EnsureCapacity method properly increases the stack's capacity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EnsureCapacity_IncreasesCapacity()
+        [Fact] public void EnsureCapacity_IncreasesCapacity()
         {
             FastestStack<int> stack = new FastestStack<int>(5);
 
@@ -384,8 +364,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that TrimExcess method reduces the capacity to match the count.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TrimExcess_ReducesCapacity()
+        [Fact] public void TrimExcess_ReducesCapacity()
         {
             FastestStack<int> stack = new FastestStack<int>(100);
             stack.Push(1);
@@ -402,8 +381,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that FastestStack works correctly with reference types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Stack_CanHandleReferenceTypes()
+        [Fact] public void Stack_CanHandleReferenceTypes()
         {
             FastestStack<string> stack = new FastestStack<string>();
             stack.Push("Hello");
@@ -421,8 +399,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that FastestStack can store and retrieve null values for reference types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Stack_CanHandleNullValues()
+        [Fact] public void Stack_CanHandleNullValues()
         {
             FastestStack<string> stack = new FastestStack<string>();
             stack.Push(null);
@@ -438,8 +415,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that the static Create method properly initializes a stack with capacity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Create_StaticMethodCreatesStackWithCapacity()
+        [Fact] public void Create_StaticMethodCreatesStackWithCapacity()
         {
             FastestStack<int> stack = FastestStack<int>.Create(15);
 
@@ -453,8 +429,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that the stack can handle a large number of push and pop operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Stack_HandlesLargeNumberOfItems()
+        [Fact] public void Stack_HandlesLargeNumberOfItems()
         {
             FastestStack<int> stack = new FastestStack<int>();
             const int itemCount = 10000;
@@ -478,8 +453,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that creating a stack with negative capacity throws an exception.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithNegativeCapacity_ThrowsException()
+        [Fact] public void Constructor_WithNegativeCapacity_ThrowsException()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => new FastestStack<int>(-1));
         }
@@ -490,8 +464,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Validates that creating a stack from a null enumerable throws an exception.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_WithNullEnumerable_ThrowsException()
+        [Fact] public void Constructor_WithNullEnumerable_ThrowsException()
         {
             Assert.Throws<ArgumentNullException>(() => new FastestStack<int>(null));
         }
@@ -502,8 +475,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <remarks>
         ///     Tests that AsSpan method returns a span representing the stack's contents.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AsSpan_ReturnsCorrectSpan()
+        [Fact] public void AsSpan_ReturnsCorrectSpan()
         {
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(10);

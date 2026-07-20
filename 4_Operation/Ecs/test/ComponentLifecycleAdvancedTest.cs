@@ -50,8 +50,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that newly added components are properly initialized
         ///     with appropriate default values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_InitializesWithDefaultValues()
+        [Fact] public void Component_InitializesWithDefaultValues()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -69,8 +68,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that attempting to get a component
         ///     that doesn't exist handles appropriately.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_GettingNonExistentThrowsException()
+        [Fact] public void Component_GettingNonExistentThrowsException()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -85,8 +83,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that HasComponent correctly reports the presence
         ///     of components throughout their lifecycle.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_HasComponentAccuracyThroughLifecycle()
+        [Fact] public void Component_HasComponentAccuracyThroughLifecycle()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -107,8 +104,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that component data is properly isolated
         ///     between different scene instances.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_DataIsolatedAcrossScenes()
+        [Fact] public void Component_DataIsolatedAcrossScenes()
         {
             using Scene scene1 = new Scene();
             using Scene scene2 = new Scene();
@@ -130,8 +126,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that components are properly managed during
         ///     rapid entity lifecycle operations.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_HandlesRapidEntityLifecycle()
+        [Fact] public void Component_HandlesRapidEntityLifecycle()
         {
             using Scene scene = new Scene();
             const int iterations = 100;
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that modifications made through component references
         ///     are properly reflected in the entity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_ModificationsThroughReferenceWork()
+        [Fact] public void Component_ModificationsThroughReferenceWork()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
@@ -176,8 +170,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that component data remains intact through
         ///     multiple archetype transitions.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_IntegrityThroughMultipleTransitions()
+        [Fact] public void Component_IntegrityThroughMultipleTransitions()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position {X = 100, Y = 200});
@@ -208,8 +201,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that an entity can have multiple different
         ///     component types simultaneously.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_EntityCanHaveMultipleComponents()
+        [Fact] public void Component_EntityCanHaveMultipleComponents()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -230,8 +222,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that components have their default values
         ///     immediately after being added to an entity.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_HasDefaultValuesAfterCreation()
+        [Fact] public void Component_HasDefaultValuesAfterCreation()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
@@ -249,8 +240,7 @@ namespace Alis.Core.Ecs.Test
         ///     Validates that querying entities with specific components
         ///     performs well even with many entities.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Component_QueryPerformanceWithManyEntities()
+        [Fact] public void Component_QueryPerformanceWithManyEntities()
         {
             using Scene scene = new Scene();
             const int entityCount = 1000;

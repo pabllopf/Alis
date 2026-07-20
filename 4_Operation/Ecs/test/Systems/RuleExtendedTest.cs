@@ -45,8 +45,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that has component factory creates rule with correct state
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasComponent_CreatesRuleWithCorrectState()
+        [Fact] public void HasComponent_CreatesRuleWithCorrectState()
         {
             ComponentId compId = Component<Position>.Id;
 
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that not component factory creates rule with correct state
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void NotComponent_CreatesRuleWithCorrectState()
+        [Fact] public void NotComponent_CreatesRuleWithCorrectState()
         {
             ComponentId compId = Component<Position>.Id;
 
@@ -71,8 +69,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that delegate factory creates rule with custom function
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Delegate_CreatesRuleWithCustomFunction()
+        [Fact] public void Delegate_CreatesRuleWithCustomFunction()
         {
             Func<GameObjectType, bool> func = _ => true;
 
@@ -84,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that include disabled rule is static and not default
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void IncludeDisabledRule_IsStaticAndNotDefault()
+        [Fact] public void IncludeDisabledRule_IsStaticAndNotDefault()
         {
             Assert.NotEqual(default(Rule), Rule.IncludeDisabledRule);
         }
@@ -93,8 +89,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that two rules with same component are equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TwoRulesWithSameComponent_AreEqual()
+        [Fact] public void TwoRulesWithSameComponent_AreEqual()
         {
             ComponentId compId = Component<Position>.Id;
 
@@ -109,8 +104,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that two rules with different components are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TwoRulesWithDifferentComponents_AreNotEqual()
+        [Fact] public void TwoRulesWithDifferentComponents_AreNotEqual()
         {
             Rule rule1 = Rule.HasComponent(Component<Position>.Id);
             Rule rule2 = Rule.HasComponent(Component<Velocity>.Id);
@@ -123,8 +117,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that has component and not component with same id are not equal
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void HasComponentAndNotComponentWithSameId_AreNotEqual()
+        [Fact] public void HasComponentAndNotComponentWithSameId_AreNotEqual()
         {
             ComponentId compId = Component<Position>.Id;
 
@@ -137,8 +130,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that equals with null returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithNull_ReturnsFalse()
+        [Fact] public void Equals_WithNull_ReturnsFalse()
         {
             Rule rule = Rule.HasComponent(Component<Position>.Id);
 
@@ -148,8 +140,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that equals with wrong type returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Equals_WithWrongType_ReturnsFalse()
+        [Fact] public void Equals_WithWrongType_ReturnsFalse()
         {
             Rule rule = Rule.HasComponent(Component<Position>.Id);
 
@@ -159,8 +150,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that get hash code is consistent
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetHashCode_IsConsistent()
+        [Fact] public void GetHashCode_IsConsistent()
         {
             Rule rule = Rule.HasComponent(Component<Position>.Id);
 
@@ -173,8 +163,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that two equal rules have same hash code
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void TwoEqualRules_HaveSameHashCode()
+        [Fact] public void TwoEqualRules_HaveSameHashCode()
         {
             ComponentId compId = Component<Position>.Id;
 
@@ -187,8 +176,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that rule has sequential struct layout
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_HasSequentialStructLayout()
+        [Fact] public void Rule_HasSequentialStructLayout()
         {
             StructLayoutAttribute layout = typeof(Rule).StructLayoutAttribute;
 
@@ -198,8 +186,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that rule struct is value type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_IsValueType()
+        [Fact] public void Rule_IsValueType()
         {
             Type ruleType = typeof(Rule);
 
@@ -209,8 +196,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that delegate rule can be used with custom logic
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DelegateRule_CanBeUsedWithCustomLogic()
+        [Fact] public void DelegateRule_CanBeUsedWithCustomLogic()
         {
             bool wasCalled = false;
             Func<GameObjectType, bool> func = _ =>
@@ -227,8 +213,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that default rule is all zeros
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultRule_IsAllZeros()
+        [Fact] public void DefaultRule_IsAllZeros()
         {
             Rule defaultRule = default(Rule);
 
@@ -238,8 +223,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that rule struct can be copied
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_CanBeCopied()
+        [Fact] public void Rule_CanBeCopied()
         {
             Rule original = Rule.HasComponent(Component<Position>.Id);
             Rule copy = original;
@@ -250,8 +234,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that rule struct can be assigned
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Rule_CanBeAssigned()
+        [Fact] public void Rule_CanBeAssigned()
         {
             Rule rule = Rule.HasComponent(Component<Position>.Id);
             Rule assigned = rule;
@@ -262,8 +245,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that HasComponent RuleApplies returns true when archetype has the component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_HasComponent_ReturnsTrueWhenArchetypeHasComponent()
+        [Fact] public void RuleApplies_HasComponent_ReturnsTrueWhenArchetypeHasComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -277,8 +259,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that HasComponent RuleApplies returns false when archetype lacks the component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_HasComponent_ReturnsFalseWhenArchetypeLacksComponent()
+        [Fact] public void RuleApplies_HasComponent_ReturnsFalseWhenArchetypeLacksComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -292,8 +273,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that NotComponent RuleApplies returns true when archetype lacks the component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_NotComponent_ReturnsTrueWhenArchetypeLacksComponent()
+        [Fact] public void RuleApplies_NotComponent_ReturnsTrueWhenArchetypeLacksComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -307,8 +287,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that NotComponent RuleApplies returns false when archetype has the component
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_NotComponent_ReturnsFalseWhenArchetypeHasComponent()
+        [Fact] public void RuleApplies_NotComponent_ReturnsFalseWhenArchetypeHasComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -322,8 +301,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Delegate RuleApplies calls the custom function and returns true
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_Delegate_ReturnsTrueWhenFunctionReturnsTrue()
+        [Fact] public void RuleApplies_Delegate_ReturnsTrueWhenFunctionReturnsTrue()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -343,8 +321,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that Delegate RuleApplies returns false when custom function returns false
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_Delegate_ReturnsFalseWhenFunctionReturnsFalse()
+        [Fact] public void RuleApplies_Delegate_ReturnsFalseWhenFunctionReturnsFalse()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -358,8 +335,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that IncludeDisabled RuleApplies always returns true
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_IncludeDisabled_ReturnsTrue()
+        [Fact] public void RuleApplies_IncludeDisabled_ReturnsTrue()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
@@ -371,8 +347,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that default Rule throws InvalidDataException on RuleApplies
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RuleApplies_Default_ThrowsInvalidDataException()
+        [Fact] public void RuleApplies_Default_ThrowsInvalidDataException()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position { X = 1, Y = 2 });

@@ -47,8 +47,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that DeleteComponent can be instantiated with valid parameters.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_CanBeCreated()
+        [Fact] public void DeleteComponent_CanBeCreated()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(0);
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the Entity field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_EntityFieldIsPreserved()
+        [Fact] public void DeleteComponent_EntityFieldIsPreserved()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(99, 10);
             ComponentId componentId = new ComponentId(5);
@@ -83,8 +81,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the ComponentId field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_ComponentIdFieldIsPreserved()
+        [Fact] public void DeleteComponent_ComponentIdFieldIsPreserved()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(42);
@@ -100,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Confirms that DeleteComponent behaves as a record struct with value semantics.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_IsRecordStruct()
+        [Fact] public void DeleteComponent_IsRecordStruct()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(5);
@@ -118,8 +114,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that DeleteComponent with different entities are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_WithDifferentEntitiesAreNotEqual()
+        [Fact] public void DeleteComponent_WithDifferentEntitiesAreNotEqual()
         {
             GameObjectIdOnly entity1 = new GameObjectIdOnly(1, 0);
             GameObjectIdOnly entity2 = new GameObjectIdOnly(2, 0);
@@ -137,8 +132,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that DeleteComponent with different component IDs are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DeleteComponent_WithDifferentComponentIdsAreNotEqual()
+        [Fact] public void DeleteComponent_WithDifferentComponentIdsAreNotEqual()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId1 = new ComponentId(5);

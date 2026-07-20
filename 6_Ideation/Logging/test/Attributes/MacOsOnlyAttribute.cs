@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using System.Runtime.InteropServices;
 using Xunit;
 
@@ -68,7 +67,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                Skip = "Only running in macos mode";
+
             }
         }
     }

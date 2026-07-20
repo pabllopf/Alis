@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get returns correct element at index 0.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_AtIndex0_ShouldReturnCorrectElement()
+        [Fact] public void Get_AtIndex0_ShouldReturnCorrectElement()
         {
             InlineArray8<int> array = new InlineArray8<int> {_0 = 10};
 
@@ -53,8 +52,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get returns correct element at index 1.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_AtIndex1_ShouldReturnCorrectElement()
+        [Fact] public void Get_AtIndex1_ShouldReturnCorrectElement()
         {
             InlineArray8<int> array = new InlineArray8<int> {_1 = 20};
 
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get returns correct element at all indices.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_AtAllIndices_ShouldReturnCorrectElements()
+        [Fact] public void Get_AtAllIndices_ShouldReturnCorrectElements()
         {
             InlineArray8<int> array = new InlineArray8<int>
             {
@@ -91,8 +88,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get allows modification through reference.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_ModifyThroughReference_ShouldUpdateElement()
+        [Fact] public void Get_ModifyThroughReference_ShouldUpdateElement()
         {
             InlineArray8<int> array = new InlineArray8<int> {_0 = 10};
 
@@ -105,8 +101,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get with reference types works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithReferenceTypes_ShouldWorkCorrectly()
+        [Fact] public void Get_WithReferenceTypes_ShouldWorkCorrectly()
         {
             string str1 = "test1";
             string str2 = "test2";
@@ -126,8 +121,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get allows replacing reference through assignment.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_ReplaceReference_ShouldUpdateElement()
+        [Fact] public void Get_ReplaceReference_ShouldUpdateElement()
         {
             InlineArray8<string> array = new InlineArray8<string> {_0 = "original"};
 
@@ -140,8 +134,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that all 8 elements can be accessed and modified.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_AllElements_CanBeAccessedAndModified()
+        [Fact] public void Get_AllElements_CanBeAccessedAndModified()
         {
             InlineArray8<int> array = new InlineArray8<int>();
 
@@ -164,8 +157,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that default values are zero for value types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultValues_ForValueTypes_ShouldBeZero()
+        [Fact] public void DefaultValues_ForValueTypes_ShouldBeZero()
         {
             InlineArray8<int> array = new InlineArray8<int>();
 
@@ -179,8 +171,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that default values are null for reference types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultValues_ForReferenceTypes_ShouldBeNull()
+        [Fact] public void DefaultValues_ForReferenceTypes_ShouldBeNull()
         {
             InlineArray8<string> array = new InlineArray8<string>();
 
@@ -194,8 +185,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get with struct types works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_WithStructTypes_ShouldWorkCorrectly()
+        [Fact] public void Get_WithStructTypes_ShouldWorkCorrectly()
         {
             InlineArray8<(int x, int y)> array = new InlineArray8<(int x, int y)>
             {
@@ -213,8 +203,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that modifications are visible across multiple get calls.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_Modifications_ShouldBeVisibleAcrossMultipleCalls()
+        [Fact] public void Get_Modifications_ShouldBeVisibleAcrossMultipleCalls()
         {
             InlineArray8<int> array = new InlineArray8<int>();
 
@@ -228,8 +217,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Tests that get at last index works correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Get_AtLastIndex_ShouldWorkCorrectly()
+        [Fact] public void Get_AtLastIndex_ShouldWorkCorrectly()
         {
             InlineArray8<int> array = new InlineArray8<int> {_7 = 777};
 

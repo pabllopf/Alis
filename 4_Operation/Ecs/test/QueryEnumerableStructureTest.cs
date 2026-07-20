@@ -43,8 +43,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 1 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity1_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity1_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position>>(typeof(GameObjectQueryEnumerator<Position>));
         }
@@ -52,8 +51,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 2 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity2_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity2_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity>>(typeof(GameObjectQueryEnumerator<Position, Velocity>));
         }
@@ -61,8 +59,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 3 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity3_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity3_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health>));
         }
@@ -70,8 +67,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 4 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity4_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity4_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health, Transform>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform>));
         }
@@ -79,8 +75,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 5 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity5_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity5_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health, Transform, TestComponent>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent>));
         }
@@ -88,8 +83,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 6 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity6_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity6_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>));
         }
@@ -97,8 +91,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 7 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity7_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity7_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>));
         }
@@ -106,8 +99,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 8 get enumerator returns expected type
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity8_GetEnumerator_ReturnsExpectedType()
+        [Fact] public void QueryEnumerable_Arity8_GetEnumerator_ReturnsExpectedType()
         {
             AssertGetEnumeratorReturnType<QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>>(typeof(GameObjectQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>));
         }
@@ -115,8 +107,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 1 direct instance works in foreach
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity1_DirectInstance_WorksInForeach()
+        [Fact] public void QueryEnumerable_Arity1_DirectInstance_WorksInForeach()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2});
@@ -136,8 +127,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 2 direct instance works in foreach
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity2_DirectInstance_WorksInForeach()
+        [Fact] public void QueryEnumerable_Arity2_DirectInstance_WorksInForeach()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1, Y = 2}, new Velocity {X = 3, Y = 4});
@@ -156,8 +146,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests that query enumerable arity 8 direct instance works in foreach
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void QueryEnumerable_Arity8_DirectInstance_WorksInForeach()
+        [Fact] public void QueryEnumerable_Arity8_DirectInstance_WorksInForeach()
         {
             using Scene scene = new Scene();
             scene.Create(
@@ -182,7 +171,6 @@ namespace Alis.Core.Ecs.Test
 
             Assert.Equal(1, count);
         }
-        
 
         /// <summary>
         ///     Asserts the get enumerator return type using the specified expected type

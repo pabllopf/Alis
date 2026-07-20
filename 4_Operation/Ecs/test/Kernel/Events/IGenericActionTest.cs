@@ -11,8 +11,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that invoke with ref type executes action
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Invoke_WithRefType_ExecutesAction()
+        [Fact] public void Invoke_WithRefType_ExecutesAction()
         {
             var action = new TestGenericAction();
             int value = 42;
@@ -23,8 +22,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that invoke with string ref executes action
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Invoke_WithStringRef_ExecutesAction()
+        [Fact] public void Invoke_WithStringRef_ExecutesAction()
         {
             var action = new StringGenericAction();
             string value = "hello";
@@ -35,8 +33,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         /// Tests that invoke with t param executes action
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Invoke_WithTParam_ExecutesAction()
+        [Fact] public void Invoke_WithTParam_ExecutesAction()
         {
             var action = new TypedGenericAction();
             int result = 0;

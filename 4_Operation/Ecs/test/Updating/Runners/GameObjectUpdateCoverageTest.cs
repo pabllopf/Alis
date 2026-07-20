@@ -45,8 +45,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     GameObjectUpdate Runner, verifying the pipeline handles non-matching
         ///     archetypes gracefully (no-op).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Run_WithNonMatchingArchetype_DoesNotThrow()
+        [Fact] public void Run_WithNonMatchingArchetype_DoesNotThrow()
         {
             using Scene scene = new Scene();
             _ = scene.Create(new TagComponent());
@@ -57,8 +56,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     Tests that deferred creation during update does not throw even when
         ///     the spawned entities do not match the runner's component type.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Run_WithDeferredNonMatchingEntities_DoesNotThrow()
+        [Fact] public void Run_WithDeferredNonMatchingEntities_DoesNotThrow()
         {
             using Scene scene = new Scene();
             _ = scene.Create(
@@ -73,8 +71,7 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         ///     Tests that the range-based Run overload processes deferred entities
         ///     that share the same component type as the spawning entity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RangeRun_SameTypeDeferredEntities_TriggersRangeBasedRun()
+        [Fact] public void RangeRun_SameTypeDeferredEntities_TriggersRangeBasedRun()
         {
             using Scene scene = new Scene();
 

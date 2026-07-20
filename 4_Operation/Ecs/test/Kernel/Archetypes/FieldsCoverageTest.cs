@@ -16,8 +16,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that archetype data property returns fields
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Archetype_DataProperty_ReturnsFields()
+        [Fact] public void Archetype_DataProperty_ReturnsFields()
         {
             using Scene scene = new();
             Archetype archetype = scene.DefaultArchetype;
@@ -29,8 +28,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that get component data reference with valid setup returns reference
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentDataReference_WithValidSetup_ReturnsReference()
+        [Fact] public void GetComponentDataReference_WithValidSetup_ReturnsReference()
         {
             using Scene scene = new();
             scene.Create(new Position { X = 1, Y = 2 });
@@ -53,8 +51,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// Tests that GetComponentDataReference on Fields from the correct archetype
         /// successfully invokes GetComponentStorageDataReference, covering all code paths.
         /// </summary>
-        [Fact]
-        public void GetComponentDataReference_OnProperArchetype_CoversAllLines()
+        [Fact] public void GetComponentDataReference_OnProperArchetype_CoversAllLines()
         {
             using Scene scene = new();
             scene.Create(new Alis.Core.Ecs.Test.Models.Position { X = 42, Y = 84 });

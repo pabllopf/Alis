@@ -44,8 +44,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Tests that UpdateSubset updates only deferred entities with the matching component
         ///     when called through deferred creation resolution.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_WithDeferredComponentEntity_UpdatesNewEntity()
+        [Fact] public void UpdateSubset_WithDeferredComponentEntity_UpdatesNewEntity()
         {
             using Scene scene = new Scene();
             GameObject existing = scene.Create(new UpdateComponent {CallCount = 0});
@@ -64,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Tests that UpdateSubset with an entity not having the filter's component
         ///     does not throw. This covers the <c>componentIndex == 0</c> branch.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_WithDeferredNonComponentEntity_DoesNotThrow()
+        [Fact] public void UpdateSubset_WithDeferredNonComponentEntity_DoesNotThrow()
         {
             using Scene scene = new Scene();
             scene.Create(new UpdateComponent {CallCount = 0});
@@ -81,8 +79,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Tests that UpdateSubset with multiple archetypes (some with, some without the
         ///     component) processes only matching deferred entities.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_WithMixedDeferredEntities_UpdatesOnlyMatching()
+        [Fact] public void UpdateSubset_WithMixedDeferredEntities_UpdatesOnlyMatching()
         {
             using Scene scene = new Scene();
             scene.Create(new UpdateComponent {CallCount = 0});
@@ -103,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Tests that UpdateSubset is invoked when multiple entities are deferred and
         ///     that all deferred entities are updated exactly once.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UpdateSubset_WithMultipleDeferredEntities_UpdatesAll()
+        [Fact] public void UpdateSubset_WithMultipleDeferredEntities_UpdatesAll()
         {
             using Scene scene = new Scene();
             scene.Create(new UpdateComponent {CallCount = 0});

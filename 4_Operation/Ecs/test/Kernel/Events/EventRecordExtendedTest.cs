@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize initializes sub-objects on an existing record when not exists
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_CreatesNewRecordWhenNotExists()
+        [Fact] public void Initalize_CreatesNewRecordWhenNotExists()
         {
             EventRecord record = new EventRecord();
 
@@ -54,8 +53,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize does not overwrite existing record
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_DoesNotOverwriteExistingRecord()
+        [Fact] public void Initalize_DoesNotOverwriteExistingRecord()
         {
             EventRecord record = new EventRecord();
             EventRecord.Initalize(true, ref record);
@@ -66,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize creates add component event on an existing record
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_CreatesAddComponentEvent()
+        [Fact] public void Initalize_CreatesAddComponentEvent()
         {
             EventRecord record = new EventRecord();
 
@@ -79,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// <summary>
         ///     Tests that initalize creates remove component event on an existing record
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Initalize_CreatesRemoveComponentEvent()
+        [Fact] public void Initalize_CreatesRemoveComponentEvent()
         {
             EventRecord record = new EventRecord();
 

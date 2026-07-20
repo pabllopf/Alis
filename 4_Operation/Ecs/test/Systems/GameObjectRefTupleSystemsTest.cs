@@ -40,8 +40,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that game object field can be set and retrieved
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldSetAndRetrieveGameObjectField()
+        [Fact] public void ShouldSetAndRetrieveGameObjectField()
         {
             int[] buffer = [42];
             GameObject gameObject = default;
@@ -58,8 +57,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that deconstruct outputs correct game object
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldDeconstructWithCorrectGameObject()
+        [Fact] public void ShouldDeconstructWithCorrectGameObject()
         {
             int[] buffer = [42];
             GameObject gameObject = default;
@@ -78,8 +76,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that deconstruct outputs correct ref value
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldDeconstructWithCorrectRefValue()
+        [Fact] public void ShouldDeconstructWithCorrectRefValue()
         {
             int[] buffer = [42];
             GameObject gameObject = default;
@@ -98,8 +95,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// <summary>
         ///     Tests that ref value modification affects original buffer
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void ShouldModifyOriginalBufferThroughRefValue()
+        [Fact] public void ShouldModifyOriginalBufferThroughRefValue()
         {
             int[] buffer = [42];
             GameObject gameObject = default;

@@ -47,8 +47,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that Add can be instantiated with valid parameters.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_CanBeCreated()
+        [Fact] public void Add_CanBeCreated()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(0);
@@ -65,8 +64,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the Entity field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_EntityFieldIsPreserved()
+        [Fact] public void Add_EntityFieldIsPreserved()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(42, 5);
             ComponentId componentId = new ComponentId(0);
@@ -84,8 +82,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that the ComponentHandle field is correctly stored.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_ComponentHandleFieldIsPreserved()
+        [Fact] public void Add_ComponentHandleFieldIsPreserved()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(2);
@@ -103,8 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Confirms that Add behaves as a record struct with value semantics.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_IsRecordStruct()
+        [Fact] public void Add_IsRecordStruct()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId componentId = new ComponentId(0);
@@ -122,8 +118,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Add with different entities are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithDifferentEntitiesAreNotEqual()
+        [Fact] public void Add_WithDifferentEntitiesAreNotEqual()
         {
             GameObjectIdOnly entity1 = new GameObjectIdOnly(1, 0);
             GameObjectIdOnly entity2 = new GameObjectIdOnly(2, 0);
@@ -142,8 +137,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Add with different handles are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithDifferentHandlesAreNotEqual()
+        [Fact] public void Add_WithDifferentHandlesAreNotEqual()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId id = new ComponentId(0);
@@ -162,8 +156,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that equal Add structs have same hash code.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_HashCodeConsistency()
+        [Fact] public void Add_HashCodeConsistency()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId id = new ComponentId(0);
@@ -181,8 +174,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Add with different entity versions are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithDifferentVersionsAreNotEqual()
+        [Fact] public void Add_WithDifferentVersionsAreNotEqual()
         {
             GameObjectIdOnly entity1 = new GameObjectIdOnly(1, 0);
             GameObjectIdOnly entity2 = new GameObjectIdOnly(1, 1);
@@ -201,8 +193,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Add with different component IDs are not equal.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithDifferentComponentIdsAreNotEqual()
+        [Fact] public void Add_WithDifferentComponentIdsAreNotEqual()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId id1 = new ComponentId(0);
@@ -222,8 +213,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests Add with maximum values.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_WithMaxValues()
+        [Fact] public void Add_WithMaxValues()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(int.MaxValue, ushort.MaxValue);
             ComponentId id = new ComponentId(ushort.MaxValue);
@@ -243,8 +233,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates string representation of Add.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_ToStringWorks()
+        [Fact] public void Add_ToStringWorks()
         {
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
             ComponentId id = new ComponentId(0);

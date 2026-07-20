@@ -41,8 +41,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache can be created successfully.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Constructor_DefaultCreation_SuccessfulInitialization()
+        [Fact] public void Constructor_DefaultCreation_SuccessfulInitialization()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -52,8 +51,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache Traverse returns 32 for non-existent key.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_NonExistentKey_ReturnsMaxIndex()
+        [Fact] public void Traverse_NonExistentKey_ReturnsMaxIndex()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -65,8 +63,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache Set and Lookup work correctly.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetAndLookup_StoreAndRetrieveValue()
+        [Fact] public void SetAndLookup_StoreAndRetrieveValue()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort key = 10;
@@ -81,8 +78,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache handles multiple entries.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetAndLookup_MultipleKeys_Independent()
+        [Fact] public void SetAndLookup_MultipleKeys_Independent()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -113,8 +109,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache respects cache capacity.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetAndLookup_MaxCapacity_WorksCorrectly()
+        [Fact] public void SetAndLookup_MaxCapacity_WorksCorrectly()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -133,8 +128,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache maintains a reasonable hit/miss ratio.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Traverse_CacheHitRatio_IsReasonable()
+        [Fact] public void Traverse_CacheHitRatio_IsReasonable()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
             ushort testKey = 5;
@@ -149,8 +143,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache handles boundary values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetAndLookup_BoundaryValues_WorksCorrectly()
+        [Fact] public void SetAndLookup_BoundaryValues_WorksCorrectly()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 
@@ -169,8 +162,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that ArchetypeNeighborCache wraps around correctly with circular buffer.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void SetAndLookup_CircularOverwrite_UpdatesCorrectly()
+        [Fact] public void SetAndLookup_CircularOverwrite_UpdatesCorrectly()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
 

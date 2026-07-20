@@ -13,8 +13,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that default constructor should initialize fields to null
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void DefaultConstructor_ShouldInitializeFieldsToNull()
+        [Fact] public void DefaultConstructor_ShouldInitializeFieldsToNull()
         {
             Fields fields = default;
 
@@ -25,8 +24,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that fields can set map
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Fields_CanSetMap()
+        [Fact] public void Fields_CanSetMap()
         {
             Fields fields = default;
             byte[] map = [1, 2, 3];
@@ -39,8 +37,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that fields can set components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Fields_CanSetComponents()
+        [Fact] public void Fields_CanSetComponents()
         {
             Fields fields = default;
             ComponentStorageBase[] components = [];
@@ -53,8 +50,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         /// Tests that struct layout should be sequential
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void StructLayout_ShouldBeSequential()
+        [Fact] public void StructLayout_ShouldBeSequential()
         {
             Assert.True(typeof(Fields).IsValueType);
             Assert.Equal(LayoutKind.Sequential, typeof(Fields).StructLayoutAttribute.Value);

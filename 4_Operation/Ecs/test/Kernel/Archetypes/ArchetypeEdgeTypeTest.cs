@@ -48,7 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
@@ -62,8 +61,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that add component has correct value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Add_ShouldHaveCorrectValue()
+        [Fact] public void Add_ShouldHaveCorrectValue()
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
@@ -75,8 +73,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that remove component has correct value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveComponent_ShouldHaveCorrectValue()
+        [Fact] public void RemoveComponent_ShouldHaveCorrectValue()
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.RemoveComponent;
@@ -88,8 +85,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that add tag has correct value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AddTag_ShouldHaveCorrectValue()
+        [Fact] public void AddTag_ShouldHaveCorrectValue()
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddTag;
@@ -101,8 +97,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that remove tag has correct value.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void RemoveTag_ShouldHaveCorrectValue()
+        [Fact] public void RemoveTag_ShouldHaveCorrectValue()
         {
             // Arrange & Act
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.RemoveTag;
@@ -114,8 +109,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that all edge types have unique values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void AllEdgeTypes_ShouldHaveUniqueValues()
+        [Fact] public void AllEdgeTypes_ShouldHaveUniqueValues()
         {
             // Arrange
             ushort Add = (ushort) ArchetypeEdgeType.AddComponent;
@@ -135,8 +129,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that edge type can be compared.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeType_CanBeCompared()
+        [Fact] public void EdgeType_CanBeCompared()
         {
             // Arrange
             ArchetypeEdgeType type1 = ArchetypeEdgeType.AddComponent;
@@ -151,8 +144,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that edge type can be cast to ushort.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeType_CanBeCastToUShort()
+        [Fact] public void EdgeType_CanBeCastToUShort()
         {
             // Arrange
             ArchetypeEdgeType edgeType = ArchetypeEdgeType.AddComponent;
@@ -167,8 +159,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that ushort can be cast to edge type.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void UShort_CanBeCastToEdgeType()
+        [Fact] public void UShort_CanBeCastToEdgeType()
         {
             // Arrange
             ushort value = 49157;
@@ -183,8 +174,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         /// <summary>
         ///     Tests that edge type values are within ushort range.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void EdgeTypeValues_ShouldBeWithinUShortRange()
+        [Fact] public void EdgeTypeValues_ShouldBeWithinUShortRange()
         {
             // Arrange & Act
             ushort Add = (ushort) ArchetypeEdgeType.AddComponent;

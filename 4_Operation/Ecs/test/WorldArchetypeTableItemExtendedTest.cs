@@ -46,8 +46,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Verifies that WorldArchetypeTableItem can be instantiated with null archetypes.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldArchetypeTableItem_CanBeCreatedWithNullArchetypes()
+        [Fact] public void WorldArchetypeTableItem_CanBeCreatedWithNullArchetypes()
         {
             WorldArchetypeTableItem item = new WorldArchetypeTableItem(null, null);
 
@@ -61,8 +60,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the Archetype and DeferredCreationArchetype fields are accessible.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldArchetypeTableItem_FieldsAreAccessible()
+        [Fact] public void WorldArchetypeTableItem_FieldsAreAccessible()
         {
             WorldArchetypeTableItem item = new WorldArchetypeTableItem(null, null);
 
@@ -76,8 +74,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Confirms that WorldArchetypeTableItem is a value type (struct).
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldArchetypeTableItem_IsValueType()
+        [Fact] public void WorldArchetypeTableItem_IsValueType()
         {
             WorldArchetypeTableItem item1 = new WorldArchetypeTableItem(null, null);
             WorldArchetypeTableItem item2 = item1;
@@ -92,8 +89,7 @@ namespace Alis.Core.Ecs.Test
         /// <remarks>
         ///     Validates that the public fields can be modified.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void WorldArchetypeTableItem_FieldsCanBeModified()
+        [Fact] public void WorldArchetypeTableItem_FieldsCanBeModified()
         {
             WorldArchetypeTableItem item = new WorldArchetypeTableItem(null, null);
 

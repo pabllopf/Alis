@@ -51,112 +51,98 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>short</c> is 2 bytes → returns 2.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Short_Returns2()
+        [Fact] public void GetComponentSize_Short_Returns2()
         {
             int result = ComponentStorageBase.GetComponentSize<short>();
             Assert.Equal(2, result);
         }
 
         /// <summary><c>ushort</c> is 2 bytes → returns 2.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_UShort_Returns2()
+        [Fact] public void GetComponentSize_UShort_Returns2()
         {
             int result = ComponentStorageBase.GetComponentSize<ushort>();
             Assert.Equal(2, result);
         }
 
         /// <summary><c>char</c> is 2 bytes → returns 2.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Char_Returns2()
+        [Fact] public void GetComponentSize_Char_Returns2()
         {
             int result = ComponentStorageBase.GetComponentSize<char>();
             Assert.Equal(2, result);
         }
 
         /// <summary>Custom 2-byte struct → returns 2.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_TwoByteStruct_Returns2()
+        [Fact] public void GetComponentSize_TwoByteStruct_Returns2()
         {
             int result = ComponentStorageBase.GetComponentSize<TwoByteStruct>();
             Assert.Equal(2, result);
         }
 
         /// <summary><c>int</c> is 4 bytes → returns 4.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Int_Returns4()
+        [Fact] public void GetComponentSize_Int_Returns4()
         {
             int result = ComponentStorageBase.GetComponentSize<int>();
             Assert.Equal(4, result);
         }
 
         /// <summary><c>uint</c> is 4 bytes → returns 4.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_UInt_Returns4()
+        [Fact] public void GetComponentSize_UInt_Returns4()
         {
             int result = ComponentStorageBase.GetComponentSize<uint>();
             Assert.Equal(4, result);
         }
 
         /// <summary><c>float</c> is 4 bytes → returns 4.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Float_Returns4()
+        [Fact] public void GetComponentSize_Float_Returns4()
         {
             int result = ComponentStorageBase.GetComponentSize<float>();
             Assert.Equal(4, result);
         }
 
         /// <summary>Custom 4-byte struct (two <c>short</c>s) → returns 4.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_FourByteStruct_Returns4()
+        [Fact] public void GetComponentSize_FourByteStruct_Returns4()
         {
             int result = ComponentStorageBase.GetComponentSize<FourByteStruct>();
             Assert.Equal(4, result);
         }
 
         /// <summary><c>long</c> is 8 bytes → returns 8.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Long_Returns8()
+        [Fact] public void GetComponentSize_Long_Returns8()
         {
             int result = ComponentStorageBase.GetComponentSize<long>();
             Assert.Equal(8, result);
         }
 
         /// <summary><c>ulong</c> is 8 bytes → returns 8.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_ULong_Returns8()
+        [Fact] public void GetComponentSize_ULong_Returns8()
         {
             int result = ComponentStorageBase.GetComponentSize<ulong>();
             Assert.Equal(8, result);
         }
 
         /// <summary><c>double</c> is 8 bytes → returns 8.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Double_Returns8()
+        [Fact] public void GetComponentSize_Double_Returns8()
         {
             int result = ComponentStorageBase.GetComponentSize<double>();
             Assert.Equal(8, result);
         }
 
         /// <summary>Custom 8-byte struct (two <c>int</c>s) → returns 8.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_EightByteStruct_Returns8()
+        [Fact] public void GetComponentSize_EightByteStruct_Returns8()
         {
             int result = ComponentStorageBase.GetComponentSize<EightByteStruct>();
             Assert.Equal(8, result);
         }
 
         /// <summary><c>decimal</c> is 16 bytes → returns 16.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Decimal_Returns16()
+        [Fact] public void GetComponentSize_Decimal_Returns16()
         {
             int result = ComponentStorageBase.GetComponentSize<decimal>();
             Assert.Equal(16, result);
         }
 
         /// <summary>Custom 16-byte struct (four <c>int</c>s) → returns 16.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_SixteenByteStruct_Returns16()
+        [Fact] public void GetComponentSize_SixteenByteStruct_Returns16()
         {
             int result = ComponentStorageBase.GetComponentSize<SixteenByteStruct>();
             Assert.Equal(16, result);
@@ -165,24 +151,21 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>string</c> is a reference type → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_String_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_String_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<string>();
             Assert.Equal(-1, result);
         }
 
         /// <summary><c>object</c> is a reference type → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Object_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_Object_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<object>();
             Assert.Equal(-1, result);
         }
 
         /// <summary>A struct that contains a managed <c>string</c> field → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_StructContainingRef_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_StructContainingRef_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<StructContainingRef>();
             Assert.Equal(-1, result);
@@ -191,24 +174,21 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary><c>byte</c> is 1 byte (size &lt; 2) → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Byte_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_Byte_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<byte>();
             Assert.Equal(-1, result);
         }
 
         /// <summary><c>sbyte</c> is 1 byte (size &lt; 2) → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_SByte_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_SByte_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<sbyte>();
             Assert.Equal(-1, result);
         }
 
         /// <summary><c>bool</c> is 1 byte (size &lt; 2) → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Bool_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_Bool_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<bool>();
             Assert.Equal(-1, result);
@@ -217,8 +197,7 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>32-byte struct (2 × decimal, power of two but &gt; 16) → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_TwoDecimalsStruct_32Bytes_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_TwoDecimalsStruct_32Bytes_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<TwoDecimalsStruct>();
             Assert.Equal(-1, result);
@@ -227,16 +206,14 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>3-byte struct (Pack=1) is not a power of two → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_ThreeByteStruct_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_ThreeByteStruct_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<ThreeByteStruct>();
             Assert.Equal(-1, result);
         }
 
         /// <summary>12-byte struct (3 × int) is not a power of two → returns -1.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_TwelveByteStruct_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_TwelveByteStruct_ReturnsMinusOne()
         {
             int result = ComponentStorageBase.GetComponentSize<TwelveByteStruct>();
             Assert.Equal(-1, result);
@@ -256,8 +233,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     For the known-valid set the return value must be exactly one of {2, 4, 8, 16}.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_ValidTypes_ReturnValueIsInAllowedSet()
+        [Fact] public void GetComponentSize_ValidTypes_ReturnValueIsInAllowedSet()
         {
             int[] allowed = [2, 4, 8, 16];
 
@@ -276,8 +252,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     For the known-invalid set the return value must always be -1.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_InvalidTypes_AlwaysReturnMinusOne()
+        [Fact] public void GetComponentSize_InvalidTypes_AlwaysReturnMinusOne()
         {
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<byte>());
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<sbyte>());
@@ -293,8 +268,7 @@ namespace Alis.Core.Ecs.Test.Updating
         // ─────────────────────────────────────────────────────────────────────
 
         /// <summary>Calling the method twice for the same type must return the same value.</summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_CalledTwice_ReturnsSameResult()
+        [Fact] public void GetComponentSize_CalledTwice_ReturnsSameResult()
         {
             Assert.Equal(
                 ComponentStorageBase.GetComponentSize<int>(),
@@ -315,8 +289,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Size 2 is the inclusive lower boundary; everything smaller must return -1.
         ///     Verifies the &lt; 2 guard.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Size1_IsBelow_LowerBoundary_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_Size1_IsBelow_LowerBoundary_ReturnsMinusOne()
         {
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<byte>());
         }
@@ -325,8 +298,7 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Size 16 is the inclusive upper boundary; everything larger must return -1.
         ///     Verifies the &gt; 16 guard.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Size32_IsAbove_UpperBoundary_ReturnsMinusOne()
+        [Fact] public void GetComponentSize_Size32_IsAbove_UpperBoundary_ReturnsMinusOne()
         {
             Assert.Equal(-1, ComponentStorageBase.GetComponentSize<TwoDecimalsStruct>());
         }
@@ -334,8 +306,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Size 2 is accepted (lower boundary is inclusive).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Size2_IsLowerBoundary_Returns2()
+        [Fact] public void GetComponentSize_Size2_IsLowerBoundary_Returns2()
         {
             Assert.Equal(2, ComponentStorageBase.GetComponentSize<short>());
         }
@@ -343,8 +314,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Size 16 is accepted (upper boundary is inclusive).
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void GetComponentSize_Size16_IsUpperBoundary_Returns16()
+        [Fact] public void GetComponentSize_Size16_IsUpperBoundary_Returns16()
         {
             Assert.Equal(16, ComponentStorageBase.GetComponentSize<decimal>());
         }

@@ -178,8 +178,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that make safe temp name no extension generates name without extension
         /// </summary>
-        [Fact]
-        public void MakeSafeTempName_NoExtension_GeneratesNameWithoutExtension()
+        [Fact] public void MakeSafeTempName_NoExtension_GeneratesNameWithoutExtension()
         {
             MethodInfo method = typeof(AssetRegistry).GetMethod("MakeSafeTempName",
                 BindingFlags.NonPublic | BindingFlags.Static);
@@ -194,8 +193,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that make safe temp name extension length exactly 16 keeps extension
         /// </summary>
-        [Fact]
-        public void MakeSafeTempName_ExtensionLengthExactly16_KeepsExtension()
+        [Fact] public void MakeSafeTempName_ExtensionLengthExactly16_KeepsExtension()
         {
             MethodInfo method = typeof(AssetRegistry).GetMethod("MakeSafeTempName",
                 BindingFlags.NonPublic | BindingFlags.Static);
@@ -211,8 +209,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name duplicate filenames resolves by full path
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByFullPath()
+        [Fact] public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByFullPath()
         {
             string assemblyName = "DupFile1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -230,8 +227,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name duplicate filenames resolves by partial path
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByPartialPath()
+        [Fact] public void GetResourceMemoryStreamByName_DuplicateFilenames_ResolvesByPartialPath()
         {
             string assemblyName = "DupPartial_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -249,8 +245,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name resource without extension returns stream
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_ResourceWithoutExtension_ReturnsStream()
+        [Fact] public void GetResourceMemoryStreamByName_ResourceWithoutExtension_ReturnsStream()
         {
             string assemblyName = "NoExt1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -273,8 +268,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name subdir resource returns content
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_SubdirResource_ReturnsContent()
+        [Fact] public void GetResourceMemoryStreamByName_SubdirResource_ReturnsContent()
         {
             string assemblyName = "Subdir1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -292,8 +286,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource path by name resource without extension returns path
         /// </summary>
-        [Fact]
-        public void GetResourcePathByName_ResourceWithoutExtension_ReturnsPath()
+        [Fact] public void GetResourcePathByName_ResourceWithoutExtension_ReturnsPath()
         {
             string assemblyName = "NoExtPath1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -312,8 +305,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name triple duplicate filenames resolves by full path
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_TripleDuplicateFilenames_ResolvesByFullPath()
+        [Fact] public void GetResourceMemoryStreamByName_TripleDuplicateFilenames_ResolvesByFullPath()
         {
             string assemblyName = "TripleDup1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -332,8 +324,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name partial match via index of finds resource
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_PartialMatchViaIndexOf_FindsResource()
+        [Fact] public void GetResourceMemoryStreamByName_PartialMatchViaIndexOf_FindsResource()
         {
             string assemblyName = "IndexOf1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -350,8 +341,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that ensure zip cached duplicate filenames builds cache correctly
         /// </summary>
-        [Fact]
-        public void EnsureZipCached_DuplicateFilenames_BuildsCacheCorrectly()
+        [Fact] public void EnsureZipCached_DuplicateFilenames_BuildsCacheCorrectly()
         {
             string assemblyName = "CacheDup1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -370,8 +360,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name backslash in resource name finds resource
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_BackslashInResourceName_FindsResource()
+        [Fact] public void GetResourceMemoryStreamByName_BackslashInResourceName_FindsResource()
         {
             string assemblyName = "Backslash1_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string>
@@ -388,8 +377,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that register assembly clears extracted path cache for assembly
         /// </summary>
-        [Fact]
-        public void RegisterAssembly_ClearsExtractedPathCacheForAssembly()
+        [Fact] public void RegisterAssembly_ClearsExtractedPathCacheForAssembly()
         {
             string assemblyName = "ClearCache1_" + Guid.NewGuid();
 
@@ -411,8 +399,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource path by name cache miss after ensure throws file not found exception
         /// </summary>
-        [Fact(Skip = "Race condition causes NullReferenceException instead of FileNotFoundException - source bug")]
-        public void GetResourcePathByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
+        [Fact] public void GetResourcePathByName_CacheMissAfterEnsure_ThrowsFileNotFoundException()
         {
             string assemblyName = "CacheMissPath_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
@@ -453,8 +440,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name zip entry null throws file not found exception
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_ZipEntryNull_ThrowsFileNotFoundException()
+        [Fact] public void GetResourceMemoryStreamByName_ZipEntryNull_ThrowsFileNotFoundException()
         {
             string assemblyName = "ZipEntryNull_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"real.txt", "content"}});
@@ -498,8 +484,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that try get cached path entry candidate null removes cache entry
         /// </summary>
-        [Fact]
-        public void TryGetCachedPath_EntryCandidateNull_RemovesCacheEntry()
+        [Fact] public void TryGetCachedPath_EntryCandidateNull_RemovesCacheEntry()
         {
             string assemblyName = "NullCandidate_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
@@ -526,8 +511,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that ensure zip cached for active assembly loader missing throws invalid operation exception
         /// </summary>
-        [Fact]
-        public void EnsureZipCachedForActiveAssembly_LoaderMissing_ThrowsInvalidOperationException()
+        [Fact] public void EnsureZipCachedForActiveAssembly_LoaderMissing_ThrowsInvalidOperationException()
         {
             string assemblyName = "LoaderMiss_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
@@ -550,8 +534,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that get resource memory stream by name length exceeds max int creates memory stream without capacity
         /// </summary>
-        [Fact]
-        public void GetResourceMemoryStreamByName_LengthExceedsMaxInt_CreatesMemoryStreamWithoutCapacity()
+        [Fact] public void GetResourceMemoryStreamByName_LengthExceedsMaxInt_CreatesMemoryStreamWithoutCapacity()
         {
             string assemblyName = "BigLen_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
@@ -580,8 +563,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that extract resource to temp zip entry null throws file not found exception
         /// </summary>
-        [Fact]
-        public void ExtractResourceToTemp_ZipEntryNull_ThrowsFileNotFoundException()
+        [Fact] public void ExtractResourceToTemp_ZipEntryNull_ThrowsFileNotFoundException()
         {
             string assemblyName = "ExtractRace_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"real.txt", "content"}});
@@ -618,8 +600,7 @@ namespace Alis.Core.Aspect.Memory.Test
         /// <summary>
         /// Tests that extract resource to temp set last write time utc fails catch block handles
         /// </summary>
-        [Fact]
-        public void ExtractResourceToTemp_SetLastWriteTimeUtcFails_CatchBlockHandles()
+        [Fact] public void ExtractResourceToTemp_SetLastWriteTimeUtcFails_CatchBlockHandles()
         {
             string assemblyName = "CatchBlock_" + Guid.NewGuid();
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
@@ -671,7 +652,6 @@ namespace Alis.Core.Aspect.Memory.Test
             cts.Cancel();
             Assert.True(done, "Extraction completed with catch block handling");
         }
-
 
     }
 }

@@ -45,8 +45,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query with many entities
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_WorksWithLargeEntityCount()
+        [Fact] public void Query_WorksWithLargeEntityCount()
         {
             using Scene scene = new Scene();
             const int entityCount = 100;
@@ -68,8 +67,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query filters entities correctly with mixed components
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_CorrectlyFiltersWithMixedComponents()
+        [Fact] public void Query_CorrectlyFiltersWithMixedComponents()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 1});
@@ -107,8 +105,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query state after entity modifications
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_StateReflectsEntityModifications()
+        [Fact] public void Query_StateReflectsEntityModifications()
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
@@ -137,8 +134,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests creating and deleting many entities in sequence
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Scene_CanCreateAndDeleteManyEntitiesInSequence()
+        [Fact] public void Scene_CanCreateAndDeleteManyEntitiesInSequence()
         {
             using Scene scene = new Scene();
             const int operationCount = 50;
@@ -167,8 +163,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests accessing component data in queries
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_CanAccessComponentData()
+        [Fact] public void Query_CanAccessComponentData()
         {
             using Scene scene = new Scene();
             scene.Create(new Position {X = 10, Y = 20});
@@ -188,8 +183,7 @@ namespace Alis.Core.Ecs.Test
         /// <summary>
         ///     Tests query performance with repeated filtering
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Query_RepeatedFilteringIsConsistent()
+        [Fact] public void Query_RepeatedFilteringIsConsistent()
         {
             using Scene scene = new Scene();
             for (int i = 0; i < 50; i++)

@@ -49,8 +49,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Verifies that Ref can properly wrap a component reference.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanWrapComponentReference()
+        [Fact] public void Ref_CanWrapComponentReference()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new TestComponent {Value = 42, Name = "Test"});
@@ -67,8 +66,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that modifications through Ref are reflected in the original component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_AllowsModificationOfComponent()
+        [Fact] public void Ref_AllowsModificationOfComponent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new TestComponent {Value = 10});
@@ -85,8 +83,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that modifications through Ref persist across multiple accesses.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_ModificationsArePersistent()
+        [Fact] public void Ref_ModificationsArePersistent()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new TestComponent {Value = 5, Name = "Initial"});
@@ -107,8 +104,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Ref properly works with value type components.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_WorksWithValueTypes()
+        [Fact] public void Ref_WorksWithValueTypes()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(100);
@@ -125,8 +121,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Ref can be used when iterating through query results.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_CanBeUsedInIterations()
+        [Fact] public void Ref_CanBeUsedInIterations()
         {
             using Scene scene = new Scene();
             for (int i = 0; i < 5; i++)
@@ -154,8 +149,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Validates that Ref allows direct field access to the wrapped component.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_AllowsFieldAccess()
+        [Fact] public void Ref_AllowsFieldAccess()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new TestComponent {Value = 123, Name = "FieldTest"});
@@ -174,8 +168,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that multiple Ref instances to the same component reference the same data.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void MultipleRefs_ToSameComponent_ReferenceSameData()
+        [Fact] public void MultipleRefs_ToSameComponent_ReferenceSameData()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new TestComponent {Value = 77});
@@ -194,8 +187,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// <remarks>
         ///     Tests that Ref properly handles complex component types.
         /// </remarks>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
-        public void Ref_WorksWithComplexTypes()
+        [Fact] public void Ref_WorksWithComplexTypes()
         {
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new ComplexComponent
