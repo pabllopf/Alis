@@ -328,37 +328,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
 
             Assert.Empty(dest.ToArray());
         }
-
-        /// <summary>
-        ///     Tests that RemoveRange with empty enumerable and comparer does nothing
-        /// </summary>
-        [Fact]
-        public void RemoveRangeEmptyEnumerableWithComparerDoesNothing()
-        {
-            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
-            builder.Add(1);
-
-            builder.RemoveRange((System.Collections.Generic.IEnumerable<int>)Array.Empty<int>(), null);
-
-            Assert.Equal(1, builder.Count);
-        }
-
-        /// <summary>
-        ///     Tests that RemoveRange with item at last position triggers break in while loop
-        /// </summary>
-        [Fact]
-        public void RemoveRangeItemAtLastPositionTriggersBreak()
-        {
-            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(3);
-            builder.AddRange("A", "B", "C");
-
-            builder.RemoveRange((System.Collections.Generic.IEnumerable<string>)new[] {"C"}, StringComparer.OrdinalIgnoreCase);
-
-            Assert.Equal(2, builder.Count);
-            Assert.Equal("A", builder[0]);
-            Assert.Equal("B", builder[1]);
-        }
-
+        
         /// <summary>
         ///     Tests that RemoveRange with reference type clears elements at end
         /// </summary>

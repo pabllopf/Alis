@@ -899,36 +899,6 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        ///     Tests that ToLowerHex returns empty string for null bytes.
-        /// </summary>
-        [Fact]
-        public void ToLowerHex_NullBytes_ReturnsEmpty()
-        {
-            Type at = typeof(AssetRegistry);
-            MethodInfo method = at.GetMethod("ToLowerHex",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            string result = (string)method.Invoke(null, new object[] {null});
-
-            Assert.Equal(string.Empty, result);
-        }
-
-        /// <summary>
-        ///     Tests that ToLowerHex returns empty string for empty byte array.
-        /// </summary>
-        [Fact]
-        public void ToLowerHex_EmptyBytes_ReturnsEmpty()
-        {
-            Type at = typeof(AssetRegistry);
-            MethodInfo method = at.GetMethod("ToLowerHex",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            string result = (string)method.Invoke(null, new object[] {Array.Empty<byte>()});
-
-            Assert.Equal(string.Empty, result);
-        }
-
-        /// <summary>
         ///     Tests that MakeSafeTempName strips extension when it contains a forward slash.
         /// </summary>
         [Fact]

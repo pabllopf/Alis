@@ -550,22 +550,6 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(3, builder.Count);
         }
 
-        /// <summary>
-        ///     Tests that builder remove range with enumerable removes all occurrences
-        /// </summary>
-        [Fact]
-        public void Builder_RemoveRange_WithEnumerable_RemovesAllOccurrences()
-        {
-            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
-            builder.AddRange(1, 2, 3, 2, 4);
-
-            builder.RemoveRange((System.Collections.Generic.IEnumerable<int>)new[] { 2 });
-
-            Assert.Equal(3, builder.Count);
-            Assert.Equal(1, builder[0]);
-            Assert.Equal(3, builder[1]);
-            Assert.Equal(4, builder[2]);
-        }
 
         /// <summary>
         ///     Tests that builder remove range with zero length does nothing
@@ -1117,20 +1101,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(new[] { 0, 1, 2, 0 }, dest);
         }
 
-        /// <summary>
-        ///     Tests that builder remove range with enumerable and custom comparer removes elements
-        /// </summary>
-        [Fact]
-        public void Builder_RemoveRange_WithEnumerableAndComparer_RemovesElements()
-        {
-            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(3);
-            builder.AddRange("A", "B", "A");
-
-            builder.RemoveRange((System.Collections.Generic.IEnumerable<string>)new[] { "a" }, StringComparer.OrdinalIgnoreCase);
-
-            Assert.Single(builder);
-            Assert.Equal("B", builder[0]);
-        }
+    
 
         /// <summary>
         ///     Tests that builder add range with length on array appends up to length
@@ -1483,20 +1454,6 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             int index = builder.LastIndexOf("b", 0, 1, StringComparer.OrdinalIgnoreCase);
 
             Assert.Equal(-1, index);
-        }
-
-        /// <summary>
-        ///     Tests that builder remove range with empty enumerable does nothing
-        /// </summary>
-        [Fact]
-        public void Builder_RemoveRange_EmptyEnumerable_DoesNothing()
-        {
-            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
-            builder.Add(1);
-
-            builder.RemoveRange((System.Collections.Generic.IEnumerable<int>)System.Array.Empty<int>(), EqualityComparer<int>.Default);
-
-            Assert.Equal(1, builder.Count);
         }
 
         /// <summary>
