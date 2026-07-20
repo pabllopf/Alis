@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -487,6 +488,53 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             }
 
             Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints with warm starting disabled sets impulse to zero
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStartingDisabled_ShouldSetImpulseToZero()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
+            world.Add(joint);
+
+            world.Step(1.0f / 60.0f);
+
+            int indexA = bodyA.GetIslandIndex;
+            int indexB = bodyB.GetIslandIndex;
+            int maxIndex = Math.Max(indexA, indexB);
+
+            TimeStep step = new TimeStep();
+            step.Dt = 1.0f / 60.0f;
+            step.InvDt = 60.0f;
+            step.DtRatio = 1.0f;
+            step.PositionIterations = 3;
+            step.VelocityIterations = 8;
+            step.WarmStarting = false;
+
+            SolverData data = new SolverData();
+            data.Step = step;
+            data.Positions = new SolverPosition[maxIndex + 1];
+            data.Velocities = new SolverVelocity[maxIndex + 1];
+            data.Locks = new int[maxIndex + 1];
+
+            data.Positions[indexA] = new SolverPosition { C = bodyA.Sweep.C, A = bodyA.Sweep.A };
+            data.Positions[indexB] = new SolverPosition { C = bodyB.Sweep.C, A = bodyB.Sweep.A };
+            data.Velocities[indexA] = new SolverVelocity { V = bodyA.LinearVelocityInternal, W = bodyA.AngularVelocity };
+            data.Velocities[indexB] = new SolverVelocity { V = bodyB.LinearVelocityInternal, W = bodyB.AngularVelocity };
+
+            joint.InitVelocityConstraints(ref data);
+
+            Assert.Equal(0.0f, joint._impulse);
         }
     }
 }
