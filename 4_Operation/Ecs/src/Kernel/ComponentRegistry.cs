@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel.Archetypes;
@@ -259,12 +260,23 @@ namespace Alis.Core.Ecs.Kernel
         {
             lock (GlobalWorldTables.BufferChangeLock)
             {
+                KeyValuePair<Type, ComponentId>[] entries = _existingComponentIDs.ToArray();
                 NoneComponentRunnerTable.Clear();
-                _existingComponentIDs.Clear();
-                _nextComponentId = -1;
-                ComponentTable = FastestStack<ComponentData>.Create(16);
-                // Forzar la inicialización de void para mantener el comportamiento original
-                GetComponentId(typeof(void));
+
+                for (int i = 0; i < entries.Length; i++)
+                {
+                    Type type = entries[i].Key;
+                    if (type == typeof(void))
+                    {
+                        continue;
+                    }
+
+                    if (!NoneComponentRunnerTable.ContainsKey(type) && !GenerationServices.UserGeneratedTypeMap.ContainsKey(type))
+                    {
+                        System.Type factoryType = typeof(NoneUpdateRunnerFactory<>).MakeGenericType(type);
+                        NoneComponentRunnerTable[type] = (IComponentStorageBaseFactory)System.Activator.CreateInstance(factoryType);
+                    }
+                }
             }
         }
     }

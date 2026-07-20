@@ -196,32 +196,6 @@ namespace Alis.Extension.Network.Internal
             return buffer;
         }
 
-#if NETSTANDARD2_0 || NET461 || NETCOREAPP2_0
-        internal static void GetBytesInCorrectEndianness(int value, bool isLittleEndian, Span<byte> destination)
-        {
-            byte[] buffer = BitConverter.GetBytes(value);
-            if (BitConverter.IsLittleEndian && !isLittleEndian)
-            {
-                Array.Reverse(buffer);
-            }
-            buffer.CopyTo(destination);
-        }
-#else
-        internal static void GetBytesInCorrectEndianness(int value, bool isLittleEndian, Span<byte> destination)
-        {
-            if (!BitConverter.TryWriteBytes(destination, value))
-            {
-                byte[] buffer = BitConverter.GetBytes(value);
-                buffer.CopyTo(destination);
-            }
-
-            if (BitConverter.IsLittleEndian && !isLittleEndian)
-            {
-                destination.Reverse();
-            }
-        }
-#endif
-
         /// <summary>
         ///     Writes the to stream using the specified buffer
         /// </summary>

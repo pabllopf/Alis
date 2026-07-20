@@ -180,11 +180,5 @@ namespace Alis.Extension.Media.FFmpeg.Video
             Array.Copy(RawData, index, pixels, 0, length * 3);
             return pixels;
         }
-
-        public void GetPixels(int x, int y, Span<byte> destination, int length = 1)
-        {
-            int index = (x + y * Width) * 3;
-            new ReadOnlySpan<byte>(RawData, index, length * 3).CopyTo(destination);
-        }
     }
 }

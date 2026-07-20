@@ -51,8 +51,6 @@ namespace Alis.Core.Ecs.Components.Collider
         /// <summary>
         ///     The vertices
         /// </summary>
-        private readonly float[] _rectVerticesCache = new float[8];
-
         private static readonly float[] Vertices =
         {
             -0.5f, -0.5f,
@@ -507,24 +505,23 @@ namespace Alis.Core.Ecs.Components.Collider
             float top = rectangleY / cameraResolution.Y * 2.0f - 1.0f;
             float bottom = (rectangleY + rectangleH) / cameraResolution.Y * 2.0f - 1.0f;
 
-            _rectVerticesCache[0] = left;
-            _rectVerticesCache[1] = bottom;
-            _rectVerticesCache[2] = left;
-            _rectVerticesCache[3] = top;
-            _rectVerticesCache[4] = right;
-            _rectVerticesCache[5] = top;
-            _rectVerticesCache[6] = right;
-            _rectVerticesCache[7] = bottom;
+            float[] rectVertices = new[]
+            {
+                left, bottom, // bottom-left
+                left, top, // top-left
+                right, top, // top-right
+                right, bottom // bottom-right
+            };
 
             Gl.GlUseProgram(shaderProgram);
             Gl.GlBindVertexArray(vao);
 
             Gl.GlBindBuffer(BufferTarget.ArrayBuffer, vbo);
-            GCHandle handle = GCHandle.Alloc(_rectVerticesCache, GCHandleType.Pinned);
+            GCHandle handle = GCHandle.Alloc(rectVertices, GCHandleType.Pinned);
             try
             {
                 IntPtr pointer = handle.AddrOfPinnedObject();
-                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(_rectVerticesCache.Length * sizeof(float)), pointer, BufferUsageHint.DynamicDraw);
+                Gl.GlBufferData(BufferTarget.ArrayBuffer, new IntPtr(rectVertices.Length * sizeof(float)), pointer, BufferUsageHint.DynamicDraw);
             }
             finally
             {

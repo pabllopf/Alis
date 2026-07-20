@@ -187,6 +187,20 @@ namespace Alis.Core.Physic.Common.Decomposition
         private static int ClipEar(int earIndex, ref int vNum, ref float[] xrem, ref float[] yrem, Vertices[] buffer, ref int bufferSize)
         {
             --vNum;
+            float[] newx = new float[vNum];
+            float[] newy = new float[vNum];
+            int currDest = 0;
+            for (int i = 0; i < vNum; ++i)
+            {
+                if (currDest == earIndex)
+                {
+                    ++currDest;
+                }
+
+                newx[i] = xrem[currDest];
+                newy[i] = yrem[currDest];
+                ++currDest;
+            }
 
             int under = earIndex == 0 ? vNum : earIndex - 1;
             int over = earIndex == vNum ? 0 : earIndex + 1;
@@ -194,11 +208,8 @@ namespace Alis.Core.Physic.Common.Decomposition
             buffer[bufferSize] = toAdd;
             ++bufferSize;
 
-            if (earIndex < vNum)
-            {
-                System.Array.Copy(xrem, earIndex + 1, xrem, earIndex, vNum - earIndex);
-                System.Array.Copy(yrem, earIndex + 1, yrem, earIndex, vNum - earIndex);
-            }
+            xrem = newx;
+            yrem = newy;
 
             return vNum;
         }

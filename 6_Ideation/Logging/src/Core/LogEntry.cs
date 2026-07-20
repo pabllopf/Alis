@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Logging.Core
             ThreadId = Thread.CurrentThread.ManagedThreadId;
             CorrelationId = correlationId;
             Properties = properties ?? new Dictionary<string, object>();
-            Scopes = scopes ?? Array.Empty<object>();
+            Scopes = scopes ?? new List<object>();
         }
 
 

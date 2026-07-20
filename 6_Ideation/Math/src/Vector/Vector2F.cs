@@ -399,15 +399,6 @@ namespace Alis.Core.Aspect.Math.Vector
             array[index + 1] = Y;
         }
 
-        /// <summary>Copies the vector elements to a specified span starting at a specified index.</summary>
-        /// <param name="destination">The destination span.</param>
-        /// <param name="index">The index at which to copy the first element.</param>
-        public void CopyTo(Span<float> destination, int index = 0)
-        {
-            destination[index] = X;
-            destination[index + 1] = Y;
-        }
-
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare.</param>
         /// <returns><c>true</c> if equal; otherwise, <c>false</c>.</returns>

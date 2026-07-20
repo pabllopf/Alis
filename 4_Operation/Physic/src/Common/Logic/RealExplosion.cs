@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
@@ -131,9 +130,9 @@ namespace Alis.Core.Physic.Common.Logic
             Aabb aabb;
             aabb.LowerBound = pos + new Vector2F(-radius, -radius);
             aabb.UpperBound = pos + new Vector2F(radius, radius);
+            Fixture[] shapes = new Fixture[MaxShapes];
 
-            Fixture[] shapes = ArrayPool<Fixture>.Shared.Rent(MaxShapes);
-            Fixture[] containedShapes = ArrayPool<Fixture>.Shared.Rent(5);
+            Fixture[] containedShapes = new Fixture[5];
 
             int shapeCount = 0;
             int containedShapeCount = 0;
@@ -155,27 +154,17 @@ namespace Alis.Core.Physic.Common.Logic
 
             Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>(shapeCount + containedShapeCount);
 
-            int valsLength = shapeCount * 2;
-            float[] vals = ArrayPool<float>.Shared.Rent(valsLength);
-            try
-            {
-                int valIndex = ComputeShapeAngleBounds(shapes, shapeCount, pos, vals);
+            float[] vals = new float[shapeCount * 2];
+            int valIndex = ComputeShapeAngleBounds(shapes, shapeCount, pos, vals);
 
-                Array.Sort(vals, 0, valIndex, _rdc);
-                _data.Clear();
+            Array.Sort(vals, 0, valIndex, _rdc);
+            _data.Clear();
 
-                ProcessRayCastResults(vals, valIndex, pos, radius);
+            ProcessRayCastResults(vals, valIndex, pos, radius);
 
-                ApplyExplosionImpulses(pos, radius, maxForce, exploded);
+            ApplyExplosionImpulses(pos, radius, maxForce, exploded);
 
-                ApplyContainedShapeImpulses(pos, maxForce, containedShapes, containedShapeCount, exploded);
-            }
-            finally
-            {
-                ArrayPool<Fixture>.Shared.Return(shapes);
-                ArrayPool<Fixture>.Shared.Return(containedShapes);
-                ArrayPool<float>.Shared.Return(vals);
-            }
+            ApplyContainedShapeImpulses(pos, maxForce, containedShapes, containedShapeCount, exploded);
 
             return exploded;
         }
