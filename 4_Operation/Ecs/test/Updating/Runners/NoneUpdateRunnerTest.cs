@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Ecs.Collections;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Updating;
 using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
@@ -148,6 +149,44 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
 
             Assert.Equal(0, storage.Buffer.Length);
             Assert.Equal(0, strongStorage.Buffer.Length);
+        }
+
+        /// <summary>
+        ///     Tests that none update run with scene and archetype does not throw
+        /// </summary>
+        [Fact]
+        public void ShouldRunWithSceneAndArchetype()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.Run(null!, null!);
+
+            Assert.NotNull(storage);
+        }
+
+        /// <summary>
+        ///     Tests that none update run with scene archetype start and length does not throw
+        /// </summary>
+        [Fact]
+        public void ShouldRunWithSceneArchetypeStartAndLength()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(4);
+
+            storage.Run(null!, null!, 0, 4);
+
+            Assert.NotNull(storage);
+        }
+
+        /// <summary>
+        ///     Tests that none update can be created with non power of two capacity
+        /// </summary>
+        [Fact]
+        public void ShouldCreateNoneUpdateWithNonPowerOfTwoCapacity()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(5);
+
+            Assert.NotNull(storage);
+            Assert.Equal(5, storage.Buffer.Length);
         }
     }
 }
