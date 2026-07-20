@@ -42,7 +42,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet stores and retrieves values correctly by index.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_SetAndGet_StoresAndRetrievesCorrectly()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -56,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet handles multiple sequential inserts.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_MultipleSequentialInserts_AllAccessible()
         {
             SparseSet<string> set = new SparseSet<string>();
@@ -76,7 +76,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet handles sparse index access patterns.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_SparseAccess_AllIndexesAccessible()
         {
             SparseSet<long> set = new SparseSet<long>();
@@ -97,7 +97,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet properly grows as needed.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_LargeIndex_BufferExpands()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet works with value types.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_ValueType_StoresAndRetrievesCorrectly()
         {
             SparseSet<Guid> set = new SparseSet<Guid>();
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet with reference types maintains proper references.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_ReferenceType_MaintainsReferences()
         {
             SparseSet<object> set = new SparseSet<object>();
@@ -145,7 +145,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet maintains data across multiple accesses.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void MultipleAccesses_SameIndex_DataConsistent()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -162,7 +162,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet can clear and be reused.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Clear_AfterInserts_CanReuseSet()
         {
             SparseSet<int> set = new SparseSet<int>();
@@ -187,7 +187,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet handles alternating sparse and sequential access.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void MixedAccess_SparseAndSequential_ConsistentState()
         {
             SparseSet<string> set = new SparseSet<string>();
@@ -219,7 +219,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// <summary>
         ///     Test that SparseSet properly initializes default values.
         /// </summary>
-        [Fact(Skip = "Known ECS source bug - IndexOutOfRangeException/ArgumentNullException")]
+        [Fact()]
         public void Index_UninitiallizedAccess_HasDefaultValue()
         {
             SparseSet<int> set = new SparseSet<int>();
