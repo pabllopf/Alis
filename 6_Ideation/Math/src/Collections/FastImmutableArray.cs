@@ -884,16 +884,7 @@ namespace Alis.Core.Aspect.Math.Collections
                     System.Array.Sort(_elements, index, count, comparer);
                 }
             }
-
-            /// <summary>
-            ///     Copies the current contents to the specified <see cref="Span{T}" />.
-            /// </summary>
-            /// <param name="destination">The <see cref="Span{T}" /> to copy to.</param>
-            public void CopyTo(Span<T> destination)
-            {
-                new ReadOnlySpan<T>(_elements, 0, Count).CopyTo(destination);
-            }
-
+            
             /// <summary>
             ///     Returns an enumerator that iterates through the collection.
             /// </summary>
