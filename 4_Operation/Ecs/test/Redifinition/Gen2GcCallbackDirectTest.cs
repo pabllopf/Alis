@@ -109,5 +109,46 @@ namespace Alis.Core.Ecs.Test.Redifinition
                 Gen2GcCallback.Register((obj) => obj != null, target);
             }
         }
+
+        [Fact]
+        public void Register_NullFuncBool_DoesNotThrowAtRegistration()
+        {
+            Gen2GcCallback.Register((Func<bool>)null);
+        }
+
+        [Fact]
+        public void Register_NullFuncObjectBool_DoesNotThrowAtRegistration()
+        {
+            object target = new object();
+            Gen2GcCallback.Register((Func<object, bool>)null, target);
+        }
+
+        [Fact]
+        public void Gen2CollectionOccured_InvokeWhenNull_DoesNotThrow()
+        {
+            Action saved = Gen2GcCallback.Gen2CollectionOccured;
+            try
+            {
+                Gen2GcCallback.Gen2CollectionOccured = null;
+                Gen2GcCallback.Gen2CollectionOccured?.Invoke();
+            }
+            finally
+            {
+                Gen2GcCallback.Gen2CollectionOccured = saved;
+            }
+        }
+
+        [Fact]
+        public void Register_WithCallbackReturningTrue_DoesNotThrow()
+        {
+            Gen2GcCallback.Register(() => true);
+        }
+
+        [Fact]
+        public void Register_WithObjectCallbackReturningTrue_DoesNotThrow()
+        {
+            object target = new object();
+            Gen2GcCallback.Register(obj => true, target);
+        }
     }
 }
