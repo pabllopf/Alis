@@ -32,7 +32,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
+using Alis.Core.Ecs.Updating.Runners;
+using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating
@@ -129,6 +132,88 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
+        ///     Tests that <see cref="GenerationServices.RegisterType" /> with a valid factory
+        ///     for a new type adds an entry to <c>UserGeneratedTypeMap</c>.
+        /// </summary>
+        [Fact]
+        public void RegisterType_WithValidFactory_NewType_AddsToMap()
+        {
+            GenerationServices.RegisterType(typeof(CoverageOnUpdateProbe), new UpdateRunnerFactory<CoverageOnUpdateProbe>());
+
+            IDictionary map = (IDictionary)typeof(GenerationServices)
+                .GetField("UserGeneratedTypeMap", BindingFlags.Static | BindingFlags.NonPublic)
+                .GetValue(null);
+
+            Assert.True(map.Contains(typeof(CoverageOnUpdateProbe)));
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="GenerationServices.RegisterType" /> with the same factory
+        ///     for an already-registered type does not throw.
+        /// </summary>
+        [Fact]
+        public void RegisterType_WithValidFactory_SameFactoryTwice_DoesNotThrow()
+        {
+            Type type = typeof(CoverageSameFactoryProbe);
+            GenerationServices.RegisterType(type, new UpdateRunnerFactory<CoverageSameFactoryProbe>());
+            GenerationServices.RegisterType(type, new UpdateRunnerFactory<CoverageSameFactoryProbe>());
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="GenerationServices.RegisterType" /> with a different factory
+        ///     type for an already-registered type throws <see cref="ArgumentException" />.
+        /// </summary>
+        [Fact]
+        public void RegisterType_WithValidFactory_DifferentFactoryType_ThrowsArgumentException()
+        {
+            Type type = typeof(CoverageDiffFactoryProbe);
+            GenerationServices.RegisterType(type, new UpdateRunnerFactory<CoverageDiffFactoryProbe>());
+
+            ArgumentException ex = Assert.Throws<ArgumentException>(() =>
+                GenerationServices.RegisterType(type, new UpdateRunnerFactory<CoverageAnotherUpdateProbe>()));
+
+            Assert.Contains(type.FullName, ex.Message);
+        }
+
+        /// <summary>
+        ///     Tests that the delegate stored by <see cref="GenerationServices.RegisterInit{T}" />
+        ///     can be invoked and calls <c>OnInit</c> on the component.
+        /// </summary>
+        [Fact]
+        public void RegisterInit_Delegate_InvokesOnInit()
+        {
+            GenerationServices.RegisterInit<CoverageInitDestroyProbe>();
+
+            ComponentDelegates<CoverageInitDestroyProbe>.InitDelegate init =
+                (ComponentDelegates<CoverageInitDestroyProbe>.InitDelegate)
+                    ((IDictionary)typeof(GenerationServices)
+                        .GetField("TypeIniters", BindingFlags.Static | BindingFlags.NonPublic)
+                        .GetValue(null))[typeof(CoverageInitDestroyProbe)];
+
+            CoverageInitDestroyProbe probe = default;
+            init(default(GameObject), ref probe);
+        }
+
+        /// <summary>
+        ///     Tests that the delegate stored by <see cref="GenerationServices.RegisterDestroy{T}" />
+        ///     can be invoked and calls <c>OnDestroy</c> on the component.
+        /// </summary>
+        [Fact]
+        public void RegisterDestroy_Delegate_InvokesOnDestroy()
+        {
+            GenerationServices.RegisterDestroy<CoverageInitDestroyProbe>();
+
+            ComponentDelegates<CoverageInitDestroyProbe>.DestroyDelegate destroy =
+                (ComponentDelegates<CoverageInitDestroyProbe>.DestroyDelegate)
+                    ((IDictionary)typeof(GenerationServices)
+                        .GetField("TypeDestroyers", BindingFlags.Static | BindingFlags.NonPublic)
+                        .GetValue(null))[typeof(CoverageInitDestroyProbe)];
+
+            CoverageInitDestroyProbe probe = default;
+            destroy(ref probe);
+        }
+
+        /// <summary>
         ///     A probe attribute for testing registration.
         /// </summary>
         internal sealed class CoverageProbeAttribute : Attribute;
@@ -152,5 +237,45 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     A second probe component type for testing.
         /// </summary>
         private struct CoverageAnotherProbeComponent;
+
+        /// <summary>
+        ///     Probe component implementing <see cref="IOnUpdate" /> for valid factory tests.
+        /// </summary>
+        private partial struct CoverageOnUpdateProbe : IOnUpdate
+        {
+            public void OnUpdate(IGameObject self)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Probe component for same-factory registration test.
+        /// </summary>
+        private partial struct CoverageSameFactoryProbe : IOnUpdate
+        {
+            public void OnUpdate(IGameObject self)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Probe component for different-factory registration test.
+        /// </summary>
+        private partial struct CoverageDiffFactoryProbe : IOnUpdate
+        {
+            public void OnUpdate(IGameObject self)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Another update probe with a different type identity.
+        /// </summary>
+        private partial struct CoverageAnotherUpdateProbe : IOnUpdate
+        {
+            public void OnUpdate(IGameObject self)
+            {
+            }
+        }
     }
 }
