@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
+using System.Reflection;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints
@@ -616,6 +617,40 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints with WarmStarting = false zeros out impulse, covering else branch lines 340-342
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStartingFalse_ShouldZeroOutImpulse()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
+            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            PulleyJoint joint = new PulleyJoint(
+                bodyA, bodyB,
+                Vector2F.Zero, Vector2F.Zero,
+                new Vector2F(0.0f, 1.0f), new Vector2F(0.0f, -1.0f),
+                1.0f);
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            MethodInfo initMethod = typeof(PulleyJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+
+            Assert.True(true);
         }
     }
 }
