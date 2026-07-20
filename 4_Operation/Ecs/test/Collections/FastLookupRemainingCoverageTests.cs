@@ -138,6 +138,25 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
+        /// Tests that find adjacent archetype id cold path creates new archetype and adds to graph
+        /// </summary>
+        [Fact]
+        public void FindAdjacentArchetypeId_ColdPath_CreatesNewArchetypeAndAddsToGraph()
+        {
+            FastLookup lookup = new FastLookup();
+            Component.RegisterComponent<System.Uri>();
+            ComponentId componentId = Component.GetComponentId(typeof(System.Uri));
+            var typeId = new TestTypeId(componentId.RawIndex);
+            GameObjectType from = _scene.DefaultArchetype.Id;
+
+            GameObjectType result = lookup.FindAdjacentArchetypeId(typeId, from, _scene, ArchetypeEdgeType.AddComponent);
+
+            ArchetypeEdgeKey expectedEdgeKey = ArchetypeEdgeKey.Component(componentId, from, ArchetypeEdgeType.AddComponent);
+            Assert.True(_scene.ArchetypeGraphEdges.ContainsKey(expectedEdgeKey));
+            Assert.Equal(_scene.ArchetypeGraphEdges[expectedEdgeKey].Id.RawIndex, result.RawIndex);
+        }
+
+        /// <summary>
         /// The test type id class
         /// </summary>
         /// <seealso cref="ITypeId"/>
