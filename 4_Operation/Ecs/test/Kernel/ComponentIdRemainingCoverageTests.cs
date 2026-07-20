@@ -154,5 +154,41 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.True(a.Equals(b));
         }
+
+        /// <summary>
+        ///     Verifies that the Type property returns the correct type for a registered component.
+        /// </summary>
+        [Fact]
+        public void Type_RegisteredComponent_ReturnsCorrectType()
+        {
+            Component.ResetForTests();
+            ComponentId id = Component.GetComponentId(typeof(void));
+            Assert.Equal(typeof(void), id.Type);
+        }
+
+        /// <summary>
+        ///     Verifies that the Type property returns the correct type after RegisterComponent.
+        /// </summary>
+        [Fact]
+        public void Type_AfterRegisterComponent_ReturnsCorrectType()
+        {
+            Component.ResetForTests();
+            Component.RegisterComponent<Uri>();
+            ComponentId id = Component.GetComponentId(typeof(Uri));
+            Assert.Equal(typeof(Uri), id.Type);
+        }
+
+        /// <summary>
+        ///     Verifies that DebuggerDisplayString returns the correct string format.
+        /// </summary>
+        [Fact]
+        public void DebuggerDisplayString_RegisteredComponent_ReturnsFormattedString()
+        {
+            Component.ResetForTests();
+            Component.RegisterComponent<Uri>();
+            ComponentId id = Component.GetComponentId(typeof(Uri));
+            string expected = $"Types: {typeof(Uri)} ID: {id.RawIndex}";
+            Assert.Equal(expected, id.DebuggerDisplayString);
+        }
     }
 }
