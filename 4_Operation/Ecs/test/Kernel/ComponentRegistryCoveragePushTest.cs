@@ -51,6 +51,13 @@ namespace Alis.Core.Ecs.Test.Kernel
             }
         }
 
+        private partial struct CustomComponent : IOnInit
+        {
+            public void OnInit(IGameObject self)
+            {
+            }
+        }
+
         private static void Reset()
         {
             Component.ResetForTests();
@@ -60,10 +67,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void GetComponentFactoryFromType_UserGeneratedTypeMap_ReturnsFactory()
         {
             Reset();
-            GenerationServices.RegisterInit<Position>();
-            GenerationServices.RegisterType(typeof(Position), new NoneUpdateRunnerFactory<Position>());
+            GenerationServices.RegisterType(typeof(CustomComponent), new NoneUpdateRunnerFactory<CustomComponent>());
 
-            object factory = Component.GetComponentFactoryFromType(typeof(Position));
+            object factory = Component.GetComponentFactoryFromType(typeof(CustomComponent));
 
             Assert.NotNull(factory);
         }
@@ -94,7 +100,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             Reset();
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(Position)));
+                Component.GetComponentFactoryFromType(typeof(IOnInit)));
 
             Assert.Contains("source generator", ex.Message);
         }
@@ -113,10 +119,9 @@ namespace Alis.Core.Ecs.Test.Kernel
         public void RegisterComponent_TypeInUserGeneratedTypeMap_SkipsRegistration()
         {
             Reset();
-            GenerationServices.RegisterInit<Position>();
-            GenerationServices.RegisterType(typeof(Position), new NoneUpdateRunnerFactory<Position>());
+            GenerationServices.RegisterType(typeof(CustomComponent), new NoneUpdateRunnerFactory<CustomComponent>());
 
-            Exception exception = Record.Exception(() => Component.RegisterComponent<Position>());
+            Exception exception = Record.Exception(() => Component.RegisterComponent<CustomComponent>());
 
             Assert.Null(exception);
         }
@@ -207,7 +212,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             Reset();
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentId(typeof(Position)));
+                Component.GetComponentId(typeof(IOnInit)));
 
             Assert.Contains("source generator", ex.Message);
         }
@@ -281,6 +286,17 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId fromGetId = Component.GetComponentId(typeof(Guid));
 
             Assert.Equal(existing, fromGetId);
+        }
+
+        [Fact]
+        public void GetComponentTable_UserGeneratedTypeMapPath_CreatesStack()
+        {
+            Reset();
+            GenerationServices.RegisterType(typeof(CustomComponent), new NoneUpdateRunnerFactory<CustomComponent>());
+
+            ComponentId id = Component.GetComponentId(typeof(CustomComponent));
+
+            Assert.True(id.RawIndex >= 0);
         }
     }
 }
