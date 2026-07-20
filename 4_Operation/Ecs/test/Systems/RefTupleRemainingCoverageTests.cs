@@ -61,6 +61,17 @@ namespace Alis.Core.Ecs.Test.Systems
         }
 
         /// <summary>
+        ///     Tests that a default-constructed <see cref="RefTuple{T1,T2,T3}" /> can be deconstructed.
+        /// </summary>
+        [Fact]
+        public void DefaultConstructor_Arity3_CreatesEmptyTuple()
+        {
+            RefTuple<int, int, int> tuple = new RefTuple<int, int, int>();
+
+            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3);
+        }
+
+        /// <summary>
         ///     Tests that a default-constructed <see cref="RefTuple{T1,T2,T3,T4}" /> can be deconstructed.
         /// </summary>
         [Fact]
@@ -151,6 +162,31 @@ namespace Alis.Core.Ecs.Test.Systems
             Assert.Equal(100, (int)r2);
             Assert.Equal(42, (int)tuple.Item1);
             Assert.Equal(100, (int)tuple.Item2);
+        }
+
+        /// <summary>
+        ///     Tests deconstruction and field access of <see cref="RefTuple{T1,T2,T3}" />.
+        /// </summary>
+        [Fact]
+        public void Deconstruct_Arity3_ReturnsCorrectRefs()
+        {
+            int[] arr = new int[3];
+            arr[0] = 100;
+            arr[1] = 200;
+            arr[2] = 300;
+            Ref<int> ref1 = new Ref<int>(arr, 0);
+            Ref<int> ref2 = new Ref<int>(arr, 1);
+            Ref<int> ref3 = new Ref<int>(arr, 2);
+            RefTuple<int, int, int> tuple = new RefTuple<int, int, int> { Item1 = ref1, Item2 = ref2, Item3 = ref3 };
+
+            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3);
+
+            Assert.Equal(100, (int)r1);
+            Assert.Equal(200, (int)r2);
+            Assert.Equal(300, (int)r3);
+            Assert.Equal(100, (int)tuple.Item1);
+            Assert.Equal(200, (int)tuple.Item2);
+            Assert.Equal(300, (int)tuple.Item3);
         }
 
         /// <summary>
