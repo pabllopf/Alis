@@ -67,11 +67,6 @@ namespace Alis.Core.Graphic
         public byte[] Data { get; }
 
         /// <summary>
-        ///     Gets a read-only span over the pixel data.
-        /// </summary>
-        public ReadOnlySpan<byte> DataSpan => Data;
-
-        /// <summary>
         ///     Loads the image from resources using the specified resource name
         /// </summary>
         /// <param name="resourceName">The name of the embedded resource to load</param>

@@ -1,5 +1,3 @@
 # Coverage Locks
 
-| Target | Worker | Timestamp | Status |
-|--------|--------|-----------|--------|
-
+No active locks.

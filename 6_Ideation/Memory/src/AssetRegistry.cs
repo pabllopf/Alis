@@ -34,7 +34,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -439,13 +438,7 @@ namespace Alis.Core.Aspect.Memory
             string hash;
             using (SHA256 sha = SHA256.Create())
             {
-#if NET
-                Span<byte> hashBuffer = stackalloc byte[32];
-                sha.TryComputeHash(keyBytes, hashBuffer, out _);
-                hash = ToLowerHex((ReadOnlySpan<byte>)hashBuffer);
-#else
                 hash = ToLowerHex(sha.ComputeHash(keyBytes));
-#endif
             }
 
             return string.IsNullOrEmpty(extension)
@@ -470,22 +463,6 @@ namespace Alis.Core.Aspect.Memory
         private static string ToLowerHex(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)
-            {
-                return string.Empty;
-            }
-
-            StringBuilder sb = new StringBuilder(bytes.Length * 2);
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                sb.Append(bytes[i].ToString("x2"));
-            }
-
-            return sb.ToString();
-        }
-
-        private static string ToLowerHex(ReadOnlySpan<byte> bytes)
-        {
-            if (bytes.Length == 0)
             {
                 return string.Empty;
             }
@@ -535,12 +512,9 @@ namespace Alis.Core.Aspect.Memory
                 throw new FileNotFoundException("Resource file `assets.pack` not found in embedded resources.");
             }
 
-            byte[] bytes;
-            using (MemoryStream mem = new MemoryStream())
-            {
-                srcStream.CopyTo(mem);
-                bytes = mem.TryGetBuffer(out ArraySegment<byte> segment) ? segment.Array : mem.ToArray();
-            }
+            using MemoryStream mem = new MemoryStream();
+            srcStream.CopyTo(mem);
+            byte[] bytes = mem.ToArray();
 
             using MemoryStream indexStream = new MemoryStream(bytes, false);
             using ZipArchive zip = new ZipArchive(indexStream, ZipArchiveMode.Read, true);

@@ -87,11 +87,6 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         /// </summary>
         private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
 
-        private readonly HashSet<ConsoleKey> _newKeysCache = new HashSet<ConsoleKey>();
-        private readonly HashSet<ConsoleKey> _pressedKeysCache = new HashSet<ConsoleKey>();
-        private readonly HashSet<ConsoleKey> _heldKeysCache = new HashSet<ConsoleKey>();
-        private readonly HashSet<ConsoleKey> _releasedKeysCache = new HashSet<ConsoleKey>();
-
         /// <summary>
         ///     The platform
         /// </summary>
@@ -125,7 +120,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             platform = new MacNativePlatform();
 #elif winx64 || winx86 || winarm64 || winarm || win
             platform = new Alis.Core.Graphic.Platforms.Win.WinNativePlatform();
-#elif linuxx64 || linuxx86 || linuxarm64 || linuxarm || linux
+#elif linuxarm64 || linuxarm || linuxx64
             platform = new Alis.Core.Graphic.Platforms.Linux.LinuxNativePlatform();
 #else
             platform = null;
@@ -198,23 +193,11 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
             DateTime now = DateTime.UtcNow;
-            HashSet<ConsoleKey> newKeys = _newKeysCache;
-            newKeys.Clear();
-            ConsoleKey[] localAllKeys = allKeys;
-            for (int i = 0; i < localAllKeys.Length; i++)
-            {
-                if (platform.IsKeyDown(localAllKeys[i]))
-                {
-                    newKeys.Add(localAllKeys[i]);
-                }
-            }
+            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(k => platform.IsKeyDown(k)));
 
-            HashSet<ConsoleKey> pressedKeys = _pressedKeysCache;
-            HashSet<ConsoleKey> heldKeys = _heldKeysCache;
-            HashSet<ConsoleKey> releasedKeys = _releasedKeysCache;
-            ComputePressedKeys(newKeys, currentKeys, pressedKeys);
-            ComputeHeldKeys(newKeys, currentKeys, heldKeys);
-            ComputeReleasedKeys(currentKeys, newKeys, releasedKeys);
+            HashSet<ConsoleKey> pressedKeys = ComputePressedKeys(newKeys, currentKeys);
+            HashSet<ConsoleKey> heldKeys = ComputeHeldKeys(newKeys, currentKeys);
+            HashSet<ConsoleKey> releasedKeys = ComputeReleasedKeys(currentKeys, newKeys);
 
             UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
             ProcessKeyEventComponents(pressedKeys, heldKeys, releasedKeys, now);

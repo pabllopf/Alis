@@ -388,8 +388,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             Vector2F normalL = Complex.Divide(ref normal, ref xf.Rotation);
             float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
-            const int maxVertices = 8;
-            Span<float> depths = stackalloc float[maxVertices];
+            float[] depths = new float[SettingEnv.MaxPolygonVertices];
             int diveCount = 0;
             int intoIndex = -1;
             int outoIndex = -1;

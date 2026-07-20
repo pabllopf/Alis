@@ -55,16 +55,6 @@ namespace Alis.Core.Ecs.Collections
         internal int[] _sparse;
 
         /// <summary>
-        ///     Returns a span over the populated dense elements.
-        /// </summary>
-        internal Span<T> AsSpan() => _dense.AsSpan(0, _nextIndex);
-
-        /// <summary>
-        ///     Returns a span over the populated sparse elements up to the specified ID.
-        /// </summary>
-        internal Span<int> SparseAsSpan(int upToId) => _sparse.AsSpan(0, Math.Min(upToId + 1, _sparse.Length));
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="SparseSet{T}" /> class with default capacity
         /// </summary>
         public SparseSet()
