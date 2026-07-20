@@ -184,5 +184,32 @@ namespace Alis.Core.Ecs.Test.Collections
             int index = (int)getBucketIndex.Invoke(null, [arr.Length]);
             Assert.Equal(-1, index);
         }
+
+        /// <summary>
+        /// Tests that Rent with size below MinBucketSize returns a new non-pooled array.
+        /// </summary>
+        [Fact]
+        public void Rent_BelowMinBucketSize_ReturnsNewArray()
+        {
+            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
+            int[] array = pool.Rent(15);
+            Assert.Equal(15, array.Length);
+        }
+
+        /// <summary>
+        /// Tests that ResizeArrayFromPool preserves existing data and allocates sufficient space.
+        /// </summary>
+        [Fact]
+        public void ResizeArrayFromPool_PreservesData()
+        {
+            int[] arr = [1, 2, 3, 4, 5];
+            FastestArrayPool<int>.ResizeArrayFromPool(ref arr, 200);
+            Assert.Equal(1, arr[0]);
+            Assert.Equal(2, arr[1]);
+            Assert.Equal(3, arr[2]);
+            Assert.Equal(4, arr[3]);
+            Assert.Equal(5, arr[4]);
+            Assert.True(arr.Length >= 200);
+        }
     }
 }
