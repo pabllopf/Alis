@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
@@ -151,6 +154,96 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectType t = default;
 
             Assert.Equal((ushort)0, t.RawIndex);
+        }
+
+        /// <summary>
+        ///     Verifies that the Types property reads from ArchetypeTable correctly.
+        /// </summary>
+        [Fact]
+        public void Types_ReturnsComponentTypesFromArchetypeTable()
+        {
+            FastestStack<ArchetypeData> saved = Archetype.ArchetypeTable;
+            try
+            {
+                Archetype.ArchetypeTable = FastestStack<ArchetypeData>.Create(1);
+                Archetype.ArchetypeTable.Push(new ArchetypeData(
+                    new GameObjectType(0),
+                    new FastImmutableArray<ComponentId>(new[] { new ComponentId(1) })
+                ));
+
+                GameObjectType t = new GameObjectType(0);
+                FastImmutableArray<ComponentId> types = t.Types;
+
+                Assert.Equal(1, types.Length);
+                Assert.Equal(new ComponentId(1), types[0]);
+            }
+            finally
+            {
+                Archetype.ArchetypeTable = saved;
+            }
+        }
+
+        /// <summary>
+        ///     Verifies that HasComponent returns true when the component is present.
+        /// </summary>
+        [Fact]
+        public void HasComponent_ComponentExists_ReturnsTrue()
+        {
+            byte[][] savedTable = GlobalWorldTables.ComponentTagLocationTable;
+            int savedSize = GlobalWorldTables.ComponentTagTableBufferSize;
+            try
+            {
+                GlobalWorldTables.ComponentTagLocationTable = new byte[1][];
+                GlobalWorldTables.ComponentTagLocationTable[0] = new byte[1] { 1 };
+                GlobalWorldTables.ComponentTagTableBufferSize = 1;
+
+                GameObjectType t = new GameObjectType(0);
+                ComponentId c = new ComponentId(0);
+
+                Assert.True(t.HasComponent(c));
+            }
+            finally
+            {
+                GlobalWorldTables.ComponentTagTableBufferSize = savedSize;
+                GlobalWorldTables.ComponentTagLocationTable = savedTable;
+            }
+        }
+
+        /// <summary>
+        ///     Verifies that HasComponent returns false when the component is absent.
+        /// </summary>
+        [Fact]
+        public void HasComponent_ComponentAbsent_ReturnsFalse()
+        {
+            byte[][] savedTable = GlobalWorldTables.ComponentTagLocationTable;
+            int savedSize = GlobalWorldTables.ComponentTagTableBufferSize;
+            try
+            {
+                GlobalWorldTables.ComponentTagLocationTable = new byte[1][];
+                GlobalWorldTables.ComponentTagLocationTable[0] = new byte[1] { 0 };
+                GlobalWorldTables.ComponentTagTableBufferSize = 1;
+
+                GameObjectType t = new GameObjectType(0);
+                ComponentId c = new ComponentId(0);
+
+                Assert.False(t.HasComponent(c));
+            }
+            finally
+            {
+                GlobalWorldTables.ComponentTagTableBufferSize = savedSize;
+                GlobalWorldTables.ComponentTagLocationTable = savedTable;
+            }
+        }
+
+        /// <summary>
+        ///     Verifies that Archetype method throws when context is null.
+        /// </summary>
+        [Fact]
+        public void Archetype_NullContext_ThrowsNullReference()
+        {
+            GameObjectType t = new GameObjectType(0);
+
+            _ = Assert.Throws<NullReferenceException>(() => t.Archetype(null));
         }
     }
 }
