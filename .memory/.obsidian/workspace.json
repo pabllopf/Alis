@@ -203,6 +203,8 @@
   },
   "active": "773ae85571ac0b74",
   "lastOpenFiles": [
+    "span_migration_report_dry_run.md",
+    "system/cache/sonarcloud_cache_20260720_142920.json",
     "system/cache/sonarcloud_cache_20260719_195157.json",
     "system/results/QuaternionRemainingCoverageTests.md",
     "system/results/GameObjectRefTupleRemainingCoverageTests.md",
@@ -237,8 +239,6 @@
     "coverage/tasks",
     "coverage/state/priority-targets.json",
     "coverage/state/coverage-delta.json",
-    "coverage/state/sonarcloud-data.json",
-    "coverage/logs/archive",
     "Sin título.canvas"
   ]
 }
