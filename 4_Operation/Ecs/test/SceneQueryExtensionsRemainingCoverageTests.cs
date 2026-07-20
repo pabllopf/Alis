@@ -156,5 +156,103 @@ namespace Alis.Core.Ecs.Test
 
             Assert.NotNull(result);
         }
+
+        /// <summary>
+        ///     Tests that Query with two rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_TwoRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>>();
+            Query second = scene.Query<With<Position>, With<Velocity>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with three rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_ThreeRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with four rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_FourRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with five rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_FiveRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with six rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_SixRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with seven rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_SevenRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>>();
+
+            Assert.Same(first, second);
+        }
+
+        /// <summary>
+        ///     Tests that Query with eight rules caches the query instance.
+        /// </summary>
+        [Fact]
+        public void Query_EightRules_CachesQueryInstance()
+        {
+            using Scene scene = new Scene();
+
+            Query first = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
+            Query second = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Armor>, With<Damage>, With<EnemyTag>, With<PlayerTag>, With<TagComponent>>();
+
+            Assert.Same(first, second);
+        }
     }
 }
