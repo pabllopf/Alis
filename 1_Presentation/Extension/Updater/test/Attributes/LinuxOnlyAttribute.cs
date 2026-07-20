@@ -46,7 +46,7 @@ namespace Alis.Extension.Updater.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

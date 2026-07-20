@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("csfml-audio"))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
 

@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

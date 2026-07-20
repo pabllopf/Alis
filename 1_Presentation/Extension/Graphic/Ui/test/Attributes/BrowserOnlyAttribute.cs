@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY")) &&
                 !RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER")))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

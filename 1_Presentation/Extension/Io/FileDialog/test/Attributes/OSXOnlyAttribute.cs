@@ -47,7 +47,7 @@ namespace Alis.Extension.Io.FileDialog.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

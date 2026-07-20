@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("csfml-window"))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
 

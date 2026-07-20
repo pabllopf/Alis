@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

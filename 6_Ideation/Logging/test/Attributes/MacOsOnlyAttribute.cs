@@ -67,7 +67,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

@@ -48,7 +48,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("ffmpeg"))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
 

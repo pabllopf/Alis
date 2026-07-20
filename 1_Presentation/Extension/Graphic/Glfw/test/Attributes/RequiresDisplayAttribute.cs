@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Attributes
         {
             if (!HasDisplay())
             {
-
+                Skip = "Test skipped because it requires a display environment.";
             }
         }
 

@@ -46,7 +46,7 @@ namespace Alis.Core.Audio.Test.Players.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
     }

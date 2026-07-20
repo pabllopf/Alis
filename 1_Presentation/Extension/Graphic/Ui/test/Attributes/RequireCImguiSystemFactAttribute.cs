@@ -48,7 +48,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Attributes
         {
             if (!TryLoadSfmlLibrary("cimgui"))
             {
-
+                Skip = "Test skipped because its not platform";
             }
         }
 

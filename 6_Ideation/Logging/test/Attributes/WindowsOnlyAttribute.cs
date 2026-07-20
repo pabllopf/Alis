@@ -46,7 +46,7 @@ namespace Alis.Core.Aspect.Logging.Test.Attributes
         {
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-
+                Skip = "Test skipped because it is only applicable on Windows.";
             }
         }
     }
