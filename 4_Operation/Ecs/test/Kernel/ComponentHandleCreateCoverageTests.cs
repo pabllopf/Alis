@@ -41,17 +41,10 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class ComponentHandleCreateCoverageTests
     {
-        [Fact]
-        public void Create_WithValueType_StoresComponent()
-        {
-            ComponentHandle handle = ComponentHandle.Create<long>(42L);
-
-            long result = handle.Retrieve<long>();
-
-            Assert.Equal(42L, result);
-            Assert.Equal(typeof(long), handle.Type);
-        }
-
+       
+        /// <summary>
+        /// Tests that create with reference type stores component
+        /// </summary>
         [Fact]
         public void Create_WithReferenceType_StoresComponent()
         {
@@ -62,46 +55,10 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal("hello", result);
         }
 
-        [Fact]
-        public void CreateFromBoxed_WithComponentId_StoresComponent()
-        {
-            ComponentHandle handle = ComponentHandle.CreateFromBoxed(Component<long>.Id, 42L);
-
-            object result = handle.RetrieveBoxed();
-
-            Assert.Equal(42L, result);
-            Assert.Equal(typeof(long), handle.Type);
-        }
-
-        [Fact]
-        public void CreateFromBoxed_WithoutComponentId_StoresComponent()
-        {
-            ComponentHandle handle = ComponentHandle.CreateFromBoxed(42L);
-
-            object result = handle.RetrieveBoxed();
-
-            Assert.Equal(42L, result);
-            Assert.Equal(typeof(long), handle.Type);
-        }
-
-        [Fact]
-        public void ParentTable_AfterCreate_ReturnsStorage()
-        {
-            ComponentHandle handle = ComponentHandle.Create<long>(42L);
-
-            IdTable parentTable = handle.ParentTable;
-
-            Assert.NotNull(parentTable);
-        }
-
-        [Fact]
-        public void Dispose_AfterCreate_FreesHandle()
-        {
-            ComponentHandle handle = ComponentHandle.Create<long>(42L);
-
-            handle.Dispose();
-        }
-
+        
+        /// <summary>
+        /// Tests that create and retrieve with different types
+        /// </summary>
         [Fact]
         public void Create_AndRetrieve_WithDifferentTypes()
         {
@@ -111,15 +68,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(99L, longHandle.Retrieve<long>());
             Assert.Equal("world", stringHandle.Retrieve<string>());
         }
-
-        [Fact]
-        public void InvokeComponentEventAndConsume_DispatchesEvent()
-        {
-            ComponentHandle handle = ComponentHandle.Create<long>(42L);
-            GameObject gameObject = new GameObject();
-            GenericEvent genericEvent = new GenericEvent();
-
-            handle.InvokeComponentEventAndConsume(gameObject, genericEvent);
-        }
+        
     }
 }

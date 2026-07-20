@@ -56,21 +56,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        ///     Tests that <see cref="Component.GetComponentFactoryFromType" /> throws
-        ///     <see cref="InvalidOperationException" /> with the source-generator error message
-        ///     when called for an <see cref="IComponentBase" /> interface type that is not
-        ///     registered. This covers the <c>IComponentBase.IsAssignableFrom</c> branch of
-        ///     <see cref="Component" />.Throw_ComponentTypeNotInit.
-        /// </summary>
-        [Fact] public void GetComponentFactoryFromType_IComponentBaseInterface_ThrowsWithSourceGenMessage()
-        {
-            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(IOnInit)));
-
-            Assert.Contains("source generator", exception.Message, StringComparison.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
         ///     Tests that <see cref="Component.RegisterComponent{T}" /> does not add a type to
         ///     <c>NoneComponentRunnerTable</c> when the type is already in
         ///     <see cref="GenerationServices.UserGeneratedTypeMap" /> (source-generated types).

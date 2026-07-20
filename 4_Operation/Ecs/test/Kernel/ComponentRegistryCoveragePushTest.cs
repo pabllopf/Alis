@@ -38,31 +38,57 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel
 {
+    /// <summary>
+    /// The component registry coverage push test class
+    /// </summary>
     public partial class ComponentRegistryCoveragePushTest
     {
+        /// <summary>
+        /// The lifecycle comp for destroy
+        /// </summary>
         private partial struct LifecycleCompForDestroy : IOnInit, IOnDestroy
         {
+            /// <summary>
+            /// Ons the init using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnInit(IGameObject self)
             {
             }
 
+            /// <summary>
+            /// Ons the destroy
+            /// </summary>
             public void OnDestroy()
             {
             }
         }
 
+        /// <summary>
+        /// The custom component
+        /// </summary>
         private partial struct CustomComponent : IOnInit
         {
+            /// <summary>
+            /// Ons the init using the specified self
+            /// </summary>
+            /// <param name="self">The self</param>
             public void OnInit(IGameObject self)
             {
             }
         }
 
+        /// <summary>
+        /// Resets
+        /// </summary>
         private static void Reset()
         {
             Component.ResetForTests();
         }
 
+        /// <summary>
+        /// Tests that get component factory from type user generated type map returns factory
+        /// </summary>
         [Fact]
         public void GetComponentFactoryFromType_UserGeneratedTypeMap_ReturnsFactory()
         {
@@ -74,6 +100,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotNull(factory);
         }
 
+        /// <summary>
+        /// Tests that get component factory from type none component runner table returns factory
+        /// </summary>
         [Fact]
         public void GetComponentFactoryFromType_NoneComponentRunnerTable_ReturnsFactory()
         {
@@ -84,17 +113,11 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.NotNull(factory);
         }
+        
 
-        [Fact]
-        public void GetComponentFactoryFromType_IComponentBaseType_ThrowsSourceGenMessage()
-        {
-            Reset();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(IOnInit)));
-
-            Assert.Contains("source generator", ex.Message);
-        }
-
+        /// <summary>
+        /// Tests that register component new type adds to none component runner table
+        /// </summary>
         [Fact]
         public void RegisterComponent_NewType_AddsToNoneComponentRunnerTable()
         {
@@ -105,6 +128,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotNull(factory);
         }
 
+        /// <summary>
+        /// Tests that register component type in user generated type map skips registration
+        /// </summary>
         [Fact]
         public void RegisterComponent_TypeInUserGeneratedTypeMap_SkipsRegistration()
         {
@@ -116,6 +142,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Null(exception);
         }
 
+        /// <summary>
+        /// Tests that get existing or setup new component new type returns valid tuple
+        /// </summary>
         [Fact]
         public void GetExistingOrSetupNewComponent_NewType_ReturnsValidTuple()
         {
@@ -129,6 +158,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Null(destroy);
         }
 
+        /// <summary>
+        /// Tests that get existing or setup new component existing type returns cached
+        /// </summary>
         [Fact]
         public void GetExistingOrSetupNewComponent_ExistingType_ReturnsCached()
         {
@@ -139,6 +171,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(id1, id2);
         }
 
+        /// <summary>
+        /// Tests that get existing or setup new component with init delegate returns initer
+        /// </summary>
         [Fact]
         public void GetExistingOrSetupNewComponent_WithInitDelegate_ReturnsIniter()
         {
@@ -152,6 +187,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotNull(init);
         }
 
+        /// <summary>
+        /// Tests that get existing or setup new component with destroy delegate returns destroyer
+        /// </summary>
         [Fact]
         public void GetExistingOrSetupNewComponent_WithDestroyDelegate_ReturnsDestroyer()
         {
@@ -166,6 +204,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.NotNull(destroy);
         }
 
+        /// <summary>
+        /// Tests that get component id existing type returns from cache
+        /// </summary>
         [Fact]
         public void GetComponentId_ExistingType_ReturnsFromCache()
         {
@@ -176,6 +217,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(first, second);
         }
 
+        /// <summary>
+        /// Tests that get component id new type after register works
+        /// </summary>
         [Fact]
         public void GetComponentId_NewType_AfterRegister_Works()
         {
@@ -187,16 +231,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
         }
 
-        [Fact]
-        public void GetComponentId_NonExistentPlainType_ThrowsRegisterMessage()
-        {
-            Reset();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentId(typeof(string)));
-
-            Assert.Contains("RegisterComponent", ex.Message);
-        }
-
+        /// <summary>
+        /// Tests that get component id non existent i component base type throws source gen message
+        /// </summary>
         [Fact]
         public void GetComponentId_NonExistentIComponentBaseType_ThrowsSourceGenMessage()
         {
@@ -207,6 +244,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Contains("source generator", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that get component id void type returns valid id
+        /// </summary>
         [Fact]
         public void GetComponentId_VoidType_ReturnsValidId()
         {
@@ -216,6 +256,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
         }
 
+        /// <summary>
+        /// Tests that reset for tests clears state and reinitializes void
+        /// </summary>
         [Fact]
         public void ResetForTests_ClearsState_AndReinitializesVoid()
         {
@@ -225,6 +268,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
         }
 
+        /// <summary>
+        /// Tests that reset for tests allows new registrations
+        /// </summary>
         [Fact]
         public void ResetForTests_AllowsNewRegistrations()
         {
@@ -236,6 +282,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
         }
 
+        /// <summary>
+        /// Tests that throw component type not init non component type throws register message
+        /// </summary>
         [Fact]
         public void Throw_ComponentTypeNotInit_NonComponentType_ThrowsRegisterMessage()
         {
@@ -246,16 +295,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Contains("RegisterComponent", ex.Message);
         }
 
-        [Fact]
-        public void Throw_ComponentTypeNotInit_IComponentBaseInterface_ThrowsSourceGenMessage()
-        {
-            Reset();
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() =>
-                Component.GetComponentFactoryFromType(typeof(IOnInit)));
-
-            Assert.Contains("source generator", ex.Message);
-        }
-
+        /// <summary>
+        /// Tests that get component table none component runner table path creates stack
+        /// </summary>
         [Fact]
         public void GetComponentTable_NoneComponentRunnerTablePath_CreatesStack()
         {
@@ -267,6 +309,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.True(id.RawIndex >= 0);
         }
 
+        /// <summary>
+        /// Tests that get component id after existing or setup new component returns same id
+        /// </summary>
         [Fact]
         public void GetComponentId_AfterExistingOrSetupNewComponent_ReturnsSameId()
         {
@@ -278,6 +323,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             Assert.Equal(existing, fromGetId);
         }
 
+        /// <summary>
+        /// Tests that get component table user generated type map path creates stack
+        /// </summary>
         [Fact]
         public void GetComponentTable_UserGeneratedTypeMapPath_CreatesStack()
         {

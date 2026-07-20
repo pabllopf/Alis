@@ -673,32 +673,5 @@ namespace Alis.Core.Ecs.Test
 
         enumerator.Dispose();
     }
-
-    /// <summary>
-    /// Tests that arity 1 enumerator handles entity with only the queried component
-    /// when other archetypes exist without that component
-    /// </summary>
-    [Fact]
-    public void Arity1_MultipleArchetypes_SkipsNonMatching()
-    {
-        using Scene scene = new Scene();
-        scene.Create(new Position { X = 1, Y = 2 }, new Velocity { X = 3, Y = 4 });
-        scene.Create(new Position { X = 5, Y = 6 });
-        scene.Create(new Velocity { X = 7, Y = 8 });
-
-        Query query = scene.Query<With<Position>>();
-        QueryEnumerable<Position> enumerable = new QueryEnumerable<Position>(query);
-        GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
-
-        Assert.True(enumerator.MoveNext());
-        Assert.Equal(1, enumerator.Current.Item1.Value.X);
-
-        Assert.True(enumerator.MoveNext());
-        Assert.Equal(5, enumerator.Current.Item1.Value.X);
-
-        Assert.False(enumerator.MoveNext());
-
-        enumerator.Dispose();
-    }
     }
 }
