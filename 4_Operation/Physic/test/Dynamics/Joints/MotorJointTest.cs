@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
@@ -769,6 +770,44 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
+        }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints with WarmStarting=false zeros impulses.
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithWarmStartingFalse_ShouldZeroImpulses()
+        {
+            Body bodyA = new Body();
+            Body bodyB = new Body();
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
+
+            bodyA.GetIslandIndex = 0;
+            bodyB.GetIslandIndex = 1;
+            bodyA.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyB.Sweep = new Sweep { LocalCenter = Vector2F.Zero };
+            bodyA.InvMass = 1.0f;
+            bodyB.InvMass = 1.0f;
+            bodyA.InvI = 1.0f;
+            bodyB.InvI = 1.0f;
+
+            SolverData data = new SolverData();
+            data.Step = new TimeStep { WarmStarting = false };
+            data.Positions = new SolverPosition[2]
+            {
+                new SolverPosition { C = Vector2F.Zero, A = 0f },
+                new SolverPosition { C = Vector2F.Zero, A = 0f }
+            };
+            data.Velocities = new SolverVelocity[2]
+            {
+                new SolverVelocity { V = Vector2F.Zero, W = 0f },
+                new SolverVelocity { V = Vector2F.Zero, W = 0f }
+            };
+
+            joint.InitVelocityConstraints(ref data);
+
+            Assert.Equal(Vector2F.Zero, joint.GetReactionForce(1.0f));
+            Assert.Equal(0.0f, joint.GetReactionTorque(1.0f));
         }
     }
 }
