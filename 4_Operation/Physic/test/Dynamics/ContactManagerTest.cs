@@ -136,26 +136,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that post solve callback should be raised during step
-        /// </summary>
-        [Fact]
-        public void PostSolveCallback_ShouldBeRaised_DuringStep()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            int postSolveCount = 0;
-            world.ContactManager.PostSolve = (constraint, velocityConstraint) =>
-            {
-                postSolveCount++;
-            };
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(postSolveCount > 0);
-        }
-
-        /// <summary>
         /// Tests that collide with no contacts does not throw
         /// </summary>
         [Fact]

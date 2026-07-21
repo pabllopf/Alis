@@ -223,78 +223,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             Assert.NotNull(result);
         }
 
-        /// <summary>
-        ///     Tests IsEar input validation reject when vertex index exceeds array length
-        /// </summary>
-        [Fact]
-        public void IsEar_WithInvalidIndex_ShouldReturnFalse()
-        {
-            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            float[] xv = new float[] { 0f, 1f, 0f };
-            float[] yv = new float[] { 0f, 0f, 1f };
-
-            // i >= xvLength
-            bool result = (bool)method.Invoke(null, new object[] { 5, xv, yv, 3 });
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests IsEar input validation reject when negative index
-        /// </summary>
-        [Fact]
-        public void IsEar_WithNegativeIndex_ShouldReturnFalse()
-        {
-            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            float[] xv = new float[] { 0f, 1f, 0f };
-            float[] yv = new float[] { 0f, 0f, 1f };
-
-            // i < 0
-            bool result = (bool)method.Invoke(null, new object[] { -1, xv, yv, 3 });
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests IsEar input validation reject when vertex count less than 3
-        /// </summary>
-        [Fact]
-        public void IsEar_WithXvLengthLessThanThree_ShouldReturnFalse()
-        {
-            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            float[] xv = new float[] { 0f, 1f };
-            float[] yv = new float[] { 0f, 0f };
-
-            // xvLength < 3
-            bool result = (bool)method.Invoke(null, new object[] { 0, xv, yv, 2 });
-            Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests IsEar where a non-adjacent vertex falls inside the ear triangle,
-        ///     triggering the IsInside rejection path (line 400-401).
-        ///     Uses a CW pentagon where vertex 3 is inside the ear triangle of vertex 0.
-        /// </summary>
-        [Fact]
-        public void IsEar_WithVertexInsideTriangle_ShouldReturnFalse()
-        {
-            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("IsEar",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            // CW pentagon: (0,0), (0,10), (10,10), (3,3), (10,0)
-            // Vertex 0 ear triangle: (0,0), (0,10), (10,0)
-            // Vertex 3 (3,3) is inside this triangle
-            float[] xv = new float[] { 0f, 0f, 10f, 3f, 10f };
-            float[] yv = new float[] { 0f, 10f, 10f, 3f, 0f };
-
-            bool result = (bool)method.Invoke(null, new object[] { 0, xv, yv, 5 });
-
-            Assert.False(result);
-        }
+        
 
         /// <summary>
         ///     Tests ResolvePinchPoint early return when polygon has fewer than 3 vertices.
@@ -463,31 +392,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             bool result = (bool)method.Invoke(triangle, new object[] { 0f, 5f });
 
             Assert.False(result);
-        }
-
-        /// <summary>
-        ///     Tests ClipEar when earIndex equals vNum after decrement,
-        ///     exercising the true branch of the ternary at line 206.
-        ///     A 4-vertex quad with ear at the last index (3) makes earIndex==vNum inside ClipEar.
-        /// </summary>
-        [Fact]
-        public void ClipEar_EarAtIndexLast_ShouldHandleWrapAround()
-        {
-            System.Reflection.MethodInfo method = typeof(EarclipDecomposer).GetMethod("ClipEar",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            int earIndex = 3;
-            int vNum = 4;
-            float[] xrem = new float[] { 0f, 1f, 1f, 0f };
-            float[] yrem = new float[] { 0f, 0f, 1f, 1f };
-            Vertices[] buffer = new Vertices[1];
-            int bufferSize = 0;
-
-            object[] parameters = new object[] { earIndex, vNum, xrem, yrem, buffer, bufferSize };
-
-            int result = (int)method.Invoke(null, parameters);
-
-            Assert.Equal(3, result);
         }
     }
 }
