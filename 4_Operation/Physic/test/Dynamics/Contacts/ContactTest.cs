@@ -350,6 +350,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(world.ContactManager.ContactCount > 0);
         }
 
+        
         /// <summary>
         ///     Tests that a polygon and a circle overlapping create a contact, exercising the
         ///     <see cref="ContactType.PolygonAndCircle" /> branch of Evaluate.
