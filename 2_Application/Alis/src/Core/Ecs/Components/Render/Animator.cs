@@ -189,8 +189,7 @@ namespace Alis.Core.Ecs.Components.Render
 
             if (sprite.NameFile != textureName)
             {
-                sprite.LoadTexture(textureName);
-            }
+                sprite.LoadTexture(textureName); }
         }
 
         /// <summary>
