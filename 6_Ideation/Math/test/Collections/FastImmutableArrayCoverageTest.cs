@@ -30,6 +30,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Aspect.Math.Collections;
 using Xunit;
 
@@ -342,6 +343,288 @@ namespace Alis.Core.Aspect.Math.Test.Collections
 
             Assert.Equal(1, builder.Count);
             Assert.Equal("A", builder[0]);
+        }
+
+        /// <summary>
+        ///     Tests that Count setter shrink by 64 or fewer uses loop clear (not Array.Clear)
+        /// </summary>
+        [Fact]
+        public void CountSetterShrinkSmallUsesLoop()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(70);
+            for (int i = 0; i < 70; i++)
+            {
+                builder.Add(i);
+            }
+
+            builder.Count = 60;
+
+            Assert.Equal(60, builder.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Capacity setter with value > 0 and _count == 0 reallocates without copy
+        /// </summary>
+        [Fact]
+        public void CapacitySetLargerWithZeroCountReallocates()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+
+            builder.Capacity = 10;
+
+            Assert.Equal(10, builder.Capacity);
+            Assert.Equal(0, builder.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Insert at end (index == Count) appends without shifting
+        /// </summary>
+        [Fact]
+        public void InsertAtEndAppends()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(3);
+            builder.Add(1);
+            builder.Add(2);
+
+            builder.Insert(2, 3);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(2, builder[1]);
+            Assert.Equal(3, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that InsertRange at end (index == Count) appends without shifting
+        /// </summary>
+        [Fact]
+        public void InsertRangeAtEndAppends()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(4);
+            builder.AddRange(1, 2);
+
+            builder.InsertRange(2, new FastImmutableArray<int>(new[] { 3, 4 }));
+
+            Assert.Equal(4, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(2, builder[1]);
+            Assert.Equal(3, builder[2]);
+            Assert.Equal(4, builder[3]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveRange at end skips copy and just decrements count
+        /// </summary>
+        [Fact]
+        public void RemoveRangeAtEndSkipsCopy()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 4, 5);
+
+            builder.RemoveRange(3, 2);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(2, builder[1]);
+            Assert.Equal(3, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that EnsureCapacity does nothing when already sufficient
+        /// </summary>
+        [Fact]
+        public void EnsureCapacityAlreadySufficientDoesNothing()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(10);
+            builder.Add(1);
+
+            int originalCapacity = builder.Capacity;
+
+            builder.EnsureCapacity(5);
+
+            Assert.Equal(originalCapacity, builder.Capacity);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveRange(IEnumerable{T}) with duplicates removes all occurrences
+        /// </summary>
+        [Fact]
+        public void RemoveRangeEnumerableWithDuplicates()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(10);
+            builder.AddRange(1, 2, 3, 2, 4, 2, 5);
+
+            builder.RemoveRange(new[] { 2 });
+
+            Assert.Equal(4, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(3, builder[1]);
+            Assert.Equal(4, builder[2]);
+            Assert.Equal(5, builder[3]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveRange(IEnumerable{T}) with multiple items removes all
+        /// </summary>
+        [Fact]
+        public void RemoveRangeEnumerableMultipleItems()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(10);
+            builder.AddRange(1, 2, 3, 4, 5);
+
+            builder.RemoveRange(new[] { 2, 4 });
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(3, builder[1]);
+            Assert.Equal(5, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveRange(IEnumerable{T}, IEqualityComparer) with custom comparer removes matches
+        /// </summary>
+        [Fact]
+        public void RemoveRangeEnumerableWithCustomComparer()
+        {
+            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(5);
+            builder.AddRange("A", "B", "C", "D");
+
+            builder.RemoveRange(new[] { "a", "c" }, StringComparer.OrdinalIgnoreCase);
+
+            Assert.Equal(2, builder.Count);
+            Assert.Equal("B", builder[0]);
+            Assert.Equal("D", builder[1]);
+        }
+
+        /// <summary>
+        ///     Tests that IndexOf with only startIndex delegates correctly
+        /// </summary>
+        [Fact]
+        public void IndexOfWithStartOnlyFindsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 2, 1);
+
+            int index = builder.IndexOf(2, 2);
+
+            Assert.Equal(3, index);
+        }
+
+        /// <summary>
+        ///     Tests that IndexOf with startIndex and count finds element in range
+        /// </summary>
+        [Fact]
+        public void IndexOfWithStartAndCountFindsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 4, 5);
+
+            int index = builder.IndexOf(3, 1, 3);
+
+            Assert.Equal(2, index);
+        }
+
+        /// <summary>
+        ///     Tests that LastIndexOf with startIndex and count finds element
+        /// </summary>
+        [Fact]
+        public void LastIndexOfWithRangeFindsElement()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3, 2, 1);
+
+            int index = builder.LastIndexOf(2, 3, 3);
+
+            Assert.Equal(3, index);
+        }
+
+        /// <summary>
+        ///     Tests that Builder foreach uses struct enumerator via GetEnumerator
+        /// </summary>
+        [Fact]
+        public void BuilderGetEnumeratorStructEnumerates()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(10, 20, 30);
+
+            System.Collections.Generic.IEnumerator<int> enumerator = ((System.Collections.Generic.IEnumerable<int>)builder).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(10, enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(20, enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(30, enumerator.Current);
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that Builder non-generic GetEnumerator returns values
+        /// </summary>
+        [Fact]
+        public void BuilderNonGenericEnumeratorEnumerates()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(3);
+            builder.AddRange(1, 2, 3);
+
+            System.Collections.IEnumerator enumerator = ((System.Collections.IEnumerable)builder).GetEnumerator();
+
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(1, enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(2, enumerator.Current);
+            Assert.True(enumerator.MoveNext());
+            Assert.Equal(3, enumerator.Current);
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that GetEnumerator on default instance throws via IEnumerable{T}
+        /// </summary>
+        [Fact]
+        public void DefaultIEnumerableGenericEnumeratorThrows()
+        {
+            FastImmutableArray<int> defaultArray = default;
+
+            Assert.Throws<InvalidOperationException>(() => ((System.Collections.Generic.IEnumerable<int>)defaultArray).GetEnumerator());
+        }
+
+        /// <summary>
+        ///     Tests that GetEnumerator on default instance throws via IEnumerable
+        /// </summary>
+        [Fact]
+        public void DefaultIEnumerableNonGenericEnumeratorThrows()
+        {
+            FastImmutableArray<int> defaultArray = default;
+
+            Assert.Throws<InvalidOperationException>(() => ((System.Collections.IEnumerable)defaultArray).GetEnumerator());
+        }
+
+        /// <summary>
+        ///     Tests that EnumeratorObject MoveNext on empty returns false
+        /// </summary>
+        [Fact]
+        public void EnumeratorObjectEmptyMoveNextFalse()
+        {
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new int[0]);
+
+            System.Collections.Generic.IEnumerator<int> enumerator = ((System.Collections.Generic.IEnumerable<int>)array).GetEnumerator();
+
+            Assert.False(enumerator.MoveNext());
+        }
+
+        /// <summary>
+        ///     Tests that AddRange with FastImmutableArray having null array calls AddRange(items, length)
+        /// </summary>
+        [Fact]
+        public void AddRangeFastImmutableArrayEmptyDoesNothing()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(2);
+            builder.Add(1);
+
+            builder.AddRange(FastImmutableArray<int>.Empty);
+
+            Assert.Equal(1, builder.Count);
         }
     }
 }
