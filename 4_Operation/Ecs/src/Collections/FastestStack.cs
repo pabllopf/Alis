@@ -304,10 +304,7 @@ namespace Alis.Core.Ecs.Collections
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint) size >= (uint) array.Length)
-            {
-                ThrowForEmptyStack();
-            }
+            if ((uint) size >= (uint) array.Length) ThrowForEmptyStack();
 
             return array[size];
         }
@@ -341,10 +338,7 @@ namespace Alis.Core.Ecs.Collections
             int size = _size - 1;
             T[] array = _array;
 
-            if ((uint) size >= (uint) array.Length)
-            {
-                ThrowForEmptyStack();
-            }
+            if ((uint) size >= (uint) array.Length) ThrowForEmptyStack();
 
             _version++;
             _size = size;
@@ -620,10 +614,7 @@ namespace Alis.Core.Ecs.Collections
             {
                 get
                 {
-                    if (_index < 0)
-                    {
-                        ThrowEnumerationNotStartedOrEnded();
-                    }
+                    if (_index < 0) ThrowEnumerationNotStartedOrEnded();
 
                     return _currentElement!;
                 }
