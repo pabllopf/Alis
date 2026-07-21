@@ -328,6 +328,110 @@ namespace Alis.Core.Ecs.Test.Kernel
 
             Assert.False(result);
         }
-        
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.Entity().End()" /> without
+        ///     <see cref="CommandBuffer.With{T}" /> creates an entity on playback
+        ///     (ProcessCreateEntities, BufferLength == 0 path).
+        /// </summary>
+        [Fact] public void Entity_End_WithoutComponents_CreatesEntityOnPlayback()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            int initialCount = scene.EntityCount;
+
+            buffer.Entity().End();
+            buffer.Playback();
+
+            Assert.Equal(initialCount + 1, scene.EntityCount);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.ProcessDeleteEntities" /> skips
+        ///     entities whose version no longer matches (already deleted directly).
+        /// </summary>
+        [Fact] public void DeleteEntity_VersionMismatch_SkipsOnPlayback()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            buffer.DeleteEntity(entity);
+            entity.Delete();
+
+            buffer.Playback();
+
+            Assert.False(entity.IsAlive);
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.ProcessRemoveComponents" /> skips
+        ///     entities whose version no longer matches (already deleted directly).
+        /// </summary>
+        [Fact] public void RemoveComponent_VersionMismatch_SkipsOnPlayback()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            buffer.RemoveComponent<TestComponent>(entity);
+            entity.Delete();
+
+            buffer.Playback();
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.ProcessAddComponents" /> skips
+        ///     entities whose version no longer matches (already deleted directly).
+        /// </summary>
+        [Fact] public void AddComponent_VersionMismatch_SkipsOnPlayback()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            buffer.AddComponent(entity, new AnotherComponent { Name = "test" });
+            entity.Delete();
+
+            buffer.Playback();
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.ProcessAddComponents" /> fires
+        ///     the <c>OnComponentAdded</c> event when <see cref="GameObjectFlags.AddComp" />
+        ///     is set on the entity.
+        /// </summary>
+        [Fact] public void AddComponent_WithOnComponentAddedEvent_Fires()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+            GameObject entity = scene.Create(new TestComponent { Value = 1 });
+
+            bool eventFired = false;
+            entity.OnComponentAdded += (_, _) => eventFired = true;
+
+            buffer.AddComponent(entity, new AnotherComponent { Name = "event-test" });
+            buffer.Playback();
+
+            Assert.True(eventFired);
+            Assert.True(entity.Has<AnotherComponent>());
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="CommandBuffer.Clear" /> handles version mismatches
+        ///     in the <c>CreateEntityBuffer</c> loop without throwing.
+        /// </summary>
+        [Fact] public void Clear_WithStaleCreateEntity_VersionMismatch_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
+            CommandBuffer buffer = new CommandBuffer(scene);
+
+            GameObject entity = buffer.Entity().With(new TestComponent { Value = 1 }).End();
+            entity.Delete();
+
+            buffer.Clear();
+
+            Assert.False(buffer.HasBufferItems);
+        }
     }
 }
