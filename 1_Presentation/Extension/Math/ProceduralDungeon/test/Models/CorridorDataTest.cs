@@ -254,5 +254,75 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
 
             Assert.Equal(direction, corridorData.Direction);
         }
+
+        /// <summary>
+        ///     Tests that equals should return false when only height differs (short-circuit branch coverage).
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnFalse_WhenOnlyHeightDiffers()
+        {
+            CorridorData corridorData1 = new CorridorData(15, 25, 4, 6, Direction.North);
+            CorridorData corridorData2 = new CorridorData(15, 25, 4, 7, Direction.North);
+
+            bool result = corridorData1.Equals(corridorData2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that equals should return false when only direction differs (last short-circuit branch).
+        /// </summary>
+        [Fact]
+        public void Equals_ShouldReturnFalse_WhenOnlyDirectionDiffers()
+        {
+            CorridorData corridorData1 = new CorridorData(15, 25, 4, 6, Direction.North);
+            CorridorData corridorData2 = new CorridorData(15, 25, 4, 6, Direction.South);
+
+            bool result = corridorData1.Equals(corridorData2);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that object equals should return true when comparing boxed equal corridor data.
+        /// </summary>
+        [Fact]
+        public void EqualsObject_ShouldReturnTrue_WhenBoxedCorridorDataIsEqual()
+        {
+            CorridorData corridorData = new CorridorData(10, 20, 3, 5, Direction.East);
+            object other = new CorridorData(10, 20, 3, 5, Direction.East);
+
+            bool result = corridorData.Equals(other);
+
+            Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that object equals should return false when comparing boxed different corridor data.
+        /// </summary>
+        [Fact]
+        public void EqualsObject_ShouldReturnFalse_WhenBoxedCorridorDataIsDifferent()
+        {
+            CorridorData corridorData = new CorridorData(10, 20, 3, 5, Direction.North);
+            object other = new CorridorData(99, 99, 9, 9, Direction.South);
+
+            bool result = corridorData.Equals(other);
+
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that inequality operator returns false for equal corridor data.
+        /// </summary>
+        [Fact]
+        public void InequalityOperator_ShouldReturnFalse_ForEqualCorridorData()
+        {
+            CorridorData corridorData1 = new CorridorData(15, 25, 4, 6, Direction.West);
+            CorridorData corridorData2 = new CorridorData(15, 25, 4, 6, Direction.West);
+
+            bool result = corridorData1 != corridorData2;
+
+            Assert.False(result);
+        }
     }
 }
