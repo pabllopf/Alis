@@ -285,6 +285,22 @@ namespace Alis.Core.Physic.Test.Common.Logic
         }
 
         /// <summary>
+        ///     Tests that Activate correctly handles a body within the AABB but outside the explosion radius.
+        ///     Exercises the Vector2F.Distance(...) > radius branch of the QueryAabb lambda.
+        /// </summary>
+        [Fact]
+        public void Activate_WithBodyInsideAabbButOutsideRadius_ShouldReturnEmpty()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1f, 1f, new Vector2F(4f, 4f), BodyType.Dynamic);
+            SimpleExplosion explosion = new SimpleExplosion(world);
+
+            Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
+
+            Assert.Empty(result);
+        }
+
+        /// <summary>
         ///     Tests that Activate with body outside radius but within AABB returns empty
         /// </summary>
         [Fact]
