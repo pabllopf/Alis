@@ -444,5 +444,99 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.True(result);
         }
+
+        /// <summary>
+        /// Tests that init velocity constraints with static bodies (mass = 0) covers the else branch of the mass ternary
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithStaticBodies_CoversMassZeroBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Static);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Static);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Static);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            int indexA = bodyB.GetIslandIndex;
+            int indexB = bodyD.GetIslandIndex;
+            int indexC = bodyA.GetIslandIndex;
+            int indexD = bodyC.GetIslandIndex;
+            int maxIndex = Math.Max(Math.Max(indexA, indexB), Math.Max(indexC, indexD)) + 1;
+
+            SolverPosition[] positions = new SolverPosition[maxIndex];
+            SolverVelocity[] velocities = new SolverVelocity[maxIndex];
+            for (int i = 0; i < maxIndex; i++)
+            {
+                positions[i] = new SolverPosition { C = Vector2F.Zero, A = 0.0f };
+                velocities[i] = new SolverVelocity { V = Vector2F.Zero, W = 0.0f };
+            }
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = positions,
+                Velocities = velocities,
+                Locks = new int[maxIndex]
+            };
+
+            MethodInfo initMethod = typeof(GearJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(gearJoint, new object[] { data });
+
+            FieldInfo impulseField = typeof(GearJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
+            float impulse = (float)impulseField.GetValue(gearJoint);
+
+            Assert.Equal(0.0f, impulse);
+        }
+
+        /// <summary>
+        /// Tests that init velocity constraints with static bodies and warm starting covers mass zero branch
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithStaticBodiesAndWarmStarting_CoversMassZeroBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Static);
+            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Static);
+            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Static);
+
+            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
+            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+
+            int indexA = bodyB.GetIslandIndex;
+            int indexB = bodyD.GetIslandIndex;
+            int indexC = bodyA.GetIslandIndex;
+            int indexD = bodyC.GetIslandIndex;
+            int maxIndex = Math.Max(Math.Max(indexA, indexB), Math.Max(indexC, indexD)) + 1;
+
+            SolverPosition[] positions = new SolverPosition[maxIndex];
+            SolverVelocity[] velocities = new SolverVelocity[maxIndex];
+            for (int i = 0; i < maxIndex; i++)
+            {
+                positions[i] = new SolverPosition { C = Vector2F.Zero, A = 0.0f };
+                velocities[i] = new SolverVelocity { V = Vector2F.Zero, W = 0.0f };
+            }
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = true },
+                Positions = positions,
+                Velocities = velocities,
+                Locks = new int[maxIndex]
+            };
+
+            MethodInfo initMethod = typeof(GearJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(gearJoint, new object[] { data });
+
+            FieldInfo impulseField = typeof(GearJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
+            float impulse = (float)impulseField.GetValue(gearJoint);
+
+            Assert.Equal(0.0f, impulse);
+        }
     }
 }
