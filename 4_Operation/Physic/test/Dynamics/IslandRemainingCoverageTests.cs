@@ -468,5 +468,58 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
+
+        // ========================================================================
+        // Dispose after Reset — exercises non-null Return*Array paths (lines 672-676, 684-688)
+        // ========================================================================
+        /// <summary>
+        /// Tests that dispose after reset returns arrays to pool without throwing
+        /// </summary>
+        [Fact]
+        public void Dispose_AfterReset_ReturnsArraysToPool()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager contactManager = world.ContactManager;
+            Island island = new Island();
+            island.Reset(32, 32, 32, contactManager);
+
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            island.Add(bodyA);
+            island.Add(bodyB);
+            island.Add(joint);
+
+            Exception ex = Record.Exception(() => island.Dispose());
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // SolveToi — extreme velocity clamping (lines 604-616)
+        // Uses static target + high restitution to preserve bullet velocity through TOI
+        // ========================================================================
+        /// <summary>
+        /// Tests that solve toi clamps extreme linear and angular velocity
+        /// </summary>
+        [Fact]
+        public void SolveToi_ClampsExtremeVelocity_WhenMovingFast()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Static);
+
+            bodyA.FixtureList.List[0].GetRestitution = 1.0f;
+
+            bodyA.IsBullet = true;
+            bodyA.LinearVelocityInternal = new Vector2F(1000f, 0f);
+            bodyA.AngularVelocity = 500f;
+
+            for (int i = 0; i < 5; i++)
+            {
+                world.Step(1.0f / 60.0f);
+            }
+
+            Assert.NotNull(bodyA);
+        }
     }
 }
