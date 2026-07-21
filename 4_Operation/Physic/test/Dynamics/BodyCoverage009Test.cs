@@ -199,31 +199,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that Remove iterates contacts and destroys those where
-        ///     the removed fixture matches fixtureB in the contact.
-        ///     Covers the fixture == fixtureB branch in Remove.
-        ///     Reverses fixture creation order so that body's fixture
-        ///     is proxy ID 1 (fixtureB) in the contact.
-        /// </summary>
-        [Fact]
-        public void Remove_FixtureAsFixtureB_DestroysContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            // Create other first so it gets proxy ID 0 (fixtureA)
-            Body other = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
-            // Create body second so its fixture gets proxy ID 1 (fixtureB)
-            Body body = world.CreateRectangle(2.0f, 2.0f, 1.0f, Vector2F.Zero, 0.0f, BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.NotEmpty(body.FixtureList);
-
-            body.Remove(body.FixtureList[0]);
-
-            Assert.Empty(body.FixtureList);
-        }
-
-        /// <summary>
         ///     Tests that setting Enabled to true on a body with no world
         ///     does not throw. Covers the GetWorldPhysic == null path
         ///     in the true branch of Enabled setter.

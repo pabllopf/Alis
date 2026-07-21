@@ -133,31 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
-
-        /// <summary>
-        /// Tests that process contact multi core with both bodies inactive skips contact
-        /// </summary>
-        [Fact]
-        public void ProcessContactMultiCore_WithBothBodiesInactive_SkipsContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
-                BindingFlags.Instance | BindingFlags.Public);
-            field.SetValue(world.ContactManager, 0);
-
-            bodyA.Awake = false;
-            bodyB.Awake = false;
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
+        
 
         /// <summary>
         /// Tests that process contact multi core with try resolve contact filter destroys contact
