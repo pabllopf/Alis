@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -59,19 +60,35 @@ namespace Alis.Core.Physic.Common.ConvexHull
 
             pointSet.Sort(PointComparer);
 
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Vector2F[] h = ArrayPool<Vector2F>.Shared.Rent(pointSet.Count * 2);
+#else
             Vector2F[] h = new Vector2F[pointSet.Count * 2];
+#endif
 
             int minmax = FindMinmax(pointSet);
             if (minmax == pointSet.Count - 1)
             {
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                Vertices result = BuildVerticalLineHull(pointSet, h, minmax);
+                ArrayPool<Vector2F>.Shared.Return(h);
+                return result;
+#else
                 return BuildVerticalLineHull(pointSet, h, minmax);
+#endif
             }
 
             int maxmin = FindMaxmin(pointSet);
             int top = BuildLowerChain(pointSet, h, minmax, maxmin);
             top = BuildUpperChain(pointSet, h, minmax, maxmin, top);
 
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Vertices result2 = BuildResultFromHull(h, top);
+            ArrayPool<Vector2F>.Shared.Return(h);
+            return result2;
+#else
             return BuildResultFromHull(h, top);
+#endif
         }
 
         /// <summary>

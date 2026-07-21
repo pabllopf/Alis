@@ -22,13 +22,27 @@
 | Status | Count |
 |--------|-------|
 | SUCCESS / COMPLETED | 93 |
-| BLOCKED_BY_PRODUCTION_CODE | 68 |
+| BLOCKED_BY_PRODUCTION_CODE | 63 |
 | COMPLETED_NO_TESTS_NEEDED | 2 |
 | SKIPPED (worker timeout) | 1 |
 
+## Reflection/Contract Test Resolution (2026-07-21)
+
+Applied Option A: reflection/contract tests to 5 groups of native wrapper files. These tests verify metadata (class structure, method signatures, DllImport attributes, enum values) without requiring native libraries.
+
+| Test File | Source File(s) | Tests Added | Status |
+|-----------|---------------|-------------|--------|
+| `Sdl2/test/SurfaceTest.cs` | `Surface.cs` | 13 | ✅ All pass |
+| `Sdl2/test/DropEventTest.cs` | `DropEvent.cs` | 6 | ✅ All pass |
+| `Glfw/test/Structs/GamePadStateTest.cs` (new) | `GamePadState.cs` | 6 | ✅ All pass |
+| `Sfml/test/Windows/KeyboardContractTest.cs` (new) | `Keyboard.cs` | 17 | ✅ All pass |
+| `Ui/test/Extras/Plot/ImPlotContractTests.cs` (new) | `ImPlotP1.cs`-`P22.cs` (22 partial files) | 40 | ✅ All pass |
+
+**Total**: 82 new contract tests across 26 source files.
+
 ## Remaining Work
 
-164 files still at 0.0% coverage — 68 are P/Invoke native wrappers blocked by production code restrictions. The remaining 96 need additional work but were processed in prior sessions.
+138 files still at 0.0% coverage — 63 are P/Invoke native wrappers still without contract tests. Apply the same contract-test pattern to the remaining 63 files to convert BLOCKED → SUCCESS.
 
 ## Detailed Results (See .memory/system/results/ for full details)
 

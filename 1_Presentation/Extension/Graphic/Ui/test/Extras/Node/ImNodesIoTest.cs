@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ImNodesIoTest.cs
+//  File:ImNodesIOTest.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,124 +28,103 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Ui.Extras.Node;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
 {
     /// <summary>
-    ///     The im nodes io test class
+    ///     Contract tests for the <see cref="ImNodesIo" /> struct.
     /// </summary>
-    public class ImNodesIoTest
+    public class ImNodesIOTest
     {
         /// <summary>
-        ///     Tests that three button mouse should be initialized
+        ///     Verifies that ImNodesIo is a value type.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void ThreeButtonMouse_ShouldBeInitialized()
+        [Fact]
+        public void ImNodesIo_ShouldBeValueType()
         {
-            ImNodesIo io = new ImNodesIo();
+            Assert.True(typeof(ImNodesIo).IsValueType);
+        }
+
+        /// <summary>
+        ///     Verifies that default instance has default ThreeButtonMouse.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_ThreeButtonMouse_ShouldBeDefault()
+        {
+            ImNodesIo io = default;
+
             Assert.Equal(default(EmulateThreeButtonMouse), io.ThreeButtonMouse);
         }
 
         /// <summary>
-        ///     Tests that detach with modifier click should be initialized
+        ///     Verifies that default instance has default DetachWithModifierClick.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void DetachWithModifierClick_ShouldBeInitialized()
+        [Fact]
+        public void DefaultInstance_DetachWithModifierClick_ShouldBeDefault()
         {
-            ImNodesIo io = new ImNodesIo();
+            ImNodesIo io = default;
+
             Assert.Equal(default(LinkDetachWithModifierClick), io.DetachWithModifierClick);
         }
 
         /// <summary>
-        ///     Tests that select modifier should be initialized
+        ///     Verifies that default instance has default SelectModifier.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void SelectModifier_ShouldBeInitialized()
+        [Fact]
+        public void DefaultInstance_SelectModifier_ShouldBeDefault()
         {
-            ImNodesIo io = new ImNodesIo();
+            ImNodesIo io = default;
+
             Assert.Equal(default(MultipleSelectModifier), io.SelectModifier);
         }
 
         /// <summary>
-        ///     Tests that alt mouse button should be initialized
+        ///     Verifies that AltMouseButton defaults to zero.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AltMouseButton_ShouldBeInitialized()
+        [Fact]
+        public void DefaultInstance_AltMouseButton_ShouldBeZero()
         {
-            ImNodesIo io = new ImNodesIo();
-            Assert.Equal(default(int), io.AltMouseButton);
+            ImNodesIo io = default;
+
+            Assert.Equal(0, io.AltMouseButton);
         }
 
         /// <summary>
-        ///     Tests that auto panning speed should be initialized
+        ///     Verifies that AutoPanningSpeed defaults to zero.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void AutoPanningSpeed_ShouldBeInitialized()
+        [Fact]
+        public void DefaultInstance_AutoPanningSpeed_ShouldBeZero()
         {
-            ImNodesIo io = new ImNodesIo();
-            Assert.Equal(default(float), io.AutoPanningSpeed);
+            ImNodesIo io = default;
+
+            Assert.Equal(0f, io.AutoPanningSpeed);
         }
 
         /// <summary>
-        ///     Tests that three button mouse should set and get correctly
+        ///     Verifies that AltMouseButton can be set and read.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void ThreeButtonMouse_Should_SetAndGetCorrectly()
+        [Fact]
+        public void AltMouseButton_ShouldBeSettable()
         {
-            ImNodesIo io = new ImNodesIo();
-            EmulateThreeButtonMouse value = new EmulateThreeButtonMouse();
-            io.ThreeButtonMouse = value;
-            Assert.Equal(value, io.ThreeButtonMouse);
+            ImNodesIo io = default;
+
+            io.AltMouseButton = 2;
+
+            Assert.Equal(2, io.AltMouseButton);
         }
 
         /// <summary>
-        ///     Tests that detach with modifier click should set and get correctly
+        ///     Verifies that AutoPanningSpeed can be set and read.
         /// </summary>
-        [RequireCImguiSystemFact]
-        public void DetachWithModifierClick_Should_SetAndGetCorrectly()
+        [Fact]
+        public void AutoPanningSpeed_ShouldBeSettable()
         {
-            ImNodesIo io = new ImNodesIo();
-            LinkDetachWithModifierClick value = new LinkDetachWithModifierClick();
-            io.DetachWithModifierClick = value;
-            Assert.Equal(value, io.DetachWithModifierClick);
-        }
+            ImNodesIo io = default;
 
-        /// <summary>
-        ///     Tests that select modifier should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void SelectModifier_Should_SetAndGetCorrectly()
-        {
-            ImNodesIo io = new ImNodesIo();
-            MultipleSelectModifier value = new MultipleSelectModifier();
-            io.SelectModifier = value;
-            Assert.Equal(value, io.SelectModifier);
-        }
+            io.AutoPanningSpeed = 0.5f;
 
-        /// <summary>
-        ///     Tests that alt mouse button should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void AltMouseButton_Should_SetAndGetCorrectly()
-        {
-            ImNodesIo io = new ImNodesIo();
-            int value = 1;
-            io.AltMouseButton = value;
-            Assert.Equal(value, io.AltMouseButton);
-        }
-
-        /// <summary>
-        ///     Tests that auto panning speed should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void AutoPanningSpeed_Should_SetAndGetCorrectly()
-        {
-            ImNodesIo io = new ImNodesIo();
-            float value = 1.0f;
-            io.AutoPanningSpeed = value;
-            Assert.Equal(value, io.AutoPanningSpeed);
+            Assert.Equal(0.5f, io.AutoPanningSpeed);
         }
     }
 }

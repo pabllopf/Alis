@@ -33,6 +33,9 @@ using System.Text;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+using System.Runtime.InteropServices;
+#endif
 
 namespace Alis.Core.Physic.Common
 {
@@ -108,6 +111,20 @@ public Vertices(IEnumerable<Vector2F> vertices)
         ///     </code>
         /// </example>
         public List<Vertices> Holes { get; set; }
+
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        /// <summary>
+        ///     Returns a span over the internal vertex data.
+        ///     Zero-allocation access to the underlying list buffer.
+        /// </summary>
+        internal Span<Vector2F> AsSpan() => CollectionsMarshal.AsSpan(this);
+
+        /// <summary>
+        ///     Returns a read-only span over the internal vertex data.
+        ///     Zero-allocation access to the underlying list buffer.
+        /// </summary>
+        internal ReadOnlySpan<Vector2F> AsReadOnlySpan() => CollectionsMarshal.AsSpan(this);
+#endif
 
         /// <summary>
         ///     Gets the next index. Used for iterating all the edges with wrap-around.

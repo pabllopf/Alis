@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
@@ -58,13 +59,23 @@ namespace Alis.Core.Physic.Common.ConvexHull
                 return vertices;
             }
 
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Vector2F[] deque = ArrayPool<Vector2F>.Shared.Rent(vertices.Count + 1);
+#else
             Vector2F[] deque = new Vector2F[vertices.Count + 1];
+#endif
             int qf = 3, qb = 0;
 
             int startIndex = InitializeDeque(vertices, deque, ref qf);
             ProcessDeque(vertices, deque, ref qf, ref qb, startIndex);
 
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Vertices result = BuildConvexHullResult(deque, qf, qb);
+            ArrayPool<Vector2F>.Shared.Return(deque);
+            return result;
+#else
             return BuildConvexHullResult(deque, qf, qb);
+#endif
         }
 
         /// <summary>

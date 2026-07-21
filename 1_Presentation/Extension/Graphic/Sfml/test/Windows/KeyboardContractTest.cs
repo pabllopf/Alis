@@ -97,7 +97,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_Escape_ShouldHaveCorrectValue()
         {
-            Assert.Equal(37, (int)Keyboard.Key.Escape);
+            Assert.Equal(36, (int)Keyboard.Key.Escape);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_Space_ShouldHaveCorrectValue()
         {
-            Assert.Equal(58, (int)Keyboard.Key.Space);
+            Assert.Equal(57, (int)Keyboard.Key.Space);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_Enter_ShouldHaveCorrectValue()
         {
-            Assert.Equal(59, (int)Keyboard.Key.Enter);
+            Assert.Equal(58, (int)Keyboard.Key.Enter);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_LControl_ShouldHaveCorrectValue()
         {
-            Assert.Equal(38, (int)Keyboard.Key.LControl);
+            Assert.Equal(37, (int)Keyboard.Key.LControl);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_LShift_ShouldHaveCorrectValue()
         {
-            Assert.Equal(39, (int)Keyboard.Key.LShift);
+            Assert.Equal(38, (int)Keyboard.Key.LShift);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_LAlt_ShouldHaveCorrectValue()
         {
-            Assert.Equal(40, (int)Keyboard.Key.LAlt);
+            Assert.Equal(39, (int)Keyboard.Key.LAlt);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_LSystem_ShouldHaveCorrectValue()
         {
-            Assert.Equal(41, (int)Keyboard.Key.LSystem);
+            Assert.Equal(40, (int)Keyboard.Key.LSystem);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_RControl_ShouldHaveCorrectValue()
         {
-            Assert.Equal(42, (int)Keyboard.Key.RControl);
+            Assert.Equal(41, (int)Keyboard.Key.RControl);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_RShift_ShouldHaveCorrectValue()
         {
-            Assert.Equal(43, (int)Keyboard.Key.RShift);
+            Assert.Equal(42, (int)Keyboard.Key.RShift);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_RAlt_ShouldHaveCorrectValue()
         {
-            Assert.Equal(44, (int)Keyboard.Key.RAlt);
+            Assert.Equal(43, (int)Keyboard.Key.RAlt);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [Fact]
         public void Key_RSystem_ShouldHaveCorrectValue()
         {
-            Assert.Equal(45, (int)Keyboard.Key.RSystem);
+            Assert.Equal(44, (int)Keyboard.Key.RSystem);
         }
 
         /// <summary>

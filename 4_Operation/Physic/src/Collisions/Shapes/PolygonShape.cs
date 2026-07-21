@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.CompilerServices;
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
 using System.Runtime.InteropServices;
+#endif
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -138,12 +141,34 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <summary>
         ///     Gets a read-only span of the polygon vertices for zero-allocation access.
         /// </summary>
-        internal ReadOnlySpan<Vector2F> VerticesSpan => CollectionsMarshal.AsSpan(_vertices);
+        internal ReadOnlySpan<Vector2F> VerticesSpan
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get
+            {
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                return CollectionsMarshal.AsSpan(_vertices);
+#else
+                return _vertices.ToArray().AsSpan(0, _vertices.Count);
+#endif
+            }
+        }
 
         /// <summary>
         ///     Gets a read-only span of the polygon normals for zero-allocation access.
         /// </summary>
-        internal ReadOnlySpan<Vector2F> NormalsSpan => CollectionsMarshal.AsSpan(Normals);
+        internal ReadOnlySpan<Vector2F> NormalsSpan
+        {
+            [MethodImpl(MethodImplOptions.AggressiveInlining)]
+            get
+            {
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+                return CollectionsMarshal.AsSpan(Normals);
+#else
+                return Normals.ToArray().AsSpan(0, Normals.Count);
+#endif
+            }
+        }
 
         /// <summary>
         ///     Gets the value of the child count
@@ -399,7 +424,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
             Vector2F normalL = Complex.Divide(ref normal, ref xf.Rotation);
             float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            Span<float> depths = stackalloc float[SettingEnv.MaxPolygonVertices];
+#else
             float[] depths = new float[SettingEnv.MaxPolygonVertices];
+#endif
             int diveCount = 0;
             int intoIndex = -1;
             int outoIndex = -1;

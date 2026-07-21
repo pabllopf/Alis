@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -936,7 +937,11 @@ namespace Alis.Core.Physic.Collisions
         /// </summary>
         public void RebuildBottomUp()
         {
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            int[] nodes = ArrayPool<int>.Shared.Rent(_nodeCount);
+#else
             int[] nodes = new int[_nodeCount];
+#endif
             int count = 0;
 
             // Build array of leaves. Free the rest.
@@ -982,6 +987,10 @@ namespace Alis.Core.Physic.Collisions
             }
 
             _root = nodes[0];
+
+#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+            ArrayPool<int>.Shared.Return(nodes);
+#endif
 
             Validate();
         }

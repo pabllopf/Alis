@@ -191,15 +191,17 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        ///     Verifies that DestroyContext method exists.
+        ///     Verifies that DestroyContext methods exist.
         /// </summary>
         [Fact]
         public void DestroyContext_ShouldExist()
         {
-            MethodInfo method = typeof(ImPlot)
-                .GetMethod("DestroyContext", BindingFlags.Public | BindingFlags.Static);
+            MethodInfo[] methods = typeof(ImPlot)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(m => m.Name == "DestroyContext")
+                .ToArray();
 
-            Assert.NotNull(method);
+            Assert.NotEmpty(methods);
         }
 
         /// <summary>
@@ -325,14 +327,14 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         }
 
         /// <summary>
-        ///     Verifies that PlotBarsH method exists.
+        ///     Verifies that PlotBarGroups method exists.
         /// </summary>
         [Fact]
-        public void PlotBarsH_ShouldExist()
+        public void PlotBarGroups_ShouldExist()
         {
             MethodInfo[] overloads = typeof(ImPlot)
                 .GetMethods(BindingFlags.Public | BindingFlags.Static)
-                .Where(m => m.Name == "PlotBarsH")
+                .Where(m => m.Name == "PlotBarGroups")
                 .ToArray();
 
             Assert.NotEmpty(overloads);
@@ -470,10 +472,17 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         [Fact]
         public void LegendContextMethods_ShouldExist()
         {
-            Assert.NotNull(typeof(ImPlot)
-                .GetMethod("BeginLegendPopup", BindingFlags.Public | BindingFlags.Static));
-            Assert.NotNull(typeof(ImPlot)
-                .GetMethod("EndLegendPopup", BindingFlags.Public | BindingFlags.Static));
+            MethodInfo[] beginMethods = typeof(ImPlot)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(m => m.Name == "BeginLegendPopup")
+                .ToArray();
+            MethodInfo[] endMethods = typeof(ImPlot)
+                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+                .Where(m => m.Name == "EndLegendPopup")
+                .ToArray();
+
+            Assert.NotEmpty(beginMethods);
+            Assert.NotEmpty(endMethods);
         }
 
         /// <summary>
