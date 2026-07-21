@@ -1140,3 +1140,6 @@
 2026-07-21T10:15:24Z | SceneUpdateFilter.cs | 96.2% | 100.0% | 1 | 0fe979440 | COMPLETED
 2026-07-21T10:15:24Z | FastestArrayPool.cs | 97.2% | 100.0% | 1 | b02d23b52 | COMPLETED
 2026-07-21T10:15:24Z | SimpleExplosion.cs | 98.1% | 100.0% | 1 | d84b6a6aa | COMPLETED
+2026-07-21T10:25:07Z | JsonParser.cs | 99.0% | 100.0% | 1 | dbd736c7f | COMPLETED
+2026-07-21T10:25:07Z | FlipcodeDecomposer.cs | 99.1% | 100.0% | 3 | 858da45f7 | COMPLETED
+2026-07-21T10:25:07Z | FastestStack.cs | 99.2% | 100.0% | 0 | c5650d21f | COMPLETED
