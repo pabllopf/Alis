@@ -202,6 +202,42 @@ namespace Alis.Core.Ecs.Test.Updating
         }
 
         /// <summary>
+        ///     Tests that <see cref="SceneUpdateFilter.ArchetypeAdded" /> grows the internal
+        ///     <c>_allComponents</c> array when the number of matched component storages exceeds
+        ///     the initial capacity of 8.
+        /// </summary>
+        [Fact]
+        public void ArchetypeAdded_WhenStorageBufferExceedsInitialCapacity_GrowsArray()
+        {
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp0));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp1));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp2));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp3));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp4));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp5));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp6));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp7));
+            GenerationServices.RegisterUpdateMethodAttribute(BufferGrowthAttributeType, typeof(BufferComp8));
+
+            using Scene scene = new Scene();
+
+            // First entity with 8 matching components fills the initial _allComponents capacity of 8
+            scene.Create(new BufferComp0(), new BufferComp1(), new BufferComp2(), new BufferComp3(),
+                         new BufferComp4(), new BufferComp5(), new BufferComp6(), new BufferComp7());
+
+            SceneUpdateFilter filter = new SceneUpdateFilter(scene, BufferGrowthAttributeType);
+            scene._updatesByAttributes[BufferGrowthAttributeType] = filter;
+
+            // Second entity with a 9th matching component creates a new archetype;
+            // ArchetypeAdded tries to store its component storage while _nextComponentStorageIndex
+            // equals _allComponents.Length, triggering Array.Resize.
+            scene.Create(new BufferComp8());
+
+            Exception ex = Record.Exception(() => filter.Update());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
         ///     The registered scene update filter attribute class
         /// </summary>
         /// <seealso cref="Attribute" />
@@ -213,6 +249,14 @@ namespace Alis.Core.Ecs.Test.Updating
         ///     Attribute used to test buffer stretching beyond initial capacity.
         /// </summary>
         internal sealed class StretchFilterAttribute : Attribute
+        {
+        }
+
+        /// <summary>
+        ///     The buffer growth attribute class
+        /// </summary>
+        /// <seealso cref="Attribute" />
+        internal sealed class BufferGrowthAttribute : Attribute
         {
         }
 
@@ -235,5 +279,55 @@ namespace Alis.Core.Ecs.Test.Updating
             /// </summary>
             public int Data;
         }
+
+        /// <summary>
+        ///     The buffer growth attribute type
+        /// </summary>
+        private static readonly Type BufferGrowthAttributeType = typeof(BufferGrowthAttribute);
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp0 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp1 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp2 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp3 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp4 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp5 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp6 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp7 { public int Value; }
+
+        /// <summary>
+        ///     Component type for buffer growth test
+        /// </summary>
+        private struct BufferComp8 { public int Value; }
     }
 }
