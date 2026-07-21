@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
@@ -152,6 +153,72 @@ namespace Alis.Core.Aspect.Logging.Test
                 try { Logger.Exception("trigger-null-branch"); }
                 catch (InvalidOperationException) { }
             });
+        }
+
+        /// <summary>
+        /// Tests that debug null branch
+        /// </summary>
+        [Fact]
+        public void Debug_NullBranch()
+        {
+            AttemptNullBranch(() => Logger.Debug("trigger-null-branch"));
+        }
+
+        /// <summary>
+        /// Tests that warning null branch
+        /// </summary>
+        [Fact]
+        public void Warning_NullBranch()
+        {
+            AttemptNullBranch(() => Logger.Warning("trigger-null-branch"));
+        }
+
+        /// <summary>
+        /// Tests that ensure initialized concurrent initialization second thread skips
+        /// </summary>
+        [Fact]
+        public void Logger_EnsureInitialized_ConcurrentInitialization_SecondThreadSkips()
+        {
+            object saved = DefaultLoggerField.GetValue(null);
+
+            try
+            {
+                DefaultLoggerField.SetValue(null, null);
+
+                System.Collections.Concurrent.ConcurrentBag<Exception> exceptions = new System.Collections.Concurrent.ConcurrentBag<Exception>();
+                Thread[] threads = new Thread[20];
+
+                for (int i = 0; i < threads.Length; i++)
+                {
+                    threads[i] = new Thread(() =>
+                    {
+                        try
+                        {
+                            Logger.Trace("concurrent-init");
+                        }
+                        catch (Exception ex)
+                        {
+                            exceptions.Add(ex);
+                        }
+                    });
+                }
+
+                for (int i = 0; i < threads.Length; i++)
+                {
+                    threads[i].Start();
+                }
+
+                for (int i = 0; i < threads.Length; i++)
+                {
+                    threads[i].Join(10000);
+                }
+
+                Assert.Empty(exceptions);
+            }
+            finally
+            {
+                DefaultLoggerField.SetValue(null, saved);
+            }
         }
 
         /// <summary>
