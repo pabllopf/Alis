@@ -55,7 +55,7 @@ namespace Alis.App.Hub
     /// </summary>
     public class HubEngine
     {
- 
+        private static readonly int[] ViewportBuffer = new int[4];
 
         /// <summary>
         ///     The vector
@@ -448,10 +448,9 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
 
             //my = fbH - my; // Invertir coordenada Y para ImGui
 
-            int[] viewport = new int[4];
-            Gl.GlGetIntegerv(0x0BA2, viewport);
-            int glViewportWidth = viewport[2];
-            int glViewportHeight = viewport[3];
+            Gl.GlGetIntegerv(0x0BA2, ViewportBuffer);
+            int glViewportWidth = ViewportBuffer[2];
+            int glViewportHeight = ViewportBuffer[3];
 
             float scaleX = glViewportWidth / resolutionProgramX;
             float scaleY = glViewportHeight / resolutionProgramY;
@@ -1003,10 +1002,9 @@ platform.GetWindowMetrics(out _, out _, out _, out _, out _, out int fbH);
             Gl.GlDisable(EnableCap.DepthTest);
             Gl.GlEnable(EnableCap.ScissorTest);
 
-            int[] viewport = new int[4];
-            Gl.GlGetIntegerv(0x0BA2, viewport); // 0x0BA2 = GL_VIEWPORT
-            int fbWidth = viewport[2];
-            int fbHeight = viewport[3];
+            Gl.GlGetIntegerv(0x0BA2, ViewportBuffer); // 0x0BA2 = GL_VIEWPORT
+            int fbWidth = ViewportBuffer[2];
+            int fbHeight = ViewportBuffer[3];
             ImGuiIoPtr imGuiIoPtr = ImGui.GetIo();
             imGuiIoPtr.DisplaySize = new Vector2F(fbWidth, fbHeight);
 

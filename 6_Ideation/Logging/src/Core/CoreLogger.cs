@@ -294,7 +294,15 @@ namespace Alis.Core.Aspect.Logging.Core
         {
             lock (_scopeLock)
             {
-                return _scopeStack.Count > 0 ? _scopeStack.ToArray() : Array.Empty<object>();
+                int count = _scopeStack.Count;
+                if (count == 0)
+                {
+                    return Array.Empty<object>();
+                }
+
+                object[] result = new object[count];
+                _scopeStack.CopyTo(result, 0);
+                return result;
             }
         }
 

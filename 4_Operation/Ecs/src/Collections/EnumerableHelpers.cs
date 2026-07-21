@@ -76,6 +76,26 @@ namespace Alis.Core.Ecs.Collections
             return Array.Empty<T>();
         }
 
+        /// <summary>Converts an enumerable to a span, filling a pre-allocated buffer.</summary>
+        /// <param name="source">The enumerable to convert.</param>
+        /// <param name="destination">The destination span to fill.</param>
+        /// <param name="length">The number of items written to the span.</param>
+        public static void ToSpan<T>(IEnumerable<T> source, Span<T> destination, out int length)
+        {
+            int index = 0;
+            foreach (T item in source)
+            {
+                if (index >= destination.Length)
+                {
+                    break;
+                }
+
+                destination[index++] = item;
+            }
+
+            length = index;
+        }
+
         /// <summary>
         /// Returns the array from collection using the specified collection
         /// </summary>

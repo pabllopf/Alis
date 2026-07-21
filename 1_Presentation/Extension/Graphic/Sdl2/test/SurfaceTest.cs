@@ -27,12 +27,172 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
+
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
-    ///     Unit tests for the Surface struct.
+    ///     Contract tests for the <see cref="Surface" /> blittable struct.
     /// </summary>
     public class SurfaceTest
     {
+        /// <summary>
+        ///     Verifies that Surface is a value type.
+        /// </summary>
+        [Fact]
+        public void Surface_ShouldBeValueType()
+        {
+            Assert.True(typeof(Surface).IsValueType);
+        }
+
+        /// <summary>
+        ///     Verifies that Surface has sequential layout.
+        /// </summary>
+        [Fact]
+        public void Surface_ShouldHaveSequentialLayout()
+        {
+            StructLayoutAttribute attribute = typeof(Surface).StructLayoutAttribute;
+
+            Assert.NotNull(attribute);
+            Assert.Equal(LayoutKind.Sequential, attribute.Value);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero flags.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_Flags_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0u, surface.flags);
+        }
+
+        /// <summary>
+        ///     Verifies that Format property can be set and read.
+        /// </summary>
+        [Fact]
+        public void Format_ShouldBeSettable()
+        {
+            Surface surface = default;
+            System.IntPtr expected = new System.IntPtr(12345);
+
+            surface.Format = expected;
+
+            Assert.Equal(expected, surface.Format);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero width.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_W_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0, surface.w);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero height.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_H_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0, surface.h);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero pitch.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_Pitch_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0, surface.pitch);
+        }
+
+        /// <summary>
+        ///     Verifies that Pixels property can be set and read.
+        /// </summary>
+        [Fact]
+        public void Pixels_ShouldBeSettable()
+        {
+            Surface surface = default;
+            System.IntPtr expected = new System.IntPtr(67890);
+
+            surface.Pixels = expected;
+
+            Assert.Equal(expected, surface.Pixels);
+        }
+
+        /// <summary>
+        ///     Verifies that Userdata property can be set and read.
+        /// </summary>
+        [Fact]
+        public void Userdata_ShouldBeSettable()
+        {
+            Surface surface = default;
+            System.IntPtr expected = new System.IntPtr(11111);
+
+            surface.Userdata = expected;
+
+            Assert.Equal(expected, surface.Userdata);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero locked.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_Locked_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0, surface.locked);
+        }
+
+        /// <summary>
+        ///     Verifies that ListBlitMap property can be set and read.
+        /// </summary>
+        [Fact]
+        public void ListBlitMap_ShouldBeSettable()
+        {
+            Surface surface = default;
+            System.IntPtr expected = new System.IntPtr(22222);
+
+            surface.ListBlitMap = expected;
+
+            Assert.Equal(expected, surface.ListBlitMap);
+        }
+
+        /// <summary>
+        ///     Verifies that Map property can be set and read.
+        /// </summary>
+        [Fact]
+        public void Map_ShouldBeSettable()
+        {
+            Surface surface = default;
+            System.IntPtr expected = new System.IntPtr(33333);
+
+            surface.Map = expected;
+
+            Assert.Equal(expected, surface.Map);
+        }
+
+        /// <summary>
+        ///     Verifies that default Surface has zero refCount.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_RefCount_ShouldBeZero()
+        {
+            Surface surface = default;
+
+            Assert.Equal(0, surface.refCount);
+        }
     }
 }

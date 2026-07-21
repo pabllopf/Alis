@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.ConvexHull;
@@ -133,6 +134,16 @@ namespace Alis.Core.Physic.Collisions.Shapes
         ///     Gets or sets the value of the normals
         /// </summary>
         public Vertices Normals { get; private set; }
+
+        /// <summary>
+        ///     Gets a read-only span of the polygon vertices for zero-allocation access.
+        /// </summary>
+        internal ReadOnlySpan<Vector2F> VerticesSpan => CollectionsMarshal.AsSpan(_vertices);
+
+        /// <summary>
+        ///     Gets a read-only span of the polygon normals for zero-allocation access.
+        /// </summary>
+        internal ReadOnlySpan<Vector2F> NormalsSpan => CollectionsMarshal.AsSpan(Normals);
 
         /// <summary>
         ///     Gets the value of the child count

@@ -424,6 +424,25 @@ namespace Alis.Core.Aspect.Math.Collections
             }
 
             /// <summary>
+            ///     Adds items from a source array of a derived type to this collection using a span.
+            /// </summary>
+            /// <typeparam name="TDerived">The type of source elements (must derive from <typeparamref name="T" />).</typeparam>
+            /// <param name="items">The source read-only span.</param>
+            internal void AddRange<TDerived>(ReadOnlySpan<TDerived> items) where TDerived : T
+            {
+                EnsureCapacity(Count + items.Length);
+
+                int offset = Count;
+                Count += items.Length;
+
+                Span<T> dest = _elements.AsSpan(offset, items.Length);
+                for (int i = 0; i < items.Length; i++)
+                {
+                    dest[i] = items[i];
+                }
+            }
+
+            /// <summary>
             ///     Adds the specified items to the end of the array from another <see cref="FastImmutableArray{T}" />.
             /// </summary>
             /// <param name="items">The items to add.</param>

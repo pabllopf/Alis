@@ -492,14 +492,22 @@ namespace Alis.Core.Ecs.Collections
             }
 
             T[] objArray = new T[_size];
+            CopyTo(objArray.AsSpan());
+            return objArray;
+        }
+
+        /// <summary>
+        ///     Copies the contents of the stack to the specified span in reverse order.
+        /// </summary>
+        /// <param name="destination">The destination span.</param>
+        public void CopyTo(Span<T> destination)
+        {
             int i = 0;
             while (i < _size)
             {
-                objArray[i] = _array[_size - i - 1];
+                destination[i] = _array[_size - i - 1];
                 i++;
             }
-
-            return objArray;
         }
 
         /// <summary>

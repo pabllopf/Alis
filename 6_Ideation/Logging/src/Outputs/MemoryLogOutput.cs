@@ -49,6 +49,7 @@
 // 
 
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
 
@@ -178,7 +179,15 @@ namespace Alis.Core.Aspect.Logging.Outputs
         {
             lock (_lock)
             {
-                return _entries.ToArray();
+                int count = _entries.Count;
+                if (count == 0)
+                {
+                    return Array.Empty<ILogEntry>();
+                }
+
+                ILogEntry[] result = new ILogEntry[count];
+                _entries.CopyTo(result, 0);
+                return result;
             }
         }
 

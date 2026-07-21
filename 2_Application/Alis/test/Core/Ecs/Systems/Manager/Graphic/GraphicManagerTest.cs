@@ -49,8 +49,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputePressedKeys(newKeys, currentKeys);
+            GraphicManager.ComputePressedKeys(newKeys, currentKeys, result);
 
             Assert.Equal(2, result.Count);
             Assert.Contains(ConsoleKey.A, result);
@@ -65,8 +66,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputePressedKeys(newKeys, currentKeys);
+            GraphicManager.ComputePressedKeys(newKeys, currentKeys, result);
 
             Assert.Single(result);
             Assert.Contains(ConsoleKey.B, result);
@@ -81,8 +83,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputePressedKeys(newKeys, currentKeys);
+            GraphicManager.ComputePressedKeys(newKeys, currentKeys, result);
 
             Assert.Empty(result);
         }
@@ -95,8 +98,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B, ConsoleKey.C };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeHeldKeys(newKeys, currentKeys);
+            GraphicManager.ComputeHeldKeys(newKeys, currentKeys, result);
 
             Assert.Equal(2, result.Count);
             Assert.Contains(ConsoleKey.A, result);
@@ -111,8 +115,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.B };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeHeldKeys(newKeys, currentKeys);
+            GraphicManager.ComputeHeldKeys(newKeys, currentKeys, result);
 
             Assert.Empty(result);
         }
@@ -125,8 +130,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeHeldKeys(newKeys, currentKeys);
+            GraphicManager.ComputeHeldKeys(newKeys, currentKeys, result);
 
             Assert.Empty(result);
         }
@@ -139,8 +145,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeReleasedKeys(currentKeys, newKeys);
+            GraphicManager.ComputeReleasedKeys(currentKeys, newKeys, result);
 
             Assert.Single(result);
             Assert.Contains(ConsoleKey.B, result);
@@ -154,8 +161,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeReleasedKeys(currentKeys, newKeys);
+            GraphicManager.ComputeReleasedKeys(currentKeys, newKeys, result);
 
             Assert.Empty(result);
         }
@@ -168,8 +176,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> result = GraphicManager.ComputeReleasedKeys(currentKeys, newKeys);
+            GraphicManager.ComputeReleasedKeys(currentKeys, newKeys, result);
 
             Assert.Equal(2, result.Count);
             Assert.Contains(ConsoleKey.A, result);
@@ -184,10 +193,13 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
         {
             HashSet<ConsoleKey> prevKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.B, ConsoleKey.C };
+            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> held = new HashSet<ConsoleKey>();
+            HashSet<ConsoleKey> released = new HashSet<ConsoleKey>();
 
-            HashSet<ConsoleKey> pressed = GraphicManager.ComputePressedKeys(newKeys, prevKeys);
-            HashSet<ConsoleKey> held = GraphicManager.ComputeHeldKeys(newKeys, prevKeys);
-            HashSet<ConsoleKey> released = GraphicManager.ComputeReleasedKeys(prevKeys, newKeys);
+            GraphicManager.ComputePressedKeys(newKeys, prevKeys, pressed);
+            GraphicManager.ComputeHeldKeys(newKeys, prevKeys, held);
+            GraphicManager.ComputeReleasedKeys(prevKeys, newKeys, released);
 
             Assert.Single(pressed);
             Assert.Contains(ConsoleKey.C, pressed);

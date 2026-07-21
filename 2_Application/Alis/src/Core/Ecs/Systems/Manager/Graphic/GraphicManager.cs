@@ -75,17 +75,30 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             ConsoleKey.Spacebar, ConsoleKey.Enter, ConsoleKey.Escape
         };
 
-        // Diccionario para guardar el timestamp de pulsación de cada tecla
         /// <summary>
         ///     The date time
         /// </summary>
         internal readonly Dictionary<ConsoleKey, DateTime> keyDownTimestamps = new Dictionary<ConsoleKey, DateTime>();
 
-        // Estado actual de teclas presionadas
         /// <summary>
         ///     The console key
         /// </summary>
         private HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
+
+        /// <summary>
+        ///     Reusable buffer for pressed keys calculation to avoid per-frame allocations.
+        /// </summary>
+        private readonly HashSet<ConsoleKey> _pressedKeysBuffer = new HashSet<ConsoleKey>();
+
+        /// <summary>
+        ///     Reusable buffer for held keys calculation to avoid per-frame allocations.
+        /// </summary>
+        private readonly HashSet<ConsoleKey> _heldKeysBuffer = new HashSet<ConsoleKey>();
+
+        /// <summary>
+        ///     Reusable buffer for released keys calculation to avoid per-frame allocations.
+        /// </summary>
+        private readonly HashSet<ConsoleKey> _releasedKeysBuffer = new HashSet<ConsoleKey>();
 
         /// <summary>
         ///     The platform
@@ -193,14 +206,14 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
             }
 
             DateTime now = DateTime.UtcNow;
-            HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>(allKeys.Where(k => platform.IsKeyDown(k)));
+            HashSet<ConsoleKey> newKeys = BuildNewKeys();
 
-            HashSet<ConsoleKey> pressedKeys = ComputePressedKeys(newKeys, currentKeys);
-            HashSet<ConsoleKey> heldKeys = ComputeHeldKeys(newKeys, currentKeys);
-            HashSet<ConsoleKey> releasedKeys = ComputeReleasedKeys(currentKeys, newKeys);
+            ComputePressedKeys(newKeys, currentKeys, _pressedKeysBuffer);
+            ComputeHeldKeys(newKeys, currentKeys, _heldKeysBuffer);
+            ComputeReleasedKeys(currentKeys, newKeys, _releasedKeysBuffer);
 
-            UpdateKeyTimestamps(pressedKeys, releasedKeys, now);
-            ProcessKeyEventComponents(pressedKeys, heldKeys, releasedKeys, now);
+            UpdateKeyTimestamps(_pressedKeysBuffer, _releasedKeysBuffer, now);
+            ProcessKeyEventComponents(_pressedKeysBuffer, _heldKeysBuffer, _releasedKeysBuffer, now);
 
             currentKeys = newKeys;
 
@@ -277,42 +290,50 @@ namespace Alis.Core.Ecs.Systems.Manager.Graphic
         }
 
         /// <summary>
-        /// Computes the pressed keys using the specified new keys
+        ///     Builds the set of currently pressed keys using a manual loop to avoid LINQ allocations.
         /// </summary>
-        /// <param name="newKeys">The new keys</param>
-        /// <param name="currentKeys">The current keys</param>
-        /// <returns>The pressed</returns>
-        internal static HashSet<ConsoleKey> ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        private HashSet<ConsoleKey> BuildNewKeys()
         {
-            HashSet<ConsoleKey> pressed = new HashSet<ConsoleKey>(newKeys);
-            pressed.ExceptWith(currentKeys);
-            return pressed;
+            HashSet<ConsoleKey> keys = new HashSet<ConsoleKey>();
+            for (int i = 0; i < allKeys.Length; i++)
+            {
+                if (platform.IsKeyDown(allKeys[i]))
+                {
+                    keys.Add(allKeys[i]);
+                }
+            }
+
+            return keys;
         }
 
         /// <summary>
-        /// Computes the held keys using the specified new keys
+        /// Computes the pressed keys into a reusable destination set.
         /// </summary>
-        /// <param name="newKeys">The new keys</param>
-        /// <param name="currentKeys">The current keys</param>
-        /// <returns>The held</returns>
-        internal static HashSet<ConsoleKey> ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys)
+        internal static void ComputePressedKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> result)
         {
-            HashSet<ConsoleKey> held = new HashSet<ConsoleKey>(newKeys);
-            held.IntersectWith(currentKeys);
-            return held;
+            result.Clear();
+            result.UnionWith(newKeys);
+            result.ExceptWith(currentKeys);
         }
 
         /// <summary>
-        /// Computes the released keys using the specified current keys
+        /// Computes the held keys into a reusable destination set.
         /// </summary>
-        /// <param name="currentKeys">The current keys</param>
-        /// <param name="newKeys">The new keys</param>
-        /// <returns>The released</returns>
-        internal static HashSet<ConsoleKey> ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys)
+        internal static void ComputeHeldKeys(HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> result)
         {
-            HashSet<ConsoleKey> released = new HashSet<ConsoleKey>(currentKeys);
-            released.ExceptWith(newKeys);
-            return released;
+            result.Clear();
+            result.UnionWith(newKeys);
+            result.IntersectWith(currentKeys);
+        }
+
+        /// <summary>
+        /// Computes the released keys into a reusable destination set.
+        /// </summary>
+        internal static void ComputeReleasedKeys(HashSet<ConsoleKey> currentKeys, HashSet<ConsoleKey> newKeys, HashSet<ConsoleKey> result)
+        {
+            result.Clear();
+            result.UnionWith(currentKeys);
+            result.ExceptWith(newKeys);
         }
 
         /// <summary>

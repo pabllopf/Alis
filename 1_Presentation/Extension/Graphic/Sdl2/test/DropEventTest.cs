@@ -27,12 +27,83 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sdl2.Structs;
+using Xunit;
+
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
     /// <summary>
-    ///     Unit tests for the DropEvent struct.
+    ///     Contract tests for the <see cref="DropEvent" /> blittable struct.
     /// </summary>
     public class DropEventTest
     {
+        /// <summary>
+        ///     Verifies that DropEvent is a value type.
+        /// </summary>
+        [Fact]
+        public void DropEvent_ShouldBeValueType()
+        {
+            Assert.True(typeof(DropEvent).IsValueType);
+        }
+
+        /// <summary>
+        ///     Verifies that DropEvent has sequential layout.
+        /// </summary>
+        [Fact]
+        public void DropEvent_ShouldHaveSequentialLayout()
+        {
+            StructLayoutAttribute attribute = typeof(DropEvent).StructLayoutAttribute;
+
+            Assert.NotNull(attribute);
+            Assert.Equal(LayoutKind.Sequential, attribute.Value);
+        }
+
+        /// <summary>
+        ///     Verifies that default DropEvent has zero type.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_Type_ShouldBeZero()
+        {
+            DropEvent dropEvent = default;
+
+            Assert.Equal(0, (int)dropEvent.type);
+        }
+
+        /// <summary>
+        ///     Verifies that default DropEvent has zero timestamp.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_Timestamp_ShouldBeZero()
+        {
+            DropEvent dropEvent = default;
+
+            Assert.Equal(0u, dropEvent.timestamp);
+        }
+
+        /// <summary>
+        ///     Verifies that File property can be set and read.
+        /// </summary>
+        [Fact]
+        public void File_ShouldBeSettable()
+        {
+            DropEvent dropEvent = default;
+            System.IntPtr expected = new System.IntPtr(12345);
+
+            dropEvent.File = expected;
+
+            Assert.Equal(expected, dropEvent.File);
+        }
+
+        /// <summary>
+        ///     Verifies that default DropEvent has zero windowID.
+        /// </summary>
+        [Fact]
+        public void DefaultInstance_WindowID_ShouldBeZero()
+        {
+            DropEvent dropEvent = default;
+
+            Assert.Equal(0u, dropEvent.windowID);
+        }
     }
 }

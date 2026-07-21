@@ -167,8 +167,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B, ConsoleKey.C };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.B, ConsoleKey.D };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Equal(new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.C }, result);
         }
 
@@ -180,8 +181,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Empty(result);
         }
 
@@ -193,8 +195,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey>();
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputePressedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Equal(2, result.Count);
             Assert.Contains(ConsoleKey.A, result);
             Assert.Contains(ConsoleKey.B, result);
@@ -208,8 +211,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B, ConsoleKey.C };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.B, ConsoleKey.D };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Equal(new HashSet<ConsoleKey> { ConsoleKey.B }, result);
         }
 
@@ -221,8 +225,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.C, ConsoleKey.D };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Empty(result);
         }
 
@@ -234,8 +239,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { newKeys, currentKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeHeldKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { newKeys, currentKeys, result });
             Assert.Equal(2, result.Count);
         }
 
@@ -247,8 +253,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B, ConsoleKey.C };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.B, ConsoleKey.D };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { currentKeys, newKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { currentKeys, newKeys, result });
             Assert.Equal(new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.C }, result);
         }
 
@@ -260,8 +267,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { currentKeys, newKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { currentKeys, newKeys, result });
             Assert.Empty(result);
         }
 
@@ -273,8 +281,9 @@ namespace Alis.Test
         {
             HashSet<ConsoleKey> currentKeys = new HashSet<ConsoleKey> { ConsoleKey.A, ConsoleKey.B };
             HashSet<ConsoleKey> newKeys = new HashSet<ConsoleKey>();
-            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
-            HashSet<ConsoleKey> result = (HashSet<ConsoleKey>)method.Invoke(null, new object[] { currentKeys, newKeys });
+            HashSet<ConsoleKey> result = new HashSet<ConsoleKey>();
+            MethodInfo method = typeof(GraphicManager).GetMethod("ComputeReleasedKeys", BindingFlags.Static | BindingFlags.NonPublic, null, new[] { typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>), typeof(HashSet<ConsoleKey>) }, null);
+            method.Invoke(null, new object[] { currentKeys, newKeys, result });
             Assert.Equal(2, result.Count);
         }
     }

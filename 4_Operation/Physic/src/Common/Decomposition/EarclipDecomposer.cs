@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
@@ -102,8 +103,10 @@ namespace Alis.Core.Physic.Common.Decomposition
 
             Vertices[] buffer = new Vertices[vertices.Count - 2];
             int bufferSize = 0;
-            float[] xrem = new float[vertices.Count];
-            float[] yrem = new float[vertices.Count];
+            float[] xremPooled = ArrayPool<float>.Shared.Rent(vertices.Count);
+            float[] yremPooled = ArrayPool<float>.Shared.Rent(vertices.Count);
+            Span<float> xrem = xremPooled.AsSpan(0, vertices.Count);
+            Span<float> yrem = yremPooled.AsSpan(0, vertices.Count);
             for (int i = 0; i < vertices.Count; ++i)
             {
                 xrem[i] = vertices[i].X;
@@ -118,15 +121,20 @@ namespace Alis.Core.Physic.Common.Decomposition
 
                 if (earIndex == -1)
                 {
+                    ArrayPool<float>.Shared.Return(xremPooled);
+                    ArrayPool<float>.Shared.Return(yremPooled);
                     AddBufferToResults(buffer, bufferSize, results);
                     return results;
                 }
 
-                vNum = ClipEar(earIndex, ref vNum, ref xrem, ref yrem, buffer, ref bufferSize);
+                vNum = ClipEar(earIndex, ref vNum, ref xremPooled, ref yremPooled, ref xrem, ref yrem, buffer, ref bufferSize);
             }
 
             AddFinalTriangle(xrem, yrem, buffer, ref bufferSize);
             AddBufferToResults(buffer, bufferSize, results);
+
+            ArrayPool<float>.Shared.Return(xremPooled);
+            ArrayPool<float>.Shared.Return(yremPooled);
 
             return results;
         }
@@ -134,7 +142,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Finds the best ear vertex in the polygon
         /// </summary>
-        private static int FindEar(int vNum, float[] xrem, float[] yrem)
+        private static int FindEar(int vNum, ReadOnlySpan<float> xrem, ReadOnlySpan<float> yrem)
         {
             int earIndex = -1;
             float earMaxMinCross = -10.0f;
@@ -158,7 +166,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Calculates the score for an ear candidate based on minimum angle
         /// </summary>
-        private static float CalculateEarScore(int i, float[] xrem, float[] yrem, int vNum)
+        private static float CalculateEarScore(int i, ReadOnlySpan<float> xrem, ReadOnlySpan<float> yrem, int vNum)
         {
             int lower = Remainder(i - 1, vNum);
             int upper = Remainder(i + 1, vNum);
@@ -184,11 +192,21 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Clips off an ear and updates the vertex arrays
         /// </summary>
-        private static int ClipEar(int earIndex, ref int vNum, ref float[] xrem, ref float[] yrem, Vertices[] buffer, ref int bufferSize)
+        private static int ClipEar(int earIndex, ref int vNum, ref float[] xremPooled, ref float[] yremPooled, ref Span<float> xrem, ref Span<float> yrem, Vertices[] buffer, ref int bufferSize)
         {
             --vNum;
-            float[] newx = new float[vNum];
-            float[] newy = new float[vNum];
+
+            int under = earIndex == 0 ? vNum : earIndex - 1;
+            int over = earIndex == vNum ? 0 : earIndex + 1;
+            Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under], yrem[under]);
+            buffer[bufferSize] = toAdd;
+            ++bufferSize;
+
+            float[] newx = ArrayPool<float>.Shared.Rent(vNum);
+            float[] newy = ArrayPool<float>.Shared.Rent(vNum);
+            Span<float> newxSpan = newx.AsSpan(0, vNum);
+            Span<float> newySpan = newy.AsSpan(0, vNum);
+
             int currDest = 0;
             for (int i = 0; i < vNum; ++i)
             {
@@ -197,19 +215,18 @@ namespace Alis.Core.Physic.Common.Decomposition
                     ++currDest;
                 }
 
-                newx[i] = xrem[currDest];
-                newy[i] = yrem[currDest];
+                newxSpan[i] = xrem[currDest];
+                newySpan[i] = yrem[currDest];
                 ++currDest;
             }
 
-            int under = earIndex == 0 ? vNum : earIndex - 1;
-            int over = earIndex == vNum ? 0 : earIndex + 1;
-            Triangle toAdd = new Triangle(xrem[earIndex], yrem[earIndex], xrem[over], yrem[over], xrem[under], yrem[under]);
-            buffer[bufferSize] = toAdd;
-            ++bufferSize;
+            ArrayPool<float>.Shared.Return(xremPooled);
+            ArrayPool<float>.Shared.Return(yremPooled);
 
-            xrem = newx;
-            yrem = newy;
+            xremPooled = newx;
+            yremPooled = newy;
+            xrem = newxSpan;
+            yrem = newySpan;
 
             return vNum;
         }
@@ -228,7 +245,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <summary>
         ///     Adds the final triangle to the buffer
         /// </summary>
-        private static void AddFinalTriangle(float[] xrem, float[] yrem, Vertices[] buffer, ref int bufferSize)
+        private static void AddFinalTriangle(ReadOnlySpan<float> xrem, ReadOnlySpan<float> yrem, Vertices[] buffer, ref int bufferSize)
         {
             Triangle tooAdd = new Triangle(xrem[1], yrem[1], xrem[2], yrem[2], xrem[0], yrem[0]);
             buffer[bufferSize] = tooAdd;
@@ -346,7 +363,7 @@ namespace Alis.Core.Physic.Common.Decomposition
         /// <returns>
         ///     <c>true</c> if the specified i is ear; otherwise, <c>false</c>.
         /// </returns>
-        internal static bool IsEar(int i, float[] xv, float[] yv, int xvLength)
+        internal static bool IsEar(int i, ReadOnlySpan<float> xv, ReadOnlySpan<float> yv, int xvLength)
         {
             float dx0, dy0, dx1, dy1;
             if (i >= xvLength || i < 0 || xvLength < 3)

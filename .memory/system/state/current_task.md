@@ -1,11 +1,11 @@
 
-[INFO] Found 1 coverage targets. (limited to 1 files) Outputting AI-ready tasks:
+[INFO] Found 1 coverage targets. (limited to 1 files) (skipped first 1 files) Outputting AI-ready tasks:
 
 
     ## COVERAGE TASK
 
     ### File
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs
 
     ### Language
     cs
@@ -14,16 +14,16 @@
     0.0% (Line: 0.0%, Branch: 0.0%)
 
     ### Uncovered Lines
-    457
+    452
 
     ### Uncovered Branches
-    8
+    62
 
     ### Method
-    ImPlot
+    ImPlotP2
 
     ### Complexity / LOC
-    135 / 597 lines
+    110 / 534 lines
 
     ### Source Code
     ```csharp
@@ -34,7 +34,7 @@
 //                              âââââ âââââ âââ ââââââ
 // 
 //  --------------------------------------------------------------------------
-//  File:ImPlot.cs
+//  File:ImPlotP2.cs
 // 
 //  Author:Pablo Perdomo FalcÃ³n
 //  Web:https://www.pabllopf.dev/
@@ -68,39 +68,39 @@ namespace Alis.Extension.Graphic.Ui.Extras.Plot
     public static partial class ImPlot
     {
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Ends the drag drop target
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
-        /// <param name="count">The count</param>
-        /// <param name="ref">The ref</param>
-        /// <param name="flags">The flags</param>
-        public static void PlotStems(string labelId, ref ushort xs, ref ushort ys, int count, double @ref, ImPlotStemsFlags flags)
+        public static void EndDragDropTarget()
         {
-            ImPlotNative.ImPlot_PlotStems_U16PtrU16Ptr(Encoding.UTF8.GetBytes(labelId), ref xs, ref ys, count, @ref, flags, 0, sizeof(ushort));
+            ImPlotNative.ImPlot_EndDragDropTarget();
         }
 
         /// <summary>
-        ///     Plots the stems using the specified label id
+        ///     Ends the legend popup
         /// </summary>
-        /// <param name="labelId">The label id</param>
-        /// <param name="xs">The xs</param>
-        /// <param name="ys">The ys</param>
+        public static void EndLegendPopup()
+        {
+            ImPlotNative.ImPlot_EndLegendPopup();
+        }
+
+        /// <summary>
+        ///     Ends the plot
+        /// </summary>
+        public static void EndPlot()
     ```
     
     ### Test File Hint
-    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotTests.cs
+    pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/test/Extras/Plot/ImPlotP2Tests.cs
 
     Priority
     CRITICAL (NEW)
 
     AI Execution Instructions
-    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlot.cs
+    Generate xUnit test targeting pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP2.cs
     Follow Arrange/Act/Assert pattern
     Use real objects first, Moq ONLY if interface/external dependency
     Target: net8.0 (compatible with netstandard2.0 production)
-    Commit format: test: coverage ImPlot.cs
+    Commit format: test: coverage ImPlotP2.cs
     Update ./.memory/coverage/state/coverage-index.md after completion
             
 ==================================================

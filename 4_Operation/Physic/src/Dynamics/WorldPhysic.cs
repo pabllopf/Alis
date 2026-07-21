@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -123,7 +124,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private Body[] _stack = new Body[64];
+        private Body[] _stack = ArrayPool<Body>.Shared.Rent(64);
 
         /// <summary>
         ///     The step complete
@@ -318,7 +319,9 @@ namespace Alis.Core.Physic.Dynamics
             int stackSize = BodyList.Count;
             if (stackSize > _stack.Length)
             {
-                _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
+                Body[] old = _stack;
+                _stack = ArrayPool<Body>.Shared.Rent(Math.Max(_stack.Length * 2, stackSize));
+                ArrayPool<Body>.Shared.Return(old);
             }
 
             for (int index = BodyList.List.Count - 1; index >= 0; index--)

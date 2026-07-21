@@ -159,6 +159,9 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <returns>The byte array</returns>
         private static byte[] CompressGZip(byte[] data)
         {
+#if NET8_0_OR_GREATER
+            return CompressGZip(data.AsSpan());
+#else
             using MemoryStream output = new MemoryStream();
             using (GZipStream compressor = new GZipStream(output, CompressionLevel.Optimal, true))
             {
@@ -166,7 +169,21 @@ namespace Alis.Core.Aspect.Memory.Generator
             }
 
             return output.ToArray();
+#endif
         }
+
+#if NET8_0_OR_GREATER
+        private static byte[] CompressGZip(ReadOnlySpan<byte> data)
+        {
+            using MemoryStream output = new MemoryStream();
+            using (GZipStream compressor = new GZipStream(output, CompressionLevel.Optimal, true))
+            {
+                compressor.Write(data);
+            }
+
+            return output.ToArray();
+        }
+#endif
 
         /// <summary>
         ///     Calculates the sha 256 hash using the specified data
@@ -175,14 +192,41 @@ namespace Alis.Core.Aspect.Memory.Generator
         /// <returns>The string</returns>
         private static string CalculateSha256Hash(byte[] data)
         {
-#if NET6_0_OR_GREATER
-            byte[] h = SHA256.HashData(data ?? Array.Empty<byte>());
+#if NET8_0_OR_GREATER
+            return data != null
+                ? CalculateSha256Hash(data.AsSpan())
+                : ToLowerHex(Span<byte>.Empty);
 #else
             using SHA256 sha = SHA256.Create();
             byte[] h = sha.ComputeHash(data ?? Array.Empty<byte>());
-#endif
             return BitConverter.ToString(h).Replace("-", "").ToLowerInvariant();
+#endif
         }
+
+#if NET8_0_OR_GREATER
+        private static string CalculateSha256Hash(ReadOnlySpan<byte> data)
+        {
+            Span<byte> hashBytes = stackalloc byte[32];
+            SHA256.HashData(data, hashBytes);
+            return ToLowerHex(hashBytes);
+        }
+
+        private static string ToLowerHex(ReadOnlySpan<byte> bytes)
+        {
+            if (bytes.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder(bytes.Length * 2);
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x2"));
+            }
+
+            return sb.ToString();
+        }
+#endif
 
         /// <summary>
         ///     Generates the registration loader using the specified assembly name

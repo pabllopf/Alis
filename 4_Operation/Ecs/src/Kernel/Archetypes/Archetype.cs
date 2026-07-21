@@ -364,7 +364,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         /// <param name="newLen">The new len</param>
         internal void Resize(int newLen)
         {
-            Array.Resize(ref _entities, newLen);
+            FastestArrayPool<GameObjectIdOnly>.ResizeArrayFromPool(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
             {
@@ -379,7 +379,7 @@ namespace Alis.Core.Ecs.Kernel.Archetypes
         {
             int newLen = checked(Math.Max(1, _entities.Length) * 2);
             //we only need to resize the EntityIDOnly array when future total gameObject count is greater than capacity
-            Array.Resize(ref _entities, newLen);
+            FastestArrayPool<GameObjectIdOnly>.ResizeArrayFromPool(ref _entities, newLen);
             ComponentStorageBase[] runners = Components;
             for (int i = 1; i < runners.Length; i++)
             {

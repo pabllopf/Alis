@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Contacts;
@@ -148,6 +149,9 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (disposing)
             {
+                ReturnBodyArrays();
+                ReturnContactsArray();
+                ReturnJointsArray();
                 _contactSolver?.Dispose();
             }
         }
@@ -172,27 +176,30 @@ namespace Alis.Core.Physic.Dynamics
 
             if (Bodies == null || Bodies.Length < bodyCapacity)
             {
+                ReturnBodyArrays();
                 int newBodyBufferCapacity = Math.Max(bodyCapacity, 32);
-                newBodyBufferCapacity = (newBodyBufferCapacity + 31) & ~31; // grow in chunks of 32.
-                Bodies = new Body[newBodyBufferCapacity];
-                Velocities = new SolverVelocity[newBodyBufferCapacity];
-                Positions = new SolverPosition[newBodyBufferCapacity];
-                Locks = new int[newBodyBufferCapacity];
+                newBodyBufferCapacity = (newBodyBufferCapacity + 31) & ~31;
+                Bodies = ArrayPool<Body>.Shared.Rent(newBodyBufferCapacity);
+                Velocities = ArrayPool<SolverVelocity>.Shared.Rent(newBodyBufferCapacity);
+                Positions = ArrayPool<SolverPosition>.Shared.Rent(newBodyBufferCapacity);
+                Locks = ArrayPool<int>.Shared.Rent(newBodyBufferCapacity);
             }
 
             if (_contacts == null || _contacts.Length < contactCapacity)
             {
+                ReturnContactsArray();
                 int newContactBufferCapacity = Math.Max(contactCapacity, 32);
-                newContactBufferCapacity = newContactBufferCapacity + ((newContactBufferCapacity * 2) >> 4); // grow by x1.125f
-                newContactBufferCapacity = (newContactBufferCapacity + 31) & ~31; // grow in chunks of 32.
-                _contacts = new Contact[newContactBufferCapacity];
+                newContactBufferCapacity = newContactBufferCapacity + ((newContactBufferCapacity * 2) >> 4);
+                newContactBufferCapacity = (newContactBufferCapacity + 31) & ~31;
+                _contacts = ArrayPool<Contact>.Shared.Rent(newContactBufferCapacity);
             }
 
             if (_joints == null || _joints.Length < jointCapacity)
             {
+                ReturnJointsArray();
                 int newJointBufferCapacity = Math.Max(jointCapacity, 32);
-                newJointBufferCapacity = (newJointBufferCapacity + 31) & ~31; // grow in chunks of 32.
-                _joints = new Joint[newJointBufferCapacity];
+                newJointBufferCapacity = (newJointBufferCapacity + 31) & ~31;
+                _joints = ArrayPool<Joint>.Shared.Rent(newJointBufferCapacity);
             }
         }
 
@@ -625,6 +632,60 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             Report(_contactSolver.VelocityConstraints);
+        }
+
+        /// <summary>
+        ///     Returns rented body arrays to the shared pool.
+        /// </summary>
+        private void ReturnBodyArrays()
+        {
+            if (Bodies != null)
+            {
+                ArrayPool<Body>.Shared.Return(Bodies, clearArray: true);
+                Bodies = null;
+            }
+
+            if (Velocities != null)
+            {
+                ArrayPool<SolverVelocity>.Shared.Return(Velocities);
+                Velocities = null;
+            }
+
+            if (Positions != null)
+            {
+                ArrayPool<SolverPosition>.Shared.Return(Positions);
+                Positions = null;
+            }
+
+            if (Locks != null)
+            {
+                ArrayPool<int>.Shared.Return(Locks);
+                Locks = null;
+            }
+        }
+
+        /// <summary>
+        ///     Returns the rented contacts array to the shared pool.
+        /// </summary>
+        private void ReturnContactsArray()
+        {
+            if (_contacts != null)
+            {
+                ArrayPool<Contact>.Shared.Return(_contacts, clearArray: true);
+                _contacts = null;
+            }
+        }
+
+        /// <summary>
+        ///     Returns the rented joints array to the shared pool.
+        /// </summary>
+        private void ReturnJointsArray()
+        {
+            if (_joints != null)
+            {
+                ArrayPool<Joint>.Shared.Return(_joints, clearArray: true);
+                _joints = null;
+            }
         }
 
         /// <summary>

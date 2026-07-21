@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Buffers;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
@@ -140,6 +141,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             if (disposing)
             {
+                if (VelocityConstraints != null)
+                {
+                    ArrayPool<ContactVelocityConstraint>.Shared.Return(VelocityConstraints, clearArray: true);
+                    VelocityConstraints = null;
+                }
+
+                if (PositionConstraints != null)
+                {
+                    ArrayPool<ContactPositionConstraint>.Shared.Return(PositionConstraints, clearArray: true);
+                    PositionConstraints = null;
+                }
+
                 solveVelocityConstraintsWaitLock?.Dispose();
             }
         }
@@ -169,11 +182,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             if (VelocityConstraints == null || VelocityConstraints.Length < count)
             {
                 int newBufferCount = Math.Max(count, 32);
-                newBufferCount = newBufferCount + ((newBufferCount * 2) >> 4); // grow by x1.125f
-                newBufferCount = (newBufferCount + 31) & ~31; // grow in chunks of 32.
+                newBufferCount = newBufferCount + ((newBufferCount * 2) >> 4);
+                newBufferCount = (newBufferCount + 31) & ~31;
                 int oldBufferCount = VelocityConstraints == null ? 0 : VelocityConstraints.Length;
-                Array.Resize(ref VelocityConstraints, newBufferCount);
-                Array.Resize(ref PositionConstraints, newBufferCount);
+
+                ContactVelocityConstraint[] oldVc = VelocityConstraints;
+                ContactPositionConstraint[] oldPc = PositionConstraints;
+
+                VelocityConstraints = ArrayPool<ContactVelocityConstraint>.Shared.Rent(newBufferCount);
+                PositionConstraints = ArrayPool<ContactPositionConstraint>.Shared.Rent(newBufferCount);
+
+                if (oldVc != null)
+                {
+                    Array.Copy(oldVc, VelocityConstraints, Math.Min(oldBufferCount, newBufferCount));
+                    ArrayPool<ContactVelocityConstraint>.Shared.Return(oldVc, clearArray: true);
+                    ArrayPool<ContactPositionConstraint>.Shared.Return(oldPc, clearArray: true);
+                }
 
                 for (int i = oldBufferCount; i < newBufferCount; i++)
                 {

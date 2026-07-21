@@ -434,12 +434,30 @@ namespace Alis.Core.Aspect.Memory
                 extension = string.Empty;
             }
 
-            byte[] keyBytes = Encoding.UTF8.GetBytes(normalizedResourceKey);
             string hash;
-            using (SHA256 sha = SHA256.Create())
+#if NET6_0_OR_GREATER
+            int maxByteCount = Encoding.UTF8.GetMaxByteCount(normalizedResourceKey.Length);
+            byte[] rentedBuffer = null;
+            Span<byte> keyBytes = maxByteCount <= 256
+                ? stackalloc byte[maxByteCount]
+                : (rentedBuffer = ArrayPool<byte>.Shared.Rent(maxByteCount));
+            int actualByteCount = Encoding.UTF8.GetBytes(normalizedResourceKey, keyBytes);
+            keyBytes = keyBytes[..actualByteCount];
+
+            Span<byte> hashBytes = stackalloc byte[32];
+            SHA256.HashData(keyBytes, hashBytes);
+
+            hash = ToLowerHex(hashBytes);
+
+            if (rentedBuffer != null)
             {
-                hash = ToLowerHex(sha.ComputeHash(keyBytes));
+                ArrayPool<byte>.Shared.Return(rentedBuffer);
             }
+#else
+            byte[] keyBytes = Encoding.UTF8.GetBytes(normalizedResourceKey);
+            using SHA256 sha = SHA256.Create();
+            hash = ToLowerHex(sha.ComputeHash(keyBytes));
+#endif
 
             return string.IsNullOrEmpty(extension)
                 ? $"{assemblyName}_{hash}"
@@ -447,19 +465,16 @@ namespace Alis.Core.Aspect.Memory
         }
 
         /// <summary>
-        ///     Converts a byte array into a lower-case hexadecimal string representation.
-        ///     Returns <see cref="string.Empty" /> when the input is null or empty.
+        ///     Converts a byte span into a lower-case hexadecimal string representation.
+        ///     Returns <see cref="string.Empty" /> when the input is empty.
         /// </summary>
-        /// <param name="bytes">
-        ///     The byte array to convert. When null or zero-length, an empty string is
-        ///     returned.
-        /// </param>
+        /// <param name="bytes">The byte span to convert.</param>
         /// <returns>
         ///     A lower-case hexadecimal string where each byte is represented by two
-        ///     hex characters, or <see cref="string.Empty" /> if the input is null or
-        ///     empty.
+        ///     hex characters, or <see cref="string.Empty" /> if the input is empty.
         /// </returns>
         
+#if NETSTANDARD2_0 || NET461
         private static string ToLowerHex(byte[] bytes)
         {
             if (bytes == null || bytes.Length == 0)
@@ -475,6 +490,33 @@ namespace Alis.Core.Aspect.Memory
 
             return sb.ToString();
         }
+#else
+        private static string ToLowerHex(ReadOnlySpan<byte> bytes)
+        {
+            if (bytes.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder sb = new StringBuilder(bytes.Length * 2);
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                sb.Append(bytes[i].ToString("x2"));
+            }
+
+            return sb.ToString();
+        }
+
+        private static string ToLowerHex(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+            {
+                return string.Empty;
+            }
+
+            return ToLowerHex(bytes.AsSpan());
+        }
+#endif
 
         /// <summary>
         ///     Ensures that the zip cache for the currently active assembly has been

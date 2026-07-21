@@ -515,7 +515,7 @@ namespace Alis.Core.Ecs
 
             if (!QueryCache.TryGetValue(hashCode, out Query query))
             {
-                QueryCache[hashCode] = query = CreateQueryFromSpan([.. rules]);
+                QueryCache[hashCode] = query = CreateQueryFromSpan(rules);
             }
 
             return query;
