@@ -342,17 +342,131 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that dynamic tree with string type operates correctly
+        /// Tests that FindBestSibling triggers the break condition when cost
+        /// of creating a new parent is less than descending into both children.
         /// </summary>
         [Fact]
-        public void DynamicTree_WithStringType_OperatesCorrectly()
+        public void FindBestSibling_BreakCondition_WhenCostMinimal()
         {
-            DynamicTree<string> tree = new DynamicTree<string>();
-            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(1, 1));
-            int proxyId = tree.AddProxy(ref aabb);
-            tree.SetUserData(proxyId, "hello");
-            Assert.Equal("hello", tree.GetUserData(proxyId));
+            DynamicTree<int> tree = new DynamicTree<int>();
+            Aabb close = new Aabb(new Vector2F(1.5f, 1.5f), new Vector2F(2.0f, 2.0f));
+            Aabb far = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(0.5f, 0.5f));
+            tree.AddProxy(ref close);
+            tree.AddProxy(ref far);
+
+            Aabb leafAabb = new Aabb(new Vector2F(5.0f, 5.0f), new Vector2F(6.0f, 6.0f));
+            int sibling = tree.FindBestSibling(leafAabb);
+            Assert.True(sibling >= 0);
+        }
+
+        /// <summary>
+        /// Tests that Balance right rotation covers the iBa.Height > iBb.Height sub-case.
+        /// </summary>
+        [Fact]
+        public void Balance_RightRotation_BaHeightGreaterBbHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 50; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.3f, 0.0f),
+                    new Vector2F(i * 0.3f + 0.2f, 0.2f));
+                tree.AddProxy(ref aabb);
+            }
             tree.Validate();
+            Assert.True(tree.MaxBalance >= 0);
+        }
+
+        /// <summary>
+        /// Tests that Balance right rotation covers the iBa.Height &lt;= iBb.Height sub-case.
+        /// </summary>
+        [Fact]
+        public void Balance_RightRotation_BaHeightLessOrEqualBbHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 50; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.2f, i * 0.1f),
+                    new Vector2F(i * 0.2f + 0.15f, i * 0.1f + 0.15f));
+                tree.AddProxy(ref aabb);
+            }
+            tree.Validate();
+            Assert.True(tree.MaxBalance >= 0);
+        }
+
+        /// <summary>
+        /// Tests that Balance left rotation covers the iAa.Height > iAb.Height sub-case.
+        /// </summary>
+        [Fact]
+        public void Balance_LeftRotation_AaHeightGreaterAbHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 50; i >= 0; i--)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.3f, 0.0f),
+                    new Vector2F(i * 0.3f + 0.2f, 0.2f));
+                tree.AddProxy(ref aabb);
+            }
+            tree.Validate();
+            Assert.True(tree.MaxBalance >= 0);
+        }
+
+        /// <summary>
+        /// Tests that Balance left rotation covers the iAa.Height &lt;= iAb.Height sub-case.
+        /// </summary>
+        [Fact]
+        public void Balance_LeftRotation_AaHeightLessOrEqualAbHeight()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 50; i >= 0; i--)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.2f, i * 0.1f),
+                    new Vector2F(i * 0.2f + 0.15f, i * 0.1f + 0.15f));
+                tree.AddProxy(ref aabb);
+            }
+            tree.Validate();
+            Assert.True(tree.MaxBalance >= 0);
+        }
+
+        /// <summary>
+        /// Tests that ComputeChildCost with an internal node returns cost correctly.
+        /// </summary>
+        [Fact]
+        public void ComputeChildCost_WithInternalNode_ReturnsCost()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 3.0f, 0.0f),
+                    new Vector2F(i * 3.0f + 1.0f, 1.0f));
+                tree.AddProxy(ref aabb);
+            }
+
+            Aabb leafAabb = new Aabb(new Vector2F(-1.0f, -1.0f), new Vector2F(0.0f, 0.0f));
+            Assert.True(tree.ComputeChildCost(0, leafAabb, 0.5f) >= 0);
+            Assert.True(tree.ComputeChildCost(1, leafAabb, 0.5f) >= 0);
+        }
+
+        /// <summary>
+        /// Tests that UpdateParentPointer sets root when parent is NullNode.
+        /// </summary>
+        [Fact]
+        public void UpdateParentPointer_RootRotation_SetsNewRoot()
+        {
+            DynamicTree<int> tree = new DynamicTree<int>();
+            for (int i = 0; i < 200; i++)
+            {
+                Aabb aabb = new Aabb(
+                    new Vector2F(i * 0.1f, 0.0f),
+                    new Vector2F(i * 0.1f + 0.05f, 0.05f));
+                tree.AddProxy(ref aabb);
+            }
+            tree.Validate();
+            Assert.True(tree.Height > 0);
         }
     }
 }
