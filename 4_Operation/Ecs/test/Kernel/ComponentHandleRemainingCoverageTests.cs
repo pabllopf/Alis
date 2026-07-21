@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
+using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
@@ -250,6 +253,76 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentHandle handle = default;
 
             Assert.Equal(typeof(void), handle.Type);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="ComponentHandle.DebuggerDisplayString" /> returns "null"
+        ///     when the backing storage has been consumed.
+        /// </summary>
+        [Fact]
+        public void DebuggerDisplayString_AfterDispose_ReturnsNull()
+        {
+            ComponentHandle handle = ComponentHandle.Create<string>("test");
+            handle.Dispose();
+
+            string display = handle.DebuggerDisplayString;
+
+            Assert.Equal("null", display);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="ComponentHandle.ParentTable" /> returns the underlying
+        ///     <see cref="IdTable" /> storage for a valid handle.
+        /// </summary>
+        [Fact]
+        public void ParentTable_ForValidHandle_ReturnsStorage()
+        {
+            ComponentHandle handle = ComponentHandle.Create<int>(42);
+
+            IdTable table = handle.ParentTable;
+
+            Assert.NotNull(table);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="ComponentHandle.InvokeComponentEventAndConsume" /> invokes
+        ///     the event and consumes the component slot.
+        /// </summary>
+        [Fact]
+        public void InvokeComponentEventAndConsume_WithEvent_InvokesAndConsumes()
+        {
+            ComponentHandle handle = ComponentHandle.Create<int>(99);
+            Scene scene = new Scene();
+            GameObject gameObject = scene.Create();
+            GenericEvent evt = new GenericEvent();
+            CountingAction action = new CountingAction();
+            evt += action;
+
+            handle.InvokeComponentEventAndConsume(gameObject, evt);
+
+            Assert.Equal(1, action.CallCount);
+        }
+
+        /// <summary>
+        ///     The counting action class
+        /// </summary>
+        private sealed class CountingAction : IGenericAction<GameObject>
+        {
+            /// <summary>
+            ///     Gets or sets the call count
+            /// </summary>
+            public int CallCount { get; set; }
+
+            /// <summary>
+            ///     Invokes the specified param
+            /// </summary>
+            /// <typeparam name="T">The type</typeparam>
+            /// <param name="param">The param</param>
+            /// <param name="type">The type</param>
+            public void Invoke<T>(GameObject param, ref T type)
+            {
+                CallCount++;
+            }
         }
     }
 }
