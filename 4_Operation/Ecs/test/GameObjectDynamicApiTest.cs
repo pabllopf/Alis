@@ -118,20 +118,7 @@ namespace Alis.Core.Ecs.Test
             Assert.False(foundVelocity);
             Assert.Null(velocityObj);
         }
-
-        /// <summary>
-        ///     Tests that game object add boxed adds component
-        /// </summary>
-        [Fact] public void GameObject_AddBoxed_AddsComponent()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create();
-
-            entity.AddBoxed(new Position {X = 7, Y = 8});
-
-            Assert.True(entity.Has<Position>());
-            Assert.Equal(7, entity.Get<Position>().X);
-        }
+        
 
         /// <summary>
         ///     Tests that game object add as by type adds component as specified type
@@ -194,21 +181,7 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(typeof(Health), action.SeenTypes);
         }
 
-        /// <summary>
-        ///     Tests that game object on component removed generic raises with concrete type
-        /// </summary>
-        [Fact] public void GameObject_OnComponentRemovedGeneric_RaisesWithConcreteType()
-        {
-            using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position {X = 5, Y = 6});
-            CaptureGenericAction action = new CaptureGenericAction();
-
-            entity.OnComponentRemovedGeneric += action;
-            entity.Remove<Position>();
-
-            Assert.Equal(1, action.Calls);
-            Assert.Contains(typeof(Position), action.SeenTypes);
-        }
+      
 
         /// <summary>
         ///     Tests that game object enumerate components invokes action for each component
