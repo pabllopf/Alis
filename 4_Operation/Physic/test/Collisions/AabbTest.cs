@@ -580,5 +580,126 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.True(hit);
         }
+
+        /// <summary>
+        /// Tests that contains returns true for an AABB with the exact same bounds
+        /// </summary>
+        [Fact]
+        public void Contains_WithExactSameBounds_ShouldReturnTrue()
+        {
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb inner = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+
+            Assert.True(outer.Contains(ref inner));
+        }
+
+        /// <summary>
+        /// Tests that contains returns true for an inner AABB touching the lower edges of the outer
+        /// </summary>
+        [Fact]
+        public void Contains_WithInnerTouchingLowerEdges_ShouldReturnTrue()
+        {
+            Aabb outer = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb inner = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+
+            Assert.True(outer.Contains(ref inner));
+        }
+
+        /// <summary>
+        /// Tests that test overlap with AABBs touching in Y direction should return true
+        /// </summary>
+        [Fact]
+        public void TestOverlap_WithTouchingInYDirection_ShouldReturnTrue()
+        {
+            Aabb a = new Aabb(new Vector2F(0, 0), new Vector2F(5, 5));
+            Aabb b = new Aabb(new Vector2F(0, 5), new Vector2F(5, 10));
+
+            Assert.True(Aabb.TestOverlap(ref a, ref b));
+        }
+
+        /// <summary>
+        /// Tests that combine with a smaller AABB does not shrink the bounds
+        /// </summary>
+        [Fact]
+        public void Combine_WithSmallerAabb_ShouldNotShrink()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            Aabb smaller = new Aabb(new Vector2F(2, 2), new Vector2F(8, 8));
+
+            aabb.Combine(ref smaller);
+
+            Assert.Equal(0, aabb.LowerBound.X);
+            Assert.Equal(0, aabb.LowerBound.Y);
+            Assert.Equal(10, aabb.UpperBound.X);
+            Assert.Equal(10, aabb.UpperBound.Y);
+        }
+
+        /// <summary>
+        /// Tests that is valid returns true for an AABB with zero width
+        /// </summary>
+        [Fact]
+        public void IsValid_WithZeroWidth_ShouldReturnTrue()
+        {
+            Aabb aabb = new Aabb(new Vector2F(5, 5), new Vector2F(5, 10));
+
+            Assert.True(aabb.IsValid());
+        }
+
+        /// <summary>
+        /// Tests that ray cast with MaxFraction less than computed tmin should miss
+        /// </summary>
+        [Fact]
+        public void RayCast_WithMaxFractionLessThanTmin_ShouldMiss()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5, 5),
+                Point2 = new Vector2F(15, 5),
+                MaxFraction = 0.2f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast passing through X extent but below the AABB should miss
+        /// </summary>
+        [Fact]
+        public void RayCast_WithNonParallelMissBelow_ShouldMiss()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(15, -5),
+                Point2 = new Vector2F(-5, -3),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.False(hit);
+        }
+
+        /// <summary>
+        /// Tests that ray cast passing through Y extent but left of the AABB should miss
+        /// </summary>
+        [Fact]
+        public void RayCast_WithNonParallelMissLeft_ShouldMiss()
+        {
+            Aabb aabb = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
+            RayCastInput input = new RayCastInput
+            {
+                Point1 = new Vector2F(-5, 15),
+                Point2 = new Vector2F(-3, -5),
+                MaxFraction = 1.0f
+            };
+
+            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+
+            Assert.False(hit);
+        }
     }
 }
