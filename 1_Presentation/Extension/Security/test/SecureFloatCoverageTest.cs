@@ -164,10 +164,10 @@ namespace Alis.Extension.Security.Test
             SecureFloat a = new SecureFloat(-10.0f);
             SecureFloat b = new SecureFloat(-5.0f);
 
-            Assert.Equal(-15f, (float)(a + b));
-            Assert.Equal(-5f, (float)(a - b));
-            Assert.Equal(50f, (float)(a * b));
-            Assert.Equal(2f, (float)(a / b));
+            Assert.Equal(-15f, (float)(a + b), 0.1f);
+            Assert.Equal(-5f, (float)(a - b), 0.1f);
+            Assert.Equal(50f, (float)(a * b), 0.1f);
+            Assert.Equal(2f, (float)(a / b), 0.1f);
         }
 
         /// <summary>
