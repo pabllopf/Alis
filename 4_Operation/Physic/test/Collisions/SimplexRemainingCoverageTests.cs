@@ -488,5 +488,45 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(0.0f, metric);
         }
+
+        /// <summary>
+        /// Tests that solve 3 when d 231 is non positive should not trigger edge 12
+        /// </summary>
+        [Fact]
+        public void Solve3_WhenD231NonPositive_ShouldNotTriggerEdge12()
+        {
+            Simplex simplex = new Simplex
+            {
+                Count = 3,
+                V = new FixedArray3<SimplexVertex>()
+            };
+            simplex.V[0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) };
+            simplex.V[1] = new SimplexVertex { W = new Vector2F(10.0f, -3.0f) };
+            simplex.V[2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) };
+
+            simplex.Solve3();
+
+            Assert.Equal(3, simplex.Count);
+        }
+
+        /// <summary>
+        /// Tests that solve 3 when d 232 is non positive should not trigger edge 12
+        /// </summary>
+        [Fact]
+        public void Solve3_WhenD232NonPositive_ShouldNotTriggerEdge12()
+        {
+            Simplex simplex = new Simplex
+            {
+                Count = 3,
+                V = new FixedArray3<SimplexVertex>()
+            };
+            simplex.V[0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) };
+            simplex.V[1] = new SimplexVertex { W = new Vector2F(2.0f, -1.0f) };
+            simplex.V[2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) };
+
+            simplex.Solve3();
+
+            Assert.Equal(3, simplex.Count);
+        }
     }
 }
