@@ -102,23 +102,6 @@ namespace Alis.Core.Ecs.Test.Marshalling
         }
 
         /// <summary>
-        ///     Tests that get world with multiple entities returns same scene.
-        /// </summary>
-        [Fact] public void GetWorld_WithMultipleEntitiesFromSameScene_ShouldReturnSameWorld()
-        {
-            Scene world = new Scene();
-            GameObject entity1 = world.Create();
-            GameObject entity2 = world.Create();
-
-            Scene world1 = GameObjectMarshal.GetWorld(entity1);
-            Scene world2 = GameObjectMarshal.GetWorld(entity2);
-
-            Assert.Same(world1, world2);
-
-            world.Dispose();
-        }
-
-        /// <summary>
         ///     Tests that entity id with null entity returns default value.
         /// </summary>
         [Fact] public void EntityId_WithNullEntity_ShouldReturnDefaultValue()

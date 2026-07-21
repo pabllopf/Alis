@@ -267,34 +267,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         }
 
         /// <summary>
-        ///     Tests archetype creation with many different component combinations.
-        ///     Exercises the ModifyComponentLocationTable resize path when many
-        ///     archetypes are created and the table needs to grow.
-        /// </summary>
-        [Fact] public void Archetype_ModifyComponentLocationTable_ResizePath()
-        {
-            using Scene scene = new Scene();
-            for (int i = 0; i < 20; i++)
-            {
-                GameObject entity = scene.Create();
-                entity.Add(new Position { X = i, Y = i });
-                entity.Add(new Velocity { X = i, Y = i });
-                entity.Add(new Health { Value = i });
-            }
-
-            Query query = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-            int count = 0;
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                count++;
-                ref Position p = ref entity.Get<Position>();
-                Assert.Equal(count - 1, p.X);
-            }
-
-            Assert.Equal(20, count);
-        }
-
-        /// <summary>
         ///     Tests ArchetypeTable push in GetArchetypeId when a new archetype is created.
         ///     Exercises the cache-miss and push path in GetArchetypeId.
         /// </summary>

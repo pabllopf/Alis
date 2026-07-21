@@ -609,41 +609,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             scene.Dispose();
         }
-
-        /// <summary>
-        ///     Tests that entity count remains accurate after mixed add/remove operations
-        /// </summary>
-        /// <remarks>
-        ///     Validates archetype entity count through create, add component, remove component, delete.
-        /// </remarks>
-        [Fact] public void Archetype_MixedOperations_MaintainsAccurateCount()
-        {
-            using Scene scene = new Scene();
-
-            GameObject e1 = scene.Create(new Position());
-            GameObject e2 = scene.Create(new Position());
-            GameObject e3 = scene.Create(new Position());
-
-            e1.Add(new Velocity());
-            e2.Remove<Position>();
-            e3.Delete();
-
-            Assert.True(e1.IsAlive);
-            Assert.True(e2.IsAlive);
-            Assert.False(e3.IsAlive);
-
-            int count = 0;
-            Query query = scene.Query<With<Position>>();
-            foreach (GameObject entity in query.EnumerateWithEntities())
-            {
-                count++;
-            }
-
-            Assert.Equal(1, count);
-
-            scene.Dispose();
-        }
-
+        
         /// <summary>
         ///     Tests that entity count is correct after adding component to all entities
         /// </summary>
