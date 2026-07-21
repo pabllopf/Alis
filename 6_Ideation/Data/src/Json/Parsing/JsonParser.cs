@@ -126,7 +126,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
 
             SkipWhitespace(json, ref position);
 
-            if ((position < length) && (json[position] == '{'))
+            if (json[position] == '{')
             {
                 position++;
             }
@@ -210,7 +210,7 @@ namespace Alis.Core.Aspect.Data.Json.Parsing
         /// <exception cref="JsonParsingException">Thrown if no opening quote is found at the current position, or if the string is unterminated (no closing quote before end of input).</exception>
         internal string ReadJsonString(string json, ref int position)
         {
-            if (position >= json.Length || json[position] != '"')
+            if (json[position] != '"')
             {
                 throw new JsonParsingException($"Expected '\"' at position {position}");
             }

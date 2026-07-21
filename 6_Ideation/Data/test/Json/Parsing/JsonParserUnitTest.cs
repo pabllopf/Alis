@@ -940,6 +940,16 @@ namespace Alis.Core.Aspect.Data.Test.Json.Parsing
         }
 
         /// <summary>
+        ///     Tests that parse to dictionary with unquoted key throws json parsing exception
+        /// </summary>
+        [Fact]
+        public void ParseToDictionary_UnquotedKey_ThrowsJsonParsingException()
+        {
+            string json = "{key: \"value\"}";
+            Assert.Throws<JsonParsingException>(() => _parser.ParseToDictionary(json));
+        }
+
+        /// <summary>
         ///     Tests that parse to dictionary with unterminated string throws parsing exception
         /// </summary>
         [Fact]
