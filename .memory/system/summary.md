@@ -1132,3 +1132,7 @@
 2026-07-21T09:55:13Z | Island.cs | 96.8% | 97.47% | 0 | fc5d9c57e | COMPLETED
 2026-07-21T09:55:13Z | CommandBuffer.cs | 96.8% | 100.0% | 6 | 01afaad3c | COMPLETED
 2026-07-21T09:55:13Z | ComponentStorage.cs | 96.8% | 100.0% | 2 | 3868fefb6 | COMPLETED
+2026-07-21T10:07:06Z | WorldPhysic.cs | 98.4% | 99.9% | 5 | 1597ab07f | COMPLETED
+2026-07-21T10:07:06Z | DelaunayTriangle.cs | 98.7% | 100.0% | 1 | c877d5e44 | COMPLETED
+2026-07-21T10:07:06Z | Animator.cs | 98.9% | 100.0% | 1 | 73a4d354f | COMPLETED
+2026-07-21T10:07:06Z | DialogManager.cs | 99.0% | 100.0% | 2 | 5f64d2154 | COMPLETED
