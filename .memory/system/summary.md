@@ -1124,3 +1124,7 @@
 2026-07-21T09:13:47Z | WebAssemblyDisplayManager.cs | 84.3% | 84.3% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
 2026-07-21T09:13:47Z | WebAssemblyInputManager.cs | 73.6% | 73.6% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
 2026-07-21T09:13:47Z | WindowsFilePicker.cs | 90.7% | 90.7% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T09:32:19Z | DTSweep.cs | 94.6% | 96.5% | 4 | 6c55bde02 | COMPLETED
+2026-07-21T09:32:19Z | ConsoleLogOutput.cs | 94.7% | 94.7% | 0 | none | BLOCKED
+2026-07-21T09:32:19Z | Logger.cs | 95.3% | 100.0% | 3 | 034b95e98 | COMPLETED
+2026-07-21T09:32:19Z | FastImmutableArray.cs | 95.5% | 97.8% | 17 | 3adb79c88 | COMPLETED
