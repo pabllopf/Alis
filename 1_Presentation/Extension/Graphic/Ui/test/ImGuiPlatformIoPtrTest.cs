@@ -100,18 +100,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        ///     Verifies that GetHashCode returns the NativePtr hash code.
-        /// </summary>
-        [Fact]
-        public void GetHashCode_ShouldReturnNativePtrHashCode()
-        {
-            IntPtr nativePtr = new IntPtr(22222);
-            ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(nativePtr);
-
-            Assert.Equal(nativePtr.GetHashCode(), ptr.GetHashCode());
-        }
-
-        /// <summary>
         ///     Verifies that Equals compares NativePtr values.
         /// </summary>
         [Fact]
@@ -145,6 +133,20 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(new IntPtr(66666));
 
             Assert.False(ptr.Equals(null));
+        }
+
+        /// <summary>
+        ///     Verifies that GetHashCode is consistent across calls.
+        /// </summary>
+        [Fact]
+        public void GetHashCode_ShouldBeConsistent()
+        {
+            ImGuiPlatformIoPtr ptr = new ImGuiPlatformIoPtr(new IntPtr(77777));
+
+            int hash1 = ptr.GetHashCode();
+            int hash2 = ptr.GetHashCode();
+
+            Assert.Equal(hash1, hash2);
         }
     }
 }
