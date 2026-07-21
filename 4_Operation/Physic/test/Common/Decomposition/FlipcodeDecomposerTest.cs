@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common;
@@ -209,6 +210,65 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.NotNull(result);
             Assert.Equal(3, result.Count);
+        }
+        /// <summary>
+        /// Tests that convex partition with collinear triangle returns empty list (error path)
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_CollinearTriangle_ReturnsEmpty()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(1f, 0f),
+                new Vector2F(2f, 0f)
+            });
+
+            List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.Empty(result);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with specific pentagon triggers u-wrap branch
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_WithUWrapping_ShouldHandleUWrap()
+        {
+            Vertices vertices = new Vertices(new[]
+            {
+                new Vector2F(0f, 0f),
+                new Vector2F(10f, 0f),
+                new Vector2F(10f, 3f),
+                new Vector2F(3f, 2f),
+                new Vector2F(0f, 5f)
+            });
+
+            List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.Equal(3, result.Count);
+        }
+
+        /// <summary>
+        /// Tests that convex partition with large polygon uses new int[] path (count > 256)
+        /// </summary>
+        [Fact]
+        public void ConvexPartition_LargePolygon_ReturnsTriangles()
+        {
+            const int count = 257;
+            Vertices vertices = new Vertices(count);
+            for (int i = 0; i < count; i++)
+            {
+                float angle = (float)i / count * MathF.PI * 2f;
+                vertices.Add(new Vector2F(MathF.Cos(angle), MathF.Sin(angle)));
+            }
+
+            List<Vertices> result = FlipcodeDecomposer.ConvexPartition(vertices);
+
+            Assert.NotNull(result);
+            Assert.Equal(count - 2, result.Count);
         }
     }
 }

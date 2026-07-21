@@ -370,5 +370,46 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.NotNull(joint);
         }
+
+        /// <summary>
+        /// Tests that InitVelocityConstraints with FrequencyHz > 0 and bodies
+        /// having extremely tiny total inverse inertia (iA + iB &lt; float.Epsilon)
+        /// triggers the 1.0f / invM branch of the _mass.Ez.Z ternary at line 286.
+        /// </summary>
+        [Fact]
+        public void InitVelocityConstraints_WithFrequencyPositiveAndNearZeroTotalInvI_ShouldHitMassEzInfinityBranch()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
+
+            CircleShape shapeA = new CircleShape(6000f, 1e30f);
+            CircleShape shapeB = new CircleShape(6000f, 1e30f);
+            bodyA.CreateFixture(shapeA);
+            bodyB.CreateFixture(shapeB);
+
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
+            joint.FrequencyHz = 10.0f;
+
+            SolverData data = new SolverData
+            {
+                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
+                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
+                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
+                Locks = new int[] { 0 }
+            };
+
+            MethodInfo initMethod = typeof(WeldJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
+            initMethod.Invoke(joint, new object[] { data });
+
+            FieldInfo massField = typeof(WeldJoint).GetField("_mass", BindingFlags.NonPublic | BindingFlags.Instance);
+            object mass = massField.GetValue(joint);
+            FieldInfo ezField = mass.GetType().GetField("Ez");
+            object ez = ezField.GetValue(mass);
+            System.Reflection.PropertyInfo zProp = ez.GetType().GetProperty("Z");
+            float ezZ = (float)zProp.GetValue(ez);
+
+            Assert.False(float.IsNaN(ezZ));
+        }
     }
 }
