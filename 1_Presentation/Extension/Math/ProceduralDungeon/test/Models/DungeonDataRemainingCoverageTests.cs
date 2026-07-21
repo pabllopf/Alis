@@ -94,5 +94,61 @@ namespace Alis.Extension.Math.ProceduralDungeon.Test.Models
 
             Assert.Throws<InvalidOperationException>(() => data.Validate());
         }
+
+        /// <summary>
+        ///     Tests that Validate throws when a room has a negative y position.
+        /// </summary>
+        [Fact]
+        public void ValidateRooms_WithNegativeYPos_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Corridors = new List<CorridorData>();
+            data.Rooms = new List<RoomData> { new RoomData(0, -1, 5, 5, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a room has a zero height.
+        /// </summary>
+        [Fact]
+        public void ValidateRooms_WithZeroHeight_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Corridors = new List<CorridorData>();
+            data.Rooms = new List<RoomData> { new RoomData(0, 0, 5, 0, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a corridor has a negative x position.
+        /// </summary>
+        [Fact]
+        public void ValidateCorridors_WithNegativeXPos_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData> { new CorridorData(-1, 0, 3, 3, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
+
+        /// <summary>
+        ///     Tests that Validate throws when a corridor has a zero width.
+        /// </summary>
+        [Fact]
+        public void ValidateCorridors_WithZeroWidth_ThrowsInvalidOperationException()
+        {
+            DungeonData data = new DungeonData();
+            data.Board = new BoardSquare[10, 10];
+            data.Rooms = new List<RoomData>();
+            data.Corridors = new List<CorridorData> { new CorridorData(0, 0, 0, 3, Direction.North) };
+
+            Assert.Throws<InvalidOperationException>(() => data.Validate());
+        }
     }
 }
