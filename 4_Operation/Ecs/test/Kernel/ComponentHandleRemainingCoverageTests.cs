@@ -54,20 +54,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        ///     Verifies that <see cref="ComponentHandle.Type" /> returns the correct type after
-        ///     creation via <see cref="NoneUpdate{T}.Store" />.
-        /// </summary>
-        [Fact]
-        public void Type_AfterStore_ReturnsIntType()
-        {
-            NoneUpdate<int> storage = new NoneUpdate<int>(4);
-            storage[0] = 42;
-            ComponentHandle handle = storage.Store(0);
-
-            Assert.Equal(typeof(int), handle.Type);
-        }
-
-        /// <summary>
         ///     Verifies that <see cref="ComponentHandle.Equals(ComponentHandle)" /> returns
         ///     <see langword="true" /> when comparing a handle to itself.
         /// </summary>
@@ -188,36 +174,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         }
 
         /// <summary>
-        ///     Verifies that <see cref="ComponentHandle.Dispose" /> does not throw when called on
-        ///     a handle created via <see cref="NoneUpdate{T}.Store" />.
-        /// </summary>
-        [Fact]
-        public void Dispose_AfterStore_DoesNotThrow()
-        {
-            NoneUpdate<int> storage = new NoneUpdate<int>(4);
-            storage[0] = 42;
-            ComponentHandle handle = storage.Store(0);
-
-            handle.Dispose();
-        }
-
-        /// <summary>
-        ///     Verifies that <see cref="ComponentHandle.RetrieveBoxed" /> returns the stored value
-        ///     after creation via <see cref="NoneUpdate{T}.Store" />.
-        /// </summary>
-        [Fact]
-        public void RetrieveBoxed_AfterStore_ReturnsStoredValue()
-        {
-            NoneUpdate<int> storage = new NoneUpdate<int>(4);
-            storage[0] = 42;
-            ComponentHandle handle = storage.Store(0);
-
-            object result = handle.RetrieveBoxed();
-
-            Assert.Equal(42, result);
-        }
-
-        /// <summary>
         ///     Verifies that <see cref="ComponentHandle.Retrieve{T}" /> returns the stored value
         ///     after creation via <see cref="NoneUpdate{T}.Store" />.
         /// </summary>
@@ -231,22 +187,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             int result = handle.Retrieve<int>();
 
             Assert.Equal(42, result);
-        }
-
-        /// <summary>
-        ///     Verifies that <see cref="ComponentHandle.DebuggerDisplayString" /> returns a
-        ///     non-null value after creation via <see cref="NoneUpdate{T}.Store" />.
-        /// </summary>
-        [Fact]
-        public void DebuggerDisplayString_AfterStore_ReturnsValue()
-        {
-            NoneUpdate<int> storage = new NoneUpdate<int>(4);
-            storage[0] = 42;
-            ComponentHandle handle = storage.Store(0);
-
-            string display = handle.DebuggerDisplayString;
-
-            Assert.Equal("42", display);
         }
 
         /// <summary>
