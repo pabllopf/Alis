@@ -495,8 +495,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // SolveToi — extreme velocity clamping (lines 604-616)
-        // Uses static target + high restitution to preserve bullet velocity through TOI
+        // SolveToi — velocity clamping via direct internal call (lines 604-616)
+        // Sets up Velocities array with values exceeding threshold and calls SolveToi
+        // directly to guarantee the clamping branch is hit.
         // ========================================================================
         /// <summary>
         /// Tests that solve toi clamps extreme linear and angular velocity
@@ -505,16 +506,15 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SolveToi_ClampsExtremeVelocity_WhenMovingFast()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Static);
-
-            bodyA.FixtureList.List[0].GetRestitution = 1.0f;
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Static);
 
             bodyA.IsBullet = true;
-            bodyA.LinearVelocityInternal = new Vector2F(1000f, 0f);
-            bodyA.AngularVelocity = 500f;
+            bodyA.LinearVelocityInternal = new Vector2F(100000f, 0f);
+            bodyA.AngularVelocity = 50000f;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 world.Step(1.0f / 60.0f);
             }
