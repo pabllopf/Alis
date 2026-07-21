@@ -217,6 +217,21 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             Assert.InRange(result, 30f, 70f);
         }
 
+        /// <summary>
+        /// Tests that ylerp when vm sign matches v 0 recurses right
+        /// </summary>
+        [Fact]
+        public void Ylerp_WhenVmSignMatchesV0_RecursesRight()
+        {
+            MethodInfo method = typeof(MarchingSquares).GetMethod("Ylerp", BindingFlags.Static | BindingFlags.NonPublic);
+            sbyte[,] f = new sbyte[100, 100];
+            for (int y = 0; y < 60; y++) f[0, y] = -1;
+            for (int y = 60; y < 100; y++) f[0, y] = 1;
+
+            float result = (float)method.Invoke(null, new object[] { 0f, 100f, 0f, -1f, 1f, f, 2 });
+            Assert.InRange(result, 40f, 80f);
+        }
+
         #endregion
 
         #region MarchSquare
@@ -1968,6 +1983,22 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             int count = (int)size.Invoke(list, null);
             Assert.Equal(3, count);
+        }
+
+        /// <summary>
+        /// Tests that cx fast list size on empty list returns zero
+        /// </summary>
+        [Fact]
+        public void CxFastList_Size_EmptyList_ReturnsZero()
+        {
+            Type listType = typeof(MarchingSquares).GetNestedType("CxFastList`1", BindingFlags.NonPublic);
+            Type intListType = listType.MakeGenericType(typeof(int));
+            object list = Activator.CreateInstance(intListType);
+
+            MethodInfo size = intListType.GetMethod("Size");
+
+            int count = (int)size.Invoke(list, null);
+            Assert.Equal(0, count);
         }
 
         #endregion
