@@ -211,5 +211,19 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(5, arr[4]);
             Assert.True(arr.Length >= 200);
         }
+
+        /// <summary>
+        /// Tests that Rent with size exceeding bucket range triggers the fallback path,
+        /// returning a new exact-size array instead of a bucket-sized one.
+        /// </summary>
+        [Fact]
+        public void Rent_Oversized_FallbackToNewArray()
+        {
+            FastestArrayPool<byte> pool = new FastestArrayPool<byte>();
+            int size = (1 << 30) + 1;
+            byte[] array = pool.Rent(size);
+            Assert.NotNull(array);
+            Assert.Equal(size, array.Length);
+        }
     }
 }
