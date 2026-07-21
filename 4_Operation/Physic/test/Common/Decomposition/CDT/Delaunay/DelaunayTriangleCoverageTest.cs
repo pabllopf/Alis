@@ -768,5 +768,23 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 
             t1.MarkNeighbor(t2);
         }
+
+        /// <summary>
+        /// Tests that rotate cw rotates points clockwise
+        /// </summary>
+        [Fact]
+        public void RotateCw_RotatesPointsClockwise()
+        {
+            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
+            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
+            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
+
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            triangle.RotateCw();
+
+            Assert.Equal(p3, triangle.Points[0]);
+            Assert.Equal(p1, triangle.Points[1]);
+            Assert.Equal(p2, triangle.Points[2]);
+        }
     }
 }
