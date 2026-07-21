@@ -1,137 +1,989 @@
-# Coverage Summary
-
-## Final Status — All 306 SonarCloud coverage targets processed
-
-**Total files processed**: 306 coverage targets across all sessions
-**Total processed.json entries**: 379
-**Timestamp**: 2026-07-21 00:00:00
-
-
-
-## Coverage Summary by Module
-
-| Module | Covered/Total | Coverage % |
-|--------|--------------|-----------|
-| 1_Presentation | 44/194 | 22.7% |
-| 2_Application | 6/6 | 100.0% |
-| 4_Operation | 86/99 | 86.9% |
-| 6_Ideation | 6/7 | 85.7% |
-
-## Result Status
-
-| Status | Count |
-|--------|-------|
-| SUCCESS / COMPLETED | 93 |
-| BLOCKED_BY_PRODUCTION_CODE | 63 |
-| COMPLETED_NO_TESTS_NEEDED | 2 |
-| SKIPPED (worker timeout) | 1 |
-
-## Reflection/Contract Test Resolution (2026-07-21)
-
-Applied Option A: reflection/contract tests to native wrapper files. These tests verify metadata (class structure, method signatures, DllImport attributes, enum values) without requiring native libraries.
-
-| Test File | Source File(s) | Tests Added | Status |
-|-----------|---------------|-------------|--------|
-| `Sdl2/test/SurfaceTest.cs` | `Surface.cs` | 13 | ✅ All pass |
-| `Sdl2/test/DropEventTest.cs` | `DropEvent.cs` | 6 | ✅ All pass |
-| `Glfw/test/Structs/GamePadStateTest.cs` | `GamePadState.cs` | 6 | ✅ All pass |
-| `Glfw/test/Structs/GammaRampInternalTest.cs` | `GammaRampInternal.cs` | 7 | ✅ All pass |
-| `Sfml/test/Windows/KeyboardContractTest.cs` | `Keyboard.cs` | 17 | ✅ All pass |
-| `Ui/test/Extras/Plot/ImPlotContractTests.cs` | `ImPlotP1.cs`-`P22.cs` (22 partial files) | 40 | ✅ All pass |
-| `Ui/test/ImGuiPlatformIOPtrTest.cs` | `ImGuiPlatformIOPtr.cs` | 8 | ✅ All pass |
-| `Ui/test/ImGuiPlatformIOTest.cs` | `ImGuiPlatformIO.cs` | 7 | ✅ All pass |
-| `Ui/test/Extras/Node/ImNodesIOTest.cs` | `ImNodesIO.cs` | 8 | ✅ All pass |
-
-**Total**: 112 new contract tests across 29 source files. All tests pass with zero failures across 4 test projects.
-
-## Remaining Files at 0%
-
-135 files still at 0.0% coverage — most have partial test coverage. The remaining truly uncovered files (no test file at all) are:
-- `MacWindow.cs` (4_Operation/Graphic/Platforms/Osx/Native) — conditionally compiled, internal class
-- `EntityUpdate.cs` (4_Operation/Ecs) — covered by existing tests but still at 0%
-- Various ImGui/ImPlot struct files — already have tests but need deeper coverage
-
-These files require either `NativeLibrary.SetDllImportResolver` (Option B) to mock P/Invoke calls, or native libraries installed on the system (Option C) for actual code execution coverage.
-
-## Detailed Results (See .memory/system/results/ for full details)
-
-### Quaternion.cs
-- **Timestamp**: 2026-07-19 21:00:00
-- **File**: `6_Ideation/Math/src/Util/Quaternion.cs`
-- **Commit**: `ae0b8e42a`
-- **Status**: SUCCESS
-
-### GameObjectRefTuple.cs
-- **Timestamp**: 2026-07-19 20:45:00
-- **File**: `4_Operation/Ecs/src/GameObjectRefTuple.cs`
-- **Commit**: `b1c822259`
-- **Status**: SUCCESS
-
-### RefTuple.cs
-- **Timestamp**: 2026-07-19 20:30:00
-- **File**: `4_Operation/Ecs/src/Systems/RefTuple.cs`
-- **Commit**: `aa19100ac`
-- **Status**: SUCCESS
-
-### SceneQueryExtensions.cs
-- **Timestamp**: 2026-07-19 20:15:00
-- **File**: `4_Operation/Ecs/src/SceneQueryExtensions.cs`
-- **Coverage Before**: N/A
-- **Coverage After**: ~15%
-- **Tests Added**: 9
-- **Commit**: `f4929fc6c`
-- **Status**: SUCCESS
-
-### Query.cs
-- **Timestamp**: 2026-07-19 20:00:00
-- **File**: `4_Operation/Ecs/src/Systems/Query.cs`
-- **Coverage Before**: N/A
-- **Coverage After**: ~78%
-- **Tests Added**: 10
-- **Commit**: `fc8cb1a09`
-- **Status**: SUCCESS
-
-### MemoryHelpers.cs
-- **Timestamp**: 2026-07-19 19:45:00
-- **File**: `4_Operation/Ecs/src/Redifinition/MemoryHelpers.cs`
-- **Coverage Before**: N/A
-- **Coverage After**: ~100%
-- **Tests Added**: 19
-- **Commit**: `a39f9815a`
-- **Status**: SUCCESS
-
-### ArchetypeNeighborCache.cs
-- **Timestamp**: 2026-07-19 19:30:00
-- **File**: `4_Operation/Ecs/src/Collections/ArchetypeNeighborCache.cs`
-- **Coverage Before**: 55.5%
-- **Coverage After**: ~90%
-- **Tests Added**: 10
-- **Commit**: `87beeb47c`
-- **Status**: SUCCESS
-
-### ComponentHandle.cs
-- **Timestamp**: 2026-07-19 19:15:00
-- **File**: `4_Operation/Ecs/src/Kernel/ComponentHandle.cs`
-- **Coverage Before**: 37.0%
-- **Coverage After**: ~82%
-- **Tests Added**: 19
-- **Commit**: `94120e76e`
-- **Status**: SUCCESS
-
-### ShortSparseSet.cs
-- **Timestamp**: 2026-07-19 19:00:00
-- **File**: `4_Operation/Ecs/src/Collections/ShortSparseSet.cs`
-- **Coverage Before**: 29.1%
-- **Coverage After**: ~85%
-- **Tests Added**: 37
-- **Commit**: `f374343c9`
-- **Status**: SUCCESS
-
-### EntityUpdate.cs
-- **Timestamp**: 2026-07-13 00:00:00
-- **File**: `4_Operation/Ecs/src/EntityUpdate.cs`
-- **Coverage Before**: 0.0%
-- **Coverage After**: N/A
-- **Tests Added**: 8
-- **Commit**: N/A
-- **Status**: BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:34:07Z | ImPlot.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:34:54Z | ImPlotP2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CharCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CharEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CharModsCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ContentScaleEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ClientApi.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ConnectionStatus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Constants.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ContextApi.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ContextAttributes.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CursorMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CursorType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ErrorCode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GamePadAxis.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GamePadButton.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GlfwProfile.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Hat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Hint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InputMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InputState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Joystick.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Keys.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ModifierKeys.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseButton.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ReleaseBehavior.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Robustness.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowAttribute.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ErrorCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | FileDropCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | FileDropEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | FocusCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GlfwNative.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | IconifyCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MaximizeEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MonitorCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseButtonCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseButtonEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseEnterCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseMoveEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | NativeWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | PositionCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SizeCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SizeChangeEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Cursor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EGLContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EGLDisplay.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EGLSurface.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GLXContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GamePadState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GammaRamp.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GammaRampInternal.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | HGLRC.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Image.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Monitor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | NSOpenGLContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | OSMesaContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | VideoMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Window.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Util.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Vulkan.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowContentsScaleCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowMaximizedCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlAudioCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlEventFilter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlHitTest.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlIPhoneAnimationCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlLogOutputFunction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlMainFunc.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlTimerCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWindowsMessageHook.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWopsCloseCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWopsReadCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWopsSeekCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWopsSizeCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlWopsWriteCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ArrayOrder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Attr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioAllow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioStatus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | BitmapOrder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | BlendFactor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | BlendModes.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | BlendOperation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DisplayEventId.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DisplayOrientation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EventAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EventType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | FlashOperation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameControllerAxis.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameControllerBindType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameControllerButton.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Haptic.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | HapticConstant.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Hat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | HintPriority.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | HitTestResult.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InitSettings.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickPowerLevel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyMods.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | LogCategory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | LogPriority.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseWheelDirection.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | PackedLayout.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | PackedOrder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | PowerState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Profiles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RendererFlips.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Renderers.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RwOps.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RwSeek.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ScaleMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Sdl2Contexts.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SensorType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SysWmType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SystemCursor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TextureAccess.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TextureModulate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TouchDeviceType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TypePixel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WinRtDeviceFamily.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowEventId.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowPos.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | WindowSettings.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | IWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyCodes.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlInputConst.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlScancode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | NativeSdl.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Sdl.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImgAnimation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | NativeSdlImage.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlImage.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | NativeSdlTtf.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SdlTtf.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioDeviceEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioSpec.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ControllerAxisEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ControllerButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ControllerDeviceEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ControllerSensorEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ControllerTouchpadEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DisplayEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DisplayMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DollarGestureEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | DropEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Event.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameControllerButtonBind.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GameControllerType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | GenericEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | HapticDirection.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Hint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalAndroidWminfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalCocoaWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalDirectfbWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalGameControllerButtonBindHat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalGameControllerButtonBindUnion.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalKmsWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalMirWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalOs2WmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalSdlGameControllerButtonBind.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalSysWmDriverUnion.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalUikitWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalVivanteWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalWaylandWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalWindowsWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalWinrtWmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InternalX11WmInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoyAxisEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoyBallEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoyButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoyDeviceEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoyHatEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeySym.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyboardEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseMotionEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseWheelEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MultiGestureEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | PixelFormat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | QuitEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RendererInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SensorEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Surface.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SysWmEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TextEditingEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TextInputEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TouchFingerEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | UserEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Version.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Vertex.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Listener.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Music.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Sound.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SoundBuffer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SoundBufferRecorder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SoundRecorder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SoundStream.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Font.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Image.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RenderTexture.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | RenderWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Shader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Texture.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | CSFML.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Clock.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | InputStream.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ObjectBase.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SfmlTime.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | StreamAdaptor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickButtonEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickConnectEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | JoystickMoveEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | KeyEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseButtonEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseMoveEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseWheelEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MouseWheelScrollEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SensorEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | SizeEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TextEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | TouchEventArgs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | Window.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuizMo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodes.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesCol.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesEditorContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesIO.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesMiniMapLocation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesMiniMapNodeHoveringCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesMiniMapNodeHoveringCallbackUserData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesNative.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesPinShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesStyle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesStyleFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImNodesStyleVar.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP1.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP10.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP11.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP12.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP13.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP14.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP15.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP16.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP17.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP18.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP19.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP20.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP21.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP22.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP5.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP6.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP7.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP8.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImPlotP9.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImDrawList.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImDrawListFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImDrawListPtr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImDrawListSplitter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFont.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontAtlas.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontAtlasCustomRect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontAtlasFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontAtlasPtr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontConfigPtr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontGlyph.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontGlyphRangesBuilder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImFontPtr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGui.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP1.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP5.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP6.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP7.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiP8.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPayload.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPlatformIO.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPlatformIOPtr.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPlatformImeData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPlatformMonitor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | ImGuiPopupFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | StbTexteditRow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | StbTexteditState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | StbUndoRecord.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | StbUndoState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioFrame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioPlayer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioReader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioWriter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MediaReader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MediaStream.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MediaWriter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | EncoderOptions.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | FFMpegWrapper.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | AudioVideoWriter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | VideoFrame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | VideoPlayer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | VideoReader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | VideoWriter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:35:43Z | MacWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ActiveAttribType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ActiveUniformType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AddComponent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AfterCollisionEventHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AnimatorConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ArchetypeData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ArchetypeDeferredUpdateRecord.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ArchetypeEdgeType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AreaLight.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AttachShader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AudioSourceConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BeforeCollisionEventHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Begin.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BeginContactDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BeginMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BindBuffer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BindSampler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BindTexture.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BindVertexArray.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendEquation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendEquationMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendFunc.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendingFactorDest.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendingFactorSrc.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BoardSquareType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BodyDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BodyType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BoxColliderConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BreakableBodyState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BroadphaseDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BroadPhaseQueryCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BroadPhaseRayCastCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BufferData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BufferTarget.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BufferUsageHint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Bvec2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Bvec3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Bvec4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CameraConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Canvas.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Categories.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CGPoint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Chunk.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CircleCollider.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CircleF.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CircleI.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ClassStyles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Clear.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ClearBufferMask.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ClearColor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ClipVertex.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CollisionFilterDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Color4f.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ColorStyle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CompileShader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ComponentData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ComponentEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ContactFeature.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ContactFeatureType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ContactID.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ControllerCategories.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ControllerDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CreateCommand.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CreateProgram.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CreateShader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteBuffers.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteComponent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteComponentData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteProgram.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteShader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteTextures.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DeleteVertexArrays.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DetachShader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DialogEventType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DialogStateType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Direction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DirectionalLight.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Disable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DisableVertexAttribArray.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DistanceInput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DistanceOutput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DrawArrays.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DrawElements.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DrawElementsBaseVertex.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | DrawElementsType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EmulateThreeButtonMouse.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Enable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EnableCap.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EnableLink.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EnableVertexAttribArrayDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | End.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EndContactDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EntityData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EntityHighLow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EntityWorldInfoAccess.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EPAxis.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EPAxisType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Event.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | EventType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FFmpegProfile.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Fields.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FileDialogType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FixtureDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FixtureProxy.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Frame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FramebufferAttachment.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FramebufferTarget.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GameObjectFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GameObjectRefTuple.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GenBuffers.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GenTextures.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GenVertexArrays.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetActiveAttrib.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetActiveUniform.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetAttribLocation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetProgramInfoLogDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetProgramiv.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetShaderInfoLogDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetShaderiv.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetString.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GetUniformLocation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Glyph.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | GravityType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.5.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.6.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.7.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.8.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAdd.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAddAnimation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAddComponent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAddFrame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAds.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAdsManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAi.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAngularVelocity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAnimation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAnimator.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IArchetypeGraphEdge.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAudio.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAudioSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAudioSource.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAuthor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IAutoTilling.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBackground.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBackgroundColor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBoardBuilder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBodyType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBoxCollider.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBroadPhase.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBufferPool.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IBuild.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICallbackDialogAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICamera.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IChunkAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICloud.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICloudManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IComponentBase.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IComponentRunnerFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IComponentStorageBaseFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IComponentUpdateFilter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IComponentUpdateOrderAttribute.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IConfiguration.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IContextHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICorridorFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ICreate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDebug.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDebugColor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDelete.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDensity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDepth.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDescription.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDialogAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDialogCondition.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDialogEventObserver.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDialogState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDrawable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IDungeonGenerator.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IEncoderOptionsBuilder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IEntityChunkAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IEscapeSequenceHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFastImmutableArray.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFile.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFilePath.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFilePicker.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFileService.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFixedRotation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFixedSizePriorityQueue.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IFriction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGameObject.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGeneral.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGeneralSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGenericAction.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGitHubApiService.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGraphic.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGraphicSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGravity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IGravityScale.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IHas.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IHasBuilder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IHasContext.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIcon.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IInput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IInputSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIsActive.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIsDynamic.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIsResizable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIsStatic.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IIsTrigger.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonDeserializer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonDesSerializable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonFileHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonParser.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonSerializable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IJsonSerializer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILanguage.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILanguageProvider.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILicense.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILinearVelocity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogEntry.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogFilter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogFormatter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogger.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogLevel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ILogOutput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IManagerOf.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IMass.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImAxis.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawChannel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawCmdHeader.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawVert.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IMediaFrame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImgInitFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiBackendFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiButtonFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiCol.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiColorEditFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiComboFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiCond.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiConfigFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiDataType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiDir.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiDockNodeFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiDragDropFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiDragDropFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiFocusedFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiHoveredFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiInputTextCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiInputTextCallbackData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiInputTextFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiIO.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImguiIo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiKey.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiKeyData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiListClipper.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiModFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiModFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiMouseButton.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiMouseCursor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiNavInput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiOnceUponAFrame.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiSelectableFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiSizeCallback.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiSizeCallbackData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiSliderFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiSortDirection.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiStorage.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiStoragePair.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiStyleVar.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTabBarFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTabItemFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableBgTarget.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableColumnFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableColumnSortSpecs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableRowFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTableSortSpecs.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTextBuffer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTextFilter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTextRange.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiTreeNodeFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiViewport.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiViewportFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiWindowClass.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiWindowFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotAxisFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotBarGroupsFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotBarsFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotBin.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotCol.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotColormap.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotColormapScaleFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotCond.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotDigitalFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotDragToolFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotDummyFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotErrorBarsFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotHeatmapFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotHistogramFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotImageFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotInfLinesFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotInputMap.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotItemFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotLegendFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotLineFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotLocation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotMarker.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotMouseTextFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotPieChartFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotPoint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotRange.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotRect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotScale.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotScatterFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotShadedFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotStairsFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotStemsFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotStyle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotStyleVar.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotSubplotFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImPlotTextFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IMute.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImVector.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IName.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INativePlatform.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IncludeDisabled.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetwork.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkClientManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkSerializer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkServerManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | INetworkTransport.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | InlineArray8.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnAfterDraw.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnAfterFixedUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnAfterUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnAwake.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnBeforeDraw.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnBeforeFixedUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnBeforeUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnCollisionEnter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnCollisionExit.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnDestroy.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnDraw.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnExit.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnFixedUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnHoldKey.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnInit.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnPhysicUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnPressKey.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnProcessPendingChanges.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnReleaseKey.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnStart.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.1.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.5.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.6.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.7.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.8.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOnUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IOrder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IParallelCapable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IParallelExecutionStrategy.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPhysic.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPhysicSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPingPongManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPlayer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPlayOnAwake.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPlugin.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPluralizationEngine.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPosition2D.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IPriorityQueue.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IProfile.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IProfilerService.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRandomNumberGenerator.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRelativePosition.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRenderTarget.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IResolution.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IResourceMonitor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRestitution.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRoomFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRotation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRuleProvider.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRun.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRunteable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IRuntime.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IScale2D.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IScreenMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IScript.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISet.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISetAudioClip.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISetMax.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISetTexture.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISettings.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISize.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISpeed.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISplashScreen.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ISprite.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IStore.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IStoreManager.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IStripeGatewayClient.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IStyle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITime.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITimeSetting.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITimeTracker.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITransform.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITranslationCache.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITranslationObserver.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITranslationProvider.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITriangulatable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ITypeID.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IUpdate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Ivec3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IVersion.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IVolume.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWebSocketClientFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWebSocketServerFactory.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWhere.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWith.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWithColor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWithModel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWithName.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWithTag.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IWorld.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JointDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JointType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JoystickButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JoystickConnectEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JoystickMoveEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | KeyEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | KeyEventInfo.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LayerType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LimitState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LineF.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LineI.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LinkDetachWithModifierClick.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LinkProgram.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LogLevel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Manifold.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ManifoldPoint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ManifoldType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MaterialFace.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MediaType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MemoryTrimming.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Mode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MouseButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MouseMoveEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MouseWheelEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MouseWheelScrollEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Msg.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MultipleSelectModifier.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MuxingSupport.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | NetworkManagerState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | NetworkTransportState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Not.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | NsPoint.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | NsRect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | OnCollisionEventHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | OnSeparationEventHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Operations.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Orientation.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ParamType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PaymentStatus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PinShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PixelFormat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Pixelformatdescriptor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PixelFormatFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PixelInternalFormat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PixelType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PixelType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformCreateWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformDestroyWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformGetWindowFocus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformGetWindowMinimized.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformGetWindowPos.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformGetWindowSize.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformSetWindowFocus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformSetWindowPos.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformSetWindowSize.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformSetWindowTitle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlatformShowWindow.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PlayerConnectionState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PointI.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PointLight.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PointState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PolyClipError.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PolyClipType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PolygonError.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PolygonMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PolygonModeEnum.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PostSolveDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Preset.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PreSolveDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PrimitiveType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | PrimitiveType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ProgramParameter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Quality.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | QueryReportFixtureDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RayCastInput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RayCastOutput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RayCastReportFixtureDelegate.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Rect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ReferenceFace.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RigidBody.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RuleTypes.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Scissor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SensorEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SeparationFunctionType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SessionState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShaderParameter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShaderSourceDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShaderType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShapeData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShapeType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ShowWindowCommand.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SimplexCache.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SimplexVertex.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SizeEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SolverData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SolverIterations.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SolverPosition.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SolverVelocity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SoundStatus.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SpotLight.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SpriteConfig.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SquareF.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SquareI.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Storei.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | StoreParameter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | StringName.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Style.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | StyleFlags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Styles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Styles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | StyleVar.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TexCoord2F.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TexImage2D.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TexParameteri.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TextEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TextureParameter.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TextureParameterName.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TextureTarget.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TextureUnit.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TimeStep.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TOIOutput.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TOIOutputState.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TouchEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TreeNode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TriangulationAlgorithm.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | TriangulationMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Tune.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform1F.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform1I.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform2F.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform3F.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform3Fv.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform4F.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Uniform4Fv.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | UniformMatrix3FvDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | UniformMatrix4FvDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | UnionValue.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | UpdateProgressEventHandler.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | UseProgram.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VelocityConstraintInitData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Verbosity.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Vertex2f.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VertexAttribPointerDel.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VertexAttribPointerType.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Viewport.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | WebSocketOpCode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | WindowExStyles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | WindowMessage.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | WindowStyles.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | With.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Wndclass.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | WorldArchetypeTableItem.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XAnyEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XButtonEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XClientMessageEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XConfigureEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XFocusChangeEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XKeyEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XMotionEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | XVisibilityEvent.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AACEncoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AudioFormat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | AudioMetadata.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | BlendMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | CircleShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Clipboard.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Color.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Context.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ContextSettings.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ConvexShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Cursor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | FloatRect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | H264Encoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImColor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawCmd.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImDrawData.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | ImGuiStyle.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | IntRect.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Ivec2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Ivec4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | JetBrains.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Joystick.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Keyboard.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LoadingFailedException.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | LoadingFailedException.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Mouse.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | MP3Encoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | OpusEncoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RectangleShape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | RenderStates.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Sensor.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | SfmlText.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Shape.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Sprite.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | StreamTags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Tags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Touch.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Transform.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Transformable.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Vec2.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Vec3.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Vec4.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | Vertex.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VertexArray.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VertexBuffer.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VideoFormat.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VideoFormatTags.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VideoMetadata.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VideoMode.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | View.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VorbisEncoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:36:36Z | VP9Encoder.cs | 0.0% | 0.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | ComponentDelegates.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | Constant.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | Constant.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | EGL.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | EGLDroid.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | Emscripten.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | EmscriptenWebScript.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | Gdi32.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | ImGuiNative.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | ImGuiZmoNative.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | ImPlotNative.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | IsExternalInit.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | JointEdge.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | JsonNativeIgnoreAttribute.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | Kernel32.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | LinuxNativePlatform.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | MacConstants.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | MemoryMarshal.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | ModuleInitializerAttribute.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE
+2026-07-21T08:37:09Z | OpenAL.cs | 100.0% | 100.0% | 0 | none | BLOCKED_BY_PRODUCTION_CODE

@@ -1,6 +1,0 @@
-File: ImPlotP22.cs
-CoverageBefore: 0.0%
-CoverageAfter: 0.0%
-TestsAdded: 0
-Commit: N/A
-Status: BLOCKED_BY_PRODUCTION_CODE
