@@ -1128,3 +1128,7 @@
 2026-07-21T09:32:19Z | ConsoleLogOutput.cs | 94.7% | 94.7% | 0 | none | BLOCKED
 2026-07-21T09:32:19Z | Logger.cs | 95.3% | 100.0% | 3 | 034b95e98 | COMPLETED
 2026-07-21T09:32:19Z | FastImmutableArray.cs | 95.5% | 97.8% | 17 | 3adb79c88 | COMPLETED
+2026-07-21T09:55:13Z | Collision.cs | 96.6% | 97.6% | 9 | 77aadb3e8 | COMPLETED
+2026-07-21T09:55:13Z | Island.cs | 96.8% | 97.47% | 0 | fc5d9c57e | COMPLETED
+2026-07-21T09:55:13Z | CommandBuffer.cs | 96.8% | 100.0% | 6 | 01afaad3c | COMPLETED
+2026-07-21T09:55:13Z | ComponentStorage.cs | 96.8% | 100.0% | 2 | 3868fefb6 | COMPLETED
