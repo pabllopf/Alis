@@ -2620,5 +2620,111 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(bodyB.JointList);
             Assert.Single(world.JointList);
         }
+
+        // ========================================================================
+        // ShouldProcessBody — not awake (line 350-353)
+        // ========================================================================
+        /// <summary>
+        /// Tests that should process body with non awake body skips processing
+        /// </summary>
+        [Fact]
+        public void ShouldProcessBody_WithNonAwakeBody_SkipsProcessing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            bodyA.Awake = false;
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+            Assert.False(bodyA.Island);
+        }
+
+        // ========================================================================
+        // ShouldProcessBody — disabled (line 350-353)
+        // ========================================================================
+        /// <summary>
+        /// Tests that should process body with disabled body skips processing
+        /// </summary>
+        [Fact]
+        public void ShouldProcessBody_WithDisabledBody_SkipsProcessing()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            bodyA.Enabled = false;
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+            Assert.False(bodyA.Island);
+        }
+
+        // ========================================================================
+        // ProcessContactEdges — disabled contact (line 477-480)
+        // ========================================================================
+        /// <summary>
+        /// Tests that process contact edges with disabled contact skips
+        /// </summary>
+        [Fact]
+        public void ProcessContactEdges_WithDisabledContact_Skips()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.Enabled = false;
+                return true;
+            };
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // ProcessContactEdges — not touching contact (line 477-480)
+        // ========================================================================
+        /// <summary>
+        /// Tests that process contact edges with not touching contact skips
+        /// </summary>
+        [Fact]
+        public void ProcessContactEdges_WithNotTouchingContact_Skips()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+
+            world.ContactManager.BeginContact = contact =>
+            {
+                contact.IsTouching = false;
+                return true;
+            };
+
+            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+            Assert.Null(ex);
+        }
+
+        // ========================================================================
+        // CalculateContactAlpha — different alpha0 values (lines 743-752)
+        // ========================================================================
+        /// <summary>
+        /// Tests that calculate contact alpha with different sweep alpha values branches correctly
+        /// </summary>
+        [Fact]
+        public void CalculateContactAlpha_WithDifferentAlpha0_BranchesCorrectly()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Dynamic);
+            bodyA.LinearVelocityInternal = new Vector2F(300f, 0f);
+
+            for (int i = 0; i < 5; i++)
+            {
+                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
+                Assert.Null(ex);
+            }
+        }
     }
 }
