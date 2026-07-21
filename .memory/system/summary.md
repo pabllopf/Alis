@@ -1136,3 +1136,7 @@
 2026-07-21T10:07:06Z | DelaunayTriangle.cs | 98.7% | 100.0% | 1 | c877d5e44 | COMPLETED
 2026-07-21T10:07:06Z | Animator.cs | 98.9% | 100.0% | 1 | 73a4d354f | COMPLETED
 2026-07-21T10:07:06Z | DialogManager.cs | 99.0% | 100.0% | 2 | 5f64d2154 | COMPLETED
+2026-07-21T10:15:24Z | ComponentHandle.cs | 95.7% | 100.0% | 3 | c750bcc48 | COMPLETED
+2026-07-21T10:15:24Z | SceneUpdateFilter.cs | 96.2% | 100.0% | 1 | 0fe979440 | COMPLETED
+2026-07-21T10:15:24Z | FastestArrayPool.cs | 97.2% | 100.0% | 1 | b02d23b52 | COMPLETED
+2026-07-21T10:15:24Z | SimpleExplosion.cs | 98.1% | 100.0% | 1 | d84b6a6aa | COMPLETED
