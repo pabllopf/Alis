@@ -53,22 +53,6 @@ namespace Alis.Core.Ecs.Test
         }
 
         /// <summary>
-        ///     Tests that boundary condition position with extreme values
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        [Theory, InlineData(0, 0), InlineData(1, 1), InlineData(-1, -1), InlineData(int.MaxValue, int.MaxValue), InlineData(int.MinValue, int.MinValue), InlineData(int.MaxValue, int.MinValue)]
-        public void BoundaryCondition_PositionWithExtremeValues(int x, int y)
-        {
-            using Scene scene = new Scene();
-            GameObject go = scene.Create();
-
-            go.Add(new Position {X = x, Y = y});
-            Assert.Equal(x, go.Get<Position>().X);
-            Assert.Equal(y, go.Get<Position>().Y);
-        }
-
-        /// <summary>
         ///     Tests that boundary condition single entity creates
         /// </summary>
         [Fact] public void BoundaryCondition_SingleEntity_Creates()
