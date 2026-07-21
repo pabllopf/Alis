@@ -1,4 +1,4 @@
-File: ICloudManager.cs
+File: JsonFileHandler.cs
 CoverageBefore: 100.0%
 CoverageAfter: 100.0%
 TestsAdded: 0

@@ -1,6 +1,6 @@
 File: Sprite.cs
-CoverageBefore: 0.0%
-CoverageAfter: 0.0%
+CoverageBefore: 21.9%
+CoverageAfter: 21.9%
 TestsAdded: 0
 Commit: none
 Status: BLOCKED_BY_PRODUCTION_CODE
