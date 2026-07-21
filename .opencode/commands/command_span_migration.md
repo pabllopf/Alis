@@ -105,18 +105,104 @@ try {
 
 ## COMPATIBILITY RULES
 
-- `Span<T>` is available on: `netcoreapp2.1+`, `netstandard2.1+`, `net5.0+`, `net6.0+`, `net8.0+`, `net10.0+`.
-- On `netstandard2.0` and `net461`: use `System.Memory` NuGet shim (already included via `System.Memory` compat package).
-- For multi-target projects, use `#if`:
-  ```csharp
-  #if NETSTANDARD2_0 || NET461
-      // array-based fallback
-  #else
-      // Span-based implementation
-  #endif
-  ```
+### Target Framework Symbols
+
+The following `#if` symbols correspond to each target framework:
+
+| Framework | Target Moniker | C# Preprocessor Symbol |
+|---|---|---|
+| .NET Core | `netcoreapp2.0` | `NETCOREAPP2_0` |
+| .NET Core | `netcoreapp2.1` | `NETCOREAPP2_1` |
+| .NET Core | `netcoreapp2.2` | `NETCOREAPP2_2` |
+| .NET Core | `netcoreapp3.0` | `NETCOREAPP3_0` |
+| .NET Core | `netcoreapp3.1` | `NETCOREAPP3_1` |
+| .NET | `net5.0` | `NET5_0` |
+| .NET | `net6.0` | `NET6_0` |
+| .NET | `net7.0` | `NET7_0` |
+| .NET | `net8.0` | `NET8_0` |
+| .NET | `net9.0` | `NET9_0` |
+| .NET | `net10.0` | `NET10_0` |
+| .NET Standard | `netstandard2.0` | `NETSTANDARD2_0` |
+| .NET Standard | `netstandard2.1` | `NETSTANDARD2_1` |
+| .NET Framework | `net471` | `NET471` |
+| .NET Framework | `net472` | `NET472` |
+| .NET Framework | `net48` | `NET48` |
+| .NET Framework | `net481` | `NET481` |
+
+### Span<T> Availability
+
+- `Span<T>` is natively available on: `netcoreapp2.1+`, `netstandard2.1+`, `net5.0+`.
+- On `netcoreapp2.0`, `netstandard2.0`, and `net471`–`net481`: use `System.Memory` NuGet shim (already included via `System.Memory` compat package).
+
+### Preprocessor Guard Patterns
+
+For multi-target projects, organize code with `#if` blocks:
+
+```csharp
+#if NET10_0
+    // .NET 10 — newest APIs available
+#elif NET9_0
+    // .NET 9
+#elif NET8_0
+    // .NET 8
+#elif NET7_0
+    // .NET 7
+#elif NET6_0
+    // .NET 6
+#elif NET5_0
+    // .NET 5
+#elif NETCOREAPP3_1
+    // .NET Core 3.1
+#elif NETCOREAPP3_0
+    // .NET Core 3.0
+#elif NETCOREAPP2_2
+    // .NET Core 2.2
+#elif NETCOREAPP2_1
+    // .NET Core 2.1 — Span<T> available via System.Memory
+#elif NETCOREAPP2_0
+    // .NET Core 2.0
+#elif NETSTANDARD2_1
+    // .NET Standard 2.1 — Span<T> available natively
+#elif NETSTANDARD2_0
+    // .NET Standard 2.0 — requires System.Memory
+#elif NET481
+    // .NET Framework 4.8.1
+#elif NET48
+    // .NET Framework 4.8
+#elif NET472
+    // .NET Framework 4.7.2
+#elif NET471
+    // .NET Framework 4.7.1
+#endif
+```
+
+For simpler Span/no-Span branching:
+
+```csharp
+#if NETCOREAPP2_0 || NETSTANDARD2_0 || NET471 || NET472 || NET48 || NET481
+    // array-based fallback (no Span<T>)
+    Byte[] buffer = new Byte[256];
+#else
+    // Span-based implementation
+    Span<Byte> buffer = stackalloc Byte[256];
+#endif
+```
+
+Or using a positive check for Span-capable targets:
+
+```csharp
+#if NETCOREAPP2_1_OR_GREATER || NETSTANDARD2_1_OR_GREATER || NET5_0_OR_GREATER
+    // Span-based implementation
+    ReadOnlySpan<Byte> data = source;
+#else
+    // array-based fallback
+    Byte[] data = source.ToArray();
+#endif
+```
+
 - Never change public API without preserving the original overload.
 - Use `[EditorBrowsable(EditorBrowsableState.Advanced)]` on new Span overloads if needed.
+- When targeting netstandard2.0 or netfx, ensure `System.Memory` package is referenced in the project file for `Span<T>` APIs.
 
 ## OUTPUT
 
