@@ -74,10 +74,10 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void Archetype_GetComponentIndex_WithComponentId_ReturnsCorrectValue()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
-            Archetype archetype = scene.DefaultArchetype;
+            WorldArchetypeTableItem item = Archetype<Position>.CreateNewOrGetExistingArchetypes(scene);
+            Archetype archetype = item.Archetype;
             int posIndex = archetype.GetComponentIndex(Component<Position>.Id);
-            Assert.True(posIndex > 0, $"Component index should be > 0 but was {posIndex}");
+            Assert.True(posIndex > 0);
         }
 
         [Fact]
