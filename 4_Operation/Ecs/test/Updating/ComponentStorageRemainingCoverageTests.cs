@@ -520,6 +520,40 @@ namespace Alis.Core.Ecs.Test.Updating
 
             Assert.Equal(Component<DestroyableRefStruct>.Id, handle.ComponentId);
         }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.GetComponentStorageDataReference" />
+        ///     throws <see cref="InvalidOperationException" /> when the buffer is empty.
+        /// </summary>
+        [Fact]
+        public void GetComponentStorageDataReference_WithEmptyBuffer_ThrowsInvalidOperationException()
+        {
+            NoneUpdate<int> storage = new NoneUpdate<int>(0);
+
+            Assert.Throws<InvalidOperationException>(() => storage.GetComponentStorageDataReference());
+        }
+
+        /// <summary>
+        ///     Tests that <see cref="ComponentStorage{TComponent}.PullComponentFromAndClear" />
+        ///     with a reference type properly clears the source slot.
+        /// </summary>
+        [Fact]
+        public void PullComponentFromAndClear_WithReferenceType_ClearsSourceSlot()
+        {
+            NoneUpdate<string> target = new NoneUpdate<string>(4);
+            target[0] = "old";
+
+            NoneUpdate<string> source = new NoneUpdate<string>(4);
+            source[0] = "keep";
+            source[1] = "move";
+            source[2] = "last";
+
+            target.PullComponentFromAndClear(source, 0, 1, 2);
+
+            Assert.Equal("move", target[0]);
+            Assert.Equal("last", source[1]);
+            Assert.Null(source[2]);
+        }
     }
 
     /// <summary>
