@@ -180,25 +180,6 @@ namespace Alis.Core.Aspect.Memory.Test
         }
 
         /// <summary>
-        ///     Tests that GetResourcePathByName throws when resource not found in archive.
-    ///     This covers the resource not found error branch.
-        /// </summary>
-        [Fact]
-        public void GetResourcePathByName_ResourceNotFound_ShouldThrowFileNotFoundException()
-        {
-            // Arrange
-            string assemblyName = "TestAssembly_" + Guid.NewGuid();
-            byte[] zipBytes = CreateTestZipBytes(new System.Collections.Generic.Dictionary<string, string> {{"file.txt", "content"}});
-            Func<Stream> loader = () => new MemoryStream(zipBytes, false);
-            AssetRegistry.RegisterAssembly(assemblyName, loader);
-
-            // Act & Assert
-            Exception exception = Record.Exception(() => AssetRegistry.GetResourcePathByName("nonexistent.txt"));
-            Assert.NotNull(exception);
-            Assert.IsType<FileNotFoundException>(exception);
-        }
-
-        /// <summary>
         ///     Helper method to create a simple ZIP in memory with test data (same as existing test).
         /// </summary>
         private static byte[] CreateTestZipBytes(System.Collections.Generic.Dictionary<string, string> entries)

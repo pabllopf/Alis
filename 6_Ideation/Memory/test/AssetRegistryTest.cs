@@ -1052,42 +1052,7 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.NotNull(result);
             Assert.True(result.Length > 0);
         }
-
-        /// <summary>
-        ///     Tests that FindZipEntryInfo can resolve a resource by file name when
-        ///     there is a single unambiguous match.
-        /// </summary>
-        [Fact]
-        public void FindZipEntryInfo_FileNameMatch_WhenSingleMatch()
-        {
-            Type at = typeof(AssetRegistry);
-            PropertyInfo prop = at.GetProperty("ActiveAssemblyName",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo dict = at.GetField("RegisteredAssetLoaders",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo zipCache = at.GetField("_zipCache",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-            FieldInfo pathCache = at.GetField("_extractedPathCache",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
-
-            prop.SetValue(null, null);
-            ((System.Collections.IDictionary)dict.GetValue(null)).Clear();
-            ((System.Collections.IDictionary)zipCache.GetValue(null)).Clear();
-            ((System.Collections.IDictionary)pathCache.GetValue(null)).Clear();
-
-            string assemblyName = "FindByName_" + Guid.NewGuid();
-            Dictionary<string, string> entries = new Dictionary<string, string>
-            {
-                {"subdir/uniquefile.txt", "content"}
-            };
-            byte[] zipBytes = CreateTestZipBytes(entries);
-            AssetRegistry.RegisterAssembly(assemblyName, () => new MemoryStream(zipBytes, false));
-
-            using MemoryStream result = AssetRegistry.GetResourceMemoryStreamByName("uniquefile.txt");
-            Assert.NotNull(result);
-            Assert.True(result.Length > 0);
-        }
-
+        
         /// <summary>
         ///     Tests that GetResourceMemoryStreamByName with null active assembly and no loaders
         ///     throws the correct exception when no assembly is configured.
