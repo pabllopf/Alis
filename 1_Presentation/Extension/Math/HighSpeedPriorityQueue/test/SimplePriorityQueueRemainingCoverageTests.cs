@@ -179,5 +179,44 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
             Assert.True(queue.EnqueueWithoutDuplicates(null, 1));
         }
+
+        [Fact]
+        public void TryRemove_NullItem_WhenNullCacheNotEmpty_RemovesItem()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue(null, 1);
+            bool result = queue.TryRemove(default(string));
+            Assert.True(result);
+            Assert.Equal(0, queue.Count);
+        }
+
+        [Fact]
+        public void RemoveFromNodeCache_WhenItemNotInCache_DoesNotThrow()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue("test", 1);
+            queue._itemToNodesCache.Remove("test");
+            queue.Dequeue();
+        }
+
+        [Fact]
+        public void IsValidQueue_WhenCacheHasExtraNodes_ReturnsFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue("valid", 1);
+            SimplePriorityQueue<string, int>.SimpleNode fakeNode = new SimplePriorityQueue<string, int>.SimpleNode("fake");
+            queue._itemToNodesCache["fake"] = new List<SimplePriorityQueue<string, int>.SimpleNode> { fakeNode };
+            Assert.False(queue.IsValidQueue());
+        }
+
+        [Fact]
+        public void IsValidQueue_WhenQueueHasExtraNodes_ReturnsFalse()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue("valid", 1);
+            SimplePriorityQueue<string, int>.SimpleNode extraNode = new SimplePriorityQueue<string, int>.SimpleNode("extra");
+            queue._queue.Enqueue(extraNode, 2);
+            Assert.False(queue.IsValidQueue());
+        }
     }
 }
