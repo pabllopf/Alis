@@ -23,9 +23,15 @@ namespace Alis.Test
             if (tableField == null) return;
 
             byte[][] table = (byte[][])tableField.GetValue(null);
-            if (table == null || table.Length < 64)
+            if (table == null)
             {
                 tableField.SetValue(null, new byte[64][]);
+            }
+            else if (table.Length < 64)
+            {
+                byte[][] grown = new byte[64][];
+                Array.Copy(table, grown, table.Length);
+                tableField.SetValue(null, grown);
             }
 
             PropertyInfo bufferProp = globalWorldTables.GetProperty("ComponentTagTableBufferSize",

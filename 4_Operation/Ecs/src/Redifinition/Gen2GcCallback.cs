@@ -43,7 +43,30 @@ namespace Alis.Core.Ecs.Redifinition
         /// <summary>
         ///     The gen collection occured
         /// </summary>
-        public static Action Gen2CollectionOccured { get; set; }
+        public static Action Gen2CollectionOccured
+        {
+            get
+            {
+                lock (Gen2CollectionLock)
+                {
+                    return _gen2CollectionOccured;
+                }
+            }
+            set
+            {
+                lock (Gen2CollectionLock)
+                {
+                    _gen2CollectionOccured = value;
+                }
+            }
+        }
+
+        private static Action _gen2CollectionOccured;
+
+        /// <summary>
+        ///     Lock guarding <see cref="Gen2CollectionOccured" /> subscription and invocation across threads.
+        /// </summary>
+        private static readonly object Gen2CollectionLock = new();
 
         /// <summary>
         ///     The callback
@@ -66,13 +89,23 @@ namespace Alis.Core.Ecs.Redifinition
         private static readonly List<Gen2GcCallback> _registeredCallbacks = new();
 
         /// <summary>
+        ///     Lock guarding <see cref="_registeredCallbacks" /> against the finalizer thread.
+        /// </summary>
+        private static readonly object RegisteredCallbacksLock = new();
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="Gen2GcCallback" /> class
         /// </summary>
         static Gen2GcCallback()
         {
             Register(() =>
             {
-                Gen2CollectionOccured?.Invoke();
+                Action handler;
+                lock (Gen2CollectionLock)
+                {
+                    handler = _gen2CollectionOccured;
+                }
+                handler?.Invoke();
                 return true;
             });
         }
@@ -101,7 +134,10 @@ namespace Alis.Core.Ecs.Redifinition
         public static void Register(Func<bool> callback)
         {
             Gen2GcCallback instance = new Gen2GcCallback(callback);
-            _registeredCallbacks.Add(instance);
+            lock (RegisteredCallbacksLock)
+            {
+                _registeredCallbacks.Add(instance);
+            }
         }
 
         /// <summary>
@@ -113,14 +149,20 @@ namespace Alis.Core.Ecs.Redifinition
         public static void Register(Func<object, bool> callback, object targetObj)
         {
             Gen2GcCallback instance = new Gen2GcCallback(callback, targetObj);
-            _registeredCallbacks.Add(instance);
+            lock (RegisteredCallbacksLock)
+            {
+                _registeredCallbacks.Add(instance);
+            }
         }
 
         /// <summary>
         /// </summary>
         ~Gen2GcCallback()
         {
-            _registeredCallbacks.Remove(this);
+            lock (RegisteredCallbacksLock)
+            {
+                _registeredCallbacks.Remove(this);
+            }
 
             if (_weakTargetObj.IsAllocated)
             {

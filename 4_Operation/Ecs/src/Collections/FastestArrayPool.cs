@@ -56,6 +56,11 @@ namespace Alis.Core.Ecs.Collections
         internal readonly T[][] _buckets = new T[BucketCount][];
 
         /// <summary>
+        ///     Lock guarding <see cref="_buckets" /> against the gen-2 finalizer thread.
+        /// </summary>
+        private readonly object _bucketsLock = new();
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="FastestArrayPool{T}" /> class
         /// </summary>
         public FastestArrayPool() => Gen2GcCallback.Gen2CollectionOccured += ClearBuckets;
@@ -98,12 +103,15 @@ namespace Alis.Core.Ecs.Collections
                 return new T[minimumLength]; // fallback for oversized arrays
             }
 
-            ref T[] slot = ref _buckets[bucketIndex];
-            if (slot is not null)
+            lock (_bucketsLock)
             {
-                T[] arr = slot;
-                slot = null!;
-                return arr!;
+                ref T[] slot = ref _buckets[bucketIndex];
+                if (slot is not null)
+                {
+                    T[] arr = slot;
+                    slot = null!;
+                    return arr!;
+                }
             }
 
 
@@ -129,7 +137,10 @@ namespace Alis.Core.Ecs.Collections
                 array.AsSpan().Clear();
             }
 
-            _buckets[bucketIndex] = array;
+            lock (_bucketsLock)
+            {
+                _buckets[bucketIndex] = array;
+            }
         }
 
         /// <summary>
@@ -189,9 +200,12 @@ namespace Alis.Core.Ecs.Collections
         /// </summary>
         internal void ClearBuckets()
         {
-            for (int i = 0; i < BucketCount; i++)
+            lock (_bucketsLock)
             {
-                _buckets[i] = null;
+                for (int i = 0; i < BucketCount; i++)
+                {
+                    _buckets[i] = null;
+                }
             }
         }
     }

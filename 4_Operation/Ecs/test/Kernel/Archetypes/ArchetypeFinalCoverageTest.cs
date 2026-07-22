@@ -168,8 +168,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact]
         public void Archetype_T_GetArchetypeId_CacheHit_ReturnsConsistent()
         {
-            GameObjectType id1 = Archetype<Position>.GetArchetypeId(new[] { Component<Position>.Id }.AsSpan());
-            GameObjectType id2 = Archetype<Position>.GetArchetypeId(new[] { Component<Position>.Id }.AsSpan());
+            GameObjectType id1 = Archetype.GetArchetypeId(new[] { Component<Position>.Id }.AsSpan());
+            GameObjectType id2 = Archetype.GetArchetypeId(new[] { Component<Position>.Id }.AsSpan());
             Assert.Equal(id1.RawIndex, id2.RawIndex);
         }
 

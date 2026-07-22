@@ -316,6 +316,12 @@ namespace Alis.Core.Ecs
                 }
             }
 
+            _singleComponentUpdates.Clear();
+            _updatesByAttributes.Clear();
+            ArchetypeGraphEdges.Clear();
+            EventLookup.Clear();
+            QueryCache.Clear();
+
             _sharedCountdown.Dispose();
             RecycledEntityIds.Dispose();
         }

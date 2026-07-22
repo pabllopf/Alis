@@ -180,19 +180,21 @@ namespace Alis.Core.Ecs.Kernel
                     return value;
                 }
 
-                int nextIdInt = ++_nextComponentId;
-
-                if (nextIdInt == ushort.MaxValue)
+                if (_nextComponentId + 1 == ushort.MaxValue)
                 {
                     throw new InvalidOperationException("Exceeded maximum unique component type count of 65535");
                 }
+
+                IdTable stack = GetComponentTable(t);
+
+                int nextIdInt = ++_nextComponentId;
 
                 ComponentId id = new ComponentId((ushort) nextIdInt);
                 _existingComponentIDs[t] = id;
 
                 GlobalWorldTables.GrowComponentTagTableIfNeeded(id.RawIndex);
 
-                ComponentTable.Push(new ComponentData(t, GetComponentTable(t),
+                ComponentTable.Push(new ComponentData(t, stack,
                     GenerationServices.TypeIniters.TryGetValue(t, out Delegate v) ? v : null,
                     GenerationServices.TypeDestroyers.TryGetValue(t, out Delegate d) ? d : null));
 
