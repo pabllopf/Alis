@@ -80,7 +80,7 @@ namespace Alis.Core.Ecs.Systems.Manager.Scene
         public List<Ecs.Scene> LoadedScenes
         {
             get => loadedScenes;
-            internal set => loadedScenes = (List<Ecs.Scene>)value;
+            internal set => loadedScenes = value;
         }
 
         /// <summary>

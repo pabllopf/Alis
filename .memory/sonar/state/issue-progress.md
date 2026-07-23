@@ -1,5 +1,5 @@
 # Issue Progress
 
 Total: 7
-Processed: 2
-Remaining: 5
+Processed: 3
+Remaining: 4

@@ -10,6 +10,13 @@ Initial issues fetched: 7
 - Commit: d6d157ef15957744817b15877db634150eaad146
 - Timestamp: 2026-07-23T00:00:00Z
 
+## AZ-OwbQ-DLnBipD5IA_O
+- Rule: S1144
+- File: AssetRegistry.cs
+- Action: Removed unused private method ToLowerHex(byte[])
+- Commit: e64c6d786f5ebc6e03ddc2482458a6d081d8aaea
+- Timestamp: 2026-07-23T00:00:00Z
+
 ## AZ-OwbQ-DLnBipD5IA_P
 - Rule: S1121
 - File: AssetRegistry.cs
