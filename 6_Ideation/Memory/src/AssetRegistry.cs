@@ -507,15 +507,6 @@ namespace Alis.Core.Aspect.Memory
             return sb.ToString();
         }
 
-        private static string ToLowerHex(byte[] bytes)
-        {
-            if (bytes == null || bytes.Length == 0)
-            {
-                return string.Empty;
-            }
-
-            return ToLowerHex(bytes.AsSpan());
-        }
 #endif
 
         /// <summary>
