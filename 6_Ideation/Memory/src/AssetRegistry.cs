@@ -437,10 +437,10 @@ namespace Alis.Core.Aspect.Memory
             string hash;
 #if NET6_0_OR_GREATER
             int maxByteCount = Encoding.UTF8.GetMaxByteCount(normalizedResourceKey.Length);
-            byte[] rentedBuffer = null;
+            byte[] rentedBuffer = maxByteCount > 256 ? ArrayPool<byte>.Shared.Rent(maxByteCount) : null;
             Span<byte> keyBytes = maxByteCount <= 256
                 ? stackalloc byte[maxByteCount]
-                : (rentedBuffer = ArrayPool<byte>.Shared.Rent(maxByteCount));
+                : rentedBuffer;
             int actualByteCount = Encoding.UTF8.GetBytes(normalizedResourceKey, keyBytes);
             keyBytes = keyBytes[..actualByteCount];
 

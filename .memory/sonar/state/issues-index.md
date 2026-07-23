@@ -5,7 +5,7 @@ Generated: 2026-07-23
 
 | # | Key | Rule | File | Line | Severity | Status |
 |---|-----|------|------|------|----------|--------|
-| 1 | AZ-OwbIdDLnBipD5IA_M | csharpsquid:S2486 | Collision.cs | 1098 | MINOR | OPEN |
+| 1 | AZ-OwbIdDLnBipD5IA_M | csharpsquid:S2486 | Collision.cs | 1098 | MINOR | FIXED |
 | 2 | AZ-OwbIdDLnBipD5IA_N | csharpsquid:S108 | Collision.cs | 1099 | MAJOR | OPEN |
 | 3 | AZ-OwbQ-DLnBipD5IA_P | csharpsquid:S1121 | AssetRegistry.cs | 443 | MAJOR | OPEN |
 | 4 | AZ-OwbQ-DLnBipD5IA_O | csharpsquid:S1144 | AssetRegistry.cs | 510 | MAJOR | OPEN |
