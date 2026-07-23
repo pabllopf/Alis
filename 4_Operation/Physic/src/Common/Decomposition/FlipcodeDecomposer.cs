@@ -81,14 +81,9 @@ namespace Alis.Core.Physic.Common.Decomposition
                         return new List<Vertices>();
                     }
 
-                    int u = v;
-                    if (nv <= u) u = 0;
-
-                    v = u + 1;
-                    if (nv <= v) v = 0;
-
-                    int w = v + 1;
-                    if (nv <= w) w = 0;
+                    int u = v % nv;
+                    v = (u + 1) % nv;
+                    int w = (v + 1) % nv;
 
                     tmpA = vertices[polygon[u]];
                     tmpB = vertices[polygon[v]];
