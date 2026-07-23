@@ -63,7 +63,7 @@ namespace Alis.Builder.Core.Ecs.Entity
         /// </summary>
         private Info info = new Info
         {
-            Name = "GameObject",
+            Name = $"GameObject {Guid.NewGuid()}",
             Tag = "Untagged",
             Id = 0,
             IsActive = true,
@@ -86,7 +86,15 @@ namespace Alis.Builder.Core.Ecs.Entity
         ///     Builds this instance
         /// </summary>
         /// <returns>The dictionary of components</returns>
-        public GameObject Build() => gameObject;
+        public GameObject Build()
+        {
+            if (!gameObject.Has<Info>())
+            {
+                gameObject.Add(info);
+            }
+            
+            return gameObject;
+        }
 
         /// <summary>
         ///     Transforms the config
@@ -244,7 +252,7 @@ namespace Alis.Builder.Core.Ecs.Entity
             }
             else
             {
-                gameObject.Add(info);
+                gameObject.Add<Info>(info);
             }
 
             return this;

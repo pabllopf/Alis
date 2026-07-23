@@ -39,7 +39,7 @@ namespace Alis.Sample.King.Platform.Desktop
     /// <summary>
     ///     The player movement
     /// </summary>
-    public struct PlayerMovement : IOnInit, IOnUpdate, IOnPressKey, IOnHoldKey, IOnReleaseKey
+    public class PlayerMovement : IOnInit, IOnUpdate, IOnPressKey, IOnHoldKey, IOnReleaseKey
     {
         /// <summary>
         ///     The jump force
@@ -81,9 +81,6 @@ namespace Alis.Sample.King.Platform.Desktop
         /// </summary>
         public PlayerMovement()
         {
-            animator = default(Animator);
-            boxCollider = null;
-            sprite = default(Sprite);
         }
 
         /// <summary>

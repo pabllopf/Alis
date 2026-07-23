@@ -73,6 +73,8 @@ namespace Alis.Sample.King.Platform.Desktop
                     .Add<Scene>(gameScene => gameScene
 
                         .Add<GameObject>(player => player
+                            .Name("Player")
+                            .Tag("Player")
                             .Transform(transform => transform
                                 .Position(0, 2)
                                 .Scale(2, 2)
@@ -140,9 +142,6 @@ namespace Alis.Sample.King.Platform.Desktop
                         .Build())
                     .Build())
                 .Build();
-
-            game.Save();
-
             game.Run();
         }
     }
