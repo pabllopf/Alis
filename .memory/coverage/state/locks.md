@@ -8,4 +8,4 @@ Locks older than 60 minutes may be reclaimed.
 
 | Target | Worker | Timestamp |
 |--------|--------|-----------|
-| `4_Operation/Ecs/src/Collections/EnumerableHelpers.cs` | `coverage-agent` | `2026-07-23T12:00:00Z` |
+| `analysis-complete` | `coverage-agent` | `2026-07-23T12:00:00Z` |
