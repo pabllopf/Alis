@@ -626,5 +626,226 @@ namespace Alis.Core.Aspect.Math.Test.Collections
 
             Assert.Equal(1, builder.Count);
         }
+
+        /// <summary>
+        ///     Tests that Capacity setter with same value as current does nothing
+        /// </summary>
+        [Fact]
+        public void CapacitySetToSameValueDoesNothing()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(5);
+            builder.AddRange(1, 2, 3);
+
+            builder.Capacity = 5;
+
+            Assert.Equal(5, builder.Capacity);
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveRange int int with reference type in middle clears and shifts elements
+        /// </summary>
+        [Fact]
+        public void RemoveRangeIntIntReferenceTypeMiddleClearsAndShifts()
+        {
+            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(6);
+            builder.AddRange("A", "B", "C", "D", "E", "F");
+
+            builder.RemoveRange(2, 2);
+
+            Assert.Equal(4, builder.Count);
+            Assert.Equal("A", builder[0]);
+            Assert.Equal("B", builder[1]);
+            Assert.Equal("E", builder[2]);
+            Assert.Equal("F", builder[3]);
+        }
+
+        /// <summary>
+        ///     Tests that RemoveAll with no matching elements leaves list null and skips RemoveAtRange
+        /// </summary>
+        [Fact]
+        public void RemoveAllNoMatchingElementsLeavesBuilderUnchanged()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(3);
+            builder.AddRange(1, 2, 3);
+
+            builder.RemoveAll(x => x > 10);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(2, builder[1]);
+            Assert.Equal(3, builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that Builder AsMemory returns memory over all added elements
+        /// </summary>
+        [Fact]
+        public void BuilderAsMemoryWithNoElementsReturnsEmpty()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(4);
+
+            Memory<int> memory = builder.AsMemory();
+
+            Assert.Equal(0, memory.Length);
+        }
+
+        /// <summary>
+        ///     Tests that struct CopyTo T array copies all elements to destination
+        /// </summary>
+        [Fact]
+        public void StructCopyToTArrayCopiesAllElements()
+        {
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] { 7, 8, 9 });
+            int[] dest = new int[3];
+
+            array.CopyTo(dest);
+
+            Assert.Equal(7, dest[0]);
+            Assert.Equal(8, dest[1]);
+            Assert.Equal(9, dest[2]);
+        }
+
+        /// <summary>
+        ///     Tests that struct CopyTo T array with destination index copies at offset
+        /// </summary>
+        [Fact]
+        public void StructCopyToTArrayWithDestIndexCopiesAtOffset()
+        {
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] { 7, 8, 9 });
+            int[] dest = new int[5];
+
+            array.CopyTo(dest, 2);
+
+            Assert.Equal(0, dest[0]);
+            Assert.Equal(0, dest[1]);
+            Assert.Equal(7, dest[2]);
+            Assert.Equal(8, dest[3]);
+            Assert.Equal(9, dest[4]);
+        }
+
+        /// <summary>
+        ///     Tests that struct CopyTo int T array int int copies range from source
+        /// </summary>
+        [Fact]
+        public void StructCopyToRangeCopiesFromSourceIndex()
+        {
+            FastImmutableArray<int> array = new FastImmutableArray<int>(new[] { 10, 20, 30, 40, 50 });
+            int[] dest = new int[2];
+
+            array.CopyTo(2, dest, 0, 2);
+
+            Assert.Equal(30, dest[0]);
+            Assert.Equal(40, dest[1]);
+        }
+
+        /// <summary>
+        ///     Tests that Builder AddRange with empty T array does nothing
+        /// </summary>
+        [Fact]
+        public void BuilderAddRangeEmptyArrayDoesNothing()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(3);
+            builder.Add(1);
+
+            builder.AddRange(new int[0]);
+
+            Assert.Equal(1, builder.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Builder AddRange with derived T array copies elements correctly
+        /// </summary>
+        [Fact]
+        public void BuilderAddRangeDerivedArrayCopiesElements()
+        {
+            FastImmutableArray<object>.Builder builder = FastImmutableArray<object>.CreateBuilder<object>(4);
+            builder.Add("start");
+
+            builder.AddRange(new string[] { "a", "b", "c" });
+
+            Assert.Equal(4, builder.Count);
+            Assert.Equal("start", builder[0]);
+            Assert.Equal("a", builder[1]);
+            Assert.Equal("b", builder[2]);
+            Assert.Equal("c", builder[3]);
+        }
+
+        /// <summary>
+        ///     Tests that Builder RemoveAll with all matching elements removes all
+        /// </summary>
+        [Fact]
+        public void BuilderRemoveAllWithAllMatchingRemovesAll()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(3);
+            builder.AddRange(2, 4, 6);
+
+            builder.RemoveAll(x => x % 2 == 0);
+
+            Assert.Equal(0, builder.Count);
+        }
+
+        /// <summary>
+        ///     Tests that Builder AddRange with derived ReadOnlySpan copies elements
+        /// </summary>
+        [Fact]
+        public void BuilderAddRangeDerivedSpanCopiesElements()
+        {
+            ReadOnlySpan<string> span = new string[] { "x", "y" }.AsSpan();
+            FastImmutableArray<object>.Builder builder = FastImmutableArray<object>.CreateBuilder<object>(4);
+            builder.Add("start");
+
+            builder.AddRange(span);
+
+            Assert.Equal(3, builder.Count);
+            Assert.Equal("start", builder[0]);
+            Assert.Equal("x", builder[1]);
+            Assert.Equal("y", builder[2]);
+        }
+
+        /// <summary>
+        ///     Tests that Builder RemoveRange with IEnumerable and multiple matching items removes all occurrences
+        /// </summary>
+        [Fact]
+        public void BuilderRemoveRangeIEnumerableWithMultipleMatchingOccurrences()
+        {
+            FastImmutableArray<int>.Builder builder = FastImmutableArray<int>.CreateBuilder<int>(8);
+            builder.AddRange(1, 2, 2, 3, 2, 4);
+
+            builder.RemoveRange(new[] { 2, 4 });
+
+            Assert.Equal(2, builder.Count);
+            Assert.Equal(1, builder[0]);
+            Assert.Equal(3, builder[1]);
+        }
+
+        /// <summary>
+        ///     Tests that Builder LastIndexOf with custom comparer and count zero returns minus one
+        /// </summary>
+        [Fact]
+        public void BuilderLastIndexOfWithZeroCountReturnsMinusOne()
+        {
+            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(3);
+            builder.AddRange("A", "B", "C");
+
+            int index = builder.LastIndexOf("A", 2, 0, StringComparer.OrdinalIgnoreCase);
+
+            Assert.Equal(-1, index);
+        }
+
+        /// <summary>
+        ///     Tests that Builder IndexOf with custom comparer loop path searches manually
+        /// </summary>
+        [Fact]
+        public void BuilderIndexOfWithCustomComparerLoopPathSearches()
+        {
+            FastImmutableArray<string>.Builder builder = FastImmutableArray<string>.CreateBuilder<string>(4);
+            builder.AddRange("Alpha", "Beta", "Gamma", "Delta");
+
+            int index = builder.IndexOf("beta", 1, 3, StringComparer.OrdinalIgnoreCase);
+
+            Assert.Equal(1, index);
+        }
     }
 }
