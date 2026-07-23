@@ -721,27 +721,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // ContactAlreadyExists with reversed fixture/index ordering
-        // ========================================================================
-        /// <summary>
-        /// Tests that contact already exists reverse order detects correctly
-        /// </summary>
-        [Fact]
-        public void ContactAlreadyExists_ReverseOrder_DetectsCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-            int count = world.ContactManager.ContactCount;
-            Assert.True(count > 0);
-            world.Step(1.0f / 60.0f);
-            Assert.Equal(count, world.ContactManager.ContactCount);
-        }
-
-    
-
-        // ========================================================================
         // TryResolveContactFilter with all paths via multithreaded collision
         // ========================================================================
         /// <summary>

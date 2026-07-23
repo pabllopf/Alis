@@ -2526,8 +2526,12 @@ namespace Alis.Core.Physic.Test
             var bodyA = world.CreateCircle(0.3f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             var bodyB = world.CreateCircle(0.3f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
             var bodyC = world.CreateCircle(0.3f, 1.0f, new Vector2F(-0.5f, 0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-            world.Step(1.0f / 60.0f);
+            
+            SolverIterations solverIterations = new SolverIterations();
+            solverIterations.PositionIterations = 10;
+            
+            world.Step(1.0f / 60.0f, ref solverIterations);
+            world.Step(1.0f / 60.0f, ref solverIterations);
         }
 
         // ========================================================================
