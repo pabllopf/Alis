@@ -1095,10 +1095,6 @@ namespace Alis.Core.Physic.Collisions
 
                     BuildManifoldPoints(ref manifold, ref clipPoints2, ref rf, ref xf, radius, primaryAxis);
                 }
-                catch
-                {
-                    
-                }
                 finally
                 {
                     tempPolygonB.ReturnBuffers();

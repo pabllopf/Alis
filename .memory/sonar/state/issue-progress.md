@@ -1,5 +1,5 @@
 # Issue Progress
 
-- Total: 7
-- Fixed: 7
-- Pending: 0
+Total: 7
+Processed: 0
+Remaining: 7

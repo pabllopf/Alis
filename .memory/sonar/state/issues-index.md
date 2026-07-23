@@ -1,11 +1,14 @@
 # Issues Index
 
-| Issue | Rule | File | Status | Commit |
-|-------|------|------|--------|--------|
-| AZ9WLQoab3Yg5Wvlzs06 | S2583 | 4_Operation/Physic/src/Collisions/DynamicTreeBroadPhase.cs | fixed | 662d5dcfc |
-| AZ9WLQkSb3Yg5Wvlzs02 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs | fixed | 0b035c61e |
-| AZ9WLQkSb3Yg5Wvlzs03 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/LinuxFilePicker.cs | fixed | 0b035c61e |
-| AZ9WLQkob3Yg5Wvlzs05 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs | fixed | 6ab1fe968 |
-| AZ9WLQkob3Yg5Wvlzs04 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/MacFilePicker.cs | fixed | 6ab1fe968 |
-| AZ9WLQjFb3Yg5Wvlzs01 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs | fixed | aaacdb22d |
-| AZ9WLQjFb3Yg5Wvlzs00 | S2259 | 1_Presentation/Extension/Io/FileDialog/src/WindowsFilePicker.cs | fixed | aaacdb22d |
+Total: 7
+Generated: 2026-07-23
+
+| # | Key | Rule | File | Line | Severity | Status |
+|---|-----|------|------|------|----------|--------|
+| 1 | AZ-OwbIdDLnBipD5IA_M | csharpsquid:S2486 | Collision.cs | 1098 | MINOR | OPEN |
+| 2 | AZ-OwbIdDLnBipD5IA_N | csharpsquid:S108 | Collision.cs | 1099 | MAJOR | OPEN |
+| 3 | AZ-OwbQ-DLnBipD5IA_P | csharpsquid:S1121 | AssetRegistry.cs | 443 | MAJOR | OPEN |
+| 4 | AZ-OwbQ-DLnBipD5IA_O | csharpsquid:S1144 | AssetRegistry.cs | 510 | MAJOR | OPEN |
+| 5 | AZ-BlpcYiLjI1diOPXKO | csharpsquid:S1905 | SceneManager.cs | 83 | MINOR | OPEN |
+| 6 | AZ-Blp3oiLjI1diOPXKQ | csharpsquid:S3776 | FlipcodeDecomposer.cs | 55 | CRITICAL | OPEN |
+| 7 | AZ-Blp1iiLjI1diOPXKP | csharpsquid:S2223 | Contact.cs | 48 | CRITICAL | OPEN |
