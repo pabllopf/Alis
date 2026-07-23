@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Test hook: when set to true, Create returns null.
         /// </summary>
-        internal static bool ReturnNullOverride;
+        private static bool ReturnNullOverride = false;
 
         /// <summary>
         ///     The edge shape

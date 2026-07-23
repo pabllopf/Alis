@@ -10,6 +10,20 @@ Initial issues fetched: 7
 - Commit: d6d157ef15957744817b15877db634150eaad146
 - Timestamp: 2026-07-23T00:00:00Z
 
+## AZ-BlpcYiLjI1diOPXKO
+- Rule: S1905
+- File: SceneManager.cs
+- Action: Removed unnecessary cast
+- Commit: b225aeefe0032534efa8541ae1e75e33152768fa
+- Timestamp: 2026-07-23T00:00:00Z
+
+## AZ-Blp3oiLjI1diOPXKQ
+- Rule: S3776
+- File: FlipcodeDecomposer.cs
+- Action: Replaced if-bounds with modulo to reduce cognitive complexity
+- Commit: 58d429ece448d273a1a3f77fa506129a403f3c36
+- Timestamp: 2026-07-23T00:00:00Z
+
 ## AZ-OwbQ-DLnBipD5IA_O
 - Rule: S1144
 - File: AssetRegistry.cs

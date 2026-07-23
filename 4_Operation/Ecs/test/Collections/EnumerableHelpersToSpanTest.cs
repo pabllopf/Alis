@@ -156,20 +156,20 @@ namespace Alis.Core.Ecs.Test.Collections
         }
 
         /// <summary>
-        ///     Tests that ToSpan works with string elements.
+        ///     Tests that ToSpan works with value type elements.
         /// </summary>
         [Fact]
-        public void ToSpan_Strings_WorksCorrectly()
+        public void ToSpan_ValueTypes_WorksCorrectly()
         {
-            Span<string> destination = stackalloc string[3];
-            List<string> source = new List<string> { "a", "b", "c" };
+            Span<double> destination = stackalloc double[3];
+            List<double> source = new List<double> { 1.1, 2.2, 3.3 };
 
             EnumerableHelpers.ToSpan(source, destination, out int length);
 
             Assert.Equal(3, length);
-            Assert.Equal("a", destination[0]);
-            Assert.Equal("b", destination[1]);
-            Assert.Equal("c", destination[2]);
+            Assert.Equal(1.1, destination[0]);
+            Assert.Equal(2.2, destination[1]);
+            Assert.Equal(3.3, destination[2]);
         }
 
         /// <summary>
