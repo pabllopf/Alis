@@ -37,3 +37,11 @@ CoverageAfter: 0.0%
 TestsAdded: 4
 Commit: e1dc418a4
 Status: SUCCESS
+
+Timestamp: 2026-07-25T19:25:00Z
+File: 1_Presentation/Extension/Graphic/Glfw/src/NativeWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: N/A
+TestsAdded: 16
+Commit: 8d3fb9295
+Status: SUCCESS
