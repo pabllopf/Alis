@@ -30,6 +30,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
@@ -199,6 +200,511 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void LinuxOnly_SurfaceCheck_ShouldRunIsolated()
         {
             Assert.NotNull(typeof(ImPlot));
+        }
+
+        /// <summary>
+        ///     Verifies that PopColormap exposes both default and explicit overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PopColormap_ShouldExposeDefaultAndCountOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PopColormap");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(int)));
+        }
+
+        /// <summary>
+        ///     Verifies that PopPlotClipRect is a parameterless method.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PopPlotClipRect_ShouldBeParameterless()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("PopPlotClipRect", BindingFlags.Public | BindingFlags.Static, null, Type.EmptyTypes, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that PopStyleColor exposes both default and explicit overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PopStyleColor_ShouldExposeDefaultAndCountOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PopStyleColor");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(int)));
+        }
+
+        /// <summary>
+        ///     Verifies that PopStyleVar exposes both default and explicit overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PopStyleVar_ShouldExposeDefaultAndCountOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PopStyleVar");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(int)));
+        }
+
+        /// <summary>
+        ///     Verifies that PushColormap exposes both enum and string overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PushColormap_ShouldExposeEnumAndStringOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PushColormap");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(ImPlotColormap));
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(string));
+        }
+
+        /// <summary>
+        ///     Verifies that PushPlotClipRect exposes both default and explicit overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PushPlotClipRect_ShouldExposeDefaultAndExpandOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PushPlotClipRect");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => (method.GetParameters().Length == 1) && (method.GetParameters()[0].ParameterType == typeof(float)));
+        }
+
+        /// <summary>
+        ///     Verifies that PushStyleColor exposes both U32 and Vec4 overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PushStyleColor_ShouldExposeU32AndVec4Overloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PushStyleColor");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(uint));
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(Vector4F));
+        }
+
+        /// <summary>
+        ///     Verifies that PushStyleVar exposes Float, Int, and Vec2 overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PushStyleVar_ShouldExposeFloatIntAndVec2Overloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PushStyleVar");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(float));
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(int));
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(Vector2F));
+        }
+
+        /// <summary>
+        ///     Verifies that SampleColormap exposes both default and explicit colormap overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SampleColormap_ShouldExposeDefaultAndCustomOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SampleColormap");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 2);
+        }
+
+        /// <summary>
+        ///     Verifies that SetAxes is a two-parameter method.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetAxes_ShouldAcceptTwoAxisParameters()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetAxes", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(ImAxis), typeof(ImAxis) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetAxis is a single-parameter method.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetAxis_ShouldAcceptSingleAxisParameter()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetAxis", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(ImAxis) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetImGuiContext accepts an IntPtr.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetImGuiContext_ShouldAcceptIntPtr()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetImGuiContext", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(IntPtr) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextAxesLimits exposes both with and without condition overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextAxesLimits_ShouldExposeDefaultAndConditionOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextAxesLimits");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 4);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 5);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextAxesToFit is parameterless.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextAxesToFit_ShouldBeParameterless()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetNextAxesToFit", BindingFlags.Public | BindingFlags.Static, null, Type.EmptyTypes, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextAxisLinks exposes a with-ref overload.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextAxisLinks_ShouldAcceptAxisAndRefDoubles()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextAxisLinks");
+
+            Assert.NotEmpty(overloads);
+            Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.GetElementType() == typeof(double)));
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextAxisToFit accepts a single ImAxis.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextAxisToFit_ShouldAcceptSingleAxis()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetNextAxisToFit", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(ImAxis) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextErrorBarStyle exposes four overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextErrorBarStyle_ShouldExposeMultipleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextErrorBarStyle");
+
+            Assert.Equal(4, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 2);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 3);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextFillStyle exposes three overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextFillStyle_ShouldExposeThreeOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextFillStyle");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 2);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextLineStyle exposes three overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextLineStyle_ShouldExposeThreeOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextLineStyle");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 2);
+        }
+
+        /// <summary>
+        ///     Verifies that SetNextMarkerStyle exposes six overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetNextMarkerStyle_ShouldExposeSixOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetNextMarkerStyle");
+
+            Assert.Equal(6, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 2);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 3);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 4);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 5);
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxes exposes three overloads with string parameters.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxes_ShouldExposeStringAndFlagsOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetupAxes");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.All(overloads, method => Assert.True(method.GetParameters()[0].ParameterType == typeof(string)));
+            Assert.All(overloads, method => Assert.True(method.GetParameters()[1].ParameterType == typeof(string)));
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxesLimits exposes both with and without condition overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxesLimits_ShouldExposeDefaultAndConditionOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetupAxesLimits");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 4);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 5);
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxisFormat exposes string and IntPtr overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxisFormat_ShouldExposeStringAndIntPtrOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetupAxisFormat");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(string)));
+            Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(IntPtr)));
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxisLimitsConstraints accepts axis and two doubles.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxisLimitsConstraints_ShouldAcceptAxisAndTwoDoubles()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetupAxisLimitsConstraints", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(ImAxis), typeof(double), typeof(double) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxisLinks accepts axis and ref doubles.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxisLinks_ShouldAcceptAxisAndRefDoubles()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetupAxisLinks");
+
+            Assert.NotEmpty(overloads);
+            Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.GetElementType() == typeof(double)));
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxisScale exposes PlotScale and IntPtr overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxisScale_ShouldExposeEnumAndIntPtrOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("SetupAxisScale");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(ImPlotScale));
+            Assert.Contains(overloads, method => method.GetParameters()[1].ParameterType == typeof(IntPtr));
+        }
+
+        /// <summary>
+        ///     Verifies that SetupAxisZoomConstraints accepts axis and two doubles.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupAxisZoomConstraints_ShouldAcceptAxisAndTwoDoubles()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetupAxisZoomConstraints", BindingFlags.Public | BindingFlags.Static, null, new[] { typeof(ImAxis), typeof(double), typeof(double) }, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that SetupFinish is parameterless.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void SetupFinish_ShouldBeParameterless()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("SetupFinish", BindingFlags.Public | BindingFlags.Static, null, Type.EmptyTypes, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that ShowColormapSelector accepts a string and returns bool.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowColormapSelector_ShouldAcceptAndReturnBool()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("ShowColormapSelector");
+
+            Assert.NotEmpty(overloads);
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(string));
+            Assert.Contains(overloads, method => method.ReturnType == typeof(bool));
+        }
+
+        /// <summary>
+        ///     Verifies that ShowInputMapSelector accepts a string and returns bool.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowInputMapSelector_ShouldAcceptStringAndReturnBool()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("ShowInputMapSelector");
+
+            Assert.NotEmpty(overloads);
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(string));
+            Assert.Contains(overloads, method => method.ReturnType == typeof(bool));
+        }
+
+        /// <summary>
+        ///     Verifies that ShowStyleEditor exposes both default and ImPlotStyle overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowStyleEditor_ShouldExposeDefaultAndStyleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("ShowStyleEditor");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+        }
+
+        /// <summary>
+        ///     Verifies that ShowStyleSelector accepts a string and returns bool.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowStyleSelector_ShouldAcceptStringAndReturnBool()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("ShowStyleSelector");
+
+            Assert.NotEmpty(overloads);
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(string));
+            Assert.Contains(overloads, method => method.ReturnType == typeof(bool));
+        }
+
+        /// <summary>
+        ///     Verifies that ShowUserGuide is parameterless.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ShowUserGuide_ShouldBeParameterless()
+        {
+            MethodInfo method = typeof(ImPlot).GetMethod("ShowUserGuide", BindingFlags.Public | BindingFlags.Static, null, Type.EmptyTypes, null);
+
+            Assert.NotNull(method);
+            Assert.Equal(typeof(void), method.ReturnType);
+        }
+
+        /// <summary>
+        ///     Verifies that StyleColorsAuto exposes both default and ImPlotStyle overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void StyleColorsAuto_ShouldExposeDefaultAndStyleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("StyleColorsAuto");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+        }
+
+        /// <summary>
+        ///     Verifies that StyleColorsClassic exposes both default and ImPlotStyle overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void StyleColorsClassic_ShouldExposeDefaultAndStyleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("StyleColorsClassic");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+        }
+
+        /// <summary>
+        ///     Verifies that StyleColorsDark exposes both default and ImPlotStyle overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void StyleColorsDark_ShouldExposeDefaultAndStyleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("StyleColorsDark");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+        }
+
+        /// <summary>
+        ///     Verifies that StyleColorsLight exposes both default and ImPlotStyle overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void StyleColorsLight_ShouldExposeDefaultAndStyleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("StyleColorsLight");
+
+            Assert.Equal(2, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 0);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 1);
+        }
+
+        /// <summary>
+        ///     Verifies that PlotToPixels exposes the expected set of overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotToPixels_ShouldExposePointAndDoubleOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PlotToPixels");
+
+            Assert.Equal(6, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(ImPlotPoint));
+            Assert.Contains(overloads, method => method.GetParameters()[0].ParameterType == typeof(double));
+            Assert.Contains(overloads, method => method.ReturnType == typeof(Vector2F));
+        }
+
+        /// <summary>
+        ///     Verifies that PlotText exposes the expected three overloads.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void PlotText_ShouldExposeStringAndVectorAndFlagsOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PlotText");
+
+            Assert.Equal(3, overloads.Length);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 3);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 4);
+            Assert.Contains(overloads, method => method.GetParameters().Length == 5);
         }
 
         /// <summary>
