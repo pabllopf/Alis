@@ -593,5 +593,270 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGui.End();
             ImGui.Render();
         }
+
+        /// <summary>
+        /// Tests that accept drag drop payload test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void AcceptDragDropPayload_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            ImGui.Button("source");
+            if (ImGui.BeginDragDropSource())
+            {
+                _ = ImGui.SetDragDropPayload("test_type", IntPtr.Zero, 0u, ImGuiCond.None);
+                ImGui.EndDragDropSource();
+            }
+            if (ImGui.BeginDragDropTarget())
+            {
+                _ = ImGui.AcceptDragDropPayload("test_type");
+                ImGui.EndDragDropTarget();
+            }
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that accept drag drop payload with flags test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void AcceptDragDropPayload_WithFlags_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            ImGui.Button("source2");
+            if (ImGui.BeginDragDropSource())
+            {
+                _ = ImGui.SetDragDropPayload("test_type2", IntPtr.Zero, 0u, ImGuiCond.None);
+                ImGui.EndDragDropSource();
+            }
+            if (ImGui.BeginDragDropTarget())
+            {
+                _ = ImGui.AcceptDragDropPayload("test_type2", ImGuiDragDropFlags.None);
+                ImGui.EndDragDropTarget();
+            }
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that begin popup test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginPopup_Test()
+        {
+            ImGui.NewFrame();
+            if (ImGui.BeginPopup("popup1"))
+            {
+                ImGui.EndPopup();
+            }
+            if (ImGui.BeginPopup("popup2", ImGuiWindowFlags.None))
+            {
+                ImGui.EndPopup();
+            }
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that begin popup modal test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginPopupModal_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.OpenPopup("modal1");
+            if (ImGui.BeginPopupModal("modal1"))
+            {
+                ImGui.CloseCurrentPopup();
+                ImGui.EndPopup();
+            }
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that begin popup modal with ref bool test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginPopupModal_RefBool_Test()
+        {
+            ImGui.NewFrame();
+            bool open = true;
+            ImGui.OpenPopup("modal2");
+            if (ImGui.BeginPopupModal("modal2", ref open))
+            {
+                ImGui.CloseCurrentPopup();
+                ImGui.EndPopup();
+            }
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that begin popup modal with flags test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginPopupModal_Flags_Test()
+        {
+            ImGui.NewFrame();
+            bool open = true;
+            ImGui.OpenPopup("modal3");
+            if (ImGui.BeginPopupModal("modal3", ref open, ImGuiWindowFlags.None))
+            {
+                ImGui.CloseCurrentPopup();
+                ImGui.EndPopup();
+            }
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that begin tab item test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void BeginTabItem_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            if (ImGui.BeginTabBar("tb"))
+            {
+                if (ImGui.BeginTabItem("ti1"))
+                {
+                    ImGui.EndTabItem();
+                }
+                bool open = true;
+                if (ImGui.BeginTabItem("ti2", ref open))
+                {
+                    ImGui.EndTabItem();
+                }
+                if (ImGui.BeginTabItem("ti3", ref open, ImGuiTabItemFlags.None))
+                {
+                    ImGui.EndTabItem();
+                }
+                ImGui.EndTabBar();
+            }
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that checkbox test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Checkbox_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            bool value = true;
+            ImGui.Checkbox("cb1", ref value);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that checkbox flags int test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void CheckboxFlags_Int_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            int flags = 1;
+            ImGui.CheckboxFlags("cf1", ref flags, 1);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that checkbox flags uint test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void CheckboxFlags_Uint_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            uint flags = 1u;
+            ImGui.CheckboxFlags("cf2", ref flags, 1u);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that collapsing header test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void CollapsingHeader_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            ImGui.CollapsingHeader("ch1");
+            ImGui.CollapsingHeader("ch2", ImGuiTreeNodeFlags.None);
+            bool visible = true;
+            ImGui.CollapsingHeader("ch3", ref visible);
+            ImGui.CollapsingHeader("ch4", ref visible, ImGuiTreeNodeFlags.None);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that color edit 3 test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ColorEdit3_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            var col = new Vector3F(0.2f, 0.4f, 0.6f);
+            ImGui.ColorEdit3("ce3", ref col);
+            ImGui.ColorEdit3("ce3b", ref col, ImGuiColorEditFlags.None);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that color picker 3 test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ColorPicker3_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            var col = new Vector3F(0.2f, 0.4f, 0.6f);
+            ImGui.ColorPicker3("cp3", ref col);
+            ImGui.ColorPicker3("cp3b", ref col, ImGuiColorEditFlags.None);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that color picker 4 test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ColorPicker4_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            var col = new Vector4F(0.2f, 0.4f, 0.6f, 1.0f);
+            ImGui.ColorPicker4("cp4", ref col);
+            ImGui.ColorPicker4("cp4b", ref col, ImGuiColorEditFlags.None);
+            float refCol = 0.5f;
+            ImGui.ColorPicker4("cp4c", ref col, ImGuiColorEditFlags.None, ref refCol);
+            ImGui.End();
+            ImGui.Render();
+        }
+
+        /// <summary>
+        /// Tests that combo test
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Combo_Test()
+        {
+            ImGui.NewFrame();
+            ImGui.Begin("TestWin");
+            int current = 0;
+            string[] items = { "A", "B", "C" };
+            ImGui.Combo("co1", ref current, items, items.Length);
+            ImGui.Combo("co2", ref current, items, items.Length, -1);
+            ImGui.End();
+            ImGui.Render();
+        }
     }
 }
