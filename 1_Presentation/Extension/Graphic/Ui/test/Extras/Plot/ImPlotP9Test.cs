@@ -31,196 +31,399 @@ using System;
 using System.Linq;
 using System.Reflection;
 using Alis.Extension.Graphic.Ui.Extras.Plot;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
-    /// <summary>
-    ///     Provides focused unit coverage for API members implemented in <c>ImPlotP9.cs</c>.
-    /// </summary>
     public class ImPlotP9Test
     {
-        /// <summary>
-        ///     Verifies that <c>PlotLine</c> exposes all expected overloads from this partial segment.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotLine_ShouldExposeExpectedOverloadCount()
+        [Fact]
+        public void PlotLine_ShouldExposeAll16Overloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
-
             Assert.True(overloads.Length >= 16);
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotLine</c> includes by-ref overloads for all integer families.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotLine_ShouldExposeAllExpectedByRefNumericFamilies()
+        [Fact]
+        public void PlotLine_ShouldExposeByRefIntOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
-
-            Assert.Contains(overloads, method => HasByRefParameter(method, typeof(int)));
-            Assert.Contains(overloads, method => HasByRefParameter(method, typeof(uint)));
-            Assert.Contains(overloads, method => HasByRefParameter(method, typeof(long)));
-            Assert.Contains(overloads, method => HasByRefParameter(method, typeof(ulong)));
+            MethodInfo[] intOverloads = overloads.Where(m => HasByRefParameter(m, typeof(int))).ToArray();
+            Assert.True(intOverloads.Length >= 4);
+            Assert.Contains(intOverloads, m => m.GetParameters().Length == 4);
+            Assert.Contains(intOverloads, m => m.GetParameters().Length == 5);
+            Assert.Contains(intOverloads, m => m.GetParameters().Length == 6);
+            Assert.Contains(intOverloads, m => m.GetParameters().Length == 7);
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotLine</c> contains overloads with flags, offset and stride parameters.
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
+        public void PlotLine_ShouldExposeByRefUintOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
+            Assert.Contains(overloads, m => HasByRefParameter(m, typeof(uint)));
+        }
+
+        [Fact]
+        public void PlotLine_ShouldExposeByRefLongOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
+            Assert.Contains(overloads, m => HasByRefParameter(m, typeof(long)));
+        }
+
+        [Fact]
+        public void PlotLine_ShouldExposeByRefUlongOverloads()
+        {
+            MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
+            Assert.Contains(overloads, m => HasByRefParameter(m, typeof(ulong)));
+        }
+
+        [Fact]
         public void PlotLine_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLine");
-
-            Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotLineFlags)));
-            Assert.Contains(overloads, method => (method.GetParameters().Length >= 6) && (method.GetParameters()[5].ParameterType == typeof(int)));
-            Assert.Contains(overloads, method => (method.GetParameters().Length >= 7) && (method.GetParameters()[6].ParameterType == typeof(int)));
+            Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotLineFlags)));
+            Assert.Contains(overloads, m => m.GetParameters().Length >= 6 && m.GetParameters()[5].ParameterType == typeof(int));
+            Assert.Contains(overloads, m => m.GetParameters().Length >= 7 && m.GetParameters()[6].ParameterType == typeof(int));
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotLineG</c> exposes both default and flags overloads.
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void PlotLineG_ShouldExposeExpectedOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotLineG");
-
             Assert.True(overloads.Length >= 2);
-            Assert.Contains(overloads, method => method.GetParameters().Length == 4);
-            Assert.Contains(overloads, method => (method.GetParameters().Length == 5) && method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotLineFlags)));
+            Assert.Contains(overloads, m => m.GetParameters().Length == 4);
+            Assert.Contains(overloads, m => m.GetParameters().Length == 5 && m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotLineFlags)));
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotPieChart</c> exposes a large overload matrix.
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void PlotPieChart_ShouldExposeExpectedOverloadCount()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
-
-            Assert.True(overloads.Length >= 20);
+            Assert.True(overloads.Length >= 21);
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotPieChart</c> supports multiple values array element types.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotPieChart_ShouldExposeExpectedValueArrayFamilies()
+        [Fact]
+        public void PlotPieChart_ShouldExposeAllExpectedValueArrayFamilies()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
-
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(float)));
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(double)));
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(sbyte)));
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(byte)));
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(short)));
-            Assert.Contains(overloads, method => HasArrayParameter(method, typeof(ushort)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(float)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(double)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(sbyte)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(byte)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(short)));
+            Assert.Contains(overloads, m => HasArrayParameter(m, typeof(ushort)));
         }
 
-        /// <summary>
-        ///     Verifies that <c>PlotPieChart</c> includes formatting, angle and flags overloads.
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
         public void PlotPieChart_ShouldExposeLabelFormatAngleAndFlagsOverloads()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotPieChart");
-
-            Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(string)));
-            Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(double)) && (method.GetParameters().Length >= 8));
-            Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotPieChartFlags)));
+            Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotPieChartFlags)));
         }
 
-        /// <summary>
-        ///     Verifies that passing a null label to <c>PlotLine</c> throws before native invocation.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotLine_WithNullLabel_ShouldThrowArgumentNullException()
+        [Fact]
+        public void PlotLine_Int32Base_WithNullLabel_ThrowsArgumentNullException()
         {
-            int xs = 1;
-            int ys = 2;
-
-            Assert.Throws<ArgumentNullException>((Action) (() => ImPlot.PlotLine(null, ref xs, ref ys, 1)));
+            int xs = 1; int ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1));
         }
 
-        /// <summary>
-        ///     Verifies that passing a null label to <c>PlotLineG</c> throws before native invocation.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotLineG_WithNullLabel_ShouldThrowArgumentNullException()
+        [Fact]
+        public void PlotLine_Int32Flags_WithNullLabel_ThrowsArgumentNullException()
         {
-            Assert.Throws<ArgumentNullException>((Action) (() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1)));
+            int xs = 1; int ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None));
         }
 
-        /// <summary>
-        ///     Verifies that a null labels array in <c>PlotPieChart</c> fails before native invocation.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotPieChart_WithNullLabelsArray_ShouldThrowNullReferenceException()
+        [Fact]
+        public void PlotLine_Int32FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
         {
-            float[] values = {1f, 2f};
-
-            Assert.Throws<NullReferenceException>((Action) (() => ImPlot.PlotPieChart(null, values, 2, 0.0, 0.0, 1.0)));
+            int xs = 1; int ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0));
         }
 
-        /// <summary>
-        ///     Verifies that a null label element in <c>PlotPieChart</c> throws before native invocation.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotPieChart_WithNullLabelItem_ShouldThrowArgumentNullException()
+        [Fact]
+        public void PlotLine_Int32FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
         {
-            string[] labels = {"A", null};
-            float[] values = {1f, 2f};
-
-            Assert.Throws<ArgumentNullException>((Action) (() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0)));
+            int xs = 1; int ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(int)));
         }
 
-        /// <summary>
-        ///     Verifies that a null label format in <c>PlotPieChart</c> throws before native invocation.
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void PlotPieChart_WithNullLabelFormat_ShouldThrowArgumentNullException()
+        [Fact]
+        public void PlotLine_Uint32Base_WithNullLabel_ThrowsArgumentNullException()
         {
-            string[] labels = {"A", "B"};
-            float[] values = {1f, 2f};
-
-            Assert.Throws<ArgumentNullException>((Action) (() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null)));
+            uint xs = 1; uint ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1));
         }
 
-        /// <summary>
-        ///     Gets all public static methods with the requested name.
-        /// </summary>
-        /// <param name="name">The method name.</param>
-        /// <returns>The matching method array.</returns>
-        private static MethodInfo[] GetPublicStaticMethods(string name)
+        [Fact]
+        public void PlotLine_Uint32Flags_WithNullLabel_ThrowsArgumentNullException()
         {
-            return typeof(ImPlot)
-                .GetMethods(BindingFlags.Public | BindingFlags.Static)
+            uint xs = 1; uint ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None));
+        }
+
+        [Fact]
+        public void PlotLine_Uint32FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
+        {
+            uint xs = 1; uint ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0));
+        }
+
+        [Fact]
+        public void PlotLine_Uint32FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
+        {
+            uint xs = 1; uint ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(uint)));
+        }
+
+        [Fact]
+        public void PlotLine_Int64Base_WithNullLabel_ThrowsArgumentNullException()
+        {
+            long xs = 1; long ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1));
+        }
+
+        [Fact]
+        public void PlotLine_Int64Flags_WithNullLabel_ThrowsArgumentNullException()
+        {
+            long xs = 1; long ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None));
+        }
+
+        [Fact]
+        public void PlotLine_Int64FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
+        {
+            long xs = 1; long ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0));
+        }
+
+        [Fact]
+        public void PlotLine_Int64FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
+        {
+            long xs = 1; long ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(long)));
+        }
+
+        [Fact]
+        public void PlotLine_Uint64Base_WithNullLabel_ThrowsArgumentNullException()
+        {
+            ulong xs = 1; ulong ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1));
+        }
+
+        [Fact]
+        public void PlotLine_Uint64Flags_WithNullLabel_ThrowsArgumentNullException()
+        {
+            ulong xs = 1; ulong ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None));
+        }
+
+        [Fact]
+        public void PlotLine_Uint64FlagsOffset_WithNullLabel_ThrowsArgumentNullException()
+        {
+            ulong xs = 1; ulong ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0));
+        }
+
+        [Fact]
+        public void PlotLine_Uint64FlagsOffsetStride_WithNullLabel_ThrowsArgumentNullException()
+        {
+            ulong xs = 1; ulong ys = 2;
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLine(null, ref xs, ref ys, 1, ImPlotLineFlags.None, 0, sizeof(ulong)));
+        }
+
+        [Fact]
+        public void PlotLineG_Base_WithNullLabel_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1));
+        }
+
+        [Fact]
+        public void PlotLineG_Flags_WithNullLabel_ThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotLineG(null, IntPtr.Zero, IntPtr.Zero, 1, ImPlotLineFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_Float_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            float[] values = { 1f, 2f };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_FloatLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            float[] values = { 1f, 2f };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null));
+        }
+
+        [Fact]
+        public void PlotPieChart_FloatAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            float[] values = { 1f, 2f };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_FloatFlags_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            float[] values = { 1f, 2f };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0, ImPlotPieChartFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_Double_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            double[] values = { 1.0, 2.0 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_DoubleLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            double[] values = { 1.0, 2.0 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null));
+        }
+
+        [Fact]
+        public void PlotPieChart_DoubleAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            double[] values = { 1.0, 2.0 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_DoubleFlags_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            double[] values = { 1.0, 2.0 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0, ImPlotPieChartFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_SByte_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            sbyte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_SByteLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            sbyte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null));
+        }
+
+        [Fact]
+        public void PlotPieChart_SByteAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            sbyte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_SByteFlags_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            sbyte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0, ImPlotPieChartFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_Byte_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            byte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_ByteLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            byte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null));
+        }
+
+        [Fact]
+        public void PlotPieChart_ByteAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            byte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_ByteFlags_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            byte[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0, ImPlotPieChartFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_Short_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            short[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_ShortLabelFmt_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            short[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null));
+        }
+
+        [Fact]
+        public void PlotPieChart_ShortAngle0_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            short[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0));
+        }
+
+        [Fact]
+        public void PlotPieChart_ShortFlags_WithNullLabelFmt_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", "B" };
+            short[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0, null, 90.0, ImPlotPieChartFlags.None));
+        }
+
+        [Fact]
+        public void PlotPieChart_UShort_WithNullLabelItem_ThrowsArgumentNullException()
+        {
+            string[] labels = { "A", null };
+            ushort[] values = { 1, 2 };
+            Assert.Throws<ArgumentNullException>(() => ImPlot.PlotPieChart(labels, values, 2, 0.0, 0.0, 1.0));
+        }
+
+        private static MethodInfo[] GetPublicStaticMethods(string name) =>
+            typeof(ImPlot).GetMethods(BindingFlags.Public | BindingFlags.Static)
                 .Where(method => method.Name == name)
                 .ToArray();
-        }
 
-        /// <summary>
-        ///     Determines whether a method has a by-reference parameter for the provided element type.
-        /// </summary>
-        /// <param name="method">The method to inspect.</param>
-        /// <param name="elementType">The by-reference element type.</param>
-        /// <returns><c>true</c> if a matching by-reference parameter is found; otherwise <c>false</c>.</returns>
-        private static bool HasByRefParameter(MethodInfo method, Type elementType)
-        {
-            return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
-        }
+        private static bool HasByRefParameter(MethodInfo method, Type elementType) =>
+            method.GetParameters().Any(parameter =>
+                parameter.ParameterType.IsByRef && parameter.ParameterType.GetElementType() == elementType);
 
-        /// <summary>
-        ///     Determines whether a method has an array parameter whose element type matches the provided type.
-        /// </summary>
-        /// <param name="method">The method to inspect.</param>
-        /// <param name="elementType">The target array element type.</param>
-        /// <returns><c>true</c> when a matching array parameter exists; otherwise <c>false</c>.</returns>
-        private static bool HasArrayParameter(MethodInfo method, Type elementType)
-        {
-            return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && (parameter.ParameterType.GetElementType() == elementType));
-        }
+        private static bool HasArrayParameter(MethodInfo method, Type elementType) =>
+            method.GetParameters().Any(parameter =>
+                parameter.ParameterType.IsArray && parameter.ParameterType.GetElementType() == elementType);
     }
 }
