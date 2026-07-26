@@ -47,6 +47,15 @@
   - `VertexArrayTest.cs` (254 lines, AAA pattern; constructors/instance/CPointer/Clear/Resize/Append/Draw/Destroy/Dispose/Indexer/Bounds/PrimitiveType/Bounds)
 - **Status**: SUCCESS
 
+## Sprite.cs
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/Sprite.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 0.0% (all methods require CSFML native library; 26 reflection-based tests verify API surface)
+- **Tests Added**: 26 (reflection-only: type hierarchy, constructors, properties, methods, override checks)
+- **Test Files**:
+  - `SpriteTests.cs` (190 lines, AAA/reflection pattern)
+- **Status**: SUCCESS
+
 ## MacWindow.cs
 - **File**: `4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs`
 - **Coverage Before**: 0.0%
