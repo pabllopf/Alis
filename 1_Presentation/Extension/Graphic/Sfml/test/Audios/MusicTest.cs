@@ -1,43 +1,289 @@
-// license header
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MusicTest.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.IO;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Audios;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
-    /// <summary>
-    /// The music test class
-    /// </summary>
     public class MusicTest
     {
-        /// <summary>
-        /// Tests that music is assignable from object base
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void Music_IsAssignableFromObjectBase()
+        private static readonly string AssetsDir;
+
+        static MusicTest()
         {
-            var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);
-            Assert.True(typeof(ObjectBase).IsAssignableFrom(musicType));
+            string assemblyDir = Path.GetDirectoryName(typeof(MusicTest).Assembly.Location);
+            AssetsDir = Path.GetFullPath(Path.Combine(assemblyDir, "..", "..", "..", "Assets"));
         }
 
-        /// <summary>
-        /// Tests that music class exists
-        /// </summary>
+        private static string AudioSamplePath => Path.Combine(AssetsDir, "AudioSample.wav");
+
         [RequireCSfmlAudioFact]
-        public void Music_Class_Exists()
+        public void Music_Type_ShouldBeAccessible() =>
+            Assert.NotNull(typeof(Music));
+
+        [RequireCSfmlAudioFact]
+        public void Music_ShouldImplementIDisposable() =>
+            Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Music)));
+
+        [RequireCSfmlAudioFact]
+        public void Music_ShouldInheritFromObjectBase() =>
+            Assert.Equal("ObjectBase", typeof(Music).BaseType.Name);
+
+        [RequireCSfmlAudioFact]
+        public void Music_Namespace_ShouldBeCorrect() =>
+            Assert.Equal("Alis.Extension.Graphic.Sfml.Audios", typeof(Music).Namespace);
+
+        [RequireCSfmlAudioFact]
+        public void Music_Constructor_FromFile_ShouldCreateInstance()
         {
-            var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);
-            Assert.NotNull(musicType);
+            using Music music = new Music(AudioSamplePath);
+            Assert.NotEqual(IntPtr.Zero, music.CPointer);
         }
 
-        /// <summary>
-        /// Tests that music implements i disposable
-        /// </summary>
         [RequireCSfmlAudioFact]
-        public void Music_ImplementsIDisposable()
+        public void Music_Constructor_FromFile_ShouldThrowOnInvalidPath() =>
+            _ = Assert.Throws<Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException>(() => new Music("/nonexistent/file.wav"));
+
+        [RequireCSfmlAudioFact]
+        public void Music_Constructor_FromBytes_ShouldCreateInstance()
         {
-            var musicType = typeof(Alis.Extension.Graphic.Sfml.Audios.Music);
-            Assert.True(typeof(System.IDisposable).IsAssignableFrom(musicType));
+            byte[] bytes = File.ReadAllBytes(AudioSamplePath);
+            using Music music = new Music(bytes);
+            Assert.NotEqual(IntPtr.Zero, music.CPointer);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Constructor_FromBytes_ShouldThrowOnEmpty() =>
+            _ = Assert.Throws<Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException>(() => new Music(Array.Empty<byte>()));
+
+        [RequireCSfmlAudioFact]
+        public void Music_Constructor_FromStream_ShouldCreateInstance()
+        {
+            byte[] bytes = File.ReadAllBytes(AudioSamplePath);
+            using MemoryStream stream = new MemoryStream(bytes);
+            using Music music = new Music(stream);
+            Assert.NotEqual(IntPtr.Zero, music.CPointer);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Constructor_FromStream_ShouldThrowOnEmpty()
+        {
+            using MemoryStream stream = new MemoryStream();
+            _ = Assert.Throws<Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException>(() => new Music(stream));
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_SampleRate_ShouldBeGreaterThanZero()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.True(music.SampleRate > 0);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_ChannelCount_ShouldBeGreaterThanZero()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.True(music.ChannelCount > 0);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Status_Initially_ShouldBeStopped()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.Equal(SoundStatus.Stopped, music.Status);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Duration_ShouldBePositive()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.True(music.Duration.AsMicroseconds() > 0);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Pitch_Default_ShouldBeOne()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.Equal(1.0f, music.Pitch);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Pitch_Set_ShouldReflectChange()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Pitch = 2.0f;
+            Assert.Equal(2.0f, music.Pitch);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Volume_Default_ShouldBe100()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.Equal(100.0f, music.Volume);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Volume_Set_ShouldReflectChange()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Volume = 50.0f;
+            Assert.Equal(50.0f, music.Volume);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_MinDistance_Default_ShouldBeOne()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.Equal(1.0f, music.MinDistance);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_MinDistance_Set_ShouldReflectChange()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.MinDistance = 5.0f;
+            Assert.Equal(5.0f, music.MinDistance);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Attenuation_Default_ShouldBeOne()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.Equal(1.0f, music.Attenuation);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Attenuation_Set_ShouldReflectChange()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Attenuation = 0.5f;
+            Assert.Equal(0.5f, music.Attenuation);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_RelativeToListener_Default_ShouldBeFalse()
+        {
+            using Music music = new Music(AudioSamplePath);
+            Assert.False(music.RelativeToListener);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_RelativeToListener_Set_ShouldReflectChange()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.RelativeToListener = true;
+            Assert.True(music.RelativeToListener);
+            music.RelativeToListener = false;
+            Assert.False(music.RelativeToListener);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_PlayingOffset_Get_ShouldWork()
+        {
+            using Music music = new Music(AudioSamplePath);
+            _ = music.PlayingOffset;
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_PlayingOffset_Set_ShouldWork()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.PlayingOffset = SfmlTime.Zero;
+            _ = music.PlayingOffset;
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Play_ShouldChangeStatusToPlaying()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Play();
+            Assert.Equal(SoundStatus.Playing, music.Status);
+            music.Stop();
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_PlayAndPause_ShouldChangeStatusToPaused()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Play();
+            music.Pause();
+            Assert.Equal(SoundStatus.Paused, music.Status);
+            music.Stop();
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Stop_ShouldChangeStatusToStopped()
+        {
+            using Music music = new Music(AudioSamplePath);
+            music.Play();
+            music.Stop();
+            Assert.Equal(SoundStatus.Stopped, music.Status);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_Dispose_ShouldSetCPointerToZero()
+        {
+            Music music = new Music(AudioSamplePath);
+            IntPtr ptr = music.CPointer;
+            Assert.NotEqual(IntPtr.Zero, ptr);
+            music.Dispose();
+            Assert.Equal(IntPtr.Zero, music.CPointer);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_FromFileAndFromBytes_ShouldHaveSameProperties()
+        {
+            byte[] bytes = File.ReadAllBytes(AudioSamplePath);
+            using Music fileMusic = new Music(AudioSamplePath);
+            using Music bytesMusic = new Music(bytes);
+            Assert.Equal(fileMusic.SampleRate, bytesMusic.SampleRate);
+            Assert.Equal(fileMusic.ChannelCount, bytesMusic.ChannelCount);
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_LoopPoints_Get_ShouldWork()
+        {
+            using Music music = new Music(AudioSamplePath);
+            _ = music.LoopPoints;
+        }
+
+        [RequireCSfmlAudioFact]
+        public void Music_TimeSpan_Struct_ShouldBeAccessible()
+        {
+            Type timeSpanType = typeof(Music.TimeSpan);
+            Assert.True(timeSpanType.IsValueType);
         }
     }
 }
