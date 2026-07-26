@@ -1,0 +1,83 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuiTextFilterTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Xunit;
+
+namespace Alis.Extension.Graphic.Ui.Test
+{
+    public class ImGuiTextFilterTests
+    {
+        [Fact]
+        public void InputBuf_Get_WhenDefault_ReturnsNull()
+        {
+            ImGuiTextFilter filter = default;
+            Assert.Null(filter.InputBuf);
+        }
+
+        [Fact]
+        public void InputBuf_Set_ShouldStoreValue()
+        {
+            ImGuiTextFilter filter = default;
+            byte[] expected = new byte[256];
+            filter.InputBuf = expected;
+            Assert.Same(expected, filter.InputBuf);
+        }
+
+        [Fact]
+        public void Filters_Get_WhenDefault_ReturnsDefault()
+        {
+            ImGuiTextFilter filter = default;
+            Assert.Equal(default(ImVector), filter.Filters);
+        }
+
+        [Fact]
+        public void Filters_Set_ShouldStoreValue()
+        {
+            ImGuiTextFilter filter = default;
+            ImVector expected = new ImVector(1, 2, new System.IntPtr(3));
+            filter.Filters = expected;
+            Assert.Equal(expected, filter.Filters);
+        }
+
+        [Fact]
+        public void CountGrep_Get_WhenDefault_ReturnsZero()
+        {
+            ImGuiTextFilter filter = default;
+            Assert.Equal(0, filter.CountGrep);
+        }
+
+        [Fact]
+        public void CountGrep_Set_ShouldStoreValue()
+        {
+            ImGuiTextFilter filter = default;
+            filter.CountGrep = 42;
+            Assert.Equal(42, filter.CountGrep);
+        }
+    }
+}
