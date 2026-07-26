@@ -85,3 +85,11 @@ CoverageAfter: 0.0%
 TestsAdded: 5
 Commit: 334b8864b
 Status: SUCCESS
+
+Timestamp: 2026-07-26T10:00:00Z
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Shader.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
+Commit: N/A
+Status: BLOCKED_BY_PRODUCTION_CODE
