@@ -213,3 +213,11 @@ CoverageAfter: 95.0%
 TestsAdded: 16
 Commit: a04665fa8
 Status: SUCCESS
+
+Timestamp: 2026-07-26T16:05:00Z
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 10
+Commit: N/A
+Status: BLOCKED_BY_PRODUCTION_CODE
