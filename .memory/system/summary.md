@@ -133,3 +133,11 @@ CoverageAfter: 0.0%
 TestsAdded: 0
 Commit: N/A
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+Timestamp: 2026-07-26T10:30:00Z
+File: 1_Presentation/Extension/Graphic/Sfml/src/Windows/Window.cs
+CoverageBefore: 0.0%
+CoverageAfter: N/A
+TestsAdded: 28
+Commit: <pending>
+Status: SUCCESS
