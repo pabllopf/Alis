@@ -89,7 +89,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs": {
     "coverageBefore": 0.0,
