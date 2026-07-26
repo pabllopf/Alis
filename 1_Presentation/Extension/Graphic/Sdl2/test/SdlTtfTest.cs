@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sdl2.Sdl2Ttf;
+using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -55,6 +56,17 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(2, SdlTtf.TtfHintingMono);
             Assert.Equal(3, SdlTtf.TtfHintingNone);
             Assert.Equal(4, SdlTtf.TtfHintingLightSubpixel);
+        }
+        /// <summary>
+        /// Tests that GetVersion returns the compiled version
+        /// </summary>
+        [Fact]
+        public void ShouldReturnCompiledVersion()
+        {
+            Version version = SdlTtf.GetVersion();
+            Assert.Equal(2, version.major);
+            Assert.Equal(0, version.minor);
+            Assert.Equal(16, version.patch);
         }
     }
 }
