@@ -29,6 +29,15 @@
   - `ViewTest.cs` (380 lines, constructor/reflection/instance/conditional CSFML tests)
 - **Status**: SUCCESS
 
+## ImFontConfigPtr.cs
+- **File**: `1_Presentation/Extension/Graphic/Ui/src/ImFontConfigPtr.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 100.0%
+- **Tests Added**: 52 (constructors, implicit operators, all property getters/setters, zero-pointer edge cases via Marshal)
+- **Test Files**:
+  - `ImFontConfigPtrCoverageTests.cs` (607 lines, AAA pattern using Marshal.AllocHGlobal/PtrToStructure/StructureToPtr)
+- **Status**: SUCCESS
+
 ## MacWindow.cs
 - **File**: `4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs`
 - **Coverage Before**: 0.0%
