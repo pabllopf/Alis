@@ -237,3 +237,11 @@ CoverageAfter: 88.4%
 TestsAdded: 27
 Commit: e36ae2b5a
 Status: SUCCESS
+
+Timestamp: 2026-07-26T16:20:00Z
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/Image.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 17
+Commit: N/A
+Status: BLOCKED_BY_PRODUCTION_CODE

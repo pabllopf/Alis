@@ -27,29 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
-    /// <summary>
-    ///     Unit tests for the <see cref="Image"/> class.
-    /// </summary>
     public class ImageTest
     {
-        /// <summary>
-        /// Tests that image is assignable from object base
-        /// </summary>
         [Fact]
         public void Image_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Image)));
         }
 
-        /// <summary>
-        /// Tests that image constructor overloads exist
-        /// </summary>
+        [Fact]
+        public void Image_ImplementsIDisposable()
+        {
+            Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Image)));
+        }
+
         [Fact]
         public void Image_ConstructorOverloads_Exist()
         {
@@ -61,9 +60,31 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Contains(ctors, c => c.GetParameters().Length == 3 && c.GetParameters()[0].ParameterType == typeof(uint) && c.GetParameters()[1].ParameterType == typeof(uint) && c.GetParameters()[2].ParameterType == typeof(byte[]));
         }
 
-        /// <summary>
-        /// Tests that pixels property exists
-        /// </summary>
+        [Fact]
+        public void Image_StreamConstructor_Exists()
+        {
+            var ctor = typeof(Image).GetConstructor(new[] { typeof(Stream) });
+            Assert.NotNull(ctor);
+        }
+
+        [Fact]
+        public void Image_CopyConstructor_Exists()
+        {
+            var ctor = typeof(Image).GetConstructor(new[] { typeof(Image) });
+            Assert.NotNull(ctor);
+        }
+
+        [Fact]
+        public void Image_InternalConstructor_Exists()
+        {
+            var ctors = typeof(Image).GetConstructors(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            Assert.Contains(ctors, c =>
+            {
+                var parameters = c.GetParameters();
+                return parameters.Length == 1 && parameters[0].ParameterType == typeof(IntPtr);
+            });
+        }
+
         [Fact]
         public void Pixels_Property_Exists()
         {
@@ -72,9 +93,15 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(byte[]), prop.PropertyType);
         }
 
-        /// <summary>
-        /// Tests that size property exists
-        /// </summary>
+        [Fact]
+        public void Pixels_Property_IsReadOnly()
+        {
+            var prop = typeof(Image).GetProperty("Pixels");
+            Assert.NotNull(prop);
+            Assert.True(prop.CanRead);
+            Assert.False(prop.CanWrite);
+        }
+
         [Fact]
         public void Size_Property_Exists()
         {
@@ -82,9 +109,23 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop);
         }
 
-        /// <summary>
-        /// Tests that save to file method exists
-        /// </summary>
+        [Fact]
+        public void Size_Property_IsReadOnly()
+        {
+            var prop = typeof(Image).GetProperty("Size");
+            Assert.NotNull(prop);
+            Assert.True(prop.CanRead);
+            Assert.False(prop.CanWrite);
+        }
+
+        [Fact]
+        public void CPointer_Property_Exists()
+        {
+            var prop = typeof(Image).GetProperty("CPointer");
+            Assert.NotNull(prop);
+            Assert.Equal(typeof(IntPtr), prop.PropertyType);
+        }
+
         [Fact]
         public void SaveToFile_Method_Exists()
         {
@@ -93,9 +134,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
-        /// <summary>
-        /// Tests that create mask from color single param exists
-        /// </summary>
         [Fact]
         public void CreateMaskFromColor_SingleParam_Exists()
         {
@@ -103,9 +141,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(method);
         }
 
-        /// <summary>
-        /// Tests that create mask from color two params exists
-        /// </summary>
         [Fact]
         public void CreateMaskFromColor_TwoParams_Exists()
         {
@@ -113,9 +148,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(method);
         }
 
-        /// <summary>
-        /// Tests that copy method overloads exist
-        /// </summary>
         [Fact]
         public void Copy_MethodOverloads_Exist()
         {
@@ -124,9 +156,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(Image).GetMethod("Copy", new[] { typeof(Image), typeof(uint), typeof(uint), typeof(IntRect), typeof(bool) }));
         }
 
-        /// <summary>
-        /// Tests that get pixel set pixel methods exist
-        /// </summary>
         [Fact]
         public void GetPixel_SetPixel_Methods_Exist()
         {
@@ -134,14 +163,43 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(Image).GetMethod("SetPixel"));
         }
 
-        /// <summary>
-        /// Tests that flip horizontally flip vertically methods exist
-        /// </summary>
         [Fact]
         public void FlipHorizontally_FlipVertically_Methods_Exist()
         {
             Assert.NotNull(typeof(Image).GetMethod("FlipHorizontally"));
             Assert.NotNull(typeof(Image).GetMethod("FlipVertically"));
+        }
+
+        [Fact]
+        public void ToString_Method_Exists()
+        {
+            var method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
+            Assert.NotNull(method);
+        }
+
+        [Fact]
+        public void ToString_IsOverride()
+        {
+            var method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
+            Assert.NotNull(method);
+            Assert.True(method.IsVirtual);
+            Assert.NotEqual(method.GetBaseDefinition(), method);
+        }
+
+        [Fact]
+        public void Destroy_Method_Exists()
+        {
+            var method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
+            Assert.NotNull(method);
+        }
+
+        [Fact]
+        public void Destroy_IsOverride()
+        {
+            var method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
+            Assert.NotNull(method);
+            Assert.True(method.IsVirtual);
+            Assert.NotEqual(method.GetBaseDefinition(), method);
         }
     }
 }
