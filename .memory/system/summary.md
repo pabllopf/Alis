@@ -219,5 +219,13 @@ File: 1_Presentation/Extension/Media/FFmpeg/src/Video/VideoReader.cs
 CoverageBefore: 0.0%
 CoverageAfter: 0.0%
 TestsAdded: 10
+Commit: 80e9737bf
+Status: BLOCKED_BY_PRODUCTION_CODE
+
+Timestamp: 2026-07-26T16:10:00Z
+File: 1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioPlayer.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
 Commit: N/A
 Status: BLOCKED_BY_PRODUCTION_CODE
