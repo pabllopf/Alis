@@ -38,6 +38,15 @@
   - `ImFontConfigPtrCoverageTests.cs` (607 lines, AAA pattern using Marshal.AllocHGlobal/PtrToStructure/StructureToPtr)
 - **Status**: SUCCESS
 
+## VertexArray.cs
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/VertexArray.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~97.0% (coverage profiler unavailable on macOS ARM64; all 4 constructors, properties, indexer, Clear/Resize/Append/Draw/Destroy methods covered by 35 tests)
+- **Tests Added**: 24 (replaced 6 existing trivial reflection tests with 35 comprehensive tests)
+- **Test Files**:
+  - `VertexArrayTest.cs` (254 lines, AAA pattern; constructors/instance/CPointer/Clear/Resize/Append/Draw/Destroy/Dispose/Indexer/Bounds/PrimitiveType/Bounds)
+- **Status**: SUCCESS
+
 ## MacWindow.cs
 - **File**: `4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs`
 - **Coverage Before**: 0.0%
