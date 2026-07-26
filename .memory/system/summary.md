@@ -19,3 +19,12 @@
 - **Test Files**:
   - `SoundRecorderTest.cs` (230 lines, constructor/instance/static/ToString/Start/Stop/SetDevice/GetDevice/ChannelCount/SampleRate/Dispose/Destroy)
 - **Status**: SUCCESS
+
+## View.cs
+- **File**: `1_Presentation/Extension/Graphic/Sfml/src/Render/View.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 90.2%
+- **Tests Added**: 58 (replaced 3 existing trivial reflection tests with 61 comprehensive tests: constructors, properties, methods, ToString, Destroy, Dispose)
+- **Test Files**:
+  - `ViewTest.cs` (380 lines, constructor/reflection/instance/conditional CSFML tests)
+- **Status**: SUCCESS
