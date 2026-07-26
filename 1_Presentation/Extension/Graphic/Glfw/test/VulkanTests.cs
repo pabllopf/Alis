@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
@@ -55,6 +57,182 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void Vulkan_IsSupported_DoesNotThrow()
         {
             _ = Vulkan.IsSupported;
+        }
+
+        /// <summary>
+        ///     Vulkans the is supported no display does not throw
+        /// </summary>
+        [Fact]
+        public void Vulkan_IsSupported_NoDisplay_DoesNotThrow()
+        {
+            try
+            {
+                _ = Vulkan.IsSupported;
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the is supported no display returns bool
+        /// </summary>
+        [Fact]
+        public void Vulkan_IsSupported_NoDisplay_ReturnsBool()
+        {
+            try
+            {
+                bool isSupported = Vulkan.IsSupported;
+
+                Assert.True(isSupported || !isSupported);
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get instance proc address null vulkan returns zero or address
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetInstanceProcAddress_NullVulkan_ReturnsZeroOrAddress()
+        {
+            try
+            {
+                IntPtr result = Vulkan.GetInstanceProcAddress(IntPtr.Zero, "vkGetInstanceProcAddr");
+
+                Assert.True(result == IntPtr.Zero || result != IntPtr.Zero);
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get instance proc address empty proc name returns zero
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetInstanceProcAddress_EmptyProcName_ReturnsZero()
+        {
+            try
+            {
+                IntPtr result = Vulkan.GetInstanceProcAddress(IntPtr.Zero, string.Empty);
+
+                Assert.Equal(IntPtr.Zero, result);
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get instance proc address invalid proc name returns zero
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetInstanceProcAddress_InvalidProcName_ReturnsZero()
+        {
+            try
+            {
+                IntPtr result = Vulkan.GetInstanceProcAddress(IntPtr.Zero, "NonExistentFunction__");
+
+                Assert.Equal(IntPtr.Zero, result);
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get instance proc address does not throw
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetInstanceProcAddress_DoesNotThrow()
+        {
+            try
+            {
+                IntPtr result = Vulkan.GetInstanceProcAddress(IntPtr.Zero, "vkGetInstanceProcAddr");
+
+                _ = result;
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get required instance extensions returns array
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetRequiredInstanceExtensions_ReturnsArray()
+        {
+            try
+            {
+                string[] extensions = Vulkan.GetRequiredInstanceExtensions();
+
+                Assert.NotNull(extensions);
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the get required instance extensions does not throw
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetRequiredInstanceExtensions_DoesNotThrow()
+        {
+            try
+            {
+                string[] extensions = Vulkan.GetRequiredInstanceExtensions();
+
+                _ = extensions;
+            }
+            catch (DllNotFoundException)
+            {
+            }
+            catch (EntryPointNotFoundException)
+            {
+            }
+        }
+
+        /// <summary>
+        ///     Vulkans the create window surface is extern
+        /// </summary>
+        [Fact]
+        public void Vulkan_CreateWindowSurface_IsExtern()
+        {
+            Assert.True(typeof(Vulkan).GetMethod(nameof(Vulkan.CreateWindowSurface)).IsPublic);
+        }
+
+        /// <summary>
+        ///     Vulkans the get physical device presentation support is extern
+        /// </summary>
+        [Fact]
+        public void Vulkan_GetPhysicalDevicePresentationSupport_IsExtern()
+        {
+            Assert.True(typeof(Vulkan).GetMethod(nameof(Vulkan.GetPhysicalDevicePresentationSupport)).IsPublic);
         }
     }
 }

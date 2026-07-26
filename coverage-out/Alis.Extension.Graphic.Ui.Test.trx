@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="ae6248b1-8af1-4bed-8d1f-f9125e023912" name="@MacBook-Pro-de-Pablo 2026-07-26 15:44:33" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-07-26T15:44:33.4128650+01:00" queuing="2026-07-26T15:44:33.4128650+01:00" start="2026-07-26T15:44:30.4348020+01:00" finish="2026-07-26T15:44:33.9331260+01:00" />
+  <TestSettings name="default" id="e7b46975-ab7f-4e61-8906-193299ad2494">
+    <Deployment runDeploymentRoot="_MacBook-Pro-de-Pablo_2026-07-26_15_44_33" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="9bcf3709-164a-4053-bc24-80f0b327a958" testId="06ac4c89-2b1d-8db0-e533-e548bf452ae9" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplaySize_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000309" startTime="2026-07-26T15:44:33.4025990+01:00" endTime="2026-07-26T15:44:33.4025990+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9bcf3709-164a-4053-bc24-80f0b327a958" />
+    <UnitTestResult executionId="5d153b13-b9e5-4252-9cee-6a61ec8ef331" testId="5b3caa63-742c-19b5-9525-29f43469491a" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalIdxCount_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000430" startTime="2026-07-26T15:44:33.3716370+01:00" endTime="2026-07-26T15:44:33.3716370+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d153b13-b9e5-4252-9cee-6a61ec8ef331" />
+    <UnitTestResult executionId="99147bf1-f1e0-4baf-962d-508b436560af" testId="4ca429cd-ed9e-7299-cfac-d17457469265" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalIdxCount_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000420" startTime="2026-07-26T15:44:33.4032770+01:00" endTime="2026-07-26T15:44:33.4032770+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="99147bf1-f1e0-4baf-962d-508b436560af" />
+    <UnitTestResult executionId="0161952a-117f-4d15-aad7-a4701410b35f" testId="a323549a-abd4-9f22-2fcd-a956500b9555" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Clear_WhenCalled_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000530" startTime="2026-07-26T15:44:33.4028180+01:00" endTime="2026-07-26T15:44:33.4028180+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0161952a-117f-4d15-aad7-a4701410b35f" />
+    <UnitTestResult executionId="ddb45312-24d5-432a-8fe2-1fad5811f261" testId="3087ea6b-7e19-885c-68c4-c0a4766da792" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.FramebufferScale_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000497" startTime="2026-07-26T15:44:33.4063030+01:00" endTime="2026-07-26T15:44:33.4063030+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ddb45312-24d5-432a-8fe2-1fad5811f261" />
+    <UnitTestResult executionId="42ad5aad-941e-4aa7-97d8-8f708401b656" testId="130c915a-2a47-8803-d9a0-1642b8778179" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsPtr_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000315" startTime="2026-07-26T15:44:33.3732200+01:00" endTime="2026-07-26T15:44:33.3732200+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="42ad5aad-941e-4aa7-97d8-8f708401b656" />
+    <UnitTestResult executionId="30d6931f-30c8-45cd-b8ba-d9e1d547c6fa" testId="140c3cc0-8af6-d1a8-8dc6-72a28b8c5263" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.OwnerViewportPtr_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000229" startTime="2026-07-26T15:44:33.4034550+01:00" endTime="2026-07-26T15:44:33.4034550+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30d6931f-30c8-45cd-b8ba-d9e1d547c6fa" />
+    <UnitTestResult executionId="f197c831-7469-4cdb-9fca-41fcc8bb42f7" testId="f9876d5d-99ce-fda9-3f1b-a557df4a2a7e" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.ScaleClipRects_WhenCalled_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000891" startTime="2026-07-26T15:44:33.4030660+01:00" endTime="2026-07-26T15:44:33.4030660+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f197c831-7469-4cdb-9fca-41fcc8bb42f7" />
+    <UnitTestResult executionId="7c24b6e6-01ca-4967-ba2a-4768aa361138" testId="71f96be1-d768-9180-4354-323580a7cb51" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DeIndexAllBuffers_WhenCalled_DoesNotThrow" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0098713" startTime="2026-07-26T15:44:33.4017660+01:00" endTime="2026-07-26T15:44:33.4017670+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7c24b6e6-01ca-4967-ba2a-4768aa361138" />
+    <UnitTestResult executionId="002ba2e9-e67b-41cf-83b2-3784572cc385" testId="83337301-6b39-5a14-4b1c-b520ec77f28d" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsPtr_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0009731" startTime="2026-07-26T15:44:33.3729970+01:00" endTime="2026-07-26T15:44:33.3729970+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="002ba2e9-e67b-41cf-83b2-3784572cc385" />
+    <UnitTestResult executionId="9fc304ad-ff32-45b7-ab56-74b2ae124dba" testId="f87904ce-2805-2863-1881-97433f6d4345" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalVtxCount_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0010460" startTime="2026-07-26T15:44:33.3707910+01:00" endTime="2026-07-26T15:44:33.3707910+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9fc304ad-ff32-45b7-ab56-74b2ae124dba" />
+    <UnitTestResult executionId="c65efac9-beb9-42a5-ace6-7725dcb118de" testId="d2101bb8-9a59-301e-9d75-d18e26c61ddb" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsCount_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000259" startTime="2026-07-26T15:44:33.4057180+01:00" endTime="2026-07-26T15:44:33.4057180+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c65efac9-beb9-42a5-ace6-7725dcb118de" />
+    <UnitTestResult executionId="bcfe1d98-55c0-41cf-bcb9-bc77501575bf" testId="40ed07a0-db4c-0acb-6a94-aeb93be0db68" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsRange_DataMatchesCmdListsPtr" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0001455" startTime="2026-07-26T15:44:33.4022050+01:00" endTime="2026-07-26T15:44:33.4022050+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bcfe1d98-55c0-41cf-bcb9-bc77501575bf" />
+    <UnitTestResult executionId="4e848e29-3fdc-4b54-8b40-1731d642af5e" testId="8d1e042d-4a73-17d3-a91a-63ca4691d995" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Valid_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000426" startTime="2026-07-26T15:44:33.4060990+01:00" endTime="2026-07-26T15:44:33.4060990+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e848e29-3fdc-4b54-8b40-1731d642af5e" />
+    <UnitTestResult executionId="e7ed7db6-4f39-45f0-be09-91ef0ec91c56" testId="a067fbfb-cffd-589b-1a7b-eea4d721d032" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalVtxCount_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000258" startTime="2026-07-26T15:44:33.4024060+01:00" endTime="2026-07-26T15:44:33.4024060+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e7ed7db6-4f39-45f0-be09-91ef0ec91c56" />
+    <UnitTestResult executionId="d56e19de-1f8f-4345-908e-8e82d70c18e7" testId="063fb9f7-d515-c621-fc17-e2bff99d757d" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplaySize_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000875" startTime="2026-07-26T15:44:33.3712090+01:00" endTime="2026-07-26T15:44:33.3712090+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d56e19de-1f8f-4345-908e-8e82d70c18e7" />
+    <UnitTestResult executionId="634e2bb6-933a-4a3a-bf64-97d692152363" testId="5db78949-b446-0fa9-ef73-189521187ceb" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsRange_CountMatchesCmdListsCount" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000533" startTime="2026-07-26T15:44:33.4055220+01:00" endTime="2026-07-26T15:44:33.4055220+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="634e2bb6-933a-4a3a-bf64-97d692152363" />
+    <UnitTestResult executionId="dbfca10e-1bdd-4713-9a22-b2a717ffb341" testId="e09455c9-e306-d239-aa8b-6942da456fe1" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsCount_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000236" startTime="2026-07-26T15:44:33.4059000+01:00" endTime="2026-07-26T15:44:33.4059000+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dbfca10e-1bdd-4713-9a22-b2a717ffb341" />
+    <UnitTestResult executionId="3161a010-e12e-4794-97f5-118e63c95f20" testId="60882dd3-f005-3ebb-208a-a919084e5271" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Valid_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0011296" startTime="2026-07-26T15:44:33.4047430+01:00" endTime="2026-07-26T15:44:33.4047430+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3161a010-e12e-4794-97f5-118e63c95f20" />
+    <UnitTestResult executionId="bde09a56-9495-4ec8-a4a4-c5d39f88c503" testId="3d43b429-0706-0b6c-78f8-14477c71c285" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplayPos_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000270" startTime="2026-07-26T15:44:33.3714160+01:00" endTime="2026-07-26T15:44:33.3714160+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bde09a56-9495-4ec8-a4a4-c5d39f88c503" />
+    <UnitTestResult executionId="8936d578-f597-4676-9131-c8451865ccf6" testId="569a3302-214d-65fc-b94c-b46b44e63e83" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.OwnerViewportPtr_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000577" startTime="2026-07-26T15:44:33.3734480+01:00" endTime="2026-07-26T15:44:33.3734480+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8936d578-f597-4676-9131-c8451865ccf6" />
+    <UnitTestResult executionId="6a8ddcb3-2b3f-4f63-9645-d4abadb1f8ce" testId="36cd38d9-b28a-34d4-8583-89d6116c01fc" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplayPos_SetValue_ReturnsSetValue" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0029562" startTime="2026-07-26T15:44:33.3662570+01:00" endTime="2026-07-26T15:44:33.3662640+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6a8ddcb3-2b3f-4f63-9645-d4abadb1f8ce" />
+    <UnitTestResult executionId="2bcd56ca-fab0-465c-92ed-fc81539905ad" testId="1cd7b4b0-0750-064b-aa53-2406928019a8" testName="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.FramebufferScale_DefaultValue_ReturnsZero" computerName="MacBook-Pro-de-Pablo" duration="00:00:00.0000393" startTime="2026-07-26T15:44:33.3718480+01:00" endTime="2026-07-26T15:44:33.3718480+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2bcd56ca-fab0-465c-92ed-fc81539905ad" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalIdxCount_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="4ca429cd-ed9e-7299-cfac-d17457469265">
+      <Execution id="99147bf1-f1e0-4baf-962d-508b436560af" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="TotalIdxCount_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DeIndexAllBuffers_WhenCalled_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="71f96be1-d768-9180-4354-323580a7cb51">
+      <Execution id="7c24b6e6-01ca-4967-ba2a-4768aa361138" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="DeIndexAllBuffers_WhenCalled_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.OwnerViewportPtr_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="140c3cc0-8af6-d1a8-8dc6-72a28b8c5263">
+      <Execution id="30d6931f-30c8-45cd-b8ba-d9e1d547c6fa" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="OwnerViewportPtr_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Valid_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="60882dd3-f005-3ebb-208a-a919084e5271">
+      <Execution id="3161a010-e12e-4794-97f5-118e63c95f20" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="Valid_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalIdxCount_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="5b3caa63-742c-19b5-9525-29f43469491a">
+      <Execution id="5d153b13-b9e5-4252-9cee-6a61ec8ef331" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="TotalIdxCount_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsRange_DataMatchesCmdListsPtr" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="40ed07a0-db4c-0acb-6a94-aeb93be0db68">
+      <Execution id="bcfe1d98-55c0-41cf-bcb9-bc77501575bf" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsRange_DataMatchesCmdListsPtr" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Clear_WhenCalled_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="a323549a-abd4-9f22-2fcd-a956500b9555">
+      <Execution id="0161952a-117f-4d15-aad7-a4701410b35f" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="Clear_WhenCalled_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.Valid_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="8d1e042d-4a73-17d3-a91a-63ca4691d995">
+      <Execution id="4e848e29-3fdc-4b54-8b40-1731d642af5e" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="Valid_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsPtr_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="83337301-6b39-5a14-4b1c-b520ec77f28d">
+      <Execution id="002ba2e9-e67b-41cf-83b2-3784572cc385" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsPtr_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsCount_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="e09455c9-e306-d239-aa8b-6942da456fe1">
+      <Execution id="dbfca10e-1bdd-4713-9a22-b2a717ffb341" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsCount_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsRange_CountMatchesCmdListsCount" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="5db78949-b446-0fa9-ef73-189521187ceb">
+      <Execution id="634e2bb6-933a-4a3a-bf64-97d692152363" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsRange_CountMatchesCmdListsCount" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalVtxCount_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="a067fbfb-cffd-589b-1a7b-eea4d721d032">
+      <Execution id="e7ed7db6-4f39-45f0-be09-91ef0ec91c56" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="TotalVtxCount_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplaySize_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="063fb9f7-d515-c621-fc17-e2bff99d757d">
+      <Execution id="d56e19de-1f8f-4345-908e-8e82d70c18e7" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="DisplaySize_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.FramebufferScale_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="1cd7b4b0-0750-064b-aa53-2406928019a8">
+      <Execution id="2bcd56ca-fab0-465c-92ed-fc81539905ad" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="FramebufferScale_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.TotalVtxCount_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="f87904ce-2805-2863-1881-97433f6d4345">
+      <Execution id="9fc304ad-ff32-45b7-ab56-74b2ae124dba" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="TotalVtxCount_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.FramebufferScale_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="3087ea6b-7e19-885c-68c4-c0a4766da792">
+      <Execution id="ddb45312-24d5-432a-8fe2-1fad5811f261" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="FramebufferScale_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplayPos_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="36cd38d9-b28a-34d4-8583-89d6116c01fc">
+      <Execution id="6a8ddcb3-2b3f-4f63-9645-d4abadb1f8ce" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="DisplayPos_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsCount_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="d2101bb8-9a59-301e-9d75-d18e26c61ddb">
+      <Execution id="c65efac9-beb9-42a5-ace6-7725dcb118de" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsCount_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplayPos_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="3d43b429-0706-0b6c-78f8-14477c71c285">
+      <Execution id="bde09a56-9495-4ec8-a4a4-c5d39f88c503" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="DisplayPos_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.ScaleClipRects_WhenCalled_DoesNotThrow" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="f9876d5d-99ce-fda9-3f1b-a557df4a2a7e">
+      <Execution id="f197c831-7469-4cdb-9fca-41fcc8bb42f7" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="ScaleClipRects_WhenCalled_DoesNotThrow" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.CmdListsPtr_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="130c915a-2a47-8803-d9a0-1642b8778179">
+      <Execution id="42ad5aad-941e-4aa7-97d8-8f708401b656" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="CmdListsPtr_DefaultValue_ReturnsZero" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.OwnerViewportPtr_SetValue_ReturnsSetValue" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="569a3302-214d-65fc-b94c-b46b44e63e83">
+      <Execution id="8936d578-f597-4676-9131-c8451865ccf6" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="OwnerViewportPtr_SetValue_ReturnsSetValue" />
+    </UnitTest>
+    <UnitTest name="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests.DisplaySize_DefaultValue_ReturnsZero" storage="/users/pabllopf/repositorios/alis/1_presentation/extension/graphic/ui/test/bin/debug/lib/alis.extension.graphic.ui.test.dll" id="06ac4c89-2b1d-8db0-e533-e548bf452ae9">
+      <Execution id="9bcf3709-164a-4053-bc24-80f0b327a958" />
+      <TestMethod codeBase="/Users/pabllopf/repositorios/Alis/1_Presentation/Extension/Graphic/Ui/test/bin/Debug/lib/Alis.Extension.Graphic.Ui.Test.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="Alis.Extension.Graphic.Ui.Test.ImDrawDataTests" name="DisplaySize_DefaultValue_ReturnsZero" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="06ac4c89-2b1d-8db0-e533-e548bf452ae9" executionId="9bcf3709-164a-4053-bc24-80f0b327a958" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5b3caa63-742c-19b5-9525-29f43469491a" executionId="5d153b13-b9e5-4252-9cee-6a61ec8ef331" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ca429cd-ed9e-7299-cfac-d17457469265" executionId="99147bf1-f1e0-4baf-962d-508b436560af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a323549a-abd4-9f22-2fcd-a956500b9555" executionId="0161952a-117f-4d15-aad7-a4701410b35f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3087ea6b-7e19-885c-68c4-c0a4766da792" executionId="ddb45312-24d5-432a-8fe2-1fad5811f261" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="130c915a-2a47-8803-d9a0-1642b8778179" executionId="42ad5aad-941e-4aa7-97d8-8f708401b656" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="140c3cc0-8af6-d1a8-8dc6-72a28b8c5263" executionId="30d6931f-30c8-45cd-b8ba-d9e1d547c6fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f9876d5d-99ce-fda9-3f1b-a557df4a2a7e" executionId="f197c831-7469-4cdb-9fca-41fcc8bb42f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71f96be1-d768-9180-4354-323580a7cb51" executionId="7c24b6e6-01ca-4967-ba2a-4768aa361138" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83337301-6b39-5a14-4b1c-b520ec77f28d" executionId="002ba2e9-e67b-41cf-83b2-3784572cc385" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f87904ce-2805-2863-1881-97433f6d4345" executionId="9fc304ad-ff32-45b7-ab56-74b2ae124dba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2101bb8-9a59-301e-9d75-d18e26c61ddb" executionId="c65efac9-beb9-42a5-ace6-7725dcb118de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="40ed07a0-db4c-0acb-6a94-aeb93be0db68" executionId="bcfe1d98-55c0-41cf-bcb9-bc77501575bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d1e042d-4a73-17d3-a91a-63ca4691d995" executionId="4e848e29-3fdc-4b54-8b40-1731d642af5e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a067fbfb-cffd-589b-1a7b-eea4d721d032" executionId="e7ed7db6-4f39-45f0-be09-91ef0ec91c56" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="063fb9f7-d515-c621-fc17-e2bff99d757d" executionId="d56e19de-1f8f-4345-908e-8e82d70c18e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5db78949-b446-0fa9-ef73-189521187ceb" executionId="634e2bb6-933a-4a3a-bf64-97d692152363" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e09455c9-e306-d239-aa8b-6942da456fe1" executionId="dbfca10e-1bdd-4713-9a22-b2a717ffb341" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="60882dd3-f005-3ebb-208a-a919084e5271" executionId="3161a010-e12e-4794-97f5-118e63c95f20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3d43b429-0706-0b6c-78f8-14477c71c285" executionId="bde09a56-9495-4ec8-a4a4-c5d39f88c503" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="569a3302-214d-65fc-b94c-b46b44e63e83" executionId="8936d578-f597-4676-9131-c8451865ccf6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="36cd38d9-b28a-34d4-8583-89d6116c01fc" executionId="6a8ddcb3-2b3f-4f63-9645-d4abadb1f8ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1cd7b4b0-0750-064b-aa53-2406928019a8" executionId="2bcd56ca-fab0-465c-92ed-fc81539905ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Resultados sin formato de lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Todos los resultados cargados" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="23" executed="23" passed="23" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.27)
+[xUnit.net 00:00:00.04]   Discovering: Alis.Extension.Graphic.Ui.Test (method display = ClassAndMethod, method display options = None)
+[xUnit.net 00:00:00.84]   Discovered:  Alis.Extension.Graphic.Ui.Test (found 5489 test cases)
+[xUnit.net 00:00:00.85]   Starting:    Alis.Extension.Graphic.Ui.Test (parallel test collections = off, stop on fail = off)
+[xUnit.net 00:00:00.91]   Finished:    Alis.Extension.Graphic.Ui.Test
+</StdOut>
+    </Output>
+    <CollectorDataEntries>
+      <Collector agentName="MacBook-Pro-de-Pablo" uri="datacollector://microsoft/CoverletCodeCoverage/1.0" collectorDisplayName="XPlat code coverage">
+        <UriAttachments>
+          <UriAttachment>
+            <A href="MacBook-Pro-de-Pablo/coverage.cobertura.xml"></A>
+          </UriAttachment>
+        </UriAttachments>
+      </Collector>
+    </CollectorDataEntries>
+  </ResultSummary>
+</TestRun>
