@@ -27,20 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
-    /// <summary>
-    ///     The im gui storage pair test class
-    /// </summary>
     public class ImGuiStoragePairTest
     {
-        /// <summary>
-        ///     Tests that key should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
+        public void Key_Default_ShouldBeZero()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            Assert.Equal(0u, storagePair.Key);
+        }
+
+        [Fact]
         public void Key_Should_SetAndGetCorrectly()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
@@ -48,16 +48,91 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(123u, storagePair.Key);
         }
 
-        /// <summary>
-        ///     Tests that value should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
-        public void Value_Should_SetAndGetCorrectly()
+        [Fact]
+        public void Key_Should_HandleMaxValue()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            storagePair.Key = uint.MaxValue;
+            Assert.Equal(uint.MaxValue, storagePair.Key);
+        }
+
+        [Fact]
+        public void Key_Should_HandleMinValue()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            storagePair.Key = uint.MinValue;
+            Assert.Equal(uint.MinValue, storagePair.Key);
+        }
+
+        [Fact]
+        public void Key_Should_HandleOne()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            storagePair.Key = 1u;
+            Assert.Equal(1u, storagePair.Key);
+        }
+
+        [Fact]
+        public void Value_Default_ShouldBeDefaultUnionValue()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            Assert.Equal(default(UnionValue), storagePair.Value);
+        }
+
+        [Fact]
+        public void Value_Should_SetAndGetWithValueI32()
         {
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
             UnionValue value = new UnionValue {ValueI32 = 123};
             storagePair.Value = value;
-            Assert.Equal(value, storagePair.Value);
+            Assert.Equal(123, storagePair.Value.ValueI32);
+        }
+
+        [Fact]
+        public void Value_Should_SetAndGetWithValueF32()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            UnionValue value = new UnionValue {ValueF32 = 456.78f};
+            storagePair.Value = value;
+            Assert.Equal(456.78f, storagePair.Value.ValueF32);
+        }
+
+        [Fact]
+        public void Value_Should_SetAndGetWithValuePtr()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            UnionValue value = new UnionValue {ValuePtr = new System.IntPtr(42)};
+            storagePair.Value = value;
+            Assert.Equal(new System.IntPtr(42), storagePair.Value.ValuePtr);
+        }
+
+        [Fact]
+        public void Value_Should_OverwriteCorrectly()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            storagePair.Value = new UnionValue {ValueI32 = 100};
+            storagePair.Value = new UnionValue {ValueF32 = 200.0f};
+            Assert.Equal(200.0f, storagePair.Value.ValueF32);
+        }
+
+        [Fact]
+        public void Key_And_Value_Should_BeIndependent()
+        {
+            ImGuiStoragePair storagePair = new ImGuiStoragePair();
+            storagePair.Key = 42u;
+            storagePair.Value = new UnionValue {ValueI32 = 99};
+            Assert.Equal(42u, storagePair.Key);
+            Assert.Equal(99, storagePair.Value.ValueI32);
+        }
+
+        [Fact]
+        public void Struct_Should_BeZeroedByDefault()
+        {
+            ImGuiStoragePair storagePair = default;
+            Assert.Equal(0u, storagePair.Key);
+            Assert.Equal(0, storagePair.Value.ValueI32);
+            Assert.Equal(0.0f, storagePair.Value.ValueF32);
+            Assert.Equal(System.IntPtr.Zero, storagePair.Value.ValuePtr);
         }
     }
 }
