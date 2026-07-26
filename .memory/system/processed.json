@@ -88,7 +88,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImDrawCmd.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Audios/SoundBufferRecorder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Node/Style.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Vulkan.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs": {
     "coverageBefore": 0.0,
@@ -102,5 +103,12 @@
     "commit": "57e7c5701",
     "status": "BLOCKED_BY_PRODUCTION_CODE",
     "blockReason": "Remaining 8 lines (138-145) require Vulkan loader (MoltenVK) not available on macOS"
+  },
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs": {
+    "coverageBefore": 0.0,
+    "coverageAfter": 100.0,
+    "testsAdded": 6,
+    "commit": "cde9cfa5c",
+    "status": "SUCCESS"
   }
 }
