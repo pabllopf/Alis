@@ -46,8 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Listener_GlobalVolume_Getter_ShouldReturnNonZero()
         {
             float volume = Listener.GlobalVolume;
-
-            // GlobalVolume is a static property — should return current listener volume (default 100)
+            Assert.InRange(volume, 0.0f, 100.0f);
         }
 
         /// <summary>
@@ -57,8 +56,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Listener_Position_Getter_ShouldReturnVector()
         {
             Vector3F position = Listener.Position;
-
-            // Position is a static property — should return current listener position (default 0,0,0)
+            Assert.InRange(position.X, -1.0f, 1.0f);
+            Assert.InRange(position.Y, -1.0f, 1.0f);
+            Assert.InRange(position.Z, -1.0f, 1.0f);
         }
 
         /// <summary>
@@ -68,8 +68,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Listener_Direction_Getter_ShouldReturnVector()
         {
             Vector3F direction = Listener.Direction;
-
-            // Direction is a static property — should return current listener direction (default 0,0,-1)
+            Assert.InRange(direction.X, -1.0f, 1.0f);
+            Assert.InRange(direction.Y, -1.0f, 1.0f);
+            Assert.InRange(direction.Z, -1.0f, 0.0f);
         }
 
         /// <summary>
@@ -79,8 +80,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Listener_UpVector_Getter_ShouldReturnVector()
         {
             Vector3F upVector = Listener.UpVector;
-
-            // UpVector is a static property — should return current listener up vector (default 0,1,0)
+            Assert.InRange(upVector.X, -1.0f, 1.0f);
+            Assert.InRange(upVector.Y, 0.0f, 1.0f);
+            Assert.InRange(upVector.Z, -1.0f, 1.0f);
         }
 
         /// <summary>
