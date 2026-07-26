@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
+using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
+using Alis.Extension.Graphic.Sfml.Windows;
+using Xunit;
+
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
     /// <summary>
@@ -34,5 +40,152 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
     /// </summary>
     public class ClipboardTest
     {
+        /// <summary>
+        ///     Tests that clipboard is a static class.
+        /// </summary>
+        [Fact]
+        public void Clipboard_IsStaticClass()
+        {
+            Assert.True(typeof(Clipboard).IsAbstract && typeof(Clipboard).IsSealed);
+        }
+
+        /// <summary>
+        ///     Tests that contents property exists.
+        /// </summary>
+        [Fact]
+        public void Contents_Property_Exists()
+        {
+            PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
+            Assert.NotNull(property);
+        }
+
+        /// <summary>
+        ///     Tests that contents property has getter and setter.
+        /// </summary>
+        [Fact]
+        public void Contents_Property_Has_Getter_And_Setter()
+        {
+            PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
+            Assert.NotNull(property);
+            Assert.True(property.CanRead);
+            Assert.True(property.CanWrite);
+        }
+
+        /// <summary>
+        ///     Tests that contents property type is string.
+        /// </summary>
+        [Fact]
+        public void Contents_Property_Type_Is_String()
+        {
+            PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
+            Assert.NotNull(property);
+            Assert.Equal(typeof(string), property.PropertyType);
+        }
+
+        /// <summary>
+        ///     Tests that sfClipboard_getUnicodeString dll import method exists.
+        /// </summary>
+        [Fact]
+        public void SfClipboard_getUnicodeString_DllImport_Exists()
+        {
+            MethodInfo[] methods = typeof(Clipboard).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo method = null;
+            foreach (MethodInfo mi in methods)
+            {
+                if (mi.Name.Contains("sfClipboard_getUnicodeString"))
+                {
+                    method = mi;
+                    break;
+                }
+            }
+            Assert.NotNull(method);
+            Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
+        }
+
+        /// <summary>
+        ///     Tests that sfClipboard_setUnicodeString dll import method exists.
+        /// </summary>
+        [Fact]
+        public void SfClipboard_setUnicodeString_DllImport_Exists()
+        {
+            MethodInfo[] methods = typeof(Clipboard).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo method = null;
+            foreach (MethodInfo mi in methods)
+            {
+                if (mi.Name.Contains("sfClipboard_setUnicodeString"))
+                {
+                    method = mi;
+                    break;
+                }
+            }
+            Assert.NotNull(method);
+            Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
+        }
+
+        /// <summary>
+        ///     Tests that GetContents returns a string.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void GetContents_ReturnsString()
+        {
+            string result = Clipboard.Contents;
+            Assert.NotNull(result);
+        }
+
+        /// <summary>
+        ///     Tests that SetContents does not throw.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void SetContents_DoesNotThrow()
+        {
+            Clipboard.Contents = "test";
+        }
+
+        /// <summary>
+        ///     Tests that set and get contents round trips correctly.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void SetAndGetContents_RoundTrip()
+        {
+            const string expected = "Hello, Clipboard!";
+            Clipboard.Contents = expected;
+            string actual = Clipboard.Contents;
+            Assert.Equal(expected, actual);
+        }
+
+        /// <summary>
+        ///     Tests that set and get contents works with unicode text.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void SetAndGetContents_UnicodeText()
+        {
+            const string expected = "¡Hola! ñoño 中文 𝄞";
+            Clipboard.Contents = expected;
+            string actual = Clipboard.Contents;
+            Assert.Equal(expected, actual);
+        }
+
+        /// <summary>
+        ///     Tests that set and get contents works with empty string.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void SetAndGetContents_EmptyString()
+        {
+            Clipboard.Contents = string.Empty;
+            string actual = Clipboard.Contents;
+            Assert.Equal(string.Empty, actual);
+        }
+
+        /// <summary>
+        ///     Tests that set and get contents works with long string.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void SetAndGetContents_LongString()
+        {
+            string expected = new string('A', 10000);
+            Clipboard.Contents = expected;
+            string actual = Clipboard.Contents;
+            Assert.Equal(expected, actual);
+        }
     }
 }
