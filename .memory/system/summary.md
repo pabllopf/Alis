@@ -93,3 +93,11 @@ CoverageAfter: 0.0%
 TestsAdded: 0
 Commit: N/A
 Status: BLOCKED_BY_PRODUCTION_CODE
+
+Timestamp: 2026-07-26T10:10:00Z
+File: 1_Presentation/Extension/Graphic/Ui/src/ImFontAtlasPtr.cs
+CoverageBefore: 0.0%
+CoverageAfter: 14.0%
+TestsAdded: 73
+Commit: ea2ac2315
+Status: SUCCESS
