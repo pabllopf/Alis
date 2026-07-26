@@ -56,6 +56,15 @@
   - `SpriteTests.cs` (190 lines, AAA/reflection pattern)
 - **Status**: SUCCESS
 
+## AudioReader.cs
+- **File**: `1_Presentation/Extension/Media/FFmpeg/src/Audio/AudioReader.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: 82.35%
+- **Tests Added**: 49 (constructor, properties, dispose, resolve bit depth, load metadata, load, next frame, copy to)
+- **Test Files**:
+  - `AudioReaderTests.cs` (866 lines, AAA pattern; real impls + Moq + TestableAudioReader)
+- **Status**: SUCCESS
+
 ## MacWindow.cs
 - **File**: `4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs`
 - **Coverage Before**: 0.0%
