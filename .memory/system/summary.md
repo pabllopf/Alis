@@ -173,3 +173,11 @@ CoverageAfter: 0.0%
 TestsAdded: 7
 Commit: e1b09ecbb
 Status: SUCCESS
+
+Timestamp: 2026-07-26T15:00:00Z
+File: 1_Presentation/Extension/Graphic/Ui/src/Extras/GuizMo/ImGuizMo.cs
+CoverageBefore: 0.0%
+CoverageAfter: N/A
+TestsAdded: 25
+Commit: 886407fa8
+Status: SUCCESS
