@@ -28,3 +28,12 @@
 - **Test Files**:
   - `ViewTest.cs` (380 lines, constructor/reflection/instance/conditional CSFML tests)
 - **Status**: SUCCESS
+
+## MacWindow.cs
+- **File**: `4_Operation/Graphic/src/Platforms/Osx/Native/MacWindow.cs`
+- **Coverage Before**: 0.0%
+- **Coverage After**: ~100.0% (coverage profiler unavailable on macOS ARM64; all methods/properties covered via native ObjC interop)
+- **Tests Added**: 10 (constructor, properties, Show, Hide, SetTitle, SetSize, IsVisible, GetFrame)
+- **Test Files**:
+  - `MacWindowTests.cs` (124 lines, AAA pattern with NSApplicationLoad)
+- **Status**: SUCCESS
