@@ -36,27 +36,15 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
 {
-    /// <summary>
-    ///     Tests for GameWindow class
-    /// </summary>
     public class GameWindowTests : IDisposable
     {
-        /// <summary>
-        ///     The window
-        /// </summary>
         private GameWindow window;
 
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
         public void Dispose()
         {
             window?.Dispose();
         }
 
-        /// <summary>
-        ///     Games the window default constructor creates window
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_DefaultConstructor_CreatesWindow()
         {
@@ -67,9 +55,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.False(window.IsInvalid);
         }
 
-        /// <summary>
-        ///     Games the window constructor with parameters creates window
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_ConstructorWithParameters_CreatesWindow()
         {
@@ -80,9 +65,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.False(window.IsInvalid);
         }
 
-        /// <summary>
-        ///     Games the window constructor with all parameters creates window
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_ConstructorWithAllParameters_CreatesWindow()
         {
@@ -93,9 +75,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.False(window.IsInvalid);
         }
 
-        /// <summary>
-        ///     Games the window inherits from native window
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_InheritsFromNativeWindow()
         {
@@ -107,9 +86,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.IsAssignableFrom<NativeWindow>(window);
         }
 
-        /// <summary>
-        ///     Games the window can be disposed
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_CanBeDisposed()
         {
@@ -121,9 +97,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(window.IsInvalid);
         }
 
-        /// <summary>
-        ///     Games the window with custom size has correct size
-        /// </summary>
         [RequiresDisplay]
         public void GameWindow_WithCustomSize_HasCorrectSize()
         {
@@ -136,6 +109,47 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             Assert.Equal(expectedWidth, size.Width);
             Assert.Equal(expectedHeight, size.Height);
+        }
+
+        [Fact]
+        public void GameWindow_IsPublicClass()
+        {
+            Type type = typeof(GameWindow);
+            Assert.True(type.IsPublic);
+        }
+
+        [Fact]
+        public void GameWindow_InheritsFromNativeWindow_Reflection()
+        {
+            Type type = typeof(GameWindow);
+            Assert.Equal(typeof(NativeWindow), type.BaseType);
+        }
+
+        [Fact]
+        public void GameWindow_HasDefaultConstructor_Reflection()
+        {
+            Type type = typeof(GameWindow);
+            System.Reflection.ConstructorInfo ctor = type.GetConstructor(Type.EmptyTypes);
+            Assert.NotNull(ctor);
+            Assert.True(ctor.IsPublic);
+        }
+
+        [Fact]
+        public void GameWindow_HasConstructorWithWidthHeightTitle_Reflection()
+        {
+            Type type = typeof(GameWindow);
+            System.Reflection.ConstructorInfo ctor = type.GetConstructor(new[] { typeof(int), typeof(int), typeof(string) });
+            Assert.NotNull(ctor);
+            Assert.True(ctor.IsPublic);
+        }
+
+        [Fact]
+        public void GameWindow_HasConstructorWithAllParams_Reflection()
+        {
+            Type type = typeof(GameWindow);
+            System.Reflection.ConstructorInfo ctor = type.GetConstructor(new[] { typeof(int), typeof(int), typeof(string), typeof(Monitor), typeof(Window) });
+            Assert.NotNull(ctor);
+            Assert.True(ctor.IsPublic);
         }
     }
 }

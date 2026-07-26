@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Attributes
             {
                 if (IsWindows())
                 {
-                    return false;
+                    return true;
                 }
 
                 if (IsLinux())
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Attributes
                         if (process != null)
                         {
                             process.WaitForExit();
-                            return false; // 0 significa que WindowServer está corriendo
+                            return process.ExitCode == 0;
                         }
                     }
                     catch
