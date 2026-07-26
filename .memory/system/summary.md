@@ -157,3 +157,11 @@ CoverageAfter: 0.0%
 TestsAdded: 74
 Commit: 7ef4e5ca7
 Status: SUCCESS
+
+Timestamp: 2026-07-26T14:25:00Z
+File: 1_Presentation/Extension/Graphic/Sfml/src/Render/RenderWindow.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 28
+Commit: pending
+Status: BLOCKED_BY_PRODUCTION_CODE
