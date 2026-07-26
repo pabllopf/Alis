@@ -92,7 +92,8 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Windows/Context.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImFontGlyphRangesBuilder.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/Structs/GammaRampInternal.cs",
-    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs"
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiPayload.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs": {
     "coverageBefore": 0.0,
@@ -120,5 +121,11 @@
     "testsAdded": 30,
     "status": "SUCCESS",
     "commit": "d901db0e8"
+  },
+  "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs": {
+    "coverageBefore": 0.0,
+    "coverageAfter": 100.0,
+    "testsAdded": 14,
+    "status": "SUCCESS"
   }
 }
