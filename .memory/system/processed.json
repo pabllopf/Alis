@@ -96,7 +96,7 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotInputMap.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Glfw/src/GameWindow.cs",
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Sfml/src/Systems/Clock.cs"
-  ],
+  ,"pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiWindowClass.cs"],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs": {
     "coverageBefore": 0.0,
     "testsAdded": 59,
