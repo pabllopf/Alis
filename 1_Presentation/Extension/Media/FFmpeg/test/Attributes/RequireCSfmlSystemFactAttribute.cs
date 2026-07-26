@@ -46,7 +46,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
         /// </summary>
         public RequireFfmpegFactAttribute()
         {
-            if (!TryLoadSfmlLibrary("ffmpeg"))
+            if (!TryLoadSfmlLibrary("avformat"))
             {
                 Skip = "Test skipped because its not platform";
             }
@@ -65,17 +65,32 @@ namespace Alis.Extension.Media.FFmpeg.Test.Attributes
             if (assemblyDir == null)
                 return false;
 
-            string[] candidates = new[]
+            string[] searchDirs = new[]
             {
-                Path.Combine(assemblyDir, name),
-                Path.Combine(assemblyDir, "lib" + name),
-                Path.Combine(assemblyDir, "lib" + name + ".dylib")
+                assemblyDir,
+                "/opt/homebrew/lib",
+                "/usr/local/lib",
+                "/usr/lib",
+                "/usr/lib/x86_64-linux-gnu",
+                "/usr/lib/aarch64-linux-gnu"
             };
 
-            foreach (string candidate in candidates)
+            foreach (string dir in searchDirs)
             {
-                if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
-                    return true;
+                string[] candidates = new[]
+                {
+                    Path.Combine(dir, name),
+                    Path.Combine(dir, "lib" + name),
+                    Path.Combine(dir, "lib" + name + ".dylib"),
+                    Path.Combine(dir, "lib" + name + ".so"),
+                    Path.Combine(dir, "lib" + name + ".so.1")
+                };
+
+                foreach (string candidate in candidates)
+                {
+                    if (File.Exists(candidate) && NativeLibrary.TryLoad(candidate, out _))
+                        return true;
+                }
             }
 
             return false;
