@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Glfw.Structs;
 using Xunit;
@@ -119,6 +120,176 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(System.IntPtr.Zero, ramp.Green);
             Assert.Equal(System.IntPtr.Zero, ramp.Blue);
             Assert.Equal(0, ramp.Size);
+        }
+
+        /// <summary>
+        ///     Tests that explicit operator with default instance returns GammaRamp with empty arrays.
+        /// </summary>
+        [Fact]
+        public void ExplicitOperator_WithDefault_ReturnsEmptyArrays()
+        {
+            GammaRampInternal internalRamp = default;
+
+            GammaRamp ramp = (GammaRamp)internalRamp;
+
+            Assert.NotNull(ramp.Red);
+            Assert.NotNull(ramp.Green);
+            Assert.NotNull(ramp.Blue);
+            Assert.Equal(0u, ramp.Size);
+        }
+
+        /// <summary>
+        ///     Tests that explicit operator with allocated data converts correctly.
+        /// </summary>
+        [Fact]
+        public void ExplicitOperator_WithAllocatedData_ConvertsCorrectly()
+        {
+            const int size = 3;
+            ushort[] expectedRed = { 100, 200, 300 };
+            ushort[] expectedGreen = { 400, 500, 600 };
+            ushort[] expectedBlue = { 700, 800, 900 };
+
+            int bytes = size * sizeof(ushort);
+            IntPtr redPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr greenPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr bluePtr = Marshal.AllocHGlobal(bytes);
+
+            try
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    Marshal.WriteInt16(redPtr, i * sizeof(ushort), unchecked((short)expectedRed[i]));
+                    Marshal.WriteInt16(greenPtr, i * sizeof(ushort), unchecked((short)expectedGreen[i]));
+                    Marshal.WriteInt16(bluePtr, i * sizeof(ushort), unchecked((short)expectedBlue[i]));
+                }
+
+                GammaRampInternal internalRamp = CreateInternalRamp(redPtr, greenPtr, bluePtr, size);
+
+                GammaRamp ramp = (GammaRamp)internalRamp;
+
+                Assert.Equal(expectedRed, ramp.Red);
+                Assert.Equal(expectedGreen, ramp.Green);
+                Assert.Equal(expectedBlue, ramp.Blue);
+                Assert.Equal((uint)size, ramp.Size);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(redPtr);
+                Marshal.FreeHGlobal(greenPtr);
+                Marshal.FreeHGlobal(bluePtr);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that explicit operator with single element works correctly.
+        /// </summary>
+        [Fact]
+        public void ExplicitOperator_WithSingleElement_ConvertsCorrectly()
+        {
+            const int size = 1;
+            ushort[] expectedRed = { 42 };
+            ushort[] expectedGreen = { 99 };
+            ushort[] expectedBlue = { 255 };
+
+            int bytes = size * sizeof(ushort);
+            IntPtr redPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr greenPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr bluePtr = Marshal.AllocHGlobal(bytes);
+
+            try
+            {
+                Marshal.WriteInt16(redPtr, 0, unchecked((short)expectedRed[0]));
+                Marshal.WriteInt16(greenPtr, 0, unchecked((short)expectedGreen[0]));
+                Marshal.WriteInt16(bluePtr, 0, unchecked((short)expectedBlue[0]));
+
+                GammaRampInternal internalRamp = CreateInternalRamp(redPtr, greenPtr, bluePtr, size);
+
+                GammaRamp ramp = (GammaRamp)internalRamp;
+
+                Assert.Equal(expectedRed, ramp.Red);
+                Assert.Equal(expectedGreen, ramp.Green);
+                Assert.Equal(expectedBlue, ramp.Blue);
+                Assert.Equal((uint)size, ramp.Size);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(redPtr);
+                Marshal.FreeHGlobal(greenPtr);
+                Marshal.FreeHGlobal(bluePtr);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that explicit operator with max ushort values works correctly.
+        /// </summary>
+        [Fact]
+        public void ExplicitOperator_WithMaxValues_ConvertsCorrectly()
+        {
+            const int size = 2;
+            ushort[] expectedRed = { ushort.MaxValue, ushort.MinValue };
+            ushort[] expectedGreen = { ushort.MaxValue, ushort.MinValue };
+            ushort[] expectedBlue = { ushort.MaxValue, ushort.MinValue };
+
+            int bytes = size * sizeof(ushort);
+            IntPtr redPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr greenPtr = Marshal.AllocHGlobal(bytes);
+            IntPtr bluePtr = Marshal.AllocHGlobal(bytes);
+
+            try
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    Marshal.WriteInt16(redPtr, i * sizeof(ushort), unchecked((short)expectedRed[i]));
+                    Marshal.WriteInt16(greenPtr, i * sizeof(ushort), unchecked((short)expectedGreen[i]));
+                    Marshal.WriteInt16(bluePtr, i * sizeof(ushort), unchecked((short)expectedBlue[i]));
+                }
+
+                GammaRampInternal internalRamp = CreateInternalRamp(redPtr, greenPtr, bluePtr, size);
+
+                GammaRamp ramp = (GammaRamp)internalRamp;
+
+                Assert.Equal(expectedRed, ramp.Red);
+                Assert.Equal(expectedGreen, ramp.Green);
+                Assert.Equal(expectedBlue, ramp.Blue);
+                Assert.Equal((uint)size, ramp.Size);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(redPtr);
+                Marshal.FreeHGlobal(greenPtr);
+                Marshal.FreeHGlobal(bluePtr);
+            }
+        }
+
+        /// <summary>
+        ///     Creates a GammaRampInternal with the specified field values via boxing.
+        /// </summary>
+        private static GammaRampInternal CreateInternalRamp(IntPtr red, IntPtr green, IntPtr blue, int size)
+        {
+            object boxed = default(GammaRampInternal);
+            System.Reflection.FieldInfo[] fields = typeof(GammaRampInternal).GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+            for (int i = 0; i < fields.Length; i++)
+            {
+                string name = fields[i].Name;
+                if (name == "Red")
+                {
+                    fields[i].SetValue(boxed, red);
+                }
+                else if (name == "Green")
+                {
+                    fields[i].SetValue(boxed, green);
+                }
+                else if (name == "Blue")
+                {
+                    fields[i].SetValue(boxed, blue);
+                }
+                else if (name == "Size")
+                {
+                    fields[i].SetValue(boxed, size);
+                }
+            }
+
+            return (GammaRampInternal)boxed;
         }
     }
 }
