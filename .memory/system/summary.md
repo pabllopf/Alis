@@ -109,3 +109,27 @@ CoverageAfter: 14.0%
 TestsAdded: 73
 Commit: ea2ac2315
 Status: SUCCESS
+
+Timestamp: 2026-07-26T10:15:00Z
+File: 1_Presentation/Extension/Graphic/Sdl2/src/Sdl2Ttf/SdlTtf.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 1
+Commit: 8c0d83d98
+Status: BLOCKED_BY_PRODUCTION_CODE
+
+Timestamp: 2026-07-26T10:20:00Z
+File: 1_Presentation/Extension/Media/FFmpeg/src/Video/AudioVideoWriter.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 3
+Commit: 2ed489a5d
+Status: BLOCKED_BY_PRODUCTION_CODE
+
+Timestamp: 2026-07-26T10:25:00Z
+File: 1_Presentation/Extension/Media/FFmpeg/src/FFMpegWrapper.cs
+CoverageBefore: 0.0%
+CoverageAfter: 0.0%
+TestsAdded: 0
+Commit: N/A
+Status: BLOCKED_BY_PRODUCTION_CODE
