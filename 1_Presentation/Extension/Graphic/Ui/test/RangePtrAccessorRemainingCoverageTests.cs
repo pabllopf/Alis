@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Matrix;
 using Xunit;
 
@@ -78,6 +79,75 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(new IntPtr(1), 0);
             Assert.Throws<CustomIndexOutOfRangeException>(() => accessor[0]);
+        }
+
+        /// <summary>
+        ///     Tests that indexer returns correct value for int
+        /// </summary>
+        [Fact]
+        public void Indexer_ShouldReturnCorrectValue_ForInt()
+        {
+            int[] expected = { 10, 20, 30 };
+            IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * expected.Length);
+            try
+            {
+                Marshal.Copy(expected, 0, ptr, expected.Length);
+                RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(ptr, expected.Length);
+
+                Assert.Equal(10, accessor[0]);
+                Assert.Equal(20, accessor[1]);
+                Assert.Equal(30, accessor[2]);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that indexer returns correct value for byte
+        /// </summary>
+        [Fact]
+        public void Indexer_ShouldReturnCorrectValue_ForByte()
+        {
+            byte[] expected = { 0xAB, 0xCD, 0xEF };
+            IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<byte>() * expected.Length);
+            try
+            {
+                Marshal.Copy(expected, 0, ptr, expected.Length);
+                RangePtrAccessor<byte> accessor = new RangePtrAccessor<byte>(ptr, expected.Length);
+
+                Assert.Equal(0xAB, accessor[0]);
+                Assert.Equal(0xCD, accessor[1]);
+                Assert.Equal(0xEF, accessor[2]);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that indexer reads from correct offset
+        /// </summary>
+        [Fact]
+        public void Indexer_ShouldReadFromCorrectOffset()
+        {
+            int[] expected = { 100, 200, 300, 400, 500 };
+            IntPtr ptr = Marshal.AllocHGlobal(Marshal.SizeOf<int>() * expected.Length);
+            try
+            {
+                Marshal.Copy(expected, 0, ptr, expected.Length);
+                RangePtrAccessor<int> accessor = new RangePtrAccessor<int>(ptr, expected.Length);
+
+                Assert.Equal(400, accessor[3]);
+                Assert.Equal(500, accessor[4]);
+                Assert.Equal(100, accessor[0]);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(ptr);
+            }
         }
     }
 }
