@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Shapes.Rectangle;
 using Alis.Extension.Graphic.Sdl2.Structs;
 using Xunit;
 
@@ -193,6 +194,23 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Surface surface = default;
 
             Assert.Equal(0, surface.refCount);
+        }
+
+        /// <summary>
+        ///     Verifies that ClipRect property can be set and read.
+        /// </summary>
+        [Fact]
+        public void ClipRect_ShouldBeSettable()
+        {
+            Surface surface = default;
+            RectangleI expected = new RectangleI(10, 20, 30, 40);
+
+            surface.ClipRect = expected;
+
+            Assert.Equal(expected.X, surface.ClipRect.X);
+            Assert.Equal(expected.Y, surface.ClipRect.Y);
+            Assert.Equal(expected.W, surface.ClipRect.W);
+            Assert.Equal(expected.H, surface.ClipRect.H);
         }
     }
 }
