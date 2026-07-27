@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
@@ -115,6 +118,29 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             MethodInfo[] methods = typeof(ImGui).GetMethods(BindingFlags.Public | BindingFlags.Static).Where(m => m.Name == "DragFloatRange2").ToArray();
             Assert.True(methods.Length >= 6);
+        }
+
+        /// <summary>
+        ///     Verifies DebugCheckVersionAndDataLayout executes without error.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void DebugCheckVersionAndDataLayout_ShouldExecute()
+        {
+            IntPtr ctx = ImGui.CreateContext();
+            ImGui.SetCurrentContext(ctx);
+
+            string version = ImGui.GetVersion();
+            bool result = ImGui.DebugCheckVersionAndDataLayout(
+                version,
+                (uint)Marshal.SizeOf<ImGuiIo>(),
+                (uint)Marshal.SizeOf<ImGuiStyle>(),
+                (uint)Marshal.SizeOf<Vector2F>(),
+                (uint)Marshal.SizeOf<Vector4F>(),
+                (uint)Marshal.SizeOf<ImDrawVert>(),
+                (uint)Marshal.SizeOf<ushort>());
+            _ = result;
+
+            ImGuiNative.igDestroyContext(ctx);
         }
     }
 }
