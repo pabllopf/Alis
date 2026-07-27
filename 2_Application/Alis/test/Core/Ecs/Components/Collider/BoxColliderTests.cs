@@ -28,12 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Components.Collider;
+using Alis.Core.Ecs.Systems.Scope;
+using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Contacts;
 using Moq;
 using Xunit;
 
@@ -527,6 +532,452 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(5f, transform.Position.X);
             Assert.Equal(5f, transform.Position.Y);
             Assert.Equal(1.0f, transform.Rotation);
+        }
+
+        #endregion
+
+        #region OnUpdate — Body Present Path
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnUpdate" /> copies Body position and rotation
+        ///     to the Transform when Body is not null.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WhenBodyIsPresent_UpdatesTransformFromBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(0f, 0f), 0f));
+            BoxCollider collider = new BoxCollider
+            {
+                Context = new Context(),
+                SizeOfTexture = new Vector2F(1f, 1f),
+                RelativePosition = Vector2F.Zero,
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(gameObject);
+            Assert.NotNull(collider.Body);
+
+            collider.Body.Position = new Vector2F(15f, 25f);
+            collider.Body.Rotation = 1.5f;
+
+            collider.OnUpdate(gameObject);
+
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(15f, transform.Position.X);
+            Assert.Equal(25f, transform.Position.Y);
+            Assert.Equal(1.5f, transform.Rotation);
+        }
+
+        /// <summary>
+        ///     Verifies that multiple calls to <see cref="BoxCollider.OnUpdate" /> with Body present
+        ///     continuously update the Transform.
+        /// </summary>
+        [Fact]
+        public void OnUpdate_WhenBodyIsPresent_MultipleCallsSyncTransform()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(0f, 0f), 0f));
+            BoxCollider collider = new BoxCollider
+            {
+                Context = new Context(),
+                SizeOfTexture = new Vector2F(1f, 1f),
+                RelativePosition = Vector2F.Zero,
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(gameObject);
+
+            collider.Body.Position = new Vector2F(3f, 7f);
+            collider.Body.Rotation = 0.5f;
+            collider.OnUpdate(gameObject);
+
+            ref Transform transform = ref gameObject.Get<Transform>();
+            Assert.Equal(3f, transform.Position.X);
+            Assert.Equal(7f, transform.Position.Y);
+            Assert.Equal(0.5f, transform.Rotation);
+
+            collider.Body.Position = new Vector2F(10f, 20f);
+            collider.Body.Rotation = 2.0f;
+            collider.OnUpdate(gameObject);
+
+            Assert.Equal(10f, transform.Position.X);
+            Assert.Equal(20f, transform.Position.Y);
+            Assert.Equal(2.0f, transform.Rotation);
+        }
+
+        #endregion
+
+        #region OnStart — Full Path
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnStart" /> creates a Body and assigns all
+        ///     properties from the collider to the body.
+        /// </summary>
+        [Fact]
+        public void OnStart_WithContext_CreatesBodyAndSetsProperties()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create(new Transform(new Vector2F(5f, 10f), 0.5f, new Vector2F(2f, 2f)));
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(4f, 8f),
+                Rotation = 0.25f,
+                RelativePosition = new Vector2F(1f, 2f),
+                BodyType = BodyType.Dynamic,
+                Restitution = 0.7f,
+                Friction = 0.3f,
+                FixedRotation = true,
+                Mass = 3f,
+                IgnoreGravity = true,
+                LinearVelocity = new Vector2F(5f, 10f),
+                IsTrigger = false
+            };
+
+            collider.OnStart(gameObject);
+
+            Assert.NotNull(collider.Body);
+            Assert.Equal(BodyType.Dynamic, collider.Body.GetBodyType);
+            Assert.Same(collider.Body, collider.Body);
+            Assert.False(collider.Body.SleepingAllowed);
+            Assert.False(collider.Body.IsBullet);
+            Assert.True(collider.Body.IgnoreGravity);
+            Assert.True(collider.Body.Awake);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnStart" /> does nothing when the GameObject
+        ///     lacks a Transform component.
+        /// </summary>
+        [Fact]
+        public void OnStart_WhenGameObjectLacksTransform_DoesNotCreateBody()
+        {
+            using Scene scene = new Scene();
+            GameObject gameObject = scene.Create();
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f)
+            };
+
+            collider.OnStart(gameObject);
+
+            Assert.Null(collider.Body);
+        }
+
+        #endregion
+
+        #region OnCollision — Private Method (via Reflection)
+
+        /// <summary>
+        ///     Verifies that the private <see cref="BoxCollider.OnCollision" /> method executes both
+        ///     branches without throwing, covering the first fixture matching ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnCollision_WhenFixtureAMatchesThisGameObject_ReturnsTrue()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            otherGo.Add<BoxCollider>(new BoxCollider());
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) selfGo;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) otherGo;
+
+            PolygonShape shape = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shape);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onCollision = typeof(BoxCollider).GetMethod("OnCollision",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            object result = onCollision.Invoke(collider, new object[] { fixtureA, fixtureB, contact });
+
+            Assert.Equal(true, result);
+        }
+
+        /// <summary>
+        ///     Verifies that the private <see cref="BoxCollider.OnCollision" /> method handles the
+        ///     branch where fixtureB matches ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnCollision_WhenFixtureBMatchesThisGameObject_ReturnsTrue()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            otherGo.Add<BoxCollider>(new BoxCollider());
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) otherGo;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) selfGo;
+
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shapeA);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onCollision = typeof(BoxCollider).GetMethod("OnCollision",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            object result = onCollision.Invoke(collider, new object[] { fixtureA, fixtureB, contact });
+
+            Assert.Equal(true, result);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnCollision" /> returns true when neither
+        ///     fixture matches ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnCollision_WhenNeitherFixtureMatchesThisGameObject_ReturnsTrue()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherA = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherB = scene.Create(new Transform(Vector2F.Zero, 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) otherA;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) otherB;
+
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shapeA);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onCollision = typeof(BoxCollider).GetMethod("OnCollision",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            object result = onCollision.Invoke(collider, new object[] { fixtureA, fixtureB, contact });
+
+            Assert.Equal(true, result);
+        }
+
+        #endregion
+
+        #region OnSeparation — Internal Method (via Reflection)
+
+        /// <summary>
+        ///     Verifies that the <see cref="BoxCollider.OnSeparation" /> method executes the
+        ///     branch where fixtureA matches ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnSeparation_WhenFixtureAMatchesThisGameObject_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            otherGo.Add<BoxCollider>(new BoxCollider());
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) selfGo;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) otherGo;
+
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shapeA);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onSeparation = typeof(BoxCollider).GetMethod("OnSeparation",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            Exception exception = Record.Exception(() =>
+                onSeparation.Invoke(collider, new object[] { fixtureA, fixtureB, contact }));
+
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Verifies that the <see cref="BoxCollider.OnSeparation" /> method executes the
+        ///     branch where fixtureB matches ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnSeparation_WhenFixtureBMatchesThisGameObject_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            otherGo.Add<BoxCollider>(new BoxCollider());
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) otherGo;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) selfGo;
+
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shapeA);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onSeparation = typeof(BoxCollider).GetMethod("OnSeparation",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            Exception exception = Record.Exception(() =>
+                onSeparation.Invoke(collider, new object[] { fixtureA, fixtureB, contact }));
+
+            Assert.Null(exception);
+        }
+
+        /// <summary>
+        ///     Verifies that <see cref="BoxCollider.OnSeparation" /> does nothing when neither
+        ///     fixture matches ThisGameObject.
+        /// </summary>
+        [Fact]
+        public void OnSeparation_WhenNeitherFixtureMatchesThisGameObject_DoesNotThrow()
+        {
+            using Scene scene = new Scene();
+            GameObject selfGo = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherA = scene.Create(new Transform(Vector2F.Zero, 0f));
+            GameObject otherB = scene.Create(new Transform(Vector2F.Zero, 0f));
+
+            Context context = new Context();
+            BoxCollider collider = new BoxCollider
+            {
+                Context = context,
+                SizeOfTexture = new Vector2F(1f, 1f),
+                BodyType = BodyType.Dynamic
+            };
+            collider.OnStart(selfGo);
+            Assert.NotNull(collider.Body);
+
+            Alis.Core.Physic.Dynamics.Body bodyA = new Alis.Core.Physic.Dynamics.Body();
+            bodyA.Tag = (IGameObject) otherA;
+            Alis.Core.Physic.Dynamics.Body bodyB = new Alis.Core.Physic.Dynamics.Body();
+            bodyB.Tag = (IGameObject) otherB;
+
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureA = new Fixture(shapeA);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureA, bodyA);
+
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1f);
+            Fixture fixtureB = new Fixture(shapeB);
+            typeof(Fixture).GetProperty("GetBody").SetValue(fixtureB, bodyB);
+
+            Contact contact = (Contact) typeof(Contact).GetConstructor(
+                BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new[] { typeof(Fixture), typeof(int), typeof(Fixture), typeof(int) }, null)
+                .Invoke(new object[] { fixtureA, 0, fixtureB, 0 });
+
+            MethodInfo onSeparation = typeof(BoxCollider).GetMethod("OnSeparation",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+            Exception exception = Record.Exception(() =>
+                onSeparation.Invoke(collider, new object[] { fixtureA, fixtureB, contact }));
+
+            Assert.Null(exception);
+        }
+
+        #endregion
+
+        #region Context Property
+
+        /// <summary>
+        ///     Verifies that the Context property can be get and set.
+        /// </summary>
+        [Fact]
+        public void Context_CanBeGetAndSet()
+        {
+            BoxCollider collider = new BoxCollider();
+            Assert.Null(collider.Context);
+
+            Context context = new Context();
+            collider.Context = context;
+            Assert.Same(context, collider.Context);
+
+            collider.Context = null;
+            Assert.Null(collider.Context);
         }
 
         #endregion
