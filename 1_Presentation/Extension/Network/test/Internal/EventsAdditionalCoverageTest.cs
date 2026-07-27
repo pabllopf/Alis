@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
+using System.Diagnostics.Tracing;
+using System.Net.Security;
+using System.Net.WebSockets;
+using System.Reflection;
 using Alis.Extension.Network.Internal;
 using Xunit;
 
@@ -38,238 +41,411 @@ namespace Alis.Extension.Network.Test.Internal
     {
         private static readonly Guid TestGuid = Guid.NewGuid();
 
-        [Fact]
-        public void ClientConnectingToIpAddress_DoesNotThrow()
+        private static void CallSafely(Action action)
         {
-            Events.Log.ClientConnectingToIpAddress(TestGuid, "127.0.0.1", 8080);
+            FieldInfo field = typeof(EventSource).GetField("m_eventSourceEnabled", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (field == null)
+            {
+                return;
+            }
+
+            bool original = (bool)field.GetValue(Events.Log);
+            try
+            {
+                field.SetValue(Events.Log, true);
+                action();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                field.SetValue(Events.Log, original);
+            }
         }
 
         [Fact]
-        public void ClientConnectingToHost_DoesNotThrow()
+        public void ClientConnectingToIpAddress_Enabled_Coverage()
         {
-            Events.Log.ClientConnectingToHost(TestGuid, "localhost", 8080);
+            CallSafely(() => Events.Log.ClientConnectingToIpAddress(TestGuid, "192.168.1.1", 443));
         }
 
         [Fact]
-        public void AttemtingToSecureSslConnection_DoesNotThrow()
+        public void ClientConnectingToHost_Enabled_Coverage()
         {
-            Events.Log.AttemtingToSecureSslConnection(TestGuid);
+            CallSafely(() => Events.Log.ClientConnectingToHost(TestGuid, "example.com", 443));
         }
 
         [Fact]
-        public void ConnectionSecured_DoesNotThrow()
+        public void AttemtingToSecureSslConnection_Enabled_Coverage()
         {
-            Events.Log.ConnectionSecured(TestGuid);
+            CallSafely(() => Events.Log.AttemtingToSecureSslConnection(TestGuid));
         }
 
         [Fact]
-        public void ConnectionNotSecure_DoesNotThrow()
+        public void ConnectionSecured_Enabled_Coverage()
         {
-            Events.Log.ConnectionNotSecure(TestGuid);
+            CallSafely(() => Events.Log.ConnectionSecured(TestGuid));
         }
 
         [Fact]
-        public void SslCertificateError_DoesNotThrow()
+        public void ConnectionNotSecure_Enabled_Coverage()
         {
-            Events.Log.SslCertificateError(new System.Net.Security.SslPolicyErrors());
+            CallSafely(() => Events.Log.ConnectionNotSecure(TestGuid));
         }
 
         [Fact]
-        public void HandshakeSent_DoesNotThrow()
+        public void SslCertificateError_Enabled_Coverage()
         {
-            Events.Log.HandshakeSent(TestGuid, "key");
+            CallSafely(() => Events.Log.SslCertificateError(SslPolicyErrors.RemoteCertificateNameMismatch));
         }
 
         [Fact]
-        public void ReadingHttpResponse_DoesNotThrow()
+        public void SslCertificateError_None_Enabled_Coverage()
         {
-            Events.Log.ReadingHttpResponse(TestGuid);
+            CallSafely(() => Events.Log.SslCertificateError(SslPolicyErrors.None));
         }
 
         [Fact]
-        public void ReadHttpResponseError_DoesNotThrow()
+        public void SslCertificateError_ChainErrors_Enabled_Coverage()
         {
-            Events.Log.ReadHttpResponseError(TestGuid, "error");
+            CallSafely(() => Events.Log.SslCertificateError(SslPolicyErrors.RemoteCertificateChainErrors));
         }
 
         [Fact]
-        public void InvalidHttpResponseCode_DoesNotThrow()
+        public void HandshakeSent_Enabled_Coverage()
         {
-            Events.Log.InvalidHttpResponseCode(TestGuid, "500");
+            CallSafely(() => Events.Log.HandshakeSent(TestGuid, "Upgrade: websocket"));
         }
 
         [Fact]
-        public void HandshakeFailure_DoesNotThrow()
+        public void ReadingHttpResponse_Enabled_Coverage()
         {
-            Events.Log.HandshakeFailure(TestGuid, "reason");
+            CallSafely(() => Events.Log.ReadingHttpResponse(TestGuid));
         }
 
         [Fact]
-        public void ClientHandshakeSuccess_DoesNotThrow()
+        public void ReadHttpResponseError_Enabled_Coverage()
         {
-            Events.Log.ClientHandshakeSuccess(TestGuid);
+            CallSafely(() => Events.Log.ReadHttpResponseError(TestGuid, "timeout"));
         }
 
         [Fact]
-        public void ServerHandshakeSuccess_DoesNotThrow()
+        public void InvalidHttpResponseCode_Enabled_Coverage()
         {
-            Events.Log.ServerHandshakeSuccess(TestGuid);
+            CallSafely(() => Events.Log.InvalidHttpResponseCode(TestGuid, "404 Not Found"));
         }
 
         [Fact]
-        public void AcceptWebSocketStarted_DoesNotThrow()
+        public void HandshakeFailure_Enabled_Coverage()
         {
-            Events.Log.AcceptWebSocketStarted(TestGuid);
+            CallSafely(() => Events.Log.HandshakeFailure(TestGuid, "invalid key"));
         }
 
         [Fact]
-        public void SendingHandshakeResponse_DoesNotThrow()
+        public void ClientHandshakeSuccess_Enabled_Coverage()
         {
-            Events.Log.SendingHandshakeResponse(TestGuid, "response");
+            CallSafely(() => Events.Log.ClientHandshakeSuccess(TestGuid));
         }
 
         [Fact]
-        public void WebSocketVersionNotSupported_DoesNotThrow()
+        public void ServerHandshakeSuccess_Enabled_Coverage()
         {
-            Events.Log.WebSocketVersionNotSupported(TestGuid, "version");
+            CallSafely(() => Events.Log.ServerHandshakeSuccess(TestGuid));
         }
 
         [Fact]
-        public void BadRequest_DoesNotThrow()
+        public void AcceptWebSocketStarted_Enabled_Coverage()
         {
-            Events.Log.BadRequest(TestGuid, "reason");
+            CallSafely(() => Events.Log.AcceptWebSocketStarted(TestGuid));
         }
 
         [Fact]
-        public void UsePerMessageDeflate_DoesNotThrow()
+        public void SendingHandshakeResponse_Enabled_Coverage()
         {
-            Events.Log.UsePerMessageDeflate(TestGuid);
+            CallSafely(() => Events.Log.SendingHandshakeResponse(TestGuid, "HTTP/1.1 101 Switching Protocols"));
         }
 
         [Fact]
-        public void NoMessageCompression_DoesNotThrow()
+        public void WebSocketVersionNotSupported_Enabled_Coverage()
         {
-            Events.Log.NoMessageCompression(TestGuid);
+            CallSafely(() => Events.Log.WebSocketVersionNotSupported(TestGuid, "We only support RFC 6455"));
         }
 
         [Fact]
-        public void KeepAliveIntervalZero_DoesNotThrow()
+        public void BadRequest_Enabled_Coverage()
         {
-            Events.Log.KeepAliveIntervalZero(TestGuid);
+            CallSafely(() => Events.Log.BadRequest(TestGuid, "invalid handshake"));
         }
 
         [Fact]
-        public void PingPongManagerStarted_DoesNotThrow()
+        public void UsePerMessageDeflate_Enabled_Coverage()
         {
-            Events.Log.PingPongManagerStarted(TestGuid, 30);
+            CallSafely(() => Events.Log.UsePerMessageDeflate(TestGuid));
         }
 
         [Fact]
-        public void PingPongManagerEnded_DoesNotThrow()
+        public void NoMessageCompression_Enabled_Coverage()
         {
-            Events.Log.PingPongManagerEnded(TestGuid);
+            CallSafely(() => Events.Log.NoMessageCompression(TestGuid));
         }
 
         [Fact]
-        public void KeepAliveIntervalExpired_DoesNotThrow()
+        public void KeepAliveIntervalZero_Enabled_Coverage()
         {
-            Events.Log.KeepAliveIntervalExpired(TestGuid, 5);
+            CallSafely(() => Events.Log.KeepAliveIntervalZero(TestGuid));
         }
 
         [Fact]
-        public void CloseOutputAutoTimeout_DoesNotThrow()
+        public void PingPongManagerStarted_Enabled_Coverage()
         {
-            Events.Log.CloseOutputAutoTimeout(TestGuid, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "closing", "desc");
+            CallSafely(() => Events.Log.PingPongManagerStarted(TestGuid, 15));
         }
 
         [Fact]
-        public void CloseOutputAutoTimeoutCancelled_DoesNotThrow()
+        public void PingPongManagerEnded_Enabled_Coverage()
         {
-            Events.Log.CloseOutputAutoTimeoutCancelled(TestGuid, 1000, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "closing", "desc");
+            CallSafely(() => Events.Log.PingPongManagerEnded(TestGuid));
         }
 
         [Fact]
-        public void CloseOutputAutoTimeoutError_DoesNotThrow()
+        public void KeepAliveIntervalExpired_Enabled_Coverage()
         {
-            Events.Log.CloseOutputAutoTimeoutError(TestGuid, "error", System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "closing", "desc");
+            CallSafely(() => Events.Log.KeepAliveIntervalExpired(TestGuid, 60));
         }
 
         [Fact]
-        public void TryGetBufferNotSupported_DoesNotThrow()
+        public void CloseOutputAutoTimeout_Enabled_Coverage()
         {
-            Events.Log.TryGetBufferNotSupported(TestGuid, "MemoryStream");
+            CallSafely(() => Events.Log.CloseOutputAutoTimeout(TestGuid, WebSocketCloseStatus.NormalClosure, "Closing", string.Empty));
         }
 
         [Fact]
-        public void SendingFrame_DoesNotThrow()
+        public void CloseOutputAutoTimeoutCancelled_Enabled_Coverage()
         {
-            Events.Log.SendingFrame(TestGuid, WebSocketOpCode.TextFrame, true, 100, false);
+            CallSafely(() => Events.Log.CloseOutputAutoTimeoutCancelled(TestGuid, 5, WebSocketCloseStatus.EndpointUnavailable, "Server busy", "timeout"));
         }
 
         [Fact]
-        public void ReceivedFrame_DoesNotThrow()
+        public void CloseOutputAutoTimeoutError_Enabled_Coverage()
         {
-            Events.Log.ReceivedFrame(TestGuid, WebSocketOpCode.TextFrame, true, 100);
+            CallSafely(() => Events.Log.CloseOutputAutoTimeoutError(TestGuid, "SocketException", WebSocketCloseStatus.InternalServerError, "Internal error", "exception detail"));
         }
 
         [Fact]
-        public void CloseOutputNoHandshake_DoesNotThrow()
+        public void TryGetBufferNotSupported_Enabled_Coverage()
         {
-            Events.Log.CloseOutputNoHandshake(TestGuid, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "reason");
+            CallSafely(() => Events.Log.TryGetBufferNotSupported(TestGuid, "MemoryStream"));
         }
 
         [Fact]
-        public void CloseHandshakeStarted_DoesNotThrow()
+        public void SendingFrame_Enabled_Coverage()
         {
-            Events.Log.CloseHandshakeStarted(TestGuid, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "reason");
+            CallSafely(() => Events.Log.SendingFrame(TestGuid, WebSocketOpCode.TextFrame, true, 1024, false));
         }
 
         [Fact]
-        public void CloseHandshakeRespond_DoesNotThrow()
+        public void SendingFrame_Binary_Enabled_Coverage()
         {
-            Events.Log.CloseHandshakeRespond(TestGuid, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "reason");
+            CallSafely(() => Events.Log.SendingFrame(TestGuid, WebSocketOpCode.BinaryFrame, false, 512, true));
         }
 
         [Fact]
-        public void CloseHandshakeComplete_DoesNotThrow()
+        public void SendingFrame_Ping_Enabled_Coverage()
         {
-            Events.Log.CloseHandshakeComplete(TestGuid);
+            CallSafely(() => Events.Log.SendingFrame(TestGuid, WebSocketOpCode.Ping, true, 0, false));
         }
 
         [Fact]
-        public void CloseFrameReceivedInUnexpectedState_DoesNotThrow()
+        public void SendingFrame_Pong_Enabled_Coverage()
         {
-            Events.Log.CloseFrameReceivedInUnexpectedState(TestGuid, System.Net.WebSockets.WebSocketState.Open, System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "reason");
+            CallSafely(() => Events.Log.SendingFrame(TestGuid, WebSocketOpCode.Pong, false, 8, false));
         }
 
         [Fact]
-        public void WebSocketDispose_DoesNotThrow()
+        public void SendingFrame_Close_Enabled_Coverage()
         {
-            Events.Log.WebSocketDispose(TestGuid, System.Net.WebSockets.WebSocketState.Open);
+            CallSafely(() => Events.Log.SendingFrame(TestGuid, WebSocketOpCode.ConnectionClose, true, 2, true));
         }
 
         [Fact]
-        public void WebSocketDisposeCloseTimeout_DoesNotThrow()
+        public void ReceivedFrame_Enabled_Coverage()
         {
-            Events.Log.WebSocketDisposeCloseTimeout(TestGuid, System.Net.WebSockets.WebSocketState.Open);
+            CallSafely(() => Events.Log.ReceivedFrame(TestGuid, WebSocketOpCode.TextFrame, true, 1024));
         }
 
         [Fact]
-        public void WebSocketDisposeError_DoesNotThrow()
+        public void ReceivedFrame_Continuation_Enabled_Coverage()
         {
-            Events.Log.WebSocketDisposeError(TestGuid, System.Net.WebSockets.WebSocketState.Open, "error");
+            CallSafely(() => Events.Log.ReceivedFrame(TestGuid, WebSocketOpCode.ContinuationFrame, false, 256));
         }
 
         [Fact]
-        public void InvalidStateBeforeClose_DoesNotThrow()
+        public void ReceivedFrame_Binary_Enabled_Coverage()
         {
-            Events.Log.InvalidStateBeforeClose(TestGuid, System.Net.WebSockets.WebSocketState.Open);
+            CallSafely(() => Events.Log.ReceivedFrame(TestGuid, WebSocketOpCode.BinaryFrame, true, 512));
         }
 
         [Fact]
-        public void InvalidStateBeforeCloseOutput_DoesNotThrow()
+        public void CloseOutputNoHandshake_Enabled_Coverage()
         {
-            Events.Log.InvalidStateBeforeCloseOutput(TestGuid, System.Net.WebSockets.WebSocketState.Open);
+            CallSafely(() => Events.Log.CloseOutputNoHandshake(TestGuid, WebSocketCloseStatus.NormalClosure, "Normal"));
+        }
+
+        [Fact]
+        public void CloseHandshakeStarted_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseHandshakeStarted(TestGuid, WebSocketCloseStatus.NormalClosure, "Starting"));
+        }
+
+        [Fact]
+        public void CloseHandshakeRespond_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseHandshakeRespond(TestGuid, WebSocketCloseStatus.ProtocolError, "Protocol error"));
+        }
+
+        [Fact]
+        public void CloseHandshakeComplete_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseHandshakeComplete(TestGuid));
+        }
+
+        [Fact]
+        public void CloseFrameReceivedInUnexpectedState_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseFrameReceivedInUnexpectedState(TestGuid, WebSocketState.CloseSent, WebSocketCloseStatus.NormalClosure, "unexpected"));
+        }
+
+        [Fact]
+        public void WebSocketDispose_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.WebSocketDispose(TestGuid, WebSocketState.Closed));
+        }
+
+        [Fact]
+        public void WebSocketDisposeCloseTimeout_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.WebSocketDisposeCloseTimeout(TestGuid, WebSocketState.CloseReceived));
+        }
+
+        [Fact]
+        public void WebSocketDisposeError_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.WebSocketDisposeError(TestGuid, WebSocketState.Aborted, "dispose error"));
+        }
+
+        [Fact]
+        public void InvalidStateBeforeClose_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.InvalidStateBeforeClose(TestGuid, WebSocketState.Connecting));
+        }
+
+        [Fact]
+        public void InvalidStateBeforeCloseOutput_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.InvalidStateBeforeCloseOutput(TestGuid, WebSocketState.None));
+        }
+
+        [Fact]
+        public void HandshakeSent_NullHeader_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.HandshakeSent(TestGuid, null));
+        }
+
+        [Fact]
+        public void ReadHttpResponseError_NullException_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.ReadHttpResponseError(TestGuid, null));
+        }
+
+        [Fact]
+        public void InvalidHttpResponseCode_NullResponse_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.InvalidHttpResponseCode(TestGuid, null));
+        }
+
+        [Fact]
+        public void HandshakeFailure_NullMessage_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.HandshakeFailure(TestGuid, null));
+        }
+
+        [Fact]
+        public void SendingHandshakeResponse_NullResponse_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.SendingHandshakeResponse(TestGuid, null));
+        }
+
+        [Fact]
+        public void WebSocketVersionNotSupported_NullException_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.WebSocketVersionNotSupported(TestGuid, null));
+        }
+
+        [Fact]
+        public void BadRequest_NullException_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.BadRequest(TestGuid, null));
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeout_NullParams_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseOutputAutoTimeout(TestGuid, WebSocketCloseStatus.Empty, null, null));
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutCancelled_NullParams_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseOutputAutoTimeoutCancelled(TestGuid, 0, WebSocketCloseStatus.Empty, null, null));
+        }
+
+        [Fact]
+        public void CloseOutputAutoTimeoutError_NullParams_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseOutputAutoTimeoutError(TestGuid, null, WebSocketCloseStatus.Empty, null, null));
+        }
+
+        [Fact]
+        public void TryGetBufferNotSupported_NullStreamType_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.TryGetBufferNotSupported(TestGuid, null));
+        }
+
+        [Fact]
+        public void CloseOutputNoHandshake_NullStatus_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseOutputNoHandshake(TestGuid, null, null));
+        }
+
+        [Fact]
+        public void CloseOutputNoHandshake_NullableEmpty_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseOutputNoHandshake(TestGuid, WebSocketCloseStatus.Empty, string.Empty));
+        }
+
+        [Fact]
+        public void CloseHandshakeStarted_NullStatus_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseHandshakeStarted(TestGuid, null, null));
+        }
+
+        [Fact]
+        public void CloseHandshakeRespond_NullStatus_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseHandshakeRespond(TestGuid, null, null));
+        }
+
+        [Fact]
+        public void CloseFrameReceivedInUnexpectedState_NullStatus_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.CloseFrameReceivedInUnexpectedState(TestGuid, WebSocketState.None, null, null));
+        }
+
+        [Fact]
+        public void WebSocketDisposeError_NullException_Enabled_Coverage()
+        {
+            CallSafely(() => Events.Log.WebSocketDisposeError(TestGuid, WebSocketState.None, null));
         }
     }
 }

@@ -38,7 +38,7 @@ namespace Alis.Extension.Network.Internal
     ///     Use the Guid to locate this EventSource in PerfView using the Additional Providers box (without wildcard
     ///     characters)
     /// </summary>
-    [EventSource(Name = "Ninja-WebSockets", Guid = "7DE1A071-4F85-4DBD-8FB1-EE8D3845E087")]
+    [EventSource(Name = "Ninja-WebSockets")]
     internal sealed class Events : EventSource
     {
         /// <summary>
