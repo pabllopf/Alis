@@ -34,52 +34,203 @@ using Xunit;
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
     /// <summary>
-    ///     The im plot rect test class
+    ///     Provides unit coverage for <see cref="ImPlotRect" /> struct.
     /// </summary>
     public class ImPlotRectTest
     {
         /// <summary>
-        ///     Tests that x should be initialized
+        ///     Tests that X and Y should be initialized correctly.
         /// </summary>
         [RequireCImguiSystemFact]
-        public void X_ShouldBeInitialized()
+        public void XAndY_ShouldBeInitializedCorrectly()
         {
-            ImPlotRect rect = new ImPlotRect();
-            Assert.Equal(default(ImPlotRange), rect.X);
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
+            };
+
+            Assert.Equal(0.0, rect.X.Min);
+            Assert.Equal(100.0, rect.X.Max);
+            Assert.Equal(0.0, rect.Y.Min);
+            Assert.Equal(200.0, rect.Y.Max);
         }
 
         /// <summary>
-        ///     Tests that y should be initialized
+        ///     Tests that X should be set correctly.
         /// </summary>
         [RequireCImguiSystemFact]
-        public void Y_ShouldBeInitialized()
+        public void X_ShouldBeSetCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = -50.5, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
+            };
+
+            Assert.Equal(-50.5, rect.X.Min);
+            Assert.Equal(100.0, rect.X.Max);
+        }
+
+        /// <summary>
+        ///     Tests that Y should be set correctly.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void Y_ShouldBeSetCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 999.99 }
+            };
+
+            Assert.Equal(0.0, rect.Y.Min);
+            Assert.Equal(999.99, rect.Y.Max);
+        }
+
+        /// <summary>
+        ///     Tests that X and Y can be modified after initialization.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void XAndY_ShouldBeModifiable()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
+            };
+
+            rect.X = new ImPlotRange { Min = -100.0, Max = 50.0 };
+            rect.Y = new ImPlotRange { Min = -200.0, Max = 300.0 };
+
+            Assert.Equal(-100.0, rect.X.Min);
+            Assert.Equal(50.0, rect.X.Max);
+            Assert.Equal(-200.0, rect.Y.Min);
+            Assert.Equal(300.0, rect.Y.Max);
+        }
+
+        /// <summary>
+        ///     Tests that default struct initialization sets X and Y to default ImPlotRange.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void DefaultInitialization_ShouldSetXAndYToDefault()
         {
             ImPlotRect rect = new ImPlotRect();
+
+            Assert.Equal(default(ImPlotRange), rect.X);
             Assert.Equal(default(ImPlotRange), rect.Y);
         }
 
         /// <summary>
-        ///     Tests that x should set and get correctly
+        ///     Tests that struct equality works correctly.
         /// </summary>
         [RequireCImguiSystemFact]
-        public void X_Should_SetAndGetCorrectly()
+        public void Equality_ShouldWorkCorrectly()
         {
-            ImPlotRect rect = new ImPlotRect();
-            ImPlotRange range = new ImPlotRange();
-            rect.X = range;
-            Assert.Equal(range, rect.X);
+            ImPlotRect rect1 = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
+            };
+            ImPlotRect rect2 = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
+            };
+            ImPlotRect rect3 = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 100.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 300.0 }
+            };
+
+            Assert.Equal(rect1, rect2);
+            Assert.NotEqual(rect1, rect3);
         }
 
         /// <summary>
-        ///     Tests that y should set and get correctly
+        ///     Tests that negative values can be used for X and Y ranges.
         /// </summary>
         [RequireCImguiSystemFact]
-        public void Y_Should_SetAndGetCorrectly()
+        public void NegativeValues_ShouldBeSupported()
         {
-            ImPlotRect rect = new ImPlotRect();
-            ImPlotRange range = new ImPlotRange();
-            rect.Y = range;
-            Assert.Equal(range, rect.Y);
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = -1000.0, Max = -500.0 },
+                Y = new ImPlotRange { Min = -2000.0, Max = -1000.0 }
+            };
+
+            Assert.Equal(-1000.0, rect.X.Min);
+            Assert.Equal(-500.0, rect.X.Max);
+            Assert.Equal(-2000.0, rect.Y.Min);
+            Assert.Equal(-1000.0, rect.Y.Max);
+        }
+
+        /// <summary>
+        ///     Tests that large double values are supported for X and Y ranges.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void LargeDoubleValues_ShouldBeSupported()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = double.MinValue, Max = double.MaxValue },
+                Y = new ImPlotRange { Min = double.MinValue, Max = double.MaxValue }
+            };
+
+            Assert.Equal(double.MinValue, rect.X.Min);
+            Assert.Equal(double.MaxValue, rect.X.Max);
+            Assert.Equal(double.MinValue, rect.Y.Min);
+            Assert.Equal(double.MaxValue, rect.Y.Max);
+        }
+
+        /// <summary>
+        ///     Tests that zero values are supported for X and Y ranges.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void ZeroValues_ShouldBeSupported()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 0.0, Max = 0.0 },
+                Y = new ImPlotRange { Min = 0.0, Max = 0.0 }
+            };
+
+            Assert.Equal(0.0, rect.X.Min);
+            Assert.Equal(0.0, rect.X.Max);
+            Assert.Equal(0.0, rect.Y.Min);
+            Assert.Equal(0.0, rect.Y.Max);
+        }
+
+        /// <summary>
+        ///     Tests that struct with only X set works correctly.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void OnlyXSet_ShouldWorkCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                X = new ImPlotRange { Min = 10.0, Max = 20.0 }
+            };
+
+            Assert.Equal(10.0, rect.X.Min);
+            Assert.Equal(20.0, rect.X.Max);
+            Assert.Equal(default(ImPlotRange), rect.Y);
+        }
+
+        /// <summary>
+        ///     Tests that struct with only Y set works correctly.
+        /// </summary>
+        [RequireCImguiSystemFact]
+        public void OnlyYSet_ShouldWorkCorrectly()
+        {
+            ImPlotRect rect = new ImPlotRect
+            {
+                Y = new ImPlotRange { Min = 30.0, Max = 40.0 }
+            };
+
+            Assert.Equal(default(ImPlotRange), rect.X);
+            Assert.Equal(30.0, rect.Y.Min);
+            Assert.Equal(40.0, rect.Y.Max);
         }
     }
 }
