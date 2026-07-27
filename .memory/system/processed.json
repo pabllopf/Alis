@@ -138,7 +138,10 @@
     "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/StbUndoState.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
     "pabllopf-official_alis:4_Operation/Graphic/src/Platforms/Web/WebAssemblyGameExamples.cs",
-    "pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs"
+    "pabllopf-official_alis:4_Operation/Graphic/src/Ui/Font.cs",
+    "pabllopf-official_alis:2_Application/Alis/src/Core/Ecs/Components/Render/Sprite.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs",
+    "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/NullTerminatedString.cs"
   ],
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/Extras/Plot/ImPlotP18.cs": {
     "coverageBefore": 0,
@@ -192,7 +195,7 @@
     "testsAdded": 4,
     "commit": null,
     "status": "BLOCKED_BY_PRODUCTION_CODE",
-    "blockReason": "Source contains only public const float fields (Pi, Tau). const fields are compile-time constants with zero instrumentable IL lines \u2014 coverage tools cannot track them. Would require conversion to static readonly in production code."
+    "blockReason": "Source contains only public const float fields (Pi, Tau). const fields are compile-time constants with zero instrumentable IL lines — coverage tools cannot track them. Would require conversion to static readonly in production code."
   },
   "pabllopf-official_alis:1_Presentation/Extension/Graphic/Ui/src/ImGuiStoragePair.cs": {
     "coverageBefore": 0,
