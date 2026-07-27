@@ -300,5 +300,230 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             Assert.Equal(0x20000000, (int)ControllerCategories.Cat30);
         }
+
+        /// <summary>
+        ///     Tests that Cat03 enum value is correctly defined as 0x00000004.
+        /// </summary>
+        [Fact]
+        public void Cat03Value_ShouldBe0x00000004()
+        {
+            Assert.Equal(0x00000004, (int)ControllerCategories.Cat03);
+        }
+
+        /// <summary>
+        ///     Tests that Cat04 enum value is correctly defined as 0x00000008.
+        /// </summary>
+        [Fact]
+        public void Cat04Value_ShouldBe0x00000008()
+        {
+            Assert.Equal(0x00000008, (int)ControllerCategories.Cat04);
+        }
+
+        /// <summary>
+        ///     Tests that Cat05 enum value is correctly defined as 0x00000010.
+        /// </summary>
+        [Fact]
+        public void Cat05Value_ShouldBe0x00000010()
+        {
+            Assert.Equal(0x00000010, (int)ControllerCategories.Cat05);
+        }
+
+        /// <summary>
+        ///     Tests that Cat07 enum value is correctly defined as 0x00000040.
+        /// </summary>
+        [Fact]
+        public void Cat07Value_ShouldBe0x00000040()
+        {
+            Assert.Equal(0x00000040, (int)ControllerCategories.Cat07);
+        }
+
+        /// <summary>
+        ///     Tests that Cat09 enum value is correctly defined as 0x00000100.
+        /// </summary>
+        [Fact]
+        public void Cat09Value_ShouldBe0x00000100()
+        {
+            Assert.Equal(0x00000100, (int)ControllerCategories.Cat09);
+        }
+
+        /// <summary>
+        ///     Tests that Cat10 enum value is correctly defined as 0x00000200.
+        /// </summary>
+        [Fact]
+        public void Cat10Value_ShouldBe0x00000200()
+        {
+            Assert.Equal(0x00000200, (int)ControllerCategories.Cat10);
+        }
+
+        /// <summary>
+        ///     Tests that Cat11 enum value is correctly defined as 0x00000400.
+        /// </summary>
+        [Fact]
+        public void Cat11Value_ShouldBe0x00000400()
+        {
+            Assert.Equal(0x00000400, (int)ControllerCategories.Cat11);
+        }
+
+        /// <summary>
+        ///     Tests that Cat12 enum value is correctly defined as 0x00000800.
+        /// </summary>
+        [Fact]
+        public void Cat12Value_ShouldBe0x00000800()
+        {
+            Assert.Equal(0x00000800, (int)ControllerCategories.Cat12);
+        }
+
+        /// <summary>
+        ///     Tests that Cat13 enum value is correctly defined as 0x00001000.
+        /// </summary>
+        [Fact]
+        public void Cat13Value_ShouldBe0x00001000()
+        {
+            Assert.Equal(0x00001000, (int)ControllerCategories.Cat13);
+        }
+
+        /// <summary>
+        ///     Tests that Cat14 enum value is correctly defined as 0x00002000.
+        /// </summary>
+        [Fact]
+        public void Cat14Value_ShouldBe0x00002000()
+        {
+            Assert.Equal(0x00002000, (int)ControllerCategories.Cat14);
+        }
+
+        /// <summary>
+        ///     Tests that Cat15 enum value is correctly defined as 0x00004000.
+        /// </summary>
+        [Fact]
+        public void Cat15Value_ShouldBe0x00004000()
+        {
+            Assert.Equal(0x00004000, (int)ControllerCategories.Cat15);
+        }
+
+        /// <summary>
+        ///     Tests that Cat16 enum value is correctly defined as 0x00008000.
+        /// </summary>
+        [Fact]
+        public void Cat16Value_ShouldBe0x00008000()
+        {
+            Assert.Equal(0x00008000, (int)ControllerCategories.Cat16);
+        }
+
+        /// <summary>
+        ///     Tests that Cat17 enum value is correctly defined as 0x00010000.
+        /// </summary>
+        [Fact]
+        public void Cat17Value_ShouldBe0x00010000()
+        {
+            Assert.Equal(0x00010000, (int)ControllerCategories.Cat17);
+        }
+
+        /// <summary>
+        ///     Tests that Cat18 enum value is correctly defined as 0x00020000.
+        /// </summary>
+        [Fact]
+        public void Cat18Value_ShouldBe0x00020000()
+        {
+            Assert.Equal(0x00020000, (int)ControllerCategories.Cat18);
+        }
+
+        /// <summary>
+        ///     Tests that Cat19 enum value is correctly defined as 0x00040000.
+        /// </summary>
+        [Fact]
+        public void Cat19Value_ShouldBe0x00040000()
+        {
+            Assert.Equal(0x00040000, (int)ControllerCategories.Cat19);
+        }
+
+        /// <summary>
+        ///     Tests that Cat20 enum value is correctly defined as 0x00080000.
+        /// </summary>
+        [Fact]
+        public void Cat20Value_ShouldBe0x00080000()
+        {
+            Assert.Equal(0x00080000, (int)ControllerCategories.Cat20);
+        }
+
+        /// <summary>
+        ///     Tests that Cat21 enum value is correctly defined as 0x00100000.
+        /// </summary>
+        [Fact]
+        public void Cat21Value_ShouldBe0x00100000()
+        {
+            Assert.Equal(0x00100000, (int)ControllerCategories.Cat21);
+        }
+
+        /// <summary>
+        ///     Tests that Cat22 enum value is correctly defined as 0x00200000.
+        /// </summary>
+        [Fact]
+        public void Cat22Value_ShouldBe0x00200000()
+        {
+            Assert.Equal(0x00200000, (int)ControllerCategories.Cat22);
+        }
+
+        /// <summary>
+        ///     Tests that Cat23 enum value is correctly defined as 0x00400000.
+        /// </summary>
+        [Fact]
+        public void Cat23Value_ShouldBe0x00400000()
+        {
+            Assert.Equal(0x00400000, (int)ControllerCategories.Cat23);
+        }
+
+        /// <summary>
+        ///     Tests that Cat24 enum value is correctly defined as 0x00800000.
+        /// </summary>
+        [Fact]
+        public void Cat24Value_ShouldBe0x00800000()
+        {
+            Assert.Equal(0x00800000, (int)ControllerCategories.Cat24);
+        }
+
+        /// <summary>
+        ///     Tests that Cat25 enum value is correctly defined as 0x01000000.
+        /// </summary>
+        [Fact]
+        public void Cat25Value_ShouldBe0x01000000()
+        {
+            Assert.Equal(0x01000000, (int)ControllerCategories.Cat25);
+        }
+
+        /// <summary>
+        ///     Tests that Cat26 enum value is correctly defined as 0x02000000.
+        /// </summary>
+        [Fact]
+        public void Cat26Value_ShouldBe0x02000000()
+        {
+            Assert.Equal(0x02000000, (int)ControllerCategories.Cat26);
+        }
+
+        /// <summary>
+        ///     Tests that Cat27 enum value is correctly defined as 0x04000000.
+        /// </summary>
+        [Fact]
+        public void Cat27Value_ShouldBe0x04000000()
+        {
+            Assert.Equal(0x04000000, (int)ControllerCategories.Cat27);
+        }
+
+        /// <summary>
+        ///     Tests that Cat28 enum value is correctly defined as 0x08000000.
+        /// </summary>
+        [Fact]
+        public void Cat28Value_ShouldBe0x08000000()
+        {
+            Assert.Equal(0x08000000, (int)ControllerCategories.Cat28);
+        }
+
+        /// <summary>
+        ///     Tests that Cat29 enum value is correctly defined as 0x10000000.
+        /// </summary>
+        [Fact]
+        public void Cat29Value_ShouldBe0x10000000()
+        {
+            Assert.Equal(0x10000000, (int)ControllerCategories.Cat29);
+        }
     }
 }
