@@ -430,7 +430,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            var iter = new SolverIterations();
+            iter.PositionIterations = 100;
+            world.Step(1.0f / 60.0f, ref iter);
+            
 
             Contact contact = world.ContactManager.ContactList.Next;
             Assert.NotNull(contact);

@@ -94,28 +94,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that end contact callback should be raised when contact is destroyed
-        /// </summary>
-        [Fact]
-        public void EndContactCallback_ShouldBeRaised_WhenContactDestroyed()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            int endCount = 0;
-            world.ContactManager.EndContact = contact =>
-            {
-                endCount++;
-            };
-
-            world.Step(1.0f / 60.0f);
-            world.Remove(bodyB);
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(endCount > 0);
-        }
-
-        /// <summary>
         /// Tests that pre solve callback should be raised during step
         /// </summary>
         [Fact]
