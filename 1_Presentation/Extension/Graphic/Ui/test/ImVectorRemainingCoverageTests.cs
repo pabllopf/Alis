@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
@@ -94,6 +95,80 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(7, vector.Size);
             Assert.Equal(14, vector.Capacity);
             Assert.Equal(data, vector.Data);
+        }
+        /// <summary>
+        ///     Tests that ref method should read int from allocated memory
+        /// </summary>
+        [Fact]
+        public void Ref_ShouldReadInt()
+        {
+            IntPtr data = Marshal.AllocHGlobal(sizeof(int));
+            Marshal.WriteInt32(data, 42);
+            ImVector vector = new ImVector(1, 1, data);
+            Assert.Equal(42, vector.Ref<int>(0));
+            Marshal.FreeHGlobal(data);
+        }
+
+        /// <summary>
+        ///     Tests that ref should read int at non zero index
+        /// </summary>
+        [Fact]
+        public void Ref_ShouldReadIntAtIndex()
+        {
+            IntPtr data = Marshal.AllocHGlobal(sizeof(int) * 3);
+            for (int i = 0; i < 3; i++)
+                Marshal.WriteInt32(data + i * sizeof(int), (i + 1) * 10);
+            ImVector vector = new ImVector(3, 3, data);
+            Assert.Equal(10, vector.Ref<int>(0));
+            Assert.Equal(20, vector.Ref<int>(1));
+            Assert.Equal(30, vector.Ref<int>(2));
+            Marshal.FreeHGlobal(data);
+        }
+
+        /// <summary>
+        ///     Tests that ref should read byte
+        /// </summary>
+        [Fact]
+        public void Ref_ShouldReadByte()
+        {
+            IntPtr data = Marshal.AllocHGlobal(sizeof(byte));
+            Marshal.WriteByte(data, 7);
+            ImVector vector = new ImVector(1, 1, data);
+            Assert.Equal((byte)7, vector.Ref<byte>(0));
+            Marshal.FreeHGlobal(data);
+        }
+
+        /// <summary>
+        ///     Tests that address should return data pointer at index zero
+        /// </summary>
+        [Fact]
+        public void Address_ShouldReturnDataPointer()
+        {
+            IntPtr data = new IntPtr(123);
+            ImVector vector = new ImVector(1, 1, data);
+            Assert.Equal(data, vector.Address<int>(0));
+        }
+
+        /// <summary>
+        ///     Tests that address should return advanced pointer at non zero index
+        /// </summary>
+        [Fact]
+        public void Address_ShouldReturnAdvancedPointer()
+        {
+            IntPtr data = new IntPtr(100);
+            ImVector vector = new ImVector(2, 2, data);
+            Assert.Equal(data + sizeof(int), vector.Address<int>(1));
+        }
+
+        /// <summary>
+        ///     Tests that address with byte type should advance by byte size
+        /// </summary>
+        [Fact]
+        public void Address_WithByteType_ShouldAdvanceByByteSize()
+        {
+            IntPtr data = new IntPtr(100);
+            ImVector vector = new ImVector(2, 2, data);
+            Assert.Equal(data + sizeof(byte), vector.Address<byte>(1));
         }
     }
 }
