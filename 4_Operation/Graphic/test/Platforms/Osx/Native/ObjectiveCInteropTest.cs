@@ -138,6 +138,53 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
                 "/System/Library/Frameworks/OpenGL.framework/OpenGL", 0);
             Assert.NotEqual(IntPtr.Zero, handle);
         }
+
+        /// <summary>
+        ///     NSViewGetFrame_ReturnsValidFrame_ForNewView
+        /// </summary>
+        [Fact]
+        public void NSViewGetFrame_ReturnsValidFrame_ForNewView()
+        {
+            IntPtr viewClass = ObjectiveCInterop.Class("NSView");
+            IntPtr view = ObjectiveCInterop.objc_msgSend(viewClass, ObjectiveCInterop.Sel("alloc"));
+            view = ObjectiveCInterop.objc_msgSend(view, ObjectiveCInterop.Sel("init"));
+            NsRect frame = ObjectiveCInterop.NSViewGetFrame(view);
+            Assert.True(frame.width >= 0.0);
+            Assert.True(frame.height >= 0.0);
+        }
+
+        /// <summary>
+        ///     GetWindowFrame_ReturnsDefault_ForNilWindow
+        /// </summary>
+        [Fact]
+        public void GetWindowFrame_ReturnsDefault_ForNilWindow()
+        {
+            NsRect frame = ObjectiveCInterop.GetWindowFrame(IntPtr.Zero);
+            Assert.Equal(0.0, frame.x);
+            Assert.Equal(0.0, frame.y);
+            Assert.Equal(0.0, frame.width);
+            Assert.Equal(0.0, frame.height);
+        }
+
+        /// <summary>
+        ///     NsString_ReturnsNonZero_ForValidString
+        /// </summary>
+        [Fact]
+        public void NsString_ReturnsNonZero_ForValidString()
+        {
+            IntPtr result = ObjectiveCInterop.NsString("Hello");
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
+
+        /// <summary>
+        ///     NsString_ReturnsNonZero_ForEmptyString
+        /// </summary>
+        [Fact]
+        public void NsString_ReturnsNonZero_ForEmptyString()
+        {
+            IntPtr result = ObjectiveCInterop.NsString("");
+            Assert.NotEqual(IntPtr.Zero, result);
+        }
     }
 }
 #endif
