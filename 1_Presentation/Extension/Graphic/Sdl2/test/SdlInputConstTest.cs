@@ -88,7 +88,17 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(1u << 0, SdlInputConst.HapticConstant);
             Assert.Equal(1u << 1, SdlInputConst.HapticSine);
             Assert.Equal(1u << 2, SdlInputConst.HapticLeftRight);
+            Assert.Equal(1u << 3, SdlInputConst.HapticTriangle);
+            Assert.Equal(1u << 4, SdlInputConst.HapticSawToothUp);
+            Assert.Equal(1u << 5, SdlInputConst.HapticSawToothDown);
+            Assert.Equal(1u << 7, SdlInputConst.HapticSpring);
+            Assert.Equal(1u << 8, SdlInputConst.HapticDamper);
+            Assert.Equal(1u << 9, SdlInputConst.HapticInertia);
+            Assert.Equal(1u << 10, SdlInputConst.HapticFriction);
             Assert.Equal(1u << 11, SdlInputConst.HapticCustom);
+            Assert.Equal(1u << 12, SdlInputConst.HapticGain);
+            Assert.Equal(1u << 13, SdlInputConst.HapticAutoCenter);
+            Assert.Equal(1u << 14, SdlInputConst.HapticStatus);
             Assert.Equal(1u << 15, SdlInputConst.HapticPauseVar);
         }
 
