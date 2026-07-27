@@ -457,5 +457,50 @@ C:\mock\b.txt";
             Assert.NotNull(result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Tests that pick file with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFile_NullOptions_ReturnsError()
+        {
+            var picker = new WindowsFilePicker();
+
+            FilePickerResult result = picker.PickFile(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+            Assert.Contains("Options cannot be null.", result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// Tests that pick files with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFiles_NullOptions_ReturnsError()
+        {
+            var picker = new WindowsFilePicker();
+
+            FilePickerResult result = picker.PickFiles(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+            Assert.Contains("Options cannot be null.", result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// Tests that pick folder with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFolder_NullOptions_ReturnsError()
+        {
+            var picker = new WindowsFilePicker();
+
+            FilePickerResult result = picker.PickFolder(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+            Assert.Contains("Options cannot be null.", result.ErrorMessage);
+        }
+
     }
 }
