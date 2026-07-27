@@ -138,5 +138,24 @@ namespace Alis.Extension.Network.Test
 
             manager.WebSocketImplPong(null, new PongEventArgs(new ArraySegment<byte>(Array.Empty<byte>())));
         }
+
+        /// <summary>
+        /// Tests that ping forever catches operation canceled exception when token cancelled during delay
+        /// </summary>
+        [Fact]
+        public async Task PingForever_WhenCancelledDuringDelay_CatchesOperationCanceledException()
+        {
+            Guid guid = Guid.NewGuid();
+            WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
+                TimeSpan.FromSeconds(30), null, false, true, null);
+            using CancellationTokenSource cts = new CancellationTokenSource();
+            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.FromMilliseconds(500), cts.Token);
+
+            await Task.Delay(100);
+
+            cts.Cancel();
+
+            await Task.Delay(1000);
+        }
     }
 }
