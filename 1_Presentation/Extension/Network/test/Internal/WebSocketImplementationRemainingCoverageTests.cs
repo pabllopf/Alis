@@ -276,6 +276,305 @@ namespace Alis.Extension.Network.Test.Internal
         }
 
         /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches Ping correctly.
+        /// </summary>
+        [Fact]
+        public async Task HandleWebSocketOpCodes_Ping_ReturnsNull()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("ping");
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Ping, data.Length, new ArraySegment<byte>(data));
+            using var cts = new CancellationTokenSource();
+            ArraySegment<byte> buffer = new ArraySegment<byte>(data);
+
+            WebSocketReceiveResult result = await ws.HandleWebSocketOpCodes(frame, buffer, cts, true);
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches Pong correctly.
+        /// </summary>
+        [Fact]
+        public void HandleWebSocketOpCodes_Pong_ReturnsNull()
+        {
+            var ws = CreateWs();
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, 0, default);
+            using var cts = new CancellationTokenSource();
+
+            WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
+
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches TextFrame correctly.
+        /// </summary>
+        [Fact]
+        public void HandleWebSocketOpCodes_TextFrame_ReturnsResult()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("Hello");
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.TextFrame, data.Length, new ArraySegment<byte>(data));
+            using var cts = new CancellationTokenSource();
+
+            WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
+
+            Assert.Equal(WebSocketMessageType.Text, result.MessageType);
+        }
+
+        /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches BinaryFrame correctly.
+        /// </summary>
+        [Fact]
+        public void HandleWebSocketOpCodes_BinaryFrame_ReturnsResult()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("Hello");
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, data.Length, new ArraySegment<byte>(data));
+            using var cts = new CancellationTokenSource();
+
+            WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
+
+            Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
+        }
+
+        /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches ContinuationFrame correctly.
+        /// </summary>
+        [Fact]
+        public void HandleWebSocketOpCodes_ContinuationFrame_ReturnsResult()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("Hello");
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.ContinuationFrame, data.Length, new ArraySegment<byte>(data));
+            using var cts = new CancellationTokenSource();
+
+            WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
+
+            Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
+        }
+
+        /// <summary>
+        ///     Tests that HandleWebSocketOpCodes dispatches default for unknown opcode.
+        /// </summary>
+        [Fact]
+        public async Task HandleWebSocketOpCodes_UnknownOpCode_ThrowsNotSupportedException()
+        {
+            var ws = CreateWs();
+            WebSocketFrame frame = new WebSocketFrame(true, (WebSocketOpCode)255, 0, new ArraySegment<byte>(new byte[0]));
+            using var cts = new CancellationTokenSource();
+
+            await Assert.ThrowsAsync<NotSupportedException>(() =>
+                ws.HandleWebSocketOpCodes(frame, default, cts, true));
+        }
+
+        /// <summary>
+        ///     Tests that HandleBinaryFrame with non-final frame sets continuation type to Binary.
+        /// </summary>
+        [Fact]
+        public void HandleBinaryFrame_NotFinalFrame_SetsContinuationType()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("Hello");
+            WebSocketFrame frame = new WebSocketFrame(false, WebSocketOpCode.BinaryFrame, data.Length, new ArraySegment<byte>(data));
+
+            WebSocketReceiveResult result = ws.HandleBinaryFrame(frame, false);
+
+            Assert.Equal(WebSocketMessageType.Binary, result.MessageType);
+            Assert.False(result.EndOfMessage);
+        }
+
+        /// <summary>
+        ///     Tests that HandlePong with non-null array and event handler invokes the event.
+        /// </summary>
+        [Fact]
+        public void HandlePong_WithEventHandler_InvokesEvent()
+        {
+            var ws = CreateWs();
+            byte[] data = Encoding.UTF8.GetBytes("pong");
+            ArraySegment<byte> buffer = new ArraySegment<byte>(data);
+            WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, data.Length, buffer);
+            bool eventRaised = false;
+            ws.Pong += (_, _) => eventRaised = true;
+
+            WebSocketReceiveResult result = ws.HandlePong(frame, buffer);
+
+            Assert.True(eventRaised);
+            Assert.Null(result);
+        }
+
+        /// <summary>
+        ///     Tests that Dispose catches OperationCanceledException from CloseOutputAsync.
+        /// </summary>
+        [Fact]
+        public void Dispose_CloseOutputThrowsOperationCanceled_Caught()
+        {
+            var ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new OperationCanceledMemoryStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                false,
+                true,
+                null);
+
+            ws.Dispose();
+
+            Assert.Equal(WebSocketState.Closed, ws.State);
+        }
+
+        /// <summary>
+        ///     Tests that CloseOutputAutoTimeoutAsync catches OperationCanceledException.
+        /// </summary>
+        [Fact]
+        public async Task CloseOutputAutoTimeoutAsync_OperationCanceled_Caught()
+        {
+            var ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new OperationCanceledMemoryStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                true,
+                true,
+                null);
+
+            await ws.CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "error",
+                new Exception("test"));
+
+            Assert.Equal(WebSocketState.Closed, ws.State);
+        }
+
+        /// <summary>
+        ///     Tests that CloseOutputAutoTimeoutAsync catches generic Exception from CloseOutputAsync.
+        /// </summary>
+        [Fact]
+        public async Task CloseOutputAutoTimeoutAsync_GenericException_Caught()
+        {
+            var ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new ThrowingWriteStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                true,
+                true,
+                null);
+
+            await ws.CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "error",
+                new Exception("test"));
+
+            Assert.Equal(WebSocketState.Closed, ws.State);
+        }
+
+        /// <summary>
+        ///     Tests that ReceiveAsync succeeds when a valid frame is available.
+        /// </summary>
+        [Fact]
+        public async Task ReceiveAsync_ValidFrame_ReturnsResult()
+        {
+            WebSocketImplementation ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new MemoryStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                false,
+                false,
+                null);
+
+            byte[] payload = Encoding.UTF8.GetBytes("Hello");
+            MemoryStream frameStream = new MemoryStream();
+            WebSocketFrameWriter.Write(WebSocketOpCode.TextFrame, new ArraySegment<byte>(payload), frameStream, true, false);
+            byte[] frameData = frameStream.ToArray();
+            ws.Stream.Write(frameData, 0, frameData.Length);
+            ws.Stream.Position = 0;
+
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+            WebSocketReceiveResult result = await ws.ReceiveAsync(buffer, CancellationToken.None);
+
+            Assert.NotNull(result);
+            Assert.Equal(WebSocketMessageType.Text, result.MessageType);
+        }
+
+        /// <summary>
+        ///     Tests that ReceiveAsync handles non-final frame correctly (short-circuit IsFinBitSet check).
+        /// </summary>
+        [Fact]
+        public async Task ReceiveAsync_NonFinalFrame_ReturnsResult()
+        {
+            WebSocketImplementation ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new MemoryStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                false,
+                false,
+                null);
+
+            byte[] payload = Encoding.UTF8.GetBytes("Hello");
+            MemoryStream frameStream = new MemoryStream();
+            WebSocketFrameWriter.Write(WebSocketOpCode.TextFrame, new ArraySegment<byte>(payload), frameStream, false, false);
+            byte[] frameData = frameStream.ToArray();
+            ws.Stream.Write(frameData, 0, frameData.Length);
+            ws.Stream.Position = 0;
+
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+            WebSocketReceiveResult result = await ws.ReceiveAsync(buffer, CancellationToken.None);
+
+            Assert.NotNull(result);
+            Assert.Equal(WebSocketMessageType.Text, result.MessageType);
+            Assert.False(result.EndOfMessage);
+        }
+
+        /// <summary>
+        ///     Tests that ReceiveAsync with disconnected InternalReadCts throws.
+        /// </summary>
+        [Fact]
+        public async Task ReceiveAsync_InternalReadCtsCancelled_Throws()
+        {
+            WebSocketImplementation ws = new WebSocketImplementation(
+                Guid.NewGuid(),
+                () => new MemoryStream(),
+                new MemoryStream(),
+                TimeSpan.FromSeconds(30),
+                null,
+                false,
+                false,
+                null);
+
+            ws.InternalReadCts.Cancel();
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
+
+            await Assert.ThrowsAsync<TaskCanceledException>(() =>
+                ws.ReceiveAsync(buffer, CancellationToken.None));
+        }
+
+        /// <summary>
+        ///     Tests OnPong with null handler (covers the null branch of ?. operator).
+        /// </summary>
+        [Fact]
+        public void OnPong_NullHandler_DoesNotThrow()
+        {
+            var ws = CreateWs();
+            ws.OnPong(new PongEventArgs(new ArraySegment<byte>(new byte[0])));
+        }
+
+        /// <summary>
+        ///     A MemoryStream that throws OperationCanceledException on write for testing cancellation paths.
+        /// </summary>
+        internal sealed class OperationCanceledMemoryStream : MemoryStream
+        {
+            public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
+            {
+                throw new OperationCanceledException();
+            }
+        }
+
+        /// <summary>
         ///     A MemoryStream that throws on WriteAsync for testing error paths.
         /// </summary>
         internal sealed class ThrowingWriteStream : MemoryStream
