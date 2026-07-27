@@ -29,10 +29,12 @@
 
 using System;
 using Alis.Core.Aspect.Math.Collections;
+using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
+using Alis.Core.Ecs.Updating;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
@@ -647,6 +649,174 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
                 scene.Create(new Position { X = i, Y = i });
             }
             Assert.Equal(10, scene.EntityCount);
+        }
+
+        /// <summary>
+        /// Tests that get component span throws component not found exception when component does not exist
+        /// </summary>
+        [Fact]
+        public void GetComponentSpan_WhenComponentNotFound_ThrowsComponentNotFoundException()
+        {
+            using Scene scene = new Scene();
+            Archetype archetype = scene.DefaultArchetype;
+            Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentSpan<Position>());
+        }
+
+        /// <summary>
+        /// Tests that get component data reference throws component not found exception when component does not exist
+        /// </summary>
+        [Fact]
+        public void GetComponentDataReference_WhenComponentNotFound_ThrowsComponentNotFoundException()
+        {
+            using Scene scene = new Scene();
+            Archetype archetype = scene.DefaultArchetype;
+            Assert.Throws<ComponentNotFoundException>(() => archetype.GetComponentDataReference<Position>());
+        }
+
+        /// <summary>
+        /// Tests that delete entity throws invalid operation exception when archetype has no entities
+        /// </summary>
+        [Fact]
+        public void DeleteEntity_WhenEmptyArchetype_ThrowsInvalidOperationException()
+        {
+            using Scene scene = new Scene();
+            Archetype archetype = scene.DefaultArchetype;
+            Assert.Throws<InvalidOperationException>(() => archetype.DeleteEntity(0));
+        }
+
+        /// <summary>
+        /// Tests that update with range returns early when archetype has no entities
+        /// </summary>
+        [Fact]
+        public void UpdateWithRange_WhenEmptyArchetype_ReturnsEarly()
+        {
+            using Scene scene = new Scene();
+            Archetype archetype = scene.DefaultArchetype;
+            archetype.Update(scene, 0, 0);
+        }
+
+        /// <summary>
+        /// Tests that components span returns non empty span
+        /// </summary>
+        [Fact]
+        public void ComponentsSpan_OnDefaultArchetype_ReturnsComponents()
+        {
+            using Scene scene = new Scene();
+            ReadOnlySpan<ComponentStorageBase> span = scene.DefaultArchetype.ComponentsSpan;
+            Assert.False(span.IsEmpty);
+        }
+
+        /// <summary>
+        /// Tests that component tag table span returns non empty span
+        /// </summary>
+        [Fact]
+        public void ComponentTagTableSpan_OnDefaultArchetype_ReturnsTagTable()
+        {
+            using Scene scene = new Scene();
+            ReadOnlySpan<byte> span = scene.DefaultArchetype.ComponentTagTableSpan;
+            Assert.False(span.IsEmpty);
+        }
+
+        /// <summary>
+        /// Tests that get entity span returns correct entity count
+        /// </summary>
+        [Fact]
+        public void GetEntitySpan_WithDefaultEntities_ReturnsCorrectCount()
+        {
+            using Scene scene = new Scene();
+            for (int i = 0; i < 3; i++)
+            {
+                scene.Create();
+            }
+
+            Archetype archetype = scene.DefaultArchetype;
+            Span<GameObjectIdOnly> entities = archetype.GetEntitySpan();
+            Assert.Equal(3, entities.Length);
+        }
+
+        /// <summary>
+        /// Tests that get entity data reference returns reference to first entity
+        /// </summary>
+        [Fact]
+        public void GetEntityDataReference_OnNonEmptyArchetype_ReturnsReference()
+        {
+            using Scene scene = new Scene();
+            scene.Create();
+
+            Archetype archetype = scene.DefaultArchetype;
+            ref GameObjectIdOnly first = ref archetype.GetEntityDataReference();
+            Assert.NotNull(first);
+        }
+
+        /// <summary>
+        /// Tests that static constructor initializes null
+        /// </summary>
+        [Fact]
+        public void ArchetypeStaticConstructor_InitializesNull()
+        {
+            GameObjectType nullId = Archetype<Position>.Null;
+            Assert.NotNull(nullId);
+        }
+
+        /// <summary>
+        /// Tests that null is shared between generic and non generic
+        /// </summary>
+        [Fact]
+        public void ArchetypeNull_SharedBetweenGenericAndNonGeneric()
+        {
+            Assert.Equal(Archetype<Position>.Null, Archetype.Null);
+        }
+
+        /// <summary>
+        /// Tests that get archetype id throws invalid operation exception when too many components
+        /// </summary>
+        [Fact]
+        public void GetArchetypeId_WithTooManyComponents_ThrowsInvalidOperationException()
+        {
+            ComponentId[] components = new ComponentId[128];
+            for (int i = 0; i < 128; i++)
+            {
+                components[i] = Component<Position>.Id;
+            }
+
+            Assert.Throws<InvalidOperationException>(() => Archetype.GetArchetypeId(components.AsSpan()));
+        }
+
+        /// <summary>
+        /// Tests that resize create component buffers resizes when array full
+        /// </summary>
+        [Fact]
+        public void ResizeCreateComponentBuffers_ResizesWhenArrayFull()
+        {
+            using Scene scene = new Scene();
+
+            scene.EnterDisallowState();
+            int count = 10;
+            for (int i = 0; i < count; i++)
+            {
+                scene.Create(new Position { X = i, Y = i * 2 });
+            }
+            scene.ExitDisallowState(null);
+
+            Assert.Equal(count, scene.EntityCount);
+        }
+
+        /// <summary>
+        /// Tests that get adjacent archetype lookup when not cached calls cold path
+        /// </summary>
+        [Fact]
+        public void GetAdjacentArchetypeLookup_WhenNotCached_CallsColdPath()
+        {
+            using Scene scene = new Scene();
+
+            GameObject entity = scene.Create(new Position { X = 1, Y = 2 });
+            entity.Add(new Velocity { X = 3, Y = 4 });
+            entity.Add(new Health { Value = 100 });
+            entity.Remove<Velocity>();
+
+            Assert.True(entity.Has<Position>());
+            Assert.False(entity.Has<Velocity>());
+            Assert.True(entity.Has<Health>());
         }
     }
 }
