@@ -293,5 +293,208 @@ namespace Alis.Extension.Payment.Stripe.Test
 
             await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreateCheckoutSessionAsync(request));
         }
+
+        /// <summary>
+        /// Tests that configure with empty key throws argument exception
+        /// </summary>
+        [Fact]
+        public void Configure_WithEmptyKey_ThrowsArgumentException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+
+            Assert.Throws<ArgumentException>(() => gateway.Configure("  "));
+        }
+
+        /// <summary>
+        /// Tests that configure with null key throws argument exception
+        /// </summary>
+        [Fact]
+        public void Configure_WithNullKey_ThrowsArgumentException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+
+            Assert.Throws<ArgumentException>(() => gateway.Configure(null));
+        }
+
+        /// <summary>
+        /// Tests that ensure configured when not configured throws invalid operation exception
+        /// </summary>
+        [Fact]
+        public void EnsureConfigured_WhenNotConfigured_ThrowsInvalidOperationException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+
+            Assert.Throws<InvalidOperationException>(() => gateway.EnsureConfigured());
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with null request throws argument null exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithNullRequest_ThrowsArgumentNullException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+
+            await Assert.ThrowsAsync<ArgumentNullException>(() => gateway.CreateCheckoutSessionAsync(null));
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with null product name throws argument exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithNullProductName_ThrowsArgumentException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = null,
+                Currency = "usd",
+                UnitAmount = 999,
+                Quantity = 1,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
+            };
+
+            await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreateCheckoutSessionAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with unit amount zero throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithUnitAmountZero_ThrowsArgumentOutOfRangeException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test",
+                Currency = "usd",
+                UnitAmount = 0,
+                Quantity = 1,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
+            };
+
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => gateway.CreateCheckoutSessionAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with unit amount negative throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithUnitAmountNegative_ThrowsArgumentOutOfRangeException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test",
+                Currency = "usd",
+                UnitAmount = -1,
+                Quantity = 1,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
+            };
+
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => gateway.CreateCheckoutSessionAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with quantity zero throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithQuantityZero_ThrowsArgumentOutOfRangeException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test",
+                Currency = "usd",
+                UnitAmount = 999,
+                Quantity = 0,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
+            };
+
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => gateway.CreateCheckoutSessionAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that create checkout session async with quantity negative throws argument out of range exception
+        /// </summary>
+        [Fact]
+        public async Task CreateCheckoutSessionAsync_WithQuantityNegative_ThrowsArgumentOutOfRangeException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripeCheckoutSessionRequest request = new StripeCheckoutSessionRequest
+            {
+                ProductName = "Test",
+                Currency = "usd",
+                UnitAmount = 999,
+                Quantity = -1,
+                SuccessUrl = new Uri("https://example.com/success"),
+                CancelUrl = new Uri("https://example.com/cancel")
+            };
+
+            await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => gateway.CreateCheckoutSessionAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that create payment intent async with null request throws argument null exception
+        /// </summary>
+        [Fact]
+        public async Task CreatePaymentIntentAsync_WithNullRequest_ThrowsArgumentNullException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+
+            await Assert.ThrowsAsync<ArgumentNullException>(() => gateway.CreatePaymentIntentAsync(null));
+        }
+
+        /// <summary>
+        /// Tests that create payment intent async with null currency throws argument exception
+        /// </summary>
+        [Fact]
+        public async Task CreatePaymentIntentAsync_WithNullCurrency_ThrowsArgumentException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+            StripePaymentIntentRequest request = new StripePaymentIntentRequest
+            {
+                Amount = 1000,
+                Currency = null
+            };
+
+            await Assert.ThrowsAsync<ArgumentException>(() => gateway.CreatePaymentIntentAsync(request));
+        }
+
+        /// <summary>
+        /// Tests that get payment intent async with null id throws argument exception
+        /// </summary>
+        [Fact]
+        public async Task GetPaymentIntentAsync_WithNullId_ThrowsArgumentException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+
+            await Assert.ThrowsAsync<ArgumentException>(() => gateway.GetPaymentIntentAsync(null));
+        }
+
+        /// <summary>
+        /// Tests that create refund async with null request throws argument null exception
+        /// </summary>
+        [Fact]
+        public async Task CreateRefundAsync_WithNullRequest_ThrowsArgumentNullException()
+        {
+            StripeGatewayClient gateway = new StripeGatewayClient();
+            gateway.Configure("sk_test_dummy");
+
+            await Assert.ThrowsAsync<ArgumentNullException>(() => gateway.CreateRefundAsync(null));
+        }
     }
 }
