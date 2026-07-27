@@ -28,7 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Glfw;
+using Alis.Extension.Graphic.Glfw.Enums;
 using Alis.Extension.Graphic.Glfw.Structs;
+using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
@@ -206,6 +209,76 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             bool result = window1.Equals(window2);
 
             Assert.True(result);
+        }
+
+        /// <summary>
+        ///     Tests that window opacity getter returns value in valid range
+        /// </summary>
+        [RequiresDisplay]
+        public void Window_Opacity_Getter_ReturnsValueInRange()
+        {
+            GlfwNative.Init();
+            GlfwNative.WindowHint(Hint.Visible, false);
+            Window window = GlfwNative.CreateWindow(100, 100, "Test", Monitor.None, Window.None);
+
+            try
+            {
+                float opacity = window.Opacity;
+
+                Assert.True(opacity >= 0.0f);
+                Assert.True(opacity <= 1.0f);
+            }
+            finally
+            {
+                GlfwNative.DestroyWindow(window);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that window opacity setter changes opacity value
+        /// </summary>
+        [RequiresDisplay]
+        public void Window_Opacity_Setter_SetsValue()
+        {
+            GlfwNative.Init();
+            GlfwNative.WindowHint(Hint.Visible, false);
+            Window window = GlfwNative.CreateWindow(100, 100, "Test", Monitor.None, Window.None);
+
+            try
+            {
+                window.Opacity = 0.5f;
+                float opacity = window.Opacity;
+
+                Assert.True(Math.Abs(opacity - 0.5f) < 0.1f);
+            }
+            finally
+            {
+                GlfwNative.DestroyWindow(window);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that window opacity setter clamps value to valid range
+        /// </summary>
+        [RequiresDisplay]
+        public void Window_Opacity_Setter_ClampsValue()
+        {
+            GlfwNative.Init();
+            GlfwNative.WindowHint(Hint.Visible, false);
+            Window window = GlfwNative.CreateWindow(100, 100, "Test", Monitor.None, Window.None);
+
+            try
+            {
+                window.Opacity = 2.0f;
+                float opacity = window.Opacity;
+
+                Assert.True(opacity >= 0.0f);
+                Assert.True(opacity <= 1.0f);
+            }
+            finally
+            {
+                GlfwNative.DestroyWindow(window);
+            }
         }
     }
 }
