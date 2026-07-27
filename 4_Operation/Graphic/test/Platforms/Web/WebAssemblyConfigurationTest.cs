@@ -175,6 +175,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with multisample count valid value sets count using the specified count
         /// </summary>
         /// <param name="count">The count</param>
+        [Theory]
         [InlineData(2)]
         [InlineData(4)]
         [InlineData(8)]
@@ -193,6 +194,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with multisample count invalid value throws using the specified count
         /// </summary>
         /// <param name="count">The count</param>
+        [Theory]
         [InlineData(1)]
         [InlineData(3)]
         [InlineData(5)]
@@ -299,6 +301,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with gamepad deadzone valid value sets deadzone using the specified deadzone
         /// </summary>
         /// <param name="deadzone">The deadzone</param>
+        [Theory]
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -316,6 +319,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with gamepad deadzone invalid value throws using the specified deadzone
         /// </summary>
         /// <param name="deadzone">The deadzone</param>
+        [Theory]
         [InlineData(-0.1f)]
         [InlineData(1.1f)]
         public void ConfigBuilder_WithGamepadDeadzone_InvalidValue_Throws(float deadzone)
@@ -329,6 +333,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with trigger deadzone valid value sets deadzone using the specified deadzone
         /// </summary>
         /// <param name="deadzone">The deadzone</param>
+        [Theory]
         [InlineData(0.0f)]
         [InlineData(0.5f)]
         [InlineData(1.0f)]
@@ -346,6 +351,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Configs the builder with trigger deadzone invalid value throws using the specified deadzone
         /// </summary>
         /// <param name="deadzone">The deadzone</param>
+        [Theory]
         [InlineData(-0.01f)]
         [InlineData(1.01f)]
         public void ConfigBuilder_WithTriggerDeadzone_InvalidValue_Throws(float deadzone)
