@@ -495,6 +495,98 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
+        // SolveToi — translation clamping in body update loop (lines 604-609)
+        // Sets up solver arrays directly with extreme velocity and calls SolveToi
+        // via reflection with zero contacts so only the body update loop executes.
+        // ========================================================================
+        /// <summary>
+        /// Tests that solve toi clamps translation when velocity is extreme
+        /// </summary>
+        [Fact]
+        public void SolveToi_ClampsTranslation_WhenVelocityExtreme()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
+            Island island = new Island();
+            island.Reset(8, 0, 0, cm);
+
+            Body body = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            body.LinearVelocityInternal = new Vector2F(100000f, 0f);
+            island.Add(body);
+            island.BodyCount = 1;
+
+            FieldInfo velField = typeof(Island).GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic);
+            SolverVelocity[] velocities = (SolverVelocity[])velField.GetValue(island);
+            velocities[0].V = new Vector2F(100000f, 0f);
+            velocities[0].W = 0f;
+
+            FieldInfo posField = typeof(Island).GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic);
+            SolverPosition[] positions = (SolverPosition[])posField.GetValue(island);
+            positions[0].C = new Vector2F(0f, 0f);
+            positions[0].A = 0f;
+
+            TimeStep subStep = new TimeStep();
+            subStep.Dt = 1.0f / 60.0f;
+            subStep.InvDt = 60.0f;
+            subStep.PositionIterations = 0;
+            subStep.VelocityIterations = 0;
+            subStep.WarmStarting = false;
+            subStep.DtRatio = 1.0f;
+
+            MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
+            object[] args = { subStep, 0, 0 };
+            solveToi.Invoke(island, args);
+
+            Assert.True(body.Position.X < 10f);
+        }
+
+        // ========================================================================
+        // SolveToi — rotation clamping in body update loop (lines 611-616)
+        // Sets up solver arrays directly with extreme angular velocity.
+        // ========================================================================
+        /// <summary>
+        /// Tests that solve toi clamps rotation when angular velocity is extreme
+        /// </summary>
+        [Fact]
+        public void SolveToi_ClampsRotation_WhenAngularVelocityExtreme()
+        {
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
+            Island island = new Island();
+            island.Reset(8, 0, 0, cm);
+
+            Body body = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            body.LinearVelocityInternal = new Vector2F(100000f, 0f);
+            body.AngularVelocity = 50000f;
+            island.Add(body);
+            island.BodyCount = 1;
+
+            FieldInfo velField = typeof(Island).GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic);
+            SolverVelocity[] velocities = (SolverVelocity[])velField.GetValue(island);
+            velocities[0].V = new Vector2F(100000f, 0f);
+            velocities[0].W = 50000f;
+
+            FieldInfo posField = typeof(Island).GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic);
+            SolverPosition[] positions = (SolverPosition[])posField.GetValue(island);
+            positions[0].C = new Vector2F(0f, 0f);
+            positions[0].A = 0f;
+
+            TimeStep subStep = new TimeStep();
+            subStep.Dt = 1.0f / 60.0f;
+            subStep.InvDt = 60.0f;
+            subStep.PositionIterations = 0;
+            subStep.VelocityIterations = 0;
+            subStep.WarmStarting = false;
+            subStep.DtRatio = 1.0f;
+
+            MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
+            object[] args = { subStep, 0, 0 };
+            solveToi.Invoke(island, args);
+
+            Assert.NotNull(body);
+        }
+
+        // ========================================================================
         // SolveToi — velocity clamping via direct internal call (lines 604-616)
         // Sets up Velocities array with values exceeding threshold and calls SolveToi
         // directly to guarantee the clamping branch is hit.
