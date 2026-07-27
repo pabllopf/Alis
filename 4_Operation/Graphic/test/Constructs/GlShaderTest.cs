@@ -30,6 +30,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using Alis.Core.Graphic.OpenGL.Constructs;
 using Alis.Core.Graphic.OpenGL.Enums;
 using Xunit;
@@ -181,6 +182,80 @@ namespace Alis.Core.Graphic.Test.Constructs
 
             Assert.NotEmpty(publicProperties);
             Assert.Contains(publicMethods, m => m.Name == "Dispose");
+        }
+
+        /// <summary>
+        ///     Tests that an uninitialized GlShader instance has ShaderId equal to 0.
+        /// </summary>
+        [Fact]
+        public void GlShader_UninitializedInstance_ShaderIdIsZero()
+        {
+            object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
+            GlShader shader = (GlShader)instance;
+
+            Assert.Equal(0u, shader.ShaderId);
+        }
+
+        /// <summary>
+        ///     Tests that Dispose on an uninitialized GlShader does not throw.
+        /// </summary>
+        [Fact]
+        public void GlShader_UninitializedInstance_DisposeDoesNotThrow()
+        {
+            object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
+            GlShader shader = (GlShader)instance;
+
+            shader.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that multiple Dispose calls on an uninitialized GlShader are safe.
+        /// </summary>
+        [Fact]
+        public void GlShader_UninitializedInstance_MultipleDisposeIsSafe()
+        {
+            object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
+            GlShader shader = (GlShader)instance;
+
+            shader.Dispose();
+            shader.Dispose();
+            shader.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that ShaderLog getter on an uninitialized instance throws because OpenGL is not initialized.
+        /// </summary>
+        [Fact]
+        public void GlShader_UninitializedInstance_ShaderLogThrows()
+        {
+            object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
+            GlShader shader = (GlShader)instance;
+
+            Assert.Throws<InvalidOperationException>(() => shader.ShaderLog);
+        }
+
+        /// <summary>
+        ///     Tests that disposing an uninitialized instance then GC-collecting triggers finalizer safely.
+        /// </summary>
+        [Fact]
+        public void GlShader_DisposedInstance_FinalizerDoesNotThrow()
+        {
+            WeakReference wr;
+
+            void CreateAndDispose()
+            {
+                object instance = RuntimeHelpers.GetUninitializedObject(typeof(GlShader));
+                GlShader shader = (GlShader)instance;
+                shader.Dispose();
+                wr = new WeakReference(shader);
+            }
+
+            CreateAndDispose();
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            Assert.NotNull(wr);
         }
     }
 }
