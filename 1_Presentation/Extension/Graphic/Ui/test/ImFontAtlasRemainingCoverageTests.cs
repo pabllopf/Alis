@@ -445,5 +445,677 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             Assert.Equal(value, atlas.PackIdLines);
         }
+
+        /// <summary>
+        ///     Tests that tex uv lines 1 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines1_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines1 = v;
+            Assert.Equal(v, atlas.TexUvLines1);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 2 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines2_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines2 = v;
+            Assert.Equal(v, atlas.TexUvLines2);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 3 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines3_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines3 = v;
+            Assert.Equal(v, atlas.TexUvLines3);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 4 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines4_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines4 = v;
+            Assert.Equal(v, atlas.TexUvLines4);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 6 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines6_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines6 = v;
+            Assert.Equal(v, atlas.TexUvLines6);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 7 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines7_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines7 = v;
+            Assert.Equal(v, atlas.TexUvLines7);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 8 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines8_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines8 = v;
+            Assert.Equal(v, atlas.TexUvLines8);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 9 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines9_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines9 = v;
+            Assert.Equal(v, atlas.TexUvLines9);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 11 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines11_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines11 = v;
+            Assert.Equal(v, atlas.TexUvLines11);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 12 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines12_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines12 = v;
+            Assert.Equal(v, atlas.TexUvLines12);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 13 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines13_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines13 = v;
+            Assert.Equal(v, atlas.TexUvLines13);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 14 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines14_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines14 = v;
+            Assert.Equal(v, atlas.TexUvLines14);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 15 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines15_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines15 = v;
+            Assert.Equal(v, atlas.TexUvLines15);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 16 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines16_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines16 = v;
+            Assert.Equal(v, atlas.TexUvLines16);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 17 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines17_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines17 = v;
+            Assert.Equal(v, atlas.TexUvLines17);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 18 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines18_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines18 = v;
+            Assert.Equal(v, atlas.TexUvLines18);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 19 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines19_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines19 = v;
+            Assert.Equal(v, atlas.TexUvLines19);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 21 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines21_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines21 = v;
+            Assert.Equal(v, atlas.TexUvLines21);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 22 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines22_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines22 = v;
+            Assert.Equal(v, atlas.TexUvLines22);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 23 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines23_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines23 = v;
+            Assert.Equal(v, atlas.TexUvLines23);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 24 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines24_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines24 = v;
+            Assert.Equal(v, atlas.TexUvLines24);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 25 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines25_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines25 = v;
+            Assert.Equal(v, atlas.TexUvLines25);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 26 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines26_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines26 = v;
+            Assert.Equal(v, atlas.TexUvLines26);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 27 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines27_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines27 = v;
+            Assert.Equal(v, atlas.TexUvLines27);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 28 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines28_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines28 = v;
+            Assert.Equal(v, atlas.TexUvLines28);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 29 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines29_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines29 = v;
+            Assert.Equal(v, atlas.TexUvLines29);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 31 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines31_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines31 = v;
+            Assert.Equal(v, atlas.TexUvLines31);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 32 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines32_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines32 = v;
+            Assert.Equal(v, atlas.TexUvLines32);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 33 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines33_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines33 = v;
+            Assert.Equal(v, atlas.TexUvLines33);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 34 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines34_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines34 = v;
+            Assert.Equal(v, atlas.TexUvLines34);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 35 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines35_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines35 = v;
+            Assert.Equal(v, atlas.TexUvLines35);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 36 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines36_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines36 = v;
+            Assert.Equal(v, atlas.TexUvLines36);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 37 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines37_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines37 = v;
+            Assert.Equal(v, atlas.TexUvLines37);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 38 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines38_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines38 = v;
+            Assert.Equal(v, atlas.TexUvLines38);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 40 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines40_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines40 = v;
+            Assert.Equal(v, atlas.TexUvLines40);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 41 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines41_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines41 = v;
+            Assert.Equal(v, atlas.TexUvLines41);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 42 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines42_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines42 = v;
+            Assert.Equal(v, atlas.TexUvLines42);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 43 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines43_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines43 = v;
+            Assert.Equal(v, atlas.TexUvLines43);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 44 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines44_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines44 = v;
+            Assert.Equal(v, atlas.TexUvLines44);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 45 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines45_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines45 = v;
+            Assert.Equal(v, atlas.TexUvLines45);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 46 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines46_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines46 = v;
+            Assert.Equal(v, atlas.TexUvLines46);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 47 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines47_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines47 = v;
+            Assert.Equal(v, atlas.TexUvLines47);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 48 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines48_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines48 = v;
+            Assert.Equal(v, atlas.TexUvLines48);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 49 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines49_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines49 = v;
+            Assert.Equal(v, atlas.TexUvLines49);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 51 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines51_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines51 = v;
+            Assert.Equal(v, atlas.TexUvLines51);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 52 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines52_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines52 = v;
+            Assert.Equal(v, atlas.TexUvLines52);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 53 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines53_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines53 = v;
+            Assert.Equal(v, atlas.TexUvLines53);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 54 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines54_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines54 = v;
+            Assert.Equal(v, atlas.TexUvLines54);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 55 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines55_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines55 = v;
+            Assert.Equal(v, atlas.TexUvLines55);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 56 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines56_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines56 = v;
+            Assert.Equal(v, atlas.TexUvLines56);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 57 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines57_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines57 = v;
+            Assert.Equal(v, atlas.TexUvLines57);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 58 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines58_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines58 = v;
+            Assert.Equal(v, atlas.TexUvLines58);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 59 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines59_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines59 = v;
+            Assert.Equal(v, atlas.TexUvLines59);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 60 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines60_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines60 = v;
+            Assert.Equal(v, atlas.TexUvLines60);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 61 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines61_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines61 = v;
+            Assert.Equal(v, atlas.TexUvLines61);
+        }
+
+        /// <summary>
+        ///     Tests that tex uv lines 62 should set and get correctly
+        /// </summary>
+        [Fact]
+        public void TexUvLines62_Should_SetAndGetCorrectly()
+        {
+            ImFontAtlas atlas = new ImFontAtlas();
+            Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
+            atlas.TexUvLines62 = v;
+            Assert.Equal(v, atlas.TexUvLines62);
+        }
     }
 }
