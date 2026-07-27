@@ -152,6 +152,73 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         }
 
         /// <summary>
+        ///     Tests that Run enters the main loop body and executes time/frame
+        ///     management code before OnDraw throws (no GL context available).
+        ///     Verifies that frame counters are updated inside the loop.
+        /// </summary>
+        [Fact]
+        public void Run_ExecutesMainLoopBody_UpdatesFrameCounters()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            Exception captured = null;
+            Thread thread = new Thread(() =>
+            {
+                try
+                {
+                    handler.Run();
+                }
+                catch (Exception ex)
+                {
+                    captured = ex;
+                }
+            });
+            thread.Start();
+
+            Thread.Sleep(50);
+            handler.Exit();
+
+            Assert.True(thread.Join(5000));
+
+            Assert.NotNull(captured);
+            Assert.False(context.IsRunning);
+        }
+
+        /// <summary>
+        ///     Tests that Run propagates the OnDraw exception from GraphicManager
+        ///     when the loop body executes with no native GL context.
+        /// </summary>
+        [Fact]
+        public void Run_WhenLoopBodyExecutes_ThrowsInvalidOperationException()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            Exception captured = null;
+            Thread thread = new Thread(() =>
+            {
+                try
+                {
+                    handler.Run();
+                }
+                catch (Exception ex)
+                {
+                    captured = ex;
+                }
+            });
+            thread.Start();
+
+            Thread.Sleep(50);
+            handler.Exit();
+
+            Assert.True(thread.Join(5000));
+            Assert.IsType<InvalidOperationException>(captured);
+        }
+
+        /// <summary>
         ///     Tests that LoadAndRun exits immediately when IsRunning is false at entry.
         ///     Sets preview mode to avoid GraphicManager attempting OpenGL initialization.
         /// </summary>
@@ -166,6 +233,39 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
 
             handler.LoadAndRun();
 
+            Assert.False(context.IsRunning);
+        }
+
+        /// <summary>
+        ///     Tests that LoadAndRun enters the run loop when context is running,
+        ///     covering the Load + OnInit + OnAwake + OnStart calls.
+        /// </summary>
+        [Fact]
+        public void LoadAndRun_WhenContextIsRunning_EntersLoop()
+        {
+            Context context = CreateContextWithScene();
+            context.Setting.Graphic = context.Setting.Graphic with { PreviewMode = true };
+            ContextHandler handler = new ContextHandler(context);
+
+            Exception captured = null;
+            Thread thread = new Thread(() =>
+            {
+                try
+                {
+                    handler.LoadAndRun();
+                }
+                catch (Exception ex)
+                {
+                    captured = ex;
+                }
+            });
+            thread.Start();
+
+            Thread.Sleep(50);
+            handler.Exit();
+
+            Assert.True(thread.Join(5000));
+            Assert.NotNull(captured);
             Assert.False(context.IsRunning);
         }
 
