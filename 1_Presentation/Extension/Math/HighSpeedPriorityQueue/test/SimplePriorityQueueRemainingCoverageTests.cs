@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
@@ -217,6 +218,52 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             SimplePriorityQueue<string, int>.SimpleNode extraNode = new SimplePriorityQueue<string, int>.SimpleNode("extra");
             queue._queue.Enqueue(extraNode, 2);
             Assert.False(queue.IsValidQueue());
+        }
+
+        [Fact]
+        public void TryFirst_WhenQueueEmptiedBetweenChecks_ShouldCoverBraces()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue("item", 1);
+
+            bool result = true;
+            Thread thread = new Thread(() => result = queue.TryFirst(out _))
+            {
+                IsBackground = true
+            };
+
+            lock (queue._queue)
+            {
+                thread.Start();
+                Thread.Sleep(100);
+                queue.Clear();
+            }
+
+            thread.Join();
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void TryDequeue_WhenQueueEmptiedBetweenChecks_ShouldCoverBraces()
+        {
+            SimplePriorityQueue<string, int> queue = new SimplePriorityQueue<string, int>();
+            queue.Enqueue("item", 1);
+
+            bool result = true;
+            Thread thread = new Thread(() => result = queue.TryDequeue(out _))
+            {
+                IsBackground = true
+            };
+
+            lock (queue._queue)
+            {
+                thread.Start();
+                Thread.Sleep(100);
+                queue.Clear();
+            }
+
+            thread.Join();
+            Assert.False(result);
         }
     }
 }
