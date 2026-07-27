@@ -616,5 +616,79 @@ namespace Alis.Extension.Io.FileDialog.Test
             Assert.Contains("/mock/folder", result.SelectedPaths);
         }
 
+        /// <summary>
+        /// Tests that pick file with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFile_NullOptions_ReturnsError()
+        {
+            var picker = new LinuxFilePicker();
+            FilePickerResult result = picker.PickFile(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// Tests that pick files with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFiles_NullOptions_ReturnsError()
+        {
+            var picker = new LinuxFilePicker();
+            FilePickerResult result = picker.PickFiles(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// Tests that pick folder with null options returns error
+        /// </summary>
+        [Fact]
+        public void PickFolder_NullOptions_ReturnsError()
+        {
+            var picker = new LinuxFilePicker();
+            FilePickerResult result = picker.PickFolder(null);
+
+            Assert.False(result.IsSuccess);
+            Assert.NotNull(result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// Tests that build zenity file dialog arguments with null filters skips filters
+        /// </summary>
+        [Fact]
+        public void BuildZenityFileDialogArguments_WithNullFilters_SkipsFilters()
+        {
+            var args = new List<string>();
+            var options = new FilePickerOptions("Test")
+            {
+                Filters = null
+            };
+
+            LinuxFilePicker.BuildZenityFileDialogArguments(args, options, false);
+
+            Assert.DoesNotContain("--file-filter", args);
+        }
+
+        /// <summary>
+        /// Tests that build kdialog file dialog arguments with null filters skips filter arg
+        /// </summary>
+        [Fact]
+        public void BuildKdialogFileDialogArguments_WithNullFilters_SkipsFilters()
+        {
+            var args = new List<string>();
+            var options = new FilePickerOptions("Test")
+            {
+                DefaultPath = "/tmp",
+                Filters = null
+            };
+
+            LinuxFilePicker.BuildKdialogFileDialogArguments(args, options, false);
+
+            Assert.Single(args, a => a.Contains("/tmp"));
+        }
+
     }
 }
