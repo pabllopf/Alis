@@ -1,0 +1,416 @@
+using System;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Text;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Graphic.OpenGL;
+using Alis.Core.Graphic.OpenGL.Delegates;
+using Alis.Core.Graphic.OpenGL.Enums;
+using Xunit;
+
+namespace Alis.Core.Graphic.Test
+{
+    public class GlCovTests : IDisposable
+    {
+        private static readonly FieldInfo Field = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
+        private readonly object _saved;
+
+        public GlCovTests() => _saved = Field?.GetValue(null);
+        public void Dispose() => Field?.SetValue(null, _saved);
+
+        private void Init(Gl.GetProcAddressDelegate resolver) => Gl.Initialize(resolver);
+
+        [Fact]
+        public void GenBuffer_ReturnsValueFromMock()
+        {
+            GenBuffers mock = (int n, uint[] buffers) => buffers[0] = 42;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGenBuffers" ? fp : IntPtr.Zero);
+            Assert.Equal(42u, Gl.GenBuffer());
+        }
+
+        [Fact]
+        public void DeleteBuffer_CallsMock()
+        {
+            bool called = false;
+            DeleteBuffers mock = (int n, uint[] buffers) => called = true;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glDeleteBuffers" ? fp : IntPtr.Zero);
+            Gl.DeleteBuffer(7);
+            Assert.True(called);
+        }
+
+        [Fact]
+        public void GetShaderInfoLog_ReturnsEmpty_WhenLengthZero()
+        {
+            GetShaderiv ivMock = (uint shader, ShaderParameter pname, int[] p) => p[0] = 0;
+            IntPtr ivFp = Marshal.GetFunctionPointerForDelegate(ivMock);
+            Init(name => name == "glGetShaderiv" ? ivFp : IntPtr.Zero);
+            string result = Gl.GetShaderInfoLog(1);
+            Assert.Equal(string.Empty, result);
+        }
+
+        [Fact]
+        public void GetShaderInfoLog_ReturnsString_WhenLengthNonZero()
+        {
+            GetShaderiv ivMock = (uint shader, ShaderParameter pname, int[] p) => p[0] = 4;
+            IntPtr ivFp = Marshal.GetFunctionPointerForDelegate(ivMock);
+
+            GetShaderInfoLogDel logMock = (uint shader, int maxLen, int[] len, StringBuilder sb) => sb.Append("test");
+            IntPtr logFp = Marshal.GetFunctionPointerForDelegate(logMock);
+
+            Init(name => name switch
+            {
+                "glGetShaderiv" => ivFp,
+                "glGetShaderInfoLog" => logFp,
+                _ => IntPtr.Zero
+            });
+
+            Assert.Equal("test", Gl.GetShaderInfoLog(1));
+        }
+
+        [Fact]
+        public void ShaderSource_CallsMock()
+        {
+            string capturedSource = null;
+            ShaderSourceDel mock = (uint shader, int count, string[] src, int[] len) => capturedSource = src[0];
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glShaderSource" ? fp : IntPtr.Zero);
+            Gl.ShaderSource(1, "hello");
+            Assert.Equal("hello", capturedSource);
+        }
+
+        [Fact]
+        public void GetShaderCompileStatus_ReturnsTrue_WhenCompiled()
+        {
+            GetShaderiv mock = (uint shader, ShaderParameter pname, int[] p) => p[0] = 1;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetShaderiv" ? fp : IntPtr.Zero);
+            Assert.True(Gl.GetShaderCompileStatus(1));
+        }
+
+        [Fact]
+        public void GetShaderCompileStatus_ReturnsFalse_WhenNotCompiled()
+        {
+            GetShaderiv mock = (uint shader, ShaderParameter pname, int[] p) => p[0] = 0;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetShaderiv" ? fp : IntPtr.Zero);
+            Assert.False(Gl.GetShaderCompileStatus(1));
+        }
+
+        [Fact]
+        public void GetProgramInfoLog_ReturnsEmpty_WhenLengthZero()
+        {
+            GetProgramiv mock = (uint prog, ProgramParameter pname, int[] p) => p[0] = 0;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetProgramiv" ? fp : IntPtr.Zero);
+            Assert.Equal(string.Empty, Gl.GetProgramInfoLog(1));
+        }
+
+        [Fact]
+        public void GetProgramInfoLog_ReturnsString_WhenLengthNonZero()
+        {
+            GetProgramiv ivMock = (uint prog, ProgramParameter pname, int[] p) => p[0] = 5;
+            IntPtr ivFp = Marshal.GetFunctionPointerForDelegate(ivMock);
+
+            GetProgramInfoLogDel logMock = (uint prog, int maxLen, int[] len, StringBuilder sb) => sb.Append("hello");
+            IntPtr logFp = Marshal.GetFunctionPointerForDelegate(logMock);
+
+            Init(name => name switch
+            {
+                "glGetProgramiv" => ivFp,
+                "glGetProgramInfoLog" => logFp,
+                _ => IntPtr.Zero
+            });
+
+            Assert.Equal("hello", Gl.GetProgramInfoLog(1));
+        }
+
+        [Fact]
+        public void GetProgramLinkStatus_ReturnsTrue_WhenLinked()
+        {
+            GetProgramiv mock = (uint prog, ProgramParameter pname, int[] p) => p[0] = 1;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetProgramiv" ? fp : IntPtr.Zero);
+            Assert.True(Gl.GetProgramLinkStatus(1));
+        }
+
+        [Fact]
+        public void GetProgramLinkStatus_ReturnsFalse_WhenNotLinked()
+        {
+            GetProgramiv mock = (uint prog, ProgramParameter pname, int[] p) => p[0] = 0;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetProgramiv" ? fp : IntPtr.Zero);
+            Assert.False(Gl.GetProgramLinkStatus(1));
+        }
+
+        [Fact]
+        public void UniformMatrix4Fv_PassesFlattenedValues()
+        {
+            float[] captured = null;
+            UniformMatrix4FvDel mock = (int loc, int count, bool transpose, float[] val) => captured = (float[])val.Clone();
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glUniformMatrix4fv" ? fp : IntPtr.Zero);
+
+            Matrix4X4 mat = new Matrix4X4(
+                1, 2, 3, 4,
+                5, 6, 7, 8,
+                9, 10, 11, 12,
+                13, 14, 15, 16
+            );
+            Gl.UniformMatrix4Fv(0, mat);
+
+            Assert.Equal(1f, captured[0]);
+            Assert.Equal(2f, captured[1]);
+            Assert.Equal(3f, captured[2]);
+            Assert.Equal(4f, captured[3]);
+            Assert.Equal(5f, captured[4]);
+            Assert.Equal(6f, captured[5]);
+            Assert.Equal(7f, captured[6]);
+            Assert.Equal(8f, captured[7]);
+            Assert.Equal(9f, captured[8]);
+            Assert.Equal(10f, captured[9]);
+            Assert.Equal(11f, captured[10]);
+            Assert.Equal(12f, captured[11]);
+            Assert.Equal(13f, captured[12]);
+            Assert.Equal(14f, captured[13]);
+            Assert.Equal(15f, captured[14]);
+            Assert.Equal(16f, captured[15]);
+        }
+
+        [Fact]
+        public void GenVertexArray_ReturnsValueFromMock()
+        {
+            GenVertexArrays mock = (int n, uint[] arrays) => arrays[0] = 99;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGenVertexArrays" ? fp : IntPtr.Zero);
+            Assert.Equal(99u, Gl.GenVertexArray());
+        }
+
+        [Fact]
+        public void DeleteVertexArray_CallsMock()
+        {
+            uint captured = 0;
+            DeleteVertexArrays mock = (int n, uint[] arrays) => captured = arrays[0];
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glDeleteVertexArrays" ? fp : IntPtr.Zero);
+            Gl.DeleteVertexArray(5);
+            Assert.Equal(5u, captured);
+        }
+
+        [Fact]
+        public void GenTexture_ReturnsValueFromMock()
+        {
+            GenTextures mock = (int n, uint[] textures) => textures[0] = 77;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGenTextures" ? fp : IntPtr.Zero);
+            Assert.Equal(77u, Gl.GenTexture());
+        }
+
+        [Fact]
+        public void DeleteTexture_CallsMock()
+        {
+            uint captured = 0;
+            DeleteTextures mock = (int n, uint[] textures) => captured = textures[0];
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glDeleteTextures" ? fp : IntPtr.Zero);
+            Gl.DeleteTexture(3);
+            Assert.Equal(3u, captured);
+        }
+
+        [Fact]
+        public void GlGetString_ReturnsValue_WithValidPtr()
+        {
+            string expected = "OpenGL 4.1";
+            byte[] bytes = Encoding.ASCII.GetBytes(expected);
+            IntPtr mem = Marshal.AllocHGlobal(bytes.Length + 1);
+            try
+            {
+                Marshal.Copy(bytes, 0, mem, bytes.Length);
+                Marshal.WriteByte(mem, bytes.Length, 0);
+
+                GetString mock = (StringName _) => mem;
+                IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+                Init(name => name == "glGetString" ? fp : IntPtr.Zero);
+                Assert.Equal(expected, Gl.GlGetString(StringName.Version));
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(mem);
+            }
+        }
+
+        [Fact]
+        public void GlGetShader_ReturnsValueFromMock()
+        {
+            GetShaderiv mock = (uint shader, ShaderParameter pname, int[] p) => p[0] = 42;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetShaderiv" ? fp : IntPtr.Zero);
+            Gl.GlGetShader(1, ShaderParameter.CompileStatus, out int result);
+            Assert.Equal(42, result);
+        }
+
+        [Fact]
+        public void GlGetProgram_ReturnsValueFromMock()
+        {
+            GetProgramiv mock = (uint prog, ProgramParameter pname, int[] p) => p[0] = 99;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetProgramiv" ? fp : IntPtr.Zero);
+            Gl.GlGetProgram(1, ProgramParameter.LinkStatus, out int result);
+            Assert.Equal(99, result);
+        }
+
+        [Fact]
+        public void GlUniformMatrix2x3_CallsMock()
+        {
+            int capturedLocation = -1;
+            bool capturedTranspose = false;
+            Gl.UniformMatrix2x3FvDel mock = (int loc, int count, bool transpose, Span<float> val) =>
+            {
+                capturedLocation = loc;
+                capturedTranspose = transpose;
+            };
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glUniformMatrix2x3fv" ? fp : IntPtr.Zero);
+
+            Span<float> matrix = stackalloc float[6] { 1, 2, 3, 4, 5, 6 };
+            Gl.GlUniformMatrix2x3(5, true, matrix);
+            Assert.Equal(5, capturedLocation);
+            Assert.True(capturedTranspose);
+        }
+
+        [Fact]
+        public void GlGetError_ReturnsValueFromMock()
+        {
+            Alis.Core.Graphic.OpenGL.Gl.GetError mock = () => 1280;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetError" ? fp : IntPtr.Zero);
+            Assert.Equal(1280, Gl.GlGetError());
+        }
+
+        [Fact]
+        public void GlLineWidth_CallsMock()
+        {
+            float captured = 0;
+            Gl.LineWidth mock = (float w) => captured = w;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glLineWidth" ? fp : IntPtr.Zero);
+            Gl.GlLineWidth(2.5f);
+            Assert.Equal(2.5f, captured);
+        }
+
+        [Fact]
+        public void GlActiveTexture_CallsMock()
+        {
+            TextureUnit captured = 0;
+            Gl.ActiveTexture mock = (TextureUnit t) => captured = t;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glActiveTexture" ? fp : IntPtr.Zero);
+            Gl.GlActiveTexture(TextureUnit.Texture1);
+            Assert.Equal(TextureUnit.Texture1, captured);
+        }
+
+        [Fact]
+        public void GlGetIntegerv_CallsMock()
+        {
+            int[] captured = null;
+            Gl.GetIntegerv mock = (int pname, int[] data) => captured = data;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glGetIntegerv" ? fp : IntPtr.Zero);
+            int[] viewport = new int[4];
+            Gl.GlGetIntegerv(0, viewport);
+            Assert.Same(viewport, captured);
+        }
+
+        [Fact]
+        public void VertexAttribPointer_CallsMock_WithValidIndex()
+        {
+            uint capturedIndex = 999;
+            VertexAttribPointerDel mock = (uint idx, int size, VertexAttribPointerType type, bool norm, int stride, IntPtr ptr) => capturedIndex = idx;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glVertexAttribPointer" ? fp : IntPtr.Zero);
+            Gl.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, 0, IntPtr.Zero);
+            Assert.Equal(2u, capturedIndex);
+        }
+
+        [Fact]
+        public void EnableVertexAttribArray_CallsMock_WithValidIndex()
+        {
+            uint captured = 999;
+            EnableVertexAttribArrayDel mock = (uint idx) => captured = idx;
+            IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
+            Init(name => name == "glEnableVertexAttribArray" ? fp : IntPtr.Zero);
+            Gl.EnableVertexAttribArray(4);
+            Assert.Equal(4u, captured);
+        }
+
+        [Fact]
+        public void VertexAttribPointer_ThrowsOnNegativeIndex()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                Gl.VertexAttribPointer(-1, 0, 0, false, 0, IntPtr.Zero));
+        }
+
+        [Fact]
+        public void EnableVertexAttribArray_ThrowsOnNegativeIndex()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                Gl.EnableVertexAttribArray(-1));
+        }
+
+        [Fact]
+        public void AllProperties_ThrowExternal_WhenNotResolved()
+        {
+            Init(_ => IntPtr.Zero);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlViewport);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlClearColor);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlColor4F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlEnd);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlClear);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlEnable);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDisable);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBlendEquation);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBlendFunc);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUseProgram);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBegin);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlCreateShader);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlCompileShader);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDeleteShader);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlCreateProgram);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlAttachShader);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlLinkProgram);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlGetUniformLocation);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlGetAttribLocation);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDetachShader);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDeleteProgram);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlGetActiveAttrib);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlGetActiveUniform);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniform1F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniform2F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniform3F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniform4F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniform1I);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlReadPixels);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlGenFramebuffer);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlFramebufferTexture2D);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlUniformMatrix3Fv);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBindSampler);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBindVertexArray);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBindBuffer);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlVertex2F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlTexCoord2F);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDisableVertexAttribArray);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBindFramebuffer);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBindTexture);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlBufferData);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlScissor);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDrawElementsBaseVertex);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlPixelStorei);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlTexImage2D);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlTexParameteri);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDrawArrays);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlDrawElements);
+            Assert.Throws<ExternalException>(() => _ = Gl.GlPolygonMode);
+        }
+    }
+}
