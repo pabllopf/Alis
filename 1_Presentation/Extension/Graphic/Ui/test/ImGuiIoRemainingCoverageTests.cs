@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Xunit;
 
@@ -1019,6 +1020,391 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Null(io.KeysDown);
             Assert.Null(io.NavInputs);
             Assert.Null(io.MouseDown);
+        }
+
+        /// <summary>
+        ///     Tests that want capture mouse unless popup close set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void WantCaptureMouseUnlessPopupClose_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            byte value = 1;
+            io.WantCaptureMouseUnlessPopupClose = value;
+            Assert.Equal(value, io.WantCaptureMouseUnlessPopupClose);
+        }
+
+        /// <summary>
+        ///     Tests that mouse pos prev set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MousePosPrev_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MousePosPrev = value;
+            Assert.Equal(value, io.MousePosPrev);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked pos 0 get returns default value
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos0_Get_ReturnsDefaultValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Assert.Equal(default(Vector2F), io.MouseClickedPos0);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked pos 1 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos1_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseClickedPos1 = value;
+            Assert.Equal(value, io.MouseClickedPos1);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked pos 2 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos2_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseClickedPos2 = value;
+            Assert.Equal(value, io.MouseClickedPos2);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked pos 3 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos3_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseClickedPos3 = value;
+            Assert.Equal(value, io.MouseClickedPos3);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked pos 4 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseClickedPos4_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseClickedPos4 = value;
+            Assert.Equal(value, io.MouseClickedPos4);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance abs 0 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs0_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseDragMaxDistanceAbs0 = value;
+            Assert.Equal(value, io.MouseDragMaxDistanceAbs0);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance abs 1 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs1_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseDragMaxDistanceAbs1 = value;
+            Assert.Equal(value, io.MouseDragMaxDistanceAbs1);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance abs 2 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs2_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseDragMaxDistanceAbs2 = value;
+            Assert.Equal(value, io.MouseDragMaxDistanceAbs2);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance abs 3 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs3_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseDragMaxDistanceAbs3 = value;
+            Assert.Equal(value, io.MouseDragMaxDistanceAbs3);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance abs 4 set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceAbs4_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            Vector2F value = new Vector2F(2f, 3f);
+            io.MouseDragMaxDistanceAbs4 = value;
+            Assert.Equal(value, io.MouseDragMaxDistanceAbs4);
+        }
+
+        /// <summary>
+        ///     Tests that pen pressure set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void PenPressure_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            float value = 0.5f;
+            io.PenPressure = value;
+            Assert.Equal(value, io.PenPressure);
+        }
+
+        /// <summary>
+        ///     Tests that app focus lost set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void AppFocusLost_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            byte value = 1;
+            io.AppFocusLost = value;
+            Assert.Equal(value, io.AppFocusLost);
+        }
+
+        /// <summary>
+        ///     Tests that app accepting events set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void AppAcceptingEvents_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            byte value = 1;
+            io.AppAcceptingEvents = value;
+            Assert.Equal(value, io.AppAcceptingEvents);
+        }
+
+        /// <summary>
+        ///     Tests that backend using legacy key arrays set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void BackendUsingLegacyKeyArrays_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            sbyte value = -1;
+            io.BackendUsingLegacyKeyArrays = value;
+            Assert.Equal(value, io.BackendUsingLegacyKeyArrays);
+        }
+
+        /// <summary>
+        ///     Tests that backend using legacy nav input array set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void BackendUsingLegacyNavInputArray_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            byte value = 1;
+            io.BackendUsingLegacyNavInputArray = value;
+            Assert.Equal(value, io.BackendUsingLegacyNavInputArray);
+        }
+
+        /// <summary>
+        ///     Tests that input queue surrogate set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void InputQueueSurrogate_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            ushort value = 42;
+            io.InputQueueSurrogate = value;
+            Assert.Equal(value, io.InputQueueSurrogate);
+        }
+
+        /// <summary>
+        ///     Tests that input queue characters set and get returns correct value
+        /// </summary>
+        [Fact]
+        public void InputQueueCharacters_SetAndGet_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            ImVectorG<ushort> value = new ImVectorG<ushort>(1, 2, new IntPtr(123));
+            io.InputQueueCharacters = value;
+            Assert.Equal(1, io.InputQueueCharacters.Size);
+            Assert.Equal(2, io.InputQueueCharacters.Capacity);
+            Assert.Equal(new IntPtr(123), io.InputQueueCharacters.Data);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked time array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseClickedTime_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseClickedTime = new double[5];
+            io.MouseClickedTime[3] = 1.5;
+            Assert.Equal(1.5, io.MouseClickedTime[3]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseClicked_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseClicked = new byte[5];
+            io.MouseClicked[1] = 1;
+            Assert.Equal(1, io.MouseClicked[1]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse double clicked array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDoubleClicked_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDoubleClicked = new byte[5];
+            io.MouseDoubleClicked[0] = 1;
+            Assert.Equal(1, io.MouseDoubleClicked[0]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked count array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseClickedCount_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseClickedCount = new ushort[5];
+            io.MouseClickedCount[2] = 3;
+            Assert.Equal(3u, io.MouseClickedCount[2]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse clicked last count array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseClickedLastCount_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseClickedLastCount = new ushort[5];
+            io.MouseClickedLastCount[4] = 7;
+            Assert.Equal(7u, io.MouseClickedLastCount[4]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse released array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseReleased_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseReleased = new byte[5];
+            io.MouseReleased[2] = 1;
+            Assert.Equal(1, io.MouseReleased[2]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse down owned array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDownOwned_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDownOwned = new byte[5];
+            io.MouseDownOwned[3] = 1;
+            Assert.Equal(1, io.MouseDownOwned[3]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse down owned unless popup close array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDownOwnedUnlessPopupClose_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDownOwnedUnlessPopupClose = new byte[5];
+            io.MouseDownOwnedUnlessPopupClose[0] = 1;
+            Assert.Equal(1, io.MouseDownOwnedUnlessPopupClose[0]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse down duration array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDownDuration_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDownDuration = new float[5];
+            io.MouseDownDuration[1] = 0.5f;
+            Assert.Equal(0.5f, io.MouseDownDuration[1]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse down duration prev array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDownDurationPrev_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDownDurationPrev = new float[5];
+            io.MouseDownDurationPrev[2] = 0.3f;
+            Assert.Equal(0.3f, io.MouseDownDurationPrev[2]);
+        }
+
+        /// <summary>
+        ///     Tests that mouse drag max distance sqr array round-trips a known element
+        /// </summary>
+        [Fact]
+        public void MouseDragMaxDistanceSqr_Array_SetAndGetValue_ReturnsCorrectValue()
+        {
+            ImGuiIo io = new ImGuiIo();
+            io.MouseDragMaxDistanceSqr = new float[5];
+            io.MouseDragMaxDistanceSqr[0] = 10.0f;
+            Assert.Equal(10.0f, io.MouseDragMaxDistanceSqr[0]);
+        }
+
+        /// <summary>
+        ///     Tests that all keys data set and get returns correct value via reflection
+        /// </summary>
+        [Fact]
+        public void AllKeysDataSetAndGet_ReturnsCorrectValue()
+        {
+            object boxed = new ImGuiIo();
+            ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
+            System.Type type = typeof(ImGuiIo);
+            for (int i = 0; i <= 651; i++)
+            {
+                if (i == 0 || i == 1 || i == 100 || i == 294 || i == 295)
+                {
+                    continue;
+                }
+                PropertyInfo prop = type.GetProperty("KeysData" + i);
+                prop.SetValue(boxed, value);
+                ImGuiKeyData result = (ImGuiKeyData)prop.GetValue(boxed);
+                Assert.Equal((byte)1, result.Down);
+                Assert.Equal(0.5f, result.DownDuration);
+                Assert.Equal(0.25f, result.DownDurationPrev);
+                Assert.Equal(0.75f, result.AnalogValue);
+            }
         }
     }
 }
