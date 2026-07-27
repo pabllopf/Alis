@@ -175,5 +175,131 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(6f, result.X);
             Assert.Equal(12f, result.Y);
         }
+
+        /// <summary>
+        ///     Tests that GetInverse returns the inverse transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void GetInverse_ReturnsInverseTransform()
+        {
+            Transform t = new Transform(1, 0, 10, 0, 1, 20, 0, 0, 1);
+            Transform inv = t.GetInverse();
+
+            Assert.Equal(1f, inv.m00);
+            Assert.Equal(1f, inv.m11);
+            Assert.Equal(1f, inv.m22);
+        }
+
+        /// <summary>
+        ///     Tests that TransformRect transforms a rectangle.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void TransformRect_TransformsRectangle()
+        {
+            Transform t = Transform.Identity;
+            FloatRect rect = new FloatRect(10f, 20f, 30f, 40f);
+            FloatRect result = t.TransformRect(rect);
+
+            Assert.Equal(10f, result.Left);
+            Assert.Equal(20f, result.Top);
+            Assert.Equal(30f, result.Width);
+            Assert.Equal(40f, result.Height);
+        }
+
+        /// <summary>
+        ///     Tests that Rotate with angle only modifies the transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Rotate_WithAngleOnly_ModifiesTransform()
+        {
+            Transform t = Transform.Identity;
+            t.Rotate(90f);
+
+            Assert.Equal(0f, t.m00, 4);
+            Assert.Equal(-1f, t.m01, 4);
+            Assert.Equal(1f, t.m10, 4);
+            Assert.Equal(0f, t.m11, 4);
+        }
+
+        /// <summary>
+        ///     Tests that TransformPoint with Vector2F directly transforms a point.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void TransformPoint_WithVector2F_ReturnsTransformedPoint()
+        {
+            Transform t = Transform.Identity;
+            Vector2F point = new Vector2F(10f, 20f);
+            Vector2F result = t.TransformPoint(point);
+
+            Assert.Equal(10f, result.X);
+            Assert.Equal(20f, result.Y);
+        }
+
+        /// <summary>
+        ///     Tests that Translate with floats modifies the transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Translate_WithFloats_ModifiesTransform()
+        {
+            Transform t = Transform.Identity;
+            t.Translate(15f, 25f);
+
+            Assert.Equal(15f, t.m02);
+            Assert.Equal(25f, t.m12);
+        }
+
+        /// <summary>
+        ///     Tests that Scale with floats modifies the transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Scale_WithFloats_ModifiesTransform()
+        {
+            Transform t = Transform.Identity;
+            t.Scale(3f, 4f);
+
+            Assert.Equal(3f, t.m00);
+            Assert.Equal(4f, t.m11);
+        }
+
+        /// <summary>
+        ///     Tests that Scale with floats and center modifies the transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Scale_WithFloatsAndCenter_ModifiesTransform()
+        {
+            Transform t = Transform.Identity;
+            t.Scale(2f, 3f, 50f, 100f);
+
+            Assert.Equal(2f, t.m00);
+            Assert.Equal(3f, t.m11);
+        }
+
+        /// <summary>
+        ///     Tests that Combine directly combines two transforms.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Combine_CombinesTransforms()
+        {
+            Transform t = Transform.Identity;
+            Transform other = new Transform(1, 0, 10, 0, 1, 20, 0, 0, 1);
+            t.Combine(other);
+
+            Assert.Equal(10f, t.m02);
+            Assert.Equal(20f, t.m12);
+        }
+
+        /// <summary>
+        ///     Tests that Rotate with angle and center coordinates modifies the transform.
+        /// </summary>
+        [RequireCSfmlWindowsFact]
+        public void Rotate_WithAngleAndCenterCoords_ModifiesTransform()
+        {
+            Transform t = Transform.Identity;
+            t.Rotate(0f, 100f, 200f);
+
+            Assert.Equal(1f, t.m00);
+            Assert.Equal(1f, t.m11);
+            Assert.Equal(1f, t.m22);
+        }
     }
 }
