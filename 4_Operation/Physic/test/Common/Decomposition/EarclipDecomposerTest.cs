@@ -393,5 +393,37 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             Assert.False(result);
         }
+
+        /// <summary>
+        ///     Tests that IsEar returns false when i is out of bounds or xvLength is less than 3.
+        /// </summary>
+        [Fact]
+        public void IsEar_WithOutOfBoundsIndex_ShouldReturnFalse()
+        {
+            float[] xv = { 0f, 1f, 0f };
+            float[] yv = { 0f, 0f, 1f };
+
+            bool result = EarclipDecomposer.IsEar(-1, xv, yv, 3);
+            Assert.False(result);
+
+            result = EarclipDecomposer.IsEar(5, xv, yv, 3);
+            Assert.False(result);
+
+            result = EarclipDecomposer.IsEar(0, xv, yv, 2);
+            Assert.False(result);
+        }
+
+        /// <summary>
+        ///     Tests that IsEar returns false when a non-adjacent vertex lies inside the ear triangle.
+        /// </summary>
+        [Fact]
+        public void IsEar_WithVertexInsideEarTriangle_ShouldReturnFalse()
+        {
+            float[] xv = { 0f, 0f, 6f, 6f, 4f };
+            float[] yv = { 0f, 6f, 6f, 0f, 3f };
+
+            bool result = EarclipDecomposer.IsEar(2, xv, yv, 5);
+            Assert.False(result);
+        }
     }
 }
