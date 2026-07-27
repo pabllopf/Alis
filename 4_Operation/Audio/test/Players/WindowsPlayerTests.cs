@@ -28,7 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Alis.Core.Audio.Interfaces;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
 using Xunit;
@@ -36,212 +40,658 @@ using Xunit;
 namespace Alis.Core.Audio.Test.Players
 {
     /// <summary>
-    ///     Tests for WindowsPlayer internal methods.
+    ///     Tests for WindowsPlayer internal methods and uncovered code paths.
     /// </summary>
     public class WindowsPlayerTests
     {
         /// <summary>
-        /// Disposes the withdisposing true should release resources
+        ///     Tests that constructor initializes Playing and Paused to false.
         /// </summary>
-        [WindowsOnly]
-        public void Dispose_WithdisposingTrue_ShouldReleaseResources()
+        [Fact]
+        public void Constructor_PlayingAndPaused_False()
         {
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
-
-            // Act
-            player.Dispose();
-
-            // Assert - should not throw
-            Assert.True(true);
+            Assert.False(player.Playing);
+            Assert.False(player.Paused);
         }
 
         /// <summary>
-        /// Disposes the withdisposing false should not release managed resources
+        ///     Tests that WindowsPlayer implements IPlayer.
         /// </summary>
-        [WindowsOnly]
-        public void Dispose_WithdisposingFalse_ShouldNotReleaseManagedResources()
+        [Fact]
+        public void WindowsPlayer_Implements_IPlayer()
         {
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
-
-            // Act
-            player.Dispose();
-
-            // Assert - should not throw
-            Assert.True(true);
+            Assert.IsAssignableFrom<IPlayer>(player);
         }
 
         /// <summary>
-        /// Disposes the multiple calls should not throw
+        ///     Tests that WindowsPlayer implements IDisposable.
         /// </summary>
-        [WindowsOnly]
+        [Fact]
+        public void WindowsPlayer_Implements_IDisposable()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            Assert.IsAssignableFrom<IDisposable>(player);
+        }
+
+        /// <summary>
+        ///     Tests that Dispose does not throw.
+        /// </summary>
+        [Fact]
+        public void Dispose_ShouldNotThrow()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+        }
+
+        /// <summary>
+        ///     Tests that multiple Dispose calls do not throw.
+        /// </summary>
+        [Fact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
-
-            // Act & Assert
             player.Dispose();
             player.Dispose();
             player.Dispose();
-            Assert.True(true);
-        }
-        
-        /// <summary>
-        /// Playings the property should be public get
-        /// </summary>
-        [WindowsOnly]
-        public void Playing_Property_ShouldBePublicGet()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo playingProperty = typeof(WindowsPlayer).GetProperty("Playing");
-
-            // Assert
-            Assert.NotNull(playingProperty);
-            Assert.True(playingProperty.CanRead);
         }
 
         /// <summary>
-        /// Pauseds the property should be public get
+        ///     Tests that Dispose via using statement works.
         /// </summary>
-        [WindowsOnly]
-        public void Paused_Property_ShouldBePublicGet()
+        [Fact]
+        public void Dispose_ViaUsing_ShouldNotThrow()
         {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo pausedProperty = typeof(WindowsPlayer).GetProperty("Paused");
-
-            // Assert
-            Assert.NotNull(pausedProperty);
-            Assert.True(pausedProperty.CanRead);
+            using (WindowsPlayer player = new WindowsPlayer())
+            {
+                Assert.NotNull(player);
+            }
         }
 
         /// <summary>
-        /// Ises the playing property should be public get
+        ///     Tests that PlaybackFinished event can be subscribed and unsubscribed.
         /// </summary>
-        [WindowsOnly]
-        public void IsPlaying_Property_ShouldBePublicGet()
+        [Fact]
+        public void PlaybackFinished_CanSubscribeAndUnsubscribe()
         {
-            // Arrange
             WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo isPlayingProperty = typeof(WindowsPlayer).GetProperty("IsPlaying");
-
-            // Assert
-            Assert.Null(isPlayingProperty);
+            EventHandler handler = (sender, e) => { };
+            player.PlaybackFinished += handler;
+            player.PlaybackFinished -= handler;
         }
 
         /// <summary>
-        /// Ises the paused property should be public get
+        ///     Tests that PlaybackFinished event exists.
         /// </summary>
-        [WindowsOnly]
-        public void IsPaused_Property_ShouldBePublicGet()
+        [Fact]
+        public void PlaybackFinished_Event_Exists()
         {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo isPausedProperty = typeof(WindowsPlayer).GetProperty("IsPaused");
-
-            // Assert
-            Assert.Null(isPausedProperty);
-        }
-
-        /// <summary>
-        /// Playbacks the finished event should exist
-        /// </summary>
-        [WindowsOnly]
-        public void PlaybackFinished_Event_ShouldExist()
-        {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
             EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackFinished");
-
-            // Assert
             Assert.NotNull(eventInfo);
         }
 
         /// <summary>
-        /// Playbacks the paused event should exist
+        ///     Tests that Playing property is readable.
         /// </summary>
-        [WindowsOnly]
-        public void PlaybackPaused_Event_ShouldExist()
+        [Fact]
+        public void Playing_Property_IsReadable()
         {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
+            PropertyInfo prop = typeof(WindowsPlayer).GetProperty("Playing");
+            Assert.NotNull(prop);
+            Assert.True(prop.CanRead);
+        }
+
+        /// <summary>
+        ///     Tests that Paused property is readable.
+        /// </summary>
+        [Fact]
+        public void Paused_Property_IsReadable()
+        {
+            PropertyInfo prop = typeof(WindowsPlayer).GetProperty("Paused");
+            Assert.NotNull(prop);
+            Assert.True(prop.CanRead);
+        }
+
+        /// <summary>
+        ///     Tests that IsPlaying property does not exist.
+        /// </summary>
+        [Fact]
+        public void IsPlaying_Property_DoesNotExist()
+        {
+            PropertyInfo prop = typeof(WindowsPlayer).GetProperty("IsPlaying");
+            Assert.Null(prop);
+        }
+
+        /// <summary>
+        ///     Tests that IsPaused property does not exist.
+        /// </summary>
+        [Fact]
+        public void IsPaused_Property_DoesNotExist()
+        {
+            PropertyInfo prop = typeof(WindowsPlayer).GetProperty("IsPaused");
+            Assert.Null(prop);
+        }
+
+        /// <summary>
+        ///     Tests that PlaybackPaused event does not exist.
+        /// </summary>
+        [Fact]
+        public void PlaybackPaused_Event_DoesNotExist()
+        {
             EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackPaused");
-
-            // Assert
             Assert.Null(eventInfo);
         }
 
         /// <summary>
-        /// Playbacks the resumed event should exist
+        ///     Tests that PlaybackResumed event does not exist.
         /// </summary>
-        [WindowsOnly]
-        public void PlaybackResumed_Event_ShouldExist()
+        [Fact]
+        public void PlaybackResumed_Event_DoesNotExist()
         {
-            // Arrange
-            WindowsPlayer player = new WindowsPlayer();
             EventInfo eventInfo = typeof(WindowsPlayer).GetEvent("PlaybackResumed");
-
-            // Assert
             Assert.Null(eventInfo);
         }
 
         /// <summary>
-        /// Waves the out write return type should be int
+        ///     Tests that WaveOutWrite method does not exist.
         /// </summary>
-        [WindowsOnly]
-        public void WaveOutWrite_ReturnType_ShouldBeInt()
+        [Fact]
+        public void WaveOutWrite_Method_DoesNotExist()
         {
-            // Arrange
-            MethodInfo waveOutWriteMethod = typeof(WindowsPlayer).GetMethod(
-                "WaveOutWrite",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            // Assert
-            Assert.Null(waveOutWriteMethod);
+            MethodInfo method = typeof(WindowsPlayer).GetMethod("WaveOutWrite", BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.Null(method);
         }
 
         /// <summary>
-        /// Waves the header struct size should be correct
+        ///     Tests that WAVEHDR nested type does not exist.
         /// </summary>
-        [WindowsOnly]
-        public void WaveHeaderStruct_Size_ShouldBeCorrect()
+        [Fact]
+        public void WaveHeader_NestedType_DoesNotExist()
         {
-            // Arrange
-            Type waveHeaderType = typeof(WindowsPlayer).GetNestedType("WAVEHDR", BindingFlags.NonPublic);
-
-            // Assert
-            Assert.Null(waveHeaderType);
+            Type type = typeof(WindowsPlayer).GetNestedType("WAVEHDR", BindingFlags.NonPublic);
+            Assert.Null(type);
         }
 
         /// <summary>
-        /// Waves the format struct size should be correct
+        ///     Tests that WAVEFORMATEX nested type does not exist.
         /// </summary>
-        [WindowsOnly]
-        public void WaveFormatStruct_Size_ShouldBeCorrect()
+        [Fact]
+        public void WaveFormat_NestedType_DoesNotExist()
         {
-            // Arrange
-            Type waveFormatType = typeof(WindowsPlayer).GetNestedType("WAVEFORMATEX", BindingFlags.NonPublic);
-
-            // Assert
-            Assert.Null(waveFormatType);
+            Type type = typeof(WindowsPlayer).GetNestedType("WAVEFORMATEX", BindingFlags.NonPublic);
+            Assert.Null(type);
         }
 
         /// <summary>
-        /// Constantses the wave out constants should be defined
+        ///     Tests that WAVE_FORMAT_1M08 constant does not exist.
+        /// </summary>
+        [Fact]
+        public void WaveFormatConstant_DoesNotExist()
+        {
+            FieldInfo field = typeof(WindowsPlayer).GetField("WAVE_FORMAT_1M08", BindingFlags.NonPublic | BindingFlags.Static);
+            Assert.Null(field);
+        }
+
+        /// <summary>
+        ///     Sets up a timer on the player via reflection for HandlePlaybackFinished tests.
+        /// </summary>
+        private static void SetupTimer(WindowsPlayer player)
+        {
+            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer", BindingFlags.NonPublic | BindingFlags.Instance);
+            timerField.SetValue(player, new System.Timers.Timer(100) { AutoReset = false });
+        }
+
+        /// <summary>
+        ///     Tests that HandlePlaybackFinished sets Playing to false.
+        /// </summary>
+        [Fact]
+        public void HandlePlaybackFinished_SetsPlayingFalse()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            player.HandlePlaybackFinished(null, null);
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that HandlePlaybackFinished invokes PlaybackFinished event.
+        /// </summary>
+        [Fact]
+        public void HandlePlaybackFinished_InvokesEvent()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            bool invoked = false;
+            player.PlaybackFinished += (sender, e) => invoked = true;
+            player.HandlePlaybackFinished(null, null);
+            Assert.True(invoked);
+        }
+
+        /// <summary>
+        ///     Tests that HandlePlaybackFinished passes sender and args.
+        /// </summary>
+        [Fact]
+        public void HandlePlaybackFinished_PassesSenderAndArgs()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            object capturedSender = null;
+            object capturedArgs = null;
+            player.PlaybackFinished += (sender, e) => { capturedSender = sender; capturedArgs = e; };
+            player.HandlePlaybackFinished(player, null);
+            Assert.Same(player, capturedSender);
+            Assert.Null(capturedArgs);
+        }
+
+        /// <summary>
+        ///     Tests that HandlePlaybackFinished disposes the timer.
+        /// </summary>
+        [Fact]
+        public void HandlePlaybackFinished_DisposesTimer()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            player.HandlePlaybackFinished(null, null);
+            FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer", BindingFlags.NonPublic | BindingFlags.Instance);
+            Assert.Null(timerField.GetValue(player));
+        }
+
+        /// <summary>
+        ///     Tests that HandlePlaybackFinished passes null ElapsedEventArgs.
+        /// </summary>
+        [Fact]
+        public void HandlePlaybackFinished_PassesEventArgs()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            EventArgs capturedArgs = new EventArgs();
+            player.PlaybackFinished += (sender, e) => capturedArgs = e;
+            player.HandlePlaybackFinished(null, null);
+            Assert.Null(capturedArgs);
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteMsiCommand is accessible and throws DllNotFoundException on non-Windows.
+        /// </summary>
+        [Fact]
+        public void ExecuteMsiCommand_OnNonWindows_ThrowsDllNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            Assert.Throws<DllNotFoundException>(() => player.ExecuteMsiCommand("Status test.wav Length"));
+        }
+
+        /// <summary>
+        ///     Tests that ExecuteMsiCommand throws with empty command.
+        /// </summary>
+        [Fact]
+        public void ExecuteMsiCommand_WithEmptyCommand_Throws()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            Assert.Throws<DllNotFoundException>(() => player.ExecuteMsiCommand(string.Empty));
+        }
+
+        /// <summary>
+        ///     Tests that Play with existing file sets internal fields before P/Invoke throws.
+        /// </summary>
+        [Fact]
+        public async Task Play_WithExistingFile_SetsFieldsBeforePInvoke()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                try
+                {
+                    await player.Play(tempFile);
+                }
+                catch (DllNotFoundException) { }
+                catch (EntryPointNotFoundException) { }
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.Equal(tempFile, (string)fileNameField?.GetValue(player));
+
+                FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.NotNull(timerField?.GetValue(player));
+
+                FieldInfo clockField = typeof(WindowsPlayer).GetField("_playStopwatch", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.NotNull(clockField?.GetValue(player));
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop with existing file sets internal fields before P/Invoke throws.
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithExistingFile_SetsFieldsBeforePInvoke()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                try
+                {
+                    await player.PlayLoop(tempFile, false);
+                }
+                catch (DllNotFoundException) { }
+                catch (EntryPointNotFoundException) { }
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.Equal(tempFile, (string)fileNameField?.GetValue(player));
+
+                FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.NotNull(timerField?.GetValue(player));
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop with loop=true sets internal fields before P/Invoke throws.
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_WithLoopTrue_SetsFieldsBeforePInvoke()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                try
+                {
+                    await player.PlayLoop(tempFile, true);
+                }
+                catch (DllNotFoundException) { }
+                catch (EntryPointNotFoundException) { }
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.Equal(tempFile, (string)fileNameField?.GetValue(player));
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that Play with non-existent file throws FileNotFoundException.
+        /// </summary>
+        [Fact]
+        public async Task Play_NonExistentFile_ThrowsFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistent = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
+            FileNotFoundException ex = await Assert.ThrowsAsync<FileNotFoundException>(() => player.Play(nonExistent));
+            Assert.Contains("not found", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop with non-existent file throws FileNotFoundException.
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_NonExistentFile_ThrowsFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            string nonExistent = Path.Combine(Path.GetTempPath(), $"nonexistent_{Guid.NewGuid()}.wav");
+            FileNotFoundException ex = await Assert.ThrowsAsync<FileNotFoundException>(() => player.PlayLoop(nonExistent, false));
+            Assert.Contains("not found", ex.Message, StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
+        ///     Tests that Play with null file name throws FileNotFoundException.
+        /// </summary>
+        [Fact]
+        public async Task Play_NullFileName_ThrowsFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await Assert.ThrowsAsync<FileNotFoundException>(() => player.Play(null));
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop with null file name throws FileNotFoundException.
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_NullFileName_ThrowsFileNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await Assert.ThrowsAsync<FileNotFoundException>(() => player.PlayLoop(null, false));
+        }
+
+        /// <summary>
+        ///     Tests that Pause when not playing does not change state.
+        /// </summary>
+        [Fact]
+        public async Task Pause_WhenNotPlaying_StateUnchanged()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await player.Pause();
+            Assert.False(player.Paused);
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that Resume when not paused does not change state.
+        /// </summary>
+        [Fact]
+        public async Task Resume_WhenNotPaused_StateUnchanged()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await player.Resume();
+            Assert.False(player.Paused);
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that Stop when not playing does not change state.
+        /// </summary>
+        [Fact]
+        public async Task Stop_WhenNotPlaying_StateUnchanged()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await player.Stop();
+            Assert.False(player.Paused);
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that SetVolume on non-Windows throws DllNotFoundException.
+        /// </summary>
+        [Fact]
+        public async Task SetVolume_OnNonWindows_ThrowsDllNotFoundException()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await Assert.ThrowsAsync<DllNotFoundException>(() => player.SetVolume(50));
+        }
+
+        /// <summary>
+        ///     Tests that Pause after Dispose does not throw.
+        /// </summary>
+        [Fact]
+        public async Task Pause_AfterDispose_DoesNotThrow()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+            await player.Pause();
+            Assert.False(player.Paused);
+        }
+
+        /// <summary>
+        ///     Tests that Resume after Dispose does not throw.
+        /// </summary>
+        [Fact]
+        public async Task Resume_AfterDispose_DoesNotThrow()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+            await player.Resume();
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that Stop after Dispose does not throw.
+        /// </summary>
+        [Fact]
+        public async Task Stop_AfterDispose_DoesNotThrow()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            player.Dispose();
+            await player.Stop();
+            Assert.False(player.Playing);
+        }
+
+        /// <summary>
+        ///     Tests that Play after Dispose sets fields before P/Invoke.
+        /// </summary>
+        [Fact]
+        public async Task Play_AfterDispose_SetsFieldsBeforePInvoke()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                player.Dispose();
+                try
+                {
+                    await player.Play(tempFile);
+                }
+                catch (DllNotFoundException) { }
+                catch (EntryPointNotFoundException) { }
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.Equal(tempFile, (string)fileNameField?.GetValue(player));
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop after Dispose sets fields before P/Invoke.
+        /// </summary>
+        [Fact]
+        public async Task PlayLoop_AfterDispose_SetsFieldsBeforePInvoke()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                player.Dispose();
+                try
+                {
+                    await player.PlayLoop(tempFile, false);
+                }
+                catch (DllNotFoundException) { }
+                catch (EntryPointNotFoundException) { }
+
+                FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+                Assert.Equal(tempFile, (string)fileNameField?.GetValue(player));
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that the _fileName field is accessible via reflection.
+        /// </summary>
+        [Fact]
+        public void FileName_Field_IsInternal()
+        {
+            FieldInfo field = typeof(WindowsPlayer).GetField("_fileName", BindingFlags.NonPublic | BindingFlags.Instance);
+            Assert.NotNull(field);
+            Assert.True(field.IsFamilyOrAssembly || field.IsAssembly);
+        }
+
+        /// <summary>
+        ///     Tests that PlaybackFinished event can have multiple handlers.
+        /// </summary>
+        [Fact]
+        public void PlaybackFinished_MultipleHandlers()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            SetupTimer(player);
+            int count = 0;
+            player.PlaybackFinished += (sender, e) => count++;
+            player.PlaybackFinished += (sender, e) => count++;
+            player.HandlePlaybackFinished(null, null);
+            Assert.Equal(2, count);
+        }
+
+        /// <summary>
+        ///     Tests that SetVolume on Windows works (Windows only).
         /// </summary>
         [WindowsOnly]
-        public void Constants_WaveOutConstants_ShouldBeDefined()
+        public async Task SetVolume_OnWindows_ShouldNotThrow()
         {
-            // Arrange
-            FieldInfo waveOutConstantsField = typeof(WindowsPlayer).GetField(
-                "WAVE_FORMAT_1M08",
-                BindingFlags.NonPublic | BindingFlags.Static);
+            WindowsPlayer player = new WindowsPlayer();
+            await player.SetVolume(50);
+            await player.SetVolume(0);
+            await player.SetVolume(100);
+        }
 
-            // Assert
-            Assert.Null(waveOutConstantsField);
+        /// <summary>
+        ///     Tests that SetVolume with edge values on Windows works (Windows only).
+        /// </summary>
+        [WindowsOnly]
+        public async Task SetVolume_EdgeValues_OnWindows()
+        {
+            WindowsPlayer player = new WindowsPlayer();
+            await player.SetVolume(byte.MinValue);
+            await player.SetVolume(byte.MaxValue);
+        }
+
+        /// <summary>
+        ///     Tests that Play on Windows with existing file starts playback (Windows only).
+        /// </summary>
+        [WindowsOnly]
+        public async Task Play_OnWindows_WithExistingFile_StartsPlayback()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                await player.Play(tempFile);
+                Assert.True(player.Playing);
+                Assert.False(player.Paused);
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
+        }
+
+        /// <summary>
+        ///     Tests that PlayLoop on Windows with existing file starts playback (Windows only).
+        /// </summary>
+        [WindowsOnly]
+        public async Task PlayLoop_OnWindows_WithExistingFile_StartsPlayback()
+        {
+            string tempFile = Path.GetTempFileName();
+            try
+            {
+                File.WriteAllText(tempFile, "dummy");
+                WindowsPlayer player = new WindowsPlayer();
+                await player.PlayLoop(tempFile, false);
+                Assert.True(player.Playing);
+                Assert.False(player.Paused);
+            }
+            finally
+            {
+                if (File.Exists(tempFile)) File.Delete(tempFile);
+            }
         }
     }
 }
