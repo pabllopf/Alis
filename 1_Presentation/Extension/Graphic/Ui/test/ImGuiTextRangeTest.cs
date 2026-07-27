@@ -28,20 +28,20 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
-    /// <summary>
-    ///     The im gui text range test class
-    /// </summary>
     public class ImGuiTextRangeTest
     {
-        /// <summary>
-        ///     Tests that b should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
+        public void B_Default_ShouldBeZero()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            Assert.Equal(IntPtr.Zero, textRange.B);
+        }
+
+        [Fact]
         public void B_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
@@ -50,16 +50,103 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.B);
         }
 
-        /// <summary>
-        ///     Tests that e should set and get correctly
-        /// </summary>
-        [RequireCImguiSystemFact]
+        [Fact]
+        public void B_Should_HandleMaxValue()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            IntPtr ptr = new IntPtr(unchecked((int)0x7FFFFFFF));
+            textRange.B = ptr;
+            Assert.Equal(ptr, textRange.B);
+        }
+
+        [Fact]
+        public void B_Should_HandleZero()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            textRange.B = IntPtr.Zero;
+            Assert.Equal(IntPtr.Zero, textRange.B);
+        }
+
+        [Fact]
+        public void B_Should_HandleNegativeValue()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            IntPtr ptr = new IntPtr(-1);
+            textRange.B = ptr;
+            Assert.Equal(ptr, textRange.B);
+        }
+
+        [Fact]
+        public void E_Default_ShouldBeZero()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            Assert.Equal(IntPtr.Zero, textRange.E);
+        }
+
+        [Fact]
         public void E_Should_SetAndGetCorrectly()
         {
             ImGuiTextRange textRange = new ImGuiTextRange();
             IntPtr ptr = new IntPtr(456);
             textRange.E = ptr;
             Assert.Equal(ptr, textRange.E);
+        }
+
+        [Fact]
+        public void E_Should_HandleMaxValue()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            IntPtr ptr = new IntPtr(unchecked((int)0x7FFFFFFF));
+            textRange.E = ptr;
+            Assert.Equal(ptr, textRange.E);
+        }
+
+        [Fact]
+        public void E_Should_HandleZero()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            textRange.E = IntPtr.Zero;
+            Assert.Equal(IntPtr.Zero, textRange.E);
+        }
+
+        [Fact]
+        public void E_Should_HandleNegativeValue()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            IntPtr ptr = new IntPtr(-1);
+            textRange.E = ptr;
+            Assert.Equal(ptr, textRange.E);
+        }
+
+        [Fact]
+        public void B_And_E_Should_BeIndependent()
+        {
+            ImGuiTextRange textRange = new ImGuiTextRange();
+            IntPtr bPtr = new IntPtr(100);
+            IntPtr ePtr = new IntPtr(200);
+            textRange.B = bPtr;
+            textRange.E = ePtr;
+            Assert.Equal(bPtr, textRange.B);
+            Assert.Equal(ePtr, textRange.E);
+        }
+
+        [Fact]
+        public void Struct_Should_BeZeroedByDefault()
+        {
+            ImGuiTextRange textRange = default;
+            Assert.Equal(IntPtr.Zero, textRange.B);
+            Assert.Equal(IntPtr.Zero, textRange.E);
+        }
+
+        [Fact]
+        public void Struct_Should_SupportValueSemantics()
+        {
+            ImGuiTextRange textRange1 = new ImGuiTextRange { B = new IntPtr(10), E = new IntPtr(20) };
+            ImGuiTextRange textRange2 = textRange1;
+            Assert.Equal(textRange1.B, textRange2.B);
+            Assert.Equal(textRange1.E, textRange2.E);
+            textRange2.B = new IntPtr(30);
+            Assert.NotEqual(textRange1.B, textRange2.B);
         }
     }
 }
