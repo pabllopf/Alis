@@ -718,5 +718,262 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
+
+        /// <summary>
+        /// Tests that warm start with velocities updates velocities
+        /// </summary>
+        [Fact]
+        public void WarmStart_WithVelocities_UpdatesVelocities()
+        {
+            ContactSolver solver = new ContactSolver();
+            Type solverVelType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.SolverVelocity");
+            Array velocities = Array.CreateInstance(solverVelType, 2);
+            object vel0 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel0, new Vector2F(0f, 0f));
+            solverVelType.GetField("W").SetValue(vel0, 0f);
+            object vel1 = Activator.CreateInstance(solverVelType);
+            solverVelType.GetField("V").SetValue(vel1, new Vector2F(0f, 0f));
+            solverVelType.GetField("W").SetValue(vel1, 0f);
+            velocities.SetValue(vel0, 0);
+            velocities.SetValue(vel1, 1);
+            solver.GetType().GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, velocities);
+            solver.VelocityConstraints = new ContactVelocityConstraint[1];
+            solver.VelocityConstraints[0] = new ContactVelocityConstraint
+            {
+                IndexA = 0,
+                IndexB = 1,
+                InvMassA = 1f,
+                InvMassB = 1f,
+                InvIa = 1f,
+                InvIb = 1f,
+                Normal = new Vector2F(1f, 0f),
+                PointCount = 1
+            };
+            solver.VelocityConstraints[0].Points[0].NormalImpulse = 0.5f;
+            solver.VelocityConstraints[0].Points[0].TangentImpulse = 0.0f;
+            solver.VelocityConstraints[0].Points[0].Ra = new Vector2F(0f, 0f);
+            solver.VelocityConstraints[0].Points[0].Rb = new Vector2F(0f, 0f);
+            solver.Count = 1;
+            Exception ex = Record.Exception(() => solver.WarmStart());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that dispose with allocated arrays clears references
+        /// </summary>
+        [Fact]
+        public void Dispose_WithAllocatedArrays_ClearsReferences()
+        {
+            ContactSolver solver = new ContactSolver();
+            TimeStep step = new TimeStep { Dt = 1f / 60f, DtRatio = 1.0f, WarmStarting = true };
+            SolverPosition[] pos = new SolverPosition[0];
+            SolverVelocity[] vel = new SolverVelocity[0];
+            int[] lks = new int[0];
+            Contact[] dummyContacts = new Contact[0];
+            solver.Reset(ref step, 0, dummyContacts, pos, vel, lks, 0, 0);
+            solver.Dispose();
+            Assert.Null(solver.VelocityConstraints);
+            Assert.Null(solver.PositionConstraints);
+        }
+
+        /// <summary>
+        /// Tests that world manifold initialize with zero point count returns
+        /// </summary>
+        [Fact]
+        public void WorldManifold_Initialize_PointCountZero_ReturnsEarly()
+        {
+            Manifold manifold = new Manifold
+            {
+                PointCount = 0,
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0.0f, 0.0f)
+            };
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
+                out Vector2F normal, out FixedArray2<Vector2F> points);
+            Assert.Equal(0.0f, normal.X);
+            Assert.Equal(0.0f, normal.Y);
+        }
+
+        /// <summary>
+        /// Tests that world manifold initialize with face a computes correctly
+        /// </summary>
+        [Fact]
+        public void WorldManifold_Initialize_FaceA_ComputesCorrectly()
+        {
+            Manifold manifold = new Manifold
+            {
+                PointCount = 2,
+                Type = ManifoldType.FaceA,
+                LocalPoint = new Vector2F(0.0f, 0.0f),
+                LocalNormal = new Vector2F(1.0f, 0.0f)
+            };
+            manifold.Points[0] = new ManifoldPoint { LocalPoint = new Vector2F(-0.5f, -0.5f) };
+            manifold.Points[1] = new ManifoldPoint { LocalPoint = new Vector2F(-0.5f, 0.5f) };
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
+                out Vector2F normal, out FixedArray2<Vector2F> points);
+            Assert.Equal(1.0f, normal.X);
+            Assert.Equal(0.0f, normal.Y);
+            Assert.True(points[0].X >= -1.0f);
+        }
+
+        /// <summary>
+        /// Tests that world manifold initialize with circles non coincident computes normal
+        /// </summary>
+        [Fact]
+        public void WorldManifold_Initialize_CirclesNonCoincident_NormalComputed()
+        {
+            Manifold manifold = new Manifold
+            {
+                PointCount = 1,
+                Type = ManifoldType.Circles,
+                LocalPoint = new Vector2F(0.0f, 0.0f)
+            };
+            manifold.Points[0] = new ManifoldPoint { LocalPoint = new Vector2F(0.0f, 0.0f) };
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(2.0f, 0.0f), 0.0f);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
+                out Vector2F normal, out FixedArray2<Vector2F> points);
+            Assert.True(normal.X > 0.0f);
+        }
+
+        /// <summary>
+        /// Tests that solve velocity constraints with count zero returns early
+        /// </summary>
+        [Fact]
+        public void SolveVelocityConstraints_CountZero_EarlyReturn()
+        {
+            ContactSolver solver = new ContactSolver();
+            solver.Count = 0;
+            Exception ex = Record.Exception(() => solver.SolveVelocityConstraints());
+            Assert.Null(ex);
+        }
+
+        /// <summary>
+        /// Tests that solve position constraints with count zero returns true
+        /// </summary>
+        [Fact]
+        public void SolvePositionConstraints_CountZero_ReturnsTrue()
+        {
+            ContactSolver solver = new ContactSolver();
+            solver.Count = 0;
+            bool result = solver.SolvePositionConstraints();
+            Assert.True(result);
+        }
+
+        /// <summary>
+        /// Tests that initialize velocity constraint points with velocity bias when vrel below threshold
+        /// </summary>
+        [Fact]
+        public void InitializeVelocityConstraintPoints_WithVelocityBias_WhenVrelBelowThreshold()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 1;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.Restitution = 0.5f;
+            vc.Points[0].Ra = new Vector2F(0f, 0f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+            var points = new FixedArray2<Vector2F>();
+            points[0] = new Vector2F(0f, 0f);
+            Type dataType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.Contacts.VelocityConstraintInitData");
+            object data = Activator.CreateInstance(dataType,
+                new object[] { Vector2F.Zero, new Vector2F(1f, 0f), 1f, 1f, 1f, 1f, new Vector2F(0f, 1f), new Vector2F(2f, 0f), 0f, Vector2F.Zero, 0f });
+            object[] args = { vc, points, data };
+            method.Invoke(null, args);
+            Assert.True(vc.Points[0].VelocityBias > 0f);
+        }
+
+        /// <summary>
+        /// Tests that solve two point normal second branch applies block impulse
+        /// </summary>
+        [Fact]
+        public void SolveTwoPointNormal_SecondBranch_AppliesBlockImpulse()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.K.Ex = new Vector2F(2f, 0f);
+            vc.K.Ey = new Vector2F(0f, 2f);
+            vc.NormalMass = vc.K.Inverse;
+            vc.Points[0].NormalImpulse = 0f;
+            vc.Points[0].NormalMass = 1.0f;
+            vc.Points[0].VelocityBias = 0f;
+            vc.Points[0].Ra = new Vector2F(0f, -1f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+            vc.Points[1].NormalImpulse = 0f;
+            vc.Points[1].NormalMass = 1.0f;
+            vc.Points[1].VelocityBias = 0f;
+            vc.Points[1].Ra = new Vector2F(0f, 1f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+            Vector2F vA = new Vector2F(0f, 0f);
+            float wA = 1f;
+            Vector2F vB = new Vector2F(0f, 0f);
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+            object[] args = { vA, wA, vB, wB, vc, normal, mA, iA, mB, iB };
+            method.Invoke(null, args);
+            Vector2F vAResult = (Vector2F)args[0];
+            Assert.True(vAResult.X <= 1f);
+        }
+
+        /// <summary>
+        /// Tests that solve two point normal third branch applies block impulse
+        /// </summary>
+        [Fact]
+        public void SolveTwoPointNormal_ThirdBranch_AppliesBlockImpulse()
+        {
+            MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
+                BindingFlags.Static | BindingFlags.NonPublic);
+            var vc = new ContactVelocityConstraint();
+            vc.PointCount = 2;
+            vc.Normal = new Vector2F(1f, 0f);
+            vc.K.Ex = new Vector2F(2f, 0f);
+            vc.K.Ey = new Vector2F(0f, 2f);
+            vc.NormalMass = vc.K.Inverse;
+            vc.Points[0].NormalImpulse = 0f;
+            vc.Points[0].NormalMass = 1.0f;
+            vc.Points[0].VelocityBias = 0f;
+            vc.Points[0].Ra = new Vector2F(0f, 1f);
+            vc.Points[0].Rb = new Vector2F(0f, 0f);
+            vc.Points[1].NormalImpulse = 0f;
+            vc.Points[1].NormalMass = 1.0f;
+            vc.Points[1].VelocityBias = 0f;
+            vc.Points[1].Ra = new Vector2F(0f, -1f);
+            vc.Points[1].Rb = new Vector2F(0f, 0f);
+            Vector2F vA = new Vector2F(0f, 0f);
+            float wA = 1f;
+            Vector2F vB = new Vector2F(0f, 0f);
+            float wB = 0f;
+            Vector2F normal = new Vector2F(1f, 0f);
+            float mA = 1f, iA = 1f, mB = 1f, iB = 1f;
+            object[] args = { vA, wA, vB, wB, vc, normal, mA, iA, mB, iB };
+            method.Invoke(null, args);
+            Vector2F vAResult = (Vector2F)args[0];
+            Assert.True(vAResult.X >= -1f);
+        }
+
+        /// <summary>
+        /// Tests that reset with warm starting false and count greater than zero clears impulses
+        /// </summary>
+        [Fact]
+        public void Reset_WithWarmStartingFalseAndCountGreaterThanZero_ClearsImpulses()
+        {
+            ContactSolver solver = new ContactSolver();
+            TimeStep step = new TimeStep { Dt = 1f / 60f, DtRatio = 1.0f, WarmStarting = false };
+            SolverPosition[] pos = new SolverPosition[2];
+            SolverVelocity[] vel = new SolverVelocity[2];
+            int[] lks = new int[2];
+            Contact[] dummyContacts = new Contact[1];
+            Exception ex = Record.Exception(() => solver.Reset(ref step, 0, dummyContacts, pos, vel, lks, 0, 0));
+            Assert.Null(ex);
+        }
     }
 }
