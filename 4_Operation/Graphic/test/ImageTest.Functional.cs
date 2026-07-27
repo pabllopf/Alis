@@ -164,13 +164,16 @@ namespace Alis.Core.Graphic.Test
         #region Edge Cases
 
         /// <summary>
-        ///     Tests that a BMP with negative height throws an exception due to overflow.
+        ///     Tests that a BMP with negative height (top-down) loads correctly.
         /// </summary>
         [Fact]
-        public void LoadFromStream_WhenNegativeHeight_ThrowsException()
+        public void LoadFromStream_WhenNegativeHeight_LoadsCorrectly()
         {
             string path = WriteTempBmp(CreateBmpWithNegativeHeight(2, 2));
-            Assert.ThrowsAny<Exception>(() => Image.Load(path));
+            Image image = Image.Load(path);
+            Assert.NotNull(image);
+            Assert.Equal(2, image.Width);
+            Assert.Equal(2, image.Height);
         }
 
         /// <summary>

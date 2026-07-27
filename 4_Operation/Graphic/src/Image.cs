@@ -105,6 +105,10 @@ namespace Alis.Core.Graphic
                 reader.BaseStream.Seek(18, SeekOrigin.Begin);
                 int width = reader.ReadInt32();
                 int height = reader.ReadInt32();
+                if (height < 0)
+                {
+                    height = -height;
+                }
 
                 reader.BaseStream.Seek(28, SeekOrigin.Begin);
                 short bitsPerPixel = reader.ReadInt16();
@@ -221,11 +225,6 @@ namespace Alis.Core.Graphic
         /// <exception cref="NotSupportedException">Unsupported bits per pixel: {bitsPerPixel}</exception>
         private static void LoadBmpRgb(BinaryReader reader, int width, int height, short bitsPerPixel, byte[] rawData, byte[][] palette, int rowPadded, int bytesPerPixel)
         {
-            if (height < 0)
-            {
-                height = -height;
-            }
-
             for (int y = 0; y < height; y++)
             {
                 int row = y; // Corregido: siempre cargar de arriba hacia abajo
@@ -500,11 +499,6 @@ namespace Alis.Core.Graphic
         /// <param name="bytesPerPixel">The number of bytes per pixel</param>
         private static void LoadBmpRle4(BinaryReader reader, int width, int height, byte[] rawData, byte[][] palette)
         {
-            if (height < 0)
-            {
-                height = -height;
-            }
-
             int x = 0, y = 0; // Corregido: empezar desde la primera fila
             while ((reader.BaseStream.Position < reader.BaseStream.Length) && (y < height))
             {
