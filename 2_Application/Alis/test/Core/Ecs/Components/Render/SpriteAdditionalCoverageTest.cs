@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The sprite additional coverage test class
+    /// </summary>
     public class SpriteAdditionalCoverageTest
     {
+        /// <summary>
+        /// Tests that on update is no op does not throw
+        /// </summary>
         [Fact]
         public void OnUpdate_IsNoOp_DoesNotThrow()
         {
@@ -42,6 +48,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             sprite.OnUpdate(null);
         }
 
+        /// <summary>
+        /// Tests that on start is no op does not throw
+        /// </summary>
         [Fact]
         public void OnStart_IsNoOp_DoesNotThrow()
         {

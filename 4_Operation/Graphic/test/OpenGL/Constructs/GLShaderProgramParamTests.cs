@@ -41,22 +41,50 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.OpenGL.Constructs
 {
+    /// <summary>
+    /// The gl shader program param tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class GlShaderProgramParamTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo Field = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The saved
+        /// </summary>
         private readonly object _saved;
 
+        /// <summary>
+        /// The program id
+        /// </summary>
         private uint _programId;
 
+        /// <summary>
+        /// The vertex shader id
+        /// </summary>
         private uint _vertexShaderId;
 
+        /// <summary>
+        /// The fragment shader id
+        /// </summary>
         private uint _fragmentShaderId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlShaderProgramParamTests"/> class
+        /// </summary>
         public GlShaderProgramParamTests() => _saved = Field?.GetValue(null);
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => Field?.SetValue(null, _saved);
 
+        /// <summary>
+        /// Inits the shader program
+        /// </summary>
         private void InitShaderProgram()
         {
             _programId = 42;
@@ -150,6 +178,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             });
         }
 
+        /// <summary>
+        /// Inits the uniforms
+        /// </summary>
         private void InitUniforms()
         {
             Uniform1I uniform1i = (int location, int v0) => { };
@@ -181,6 +212,10 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             });
         }
 
+        /// <summary>
+        /// Creates the valid program
+        /// </summary>
+        /// <returns>The gl shader program</returns>
         private GlShaderProgram CreateValidProgram()
         {
             GlShader vs = new GlShader("vs", ShaderType.VertexShader);
@@ -188,6 +223,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             return new GlShaderProgram(vs, fs);
         }
 
+        /// <summary>
+        /// Tests that get location when program id is zero and uniform sets location from program
+        /// </summary>
         [Fact]
         public void GetLocation_WhenProgramIdIsZeroAndUniform_SetsLocationFromProgram()
         {
@@ -204,6 +242,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(5, param.Location);
         }
 
+        /// <summary>
+        /// Tests that get location when program id is zero and attribute sets location from program
+        /// </summary>
         [Fact]
         public void GetLocation_WhenProgramIdIsZeroAndAttribute_SetsLocationFromProgram()
         {
@@ -220,6 +261,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(10, param.Location);
         }
 
+        /// <summary>
+        /// Tests that get location when program id is non zero does not change location
+        /// </summary>
         [Fact]
         public void GetLocation_WhenProgramIdIsNonZero_DoesNotChangeLocation()
         {
@@ -235,6 +279,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(99, param.Location);
         }
 
+        /// <summary>
+        /// Tests that get location when program id is non zero does not change program id
+        /// </summary>
         [Fact]
         public void GetLocation_WhenProgramIdIsNonZero_DoesNotChangeProgramId()
         {
@@ -250,6 +297,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(0, param.Location);
         }
 
+        /// <summary>
+        /// Tests that set value float array length 9 calls uniform matrix 3 fv
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length9_CallsUniformMatrix3Fv()
         {
@@ -262,6 +312,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(values);
         }
 
+        /// <summary>
+        /// Tests that get location calls use on program
+        /// </summary>
         [Fact]
         public void GetLocation_CallsUseOnProgram()
         {
@@ -277,6 +330,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.NotEqual(0u, param.ProgramId);
         }
 
+        /// <summary>
+        /// Tests that get location with uniform type queries uniform location
+        /// </summary>
         [Fact]
         public void GetLocation_WithUniformType_QueriesUniformLocation()
         {
@@ -291,6 +347,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(5, param.Location);
         }
 
+        /// <summary>
+        /// Tests that get location with attribute type queries attribute location
+        /// </summary>
         [Fact]
         public void GetLocation_WithAttributeType_QueriesAttributeLocation()
         {
@@ -305,6 +364,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             Assert.Equal(10, param.Location);
         }
 
+        /// <summary>
+        /// Tests that set value bool calls gl uniform 1 i
+        /// </summary>
         [Fact]
         public void SetValue_Bool_CallsGlUniform1I()
         {
@@ -315,6 +377,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(false);
         }
 
+        /// <summary>
+        /// Tests that set value int calls gl uniform 1 i
+        /// </summary>
         [Fact]
         public void SetValue_Int_CallsGlUniform1I()
         {
@@ -324,6 +389,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(42);
         }
 
+        /// <summary>
+        /// Tests that set value float calls gl uniform 1 f
+        /// </summary>
         [Fact]
         public void SetValue_Float_CallsGlUniform1F()
         {
@@ -333,6 +401,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(3.14f);
         }
 
+        /// <summary>
+        /// Tests that set value vector 2 f calls gl uniform 2 f
+        /// </summary>
         [Fact]
         public void SetValue_Vector2F_CallsGlUniform2F()
         {
@@ -342,6 +413,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new Vector2F(1f, 2f));
         }
 
+        /// <summary>
+        /// Tests that set value vector 3 f calls gl uniform 3 f
+        /// </summary>
         [Fact]
         public void SetValue_Vector3F_CallsGlUniform3F()
         {
@@ -351,6 +425,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new Vector3F(1f, 2f, 3f));
         }
 
+        /// <summary>
+        /// Tests that set value vector 4 f calls gl uniform 4 f
+        /// </summary>
         [Fact]
         public void SetValue_Vector4F_CallsGlUniform4F()
         {
@@ -360,6 +437,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new Vector4F(1f, 2f, 3f, 4f));
         }
 
+        /// <summary>
+        /// Tests that set value matrix 4 x 4 calls uniform matrix 4 fv
+        /// </summary>
         [Fact]
         public void SetValue_Matrix4X4_CallsUniformMatrix4Fv()
         {
@@ -369,6 +449,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new Matrix4X4());
         }
 
+        /// <summary>
+        /// Tests that set value float array length 16 calls gl uniform matrix 4 fv
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length16_CallsGlUniformMatrix4Fv()
         {
@@ -378,6 +461,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new float[16]);
         }
 
+        /// <summary>
+        /// Tests that set value float array length 4 calls gl uniform 4 f
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length4_CallsGlUniform4F()
         {
@@ -387,6 +473,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new float[4]);
         }
 
+        /// <summary>
+        /// Tests that set value float array length 3 calls gl uniform 3 f
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length3_CallsGlUniform3F()
         {
@@ -396,6 +485,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new float[3]);
         }
 
+        /// <summary>
+        /// Tests that set value float array length 2 calls gl uniform 2 f
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length2_CallsGlUniform2F()
         {
@@ -405,6 +497,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new float[2]);
         }
 
+        /// <summary>
+        /// Tests that set value float array length 1 calls gl uniform 1 f
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_Length1_CallsGlUniform1F()
         {
@@ -414,6 +509,9 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
             param.SetValue(new float[1]);
         }
 
+        /// <summary>
+        /// Tests that set value float array invalid length throws argument exception
+        /// </summary>
         [Fact]
         public void SetValue_FloatArray_InvalidLength_ThrowsArgumentException()
         {

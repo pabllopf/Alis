@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The game object extensions private get comp test class
+    /// </summary>
     public class GameObjectExtensionsPrivateGetCompTest
     {
+        /// <summary>
+        /// Tests that private get comp byte array overload throws on ref struct box
+        /// </summary>
         [Fact]
         public void PrivateGetCompByteArrayOverload_ThrowsOnRefStructBox()
         {
@@ -62,6 +68,11 @@ namespace Alis.Core.Ecs.Test
                 getCompMethod.Invoke(null, new object[] { tagTable, components, index }));
         }
 
+        /// <summary>
+        /// Invokes the assert is alive using the specified entity
+        /// </summary>
+        /// <param name="entity">The entity</param>
+        /// <returns>The object</returns>
         private static object InvokeAssertIsAlive(GameObject entity)
         {
             MethodInfo assertIsAlive = typeof(GameObject).GetMethod(
@@ -71,6 +82,12 @@ namespace Alis.Core.Ecs.Test
             return assertIsAlive.Invoke(entity, new object[] { null! })!;
         }
 
+        /// <summary>
+        /// Gets the field using the specified obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <param name="name">The name</param>
+        /// <returns>The object</returns>
         private static object GetField(object obj, string name) =>
             obj.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(obj)!;
     }

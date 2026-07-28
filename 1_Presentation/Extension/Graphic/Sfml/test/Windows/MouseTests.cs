@@ -34,25 +34,55 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The mouse tests class
+    /// </summary>
     public class MouseTests
     {
+        /// <summary>
+        /// The mock mouse window class
+        /// </summary>
+        /// <seealso cref="Window"/>
         private class MockMouseWindow : Window
         {
+            /// <summary>
+            /// Gets or sets the value of the return position
+            /// </summary>
             public Vector2F ReturnPosition { get; set; } = new Vector2F(100, 200);
+            /// <summary>
+            /// Gets or sets the value of the captured position
+            /// </summary>
             public Vector2F? CapturedPosition { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the internal get mouse position called
+            /// </summary>
             public bool InternalGetMousePositionCalled { get; private set; }
+            /// <summary>
+            /// Gets or sets the value of the internal set mouse position called
+            /// </summary>
             public bool InternalSetMousePositionCalled { get; private set; }
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="MockMouseWindow"/> class
+            /// </summary>
             public MockMouseWindow() : base(IntPtr.Zero, 0)
             {
             }
 
+            /// <summary>
+            /// Internals the get mouse position
+            /// </summary>
+            /// <returns>The return position</returns>
             public override Vector2F InternalGetMousePosition()
             {
                 InternalGetMousePositionCalled = true;
                 return ReturnPosition;
             }
 
+            /// <summary>
+            /// Internals the set mouse position using the specified position
+            /// </summary>
+            /// <param name="position">The position</param>
             public override void InternalSetMousePosition(Vector2F position)
             {
                 InternalSetMousePositionCalled = true;
@@ -60,6 +90,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that is button pressed with left button returns bool
+        /// </summary>
         [Fact]
         public void IsButtonPressed_WithLeftButton_ReturnsBool()
         {
@@ -68,6 +101,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that is button pressed with right button returns bool
+        /// </summary>
         [Fact]
         public void IsButtonPressed_WithRightButton_ReturnsBool()
         {
@@ -76,6 +112,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that is button pressed with middle button returns bool
+        /// </summary>
         [Fact]
         public void IsButtonPressed_WithMiddleButton_ReturnsBool()
         {
@@ -84,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that is button pressed with x button 1 returns bool
+        /// </summary>
         [Fact]
         public void IsButtonPressed_WithXButton1_ReturnsBool()
         {
@@ -92,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that is button pressed with x button 2 returns bool
+        /// </summary>
         [Fact]
         public void IsButtonPressed_WithXButton2_ReturnsBool()
         {
@@ -100,6 +145,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that get position no param returns vector 2 f
+        /// </summary>
         [Fact]
         public void GetPosition_NoParam_ReturnsVector2F()
         {
@@ -108,6 +156,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<Vector2F>(position);
         }
 
+        /// <summary>
+        /// Tests that get position with null window returns vector 2 f
+        /// </summary>
         [Fact]
         public void GetPosition_WithNullWindow_ReturnsVector2F()
         {
@@ -116,6 +167,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.IsType<Vector2F>(position);
         }
 
+        /// <summary>
+        /// Tests that get position with window calls internal get mouse position
+        /// </summary>
         [Fact]
         public void GetPosition_WithWindow_CallsInternalGetMousePosition()
         {
@@ -130,6 +184,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(expected.Y, result.Y);
         }
 
+        /// <summary>
+        /// Tests that get position with window returns from window
+        /// </summary>
         [Fact]
         public void GetPosition_WithWindow_ReturnsFromWindow()
         {
@@ -145,6 +202,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         // blocks on macOS without accessibility permissions (BLOCKED_BY_PRODUCTION_CODE).
         // Tests for those paths are omitted.
 
+        /// <summary>
+        /// Tests that set position with window calls internal set mouse position
+        /// </summary>
         [Fact]
         public void SetPosition_WithWindow_CallsInternalSetMousePosition()
         {
@@ -159,6 +219,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(expected.Y, window.CapturedPosition.Value.Y);
         }
 
+        /// <summary>
+        /// Tests that set position with window sets position on window
+        /// </summary>
         [Fact]
         public void SetPosition_WithWindow_SetsPositionOnWindow()
         {

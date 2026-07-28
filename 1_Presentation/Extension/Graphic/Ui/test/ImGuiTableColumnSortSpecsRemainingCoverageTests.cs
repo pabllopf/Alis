@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui table column sort specs remaining coverage tests class
+    /// </summary>
     public class ImGuiTableColumnSortSpecsRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that default column user id is zero
+        /// </summary>
         [Fact]
         public void Default_ColumnUserId_IsZero()
         {
@@ -40,6 +46,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, specs.ColumnUserId);
         }
 
+        /// <summary>
+        /// Tests that default column index is zero
+        /// </summary>
         [Fact]
         public void Default_ColumnIndex_IsZero()
         {
@@ -47,6 +56,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((short)0, specs.ColumnIndex);
         }
 
+        /// <summary>
+        /// Tests that default sort order is zero
+        /// </summary>
         [Fact]
         public void Default_SortOrder_IsZero()
         {
@@ -54,6 +66,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((short)0, specs.SortOrder);
         }
 
+        /// <summary>
+        /// Tests that default sort direction is none
+        /// </summary>
         [Fact]
         public void Default_SortDirection_IsNone()
         {
@@ -61,6 +76,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ImGuiSortDirection.None, specs.SortDirection);
         }
 
+        /// <summary>
+        /// Tests that column user id round trip
+        /// </summary>
         [Fact]
         public void ColumnUserId_RoundTrip()
         {
@@ -69,6 +87,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(42u, specs.ColumnUserId);
         }
 
+        /// <summary>
+        /// Tests that column user id round trip max value
+        /// </summary>
         [Fact]
         public void ColumnUserId_RoundTrip_MaxValue()
         {
@@ -77,6 +98,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(uint.MaxValue, specs.ColumnUserId);
         }
 
+        /// <summary>
+        /// Tests that column index round trip
+        /// </summary>
         [Fact]
         public void ColumnIndex_RoundTrip()
         {
@@ -85,6 +109,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((short)1, specs.ColumnIndex);
         }
 
+        /// <summary>
+        /// Tests that column index round trip negative
+        /// </summary>
         [Fact]
         public void ColumnIndex_RoundTrip_Negative()
         {
@@ -93,6 +120,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((short)-1, specs.ColumnIndex);
         }
 
+        /// <summary>
+        /// Tests that sort order round trip
+        /// </summary>
         [Fact]
         public void SortOrder_RoundTrip()
         {
@@ -101,6 +131,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((short)2, specs.SortOrder);
         }
 
+        /// <summary>
+        /// Tests that sort order round trip max value
+        /// </summary>
         [Fact]
         public void SortOrder_RoundTrip_MaxValue()
         {
@@ -109,6 +142,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(short.MaxValue, specs.SortOrder);
         }
 
+        /// <summary>
+        /// Tests that sort direction round trip ascending
+        /// </summary>
         [Fact]
         public void SortDirection_RoundTrip_Ascending()
         {
@@ -117,6 +153,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ImGuiSortDirection.Ascending, specs.SortDirection);
         }
 
+        /// <summary>
+        /// Tests that sort direction round trip descending
+        /// </summary>
         [Fact]
         public void SortDirection_RoundTrip_Descending()
         {

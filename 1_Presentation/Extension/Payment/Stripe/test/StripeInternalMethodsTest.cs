@@ -33,10 +33,18 @@ using Xunit;
 
 namespace Alis.Extension.Payment.Stripe.Test
 {
+    /// <summary>
+    /// The stripe internal methods test class
+    /// </summary>
     public class StripeInternalMethodsTest
     {
         #region NormalizeCurrency
 
+        /// <summary>
+        /// Invokes the normalize currency using the specified currency
+        /// </summary>
+        /// <param name="currency">The currency</param>
+        /// <returns>The string</returns>
         private static string InvokeNormalizeCurrency(string currency)
         {
             MethodInfo method = typeof(StoreManager).GetMethod("NormalizeCurrency",
@@ -44,6 +52,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             return (string)method.Invoke(null, new object[] { currency });
         }
 
+        /// <summary>
+        /// Tests that normalize currency null returns usd
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_Null_ReturnsUsd()
         {
@@ -51,6 +62,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency empty returns usd
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_Empty_ReturnsUsd()
         {
@@ -58,6 +72,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency whitespace returns usd
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_Whitespace_ReturnsUsd()
         {
@@ -65,6 +82,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency upper case returns lowercase
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_UpperCase_ReturnsLowercase()
         {
@@ -72,6 +92,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("eur", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency with spaces trims and lowercases
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_WithSpaces_TrimsAndLowercases()
         {
@@ -79,6 +102,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("gbp", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency already lowercase returns same
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_AlreadyLowercase_ReturnsSame()
         {
@@ -86,6 +112,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.Equal("usd", result);
         }
 
+        /// <summary>
+        /// Tests that normalize currency mixed case returns lowercase
+        /// </summary>
         [Fact]
         public void NormalizeCurrency_MixedCase_ReturnsLowercase()
         {
@@ -97,6 +126,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region ValidateCheckoutRequest
 
+        /// <summary>
+        /// Tests that validate checkout request null throws argument null exception
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_Null_ThrowsArgumentNullException()
         {
@@ -108,6 +140,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentNullException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request empty product name throws
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_EmptyProductName_Throws()
         {
@@ -129,6 +164,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request empty currency throws
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_EmptyCurrency_Throws()
         {
@@ -150,6 +188,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request zero unit amount throws
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_ZeroUnitAmount_Throws()
         {
@@ -171,6 +212,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentOutOfRangeException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request zero quantity throws
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_ZeroQuantity_Throws()
         {
@@ -192,6 +236,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentOutOfRangeException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request null success url throws
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_NullSuccessUrl_Throws()
         {
@@ -213,6 +260,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate checkout request valid request does not throw
+        /// </summary>
         [Fact]
         public void ValidateCheckoutRequest_ValidRequest_DoesNotThrow()
         {
@@ -236,6 +286,9 @@ namespace Alis.Extension.Payment.Stripe.Test
 
         #region ValidatePaymentIntentRequest
 
+        /// <summary>
+        /// Tests that validate payment intent request null throws argument null exception
+        /// </summary>
         [Fact]
         public void ValidatePaymentIntentRequest_Null_ThrowsArgumentNullException()
         {
@@ -247,6 +300,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentNullException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate payment intent request zero amount throws
+        /// </summary>
         [Fact]
         public void ValidatePaymentIntentRequest_ZeroAmount_Throws()
         {
@@ -264,6 +320,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentOutOfRangeException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate payment intent request empty currency throws
+        /// </summary>
         [Fact]
         public void ValidatePaymentIntentRequest_EmptyCurrency_Throws()
         {
@@ -281,6 +340,9 @@ namespace Alis.Extension.Payment.Stripe.Test
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate payment intent request valid request does not throw
+        /// </summary>
         [Fact]
         public void ValidatePaymentIntentRequest_ValidRequest_DoesNotThrow()
         {

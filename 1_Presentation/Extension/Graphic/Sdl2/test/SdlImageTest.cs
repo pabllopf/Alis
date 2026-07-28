@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sdl2.Sdl2Image;
+using Alis.Extension.Graphic.Sdl2.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that should return compiled version
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReturnCompiledVersion()
         {
             Version version = SdlImage.Version();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that GetError returns a string when no error is set
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldGetError()
         {
             string error = SdlImage.GetError();
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that SetError and GetError work together
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldSetAndGetError()
         {
             SdlImage.SetError("test error");
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that Init initializes and Quit cleans up
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldInitAndQuit()
         {
             int result = SdlImage.Init(ImgInitFlags.ImgInitPng);
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that Init with multiple flags returns the expected mask
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldInitWithMultipleFlags()
         {
             ImgInitFlags flags = ImgInitFlags.ImgInitJpg | ImgInitFlags.ImgInitPng;
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadImg with non-existent file returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadImgReturnZeroForNonExistentFile()
         {
             IntPtr result = SdlImage.LoadImg("nonexistent_file_xyz.png");
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadAnimation with non-existent file returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadAnimationReturnZeroForNonExistentFile()
         {
             IntPtr result = SdlImage.LoadAnimation("nonexistent_file_xyz.gif");
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that FreeAnimation with IntPtr.Zero does not throw
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldFreeAnimationNotThrowWithZero()
         {
             SdlImage.FreeAnimation(IntPtr.Zero);
@@ -127,7 +128,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadRw with invalid src returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadRwReturnZeroWithInvalidSrc()
         {
             IntPtr result = SdlImage.LoadRw(IntPtr.Zero, 0);
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadTypedRw with invalid src returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadTypedRwReturnZeroWithInvalidSrc()
         {
             IntPtr result = SdlImage.LoadTypedRw(IntPtr.Zero, 0, "PNG");
@@ -147,7 +148,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadTexture with invalid renderer returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadTextureReturnZeroWithInvalidRenderer()
         {
             IntPtr result = SdlImage.LoadTexture(IntPtr.Zero, "test.png");
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadTextureTypedRw with invalid params returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadTextureTypedRwReturnZeroWithInvalidParams()
         {
             IntPtr result = SdlImage.LoadTextureTypedRw(IntPtr.Zero, IntPtr.Zero, 0, "PNG");
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadAnimationRw with invalid src returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadAnimationRwReturnZeroWithInvalidSrc()
         {
             IntPtr result = SdlImage.LoadAnimationRw(IntPtr.Zero, 0);
@@ -177,7 +178,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadAnimationTypedRw with invalid params returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadAnimationTypedRwReturnZeroWithInvalidParams()
         {
             IntPtr result = SdlImage.LoadAnimationTypedRw(IntPtr.Zero, 0, "GIF");
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that LoadGifAnimationRw with invalid src returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldLoadGifAnimationRwReturnZeroWithInvalidSrc()
         {
             IntPtr result = SdlImage.LoadGifAnimationRw(IntPtr.Zero);
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that SaveJpgRw with invalid params returns error
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldSaveJpgRwReturnErrorWithInvalidParams()
         {
             int result = SdlImage.SaveJpgRw(IntPtr.Zero, IntPtr.Zero, 0, 85);
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that SavePngRw with invalid params returns error
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldSavePngRwReturnErrorWithInvalidParams()
         {
             int result = SdlImage.SavePngRw(IntPtr.Zero, IntPtr.Zero, 0);
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         /// <summary>
         /// Tests that ReadXpmFromArray with empty array returns IntPtr.Zero
         /// </summary>
-        [Fact]
+        [RequireSdl2ImageFact]
         public void ShouldReadXpmFromArrayReturnZeroForEmptyArray()
         {
             string[] xpm = { };

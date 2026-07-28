@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The transformable tests class
+    /// </summary>
     public class TransformableTests
     {
+        /// <summary>
+        /// Transforms the caches result
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_CachesResult()
         {
@@ -46,6 +52,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(first, second);
         }
 
+        /// <summary>
+        /// Transforms the invalidated by position change
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_Invalidated_ByPositionChange()
         {
@@ -56,6 +65,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(before, after);
         }
 
+        /// <summary>
+        /// Transforms the invalidated by rotation change
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_Invalidated_ByRotationChange()
         {
@@ -66,6 +78,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(before, after);
         }
 
+        /// <summary>
+        /// Transforms the invalidated by scale change
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_Invalidated_ByScaleChange()
         {
@@ -76,6 +91,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(before, after);
         }
 
+        /// <summary>
+        /// Transforms the invalidated by origin change
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_Invalidated_ByOriginChange()
         {
@@ -86,6 +104,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(before, after);
         }
 
+        /// <summary>
+        /// Transforms the with rotation rotates correctly
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_WithRotation_RotatesCorrectly()
         {
@@ -97,6 +118,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(10f, point.Y, 4);
         }
 
+        /// <summary>
+        /// Transforms the with origin offsets transformation
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_WithOrigin_OffsetsTransformation()
         {
@@ -109,6 +133,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(50f, point.Y);
         }
 
+        /// <summary>
+        /// Transforms the with position rotation scale origin combines correctly
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_WithPositionRotationScaleOrigin_CombinesCorrectly()
         {
@@ -122,6 +149,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(point.X != 0 || point.Y != 0);
         }
 
+        /// <summary>
+        /// Transforms the negative rotation rotates clockwise
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_NegativeRotation_RotatesClockwise()
         {
@@ -133,6 +163,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(-10f, point.Y, 4);
         }
 
+        /// <summary>
+        /// Transforms the negative scale flips direction
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_NegativeScale_FlipsDirection()
         {
@@ -144,6 +177,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Transforms the identity with no changes
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_Identity_WithNoChanges()
         {
@@ -154,6 +190,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(10f, point.Y);
         }
 
+        /// <summary>
+        /// Positions the setter invalidates inverse transform
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Position_Setter_InvalidatesInverseTransform()
         {
@@ -164,6 +203,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Rotations the setter invalidates inverse transform
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Rotation_Setter_InvalidatesInverseTransform()
         {
@@ -174,6 +216,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Scales the setter invalidates inverse transform
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Scale_Setter_InvalidatesInverseTransform()
         {
@@ -184,6 +229,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Origins the setter invalidates inverse transform
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Origin_Setter_InvalidatesInverseTransform()
         {
@@ -194,6 +242,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(inv1, inv2);
         }
 
+        /// <summary>
+        /// Inverses the transform is actually inverse
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void InverseTransform_IsActuallyInverse()
         {
@@ -210,6 +261,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Y, restored.Y, 4);
         }
 
+        /// <summary>
+        /// Transforms the zero scale produces zero transform
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_ZeroScale_ProducesZeroTransform()
         {
@@ -221,6 +275,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Transforms the multiple property changes caches after access
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transform_MultiplePropertyChanges_CachesAfterAccess()
         {
@@ -232,6 +289,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(second, third);
         }
 
+        /// <summary>
+        /// Inverses the transform caches after initial access
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void InverseTransform_CachesAfterInitialAccess()
         {
@@ -241,6 +301,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(inv1, inv2);
         }
 
+        /// <summary>
+        /// Transformables the dispose sets c pointer to zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transformable_Dispose_SetsCPointerToZero()
         {
@@ -249,6 +312,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, t.CPointer);
         }
 
+        /// <summary>
+        /// Transformables the dispose multiple calls do not throw
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Transformable_Dispose_MultipleCalls_DoNotThrow()
         {
@@ -257,6 +323,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             t.Dispose();
         }
 
+        /// <summary>
+        /// Positions the set multiple times reflects latest
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Position_SetMultipleTimes_ReflectsLatest()
         {
@@ -267,6 +336,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(40f, t.Position.Y);
         }
 
+        /// <summary>
+        /// Rotations the set multiple times reflects latest
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Rotation_SetMultipleTimes_ReflectsLatest()
         {
@@ -276,6 +348,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(90f, t.Rotation);
         }
 
+        /// <summary>
+        /// Scales the set multiple times reflects latest
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Scale_SetMultipleTimes_ReflectsLatest()
         {
@@ -286,6 +361,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(4f, t.Scale.Y);
         }
 
+        /// <summary>
+        /// Origins the set multiple times reflects latest
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Origin_SetMultipleTimes_ReflectsLatest()
         {
@@ -296,6 +374,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(25f, t.Origin.Y);
         }
 
+        /// <summary>
+        /// Positions the default is zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Position_Default_IsZero()
         {
@@ -304,6 +385,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, t.Position.Y);
         }
 
+        /// <summary>
+        /// Rotations the default is zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Rotation_Default_IsZero()
         {
@@ -311,6 +395,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, t.Rotation);
         }
 
+        /// <summary>
+        /// Scales the default is one
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Scale_Default_IsOne()
         {
@@ -319,6 +406,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1f, t.Scale.Y);
         }
 
+        /// <summary>
+        /// Origins the default is zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Origin_Default_IsZero()
         {
@@ -327,6 +417,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, t.Origin.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor copies all properties
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void CopyConstructor_CopiesAllProperties()
         {
@@ -345,6 +438,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Origin.Y, copy.Origin.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor independent copy
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void CopyConstructor_IndependentCopy()
         {
@@ -356,6 +452,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(20f, original.Position.Y);
         }
 
+        /// <summary>
+        /// Destroys the sets c pointer to zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Destroy_SetsCPointerToZero()
         {
@@ -364,6 +463,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, t.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the can be called multiple times
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void Destroy_CanBeCalledMultipleTimes()
         {
@@ -373,6 +475,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             t.Destroy(true);
         }
 
+        /// <summary>
+        /// Tests that protected int ptr constructor sets c pointer
+        /// </summary>
         [Fact]
         public void ProtectedIntPtrConstructor_SetsCPointer()
         {
@@ -381,8 +486,16 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(expected, t.CPointer);
         }
 
+        /// <summary>
+        /// The test transformable class
+        /// </summary>
+        /// <seealso cref="Transformable"/>
         private class TestTransformable : Transformable
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestTransformable"/> class
+            /// </summary>
+            /// <param name="cPointer">The pointer</param>
             public TestTransformable(IntPtr cPointer) : base(cPointer)
             {
             }

@@ -35,38 +35,59 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The sound stream test class
+    /// </summary>
     public class SoundStreamTest
     {
+        /// <summary>
+        /// Sounds the stream type should be accessible
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_Type_ShouldBeAccessible()
         {
             Assert.NotNull(typeof(SoundStream));
         }
 
+        /// <summary>
+        /// Sounds the stream should be abstract
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_ShouldBeAbstract()
         {
             Assert.True(typeof(SoundStream).IsAbstract);
         }
 
+        /// <summary>
+        /// Sounds the stream should be assignable from object base
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_ShouldBeAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(SoundStream)));
         }
 
+        /// <summary>
+        /// Sounds the stream namespace should be correct
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_Namespace_ShouldBeCorrect()
         {
             Assert.Equal("Alis.Extension.Graphic.Sfml.Audios", typeof(SoundStream).Namespace);
         }
 
+        /// <summary>
+        /// Sounds the stream should implement i disposable
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_ShouldImplementIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(SoundStream)));
         }
 
+        /// <summary>
+        /// Sounds the stream constructor sets c pointer to zero
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_Constructor_SetsCPointerToZero()
         {
@@ -75,6 +96,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             stream.Dispose();
         }
 
+        /// <summary>
+        /// Sounds the stream has abstract on get data
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_HasAbstractOnGetData()
         {
@@ -84,6 +108,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(method.IsPublic);
         }
 
+        /// <summary>
+        /// Sounds the stream has abstract on seek
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_HasAbstractOnSeek()
         {
@@ -93,6 +120,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(method.IsPublic);
         }
 
+        /// <summary>
+        /// Sounds the stream has public play method
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_HasPublicPlayMethod()
         {
@@ -101,6 +131,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(method.IsPublic);
         }
 
+        /// <summary>
+        /// Sounds the stream has public pause method
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_HasPublicPauseMethod()
         {
@@ -109,6 +142,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(method.IsPublic);
         }
 
+        /// <summary>
+        /// Sounds the stream has public stop method
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundStream_HasPublicStopMethod()
         {
@@ -117,18 +153,34 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(method.IsPublic);
         }
 
+        /// <summary>
+        /// The soundstream accessor class
+        /// </summary>
+        /// <seealso cref="SoundStream"/>
         private class SoundStream_Accessor : SoundStream
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="SoundStream_Accessor"/> class
+            /// </summary>
             public SoundStream_Accessor() : base()
             {
             }
 
+            /// <summary>
+            /// Ons the get data using the specified samples
+            /// </summary>
+            /// <param name="samples">The samples</param>
+            /// <returns>The bool</returns>
             public override bool OnGetData(out short[] samples)
             {
                 samples = System.Array.Empty<short>();
                 return true;
             }
 
+            /// <summary>
+            /// Ons the seek using the specified sfml time offset
+            /// </summary>
+            /// <param name="sfmlTimeOffset">The sfml time offset</param>
             public override void OnSeek(SfmlTime sfmlTimeOffset)
             {
             }

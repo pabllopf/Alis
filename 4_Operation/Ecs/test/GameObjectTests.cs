@@ -42,6 +42,9 @@ namespace Alis.Core.Ecs.Test
     /// </summary>
     public class GameObjectTests
     {
+        /// <summary>
+        /// Tests that set by component id when missing throws component not found exception
+        /// </summary>
         [Fact] public void Set_ByComponentId_WhenMissing_ThrowsComponentNotFoundException()
         {
             using Scene scene = new Scene();
@@ -49,6 +52,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<ComponentNotFoundException>(() => entity.Set(Component<Velocity>.Id, new Velocity {X = 3, Y = 4}));
         }
 
+        /// <summary>
+        /// Tests that set by type when missing throws component not found exception
+        /// </summary>
         [Fact] public void Set_ByType_WhenMissing_ThrowsComponentNotFoundException()
         {
             using Scene scene = new Scene();
@@ -56,6 +62,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Throws<ComponentNotFoundException>(() => entity.Set(typeof(Velocity), new Velocity {X = 3, Y = 4}));
         }
 
+        /// <summary>
+        /// Tests that delete on already deleted entity does not throw
+        /// </summary>
         [Fact] public void Delete_OnAlreadyDeletedEntity_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -65,6 +74,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that delete on already deleted entity returns is alive false
+        /// </summary>
         [Fact] public void Delete_OnAlreadyDeletedEntity_ReturnsIsAliveFalse()
         {
             using Scene scene = new Scene();
@@ -74,6 +86,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that add arity 2 with world event fires for both components
+        /// </summary>
         [Fact] public void Add_Arity2_WithWorldEvent_FiresForBothComponents()
         {
             using Scene scene = new Scene();
@@ -87,6 +102,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Velocity>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 3 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity3_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -101,6 +119,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Health>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 4 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity4_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -116,6 +137,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Armor>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 5 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity5_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -130,6 +154,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Damage>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 6 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity6_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -143,6 +170,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<Transform>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 7 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity7_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -156,6 +186,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<TestComponent>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that add arity 8 with world event fires for all components
+        /// </summary>
         [Fact] public void Add_Arity8_WithWorldEvent_FiresForAllComponents()
         {
             using Scene scene = new Scene();
@@ -169,6 +202,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Contains(Component<AnotherComponent>.Id, addedIds);
         }
 
+        /// <summary>
+        /// Tests that on component added subscribe and unsubscribe clears flag properly
+        /// </summary>
         [Fact] public void OnComponentAdded_SubscribeAndUnsubscribe_ClearsFlagProperly()
         {
             using Scene scene = new Scene();
@@ -182,6 +218,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<Position>());
         }
 
+        /// <summary>
+        /// Tests that on component removed subscribe and unsubscribe clears flag properly
+        /// </summary>
         [Fact] public void OnComponentRemoved_SubscribeAndUnsubscribe_ClearsFlagProperly()
         {
             using Scene scene = new Scene();
@@ -195,6 +234,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entity.Has<Position>());
         }
 
+        /// <summary>
+        /// Tests that add arity 2 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity2_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -208,6 +250,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 3 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity3_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -221,6 +266,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 4 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity4_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -234,6 +282,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 5 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity5_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -247,6 +298,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 6 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity6_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -260,6 +314,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 7 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity7_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -273,6 +330,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that add arity 8 with per entity normal event fires for first component
+        /// </summary>
         [Fact] public void Add_Arity8_WithPerEntityNormalEvent_FiresForFirstComponent()
         {
             using Scene scene = new Scene();
@@ -286,6 +346,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(1, calls);
         }
 
+        /// <summary>
+        /// Tests that remove arity 2 allow structual changes true removes both
+        /// </summary>
         [Fact] public void Remove_Arity2_AllowStructualChangesTrue_RemovesBoth()
         {
             using Scene scene = new Scene();
@@ -297,6 +360,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Velocity>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 3 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity3_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -309,6 +375,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Health>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 4 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity4_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -320,6 +389,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Armor>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 5 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity5_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -331,6 +403,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Damage>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 6 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity6_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -342,6 +417,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<Transform>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 7 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity7_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -353,6 +431,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<TestComponent>());
         }
 
+        /// <summary>
+        /// Tests that remove arity 8 allow structual changes true removes all
+        /// </summary>
         [Fact] public void Remove_Arity8_AllowStructualChangesTrue_RemovesAll()
         {
             using Scene scene = new Scene();
@@ -366,6 +447,9 @@ namespace Alis.Core.Ecs.Test
             Assert.False(entity.Has<AnotherComponent>());
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 1 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity1_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -379,6 +463,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 2 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity2_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -393,6 +480,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 3 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity3_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -408,6 +498,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 4 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity4_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -424,6 +517,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 5 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity5_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -441,6 +537,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 6 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity6_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -459,6 +558,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 7 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity7_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -478,6 +580,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that invoke per entity events arity 8 has generic false does not throw
+        /// </summary>
         [Fact] public void InvokePerEntityEvents_Arity8_HasGenericFalse_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -498,6 +603,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that initalize event record add comp with is generic event true does not throw
+        /// </summary>
         [Fact] public void InitalizeEventRecord_AddComp_WithIsGenericEventTrue_DoesNotThrow()
         {
             using Scene scene = new Scene();
@@ -511,6 +619,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that initalize event record remove comp with is generic event true does not throw
+        /// </summary>
         [Fact] public void InitalizeEventRecord_RemoveComp_WithIsGenericEventTrue_DoesNotThrow()
         {
             using Scene scene = new Scene();

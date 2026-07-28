@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im draw data tests class
+    /// </summary>
     public class ImDrawDataTests
     {
+        /// <summary>
+        /// Tests that valid default value returns zero
+        /// </summary>
         [Fact]
         public void Valid_DefaultValue_ReturnsZero()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((byte)0, data.Valid);
         }
 
+        /// <summary>
+        /// Tests that valid set value returns set value
+        /// </summary>
         [Fact]
         public void Valid_SetValue_ReturnsSetValue()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((byte)1, data.Valid);
         }
 
+        /// <summary>
+        /// Tests that cmd lists count default value returns zero
+        /// </summary>
         [Fact]
         public void CmdListsCount_DefaultValue_ReturnsZero()
         {
@@ -58,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, data.CmdListsCount);
         }
 
+        /// <summary>
+        /// Tests that cmd lists count set value returns set value
+        /// </summary>
         [Fact]
         public void CmdListsCount_SetValue_ReturnsSetValue()
         {
@@ -66,6 +81,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(5, data.CmdListsCount);
         }
 
+        /// <summary>
+        /// Tests that total idx count default value returns zero
+        /// </summary>
         [Fact]
         public void TotalIdxCount_DefaultValue_ReturnsZero()
         {
@@ -73,6 +91,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, data.TotalIdxCount);
         }
 
+        /// <summary>
+        /// Tests that total idx count set value returns set value
+        /// </summary>
         [Fact]
         public void TotalIdxCount_SetValue_ReturnsSetValue()
         {
@@ -81,6 +102,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(100, data.TotalIdxCount);
         }
 
+        /// <summary>
+        /// Tests that total vtx count default value returns zero
+        /// </summary>
         [Fact]
         public void TotalVtxCount_DefaultValue_ReturnsZero()
         {
@@ -88,6 +112,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, data.TotalVtxCount);
         }
 
+        /// <summary>
+        /// Tests that total vtx count set value returns set value
+        /// </summary>
         [Fact]
         public void TotalVtxCount_SetValue_ReturnsSetValue()
         {
@@ -96,6 +123,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(200, data.TotalVtxCount);
         }
 
+        /// <summary>
+        /// Tests that cmd lists ptr default value returns zero
+        /// </summary>
         [Fact]
         public void CmdListsPtr_DefaultValue_ReturnsZero()
         {
@@ -103,6 +133,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, data.CmdListsPtr);
         }
 
+        /// <summary>
+        /// Tests that cmd lists ptr set value returns set value
+        /// </summary>
         [Fact]
         public void CmdListsPtr_SetValue_ReturnsSetValue()
         {
@@ -112,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.CmdListsPtr);
         }
 
+        /// <summary>
+        /// Tests that display pos default value returns zero
+        /// </summary>
         [Fact]
         public void DisplayPos_DefaultValue_ReturnsZero()
         {
@@ -119,6 +155,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new Vector2F(), data.DisplayPos);
         }
 
+        /// <summary>
+        /// Tests that display pos set value returns set value
+        /// </summary>
         [Fact]
         public void DisplayPos_SetValue_ReturnsSetValue()
         {
@@ -128,6 +167,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.DisplayPos);
         }
 
+        /// <summary>
+        /// Tests that display size default value returns zero
+        /// </summary>
         [Fact]
         public void DisplaySize_DefaultValue_ReturnsZero()
         {
@@ -135,6 +177,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new Vector2F(), data.DisplaySize);
         }
 
+        /// <summary>
+        /// Tests that display size set value returns set value
+        /// </summary>
         [Fact]
         public void DisplaySize_SetValue_ReturnsSetValue()
         {
@@ -144,6 +189,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.DisplaySize);
         }
 
+        /// <summary>
+        /// Tests that framebuffer scale default value returns zero
+        /// </summary>
         [Fact]
         public void FramebufferScale_DefaultValue_ReturnsZero()
         {
@@ -151,6 +199,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new Vector2F(), data.FramebufferScale);
         }
 
+        /// <summary>
+        /// Tests that framebuffer scale set value returns set value
+        /// </summary>
         [Fact]
         public void FramebufferScale_SetValue_ReturnsSetValue()
         {
@@ -160,6 +211,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.FramebufferScale);
         }
 
+        /// <summary>
+        /// Tests that owner viewport ptr default value returns zero
+        /// </summary>
         [Fact]
         public void OwnerViewportPtr_DefaultValue_ReturnsZero()
         {
@@ -167,6 +221,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, data.OwnerViewportPtr);
         }
 
+        /// <summary>
+        /// Tests that owner viewport ptr set value returns set value
+        /// </summary>
         [Fact]
         public void OwnerViewportPtr_SetValue_ReturnsSetValue()
         {
@@ -176,6 +233,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.OwnerViewportPtr);
         }
 
+        /// <summary>
+        /// Tests that cmd lists range count matches cmd lists count
+        /// </summary>
         [Fact]
         public void CmdListsRange_CountMatchesCmdListsCount()
         {
@@ -184,6 +244,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(3, data.CmdListsRange.Count);
         }
 
+        /// <summary>
+        /// Tests that cmd lists range data matches cmd lists ptr
+        /// </summary>
         [Fact]
         public void CmdListsRange_DataMatchesCmdListsPtr()
         {
@@ -193,6 +256,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, data.CmdListsRange.Data);
         }
 
+        /// <summary>
+        /// Clears the when called does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_WhenCalled_DoesNotThrow()
         {
@@ -200,6 +266,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             data.Clear();
         }
 
+        /// <summary>
+        /// Des the index all buffers when called does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DeIndexAllBuffers_WhenCalled_DoesNotThrow()
         {
@@ -207,6 +276,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             data.DeIndexAllBuffers();
         }
 
+        /// <summary>
+        /// Scales the clip rects when called does not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ScaleClipRects_WhenCalled_DoesNotThrow()
         {

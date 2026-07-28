@@ -35,20 +35,32 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The vertex array test class
+    /// </summary>
     public class VertexArrayTest
     {
+        /// <summary>
+        /// Tests that vertex array is assignable from object base
+        /// </summary>
         [Fact]
         public void VertexArray_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(VertexArray)));
         }
 
+        /// <summary>
+        /// Tests that vertex array implements i drawable
+        /// </summary>
         [Fact]
         public void VertexArray_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(VertexArray)));
         }
 
+        /// <summary>
+        /// Tests that constructor default c pointer not null
+        /// </summary>
         [Fact]
         public void Constructor_Default_CPointerNotNull()
         {
@@ -56,6 +68,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(System.IntPtr.Zero, va.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor primitive type sets primitive type
+        /// </summary>
         [Fact]
         public void Constructor_PrimitiveType_SetsPrimitiveType()
         {
@@ -63,6 +78,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Triangles, va.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that constructor primitive type c pointer not null
+        /// </summary>
         [Fact]
         public void Constructor_PrimitiveType_CPointerNotNull()
         {
@@ -70,6 +88,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(System.IntPtr.Zero, va.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor primitive type and vertex count sets primitive type
+        /// </summary>
         [Fact]
         public void Constructor_PrimitiveTypeAndVertexCount_SetsPrimitiveType()
         {
@@ -77,6 +98,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Quads, va.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that constructor primitive type and vertex count sets vertex count
+        /// </summary>
         [Fact]
         public void Constructor_PrimitiveTypeAndVertexCount_SetsVertexCount()
         {
@@ -84,6 +108,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(3u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that constructor copy copies properties
+        /// </summary>
         [Fact]
         public void Constructor_Copy_CopiesProperties()
         {
@@ -94,6 +121,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.PrimitiveType, copy.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that vertex count default returns zero
+        /// </summary>
         [Fact]
         public void VertexCount_Default_ReturnsZero()
         {
@@ -101,6 +131,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that vertex count after resize returns correct count
+        /// </summary>
         [Fact]
         public void VertexCount_AfterResize_ReturnsCorrectCount()
         {
@@ -109,6 +142,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that vertex count after append increments count
+        /// </summary>
         [Fact]
         public void VertexCount_AfterAppend_IncrementsCount()
         {
@@ -117,6 +153,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that primitive type get set roundtrips
+        /// </summary>
         [Fact]
         public void PrimitiveType_GetSet_Roundtrips()
         {
@@ -125,6 +164,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.TriangleStrip, va.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that primitive type default returns points
+        /// </summary>
         [Fact]
         public void PrimitiveType_Default_ReturnsPoints()
         {
@@ -132,6 +174,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Points, va.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that indexer get returns vertex at position
+        /// </summary>
         [Fact]
         public void Indexer_Get_ReturnsVertexAtPosition()
         {
@@ -143,6 +188,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(Color.Red, v.Color);
         }
 
+        /// <summary>
+        /// Tests that indexer set modifies vertex
+        /// </summary>
         [Fact]
         public void Indexer_Set_ModifiesVertex()
         {
@@ -155,6 +203,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(Color.Blue, v.Color);
         }
 
+        /// <summary>
+        /// Tests that bounds empty array returns zero rect
+        /// </summary>
         [Fact]
         public void Bounds_EmptyArray_ReturnsZeroRect()
         {
@@ -166,6 +217,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0, bounds.Height);
         }
 
+        /// <summary>
+        /// Tests that bounds with vertices returns non empty
+        /// </summary>
         [Fact]
         public void Bounds_WithVertices_ReturnsNonEmpty()
         {
@@ -177,6 +231,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(bounds.Height > 0);
         }
 
+        /// <summary>
+        /// Tests that clear removes all vertices
+        /// </summary>
         [Fact]
         public void Clear_RemovesAllVertices()
         {
@@ -187,6 +244,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that resize to zero clears array
+        /// </summary>
         [Fact]
         public void Resize_ToZero_ClearsArray()
         {
@@ -196,6 +256,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that resize to larger extends array
+        /// </summary>
         [Fact]
         public void Resize_ToLarger_ExtendsArray()
         {
@@ -205,6 +268,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(3u, va.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that append adds vertex at end
+        /// </summary>
         [Fact]
         public void Append_AddsVertexAtEnd()
         {
@@ -216,6 +282,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(4, va[1].Position.Y);
         }
 
+        /// <summary>
+        /// Tests that draw with mock target does not throw
+        /// </summary>
         [Fact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
@@ -225,6 +294,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             va.Draw(mockTarget.Object, states);
         }
 
+        /// <summary>
+        /// Tests that destroy sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_SetsCPointerToZero()
         {
@@ -234,6 +306,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, va.CPointer);
         }
 
+        /// <summary>
+        /// Tests that dispose calls destroy
+        /// </summary>
         [Fact]
         public void Dispose_CallsDestroy()
         {
@@ -242,6 +317,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, va.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor default dispose does not throw
+        /// </summary>
         [Fact]
         public void Constructor_Default_Dispose_DoesNotThrow()
         {
@@ -249,6 +327,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             va.Dispose();
         }
 
+        /// <summary>
+        /// Tests that primitive type all values can be set
+        /// </summary>
         [Fact]
         public void PrimitiveType_AllValues_CanBeSet()
         {
@@ -269,12 +350,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Quads, va.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that vertex count property exists
+        /// </summary>
         [Fact]
         public void VertexCount_Property_Exists()
         {
             Assert.NotNull(typeof(VertexArray).GetProperty("VertexCount"));
         }
 
+        /// <summary>
+        /// Tests that primitive type property exists
+        /// </summary>
         [Fact]
         public void PrimitiveType_Property_Exists()
         {
@@ -284,12 +371,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that bounds property exists
+        /// </summary>
         [Fact]
         public void Bounds_Property_Exists()
         {
             Assert.NotNull(typeof(VertexArray).GetProperty("Bounds"));
         }
 
+        /// <summary>
+        /// Tests that indexer exists
+        /// </summary>
         [Fact]
         public void Indexer_Exists()
         {
@@ -297,6 +390,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop);
         }
 
+        /// <summary>
+        /// Tests that clear resize append methods exist
+        /// </summary>
         [Fact]
         public void Clear_Resize_Append_Methods_Exist()
         {

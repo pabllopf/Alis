@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 17 tests class
+    /// </summary>
     public class ImPlotP17Tests
     {
+        /// <summary>
+        /// Tests that plot bars s 64 ptr s 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrS64Ptr_Default_ShouldBeVoid()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr u 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrU64Ptr_Default_ShouldBeVoid()
         {
@@ -63,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr u 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrU64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -76,6 +88,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr u 64 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrU64Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -89,6 +104,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr u 64 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrU64Ptr_Full_ShouldBeVoid()
         {
@@ -102,6 +120,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars g default should be void
+        /// </summary>
         [Fact]
         public void PlotBarsG_Default_ShouldBeVoid()
         {
@@ -114,6 +135,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars g with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBarsG_WithFlags_ShouldBeVoid()
         {
@@ -127,6 +151,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital float ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_FloatPtr_Default_ShouldBeVoid()
         {
@@ -139,6 +166,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital float ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_FloatPtr_WithFlags_ShouldBeVoid()
         {
@@ -152,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital float ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_FloatPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -165,6 +198,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital float ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_FloatPtr_Full_ShouldBeVoid()
         {
@@ -178,6 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital double ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_DoublePtr_Default_ShouldBeVoid()
         {
@@ -190,6 +229,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital double ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_DoublePtr_WithFlags_ShouldBeVoid()
         {
@@ -203,6 +245,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital double ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_DoublePtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -216,6 +261,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital double ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_DoublePtr_Full_ShouldBeVoid()
         {
@@ -229,6 +277,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S8Ptr_Default_ShouldBeVoid()
         {
@@ -241,6 +292,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -254,6 +308,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 8 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S8Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -267,6 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 8 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S8Ptr_Full_ShouldBeVoid()
         {
@@ -280,6 +340,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U8Ptr_Default_ShouldBeVoid()
         {
@@ -292,6 +355,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -305,6 +371,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 8 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U8Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -318,6 +387,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 8 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U8Ptr_Full_ShouldBeVoid()
         {
@@ -331,6 +403,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S16Ptr_Default_ShouldBeVoid()
         {
@@ -343,6 +418,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -356,6 +434,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 16 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S16Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -369,6 +450,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 16 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S16Ptr_Full_ShouldBeVoid()
         {
@@ -382,6 +466,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U16Ptr_Default_ShouldBeVoid()
         {
@@ -394,6 +481,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -407,6 +497,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 16 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U16Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -420,6 +513,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 16 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U16Ptr_Full_ShouldBeVoid()
         {
@@ -433,6 +529,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S32Ptr_Default_ShouldBeVoid()
         {
@@ -445,6 +544,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -458,6 +560,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 32 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S32Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -471,6 +576,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 32 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S32Ptr_Full_ShouldBeVoid()
         {
@@ -484,6 +592,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U32Ptr_Default_ShouldBeVoid()
         {
@@ -496,6 +607,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -509,6 +623,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 32 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U32Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -522,6 +639,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 32 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U32Ptr_Full_ShouldBeVoid()
         {
@@ -535,6 +655,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S64Ptr_Default_ShouldBeVoid()
         {
@@ -547,6 +670,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -560,6 +686,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 64 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S64Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -573,6 +702,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital s 64 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_S64Ptr_Full_ShouldBeVoid()
         {
@@ -586,6 +718,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U64Ptr_Default_ShouldBeVoid()
         {
@@ -598,6 +733,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -611,6 +749,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 64 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U64Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -624,6 +765,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital u 64 ptr full should be void
+        /// </summary>
         [Fact]
         public void PlotDigital_U64Ptr_Full_ShouldBeVoid()
         {
@@ -637,6 +781,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital g default should be void
+        /// </summary>
         [Fact]
         public void PlotDigitalG_Default_ShouldBeVoid()
         {
@@ -649,6 +796,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot digital g with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDigitalG_WithFlags_ShouldBeVoid()
         {
@@ -662,6 +812,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot dummy default should be void
+        /// </summary>
         [Fact]
         public void PlotDummy_Default_ShouldBeVoid()
         {
@@ -674,6 +827,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot dummy with flags should be void
+        /// </summary>
         [Fact]
         public void PlotDummy_WithFlags_ShouldBeVoid()
         {
@@ -686,6 +842,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr float ptr float ptr int default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrFloatPtrFloatPtrInt_Default_ShouldBeVoid()
         {
@@ -699,6 +858,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr float ptr float ptr int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrFloatPtrFloatPtrInt_WithFlags_ShouldBeVoid()
         {
@@ -712,6 +874,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotBars_ShouldExposeExpectedOverloadCount()
         {
@@ -723,6 +888,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotBarsFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot bars should accept ref long and ref u long families
+        /// </summary>
         [Fact]
         public void PlotBars_ShouldAcceptRefLongAndRefULongFamilies()
         {
@@ -734,6 +902,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 && m.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot bars g should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotBarsG_ShouldExposeExpectedOverloadCount()
         {
@@ -744,6 +915,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Tests that plot bars g should accept int ptr and im plot bars flags
+        /// </summary>
         [Fact]
         public void PlotBarsG_ShouldAcceptIntPtrAndImPlotBarsFlags()
         {
@@ -753,6 +927,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotBarsFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot digital should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotDigital_ShouldExposeExpectedOverloadCount()
         {
@@ -761,6 +938,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 36);
         }
 
+        /// <summary>
+        /// Tests that plot digital should accept all primitive by ref types
+        /// </summary>
         [Fact]
         public void PlotDigital_ShouldAcceptAllPrimitiveByRefTypes()
         {
@@ -778,6 +958,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot digital overloads should have 4 overloads per type
+        /// </summary>
         [Fact]
         public void PlotDigital_OverloadsShouldHave4OverloadsPerType()
         {
@@ -791,6 +974,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             }
         }
 
+        /// <summary>
+        /// Tests that plot digital g should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotDigitalG_ShouldExposeExpectedOverloadCount()
         {
@@ -801,6 +987,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Length == 5);
         }
 
+        /// <summary>
+        /// Tests that plot digital g should accept int ptr and im plot digital flags
+        /// </summary>
         [Fact]
         public void PlotDigitalG_ShouldAcceptIntPtrAndImPlotDigitalFlags()
         {
@@ -810,6 +999,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotDigitalFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot dummy should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotDummy_ShouldExposeExpectedOverloadCount()
         {
@@ -820,6 +1012,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Length == 2);
         }
 
+        /// <summary>
+        /// Tests that plot dummy should accept string and flags
+        /// </summary>
         [Fact]
         public void PlotDummy_ShouldAcceptStringAndFlags()
         {
@@ -829,6 +1024,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotDummyFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeExpectedOverloadCount()
         {
@@ -837,6 +1035,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 2);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should accept by ref float and flags
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldAcceptByRefFloatAndFlags()
         {
@@ -847,6 +1048,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotErrorBarsFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot error bars should accept by ref float with count 4
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldAcceptByRefFloatWithCount4()
         {
@@ -855,6 +1059,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(float).MakeByRefType()));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -881,6 +1091,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)

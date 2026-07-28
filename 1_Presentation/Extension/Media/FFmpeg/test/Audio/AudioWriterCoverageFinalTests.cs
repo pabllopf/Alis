@@ -37,12 +37,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Audio
 {
+    /// <summary>
+    /// The audio writer coverage final tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class AudioWriterCoverageFinalTests : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffmpeg path
+        /// </summary>
         private readonly string _fakeFfmpegPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioWriterCoverageFinalTests"/> class
+        /// </summary>
         public AudioWriterCoverageFinalTests()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -55,6 +71,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -73,6 +92,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             }
         }
 
+        /// <summary>
+        /// Writes the frame when not opened should throw invalid operation exception
+        /// </summary>
         [RequireFfmpegFact]
         public void WriteFrame_WhenNotOpened_ShouldThrowInvalidOperationException()
         {
@@ -83,6 +105,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("prepared for writing", ex.Message);
         }
 
+        /// <summary>
+        /// Opens the write filename mode when file does not exist should succeed
+        /// </summary>
         [RequireFfmpegFact]
         public void OpenWrite_FilenameMode_WhenFileDoesNotExist_ShouldSucceed()
         {
@@ -100,6 +125,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Disposes the when opened for writing filename mode should close write and dispose
+        /// </summary>
         [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWritingFilenameMode_ShouldCloseWriteAndDispose()
         {
@@ -114,6 +142,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Disposes the when opened for writing stream mode should close write and dispose destination
+        /// </summary>
         [RequireFfmpegFact]
         public void Dispose_WhenOpenedForWritingStreamMode_ShouldCloseWriteAndDisposeDestination()
         {
@@ -129,6 +160,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
         }
 
+        /// <summary>
+        /// Closes the write when ffmpegp process exits quickly should not kill
+        /// </summary>
         [RequireFfmpegFact]
         public void CloseWrite_WhenFfmpegpProcessExitsQuickly_ShouldNotKill()
         {
@@ -144,6 +178,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Closes the write when ffmpegp still running should kill and succeed
+        /// </summary>
         [RequireFfmpegFact]
         public void CloseWrite_WhenFfmpegpStillRunning_ShouldKillAndSucceed()
         {
@@ -168,6 +205,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Opens the write stream mode with show f fmpeg output true should succeed
+        /// </summary>
         [RequireFfmpegFact]
         public void OpenWrite_StreamMode_WithShowFFmpegOutputTrue_ShouldSucceed()
         {

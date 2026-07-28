@@ -61,6 +61,9 @@ namespace Alis.Core.Ecs.Redifinition
             }
         }
 
+        /// <summary>
+        /// The gen collection occured
+        /// </summary>
         private static Action _gen2CollectionOccured;
 
         /// <summary>

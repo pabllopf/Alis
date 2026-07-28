@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 12 tests class
+    /// </summary>
     public class ImPlotP12Tests
     {
+        /// <summary>
+        /// Tests that plot histogram should expose sufficient overload count
+        /// </summary>
         [Fact]
         public void PlotHistogram_ShouldExposeSufficientOverloadCount()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 32);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 8 ptr with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U8Ptr_WithRange_ShouldReturnDouble()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 8 ptr with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U8Ptr_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 16 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S16_Default_ShouldReturnDouble()
         {
@@ -68,6 +83,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 16 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S16_WithBins_ShouldReturnDouble()
         {
@@ -76,6 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 16 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S16_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -84,6 +105,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 16 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S16_WithRange_ShouldReturnDouble()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 16 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S16_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -100,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 16 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U16_Default_ShouldReturnDouble()
         {
@@ -108,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 16 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U16_WithBins_ShouldReturnDouble()
         {
@@ -116,6 +149,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 16 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U16_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -124,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 16 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U16_WithRange_ShouldReturnDouble()
         {
@@ -132,6 +171,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 16 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U16_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 32 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S32_Default_ShouldReturnDouble()
         {
@@ -148,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 32 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S32_WithBins_ShouldReturnDouble()
         {
@@ -156,6 +204,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 32 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S32_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -164,6 +215,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 32 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S32_WithRange_ShouldReturnDouble()
         {
@@ -172,6 +226,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 32 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S32_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -180,6 +237,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 32 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U32_Default_ShouldReturnDouble()
         {
@@ -188,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 32 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U32_WithBins_ShouldReturnDouble()
         {
@@ -196,6 +259,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 32 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U32_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -204,6 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 32 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U32_WithRange_ShouldReturnDouble()
         {
@@ -212,6 +281,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 32 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U32_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -220,6 +292,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 64 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S64_Default_ShouldReturnDouble()
         {
@@ -228,6 +303,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 64 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S64_WithBins_ShouldReturnDouble()
         {
@@ -236,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 64 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S64_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -244,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 64 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S64_WithRange_ShouldReturnDouble()
         {
@@ -252,6 +336,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram s 64 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_S64_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -260,6 +347,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 64 default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U64_Default_ShouldReturnDouble()
         {
@@ -268,6 +358,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 64 with bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U64_WithBins_ShouldReturnDouble()
         {
@@ -276,6 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 64 with bins and bar scale should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U64_WithBinsAndBarScale_ShouldReturnDouble()
         {
@@ -284,6 +380,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 64 with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U64_WithRange_ShouldReturnDouble()
         {
@@ -292,6 +391,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram u 64 with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram_U64_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -300,6 +402,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram should expose five overloads for short
+        /// </summary>
         [Fact]
         public void PlotHistogram_ShouldExposeFiveOverloadsForShort()
         {
@@ -313,6 +418,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot histogram should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotHistogram_ShouldExposeAllExpectedArrayTypes()
         {
@@ -326,6 +434,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram should expose flags overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram_ShouldExposeFlagsOverloads()
         {
@@ -333,6 +444,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotHistogramFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose sufficient overload count
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeSufficientOverloadCount()
         {
@@ -340,6 +454,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 18);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d float ref default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_FloatRef_Default_ShouldReturnDouble()
         {
@@ -348,6 +465,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d float ref with x bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_FloatRef_WithXBins_ShouldReturnDouble()
         {
@@ -356,6 +476,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d float ref with x bins and y bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_FloatRef_WithXBinsAndYBins_ShouldReturnDouble()
         {
@@ -364,6 +487,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d float ref with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_FloatRef_WithRange_ShouldReturnDouble()
         {
@@ -372,6 +498,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d float ref with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_FloatRef_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -380,6 +509,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d double ref default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_DoubleRef_Default_ShouldReturnDouble()
         {
@@ -388,6 +520,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d double ref with x bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_DoubleRef_WithXBins_ShouldReturnDouble()
         {
@@ -396,6 +531,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d double ref with x bins and y bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_DoubleRef_WithXBinsAndYBins_ShouldReturnDouble()
         {
@@ -404,6 +542,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d double ref with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_DoubleRef_WithRange_ShouldReturnDouble()
         {
@@ -412,6 +553,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d double ref with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_DoubleRef_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -420,6 +564,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d s 8 ref default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_S8Ref_Default_ShouldReturnDouble()
         {
@@ -428,6 +575,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d s 8 ref with x bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_S8Ref_WithXBins_ShouldReturnDouble()
         {
@@ -436,6 +586,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d s 8 ref with x bins and y bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_S8Ref_WithXBinsAndYBins_ShouldReturnDouble()
         {
@@ -444,6 +597,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d s 8 ref with range should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_S8Ref_WithRange_ShouldReturnDouble()
         {
@@ -452,6 +608,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d s 8 ref with range and flags should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_S8Ref_WithRangeAndFlags_ShouldReturnDouble()
         {
@@ -460,6 +619,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d u 8 ref default should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_U8Ref_Default_ShouldReturnDouble()
         {
@@ -468,6 +630,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d u 8 ref with x bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_U8Ref_WithXBins_ShouldReturnDouble()
         {
@@ -476,6 +641,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d u 8 ref with x bins and y bins should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_U8Ref_WithXBinsAndYBins_ShouldReturnDouble()
         {
@@ -484,6 +652,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose all expected by ref numeric families
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeAllExpectedByRefNumericFamilies()
         {
@@ -494,6 +665,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasByRefParameter(method, typeof(byte)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose flags overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeFlagsOverloads()
         {
@@ -501,6 +675,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotHistogramFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose five float ref overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeFiveFloatRefOverloads()
         {
@@ -514,6 +691,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(floatOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose five double ref overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeFiveDoubleRefOverloads()
         {
@@ -527,6 +707,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(doubleOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose five s 8 ref overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeFiveS8RefOverloads()
         {
@@ -540,6 +723,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(s8Overloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose three u 8 ref overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeThreeU8RefOverloads()
         {
@@ -551,6 +737,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(u8Overloads, method => method.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -577,6 +769,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -585,11 +782,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the by ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && (parameter.ParameterType.GetElementType() == elementType));

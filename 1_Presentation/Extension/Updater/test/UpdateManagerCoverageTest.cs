@@ -45,8 +45,14 @@ using Xunit;
 
 namespace Alis.Extension.Updater.Test
 {
+    /// <summary>
+    /// The update manager coverage test class
+    /// </summary>
     public class UpdateManagerCoverageTest
     {
+        /// <summary>
+        /// Tests that select asset skips assets with null name
+        /// </summary>
         [Fact]
         public void SelectAsset_SkipsAssetsWithNullName()
         {
@@ -68,6 +74,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal("app-win-x64.zip", selected["name"]);
         }
 
+        /// <summary>
+        /// Tests that get latest release async throws when version does not exist
+        /// </summary>
         [Fact]
         public void GetLatestReleaseAsync_Throws_WhenVersionDoesNotExist()
         {
@@ -82,6 +91,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("latest version is already installed", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that get latest release async returns release for latest version
+        /// </summary>
         [Fact]
         public void GetLatestReleaseAsync_ReturnsRelease_ForLatestVersion()
         {
@@ -98,6 +110,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal("v0.7.5", result["tag_name"]);
         }
 
+        /// <summary>
+        /// Tests that download file async downloads file
+        /// </summary>
         [Fact]
         public void DownloadFileAsync_DownloadsFile()
         {
@@ -129,6 +144,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that extract zip creates directory entry
+        /// </summary>
         [Fact]
         public void ExtractZip_CreatesDirectoryEntry()
         {
@@ -147,6 +165,9 @@ namespace Alis.Extension.Updater.Test
             Assert.True(Directory.Exists(Path.Combine(targetFolder, "subdir")));
         }
 
+        /// <summary>
+        /// Tests that extract zip throws when path traversal detected
+        /// </summary>
         [Fact]
         public void ExtractZip_Throws_WhenPathTraversalDetected()
         {
@@ -168,6 +189,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("path traversal", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that extract zip throws when compression ratio exceeds threshold
+        /// </summary>
         [Fact]
         public void ExtractZip_Throws_WhenCompressionRatioExceedsThreshold()
         {
@@ -189,6 +213,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("compression ratio", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Gets the platform on mac os returns osx
+        /// </summary>
         [MacOsOnly]
         public void GetPlatform_OnMacOs_ReturnsOsx()
         {
@@ -200,6 +227,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal("osx", result);
         }
 
+        /// <summary>
+        /// Tests that start throws when release not found
+        /// </summary>
         [Fact]
         public void Start_Throws_WhenReleaseNotFound()
         {
@@ -214,6 +244,12 @@ namespace Alis.Extension.Updater.Test
             Assert.Contains("Error updating program", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Creates the manager fast using the specified version to install
+        /// </summary>
+        /// <param name="versionToInstall">The version to install</param>
+        /// <param name="programFolder">The program folder</param>
+        /// <returns>The manager</returns>
         private static UpdateManager CreateManagerFast(string versionToInstall = "latest", string programFolder = null)
         {
             Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
@@ -230,20 +266,50 @@ namespace Alis.Extension.Updater.Test
             return manager;
         }
 
+        /// <summary>
+        /// Assets the name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="url">The url</param>
+        /// <returns>A dictionary of string and object</returns>
         private static Dictionary<string, object> Asset(string name, string url) => new Dictionary<string, object>
         {
             {"name", name},
             {"browser_download_url", url}
         };
 
+        /// <summary>
+        /// The loopback http server class
+        /// </summary>
+        /// <seealso cref="IDisposable"/>
         private sealed class LoopbackHttpServer : IDisposable
         {
+            /// <summary>
+            /// The listener
+            /// </summary>
             private readonly TcpListener _listener;
+            /// <summary>
+            /// The cancellation
+            /// </summary>
             private readonly CancellationTokenSource _cancellation;
+            /// <summary>
+            /// The worker
+            /// </summary>
             private readonly Task _worker;
+            /// <summary>
+            /// The response content
+            /// </summary>
             private string _responseContent;
+            /// <summary>
+            /// The expected path
+            /// </summary>
             private string _expectedPath;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="LoopbackHttpServer"/> class
+            /// </summary>
+            /// <param name="listener">The listener</param>
+            /// <param name="uri">The uri</param>
             private LoopbackHttpServer(TcpListener listener, Uri uri)
             {
                 _listener = listener;
@@ -254,14 +320,25 @@ namespace Alis.Extension.Updater.Test
                 _worker = Task.Run(() => WorkerLoop(_cancellation.Token));
             }
 
+            /// <summary>
+            /// Gets the value of the uri
+            /// </summary>
             public Uri Uri { get; }
 
+            /// <summary>
+            /// Sets the response using the specified path
+            /// </summary>
+            /// <param name="path">The path</param>
+            /// <param name="content">The content</param>
             public void SetResponse(string path, string content)
             {
                 _expectedPath = path;
                 _responseContent = content;
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 _cancellation.Cancel();
@@ -278,6 +355,10 @@ namespace Alis.Extension.Updater.Test
                 _cancellation.Dispose();
             }
 
+            /// <summary>
+            /// Starts
+            /// </summary>
+            /// <returns>The loopback http server</returns>
             public static LoopbackHttpServer Start()
             {
                 TcpListener listener = new TcpListener(IPAddress.Loopback, 0);
@@ -287,6 +368,10 @@ namespace Alis.Extension.Updater.Test
                 return new LoopbackHttpServer(listener, uri);
             }
 
+            /// <summary>
+            /// Workers the loop using the specified token
+            /// </summary>
+            /// <param name="token">The token</param>
             private void WorkerLoop(CancellationToken token)
             {
                 while (!token.IsCancellationRequested)
@@ -322,12 +407,26 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// The temp folder class
+        /// </summary>
+        /// <seealso cref="IDisposable"/>
         internal sealed class TempFolder : IDisposable
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TempFolder"/> class
+            /// </summary>
+            /// <param name="path">The path</param>
             private TempFolder(string path) => Path = path;
 
+            /// <summary>
+            /// Gets the value of the path
+            /// </summary>
             public string Path { get; }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 if (Directory.Exists(Path))
@@ -336,6 +435,10 @@ namespace Alis.Extension.Updater.Test
                 }
             }
 
+            /// <summary>
+            /// Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
             public static TempFolder Create()
             {
                 string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-cov", Guid.NewGuid().ToString("N"));

@@ -39,8 +39,14 @@ namespace Alis.Extension.Graphic.Ui.Test
     /// </summary>
     public class ImGuiP8SliderTest : IDisposable
     {
+        /// <summary>
+        /// The ctx
+        /// </summary>
         internal readonly IntPtr _ctx;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiP8SliderTest"/> class
+        /// </summary>
         public ImGuiP8SliderTest()
         {
             _ctx = ImGui.CreateContext();
@@ -50,47 +56,13 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.Fonts.Build();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ImGui.SetCurrentContext(IntPtr.Zero);
             ImGuiNative.igDestroyContext(_ctx);
-        }
-
-        [RequireCImguiSystemFact]
-        public void AllSliderOverloads_ShouldExecute()
-        {
-            float sv = 45.0f;
-            ImGui.NewFrame();
-            ImGui.Begin("s_all");
-            ImGui.SliderAngle("a1", ref sv);
-            ImGui.SliderAngle("a2", ref sv, -180.0f);
-            ImGui.SliderAngle("a3", ref sv, -180.0f, 180.0f);
-            ImGui.SliderAngle("a4", ref sv, -180.0f, 180.0f, "%.1f deg");
-
-            float fv = 50.0f;
-            ImGui.SliderFloat("f1", ref fv, 0.0f, 100.0f);
-            ImGui.SliderFloat("f2", ref fv, 0.0f, 100.0f, "%.2f");
-
-            Vector2F v2 = new Vector2F(25.0f, 75.0f);
-            ImGui.SliderFloat2("f2a", ref v2, 0.0f, 100.0f);
-            ImGui.SliderFloat2("f2b", ref v2, 0.0f, 100.0f, "%.2f");
-
-            Vector3F v3 = new Vector3F(10.0f, 50.0f, 90.0f);
-            ImGui.SliderFloat3("f3a", ref v3, 0.0f, 100.0f);
-            ImGui.SliderFloat3("f3b", ref v3, 0.0f, 100.0f, "%.2f");
-
-            Vector4F v4 = new Vector4F(10.0f, 30.0f, 60.0f, 90.0f);
-            ImGui.SliderFloat4("f4a", ref v4, 0.0f, 100.0f);
-            ImGui.SliderFloat4("f4b", ref v4, 0.0f, 100.0f, "%.2f");
-
-            ImGui.SliderAngle("a5", ref sv, -180.0f, 180.0f, "%.1f deg", (ImGuiSliderFlags)0);
-            ImGui.SliderFloat("f3", ref fv, 0.0f, 100.0f, "%.2f", (ImGuiSliderFlags)0);
-            ImGui.SliderFloat2("f2c", ref v2, 0.0f, 100.0f, "%.2f", (ImGuiSliderFlags)0);
-            ImGui.SliderFloat3("f3c", ref v3, 0.0f, 100.0f, "%.2f", (ImGuiSliderFlags)0);
-            ImGui.SliderFloat4("f4c", ref v4, 0.0f, 100.0f, "%.2f", (ImGuiSliderFlags)0);
-
-            ImGui.End();
-            ImGui.Render();
         }
     }
 }

@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 21 tests class
+    /// </summary>
     public class ImPlotP21Tests
     {
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8Ptr_Default_ShouldBeVoid()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8Ptr_WithYRef_ShouldBeVoid()
         {
@@ -61,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -73,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8Ptr_WithOffset_ShouldBeVoid()
         {
@@ -85,6 +100,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8Ptr_WithStride_ShouldBeVoid()
         {
@@ -97,6 +115,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 8 ptr u 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8Ptr_Default_ShouldBeVoid()
         {
@@ -109,6 +130,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 8 ptr u 8 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8Ptr_WithYRef_ShouldBeVoid()
         {
@@ -121,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 8 ptr u 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -133,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 8 ptr u 8 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8Ptr_WithOffset_ShouldBeVoid()
         {
@@ -145,6 +175,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 8 ptr u 8 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U8PtrU8Ptr_WithStride_ShouldBeVoid()
         {
@@ -157,6 +190,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 16 ptr s 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16Ptr_Default_ShouldBeVoid()
         {
@@ -169,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 16 ptr s 16 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16Ptr_WithYRef_ShouldBeVoid()
         {
@@ -181,6 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 16 ptr s 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -193,6 +235,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 16 ptr s 16 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16Ptr_WithOffset_ShouldBeVoid()
         {
@@ -205,6 +250,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 16 ptr s 16 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S16PtrS16Ptr_WithStride_ShouldBeVoid()
         {
@@ -217,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 16 ptr u 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16Ptr_Default_ShouldBeVoid()
         {
@@ -229,6 +280,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 16 ptr u 16 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16Ptr_WithYRef_ShouldBeVoid()
         {
@@ -241,6 +295,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 16 ptr u 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -253,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 16 ptr u 16 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16Ptr_WithOffset_ShouldBeVoid()
         {
@@ -265,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 16 ptr u 16 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U16PtrU16Ptr_WithStride_ShouldBeVoid()
         {
@@ -277,6 +340,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 32 ptr s 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32Ptr_Default_ShouldBeVoid()
         {
@@ -289,6 +355,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 32 ptr s 32 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32Ptr_WithYRef_ShouldBeVoid()
         {
@@ -301,6 +370,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 32 ptr s 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -313,6 +385,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 32 ptr s 32 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32Ptr_WithOffset_ShouldBeVoid()
         {
@@ -325,6 +400,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 32 ptr s 32 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S32PtrS32Ptr_WithStride_ShouldBeVoid()
         {
@@ -337,6 +415,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 32 ptr u 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32Ptr_Default_ShouldBeVoid()
         {
@@ -349,6 +430,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 32 ptr u 32 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32Ptr_WithYRef_ShouldBeVoid()
         {
@@ -361,6 +445,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 32 ptr u 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -373,6 +460,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 32 ptr u 32 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32Ptr_WithOffset_ShouldBeVoid()
         {
@@ -385,6 +475,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 32 ptr u 32 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U32PtrU32Ptr_WithStride_ShouldBeVoid()
         {
@@ -397,6 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 64 ptr s 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64Ptr_Default_ShouldBeVoid()
         {
@@ -409,6 +505,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 64 ptr s 64 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64Ptr_WithYRef_ShouldBeVoid()
         {
@@ -421,6 +520,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 64 ptr s 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -433,6 +535,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 64 ptr s 64 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64Ptr_WithOffset_ShouldBeVoid()
         {
@@ -445,6 +550,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 64 ptr s 64 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S64PtrS64Ptr_WithStride_ShouldBeVoid()
         {
@@ -457,6 +565,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 64 ptr u 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64Ptr_Default_ShouldBeVoid()
         {
@@ -469,6 +580,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 64 ptr u 64 ptr with y ref should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64Ptr_WithYRef_ShouldBeVoid()
         {
@@ -481,6 +595,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 64 ptr u 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -493,6 +610,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 64 ptr u 64 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64Ptr_WithOffset_ShouldBeVoid()
         {
@@ -505,6 +625,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded u 64 ptr u 64 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_U64PtrU64Ptr_WithStride_ShouldBeVoid()
         {
@@ -517,6 +640,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded float ptr float ptr float ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_Default_ShouldBeVoid()
         {
@@ -529,6 +655,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded float ptr float ptr float ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_WithFlags_ShouldBeVoid()
         {
@@ -541,6 +670,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded float ptr float ptr float ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_WithOffset_ShouldBeVoid()
         {
@@ -553,6 +685,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded float ptr float ptr float ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_FloatPtrFloatPtrFloatPtr_WithStride_ShouldBeVoid()
         {
@@ -565,6 +700,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded double ptr double ptr double ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_DoublePtrDoublePtrDoublePtr_Default_ShouldBeVoid()
         {
@@ -577,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded double ptr double ptr double ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_DoublePtrDoublePtrDoublePtr_WithFlags_ShouldBeVoid()
         {
@@ -589,6 +730,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded double ptr double ptr double ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_DoublePtrDoublePtrDoublePtr_WithOffset_ShouldBeVoid()
         {
@@ -601,6 +745,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded double ptr double ptr double ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_DoublePtrDoublePtrDoublePtr_WithStride_ShouldBeVoid()
         {
@@ -613,6 +760,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrS8Ptr_Default_ShouldBeVoid()
         {
@@ -625,6 +775,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded s 8 ptr s 8 ptr s 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotShaded_S8PtrS8PtrS8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -637,6 +790,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot shaded should include all primitive by ref types
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldIncludeAllPrimitiveByRefTypes()
         {
@@ -664,6 +820,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeExpectedOverloadCount()
         {
@@ -672,6 +831,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 50);
         }
 
+        /// <summary>
+        /// Tests that plot shaded overloads should have 5 overloads per by ref type
+        /// </summary>
         [Fact]
         public void PlotShaded_OverloadsShouldHave5OverloadsPerByRefType()
         {
@@ -685,6 +847,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             }
         }
 
+        /// <summary>
+        /// Tests that plot shaded should accept im plot shaded flags
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldAcceptImPlotShadedFlags()
         {
@@ -693,6 +858,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotShadedFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded has 3 ref overloads for float double sbyte
+        /// </summary>
         [Fact]
         public void PlotShaded_Has3RefOverloadsForFloatDoubleSbyte()
         {
@@ -706,6 +874,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 && m.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(sbyte)));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -732,6 +906,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)

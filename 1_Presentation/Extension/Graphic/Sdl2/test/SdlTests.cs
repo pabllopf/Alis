@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sdl2.Test
 {
+    /// <summary>
+    /// The sdl tests class
+    /// </summary>
     public class SdlTests
     {
+        /// <summary>
+        /// Tests that set error then get error returns set message
+        /// </summary>
         [Fact]
         public void SetError_ThenGetError_ReturnsSetMessage()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Contains("test error message", error);
         }
 
+        /// <summary>
+        /// Tests that get error initially returns empty string
+        /// </summary>
         [Fact]
         public void GetError_Initially_ReturnsEmptyString()
         {
@@ -53,12 +62,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(error);
         }
 
+        /// <summary>
+        /// Tests that clear hints does not throw
+        /// </summary>
         [Fact]
         public void ClearHints_DoesNotThrow()
         {
             Sdl.ClearHints();
         }
 
+        /// <summary>
+        /// Tests that set hint get hint roundtrip
+        /// </summary>
         [Fact]
         public void SetHint_GetHint_Roundtrip()
         {
@@ -72,6 +87,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        /// <summary>
+        /// Tests that set hint with priority get hint roundtrip
+        /// </summary>
         [Fact]
         public void SetHintWithPriority_GetHint_Roundtrip()
         {
@@ -85,6 +103,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        /// <summary>
+        /// Tests that get hint boolean returns default for unknown hint
+        /// </summary>
         [Fact]
         public void GetHintBoolean_ReturnsDefaultForUnknownHint()
         {
@@ -95,6 +116,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that init and quit lifecycle
+        /// </summary>
         [Fact]
         public void Init_And_Quit_Lifecycle()
         {
@@ -113,6 +137,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, wasInitAfterQuit);
         }
 
+        /// <summary>
+        /// Tests that init with multiple flags works
+        /// </summary>
         [Fact]
         public void Init_WithMultipleFlags_Works()
         {
@@ -121,6 +148,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that was init after partial init returns correct flags
+        /// </summary>
         [Fact]
         public void WasInit_AfterPartialInit_ReturnsCorrectFlags()
         {
@@ -137,6 +167,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get num audio drivers after audio init returns positive
+        /// </summary>
         [Fact]
         public void GetNumAudioDrivers_AfterAudioInit_ReturnsPositive()
         {
@@ -148,6 +181,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get current audio driver after audio init returns non null
+        /// </summary>
         [Fact]
         public void GetCurrentAudioDriver_AfterAudioInit_ReturnsNonNull()
         {
@@ -160,6 +196,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get audio driver by index returns non null
+        /// </summary>
         [Fact]
         public void GetAudioDriver_ByIndex_ReturnsNonNull()
         {
@@ -176,6 +215,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get num audio devices after audio init returns non negative
+        /// </summary>
         [Fact]
         public void GetNumAudioDevices_AfterAudioInit_ReturnsNonNegative()
         {
@@ -187,6 +229,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get audio device status zero does not throw
+        /// </summary>
         [Fact]
         public void GetAudioDeviceStatus_Zero_DoesNotThrow()
         {
@@ -197,6 +242,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get performance frequency returns positive
+        /// </summary>
         [Fact]
         public void GetPerformanceFrequency_ReturnsPositive()
         {
@@ -208,6 +256,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get performance counter returns positive
+        /// </summary>
         [Fact]
         public void GetPerformanceCounter_ReturnsPositive()
         {
@@ -219,6 +270,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get performance counter increases
+        /// </summary>
         [Fact]
         public void GetPerformanceCounter_Increases()
         {
@@ -231,6 +285,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get pixel format name returns non null
+        /// </summary>
         [Fact]
         public void GetPixelFormatName_ReturnsNonNull()
         {
@@ -239,6 +296,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotEmpty(name);
         }
 
+        /// <summary>
+        /// Tests that get pixel format name for unknown returns non null
+        /// </summary>
         [Fact]
         public void GetPixelFormatName_ForUnknown_ReturnsNonNull()
         {
@@ -246,6 +306,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(name);
         }
 
+        /// <summary>
+        /// Tests that format enum to masks for rgb 888 returns valid masks
+        /// </summary>
         [Fact]
         public void FormatEnumToMasks_ForRgb888_ReturnsValidMasks()
         {
@@ -259,6 +322,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, aMask);
         }
 
+        /// <summary>
+        /// Tests that format enum to masks for argb 8888 includes alpha
+        /// </summary>
         [Fact]
         public void FormatEnumToMasks_ForArgb8888_IncludesAlpha()
         {
@@ -268,6 +334,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotEqual(0u, aMask);
         }
 
+        /// <summary>
+        /// Tests that calculate gamma ramp with gamma one produces correct values
+        /// </summary>
         [Fact]
         public void CalculateGammaRamp_WithGammaOne_ProducesCorrectValues()
         {
@@ -281,6 +350,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(ramp[128] < ramp[192]);
         }
 
+        /// <summary>
+        /// Tests that calculate gamma ramp with gamma two produces correct shape
+        /// </summary>
         [Fact]
         public void CalculateGammaRamp_WithGammaTwo_ProducesCorrectShape()
         {
@@ -295,24 +367,36 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             }
         }
 
+        /// <summary>
+        /// Tests that compose custom blend mode returns valid mode
+        /// </summary>
         [Fact]
         public void ComposeCustomBlendMode_ReturnsValidMode()
         {
             BlendModes mode = Sdl.ComposeCustomBlendMode(BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd, BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd);
         }
 
+        /// <summary>
+        /// Tests that get key from scancode does not throw
+        /// </summary>
         [Fact]
         public void GetKeyFromScancode_DoesNotThrow()
         {
             KeyCodes key = Sdl.GetKeyFromScancode(SdlScancode.SdlScancodeA);
         }
 
+        /// <summary>
+        /// Tests that get scancode from key does not throw
+        /// </summary>
         [Fact]
         public void GetScancodeFromKey_DoesNotThrow()
         {
             SdlScancode scancode = Sdl.GetScancodeFromKey(KeyCodes.Unknown);
         }
 
+        /// <summary>
+        /// Tests that get scancode name does not throw
+        /// </summary>
         [Fact]
         public void GetScancodeName_DoesNotThrow()
         {
@@ -320,12 +404,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(name);
         }
 
+        /// <summary>
+        /// Tests that get scancode from name does not throw
+        /// </summary>
         [Fact]
         public void GetScancodeFromName_DoesNotThrow()
         {
             SdlScancode sc = Sdl.GetScancodeFromName("A");
         }
 
+        /// <summary>
+        /// Tests that s get key name does not throw
+        /// </summary>
         [Fact]
         public void SGetKeyName_DoesNotThrow()
         {
@@ -333,12 +423,18 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotNull(name);
         }
 
+        /// <summary>
+        /// Tests that get key from name does not throw
+        /// </summary>
         [Fact]
         public void GetKeyFromName_DoesNotThrow()
         {
             KeyCodes key = Sdl.GetKeyFromName("A");
         }
 
+        /// <summary>
+        /// Tests that has event does not throw
+        /// </summary>
         [Fact]
         public void HasEvent_DoesNotThrow()
         {
@@ -350,6 +446,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that has events does not throw
+        /// </summary>
         [Fact]
         public void HasEvents_DoesNotThrow()
         {
@@ -361,6 +460,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that flush event does not throw
+        /// </summary>
         [Fact]
         public void FlushEvent_DoesNotThrow()
         {
@@ -371,6 +473,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that get event state does not throw
+        /// </summary>
         [Fact]
         public void GetEventState_DoesNotThrow()
         {
@@ -381,6 +486,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that register events returns non zero
+        /// </summary>
         [Fact]
         public void RegisterEvents_ReturnsNonZero()
         {
@@ -392,6 +500,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that push event does not throw
+        /// </summary>
         [Fact]
         public void PushEvent_DoesNotThrow()
         {
@@ -406,6 +517,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Sdl.Quit();
         }
 
+        /// <summary>
+        /// Tests that sdl audio bit size additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioBitSize_AdditionalCases()
         {
@@ -415,6 +529,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal((ushort)0x08, Sdl.SdlAudioBitSize(0x0108));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is float additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsFloat_AdditionalCases()
         {
@@ -422,6 +539,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsFloat(0x0000));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is big endian additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsBigEndian_AdditionalCases()
         {
@@ -429,6 +549,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.True(Sdl.SdlAudioIsBigEndian(0x1000));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is signed additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsSigned_AdditionalCases()
         {
@@ -436,6 +559,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsSigned(0x0000));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is int additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsInt_AdditionalCases()
         {
@@ -443,6 +569,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsInt(0x0100));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is little endian additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsLittleEndian_AdditionalCases()
         {
@@ -450,6 +579,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsLittleEndian(0x1000));
         }
 
+        /// <summary>
+        /// Tests that sdl audio is unsigned additional cases
+        /// </summary>
         [Fact]
         public void SdlAudioIsUnsigned_AdditionalCases()
         {
@@ -457,6 +589,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.False(Sdl.SdlAudioIsUnsigned(0x8000));
         }
 
+        /// <summary>
+        /// Tests that sdl define pixel format constants are non zero
+        /// </summary>
         [Fact]
         public void SdlDefinePixelFormat_Constants_AreNonZero()
         {
@@ -467,36 +602,54 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotEqual(0u, Sdl.PixelFormatIndex8);
         }
 
+        /// <summary>
+        /// Tests that pixel format argb 8888 and rgba 8888 are distinct
+        /// </summary>
         [Fact]
         public void PixelFormat_Argb8888_And_Rgba8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatRgba8888);
         }
 
+        /// <summary>
+        /// Tests that pixel format argb 8888 and a bgr 8888 are distinct
+        /// </summary>
         [Fact]
         public void PixelFormat_Argb8888_And_ABgr8888_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatArgb8888, Sdl.PixelFormatABgr8888);
         }
 
+        /// <summary>
+        /// Tests that pixel format rgb 24 and bgr 24 are distinct
+        /// </summary>
         [Fact]
         public void PixelFormat_Rgb24_And_Bgr24_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb24, Sdl.PixelFormatBgr24);
         }
 
+        /// <summary>
+        /// Tests that pixel format rgb 565 and bgr 565 are distinct
+        /// </summary>
         [Fact]
         public void PixelFormat_Rgb565_And_Bgr565_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatRgb565, Sdl.PixelFormatBgr565);
         }
 
+        /// <summary>
+        /// Tests that pixel format yv 12 and iy are distinct
+        /// </summary>
         [Fact]
         public void PixelFormat_Yv12_And_Iy_AreDistinct()
         {
             Assert.NotEqual(Sdl.PixelFormatYv12, Sdl.PixelFormatIy);
         }
 
+        /// <summary>
+        /// Tests that audio constants are distinct
+        /// </summary>
         [Fact]
         public void AudioConstants_AreDistinct()
         {
@@ -507,36 +660,54 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.NotEqual(Sdl.AudioF32Lsb, Sdl.AudioF32Msb);
         }
 
+        /// <summary>
+        /// Tests that pixel format rgb 888 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatRgb888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb888, Sdl.PixelFormatRgb888);
         }
 
+        /// <summary>
+        /// Tests that pixel format bgr 888 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatBgr888_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr888, Sdl.PixelFormatBgr888);
         }
 
+        /// <summary>
+        /// Tests that pixel format rgb 444 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatRgb444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb444, Sdl.PixelFormatRgb444);
         }
 
+        /// <summary>
+        /// Tests that pixel format bgr 444 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatBgr444_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXBgr444, Sdl.PixelFormatBgr444);
         }
 
+        /// <summary>
+        /// Tests that pixel format rgb 555 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatRgb555_AliasMatchesGlFormat()
         {
             Assert.Equal(Sdl.GlFormatXRgb1555, Sdl.PixelFormatRgb555);
         }
 
+        /// <summary>
+        /// Tests that pixel format bgr 555 alias matches gl format
+        /// </summary>
         [Fact]
         public void PixelFormatBgr555_AliasMatchesGlFormat()
         {

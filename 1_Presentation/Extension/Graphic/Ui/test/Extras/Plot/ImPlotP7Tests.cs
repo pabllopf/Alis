@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot tests class
+    /// </summary>
     public class ImPlotP7Tests
     {
+        /// <summary>
+        /// Tests that plot scatter u 8 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8Array_Full_ShouldBeVoid()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_Default_ShouldBeVoid()
         {
@@ -60,6 +69,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_WithXscale_ShouldBeVoid()
         {
@@ -71,6 +83,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -82,6 +97,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_WithFlags_ShouldBeVoid()
         {
@@ -94,6 +112,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -106,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 16 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S16Array_Full_ShouldBeVoid()
         {
@@ -118,6 +142,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_Default_ShouldBeVoid()
         {
@@ -129,6 +156,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_WithXscale_ShouldBeVoid()
         {
@@ -140,6 +170,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -151,6 +184,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_WithFlags_ShouldBeVoid()
         {
@@ -163,6 +199,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -175,6 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 16 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U16Array_Full_ShouldBeVoid()
         {
@@ -187,6 +229,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_Default_ShouldBeVoid()
         {
@@ -198,6 +243,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_WithXscale_ShouldBeVoid()
         {
@@ -209,6 +257,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -220,6 +271,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_WithFlags_ShouldBeVoid()
         {
@@ -232,6 +286,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -244,6 +301,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 32 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S32Array_Full_ShouldBeVoid()
         {
@@ -256,6 +316,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_Default_ShouldBeVoid()
         {
@@ -267,6 +330,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_WithXscale_ShouldBeVoid()
         {
@@ -278,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -289,6 +358,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_WithFlags_ShouldBeVoid()
         {
@@ -301,6 +373,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -313,6 +388,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 32 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U32Array_Full_ShouldBeVoid()
         {
@@ -325,6 +403,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_Default_ShouldBeVoid()
         {
@@ -336,6 +417,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_WithXscale_ShouldBeVoid()
         {
@@ -347,6 +431,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -358,6 +445,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_WithFlags_ShouldBeVoid()
         {
@@ -370,6 +460,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -382,6 +475,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 64 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S64Array_Full_ShouldBeVoid()
         {
@@ -394,6 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_Default_ShouldBeVoid()
         {
@@ -405,6 +504,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_WithXscale_ShouldBeVoid()
         {
@@ -416,6 +518,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_WithXscaleXstart_ShouldBeVoid()
         {
@@ -427,6 +532,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_WithFlags_ShouldBeVoid()
         {
@@ -439,6 +547,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_WithFlagsOffset_ShouldBeVoid()
         {
@@ -451,6 +562,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 64 array full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U64Array_Full_ShouldBeVoid()
         {
@@ -463,6 +577,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref float default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefFloat_Default_ShouldBeVoid()
         {
@@ -474,6 +591,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref float with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefFloat_WithFlags_ShouldBeVoid()
         {
@@ -486,6 +606,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref float with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefFloat_WithFlagsOffset_ShouldBeVoid()
         {
@@ -498,6 +621,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref float full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefFloat_Full_ShouldBeVoid()
         {
@@ -510,6 +636,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref double default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefDouble_Default_ShouldBeVoid()
         {
@@ -521,6 +650,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref double with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefDouble_WithFlags_ShouldBeVoid()
         {
@@ -533,6 +665,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref double with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefDouble_WithFlagsOffset_ShouldBeVoid()
         {
@@ -545,6 +680,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref double full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefDouble_Full_ShouldBeVoid()
         {
@@ -557,6 +695,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref s byte default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefSByte_Default_ShouldBeVoid()
         {
@@ -568,6 +709,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref s byte with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefSByte_WithFlags_ShouldBeVoid()
         {
@@ -580,6 +724,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref s byte with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefSByte_WithFlagsOffset_ShouldBeVoid()
         {
@@ -592,6 +739,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref s byte full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefSByte_Full_ShouldBeVoid()
         {
@@ -604,6 +754,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref byte default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefByte_Default_ShouldBeVoid()
         {
@@ -615,6 +768,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref byte with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefByte_WithFlags_ShouldBeVoid()
         {
@@ -627,6 +783,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref byte with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefByte_WithFlagsOffset_ShouldBeVoid()
         {
@@ -639,6 +798,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref byte full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefByte_Full_ShouldBeVoid()
         {
@@ -651,6 +813,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter ref short default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_RefShort_Default_ShouldBeVoid()
         {
@@ -662,6 +827,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -688,6 +859,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)

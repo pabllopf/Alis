@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Cloud.GoogleDrive.Test
 {
+    /// <summary>
+    /// The google drive cloud manager additional test class
+    /// </summary>
     public class GoogleDriveCloudManagerAdditionalTest
     {
+        /// <summary>
+        /// Tests that initialize async with empty token throws argument exception
+        /// </summary>
         [Fact]
         public void InitializeAsync_WithEmptyToken_ThrowsArgumentException()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Contains("Access token cannot be null or empty", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that initialize async with null token throws argument exception
+        /// </summary>
         [Fact]
         public void InitializeAsync_WithNullToken_ThrowsArgumentException()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
 
 
 
+        /// <summary>
+        /// Tests that is initialized after construction returns false
+        /// </summary>
         [Fact]
         public void IsInitialized_AfterConstruction_ReturnsFalse()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.False(manager.IsInitialized);
         }
 
+        /// <summary>
+        /// Tests that name after construction returns google drive manager
+        /// </summary>
         [Fact]
         public void Name_AfterConstruction_ReturnsGoogleDriveManager()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             Assert.Equal("GoogleDriveManager", manager.Name);
         }
 
+        /// <summary>
+        /// Tests that tag after construction returns cloud
+        /// </summary>
         [Fact]
         public void Tag_AfterConstruction_ReturnsCloud()
         {

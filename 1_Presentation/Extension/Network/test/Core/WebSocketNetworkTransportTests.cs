@@ -42,11 +42,24 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test.Core
 {
+    /// <summary>
+    /// The web socket network transport tests class
+    /// </summary>
     public class WebSocketNetworkTransportTests
     {
+        /// <summary>
+        /// The next port
+        /// </summary>
         private static int _nextPort = 25000;
+        /// <summary>
+        /// The port lock
+        /// </summary>
         private static readonly object PortLock = new object();
 
+        /// <summary>
+        /// Gets the next port
+        /// </summary>
+        /// <returns>The int</returns>
         private static int GetNextPort()
         {
             lock (PortLock)
@@ -57,6 +70,10 @@ namespace Alis.Extension.Network.Test.Core
             }
         }
 
+        /// <summary>
+        /// Creates the web socket key
+        /// </summary>
+        /// <returns>The string</returns>
         private static string CreateWebSocketKey()
         {
             byte[] keyBytes = new byte[16];
@@ -64,6 +81,13 @@ namespace Alis.Extension.Network.Test.Core
             return Convert.ToBase64String(keyBytes);
         }
 
+        /// <summary>
+        /// Builds the web socket upgrade request using the specified host
+        /// </summary>
+        /// <param name="host">The host</param>
+        /// <param name="port">The port</param>
+        /// <param name="key">The key</param>
+        /// <returns>The string</returns>
         private static string BuildWebSocketUpgradeRequest(string host, int port, string key)
         {
             return $"GET / HTTP/1.1\r\n" +
@@ -74,6 +98,12 @@ namespace Alis.Extension.Network.Test.Core
                    $"Sec-WebSocket-Version: 13\r\n\r\n";
         }
 
+        /// <summary>
+        /// Masks the data using the specified data
+        /// </summary>
+        /// <param name="data">The data</param>
+        /// <param name="maskKey">The mask key</param>
+        /// <returns>The masked</returns>
         private static byte[] MaskData(byte[] data, byte[] maskKey)
         {
             byte[] masked = new byte[data.Length];
@@ -84,6 +114,12 @@ namespace Alis.Extension.Network.Test.Core
             return masked;
         }
 
+        /// <summary>
+        /// Builds the text frame using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="masked">The masked</param>
+        /// <returns>The byte array</returns>
         private static byte[] BuildTextFrame(string text, bool masked = true)
         {
             byte[] payload = Encoding.UTF8.GetBytes(text);
@@ -137,6 +173,12 @@ namespace Alis.Extension.Network.Test.Core
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Builds the close frame using the specified status
+        /// </summary>
+        /// <param name="status">The status</param>
+        /// <param name="masked">The masked</param>
+        /// <returns>The byte array</returns>
         private static byte[] BuildCloseFrame(WebSocketCloseStatus status = WebSocketCloseStatus.NormalClosure, bool masked = true)
         {
             ushort statusCode = (ushort)status;
@@ -176,6 +218,12 @@ namespace Alis.Extension.Network.Test.Core
             return ms.ToArray();
         }
 
+        /// <summary>
+        /// Connects the and handshake using the specified host
+        /// </summary>
+        /// <param name="host">The host</param>
+        /// <param name="port">The port</param>
+        /// <returns>A task containing the tcp client client network stream stream</returns>
         private static async Task<(TcpClient Client, NetworkStream Stream)> ConnectAndHandshakeAsync(string host, int port)
         {
             TcpClient tcpClient = new TcpClient();
@@ -197,6 +245,9 @@ namespace Alis.Extension.Network.Test.Core
             return (tcpClient, stream);
         }
 
+        /// <summary>
+        /// Tests that accept connections async client connects handles connection
+        /// </summary>
         [Fact]
         public async Task AcceptConnectionsAsync_ClientConnects_HandlesConnection()
         {
@@ -225,6 +276,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that accept connections async non web socket request returns gracefully
+        /// </summary>
         [Fact]
         public async Task AcceptConnectionsAsync_NonWebSocketRequest_ReturnsGracefully()
         {
@@ -250,6 +304,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that receive from client async text frame enqueues message
+        /// </summary>
         [Fact]
         public async Task ReceiveFromClientAsync_TextFrame_EnqueuesMessage()
         {
@@ -292,6 +349,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that receive from client async close frame removes client
+        /// </summary>
         [Fact]
         public async Task ReceiveFromClientAsync_CloseFrame_RemovesClient()
         {
@@ -314,6 +374,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that handle client async malformed data handles gracefully
+        /// </summary>
         [Fact]
         public async Task HandleClientAsync_MalformedData_HandlesGracefully()
         {
@@ -336,6 +399,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that send async to connected client sends message
+        /// </summary>
         [Fact]
         public async Task SendAsync_ToConnectedClient_SendsMessage()
         {
@@ -359,6 +425,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that broadcast async with connected client completes
+        /// </summary>
         [Fact]
         public async Task BroadcastAsync_WithConnectedClient_Completes()
         {
@@ -382,6 +451,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that stop async with connected clients closes all
+        /// </summary>
         [Fact]
         public async Task StopAsync_WithConnectedClients_ClosesAll()
         {
@@ -405,6 +477,9 @@ namespace Alis.Extension.Network.Test.Core
             }
         }
 
+        /// <summary>
+        /// Tests that multiple clients can send and receive
+        /// </summary>
         [Fact]
         public async Task MultipleClients_CanSendAndReceive()
         {
@@ -449,6 +524,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that dispose with active connections cleans up
+        /// </summary>
         [Fact]
         public async Task Dispose_WithActiveConnections_CleansUp()
         {
@@ -472,6 +550,9 @@ namespace Alis.Extension.Network.Test.Core
             }
         }
 
+        /// <summary>
+        /// Tests that start async stop async restart works
+        /// </summary>
         [Fact]
         public async Task StartAsync_StopAsync_Restart_Works()
         {
@@ -500,6 +581,9 @@ namespace Alis.Extension.Network.Test.Core
             await transport.StopAsync();
         }
 
+        /// <summary>
+        /// Tests that accept connections async cancelled stops loop
+        /// </summary>
         [Fact]
         public async Task AcceptConnectionsAsync_Cancelled_StopsLoop()
         {
@@ -515,6 +599,9 @@ namespace Alis.Extension.Network.Test.Core
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
         }
 
+        /// <summary>
+        /// Tests that receive async sequential messages returns in order
+        /// </summary>
         [Fact]
         public async Task ReceiveAsync_SequentialMessages_ReturnsInOrder()
         {

@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot tests class
+    /// </summary>
     public class ImPlotP3Tests
     {
+        /// <summary>
+        /// Tests that plot error bars float ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtr_WithAll_ShouldBeVoid()
         {
@@ -63,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtr_Default_ShouldBeVoid()
         {
@@ -76,6 +88,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtr_WithFlags_ShouldBeVoid()
         {
@@ -89,6 +104,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -102,6 +120,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtr_WithAll_ShouldBeVoid()
         {
@@ -115,6 +136,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S8Ptr_Default_ShouldBeVoid()
         {
@@ -128,6 +152,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -141,6 +168,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 8 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S8Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -154,6 +184,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 8 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S8Ptr_WithAll_ShouldBeVoid()
         {
@@ -167,6 +200,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U8Ptr_Default_ShouldBeVoid()
         {
@@ -180,6 +216,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -193,6 +232,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 8 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U8Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -206,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 8 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U8Ptr_WithAll_ShouldBeVoid()
         {
@@ -219,6 +264,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S16Ptr_Default_ShouldBeVoid()
         {
@@ -232,6 +280,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -245,6 +296,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 16 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S16Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -258,6 +312,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 16 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S16Ptr_WithAll_ShouldBeVoid()
         {
@@ -271,6 +328,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U16Ptr_Default_ShouldBeVoid()
         {
@@ -284,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -297,6 +360,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 16 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U16Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -310,6 +376,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 16 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U16Ptr_WithAll_ShouldBeVoid()
         {
@@ -323,6 +392,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S32Ptr_Default_ShouldBeVoid()
         {
@@ -336,6 +408,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -349,6 +424,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 32 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S32Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -362,6 +440,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 32 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S32Ptr_WithAll_ShouldBeVoid()
         {
@@ -375,6 +456,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U32Ptr_Default_ShouldBeVoid()
         {
@@ -388,6 +472,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -401,6 +488,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 32 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U32Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -414,6 +504,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 32 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U32Ptr_WithAll_ShouldBeVoid()
         {
@@ -427,6 +520,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S64Ptr_Default_ShouldBeVoid()
         {
@@ -440,6 +536,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -453,6 +552,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 64 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S64Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -466,6 +568,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 64 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S64Ptr_WithAll_ShouldBeVoid()
         {
@@ -479,6 +584,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U64Ptr_Default_ShouldBeVoid()
         {
@@ -492,6 +600,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -505,6 +616,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 64 ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U64Ptr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -518,6 +632,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars u 64 ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_U64Ptr_WithAll_ShouldBeVoid()
         {
@@ -531,6 +648,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr neg pos default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrNegPos_Default_ShouldBeVoid()
         {
@@ -544,6 +664,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr neg pos with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrNegPos_WithFlags_ShouldBeVoid()
         {
@@ -558,6 +681,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr neg pos with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrNegPos_WithFlagsOffset_ShouldBeVoid()
         {
@@ -572,6 +698,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars float ptr neg pos with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_FloatPtrNegPos_WithAll_ShouldBeVoid()
         {
@@ -586,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr neg pos default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtrNegPos_Default_ShouldBeVoid()
         {
@@ -599,6 +731,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr neg pos with flags should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtrNegPos_WithFlags_ShouldBeVoid()
         {
@@ -613,6 +748,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr neg pos with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtrNegPos_WithFlagsOffset_ShouldBeVoid()
         {
@@ -627,6 +765,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars double ptr neg pos with all should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_DoublePtrNegPos_WithAll_ShouldBeVoid()
         {
@@ -641,6 +782,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars s 8 ptr neg pos default should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_S8PtrNegPos_Default_ShouldBeVoid()
         {
@@ -654,6 +798,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeExpectedOverloadCount()
         {
@@ -662,6 +809,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 47);
         }
 
+        /// <summary>
+        /// Tests that plot error bars all overloads should be void
+        /// </summary>
         [Fact]
         public void PlotErrorBars_AllOverloads_ShouldBeVoid()
         {
@@ -670,6 +820,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose float ptr family
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeFloatPtrFamily()
         {
@@ -681,6 +834,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(floatOverloads.Length >= 6);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose double ptr family
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeDoublePtrFamily()
         {
@@ -692,6 +848,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(doubleOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose s 8 ptr family
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeS8PtrFamily()
         {
@@ -703,6 +862,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(s8Overloads.Length >= 5);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose u 8 ptr family
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeU8PtrFamily()
         {
@@ -714,6 +876,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(u8Overloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot error bars should expose all numeric ptr types
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldExposeAllNumericPtrTypes()
         {
@@ -731,6 +896,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => HasByRefParameter(m, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot error bars should accept im plot error bars flags
+        /// </summary>
         [Fact]
         public void PlotErrorBars_ShouldAcceptImPlotErrorBarsFlags()
         {
@@ -741,6 +909,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(withFlags.Length >= 12);
         }
 
+        /// <summary>
+        /// Tests that plot error bars overloads with offset should exist
+        /// </summary>
         [Fact]
         public void PlotErrorBars_OverloadsWithOffset_ShouldExist()
         {
@@ -752,6 +923,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(withOffset.Length >= 12);
         }
 
+        /// <summary>
+        /// Tests that plot error bars overloads with stride should exist
+        /// </summary>
         [Fact]
         public void PlotErrorBars_OverloadsWithStride_ShouldExist()
         {
@@ -763,6 +937,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(withStride.Length >= 10);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -789,6 +969,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -797,6 +982,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the by ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(p =>

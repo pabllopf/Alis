@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The sfml text tests class
+    /// </summary>
     public class SfmlTextTests
     {
+        /// <summary>
+        /// Tests that constructor default sets empty string null font size 30
+        /// </summary>
         [Fact]
         public void Constructor_Default_SetsEmptyStringNullFontSize30()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(30u, text.CharacterSize);
         }
 
+        /// <summary>
+        /// Tests that constructor string and font sets displayed string and font and size 30
+        /// </summary>
         [Fact]
         public void Constructor_StringAndFont_SetsDisplayedStringAndFontAndSize30()
         {
@@ -54,6 +63,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(30u, text.CharacterSize);
         }
 
+        /// <summary>
+        /// Tests that constructor string font size sets all properties
+        /// </summary>
         [Fact]
         public void Constructor_StringFontSize_SetsAllProperties()
         {
@@ -63,6 +75,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(42u, text.CharacterSize);
         }
 
+        /// <summary>
+        /// Tests that constructor copy copies all properties
+        /// </summary>
         [Fact]
         public void Constructor_Copy_CopiesAllProperties()
         {
@@ -73,6 +88,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Font, copy.Font);
         }
 
+        /// <summary>
+        /// Tests that fill color get set returns expected
+        /// </summary>
         [Fact]
         public void FillColor_GetSet_ReturnsExpected()
         {
@@ -82,6 +100,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(color, text.FillColor);
         }
 
+        /// <summary>
+        /// Tests that outline color get set returns expected
+        /// </summary>
         [Fact]
         public void OutlineColor_GetSet_ReturnsExpected()
         {
@@ -91,6 +112,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(color, text.OutlineColor);
         }
 
+        /// <summary>
+        /// Tests that outline thickness get set returns expected
+        /// </summary>
         [Fact]
         public void OutlineThickness_GetSet_ReturnsExpected()
         {
@@ -99,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(2.5f, text.OutlineThickness);
         }
 
+        /// <summary>
+        /// Tests that displayed string get set roundtrips
+        /// </summary>
         [Fact]
         public void DisplayedString_GetSet_Roundtrips()
         {
@@ -107,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal("Hello World", text.DisplayedString);
         }
 
+        /// <summary>
+        /// Tests that displayed string get set with unicode chars
+        /// </summary>
         [Fact]
         public void DisplayedString_GetSet_WithUnicodeChars()
         {
@@ -115,6 +145,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal("äöüñçé", text.DisplayedString);
         }
 
+        /// <summary>
+        /// Tests that displayed string get set empty string
+        /// </summary>
         [Fact]
         public void DisplayedString_GetSet_EmptyString()
         {
@@ -123,6 +156,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal("", text.DisplayedString);
         }
 
+        /// <summary>
+        /// Tests that font get set roundtrips
+        /// </summary>
         [Fact]
         public void Font_GetSet_Roundtrips()
         {
@@ -132,6 +168,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(text.Font);
         }
 
+        /// <summary>
+        /// Tests that character size get set returns expected
+        /// </summary>
         [Fact]
         public void CharacterSize_GetSet_ReturnsExpected()
         {
@@ -140,6 +179,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(64u, text.CharacterSize);
         }
 
+        /// <summary>
+        /// Tests that character size get set zero
+        /// </summary>
         [Fact]
         public void CharacterSize_GetSet_Zero()
         {
@@ -148,6 +190,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, text.CharacterSize);
         }
 
+        /// <summary>
+        /// Tests that letter spacing get set returns expected
+        /// </summary>
         [Fact]
         public void LetterSpacing_GetSet_ReturnsExpected()
         {
@@ -156,6 +201,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1.5f, text.LetterSpacing);
         }
 
+        /// <summary>
+        /// Tests that letter spacing get set default
+        /// </summary>
         [Fact]
         public void LetterSpacing_GetSet_Default()
         {
@@ -163,6 +211,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1.0f, text.LetterSpacing);
         }
 
+        /// <summary>
+        /// Tests that line spacing get set returns expected
+        /// </summary>
         [Fact]
         public void LineSpacing_GetSet_ReturnsExpected()
         {
@@ -171,6 +222,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(2.0f, text.LineSpacing);
         }
 
+        /// <summary>
+        /// Tests that line spacing get set default
+        /// </summary>
         [Fact]
         public void LineSpacing_GetSet_Default()
         {
@@ -178,6 +232,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1.0f, text.LineSpacing);
         }
 
+        /// <summary>
+        /// Tests that style get set returns expected
+        /// </summary>
         [Fact]
         public void Style_GetSet_ReturnsExpected()
         {
@@ -186,6 +243,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(Styles.Bold | Styles.Italic, text.Style);
         }
 
+        /// <summary>
+        /// Tests that style get set none
+        /// </summary>
         [Fact]
         public void Style_GetSet_None()
         {
@@ -194,6 +254,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(Styles.None, text.Style);
         }
 
+        /// <summary>
+        /// Tests that style get set all flags
+        /// </summary>
         [Fact]
         public void Style_GetSet_AllFlags()
         {
@@ -203,6 +266,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(all, text.Style);
         }
 
+        /// <summary>
+        /// Tests that to string contains all components
+        /// </summary>
         [Fact]
         public void ToString_ContainsAllComponents()
         {
@@ -218,6 +284,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Contains("Style", str);
         }
 
+        /// <summary>
+        /// Tests that draw with mock target does not throw
+        /// </summary>
         [Fact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
@@ -227,6 +296,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             text.Draw(mockTarget.Object, states);
         }
 
+        /// <summary>
+        /// Tests that draw updates transform
+        /// </summary>
         [Fact]
         public void Draw_UpdatesTransform()
         {
@@ -237,6 +309,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             text.Draw(mockTarget.Object, states);
         }
 
+        /// <summary>
+        /// Tests that destroy sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_SetsCPointerToZero()
         {
@@ -246,6 +321,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, text.CPointer);
         }
 
+        /// <summary>
+        /// Tests that dispose calls destroy
+        /// </summary>
         [Fact]
         public void Dispose_CallsDestroy()
         {
@@ -254,6 +332,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, text.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor default dispose does not throw
+        /// </summary>
         [Fact]
         public void Constructor_Default_Dispose_DoesNotThrow()
         {
@@ -261,6 +342,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             text.Dispose();
         }
 
+        /// <summary>
+        /// Tests that position and rotation affects transform
+        /// </summary>
         [Fact]
         public void Position_AndRotation_AffectsTransform()
         {

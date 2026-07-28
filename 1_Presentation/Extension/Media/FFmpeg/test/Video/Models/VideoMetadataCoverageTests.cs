@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
 {
+    /// <summary>
+    /// The video metadata coverage tests class
+    /// </summary>
     public class VideoMetadataCoverageTests
     {
+        /// <summary>
+        /// Tests that parameterized constructor should set all properties
+        /// </summary>
         [Fact]
         public void ParameterizedConstructor_ShouldSetAllProperties()
         {
@@ -75,6 +81,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Same(format, sut.Format);
         }
 
+        /// <summary>
+        /// Tests that pixel format should round trip
+        /// </summary>
         [Fact]
         public void PixelFormat_ShouldRoundTrip()
         {
@@ -86,6 +95,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.PixelFormat);
         }
 
+        /// <summary>
+        /// Tests that pixel format default should be empty
+        /// </summary>
         [Fact]
         public void PixelFormat_Default_ShouldBeEmpty()
         {
@@ -94,6 +106,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(string.Empty, sut.PixelFormat);
         }
 
+        /// <summary>
+        /// Tests that codec long name should round trip
+        /// </summary>
         [Fact]
         public void CodecLongName_ShouldRoundTrip()
         {
@@ -105,6 +120,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.CodecLongName);
         }
 
+        /// <summary>
+        /// Tests that codec long name default should be empty
+        /// </summary>
         [Fact]
         public void CodecLongName_Default_ShouldBeEmpty()
         {
@@ -113,6 +131,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(string.Empty, sut.CodecLongName);
         }
 
+        /// <summary>
+        /// Tests that avg framerate should round trip
+        /// </summary>
         [Fact]
         public void AvgFramerate_ShouldRoundTrip()
         {
@@ -124,6 +145,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.AvgFramerate);
         }
 
+        /// <summary>
+        /// Tests that avg framerate default should be zero
+        /// </summary>
         [Fact]
         public void AvgFramerate_Default_ShouldBeZero()
         {
@@ -132,6 +156,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(0.0, sut.AvgFramerate);
         }
 
+        /// <summary>
+        /// Tests that avg framerate should handle fractional values
+        /// </summary>
         [Fact]
         public void AvgFramerate_ShouldHandleFractionalValues()
         {
@@ -143,6 +170,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.AvgFramerate, 3);
         }
 
+        /// <summary>
+        /// Tests that avg framerate should handle negative value
+        /// </summary>
         [Fact]
         public void AvgFramerate_ShouldHandleNegativeValue()
         {
@@ -153,6 +183,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(-1.0, sut.AvgFramerate);
         }
 
+        /// <summary>
+        /// Tests that bit depth should round trip
+        /// </summary>
         [Fact]
         public void BitDepth_ShouldRoundTrip()
         {
@@ -164,6 +197,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that bit depth default should be zero
+        /// </summary>
         [Fact]
         public void BitDepth_Default_ShouldBeZero()
         {
@@ -172,6 +208,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(0, sut.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that bit depth should handle max value
+        /// </summary>
         [Fact]
         public void BitDepth_ShouldHandleMaxValue()
         {
@@ -183,6 +222,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.BitDepth);
         }
 
+        /// <summary>
+        /// Tests that sample aspect ratio should round trip
+        /// </summary>
         [Fact]
         public void SampleAspectRatio_ShouldRoundTrip()
         {
@@ -194,6 +236,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.SampleAspectRatio);
         }
 
+        /// <summary>
+        /// Tests that sample aspect ratio default should be empty
+        /// </summary>
         [Fact]
         public void SampleAspectRatio_Default_ShouldBeEmpty()
         {
@@ -202,6 +247,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(string.Empty, sut.SampleAspectRatio);
         }
 
+        /// <summary>
+        /// Tests that sample aspect ratio should handle null
+        /// </summary>
         [Fact]
         public void SampleAspectRatio_ShouldHandleNull()
         {
@@ -212,6 +260,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Null(sut.SampleAspectRatio);
         }
 
+        /// <summary>
+        /// Tests that predicted frame count should round trip
+        /// </summary>
         [Fact]
         public void PredictedFrameCount_ShouldRoundTrip()
         {
@@ -223,6 +274,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.PredictedFrameCount);
         }
 
+        /// <summary>
+        /// Tests that predicted frame count default should be zero
+        /// </summary>
         [Fact]
         public void PredictedFrameCount_Default_ShouldBeZero()
         {
@@ -231,6 +285,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(0, sut.PredictedFrameCount);
         }
 
+        /// <summary>
+        /// Tests that predicted frame count should handle negative value
+        /// </summary>
         [Fact]
         public void PredictedFrameCount_ShouldHandleNegativeValue()
         {
@@ -241,6 +298,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(-1, sut.PredictedFrameCount);
         }
 
+        /// <summary>
+        /// Tests that codec should round trip
+        /// </summary>
         [Fact]
         public void Codec_ShouldRoundTrip()
         {
@@ -252,6 +312,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.Codec);
         }
 
+        /// <summary>
+        /// Tests that codec default should be empty
+        /// </summary>
         [Fact]
         public void Codec_Default_ShouldBeEmpty()
         {
@@ -260,6 +323,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(string.Empty, sut.Codec);
         }
 
+        /// <summary>
+        /// Tests that width should round trip
+        /// </summary>
         [Fact]
         public void Width_ShouldRoundTrip()
         {
@@ -271,6 +337,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.Width);
         }
 
+        /// <summary>
+        /// Tests that height should round trip
+        /// </summary>
         [Fact]
         public void Height_ShouldRoundTrip()
         {
@@ -282,6 +351,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.Height);
         }
 
+        /// <summary>
+        /// Tests that duration should round trip
+        /// </summary>
         [Fact]
         public void Duration_ShouldRoundTrip()
         {
@@ -293,6 +365,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.Duration);
         }
 
+        /// <summary>
+        /// Tests that duration should handle negative
+        /// </summary>
         [Fact]
         public void Duration_ShouldHandleNegative()
         {
@@ -303,6 +378,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(-1.0, sut.Duration);
         }
 
+        /// <summary>
+        /// Tests that bit rate should round trip
+        /// </summary>
         [Fact]
         public void BitRate_ShouldRoundTrip()
         {
@@ -314,6 +392,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(value, sut.BitRate);
         }
 
+        /// <summary>
+        /// Tests that bit rate default should be zero
+        /// </summary>
         [Fact]
         public void BitRate_Default_ShouldBeZero()
         {
@@ -322,6 +403,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(0, sut.BitRate);
         }
 
+        /// <summary>
+        /// Tests that streams should round trip
+        /// </summary>
         [Fact]
         public void Streams_ShouldRoundTrip()
         {
@@ -338,6 +422,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Same(streams, sut.Streams);
         }
 
+        /// <summary>
+        /// Tests that streams default should be empty array
+        /// </summary>
         [Fact]
         public void Streams_Default_ShouldBeEmptyArray()
         {
@@ -347,6 +434,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Empty(sut.Streams);
         }
 
+        /// <summary>
+        /// Tests that streams should handle null
+        /// </summary>
         [Fact]
         public void Streams_ShouldHandleNull()
         {
@@ -357,6 +447,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Null(sut.Streams);
         }
 
+        /// <summary>
+        /// Tests that format should round trip
+        /// </summary>
         [Fact]
         public void Format_ShouldRoundTrip()
         {
@@ -368,6 +461,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Same(format, sut.Format);
         }
 
+        /// <summary>
+        /// Tests that format default should be not null
+        /// </summary>
         [Fact]
         public void Format_Default_ShouldBeNotNull()
         {
@@ -376,6 +472,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.NotNull(sut.Format);
         }
 
+        /// <summary>
+        /// Tests that width and height should be settable independently
+        /// </summary>
         [Fact]
         public void WidthAndHeight_ShouldBeSettableIndependently()
         {
@@ -388,6 +487,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(1080, sut.Height);
         }
 
+        /// <summary>
+        /// Tests that pixel format and codec should be settable independently
+        /// </summary>
         [Fact]
         public void PixelFormatAndCodec_ShouldBeSettableIndependently()
         {
@@ -400,6 +502,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal("vp9", sut.Codec);
         }
 
+        /// <summary>
+        /// Tests that multiple properties should set and get consistently
+        /// </summary>
         [Fact]
         public void MultipleProperties_ShouldSetAndGetConsistently()
         {
@@ -421,6 +526,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(2700, sut.PredictedFrameCount);
         }
 
+        /// <summary>
+        /// Tests that parameterless constructor should initialize with defaults
+        /// </summary>
         [Fact]
         public void ParameterlessConstructor_ShouldInitializeWithDefaults()
         {
@@ -442,6 +550,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.NotNull(sut.Format);
         }
 
+        /// <summary>
+        /// Tests that get first video stream when streams null should throw argument null exception
+        /// </summary>
         [Fact]
         public void GetFirstVideoStream_WhenStreamsNull_ShouldThrowArgumentNullException()
         {
@@ -451,6 +562,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Throws<System.ArgumentNullException>(() => sut.GetFirstVideoStream());
         }
 
+        /// <summary>
+        /// Tests that get first audio stream when streams null should throw argument null exception
+        /// </summary>
         [Fact]
         public void GetFirstAudioStream_WhenStreamsNull_ShouldThrowArgumentNullException()
         {

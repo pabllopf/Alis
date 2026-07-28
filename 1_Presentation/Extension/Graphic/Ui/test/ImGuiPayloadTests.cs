@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui payload tests class
+    /// </summary>
     public class ImGuiPayloadTests
     {
+        /// <summary>
+        /// Datas the set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Data_SetAndGet_ReturnsValue()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, payload.Data);
         }
 
+        /// <summary>
+        /// Datas the default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Data_Default_IsZero()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, payload.Data);
         }
 
+        /// <summary>
+        /// Datas the size set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataSize_SetAndGet_ReturnsValue()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(256, payload.DataSize);
         }
 
+        /// <summary>
+        /// Datas the size default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataSize_Default_IsZero()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, payload.DataSize);
         }
 
+        /// <summary>
+        /// Sources the id set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SourceId_SetAndGet_ReturnsValue()
         {
@@ -75,6 +93,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(123u, payload.SourceId);
         }
 
+        /// <summary>
+        /// Sources the id default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SourceId_Default_IsZero()
         {
@@ -82,6 +103,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, payload.SourceId);
         }
 
+        /// <summary>
+        /// Sources the parent id set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SourceParentId_SetAndGet_ReturnsValue()
         {
@@ -90,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(456u, payload.SourceParentId);
         }
 
+        /// <summary>
+        /// Sources the parent id default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SourceParentId_Default_IsZero()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, payload.SourceParentId);
         }
 
+        /// <summary>
+        /// Datas the frame count set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataFrameCount_SetAndGet_ReturnsValue()
         {
@@ -105,6 +135,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(789, payload.DataFrameCount);
         }
 
+        /// <summary>
+        /// Datas the frame count default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataFrameCount_Default_IsZero()
         {
@@ -112,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, payload.DataFrameCount);
         }
 
+        /// <summary>
+        /// Datas the type set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataType_SetAndGet_ReturnsValue()
         {
@@ -125,6 +161,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, payload.DataType);
         }
 
+        /// <summary>
+        /// Datas the type default is null
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DataType_Default_IsNull()
         {
@@ -132,6 +171,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Null(payload.DataType);
         }
 
+        /// <summary>
+        /// Previews the set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Preview_SetAndGet_ReturnsValue()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1, payload.Preview);
         }
 
+        /// <summary>
+        /// Previews the default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Preview_Default_IsZero()
         {
@@ -147,6 +192,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, payload.Preview);
         }
 
+        /// <summary>
+        /// Deliveries the set and get returns value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Delivery_SetAndGet_ReturnsValue()
         {
@@ -155,6 +203,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1, payload.Delivery);
         }
 
+        /// <summary>
+        /// Deliveries the default is zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Delivery_Default_IsZero()
         {
@@ -162,6 +213,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, payload.Delivery);
         }
 
+        /// <summary>
+        /// Clears the resets data to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsDataToZero()
         {
@@ -170,6 +224,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, payload.Data);
         }
 
+        /// <summary>
+        /// Clears the resets data size to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsDataSizeToZero()
         {
@@ -178,6 +235,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, payload.DataSize);
         }
 
+        /// <summary>
+        /// Clears the resets source id to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsSourceIdToZero()
         {
@@ -186,6 +246,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, payload.SourceId);
         }
 
+        /// <summary>
+        /// Clears the resets source parent id to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsSourceParentIdToZero()
         {
@@ -194,6 +257,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, payload.SourceParentId);
         }
 
+        /// <summary>
+        /// Clears the resets data frame count to negative one
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsDataFrameCountToNegativeOne()
         {
@@ -202,6 +268,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(-1, payload.DataFrameCount);
         }
 
+        /// <summary>
+        /// Clears the resets preview to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsPreviewToZero()
         {
@@ -210,6 +279,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((byte)0, payload.Preview);
         }
 
+        /// <summary>
+        /// Clears the resets delivery to zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Clear_ResetsDeliveryToZero()
         {
@@ -218,6 +290,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((byte)0, payload.Delivery);
         }
 
+        /// <summary>
+        /// Ises the data type matching type returns true
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsDataType_MatchingType_ReturnsTrue()
         {
@@ -227,6 +302,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(payload.IsDataType("test"));
         }
 
+        /// <summary>
+        /// Ises the data type non matching type returns false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsDataType_NonMatchingType_ReturnsFalse()
         {
@@ -236,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.False(payload.IsDataType("test"));
         }
 
+        /// <summary>
+        /// Ises the data type empty type returns false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsDataType_EmptyType_ReturnsFalse()
         {
@@ -243,6 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.False(payload.IsDataType("anything"));
         }
 
+        /// <summary>
+        /// Ises the delivery when set returns true
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsDelivery_WhenSet_ReturnsTrue()
         {
@@ -250,6 +334,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(payload.IsDelivery());
         }
 
+        /// <summary>
+        /// Ises the delivery when not set returns false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsDelivery_WhenNotSet_ReturnsFalse()
         {
@@ -257,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.False(payload.IsDelivery());
         }
 
+        /// <summary>
+        /// Ises the preview when set returns true
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsPreview_WhenSet_ReturnsTrue()
         {
@@ -264,6 +354,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.True(payload.IsPreview());
         }
 
+        /// <summary>
+        /// Ises the preview when not set returns false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IsPreview_WhenNotSet_ReturnsFalse()
         {

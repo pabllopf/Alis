@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui text range test class
+    /// </summary>
     public class ImGuiTextRangeTest
     {
+        /// <summary>
+        /// Tests that b default should be zero
+        /// </summary>
         [Fact]
         public void B_Default_ShouldBeZero()
         {
@@ -41,6 +47,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, textRange.B);
         }
 
+        /// <summary>
+        /// Tests that b should set and get correctly
+        /// </summary>
         [Fact]
         public void B_Should_SetAndGetCorrectly()
         {
@@ -50,6 +59,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.B);
         }
 
+        /// <summary>
+        /// Tests that b should handle max value
+        /// </summary>
         [Fact]
         public void B_Should_HandleMaxValue()
         {
@@ -59,6 +71,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.B);
         }
 
+        /// <summary>
+        /// Tests that b should handle zero
+        /// </summary>
         [Fact]
         public void B_Should_HandleZero()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, textRange.B);
         }
 
+        /// <summary>
+        /// Tests that b should handle negative value
+        /// </summary>
         [Fact]
         public void B_Should_HandleNegativeValue()
         {
@@ -76,6 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.B);
         }
 
+        /// <summary>
+        /// Tests that e default should be zero
+        /// </summary>
         [Fact]
         public void E_Default_ShouldBeZero()
         {
@@ -83,6 +104,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that e should set and get correctly
+        /// </summary>
         [Fact]
         public void E_Should_SetAndGetCorrectly()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that e should handle max value
+        /// </summary>
         [Fact]
         public void E_Should_HandleMaxValue()
         {
@@ -101,6 +128,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that e should handle zero
+        /// </summary>
         [Fact]
         public void E_Should_HandleZero()
         {
@@ -109,6 +139,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that e should handle negative value
+        /// </summary>
         [Fact]
         public void E_Should_HandleNegativeValue()
         {
@@ -118,6 +151,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ptr, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that b and e should be independent
+        /// </summary>
         [Fact]
         public void B_And_E_Should_BeIndependent()
         {
@@ -130,6 +166,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(ePtr, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that struct should be zeroed by default
+        /// </summary>
         [Fact]
         public void Struct_Should_BeZeroedByDefault()
         {
@@ -138,6 +177,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, textRange.E);
         }
 
+        /// <summary>
+        /// Tests that struct should support value semantics
+        /// </summary>
         [Fact]
         public void Struct_Should_SupportValueSemantics()
         {

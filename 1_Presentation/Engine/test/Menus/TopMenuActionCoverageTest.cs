@@ -32,14 +32,23 @@ using Xunit;
 
 namespace Alis.App.Engine.Test.Menus
 {
+    /// <summary>
+    /// The top menu action coverage test class
+    /// </summary>
     public class TopMenuActionCoverageTest
     {
+        /// <summary>
+        /// Tests that execute menu action with invalid action does not throw
+        /// </summary>
         [Fact]
         public void ExecuteMenuAction_WithInvalidAction_DoesNotThrow()
         {
             TopMenuAction.ExecuteMenuAction("NonExistentAction");
         }
 
+        /// <summary>
+        /// Tests that execute menu action with empty action does not throw
+        /// </summary>
         [Fact]
         public void ExecuteMenuAction_WithEmptyAction_DoesNotThrow()
         {

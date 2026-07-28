@@ -56,8 +56,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
 {
+    /// <summary>
+    /// The im nodes test class
+    /// </summary>
     public class ImNodesTest
     {
+        /// <summary>
+        /// Creates the context should return non null
+        /// </summary>
         [RequireCImguiSystemFact]
         public void CreateContext_ShouldReturnNonNull()
         {
@@ -65,6 +71,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.NotNull(ctx);
         }
 
+        /// <summary>
+        /// Editors the context create should return non null
+        /// </summary>
         [RequireCImguiSystemFact]
         public void EditorContextCreate_ShouldReturnNonNull()
         {
@@ -72,6 +81,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.NotNull(editorCtx);
         }
 
+        /// <summary>
+        /// Sets the current context should not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetCurrentContext_ShouldNotThrow()
         {
@@ -79,6 +91,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             ImNodes.SetCurrentContext(ctx);
         }
 
+        /// <summary>
+        /// Sets the im gui context should not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SetImGuiContext_ShouldNotThrow()
         {
@@ -86,12 +101,18 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             ImNodes.SetImGuiContext(ctx);
         }
 
+        /// <summary>
+        /// Saves the current editor state to ini string should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveCurrentEditorStateToIniString_ShouldThrow()
         {
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString());
         }
 
+        /// <summary>
+        /// Saves the current editor state to ini string with data size should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveCurrentEditorStateToIniString_WithDataSize_ShouldThrow()
         {
@@ -99,6 +120,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveCurrentEditorStateToIniString(ref dataSize));
         }
 
+        /// <summary>
+        /// Saves the editor state to ini string with editor should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveEditorStateToIniString_WithEditor_ShouldThrow()
         {
@@ -106,6 +130,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(editor));
         }
 
+        /// <summary>
+        /// Saves the editor state to ini string with editor and data size should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void SaveEditorStateToIniString_WithEditorAndDataSize_ShouldThrow()
         {
@@ -114,24 +141,36 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.Throws<MarshalDirectiveException>(() => ImNodes.SaveEditorStateToIniString(editor, ref dataSize));
         }
 
+        /// <summary>
+        /// Gets the style should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void GetStyle_ShouldThrow()
         {
             Assert.Throws<TypeLoadException>(() => ImNodes.GetStyle());
         }
 
+        /// <summary>
+        /// Gets the io should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void GetIo_ShouldThrow()
         {
             Assert.Throws<TypeLoadException>(() => ImNodes.GetIo());
         }
 
+        /// <summary>
+        /// Styles the colors classic no arg should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsClassic_NoArg_ShouldThrow()
         {
             Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic());
         }
 
+        /// <summary>
+        /// Styles the colors classic with dest should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsClassic_WithDest_ShouldThrow()
         {
@@ -139,12 +178,18 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsClassic(dest));
         }
 
+        /// <summary>
+        /// Styles the colors dark no arg should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsDark_NoArg_ShouldThrow()
         {
             Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark());
         }
 
+        /// <summary>
+        /// Styles the colors dark with dest should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsDark_WithDest_ShouldThrow()
         {
@@ -152,12 +197,18 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
             Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsDark(dest));
         }
 
+        /// <summary>
+        /// Styles the colors light no arg should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsLight_NoArg_ShouldThrow()
         {
             Assert.Throws<TypeLoadException>(() => ImNodes.StyleColorsLight());
         }
 
+        /// <summary>
+        /// Styles the colors light with dest should throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StyleColorsLight_WithDest_ShouldThrow()
         {

@@ -34,6 +34,9 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly game examples tests class
+    /// </summary>
     public class WebAssemblyGameExamplesTests
     {
         // =====================================================================
@@ -41,60 +44,90 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // on non-WebAssembly hosts.  We verify the expected exception.
         // =====================================================================
 
+        /// <summary>
+        /// Tests that basic game loop example throws on non web assembly
+        /// </summary>
         [Fact]
         public void BasicGameLoopExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.BasicGameLoopExample());
         }
 
+        /// <summary>
+        /// Tests that gamepad input example throws on non web assembly
+        /// </summary>
         [Fact]
         public void GamepadInputExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.GamepadInputExample());
         }
 
+        /// <summary>
+        /// Tests that display management example throws on non web assembly
+        /// </summary>
         [Fact]
         public void DisplayManagementExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DisplayManagementExample());
         }
 
+        /// <summary>
+        /// Tests that fps game example throws on non web assembly
+        /// </summary>
         [Fact]
         public void FpsGameExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.FpsGameExample());
         }
 
+        /// <summary>
+        /// Tests that system info example throws on non web assembly
+        /// </summary>
         [Fact]
         public void SystemInfoExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.SystemInfoExample());
         }
 
+        /// <summary>
+        /// Tests that configuration presets example throws on non web assembly
+        /// </summary>
         [Fact]
         public void ConfigurationPresetsExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.ConfigurationPresetsExample());
         }
 
+        /// <summary>
+        /// Tests that text input example throws on non web assembly
+        /// </summary>
         [Fact]
         public void TextInputExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.TextInputExample());
         }
 
+        /// <summary>
+        /// Tests that performance monitoring example throws on non web assembly
+        /// </summary>
         [Fact]
         public void PerformanceMonitoringExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.PerformanceMonitoringExample());
         }
 
+        /// <summary>
+        /// Tests that dialog box example throws on non web assembly
+        /// </summary>
         [Fact]
         public void DialogBoxExample_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DialogBoxExample());
         }
 
+        /// <summary>
+        /// Tests that complete game template throws on non web assembly
+        /// </summary>
         [Fact]
         public void CompleteGameTemplate_ThrowsOnNonWebAssembly()
         {
@@ -105,6 +138,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // Private helpers via reflection
         // =====================================================================
 
+        /// <summary>
+        /// Tests that handle single gamepad input null context throws null reference exception
+        /// </summary>
         [Fact]
         public void HandleSingleGamepadInput_NullContext_ThrowsNullReferenceException()
         {
@@ -115,6 +151,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 method.Invoke(null, new object[] { null, 0 }));
         }
 
+        /// <summary>
+        /// Tests that handle pointer lock null context throws null reference exception
+        /// </summary>
         [Fact]
         public void HandlePointerLock_NullContext_ThrowsNullReferenceException()
         {
@@ -125,6 +164,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 method.Invoke(null, new object[] { null, false }));
         }
 
+        /// <summary>
+        /// Tests that handle keyboard movement null context throws null reference exception
+        /// </summary>
         [Fact]
         public void HandleKeyboardMovement_NullContext_ThrowsNullReferenceException()
         {
@@ -139,6 +181,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GamepadState
         // =====================================================================
 
+        /// <summary>
+        /// Tests that gamepad state default not connected
+        /// </summary>
         [Fact]
         public void GamepadState_Default_NotConnected()
         {
@@ -146,6 +191,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button a returns buttons 0
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonA_ReturnsButtons0()
         {
@@ -155,6 +203,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonA);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button b returns buttons 1
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonB_ReturnsButtons1()
         {
@@ -164,6 +215,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonB);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button x returns buttons 2
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonX_ReturnsButtons2()
         {
@@ -173,6 +227,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button y returns buttons 3
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonY_ReturnsButtons3()
         {
@@ -182,6 +239,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button lb returns buttons 4
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLb_ReturnsButtons4()
         {
@@ -191,6 +251,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button rb returns buttons 5
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRb_ReturnsButtons5()
         {
@@ -200,6 +263,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRb);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button left stick click returns buttons 10
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonLeftStickClick_ReturnsButtons10()
         {
@@ -209,6 +275,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonLeftStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button right stick click returns buttons 11
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonRightStickClick_ReturnsButtons11()
         {
@@ -218,6 +287,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonRightStickClick);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button start returns buttons 9
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonStart_ReturnsButtons9()
         {
@@ -227,6 +299,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonStart);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button back returns buttons 8
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonBack_ReturnsButtons8()
         {
@@ -236,6 +311,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonBack);
         }
 
+        /// <summary>
+        /// Tests that gamepad state button guide returns buttons 12
+        /// </summary>
         [Fact]
         public void GamepadState_ButtonGuide_ReturnsButtons12()
         {
@@ -245,6 +323,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.ButtonGuide);
         }
 
+        /// <summary>
+        /// Tests that gamepad state axes properties round trip
+        /// </summary>
         [Fact]
         public void GamepadState_AxesProperties_RoundTrip()
         {
@@ -265,6 +346,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.25f, state.RightTrigger);
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button invalid index returns false
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_InvalidIndex_ReturnsFalse()
         {
@@ -274,6 +358,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.GetButton(99));
         }
 
+        /// <summary>
+        /// Tests that gamepad state get button valid index returns button state
+        /// </summary>
         [Fact]
         public void GamepadState_GetButton_ValidIndex_ReturnsButtonState()
         {
@@ -287,6 +374,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GamepadInputState
         // =====================================================================
 
+        /// <summary>
+        /// Tests that gamepad input state default properties are null
+        /// </summary>
         [Fact]
         public void GamepadInputState_Default_PropertiesAreNull()
         {
@@ -295,6 +385,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(inputState.PreviousState);
         }
 
+        /// <summary>
+        /// Tests that gamepad input state update shifts states
+        /// </summary>
         [Fact]
         public void GamepadInputState_Update_ShiftsStates()
         {
@@ -315,6 +408,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyConfigurationBuilder — fluent chain used in examples
         // =====================================================================
 
+        /// <summary>
+        /// Tests that configuration builder default build has defaults
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_DefaultBuild_HasDefaults()
         {
@@ -339,6 +435,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(config.IconPath);
         }
 
+        /// <summary>
+        /// Tests that configuration builder full chain configures correctly
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_FullChain_ConfiguresCorrectly()
         {
@@ -382,6 +481,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal("icon.png", config.IconPath);
         }
 
+        /// <summary>
+        /// Tests that configuration builder disable options works
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_DisableOptions_Works()
         {
@@ -402,6 +504,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.Fullscreen);
         }
 
+        /// <summary>
+        /// Tests that configuration builder with target frame rate zero or negative throws
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_WithTargetFrameRate_ZeroOrNegative_Throws()
         {
@@ -410,6 +515,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentException>(() => builder.WithTargetFrameRate(-1));
         }
 
+        /// <summary>
+        /// Tests that configuration builder with multisample count invalid throws
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_WithMultisampleCount_Invalid_Throws()
         {
@@ -419,6 +527,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentException>(() => builder.WithMultisampleCount(0));
         }
 
+        /// <summary>
+        /// Tests that configuration builder with gamepad deadzone invalid throws
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_WithGamepadDeadzone_Invalid_Throws()
         {
@@ -427,6 +538,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Throws<ArgumentException>(() => builder.WithGamepadDeadzone(1.1f));
         }
 
+        /// <summary>
+        /// Tests that configuration builder with trigger deadzone invalid throws
+        /// </summary>
         [Fact]
         public void ConfigurationBuilder_WithTriggerDeadzone_Invalid_Throws()
         {
@@ -439,6 +553,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyInputManager — methods used indirectly in HandleSingleGamepadInput
         // =====================================================================
 
+        /// <summary>
+        /// Tests that input manager no gamepads get connected gamepad indices returns empty
+        /// </summary>
         [Fact]
         public void InputManager_NoGamepads_GetConnectedGamepadIndices_ReturnsEmpty()
         {
@@ -448,6 +565,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Empty(indices);
         }
 
+        /// <summary>
+        /// Tests that input manager no gamepads try get gamepad state returns false
+        /// </summary>
         [Fact]
         public void InputManager_NoGamepads_TryGetGamepadState_ReturnsFalse()
         {
@@ -457,6 +577,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(state);
         }
 
+        /// <summary>
+        /// Tests that input manager no gamepads is gamepad button just pressed returns false
+        /// </summary>
         [Fact]
         public void InputManager_NoGamepads_IsGamepadButtonJustPressed_ReturnsFalse()
         {
@@ -465,6 +588,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(manager.IsGamepadButtonJustPressed(0, 0));
         }
 
+        /// <summary>
+        /// Tests that input manager no gamepads is gamepad button just released returns false
+        /// </summary>
         [Fact]
         public void InputManager_NoGamepads_IsGamepadButtonJustReleased_ReturnsFalse()
         {
@@ -477,6 +603,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyDisplayManager event-args types
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display event args properties round trip
+        /// </summary>
         [Fact]
         public void DisplayEventArgs_Properties_RoundTrip()
         {
@@ -489,6 +618,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1080, args.Height);
         }
 
+        /// <summary>
+        /// Tests that orientation event args properties round trip
+        /// </summary>
         [Fact]
         public void OrientationEventArgs_Properties_RoundTrip()
         {
@@ -505,6 +637,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(ScreenOrientation.Square, args.Orientation);
         }
 
+        /// <summary>
+        /// Tests that fullscreen event args properties round trip
+        /// </summary>
         [Fact]
         public void FullscreenEventArgs_Properties_RoundTrip()
         {
@@ -522,6 +657,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // DisplayMode
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display mode properties round trip
+        /// </summary>
         [Fact]
         public void DisplayMode_Properties_RoundTrip()
         {
@@ -538,6 +676,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(mode.IsFullscreenOnly);
         }
 
+        /// <summary>
+        /// Tests that display mode to string returns formatted string
+        /// </summary>
         [Fact]
         public void DisplayMode_ToString_ReturnsFormattedString()
         {
@@ -554,6 +695,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // ScreenOrientation enum
         // =====================================================================
 
+        /// <summary>
+        /// Tests that screen orientation values are correct
+        /// </summary>
         [Fact]
         public void ScreenOrientation_Values_AreCorrect()
         {
@@ -566,6 +710,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // DisplayQuality enum
         // =====================================================================
 
+        /// <summary>
+        /// Tests that display quality values are correct
+        /// </summary>
         [Fact]
         public void DisplayQuality_Values_AreCorrect()
         {
@@ -581,6 +728,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // GameDevelopmentUtils — pure logic edge cases beyond existing tests
         // =====================================================================
 
+        /// <summary>
+        /// Tests that apply deadzone negative deadzone applies formula
+        /// </summary>
         [Fact]
         public void ApplyDeadzone_NegativeDeadzone_AppliesFormula()
         {
@@ -591,6 +741,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(magnitude >= 0);
         }
 
+        /// <summary>
+        /// Tests that apply deadzone magnitude above deadzone result magnitude is normalized
+        /// </summary>
         [Fact]
         public void ApplyDeadzone_MagnitudeAboveDeadzone_ResultMagnitudeIsNormalized()
         {
@@ -602,6 +755,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(magnitude <= 1.0f);
         }
 
+        /// <summary>
+        /// Tests that normalize input magnitude exactly one no change
+        /// </summary>
         [Fact]
         public void NormalizeInput_MagnitudeExactlyOne_NoChange()
         {
@@ -612,6 +768,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.8f, y, 5);
         }
 
+        /// <summary>
+        /// Tests that normalize input y only exceeds bounds normalizes
+        /// </summary>
         [Fact]
         public void NormalizeInput_YOnlyExceedsBounds_Normalizes()
         {
@@ -622,18 +781,27 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, y, 5);
         }
 
+        /// <summary>
+        /// Tests that get gamepad button name negative index returns formatted
+        /// </summary>
         [Fact]
         public void GetGamepadButtonName_NegativeIndex_ReturnsFormatted()
         {
             Assert.Equal("Button -1", GameDevelopmentUtils.GetGamepadButtonName(-1));
         }
 
+        /// <summary>
+        /// Tests that get gamepad button name large index returns formatted
+        /// </summary>
         [Fact]
         public void GetGamepadButtonName_LargeIndex_ReturnsFormatted()
         {
             Assert.Equal("Button 100", GameDevelopmentUtils.GetGamepadButtonName(100));
         }
 
+        /// <summary>
+        /// Tests that get key name returns string for all common keys
+        /// </summary>
         [Fact]
         public void GetKeyName_ReturnsStringForAllCommonKeys()
         {
@@ -644,6 +812,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.NotNull(GameDevelopmentUtils.GetKeyName(ConsoleKey.Pause));
         }
 
+        /// <summary>
+        /// Tests that get key name unknown key returns unknown
+        /// </summary>
         [Fact]
         public void GetKeyName_UnknownKey_ReturnsUnknown()
         {
@@ -654,6 +825,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyConfiguration properties
         // =====================================================================
 
+        /// <summary>
+        /// Tests that web assembly configuration default values
+        /// </summary>
         [Fact]
         public void WebAssemblyConfiguration_DefaultValues()
         {
@@ -678,6 +852,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Null(config.IconPath);
         }
 
+        /// <summary>
+        /// Tests that web assembly configuration properties round trip
+        /// </summary>
         [Fact]
         public void WebAssemblyConfiguration_Properties_RoundTrip()
         {
@@ -727,6 +904,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // WebAssemblyPlatform — low-level constructor does not need runtime
         // =====================================================================
 
+        /// <summary>
+        /// Tests that web assembly platform constructor initializes defaults
+        /// </summary>
         [Fact]
         public void WebAssemblyPlatform_Constructor_InitializesDefaults()
         {

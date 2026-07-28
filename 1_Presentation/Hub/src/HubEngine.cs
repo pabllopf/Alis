@@ -55,6 +55,9 @@ namespace Alis.App.Hub
     /// </summary>
     public class HubEngine
     {
+        /// <summary>
+        /// The viewport buffer
+        /// </summary>
         private static readonly int[] ViewportBuffer = new int[4];
 
         /// <summary>

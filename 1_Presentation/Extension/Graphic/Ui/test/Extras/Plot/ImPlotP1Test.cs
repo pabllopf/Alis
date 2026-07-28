@@ -44,6 +44,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
     /// </summary>
     public class ImPlotP1Test
     {
+        /// <summary>
+        /// Tests that add colormap vec 4 ptr should return im plot colormap
+        /// </summary>
         [Fact]
         public void AddColormap_Vec4Ptr_ShouldReturnImPlotColormap()
         {
@@ -53,6 +56,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(ImPlotColormap), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that add colormap vec 4 ptr with qual should return im plot colormap
+        /// </summary>
         [Fact]
         public void AddColormap_Vec4Ptr_WithQual_ShouldReturnImPlotColormap()
         {
@@ -62,6 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(ImPlotColormap), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that add colormap u 32 ptr should return im plot colormap
+        /// </summary>
         [Fact]
         public void AddColormap_U32Ptr_ShouldReturnImPlotColormap()
         {
@@ -71,6 +80,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(ImPlotColormap), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that add colormap u 32 ptr with qual should return im plot colormap
+        /// </summary>
         [Fact]
         public void AddColormap_U32Ptr_WithQual_ShouldReturnImPlotColormap()
         {
@@ -80,6 +92,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(ImPlotColormap), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that annotation bool should be void
+        /// </summary>
         [Fact]
         public void Annotation_Bool_ShouldBeVoid()
         {
@@ -89,6 +104,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that annotation bool round should be void
+        /// </summary>
         [Fact]
         public void Annotation_BoolRound_ShouldBeVoid()
         {
@@ -98,6 +116,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that annotation str should be void
+        /// </summary>
         [Fact]
         public void Annotation_Str_ShouldBeVoid()
         {
@@ -107,6 +128,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin aligned plots default should return bool
+        /// </summary>
         [Fact]
         public void BeginAlignedPlots_Default_ShouldReturnBool()
         {
@@ -116,6 +140,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin aligned plots with vertical should return bool
+        /// </summary>
         [Fact]
         public void BeginAlignedPlots_WithVertical_ShouldReturnBool()
         {
@@ -125,6 +152,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source axis default should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceAxis_Default_ShouldReturnBool()
         {
@@ -134,6 +164,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source axis with flags should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceAxis_WithFlags_ShouldReturnBool()
         {
@@ -143,6 +176,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source item default should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceItem_Default_ShouldReturnBool()
         {
@@ -152,6 +188,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source item with flags should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceItem_WithFlags_ShouldReturnBool()
         {
@@ -161,6 +200,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source plot default should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourcePlot_Default_ShouldReturnBool()
         {
@@ -170,6 +212,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source plot with flags should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropSourcePlot_WithFlags_ShouldReturnBool()
         {
@@ -179,6 +224,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop target axis should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropTargetAxis_ShouldReturnBool()
         {
@@ -188,6 +236,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop target legend should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropTargetLegend_ShouldReturnBool()
         {
@@ -197,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop target plot should return bool
+        /// </summary>
         [Fact]
         public void BeginDragDropTargetPlot_ShouldReturnBool()
         {
@@ -206,6 +260,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin legend popup default should return bool
+        /// </summary>
         [Fact]
         public void BeginLegendPopup_Default_ShouldReturnBool()
         {
@@ -215,6 +272,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin legend popup with mouse button should return bool
+        /// </summary>
         [Fact]
         public void BeginLegendPopup_WithMouseButton_ShouldReturnBool()
         {
@@ -224,6 +284,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin plot default should return bool
+        /// </summary>
         [Fact]
         public void BeginPlot_Default_ShouldReturnBool()
         {
@@ -233,6 +296,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin plot with size should return bool
+        /// </summary>
         [Fact]
         public void BeginPlot_WithSize_ShouldReturnBool()
         {
@@ -242,6 +308,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin plot with size and flags should return bool
+        /// </summary>
         [Fact]
         public void BeginPlot_WithSizeAndFlags_ShouldReturnBool()
         {
@@ -251,6 +320,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin subplots default should return bool
+        /// </summary>
         [Fact]
         public void BeginSubplots_Default_ShouldReturnBool()
         {
@@ -260,6 +332,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin subplots with flags should return bool
+        /// </summary>
         [Fact]
         public void BeginSubplots_WithFlags_ShouldReturnBool()
         {
@@ -269,6 +344,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin subplots with flags and row ratios should return bool
+        /// </summary>
         [Fact]
         public void BeginSubplots_WithFlagsAndRowRatios_ShouldReturnBool()
         {
@@ -278,6 +356,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that begin subplots with flags and both ratios should return bool
+        /// </summary>
         [Fact]
         public void BeginSubplots_WithFlagsAndBothRatios_ShouldReturnBool()
         {
@@ -287,6 +368,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that bust color cache default should be void
+        /// </summary>
         [Fact]
         public void BustColorCache_Default_ShouldBeVoid()
         {
@@ -296,6 +380,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that bust color cache with plot title should be void
+        /// </summary>
         [Fact]
         public void BustColorCache_WithPlotTitle_ShouldBeVoid()
         {
@@ -305,6 +392,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that cancel plot selection should be void
+        /// </summary>
         [Fact]
         public void CancelPlotSelection_ShouldBeVoid()
         {
@@ -314,6 +404,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap button default should return bool
+        /// </summary>
         [Fact]
         public void ColormapButton_Default_ShouldReturnBool()
         {
@@ -323,6 +416,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap button with size should return bool
+        /// </summary>
         [Fact]
         public void ColormapButton_WithSize_ShouldReturnBool()
         {
@@ -332,6 +428,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap button with size and cmap should return bool
+        /// </summary>
         [Fact]
         public void ColormapButton_WithSizeAndCmap_ShouldReturnBool()
         {
@@ -341,6 +440,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap icon should be void
+        /// </summary>
         [Fact]
         public void ColormapIcon_ShouldBeVoid()
         {
@@ -350,6 +452,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap scale default should be void
+        /// </summary>
         [Fact]
         public void ColormapScale_Default_ShouldBeVoid()
         {
@@ -359,6 +464,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap scale with size should be void
+        /// </summary>
         [Fact]
         public void ColormapScale_WithSize_ShouldBeVoid()
         {
@@ -368,6 +476,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap scale with size and format should be void
+        /// </summary>
         [Fact]
         public void ColormapScale_WithSizeAndFormat_ShouldBeVoid()
         {
@@ -377,6 +488,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap scale with size format flags should be void
+        /// </summary>
         [Fact]
         public void ColormapScale_WithSizeFormatFlags_ShouldBeVoid()
         {
@@ -386,6 +500,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap scale with all params should be void
+        /// </summary>
         [Fact]
         public void ColormapScale_WithAllParams_ShouldBeVoid()
         {
@@ -395,6 +512,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap slider default should return bool
+        /// </summary>
         [Fact]
         public void ColormapSlider_Default_ShouldReturnBool()
         {
@@ -404,6 +524,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap slider with out should return bool
+        /// </summary>
         [Fact]
         public void ColormapSlider_WithOut_ShouldReturnBool()
         {
@@ -413,6 +536,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap slider with out and format should return bool
+        /// </summary>
         [Fact]
         public void ColormapSlider_WithOutAndFormat_ShouldReturnBool()
         {
@@ -422,6 +548,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that colormap slider with out format cmap should return bool
+        /// </summary>
         [Fact]
         public void ColormapSlider_WithOutFormatCmap_ShouldReturnBool()
         {
@@ -431,6 +560,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that create context should return int ptr
+        /// </summary>
         [Fact]
         public void CreateContext_ShouldReturnIntPtr()
         {
@@ -440,6 +572,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(IntPtr), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that destroy context default should be void
+        /// </summary>
         [Fact]
         public void DestroyContext_Default_ShouldBeVoid()
         {
@@ -449,6 +584,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that destroy context with ctx should be void
+        /// </summary>
         [Fact]
         public void DestroyContext_WithCtx_ShouldBeVoid()
         {
@@ -458,6 +596,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line x default should return bool
+        /// </summary>
         [Fact]
         public void DragLineX_Default_ShouldReturnBool()
         {
@@ -467,6 +608,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line x with thickness should return bool
+        /// </summary>
         [Fact]
         public void DragLineX_WithThickness_ShouldReturnBool()
         {
@@ -476,6 +620,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line x with thickness and flags should return bool
+        /// </summary>
         [Fact]
         public void DragLineX_WithThicknessAndFlags_ShouldReturnBool()
         {
@@ -485,6 +632,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line y default should return bool
+        /// </summary>
         [Fact]
         public void DragLineY_Default_ShouldReturnBool()
         {
@@ -494,6 +644,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line y with thickness should return bool
+        /// </summary>
         [Fact]
         public void DragLineY_WithThickness_ShouldReturnBool()
         {
@@ -503,6 +656,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag line y with thickness and flags should return bool
+        /// </summary>
         [Fact]
         public void DragLineY_WithThicknessAndFlags_ShouldReturnBool()
         {
@@ -512,6 +668,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag point default should return bool
+        /// </summary>
         [Fact]
         public void DragPoint_Default_ShouldReturnBool()
         {
@@ -521,6 +680,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag point with size should return bool
+        /// </summary>
         [Fact]
         public void DragPoint_WithSize_ShouldReturnBool()
         {
@@ -530,6 +692,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag point with size and flags should return bool
+        /// </summary>
         [Fact]
         public void DragPoint_WithSizeAndFlags_ShouldReturnBool()
         {
@@ -539,6 +704,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag rect default should return bool
+        /// </summary>
         [Fact]
         public void DragRect_Default_ShouldReturnBool()
         {
@@ -548,6 +716,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that drag rect with flags should return bool
+        /// </summary>
         [Fact]
         public void DragRect_WithFlags_ShouldReturnBool()
         {
@@ -557,6 +728,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that end aligned plots should be void
+        /// </summary>
         [Fact]
         public void EndAlignedPlots_ShouldBeVoid()
         {
@@ -566,6 +740,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that end drag drop source should be void
+        /// </summary>
         [Fact]
         public void EndDragDropSource_ShouldBeVoid()
         {
@@ -575,6 +752,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that add colormap should expose expected overload count
+        /// </summary>
         [Fact]
         public void AddColormap_ShouldExposeExpectedOverloadCount()
         {
@@ -583,6 +763,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that add colormap should expose vec 4 ptr and u 32 ptr families
+        /// </summary>
         [Fact]
         public void AddColormap_ShouldExposeVec4PtrAndU32PtrFamilies()
         {
@@ -592,6 +775,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(uint)));
         }
 
+        /// <summary>
+        /// Tests that annotation should expose expected overload count
+        /// </summary>
         [Fact]
         public void Annotation_ShouldExposeExpectedOverloadCount()
         {
@@ -600,6 +786,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 3);
         }
 
+        /// <summary>
+        /// Tests that annotation should exclude overloads with bool and string
+        /// </summary>
         [Fact]
         public void Annotation_ShouldExcludeOverloadsWithBoolAndString()
         {
@@ -609,6 +798,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(string)));
         }
 
+        /// <summary>
+        /// Tests that begin aligned plots should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginAlignedPlots_ShouldExposeExpectedOverloadCount()
         {
@@ -619,6 +811,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 2);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source axis should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceAxis_ShouldExposeExpectedOverloadCount()
         {
@@ -629,6 +824,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 2);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source item should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginDragDropSourceItem_ShouldExposeExpectedOverloadCount()
         {
@@ -639,6 +837,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 2);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop source plot should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginDragDropSourcePlot_ShouldExposeExpectedOverloadCount()
         {
@@ -649,6 +850,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 1);
         }
 
+        /// <summary>
+        /// Tests that begin drag drop target methods should expose expected overloads
+        /// </summary>
         [Fact]
         public void BeginDragDropTargetMethods_ShouldExposeExpectedOverloads()
         {
@@ -657,6 +861,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.NotNull(GetPublicStaticMethod("BeginDragDropTargetPlot", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that begin legend popup should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginLegendPopup_ShouldExposeExpectedOverloadCount()
         {
@@ -667,6 +874,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 2);
         }
 
+        /// <summary>
+        /// Tests that begin plot should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginPlot_ShouldExposeExpectedOverloadCount()
         {
@@ -678,6 +888,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 3);
         }
 
+        /// <summary>
+        /// Tests that begin plot should accept string and vector 2 f and flags
+        /// </summary>
         [Fact]
         public void BeginPlot_ShouldAcceptStringAndVector2FAndFlags()
         {
@@ -688,6 +901,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotFlags)));
         }
 
+        /// <summary>
+        /// Tests that begin subplots should expose expected overload count
+        /// </summary>
         [Fact]
         public void BeginSubplots_ShouldExposeExpectedOverloadCount()
         {
@@ -700,6 +916,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that begin subplots should accept by ref ratios
+        /// </summary>
         [Fact]
         public void BeginSubplots_ShouldAcceptByRefRatios()
         {
@@ -708,6 +927,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(float)));
         }
 
+        /// <summary>
+        /// Tests that bust color cache should expose expected overload count
+        /// </summary>
         [Fact]
         public void BustColorCache_ShouldExposeExpectedOverloadCount()
         {
@@ -718,6 +940,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 1);
         }
 
+        /// <summary>
+        /// Tests that colormap button should expose expected overload count
+        /// </summary>
         [Fact]
         public void ColormapButton_ShouldExposeExpectedOverloadCount()
         {
@@ -729,6 +954,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 3);
         }
 
+        /// <summary>
+        /// Tests that colormap scale should expose expected overload count
+        /// </summary>
         [Fact]
         public void ColormapScale_ShouldExposeExpectedOverloadCount()
         {
@@ -737,6 +965,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 5);
         }
 
+        /// <summary>
+        /// Tests that colormap scale should accept format and flags and cmap
+        /// </summary>
         [Fact]
         public void ColormapScale_ShouldAcceptFormatAndFlagsAndCmap()
         {
@@ -747,6 +978,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotColormap)));
         }
 
+        /// <summary>
+        /// Tests that colormap slider should expose expected overload count
+        /// </summary>
         [Fact]
         public void ColormapSlider_ShouldExposeExpectedOverloadCount()
         {
@@ -755,6 +989,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that colormap slider should accept by ref float and out vec 4 and format and cmap
+        /// </summary>
         [Fact]
         public void ColormapSlider_ShouldAcceptByRefFloatAndOutVec4AndFormatAndCmap()
         {
@@ -766,6 +1003,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotColormap)));
         }
 
+        /// <summary>
+        /// Tests that destroy context should expose expected overload count
+        /// </summary>
         [Fact]
         public void DestroyContext_ShouldExposeExpectedOverloadCount()
         {
@@ -776,6 +1016,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 1);
         }
 
+        /// <summary>
+        /// Tests that drag line x should expose expected overload count
+        /// </summary>
         [Fact]
         public void DragLineX_ShouldExposeExpectedOverloadCount()
         {
@@ -787,6 +1030,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 5);
         }
 
+        /// <summary>
+        /// Tests that drag line x should accept by ref double and vec 4 and thickness and flags
+        /// </summary>
         [Fact]
         public void DragLineX_ShouldAcceptByRefDoubleAndVec4AndThicknessAndFlags()
         {
@@ -798,6 +1044,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotDragToolFlags)));
         }
 
+        /// <summary>
+        /// Tests that drag line y should expose expected overload count
+        /// </summary>
         [Fact]
         public void DragLineY_ShouldExposeExpectedOverloadCount()
         {
@@ -809,6 +1058,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 5);
         }
 
+        /// <summary>
+        /// Tests that drag point should expose expected overload count
+        /// </summary>
         [Fact]
         public void DragPoint_ShouldExposeExpectedOverloadCount()
         {
@@ -820,6 +1072,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Tests that drag rect should expose expected overload count
+        /// </summary>
         [Fact]
         public void DragRect_ShouldExposeExpectedOverloadCount()
         {
@@ -830,6 +1085,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that drag rect should accept by ref doubles and vec 4 and flags
+        /// </summary>
         [Fact]
         public void DragRect_ShouldAcceptByRefDoublesAndVec4AndFlags()
         {
@@ -840,6 +1098,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotDragToolFlags)));
         }
 
+        /// <summary>
+        /// Tests that void no parameter methods should exist
+        /// </summary>
         [Fact]
         public void VoidNoParameterMethods_ShouldExist()
         {
@@ -849,6 +1110,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.NotNull(GetPublicStaticMethod("ColormapIcon", new[] { typeof(ImPlotColormap) }));
         }
 
+        /// <summary>
+        /// Tests that create context should be public static method
+        /// </summary>
         [Fact]
         public void CreateContext_ShouldBePublicStaticMethod()
         {
@@ -859,6 +1123,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Empty(method.GetParameters());
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -885,6 +1155,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -893,6 +1168,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name)
         {
             return typeof(ImPlot)

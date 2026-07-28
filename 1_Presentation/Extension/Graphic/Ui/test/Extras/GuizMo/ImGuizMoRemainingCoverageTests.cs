@@ -36,32 +36,50 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
 {
+    /// <summary>
+    /// The im guiz mo remaining coverage tests class
+    /// </summary>
     public class ImGuizMoRemainingCoverageTests
     {
+        /// <summary>
+        /// Publics the api should expose decompose matrix to components
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeDecomposeMatrixToComponents()
         {
             AssertMethod("DecomposeMatrixToComponents", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType());
         }
 
+        /// <summary>
+        /// Publics the api should expose draw cubes
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeDrawCubes()
         {
             AssertMethod("DrawCubes", typeof(void), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int));
         }
 
+        /// <summary>
+        /// Publics the api should expose draw grid
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeDrawGrid()
         {
             AssertMethod("DrawGrid", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float));
         }
 
+        /// <summary>
+        /// Publics the api should expose enable
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeEnable()
         {
             AssertMethod("Enable", typeof(void), typeof(bool));
         }
 
+        /// <summary>
+        /// Publics the api should expose manipulate
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeManipulate()
         {
@@ -73,18 +91,27 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.True(method.IsStatic);
         }
 
+        /// <summary>
+        /// Publics the api should expose recompose matrix from components
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeRecomposeMatrixFromComponents()
         {
             AssertMethod("RecomposeMatrixFromComponents", typeof(void), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType(), typeof(float[]).MakeByRefType());
         }
 
+        /// <summary>
+        /// Publics the api should expose view manipulate
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PublicApi_ShouldExposeViewManipulate()
         {
             AssertMethod("ViewManipulate", typeof(void), typeof(float[]).MakeByRefType(), typeof(float), typeof(Vector2F), typeof(Vector2F), typeof(uint));
         }
 
+        /// <summary>
+        /// Statics the fields camera projection should have expected values
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_CameraProjection_ShouldHaveExpectedValues()
         {
@@ -108,6 +135,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(1.0f, values[15]);
         }
 
+        /// <summary>
+        /// Statics the fields matrix should have expected values
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_Matrix_ShouldHaveExpectedValues()
         {
@@ -120,6 +150,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(1.0f, values[15]);
         }
 
+        /// <summary>
+        /// Statics the fields matrix rotation should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixRotation_ShouldBeZero()
         {
@@ -129,6 +162,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, values[2]);
         }
 
+        /// <summary>
+        /// Statics the fields matrix scale should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixScale_ShouldBeZero()
         {
@@ -138,6 +174,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, values[2]);
         }
 
+        /// <summary>
+        /// Statics the fields matrix translation should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixTranslation_ShouldBeZero()
         {
@@ -147,6 +186,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, values[2]);
         }
 
+        /// <summary>
+        /// Statics the fields vector 3 rotation should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_Vector3Rotation_ShouldBeZero()
         {
@@ -158,6 +200,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, value.Z);
         }
 
+        /// <summary>
+        /// Statics the fields vector 3 scale should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_Vector3Scale_ShouldBeZero()
         {
@@ -169,6 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, value.Z);
         }
 
+        /// <summary>
+        /// Statics the fields vector 3 translation should be zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_Vector3Translation_ShouldBeZero()
         {
@@ -180,6 +228,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(0.0f, value.Z);
         }
 
+        /// <summary>
+        /// Statics the fields is open should be false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_IsOpen_ShouldBeFalse()
         {
@@ -189,48 +240,72 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.False(value);
         }
 
+        /// <summary>
+        /// Statics the fields camera projection length should be 16
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_CameraProjection_Length_ShouldBe16()
         {
             Assert.Equal(16, GetPrivateArray("cameraProjection").Length);
         }
 
+        /// <summary>
+        /// Statics the fields camera view length should be 16
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_CameraView_Length_ShouldBe16()
         {
             Assert.Equal(16, GetPrivateArray("cameraView").Length);
         }
 
+        /// <summary>
+        /// Statics the fields identity matrix length should be 16
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_IdentityMatrix_Length_ShouldBe16()
         {
             Assert.Equal(16, GetPrivateArray("identityMatrix").Length);
         }
 
+        /// <summary>
+        /// Statics the fields matrix length should be 16
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_Matrix_Length_ShouldBe16()
         {
             Assert.Equal(16, GetPrivateArray("matrix").Length);
         }
 
+        /// <summary>
+        /// Statics the fields matrix rotation length should be 3
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixRotation_Length_ShouldBe3()
         {
             Assert.Equal(3, GetPrivateArray("matrixRotation").Length);
         }
 
+        /// <summary>
+        /// Statics the fields matrix scale length should be 3
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixScale_Length_ShouldBe3()
         {
             Assert.Equal(3, GetPrivateArray("matrixScale").Length);
         }
 
+        /// <summary>
+        /// Statics the fields matrix translation length should be 3
+        /// </summary>
         [RequireCImguiSystemFact]
         public void StaticFields_MatrixTranslation_Length_ShouldBe3()
         {
             Assert.Equal(3, GetPrivateArray("matrixTranslation").Length);
         }
 
+        /// <summary>
+        /// Canonicals the matrices camera view should have ones on diagonal
+        /// </summary>
         [RequireCImguiSystemFact]
         public void CanonicalMatrices_CameraView_ShouldHaveOnesOnDiagonal()
         {
@@ -241,6 +316,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(1.0f, values[15]);
         }
 
+        /// <summary>
+        /// Canonicals the matrices identity matrix should have ones on diagonal
+        /// </summary>
         [RequireCImguiSystemFact]
         public void CanonicalMatrices_IdentityMatrix_ShouldHaveOnesOnDiagonal()
         {
@@ -251,6 +329,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             Assert.Equal(1.0f, values[15]);
         }
 
+        /// <summary>
+        /// Gets the private array using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The value</returns>
         private static float[] GetPrivateArray(string name)
         {
             FieldInfo field = typeof(ImGuizMo).GetField(name, BindingFlags.NonPublic | BindingFlags.Static);
@@ -261,6 +344,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             return value;
         }
 
+        /// <summary>
+        /// Asserts the method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="returnType">The return type</param>
+        /// <param name="parameterTypes">The parameter types</param>
         private static void AssertMethod(string name, Type returnType, params Type[] parameterTypes)
         {
             MethodInfo method = typeof(ImGuizMo).GetMethod(name, BindingFlags.Public | BindingFlags.Static, null, parameterTypes, null);

@@ -35,20 +35,32 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The vertex buffer test class
+    /// </summary>
     public class VertexBufferTest
     {
+        /// <summary>
+        /// Tests that vertex buffer is assignable from object base
+        /// </summary>
         [Fact]
         public void VertexBuffer_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(VertexBuffer)));
         }
 
+        /// <summary>
+        /// Tests that vertex buffer implements i drawable
+        /// </summary>
         [Fact]
         public void VertexBuffer_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(VertexBuffer)));
         }
 
+        /// <summary>
+        /// Tests that usage specifier has correct values
+        /// </summary>
         [Fact]
         public void UsageSpecifier_HasCorrectValues()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(2, (int)VertexBuffer.UsageSpecifier.Static);
         }
 
+        /// <summary>
+        /// Tests that constructor with params c pointer not null
+        /// </summary>
         [Fact]
         public void Constructor_WithParams_CPointerNotNull()
         {
@@ -64,6 +79,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(System.IntPtr.Zero, vb.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor with params sets primitive type
+        /// </summary>
         [Fact]
         public void Constructor_WithParams_SetsPrimitiveType()
         {
@@ -71,6 +89,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Triangles, vb.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that constructor with params sets usage
+        /// </summary>
         [Fact]
         public void Constructor_WithParams_SetsUsage()
         {
@@ -78,6 +99,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(VertexBuffer.UsageSpecifier.Stream, vb.Usage);
         }
 
+        /// <summary>
+        /// Tests that constructor with params sets vertex count
+        /// </summary>
         [Fact]
         public void Constructor_WithParams_SetsVertexCount()
         {
@@ -85,6 +109,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5u, vb.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that constructor copy copies properties
+        /// </summary>
         [Fact]
         public void Constructor_Copy_CopiesProperties()
         {
@@ -96,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Usage, copy.Usage);
         }
 
+        /// <summary>
+        /// Tests that available static returns bool
+        /// </summary>
         [Fact]
         public void Available_Static_ReturnsBool()
         {
@@ -103,6 +133,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<bool>(available);
         }
 
+        /// <summary>
+        /// Tests that vertex count returns correct value
+        /// </summary>
         [Fact]
         public void VertexCount_ReturnsCorrectValue()
         {
@@ -110,6 +143,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(7u, vb.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that native handle returns value
+        /// </summary>
         [Fact]
         public void NativeHandle_ReturnsValue()
         {
@@ -118,6 +154,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<uint>(handle);
         }
 
+        /// <summary>
+        /// Tests that primitive type get set roundtrips
+        /// </summary>
         [Fact]
         public void PrimitiveType_GetSet_Roundtrips()
         {
@@ -126,6 +165,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.TriangleFan, vb.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that primitive type all values can be set
+        /// </summary>
         [Fact]
         public void PrimitiveType_AllValues_CanBeSet()
         {
@@ -146,6 +188,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Quads, vb.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that usage get set roundtrips
+        /// </summary>
         [Fact]
         public void Usage_GetSet_Roundtrips()
         {
@@ -154,6 +199,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(VertexBuffer.UsageSpecifier.Dynamic, vb.Usage);
         }
 
+        /// <summary>
+        /// Tests that usage all values can be set
+        /// </summary>
         [Fact]
         public void Usage_AllValues_CanBeSet()
         {
@@ -166,6 +214,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(VertexBuffer.UsageSpecifier.Static, vb.Usage);
         }
 
+        /// <summary>
+        /// Tests that draw with mock target does not throw
+        /// </summary>
         [Fact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
@@ -175,6 +226,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             vb.Draw(mockTarget.Object, states);
         }
 
+        /// <summary>
+        /// Tests that update vertex array returns bool
+        /// </summary>
         [Fact]
         public void Update_VertexArray_ReturnsBool()
         {
@@ -184,6 +238,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that update vertex array with offset returns bool
+        /// </summary>
         [Fact]
         public void Update_VertexArrayWithOffset_ReturnsBool()
         {
@@ -193,6 +250,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that update vertex array with count and offset returns bool
+        /// </summary>
         [Fact]
         public void Update_VertexArrayWithCountAndOffset_ReturnsBool()
         {
@@ -202,6 +262,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that update vertex buffer returns bool
+        /// </summary>
         [Fact]
         public void Update_VertexBuffer_ReturnsBool()
         {
@@ -211,6 +274,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Tests that swap exchanges contents
+        /// </summary>
         [Fact]
         public void Swap_ExchangesContents()
         {
@@ -221,6 +287,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(1u, vb2.VertexCount);
         }
 
+        /// <summary>
+        /// Tests that destroy sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_SetsCPointerToZero()
         {
@@ -230,6 +299,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, vb.CPointer);
         }
 
+        /// <summary>
+        /// Tests that dispose calls destroy
+        /// </summary>
         [Fact]
         public void Dispose_CallsDestroy()
         {
@@ -238,6 +310,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, vb.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor dispose does not throw
+        /// </summary>
         [Fact]
         public void Constructor_Dispose_DoesNotThrow()
         {
@@ -245,18 +320,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             vb.Dispose();
         }
 
+        /// <summary>
+        /// Tests that vertex count property exists
+        /// </summary>
         [Fact]
         public void VertexCount_Property_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetProperty("VertexCount"));
         }
 
+        /// <summary>
+        /// Tests that native handle property exists
+        /// </summary>
         [Fact]
         public void NativeHandle_Property_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetProperty("NativeHandle"));
         }
 
+        /// <summary>
+        /// Tests that primitive type property exists
+        /// </summary>
         [Fact]
         public void PrimitiveType_Property_Exists()
         {
@@ -266,6 +350,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that usage property exists
+        /// </summary>
         [Fact]
         public void Usage_Property_Exists()
         {
@@ -275,6 +362,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that update methods exist
+        /// </summary>
         [Fact]
         public void Update_Methods_Exist()
         {
@@ -284,12 +374,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(VertexBuffer).GetMethod("Update", new System.Type[] { typeof(VertexBuffer) }));
         }
 
+        /// <summary>
+        /// Tests that swap method exists
+        /// </summary>
         [Fact]
         public void Swap_Method_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetMethod("Swap"));
         }
 
+        /// <summary>
+        /// Tests that available property exists
+        /// </summary>
         [Fact]
         public void Available_Property_Exists()
         {
@@ -298,30 +394,45 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.GetMethod.IsStatic);
         }
 
+        /// <summary>
+        /// Tests that available returns without throwing
+        /// </summary>
         [Fact]
         public void Available_ReturnsWithoutThrowing()
         {
             bool available = VertexBuffer.Available;
         }
 
+        /// <summary>
+        /// Tests that usage specifier stream value zero
+        /// </summary>
         [Fact]
         public void UsageSpecifier_Stream_ValueZero()
         {
             Assert.Equal(0, (int)VertexBuffer.UsageSpecifier.Stream);
         }
 
+        /// <summary>
+        /// Tests that usage specifier dynamic value one
+        /// </summary>
         [Fact]
         public void UsageSpecifier_Dynamic_ValueOne()
         {
             Assert.Equal(1, (int)VertexBuffer.UsageSpecifier.Dynamic);
         }
 
+        /// <summary>
+        /// Tests that usage specifier static value two
+        /// </summary>
         [Fact]
         public void UsageSpecifier_Static_ValueTwo()
         {
             Assert.Equal(2, (int)VertexBuffer.UsageSpecifier.Static);
         }
 
+        /// <summary>
+        /// Tests that constructor default primitive type is points
+        /// </summary>
         [Fact]
         public void Constructor_DefaultPrimitiveType_IsPoints()
         {
@@ -329,6 +440,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(PrimitiveType.Points, vb.PrimitiveType);
         }
 
+        /// <summary>
+        /// Tests that constructor default usage is static
+        /// </summary>
         [Fact]
         public void Constructor_DefaultUsage_IsStatic()
         {

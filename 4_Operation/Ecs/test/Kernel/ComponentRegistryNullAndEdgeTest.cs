@@ -40,8 +40,14 @@ namespace Alis.Core.Ecs.Test.Kernel
     /// </summary>
     public class ComponentRegistryNullAndEdgeTest
     {
+        /// <summary>
+        /// The overflow type
+        /// </summary>
         private struct OverflowTypeA { }
 
+        /// <summary>
+        /// The overflow type
+        /// </summary>
         private struct OverflowTypeB { }
 
         /// <summary>

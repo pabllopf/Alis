@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Collections
 {
+    /// <summary>
+    /// The enumerable helpers tests class
+    /// </summary>
     public class EnumerableHelpersTests
     {
+        /// <summary>
+        /// Tests that to span from list fills span correctly
+        /// </summary>
         [Fact]
         public void ToSpan_FromList_FillsSpanCorrectly()
         {
@@ -49,6 +55,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(50, destination[4]);
         }
 
+        /// <summary>
+        /// Tests that to span source larger than destination stops at capacity
+        /// </summary>
         [Fact]
         public void ToSpan_SourceLargerThanDestination_StopsAtCapacity()
         {
@@ -60,6 +69,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3, destination[2]);
         }
 
+        /// <summary>
+        /// Tests that to span empty source returns zero length
+        /// </summary>
         [Fact]
         public void ToSpan_EmptySource_ReturnsZeroLength()
         {
@@ -69,6 +81,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, length);
         }
 
+        /// <summary>
+        /// Tests that to span single element copies correctly
+        /// </summary>
         [Fact]
         public void ToSpan_SingleElement_CopiesCorrectly()
         {
@@ -79,6 +94,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(42, destination[0]);
         }
 
+        /// <summary>
+        /// Tests that to span exact fit copies all elements
+        /// </summary>
         [Fact]
         public void ToSpan_ExactFit_CopiesAllElements()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(9, destination[2]);
         }
 
+        /// <summary>
+        /// Tests that to span pure enumerable copies correctly
+        /// </summary>
         [Fact]
         public void ToSpan_PureEnumerable_CopiesCorrectly()
         {
@@ -101,6 +122,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(400, destination[3]);
         }
 
+        /// <summary>
+        /// Tests that to span empty destination returns zero length
+        /// </summary>
         [Fact]
         public void ToSpan_EmptyDestination_ReturnsZeroLength()
         {
@@ -110,6 +134,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(0, length);
         }
 
+        /// <summary>
+        /// Tests that to span value types works correctly
+        /// </summary>
         [Fact]
         public void ToSpan_ValueTypes_WorksCorrectly()
         {
@@ -121,6 +148,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal(3.3, destination[2]);
         }
 
+        /// <summary>
+        /// Tests that to span from array exact fit
+        /// </summary>
         [Fact]
         public void ToSpan_FromArray_ExactFit()
         {
@@ -132,6 +162,9 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("world", destination[1]);
         }
 
+        /// <summary>
+        /// Tests that to span reference type list copies correctly
+        /// </summary>
         [Fact]
         public void ToSpan_ReferenceTypeList_CopiesCorrectly()
         {
@@ -143,6 +176,10 @@ namespace Alis.Core.Ecs.Test.Collections
             Assert.Equal("c", destination[2]);
         }
 
+        /// <summary>
+        /// Yields the elements
+        /// </summary>
+        /// <returns>An enumerable of int</returns>
         private static IEnumerable<int> YieldElements()
         {
             yield return 100;

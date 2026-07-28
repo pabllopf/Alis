@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im font ptr tests class
+    /// </summary>
     public class ImFontPtrTests
     {
+        /// <summary>
+        /// Natives the ptr from int ptr constructor returns same pointer
+        /// </summary>
         [RequireCImguiSystemFact]
         public void NativePtr_FromIntPtrConstructor_ReturnsSamePointer()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Natives the ptr from im font constructor returns non zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void NativePtr_FromImFontConstructor_ReturnsNonZero()
         {
@@ -58,6 +67,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Fallbacks the advance x reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void FallbackAdvanceX_ReadsCorrectValue()
         {
@@ -76,6 +88,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Fonts the size reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void FontSize_ReadsCorrectValue()
         {
@@ -94,6 +109,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Configs the data count reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ConfigDataCount_ReadsCorrectValue()
         {
@@ -112,6 +130,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Fallbacks the char reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void FallbackChar_ReadsCorrectValue()
         {
@@ -130,6 +151,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Ellipsises the char reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void EllipsisChar_ReadsCorrectValue()
         {
@@ -148,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Dots the char reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DotChar_ReadsCorrectValue()
         {
@@ -166,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Dirties the lookup tables true returns true
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DirtyLookupTables_True_ReturnsTrue()
         {
@@ -183,6 +213,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Dirties the lookup tables false returns false
+        /// </summary>
         [RequireCImguiSystemFact]
         public void DirtyLookupTables_False_ReturnsFalse()
         {
@@ -200,6 +233,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Scales the reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Scale_ReadsCorrectValue()
         {
@@ -218,6 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Ascents the reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Ascent_ReadsCorrectValue()
         {
@@ -236,6 +275,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Descents the reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Descent_ReadsCorrectValue()
         {
@@ -254,6 +296,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Metricses the total surface reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MetricsTotalSurface_ReadsCorrectValue()
         {
@@ -272,6 +317,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Indexes the advance x reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IndexAdvanceX_ReadsCorrectValue()
         {
@@ -293,6 +341,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Indexes the lookup reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void IndexLookup_ReadsCorrectValue()
         {
@@ -314,6 +365,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Containers the atlas reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ContainerAtlas_ReadsCorrectValue()
         {
@@ -333,6 +387,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Configs the data getter reads correct value
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ConfigData_Getter_ReadsCorrectValue()
         {
@@ -351,6 +408,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Configs the data setter persists to native structure
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ConfigData_Setter_PersistsToNativeStructure()
         {
@@ -371,6 +431,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Implicits the conversion to int ptr returns native ptr
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ImplicitConversion_ToIntPtr_ReturnsNativePtr()
         {
@@ -380,6 +443,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(native, result);
         }
 
+        /// <summary>
+        /// Implicits the conversion from int ptr creates im font ptr
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ImplicitConversion_FromIntPtr_CreatesImFontPtr()
         {
@@ -388,6 +454,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(native, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Constructors the with im font roundtrips all properties
+        /// </summary>
         [RequireCImguiSystemFact]
         public void Constructor_WithImFont_RoundtripsAllProperties()
         {
@@ -427,6 +496,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Zeroes the native ptr accessing properties throws null reference
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ZeroNativePtr_AccessingProperties_ThrowsNullReference()
         {
@@ -434,6 +506,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FallbackAdvanceX);
         }
 
+        /// <summary>
+        /// Ims the font constructor allocated memory is readable
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ImFontConstructor_AllocatedMemory_IsReadable()
         {
@@ -458,6 +533,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Multiples the ptrs independent memory do not interfere
+        /// </summary>
         [RequireCImguiSystemFact]
         public void MultiplePtrs_IndependentMemory_DoNotInterfere()
         {
@@ -480,6 +558,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Configs the data setter multiple writes last value persists
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ConfigData_Setter_MultipleWrites_LastValuePersists()
         {
@@ -498,6 +579,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Natives the ptr zero value implicit conversion preserves zero
+        /// </summary>
         [RequireCImguiSystemFact]
         public void NativePtr_ZeroValue_ImplicitConversionPreservesZero()
         {

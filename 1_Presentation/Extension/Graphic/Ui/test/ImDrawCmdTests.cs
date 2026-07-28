@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im draw cmd tests class
+    /// </summary>
     public class ImDrawCmdTests
     {
+        /// <summary>
+        /// Tests that clip rect get set works correctly
+        /// </summary>
         [Fact]
         public void ClipRect_GetSet_WorksCorrectly()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.ClipRect);
         }
 
+        /// <summary>
+        /// Tests that texture id get set works correctly
+        /// </summary>
         [Fact]
         public void TextureId_GetSet_WorksCorrectly()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.TextureId);
         }
 
+        /// <summary>
+        /// Tests that vtx offset get set works correctly
+        /// </summary>
         [Fact]
         public void VtxOffset_GetSet_WorksCorrectly()
         {
@@ -62,6 +74,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.VtxOffset);
         }
 
+        /// <summary>
+        /// Tests that idx offset get set works correctly
+        /// </summary>
         [Fact]
         public void IdxOffset_GetSet_WorksCorrectly()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.IdxOffset);
         }
 
+        /// <summary>
+        /// Tests that elem count get set works correctly
+        /// </summary>
         [Fact]
         public void ElemCount_GetSet_WorksCorrectly()
         {
@@ -80,6 +98,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.ElemCount);
         }
 
+        /// <summary>
+        /// Tests that user callback get set works correctly
+        /// </summary>
         [Fact]
         public void UserCallback_GetSet_WorksCorrectly()
         {
@@ -89,6 +110,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.UserCallback);
         }
 
+        /// <summary>
+        /// Tests that user callback data get set works correctly
+        /// </summary>
         [Fact]
         public void UserCallbackData_GetSet_WorksCorrectly()
         {
@@ -98,6 +122,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, drawCmd.UserCallbackData);
         }
 
+        /// <summary>
+        /// Tests that get clip rect returns clip rect
+        /// </summary>
         [Fact]
         public void GetClipRect_ReturnsClipRect()
         {
@@ -105,6 +132,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new Vector4F(1.0f, 2.0f, 3.0f, 4.0f), drawCmd.GetClipRect());
         }
 
+        /// <summary>
+        /// Tests that get texture id returns texture id
+        /// </summary>
         [Fact]
         public void GetTextureId_ReturnsTextureId()
         {
@@ -112,6 +142,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new IntPtr(123), drawCmd.GetTextureId());
         }
 
+        /// <summary>
+        /// Tests that get vtx offset returns vtx offset
+        /// </summary>
         [Fact]
         public void GetVtxOffset_ReturnsVtxOffset()
         {
@@ -119,6 +152,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(10u, drawCmd.GetVtxOffset());
         }
 
+        /// <summary>
+        /// Tests that get idx offset returns idx offset
+        /// </summary>
         [Fact]
         public void GetIdxOffset_ReturnsIdxOffset()
         {
@@ -126,6 +162,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(20u, drawCmd.GetIdxOffset());
         }
 
+        /// <summary>
+        /// Tests that get elem count returns elem count
+        /// </summary>
         [Fact]
         public void GetElemCount_ReturnsElemCount()
         {
@@ -133,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(30u, drawCmd.GetElemCount());
         }
 
+        /// <summary>
+        /// Tests that get user callback returns user callback
+        /// </summary>
         [Fact]
         public void GetUserCallback_ReturnsUserCallback()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new IntPtr(456), drawCmd.GetUserCallback());
         }
 
+        /// <summary>
+        /// Tests that get user callback data returns user callback data
+        /// </summary>
         [Fact]
         public void GetUserCallbackData_ReturnsUserCallbackData()
         {
@@ -147,6 +192,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new IntPtr(789), drawCmd.GetUserCallbackData());
         }
 
+        /// <summary>
+        /// Tests that set user callback data sets correct value
+        /// </summary>
         [Fact]
         public void SetUserCallbackData_SetsCorrectValue()
         {
@@ -156,6 +204,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(value, drawCmd.UserCallbackData);
         }
 
+        /// <summary>
+        /// Tests that default clip rect returns zero
+        /// </summary>
         [Fact]
         public void Default_ClipRect_ReturnsZero()
         {
@@ -163,6 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default, drawCmd.ClipRect);
         }
 
+        /// <summary>
+        /// Tests that default texture id returns zero
+        /// </summary>
         [Fact]
         public void Default_TextureId_ReturnsZero()
         {
@@ -170,6 +224,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawCmd.TextureId);
         }
 
+        /// <summary>
+        /// Tests that default vtx offset returns zero
+        /// </summary>
         [Fact]
         public void Default_VtxOffset_ReturnsZero()
         {
@@ -177,6 +234,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.VtxOffset);
         }
 
+        /// <summary>
+        /// Tests that default idx offset returns zero
+        /// </summary>
         [Fact]
         public void Default_IdxOffset_ReturnsZero()
         {
@@ -184,6 +244,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.IdxOffset);
         }
 
+        /// <summary>
+        /// Tests that default elem count returns zero
+        /// </summary>
         [Fact]
         public void Default_ElemCount_ReturnsZero()
         {
@@ -191,6 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.ElemCount);
         }
 
+        /// <summary>
+        /// Tests that default user callback returns zero
+        /// </summary>
         [Fact]
         public void Default_UserCallback_ReturnsZero()
         {
@@ -198,6 +264,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawCmd.UserCallback);
         }
 
+        /// <summary>
+        /// Tests that default user callback data returns zero
+        /// </summary>
         [Fact]
         public void Default_UserCallbackData_ReturnsZero()
         {
@@ -205,6 +274,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawCmd.UserCallbackData);
         }
 
+        /// <summary>
+        /// Tests that get clip rect default returns zero
+        /// </summary>
         [Fact]
         public void GetClipRect_Default_ReturnsZero()
         {
@@ -212,6 +284,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default, drawCmd.GetClipRect());
         }
 
+        /// <summary>
+        /// Tests that get texture id default returns zero
+        /// </summary>
         [Fact]
         public void GetTextureId_Default_ReturnsZero()
         {
@@ -219,6 +294,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawCmd.GetTextureId());
         }
 
+        /// <summary>
+        /// Tests that get vtx offset default returns zero
+        /// </summary>
         [Fact]
         public void GetVtxOffset_Default_ReturnsZero()
         {
@@ -226,6 +304,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.GetVtxOffset());
         }
 
+        /// <summary>
+        /// Tests that get idx offset default returns zero
+        /// </summary>
         [Fact]
         public void GetIdxOffset_Default_ReturnsZero()
         {
@@ -233,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.GetIdxOffset());
         }
 
+        /// <summary>
+        /// Tests that get elem count default returns zero
+        /// </summary>
         [Fact]
         public void GetElemCount_Default_ReturnsZero()
         {
@@ -240,6 +324,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, drawCmd.GetElemCount());
         }
 
+        /// <summary>
+        /// Tests that get user callback default returns zero
+        /// </summary>
         [Fact]
         public void GetUserCallback_Default_ReturnsZero()
         {
@@ -247,6 +334,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawCmd.GetUserCallback());
         }
 
+        /// <summary>
+        /// Tests that get user callback data default returns zero
+        /// </summary>
         [Fact]
         public void GetUserCallbackData_Default_ReturnsZero()
         {

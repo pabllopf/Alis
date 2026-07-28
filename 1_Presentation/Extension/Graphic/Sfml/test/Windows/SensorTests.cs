@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The sensor tests class
+    /// </summary>
     public class SensorTests
     {
+        /// <summary>
+        /// Tests that is available invoke does not throw
+        /// </summary>
         [Fact]
         public void IsAvailable_Invoke_DoesNotThrow()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is available invoke with gyroscope returns false
+        /// </summary>
         [Fact]
         public void IsAvailable_Invoke_WithGyroscope_ReturnsFalse()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is available invoke with all types returns false
+        /// </summary>
         [Fact]
         public void IsAvailable_Invoke_WithAllTypes_ReturnsFalse()
         {
@@ -67,18 +79,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that set enabled invoke does not throw
+        /// </summary>
         [Fact]
         public void SetEnabled_Invoke_DoesNotThrow()
         {
             Sensor.SetEnabled(Sensor.Type.Accelerometer, true);
         }
 
+        /// <summary>
+        /// Tests that set enabled invoke with false does not throw
+        /// </summary>
         [Fact]
         public void SetEnabled_Invoke_WithFalse_DoesNotThrow()
         {
             Sensor.SetEnabled(Sensor.Type.Gyroscope, false);
         }
 
+        /// <summary>
+        /// Tests that set enabled invoke with all types does not throw
+        /// </summary>
         [Fact]
         public void SetEnabled_Invoke_WithAllTypes_DoesNotThrow()
         {
@@ -93,6 +114,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that get value invoke does not throw
+        /// </summary>
         [Fact]
         public void GetValue_Invoke_DoesNotThrow()
         {
@@ -102,6 +126,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             _ = result.Z;
         }
 
+        /// <summary>
+        /// Tests that get value invoke with gyroscope does not throw
+        /// </summary>
         [Fact]
         public void GetValue_Invoke_WithGyroscope_DoesNotThrow()
         {
@@ -111,6 +138,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             _ = result.Z;
         }
 
+        /// <summary>
+        /// Tests that sf sensor is available dll import exists
+        /// </summary>
         [Fact]
         public void SfSensor_isAvailable_DllImport_Exists()
         {
@@ -129,6 +159,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf sensor set enabled dll import exists
+        /// </summary>
         [Fact]
         public void SfSensor_setEnabled_DllImport_Exists()
         {
@@ -147,6 +180,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf sensor get value dll import exists
+        /// </summary>
         [Fact]
         public void SfSensor_getValue_DllImport_Exists()
         {

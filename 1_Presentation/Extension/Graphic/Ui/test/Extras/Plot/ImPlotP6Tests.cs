@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot tests class
+    /// </summary>
     public class ImPlotP6Tests
     {
+        /// <summary>
+        /// Tests that plot inf lines byte ptr full overload should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_BytePtr_FullOverload_ShouldBeVoid()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines short ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShortPtr_Default_ShouldBeVoid()
         {
@@ -61,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines short ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShortPtr_WithFlags_ShouldBeVoid()
         {
@@ -73,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines short ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShortPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -85,6 +100,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines short ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShortPtr_WithAll_ShouldBeVoid()
         {
@@ -97,6 +115,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ushort ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UshortPtr_Default_ShouldBeVoid()
         {
@@ -109,6 +130,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ushort ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UshortPtr_WithFlags_ShouldBeVoid()
         {
@@ -121,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ushort ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UshortPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -133,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ushort ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UshortPtr_WithAll_ShouldBeVoid()
         {
@@ -145,6 +175,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines int ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_IntPtr_Default_ShouldBeVoid()
         {
@@ -157,6 +190,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines int ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_IntPtr_WithFlags_ShouldBeVoid()
         {
@@ -169,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines int ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_IntPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -181,6 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines int ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_IntPtr_WithAll_ShouldBeVoid()
         {
@@ -193,6 +235,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines uint ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UintPtr_Default_ShouldBeVoid()
         {
@@ -205,6 +250,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines uint ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UintPtr_WithFlags_ShouldBeVoid()
         {
@@ -217,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines uint ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UintPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -229,6 +280,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines uint ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UintPtr_WithAll_ShouldBeVoid()
         {
@@ -241,6 +295,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines long ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_LongPtr_Default_ShouldBeVoid()
         {
@@ -253,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines long ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_LongPtr_WithFlags_ShouldBeVoid()
         {
@@ -265,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines long ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_LongPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -277,6 +340,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines long ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_LongPtr_WithAll_ShouldBeVoid()
         {
@@ -289,6 +355,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ulong ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UlongPtr_Default_ShouldBeVoid()
         {
@@ -301,6 +370,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ulong ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UlongPtr_WithFlags_ShouldBeVoid()
         {
@@ -313,6 +385,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ulong ptr with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UlongPtr_WithFlagsOffset_ShouldBeVoid()
         {
@@ -325,6 +400,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines ulong ptr with all should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_UlongPtr_WithAll_ShouldBeVoid()
         {
@@ -337,6 +415,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeExpectedOverloadCount()
         {
@@ -345,6 +426,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 25);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose byte array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeByteArrayFamily()
         {
@@ -355,6 +439,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(byteOverloads.Length >= 1);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose short array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeShortArrayFamily()
         {
@@ -365,6 +452,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(shortOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose ushort array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeUshortArrayFamily()
         {
@@ -375,6 +465,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(ushortOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose int array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeIntArrayFamily()
         {
@@ -385,6 +478,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(intOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose uint array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeUintArrayFamily()
         {
@@ -395,6 +491,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(uintOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose long array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeLongArrayFamily()
         {
@@ -405,6 +504,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(longOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose ulong array family
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeUlongArrayFamily()
         {
@@ -415,6 +517,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(ulongOverloads.Length >= 4);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines all overloads should be void
+        /// </summary>
         [Fact]
         public void PlotInfLines_AllOverloads_ShouldBeVoid()
         {
@@ -423,6 +528,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeAllExpectedArrayTypes()
         {
@@ -437,6 +545,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot line float array default should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_Default_ShouldBeVoid()
         {
@@ -449,6 +560,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line float array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_WithXscale_ShouldBeVoid()
         {
@@ -461,6 +575,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line float array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_WithXscaleXstart_ShouldBeVoid()
         {
@@ -473,6 +590,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line float array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_WithFlags_ShouldBeVoid()
         {
@@ -486,6 +606,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line float array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_WithFlagsOffset_ShouldBeVoid()
         {
@@ -499,6 +622,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line float array with all should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_WithAll_ShouldBeVoid()
         {
@@ -512,6 +638,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array default should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_Default_ShouldBeVoid()
         {
@@ -524,6 +653,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_WithXscale_ShouldBeVoid()
         {
@@ -536,6 +668,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_WithXscaleXstart_ShouldBeVoid()
         {
@@ -548,6 +683,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_WithFlags_ShouldBeVoid()
         {
@@ -561,6 +699,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_WithFlagsOffset_ShouldBeVoid()
         {
@@ -574,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line double array with all should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_WithAll_ShouldBeVoid()
         {
@@ -587,6 +731,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array default should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_Default_ShouldBeVoid()
         {
@@ -599,6 +746,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_WithXscale_ShouldBeVoid()
         {
@@ -611,6 +761,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_WithXscaleXstart_ShouldBeVoid()
         {
@@ -623,6 +776,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_WithFlags_ShouldBeVoid()
         {
@@ -636,6 +792,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_WithFlagsOffset_ShouldBeVoid()
         {
@@ -649,6 +808,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array with all should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_WithAll_ShouldBeVoid()
         {
@@ -662,6 +824,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array default should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_Default_ShouldBeVoid()
         {
@@ -674,6 +839,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_WithXscale_ShouldBeVoid()
         {
@@ -686,6 +854,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_WithXscaleXstart_ShouldBeVoid()
         {
@@ -698,6 +869,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_WithFlags_ShouldBeVoid()
         {
@@ -711,6 +885,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_WithFlagsOffset_ShouldBeVoid()
         {
@@ -724,6 +901,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line byte array with all should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_WithAll_ShouldBeVoid()
         {
@@ -737,6 +917,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line short array default should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_Default_ShouldBeVoid()
         {
@@ -749,6 +932,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line short array with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_WithXscale_ShouldBeVoid()
         {
@@ -761,6 +947,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line short array with xscale xstart should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_WithXscaleXstart_ShouldBeVoid()
         {
@@ -773,6 +962,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line short array with flags should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_WithFlags_ShouldBeVoid()
         {
@@ -786,6 +978,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line short array with flags offset should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_WithFlagsOffset_ShouldBeVoid()
         {
@@ -799,6 +994,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot line should expose float array family
+        /// </summary>
         [Fact]
         public void PlotLine_ShouldExposeFloatArrayFamily()
         {
@@ -809,6 +1007,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(floatOverloads.Length >= 6);
         }
 
+        /// <summary>
+        /// Tests that plot line should expose double array family
+        /// </summary>
         [Fact]
         public void PlotLine_ShouldExposeDoubleArrayFamily()
         {
@@ -819,6 +1020,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(doubleOverloads.Length >= 6);
         }
 
+        /// <summary>
+        /// Tests that plot line should expose sbyte array family
+        /// </summary>
         [Fact]
         public void PlotLine_ShouldExposeSbyteArrayFamily()
         {
@@ -829,6 +1033,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(sbyteOverloads.Length >= 6);
         }
 
+        /// <summary>
+        /// Tests that plot line should expose byte array family
+        /// </summary>
         [Fact]
         public void PlotLine_ShouldExposeByteArrayFamily()
         {
@@ -839,6 +1046,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(byteOverloads.Length >= 6);
         }
 
+        /// <summary>
+        /// Tests that plot line should expose short array family
+        /// </summary>
         [Fact]
         public void PlotLine_ShouldExposeShortArrayFamily()
         {
@@ -849,6 +1059,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(shortOverloads.Length >= 5);
         }
 
+        /// <summary>
+        /// Tests that plot line float array return type should be void
+        /// </summary>
         [Fact]
         public void PlotLine_FloatArray_ReturnType_ShouldBeVoid()
         {
@@ -859,6 +1072,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(floatOverloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot line double array return type should be void
+        /// </summary>
         [Fact]
         public void PlotLine_DoubleArray_ReturnType_ShouldBeVoid()
         {
@@ -869,6 +1085,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(doubleOverloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot line sbyte array return type should be void
+        /// </summary>
         [Fact]
         public void PlotLine_SbyteArray_ReturnType_ShouldBeVoid()
         {
@@ -879,6 +1098,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(sbyteOverloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot line byte array return type should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ByteArray_ReturnType_ShouldBeVoid()
         {
@@ -889,6 +1111,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(byteOverloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot line short array return type should be void
+        /// </summary>
         [Fact]
         public void PlotLine_ShortArray_ReturnType_ShouldBeVoid()
         {
@@ -899,6 +1124,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(shortOverloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -925,6 +1156,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -933,6 +1169,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && parameter.ParameterType.GetElementType() == elementType);

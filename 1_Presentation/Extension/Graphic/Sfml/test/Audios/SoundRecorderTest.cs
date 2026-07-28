@@ -34,41 +34,82 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The test sound recorder class
+    /// </summary>
+    /// <seealso cref="Alis.Extension.Graphic.Sfml.Audios.SoundRecorder"/>
     public sealed class TestSoundRecorder : Alis.Extension.Graphic.Sfml.Audios.SoundRecorder
     {
+        /// <summary>
+        /// Gets or sets the value of the on start called
+        /// </summary>
         public bool OnStartCalled { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the value of the on stop called
+        /// </summary>
         public bool OnStopCalled { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the value of the processed samples
+        /// </summary>
         public short[] ProcessedSamples { get; private set; }
 
+        /// <summary>
+        /// Gets or sets the value of the process result
+        /// </summary>
         public bool ProcessResult { get; set; } = true;
 
+        /// <summary>
+        /// Ons the start
+        /// </summary>
+        /// <returns>The bool</returns>
         public override bool OnStart()
         {
             OnStartCalled = true;
             return base.OnStart();
         }
 
+        /// <summary>
+        /// Ons the process samples using the specified samples
+        /// </summary>
+        /// <param name="samples">The samples</param>
+        /// <returns>The process result</returns>
         public override bool OnProcessSamples(short[] samples)
         {
             ProcessedSamples = samples;
             return ProcessResult;
         }
 
+        /// <summary>
+        /// Ons the stop
+        /// </summary>
         public override void OnStop()
         {
             OnStopCalled = true;
             base.OnStop();
         }
 
+        /// <summary>
+        /// Exposes the set processing interval using the specified interval
+        /// </summary>
+        /// <param name="interval">The interval</param>
         public void ExposeSetProcessingInterval(SfmlTime interval) => SetProcessingInterval(interval);
 
+        /// <summary>
+        /// Gets the value of the c pointer
+        /// </summary>
         public new IntPtr CPointer => base.CPointer;
     }
 
+    /// <summary>
+    /// The sound recorder test class
+    /// </summary>
     public class SoundRecorderTest
     {
+        /// <summary>
+        /// Constructors the should set c pointer to non zero
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Constructor_ShouldSetCPointerToNonZero()
         {
@@ -76,12 +117,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotEqual(IntPtr.Zero, recorder.CPointer);
         }
 
+        /// <summary>
+        /// Ises the available should return bool
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void IsAvailable_ShouldReturnBool()
         {
             Assert.IsType<bool>(Alis.Extension.Graphic.Sfml.Audios.SoundRecorder.IsAvailable);
         }
 
+        /// <summary>
+        /// Availables the devices should return array
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void AvailableDevices_ShouldReturnArray()
         {
@@ -89,6 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(devices);
         }
 
+        /// <summary>
+        /// Defaults the device should return string
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void DefaultDevice_ShouldReturnString()
         {
@@ -97,6 +147,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotEqual(string.Empty, device);
         }
 
+        /// <summary>
+        /// Samples the rate should return value
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SampleRate_ShouldReturnValue()
         {
@@ -104,6 +157,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(recorder.SampleRate > 0);
         }
 
+        /// <summary>
+        /// Channels the count default should be one
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void ChannelCount_Default_ShouldBeOne()
         {
@@ -111,6 +167,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(1u, recorder.ChannelCount);
         }
 
+        /// <summary>
+        /// Channels the count set should reflect change
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void ChannelCount_Set_ShouldReflectChange()
         {
@@ -119,6 +178,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(2u, recorder.ChannelCount);
         }
 
+        /// <summary>
+        /// Returns the string should contain sound recorder
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void ToString_ShouldContainSoundRecorder()
         {
@@ -126,6 +188,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Contains("[SoundRecorder]", recorder.ToString());
         }
 
+        /// <summary>
+        /// Returns the string should contain sample rate
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void ToString_ShouldContainSampleRate()
         {
@@ -133,6 +198,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Contains("SampleRate(", recorder.ToString());
         }
 
+        /// <summary>
+        /// Starts the default should return bool
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Start_Default_ShouldReturnBool()
         {
@@ -145,6 +213,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Starts the with sample rate should return bool
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Start_WithSampleRate_ShouldReturnBool()
         {
@@ -157,6 +228,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.IsType<bool>(result);
         }
 
+        /// <summary>
+        /// Stops the should not throw
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Stop_ShouldNotThrow()
         {
@@ -164,6 +238,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             recorder.Stop();
         }
 
+        /// <summary>
+        /// Sets the processing interval throws entry point not found
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SetProcessingInterval_ThrowsEntryPointNotFound()
         {
@@ -171,6 +248,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Throws<EntryPointNotFoundException>(() => recorder.ExposeSetProcessingInterval(SfmlTime.FromMilliseconds(50)));
         }
 
+        /// <summary>
+        /// Sets the device with default device should return true
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SetDevice_WithDefaultDevice_ShouldReturnTrue()
         {
@@ -180,6 +260,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Gets the device should return string
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void GetDevice_ShouldReturnString()
         {
@@ -189,18 +272,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotEqual(string.Empty, device);
         }
 
+        /// <summary>
+        /// Classes the should be abstract
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Class_ShouldBeAbstract()
         {
             Assert.True(typeof(Alis.Extension.Graphic.Sfml.Audios.SoundRecorder).IsAbstract);
         }
 
+        /// <summary>
+        /// Classes the should inherit from object base
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Class_ShouldInheritFromObjectBase()
         {
             Assert.Equal("ObjectBase", typeof(Alis.Extension.Graphic.Sfml.Audios.SoundRecorder).BaseType.Name);
         }
 
+        /// <summary>
+        /// Disposes the should set c pointer to zero
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Dispose_ShouldSetCPointerToZero()
         {
@@ -211,6 +303,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(IntPtr.Zero, recorder.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the should set c pointer to zero
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Destroy_ShouldSetCPointerToZero()
         {
@@ -221,6 +316,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(IntPtr.Zero, recorder.CPointer);
         }
 
+        /// <summary>
+        /// Sets the device with invalid name should return false
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SetDevice_WithInvalidName_ShouldReturnFalse()
         {
@@ -229,6 +327,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Starts the and stop should toggle recording
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void Start_AndStop_ShouldToggleRecording()
         {

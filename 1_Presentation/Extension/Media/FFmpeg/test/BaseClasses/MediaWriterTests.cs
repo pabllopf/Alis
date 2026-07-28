@@ -7,26 +7,64 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
+    /// <summary>
+    /// The media writer tests class
+    /// </summary>
     public class MediaWriterTests
     {
+        /// <summary>
+        /// The test frame class
+        /// </summary>
+        /// <seealso cref="IMediaFrame"/>
         private sealed class TestFrame : IMediaFrame
         {
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestFrame"/> class
+            /// </summary>
+            /// <param name="rawData">The raw data</param>
             public TestFrame(byte[] rawData) => RawData = rawData;
 
+            /// <summary>
+            /// Gets the value of the raw data
+            /// </summary>
             public byte[] RawData { get; }
 
+            /// <summary>
+            /// Loads the stream
+            /// </summary>
+            /// <param name="stream">The stream</param>
+            /// <returns>The bool</returns>
             public bool Load(Stream stream) => true;
         }
 
+        /// <summary>
+        /// The test writer class
+        /// </summary>
+        /// <seealso cref="MediaWriter{TestFrame}"/>
         private sealed class TestWriter : MediaWriter<TestFrame>
         {
+            /// <summary>
+            /// Sets the opened using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public void SetOpened(bool value) => OpenedForWriting = value;
 
+            /// <summary>
+            /// Sets the stream using the specified stream
+            /// </summary>
+            /// <param name="stream">The stream</param>
             public void SetStream(Stream stream) => InputDataStream = stream;
 
+            /// <summary>
+            /// Sets the filename using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public void SetFilename(string value) => Filename = value;
         }
 
+        /// <summary>
+        /// Tests that filename default should be null
+        /// </summary>
         [Fact]
         public void Filename_Default_ShouldBeNull()
         {
@@ -34,6 +72,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Null(writer.Filename);
         }
 
+        /// <summary>
+        /// Tests that filename should be settable
+        /// </summary>
         [Fact]
         public void Filename_ShouldBeSettable()
         {
@@ -42,6 +83,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal("output.mp4", writer.Filename);
         }
 
+        /// <summary>
+        /// Tests that input data stream default should be null
+        /// </summary>
         [Fact]
         public void InputDataStream_Default_ShouldBeNull()
         {
@@ -49,6 +93,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Null(writer.InputDataStream);
         }
 
+        /// <summary>
+        /// Tests that opened for writing default should be false
+        /// </summary>
         [Fact]
         public void OpenedForWriting_Default_ShouldBeFalse()
         {
@@ -56,6 +103,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Tests that write frame when not opened should throw
+        /// </summary>
         [Fact]
         public void WriteFrame_WhenNotOpened_ShouldThrow()
         {
@@ -63,6 +113,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Throws<InvalidOperationException>(() => writer.WriteFrame(new TestFrame(new byte[] { 1 })));
         }
 
+        /// <summary>
+        /// Tests that write frame when opened should write to stream
+        /// </summary>
         [Fact]
         public void WriteFrame_WhenOpened_ShouldWriteToStream()
         {
@@ -77,6 +130,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(payload, stream.ToArray());
         }
 
+        /// <summary>
+        /// Tests that file to file with echo should return process
+        /// </summary>
         [Fact]
         public void FileToFile_WithEcho_ShouldReturnProcess()
         {
@@ -94,6 +150,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             process?.Dispose();
         }
 
+        /// <summary>
+        /// Tests that stream to file with echo should return stream
+        /// </summary>
         [Fact]
         public void StreamToFile_WithEcho_ShouldReturnStream()
         {
@@ -111,6 +170,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             process?.Dispose();
         }
 
+        /// <summary>
+        /// Tests that file to stream with echo should return stream
+        /// </summary>
         [Fact]
         public void FileToStream_WithEcho_ShouldReturnStream()
         {
@@ -128,6 +190,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             process?.Dispose();
         }
 
+        /// <summary>
+        /// Tests that stream to stream with echo should return streams
+        /// </summary>
         [Fact]
         public void StreamToStream_WithEcho_ShouldReturnStreams()
         {

@@ -37,11 +37,24 @@ using Xunit;
 
 namespace Alis.Core.Audio.Test.Players
 {
+    /// <summary>
+    /// The browser player coverage completion tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class BrowserPlayerCoverageCompletionTests : IDisposable
     {
+        /// <summary>
+        /// The previous active name
+        /// </summary>
         private string _previousActiveName;
+        /// <summary>
+        /// The player
+        /// </summary>
         private BrowserPlayer _player;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (_previousActiveName != null)
@@ -49,6 +62,12 @@ namespace Alis.Core.Audio.Test.Players
             try { _player?.Stop(); } catch { }
         }
 
+        /// <summary>
+        /// Setup the assembly using the specified entry name
+        /// </summary>
+        /// <param name="entryName">The entry name</param>
+        /// <param name="content">The content</param>
+        /// <returns>The name</returns>
         private string SetupAssembly(string entryName, byte[] content)
         {
             _previousActiveName = AssetRegistryTestHelper.SaveAndSetActive(null);
@@ -57,6 +76,14 @@ namespace Alis.Core.Audio.Test.Players
             return name;
         }
 
+        /// <summary>
+        /// Creates the valid wav using the specified sample rate
+        /// </summary>
+        /// <param name="sampleRate">The sample rate</param>
+        /// <param name="channels">The channels</param>
+        /// <param name="bitsPerSample">The bits per sample</param>
+        /// <param name="dataSize">The data size</param>
+        /// <returns>The wav</returns>
         private static byte[] CreateValidWav(int sampleRate = 44100, short channels = 1, short bitsPerSample = 16, int dataSize = 1764)
         {
             short blockAlign = (short)(channels * bitsPerSample / 8);
@@ -84,11 +111,17 @@ namespace Alis.Core.Audio.Test.Players
             return wav;
         }
 
+        /// <summary>
+        /// Creates the uninitialized player
+        /// </summary>
         private void CreateUninitializedPlayer()
         {
             _player = (BrowserPlayer)FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
         }
 
+        /// <summary>
+        /// Tests that playing property default should be false
+        /// </summary>
         [Fact]
         public void Playing_Property_Default_ShouldBeFalse()
         {
@@ -96,6 +129,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Playing);
         }
 
+        /// <summary>
+        /// Tests that paused property default should be false
+        /// </summary>
         [Fact]
         public void Paused_Property_Default_ShouldBeFalse()
         {
@@ -103,6 +139,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(_player.Paused);
         }
 
+        /// <summary>
+        /// Tests that play with non existent file should throw file not found exception
+        /// </summary>
         [Fact]
         public void Play_WithNonExistentFile_ShouldThrowFileNotFoundException()
         {
@@ -113,6 +152,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Contains("missing.wav", ex.Message, StringComparison.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Tests that play with empty resource should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void Play_WithEmptyResource_ShouldThrowInvalidOperationException()
         {
@@ -123,6 +165,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.ThrowsAsync<InvalidOperationException>(() => task);
         }
 
+        /// <summary>
+        /// Tests that play with too small wav should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void Play_WithTooSmallWav_ShouldThrowInvalidOperationException()
         {
@@ -135,6 +180,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.ThrowsAsync<InvalidOperationException>(() => task);
         }
 
+        /// <summary>
+        /// Tests that play with invalid riff should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void Play_WithInvalidRiff_ShouldThrowInvalidOperationException()
         {
@@ -147,6 +195,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.ThrowsAsync<InvalidOperationException>(() => task);
         }
 
+        /// <summary>
+        /// Tests that play with compressed format should throw invalid operation exception
+        /// </summary>
         [Fact]
         public void Play_WithCompressedFormat_ShouldThrowInvalidOperationException()
         {
@@ -173,6 +224,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.ThrowsAsync<InvalidOperationException>(() => task);
         }
 
+        /// <summary>
+        /// Tests that play valid wav should not throw unexpected exception
+        /// </summary>
         [Fact]
         public void Play_ValidWav_ShouldNotThrowUnexpectedException()
         {
@@ -191,6 +245,9 @@ namespace Alis.Core.Audio.Test.Players
                         (ex is InvalidOperationException ioe && ioe.Message.Contains("OpenAL")));
         }
 
+        /// <summary>
+        /// Tests that play valid wav should fire playback finished
+        /// </summary>
         [Fact]
         public void Play_ValidWav_ShouldFirePlaybackFinished()
         {
@@ -216,6 +273,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.True(eventFired);
         }
 
+        /// <summary>
+        /// Tests that pause when open al not available should throw dll not found
+        /// </summary>
         [Fact]
         public void Pause_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
@@ -223,6 +283,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Throws<DllNotFoundException>(() => { _player.Pause().GetAwaiter().GetResult(); });
         }
 
+        /// <summary>
+        /// Tests that resume when open al not available should throw dll not found
+        /// </summary>
         [Fact]
         public void Resume_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
@@ -230,6 +293,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Throws<DllNotFoundException>(() => { _player.Resume().GetAwaiter().GetResult(); });
         }
 
+        /// <summary>
+        /// Tests that stop when open al not available should throw dll not found
+        /// </summary>
         [Fact]
         public void Stop_WhenOpenAlNotAvailable_ShouldThrowDllNotFound()
         {
@@ -237,6 +303,9 @@ namespace Alis.Core.Audio.Test.Players
             Assert.Throws<DllNotFoundException>(() => { _player.Stop().GetAwaiter().GetResult(); });
         }
 
+        /// <summary>
+        /// Tests that play should handle playback finished without handler
+        /// </summary>
         [Fact]
         public void Play_ShouldHandlePlaybackFinishedWithoutHandler()
         {

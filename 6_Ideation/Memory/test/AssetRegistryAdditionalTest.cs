@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Memory.Test
 {
+    /// <summary>
+    /// The asset registry additional test class
+    /// </summary>
     public class AssetRegistryAdditionalTest
     {
+        /// <summary>
+        /// Tests that to lower hex null bytes returns empty
+        /// </summary>
         [Fact]
         public void ToLowerHex_NullBytes_ReturnsEmpty()
         {
@@ -52,6 +58,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(string.Empty, result);
         }
 
+        /// <summary>
+        /// Tests that to lower hex empty bytes returns empty
+        /// </summary>
         [Fact]
         public void ToLowerHex_EmptyBytes_ReturnsEmpty()
         {
@@ -70,6 +79,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal(string.Empty, result);
         }
 
+        /// <summary>
+        /// Tests that to lower hex valid bytes returns hex string
+        /// </summary>
         [Fact]
         public void ToLowerHex_ValidBytes_ReturnsHexString()
         {
@@ -89,6 +101,9 @@ namespace Alis.Core.Aspect.Memory.Test
             Assert.Equal("ab1f00ff", result);
         }
 
+        /// <summary>
+        /// Tests that zip cache entry pack bytes read only returns span
+        /// </summary>
         [Fact]
         public void ZipCacheEntry_PackBytesReadOnly_ReturnsSpan()
         {
@@ -105,6 +120,9 @@ namespace Alis.Core.Aspect.Memory.Test
 #endif
         }
 
+        /// <summary>
+        /// Tests that zip cache entry pack bytes read only reflects changes
+        /// </summary>
         [Fact]
         public void ZipCacheEntry_PackBytesReadOnly_ReflectsChanges()
         {

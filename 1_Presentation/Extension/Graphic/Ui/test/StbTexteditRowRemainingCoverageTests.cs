@@ -36,6 +36,9 @@ namespace Alis.Extension.Graphic.Ui.Test
     /// </summary>
     public class StbTexteditRowRemainingCoverageTests
     {
+        /// <summary>
+        /// Tests that default x 0 should be zero
+        /// </summary>
         [Fact]
         public void DefaultX0_ShouldBeZero()
         {
@@ -43,6 +46,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0f, row.X0);
         }
 
+        /// <summary>
+        /// Tests that default x 1 should be zero
+        /// </summary>
         [Fact]
         public void DefaultX1_ShouldBeZero()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0f, row.X1);
         }
 
+        /// <summary>
+        /// Tests that default baseline y delta should be zero
+        /// </summary>
         [Fact]
         public void DefaultBaselineYDelta_ShouldBeZero()
         {
@@ -57,6 +66,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0f, row.BaselineYDelta);
         }
 
+        /// <summary>
+        /// Tests that default ymin should be zero
+        /// </summary>
         [Fact]
         public void DefaultYmin_ShouldBeZero()
         {
@@ -64,6 +76,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0f, row.Ymin);
         }
 
+        /// <summary>
+        /// Tests that default ymax should be zero
+        /// </summary>
         [Fact]
         public void DefaultYmax_ShouldBeZero()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0f, row.Ymax);
         }
 
+        /// <summary>
+        /// Tests that default num chars should be zero
+        /// </summary>
         [Fact]
         public void DefaultNumChars_ShouldBeZero()
         {
@@ -78,6 +96,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, row.NumChars);
         }
 
+        /// <summary>
+        /// Tests that x 0 set and get returns correct value
+        /// </summary>
         [Fact]
         public void X0_SetAndGet_ReturnsCorrectValue()
         {
@@ -86,6 +107,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1.5f, row.X0);
         }
 
+        /// <summary>
+        /// Tests that x 1 set and get returns correct value
+        /// </summary>
         [Fact]
         public void X1_SetAndGet_ReturnsCorrectValue()
         {
@@ -94,6 +118,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(2.5f, row.X1);
         }
 
+        /// <summary>
+        /// Tests that baseline y delta set and get returns correct value
+        /// </summary>
         [Fact]
         public void BaselineYDelta_SetAndGet_ReturnsCorrectValue()
         {
@@ -102,6 +129,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(3.5f, row.BaselineYDelta);
         }
 
+        /// <summary>
+        /// Tests that ymin set and get returns correct value
+        /// </summary>
         [Fact]
         public void Ymin_SetAndGet_ReturnsCorrectValue()
         {
@@ -110,6 +140,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(4.5f, row.Ymin);
         }
 
+        /// <summary>
+        /// Tests that ymax set and get returns correct value
+        /// </summary>
         [Fact]
         public void Ymax_SetAndGet_ReturnsCorrectValue()
         {
@@ -118,6 +151,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(5.5f, row.Ymax);
         }
 
+        /// <summary>
+        /// Tests that num chars set and get returns correct value
+        /// </summary>
         [Fact]
         public void NumChars_SetAndGet_ReturnsCorrectValue()
         {

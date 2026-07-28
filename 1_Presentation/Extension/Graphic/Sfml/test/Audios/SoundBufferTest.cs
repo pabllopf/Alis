@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Audios
 {
+    /// <summary>
+    /// The sound buffer test class
+    /// </summary>
     public class SoundBufferTest
     {
+        /// <summary>
+        /// Sounds the buffer is assignable from object base
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_IsAssignableFromObjectBase()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.True(typeof(ObjectBase).IsAssignableFrom(type));
         }
 
+        /// <summary>
+        /// Sounds the buffer class exists
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Class_Exists()
         {
@@ -52,12 +61,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(type);
         }
 
+        /// <summary>
+        /// Sounds the buffer implements i disposable
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Implements_IDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(SoundBuffer)));
         }
 
+        /// <summary>
+        /// Sounds the buffer has sample rate property
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_SampleRate_Property()
         {
@@ -68,6 +83,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(uint), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has channel count property
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_ChannelCount_Property()
         {
@@ -78,6 +96,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(uint), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has duration property
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Duration_Property()
         {
@@ -88,6 +109,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(SfmlTime), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has samples property
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Samples_Property()
         {
@@ -98,6 +122,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(short[]), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has save to file method
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_SaveToFile_Method()
         {
@@ -107,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(bool), method.ReturnType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has destroy method
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Destroy_Method()
         {
@@ -115,6 +145,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(method);
         }
 
+        /// <summary>
+        /// Sounds the buffer to string returns formatted string
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_ToString_Returns_Formatted_String()
         {
@@ -124,6 +157,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.Equal(typeof(string), method.ReturnType);
         }
 
+        /// <summary>
+        /// Sounds the buffer has string constructor
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_String_Constructor()
         {
@@ -132,6 +168,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Sounds the buffer has stream constructor
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Stream_Constructor()
         {
@@ -140,6 +179,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Sounds the buffer has byte array constructor
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_ByteArray_Constructor()
         {
@@ -148,6 +190,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Sounds the buffer has samples constructor
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Samples_Constructor()
         {
@@ -156,6 +201,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Sounds the buffer has copy constructor
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_Copy_Constructor()
         {
@@ -164,24 +212,36 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Sounds the buffer namespace is correct
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Namespace_Is_Correct()
         {
             Assert.Equal("Alis.Extension.Graphic.Sfml.Audios", typeof(SoundBuffer).Namespace);
         }
 
+        /// <summary>
+        /// Sounds the buffer is public
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_IsPublic()
         {
             Assert.True(typeof(SoundBuffer).IsPublic);
         }
 
+        /// <summary>
+        /// Sounds the buffer has base type object base
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_Has_BaseType_ObjectBase()
         {
             Assert.Equal(typeof(ObjectBase), typeof(SoundBuffer).BaseType);
         }
 
+        /// <summary>
+        /// Sounds the buffer base type has c pointer property
+        /// </summary>
         [RequireCSfmlAudioFact]
         public void SoundBuffer_BaseType_Has_CPointer_Property()
         {

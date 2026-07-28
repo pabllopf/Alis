@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test.Structs
 {
+    /// <summary>
+    /// The game pad state tests class
+    /// </summary>
     public class GamePadStateTests
     {
+        /// <summary>
+        /// Tests that game pad state struct size is correct
+        /// </summary>
         [Fact]
         public void GamePadState_StructSize_IsCorrect()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             Assert.Equal(39, size);
         }
 
+        /// <summary>
+        /// Tests that game pad state get button state returns press when button is pressed
+        /// </summary>
         [Fact]
         public void GamePadState_GetButtonState_ReturnsPress_WhenButtonIsPressed()
         {
@@ -72,6 +81,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get button state returns release when button is not pressed
+        /// </summary>
         [Fact]
         public void GamePadState_GetButtonState_ReturnsRelease_WhenButtonIsNotPressed()
         {
@@ -97,6 +109,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get button state returns repeat when button is repeated
+        /// </summary>
         [Fact]
         public void GamePadState_GetButtonState_ReturnsRepeat_WhenButtonIsRepeated()
         {
@@ -122,6 +137,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get button state returns correct state for dpad up
+        /// </summary>
         [Fact]
         public void GamePadState_GetButtonState_ReturnsCorrectState_ForDpadUp()
         {
@@ -147,6 +165,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for left x
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForLeftX()
         {
@@ -173,6 +194,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for left y
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForLeftY()
         {
@@ -197,6 +221,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for right x
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForRightX()
         {
@@ -221,6 +248,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for right y
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForRightY()
         {
@@ -245,6 +275,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for left trigger
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForLeftTrigger()
         {
@@ -269,6 +302,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state get axis returns correct value for right trigger
+        /// </summary>
         [Fact]
         public void GamePadState_GetAxis_ReturnsCorrectValue_ForRightTrigger()
         {
@@ -293,6 +329,9 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             }
         }
 
+        /// <summary>
+        /// Tests that game pad state can be allocated in unmanaged memory and all fields round trip
+        /// </summary>
         [Fact]
         public void GamePadState_CanBeAllocatedInUnmanagedMemory_AndAllFieldsRoundTrip()
         {

@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The joystick test class
+    /// </summary>
     public class JoystickTest
     {
+        /// <summary>
+        /// Tests that axis enum has correct values
+        /// </summary>
         [Fact]
         public void Axis_Enum_HasCorrectValues()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(7, (int)Joystick.Axis.PovY);
         }
 
+        /// <summary>
+        /// Tests that constants are correct
+        /// </summary>
         [Fact]
         public void Constants_AreCorrect()
         {
@@ -57,6 +66,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(8u, Joystick.AxisCount);
         }
 
+        /// <summary>
+        /// Tests that is connected invoke returns false
+        /// </summary>
         [Fact]
         public void IsConnected_Invoke_ReturnsFalse()
         {
@@ -64,6 +76,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is connected invoke with max joystick returns false
+        /// </summary>
         [Fact]
         public void IsConnected_Invoke_WithMaxJoystick_ReturnsFalse()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that get button count invoke returns zero
+        /// </summary>
         [Fact]
         public void GetButtonCount_Invoke_ReturnsZero()
         {
@@ -78,6 +96,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0u, result);
         }
 
+        /// <summary>
+        /// Tests that get button count invoke with max joystick returns zero
+        /// </summary>
         [Fact]
         public void GetButtonCount_Invoke_WithMaxJoystick_ReturnsZero()
         {
@@ -85,6 +106,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0u, result);
         }
 
+        /// <summary>
+        /// Tests that has axis invoke with x returns false
+        /// </summary>
         [Fact]
         public void HasAxis_Invoke_WithX_ReturnsFalse()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that has axis invoke with all axes returns false
+        /// </summary>
         [Fact]
         public void HasAxis_Invoke_WithAllAxes_ReturnsFalse()
         {
@@ -102,6 +129,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that is button pressed invoke returns false
+        /// </summary>
         [Fact]
         public void IsButtonPressed_Invoke_ReturnsFalse()
         {
@@ -109,6 +139,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that is button pressed invoke with max button returns false
+        /// </summary>
         [Fact]
         public void IsButtonPressed_Invoke_WithMaxButton_ReturnsFalse()
         {
@@ -116,6 +149,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that get axis position invoke returns zero
+        /// </summary>
         [Fact]
         public void GetAxisPosition_Invoke_ReturnsZero()
         {
@@ -123,6 +159,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(0f, result);
         }
 
+        /// <summary>
+        /// Tests that get axis position invoke with all axes returns zero
+        /// </summary>
         [Fact]
         public void GetAxisPosition_Invoke_WithAllAxes_ReturnsZero()
         {
@@ -133,12 +172,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that update invoke does not throw
+        /// </summary>
         [Fact]
         public void Update_Invoke_DoesNotThrow()
         {
             Joystick.Update();
         }
 
+        /// <summary>
+        /// Tests that get identification invoke does not throw
+        /// </summary>
         [Fact]
         public void GetIdentification_Invoke_DoesNotThrow()
         {
@@ -146,6 +191,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that get identification invoke returns non empty name
+        /// </summary>
         [Fact]
         public void GetIdentification_Invoke_ReturnsNonEmptyName()
         {
@@ -154,6 +202,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotEmpty(result.Name);
         }
 
+        /// <summary>
+        /// Tests that identification struct has properties
+        /// </summary>
         [Fact]
         public void Identification_Struct_HasProperties()
         {
@@ -163,6 +214,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(identType.GetProperty("ProductId"));
         }
 
+        /// <summary>
+        /// Tests that identification struct can set properties
+        /// </summary>
         [Fact]
         public void Identification_Struct_CanSetProperties()
         {
@@ -177,6 +231,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(5678u, ident.ProductId);
         }
 
+        /// <summary>
+        /// Tests that sf joystick is connected dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_isConnected_DllImport_Exists()
         {
@@ -194,6 +251,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick get button count dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_getButtonCount_DllImport_Exists()
         {
@@ -211,6 +271,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick has axis dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_hasAxis_DllImport_Exists()
         {
@@ -228,6 +291,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick is button pressed dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_isButtonPressed_DllImport_Exists()
         {
@@ -245,6 +311,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick get axis position dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_getAxisPosition_DllImport_Exists()
         {
@@ -262,6 +331,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick update dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_update_DllImport_Exists()
         {
@@ -279,6 +351,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.NotNull(method.GetCustomAttribute<DllImportAttribute>());
         }
 
+        /// <summary>
+        /// Tests that sf joystick get identification dll import exists
+        /// </summary>
         [Fact]
         public void SfJoystick_getIdentification_DllImport_Exists()
         {

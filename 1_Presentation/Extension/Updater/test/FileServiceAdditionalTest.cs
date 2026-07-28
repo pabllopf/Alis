@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Updater.Test
 {
+    /// <summary>
+    /// The file service additional test class
+    /// </summary>
     public class FileServiceAdditionalTest
     {
+        /// <summary>
+        /// Tests that download file async throws not implemented exception
+        /// </summary>
         [Fact]
         public void DownloadFileAsync_ThrowsNotImplementedException()
         {

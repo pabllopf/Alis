@@ -34,8 +34,15 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui style tests class
+    /// </summary>
     public class ImGuiStyleTests
     {
+        /// <summary>
+        /// Tests that indexer get every index should return correct color
+        /// </summary>
+        /// <param name="index">The index</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -159,6 +166,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, style[index]);
         }
 
+        /// <summary>
+        /// Tests that indexer set every index should set correct color
+        /// </summary>
+        /// <param name="index">The index</param>
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
@@ -282,6 +293,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that indexer get negative index should throw
+        /// </summary>
         [Fact]
         public void Indexer_Get_NegativeIndex_ShouldThrow()
         {
@@ -289,6 +303,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<CustomIndexOutOfRangeException>(() => style[-1]);
         }
 
+        /// <summary>
+        /// Tests that indexer get index out of range should throw
+        /// </summary>
         [Fact]
         public void Indexer_Get_IndexOutOfRange_ShouldThrow()
         {
@@ -296,6 +313,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<CustomIndexOutOfRangeException>(() => style[55]);
         }
 
+        /// <summary>
+        /// Tests that indexer set negative index should throw
+        /// </summary>
         [Fact]
         public void Indexer_Set_NegativeIndex_ShouldThrow()
         {
@@ -303,6 +323,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<CustomIndexOutOfRangeException>(() => style[-1] = new Vector4F());
         }
 
+        /// <summary>
+        /// Tests that indexer set index out of range should throw
+        /// </summary>
         [Fact]
         public void Indexer_Set_IndexOutOfRange_ShouldThrow()
         {
@@ -310,6 +333,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<CustomIndexOutOfRangeException>(() => style[55] = new Vector4F());
         }
 
+        /// <summary>
+        /// Scales the all sizes should not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ScaleAllSizes_ShouldNotThrow()
         {
@@ -317,6 +343,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             style.ScaleAllSizes(1.5f);
         }
 
+        /// <summary>
+        /// Scales the all sizes with zero should not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ScaleAllSizes_WithZero_ShouldNotThrow()
         {
@@ -324,6 +353,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             style.ScaleAllSizes(0.0f);
         }
 
+        /// <summary>
+        /// Scales the all sizes with negative should not throw
+        /// </summary>
         [RequireCImguiSystemFact]
         public void ScaleAllSizes_WithNegative_ShouldNotThrow()
         {

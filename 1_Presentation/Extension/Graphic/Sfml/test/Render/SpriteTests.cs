@@ -33,56 +33,86 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The sprite tests class
+    /// </summary>
     public class SpriteTests
     {
+        /// <summary>
+        /// Tests that sprite is assignable from transformable
+        /// </summary>
         [Fact]
         public void Sprite_IsAssignableFromTransformable()
         {
             Assert.True(typeof(Transformable).IsAssignableFrom(typeof(Sprite)));
         }
 
+        /// <summary>
+        /// Tests that sprite implements i drawable
+        /// </summary>
         [Fact]
         public void Sprite_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(Sprite)));
         }
 
+        /// <summary>
+        /// Tests that sprite is i disposable
+        /// </summary>
         [Fact]
         public void Sprite_IsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Sprite)));
         }
 
+        /// <summary>
+        /// Tests that constructor default exists
+        /// </summary>
         [Fact]
         public void Constructor_Default_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetConstructor(Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that constructor texture exists
+        /// </summary>
         [Fact]
         public void Constructor_Texture_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetConstructor(new[] { typeof(Texture) }));
         }
 
+        /// <summary>
+        /// Tests that constructor texture and int rect exists
+        /// </summary>
         [Fact]
         public void Constructor_TextureAndIntRect_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetConstructor(new[] { typeof(Texture), typeof(IntRect) }));
         }
 
+        /// <summary>
+        /// Tests that constructor copy exists
+        /// </summary>
         [Fact]
         public void Constructor_Copy_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetConstructor(new[] { typeof(Sprite) }));
         }
 
+        /// <summary>
+        /// Tests that color property exists
+        /// </summary>
         [Fact]
         public void Color_Property_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetProperty("Color"));
         }
 
+        /// <summary>
+        /// Tests that color property is read write
+        /// </summary>
         [Fact]
         public void Color_Property_IsReadWrite()
         {
@@ -92,12 +122,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that texture property exists
+        /// </summary>
         [Fact]
         public void Texture_Property_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetProperty("Texture"));
         }
 
+        /// <summary>
+        /// Tests that texture property is read write
+        /// </summary>
         [Fact]
         public void Texture_Property_IsReadWrite()
         {
@@ -107,12 +143,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that texture rect property exists
+        /// </summary>
         [Fact]
         public void TextureRect_Property_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetProperty("TextureRect"));
         }
 
+        /// <summary>
+        /// Tests that texture rect property is read write
+        /// </summary>
         [Fact]
         public void TextureRect_Property_IsReadWrite()
         {
@@ -122,36 +164,54 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that draw method exists
+        /// </summary>
         [Fact]
         public void Draw_Method_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetMethod("Draw", new[] { typeof(IRenderTarget), typeof(RenderStates) }));
         }
 
+        /// <summary>
+        /// Tests that get local bounds method exists
+        /// </summary>
         [Fact]
         public void GetLocalBounds_Method_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetMethod("GetLocalBounds"));
         }
 
+        /// <summary>
+        /// Tests that get global bounds method exists
+        /// </summary>
         [Fact]
         public void GetGlobalBounds_Method_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetMethod("GetGlobalBounds"));
         }
 
+        /// <summary>
+        /// Tests that to string method exists
+        /// </summary>
         [Fact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetMethod("ToString"));
         }
 
+        /// <summary>
+        /// Tests that destroy method exists
+        /// </summary>
         [Fact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(Sprite).GetMethod("Destroy"));
         }
 
+        /// <summary>
+        /// Tests that to string is override
+        /// </summary>
         [Fact]
         public void ToString_IsOverride()
         {
@@ -161,6 +221,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that destroy is override
+        /// </summary>
         [Fact]
         public void Destroy_IsOverride()
         {
@@ -170,6 +233,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that sprite has public parameterless constructor
+        /// </summary>
         [Fact]
         public void Sprite_HasPublicParameterlessConstructor()
         {
@@ -178,6 +244,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that get local bounds returns float rect
+        /// </summary>
         [Fact]
         public void GetLocalBounds_ReturnsFloatRect()
         {
@@ -186,6 +255,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(FloatRect), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get global bounds returns float rect
+        /// </summary>
         [Fact]
         public void GetGlobalBounds_ReturnsFloatRect()
         {
@@ -194,6 +266,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(FloatRect), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that color property type is color
+        /// </summary>
         [Fact]
         public void Color_Property_TypeIsColor()
         {
@@ -202,6 +277,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Color), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that texture property type is texture
+        /// </summary>
         [Fact]
         public void Texture_Property_TypeIsTexture()
         {
@@ -210,6 +288,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Texture), prop.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that texture rect property type is int rect
+        /// </summary>
         [Fact]
         public void TextureRect_Property_TypeIsIntRect()
         {

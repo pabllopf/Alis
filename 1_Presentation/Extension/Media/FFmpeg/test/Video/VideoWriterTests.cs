@@ -39,12 +39,28 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video writer tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class VideoWriterTests : IDisposable
     {
+        /// <summary>
+        /// The temp dir
+        /// </summary>
         private readonly string _tempDir;
+        /// <summary>
+        /// The fake ffmpeg path
+        /// </summary>
         private readonly string _fakeFfmpegPath;
+        /// <summary>
+        /// The disposed
+        /// </summary>
         private bool _disposed;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VideoWriterTests"/> class
+        /// </summary>
         public VideoWriterTests()
         {
             _tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
@@ -56,6 +72,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             chmod.WaitForExit();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_disposed)
@@ -67,6 +86,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 }
             }
         }
+        /// <summary>
+        /// Tests that file ctor null filename throws argument null exception
+        /// </summary>
         [Fact]
         public void FileCtor_NullFilename_ThrowsArgumentNullException()
         {
@@ -75,6 +97,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("Filename can't be null or empty!", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor empty filename throws argument null exception
+        /// </summary>
         [Fact]
         public void FileCtor_EmptyFilename_ThrowsArgumentNullException()
         {
@@ -83,6 +108,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("Filename can't be null or empty!", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor zero width throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_ZeroWidth_ThrowsInvalidDataException()
         {
@@ -91,6 +119,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("dimensions have to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor negative width throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_NegativeWidth_ThrowsInvalidDataException()
         {
@@ -99,6 +130,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("dimensions have to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor zero height throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_ZeroHeight_ThrowsInvalidDataException()
         {
@@ -107,6 +141,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("dimensions have to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor negative height throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_NegativeHeight_ThrowsInvalidDataException()
         {
@@ -115,6 +152,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("dimensions have to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor zero framerate throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_ZeroFramerate_ThrowsInvalidDataException()
         {
@@ -123,6 +163,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("framerate has to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor negative framerate throws invalid data exception
+        /// </summary>
         [Fact]
         public void FileCtor_NegativeFramerate_ThrowsInvalidDataException()
         {
@@ -131,6 +174,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("framerate has to be bigger than 0", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that file ctor valid params sets properties correctly
+        /// </summary>
         [Fact]
         public void FileCtor_ValidParams_SetsPropertiesCorrectly()
         {
@@ -153,6 +199,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.CurrentFFmpegProcess);
         }
 
+        /// <summary>
+        /// Tests that file ctor default encoder options creates h 264 encoder
+        /// </summary>
         [Fact]
         public void FileCtor_DefaultEncoderOptions_CreatesH264Encoder()
         {
@@ -162,6 +211,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal("libx264", writer.EncoderOptions.EncoderName);
         }
 
+        /// <summary>
+        /// Tests that file ctor private ffmpeg field stores executable
+        /// </summary>
         [Fact]
         public void FileCtor_PrivateFfmpegField_StoresExecutable()
         {
@@ -171,6 +223,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that stream ctor null stream throws argument null exception
+        /// </summary>
         [Fact]
         public void StreamCtor_NullStream_ThrowsArgumentNullException()
         {
@@ -179,6 +234,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Contains("Stream can't be null!", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that stream ctor zero width throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_ZeroWidth_ThrowsInvalidDataException()
         {
@@ -186,6 +244,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 0, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that stream ctor negative width throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_NegativeWidth_ThrowsInvalidDataException()
         {
@@ -193,6 +254,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, -1, 1080, 30));
         }
 
+        /// <summary>
+        /// Tests that stream ctor zero height throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_ZeroHeight_ThrowsInvalidDataException()
         {
@@ -200,6 +264,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 0, 30));
         }
 
+        /// <summary>
+        /// Tests that stream ctor negative height throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_NegativeHeight_ThrowsInvalidDataException()
         {
@@ -207,6 +274,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, -1, 30));
         }
 
+        /// <summary>
+        /// Tests that stream ctor zero framerate throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_ZeroFramerate_ThrowsInvalidDataException()
         {
@@ -214,6 +284,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, 0));
         }
 
+        /// <summary>
+        /// Tests that stream ctor negative framerate throws invalid data exception
+        /// </summary>
         [Fact]
         public void StreamCtor_NegativeFramerate_ThrowsInvalidDataException()
         {
@@ -221,6 +294,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<InvalidDataException>(() => new VideoWriter(ms, 1920, 1080, -1));
         }
 
+        /// <summary>
+        /// Tests that stream ctor valid params sets properties correctly
+        /// </summary>
         [Fact]
         public void StreamCtor_ValidParams_SetsPropertiesCorrectly()
         {
@@ -244,6 +320,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.CurrentFFmpegProcess);
         }
 
+        /// <summary>
+        /// Tests that stream ctor default encoder options creates h 264 encoder
+        /// </summary>
         [Fact]
         public void StreamCtor_DefaultEncoderOptions_CreatesH264Encoder()
         {
@@ -254,6 +333,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal("libx264", writer.EncoderOptions.EncoderName);
         }
 
+        /// <summary>
+        /// Tests that stream ctor private ffmpeg field stores executable
+        /// </summary>
         [Fact]
         public void StreamCtor_PrivateFfmpegField_StoresExecutable()
         {
@@ -264,6 +346,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose public method completes without exception
+        /// </summary>
         [Fact]
         public void Dispose_PublicMethod_CompletesWithoutException()
         {
@@ -272,6 +357,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing false does not release managed resources
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingFalse_DoesNotReleaseManagedResources()
         {
@@ -288,6 +376,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing true and opened for writing calls close write
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingTrueAndOpenedForWriting_CallsCloseWrite()
         {
@@ -321,6 +412,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing true disposes destination stream
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingTrue_DisposesDestinationStream()
         {
@@ -332,6 +426,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing true disposes cancellation token source
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingTrue_DisposesCancellationTokenSource()
         {
@@ -347,6 +444,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing true and null csc does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingTrueAndNullCsc_DoesNotThrow()
         {
@@ -359,6 +459,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with disposing true and null destination stream does not throw
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposingTrueAndNullDestinationStream_DoesNotThrow()
         {
@@ -371,6 +474,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that open write already opened throws invalid operation exception
+        /// </summary>
         [Fact]
         public void OpenWrite_AlreadyOpened_ThrowsInvalidOperationException()
         {
@@ -386,6 +492,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write not opened throws invalid operation exception
+        /// </summary>
         [Fact]
         public void CloseWrite_NotOpened_ThrowsInvalidOperationException()
         {
@@ -394,6 +503,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write null ffmpegp sets opened for writing false
+        /// </summary>
         [Fact]
         public void CloseWrite_NullFfmpegp_SetsOpenedForWritingFalse()
         {
@@ -411,6 +523,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write file mode with exited process completes successfully
+        /// </summary>
         [Fact]
         public void CloseWrite_FileModeWithExitedProcess_CompletesSuccessfully()
         {
@@ -442,6 +557,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write stream mode with exited process completes successfully
+        /// </summary>
         [Fact]
         public void CloseWrite_StreamModeWithExitedProcess_CompletesSuccessfully()
         {
@@ -479,6 +597,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write process needs kill kills and waits for exit
+        /// </summary>
         [Fact]
         public void CloseWrite_ProcessNeedsKill_KillsAndWaitsForExit()
         {
@@ -513,6 +634,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that close write stream mode disposes output stream
+        /// </summary>
         [Fact]
         public void CloseWrite_StreamMode_DisposesOutputStream()
         {
@@ -550,6 +674,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
+        /// <summary>
+        /// Tests that internal fields csc and ffmpegp initially null
+        /// </summary>
         [Fact]
         public void InternalFields_CscAndFfmpegp_InitiallyNull()
         {
@@ -560,6 +687,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ffmpegpField.GetValue(writer));
         }
 
+        /// <summary>
+        /// Tests that current f fmpeg process returns null initially
+        /// </summary>
         [Fact]
         public void CurrentFFmpegProcess_ReturnsNullInitially()
         {
@@ -567,6 +697,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.CurrentFFmpegProcess);
         }
 
+        /// <summary>
+        /// Tests that output data stream returns null initially
+        /// </summary>
         [Fact]
         public void OutputDataStream_ReturnsNullInitially()
         {
@@ -574,6 +707,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.OutputDataStream);
         }
 
+        /// <summary>
+        /// Tests that destination stream file ctor returns null
+        /// </summary>
         [Fact]
         public void DestinationStream_FileCtor_ReturnsNull()
         {
@@ -581,6 +717,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.DestinationStream);
         }
 
+        /// <summary>
+        /// Tests that destination stream stream ctor returns provided stream
+        /// </summary>
         [Fact]
         public void DestinationStream_StreamCtor_ReturnsProvidedStream()
         {
@@ -589,6 +728,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(ms, writer.DestinationStream);
         }
 
+        /// <summary>
+        /// Tests that input data stream default should be null
+        /// </summary>
         [Fact]
         public void InputDataStream_Default_ShouldBeNull()
         {
@@ -596,6 +738,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.InputDataStream);
         }
 
+        /// <summary>
+        /// Tests that opened for writing default should be false
+        /// </summary>
         [Fact]
         public void OpenedForWriting_Default_ShouldBeFalse()
         {
@@ -603,6 +748,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.OpenedForWriting);
         }
 
+        /// <summary>
+        /// Tests that filename default should be null
+        /// </summary>
         [Fact]
         public void Filename_Default_ShouldBeNull()
         {
@@ -611,6 +759,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(writer.Filename);
         }
 
+        /// <summary>
+        /// Tests that open write file mode opens and sets input stream
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_OpensAndSetsInputStream()
         {
@@ -625,6 +776,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write file mode with existing file deletes file first
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_WithExistingFile_DeletesFileFirst()
         {
@@ -637,6 +791,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write file mode with show f fmpeg output works
+        /// </summary>
         [Fact]
         public void OpenWrite_FileMode_WithShowFFmpegOutput_Works()
         {
@@ -649,6 +806,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that open write stream mode opens and sets streams
+        /// </summary>
         [Fact]
         public void OpenWrite_StreamMode_OpensAndSetsStreams()
         {
@@ -664,6 +824,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.CloseWrite();
         }
 
+        /// <summary>
+        /// Tests that dispose with opened for writing calls close write
+        /// </summary>
         [Fact]
         public void Dispose_WithOpenedForWriting_CallsCloseWrite()
         {

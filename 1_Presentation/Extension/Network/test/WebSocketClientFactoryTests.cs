@@ -41,8 +41,14 @@ using Xunit;
 
 namespace Alis.Extension.Network.Test
 {
+    /// <summary>
+    /// The web socket client factory tests class
+    /// </summary>
     public class WebSocketClientFactoryTests
     {
+        /// <summary>
+        /// Tests that connect async uri default returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_UriDefault_ReturnsWebSocket()
         {
@@ -53,6 +59,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async uri with options returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_UriWithOptions_ReturnsWebSocket()
         {
@@ -63,6 +72,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async uri with custom options returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_UriWithCustomOptions_ReturnsWebSocket()
         {
@@ -81,6 +93,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async uri with ssl scheme uses ssl
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_UriWithSslScheme_UsesSsl()
         {
@@ -92,6 +107,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that get stream with host name returns stream
+        /// </summary>
         [Fact]
         public async Task GetStream_WithHostName_ReturnsStream()
         {
@@ -111,6 +129,9 @@ namespace Alis.Extension.Network.Test
             listener.Stop();
         }
 
+        /// <summary>
+        /// Tests that get stream with ip address returns stream
+        /// </summary>
         [Fact]
         public async Task GetStream_WithIpAddress_ReturnsStream()
         {
@@ -130,6 +151,9 @@ namespace Alis.Extension.Network.Test
             listener.Stop();
         }
 
+        /// <summary>
+        /// Tests that get stream with no delay false sets tcp client
+        /// </summary>
         [Fact]
         public async Task GetStream_WithNoDelayFalse_SetsTcpClient()
         {
@@ -146,6 +170,9 @@ namespace Alis.Extension.Network.Test
             listener.Stop();
         }
 
+        /// <summary>
+        /// Tests that get stream with cancelled token throws
+        /// </summary>
         [Fact]
         public async Task GetStream_WithCancelledToken_Throws()
         {
@@ -161,6 +188,9 @@ namespace Alis.Extension.Network.Test
             listener.Stop();
         }
 
+        /// <summary>
+        /// Tests that tls authenticate as client virtual method can be overridden
+        /// </summary>
         [Fact]
         public void TlsAuthenticateAsClient_VirtualMethod_CanBeOverridden()
         {
@@ -171,6 +201,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(factory.TlsAuthenticateWasCalled);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate not available returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateNotAvailable_ReturnsFalse()
         {
@@ -179,6 +212,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate name mismatch returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateNameMismatch_ReturnsFalse()
         {
@@ -187,6 +223,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate remote certificate chain errors returns false
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_RemoteCertificateChainErrors_ReturnsFalse()
         {
@@ -195,6 +234,9 @@ namespace Alis.Extension.Network.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that validate server certificate no errors returns true
+        /// </summary>
         [Fact]
         public void ValidateServerCertificate_NoErrors_ReturnsTrue()
         {
@@ -202,6 +244,9 @@ namespace Alis.Extension.Network.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code null response throws
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_NullResponse_Throws()
         {
@@ -209,12 +254,18 @@ namespace Alis.Extension.Network.Test
                 WebSocketClientFactory.ThrowIfInvalidResponseCode(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code 101 response does not throw
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_101Response_DoesNotThrow()
         {
             WebSocketClientFactory.ThrowIfInvalidResponseCode("HTTP/1.1 101 Switching Protocols\r\n\r\n");
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code non 101 response throws
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_Non101Response_Throws()
         {
@@ -225,6 +276,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Line2", ex.ResponseDetails);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code non 101 no body throws
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_Non101NoBody_Throws()
         {
@@ -233,12 +287,18 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("500 Error", ex.ResponseCode);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid response code non 101 without body separator falls through
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidResponseCode_Non101WithoutBodySeparator_FallsThrough()
         {
             WebSocketClientFactory.ThrowIfInvalidResponseCode("HTTP/1.1 200 OK\r\nContent-Type: text/plain");
         }
 
+        /// <summary>
+        /// Tests that throw if invalid accept string valid does not throw
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidAcceptString_Valid_DoesNotThrow()
         {
@@ -248,6 +308,9 @@ namespace Alis.Extension.Network.Test
             WebSocketClientFactory.ThrowIfInvalidAcceptString(Guid.NewGuid(), response, key);
         }
 
+        /// <summary>
+        /// Tests that throw if invalid accept string invalid throws
+        /// </summary>
         [Fact]
         public void ThrowIfInvalidAcceptString_Invalid_Throws()
         {
@@ -256,6 +319,9 @@ namespace Alis.Extension.Network.Test
                     "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: invalid\r\n\r\n", "some-key"));
         }
 
+        /// <summary>
+        /// Tests that get sub protocol from header with protocol returns protocol
+        /// </summary>
         [Fact]
         public void GetSubProtocolFromHeader_WithProtocol_ReturnsProtocol()
         {
@@ -264,6 +330,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal("chat", result);
         }
 
+        /// <summary>
+        /// Tests that get sub protocol from header without protocol returns null
+        /// </summary>
         [Fact]
         public void GetSubProtocolFromHeader_WithoutProtocol_ReturnsNull()
         {
@@ -272,12 +341,18 @@ namespace Alis.Extension.Network.Test
             Assert.Null(result);
         }
 
+        /// <summary>
+        /// Tests that get additional headers null returns empty
+        /// </summary>
         [Fact]
         public void GetAdditionalHeaders_Null_ReturnsEmpty()
         {
             Assert.Equal(string.Empty, WebSocketClientFactory.GetAdditionalHeaders(null));
         }
 
+        /// <summary>
+        /// Tests that get additional headers empty returns empty
+        /// </summary>
         [Fact]
         public void GetAdditionalHeaders_Empty_ReturnsEmpty()
         {
@@ -285,6 +360,9 @@ namespace Alis.Extension.Network.Test
                 new System.Collections.Generic.Dictionary<string, string>()));
         }
 
+        /// <summary>
+        /// Tests that get additional headers with headers returns formatted
+        /// </summary>
         [Fact]
         public void GetAdditionalHeaders_WithHeaders_ReturnsFormatted()
         {
@@ -296,6 +374,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("Authorization: Bearer token\r\n", result);
         }
 
+        /// <summary>
+        /// Tests that build handshake request returns formatted
+        /// </summary>
         [Fact]
         public void BuildHandshakeRequest_ReturnsFormatted()
         {
@@ -308,6 +389,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("X-Hdr: val", request);
         }
 
+        /// <summary>
+        /// Tests that send handshake request writes to stream
+        /// </summary>
         [Fact]
         public async Task SendHandshakeRequest_WritesToStream()
         {
@@ -319,6 +403,9 @@ namespace Alis.Extension.Network.Test
             Assert.Contains("GET / HTTP/1.1", content);
         }
 
+        /// <summary>
+        /// Tests that generate sec web socket key returns base 64
+        /// </summary>
         [Fact]
         public void GenerateSecWebSocketKey_ReturnsBase64()
         {
@@ -329,6 +416,9 @@ namespace Alis.Extension.Network.Test
             Assert.Equal(16, decoded.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor default sets buffer pool
+        /// </summary>
         [Fact]
         public void Constructor_Default_SetsBufferPool()
         {
@@ -337,6 +427,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(factory.BufferFactory);
         }
 
+        /// <summary>
+        /// Tests that constructor with buffer factory sets factory
+        /// </summary>
         [Fact]
         public void Constructor_WithBufferFactory_SetsFactory()
         {
@@ -345,6 +438,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(factory);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_DoesNotThrow()
         {
@@ -353,6 +449,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose with tcp client disposes
+        /// </summary>
         [Fact]
         public void Dispose_WithTcpClient_Disposes()
         {
@@ -361,6 +460,9 @@ namespace Alis.Extension.Network.Test
             factory.Dispose();
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload valid response returns web socket
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_ValidResponse_ReturnsWebSocket()
         {
@@ -375,6 +477,9 @@ namespace Alis.Extension.Network.Test
             Assert.NotNull(ws);
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload invalid response throws
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_InvalidResponse_Throws()
         {
@@ -387,6 +492,9 @@ namespace Alis.Extension.Network.Test
                     new WebSocketClientOptions(), CancellationToken.None));
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload empty stream throws
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_EmptyStream_Throws()
         {
@@ -397,6 +505,9 @@ namespace Alis.Extension.Network.Test
                     new WebSocketClientOptions(), CancellationToken.None));
         }
 
+        /// <summary>
+        /// Tests that connect async stream overload disposed stream throws
+        /// </summary>
         [Fact]
         public async Task ConnectAsync_StreamOverload_DisposedStream_Throws()
         {
@@ -407,8 +518,22 @@ namespace Alis.Extension.Network.Test
                     new WebSocketClientOptions(), CancellationToken.None));
         }
 
+        /// <summary>
+        /// The testable factory class
+        /// </summary>
+        /// <seealso cref="WebSocketClientFactory"/>
         private class TestableFactory : WebSocketClientFactory
         {
+            /// <summary>
+            /// Gets the stream using the specified logging guid
+            /// </summary>
+            /// <param name="loggingGuid">The logging guid</param>
+            /// <param name="isSecure">The is secure</param>
+            /// <param name="noDelay">The no delay</param>
+            /// <param name="host">The host</param>
+            /// <param name="port">The port</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <returns>A task containing the stream</returns>
             internal override async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay,
                 string host, int port, CancellationToken cancellationToken)
             {
@@ -416,10 +541,27 @@ namespace Alis.Extension.Network.Test
             }
         }
 
+        /// <summary>
+        /// The ssl spy factory class
+        /// </summary>
+        /// <seealso cref="WebSocketClientFactory"/>
         private class SslSpyFactory : WebSocketClientFactory
         {
+            /// <summary>
+            /// Gets or sets the value of the tls authenticate was called
+            /// </summary>
             public bool TlsAuthenticateWasCalled { get; private set; }
 
+            /// <summary>
+            /// Gets the stream using the specified logging guid
+            /// </summary>
+            /// <param name="loggingGuid">The logging guid</param>
+            /// <param name="isSecure">The is secure</param>
+            /// <param name="noDelay">The no delay</param>
+            /// <param name="host">The host</param>
+            /// <param name="port">The port</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <returns>A task containing the stream</returns>
             internal override async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay,
                 string host, int port, CancellationToken cancellationToken)
             {
@@ -431,28 +573,68 @@ namespace Alis.Extension.Network.Test
                 return new HandshakeStream();
             }
 
+            /// <summary>
+            /// Tlses the authenticate as client using the specified ssl stream
+            /// </summary>
+            /// <param name="sslStream">The ssl stream</param>
+            /// <param name="host">The host</param>
             internal override void TlsAuthenticateAsClient(SslStream sslStream, string host)
             {
                 TlsAuthenticateWasCalled = true;
             }
         }
 
+        /// <summary>
+        /// The handshake stream class
+        /// </summary>
+        /// <seealso cref="Stream"/>
         private class HandshakeStream : Stream
         {
+            /// <summary>
+            /// The response
+            /// </summary>
             private byte[] _response;
+            /// <summary>
+            /// The read position
+            /// </summary>
             private int _readPosition;
+            /// <summary>
+            /// The response ready
+            /// </summary>
             private bool _responseReady;
 
+            /// <summary>
+            /// Gets the value of the can read
+            /// </summary>
             public override bool CanRead => true;
+            /// <summary>
+            /// Gets the value of the can write
+            /// </summary>
             public override bool CanWrite => true;
+            /// <summary>
+            /// Gets the value of the can seek
+            /// </summary>
             public override bool CanSeek => false;
+            /// <summary>
+            /// Gets the value of the length
+            /// </summary>
             public override long Length => throw new NotSupportedException();
+            /// <summary>
+            /// Gets or sets the value of the position
+            /// </summary>
             public override long Position
             {
                 get => throw new NotSupportedException();
                 set => throw new NotSupportedException();
             }
 
+            /// <summary>
+            /// Writes the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
+            /// <param name="cancellationToken">The cancellation token</param>
             public override async Task WriteAsync(byte[] buffer, int offset, int count,
                 CancellationToken cancellationToken)
             {
@@ -464,6 +646,14 @@ namespace Alis.Extension.Network.Test
                 _responseReady = true;
             }
 
+            /// <summary>
+            /// Reads the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <returns>The to copy</returns>
             public override async Task<int> ReadAsync(byte[] buffer, int offset, int count,
                 CancellationToken cancellationToken)
             {
@@ -483,13 +673,29 @@ namespace Alis.Extension.Network.Test
                 return toCopy;
             }
 
+            /// <summary>
+            /// Flushes this instance
+            /// </summary>
             public override void Flush()
             {
             }
 
+            /// <summary>
+            /// Reads the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
+            /// <returns>The int</returns>
             public override int Read(byte[] buffer, int offset, int count) =>
                 ReadAsync(buffer, offset, count).GetAwaiter().GetResult();
 
+            /// <summary>
+            /// Writes the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
             public override void Write(byte[] buffer, int offset, int count)
             {
                 string request = Encoding.UTF8.GetString(buffer, offset, count);
@@ -500,10 +706,25 @@ namespace Alis.Extension.Network.Test
                 _responseReady = true;
             }
 
+            /// <summary>
+            /// Seeks the offset
+            /// </summary>
+            /// <param name="offset">The offset</param>
+            /// <param name="origin">The origin</param>
+            /// <returns>The long</returns>
             public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
 
+            /// <summary>
+            /// Sets the length using the specified value
+            /// </summary>
+            /// <param name="value">The value</param>
             public override void SetLength(long value) => throw new NotSupportedException();
 
+            /// <summary>
+            /// Extracts the key using the specified handshake request
+            /// </summary>
+            /// <param name="handshakeRequest">The handshake request</param>
+            /// <returns>The string</returns>
             private static string ExtractKey(string handshakeRequest)
             {
                 const string prefix = "Sec-WebSocket-Key: ";

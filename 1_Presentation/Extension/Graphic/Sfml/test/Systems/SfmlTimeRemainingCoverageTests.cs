@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The sfml time remaining coverage tests class
+    /// </summary>
     public class SfmlTimeRemainingCoverageTests
     {
+        /// <summary>
+        /// Creates the milliseconds returns correct value
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void FromMilliseconds_ReturnsCorrectValue()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(500_000L, microseconds);
         }
 
+        /// <summary>
+        /// Converts the milliseconds returns correct value
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void AsMilliseconds_ReturnsCorrectValue()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(1500, ms);
         }
 
+        /// <summary>
+        /// Tests that equals boxed object returns true
+        /// </summary>
         [Fact]
         public void Equals_BoxedObject_ReturnsTrue()
         {
@@ -59,6 +71,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.True(t.Equals(obj));
         }
 
+        /// <summary>
+        /// Tests that equals non sfml time object returns false
+        /// </summary>
         [Fact]
         public void Equals_NonSfmlTimeObject_ReturnsFalse()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.False(t.Equals("hello"));
         }
 
+        /// <summary>
+        /// Tests that equals null object returns false
+        /// </summary>
         [Fact]
         public void Equals_NullObject_ReturnsFalse()
         {
@@ -74,6 +92,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.False(t.Equals(null));
         }
 
+        /// <summary>
+        /// Creates the milliseconds zero returns zero
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void FromMilliseconds_Zero_ReturnsZero()
         {
@@ -82,6 +103,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(0L, time.AsMicroseconds());
         }
 
+        /// <summary>
+        /// Creates the milliseconds negative returns negative
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void FromMilliseconds_Negative_ReturnsNegative()
         {
@@ -89,6 +113,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(-100_000L, time.AsMicroseconds());
         }
 
+        /// <summary>
+        /// Converts the milliseconds round trip consistent
+        /// </summary>
         [RequireCSfmlWindowsFact]
         public void AsMilliseconds_RoundTrip_Consistent()
         {

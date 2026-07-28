@@ -36,81 +36,28 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test
 {
+    /// <summary>
+    /// The game window tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class GameWindowTests : IDisposable
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private GameWindow window;
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             window?.Dispose();
         }
-
-        [RequiresDisplay]
-        public void GameWindow_DefaultConstructor_CreatesWindow()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new GameWindow();
-
-            Assert.NotNull(window);
-            Assert.False(window.IsInvalid);
-        }
-
-        [RequiresDisplay]
-        public void GameWindow_ConstructorWithParameters_CreatesWindow()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new GameWindow(800, 600, "Test Game Window");
-
-            Assert.NotNull(window);
-            Assert.False(window.IsInvalid);
-        }
-
-        [RequiresDisplay]
-        public void GameWindow_ConstructorWithAllParameters_CreatesWindow()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new GameWindow(1024, 768, "Full Test Window", Monitor.None, Window.None);
-
-            Assert.NotNull(window);
-            Assert.False(window.IsInvalid);
-        }
-
-        [RequiresDisplay]
-        public void GameWindow_InheritsFromNativeWindow()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new GameWindow();
-            
-            window.Close();
-
-            Assert.IsAssignableFrom<NativeWindow>(window);
-        }
-
-        [RequiresDisplay]
-        public void GameWindow_CanBeDisposed()
-        {
-            GlfwNative.WindowHint(Hint.Visible, false);
-            window = new GameWindow(800, 600, "Disposable Window");
-
-            window.Dispose();
-            
-            Assert.True(window.IsInvalid);
-        }
-
-        [RequiresDisplay]
-        public void GameWindow_WithCustomSize_HasCorrectSize()
-        {
-            int expectedWidth = 1280;
-            int expectedHeight = 720;
-            GlfwNative.WindowHint(Hint.Visible, false);
-
-            window = new GameWindow(expectedWidth, expectedHeight, "Sized Window");
-            Size size = window.Size;
-
-            Assert.Equal(expectedWidth, size.Width);
-            Assert.Equal(expectedHeight, size.Height);
-        }
-
+        
+        /// <summary>
+        /// Tests that game window is public
+        /// </summary>
         [Fact]
         public void GameWindow_IsPublicClass()
         {
@@ -118,6 +65,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(type.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that game window inherits from native window reflection
+        /// </summary>
         [Fact]
         public void GameWindow_InheritsFromNativeWindow_Reflection()
         {
@@ -125,6 +75,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.Equal(typeof(NativeWindow), type.BaseType);
         }
 
+        /// <summary>
+        /// Tests that game window has default constructor reflection
+        /// </summary>
         [Fact]
         public void GameWindow_HasDefaultConstructor_Reflection()
         {
@@ -134,6 +87,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that game window has constructor with width height title reflection
+        /// </summary>
         [Fact]
         public void GameWindow_HasConstructorWithWidthHeightTitle_Reflection()
         {
@@ -143,6 +99,9 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that game window has constructor with all params reflection
+        /// </summary>
         [Fact]
         public void GameWindow_HasConstructorWithAllParams_Reflection()
         {

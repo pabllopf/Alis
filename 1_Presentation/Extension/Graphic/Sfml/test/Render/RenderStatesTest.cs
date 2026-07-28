@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The render states test class
+    /// </summary>
     public class RenderStatesTest
     {
+        /// <summary>
+        /// Tests that constructor blend mode only sets blend mode
+        /// </summary>
         [Fact]
         public void Constructor_BlendModeOnly_SetsBlendMode()
         {
@@ -46,6 +52,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that constructor transform only sets transform
+        /// </summary>
         [Fact]
         public void Constructor_TransformOnly_SetsTransform()
         {
@@ -58,6 +67,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that constructor texture only sets texture
+        /// </summary>
         [Fact]
         public void Constructor_TextureOnly_SetsTexture()
         {
@@ -69,6 +81,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that constructor shader only sets shader
+        /// </summary>
         [Fact]
         public void Constructor_ShaderOnly_SetsShader()
         {
@@ -80,6 +95,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that constructor full sets all properties
+        /// </summary>
         [Fact]
         public void Constructor_Full_SetsAllProperties()
         {
@@ -93,6 +111,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that constructor copy copies all properties
+        /// </summary>
         [Fact]
         public void Constructor_Copy_CopiesAllProperties()
         {
@@ -107,6 +128,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Shader, copy.Shader);
         }
 
+        /// <summary>
+        /// Tests that default returns expected values
+        /// </summary>
         [Fact]
         public void Default_ReturnsExpectedValues()
         {
@@ -118,6 +142,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that blend mode get set works
+        /// </summary>
         [Fact]
         public void BlendMode_GetSet_Works()
         {
@@ -127,6 +154,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(newMode, states.BlendMode);
         }
 
+        /// <summary>
+        /// Tests that transform get set works
+        /// </summary>
         [Fact]
         public void Transform_GetSet_Works()
         {
@@ -136,6 +166,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(newTransform, states.Transform);
         }
 
+        /// <summary>
+        /// Tests that texture get set works
+        /// </summary>
         [Fact]
         public void Texture_GetSet_Works()
         {
@@ -144,6 +177,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Texture);
         }
 
+        /// <summary>
+        /// Tests that shader get set works
+        /// </summary>
         [Fact]
         public void Shader_GetSet_Works()
         {
@@ -152,6 +188,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(states.Shader);
         }
 
+        /// <summary>
+        /// Tests that marshal with null texture and shader sets int ptr zero
+        /// </summary>
         [Fact]
         public void Marshal_WithNullTextureAndShader_SetsIntPtrZero()
         {
@@ -164,6 +203,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, data.shader);
         }
 
+        /// <summary>
+        /// Tests that marshal returns expected blend mode and transform
+        /// </summary>
         [Fact]
         public void Marshal_ReturnsExpectedBlendModeAndTransform()
         {

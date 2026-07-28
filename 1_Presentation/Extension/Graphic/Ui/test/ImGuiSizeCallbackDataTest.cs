@@ -48,6 +48,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, data.UserData);
         }
 
+        /// <summary>
+        /// Tests that pos should be initialized
+        /// </summary>
         [Fact]
         public void Pos_ShouldBeInitialized()
         {
@@ -55,6 +58,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default(Vector2F), data.Pos);
         }
 
+        /// <summary>
+        /// Tests that current size should be initialized
+        /// </summary>
         [Fact]
         public void CurrentSize_ShouldBeInitialized()
         {
@@ -62,6 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default(Vector2F), data.CurrentSize);
         }
 
+        /// <summary>
+        /// Tests that desired size should be initialized
+        /// </summary>
         [Fact]
         public void DesiredSize_ShouldBeInitialized()
         {
@@ -69,6 +78,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default(Vector2F), data.DesiredSize);
         }
 
+        /// <summary>
+        /// Tests that user data should set and get correctly
+        /// </summary>
         [Fact]
         public void UserData_Should_SetAndGetCorrectly()
         {
@@ -78,6 +90,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(userData, data.UserData);
         }
 
+        /// <summary>
+        /// Tests that pos should set and get correctly
+        /// </summary>
         [Fact]
         public void Pos_Should_SetAndGetCorrectly()
         {
@@ -87,6 +102,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(pos, data.Pos);
         }
 
+        /// <summary>
+        /// Tests that current size should set and get correctly
+        /// </summary>
         [Fact]
         public void CurrentSize_Should_SetAndGetCorrectly()
         {
@@ -96,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(currentSize, data.CurrentSize);
         }
 
+        /// <summary>
+        /// Tests that desired size should set and get correctly
+        /// </summary>
         [Fact]
         public void DesiredSize_Should_SetAndGetCorrectly()
         {

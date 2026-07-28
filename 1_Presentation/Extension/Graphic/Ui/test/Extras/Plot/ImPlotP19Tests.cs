@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 19 tests class
+    /// </summary>
     public class ImPlotP19Tests
     {
+        /// <summary>
+        /// Tests that plot stairs should expose all overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeAllOverloads()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 99);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose byte array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeByteArrayOverloads()
         {
@@ -58,6 +67,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(byteOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose short array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeShortArrayOverloads()
         {
@@ -72,6 +84,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose u short array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeUShortArrayOverloads()
         {
@@ -86,6 +101,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(ushortOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose int array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeIntArrayOverloads()
         {
@@ -100,6 +118,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(intOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose u int array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeUIntArrayOverloads()
         {
@@ -114,6 +135,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(uintOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose long array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeLongArrayOverloads()
         {
@@ -128,6 +152,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(longOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose u long array overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeULongArrayOverloads()
         {
@@ -142,6 +169,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(ulongOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose ref float overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeRefFloatOverloads()
         {
@@ -156,6 +186,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refFloatOverloads, m => m.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose ref double overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeRefDoubleOverloads()
         {
@@ -170,6 +203,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refDoubleOverloads, m => m.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose ref s byte overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeRefSByteOverloads()
         {
@@ -184,6 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refSbyteOverloads, m => m.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose ref byte overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeRefByteOverloads()
         {
@@ -198,6 +237,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refByteOverloads, m => m.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs all overloads should return void
+        /// </summary>
         [Fact]
         public void PlotStairs_AllOverloads_ShouldReturnVoid()
         {
@@ -205,6 +247,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(void), m.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot stairs all overloads should be public static
+        /// </summary>
         [Fact]
         public void PlotStairs_AllOverloads_ShouldBePublicStatic()
         {
@@ -212,6 +257,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.True(m.IsPublic && m.IsStatic));
         }
 
+        /// <summary>
+        /// Tests that plot stairs all overloads should have string label id as first param
+        /// </summary>
         [Fact]
         public void PlotStairs_AllOverloads_ShouldHaveStringLabelIdAsFirstParam()
         {
@@ -219,6 +267,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(string), m.GetParameters()[0].ParameterType));
         }
 
+        /// <summary>
+        /// Tests that plot stairs should accept im plot stairs flags
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldAcceptImPlotStairsFlags()
         {
@@ -226,6 +277,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotStairsFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot stairs should accept offset and stride
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldAcceptOffsetAndStride()
         {
@@ -238,6 +292,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             });
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeAllExpectedArrayTypes()
         {
@@ -251,6 +308,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => HasArrayParameter(m, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose all expected ref types
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeAllExpectedRefTypes()
         {
@@ -261,6 +321,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => HasRefParameter(m, typeof(byte)));
         }
 
+        /// <summary>
+        /// Tests that plot stairs byte array overload with flags should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_ByteArray_OverloadWithFlags_ShouldHaveCorrectSignature()
         {
@@ -272,6 +335,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs short array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_ShortArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -283,6 +349,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs u short array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_UShortArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -294,6 +363,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs int array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_IntArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -305,6 +377,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs u int array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_UIntArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -316,6 +391,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs long array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_LongArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -327,6 +405,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs u long array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_ULongArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -338,6 +419,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref float minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_RefFloat_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -349,6 +433,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref double minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_RefDouble_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -360,6 +447,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref s byte minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_RefSByte_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -371,6 +461,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref byte minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotStairs_RefByte_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -382,6 +475,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -408,6 +507,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -416,11 +520,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && parameter.ParameterType.GetElementType() == elementType);
         }
 
+        /// <summary>
+        /// Hases the ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter =>

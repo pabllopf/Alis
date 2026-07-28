@@ -6,8 +6,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video reader tests class
+    /// </summary>
     public class VideoReaderTests
     {
+        /// <summary>
+        /// Tests that constructor with existing file sets filename
+        /// </summary>
         [Fact]
         public void Constructor_WithExistingFile_SetsFilename()
         {
@@ -23,6 +29,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that constructor when file missing throws file not found exception
+        /// </summary>
         [Fact]
         public void Constructor_WhenFileMissing_ThrowsFileNotFoundException()
         {
@@ -30,6 +39,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<FileNotFoundException>(() => new VideoReader(missing));
         }
 
+        /// <summary>
+        /// Tests that properties have default values
+        /// </summary>
         [Fact]
         public void Properties_HaveDefaultValues()
         {
@@ -47,6 +59,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose does not throw
+        /// </summary>
         [Fact]
         public void Dispose_DoesNotThrow()
         {
@@ -62,6 +77,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_DoesNotThrow()
         {
@@ -78,6 +96,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose with data stream disposes stream
+        /// </summary>
         [Fact]
         public void Dispose_WithDataStream_DisposesStream()
         {
@@ -96,6 +117,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that load when metadata not loaded throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Load_WhenMetadataNotLoaded_ThrowsInvalidOperationException()
         {
@@ -112,6 +136,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that next frame with parameter when not loaded throws invalid operation exception
+        /// </summary>
         [Fact]
         public void NextFrame_WithParameter_WhenNotLoaded_ThrowsInvalidOperationException()
         {
@@ -129,6 +156,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that next frame with empty stream returns null
+        /// </summary>
         [Fact]
         public void NextFrame_WithEmptyStream_ReturnsNull()
         {
@@ -147,6 +177,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that next frame with sufficient data returns frame and increments offset
+        /// </summary>
         [Fact]
         public void NextFrame_WithSufficientData_ReturnsFrameAndIncrementsOffset()
         {

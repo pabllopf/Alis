@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 18 tests class
+    /// </summary>
     public class ImPlotP18Tests
     {
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose all overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeAllOverloads()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 32);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref byte overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefByteOverloads()
         {
@@ -57,6 +66,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(byteOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref short overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefShortOverloads()
         {
@@ -72,6 +84,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref u short overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefUShortOverloads()
         {
@@ -87,6 +102,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(ushortOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref int overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefIntOverloads()
         {
@@ -102,6 +120,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(intOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref u int overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefUIntOverloads()
         {
@@ -117,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(uintOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref long overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefLongOverloads()
         {
@@ -132,6 +156,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(longOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose ref u long overloads
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeRefULongOverloads()
         {
@@ -147,6 +174,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(ulongOverloads, m => m.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d all overloads should return double
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_AllOverloads_ShouldReturnDouble()
         {
@@ -154,6 +184,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(double), m.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d all overloads should be public static
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_AllOverloads_ShouldBePublicStatic()
         {
@@ -161,6 +194,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.True(m.IsPublic && m.IsStatic));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d all overloads should have string label id as first param
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_AllOverloads_ShouldHaveStringLabelIdAsFirstParam()
         {
@@ -168,6 +204,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(string), m.GetParameters()[0].ParameterType));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should accept im plot rect and flags
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldAcceptImPlotRectAndFlags()
         {
@@ -176,6 +215,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotHistogramFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d should expose all expected ref types
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_ShouldExposeAllExpectedRefTypes()
         {
@@ -189,6 +231,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => HasRefParameter(m, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref byte minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefByte_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -201,6 +246,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref byte full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefByte_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -213,6 +261,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref short minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefShort_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -224,6 +275,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref short full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefShort_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -236,6 +290,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u short minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefUShort_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -247,6 +304,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u short full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefUShort_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -259,6 +319,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref int minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefInt_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -270,6 +333,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref int full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefInt_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -282,6 +348,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u int minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefUInt_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -293,6 +362,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u int full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefUInt_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -305,6 +377,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref long minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefLong_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -316,6 +391,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref long full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefLong_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -328,6 +406,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u long minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefULong_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -339,6 +420,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot histogram 2 d ref u long full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotHistogram2D_RefULong_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -351,6 +435,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(double), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot image should expose all overloads
+        /// </summary>
         [Fact]
         public void PlotImage_ShouldExposeAllOverloads()
         {
@@ -358,6 +445,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 5);
         }
 
+        /// <summary>
+        /// Tests that plot image all overloads should return void
+        /// </summary>
         [Fact]
         public void PlotImage_AllOverloads_ShouldReturnVoid()
         {
@@ -365,6 +455,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(void), m.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot image all overloads should be public static
+        /// </summary>
         [Fact]
         public void PlotImage_AllOverloads_ShouldBePublicStatic()
         {
@@ -372,6 +465,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.True(m.IsPublic && m.IsStatic));
         }
 
+        /// <summary>
+        /// Tests that plot image all overloads should have string label id as first param
+        /// </summary>
         [Fact]
         public void PlotImage_AllOverloads_ShouldHaveStringLabelIdAsFirstParam()
         {
@@ -379,6 +475,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(string), m.GetParameters()[0].ParameterType));
         }
 
+        /// <summary>
+        /// Tests that plot image should accept int ptr and im plot point and vector 2 f
+        /// </summary>
         [Fact]
         public void PlotImage_ShouldAcceptIntPtrAndImPlotPointAndVector2F()
         {
@@ -388,6 +487,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(Vector2F)));
         }
 
+        /// <summary>
+        /// Tests that plot image should accept vector 4 f
+        /// </summary>
         [Fact]
         public void PlotImage_ShouldAcceptVector4F()
         {
@@ -395,6 +497,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(Vector4F)));
         }
 
+        /// <summary>
+        /// Tests that plot image should accept im plot image flags
+        /// </summary>
         [Fact]
         public void PlotImage_ShouldAcceptImPlotImageFlags()
         {
@@ -402,6 +507,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotImageFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot image minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotImage_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -413,6 +521,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot image with uv 0 should have correct signature
+        /// </summary>
         [Fact]
         public void PlotImage_WithUv0_ShouldHaveCorrectSignature()
         {
@@ -425,6 +536,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot image with uv 0 uv 1 should have correct signature
+        /// </summary>
         [Fact]
         public void PlotImage_WithUv0Uv1_ShouldHaveCorrectSignature()
         {
@@ -437,6 +551,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot image with uv 0 uv 1 tint col should have correct signature
+        /// </summary>
         [Fact]
         public void PlotImage_WithUv0Uv1TintCol_ShouldHaveCorrectSignature()
         {
@@ -449,6 +566,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot image full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotImage_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -461,6 +581,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose all overloads
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeAllOverloads()
         {
@@ -468,6 +591,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 15);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines all overloads should return void
+        /// </summary>
         [Fact]
         public void PlotInfLines_AllOverloads_ShouldReturnVoid()
         {
@@ -475,6 +601,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(void), m.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines all overloads should be public static
+        /// </summary>
         [Fact]
         public void PlotInfLines_AllOverloads_ShouldBePublicStatic()
         {
@@ -482,6 +611,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.True(m.IsPublic && m.IsStatic));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines all overloads should have string label id as first param
+        /// </summary>
         [Fact]
         public void PlotInfLines_AllOverloads_ShouldHaveStringLabelIdAsFirstParam()
         {
@@ -489,6 +621,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal(typeof(string), m.GetParameters()[0].ParameterType));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose float array overloads
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeFloatArrayOverloads()
         {
@@ -501,6 +636,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(floatOverloads, m => m.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose double array overloads
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeDoubleArrayOverloads()
         {
@@ -513,6 +651,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(doubleOverloads, m => m.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose s byte array overloads
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeSByteArrayOverloads()
         {
@@ -525,6 +666,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(sbyteOverloads, m => m.GetParameters().Length == 6);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose byte array overloads
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeByteArrayOverloads()
         {
@@ -536,6 +680,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(byteOverloads, m => m.GetParameters().Length == 5);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should accept im plot inf lines flags
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldAcceptImPlotInfLinesFlags()
         {
@@ -543,6 +690,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ImPlotInfLinesFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should accept offset and stride
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldAcceptOffsetAndStride()
         {
@@ -554,6 +704,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             });
         }
 
+        /// <summary>
+        /// Tests that plot inf lines should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotInfLines_ShouldExposeAllExpectedArrayTypes()
         {
@@ -564,6 +717,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => HasArrayParameter(m, typeof(byte)));
         }
 
+        /// <summary>
+        /// Tests that plot inf lines float array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_FloatArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -575,6 +731,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines float array full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_FloatArray_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -587,6 +746,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines double array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_DoubleArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -598,6 +760,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines double array full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_DoubleArray_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -610,6 +775,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines s byte array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_SByteArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -621,6 +789,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines s byte array full overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_SByteArray_FullOverload_ShouldHaveCorrectSignature()
         {
@@ -633,6 +804,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines byte array minimal overload should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_ByteArray_MinimalOverload_ShouldHaveCorrectSignature()
         {
@@ -644,6 +818,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines byte array with flags offset should have correct signature
+        /// </summary>
         [Fact]
         public void PlotInfLines_ByteArray_WithFlagsOffset_ShouldHaveCorrectSignature()
         {
@@ -656,6 +833,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot inf lines all overloads should have correct method name
+        /// </summary>
         [Fact]
         public void PlotInfLines_AllOverloadsShouldHaveCorrectMethodName()
         {
@@ -663,6 +843,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, m => Assert.Equal("PlotInfLines", m.Name));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -689,6 +875,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -697,11 +888,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && parameter.ParameterType.GetElementType() == elementType);
         }
 
+        /// <summary>
+        /// Hases the ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter =>

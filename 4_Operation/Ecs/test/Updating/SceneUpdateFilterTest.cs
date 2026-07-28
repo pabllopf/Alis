@@ -288,46 +288,73 @@ namespace Alis.Core.Ecs.Test.Updating
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp0 { public int Value; }
+        private struct BufferComp0 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp1 { public int Value; }
+        private struct BufferComp1 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp2 { public int Value; }
+        private struct BufferComp2 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp3 { public int Value; }
+        private struct BufferComp3 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp4 { public int Value; }
+        private struct BufferComp4 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp5 { public int Value; }
+        private struct BufferComp5 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp6 { public int Value; }
+        private struct BufferComp6 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp7 { public int Value; }
+        private struct BufferComp7 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
 
         /// <summary>
         ///     Component type for buffer growth test
         /// </summary>
-        private struct BufferComp8 { public int Value; }
+        private struct BufferComp8 { /// <summary>
+/// The value
+/// </summary>
+public int Value; }
     }
 }

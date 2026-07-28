@@ -7,8 +7,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
 {
+    /// <summary>
+    /// The media stream tests class
+    /// </summary>
     public class MediaStreamTests
     {
+        /// <summary>
+        /// Ises the audio codec type null throws null reference exception
+        /// </summary>
         [RequireFfmpegFact]
         public void IsAudio_CodecTypeNull_ThrowsNullReferenceException()
         {
@@ -16,6 +22,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Throws<NullReferenceException>(() => stream.IsAudio);
         }
 
+        /// <summary>
+        /// Ises the video codec type null throws null reference exception
+        /// </summary>
         [RequireFfmpegFact]
         public void IsVideo_CodecTypeNull_ThrowsNullReferenceException()
         {
@@ -23,6 +32,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Throws<NullReferenceException>(() => stream.IsVideo);
         }
 
+        /// <summary>
+        /// Ises the audio codec type empty returns false
+        /// </summary>
         [RequireFfmpegFact]
         public void IsAudio_CodecTypeEmpty_ReturnsFalse()
         {
@@ -30,6 +42,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.False(stream.IsAudio);
         }
 
+        /// <summary>
+        /// Ises the video codec type empty returns false
+        /// </summary>
         [RequireFfmpegFact]
         public void IsVideo_CodecTypeEmpty_ReturnsFalse()
         {
@@ -37,6 +52,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.False(stream.IsVideo);
         }
 
+        /// <summary>
+        /// Ises the audio codec type upper case returns true
+        /// </summary>
         [RequireFfmpegFact]
         public void IsAudio_CodecTypeUpperCase_ReturnsTrue()
         {
@@ -44,6 +62,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.True(stream.IsAudio);
         }
 
+        /// <summary>
+        /// Ises the video codec type upper case returns true
+        /// </summary>
         [RequireFfmpegFact]
         public void IsVideo_CodecTypeUpperCase_ReturnsTrue()
         {
@@ -51,6 +72,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.True(stream.IsVideo);
         }
 
+        /// <summary>
+        /// Ises the audio codec type mixed case returns true
+        /// </summary>
         [RequireFfmpegFact]
         public void IsAudio_CodecTypeMixedCase_ReturnsTrue()
         {
@@ -58,6 +82,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.True(stream.IsAudio);
         }
 
+        /// <summary>
+        /// Ises the video codec type mixed case returns true
+        /// </summary>
         [RequireFfmpegFact]
         public void IsVideo_CodecTypeMixedCase_ReturnsTrue()
         {
@@ -65,6 +92,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.True(stream.IsVideo);
         }
 
+        /// <summary>
+        /// Ises the audio subtitle codec returns false
+        /// </summary>
         [RequireFfmpegFact]
         public void IsAudio_SubtitleCodec_ReturnsFalse()
         {
@@ -72,6 +102,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.False(stream.IsAudio);
         }
 
+        /// <summary>
+        /// Ises the video subtitle codec returns false
+        /// </summary>
         [RequireFfmpegFact]
         public void IsVideo_SubtitleCodec_ReturnsFalse()
         {
@@ -79,6 +112,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.False(stream.IsVideo);
         }
 
+        /// <summary>
+        /// Samples the rate number valid value returns parsed int
+        /// </summary>
         [RequireFfmpegFact]
         public void SampleRateNumber_ValidValue_ReturnsParsedInt()
         {
@@ -86,6 +122,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(48000, stream.SampleRateNumber);
         }
 
+        /// <summary>
+        /// Samples the rate number empty string returns negative one
+        /// </summary>
         [RequireFfmpegFact]
         public void SampleRateNumber_EmptyString_ReturnsNegativeOne()
         {
@@ -93,6 +132,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(-1, stream.SampleRateNumber);
         }
 
+        /// <summary>
+        /// Samples the rate number null string returns negative one
+        /// </summary>
         [RequireFfmpegFact]
         public void SampleRateNumber_NullString_ReturnsNegativeOne()
         {
@@ -100,6 +142,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(-1, stream.SampleRateNumber);
         }
 
+        /// <summary>
+        /// Samples the rate number whitespace string throws format exception
+        /// </summary>
         [RequireFfmpegFact]
         public void SampleRateNumber_WhitespaceString_ThrowsFormatException()
         {
@@ -107,6 +152,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Throws<FormatException>(() => stream.SampleRateNumber);
         }
 
+        /// <summary>
+        /// Avgs the frame rate number default returns zero
+        /// </summary>
         [RequireFfmpegFact]
         public void AvgFrameRateNumber_Default_ReturnsZero()
         {
@@ -114,6 +162,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(0.0, stream.AvgFrameRateNumber);
         }
 
+        /// <summary>
+        /// Avgs the frame rate number set value returns value
+        /// </summary>
         [RequireFfmpegFact]
         public void AvgFrameRateNumber_SetValue_ReturnsValue()
         {
@@ -121,6 +172,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(29.97, stream.AvgFrameRateNumber);
         }
 
+        /// <summary>
+        /// Dispositions the set dictionary returns same
+        /// </summary>
         [RequireFfmpegFact]
         public void Disposition_SetDictionary_ReturnsSame()
         {
@@ -134,6 +188,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(disposition, stream.Disposition);
         }
 
+        /// <summary>
+        /// Dispositions the default returns null
+        /// </summary>
         [RequireFfmpegFact]
         public void Disposition_Default_ReturnsNull()
         {
@@ -141,6 +198,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Null(stream.Disposition);
         }
 
+        /// <summary>
+        /// Tagses the set and get returns same
+        /// </summary>
         [RequireFfmpegFact]
         public void Tags_SetAndGet_ReturnsSame()
         {
@@ -149,6 +209,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(tags, stream.Tags);
         }
 
+        /// <summary>
+        /// Tagses the default returns null
+        /// </summary>
         [RequireFfmpegFact]
         public void Tags_Default_ReturnsNull()
         {
@@ -156,6 +219,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Null(stream.Tags);
         }
 
+        /// <summary>
+        /// Serializes the default stream produces json
+        /// </summary>
         [RequireFfmpegFact]
         public void Serialize_DefaultStream_ProducesJson()
         {
@@ -165,6 +231,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Contains("\"index\"", json);
         }
 
+        /// <summary>
+        /// Serializes the and deserialize round trip produces equal instance
+        /// </summary>
         [RequireFfmpegFact]
         public void SerializeAndDeserialize_RoundTrip_ProducesEqualInstance()
         {
@@ -189,6 +258,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Equal(original.Height, restored.Height);
         }
 
+        /// <summary>
+        /// Serializes the with tags produces json
+        /// </summary>
         [RequireFfmpegFact]
         public void Serialize_WithTags_ProducesJson()
         {
@@ -201,6 +273,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
             Assert.Contains("language", json);
         }
 
+        /// <summary>
+        /// Serializes the all properties set produces complete json
+        /// </summary>
         [RequireFfmpegFact]
         public void Serialize_AllPropertiesSet_ProducesCompleteJson()
         {

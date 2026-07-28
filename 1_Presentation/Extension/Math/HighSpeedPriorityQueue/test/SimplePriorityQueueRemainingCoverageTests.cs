@@ -181,6 +181,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.True(queue.EnqueueWithoutDuplicates(null, 1));
         }
 
+        /// <summary>
+        /// Tests that try remove null item when null cache not empty removes item
+        /// </summary>
         [Fact]
         public void TryRemove_NullItem_WhenNullCacheNotEmpty_RemovesItem()
         {
@@ -191,6 +194,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.Equal(0, queue.Count);
         }
 
+        /// <summary>
+        /// Tests that remove from node cache when item not in cache does not throw
+        /// </summary>
         [Fact]
         public void RemoveFromNodeCache_WhenItemNotInCache_DoesNotThrow()
         {
@@ -200,6 +206,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.Dequeue();
         }
 
+        /// <summary>
+        /// Tests that is valid queue when cache has extra nodes returns false
+        /// </summary>
         [Fact]
         public void IsValidQueue_WhenCacheHasExtraNodes_ReturnsFalse()
         {
@@ -210,6 +219,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that is valid queue when queue has extra nodes returns false
+        /// </summary>
         [Fact]
         public void IsValidQueue_WhenQueueHasExtraNodes_ReturnsFalse()
         {
@@ -220,6 +232,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(queue.IsValidQueue());
         }
 
+        /// <summary>
+        /// Tests that try first when queue emptied between checks should cover braces
+        /// </summary>
         [Fact]
         public void TryFirst_WhenQueueEmptiedBetweenChecks_ShouldCoverBraces()
         {
@@ -243,6 +258,9 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that try dequeue when queue emptied between checks should cover braces
+        /// </summary>
         [Fact]
         public void TryDequeue_WhenQueueEmptiedBetweenChecks_ShouldCoverBraces()
         {

@@ -32,6 +32,9 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly display manager coverage final tests class
+    /// </summary>
     public class WebAssemblyDisplayManagerCoverageFinalTests
     {
         // =====================================================================
@@ -39,6 +42,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         // each switch arm (lines 298-303) is exercised independently.
         // =====================================================================
 
+        /// <summary>
+        /// Tests that get rendering scale very low returns half
+        /// </summary>
         [Fact]
         public void GetRenderingScale_VeryLow_ReturnsHalf()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that get rendering scale low returns point 75
+        /// </summary>
         [Fact]
         public void GetRenderingScale_Low_ReturnsPoint75()
         {
@@ -57,6 +66,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.75f, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that get rendering scale medium returns point 875
+        /// </summary>
         [Fact]
         public void GetRenderingScale_Medium_ReturnsPoint875()
         {
@@ -66,6 +78,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.875f, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that get rendering scale high returns one
+        /// </summary>
         [Fact]
         public void GetRenderingScale_High_ReturnsOne()
         {
@@ -74,6 +89,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.0f, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that get rendering scale very high returns one point 25
+        /// </summary>
         [Fact]
         public void GetRenderingScale_VeryHigh_ReturnsOnePoint25()
         {
@@ -83,6 +101,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(1.25f, manager.GetRenderingScale());
         }
 
+        /// <summary>
+        /// Tests that get rendering scale ultra returns one point 5
+        /// </summary>
         [Fact]
         public void GetRenderingScale_Ultra_ReturnsOnePoint5()
         {

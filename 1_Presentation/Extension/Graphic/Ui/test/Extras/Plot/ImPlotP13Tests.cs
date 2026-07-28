@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 13 tests class
+    /// </summary>
     public class ImPlotP13Tests
     {
+        /// <summary>
+        /// Tests that plot stairs should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeExpectedOverloadCount()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 55);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref byte full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefByte_Full_ShouldBeVoid()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref short default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefShort_Default_ShouldBeVoid()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref short with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefShort_WithFlags_ShouldBeVoid()
         {
@@ -68,6 +83,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref short with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefShort_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -76,6 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref short full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefShort_Full_ShouldBeVoid()
         {
@@ -84,6 +105,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u short default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUShort_Default_ShouldBeVoid()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u short with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUShort_WithFlags_ShouldBeVoid()
         {
@@ -100,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u short with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUShort_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -108,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u short full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUShort_Full_ShouldBeVoid()
         {
@@ -116,6 +149,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref int default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefInt_Default_ShouldBeVoid()
         {
@@ -124,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefInt_WithFlags_ShouldBeVoid()
         {
@@ -132,6 +171,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref int with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefInt_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref int full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefInt_Full_ShouldBeVoid()
         {
@@ -148,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u int default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUInt_Default_ShouldBeVoid()
         {
@@ -156,6 +204,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUInt_WithFlags_ShouldBeVoid()
         {
@@ -164,6 +215,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u int with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUInt_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -172,6 +226,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u int full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefUInt_Full_ShouldBeVoid()
         {
@@ -180,6 +237,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref long default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefLong_Default_ShouldBeVoid()
         {
@@ -188,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref long with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefLong_WithFlags_ShouldBeVoid()
         {
@@ -196,6 +259,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref long with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefLong_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -204,6 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref long full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefLong_Full_ShouldBeVoid()
         {
@@ -212,6 +281,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u long default should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefULong_Default_ShouldBeVoid()
         {
@@ -220,6 +292,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u long with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefULong_WithFlags_ShouldBeVoid()
         {
@@ -228,6 +303,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u long with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefULong_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -236,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs ref u long full should be void
+        /// </summary>
         [Fact]
         public void PlotStairs_RefULong_Full_ShouldBeVoid()
         {
@@ -244,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose all expected ref numeric families
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeAllExpectedRefNumericFamilies()
         {
@@ -257,6 +341,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasByRefParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose flags offset and stride overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
@@ -266,6 +353,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length >= 7) && (method.GetParameters()[6].ParameterType == typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose four short ref overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeFourShortRefOverloads()
         {
@@ -278,6 +368,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose four int ref overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeFourIntRefOverloads()
         {
@@ -290,6 +383,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(intOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose four long ref overloads
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeFourLongRefOverloads()
         {
@@ -302,6 +398,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(longOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs should expose at least one byte ref overload
+        /// </summary>
         [Fact]
         public void PlotStairs_ShouldExposeAtLeastOneByteRefOverload()
         {
@@ -311,6 +410,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(byteOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot stairs g default should be void
+        /// </summary>
         [Fact]
         public void PlotStairsG_Default_ShouldBeVoid()
         {
@@ -319,6 +421,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs g with flags should be void
+        /// </summary>
         [Fact]
         public void PlotStairsG_WithFlags_ShouldBeVoid()
         {
@@ -327,6 +432,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stairs g should expose two overloads
+        /// </summary>
         [Fact]
         public void PlotStairsG_ShouldExposeTwoOverloads()
         {
@@ -334,6 +442,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 2);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeExpectedOverloadCount()
         {
@@ -341,6 +452,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 70);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_Default_ShouldBeVoid()
         {
@@ -349,6 +463,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_WithRef_ShouldBeVoid()
         {
@@ -357,6 +474,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_WithRefAndScale_ShouldBeVoid()
         {
@@ -365,6 +485,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -373,6 +496,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -381,6 +507,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -389,6 +518,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float array full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatArray_Full_ShouldBeVoid()
         {
@@ -397,6 +529,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_Default_ShouldBeVoid()
         {
@@ -405,6 +540,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_WithRef_ShouldBeVoid()
         {
@@ -413,6 +551,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_WithRefAndScale_ShouldBeVoid()
         {
@@ -421,6 +562,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -429,6 +573,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -437,6 +584,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -445,6 +595,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double array full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleArray_Full_ShouldBeVoid()
         {
@@ -453,6 +606,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_Default_ShouldBeVoid()
         {
@@ -461,6 +617,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_WithRef_ShouldBeVoid()
         {
@@ -469,6 +628,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_WithRefAndScale_ShouldBeVoid()
         {
@@ -477,6 +639,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -485,6 +650,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -493,6 +661,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -501,6 +672,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 array full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Array_Full_ShouldBeVoid()
         {
@@ -509,6 +683,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 array default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Array_Default_ShouldBeVoid()
         {
@@ -517,6 +694,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 array with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Array_WithRef_ShouldBeVoid()
         {
@@ -525,6 +705,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 array with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Array_WithRefAndScale_ShouldBeVoid()
         {
@@ -533,6 +716,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 array with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Array_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -541,6 +727,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 array with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Array_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -549,6 +738,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeAllExpectedArrayTypes()
         {
@@ -559,6 +751,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(byte)));
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose flags offset and stride overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
@@ -568,6 +763,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length >= 9) && (method.GetParameters()[8].ParameterType == typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven float array overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenFloatArrayOverloads()
         {
@@ -583,6 +781,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(floatOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven double array overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenDoubleArrayOverloads()
         {
@@ -598,6 +799,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(doubleOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven s byte array overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenSByteArrayOverloads()
         {
@@ -613,6 +817,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(sbyteOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose at least five byte array overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeAtLeastFiveByteArrayOverloads()
         {
@@ -626,6 +833,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(byteOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -652,6 +865,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -660,11 +878,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the by ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && (parameter.ParameterType.GetElementType() == elementType));

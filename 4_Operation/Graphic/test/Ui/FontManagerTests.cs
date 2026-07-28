@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
+    /// <summary>
+    /// The font manager tests class
+    /// </summary>
     public class FontManagerTests
     {
+        /// <summary>
+        /// Tests that default font is not null
+        /// </summary>
         [Fact]
         public void DefaultFont_IsNotNull()
         {
@@ -44,6 +50,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.NotNull(font);
         }
 
+        /// <summary>
+        /// Tests that default font has expected name file
+        /// </summary>
         [Fact]
         public void DefaultFont_HasExpectedNameFile()
         {
@@ -51,6 +60,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("mono.bmp", font.NameFile);
         }
 
+        /// <summary>
+        /// Tests that default font has depth one
+        /// </summary>
         [Fact]
         public void DefaultFont_HasDepthOne()
         {
@@ -58,6 +70,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(1, font.Depth);
         }
 
+        /// <summary>
+        /// Tests that default font property is read only
+        /// </summary>
         [Fact]
         public void DefaultFont_PropertyIsReadOnly()
         {
@@ -67,6 +82,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.False(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that default font returns same instance
+        /// </summary>
         [Fact]
         public void DefaultFont_ReturnsSameInstance()
         {
@@ -75,18 +93,27 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Same(first, second);
         }
 
+        /// <summary>
+        /// Tests that render text with coordinates throws when open gl not initialized
+        /// </summary>
         [Fact]
         public void RenderText_WithCoordinates_ThrowsWhenOpenGLNotInitialized()
         {
             Assert.ThrowsAny<Exception>(() => FontManager.RenderText("hello", 0, 0));
         }
 
+        /// <summary>
+        /// Tests that render text with colors throws when open gl not initialized
+        /// </summary>
         [Fact]
         public void RenderText_WithColors_ThrowsWhenOpenGLNotInitialized()
         {
             Assert.ThrowsAny<Exception>(() => FontManager.RenderText("hello", 0, 0, Color.White, Color.Black));
         }
 
+        /// <summary>
+        /// Tests that render text with coordinates method exists
+        /// </summary>
         [Fact]
         public void RenderText_WithCoordinates_MethodExists()
         {
@@ -95,6 +122,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that render text with colors method exists
+        /// </summary>
         [Fact]
         public void RenderText_WithColors_MethodExists()
         {
@@ -103,6 +133,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that font manager is static
+        /// </summary>
         [Fact]
         public void FontManager_IsStaticClass()
         {
@@ -111,18 +144,27 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.True(type.IsAbstract);
         }
 
+        /// <summary>
+        /// Tests that font manager is public
+        /// </summary>
         [Fact]
         public void FontManager_IsPublic()
         {
             Assert.True(typeof(FontManager).IsPublic);
         }
 
+        /// <summary>
+        /// Tests that render text with foreground and background delegates to default font
+        /// </summary>
         [Fact]
         public void RenderText_WithForegroundAndBackground_DelegatesToDefaultFont()
         {
             Assert.ThrowsAny<Exception>(() => FontManager.RenderText("hello", 10, 20, Color.White, Color.Black));
         }
 
+        /// <summary>
+        /// Tests that render text with default colors delegates to default font
+        /// </summary>
         [Fact]
         public void RenderText_WithDefaultColors_DelegatesToDefaultFont()
         {

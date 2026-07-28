@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Collider
 {
+    /// <summary>
+    /// The box collider uncovered test class
+    /// </summary>
     public class BoxColliderUncoveredTest
     {
+        /// <summary>
+        /// Tests that on collision called on scene does not throw
+        /// </summary>
         [Fact]
         public void OnCollision_CalledOnScene_DoesNotThrow()
         {
@@ -48,6 +54,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             go.Add<BoxCollider>(collider);
         }
 
+        /// <summary>
+        /// Tests that on separation called on scene does not throw
+        /// </summary>
         [Fact]
         public void OnSeparation_CalledOnScene_DoesNotThrow()
         {
@@ -57,6 +66,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             go.Add<BoxCollider>(collider);
         }
 
+        /// <summary>
+        /// Tests that render box collider without gl throws exception
+        /// </summary>
         [Fact]
         public void RenderBoxCollider_WithoutGl_ThrowsException()
         {

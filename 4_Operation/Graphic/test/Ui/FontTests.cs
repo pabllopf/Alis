@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Ui
 {
+    /// <summary>
+    /// The font tests class
+    /// </summary>
     public class FontTests
     {
+        /// <summary>
+        /// Tests that size font field stores correct value
+        /// </summary>
         [Fact]
         public void SizeFont_Field_StoresCorrectValue()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(16, value);
         }
 
+        /// <summary>
+        /// Tests that character rects field is initialized empty
+        /// </summary>
         [Fact]
         public void CharacterRects_Field_IsInitializedEmpty()
         {
@@ -58,6 +67,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Empty(rects);
         }
 
+        /// <summary>
+        /// Tests that path property default is empty
+        /// </summary>
         [Fact]
         public void Path_Property_DefaultIsEmpty()
         {
@@ -67,6 +79,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(string.Empty, value);
         }
 
+        /// <summary>
+        /// Tests that path property can set and get
+        /// </summary>
         [Fact]
         public void Path_Property_CanSetAndGet()
         {
@@ -77,6 +92,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal("custom/path.bmp", value);
         }
 
+        /// <summary>
+        /// Tests that size property default is zero
+        /// </summary>
         [Fact]
         public void Size_Property_DefaultIsZero()
         {
@@ -86,6 +104,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.NotNull(value);
         }
 
+        /// <summary>
+        /// Tests that shader program property default is zero
+        /// </summary>
         [Fact]
         public void ShaderProgram_Property_DefaultIsZero()
         {
@@ -95,6 +116,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0u, value);
         }
 
+        /// <summary>
+        /// Tests that vao property default is zero
+        /// </summary>
         [Fact]
         public void Vao_Property_DefaultIsZero()
         {
@@ -104,6 +128,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0u, value);
         }
 
+        /// <summary>
+        /// Tests that vbo property default is zero
+        /// </summary>
         [Fact]
         public void Vbo_Property_DefaultIsZero()
         {
@@ -113,6 +140,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0u, value);
         }
 
+        /// <summary>
+        /// Tests that ebo property default is zero
+        /// </summary>
         [Fact]
         public void Ebo_Property_DefaultIsZero()
         {
@@ -122,6 +152,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0u, value);
         }
 
+        /// <summary>
+        /// Tests that texture property default is zero
+        /// </summary>
         [Fact]
         public void Texture_Property_DefaultIsZero()
         {
@@ -131,6 +164,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0u, value);
         }
 
+        /// <summary>
+        /// Tests that flip property default is false
+        /// </summary>
         [Fact]
         public void Flip_Property_DefaultIsFalse()
         {
@@ -140,6 +176,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.False(value);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas populates all characters
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_PopulatesAllCharacters()
         {
@@ -153,6 +192,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(80, rects.Count);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas special chars have correct row
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_SpecialChars_HaveCorrectRow()
         {
@@ -169,6 +211,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(16, rects['0'].H);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas upper case chars have correct row
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_UpperCaseChars_HaveCorrectRow()
         {
@@ -183,6 +228,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0, rects['A'].X);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas lower case chars have correct row
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_LowerCaseChars_HaveCorrectRow()
         {
@@ -197,6 +245,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0, rects['a'].X);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas with custom spacing calculates correct positions
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_WithCustomSpacing_CalculatesCorrectPositions()
         {
@@ -219,6 +270,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(0, rects['a'].X);
         }
 
+        /// <summary>
+        /// Tests that initialize character rects from atlas with negative spacing still calculates
+        /// </summary>
         [Fact]
         public void InitializeCharacterRectsFromAtlas_WithNegativeSpacing_StillCalculates()
         {
@@ -234,6 +288,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(9, rects['1'].X);
         }
 
+        /// <summary>
+        /// Tests that render text with null name file throws but populates character rects
+        /// </summary>
         [Fact]
         public void RenderText_WithNullNameFile_ThrowsButPopulatesCharacterRects()
         {
@@ -248,6 +305,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Equal(80, rects.Count);
         }
 
+        /// <summary>
+        /// Tests that render text with empty name file throws but populates character rects
+        /// </summary>
         [Fact]
         public void RenderText_WithEmptyNameFile_ThrowsButPopulatesCharacterRects()
         {
@@ -261,6 +321,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.NotEmpty(rects);
         }
 
+        /// <summary>
+        /// Tests that render text with non empty path skips shader init
+        /// </summary>
         [Fact]
         public void RenderText_WithNonEmptyPath_SkipsShaderInit()
         {
@@ -277,6 +340,9 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.NotEmpty(rects);
         }
 
+        /// <summary>
+        /// Tests that render text with empty text does not iterate chars
+        /// </summary>
         [Fact]
         public void RenderText_WithEmptyText_DoesNotIterateChars()
         {
@@ -286,6 +352,9 @@ namespace Alis.Core.Graphic.Test.Ui
                 font.RenderText(string.Empty, 0, 0, Color.White, Color.Transparent));
         }
 
+        /// <summary>
+        /// Tests that render text with white background calls method
+        /// </summary>
         [Fact]
         public void RenderText_WithWhiteBackground_CallsMethod()
         {
@@ -295,6 +364,9 @@ namespace Alis.Core.Graphic.Test.Ui
                 font.RenderText("x", 100, 200, Color.White, Color.White));
         }
 
+        /// <summary>
+        /// Tests that render text with custom position uses position
+        /// </summary>
         [Fact]
         public void RenderText_WithCustomPosition_UsesPosition()
         {

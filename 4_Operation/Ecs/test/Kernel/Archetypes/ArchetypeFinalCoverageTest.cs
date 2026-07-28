@@ -39,8 +39,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 {
+    /// <summary>
+    /// The archetype final coverage test class
+    /// </summary>
     public class ArchetypeFinalCoverageTest
     {
+        /// <summary>
+        /// Tests that archetype components span returns correct read only span
+        /// </summary>
         [Fact]
         public void Archetype_ComponentsSpan_ReturnsCorrectReadOnlySpan()
         {
@@ -51,6 +57,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(span.IsEmpty);
         }
 
+        /// <summary>
+        /// Tests that archetype component tag table span returns correct read only span
+        /// </summary>
         [Fact]
         public void Archetype_ComponentTagTableSpan_ReturnsCorrectReadOnlySpan()
         {
@@ -61,6 +70,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(span.IsEmpty);
         }
 
+        /// <summary>
+        /// Tests that archetype of component index is accessible
+        /// </summary>
         [Fact]
         public void Archetype_OfComponentIndex_IsAccessible()
         {
@@ -70,6 +82,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotEqual(0, index);
         }
 
+        /// <summary>
+        /// Tests that archetype get component index with component id returns correct value
+        /// </summary>
         [Fact]
         public void Archetype_GetComponentIndex_WithComponentId_ReturnsCorrectValue()
         {
@@ -80,6 +95,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(posIndex > 0);
         }
 
+        /// <summary>
+        /// Tests that archetype get hash with even component count computes hash
+        /// </summary>
         [Fact]
         public void Archetype_GetHash_WithEvenComponentCount_ComputesHash()
         {
@@ -90,6 +108,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity.Has<Velocity>());
         }
 
+        /// <summary>
+        /// Tests that archetype get hash with single component computes hash
+        /// </summary>
         [Fact]
         public void Archetype_GetHash_WithSingleComponent_ComputesHash()
         {
@@ -98,6 +119,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(entity.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that archetype ensure capacity when count less than length returns early
+        /// </summary>
         [Fact]
         public void Archetype_EnsureCapacity_WhenCountLessThanLength_ReturnsEarly()
         {
@@ -109,6 +133,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(initialCount, archetype.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that archetype delete entity on empty archetype throws invalid operation
+        /// </summary>
         [Fact]
         public void Archetype_DeleteEntity_OnEmptyArchetype_ThrowsInvalidOperation()
         {
@@ -119,6 +146,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Contains("No entities", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that archetype release arrays on empty archetype does not throw
+        /// </summary>
         [Fact]
         public void Archetype_ReleaseArrays_OnEmptyArchetype_DoesNotThrow()
         {
@@ -128,6 +158,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(0, archetype.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that archetype update with range and empty archetype returns early
+        /// </summary>
         [Fact]
         public void Archetype_Update_WithRangeAndEmptyArchetype_ReturnsEarly()
         {
@@ -137,6 +170,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that archetype t get archetype id with over max components throws
+        /// </summary>
         [Fact]
         public void Archetype_T_GetArchetypeId_WithOverMaxComponents_Throws()
         {
@@ -150,6 +186,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Contains("max of 127", ex.Message);
         }
 
+        /// <summary>
+        /// Tests that archetype ensure capacity passthrough does not throw
+        /// </summary>
         [Fact]
         public void Archetype_EnsureCapacity_Passthrough_DoesNotThrow()
         {
@@ -158,6 +197,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.DefaultArchetype.EnsureCapacity(1);
         }
 
+        /// <summary>
+        /// Tests that archetype t of component index is positive
+        /// </summary>
         [Fact]
         public void Archetype_T_OfComponent_IndexIsPositive()
         {
@@ -165,6 +207,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(index > 0);
         }
 
+        /// <summary>
+        /// Tests that archetype t get archetype id cache hit returns consistent
+        /// </summary>
         [Fact]
         public void Archetype_T_GetArchetypeId_CacheHit_ReturnsConsistent()
         {
@@ -173,6 +218,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(id1.RawIndex, id2.RawIndex);
         }
 
+        /// <summary>
+        /// Tests that archetype t get hash with odd count hits both loops
+        /// </summary>
         [Fact]
         public void Archetype_T_GetHash_WithOddCount_HitsBothLoops()
         {
@@ -180,6 +228,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(id);
         }
 
+        /// <summary>
+        /// Tests that archetype t get hash with even count hits first loop
+        /// </summary>
         [Fact]
         public void Archetype_T_GetHash_WithEvenCount_HitsFirstLoop()
         {
@@ -187,6 +238,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(id);
         }
 
+        /// <summary>
+        /// Tests that archetype resize create component buffers when empty handles correctly
+        /// </summary>
         [Fact]
         public void Archetype_ResizeCreateComponentBuffers_WhenEmpty_HandlesCorrectly()
         {
@@ -196,6 +250,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.True(archetype.EntityCount >= 0);
         }
 
+        /// <summary>
+        /// Tests that archetype create entity locations new entity id when not recycled
+        /// </summary>
         [Fact]
         public void Archetype_CreateEntityLocations_NewEntityId_WhenNotRecycled()
         {
@@ -204,6 +261,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(1, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -212,6 +272,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -220,6 +283,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 t 4 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3T4_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -228,6 +294,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 t 4 t 5 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3T4T5_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -236,6 +305,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 t 4 t 5 t 6 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3T4T5T6_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -244,6 +316,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 t 4 t 5 t 6 t 7 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3T4T5T6T7_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -252,6 +327,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 t 4 t 5 t 6 t 7 t 8 create new or get existing archetypes returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3T4T5T6T7T8_CreateNewOrGetExistingArchetypes_ReturnsArchetype()
         {
@@ -260,6 +338,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(item.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype many archetypes forces component location table resize
+        /// </summary>
         [Fact]
         public void Archetype_ManyArchetypes_ForcesComponentLocationTableResize()
         {
@@ -271,6 +352,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(30, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that archetype update non empty archetype processes all
+        /// </summary>
         [Fact]
         public void Archetype_Update_NonEmptyArchetype_ProcessesAll()
         {
@@ -283,6 +367,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that archetype update range with non zero start covers branch
+        /// </summary>
         [Fact]
         public void Archetype_UpdateRange_WithNonZeroStart_CoversBranch()
         {
@@ -295,6 +382,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Update();
         }
 
+        /// <summary>
+        /// Tests that archetype t create new or get existing archetypes cache hit returns existing
+        /// </summary>
         [Fact]
         public void Archetype_T_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
@@ -304,6 +394,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Same(first.Archetype, second.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype create or get existing archetype by id returns existing
+        /// </summary>
         [Fact]
         public void Archetype_CreateOrGetExistingArchetype_ById_ReturnsExisting()
         {
@@ -313,6 +406,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that archetype create or get existing archetype by span returns archetype
+        /// </summary>
         [Fact]
         public void Archetype_CreateOrGetExistingArchetype_BySpan_ReturnsArchetype()
         {
@@ -322,6 +418,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.NotNull(result);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 create new or get existing archetypes cache hit returns existing
+        /// </summary>
         [Fact]
         public void Archetype_T1T2_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
@@ -331,6 +430,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Same(first.Archetype, second.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype t 1 t 2 t 3 create new or get existing archetypes cache hit returns existing
+        /// </summary>
         [Fact]
         public void Archetype_T1T2T3_CreateNewOrGetExistingArchetypes_CacheHit_ReturnsExisting()
         {
@@ -340,6 +442,9 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Same(first.Archetype, second.Archetype);
         }
 
+        /// <summary>
+        /// Tests that archetype modify component location table with multiple archetypes covers resize
+        /// </summary>
         [Fact]
         public void Archetype_ModifyComponentLocationTable_WithMultipleArchetypes_CoversResize()
         {

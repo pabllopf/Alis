@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Aspect.Math.Test.Collections
 {
+    /// <summary>
+    /// The fast immutable array tests class
+    /// </summary>
     public class FastImmutableArrayTests
     {
+        /// <summary>
+        /// Tests that remove range with items not present calls remove at range with empty collection
+        /// </summary>
         [Fact]
         public void RemoveRange_WithItemsNotPresent_CallsRemoveAtRangeWithEmptyCollection()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(3, builder[2]);
         }
 
+        /// <summary>
+        /// Tests that remove range empty items does nothing
+        /// </summary>
         [Fact]
         public void RemoveRange_EmptyItems_DoesNothing()
         {
@@ -57,6 +66,9 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             Assert.Equal(3, builder.Count);
         }
 
+        /// <summary>
+        /// Tests that remove range with custom comparer items not present does nothing
+        /// </summary>
         [Fact]
         public void RemoveRange_WithCustomComparer_ItemsNotPresent_DoesNothing()
         {

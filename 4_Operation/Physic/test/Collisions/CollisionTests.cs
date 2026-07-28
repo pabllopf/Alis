@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Physic.Test.Collisions
 {
+    /// <summary>
+    /// The collision tests class
+    /// </summary>
     public class CollisionTests
     {
+        /// <summary>
+        /// Tests that collide polygons local search loop body both branches
+        /// </summary>
         [Fact]
         public void CollidePolygons_LocalSearchLoopBody_BothBranches()
         {
@@ -59,6 +65,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that collide polygons clip underflow extreme sweep
+        /// </summary>
         [Fact]
         public void CollidePolygons_ClipUnderflow_ExtremeSweep()
         {
@@ -76,6 +85,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that collide polygons first clip underflow specific
+        /// </summary>
         [Fact]
         public void CollidePolygons_FirstClipUnderflow_Specific()
         {
@@ -97,6 +109,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon second clip underflow ep collider
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SecondClipUnderflow_EpCollider()
         {
@@ -120,6 +135,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon select primary axis unknown
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_SelectPrimaryAxisUnknown()
         {
@@ -145,6 +163,9 @@ namespace Alis.Core.Physic.Test.Collisions
             }
         }
 
+        /// <summary>
+        /// Tests that collide edge and polygon massive sweep ep collider
+        /// </summary>
         [Fact]
         public void CollideEdgeAndPolygon_MassiveSweep_EpCollider()
         {

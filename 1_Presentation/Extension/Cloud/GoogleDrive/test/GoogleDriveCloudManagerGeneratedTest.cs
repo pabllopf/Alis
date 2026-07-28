@@ -54,22 +54,47 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
     /// </summary>
     public class GoogleDriveCloudManagerGeneratedTest
     {
+        /// <summary>
+        /// The test token
+        /// </summary>
         private const string TestToken = "ya29.a0AfH6SMC8TokenForTestingPurposes123";
 
+        /// <summary>
+        /// The callback http message handler class
+        /// </summary>
+        /// <seealso cref="ConfigurableMessageHandler"/>
         private sealed class CallbackHttpMessageHandler : ConfigurableMessageHandler
         {
+            /// <summary>
+            /// The callback
+            /// </summary>
             private readonly Func<HttpRequestMessage, HttpResponseMessage> _callback;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="CallbackHttpMessageHandler"/> class
+            /// </summary>
+            /// <param name="callback">The callback</param>
             public CallbackHttpMessageHandler(Func<HttpRequestMessage, HttpResponseMessage> callback)
                 : base(new HttpClientHandler())
             {
                 _callback = callback;
             }
 
+            /// <summary>
+            /// Sends the request
+            /// </summary>
+            /// <param name="request">The request</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <returns>A task containing the http response message</returns>
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
                 Task.FromResult(_callback(request));
         }
 
+        /// <summary>
+        /// Creates the mock drive service using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <returns>The drive service</returns>
         private static DriveService CreateMockDriveService(Func<HttpRequestMessage, HttpResponseMessage> callback)
         {
             var handler = new CallbackHttpMessageHandler(callback);
@@ -83,18 +108,34 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             });
         }
 
+        /// <summary>
+        /// Creates the manager with mock service using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <returns>The google drive cloud manager</returns>
         private static GoogleDriveCloudManager CreateManagerWithMockService(Func<HttpRequestMessage, HttpResponseMessage> callback)
         {
             DriveService service = CreateMockDriveService(callback);
             return new GoogleDriveCloudManager(new Context(), service);
         }
 
+        /// <summary>
+        /// Jsons the response using the specified json
+        /// </summary>
+        /// <param name="json">The json</param>
+        /// <param name="status">The status</param>
+        /// <returns>The http response message</returns>
         private static HttpResponseMessage JsonResponse(string json, HttpStatusCode status = HttpStatusCode.OK) =>
             new HttpResponseMessage(status)
             {
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
 
+        /// <summary>
+        /// Lists the response using the specified file defs
+        /// </summary>
+        /// <param name="fileDefs">The file defs</param>
+        /// <returns>The http response message</returns>
         private static HttpResponseMessage ListResponse(params string[] fileDefs)
         {
             StringBuilder json = new StringBuilder("{\"files\":[");
@@ -111,9 +152,22 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
             return JsonResponse(json.ToString());
         }
 
+        /// <summary>
+        /// Files the response using the specified id
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <param name="name">The name</param>
+        /// <param name="mime">The mime</param>
+        /// <param name="size">The size</param>
+        /// <returns>The http response message</returns>
         private static HttpResponseMessage FileResponse(string id, string name, string mime, long size = 1024) =>
             JsonResponse("{\"id\":\"" + id + "\",\"name\":\"" + name + "\",\"size\":\"" + size + "\",\"mimeType\":\"" + mime + "\"}");
 
+        /// <summary>
+        /// Initiates the upload response using the specified upload uri
+        /// </summary>
+        /// <param name="uploadUri">The upload uri</param>
+        /// <returns>The response</returns>
         private static HttpResponseMessage InitiateUploadResponse(string uploadUri)
         {
             var response = new HttpResponseMessage(HttpStatusCode.OK)

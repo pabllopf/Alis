@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The convex shape tests class
+    /// </summary>
     public class ConvexShapeTests
     {
+        /// <summary>
+        /// Defaults the constructor initializes with zero points
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_InitializesWithZeroPoints()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Constructors the with point count initializes with specified count
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_WithPointCount_InitializesWithSpecifiedCount()
         {
@@ -50,6 +59,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Constructors the with zero point count initializes with zero points
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_WithZeroPointCount_InitializesWithZeroPoints()
         {
@@ -57,6 +69,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Copies the constructor copies all points
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_CopiesAllPoints()
         {
@@ -72,6 +87,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.GetPoint(2), copy.GetPoint(2));
         }
 
+        /// <summary>
+        /// Copies the constructor modify original does not affect copy
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ModifyOriginal_DoesNotAffectCopy()
         {
@@ -85,6 +103,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Vector2F(10, 20), copy.GetPoint(0));
         }
 
+        /// <summary>
+        /// Sets the point count increases size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPointCount_IncreasesSize()
         {
@@ -93,6 +114,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(6u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Sets the point count decreases size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPointCount_DecreasesSize()
         {
@@ -101,6 +125,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(2u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Sets the point count to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPointCount_ToZero()
         {
@@ -109,6 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Gets the point count returns correct count
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPointCount_ReturnsCorrectCount()
         {
@@ -119,6 +149,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(10u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Gets the point returns set point
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_ReturnsSetPoint()
         {
@@ -131,6 +164,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(point.Y, result.Y);
         }
 
+        /// <summary>
+        /// Sets the point updates existing point
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPoint_UpdatesExistingPoint()
         {
@@ -143,6 +179,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(40f, result.Y);
         }
 
+        /// <summary>
+        /// Sets the point multiple points all roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPoint_MultiplePoints_AllRoundtrip()
         {
@@ -168,6 +207,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             }
         }
 
+        /// <summary>
+        /// Gets the local bounds after setting points returns valid rect
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetLocalBounds_AfterSettingPoints_ReturnsValidRect()
         {
@@ -182,6 +224,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(bounds.Height > 0);
         }
 
+        /// <summary>
+        /// Gets the global bounds after setting points returns valid rect
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetGlobalBounds_AfterSettingPoints_ReturnsValidRect()
         {
@@ -196,6 +241,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(bounds.Height > 0);
         }
 
+        /// <summary>
+        /// Inheritses the from shape
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void InheritsFromShape()
         {
@@ -204,6 +252,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(shape is IDrawable);
         }
 
+        /// <summary>
+        /// Disposes the releases native resources
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_ReleasesNativeResources()
         {
@@ -212,6 +263,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, shape.CPointer);
         }
 
+        /// <summary>
+        /// Sets the point count after setting points preserves points within range
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void SetPointCount_AfterSettingPoints_PreservesPointsWithinRange()
         {

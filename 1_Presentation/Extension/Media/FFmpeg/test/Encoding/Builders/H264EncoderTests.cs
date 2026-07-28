@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
 {
+    /// <summary>
+    /// The 264 encoder tests class
+    /// </summary>
     public class H264EncoderTests
     {
+        /// <summary>
+        /// Tests that constructor should set default cqp
+        /// </summary>
         [Fact]
         public void Constructor_ShouldSetDefaultCqp()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("22.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that name should return libx 264
+        /// </summary>
         [Fact]
         public void Name_ShouldReturnLibx264()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("libx264", encoder.Name);
         }
 
+        /// <summary>
+        /// Tests that format default should be mp 4
+        /// </summary>
         [Fact]
         public void Format_Default_ShouldBeMp4()
         {
@@ -59,6 +71,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("mp4", encoder.Format);
         }
 
+        /// <summary>
+        /// Tests that format should be settable
+        /// </summary>
         [Fact]
         public void Format_ShouldBeSettable()
         {
@@ -67,6 +82,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("mkv", encoder.Format);
         }
 
+        /// <summary>
+        /// Tests that encoder preset default should be medium
+        /// </summary>
         [Fact]
         public void EncoderPreset_Default_ShouldBeMedium()
         {
@@ -74,6 +92,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Preset.Medium, encoder.EncoderPreset);
         }
 
+        /// <summary>
+        /// Tests that encoder preset should be settable
+        /// </summary>
         [Fact]
         public void EncoderPreset_ShouldBeSettable()
         {
@@ -82,6 +103,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Preset.Fast, encoder.EncoderPreset);
         }
 
+        /// <summary>
+        /// Tests that encoder tune default should be auto
+        /// </summary>
         [Fact]
         public void EncoderTune_Default_ShouldBeAuto()
         {
@@ -89,6 +113,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Tune.Auto, encoder.EncoderTune);
         }
 
+        /// <summary>
+        /// Tests that encoder tune should be settable
+        /// </summary>
         [Fact]
         public void EncoderTune_ShouldBeSettable()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(Tune.Film, encoder.EncoderTune);
         }
 
+        /// <summary>
+        /// Tests that encoder f fmpeg profile default should be auto
+        /// </summary>
         [Fact]
         public void EncoderFFmpegProfile_Default_ShouldBeAuto()
         {
@@ -104,6 +134,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(FFmpegProfile.Auto, encoder.EncoderFFmpegProfile);
         }
 
+        /// <summary>
+        /// Tests that encoder f fmpeg profile should be settable
+        /// </summary>
         [Fact]
         public void EncoderFFmpegProfile_ShouldBeSettable()
         {
@@ -112,6 +145,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal(FFmpegProfile.High, encoder.EncoderFFmpegProfile);
         }
 
+        /// <summary>
+        /// Tests that set cqp should update current quality settings
+        /// </summary>
         [Fact]
         public void SetCqp_ShouldUpdateCurrentQualitySettings()
         {
@@ -121,6 +157,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("18.50", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set cqp with default crf should use 22
+        /// </summary>
         [Fact]
         public void SetCqp_WithDefaultCrf_ShouldUse22()
         {
@@ -129,6 +168,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf 22.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set cbr should update current quality settings
+        /// </summary>
         [Fact]
         public void SetCbr_ShouldUpdateCurrentQualitySettings()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-bufsize 10M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set vbv should update current quality settings
+        /// </summary>
         [Fact]
         public void SetVbv_ShouldUpdateCurrentQualitySettings()
         {
@@ -151,6 +196,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf_max -1", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set vbv with custom crf max should include crf max
+        /// </summary>
         [Fact]
         public void SetVbv_WithCustomCrfMax_ShouldIncludeCrfMax()
         {
@@ -159,6 +207,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf_max 25", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set abr should update current quality settings
+        /// </summary>
         [Fact]
         public void SetAbr_ShouldUpdateCurrentQualitySettings()
         {
@@ -167,6 +218,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-b:v 4M", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that create should return encoder options with defaults
+        /// </summary>
         [Fact]
         public void Create_ShouldReturnEncoderOptionsWithDefaults()
         {
@@ -178,6 +232,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.NotNull(options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create should include crf and preset in arguments
+        /// </summary>
         [Fact]
         public void Create_ShouldIncludeCrfAndPresetInArguments()
         {
@@ -187,6 +244,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-preset medium", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create should not include tune when auto
+        /// </summary>
         [Fact]
         public void Create_ShouldNotIncludeTuneWhenAuto()
         {
@@ -196,6 +256,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-tune", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create should include tune when not auto
+        /// </summary>
         [Fact]
         public void Create_ShouldIncludeTuneWhenNotAuto()
         {
@@ -205,6 +268,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune film", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create should not include profile when auto
+        /// </summary>
         [Fact]
         public void Create_ShouldNotIncludeProfileWhenAuto()
         {
@@ -214,6 +280,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.DoesNotContain("-profile:v", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create should include profile when not auto
+        /// </summary>
         [Fact]
         public void Create_ShouldIncludeProfileWhenNotAuto()
         {
@@ -223,6 +292,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v high", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with all tune values should generate valid arguments
+        /// </summary>
         [Fact]
         public void Create_WithAllTuneValues_ShouldGenerateValidArguments()
         {
@@ -236,6 +308,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             }
         }
 
+        /// <summary>
+        /// Tests that create with all preset values should generate valid arguments
+        /// </summary>
         [Fact]
         public void Create_WithAllPresetValues_ShouldGenerateValidArguments()
         {
@@ -249,6 +324,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             }
         }
 
+        /// <summary>
+        /// Tests that create with all profile values should generate valid arguments
+        /// </summary>
         [Fact]
         public void Create_WithAllProfileValues_ShouldGenerateValidArguments()
         {
@@ -262,6 +340,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             }
         }
 
+        /// <summary>
+        /// Tests that create with cbr settings should include cbr arguments
+        /// </summary>
         [Fact]
         public void Create_WithCbrSettings_ShouldIncludeCbrArguments()
         {
@@ -272,6 +353,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("nal-hrd=cbr", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with vbv settings should include vbv arguments
+        /// </summary>
         [Fact]
         public void Create_WithVbvSettings_ShouldIncludeVbvArguments()
         {
@@ -282,6 +366,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-bufsize 10M", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with abr settings should include abr arguments
+        /// </summary>
         [Fact]
         public void Create_WithAbrSettings_ShouldIncludeAbrArguments()
         {
@@ -291,6 +378,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-b:v 4M", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with custom format should reflect in options
+        /// </summary>
         [Fact]
         public void Create_WithCustomFormat_ShouldReflectInOptions()
         {
@@ -300,6 +390,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Equal("flv", options.Format);
         }
 
+        /// <summary>
+        /// Tests that create with baseline profile should include baseline
+        /// </summary>
         [Fact]
         public void Create_WithBaselineProfile_ShouldIncludeBaseline()
         {
@@ -309,6 +402,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v baseline", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with main profile should include main
+        /// </summary>
         [Fact]
         public void Create_WithMainProfile_ShouldIncludeMain()
         {
@@ -318,6 +414,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v main", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with multiple settings should combine all
+        /// </summary>
         [Fact]
         public void Create_WithMultipleSettings_ShouldCombineAll()
         {
@@ -335,6 +434,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v high444", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with high 10 profile should include high 10
+        /// </summary>
         [Fact]
         public void Create_WithHigh10Profile_ShouldIncludeHigh10()
         {
@@ -344,6 +446,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v high10", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with high 442 profile should include high 442
+        /// </summary>
         [Fact]
         public void Create_WithHigh442Profile_ShouldIncludeHigh442()
         {
@@ -353,6 +458,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v high442", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with high 444 profile should include high 444
+        /// </summary>
         [Fact]
         public void Create_WithHigh444Profile_ShouldIncludeHigh444()
         {
@@ -362,6 +470,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-profile:v high444", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with all tune non auto should include correct tune
+        /// </summary>
         [Fact]
         public void Create_WithAllTuneNonAuto_ShouldIncludeCorrectTune()
         {
@@ -376,6 +487,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             }
         }
 
+        /// <summary>
+        /// Tests that create with animation tune should include animation
+        /// </summary>
         [Fact]
         public void Create_WithAnimationTune_ShouldIncludeAnimation()
         {
@@ -385,6 +499,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune animation", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with still image tune should include still image
+        /// </summary>
         [Fact]
         public void Create_WithStillImageTune_ShouldIncludeStillImage()
         {
@@ -394,6 +511,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune stillimage", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with fast decode tune should include fast decode
+        /// </summary>
         [Fact]
         public void Create_WithFastDecodeTune_ShouldIncludeFastDecode()
         {
@@ -403,6 +523,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune fastdecode", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that create with zero latency tune should include zero latency
+        /// </summary>
         [Fact]
         public void Create_WithZeroLatencyTune_ShouldIncludeZeroLatency()
         {
@@ -412,6 +535,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-tune zerolatency", options.EncoderArguments);
         }
 
+        /// <summary>
+        /// Tests that set cqp with zero crf should use zero
+        /// </summary>
         [Fact]
         public void SetCqp_WithZeroCrf_ShouldUseZero()
         {
@@ -420,6 +546,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf 0.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set cqp with max crf should use 51
+        /// </summary>
         [Fact]
         public void SetCqp_WithMaxCrf_ShouldUse51()
         {
@@ -428,6 +557,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf 51.00", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set cbr with empty strings should set empty values
+        /// </summary>
         [Fact]
         public void SetCbr_WithEmptyStrings_ShouldSetEmptyValues()
         {
@@ -436,6 +568,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-b:v ", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that set vbv with negative crf max should include negative
+        /// </summary>
         [Fact]
         public void SetVbv_WithNegativeCrfMax_ShouldIncludeNegative()
         {
@@ -444,6 +579,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Encoding.Builders
             Assert.Contains("-crf_max -1", encoder.CurrentQualitySettings);
         }
 
+        /// <summary>
+        /// Tests that implements i encoder options builder
+        /// </summary>
         [Fact]
         public void ImplementsIEncoderOptionsBuilder()
         {

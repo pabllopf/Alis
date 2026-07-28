@@ -40,8 +40,14 @@ using Xunit;
 
 namespace Alis.Extension.Updater.Test
 {
+    /// <summary>
+    /// The update manager additional coverage test class
+    /// </summary>
     public class UpdateManagerAdditionalCoverageTest
     {
+        /// <summary>
+        /// Tests that finish already downloaded flow returns true
+        /// </summary>
         [Fact]
         public void FinishAlreadyDownloadedFlow_ReturnsTrue()
         {
@@ -50,6 +56,9 @@ namespace Alis.Extension.Updater.Test
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that remove old backup archives with zero backups does not throw
+        /// </summary>
         [Fact]
         public void RemoveOldBackupArchives_WithZeroBackups_DoesNotThrow()
         {
@@ -58,6 +67,9 @@ namespace Alis.Extension.Updater.Test
             sut.RemoveOldBackupArchives();
         }
 
+        /// <summary>
+        /// Tests that remove old backup archives with one backup does not delete
+        /// </summary>
         [Fact]
         public void RemoveOldBackupArchives_WithOneBackup_DoesNotDelete()
         {
@@ -76,6 +88,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that remove old backup archives with three backups deletes oldest
+        /// </summary>
         [Fact]
         public void RemoveOldBackupArchives_WithThreeBackups_DeletesOldest()
         {
@@ -100,6 +115,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that compress backup folder creates zip and removes directory
+        /// </summary>
         [Fact]
         public void CompressBackupFolder_CreatesZipAndRemovesDirectory()
         {
@@ -121,6 +139,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that move program folder to backup when folder exists moves and returns path
+        /// </summary>
         [Fact]
         public void MoveProgramFolderToBackup_WhenFolderExists_MovesAndReturnsPath()
         {
@@ -142,6 +163,9 @@ namespace Alis.Extension.Updater.Test
             if (Directory.Exists(backupPath)) Directory.Delete(backupPath, true);
         }
 
+        /// <summary>
+        /// Tests that get latest release async with valid url returns task
+        /// </summary>
         [Fact]
         public void GetLatestReleaseAsync_WithValidUrl_ReturnsTask()
         {
@@ -155,6 +179,9 @@ namespace Alis.Extension.Updater.Test
             Assert.NotNull(task);
         }
 
+        /// <summary>
+        /// Tests that backup when program folder exists moves and compresses
+        /// </summary>
         [Fact]
         public void Backup_WhenProgramFolderExists_MovesAndCompresses()
         {
@@ -177,6 +204,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that backup when program folder does not exist sets progress to 07
+        /// </summary>
         [Fact]
         public void Backup_WhenProgramFolderDoesNotExist_SetsProgressTo07()
         {
@@ -189,6 +219,9 @@ namespace Alis.Extension.Updater.Test
             Assert.Equal(0.7f, sut.Progress);
         }
 
+        /// <summary>
+        /// Tests that clean temp file deletes matching files
+        /// </summary>
         [Fact]
         public void CleanTempFile_DeletesMatchingFiles()
         {
@@ -215,6 +248,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that clean temp file does not delete backup files
+        /// </summary>
         [Fact]
         public void CleanTempFile_DoesNotDeleteBackupFiles()
         {
@@ -233,6 +269,9 @@ namespace Alis.Extension.Updater.Test
             }
         }
 
+        /// <summary>
+        /// Tests that install latest version when program folder does not exist still completes
+        /// </summary>
         [Fact]
         public void InstallLatestVersion_WhenProgramFolderDoesNotExist_StillCompletes()
         {
@@ -255,6 +294,9 @@ namespace Alis.Extension.Updater.Test
             Assert.True(File.Exists(System.IO.Path.Combine(nonExistentFolder, "test.txt")));
         }
 
+        /// <summary>
+        /// Tests that wait for continue with zero delay does not block
+        /// </summary>
         [Fact]
         public void WaitForContinue_WithZeroDelay_DoesNotBlock()
         {
@@ -263,6 +305,9 @@ namespace Alis.Extension.Updater.Test
             sut.WaitForContinue();
         }
 
+        /// <summary>
+        /// Tests that get selected asset with empty assets throws key not found
+        /// </summary>
         [Fact]
         public void GetSelectedAsset_WithEmptyAssets_ThrowsKeyNotFound()
         {
@@ -270,6 +315,12 @@ namespace Alis.Extension.Updater.Test
             Assert.Throws<KeyNotFoundException>(() => UpdateManager.GetSelectedAsset(release, "win", "x64"));
         }
 
+        /// <summary>
+        /// Creates the manager fast using the specified version to install
+        /// </summary>
+        /// <param name="versionToInstall">The version to install</param>
+        /// <param name="programFolder">The program folder</param>
+        /// <returns>The manager</returns>
         private static UpdateManager CreateManagerFast(string versionToInstall = "latest", string programFolder = null)
         {
             Mock<IGitHubApiService> api = new Mock<IGitHubApiService>();
@@ -286,10 +337,21 @@ namespace Alis.Extension.Updater.Test
             return manager;
         }
 
+        /// <summary>
+        /// The temp folder class
+        /// </summary>
+        /// <seealso cref="IDisposable"/>
         private class TempFolder : IDisposable
         {
+            /// <summary>
+            /// Gets or sets the value of the path
+            /// </summary>
             public string Path { get; private set; }
 
+            /// <summary>
+            /// Creates
+            /// </summary>
+            /// <returns>The temp folder</returns>
             public static TempFolder Create()
             {
                 string path = System.IO.Path.Combine(System.IO.Path.GetTempPath(), "alis-updater-test", Guid.NewGuid().ToString("N"));
@@ -297,6 +359,9 @@ namespace Alis.Extension.Updater.Test
                 return new TempFolder { Path = path };
             }
 
+            /// <summary>
+            /// Disposes this instance
+            /// </summary>
             public void Dispose()
             {
                 try

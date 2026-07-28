@@ -174,6 +174,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.False(weak.IsAlive);
         }
 
+        /// <summary>
+        /// Creates the weak context ref
+        /// </summary>
+        /// <returns>The system weak reference</returns>
         private static System.WeakReference CreateWeakContextRef()
         {
             Context context = new Context();

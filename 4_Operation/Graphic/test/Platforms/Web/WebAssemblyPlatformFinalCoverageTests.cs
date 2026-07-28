@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
 {
+    /// <summary>
+    /// The web assembly platform final coverage tests class
+    /// </summary>
     public class WebAssemblyPlatformFinalCoverageTests
     {
+        /// <summary>
+        /// Tests that convert key code alphabet b maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetB_MapsCorrectly()
         {
@@ -44,6 +50,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.B));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet c maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetC_MapsCorrectly()
         {
@@ -52,6 +61,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.C));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet d maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetD_MapsCorrectly()
         {
@@ -60,6 +72,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet e maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetE_MapsCorrectly()
         {
@@ -68,6 +83,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.E));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet f maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetF_MapsCorrectly()
         {
@@ -76,6 +94,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet g maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetG_MapsCorrectly()
         {
@@ -84,6 +105,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.G));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet h maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetH_MapsCorrectly()
         {
@@ -92,6 +116,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.H));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet i maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetI_MapsCorrectly()
         {
@@ -100,6 +127,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.I));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet j maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetJ_MapsCorrectly()
         {
@@ -108,6 +138,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.J));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet k maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetK_MapsCorrectly()
         {
@@ -116,6 +149,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.K));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet l maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetL_MapsCorrectly()
         {
@@ -124,6 +160,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.L));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet m maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetM_MapsCorrectly()
         {
@@ -132,6 +171,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.M));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet n maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetN_MapsCorrectly()
         {
@@ -140,6 +182,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.N));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet o maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetO_MapsCorrectly()
         {
@@ -148,6 +193,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.O));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet p maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetP_MapsCorrectly()
         {
@@ -156,6 +204,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.P));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet q maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetQ_MapsCorrectly()
         {
@@ -164,6 +215,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Q));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet r maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetR_MapsCorrectly()
         {
@@ -172,6 +226,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.R));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet s maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetS_MapsCorrectly()
         {
@@ -180,6 +237,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.S));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet t maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetT_MapsCorrectly()
         {
@@ -188,6 +248,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.T));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet u maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetU_MapsCorrectly()
         {
@@ -196,6 +259,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.U));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet v maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetV_MapsCorrectly()
         {
@@ -204,6 +270,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.V));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet w maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetW_MapsCorrectly()
         {
@@ -212,6 +281,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.W));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet x maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetX_MapsCorrectly()
         {
@@ -220,6 +292,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.X));
         }
 
+        /// <summary>
+        /// Tests that convert key code alphabet y maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_AlphabetY_MapsCorrectly()
         {
@@ -228,6 +303,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.Y));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 1 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number1_MapsCorrectly()
         {
@@ -236,6 +314,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D1));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 2 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number2_MapsCorrectly()
         {
@@ -244,6 +325,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D2));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 3 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number3_MapsCorrectly()
         {
@@ -252,6 +336,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D3));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 4 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number4_MapsCorrectly()
         {
@@ -260,6 +347,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D4));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 5 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number5_MapsCorrectly()
         {
@@ -268,6 +358,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D5));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 6 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number6_MapsCorrectly()
         {
@@ -276,6 +369,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D6));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 7 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number7_MapsCorrectly()
         {
@@ -284,6 +380,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D7));
         }
 
+        /// <summary>
+        /// Tests that convert key code number 8 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Number8_MapsCorrectly()
         {
@@ -292,6 +391,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.D8));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 2 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF2_MapsCorrectly()
         {
@@ -300,6 +402,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F2));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 3 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF3_MapsCorrectly()
         {
@@ -308,6 +413,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F3));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 4 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF4_MapsCorrectly()
         {
@@ -316,6 +424,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F4));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 5 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF5_MapsCorrectly()
         {
@@ -324,6 +435,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F5));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 6 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF6_MapsCorrectly()
         {
@@ -332,6 +446,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F6));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 7 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF7_MapsCorrectly()
         {
@@ -340,6 +457,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F7));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 8 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF8_MapsCorrectly()
         {
@@ -348,6 +468,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F8));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 9 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF9_MapsCorrectly()
         {
@@ -356,6 +479,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F9));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 10 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF10_MapsCorrectly()
         {
@@ -364,6 +490,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F10));
         }
 
+        /// <summary>
+        /// Tests that convert key code function key f 11 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_FunctionKeyF11_MapsCorrectly()
         {
@@ -372,6 +501,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.F11));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 1 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad1_MapsCorrectly()
         {
@@ -380,6 +512,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad1));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 2 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad2_MapsCorrectly()
         {
@@ -388,6 +523,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad2));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 3 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad3_MapsCorrectly()
         {
@@ -396,6 +534,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad3));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 4 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad4_MapsCorrectly()
         {
@@ -404,6 +545,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad4));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 5 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad5_MapsCorrectly()
         {
@@ -412,6 +556,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad5));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 6 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad6_MapsCorrectly()
         {
@@ -420,6 +567,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad6));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 7 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad7_MapsCorrectly()
         {
@@ -428,6 +578,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad7));
         }
 
+        /// <summary>
+        /// Tests that convert key code numpad 8 maps correctly
+        /// </summary>
         [Fact]
         public void ConvertKeyCode_Numpad8_MapsCorrectly()
         {
@@ -436,6 +589,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(platform.IsKeyDown(ConsoleKey.NumPad8));
         }
 
+        /// <summary>
+        /// Tests that on mouse down valid button sets button
+        /// </summary>
         [Fact]
         public void OnMouseDown_ValidButton_SetsButton()
         {
@@ -447,6 +603,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(200, y);
         }
 
+        /// <summary>
+        /// Tests that on mouse down valid button 4 sets button
+        /// </summary>
         [Fact]
         public void OnMouseDown_ValidButton4_SetsButton()
         {
@@ -456,6 +615,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(buttons[4]);
         }
 
+        /// <summary>
+        /// Tests that on mouse up valid button clears button
+        /// </summary>
         [Fact]
         public void OnMouseUp_ValidButton_ClearsButton()
         {
@@ -468,6 +630,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(after[0]);
         }
 
+        /// <summary>
+        /// Tests that on mouse up valid button 4 clears button
+        /// </summary>
         [Fact]
         public void OnMouseUp_ValidButton4_ClearsButton()
         {
@@ -478,6 +643,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(buttons[4]);
         }
 
+        /// <summary>
+        /// Tests that on mouse down valid buttons all set correctly
+        /// </summary>
         [Fact]
         public void OnMouseDown_ValidButtons_AllSetCorrectly()
         {
@@ -493,6 +661,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that on mouse up valid buttons all cleared correctly
+        /// </summary>
         [Fact]
         public void OnMouseUp_ValidButtons_AllClearedCorrectly()
         {
@@ -512,6 +683,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             }
         }
 
+        /// <summary>
+        /// Tests that gamepad state left stick x default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_LeftStickX_DefaultIsZero()
         {
@@ -519,6 +693,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.LeftStickX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state left stick x can set
+        /// </summary>
         [Fact]
         public void GamepadState_LeftStickX_CanSet()
         {
@@ -527,6 +704,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.LeftStickX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state left stick y default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_LeftStickY_DefaultIsZero()
         {
@@ -534,6 +714,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.LeftStickY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state left stick y can set
+        /// </summary>
         [Fact]
         public void GamepadState_LeftStickY_CanSet()
         {
@@ -542,6 +725,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.LeftStickY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right stick x default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_RightStickX_DefaultIsZero()
         {
@@ -549,6 +735,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.RightStickX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right stick x can set
+        /// </summary>
         [Fact]
         public void GamepadState_RightStickX_CanSet()
         {
@@ -557,6 +746,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.RightStickX);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right stick y default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_RightStickY_DefaultIsZero()
         {
@@ -564,6 +756,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.RightStickY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right stick y can set
+        /// </summary>
         [Fact]
         public void GamepadState_RightStickY_CanSet()
         {
@@ -572,6 +767,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.RightStickY);
         }
 
+        /// <summary>
+        /// Tests that gamepad state left trigger default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_LeftTrigger_DefaultIsZero()
         {
@@ -579,6 +777,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.LeftTrigger);
         }
 
+        /// <summary>
+        /// Tests that gamepad state left trigger can set
+        /// </summary>
         [Fact]
         public void GamepadState_LeftTrigger_CanSet()
         {
@@ -587,6 +788,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.LeftTrigger);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right trigger default is zero
+        /// </summary>
         [Fact]
         public void GamepadState_RightTrigger_DefaultIsZero()
         {
@@ -594,6 +798,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.0f, state.RightTrigger);
         }
 
+        /// <summary>
+        /// Tests that gamepad state right trigger can set
+        /// </summary>
         [Fact]
         public void GamepadState_RightTrigger_CanSet()
         {
@@ -602,6 +809,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.Equal(0.5f, state.RightTrigger);
         }
 
+        /// <summary>
+        /// Tests that on gamepad connect new index creates state
+        /// </summary>
         [Fact]
         public void OnGamepadConnect_NewIndex_CreatesState()
         {
@@ -611,6 +821,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that on gamepad disconnect existing index sets disconnected
+        /// </summary>
         [Fact]
         public void OnGamepadDisconnect_ExistingIndex_SetsDisconnected()
         {
@@ -621,6 +834,9 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(state.Connected);
         }
 
+        /// <summary>
+        /// Tests that initialize short overload returns false when egl fails
+        /// </summary>
         [Fact]
         public void Initialize_ShortOverload_ReturnsFalse_WhenEglFails()
         {
@@ -629,6 +845,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Invokes the private using the specified instance
+        /// </summary>
+        /// <param name="instance">The instance</param>
+        /// <param name="methodName">The method name</param>
+        /// <param name="arguments">The arguments</param>
         private static void InvokePrivate(object instance, string methodName, params object[] arguments)
         {
             MethodInfo method = instance.GetType().GetMethod(methodName, BindingFlags.Instance | BindingFlags.NonPublic);

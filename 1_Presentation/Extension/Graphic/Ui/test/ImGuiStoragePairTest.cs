@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui storage pair test class
+    /// </summary>
     public class ImGuiStoragePairTest
     {
+        /// <summary>
+        /// Tests that key default should be zero
+        /// </summary>
         [Fact]
         public void Key_Default_ShouldBeZero()
         {
@@ -40,6 +46,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, storagePair.Key);
         }
 
+        /// <summary>
+        /// Tests that key should set and get correctly
+        /// </summary>
         [Fact]
         public void Key_Should_SetAndGetCorrectly()
         {
@@ -48,6 +57,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(123u, storagePair.Key);
         }
 
+        /// <summary>
+        /// Tests that key should handle max value
+        /// </summary>
         [Fact]
         public void Key_Should_HandleMaxValue()
         {
@@ -56,6 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(uint.MaxValue, storagePair.Key);
         }
 
+        /// <summary>
+        /// Tests that key should handle min value
+        /// </summary>
         [Fact]
         public void Key_Should_HandleMinValue()
         {
@@ -64,6 +79,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(uint.MinValue, storagePair.Key);
         }
 
+        /// <summary>
+        /// Tests that key should handle one
+        /// </summary>
         [Fact]
         public void Key_Should_HandleOne()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(1u, storagePair.Key);
         }
 
+        /// <summary>
+        /// Tests that value default should be default union value
+        /// </summary>
         [Fact]
         public void Value_Default_ShouldBeDefaultUnionValue()
         {
@@ -79,6 +100,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default(UnionValue), storagePair.Value);
         }
 
+        /// <summary>
+        /// Tests that value should set and get with value i 32
+        /// </summary>
         [Fact]
         public void Value_Should_SetAndGetWithValueI32()
         {
@@ -88,6 +112,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(123, storagePair.Value.ValueI32);
         }
 
+        /// <summary>
+        /// Tests that value should set and get with value f 32
+        /// </summary>
         [Fact]
         public void Value_Should_SetAndGetWithValueF32()
         {
@@ -97,6 +124,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(456.78f, storagePair.Value.ValueF32);
         }
 
+        /// <summary>
+        /// Tests that value should set and get with value ptr
+        /// </summary>
         [Fact]
         public void Value_Should_SetAndGetWithValuePtr()
         {
@@ -106,6 +136,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(new System.IntPtr(42), storagePair.Value.ValuePtr);
         }
 
+        /// <summary>
+        /// Tests that value should overwrite correctly
+        /// </summary>
         [Fact]
         public void Value_Should_OverwriteCorrectly()
         {
@@ -115,6 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(200.0f, storagePair.Value.ValueF32);
         }
 
+        /// <summary>
+        /// Tests that key and value should be independent
+        /// </summary>
         [Fact]
         public void Key_And_Value_Should_BeIndependent()
         {
@@ -125,6 +161,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(99, storagePair.Value.ValueI32);
         }
 
+        /// <summary>
+        /// Tests that struct should be zeroed by default
+        /// </summary>
         [Fact]
         public void Struct_Should_BeZeroedByDefault()
         {

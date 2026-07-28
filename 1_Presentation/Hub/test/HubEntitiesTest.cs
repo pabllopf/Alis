@@ -32,8 +32,14 @@ using Xunit;
 
 namespace Alis.App.Hub.Test
 {
+    /// <summary>
+    /// The hub entities test class
+    /// </summary>
     public class HubEntitiesTest
     {
+        /// <summary>
+        /// Tests that project parameterized constructor sets defaults
+        /// </summary>
         [Fact]
         public void Project_ParameterizedConstructor_SetsDefaults()
         {
@@ -47,6 +53,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("Never", project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that project property setters work correctly
+        /// </summary>
         [Fact]
         public void Project_PropertySetters_WorkCorrectly()
         {
@@ -67,6 +76,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("2024-06-15T12:00:00Z", project.LastModified);
         }
 
+        /// <summary>
+        /// Tests that installed version constructor sets properties
+        /// </summary>
         [Fact]
         public void InstalledVersion_Constructor_SetsProperties()
         {
@@ -76,6 +88,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal("/usr/local/alis", version.InstallPath);
         }
 
+        /// <summary>
+        /// Tests that gallery item constructor sets properties
+        /// </summary>
         [Fact]
         public void GalleryItem_Constructor_SetsProperties()
         {
@@ -88,6 +103,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(200, item.Width);
         }
 
+        /// <summary>
+        /// Tests that gallery item property setters work correctly
+        /// </summary>
         [Fact]
         public void GalleryItem_PropertySetters_WorkCorrectly()
         {
@@ -106,6 +124,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(60, item.Width);
         }
 
+        /// <summary>
+        /// Tests that gallery constructor creates ten items
+        /// </summary>
         [Fact]
         public void Gallery_Constructor_CreatesTenItems()
         {
@@ -114,6 +135,9 @@ namespace Alis.App.Hub.Test
             Assert.Equal(10, gallery.Items.Count);
         }
 
+        /// <summary>
+        /// Tests that gallery items have valid data
+        /// </summary>
         [Fact]
         public void Gallery_Items_HaveValidData()
         {
@@ -130,6 +154,9 @@ namespace Alis.App.Hub.Test
             }
         }
 
+        /// <summary>
+        /// Tests that project struct is serializable
+        /// </summary>
         [Fact]
         public void Project_Struct_IsSerializable()
         {

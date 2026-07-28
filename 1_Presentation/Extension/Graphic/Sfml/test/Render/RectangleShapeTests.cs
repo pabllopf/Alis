@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The rectangle shape tests class
+    /// </summary>
     public class RectangleShapeTests
     {
+        /// <summary>
+        /// Defaults the constructor sets size to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_SetsSizeToZero()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Constructors the with size sets size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_WithSize_SetsSize()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(200f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Constructors the with zero size sets size to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_WithZeroSize_SetsSizeToZero()
         {
@@ -62,6 +74,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Constructors the with negative size sets size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_WithNegativeSize_SetsSize()
         {
@@ -71,6 +86,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(-75f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor copies size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_CopiesSize()
         {
@@ -80,6 +98,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Size.Y, copy.Size.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor modify original does not affect copy
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ModifyOriginal_DoesNotAffectCopy()
         {
@@ -90,6 +111,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(200f, copy.Size.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor zero size copies correctly
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ZeroSize_CopiesCorrectly()
         {
@@ -99,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, copy.Size.Y);
         }
 
+        /// <summary>
+        /// Sizes the setter updates value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Size_Setter_UpdatesValue()
         {
@@ -108,6 +135,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(120f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Sizes the setter multiple times returns last value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Size_Setter_MultipleTimes_ReturnsLastValue()
         {
@@ -119,6 +149,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(60f, shape.Size.Y);
         }
 
+        /// <summary>
+        /// Sizes the getter returns current value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Size_Getter_ReturnsCurrentValue()
         {
@@ -128,6 +161,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(300f, size.Y);
         }
 
+        /// <summary>
+        /// Gets the point count returns four
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPointCount_ReturnsFour()
         {
@@ -135,6 +171,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(4u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Gets the point count after resize still returns four
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPointCount_AfterResize_StillReturnsFour()
         {
@@ -143,6 +182,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(4u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Gets the point count zero size returns four
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPointCount_ZeroSize_ReturnsFour()
         {
@@ -150,6 +192,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(4u, shape.GetPointCount());
         }
 
+        /// <summary>
+        /// Gets the point index 0 returns top left
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_Index0_ReturnsTopLeft()
         {
@@ -159,6 +204,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point index 1 returns top right
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_Index1_ReturnsTopRight()
         {
@@ -168,6 +216,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point index 2 returns bottom right
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_Index2_ReturnsBottomRight()
         {
@@ -177,6 +228,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(200f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point index 3 returns bottom left
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_Index3_ReturnsBottomLeft()
         {
@@ -186,6 +240,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(200f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point default case returns top left
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_DefaultCase_ReturnsTopLeft()
         {
@@ -195,6 +252,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point default case large index returns top left
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_DefaultCaseLargeIndex_ReturnsTopLeft()
         {
@@ -204,6 +264,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, point.Y);
         }
 
+        /// <summary>
+        /// Gets the point after size change reflects new size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_AfterSizeChange_ReflectsNewSize()
         {
@@ -214,6 +277,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Vector2F(0f, 400f), shape.GetPoint(3));
         }
 
+        /// <summary>
+        /// Gets the point zero size all points at origin
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_ZeroSize_AllPointsAtOrigin()
         {
@@ -224,6 +290,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Vector2F(0f, 0f), shape.GetPoint(3));
         }
 
+        /// <summary>
+        /// Inheritses the from shape
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void InheritsFromShape()
         {
@@ -232,6 +301,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(shape is IDrawable);
         }
 
+        /// <summary>
+        /// Multiples the instances work independently
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void MultipleInstances_WorkIndependently()
         {
@@ -243,6 +315,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(400f, shape2.Size.Y);
         }
 
+        /// <summary>
+        /// Destroys the with disposing true does not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_DoesNotThrow()
         {
@@ -251,6 +326,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, shape.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the with disposing false does not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_DoesNotThrow()
         {

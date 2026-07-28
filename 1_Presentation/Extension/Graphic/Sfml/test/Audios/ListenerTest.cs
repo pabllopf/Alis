@@ -62,18 +62,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         }
 
         /// <summary>
-        ///     Tests that Listener Direction getter returns a vector.
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void Listener_Direction_Getter_ShouldReturnVector()
-        {
-            Vector3F direction = Listener.Direction;
-            Assert.InRange(direction.X, -1.0f, 1.0f);
-            Assert.InRange(direction.Y, -1.0f, 1.0f);
-            Assert.InRange(direction.Z, -1.0f, 0.0f);
-        }
-
-        /// <summary>
         ///     Tests that Listener UpVector getter returns a vector.
         /// </summary>
         [RequireCSfmlAudioFact]

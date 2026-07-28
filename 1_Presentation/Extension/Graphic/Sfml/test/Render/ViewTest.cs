@@ -37,20 +37,32 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The view test class
+    /// </summary>
     public class ViewTest
     {
+        /// <summary>
+        /// Tests that view is assignable from object base
+        /// </summary>
         [Fact]
         public void View_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(View)));
         }
 
+        /// <summary>
+        /// Tests that view implements i disposable
+        /// </summary>
         [Fact]
         public void View_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(View)));
         }
 
+        /// <summary>
+        /// Tests that view has default constructor
+        /// </summary>
         [Fact]
         public void View_HasDefaultConstructor()
         {
@@ -58,6 +70,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Tests that view has float rect constructor
+        /// </summary>
         [Fact]
         public void View_HasFloatRectConstructor()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Tests that view has center size constructor
+        /// </summary>
         [Fact]
         public void View_HasCenterSizeConstructor()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Tests that view has copy constructor
+        /// </summary>
         [Fact]
         public void View_HasCopyConstructor()
         {
@@ -79,6 +100,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(ctor);
         }
 
+        /// <summary>
+        /// Tests that view has internal int ptr constructor
+        /// </summary>
         [Fact]
         public void View_HasInternalIntPtrConstructor()
         {
@@ -87,6 +111,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsAssembly);
         }
 
+        /// <summary>
+        /// Tests that center size rotation viewport properties exist
+        /// </summary>
         [Fact]
         public void Center_Size_Rotation_Viewport_Properties_Exist()
         {
@@ -96,6 +123,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(View).GetProperty("Viewport"));
         }
 
+        /// <summary>
+        /// Tests that center property has get and set
+        /// </summary>
         [Fact]
         public void Center_Property_HasGetAndSet()
         {
@@ -104,6 +134,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop.SetMethod);
         }
 
+        /// <summary>
+        /// Tests that size property has get and set
+        /// </summary>
         [Fact]
         public void Size_Property_HasGetAndSet()
         {
@@ -112,6 +145,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop.SetMethod);
         }
 
+        /// <summary>
+        /// Tests that rotation property has get and set
+        /// </summary>
         [Fact]
         public void Rotation_Property_HasGetAndSet()
         {
@@ -120,6 +156,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop.SetMethod);
         }
 
+        /// <summary>
+        /// Tests that viewport property has get and set
+        /// </summary>
         [Fact]
         public void Viewport_Property_HasGetAndSet()
         {
@@ -128,6 +167,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop.SetMethod);
         }
 
+        /// <summary>
+        /// Tests that reset move rotate zoom methods exist
+        /// </summary>
         [Fact]
         public void Reset_Move_Rotate_Zoom_Methods_Exist()
         {
@@ -137,18 +179,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(typeof(View).GetMethod("Zoom"));
         }
 
+        /// <summary>
+        /// Tests that to string method exists
+        /// </summary>
         [Fact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(View).GetMethod("ToString"));
         }
 
+        /// <summary>
+        /// Tests that destroy method exists
+        /// </summary>
         [Fact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(View).GetMethod("Destroy"));
         }
 
+        /// <summary>
+        /// Tests that destroy overrides object base
+        /// </summary>
         [Fact]
         public void Destroy_OverridesObjectBase()
         {
@@ -157,6 +208,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(destroy.GetBaseDefinition().DeclaringType == typeof(ObjectBase));
         }
 
+        /// <summary>
+        /// Tests that c pointer property inherited
+        /// </summary>
         [Fact]
         public void CPointer_Property_Inherited()
         {
@@ -165,6 +219,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.DeclaringType == typeof(ObjectBase) || prop.DeclaringType == typeof(View));
         }
 
+        /// <summary>
+        /// Defaults the constructor should create valid instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_ShouldCreateValidInstance()
         {
@@ -173,6 +230,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(IntPtr.Zero, view.CPointer);
         }
 
+        /// <summary>
+        /// Defaults the constructor should have default center
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_ShouldHaveDefaultCenter()
         {
@@ -182,6 +242,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(500f, center.Y);
         }
 
+        /// <summary>
+        /// Defaults the constructor should have default size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_ShouldHaveDefaultSize()
         {
@@ -191,6 +254,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(size.Y > 0);
         }
 
+        /// <summary>
+        /// Defaults the constructor should have default rotation
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void DefaultConstructor_ShouldHaveDefaultRotation()
         {
@@ -198,6 +264,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, view.Rotation);
         }
 
+        /// <summary>
+        /// Floats the rect constructor should create valid instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void FloatRectConstructor_ShouldCreateValidInstance()
         {
@@ -207,6 +276,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(IntPtr.Zero, view.CPointer);
         }
 
+        /// <summary>
+        /// Centers the size constructor should create valid instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CenterSizeConstructor_ShouldCreateValidInstance()
         {
@@ -221,6 +293,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(size.Y, view.Size.Y);
         }
 
+        /// <summary>
+        /// Copies the constructor should create independent instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ShouldCreateIndependentInstance()
         {
@@ -231,6 +306,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(original.CPointer, copy.CPointer);
         }
 
+        /// <summary>
+        /// Copies the constructor should copy properties
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ShouldCopyProperties()
         {
@@ -244,6 +322,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(original.Size.Y, copy.Size.Y);
         }
 
+        /// <summary>
+        /// Internals the constructor with valid pointer should create instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void InternalConstructor_WithValidPointer_ShouldCreateInstance()
         {
@@ -255,6 +336,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             internalView.Dispose();
         }
 
+        /// <summary>
+        /// Centers the set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Center_SetAndGet_ShouldRoundtrip()
         {
@@ -266,6 +350,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(expected.Y, actual.Y);
         }
 
+        /// <summary>
+        /// Sizes the set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Size_SetAndGet_ShouldRoundtrip()
         {
@@ -277,6 +364,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(expected.Y, actual.Y);
         }
 
+        /// <summary>
+        /// Rotations the set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Rotation_SetAndGet_ShouldRoundtrip()
         {
@@ -287,6 +377,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(expected, actual, 3);
         }
 
+        /// <summary>
+        /// Viewports the set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Viewport_SetAndGet_ShouldRoundtrip()
         {
@@ -300,6 +393,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(expected.Height, actual.Height, 3);
         }
 
+        /// <summary>
+        /// Tests that reset accepts float rect parameter
+        /// </summary>
         [Fact]
         public void Reset_AcceptsFloatRectParameter()
         {
@@ -308,6 +404,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(FloatRect), parameters[0].ParameterType);
         }
 
+        /// <summary>
+        /// Moves the should offset center
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Move_ShouldOffsetCenter()
         {
@@ -320,6 +419,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(before.Y + offset.Y, after.Y);
         }
 
+        /// <summary>
+        /// Rotates the should change rotation
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Rotate_ShouldChangeRotation()
         {
@@ -330,6 +432,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(before + 90f, after, 3);
         }
 
+        /// <summary>
+        /// Zooms the should change size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Zoom_ShouldChangeSize()
         {
@@ -341,6 +446,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(before.Y * 2f, after.Y, 1);
         }
 
+        /// <summary>
+        /// Zooms the with half factor should halve size
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Zoom_WithHalfFactor_ShouldHalveSize()
         {
@@ -352,6 +460,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(before.Y * 0.5f, after.Y, 1);
         }
 
+        /// <summary>
+        /// Returns the string should contain view label
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void ToString_ShouldContainViewLabel()
         {
@@ -360,6 +471,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Contains("[View]", str);
         }
 
+        /// <summary>
+        /// Returns the string should contain center size rotation viewport
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void ToString_ShouldContainCenterSizeRotationViewport()
         {
@@ -375,6 +489,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Contains("Viewport", str);
         }
 
+        /// <summary>
+        /// Disposes the should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_ShouldSetCPointerToZero()
         {
@@ -384,6 +501,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, view.CPointer);
         }
 
+        /// <summary>
+        /// Disposes the multiple times should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_MultipleTimes_ShouldNotThrow()
         {
@@ -392,6 +512,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             view.Dispose();
         }
 
+        /// <summary>
+        /// Destroys the with disposing true should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_ShouldSetCPointerToZero()
         {
@@ -400,6 +523,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, view.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the with disposing false should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_ShouldSetCPointerToZero()
         {
@@ -408,6 +534,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, view.CPointer);
         }
 
+        /// <summary>
+        /// Usings the block should dispose
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void UsingBlock_ShouldDispose()
         {
@@ -419,6 +548,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             }
         }
 
+        /// <summary>
+        /// Internals the constructor external dispose should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void InternalConstructorExternal_Dispose_ShouldSetCPointerToZero()
         {
@@ -432,6 +564,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, internalView.CPointer);
         }
 
+        /// <summary>
+        /// Multiples the instances should work independently
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void MultipleInstances_ShouldWorkIndependently()
         {

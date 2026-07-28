@@ -37,8 +37,14 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test
 {
+    /// <summary>
+    /// The scene tests class
+    /// </summary>
     public class SceneTests
     {
+        /// <summary>
+        /// Tests that dispose false path does not clear tables
+        /// </summary>
         [Fact]
         public void Dispose_FalsePath_DoesNotClearTables()
         {
@@ -48,6 +54,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(innerRef);
         }
 
+        /// <summary>
+        /// Tests that archetype added when already in global table does not double push
+        /// </summary>
         [Fact]
         public void ArchetypeAdded_WhenAlreadyInGlobalTable_DoesNotDoublePush()
         {
@@ -57,6 +66,9 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position { X = 5, Y = 6 });
         }
 
+        /// <summary>
+        /// Tests that custom query with no rules returns query
+        /// </summary>
         [Fact]
         public void CustomQuery_WithNoRules_ReturnsQuery()
         {
@@ -65,6 +77,9 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(q);
         }
 
+        /// <summary>
+        /// Tests that create entity from location with recycled id reuses id
+        /// </summary>
         [Fact]
         public void CreateEntityFromLocation_WithRecycledId_ReusesId()
         {
@@ -76,6 +91,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(firstId, go2.EntityID);
         }
 
+        /// <summary>
+        /// Tests that create many single without listener returns correct span
+        /// </summary>
         [Fact]
         public void CreateMany_Single_WithoutListener_ReturnsCorrectSpan()
         {
@@ -85,6 +103,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(5, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that entity deleted with per entity events fires individual events
+        /// </summary>
         [Fact]
         public void EntityDeleted_WithPerEntityEvents_FiresIndividualEvents()
         {
@@ -96,6 +117,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(entityDeletedFired);
         }
 
+        /// <summary>
+        /// Tests that component removed with per entity events fires generic remove event
+        /// </summary>
         [Fact]
         public void ComponentRemoved_WithPerEntityEvents_FiresGenericRemoveEvent()
         {
@@ -107,6 +131,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(genericRemoved);
         }
 
+        /// <summary>
+        /// Tests that create many two components verify values
+        /// </summary>
         [Fact]
         public void CreateMany_TwoComponents_VerifyValues()
         {
@@ -118,6 +145,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(10, result.Span2[0].Value);
         }
 
+        /// <summary>
+        /// Tests that create many three components verify values
+        /// </summary>
         [Fact]
         public void CreateMany_ThreeComponents_VerifyValues()
         {
@@ -131,6 +161,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(3, result.Span3[0].X);
         }
 
+        /// <summary>
+        /// Tests that create many arity non deferred all arities work
+        /// </summary>
         [Fact]
         public void Create_ManyArity_NonDeferred_AllAritiesWork()
         {
@@ -153,6 +186,9 @@ namespace Alis.Core.Ecs.Test
             Assert.True(e8.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that delete entity called multiple times handles version correctly
+        /// </summary>
         [Fact]
         public void DeleteEntity_CalledMultipleTimes_HandlesVersionCorrectly()
         {
@@ -165,6 +201,9 @@ namespace Alis.Core.Ecs.Test
             Assert.Equal(0, scene.EntityCount);
         }
 
+        /// <summary>
+        /// Tests that archetype added updates query cache and filters
+        /// </summary>
         [Fact]
         public void ArchetypeAdded_UpdatesQueryCacheAndFilters()
         {
@@ -182,8 +221,16 @@ namespace Alis.Core.Ecs.Test
         }
     }
 
+    /// <summary>
+    /// The scene dispose wrapper class
+    /// </summary>
+    /// <seealso cref="Scene"/>
     internal class SceneDisposeWrapper : Scene
     {
+        /// <summary>
+        /// Disposes the disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         public void Dispose(bool disposing) => base.Dispose(disposing);
     }
 }

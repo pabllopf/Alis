@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 14 tests class
+    /// </summary>
     public class ImPlotP14Tests
     {
+        /// <summary>
+        /// Tests that plot stems should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeExpectedOverloadCount()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 70);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ptr int with offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8PtrInt_WithOffset_ShouldBeVoid()
         {
@@ -52,6 +61,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ptr int with offset and stride should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8PtrInt_WithOffsetAndStride_ShouldBeVoid()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_Default_ShouldBeVoid()
         {
@@ -68,6 +83,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithRef_ShouldBeVoid()
         {
@@ -76,6 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithRefAndScale_ShouldBeVoid()
         {
@@ -84,6 +105,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -92,6 +116,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -100,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -108,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16_WithFull_ShouldBeVoid()
         {
@@ -116,6 +149,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_Default_ShouldBeVoid()
         {
@@ -124,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithRef_ShouldBeVoid()
         {
@@ -132,6 +171,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithRefAndScale_ShouldBeVoid()
         {
@@ -140,6 +182,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -148,6 +193,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -156,6 +204,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -164,6 +215,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16_WithFull_ShouldBeVoid()
         {
@@ -172,6 +226,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_Default_ShouldBeVoid()
         {
@@ -180,6 +237,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithRef_ShouldBeVoid()
         {
@@ -188,6 +248,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithRefAndScale_ShouldBeVoid()
         {
@@ -196,6 +259,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -204,6 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -212,6 +281,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -220,6 +292,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 32 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S32_WithFull_ShouldBeVoid()
         {
@@ -228,6 +303,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_Default_ShouldBeVoid()
         {
@@ -236,6 +314,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithRef_ShouldBeVoid()
         {
@@ -244,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithRefAndScale_ShouldBeVoid()
         {
@@ -252,6 +336,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -260,6 +347,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -268,6 +358,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -276,6 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 32 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U32_WithFull_ShouldBeVoid()
         {
@@ -284,6 +380,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_Default_ShouldBeVoid()
         {
@@ -292,6 +391,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithRef_ShouldBeVoid()
         {
@@ -300,6 +402,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithRefAndScale_ShouldBeVoid()
         {
@@ -308,6 +413,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -316,6 +424,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -324,6 +435,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -332,6 +446,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 64 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S64_WithFull_ShouldBeVoid()
         {
@@ -340,6 +457,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_Default_ShouldBeVoid()
         {
@@ -348,6 +468,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithRef_ShouldBeVoid()
         {
@@ -356,6 +479,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with ref and scale should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithRefAndScale_ShouldBeVoid()
         {
@@ -364,6 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with ref scale and start should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithRefScaleAndStart_ShouldBeVoid()
         {
@@ -372,6 +501,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with ref scale start and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithRefScaleStartAndFlags_ShouldBeVoid()
         {
@@ -380,6 +512,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with ref scale start flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithRefScaleStartFlagsAndOffset_ShouldBeVoid()
         {
@@ -388,6 +523,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 64 with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U64_WithFull_ShouldBeVoid()
         {
@@ -396,6 +534,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatRef_WithRef_ShouldBeVoid()
         {
@@ -404,6 +545,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float ref with ref and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatRef_WithRefAndFlags_ShouldBeVoid()
         {
@@ -412,6 +556,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float ref with ref flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatRef_WithRefFlagsAndOffset_ShouldBeVoid()
         {
@@ -420,6 +567,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems float ref with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_FloatRef_WithFull_ShouldBeVoid()
         {
@@ -428,6 +578,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double ref default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleRef_Default_ShouldBeVoid()
         {
@@ -436,6 +589,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleRef_WithRef_ShouldBeVoid()
         {
@@ -444,6 +600,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double ref with ref and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleRef_WithRefAndFlags_ShouldBeVoid()
         {
@@ -452,6 +611,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double ref with ref flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleRef_WithRefFlagsAndOffset_ShouldBeVoid()
         {
@@ -460,6 +622,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems double ref with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_DoubleRef_WithFull_ShouldBeVoid()
         {
@@ -468,6 +633,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 ref default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Ref_Default_ShouldBeVoid()
         {
@@ -476,6 +644,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Ref_WithRef_ShouldBeVoid()
         {
@@ -484,6 +655,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 ref with ref and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Ref_WithRefAndFlags_ShouldBeVoid()
         {
@@ -492,6 +666,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 ref with ref flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Ref_WithRefFlagsAndOffset_ShouldBeVoid()
         {
@@ -500,6 +677,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 8 ref with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S8Ref_WithFull_ShouldBeVoid()
         {
@@ -508,6 +688,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ref default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Ref_Default_ShouldBeVoid()
         {
@@ -516,6 +699,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Ref_WithRef_ShouldBeVoid()
         {
@@ -524,6 +710,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ref with ref and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Ref_WithRefAndFlags_ShouldBeVoid()
         {
@@ -532,6 +721,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ref with ref flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Ref_WithRefFlagsAndOffset_ShouldBeVoid()
         {
@@ -540,6 +732,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 8 ref with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U8Ref_WithFull_ShouldBeVoid()
         {
@@ -548,6 +743,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 ref default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16Ref_Default_ShouldBeVoid()
         {
@@ -556,6 +754,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16Ref_WithRef_ShouldBeVoid()
         {
@@ -564,6 +765,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 ref with ref and flags should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16Ref_WithRefAndFlags_ShouldBeVoid()
         {
@@ -572,6 +776,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 ref with ref flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16Ref_WithRefFlagsAndOffset_ShouldBeVoid()
         {
@@ -580,6 +787,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems s 16 ref with full should be void
+        /// </summary>
         [Fact]
         public void PlotStems_S16Ref_WithFull_ShouldBeVoid()
         {
@@ -588,6 +798,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 ref default should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16Ref_Default_ShouldBeVoid()
         {
@@ -596,6 +809,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems u 16 ref with ref should be void
+        /// </summary>
         [Fact]
         public void PlotStems_U16Ref_WithRef_ShouldBeVoid()
         {
@@ -604,6 +820,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeAllExpectedArrayTypes()
         {
@@ -617,6 +836,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose all expected by ref numeric families
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeAllExpectedByRefNumericFamilies()
         {
@@ -629,6 +851,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasByRefParameter(method, typeof(ushort)));
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose flags offset and stride overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
@@ -638,6 +863,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length >= 9) && (method.GetParameters()[8].ParameterType == typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven short overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenShortOverloads()
         {
@@ -653,6 +881,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven int overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenIntOverloads()
         {
@@ -668,6 +899,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(intOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven long overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenLongOverloads()
         {
@@ -683,6 +917,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(longOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose seven ulong overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeSevenUlongOverloads()
         {
@@ -698,6 +935,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(ulongOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose five by ref float overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeFiveByRefFloatOverloads()
         {
@@ -710,6 +950,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refFloatOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot stems should expose five by ref double overloads
+        /// </summary>
         [Fact]
         public void PlotStems_ShouldExposeFiveByRefDoubleOverloads()
         {
@@ -723,6 +966,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refDoubleOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -749,6 +998,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -757,11 +1011,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the by ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && (parameter.ParameterType.GetElementType() == elementType));

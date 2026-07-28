@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
 {
+    /// <summary>
+    /// The clock tests class
+    /// </summary>
     public class ClockTests
     {
+        /// <summary>
+        /// Constructors the should not be null
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_ShouldNotBeNull()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Elapseds the sfml time after restart should be near zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void ElapsedSfmlTime_AfterRestart_ShouldBeNearZero()
         {
@@ -55,6 +64,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Elapseds the sfml time after delay should increase
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void ElapsedSfmlTime_AfterDelay_ShouldIncrease()
         {
@@ -66,6 +78,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Restarts the should return elapsed time
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Restart_ShouldReturnElapsedTime()
         {
@@ -77,6 +92,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Restarts the should reset elapsed time
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Restart_ShouldResetElapsedTime()
         {
@@ -88,6 +106,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Disposes the should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_ShouldNotThrow()
         {
@@ -95,6 +116,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Dispose();
         }
 
+        /// <summary>
+        /// Disposes the multiple calls should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_MultipleCalls_ShouldNotThrow()
         {
@@ -103,6 +127,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Dispose();
         }
 
+        /// <summary>
+        /// Usings the should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Using_ShouldNotThrow()
         {
@@ -110,6 +137,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.NotNull(clock);
         }
 
+        /// <summary>
+        /// Destroys the with disposing true sets pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_SetsPointerToZero()
         {
@@ -120,6 +150,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(IntPtr.Zero, clock.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the with disposing false sets pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_SetsPointerToZero()
         {
@@ -130,6 +163,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Assert.Equal(IntPtr.Zero, clock.CPointer);
         }
 
+        /// <summary>
+        /// Elapseds the sfml time multiple reads should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void ElapsedSfmlTime_MultipleReads_ShouldNotThrow()
         {
@@ -143,6 +179,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             clock.Destroy(true);
         }
 
+        /// <summary>
+        /// Sleeps the milliseconds
+        /// </summary>
+        /// <param name="milliseconds">The milliseconds</param>
         private static void Sleep(int milliseconds)
         {
             long ticks = milliseconds * TimeSpan.TicksPerMillisecond;

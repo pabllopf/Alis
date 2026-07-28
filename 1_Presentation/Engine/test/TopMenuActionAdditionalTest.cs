@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.App.Engine.Test.Menus
 {
+    /// <summary>
+    /// The top menu action additional test class
+    /// </summary>
     public class TopMenuActionAdditionalTest
     {
+        /// <summary>
+        /// Tests that validate url scheme null url throws argument exception
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_NullUrl_ThrowsArgumentException()
         {
@@ -54,6 +60,9 @@ namespace Alis.App.Engine.Test.Menus
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate url scheme empty url throws argument exception
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_EmptyUrl_ThrowsArgumentException()
         {
@@ -71,6 +80,9 @@ namespace Alis.App.Engine.Test.Menus
             Assert.IsType<ArgumentException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate url scheme https url does not throw
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_HttpsUrl_DoesNotThrow()
         {
@@ -85,6 +97,9 @@ namespace Alis.App.Engine.Test.Menus
             method.Invoke(null, new object[] { "https://example.com" });
         }
 
+        /// <summary>
+        /// Tests that validate url scheme http url does not throw
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_HttpUrl_DoesNotThrow()
         {
@@ -99,6 +114,9 @@ namespace Alis.App.Engine.Test.Menus
             method.Invoke(null, new object[] { "http://example.com" });
         }
 
+        /// <summary>
+        /// Tests that validate url scheme ftp url throws security exception
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_FtpUrl_ThrowsSecurityException()
         {
@@ -116,6 +134,9 @@ namespace Alis.App.Engine.Test.Menus
             Assert.IsType<SecurityException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate url scheme java script url throws security exception
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_JavaScriptUrl_ThrowsSecurityException()
         {
@@ -133,6 +154,9 @@ namespace Alis.App.Engine.Test.Menus
             Assert.IsType<SecurityException>(ex.InnerException);
         }
 
+        /// <summary>
+        /// Tests that validate url scheme file url throws security exception
+        /// </summary>
         [Fact]
         public void ValidateUrlScheme_FileUrl_ThrowsSecurityException()
         {

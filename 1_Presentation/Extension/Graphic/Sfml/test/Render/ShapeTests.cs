@@ -34,35 +34,69 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The test shape class
+    /// </summary>
+    /// <seealso cref="Shape"/>
     public class TestShape : Shape
     {
+        /// <summary>
+        /// The point count
+        /// </summary>
         private uint _pointCount = 4;
+        /// <summary>
+        /// The radius
+        /// </summary>
         private float _radius = 50f;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestShape"/> class
+        /// </summary>
         public TestShape() : base()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestShape"/> class
+        /// </summary>
+        /// <param name="copy">The copy</param>
         public TestShape(TestShape copy) : base(copy)
         {
             _radius = copy._radius;
             _pointCount = copy._pointCount;
         }
 
+        /// <summary>
+        /// Sets the test point count using the specified count
+        /// </summary>
+        /// <param name="count">The count</param>
         public void SetTestPointCount(uint count)
         {
             _pointCount = count;
             Update();
         }
 
+        /// <summary>
+        /// Sets the test radius using the specified radius
+        /// </summary>
+        /// <param name="radius">The radius</param>
         public void SetTestRadius(float radius)
         {
             _radius = radius;
             Update();
         }
 
+        /// <summary>
+        /// Gets the point count
+        /// </summary>
+        /// <returns>The uint</returns>
         public override uint GetPointCount() => _pointCount;
 
+        /// <summary>
+        /// Gets the point using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The vector</returns>
         public override Vector2F GetPoint(uint index)
         {
             float angle = (float)(index * 2 * System.Math.PI / _pointCount - System.Math.PI / 2);
@@ -72,8 +106,14 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         }
     }
 
+    /// <summary>
+    /// The shape tests class
+    /// </summary>
     public class ShapeTests
     {
+        /// <summary>
+        /// Constructors the default should create valid instance
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_Default_ShouldCreateValidInstance()
         {
@@ -82,6 +122,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(System.IntPtr.Zero, shape.CPointer);
         }
 
+        /// <summary>
+        /// Constructors the default should have default values
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_Default_ShouldHaveDefaultValues()
         {
@@ -93,6 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Vector2F(0, 0), shape.Origin);
         }
 
+        /// <summary>
+        /// Copies the constructor should copy properties
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ShouldCopyProperties()
         {
@@ -116,6 +162,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             copy.Destroy(true);
         }
 
+        /// <summary>
+        /// Copies the constructor modify original should not affect copy
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void CopyConstructor_ModifyOriginal_ShouldNotAffectCopy()
         {
@@ -137,6 +186,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             copy.Destroy(true);
         }
 
+        /// <summary>
+        /// Textures the set null should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Texture_SetNull_ShouldNotThrow()
         {
@@ -147,6 +199,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(shape.Texture);
         }
 
+        /// <summary>
+        /// Textures the set and get null with texture set null twice should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Texture_SetAndGetNullWithTexture_SetNullTwice_ShouldNotThrow()
         {
@@ -158,6 +213,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(shape.Texture);
         }
 
+        /// <summary>
+        /// Textures the rect set should not throw
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void TextureRect_Set_ShouldNotThrow()
         {
@@ -167,6 +225,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.TextureRect = rect;
         }
 
+        /// <summary>
+        /// Fills the color set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void FillColor_SetAndGet_ShouldRoundtrip()
         {
@@ -182,6 +243,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(color.A, result.A);
         }
 
+        /// <summary>
+        /// Fills the color default should be white
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void FillColor_Default_ShouldBeWhite()
         {
@@ -194,6 +258,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(255, result.A);
         }
 
+        /// <summary>
+        /// Outlines the color set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void OutlineColor_SetAndGet_ShouldRoundtrip()
         {
@@ -209,6 +276,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(color.A, result.A);
         }
 
+        /// <summary>
+        /// Outlines the color default should be white
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void OutlineColor_Default_ShouldBeWhite()
         {
@@ -221,6 +291,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(255, result.A);
         }
 
+        /// <summary>
+        /// Outlines the thickness set and get should roundtrip
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void OutlineThickness_SetAndGet_ShouldRoundtrip()
         {
@@ -232,6 +305,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(5.5f, result);
         }
 
+        /// <summary>
+        /// Outlines the thickness default should be zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void OutlineThickness_Default_ShouldBeZero()
         {
@@ -242,6 +318,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(0f, result);
         }
 
+        /// <summary>
+        /// Gets the local bounds should return valid rect
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetLocalBounds_ShouldReturnValidRect()
         {
@@ -253,6 +332,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(bounds.Height >= 0);
         }
 
+        /// <summary>
+        /// Gets the global bounds should return valid rect
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetGlobalBounds_ShouldReturnValidRect()
         {
@@ -264,6 +346,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(bounds.Height >= 0);
         }
 
+        /// <summary>
+        /// Gets the global bounds with position should reflect translation
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetGlobalBounds_WithPosition_ShouldReflectTranslation()
         {
@@ -277,6 +362,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(localBounds.Top + 200, globalBounds.Top);
         }
 
+        /// <summary>
+        /// Updates the after changing geometry should recalculate
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Update_AfterChangingGeometry_ShouldRecalculate()
         {
@@ -291,6 +379,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(boundsBefore.Width, boundsAfter.Width);
         }
 
+        /// <summary>
+        /// Destroys the with disposing true should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_ShouldSetCPointerToZero()
         {
@@ -301,6 +392,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, shape.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the with disposing false should set c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_ShouldSetCPointerToZero()
         {
@@ -311,6 +405,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(System.IntPtr.Zero, shape.CPointer);
         }
 
+        /// <summary>
+        /// Multiples the instances should work independently
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void MultipleInstances_ShouldWorkIndependently()
         {
@@ -331,6 +428,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(new Vector2F(20, 20), shape2.Position);
         }
 
+        /// <summary>
+        /// Gets the point should return expected coordinates
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetPoint_ShouldReturnExpectedCoordinates()
         {

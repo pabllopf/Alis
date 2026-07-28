@@ -31,8 +31,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im gui text filter tests class
+    /// </summary>
     public class ImGuiTextFilterTests
     {
+        /// <summary>
+        /// Tests that input buf get when default returns null
+        /// </summary>
         [Fact]
         public void InputBuf_Get_WhenDefault_ReturnsNull()
         {
@@ -40,6 +46,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Null(filter.InputBuf);
         }
 
+        /// <summary>
+        /// Tests that input buf set should store value
+        /// </summary>
         [Fact]
         public void InputBuf_Set_ShouldStoreValue()
         {
@@ -49,6 +58,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Same(expected, filter.InputBuf);
         }
 
+        /// <summary>
+        /// Tests that filters get when default returns default
+        /// </summary>
         [Fact]
         public void Filters_Get_WhenDefault_ReturnsDefault()
         {
@@ -56,6 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(default(ImVector), filter.Filters);
         }
 
+        /// <summary>
+        /// Tests that filters set should store value
+        /// </summary>
         [Fact]
         public void Filters_Set_ShouldStoreValue()
         {
@@ -65,6 +80,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, filter.Filters);
         }
 
+        /// <summary>
+        /// Tests that count grep get when default returns zero
+        /// </summary>
         [Fact]
         public void CountGrep_Get_WhenDefault_ReturnsZero()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, filter.CountGrep);
         }
 
+        /// <summary>
+        /// Tests that count grep set should store value
+        /// </summary>
         [Fact]
         public void CountGrep_Set_ShouldStoreValue()
         {

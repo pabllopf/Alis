@@ -33,8 +33,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im vector tests class
+    /// </summary>
     public class ImVectorGTests
     {
+        /// <summary>
+        /// Tests that im vector constructor sets size
+        /// </summary>
         [Fact]
         public void ImVectorConstructor_SetsSize()
         {
@@ -43,6 +49,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(5, imVectorG.Size);
         }
 
+        /// <summary>
+        /// Tests that im vector constructor sets capacity
+        /// </summary>
         [Fact]
         public void ImVectorConstructor_SetsCapacity()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(10, imVectorG.Capacity);
         }
 
+        /// <summary>
+        /// Tests that im vector constructor sets data
+        /// </summary>
         [Fact]
         public void ImVectorConstructor_SetsData()
         {
@@ -60,6 +72,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(data, imVectorG.Data);
         }
 
+        /// <summary>
+        /// Tests that direct constructor sets all fields
+        /// </summary>
         [Fact]
         public void DirectConstructor_SetsAllFields()
         {
@@ -70,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(data, imVectorG.Data);
         }
 
+        /// <summary>
+        /// Tests that indexer with int data returns correct value
+        /// </summary>
         [Fact]
         public void Indexer_WithIntData_ReturnsCorrectValue()
         {
@@ -89,6 +107,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that indexer with byte data returns correct value
+        /// </summary>
         [Fact]
         public void Indexer_WithByteData_ReturnsCorrectValue()
         {
@@ -107,6 +128,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that indexer with float data returns correct value
+        /// </summary>
         [Fact]
         public void Indexer_WithFloatData_ReturnsCorrectValue()
         {
@@ -125,6 +149,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that indexer with null data throws exception
+        /// </summary>
         [Fact]
         public void Indexer_WithNullData_ThrowsException()
         {

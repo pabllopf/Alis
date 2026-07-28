@@ -41,26 +41,72 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Constructs
 {
+    /// <summary>
+    /// The gl shader program coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class GlShaderProgramCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo Field = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The saved
+        /// </summary>
         private readonly object _saved;
 
+        /// <summary>
+        /// The program id
+        /// </summary>
         private uint _programId;
+        /// <summary>
+        /// The vertex shader id
+        /// </summary>
         private uint _vertexShaderId;
+        /// <summary>
+        /// The fragment shader id
+        /// </summary>
         private uint _fragmentShaderId;
 
+        /// <summary>
+        /// The use program zero called
+        /// </summary>
         private bool _useProgramZeroCalled;
+        /// <summary>
+        /// The detach shader called
+        /// </summary>
         private bool _detachShaderCalled;
+        /// <summary>
+        /// The delete program called
+        /// </summary>
         private bool _deleteProgramCalled;
+        /// <summary>
+        /// The delete vertex shader called
+        /// </summary>
         private bool _deleteVertexShaderCalled;
+        /// <summary>
+        /// The delete fragment shader called
+        /// </summary>
         private bool _deleteFragmentShaderCalled;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlShaderProgramCoverageTests"/> class
+        /// </summary>
         public GlShaderProgramCoverageTests() => _saved = Field?.GetValue(null);
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => Field?.SetValue(null, _saved);
 
+        /// <summary>
+        /// Inits the link success
+        /// </summary>
+        /// <param name="linkSuccess">The link success</param>
+        /// <param name="activeAttributes">The active attributes</param>
+        /// <param name="activeUniforms">The active uniforms</param>
         private void Init(bool linkSuccess = true, int activeAttributes = 0, int activeUniforms = 0)
         {
             _programId = 42;
@@ -198,6 +244,10 @@ namespace Alis.Core.Graphic.Test.Constructs
             });
         }
 
+        /// <summary>
+        /// Creates the valid program
+        /// </summary>
+        /// <returns>The gl shader program</returns>
         private GlShaderProgram CreateValidProgram()
         {
             GlShader vs = new GlShader("vs", ShaderType.VertexShader);
@@ -205,6 +255,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             return new GlShaderProgram(vs, fs);
         }
 
+        /// <summary>
+        /// Tests that constructor with shaders sets properties and program id
+        /// </summary>
         [Fact]
         public void Constructor_WithShaders_SetsPropertiesAndProgramId()
         {
@@ -220,6 +273,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.False(program.DisposeChildren);
         }
 
+        /// <summary>
+        /// Tests that constructor with strings sets properties and program id
+        /// </summary>
         [Fact]
         public void Constructor_WithStrings_SetsPropertiesAndProgramId()
         {
@@ -233,6 +289,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.True(program.DisposeChildren);
         }
 
+        /// <summary>
+        /// Tests that constructor when link fails throws invalid operation exception
+        /// </summary>
         [Fact]
         public void Constructor_WhenLinkFails_ThrowsInvalidOperationException()
         {
@@ -244,6 +303,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Throws<InvalidOperationException>(() => new GlShaderProgram(vs, fs));
         }
 
+        /// <summary>
+        /// Tests that use calls gl use program
+        /// </summary>
         [Fact]
         public void Use_CallsGlUseProgram()
         {
@@ -256,6 +318,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.False(_useProgramZeroCalled);
         }
 
+        /// <summary>
+        /// Tests that get uniform location returns location from gl
+        /// </summary>
         [Fact]
         public void GetUniformLocation_ReturnsLocationFromGl()
         {
@@ -267,6 +332,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(1, location);
         }
 
+        /// <summary>
+        /// Tests that get attribute location returns location from gl
+        /// </summary>
         [Fact]
         public void GetAttributeLocation_ReturnsLocationFromGl()
         {
@@ -278,6 +346,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(2, location);
         }
 
+        /// <summary>
+        /// Tests that program log returns string
+        /// </summary>
         [Fact]
         public void ProgramLog_ReturnsString()
         {
@@ -289,6 +360,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.NotNull(log);
         }
 
+        /// <summary>
+        /// Tests that dispose without children calls gl functions and sets program id to zero
+        /// </summary>
         [Fact]
         public void Dispose_WithoutChildren_CallsGlFunctionsAndSetsProgramIdToZero()
         {
@@ -305,6 +379,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.False(_deleteFragmentShaderCalled);
         }
 
+        /// <summary>
+        /// Tests that dispose with dispose children disposes shaders
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposeChildren_DisposesShaders()
         {
@@ -319,6 +396,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.True(_deleteFragmentShaderCalled);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple calls does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleCalls_DoesNotThrow()
         {
@@ -330,6 +410,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             program.Dispose();
         }
 
+        /// <summary>
+        /// Tests that dispose when program id already zero is idempotent
+        /// </summary>
         [Fact]
         public void Dispose_WhenProgramIdAlreadyZero_IsIdempotent()
         {
@@ -349,6 +432,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.False(_deleteProgramCalled);
         }
 
+        /// <summary>
+        /// Tests that indexer with existing param returns param
+        /// </summary>
         [Fact]
         public void Indexer_WithExistingParam_ReturnsParam()
         {
@@ -363,6 +449,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(Vector3F), param.Type);
         }
 
+        /// <summary>
+        /// Tests that indexer with non existing param returns null
+        /// </summary>
         [Fact]
         public void Indexer_WithNonExistingParam_ReturnsNull()
         {
@@ -374,6 +463,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Null(param);
         }
 
+        /// <summary>
+        /// Tests that get params with attributes and uniforms populates dictionary
+        /// </summary>
         [Fact]
         public void GetParams_WithAttributesAndUniforms_PopulatesDictionary()
         {
@@ -391,6 +483,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(float), uniform.Type);
         }
 
+        /// <summary>
+        /// Tests that program id can set and get
+        /// </summary>
         [Fact]
         public void ProgramId_CanSetAndGet()
         {
@@ -402,6 +497,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(100u, program.ProgramId);
         }
 
+        /// <summary>
+        /// Tests that get uniform location calls use before query
+        /// </summary>
         [Fact]
         public void GetUniformLocation_CallsUseBeforeQuery()
         {
@@ -415,6 +513,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(1, location2);
         }
 
+        /// <summary>
+        /// Tests that get attribute location calls use before query
+        /// </summary>
         [Fact]
         public void GetAttributeLocation_CallsUseBeforeQuery()
         {
@@ -428,6 +529,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(2, location2);
         }
 
+        /// <summary>
+        /// Tests that get params with multiple attributes adds all to dictionary
+        /// </summary>
         [Fact]
         public void GetParams_WithMultipleAttributes_AddsAllToDictionary()
         {
@@ -443,6 +547,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.NotNull(a2);
         }
 
+        /// <summary>
+        /// Tests that get params with multiple uniforms adds all to dictionary
+        /// </summary>
         [Fact]
         public void GetParams_WithMultipleUniforms_AddsAllToDictionary()
         {
@@ -458,6 +565,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.NotNull(u2);
         }
 
+        /// <summary>
+        /// Tests that dispose suppresses finalize
+        /// </summary>
         [Fact]
         public void Dispose_SuppressesFinalize()
         {
@@ -467,6 +577,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             program.Dispose();
         }
 
+        /// <summary>
+        /// Tests that program log getter does not throw
+        /// </summary>
         [Fact]
         public void ProgramLog_Getter_DoesNotThrow()
         {
@@ -476,6 +589,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             _ = program.ProgramLog;
         }
 
+        /// <summary>
+        /// Tests that get uniform location with empty name does not throw
+        /// </summary>
         [Fact]
         public void GetUniformLocation_WithEmptyName_DoesNotThrow()
         {
@@ -487,6 +603,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(1, location);
         }
 
+        /// <summary>
+        /// Tests that get attribute location with empty name does not throw
+        /// </summary>
         [Fact]
         public void GetAttributeLocation_WithEmptyName_DoesNotThrow()
         {
@@ -498,6 +617,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(2, location);
         }
 
+        /// <summary>
+        /// Tests that use does not throw when called multiple times
+        /// </summary>
         [Fact]
         public void Use_DoesNotThrow_WhenCalledMultipleTimes()
         {
@@ -509,6 +631,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             program.Use();
         }
 
+        /// <summary>
+        /// Tests that dispose with dispose children disposes both shaders individually
+        /// </summary>
         [Fact]
         public void Dispose_WithDisposeChildren_DisposesBothShadersIndividually()
         {
@@ -524,6 +649,9 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(0u, program.FragmentShader.ShaderId);
         }
 
+        /// <summary>
+        /// Tests that dispose without dispose children shaders keep ids
+        /// </summary>
         [Fact]
         public void Dispose_WithoutDisposeChildren_ShadersKeepIds()
         {

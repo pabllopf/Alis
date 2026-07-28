@@ -39,22 +39,44 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Render
 {
+    /// <summary>
+    /// The sprite enhanced coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class SpriteEnhancedCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo GlField = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
 
+        /// <summary>
+        /// The instance
+        /// </summary>
         private static readonly FieldInfo TextureField = typeof(Sprite).GetField("<Texture>k__BackingField", BindingFlags.NonPublic | BindingFlags.Instance);
 
+        /// <summary>
+        /// The saved gl
+        /// </summary>
         private readonly object _savedGl;
 
+        /// <summary>
+        /// The temp bmp
+        /// </summary>
         private readonly string _tempBmp;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpriteEnhancedCoverageTests"/> class
+        /// </summary>
         public SpriteEnhancedCoverageTests()
         {
             _savedGl = GlField?.GetValue(null);
             _tempBmp = Path.GetTempFileName() + ".bmp";
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             GlField?.SetValue(null, _savedGl);
@@ -64,8 +86,16 @@ namespace Alis.Test.Core.Ecs.Components.Render
             }
         }
 
+        /// <summary>
+        /// Inits the gl to throw
+        /// </summary>
         private static void InitGlToThrow() => Gl.Initialize(_ => IntPtr.Zero);
 
+        /// <summary>
+        /// Sets the texture field using the specified sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        /// <param name="value">The value</param>
         private static void SetTextureField(ref Sprite sprite, uint value)
         {
             object boxed = sprite;
@@ -73,6 +103,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             sprite = (Sprite)boxed;
         }
 
+        /// <summary>
+        /// Writes the minimal bmp
+        /// </summary>
         private void WriteMinimalBmp()
         {
             byte[] data = new byte[58];
@@ -92,6 +125,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             File.WriteAllBytes(_tempBmp, data);
         }
 
+        /// <summary>
+        /// Tests that on exit when texture non zero and gl throws catches exception
+        /// </summary>
         [Fact]
         public void OnExit_WhenTextureNonZeroAndGlThrows_CatchesException()
         {
@@ -103,6 +139,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             sprite.OnExit(null);
         }
 
+        /// <summary>
+        /// Tests that on exit when texture zero completes successfully
+        /// </summary>
         [Fact]
         public void OnExit_WhenTextureZero_CompletesSuccessfully()
         {
@@ -112,6 +151,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             sprite.OnExit(null);
         }
 
+        /// <summary>
+        /// Tests that load texture when file exists and gl throws throws external exception
+        /// </summary>
         [Fact]
         public void LoadTexture_WhenFileExistsAndGlThrows_ThrowsExternalException()
         {
@@ -124,6 +166,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<ExternalException>(() => sprite.LoadTexture(_tempBmp));
         }
 
+        /// <summary>
+        /// Tests that load texture when file not exists and name file empty throws file not found exception
+        /// </summary>
         [Fact]
         public void LoadTexture_WhenFileNotExistsAndNameFileEmpty_ThrowsFileNotFoundException()
         {
@@ -135,6 +180,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<FileNotFoundException>(() => sprite.LoadTexture("nonexistent.bmp"));
         }
 
+        /// <summary>
+        /// Tests that load texture when file path empty uses name file fallback
+        /// </summary>
         [Fact]
         public void LoadTexture_WhenFilePathEmpty_UsesNameFileFallback()
         {
@@ -146,6 +194,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Throws<FileNotFoundException>(() => sprite.LoadTexture(string.Empty));
         }
 
+        /// <summary>
+        /// Tests that load texture when file path not empty and name file differs updates name file
+        /// </summary>
         [Fact]
         public void LoadTexture_WhenFilePathNotEmptyAndNameFileDiffers_UpdatesNameFile()
         {
@@ -159,6 +210,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal("different.bmp", sprite.NameFile);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible sprite at camera center with minimal rotation returns true
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_SpriteAtCameraCenterWithMinimalRotation_ReturnsTrue()
         {
@@ -175,6 +229,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible exact edge on x returns true
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_ExactEdgeOnX_ReturnsTrue()
         {
@@ -191,6 +248,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible just beyond edge on x returns false
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_JustBeyondEdgeOnX_ReturnsFalse()
         {
@@ -207,6 +267,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.False(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible exact edge on y returns true
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_ExactEdgeOnY_ReturnsTrue()
         {
@@ -223,6 +286,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible just beyond edge on y returns false
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_JustBeyondEdgeOnY_ReturnsFalse()
         {
@@ -239,6 +305,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.False(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible small scale sprite at camera edge returns true
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_SmallScaleSpriteAtCameraEdge_ReturnsTrue()
         {
@@ -255,6 +324,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible with custom pixels per meter computes correctly
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_WithCustomPixelsPerMeter_ComputesCorrectly()
         {
@@ -271,6 +343,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that is sprite visible sprite with no scale cannot be visible
+        /// </summary>
         [Fact]
         public void IsSpriteVisible_SpriteWithNoScale_CannotBeVisible()
         {
@@ -287,6 +362,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(visible);
         }
 
+        /// <summary>
+        /// Tests that deconstruct returns correct values
+        /// </summary>
         [Fact]
         public void Deconstruct_ReturnsCorrectValues()
         {
@@ -300,6 +378,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(5, depth);
         }
 
+        /// <summary>
+        /// Tests that to string contains type and properties
+        /// </summary>
         [Fact]
         public void ToString_ContainsTypeAndProperties()
         {
@@ -313,6 +394,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Contains("3", str);
         }
 
+        /// <summary>
+        /// Tests that equals same values returns true
+        /// </summary>
         [Fact]
         public void Equals_SameValues_ReturnsTrue()
         {
@@ -325,6 +409,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.False(sprite1 != sprite2);
         }
 
+        /// <summary>
+        /// Tests that equals different values returns false
+        /// </summary>
         [Fact]
         public void Equals_DifferentValues_ReturnsFalse()
         {
@@ -337,6 +424,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.True(sprite1 != sprite2);
         }
 
+        /// <summary>
+        /// Tests that get hash code same values returns same hash
+        /// </summary>
         [Fact]
         public void GetHashCode_SameValues_ReturnsSameHash()
         {
@@ -347,6 +437,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(sprite1.GetHashCode(), sprite2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that get hash code different values returns different hash
+        /// </summary>
         [Fact]
         public void GetHashCode_DifferentValues_ReturnsDifferentHash()
         {
@@ -357,6 +450,9 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotEqual(sprite1.GetHashCode(), sprite2.GetHashCode());
         }
 
+        /// <summary>
+        /// Tests that path property internal has default value
+        /// </summary>
         [Fact]
         public void PathProperty_Internal_HasDefaultValue()
         {

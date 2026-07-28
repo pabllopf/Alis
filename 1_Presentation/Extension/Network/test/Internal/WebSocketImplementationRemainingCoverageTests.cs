@@ -568,6 +568,14 @@ namespace Alis.Extension.Network.Test.Internal
         /// </summary>
         internal sealed class OperationCanceledMemoryStream : MemoryStream
         {
+            /// <summary>
+            /// Writes the buffer
+            /// </summary>
+            /// <param name="buffer">The buffer</param>
+            /// <param name="offset">The offset</param>
+            /// <param name="count">The count</param>
+            /// <param name="cancellationToken">The cancellation token</param>
+            /// <exception cref="OperationCanceledException"></exception>
             public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
                 throw new OperationCanceledException();

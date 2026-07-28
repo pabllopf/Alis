@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 16 tests class
+    /// </summary>
     public class ImPlotP16Tests
     {
+        /// <summary>
+        /// Tests that plot bars u 32 ptr int default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrInt_Default_ShouldBeVoid()
         {
@@ -49,6 +55,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr int with shift should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrInt_WithShift_ShouldBeVoid()
         {
@@ -61,6 +70,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrInt_WithFlags_ShouldBeVoid()
         {
@@ -73,6 +85,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr int with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrInt_WithOffset_ShouldBeVoid()
         {
@@ -85,6 +100,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr int with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrInt_WithStride_ShouldBeVoid()
         {
@@ -97,6 +115,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_Default_ShouldBeVoid()
         {
@@ -109,6 +130,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int with bar size should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_WithBarSize_ShouldBeVoid()
         {
@@ -121,6 +145,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int with shift should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_WithShift_ShouldBeVoid()
         {
@@ -133,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_WithFlags_ShouldBeVoid()
         {
@@ -145,6 +175,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_WithOffset_ShouldBeVoid()
         {
@@ -157,6 +190,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr int with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrInt_WithStride_ShouldBeVoid()
         {
@@ -169,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_Default_ShouldBeVoid()
         {
@@ -181,6 +220,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int with bar size should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_WithBarSize_ShouldBeVoid()
         {
@@ -193,6 +235,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int with shift should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_WithShift_ShouldBeVoid()
         {
@@ -205,6 +250,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_WithFlags_ShouldBeVoid()
         {
@@ -217,6 +265,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_WithOffset_ShouldBeVoid()
         {
@@ -229,6 +280,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 64 ptr int with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U64PtrInt_WithStride_ShouldBeVoid()
         {
@@ -241,6 +295,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars float ptr float ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_FloatPtrFloatPtr_Default_ShouldBeVoid()
         {
@@ -253,6 +310,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars float ptr float ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_FloatPtrFloatPtr_WithFlags_ShouldBeVoid()
         {
@@ -265,6 +325,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars float ptr float ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_FloatPtrFloatPtr_WithOffset_ShouldBeVoid()
         {
@@ -277,6 +340,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars float ptr float ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_FloatPtrFloatPtr_WithStride_ShouldBeVoid()
         {
@@ -289,6 +355,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars double ptr double ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_DoublePtrDoublePtr_Default_ShouldBeVoid()
         {
@@ -301,6 +370,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars double ptr double ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_DoublePtrDoublePtr_WithFlags_ShouldBeVoid()
         {
@@ -313,6 +385,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars double ptr double ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_DoublePtrDoublePtr_WithOffset_ShouldBeVoid()
         {
@@ -325,6 +400,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars double ptr double ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_DoublePtrDoublePtr_WithStride_ShouldBeVoid()
         {
@@ -337,6 +415,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 8 ptr s 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S8PtrS8Ptr_Default_ShouldBeVoid()
         {
@@ -349,6 +430,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 8 ptr s 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S8PtrS8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -361,6 +445,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 8 ptr s 8 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S8PtrS8Ptr_WithOffset_ShouldBeVoid()
         {
@@ -373,6 +460,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 8 ptr s 8 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S8PtrS8Ptr_WithStride_ShouldBeVoid()
         {
@@ -385,6 +475,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 8 ptr u 8 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U8PtrU8Ptr_Default_ShouldBeVoid()
         {
@@ -397,6 +490,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 8 ptr u 8 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U8PtrU8Ptr_WithFlags_ShouldBeVoid()
         {
@@ -409,6 +505,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 8 ptr u 8 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U8PtrU8Ptr_WithOffset_ShouldBeVoid()
         {
@@ -421,6 +520,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 8 ptr u 8 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U8PtrU8Ptr_WithStride_ShouldBeVoid()
         {
@@ -433,6 +535,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 16 ptr s 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S16PtrS16Ptr_Default_ShouldBeVoid()
         {
@@ -445,6 +550,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 16 ptr s 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S16PtrS16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -457,6 +565,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 16 ptr s 16 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S16PtrS16Ptr_WithOffset_ShouldBeVoid()
         {
@@ -469,6 +580,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 16 ptr s 16 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S16PtrS16Ptr_WithStride_ShouldBeVoid()
         {
@@ -481,6 +595,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 16 ptr u 16 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U16PtrU16Ptr_Default_ShouldBeVoid()
         {
@@ -493,6 +610,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 16 ptr u 16 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U16PtrU16Ptr_WithFlags_ShouldBeVoid()
         {
@@ -505,6 +625,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 16 ptr u 16 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U16PtrU16Ptr_WithOffset_ShouldBeVoid()
         {
@@ -517,6 +640,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 16 ptr u 16 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U16PtrU16Ptr_WithStride_ShouldBeVoid()
         {
@@ -529,6 +655,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 32 ptr s 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S32PtrS32Ptr_Default_ShouldBeVoid()
         {
@@ -541,6 +670,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 32 ptr s 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S32PtrS32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -553,6 +685,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 32 ptr s 32 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S32PtrS32Ptr_WithOffset_ShouldBeVoid()
         {
@@ -565,6 +700,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 32 ptr s 32 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S32PtrS32Ptr_WithStride_ShouldBeVoid()
         {
@@ -577,6 +715,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr u 32 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrU32Ptr_Default_ShouldBeVoid()
         {
@@ -589,6 +730,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr u 32 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrU32Ptr_WithFlags_ShouldBeVoid()
         {
@@ -601,6 +745,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr u 32 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrU32Ptr_WithOffset_ShouldBeVoid()
         {
@@ -613,6 +760,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars u 32 ptr u 32 ptr with stride should be void
+        /// </summary>
         [Fact]
         public void PlotBars_U32PtrU32Ptr_WithStride_ShouldBeVoid()
         {
@@ -625,6 +775,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr s 64 ptr default should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrS64Ptr_Default_ShouldBeVoid()
         {
@@ -637,6 +790,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr s 64 ptr with flags should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrS64Ptr_WithFlags_ShouldBeVoid()
         {
@@ -649,6 +805,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars s 64 ptr s 64 ptr with offset should be void
+        /// </summary>
         [Fact]
         public void PlotBars_S64PtrS64Ptr_WithOffset_ShouldBeVoid()
         {
@@ -661,6 +820,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot bars all ref ptr overloads should include all primitive types
+        /// </summary>
         [Fact]
         public void PlotBars_AllRefPtrOverloads_ShouldIncludeAllPrimitiveTypes()
         {
@@ -688,6 +850,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 p.ParameterType.IsByRef && p.ParameterType.HasElementType && p.ParameterType.GetElementType() == typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot bars array overloads should include u 32 s 64 u 64
+        /// </summary>
         [Fact]
         public void PlotBars_ArrayOverloads_ShouldIncludeU32S64U64()
         {
@@ -698,6 +863,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, m => m.GetParameters().Any(p => p.ParameterType == typeof(ulong[])));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -724,6 +895,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)

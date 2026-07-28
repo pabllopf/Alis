@@ -35,25 +35,44 @@ using Xunit;
 
 namespace Alis.Core.Ecs.Test.Redifinition
 {
+    /// <summary>
+    /// The gen gc callback coverage tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     [CollectionDefinition("Gen2GcCallbackCoverage", DisableParallelization = true)]
     public class Gen2GcCallbackCoverageTests : IDisposable
     {
+        /// <summary>
+        /// The non public
+        /// </summary>
         private static readonly FieldInfo RegisteredCallbacksField =
             typeof(Gen2GcCallback).GetField("_registeredCallbacks", BindingFlags.Static | BindingFlags.NonPublic);
 
+        /// <summary>
+        /// The non public
+        /// </summary>
         private static readonly FieldInfo Gen2CollectionLockField =
             typeof(Gen2GcCallback).GetField("Gen2CollectionLock", BindingFlags.Static | BindingFlags.NonPublic);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Gen2GcCallbackCoverageTests"/> class
+        /// </summary>
         public Gen2GcCallbackCoverageTests()
         {
             ClearRegisteredCallbacks();
         }
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             ClearRegisteredCallbacks();
         }
 
+        /// <summary>
+        /// Clears the registered callbacks
+        /// </summary>
         private static void ClearRegisteredCallbacks()
         {
             if (RegisteredCallbacksField?.GetValue(null) is System.Collections.IList list)
@@ -62,18 +81,30 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Registers the and release using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
         private static void RegisterAndRelease(Func<bool> callback)
         {
             Gen2GcCallback.Register(callback);
             ClearRegisteredCallbacks();
         }
 
+        /// <summary>
+        /// Registers the and release using the specified callback
+        /// </summary>
+        /// <param name="callback">The callback</param>
+        /// <param name="target">The target</param>
         private static void RegisterAndRelease(Func<object, bool> callback, object target)
         {
             Gen2GcCallback.Register(callback, target);
             ClearRegisteredCallbacks();
         }
 
+        /// <summary>
+        /// Forces the gc
+        /// </summary>
         private static void ForceGC()
         {
             for (int i = 0; i < 5; i++)
@@ -83,6 +114,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             }
         }
 
+        /// <summary>
+        /// Tests that finalizer simple callback returning false does not reschedule
+        /// </summary>
         [Fact]
         public void Finalizer_SimpleCallbackReturningFalse_DoesNotReschedule()
         {
@@ -92,6 +126,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(called);
         }
 
+        /// <summary>
+        /// Tests that finalizer simple callback returning true reschedules
+        /// </summary>
         [Fact]
         public void Finalizer_SimpleCallbackReturningTrue_Reschedules()
         {
@@ -101,6 +138,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(callCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that finalizer object callback target alive returning false frees handle
+        /// </summary>
         [Fact]
         public void Finalizer_ObjectCallbackTargetAliveReturningFalse_FreesHandle()
         {
@@ -112,6 +152,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(called);
         }
 
+        /// <summary>
+        /// Tests that finalizer object callback target alive returning true reschedules
+        /// </summary>
         [Fact]
         public void Finalizer_ObjectCallbackTargetAliveReturningTrue_Reschedules()
         {
@@ -123,6 +166,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(callCount >= 1);
         }
 
+        /// <summary>
+        /// Tests that finalizer object callback target collected frees handle without invocation
+        /// </summary>
         [Fact]
         public void Finalizer_ObjectCallbackTargetCollected_FreesHandleWithoutInvocation()
         {
@@ -152,6 +198,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.False(weakRef.IsAlive);
         }
 
+        /// <summary>
+        /// Tests that finalizer null target frees handle
+        /// </summary>
         [Fact]
         public void Finalizer_NullTarget_FreesHandle()
         {
@@ -164,6 +213,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             ForceGC();
         }
 
+        /// <summary>
+        /// Tests that finalizer object callback target alive returning false no reschedule
+        /// </summary>
         [Fact]
         public void Finalizer_ObjectCallbackTargetAliveReturningFalse_NoReschedule()
         {
@@ -179,6 +231,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             Assert.True(callCount <= 1);
         }
 
+        /// <summary>
+        /// Tests that finalizer simple callback combined with object callback no throw
+        /// </summary>
         [Fact]
         public void Finalizer_SimpleCallbackCombinedWithObjectCallback_NoThrow()
         {
@@ -188,6 +243,9 @@ namespace Alis.Core.Ecs.Test.Redifinition
             ForceGC();
         }
 
+        /// <summary>
+        /// Tests that finalizer static ctor registered callback executes gen 2 collection occured
+        /// </summary>
         [Fact]
         public void Finalizer_StaticCtorRegisteredCallback_ExecutesGen2CollectionOccured()
         {

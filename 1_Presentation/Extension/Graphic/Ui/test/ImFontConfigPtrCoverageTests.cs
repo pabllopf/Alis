@@ -34,8 +34,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {
+    /// <summary>
+    /// The im font config ptr coverage tests class
+    /// </summary>
     public class ImFontConfigPtrCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor with int ptr sets native ptr
+        /// </summary>
         [Fact]
         public void Constructor_WithIntPtr_SetsNativePtr()
         {
@@ -44,6 +50,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that constructor with int ptr zero sets native ptr
+        /// </summary>
         [Fact]
         public void Constructor_WithIntPtr_Zero_SetsNativePtr()
         {
@@ -51,6 +60,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that constructor with im font config allocates and copies
+        /// </summary>
         [Fact]
         public void Constructor_WithImFontConfig_AllocatesAndCopies()
         {
@@ -102,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that constructor with im font config zero fields returns defaults
+        /// </summary>
         [Fact]
         public void Constructor_WithImFontConfig_ZeroFields_ReturnsDefaults()
         {
@@ -133,6 +148,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that implicit conversion to int ptr returns native ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversion_ToIntPtr_ReturnsNativePtr()
         {
@@ -142,6 +160,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, result);
         }
 
+        /// <summary>
+        /// Tests that implicit conversion from int ptr returns im font config ptr
+        /// </summary>
         [Fact]
         public void ImplicitConversion_FromIntPtr_ReturnsImFontConfigPtr()
         {
@@ -150,6 +171,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(nativePtr, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that font data getter returns expected
+        /// </summary>
         [Fact]
         public void FontData_Getter_ReturnsExpected()
         {
@@ -167,6 +191,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that font data size getter returns expected
+        /// </summary>
         [Fact]
         public void FontDataSize_Getter_ReturnsExpected()
         {
@@ -184,6 +211,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that font data owned by atlas getter true returns true
+        /// </summary>
         [Fact]
         public void FontDataOwnedByAtlas_Getter_True_ReturnsTrue()
         {
@@ -201,6 +231,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that font data owned by atlas getter false returns false
+        /// </summary>
         [Fact]
         public void FontDataOwnedByAtlas_Getter_False_ReturnsFalse()
         {
@@ -218,6 +251,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that font no getter returns expected
+        /// </summary>
         [Fact]
         public void FontNo_Getter_ReturnsExpected()
         {
@@ -235,6 +271,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that size pixels getter returns expected
+        /// </summary>
         [Fact]
         public void SizePixels_Getter_ReturnsExpected()
         {
@@ -252,6 +291,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that oversample h getter returns expected
+        /// </summary>
         [Fact]
         public void OversampleH_Getter_ReturnsExpected()
         {
@@ -269,6 +311,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that oversample v getter returns expected
+        /// </summary>
         [Fact]
         public void OversampleV_Getter_ReturnsExpected()
         {
@@ -286,6 +331,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that snap h getter when snap h is non zero returns true
+        /// </summary>
         [Fact]
         public void SnapH_Getter_WhenSnapHIsNonZero_ReturnsTrue()
         {
@@ -303,6 +351,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that snap h getter when snap h is zero returns false
+        /// </summary>
         [Fact]
         public void SnapH_Getter_WhenSnapHIsZero_ReturnsFalse()
         {
@@ -320,6 +371,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that snap h setter sets snap h to true
+        /// </summary>
         [Fact]
         public void SnapH_Setter_SetsSnapHToTrue()
         {
@@ -340,6 +394,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that snap h setter sets snap h to false
+        /// </summary>
         [Fact]
         public void SnapH_Setter_SetsSnapHToFalse()
         {
@@ -360,6 +417,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph extra spacing getter returns expected
+        /// </summary>
         [Fact]
         public void GlyphExtraSpacing_Getter_ReturnsExpected()
         {
@@ -377,6 +437,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph offset getter returns expected
+        /// </summary>
         [Fact]
         public void GlyphOffset_Getter_ReturnsExpected()
         {
@@ -394,6 +457,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph ranges getter returns expected
+        /// </summary>
         [Fact]
         public void GlyphRanges_Getter_ReturnsExpected()
         {
@@ -411,6 +477,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph ranges setter sets value
+        /// </summary>
         [Fact]
         public void GlyphRanges_Setter_SetsValue()
         {
@@ -432,6 +501,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph min advance x getter returns expected
+        /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_Getter_ReturnsExpected()
         {
@@ -449,6 +521,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph min advance x setter sets value
+        /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_Setter_SetsValue()
         {
@@ -469,6 +544,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that glyph max advance x getter returns expected
+        /// </summary>
         [Fact]
         public void GlyphMaxAdvanceX_Getter_ReturnsExpected()
         {
@@ -486,6 +564,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode getter when merge mode is non zero returns true
+        /// </summary>
         [Fact]
         public void MergeMode_Getter_WhenMergeModeIsNonZero_ReturnsTrue()
         {
@@ -503,6 +584,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode getter when merge mode is zero returns false
+        /// </summary>
         [Fact]
         public void MergeMode_Getter_WhenMergeModeIsZero_ReturnsFalse()
         {
@@ -520,6 +604,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode setter sets merge mode to true
+        /// </summary>
         [Fact]
         public void MergeMode_Setter_SetsMergeModeToTrue()
         {
@@ -540,6 +627,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that merge mode setter sets merge mode to false
+        /// </summary>
         [Fact]
         public void MergeMode_Setter_SetsMergeModeToFalse()
         {
@@ -560,6 +650,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that font builder flags getter returns expected
+        /// </summary>
         [Fact]
         public void FontBuilderFlags_Getter_ReturnsExpected()
         {
@@ -577,6 +670,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that rasterizer multiply getter returns expected
+        /// </summary>
         [Fact]
         public void RasterizerMultiply_Getter_ReturnsExpected()
         {
@@ -594,6 +690,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that ellipsis char getter returns expected
+        /// </summary>
         [Fact]
         public void EllipsisChar_Getter_ReturnsExpected()
         {
@@ -611,6 +710,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that dst font getter returns expected
+        /// </summary>
         [Fact]
         public void DstFont_Getter_ReturnsExpected()
         {
@@ -628,6 +730,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             }
         }
 
+        /// <summary>
+        /// Tests that native ptr getter returns value passed to constructor
+        /// </summary>
         [Fact]
         public void NativePtr_Getter_ReturnsValuePassedToConstructor()
         {
@@ -636,6 +741,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(expected, ptr.NativePtr);
         }
 
+        /// <summary>
+        /// Tests that font data getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void FontData_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -643,6 +751,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FontData);
         }
 
+        /// <summary>
+        /// Tests that font data size getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void FontDataSize_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -650,6 +761,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FontDataSize);
         }
 
+        /// <summary>
+        /// Tests that font data owned by atlas getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void FontDataOwnedByAtlas_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -657,6 +771,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FontDataOwnedByAtlas);
         }
 
+        /// <summary>
+        /// Tests that font no getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void FontNo_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -664,6 +781,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FontNo);
         }
 
+        /// <summary>
+        /// Tests that size pixels getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void SizePixels_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -671,6 +791,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.SizePixels);
         }
 
+        /// <summary>
+        /// Tests that oversample h getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void OversampleH_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -678,6 +801,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.OversampleH);
         }
 
+        /// <summary>
+        /// Tests that oversample v getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void OversampleV_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -685,6 +811,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.OversampleV);
         }
 
+        /// <summary>
+        /// Tests that snap h getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void SnapH_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -692,6 +821,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.SnapH);
         }
 
+        /// <summary>
+        /// Tests that glyph extra spacing getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void GlyphExtraSpacing_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -699,6 +831,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.GlyphExtraSpacing);
         }
 
+        /// <summary>
+        /// Tests that glyph offset getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void GlyphOffset_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -706,6 +841,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.GlyphOffset);
         }
 
+        /// <summary>
+        /// Tests that glyph ranges getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void GlyphRanges_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -713,6 +851,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.GlyphRanges);
         }
 
+        /// <summary>
+        /// Tests that glyph min advance x getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void GlyphMinAdvanceX_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -720,6 +861,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.GlyphMinAdvanceX);
         }
 
+        /// <summary>
+        /// Tests that glyph max advance x getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void GlyphMaxAdvanceX_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -727,6 +871,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.GlyphMaxAdvanceX);
         }
 
+        /// <summary>
+        /// Tests that merge mode getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void MergeMode_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -734,6 +881,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.MergeMode);
         }
 
+        /// <summary>
+        /// Tests that font builder flags getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void FontBuilderFlags_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -741,6 +891,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.FontBuilderFlags);
         }
 
+        /// <summary>
+        /// Tests that rasterizer multiply getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void RasterizerMultiply_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -748,6 +901,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.RasterizerMultiply);
         }
 
+        /// <summary>
+        /// Tests that ellipsis char getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void EllipsisChar_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {
@@ -755,6 +911,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Throws<NullReferenceException>(() => _ = ptr.EllipsisChar);
         }
 
+        /// <summary>
+        /// Tests that dst font getter on zero ptr throws null reference exception
+        /// </summary>
         [Fact]
         public void DstFont_Getter_OnZeroPtr_ThrowsNullReferenceException()
         {

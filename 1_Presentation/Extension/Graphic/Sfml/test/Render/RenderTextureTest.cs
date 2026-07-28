@@ -36,26 +36,41 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The render texture test class
+    /// </summary>
     public class RenderTextureTest
     {
+        /// <summary>
+        /// Tests that render texture implements i render target
+        /// </summary>
         [Fact]
         public void RenderTexture_ImplementsIRenderTarget()
         {
             Assert.True(typeof(IRenderTarget).IsAssignableFrom(typeof(RenderTexture)));
         }
 
+        /// <summary>
+        /// Tests that render texture is assignable from object base
+        /// </summary>
         [Fact]
         public void RenderTexture_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(RenderTexture)));
         }
 
+        /// <summary>
+        /// Tests that render texture implements i disposable
+        /// </summary>
         [Fact]
         public void RenderTexture_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(RenderTexture)));
         }
 
+        /// <summary>
+        /// Tests that texture property exists
+        /// </summary>
         [Fact]
         public void Texture_Property_Exists()
         {
@@ -63,6 +78,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop);
         }
 
+        /// <summary>
+        /// Tests that texture property is read only
+        /// </summary>
         [Fact]
         public void Texture_Property_IsReadOnly()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.False(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that maximum antialiasing level property exists
+        /// </summary>
         [Fact]
         public void MaximumAntialiasingLevel_Property_Exists()
         {
@@ -79,6 +100,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(prop);
         }
 
+        /// <summary>
+        /// Tests that maximum antialiasing level property is static
+        /// </summary>
         [Fact]
         public void MaximumAntialiasingLevel_Property_IsStatic()
         {
@@ -87,6 +111,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.GetMethod.IsStatic);
         }
 
+        /// <summary>
+        /// Tests that maximum antialiasing level property is read only
+        /// </summary>
         [Fact]
         public void MaximumAntialiasingLevel_Property_IsReadOnly()
         {
@@ -96,12 +123,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.False(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that repeated property exists
+        /// </summary>
         [Fact]
         public void Repeated_Property_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetProperty("Repeated"));
         }
 
+        /// <summary>
+        /// Tests that repeated property is read write
+        /// </summary>
         [Fact]
         public void Repeated_Property_IsReadWrite()
         {
@@ -111,12 +144,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that smooth property exists
+        /// </summary>
         [Fact]
         public void Smooth_Property_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetProperty("Smooth"));
         }
 
+        /// <summary>
+        /// Tests that smooth property is read write
+        /// </summary>
         [Fact]
         public void Smooth_Property_IsReadWrite()
         {
@@ -126,12 +165,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that size property exists
+        /// </summary>
         [Fact]
         public void Size_Property_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetProperty("Size"));
         }
 
+        /// <summary>
+        /// Tests that size property is read only
+        /// </summary>
         [Fact]
         public void Size_Property_IsReadOnly()
         {
@@ -141,12 +186,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.False(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that default view property exists
+        /// </summary>
         [Fact]
         public void DefaultView_Property_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetProperty("DefaultView"));
         }
 
+        /// <summary>
+        /// Tests that default view property is read only
+        /// </summary>
         [Fact]
         public void DefaultView_Property_IsReadOnly()
         {
@@ -156,138 +207,207 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.False(prop.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that get view method exists
+        /// </summary>
         [Fact]
         public void GetView_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("GetView", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that set view method exists
+        /// </summary>
         [Fact]
         public void SetView_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("SetView", new[] { typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that get viewport method exists
+        /// </summary>
         [Fact]
         public void GetViewport_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("GetViewport", new[] { typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that map pixel to coords with point exists
+        /// </summary>
         [Fact]
         public void MapPixelToCoords_WithPoint_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("MapPixelToCoords", new[] { typeof(Vector2F) }));
         }
 
+        /// <summary>
+        /// Tests that map pixel to coords with point and view exists
+        /// </summary>
         [Fact]
         public void MapPixelToCoords_WithPointAndView_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("MapPixelToCoords", new[] { typeof(Vector2F), typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that map coords to pixel with point exists
+        /// </summary>
         [Fact]
         public void MapCoordsToPixel_WithPoint_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("MapCoordsToPixel", new[] { typeof(Vector2F) }));
         }
 
+        /// <summary>
+        /// Tests that map coords to pixel with point and view exists
+        /// </summary>
         [Fact]
         public void MapCoordsToPixel_WithPointAndView_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("MapCoordsToPixel", new[] { typeof(Vector2F), typeof(View) }));
         }
 
+        /// <summary>
+        /// Tests that clear no args exists
+        /// </summary>
         [Fact]
         public void Clear_NoArgs_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Clear", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that clear with color exists
+        /// </summary>
         [Fact]
         public void Clear_WithColor_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Clear", new[] { typeof(Color) }));
         }
 
+        /// <summary>
+        /// Tests that draw with i drawable exists
+        /// </summary>
         [Fact]
         public void Draw_WithIDrawable_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(IDrawable) }));
         }
 
+        /// <summary>
+        /// Tests that draw with i drawable and states exists
+        /// </summary>
         [Fact]
         public void Draw_WithIDrawableAndStates_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(IDrawable), typeof(RenderStates) }));
         }
 
+        /// <summary>
+        /// Tests that draw with vertex array and type exists
+        /// </summary>
         [Fact]
         public void Draw_WithVertexArrayAndType_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(Vertex[]), typeof(PrimitiveType) }));
         }
 
+        /// <summary>
+        /// Tests that draw with vertex array type and states exists
+        /// </summary>
         [Fact]
         public void Draw_WithVertexArrayTypeAndStates_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(Vertex[]), typeof(PrimitiveType), typeof(RenderStates) }));
         }
 
+        /// <summary>
+        /// Tests that draw with vertex array start count type exists
+        /// </summary>
         [Fact]
         public void Draw_WithVertexArrayStartCountType_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(Vertex[]), typeof(uint), typeof(uint), typeof(PrimitiveType) }));
         }
 
+        /// <summary>
+        /// Tests that draw with vertex array start count type and states exists
+        /// </summary>
         [Fact]
         public void Draw_WithVertexArrayStartCountTypeAndStates_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Draw", new[] { typeof(Vertex[]), typeof(uint), typeof(uint), typeof(PrimitiveType), typeof(RenderStates) }));
         }
 
+        /// <summary>
+        /// Tests that push gl states method exists
+        /// </summary>
         [Fact]
         public void PushGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("PushGlStates", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that pop gl states method exists
+        /// </summary>
         [Fact]
         public void PopGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("PopGlStates", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that reset gl states method exists
+        /// </summary>
         [Fact]
         public void ResetGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("ResetGlStates", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that set active method exists
+        /// </summary>
         [Fact]
         public void SetActive_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("SetActive", new[] { typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that generate mipmap method exists
+        /// </summary>
         [Fact]
         public void GenerateMipmap_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("GenerateMipmap", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that display method exists
+        /// </summary>
         [Fact]
         public void Display_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Display", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that to string method exists
+        /// </summary>
         [Fact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("ToString", Type.EmptyTypes));
         }
 
+        /// <summary>
+        /// Tests that to string is override
+        /// </summary>
         [Fact]
         public void ToString_IsOverride()
         {
@@ -297,12 +417,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that destroy method exists
+        /// </summary>
         [Fact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetMethod("Destroy", new[] { typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that destroy is override
+        /// </summary>
         [Fact]
         public void Destroy_IsOverride()
         {
@@ -312,18 +438,27 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that constructor width height exists
+        /// </summary>
         [Fact]
         public void Constructor_WidthHeight_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetConstructor(new[] { typeof(uint), typeof(uint) }));
         }
 
+        /// <summary>
+        /// Tests that constructor width height depth buffer exists
+        /// </summary>
         [Fact]
         public void Constructor_WidthHeightDepthBuffer_Exists()
         {
             Assert.NotNull(typeof(RenderTexture).GetConstructor(new[] { typeof(uint), typeof(uint), typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that constructor width height context settings exists
+        /// </summary>
         [Fact]
         public void Constructor_WidthHeightContextSettings_Exists()
         {

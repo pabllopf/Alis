@@ -39,20 +39,32 @@ using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailed
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
 {
+    /// <summary>
+    /// The font test class
+    /// </summary>
     public class FontTest
     {
+        /// <summary>
+        /// Tests that font is assignable from object base
+        /// </summary>
         [Fact]
         public void Font_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Font)));
         }
 
+        /// <summary>
+        /// Tests that font implements i disposable
+        /// </summary>
         [Fact]
         public void Font_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Font)));
         }
 
+        /// <summary>
+        /// Tests that info struct has family property
+        /// </summary>
         [Fact]
         public void Info_Struct_HasFamilyProperty()
         {
@@ -63,6 +75,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(string), familyProp.PropertyType);
         }
 
+        /// <summary>
+        /// Tests that info family property is read write
+        /// </summary>
         [Fact]
         public void Info_Family_Property_IsReadWrite()
         {
@@ -74,6 +89,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(familyProp.CanWrite);
         }
 
+        /// <summary>
+        /// Tests that info marshal data struct has family field
+        /// </summary>
         [Fact]
         public void InfoMarshalData_Struct_HasFamilyField()
         {
@@ -84,6 +102,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(IntPtr), familyField.FieldType);
         }
 
+        /// <summary>
+        /// Tests that constructor filename exists
+        /// </summary>
         [Fact]
         public void Constructor_Filename_Exists()
         {
@@ -92,6 +113,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that constructor stream exists
+        /// </summary>
         [Fact]
         public void Constructor_Stream_Exists()
         {
@@ -100,6 +124,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that constructor bytes exists
+        /// </summary>
         [Fact]
         public void Constructor_Bytes_Exists()
         {
@@ -108,6 +135,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that constructor copy exists
+        /// </summary>
         [Fact]
         public void Constructor_Copy_Exists()
         {
@@ -116,6 +146,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPublic);
         }
 
+        /// <summary>
+        /// Tests that constructor int ptr is private
+        /// </summary>
         [Fact]
         public void Constructor_IntPtr_IsPrivate()
         {
@@ -124,6 +157,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(ctor.IsPrivate);
         }
 
+        /// <summary>
+        /// Tests that get glyph method exists
+        /// </summary>
         [Fact]
         public void GetGlyph_Method_Exists()
         {
@@ -132,6 +168,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Glyph), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get kerning method exists
+        /// </summary>
         [Fact]
         public void GetKerning_Method_Exists()
         {
@@ -140,6 +179,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(float), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get line spacing method exists
+        /// </summary>
         [Fact]
         public void GetLineSpacing_Method_Exists()
         {
@@ -148,6 +190,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(float), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get underline position method exists
+        /// </summary>
         [Fact]
         public void GetUnderlinePosition_Method_Exists()
         {
@@ -156,6 +201,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(float), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get underline thickness method exists
+        /// </summary>
         [Fact]
         public void GetUnderlineThickness_Method_Exists()
         {
@@ -164,6 +212,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(float), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get texture method exists
+        /// </summary>
         [Fact]
         public void GetTexture_Method_Exists()
         {
@@ -172,6 +223,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Texture), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that get info method exists
+        /// </summary>
         [Fact]
         public void GetInfo_Method_Exists()
         {
@@ -180,6 +234,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(Font.Info), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that to string method exists
+        /// </summary>
         [Fact]
         public void ToString_Method_Exists()
         {
@@ -188,6 +245,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(typeof(string), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that destroy method exists
+        /// </summary>
         [Fact]
         public void Destroy_Method_Exists()
         {
@@ -195,6 +255,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotNull(method);
         }
 
+        /// <summary>
+        /// Tests that to string is override
+        /// </summary>
         [Fact]
         public void ToString_IsOverride()
         {
@@ -204,6 +267,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that destroy is override
+        /// </summary>
         [Fact]
         public void Destroy_IsOverride()
         {
@@ -213,6 +279,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(method.GetBaseDefinition(), method);
         }
 
+        /// <summary>
+        /// Tests that pinned objects field exists
+        /// </summary>
         [Fact]
         public void PinnedObjects_Field_Exists()
         {
@@ -221,6 +290,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(field.IsInitOnly);
         }
 
+        /// <summary>
+        /// Tests that my textures field exists
+        /// </summary>
         [Fact]
         public void MyTextures_Field_Exists()
         {
@@ -229,6 +301,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(field.IsInitOnly);
         }
 
+        /// <summary>
+        /// Tests that info struct can instantiate and set family
+        /// </summary>
         [Fact]
         public void Info_Struct_CanInstantiateAndSetFamily()
         {
@@ -237,6 +312,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal("Arial", info.Family);
         }
 
+        /// <summary>
+        /// Tests that info struct default family is null
+        /// </summary>
         [Fact]
         public void Info_Struct_DefaultFamilyIsNull()
         {
@@ -244,12 +322,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Null(info.Family);
         }
 
+        /// <summary>
+        /// Constructors the filename non existent throws loading failed exception
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_Filename_NonExistent_ThrowsLoadingFailedException()
         {
             Assert.Throws<LoadingFailedException>(() => new Font("nonexistent_font_file.ttf"));
         }
 
+        /// <summary>
+        /// Constructors the stream invalid data throws loading failed exception
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_Stream_InvalidData_ThrowsLoadingFailedException()
         {
@@ -257,12 +341,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Throws<LoadingFailedException>(() => new Font(ms));
         }
 
+        /// <summary>
+        /// Constructors the empty bytes throws loading failed exception
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_EmptyBytes_ThrowsLoadingFailedException()
         {
             Assert.Throws<LoadingFailedException>(() => new Font(Array.Empty<byte>()));
         }
 
+        /// <summary>
+        /// Tests that to string returns font
+        /// </summary>
         [Fact]
         public void ToString_ReturnsFont()
         {
@@ -272,6 +362,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal("Font", result);
         }
 
+        /// <summary>
+        /// Destroys the with disposing true sets c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_SetsCPointerToZero()
         {
@@ -281,6 +374,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Destroys the with disposing false sets c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_SetsCPointerToZero()
         {
@@ -290,6 +386,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Disposes the does not crash with zero pointer
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Dispose_DoesNotCrash_WithZeroPointer()
         {
@@ -299,6 +398,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.Equal(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Constructors the valid filename creates font
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_ValidFilename_CreatesFont()
         {
@@ -308,6 +410,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Constructors the valid file stream creates font
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_ValidFileStream_CreatesFont()
         {
@@ -318,6 +423,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Constructors the valid bytes creates font
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_ValidBytes_CreatesFont()
         {
@@ -328,6 +436,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(IntPtr.Zero, font.CPointer);
         }
 
+        /// <summary>
+        /// Constructors the copy font creates copy
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Constructor_CopyFont_CreatesCopy()
         {
@@ -339,6 +450,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(original.CPointer, copy.CPointer);
         }
 
+        /// <summary>
+        /// Gets the glyph with valid font returns glyph
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetGlyph_WithValidFont_ReturnsGlyph()
         {
@@ -348,6 +462,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(0u, glyph.Advance);
         }
 
+        /// <summary>
+        /// Gets the kerning with valid font returns zero or value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetKerning_WithValidFont_ReturnsZeroOrValue()
         {
@@ -357,6 +474,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(kerning >= 0);
         }
 
+        /// <summary>
+        /// Gets the line spacing with valid font returns positive value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetLineSpacing_WithValidFont_ReturnsPositiveValue()
         {
@@ -366,6 +486,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(spacing > 0);
         }
 
+        /// <summary>
+        /// Gets the underline position with valid font returns value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetUnderlinePosition_WithValidFont_ReturnsValue()
         {
@@ -375,6 +498,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(position >= 0);
         }
 
+        /// <summary>
+        /// Gets the underline thickness with valid font returns positive value
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetUnderlineThickness_WithValidFont_ReturnsPositiveValue()
         {
@@ -384,6 +510,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.True(thickness > 0);
         }
 
+        /// <summary>
+        /// Gets the texture with valid font returns texture
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetTexture_WithValidFont_ReturnsTexture()
         {
@@ -395,6 +524,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             font.GetTexture(30);
         }
 
+        /// <summary>
+        /// Gets the info with valid font returns family
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void GetInfo_WithValidFont_ReturnsFamily()
         {
@@ -405,6 +537,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEmpty(info.Family);
         }
 
+        /// <summary>
+        /// Destroys the with real font sets c pointer to zero
+        /// </summary>
         [RequireCSfmlSystemFact]
         public void Destroy_WithRealFont_SetsCPointerToZero()
         {

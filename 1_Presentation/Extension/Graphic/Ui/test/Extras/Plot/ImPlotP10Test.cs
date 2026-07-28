@@ -36,8 +36,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 10 test class
+    /// </summary>
     public class ImPlotP10Test
     {
+        /// <summary>
+        /// Tests that plot scatter should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeExpectedOverloadCount()
         {
@@ -46,6 +52,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 23);
         }
 
+        /// <summary>
+        /// Tests that plot scatter should expose all expected by ref numeric families
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeAllExpectedByRefNumericFamilies()
         {
@@ -59,6 +68,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasByRefParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot scatter should expose flags offset and stride overloads
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
@@ -69,6 +81,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length >= 7) && (method.GetParameters()[6].ParameterType == typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot scatter should expose by ref short overloads
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeByRefShortOverloads()
         {
@@ -82,6 +97,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(shortOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot scatter should expose by ref int overloads
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeByRefIntOverloads()
         {
@@ -96,6 +114,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(intOverloads, method => method.GetParameters().Length == 7);
         }
 
+        /// <summary>
+        /// Tests that plot scatter g should expose expected overloads
+        /// </summary>
         [Fact]
         public void PlotScatterG_ShouldExposeExpectedOverloads()
         {
@@ -106,6 +127,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length == 5) && method.GetParameters().Any(parameter => parameter.ParameterType == typeof(ImPlotScatterFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeExpectedOverloadCount()
         {
@@ -114,6 +138,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 80);
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose all expected array types
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeAllExpectedArrayTypes()
         {
@@ -131,6 +158,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(ulong)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose by ref float and double overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeByRefFloatAndDoubleOverloads()
         {
@@ -140,6 +170,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasByRefParameter(method, typeof(double)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose flags offset and stride overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeFlagsOffsetAndStrideOverloads()
         {
@@ -150,6 +183,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => (method.GetParameters().Length >= 9) && (method.GetParameters()[8].ParameterType == typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose yref xscale xstart overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeYrefXscaleXstartOverloads()
         {
@@ -158,6 +194,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(parameter => (parameter.Name == "yref" || parameter.ParameterType == typeof(double))));
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose seven float overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeSevenFloatOverloads()
         {
@@ -175,6 +214,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(floatOverloads, method => method.GetParameters().Length == 9);
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose five by ref float overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeFiveByRefFloatOverloads()
         {
@@ -190,6 +232,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refFloatOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Tests that plot shaded should expose five by ref double overloads
+        /// </summary>
         [Fact]
         public void PlotShaded_ShouldExposeFiveByRefDoubleOverloads()
         {
@@ -205,6 +250,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(refDoubleOverloads, method => method.GetParameters().Length == 8);
         }
 
+        /// <summary>
+        /// Plots the scatter with null label should throw argument null exception
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotScatter_WithNullLabel_ShouldThrowArgumentNullException()
         {
@@ -214,12 +262,18 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotScatter(null, ref xs, ref ys, 1, ImPlotScatterFlags.None)));
         }
 
+        /// <summary>
+        /// Plots the scatter g with null label should throw argument null exception
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotScatterG_WithNullLabel_ShouldThrowArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotScatterG(null, IntPtr.Zero, IntPtr.Zero, 1)));
         }
 
+        /// <summary>
+        /// Plots the shaded array with null label should throw argument null exception
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotShaded_ArrayWithNullLabel_ShouldThrowArgumentNullException()
         {
@@ -228,6 +282,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotShaded(null, values, 2)));
         }
 
+        /// <summary>
+        /// Plots the shaded ref float with null label should throw argument null exception
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotShaded_RefFloatWithNullLabel_ShouldThrowArgumentNullException()
         {
@@ -237,6 +294,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotShaded(null, ref xs, ref ys, 1)));
         }
 
+        /// <summary>
+        /// Plots the shaded ref double with null label should throw argument null exception
+        /// </summary>
         [RequireCImguiSystemFact]
         public void PlotShaded_RefDoubleWithNullLabel_ShouldThrowArgumentNullException()
         {
@@ -246,6 +306,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>((Action)(() => ImPlot.PlotShaded(null, ref xs, ref ys, 1)));
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -254,11 +319,23 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the by ref parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasByRefParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsByRef && (parameter.ParameterType.GetElementType() == elementType));
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(parameter => parameter.ParameterType.IsArray && (parameter.ParameterType.GetElementType() == elementType));

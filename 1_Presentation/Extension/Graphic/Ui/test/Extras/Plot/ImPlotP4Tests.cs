@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot tests class
+    /// </summary>
     public class ImPlotP4Tests
     {
+        /// <summary>
+        /// Tests that plot heatmap double with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_Double_WithBoundsMin_ShouldBeVoid()
         {
@@ -51,6 +57,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap double with bounds min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_Double_WithBoundsMinMax_ShouldBeVoid()
         {
@@ -65,6 +74,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap double with all should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_Double_WithAll_ShouldBeVoid()
         {
@@ -80,6 +92,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 default should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_Default_ShouldBeVoid()
         {
@@ -92,6 +107,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with scale min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithScaleMin_ShouldBeVoid()
         {
@@ -105,6 +123,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with scale min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithScaleMinMax_ShouldBeVoid()
         {
@@ -118,6 +139,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with format should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithFormat_ShouldBeVoid()
         {
@@ -131,6 +155,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithBoundsMin_ShouldBeVoid()
         {
@@ -145,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with bounds min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithBoundsMinMax_ShouldBeVoid()
         {
@@ -159,6 +189,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with all should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8_WithAll_ShouldBeVoid()
         {
@@ -174,6 +207,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 default should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_Default_ShouldBeVoid()
         {
@@ -186,6 +222,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with scale min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithScaleMin_ShouldBeVoid()
         {
@@ -199,6 +238,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with scale min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithScaleMinMax_ShouldBeVoid()
         {
@@ -212,6 +254,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with format should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithFormat_ShouldBeVoid()
         {
@@ -225,6 +270,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithBoundsMin_ShouldBeVoid()
         {
@@ -239,6 +287,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with bounds min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithBoundsMinMax_ShouldBeVoid()
         {
@@ -253,6 +304,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with all should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8_WithAll_ShouldBeVoid()
         {
@@ -268,6 +322,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 default should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_Default_ShouldBeVoid()
         {
@@ -280,6 +337,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with scale min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithScaleMin_ShouldBeVoid()
         {
@@ -293,6 +353,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with scale min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithScaleMinMax_ShouldBeVoid()
         {
@@ -306,6 +369,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with format should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithFormat_ShouldBeVoid()
         {
@@ -319,6 +385,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithBoundsMin_ShouldBeVoid()
         {
@@ -333,6 +402,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with bounds min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithBoundsMinMax_ShouldBeVoid()
         {
@@ -347,6 +419,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with all should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16_WithAll_ShouldBeVoid()
         {
@@ -362,6 +437,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 default should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_Default_ShouldBeVoid()
         {
@@ -374,6 +452,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with scale min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithScaleMin_ShouldBeVoid()
         {
@@ -387,6 +468,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with scale min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithScaleMinMax_ShouldBeVoid()
         {
@@ -400,6 +484,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with format should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithFormat_ShouldBeVoid()
         {
@@ -413,6 +500,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithBoundsMin_ShouldBeVoid()
         {
@@ -427,6 +517,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with bounds min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithBoundsMinMax_ShouldBeVoid()
         {
@@ -441,6 +534,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with all should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16_WithAll_ShouldBeVoid()
         {
@@ -456,6 +552,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 default should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32_Default_ShouldBeVoid()
         {
@@ -468,6 +567,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with scale min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32_WithScaleMin_ShouldBeVoid()
         {
@@ -481,6 +583,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with scale min max should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32_WithScaleMinMax_ShouldBeVoid()
         {
@@ -494,6 +599,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with format should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32_WithFormat_ShouldBeVoid()
         {
@@ -507,6 +615,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with bounds min should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32_WithBoundsMin_ShouldBeVoid()
         {
@@ -521,6 +632,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose expected overload count
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeExpectedOverloadCount()
         {
@@ -529,6 +643,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 47);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap all overloads should be void
+        /// </summary>
         [Fact]
         public void PlotHeatmap_AllOverloads_ShouldBeVoid()
         {
@@ -537,6 +654,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.All(overloads, method => Assert.Equal(typeof(void), method.ReturnType));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose all array families
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeAllArrayFamilies()
         {
@@ -550,6 +670,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => HasArrayParameter(method, typeof(int)));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose s 8 family
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeS8Family()
         {
@@ -560,6 +683,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(s8Overloads.Length >= 7);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose u 8 family
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeU8Family()
         {
@@ -570,6 +696,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(u8Overloads.Length >= 7);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose s 16 family
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeS16Family()
         {
@@ -580,6 +709,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(s16Overloads.Length >= 7);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose u 16 family
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeU16Family()
         {
@@ -590,6 +722,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(u16Overloads.Length >= 7);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose s 32 family
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeS32Family()
         {
@@ -600,6 +735,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(s32Overloads.Length >= 5);
         }
 
+        /// <summary>
+        /// Tests that plot heatmap should expose im plot point and flags parameters
+        /// </summary>
         [Fact]
         public void PlotHeatmap_ShouldExposeImPlotPointAndFlagsParameters()
         {
@@ -609,6 +747,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Contains(overloads, method => method.GetParameters().Any(p => p.ParameterType == typeof(ImPlotHeatmapFlags)));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap double bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -616,6 +757,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap double bounds min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -623,6 +767,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap double all with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_DoubleAll_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -630,6 +777,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 default with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8Default_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -637,6 +787,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with scale min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -644,6 +797,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with scale min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -651,6 +807,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with format with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -658,6 +817,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f"));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -665,6 +827,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with bounds min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -672,6 +837,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 8 with all with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -679,6 +847,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 default with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8Default_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -686,6 +857,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with scale min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -693,6 +867,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with scale min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -700,6 +877,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with format with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -707,6 +887,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f"));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -714,6 +897,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with bounds min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -721,6 +907,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 8 with all with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U8WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -728,6 +917,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 default with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16Default_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -735,6 +927,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with scale min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -742,6 +937,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with scale min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -749,6 +947,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with format with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -756,6 +957,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f"));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -763,6 +967,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with bounds min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -770,6 +977,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 16 with all with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S16WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -777,6 +987,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 default with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16Default_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -784,6 +997,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with scale min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -791,6 +1007,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with scale min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -798,6 +1017,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with format with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -805,6 +1027,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f"));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -812,6 +1037,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with bounds min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithBoundsMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -819,6 +1047,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap u 16 with all with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_U16WithAll_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -826,6 +1057,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }, new ImPlotPoint { X = 1, Y = 1 }, ImPlotHeatmapFlags.None));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 default with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32Default_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -833,6 +1067,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with scale min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32WithScaleMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -840,6 +1077,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with scale min max with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32WithScaleMinMax_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -847,6 +1087,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with format with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32WithFormat_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -854,6 +1097,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f"));
         }
 
+        /// <summary>
+        /// Tests that plot heatmap s 32 with bounds min with null label throws argument null exception
+        /// </summary>
         [Fact]
         public void PlotHeatmap_S32WithBoundsMin_WithNullLabel_ThrowsArgumentNullException()
         {
@@ -861,6 +1107,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Throws<ArgumentNullException>(() => ImPlot.PlotHeatmap(null, values, 2, 1, 0.0, 1.0, "%.1f", new ImPlotPoint { X = 0, Y = 0 }));
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -887,6 +1139,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)
@@ -895,6 +1152,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 .ToArray();
         }
 
+        /// <summary>
+        /// Hases the array parameter using the specified method
+        /// </summary>
+        /// <param name="method">The method</param>
+        /// <param name="elementType">The element type</param>
+        /// <returns>The bool</returns>
         private static bool HasArrayParameter(MethodInfo method, Type elementType)
         {
             return method.GetParameters().Any(p => p.ParameterType.IsArray && p.ParameterType.GetElementType() == elementType);

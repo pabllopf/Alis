@@ -43,12 +43,28 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
     /// </summary>
     public class ConsoleLogOutputFinalCoverageTests
     {
+        /// <summary>
+        /// Closes the fd
+        /// </summary>
+        /// <param name="fd">The fd</param>
+        /// <returns>The int</returns>
         [DllImport("libc")]
         private static extern int close(int fd);
 
+        /// <summary>
+        /// Dups the fd
+        /// </summary>
+        /// <param name="fd">The fd</param>
+        /// <returns>The int</returns>
         [DllImport("libc")]
         private static extern int dup(int fd);
 
+        /// <summary>
+        /// Dups the 2 using the specified oldfd
+        /// </summary>
+        /// <param name="oldfd">The oldfd</param>
+        /// <param name="newfd">The newfd</param>
+        /// <returns>The int</returns>
         [DllImport("libc")]
         private static extern int dup2(int oldfd, int newfd);
 
@@ -149,8 +165,16 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
         /// </summary>
         private sealed class NullFormatter : ILogFormatter
         {
+            /// <summary>
+            /// Gets the value of the name
+            /// </summary>
             public string Name => "NullFormatter";
 
+            /// <summary>
+            /// Formats the entry
+            /// </summary>
+            /// <param name="entry">The entry</param>
+            /// <returns>The string</returns>
             public string Format(ILogEntry entry) => null;
         }
     }

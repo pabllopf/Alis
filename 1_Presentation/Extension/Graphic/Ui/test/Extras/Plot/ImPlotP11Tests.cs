@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 {
+    /// <summary>
+    /// The im plot 11 tests class
+    /// </summary>
     public class ImPlotP11Tests
     {
+        /// <summary>
+        /// Tests that plot pie chart should expose sufficient overload count
+        /// </summary>
         [Fact]
         public void PlotPieChart_ShouldExposeSufficientOverloadCount()
         {
@@ -45,6 +51,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 19);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 16 default should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U16_Default_ShouldBeVoid()
         {
@@ -53,6 +62,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 16 with angle 0 should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U16_WithAngle0_ShouldBeVoid()
         {
@@ -61,6 +73,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 16 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U16_WithFlags_ShouldBeVoid()
         {
@@ -69,6 +84,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 32 default should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S32_Default_ShouldBeVoid()
         {
@@ -77,6 +95,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 32 with label fmt should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S32_WithLabelFmt_ShouldBeVoid()
         {
@@ -85,6 +106,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 32 with angle 0 should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S32_WithAngle0_ShouldBeVoid()
         {
@@ -93,6 +117,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 32 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S32_WithFlags_ShouldBeVoid()
         {
@@ -101,6 +128,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 32 default should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U32_Default_ShouldBeVoid()
         {
@@ -109,6 +139,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 32 with label fmt should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U32_WithLabelFmt_ShouldBeVoid()
         {
@@ -117,6 +150,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 32 with angle 0 should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U32_WithAngle0_ShouldBeVoid()
         {
@@ -125,6 +161,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 32 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U32_WithFlags_ShouldBeVoid()
         {
@@ -133,6 +172,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 64 default should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S64_Default_ShouldBeVoid()
         {
@@ -141,6 +183,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 64 with label fmt should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S64_WithLabelFmt_ShouldBeVoid()
         {
@@ -149,6 +194,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 64 with angle 0 should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S64_WithAngle0_ShouldBeVoid()
         {
@@ -157,6 +205,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart s 64 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_S64_WithFlags_ShouldBeVoid()
         {
@@ -165,6 +216,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 64 default should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U64_Default_ShouldBeVoid()
         {
@@ -173,6 +227,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 64 with label fmt should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U64_WithLabelFmt_ShouldBeVoid()
         {
@@ -181,6 +238,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 64 with angle 0 should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U64_WithAngle0_ShouldBeVoid()
         {
@@ -189,6 +249,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot pie chart u 64 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotPieChart_U64_WithFlags_ShouldBeVoid()
         {
@@ -197,6 +260,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter should expose sufficient overload count
+        /// </summary>
         [Fact]
         public void PlotScatter_ShouldExposeSufficientOverloadCount()
         {
@@ -205,6 +271,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.True(overloads.Length >= 23);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_Default_ShouldBeVoid()
         {
@@ -213,6 +282,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_WithXscale_ShouldBeVoid()
         {
@@ -221,6 +293,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float with xscale and xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_WithXscaleAndXstart_ShouldBeVoid()
         {
@@ -229,6 +304,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_WithFlags_ShouldBeVoid()
         {
@@ -237,6 +315,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -245,6 +326,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter float with full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Float_WithFull_ShouldBeVoid()
         {
@@ -253,6 +337,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_Default_ShouldBeVoid()
         {
@@ -261,6 +348,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_WithXscale_ShouldBeVoid()
         {
@@ -269,6 +359,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double with xscale and xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_WithXscaleAndXstart_ShouldBeVoid()
         {
@@ -277,6 +370,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_WithFlags_ShouldBeVoid()
         {
@@ -285,6 +381,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -293,6 +392,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter double with full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_Double_WithFull_ShouldBeVoid()
         {
@@ -301,6 +403,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_Default_ShouldBeVoid()
         {
@@ -309,6 +414,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_WithXscale_ShouldBeVoid()
         {
@@ -317,6 +425,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 with xscale and xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_WithXscaleAndXstart_ShouldBeVoid()
         {
@@ -325,6 +436,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_WithFlags_ShouldBeVoid()
         {
@@ -333,6 +447,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -341,6 +458,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter s 8 with full should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_S8_WithFull_ShouldBeVoid()
         {
@@ -349,6 +469,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 8 default should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8_Default_ShouldBeVoid()
         {
@@ -357,6 +480,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 8 with xscale should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8_WithXscale_ShouldBeVoid()
         {
@@ -365,6 +491,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 8 with xscale and xstart should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8_WithXscaleAndXstart_ShouldBeVoid()
         {
@@ -373,6 +502,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 8 with flags should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8_WithFlags_ShouldBeVoid()
         {
@@ -381,6 +513,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Tests that plot scatter u 8 with flags and offset should be void
+        /// </summary>
         [Fact]
         public void PlotScatter_U8_WithFlagsAndOffset_ShouldBeVoid()
         {
@@ -389,6 +524,12 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(typeof(void), method.ReturnType);
         }
 
+        /// <summary>
+        /// Gets the public static method using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="parameterTypes">The parameter types</param>
+        /// <returns>The method info</returns>
         private static MethodInfo GetPublicStaticMethod(string name, Type[] parameterTypes)
         {
             return typeof(ImPlot)
@@ -415,6 +556,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 });
         }
 
+        /// <summary>
+        /// Gets the public static methods using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The method info array</returns>
         private static MethodInfo[] GetPublicStaticMethods(string name)
         {
             return typeof(ImPlot)

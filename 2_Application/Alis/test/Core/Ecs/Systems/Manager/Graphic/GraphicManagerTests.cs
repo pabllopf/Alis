@@ -15,8 +15,14 @@ using Xunit;
 
 namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 {
+    /// <summary>
+    /// The graphic manager tests class
+    /// </summary>
     public class GraphicManagerTests
     {
+        /// <summary>
+        /// Tests that constructor with context sets context
+        /// </summary>
         [Fact]
         public void Constructor_WithContext_SetsContext()
         {
@@ -25,6 +31,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.NotNull(manager.Context);
         }
 
+        /// <summary>
+        /// Tests that renderer get set returns expected value
+        /// </summary>
         [Fact]
         public void Renderer_GetSet_ReturnsExpectedValue()
         {
@@ -35,6 +44,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Equal(expected, manager.Renderer);
         }
 
+        /// <summary>
+        /// Tests that on start does not throw
+        /// </summary>
         [Fact]
         public void OnStart_DoesNotThrow()
         {
@@ -42,6 +54,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnStart();
         }
 
+        /// <summary>
+        /// Tests that on before draw does not throw
+        /// </summary>
         [Fact]
         public void OnBeforeDraw_DoesNotThrow()
         {
@@ -49,6 +64,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnBeforeDraw();
         }
 
+        /// <summary>
+        /// Tests that on init preview mode returns early
+        /// </summary>
         [Fact]
         public void OnInit_PreviewMode_ReturnsEarly()
         {
@@ -58,6 +76,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.OnInit();
         }
 
+        /// <summary>
+        /// Tests that process key event for component i on press key invokes on press key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_IOnPressKey_InvokesOnPressKey()
         {
@@ -74,6 +95,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Equal(2, comp.PressCount);
         }
 
+        /// <summary>
+        /// Tests that process key event for component i on hold key invokes on hold key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_IOnHoldKey_InvokesOnHoldKey()
         {
@@ -90,6 +114,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Equal(2, comp.HoldCount);
         }
 
+        /// <summary>
+        /// Tests that process key event for component i on release key invokes on release key
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_IOnReleaseKey_InvokesOnReleaseKey()
         {
@@ -106,6 +133,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Equal(1, comp.ReleaseCount);
         }
 
+        /// <summary>
+        /// Tests that process key event for component multiple interfaces invokes all
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_MultipleInterfaces_InvokesAll()
         {
@@ -124,6 +154,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             Assert.Equal(1, comp.ReleaseCount);
         }
 
+        /// <summary>
+        /// Tests that process key event for component no matching interface does not throw
+        /// </summary>
         [Fact]
         public void ProcessKeyEventForComponent_NoMatchingInterface_DoesNotThrow()
         {
@@ -138,6 +171,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.ProcessKeyEventForComponent(typeof(NonKeyComponent), entity, pressedKeys, heldKeys, releasedKeys, DateTime.UtcNow);
         }
 
+        /// <summary>
+        /// Tests that update key timestamps pressed then released does not throw
+        /// </summary>
         [Fact]
         public void UpdateKeyTimestamps_PressedThenReleased_DoesNotThrow()
         {
@@ -153,6 +189,9 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
             manager.UpdateKeyTimestamps(pressed, released, now);
         }
 
+        /// <summary>
+        /// Tests that build new keys with null platform does not throw
+        /// </summary>
         [Fact]
         public void BuildNewKeys_WithNullPlatform_DoesNotThrow()
         {
@@ -163,40 +202,103 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 
     }
 
+    /// <summary>
+    /// The press key component class
+    /// </summary>
+    /// <seealso cref="IOnPressKey"/>
     internal sealed class PressKeyComponent : IOnPressKey
     {
+        /// <summary>
+        /// The press count
+        /// </summary>
         public int PressCount;
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info) => PressCount++;
     }
 
+    /// <summary>
+    /// The hold key component class
+    /// </summary>
+    /// <seealso cref="IOnHoldKey"/>
     internal sealed class HoldKeyComponent : IOnHoldKey
     {
+        /// <summary>
+        /// The hold count
+        /// </summary>
         public int HoldCount;
 
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info) => HoldCount++;
     }
 
+    /// <summary>
+    /// The release key component class
+    /// </summary>
+    /// <seealso cref="IOnReleaseKey"/>
     internal sealed class ReleaseKeyComponent : IOnReleaseKey
     {
+        /// <summary>
+        /// The release count
+        /// </summary>
         public int ReleaseCount;
 
+        /// <summary>
+        /// Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info) => ReleaseCount++;
     }
 
+    /// <summary>
+    /// The multi key component class
+    /// </summary>
+    /// <seealso cref="IOnPressKey"/>
+    /// <seealso cref="IOnHoldKey"/>
+    /// <seealso cref="IOnReleaseKey"/>
     internal sealed class MultiKeyComponent : IOnPressKey, IOnHoldKey, IOnReleaseKey
     {
+        /// <summary>
+        /// The press count
+        /// </summary>
         public int PressCount;
+        /// <summary>
+        /// The hold count
+        /// </summary>
         public int HoldCount;
+        /// <summary>
+        /// The release count
+        /// </summary>
         public int ReleaseCount;
 
+        /// <summary>
+        /// Ons the press key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnPressKey(KeyEventInfo info) => PressCount++;
 
+        /// <summary>
+        /// Ons the hold key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnHoldKey(KeyEventInfo info) => HoldCount++;
 
+        /// <summary>
+        /// Ons the release key using the specified info
+        /// </summary>
+        /// <param name="info">The info</param>
         public void OnReleaseKey(KeyEventInfo info) => ReleaseCount++;
     }
 
+    /// <summary>
+    /// The non key component class
+    /// </summary>
     internal sealed class NonKeyComponent
     {
     }

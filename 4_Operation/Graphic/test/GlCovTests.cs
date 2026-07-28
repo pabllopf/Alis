@@ -10,16 +10,39 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test
 {
+    /// <summary>
+    /// The gl cov tests class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class GlCovTests : IDisposable
     {
+        /// <summary>
+        /// The static
+        /// </summary>
         private static readonly FieldInfo Field = typeof(Gl).GetField("_getProcAddress", BindingFlags.NonPublic | BindingFlags.Static);
+        /// <summary>
+        /// The saved
+        /// </summary>
         private readonly object _saved;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlCovTests"/> class
+        /// </summary>
         public GlCovTests() => _saved = Field?.GetValue(null);
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose() => Field?.SetValue(null, _saved);
 
+        /// <summary>
+        /// Inits the resolver
+        /// </summary>
+        /// <param name="resolver">The resolver</param>
         private void Init(Gl.GetProcAddressDelegate resolver) => Gl.Initialize(resolver);
 
+        /// <summary>
+        /// Tests that gen buffer returns value from mock
+        /// </summary>
         [Fact]
         public void GenBuffer_ReturnsValueFromMock()
         {
@@ -29,6 +52,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(42u, Gl.GenBuffer());
         }
 
+        /// <summary>
+        /// Tests that delete buffer calls mock
+        /// </summary>
         [Fact]
         public void DeleteBuffer_CallsMock()
         {
@@ -40,6 +66,9 @@ namespace Alis.Core.Graphic.Test
             Assert.True(called);
         }
 
+        /// <summary>
+        /// Tests that get shader info log returns empty when length zero
+        /// </summary>
         [Fact]
         public void GetShaderInfoLog_ReturnsEmpty_WhenLengthZero()
         {
@@ -50,6 +79,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(string.Empty, result);
         }
 
+        /// <summary>
+        /// Tests that get shader info log returns string when length non zero
+        /// </summary>
         [Fact]
         public void GetShaderInfoLog_ReturnsString_WhenLengthNonZero()
         {
@@ -69,6 +101,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal("test", Gl.GetShaderInfoLog(1));
         }
 
+        /// <summary>
+        /// Tests that shader source calls mock
+        /// </summary>
         [Fact]
         public void ShaderSource_CallsMock()
         {
@@ -80,6 +115,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal("hello", capturedSource);
         }
 
+        /// <summary>
+        /// Tests that get shader compile status returns true when compiled
+        /// </summary>
         [Fact]
         public void GetShaderCompileStatus_ReturnsTrue_WhenCompiled()
         {
@@ -89,6 +127,9 @@ namespace Alis.Core.Graphic.Test
             Assert.True(Gl.GetShaderCompileStatus(1));
         }
 
+        /// <summary>
+        /// Tests that get shader compile status returns false when not compiled
+        /// </summary>
         [Fact]
         public void GetShaderCompileStatus_ReturnsFalse_WhenNotCompiled()
         {
@@ -98,6 +139,9 @@ namespace Alis.Core.Graphic.Test
             Assert.False(Gl.GetShaderCompileStatus(1));
         }
 
+        /// <summary>
+        /// Tests that get program info log returns empty when length zero
+        /// </summary>
         [Fact]
         public void GetProgramInfoLog_ReturnsEmpty_WhenLengthZero()
         {
@@ -107,6 +151,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(string.Empty, Gl.GetProgramInfoLog(1));
         }
 
+        /// <summary>
+        /// Tests that get program info log returns string when length non zero
+        /// </summary>
         [Fact]
         public void GetProgramInfoLog_ReturnsString_WhenLengthNonZero()
         {
@@ -126,6 +173,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal("hello", Gl.GetProgramInfoLog(1));
         }
 
+        /// <summary>
+        /// Tests that get program link status returns true when linked
+        /// </summary>
         [Fact]
         public void GetProgramLinkStatus_ReturnsTrue_WhenLinked()
         {
@@ -135,6 +185,9 @@ namespace Alis.Core.Graphic.Test
             Assert.True(Gl.GetProgramLinkStatus(1));
         }
 
+        /// <summary>
+        /// Tests that get program link status returns false when not linked
+        /// </summary>
         [Fact]
         public void GetProgramLinkStatus_ReturnsFalse_WhenNotLinked()
         {
@@ -144,6 +197,9 @@ namespace Alis.Core.Graphic.Test
             Assert.False(Gl.GetProgramLinkStatus(1));
         }
 
+        /// <summary>
+        /// Tests that uniform matrix 4 fv passes flattened values
+        /// </summary>
         [Fact]
         public void UniformMatrix4Fv_PassesFlattenedValues()
         {
@@ -178,6 +234,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(16f, captured[15]);
         }
 
+        /// <summary>
+        /// Tests that gen vertex array returns value from mock
+        /// </summary>
         [Fact]
         public void GenVertexArray_ReturnsValueFromMock()
         {
@@ -187,6 +246,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(99u, Gl.GenVertexArray());
         }
 
+        /// <summary>
+        /// Tests that delete vertex array calls mock
+        /// </summary>
         [Fact]
         public void DeleteVertexArray_CallsMock()
         {
@@ -198,6 +260,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(5u, captured);
         }
 
+        /// <summary>
+        /// Tests that gen texture returns value from mock
+        /// </summary>
         [Fact]
         public void GenTexture_ReturnsValueFromMock()
         {
@@ -207,6 +272,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(77u, Gl.GenTexture());
         }
 
+        /// <summary>
+        /// Tests that delete texture calls mock
+        /// </summary>
         [Fact]
         public void DeleteTexture_CallsMock()
         {
@@ -218,6 +286,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(3u, captured);
         }
 
+        /// <summary>
+        /// Tests that gl get string returns value with valid ptr
+        /// </summary>
         [Fact]
         public void GlGetString_ReturnsValue_WithValidPtr()
         {
@@ -240,6 +311,9 @@ namespace Alis.Core.Graphic.Test
             }
         }
 
+        /// <summary>
+        /// Tests that gl get shader returns value from mock
+        /// </summary>
         [Fact]
         public void GlGetShader_ReturnsValueFromMock()
         {
@@ -250,6 +324,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(42, result);
         }
 
+        /// <summary>
+        /// Tests that gl get program returns value from mock
+        /// </summary>
         [Fact]
         public void GlGetProgram_ReturnsValueFromMock()
         {
@@ -260,6 +337,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(99, result);
         }
 
+        /// <summary>
+        /// Tests that gl uniform matrix 2x 3 calls mock
+        /// </summary>
         [Fact]
         public void GlUniformMatrix2x3_CallsMock()
         {
@@ -279,6 +359,9 @@ namespace Alis.Core.Graphic.Test
             Assert.True(capturedTranspose);
         }
 
+        /// <summary>
+        /// Tests that gl get error returns value from mock
+        /// </summary>
         [Fact]
         public void GlGetError_ReturnsValueFromMock()
         {
@@ -288,6 +371,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(1280, Gl.GlGetError());
         }
 
+        /// <summary>
+        /// Tests that gl line width calls mock
+        /// </summary>
         [Fact]
         public void GlLineWidth_CallsMock()
         {
@@ -299,6 +385,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2.5f, captured);
         }
 
+        /// <summary>
+        /// Tests that gl active texture calls mock
+        /// </summary>
         [Fact]
         public void GlActiveTexture_CallsMock()
         {
@@ -310,6 +399,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(TextureUnit.Texture1, captured);
         }
 
+        /// <summary>
+        /// Tests that gl get integerv calls mock
+        /// </summary>
         [Fact]
         public void GlGetIntegerv_CallsMock()
         {
@@ -322,6 +414,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Same(viewport, captured);
         }
 
+        /// <summary>
+        /// Tests that vertex attrib pointer calls mock with valid index
+        /// </summary>
         [Fact]
         public void VertexAttribPointer_CallsMock_WithValidIndex()
         {
@@ -333,6 +428,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(2u, capturedIndex);
         }
 
+        /// <summary>
+        /// Tests that enable vertex attrib array calls mock with valid index
+        /// </summary>
         [Fact]
         public void EnableVertexAttribArray_CallsMock_WithValidIndex()
         {
@@ -344,6 +442,9 @@ namespace Alis.Core.Graphic.Test
             Assert.Equal(4u, captured);
         }
 
+        /// <summary>
+        /// Tests that vertex attrib pointer throws on negative index
+        /// </summary>
         [Fact]
         public void VertexAttribPointer_ThrowsOnNegativeIndex()
         {
@@ -351,6 +452,9 @@ namespace Alis.Core.Graphic.Test
                 Gl.VertexAttribPointer(-1, 0, 0, false, 0, IntPtr.Zero));
         }
 
+        /// <summary>
+        /// Tests that enable vertex attrib array throws on negative index
+        /// </summary>
         [Fact]
         public void EnableVertexAttribArray_ThrowsOnNegativeIndex()
         {
@@ -358,6 +462,9 @@ namespace Alis.Core.Graphic.Test
                 Gl.EnableVertexAttribArray(-1));
         }
 
+        /// <summary>
+        /// Tests that all properties throw external when not resolved
+        /// </summary>
         [Fact]
         public void AllProperties_ThrowExternal_WhenNotResolved()
         {

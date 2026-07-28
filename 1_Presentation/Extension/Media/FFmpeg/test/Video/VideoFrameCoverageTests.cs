@@ -35,8 +35,14 @@ using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video
 {
+    /// <summary>
+    /// The video frame coverage tests class
+    /// </summary>
     public class VideoFrameCoverageTests
     {
+        /// <summary>
+        /// Tests that constructor valid dimensions creates frame
+        /// </summary>
         [Fact]
         public void Constructor_ValidDimensions_CreatesFrame()
         {
@@ -47,36 +53,54 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(300, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor zero width throws invalid data exception
+        /// </summary>
         [Fact]
         public void Constructor_ZeroWidth_ThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(0, 10));
         }
 
+        /// <summary>
+        /// Tests that constructor zero height throws invalid data exception
+        /// </summary>
         [Fact]
         public void Constructor_ZeroHeight_ThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(10, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor negative width throws invalid data exception
+        /// </summary>
         [Fact]
         public void Constructor_NegativeWidth_ThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(-1, 10));
         }
 
+        /// <summary>
+        /// Tests that constructor negative height throws invalid data exception
+        /// </summary>
         [Fact]
         public void Constructor_NegativeHeight_ThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(10, -1));
         }
 
+        /// <summary>
+        /// Tests that constructor both zero throws invalid data exception
+        /// </summary>
         [Fact]
         public void Constructor_BothZero_ThrowsInvalidDataException()
         {
             Assert.Throws<InvalidDataException>(() => new VideoFrame(0, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor width and height properties return correct values
+        /// </summary>
         [Fact]
         public void Constructor_WidthAndHeightProperties_ReturnCorrectValues()
         {
@@ -86,6 +110,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(480, frame.Height);
         }
 
+        /// <summary>
+        /// Tests that constructor raw data length is width times height times 3
+        /// </summary>
         [Fact]
         public void Constructor_RawDataLength_IsWidthTimesHeightTimes3()
         {
@@ -94,6 +121,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(75, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that constructor all pixels start zero
+        /// </summary>
         [Fact]
         public void Constructor_AllPixelsStartZero()
         {
@@ -106,6 +136,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that dispose sets frame buffer to null
+        /// </summary>
         [Fact]
         public void Dispose_SetsFrameBufferToNull()
         {
@@ -117,6 +150,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(rawData);
         }
 
+        /// <summary>
+        /// Tests that dispose multiple times does not throw
+        /// </summary>
         [Fact]
         public void Dispose_MultipleTimes_DoesNotThrow()
         {
@@ -127,6 +163,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             frame.Dispose();
         }
 
+        /// <summary>
+        /// Tests that load full data returns true
+        /// </summary>
         [Fact]
         public void Load_FullData_ReturnsTrue()
         {
@@ -143,6 +182,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(12, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load full data stores correct bytes
+        /// </summary>
         [Fact]
         public void Load_FullData_StoresCorrectBytes()
         {
@@ -161,6 +203,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that load empty stream returns false
+        /// </summary>
         [Fact]
         public void Load_EmptyStream_ReturnsFalse()
         {
@@ -171,6 +216,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that load empty stream does not change raw data length
+        /// </summary>
         [Fact]
         public void Load_EmptyStream_DoesNotChangeRawDataLength()
         {
@@ -182,6 +230,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(originalLength, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load partial data returns true
+        /// </summary>
         [Fact]
         public void Load_PartialData_ReturnsTrue()
         {
@@ -193,6 +244,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.True(result);
         }
 
+        /// <summary>
+        /// Tests that load partial data resizes raw data
+        /// </summary>
         [Fact]
         public void Load_PartialData_ResizesRawData()
         {
@@ -204,6 +258,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(100, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load partial data exactly half resizes correctly
+        /// </summary>
         [Fact]
         public void Load_PartialDataExactlyHalf_ResizesCorrectly()
         {
@@ -216,6 +273,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(150, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load exact full data does not reallocate
+        /// </summary>
         [Fact]
         public void Load_ExactFullData_DoesNotReallocate()
         {
@@ -228,6 +288,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(300, frame.RawData.Length);
         }
 
+        /// <summary>
+        /// Tests that load then dispose then load again works
+        /// </summary>
         [Fact]
         public void Load_ThenDispose_ThenLoadAgain_Works()
         {
@@ -249,6 +312,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(data[299], frame2.RawData[299]);
         }
 
+        /// <summary>
+        /// Tests that load stream read returns zero at start returns false
+        /// </summary>
         [Fact]
         public void Load_StreamReadReturnsZeroAtStart_ReturnsFalse()
         {
@@ -260,6 +326,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(result);
         }
 
+        /// <summary>
+        /// Tests that raw data after construction is not null
+        /// </summary>
         [Fact]
         public void RawData_AfterConstruction_IsNotNull()
         {
@@ -268,6 +337,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.NotNull(frame.RawData);
         }
 
+        /// <summary>
+        /// Tests that raw data after load reflects loaded data
+        /// </summary>
         [Fact]
         public void RawData_AfterLoad_ReflectsLoadedData()
         {
@@ -281,6 +353,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(30, frame.RawData[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels origin returns first three bytes
+        /// </summary>
         [Fact]
         public void GetPixels_Origin_ReturnsFirstThreeBytes()
         {
@@ -300,6 +375,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(2, pixels[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels mid frame returns correct bytes
+        /// </summary>
         [Fact]
         public void GetPixels_MidFrame_ReturnsCorrectBytes()
         {
@@ -319,6 +397,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(data[expectedIndex + 2], pixels[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels last pixel returns correct bytes
+        /// </summary>
         [Fact]
         public void GetPixels_LastPixel_ReturnsCorrectBytes()
         {
@@ -338,6 +419,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(data[expectedIndex + 2], pixels[2]);
         }
 
+        /// <summary>
+        /// Tests that get pixels with length returns correct count
+        /// </summary>
         [Fact]
         public void GetPixels_WithLength_ReturnsCorrectCount()
         {
@@ -350,6 +434,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(15, pixels.Length);
         }
 
+        /// <summary>
+        /// Tests that get pixels with length returns correct bytes
+        /// </summary>
         [Fact]
         public void GetPixels_WithLength_ReturnsCorrectBytes()
         {
@@ -368,6 +455,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Equal(5, pixels[5]);
         }
 
+        /// <summary>
+        /// Tests that get pixels out of bounds throws
+        /// </summary>
         [Fact]
         public void GetPixels_OutOfBounds_Throws()
         {
@@ -378,6 +468,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Throws<ArgumentException>(() => frame.GetPixels(10, 10));
         }
 
+        /// <summary>
+        /// Tests that load chunked read accumulates correctly
+        /// </summary>
         [Fact]
         public void Load_ChunkedRead_AccumulatesCorrectly()
         {
@@ -400,6 +493,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that load tiny chunks accumulates correctly
+        /// </summary>
         [Fact]
         public void Load_TinyChunks_AccumulatesCorrectly()
         {
@@ -422,6 +518,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             }
         }
 
+        /// <summary>
+        /// Tests that implements i media frame
+        /// </summary>
         [Fact]
         public void Implements_IMediaFrame()
         {
@@ -430,6 +529,9 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.IsAssignableFrom<IMediaFrame>(frame);
         }
 
+        /// <summary>
+        /// Tests that implements i disposable
+        /// </summary>
         [Fact]
         public void Implements_IDisposable()
         {
@@ -439,12 +541,30 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
     }
 
+    /// <summary>
+    /// The chunk stream class
+    /// </summary>
+    /// <seealso cref="Stream"/>
     internal class ChunkStream : Stream
     {
+        /// <summary>
+        /// The buffer
+        /// </summary>
         private readonly byte[] _buffer;
+        /// <summary>
+        /// The chunk size
+        /// </summary>
         private readonly int _chunkSize;
+        /// <summary>
+        /// The position
+        /// </summary>
         private int _position;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChunkStream"/> class
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="chunkSize">The chunk size</param>
         public ChunkStream(byte[] buffer, int chunkSize)
         {
             _buffer = buffer;
@@ -452,21 +572,62 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             _position = 0;
         }
 
+        /// <summary>
+        /// Gets the value of the can read
+        /// </summary>
         public override bool CanRead => true;
+        /// <summary>
+        /// Gets the value of the can seek
+        /// </summary>
         public override bool CanSeek => false;
+        /// <summary>
+        /// Gets the value of the can write
+        /// </summary>
         public override bool CanWrite => false;
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         public override long Length => _buffer.Length;
+        /// <summary>
+        /// Gets or sets the value of the position
+        /// </summary>
         public override long Position
         {
             get => _position;
             set => throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
         public override void Flush() { }
+        /// <summary>
+        /// Seeks the offset
+        /// </summary>
+        /// <param name="offset">The offset</param>
+        /// <param name="origin">The origin</param>
+        /// <returns>The long</returns>
         public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+        /// <summary>
+        /// Sets the length using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public override void SetLength(long value) => throw new NotSupportedException();
+        /// <summary>
+        /// Writes the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
         public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
 
+        /// <summary>
+        /// Reads the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
+        /// <returns>The bytes to read</returns>
         public override int Read(byte[] buffer, int offset, int count)
         {
             if (_position >= _buffer.Length)
@@ -484,23 +645,68 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         }
     }
 
+    /// <summary>
+    /// The zero length stream class
+    /// </summary>
+    /// <seealso cref="Stream"/>
     internal class ZeroLengthStream : Stream
     {
+        /// <summary>
+        /// Gets the value of the can read
+        /// </summary>
         public override bool CanRead => true;
+        /// <summary>
+        /// Gets the value of the can seek
+        /// </summary>
         public override bool CanSeek => false;
+        /// <summary>
+        /// Gets the value of the can write
+        /// </summary>
         public override bool CanWrite => false;
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         public override long Length => 0;
+        /// <summary>
+        /// Gets or sets the value of the position
+        /// </summary>
         public override long Position
         {
             get => 0;
             set => throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Flushes this instance
+        /// </summary>
         public override void Flush() { }
+        /// <summary>
+        /// Seeks the offset
+        /// </summary>
+        /// <param name="offset">The offset</param>
+        /// <param name="origin">The origin</param>
+        /// <returns>The long</returns>
         public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+        /// <summary>
+        /// Sets the length using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
         public override void SetLength(long value) => throw new NotSupportedException();
+        /// <summary>
+        /// Writes the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
         public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
 
+        /// <summary>
+        /// Reads the buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="offset">The offset</param>
+        /// <param name="count">The count</param>
+        /// <returns>The int</returns>
         public override int Read(byte[] buffer, int offset, int count) => 0;
     }
 }

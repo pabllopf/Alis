@@ -35,14 +35,23 @@ using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Windows
 {
+    /// <summary>
+    /// The cursor tests class
+    /// </summary>
     public class CursorTests
     {
+        /// <summary>
+        /// Tests that cursor is assignable from object base
+        /// </summary>
         [Fact]
         public void Cursor_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Cursor)));
         }
 
+        /// <summary>
+        /// Tests that cursor type is nested enum
+        /// </summary>
         [Fact]
         public void CursorType_IsNestedEnum()
         {
@@ -50,12 +59,18 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.True(typeof(Cursor.CursorType).IsNested);
         }
 
+        /// <summary>
+        /// Tests that cursor implements i disposable
+        /// </summary>
         [Fact]
         public void Cursor_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Cursor)));
         }
 
+        /// <summary>
+        /// Tests that constructor with system type does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithSystemType_DoesNotThrow()
         {
@@ -64,6 +79,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor with system type hand does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithSystemType_Hand_DoesNotThrow()
         {
@@ -72,6 +90,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor with system type text does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithSystemType_Text_DoesNotThrow()
         {
@@ -80,6 +101,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor with system type wait does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithSystemType_Wait_DoesNotThrow()
         {
@@ -88,6 +112,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that constructor with system type all values does not throw
+        /// </summary>
         [Fact]
         public void Constructor_WithSystemTypeAllValues_DoesNotThrow()
         {
@@ -98,6 +125,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }
         }
 
+        /// <summary>
+        /// Tests that destroy sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_SetsCPointerToZero()
         {
@@ -106,6 +136,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that destroy called twice does not throw
+        /// </summary>
         [Fact]
         public void Destroy_CalledTwice_DoesNotThrow()
         {
@@ -115,6 +148,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that destroy with disposing true sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_WithDisposingTrue_SetsCPointerToZero()
         {
@@ -123,6 +159,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that destroy with disposing false sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Destroy_WithDisposingFalse_SetsCPointerToZero()
         {
@@ -131,6 +170,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that dispose sets c pointer to zero
+        /// </summary>
         [Fact]
         public void Dispose_SetsCPointerToZero()
         {
@@ -139,6 +181,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that dispose called multiple times does not throw
+        /// </summary>
         [Fact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
@@ -148,6 +193,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             Assert.Equal(IntPtr.Zero, cursor.CPointer);
         }
 
+        /// <summary>
+        /// Tests that cursor with system type constructor invokes native call
+        /// </summary>
         [Fact]
         public void Cursor_WithSystemType_ConstructorInvokesNativeCall()
         {
@@ -156,24 +204,36 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             cursor.Dispose();
         }
 
+        /// <summary>
+        /// Tests that cursor has destroy method
+        /// </summary>
         [Fact]
         public void Cursor_HasDestroyMethod()
         {
             Assert.NotNull(typeof(Cursor).GetMethod("Destroy", new[] { typeof(bool) }));
         }
 
+        /// <summary>
+        /// Tests that cursor has c pointer property
+        /// </summary>
         [Fact]
         public void Cursor_HasCPointerProperty()
         {
             Assert.NotNull(typeof(Cursor).GetProperty("CPointer"));
         }
 
+        /// <summary>
+        /// Tests that cursor has constructor with cursor type
+        /// </summary>
         [Fact]
         public void Cursor_HasConstructorWithCursorType()
         {
             Assert.NotNull(typeof(Cursor).GetConstructor(new[] { typeof(Cursor.CursorType) }));
         }
 
+        /// <summary>
+        /// Tests that cursor has constructor with pixels size and hotspot
+        /// </summary>
         [Fact]
         public void Cursor_HasConstructorWithPixelsSizeAndHotspot()
         {
@@ -185,6 +245,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             }));
         }
 
+        /// <summary>
+        /// Tests that cursor system cursor can be constructed with all types
+        /// </summary>
         [Fact]
         public void Cursor_SystemCursor_CanBeConstructedWithAllTypes()
         {
