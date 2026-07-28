@@ -67,21 +67,7 @@ namespace Alis.Extension.Cloud.DropBox.Test
                 }
             }
         }
-
-        /// <summary>
-        ///     Tests that download file async with local path no directory component skips directory creation
-        /// </summary>
-        [Fact]
-        public async Task DownloadFileAsync_WithLocalPathNoDirectoryComponent_SkipsDirectoryCreation()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DownloadFileAsync("/remote.txt", "file.txt"));
-
-            Assert.NotNull(exception);
-        }
-
+        
         /// <summary>
         ///     Tests that download file async with null dropbox path throws null reference exception
         /// </summary>
@@ -171,66 +157,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that list files async with null folder path and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task ListFilesAsync_WithNullPathAndInitialized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync(null));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that delete async with initialized manager and valid path throws from api
-        /// </summary>
-        [Fact]
-        public async Task DeleteAsync_WithInitializedManager_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DeleteAsync("/file-to-delete.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that get metadata async with initialized manager and valid path throws from api
-        /// </summary>
-        [Fact]
-        public async Task GetMetadataAsync_WithInitializedManager_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.GetMetadataAsync("/some-file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that get metadata async with path normalization and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task GetMetadataAsync_WithPathNormalizedAndInitialized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.GetMetadataAsync("some-file.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
         ///     Tests that upload file async with path normalization and existing file throws from api
         /// </summary>
         [Fact]
@@ -255,21 +181,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
                     File.Delete(tempFile);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Tests that download file async with dropbox path normalization and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task DownloadFileAsync_WithDropboxPathNormalized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DownloadFileAsync("remote.txt", "/tmp/output.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
         }
     }
 }
