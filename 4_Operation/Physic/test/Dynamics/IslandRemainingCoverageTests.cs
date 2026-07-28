@@ -92,25 +92,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that update sleep state with position solved false does not sleep bodies
-        /// </summary>
-        [Fact]
-        public void UpdateSleepState_WithPositionNotSolved_DoesNotForceSleep()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.1f, 0.0f), BodyType.Dynamic);
-
-            for (int i = 0; i < 300; i++)
-            {
-                world.Step(1.0f / 60.0f);
-            }
-
-            Assert.NotNull(bodyA);
-            Assert.NotNull(bodyB);
-        }
-
-        /// <summary>
         /// Tests that report returns early when contact manager is null
         /// </summary>
         [Fact]

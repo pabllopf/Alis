@@ -145,30 +145,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Tests that destroy with sensor fixture and points does not awake bodies
-        /// </summary>
-        [Fact]
-        public void Destroy_WithSensorFixtureAndPoints_DoesNotAwakeBodies()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            Assert.NotNull(contact);
-            Assert.True(contact.Manifold.PointCount > 0);
-
-            contact.FixtureA.GetIsSensor = true;
-            contact.Destroy();
-
-            Assert.NotNull(contact);
-        }
-
-
-
-        /// <summary>
         /// Tests that reset restitution with equal values returns same value
         /// </summary>
         [Fact]

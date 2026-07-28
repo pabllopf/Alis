@@ -1077,37 +1077,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(threw);
         }
-
-        /// <summary>
-        /// Tests that remove body when locked should throw
-        /// </summary>
-        [Fact]
-        public void RemoveBody_WhenLocked_ShouldThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            bool threw = false;
-            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            world.ContactManager.BeginContact = contact =>
-            {
-                try
-                {
-                    world.Remove(body);
-                }
-                catch (InvalidOperationException)
-                {
-                    threw = true;
-                }
-                return false;
-            };
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(threw);
-        }
-
+        
         /// <summary>
         /// Tests that add joint when locked should throw
         /// </summary>

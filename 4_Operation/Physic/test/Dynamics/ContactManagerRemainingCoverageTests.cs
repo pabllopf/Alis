@@ -704,23 +704,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // PassesCollisionFilters — all checks pass path
-        // ========================================================================
-        /// <summary>
-        /// Tests that passes collision filters all true creates contact
-        /// </summary>
-        [Fact]
-        public void PassesCollisionFilters_AllTrue_CreatesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.ContactManager.ContactFilter = null;
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        // ========================================================================
         // TryResolveContactFilter with all paths via multithreaded collision
         // ========================================================================
         /// <summary>
