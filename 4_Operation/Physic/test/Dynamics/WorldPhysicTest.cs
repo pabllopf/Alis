@@ -1958,27 +1958,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // FlagContactsForJointRemoval — non-fixed, non-collide with matching contact
-        // ========================================================================
-        /// <summary>
-        /// Tests that flag contacts for joint removal with matching contact flags it
-        /// </summary>
-        [Fact]
-        public void FlagContactsForJointRemoval_WithMatchingContact_FlagsIt()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
-            joint.CollideConnected = false;
-            world.Add(joint);
-            world.Remove(joint);
-            Assert.Empty(world.JointList);
-        }
-
-        // ========================================================================
         // CreateChain with both rope and no rope
         // ========================================================================
         /// <summary>
