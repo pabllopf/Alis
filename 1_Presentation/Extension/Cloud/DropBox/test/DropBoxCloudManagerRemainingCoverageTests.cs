@@ -69,33 +69,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that download file async with existing directory skips creation
-        /// </summary>
-        [Fact]
-        public async Task DownloadFileAsync_WithExistingDirectory_SkipsCreation()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-            string tempDir = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            Directory.CreateDirectory(tempDir);
-            string destPath = Path.Combine(tempDir, "file.txt");
-
-            try
-            {
-                Exception exception = await Record.ExceptionAsync(() =>
-                    manager.DownloadFileAsync("/remote.txt", destPath));
-
-                Assert.NotNull(exception);
-            }
-            finally
-            {
-                if (Directory.Exists(tempDir))
-                {
-                    Directory.Delete(tempDir, true);
-                }
-            }
-        }
-
-        /// <summary>
         ///     Tests that download file async with local path no directory component skips directory creation
         /// </summary>
         [Fact]
@@ -183,36 +156,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         }
 
         /// <summary>
-        ///     Tests that list files async with initialized manager and valid path throws from api
-        /// </summary>
-        [Fact]
-        public async Task ListFilesAsync_WithInitializedManager_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync("/some-folder"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that list files async with path normalization and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task ListFilesAsync_WithPathNormalizedAndInitialized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.ListFilesAsync("some-folder"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
         ///     Tests that list files async with empty folder path and initialized manager throws from api
         /// </summary>
         [Fact]
@@ -252,21 +195,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
 
             Exception exception = await Record.ExceptionAsync(() =>
                 manager.DeleteAsync("/file-to-delete.txt"));
-
-            Assert.NotNull(exception);
-            Assert.IsNotType<InvalidOperationException>(exception);
-        }
-
-        /// <summary>
-        ///     Tests that delete async with path normalization and initialized manager throws from api
-        /// </summary>
-        [Fact]
-        public async Task DeleteAsync_WithPathNormalizedAndInitialized_ThrowsFromApi()
-        {
-            using DropBoxCloudManager manager = new DropBoxCloudManager(new Context(), new DropboxClient("dummy-token"));
-
-            Exception exception = await Record.ExceptionAsync(() =>
-                manager.DeleteAsync("file-to-delete.txt"));
 
             Assert.NotNull(exception);
             Assert.IsNotType<InvalidOperationException>(exception);

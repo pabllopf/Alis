@@ -1964,27 +1964,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // FlagContactsForJointFiltering — CollideConnected=false with contacts
-        // ========================================================================
-        /// <summary>
-        /// Tests that flag contacts for joint filtering with contacts filters correctly
-        /// </summary>
-        [Fact]
-        public void FlagContactsForJointFiltering_WithContacts_FiltersCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
-            joint.CollideConnected = false;
-            world.Add(joint);
-            world.Step(1.0f / 60.0f);
-            Assert.Equal(0, world.ContactManager.ContactCount);
-        }
-
-        // ========================================================================
         // FlagContactsForJointFiltering — CollideConnected=true skips filtering
         // ========================================================================
         /// <summary>

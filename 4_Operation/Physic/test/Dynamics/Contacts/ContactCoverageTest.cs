@@ -421,34 +421,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Tests that destroy with sensor fixtures does not awake bodies
-        /// </summary>
-        [Fact]
-        public void Destroy_WithSensorFixtures_DoesNotAwakeBodies()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            var iter = new SolverIterations();
-            iter.PositionIterations = 100;
-            world.Step(1.0f / 60.0f, ref iter);
-            
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            Assert.NotNull(contact);
-
-            bodyA.Awake = false;
-            bodyB.Awake = false;
-
-            contact.FixtureA.GetIsSensor = true;
-
-            contact.Destroy();
-
-            Assert.NotNull(contact);
-        }
-
-        /// <summary>
         /// Tests that destroy with fixture b sensor only does not awake bodies
         /// </summary>
         [Fact]

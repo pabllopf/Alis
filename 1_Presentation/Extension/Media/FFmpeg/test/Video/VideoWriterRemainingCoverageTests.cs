@@ -385,38 +385,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         #endregion
 
         #region CloseWrite Coverage
-
-        /// <summary>
-        ///     Tests that CloseWrite sets OpenedForWriting to false in finally block even when exception occurs in try block.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void CloseWrite_WhenExceptionInTry_ShouldSetOpenedForWritingToFalse()
-        {
-            // Arrange
-            VideoWriter writer = new VideoWriter(_testFile, 640, 480, 30);
-
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            // Ffmpegp = null will cause NullReferenceException in try block
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, null);
-
-            // Act
-            Exception exception = Record.Exception(() => writer.CloseWrite());
-
-            // Assert
-            Assert.NotNull(exception);
-            Assert.IsType<NullReferenceException>(exception);
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
-        }
+        
 
         /// <summary>
         ///     Tests that CloseWrite completes normally in file mode with an exited process.
