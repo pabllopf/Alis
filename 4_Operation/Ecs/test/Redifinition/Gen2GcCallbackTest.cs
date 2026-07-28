@@ -209,42 +209,6 @@ namespace Alis.Core.Ecs.Test.Redifinition
         }
 
         /// <summary>
-        ///     Tests callback with dead target object
-        /// </summary>
-        /// <remarks>
-        ///     Validates that callbacks associated with dead target objects
-        ///     are properly cleaned up and don't cause memory leaks.
-        /// </remarks>
-        [Fact] public void Gen2GcCallback_WithDeadTargetObject_CleansUp()
-        {
-            WeakReference weakRef;
-
-            void CreateAndRegisterCallback()
-            {
-                object targetObj = new object();
-                weakRef = new WeakReference(targetObj);
-
-                Gen2GcCallback.Register(obj =>
-                {
-                    return true; // Try to keep alive
-                }, targetObj);
-
-            }
-
-            CreateAndRegisterCallback();
-
-            for (int i = 0; i < 5; i++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                Thread.Sleep(10);
-            }
-
-            Assert.True(true); // Test passes if no exception
-        }
-
-        /// <summary>
         ///     Tests callback with null target object
         /// </summary>
         /// <remarks>

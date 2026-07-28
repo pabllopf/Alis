@@ -690,7 +690,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            var iter = new SolverIterations();
+            iter.PositionIterations = 100;
+            world.Step(1.0f / 60.0f, ref iter);
 
             Assert.True(world.ContactManager.ContactCount >= 0);
         }

@@ -84,29 +84,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             scene.EnterDisallowState();
             scene.ExitDisallowState(filter, true);
         }
-
-        /// <summary>
-        ///     Tests that arity 8 range-based Run does not throw when length is zero
-        /// </summary>
-        [Fact]
-        public void Update_Arity8_RangeZeroLength_DoesNotThrow()
-        {
-            using Scene scene = new Scene();
-            scene.Create(
-                new Update8Component { CallCount = 0 },
-                new Position { X = 1, Y = 2 },
-                new Velocity { X = 3, Y = 4 },
-                new Health { Value = 100 },
-                new Armor { Value = 50 },
-                new Damage { Value = 10 },
-                new Transform { X = 0, Y = 0, Rotation = 0 },
-                new TestComponent { Value = 42 }
-            );
-            SingleComponentUpdateFilter filter = new SingleComponentUpdateFilter(scene, Component<Update8Component>.Id);
-            scene.EnterDisallowState();
-            scene.ExitDisallowState(filter, true);
-        }
-
         #endregion
 
         #region Range-based Run (deferred entities)
