@@ -397,6 +397,31 @@ namespace Alis.Test
         }
 
         /// <summary>
+        /// Tests that load scene sets context on components implementing IHasContext
+        /// </summary>
+        [Fact]
+        public void LoadScene_WithInt_SetsContextOnComponents()
+        {
+            _counter = 0;
+            Context context = new Context();
+            Scene oldScene = new Scene();
+            Scene newScene = new Scene();
+            Component.RegisterComponent<ContextComponent>();
+
+            newScene.CreateFromObjects(new object[] { new ContextComponent() });
+            oldScene.CreateFromObjects(new object[] { new ContextComponent() });
+
+            SceneManager manager = new SceneManager(context);
+            manager.AddScene(oldScene);
+            manager.AddScene(newScene);
+            manager.CurrentWorld = oldScene;
+
+            manager.LoadScene(1);
+
+            Assert.Same(newScene, manager.CurrentWorld);
+        }
+
+        /// <summary>
         /// Tests that load scene with string valid int exits old scene and starts new scene
         /// </summary>
         [Fact]
