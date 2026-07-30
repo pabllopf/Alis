@@ -272,6 +272,33 @@ namespace Alis.Core.Audio.Test.Players
                 File.Delete(tempFile);
             }
         }
+
+        /// <summary>
+        /// Gets the audio duration with an empty file that afinfo cannot parse should return fallback value
+        /// </summary>
+        [UnixOnly]
+        public void GetAudioDuration_WithUnparseableFile_ShouldReturnFallbackValue()
+        {
+            MacPlayer player = new MacPlayer();
+            MethodInfo getDurationMethod = typeof(UnixPlayerBase).GetMethod(
+                "GetAudioDuration",
+                BindingFlags.NonPublic | BindingFlags.Instance);
+
+            string tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, "not an audio file content");
+
+            try
+            {
+                object result = getDurationMethod.Invoke(player, new object[] { tempFile });
+
+                double duration = (double)result;
+                Assert.Equal(1.0, duration);
+            }
+            finally
+            {
+                File.Delete(tempFile);
+            }
+        }
         
 
         /// <summary>
