@@ -159,38 +159,45 @@ namespace Alis.Core.Ecs.Redifinition
         }
 
         /// <summary>
+        ///     Finalizes this instance without throwing, so the process cannot be terminated during shutdown.
         /// </summary>
         ~Gen2GcCallback()
         {
-            lock (RegisteredCallbacksLock)
+            try
             {
-                _registeredCallbacks.Remove(this);
-            }
-
-            if (_weakTargetObj.IsAllocated)
-            {
-                object targetObj = _weakTargetObj.Target;
-                if (targetObj == null)
+                lock (RegisteredCallbacksLock)
                 {
-                    _weakTargetObj.Free();
-                    return;
+                    _registeredCallbacks.Remove(this);
                 }
 
-                if (!_callback1(targetObj))
+                if (_weakTargetObj.IsAllocated)
                 {
-                    _weakTargetObj.Free();
-                    return;
-                }
-            }
-            else
-            {
-                if (!_callback0())
-                {
-                    return;
-                }
-            }
+                    object targetObj = _weakTargetObj.Target;
+                    if (targetObj == null)
+                    {
+                        _weakTargetObj.Free();
+                        return;
+                    }
 
-            GC.ReRegisterForFinalize(this);
+                    if (_callback1 == null || !_callback1(targetObj))
+                    {
+                        _weakTargetObj.Free();
+                        return;
+                    }
+                }
+                else
+                {
+                    if (_callback0 == null || !_callback0())
+                    {
+                        return;
+                    }
+                }
+
+                GC.ReRegisterForFinalize(this);
+            }
+            catch
+            {
+            }
         }
     }
 }

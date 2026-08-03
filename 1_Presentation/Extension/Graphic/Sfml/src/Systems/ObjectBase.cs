@@ -76,7 +76,13 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         ~ObjectBase()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
 
 

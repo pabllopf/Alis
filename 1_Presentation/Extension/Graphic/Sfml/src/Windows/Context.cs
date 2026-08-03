@@ -89,7 +89,13 @@ namespace Alis.Extension.Graphic.Sfml.Windows
         /// </summary>
         ~Context()
         {
-            sfContext_destroy(myThis);
+            try
+            {
+                sfContext_destroy(myThis);
+            }
+            catch
+            {
+            }
         }
 
 

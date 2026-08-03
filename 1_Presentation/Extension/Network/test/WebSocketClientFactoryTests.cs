@@ -657,8 +657,15 @@ namespace Alis.Extension.Network.Test
             public override async Task<int> ReadAsync(byte[] buffer, int offset, int count,
                 CancellationToken cancellationToken)
             {
+                DateTime deadline = DateTime.UtcNow.AddSeconds(10);
+
                 while (!_responseReady)
                 {
+                    if (DateTime.UtcNow > deadline)
+                    {
+                        throw new TimeoutException("Handshake response was not written in time.");
+                    }
+
                     await Task.Yield();
                 }
 

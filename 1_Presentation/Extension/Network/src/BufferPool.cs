@@ -96,9 +96,18 @@ namespace Alis.Extension.Network
             _bufferPoolStack.Push(buffer);
         }
 
+        /// <summary>
+        ///     Finalizer
+        /// </summary>
         ~BufferPool()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>

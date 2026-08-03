@@ -152,7 +152,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         ~GlShaderProgram()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>

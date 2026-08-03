@@ -100,7 +100,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// </summary>
         ~GlShader()
         {
-            ReleaseUnmanagedResources();
+            try
+            {
+                ReleaseUnmanagedResources();
+            }
+            catch
+            {
+            }
         }
     }
 }

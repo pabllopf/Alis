@@ -101,7 +101,13 @@ namespace Alis.Extension.Graphic.Sfml.Systems
         /// </summary>
         ~StreamAdaptor()
         {
-            Dispose(false);
+            try
+            {
+                Dispose(false);
+            }
+            catch
+            {
+            }
         }
 
 
