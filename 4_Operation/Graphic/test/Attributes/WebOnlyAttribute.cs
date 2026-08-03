@@ -33,8 +33,15 @@ using Xunit;
 namespace Alis.Core.Graphic.Test.Attributes
 {
     
+    /// <summary>
+    /// The web only attribute class
+    /// </summary>
+    /// <seealso cref="FactAttribute"/>
     public class WebOnlyAttribute : FactAttribute
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebOnlyAttribute"/> class
+        /// </summary>
         public WebOnlyAttribute()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ||  RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux)) 
