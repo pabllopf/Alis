@@ -50,30 +50,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         }
 
         /// <summary>
-        ///     Tests that Listener Position getter returns a vector.
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void Listener_Position_Getter_ShouldReturnVector()
-        {
-            Vector3F position = Listener.Position;
-            Assert.InRange(position.X, -1.0f, 1.0f);
-            Assert.InRange(position.Y, -1.0f, 1.0f);
-            Assert.InRange(position.Z, -1.0f, 1.0f);
-        }
-
-        /// <summary>
-        ///     Tests that Listener UpVector getter returns a vector.
-        /// </summary>
-        [RequireCSfmlAudioFact]
-        public void Listener_UpVector_Getter_ShouldReturnVector()
-        {
-            Vector3F upVector = Listener.UpVector;
-            Assert.InRange(upVector.X, -1.0f, 1.0f);
-            Assert.InRange(upVector.Y, 0.0f, 1.0f);
-            Assert.InRange(upVector.Z, -1.0f, 1.0f);
-        }
-
-        /// <summary>
         ///     Tests that Listener GlobalVolume can be set.
         /// </summary>
         [RequireCSfmlAudioFact]

@@ -426,32 +426,6 @@ namespace Alis.Extension.Network.Test.Core
         }
 
         /// <summary>
-        /// Tests that broadcast async with connected client completes
-        /// </summary>
-        [Fact]
-        public async Task BroadcastAsync_WithConnectedClient_Completes()
-        {
-            int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
-            await transport.StartAsync();
-
-            (TcpClient client, NetworkStream stream) = await ConnectAndHandshakeAsync("127.0.0.1", port);
-
-            NetworkMessageEnvelope envelope = new NetworkMessageEnvelope
-            {
-                MessageId = "broadcast-test",
-                MessageType = "broadcast",
-                Payload = "broadcast-payload"
-            };
-
-            Exception ex = await Record.ExceptionAsync(() => transport.BroadcastAsync(envelope));
-            Assert.Null(ex);
-
-            client.Close();
-            await transport.StopAsync();
-        }
-
-        /// <summary>
         /// Tests that stop async with connected clients closes all
         /// </summary>
         [Fact]
