@@ -1,5 +1,6 @@
 using System;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -12,7 +13,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get device language returns default
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void GetDeviceLanguage_ReturnsDefault()
         {
             string lang = WebAssemblyGameContext.GetDeviceLanguage();
@@ -22,7 +23,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get battery level returns default
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBatteryLevel_ReturnsDefault()
         {
             WebAssemblyGameContext.GetBatteryLevel();
@@ -31,7 +32,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is charging returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void IsCharging_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.IsCharging());
@@ -40,7 +41,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is online returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void IsOnline_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.IsOnline());
@@ -49,7 +50,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get refresh rate returns default
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetRefreshRate_ReturnsDefault()
         {
             int rate = WebAssemblyGameContext.GetRefreshRate();
@@ -59,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that lock pointer returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void LockPointer_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.LockPointer());
@@ -68,7 +69,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that unlock pointer returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void UnlockPointer_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.UnlockPointer());
@@ -77,7 +78,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is pointer locked returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void IsPointerLocked_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.IsPointerLocked());

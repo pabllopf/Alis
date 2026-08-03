@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Graphic.Platforms;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -43,7 +44,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetPlatform returns a non-null INativePlatform for "WebAssembly".
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void GetPlatform_WebAssembly_ReturnsNonNull()
         {
             INativePlatform platform = WebAssemblyPlatformIntegration.GetPlatform("WebAssembly");
@@ -53,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetPlatform returns a non-null INativePlatform for "Web".
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetPlatform_Web_ReturnsNonNull()
         {
             INativePlatform platform = WebAssemblyPlatformIntegration.GetPlatform("Web");
@@ -63,7 +64,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetPlatform returns a non-null INativePlatform for "Emscripten".
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetPlatform_Emscripten_ReturnsNonNull()
         {
             INativePlatform platform = WebAssemblyPlatformIntegration.GetPlatform("Emscripten");
@@ -73,7 +74,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetPlatform returns a non-null INativePlatform for "WASM".
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetPlatform_WASM_ReturnsNonNull()
         {
             INativePlatform platform = WebAssemblyPlatformIntegration.GetPlatform("WASM");
@@ -83,7 +84,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetPlatform throws PlatformNotSupportedException for an invalid name.
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetPlatform_Invalid_ThrowsPlatformNotSupportedException()
         {
             Assert.Throws<PlatformNotSupportedException>(() =>
@@ -93,7 +94,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that RegisterPlatform adds a new platform that can be retrieved.
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterPlatform_AddsNewPlatform()
         {
             WebAssemblyPlatformIntegration.RegisterPlatform("Custom", typeof(WebAssemblyPlatform));
@@ -105,7 +106,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetSupportedPlatforms returns at least 4 entries.
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetSupportedPlatforms_ReturnsAtLeastFourEntries()
         {
             string[] platforms = WebAssemblyPlatformIntegration.GetSupportedPlatforms();
@@ -116,7 +117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that CreateOptimizedPlatform with Default profile returns a non-null WebAssemblyPlatform.
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_Default_ReturnsNonNullWebAssemblyPlatform()
         {
             WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default);

@@ -30,6 +30,7 @@
 using System;
 using System.Reflection;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -42,7 +43,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform default state is consistent
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void WebAssemblyPlatform_DefaultState_IsConsistent()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -67,7 +68,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform key events update state and queue
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_KeyEvents_UpdateStateAndQueue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -86,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform char input collects and clears
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_CharInput_CollectsAndClears()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -101,7 +102,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform mouse events update coordinates and buttons
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_MouseEvents_UpdateCoordinatesAndButtons()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -123,7 +124,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get mouse position in view returns default coords
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetMousePositionInView_ReturnsDefaultCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -135,7 +136,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform try get gamepad state no gamepads returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_TryGetGamepadState_NoGamepads_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -147,7 +148,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get connected gamepad indices empty returns empty array
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -159,7 +160,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get proc address calls interop
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetProcAddress_CallsInterop()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -169,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform show window sets visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_ShowWindow_SetsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -180,7 +181,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform hide window clears visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_HideWindow_ClearsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -192,7 +193,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform set title does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SetTitle_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -202,7 +203,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform set size does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SetSize_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -212,7 +213,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform set window icon does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SetWindowIcon_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -222,7 +223,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform poll events resets wheel delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_PollEvents_ResetsWheelDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -237,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform poll events returns true when not closing
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_PollEvents_ReturnsTrueWhenNotClosing()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -248,7 +249,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform cleanup not initialized does nothing
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNothing()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -258,7 +259,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform cleanup not initialized does not clear state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_Cleanup_NotInitialized_DoesNotClearState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -273,7 +274,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform initialize when already initialized returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_Initialize_WhenAlreadyInitialized_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -283,7 +284,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform make context current with zero handles does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_MakeContextCurrent_WithZeroHandles_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -293,7 +294,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform swap buffers with zero handles does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SwapBuffers_WithZeroHandles_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -303,7 +304,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform try get last key pressed empty queue returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -315,7 +316,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform is key down unknown key returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_IsKeyDown_UnknownKey_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -325,7 +326,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform try get last input characters empty returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_TryGetLastInputCharacters_Empty_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -337,7 +338,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse wheel sets delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseWheel_SetsDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -348,7 +349,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse wheel positive delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseWheel_PositiveDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -359,7 +360,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse down boundary button 0 works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton0_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -373,7 +374,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse down boundary button 4 works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseDown_BoundaryButton4_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -385,7 +386,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse down out of bounds button ignored
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseDown_OutOfBoundsButton_Ignored()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -401,7 +402,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse down negative button ignored
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseDown_NegativeButton_Ignored()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -413,7 +414,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse up out of bounds button ignored
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseUp_OutOfBoundsButton_Ignored()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -423,7 +424,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window resize updates dimensions
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowResize_UpdatesDimensions()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -435,7 +436,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window close sets should close
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowClose_SetsShouldClose()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -447,7 +448,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window focus true sets visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowFocus_True_SetsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -458,7 +459,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window focus false clears visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowFocus_False_ClearsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -469,7 +470,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on gamepad connect creates state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnGamepadConnect_CreatesState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -482,7 +483,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on gamepad connect multiple gamepads
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnGamepadConnect_MultipleGamepads()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -498,7 +499,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on gamepad disconnect sets disconnected
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnGamepadDisconnect_SetsDisconnected()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -512,7 +513,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on gamepad disconnect non existent does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnGamepadDisconnect_NonExistent_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -522,7 +523,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get connected gamepad indices returns only connected
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_ReturnsOnlyConnected()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -538,7 +539,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get connected gamepad indices all disconnected returns empty
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetConnectedGamepadIndices_AllDisconnected_ReturnsEmpty()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -552,7 +553,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on char input invalid char code does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnCharInput_InvalidCharCode_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -562,7 +563,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on char input multiple characters accumulates
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnCharInput_MultipleCharacters_Accumulates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -577,7 +578,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on key down same key multiple times enqueues each time
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnKeyDown_SameKeyMultipleTimes_EnqueuesEachTime()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -594,7 +595,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on key down repeated key does not enqueue without release
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnKeyDown_RepeatedKey_DoesNotEnqueueWithoutRelease()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -610,7 +611,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on key down different keys queue order preserved
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnKeyDown_DifferentKeys_QueueOrderPreserved()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -631,7 +632,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on key up key not in states does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnKeyUp_KeyNotInStates_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -641,7 +642,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse move updates client coords
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseMove_UpdatesClientCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -654,7 +655,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse down updates coords and button
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseDown_UpdatesCoordsAndButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -668,7 +669,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse up updates coords and releases button
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseUp_UpdatesCoordsAndReleasesButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -683,7 +684,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse wheel negative delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseWheel_NegativeDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -694,7 +695,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on mouse wheel zero delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnMouseWheel_ZeroDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -705,7 +706,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on gamepad connect same index twice does not duplicate
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnGamepadConnect_SameIndexTwice_DoesNotDuplicate()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -718,7 +719,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window resize same size works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowResize_SameSize_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -730,7 +731,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window resize zero size works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowResize_ZeroSize_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -742,7 +743,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window resize max size works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowResize_MaxSize_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -754,7 +755,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform on window resize negative size works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_OnWindowResize_NegativeSize_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -766,7 +767,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform poll events multiple calls resets wheel each time
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_PollEvents_MultipleCalls_ResetsWheelEachTime()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -782,7 +783,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform set window icon empty path does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SetWindowIcon_EmptyPath_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -792,7 +793,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform set window icon null path does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_SetWindowIcon_NullPath_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -802,7 +803,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get window metrics returns default values on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -817,7 +818,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get mouse state returns cloned array
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -829,7 +830,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get mouse state multiple buttons
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetMouseState_MultipleButtons()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -885,7 +886,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform convert key code unknown key maps to no name
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_ConvertKeyCode_UnknownKey_MapsToNoName()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -896,7 +897,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get window position x returns default on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -907,7 +908,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform get window position y returns default on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatform_GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();

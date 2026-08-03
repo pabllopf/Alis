@@ -183,31 +183,31 @@ namespace Alis.Core.Graphic.Test.OpenGL.Constructs
         /// </summary>
         private void InitUniforms()
         {
-            Uniform1I uniform1i = (int location, int v0) => { };
-            Uniform1F uniform1f = (int location, float v0) => { };
-            Uniform2F uniform2f = (int location, float v0, float v1) => { };
-            Uniform3F uniform3f = (int location, float v0, float v1, float v2) => { };
-            Uniform4F uniform4f = (int location, float v0, float v1, float v2, float v3) => { };
-            UniformMatrix4FvDel uniformMatrix4fv = (int location, int count, bool transpose, float[] value) => { };
-            UniformMatrix3FvDel uniformMatrix3fv = (int location, int count, bool transpose, float[] value) => { };
+            Uniform1I uniform1I = (int location, int v0) => { };
+            Uniform1F uniform1F = (int location, float v0) => { };
+            Uniform2F uniform2F = (int location, float v0, float v1) => { };
+            Uniform3F uniform3F = (int location, float v0, float v1, float v2) => { };
+            Uniform4F uniform4F = (int location, float v0, float v1, float v2, float v3) => { };
+            UniformMatrix4FvDel uniformMatrix4Fv = (int location, int count, bool transpose, float[] value) => { };
+            UniformMatrix3FvDel uniformMatrix3Fv = (int location, int count, bool transpose, float[] value) => { };
 
-            IntPtr uniform1iFp = Marshal.GetFunctionPointerForDelegate(uniform1i);
-            IntPtr uniform1fFp = Marshal.GetFunctionPointerForDelegate(uniform1f);
-            IntPtr uniform2fFp = Marshal.GetFunctionPointerForDelegate(uniform2f);
-            IntPtr uniform3fFp = Marshal.GetFunctionPointerForDelegate(uniform3f);
-            IntPtr uniform4fFp = Marshal.GetFunctionPointerForDelegate(uniform4f);
-            IntPtr uniformMatrix4fvFp = Marshal.GetFunctionPointerForDelegate(uniformMatrix4fv);
-            IntPtr uniformMatrix3fvFp = Marshal.GetFunctionPointerForDelegate(uniformMatrix3fv);
+            IntPtr uniform1IFp = Marshal.GetFunctionPointerForDelegate(uniform1I);
+            IntPtr uniform1FFp = Marshal.GetFunctionPointerForDelegate(uniform1F);
+            IntPtr uniform2FFp = Marshal.GetFunctionPointerForDelegate(uniform2F);
+            IntPtr uniform3FFp = Marshal.GetFunctionPointerForDelegate(uniform3F);
+            IntPtr uniform4FFp = Marshal.GetFunctionPointerForDelegate(uniform4F);
+            IntPtr uniformMatrix4FvFp = Marshal.GetFunctionPointerForDelegate(uniformMatrix4Fv);
+            IntPtr uniformMatrix3FvFp = Marshal.GetFunctionPointerForDelegate(uniformMatrix3Fv);
 
             Gl.Initialize(name => name switch
             {
-                "glUniform1i" => uniform1iFp,
-                "glUniform1f" => uniform1fFp,
-                "glUniform2f" => uniform2fFp,
-                "glUniform3f" => uniform3fFp,
-                "glUniform4f" => uniform4fFp,
-                "glUniformMatrix4fv" => uniformMatrix4fvFp,
-                "glUniformMatrix3fv" => uniformMatrix3fvFp,
+                "glUniform1i" => uniform1IFp,
+                "glUniform1f" => uniform1FFp,
+                "glUniform2f" => uniform2FFp,
+                "glUniform3f" => uniform3FFp,
+                "glUniform4f" => uniform4FFp,
+                "glUniformMatrix4fv" => uniformMatrix4FvFp,
+                "glUniformMatrix3fv" => uniformMatrix3FvFp,
                 _ => IntPtr.Zero
             });
         }

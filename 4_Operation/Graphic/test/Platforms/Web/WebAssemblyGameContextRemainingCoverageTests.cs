@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -41,7 +42,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game 2 d returns configuration with correct defaults
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void Game2D_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game2D();
@@ -62,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game 3 d returns configuration with correct defaults
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Game3D_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game3D();
@@ -83,7 +84,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that puzzle game returns configuration with correct defaults
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void PuzzleGame_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.PuzzleGame();
@@ -103,7 +104,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that mobile game returns configuration with correct defaults
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void MobileGame_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.MobileGame();
@@ -124,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that constructor null configuration throws argument null exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Constructor_NullConfiguration_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => new WebAssemblyGameContext(null));

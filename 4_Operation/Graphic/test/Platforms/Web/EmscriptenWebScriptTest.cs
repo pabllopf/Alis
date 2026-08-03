@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -40,7 +41,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script includes core sections
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void GetBridgeScript_IncludesCoreSections()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -55,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script returns non empty string
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBridgeScript_ReturnsNonEmptyString()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -66,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains key functions
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBridgeScript_ContainsKeyFunctions()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -102,7 +103,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains emscripten web bridge
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBridgeScript_ContainsEmscriptenWebBridge()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -116,7 +117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains array helpers
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBridgeScript_ContainsArrayHelpers()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -129,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains init function
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetBridgeScript_ContainsInitFunction()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -143,7 +144,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get html template returns non empty string
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetHtmlTemplate_ReturnsNonEmptyString()
         {
             string html = EmscriptenWebScript.HtmlTemplate;
@@ -154,7 +155,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get html template contains required elements
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetHtmlTemplate_ContainsRequiredElements()
         {
             string html = EmscriptenWebScript.HtmlTemplate;

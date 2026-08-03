@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -35,12 +36,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
     /// <summary>
     ///     Tests for EGL constants.
     /// </summary>
-    public class EGLTest
+    public class EglTest
     {
         /// <summary>
         /// Tests that egl constants have expected values
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void EglConstants_HaveExpectedValues()
         {
             Assert.Equal(0x3038, EGL.EGL_NONE);
@@ -64,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that egl constants lib egl is correct string
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void EglConstants_LibEgl_IsCorrectString()
         {
             Assert.Equal("libEGL", EGL.LibEgl);

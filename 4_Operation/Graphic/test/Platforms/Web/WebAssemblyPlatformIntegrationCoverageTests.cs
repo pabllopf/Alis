@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Graphic.Platforms;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -46,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create game context throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void CreateGameContext_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -56,7 +57,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create game context with custom size throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateGameContext_WithCustomSize_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -66,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform game 2 d throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_Game2D_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -76,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform game 3 d throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_Game3D_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -86,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform low end throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_LowEnd_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -96,7 +97,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform high end throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_HighEnd_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -106,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform mobile throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_Mobile_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -116,7 +117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform web returns instance
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void CreateOptimizedPlatform_Web_ReturnsInstance()
         {
             WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Web);
@@ -131,7 +132,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that multiplatform game engine constructor throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void MultiplatformGameEngine_Constructor_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -145,7 +146,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager constructor null context stores null
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void InputManager_Constructor_NullContext_StoresNull()
         {
             InputManager manager = new InputManager(null);
@@ -159,7 +160,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager constructor null context stores null
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void DisplayManager_Constructor_NullContext_StoresNull()
         {
             DisplayManager manager = new DisplayManager(null);
@@ -169,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager is fullscreen returns default
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void DisplayManager_IsFullscreen_ReturnsDefault()
         {
             Assert.False(DisplayManager.IsFullscreen());
@@ -182,7 +183,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that quick start run minimal game throws invalid operation exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void QuickStart_RunMinimalGame_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>

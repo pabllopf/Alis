@@ -30,6 +30,7 @@
 using System;
 using System.Reflection;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -42,7 +43,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that initialize full path returns false when egl fails
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void Initialize_FullPath_ReturnsFalse_WhenEglFails()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -53,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that initialize full path with icon path returns false when egl fails
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Initialize_FullPath_WithIconPath_ReturnsFalse_WhenEglFails()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -64,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that initialize already initialized returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Initialize_AlreadyInitialized_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -76,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that initialize already initialized with icon returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Initialize_AlreadyInitializedWithIcon_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -88,7 +89,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that poll events update gamepad states no exception
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void PollEvents_UpdateGamepadStates_NoException()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -99,7 +100,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update single gamepad state new index does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void UpdateSingleGamepadState_NewIndex_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -111,7 +112,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update single gamepad state existing index updates state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void UpdateSingleGamepadState_ExistingIndex_UpdatesState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -124,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update gamepad states multiple gamepads does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void UpdateGamepadStates_MultipleGamepads_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -137,7 +138,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that cleanup when not initialized does not clear state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Cleanup_WhenNotInitialized_DoesNotClearState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -149,7 +150,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that cleanup when initialized clears state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Cleanup_WhenInitialized_ClearsState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -162,7 +163,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that cleanup when initialized clears input chars
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Cleanup_WhenInitialized_ClearsInputChars()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -175,7 +176,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that cleanup when initialized clears key queue
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Cleanup_WhenInitialized_ClearsKeyQueue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -188,7 +189,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that cleanup when initialized clears gamepad states
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Cleanup_WhenInitialized_ClearsGamepadStates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -201,7 +202,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that make context current with zero handles does nothing
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void MakeContextCurrent_WithZeroHandles_DoesNothing()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -211,7 +212,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that swap buffers with zero handles does nothing
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SwapBuffers_WithZeroHandles_DoesNothing()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -221,7 +222,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window metrics returns default values
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetWindowMetrics_ReturnsDefaultValues()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -237,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window metrics after resize returns updated values
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetWindowMetrics_AfterResize_ReturnsUpdatedValues()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -250,7 +251,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on key down key already down does not enqueue again
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnKeyDown_KeyAlreadyDown_DoesNotEnqueueAgain()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -263,7 +264,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on key down key not in states adds and enqueues
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnKeyDown_KeyNotInStates_AddsAndEnqueues()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -276,7 +277,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on key up key exists sets false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnKeyUp_KeyExists_SetsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -288,7 +289,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on key up key not in states does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnKeyUp_KeyNotInStates_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -298,7 +299,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on char input valid char appends to string builder
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnCharInput_ValidChar_AppendsToStringBuilder()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -310,7 +311,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on char input invalid char code does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnCharInput_InvalidCharCode_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -320,7 +321,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on char input zero char code does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnCharInput_ZeroCharCode_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -330,7 +331,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse move updates client coords
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnMouseMove_UpdatesClientCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -343,7 +344,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse down negative button does not set button
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnMouseDown_NegativeButton_DoesNotSetButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -355,7 +356,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse down out of range button does not set button
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnMouseDown_OutOfRangeButton_DoesNotSetButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -367,7 +368,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse up negative button does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnMouseUp_NegativeButton_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -377,7 +378,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse up out of range button does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnMouseUp_OutOfRangeButton_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -387,7 +388,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on window resize updates dimensions
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnWindowResize_UpdatesDimensions()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -399,7 +400,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on window close sets should close
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnWindowClose_SetsShouldClose()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -410,7 +411,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on window focus true sets visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnWindowFocus_True_SetsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -421,7 +422,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on window focus false clears visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnWindowFocus_False_ClearsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -432,7 +433,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad connect creates new state
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnGamepadConnect_CreatesNewState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -444,7 +445,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad connect existing index does not overwrite
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnGamepadConnect_ExistingIndex_DoesNotOverwrite()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -457,7 +458,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad disconnect existing index sets disconnected
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnGamepadDisconnect_ExistingIndex_SetsDisconnected()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -470,7 +471,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad disconnect non existent index does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnGamepadDisconnect_NonExistentIndex_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -480,7 +481,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet a maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_AlphabetA_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -491,7 +492,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet z maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_AlphabetZ_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -502,7 +503,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 0 maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Number0_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -513,7 +514,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 9 maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Number9_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -524,7 +525,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code enter maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Enter_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -535,7 +536,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code tab maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Tab_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -546,7 +547,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code spacebar maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Spacebar_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -557,7 +558,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code backspace maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Backspace_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -568,7 +569,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code escape maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Escape_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -579,7 +580,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code delete maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_Delete_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -590,7 +591,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code arrow keys maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_ArrowKeys_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -610,7 +611,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function keys maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_FunctionKeys_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -624,7 +625,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad keys maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_NumpadKeys_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -638,7 +639,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad operators maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_NumpadOperators_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -661,7 +662,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code navigation keys maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_NavigationKeys_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -687,7 +688,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code modifier shift maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_ModifierShift_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -698,7 +699,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code modifier ctrl maps correctly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_ModifierCtrl_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -709,7 +710,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code unknown key maps to no name
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_UnknownKey_MapsToNoName()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -720,7 +721,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code negative key maps to no name
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConvertKeyCode_NegativeKey_MapsToNoName()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -731,7 +732,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get last key pressed empty queue returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetLastKeyPressed_EmptyQueue_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -742,7 +743,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get last key pressed queue with items returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetLastKeyPressed_QueueWithItems_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -754,7 +755,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is key down key in states returns value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void IsKeyDown_KeyInStates_ReturnsValue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -767,7 +768,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is key down key not in states returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void IsKeyDown_KeyNotInStates_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -777,7 +778,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get last input characters has chars returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetLastInputCharacters_HasChars_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -789,7 +790,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get last input characters empty returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetLastInputCharacters_Empty_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -800,7 +801,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get last input characters clears after read
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetLastInputCharacters_ClearsAfterRead()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -812,7 +813,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state default state connected false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_DefaultState_ConnectedFalse()
         {
             GamepadState state = new GamepadState();
@@ -822,7 +823,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state get button valid index returns value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_GetButton_ValidIndex_ReturnsValue()
         {
             GamepadState state = new GamepadState();
@@ -834,7 +835,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state get button invalid index returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_GetButton_InvalidIndex_ReturnsFalse()
         {
             GamepadState state = new GamepadState();
@@ -845,7 +846,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state get button index boundary returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_GetButton_IndexBoundary_ReturnsFalse()
         {
             GamepadState state = new GamepadState();
@@ -855,7 +856,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button a returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonA_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -867,7 +868,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button b returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonB_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -879,7 +880,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button x returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonX_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -891,7 +892,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button y returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonY_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -903,7 +904,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button lb returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonLb_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -915,7 +916,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button rb returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonRb_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -927,7 +928,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button left stick click returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonLeftStickClick_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -939,7 +940,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button right stick click returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonRightStickClick_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -951,7 +952,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button start returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonStart_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -963,7 +964,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button back returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonBack_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -975,7 +976,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state button guide returns correct value
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_ButtonGuide_ReturnsCorrectValue()
         {
             GamepadState state = new GamepadState();
@@ -987,7 +988,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state all button properties default are false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GamepadState_AllButtonProperties_DefaultAreFalse()
         {
             GamepadState state = new GamepadState();
@@ -1007,7 +1008,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get mouse wheel default returns zero
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetMouseWheel_Default_ReturnsZero()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1017,7 +1018,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get mouse wheel after wheel event returns delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetMouseWheel_AfterWheelEvent_ReturnsDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1028,7 +1029,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get mouse state returns cloned array not same reference
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetMouseState_ReturnsClonedArray_NotSameReference()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1040,7 +1041,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get mouse position in view after mouse move returns updated coords
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetMousePositionInView_AfterMouseMove_ReturnsUpdatedCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1053,7 +1054,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window position x returns default on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetWindowPositionX_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1063,7 +1064,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window position y returns default on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetWindowPositionY_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1073,7 +1074,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show window sets visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ShowWindow_SetsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1084,7 +1085,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that hide window clears visible
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void HideWindow_ClearsVisible()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1096,7 +1097,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show hide window toggle works repeatedly
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ShowHideWindow_Toggle_WorksRepeatedly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1111,7 +1112,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set title does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetTitle_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1121,7 +1122,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set title empty string does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetTitle_EmptyString_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1131,7 +1132,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set title null string does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetTitle_NullString_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1141,7 +1142,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set size updates dimensions
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetSize_UpdatesDimensions()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1153,7 +1154,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set size zero dimensions does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetSize_ZeroDimensions_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1165,7 +1166,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set size negative dimensions does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetSize_NegativeDimensions_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1177,7 +1178,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon valid path does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetWindowIcon_ValidPath_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1187,7 +1188,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon empty path does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetWindowIcon_EmptyPath_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1197,7 +1198,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon null path does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetWindowIcon_NullPath_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1207,7 +1208,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepad indices empty returns empty array
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetConnectedGamepadIndices_Empty_ReturnsEmptyArray()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1218,7 +1219,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepad indices with connections returns indices
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetConnectedGamepadIndices_WithConnections_ReturnsIndices()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1233,7 +1234,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepad indices after disconnect returns only connected
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetConnectedGamepadIndices_AfterDisconnect_ReturnsOnlyConnected()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1248,7 +1249,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that poll events returns true when not closing
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void PollEvents_ReturnsTrue_WhenNotClosing()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1258,7 +1259,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that poll events returns false after window close
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void PollEvents_ReturnsFalse_AfterWindowClose()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1269,7 +1270,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that poll events resets mouse wheel delta
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void PollEvents_ResetsMouseWheelDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1282,7 +1283,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get proc address throws on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetProcAddress_ThrowsOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1292,7 +1293,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get gamepad state non existent returns false
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetGamepadState_NonExistent_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1303,7 +1304,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get gamepad state existent returns true
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void TryGetGamepadState_Existent_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1316,7 +1317,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register input events does not throw on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterInputEvents_DoesNotThrowOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1326,7 +1327,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register keyboard events does not throw on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterKeyboardEvents_DoesNotThrowOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1336,7 +1337,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register mouse events does not throw on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterMouseEvents_DoesNotThrowOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1346,7 +1347,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register gamepad events does not throw on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterGamepadEvents_DoesNotThrowOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -1356,7 +1357,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register window events does not throw on non browser
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void RegisterWindowEvents_DoesNotThrowOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();

@@ -22,16 +22,16 @@ namespace Alis.Core.Graphic.Test
         /// <summary>
         /// The saved
         /// </summary>
-        internal readonly object _saved;
+        internal readonly object Saved;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlSafeCoverageTests"/> class
         /// </summary>
-        public GlSafeCoverageTests() => _saved = Field?.GetValue(null);
+        public GlSafeCoverageTests() => Saved = Field?.GetValue(null);
         /// <summary>
         /// Disposes this instance
         /// </summary>
-        public void Dispose() => Field?.SetValue(null, _saved);
+        public void Dispose() => Field?.SetValue(null, Saved);
 
         /// <summary>
         /// Inits this instance

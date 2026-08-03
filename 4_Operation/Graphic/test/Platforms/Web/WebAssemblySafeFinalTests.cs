@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -13,7 +14,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 2 d works
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void GameContextPresets_Game2D_Works()
         {
             var c = GameContextPresets.Game2D();
@@ -24,7 +25,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 3 d works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_Game3D_Works()
         {
             var c = GameContextPresets.Game3D();
@@ -35,7 +36,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets puzzle game works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_PuzzleGame_Works()
         {
             var c = GameContextPresets.PuzzleGame();
@@ -45,7 +46,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets mobile game works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_MobileGame_Works()
         {
             var c = GameContextPresets.MobileGame();
@@ -56,73 +57,73 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConsoleLog_DoesNotThrow() => WebAssemblyGameContext.ConsoleLog("test");
         /// <summary>
         /// Tests that console warn does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConsoleWarn_DoesNotThrow() => WebAssemblyGameContext.ConsoleWarn("test");
         /// <summary>
         /// Tests that console error does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConsoleError_DoesNotThrow() => WebAssemblyGameContext.ConsoleError("test");
         /// <summary>
         /// Tests that show alert does not throw
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ShowAlert_DoesNotThrow() => WebAssemblyGameContext.ShowAlert("test");
         /// <summary>
         /// Tests that show confirm returns false
         /// </summary>
-        [Fact] public void ShowConfirm_ReturnsFalse() => Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
+        [WebOnlyAttribute] public void ShowConfirm_ReturnsFalse() => Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
         /// <summary>
         /// Tests that is fullscreen returns false
         /// </summary>
-        [Fact] public void IsFullscreen_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsFullscreen());
+        [WebOnlyAttribute] public void IsFullscreen_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsFullscreen());
         /// <summary>
         /// Tests that vibrate gamepad returns false
         /// </summary>
-        [Fact] public void VibrateGamepad_ReturnsFalse() => Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
+        [WebOnlyAttribute] public void VibrateGamepad_ReturnsFalse() => Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
         /// <summary>
         /// Tests that lock pointer returns false
         /// </summary>
-        [Fact] public void LockPointer_ReturnsFalse() => Assert.False(WebAssemblyGameContext.LockPointer());
+        [WebOnlyAttribute] public void LockPointer_ReturnsFalse() => Assert.False(WebAssemblyGameContext.LockPointer());
         /// <summary>
         /// Tests that unlock pointer returns false
         /// </summary>
-        [Fact] public void UnlockPointer_ReturnsFalse() => Assert.False(WebAssemblyGameContext.UnlockPointer());
+        [WebOnlyAttribute] public void UnlockPointer_ReturnsFalse() => Assert.False(WebAssemblyGameContext.UnlockPointer());
         /// <summary>
         /// Tests that is pointer locked returns false
         /// </summary>
-        [Fact] public void IsPointerLocked_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsPointerLocked());
+        [WebOnlyAttribute] public void IsPointerLocked_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsPointerLocked());
         /// <summary>
         /// Tests that get device language not null
         /// </summary>
-        [Fact] public void GetDeviceLanguage_NotNull() => Assert.NotNull(WebAssemblyGameContext.GetDeviceLanguage());
+        [WebOnlyAttribute] public void GetDeviceLanguage_NotNull() => Assert.NotNull(WebAssemblyGameContext.GetDeviceLanguage());
         /// <summary>
         /// Tests that get battery level does not throw
         /// </summary>
-        [Fact] public void GetBatteryLevel_DoesNotThrow() => WebAssemblyGameContext.GetBatteryLevel();
+        [WebOnlyAttribute] public void GetBatteryLevel_DoesNotThrow() => WebAssemblyGameContext.GetBatteryLevel();
         /// <summary>
         /// Tests that is charging returns false
         /// </summary>
-        [Fact] public void IsCharging_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsCharging());
+        [WebOnlyAttribute] public void IsCharging_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsCharging());
         /// <summary>
         /// Tests that is online returns false
         /// </summary>
-        [Fact] public void IsOnline_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsOnline());
+        [WebOnlyAttribute] public void IsOnline_ReturnsFalse() => Assert.False(WebAssemblyGameContext.IsOnline());
         /// <summary>
         /// Tests that get refresh rate non negative
         /// </summary>
-        [Fact] public void GetRefreshRate_NonNegative() => Assert.True(WebAssemblyGameContext.GetRefreshRate() >= 0);
+        [WebOnlyAttribute] public void GetRefreshRate_NonNegative() => Assert.True(WebAssemblyGameContext.GetRefreshRate() >= 0);
 
         // GameDevelopmentUtils
         /// <summary>
         /// Tests that apply deadzone below zeroes
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ApplyDeadzone_Below_Zeroes()
         {
             float x = 0.1f, y = 0.05f;
@@ -133,7 +134,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that apply deadzone above scales
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ApplyDeadzone_Above_Scales()
         {
             float x = 0.5f, y = 0.5f;
@@ -144,7 +145,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that normalize input above 1 normalizes
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void NormalizeInput_Above1_Normalizes()
         {
             float x = 0.8f, y = 0.6f;
@@ -156,7 +157,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that normalize input below 1 keeps
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void NormalizeInput_Below1_Keeps()
         {
             float x = 0.3f, y = 0.4f;
@@ -179,47 +180,47 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get key name returns string
         /// </summary>
-        [Fact] public void GetKeyName_ReturnsString() => Assert.NotNull(GameDevelopmentUtils.GetKeyName(ConsoleKey.A));
+        [WebOnlyAttribute] public void GetKeyName_ReturnsString() => Assert.NotNull(GameDevelopmentUtils.GetKeyName(ConsoleKey.A));
 
         // WebAssemblyPlatformIntegration
         /// <summary>
         /// Tests that get supported platforms contains
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetSupportedPlatforms_Contains() { var p = WebAssemblyPlatformIntegration.GetSupportedPlatforms(); Assert.Contains("WebAssembly", p); Assert.Contains("WASM", p); }
         /// <summary>
         /// Tests that get platform valid returns
         /// </summary>
-        [Fact] public void GetPlatform_Valid_Returns() { Assert.NotNull(WebAssemblyPlatformIntegration.GetPlatform("WebAssembly")); }
+        [WebOnlyAttribute] public void GetPlatform_Valid_Returns() { Assert.NotNull(WebAssemblyPlatformIntegration.GetPlatform("WebAssembly")); }
         /// <summary>
         /// Tests that get platform invalid throws
         /// </summary>
-        [Fact] public void GetPlatform_Invalid_Throws() => Assert.Throws<PlatformNotSupportedException>(() => WebAssemblyPlatformIntegration.GetPlatform("Invalid"));
+        [WebOnlyAttribute] public void GetPlatform_Invalid_Throws() => Assert.Throws<PlatformNotSupportedException>(() => WebAssemblyPlatformIntegration.GetPlatform("Invalid"));
         /// <summary>
         /// Tests that register platform works
         /// </summary>
-        [Fact] public void RegisterPlatform_Works() { WebAssemblyPlatformIntegration.RegisterPlatform("Custom", typeof(WebAssemblyPlatform)); Assert.NotNull(WebAssemblyPlatformIntegration.GetPlatform("Custom")); }
+        [WebOnlyAttribute] public void RegisterPlatform_Works() { WebAssemblyPlatformIntegration.RegisterPlatform("Custom", typeof(WebAssemblyPlatform)); Assert.NotNull(WebAssemblyPlatformIntegration.GetPlatform("Custom")); }
         /// <summary>
         /// Tests that create optimized platform default returns
         /// </summary>
-        [Fact] public void CreateOptimizedPlatform_Default_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default));
+        [WebOnlyAttribute] public void CreateOptimizedPlatform_Default_Returns() => Assert.NotNull(WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Default));
         /// <summary>
         /// Tests that create optimized platform game 2 d throws on non wasm
         /// </summary>
-        [Fact] public void CreateOptimizedPlatform_Game2D_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
+        [WebOnlyAttribute] public void CreateOptimizedPlatform_Game2D_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Game2D));
         /// <summary>
         /// Tests that create optimized platform high end throws on non wasm
         /// </summary>
-        [Fact] public void CreateOptimizedPlatform_HighEnd_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
+        [WebOnlyAttribute] public void CreateOptimizedPlatform_HighEnd_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.HighEnd));
         /// <summary>
         /// Tests that create optimized platform mobile throws on non wasm
         /// </summary>
-        [Fact] public void CreateOptimizedPlatform_Mobile_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
+        [WebOnlyAttribute] public void CreateOptimizedPlatform_Mobile_Throws_OnNonWasm() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Mobile));
 
         /// <summary>
         /// Tests that optimization profile all defined
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OptimizationProfile_AllDefined()
         {
             Assert.True(Enum.IsDefined(typeof(OptimizationProfile), OptimizationProfile.Default));
@@ -234,56 +235,56 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that quick start log platform info does not throw
         /// </summary>
-        [Fact] public void QuickStart_LogPlatformInfo_DoesNotThrow() => QuickStart.LogPlatformInfo();
+        [WebOnlyAttribute] public void QuickStart_LogPlatformInfo_DoesNotThrow() => QuickStart.LogPlatformInfo();
         /// <summary>
         /// Tests that quick start run minimal game throws
         /// </summary>
-        [Fact] public void QuickStart_RunMinimalGame_Throws() => Assert.ThrowsAny<Exception>(() => QuickStart.RunMinimalGame((w, h) => { }));
+        [WebOnlyAttribute] public void QuickStart_RunMinimalGame_Throws() => Assert.ThrowsAny<Exception>(() => QuickStart.RunMinimalGame((w, h) => { }));
         /// <summary>
         /// Tests that create game context throws
         /// </summary>
-        [Fact] public void CreateGameContext_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateGameContext("Test"));
+        [WebOnlyAttribute] public void CreateGameContext_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyPlatformIntegration.CreateGameContext("Test"));
 
         // WebAssemblyGameExamples - example methods
         /// <summary>
         /// Tests that example basic game loop throws
         /// </summary>
-        [Fact] public void Example_BasicGameLoop_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.BasicGameLoopExample());
+        [WebOnlyAttribute] public void Example_BasicGameLoop_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.BasicGameLoopExample());
         /// <summary>
         /// Tests that example gamepad input throws
         /// </summary>
-        [Fact] public void Example_GamepadInput_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.GamepadInputExample());
+        [WebOnlyAttribute] public void Example_GamepadInput_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.GamepadInputExample());
         /// <summary>
         /// Tests that example display management throws
         /// </summary>
-        [Fact] public void Example_DisplayManagement_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DisplayManagementExample());
+        [WebOnlyAttribute] public void Example_DisplayManagement_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DisplayManagementExample());
         /// <summary>
         /// Tests that example fps game throws
         /// </summary>
-        [Fact] public void Example_FpsGame_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.FpsGameExample());
+        [WebOnlyAttribute] public void Example_FpsGame_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.FpsGameExample());
         /// <summary>
         /// Tests that example system info throws
         /// </summary>
-        [Fact] public void Example_SystemInfo_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.SystemInfoExample());
+        [WebOnlyAttribute] public void Example_SystemInfo_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.SystemInfoExample());
         /// <summary>
         /// Tests that example configuration presets throws
         /// </summary>
-        [Fact] public void Example_ConfigurationPresets_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.ConfigurationPresetsExample());
+        [WebOnlyAttribute] public void Example_ConfigurationPresets_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.ConfigurationPresetsExample());
         /// <summary>
         /// Tests that example text input throws
         /// </summary>
-        [Fact] public void Example_TextInput_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.TextInputExample());
+        [WebOnlyAttribute] public void Example_TextInput_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.TextInputExample());
         /// <summary>
         /// Tests that example performance monitoring throws
         /// </summary>
-        [Fact] public void Example_PerformanceMonitoring_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.PerformanceMonitoringExample());
+        [WebOnlyAttribute] public void Example_PerformanceMonitoring_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.PerformanceMonitoringExample());
         /// <summary>
         /// Tests that example dialog box throws
         /// </summary>
-        [Fact] public void Example_DialogBox_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DialogBoxExample());
+        [WebOnlyAttribute] public void Example_DialogBox_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.DialogBoxExample());
         /// <summary>
         /// Tests that example complete game template throws
         /// </summary>
-        [Fact] public void Example_CompleteGameTemplate_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.CompleteGameTemplate());
+        [WebOnlyAttribute] public void Example_CompleteGameTemplate_Throws() => Assert.ThrowsAny<Exception>(() => WebAssemblyGameExamples.CompleteGameTemplate());
     }
 }

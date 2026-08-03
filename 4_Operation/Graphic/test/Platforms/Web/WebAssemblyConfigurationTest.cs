@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -44,7 +45,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly configuration default values are correct
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void WebAssemblyConfiguration_DefaultValues_AreCorrect()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration();
@@ -74,7 +75,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with size sets width and height
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithSize_SetsWidthAndHeight()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -88,7 +89,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with title sets title
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTitle_SetsTitle()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -101,7 +102,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with icon path sets icon path
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithIconPath_SetsIconPath()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -114,7 +115,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with v sync sets v sync
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithVSync_SetsVSync()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -127,7 +128,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with target frame rate valid value sets rate
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTargetFrameRate_ValidValue_SetsRate()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -140,7 +141,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with target frame rate zero throws
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTargetFrameRate_Zero_Throws()
         {
             Assert.Throws<ArgumentException>(() =>
@@ -150,7 +151,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with target frame rate negative throws
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTargetFrameRate_Negative_Throws()
         {
             Assert.Throws<ArgumentException>(() =>
@@ -160,7 +161,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with multisampling sets enabled
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithMultisampling_SetsEnabled()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -208,7 +209,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with fullscreen sets fullscreen
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithFullscreen_SetsFullscreen()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -221,7 +222,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with pointer lock sets pointer lock
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithPointerLock_SetsPointerLock()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -234,7 +235,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with display quality sets quality
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithDisplayQuality_SetsQuality()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -247,7 +248,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with gamepad input sets enabled
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithGamepadInput_SetsEnabled()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -260,7 +261,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with keyboard input sets enabled
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithKeyboardInput_SetsEnabled()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -273,7 +274,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with mouse input sets enabled
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithMouseInput_SetsEnabled()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -286,7 +287,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with touch input sets enabled
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTouchInput_SetsEnabled()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -363,7 +364,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with debug mode sets debug mode
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithDebugMode_SetsDebugMode()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -376,7 +377,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder chained methods works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_ChainedMethods_Works()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -404,7 +405,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder build multiple times returns same instance
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_Build_MultipleTimes_ReturnsSameInstance()
         {
             WebAssemblyConfigurationBuilder builder = new WebAssemblyConfigurationBuilder()
@@ -419,7 +420,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with size negative values accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithSize_NegativeValues_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -433,7 +434,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with size zero values accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithSize_ZeroValues_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -447,7 +448,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with title empty string accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTitle_EmptyString_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -460,7 +461,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with title null accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTitle_Null_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -473,7 +474,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with icon path null accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithIconPath_Null_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -486,7 +487,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with target frame rate one accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTargetFrameRate_One_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -499,7 +500,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with target frame rate max int accepts
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTargetFrameRate_MaxInt_Accepts()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -512,7 +513,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with gamepad deadzone boundary values
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithGamepadDeadzone_BoundaryValues()
         {
             WebAssemblyConfiguration configMin = new WebAssemblyConfigurationBuilder()
@@ -529,7 +530,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that config builder with trigger deadzone boundary values
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ConfigBuilder_WithTriggerDeadzone_BoundaryValues()
         {
             WebAssemblyConfiguration configMin = new WebAssemblyConfigurationBuilder()
@@ -548,7 +549,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform factory create default returns instance
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatformFactory_CreateDefault_ReturnsInstance()
         {
             WebAssemblyPlatform platform = WebAssemblyPlatformFactory.CreateDefault();
@@ -559,7 +560,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform factory create null config throws
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatformFactory_Create_NullConfig_Throws()
         {
             WebAssemblyConfiguration nullConfig = null;
@@ -571,7 +572,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly platform factory create with action null action throws
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void WebAssemblyPlatformFactory_Create_WithAction_NullAction_Throws()
         {
             Assert.Throws<ArgumentNullException>(() =>
@@ -583,7 +584,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 2 d returns valid config
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_Game2D_ReturnsValidConfig()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game2D();
@@ -603,7 +604,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 3 d returns valid config
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_Game3D_ReturnsValidConfig()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game3D();
@@ -620,7 +621,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets puzzle game returns valid config
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_PuzzleGame_ReturnsValidConfig()
         {
             WebAssemblyConfiguration config = GameContextPresets.PuzzleGame();
@@ -639,7 +640,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets mobile game returns valid config
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GameContextPresets_MobileGame_ReturnsValidConfig()
         {
             WebAssemblyConfiguration config = GameContextPresets.MobileGame();

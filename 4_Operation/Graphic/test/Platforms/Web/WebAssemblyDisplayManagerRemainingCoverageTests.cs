@@ -30,6 +30,7 @@
 using System;
 using System.Reflection;
 using Alis.Core.Graphic.Platforms.Web;
+using Alis.Core.Graphic.Test.Attributes;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Web
@@ -47,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution returns true and updates dimensions
         /// </summary>
-        [Fact]
+        [WebOnly]
         public void SetResolution_ReturnsTrueAndUpdatesDimensions()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -63,7 +64,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution fires display resized event
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_FiresDisplayResizedEvent()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -86,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution fires orientation changed when orientation changes
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_FiresOrientationChangedWhenOrientationChanges()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -106,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution does not fire orientation changed when orientation unchanged
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_DoesNotFireOrientationChangedWhenOrientationUnchanged()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -126,7 +127,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution updates orientation
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_UpdatesOrientation()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -140,7 +141,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution same dimensions still fires display resized
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_SameDimensions_StillFiresDisplayResized()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -157,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set resolution from landscape to square fires orientation changed
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void SetResolution_FromLandscapeToSquare_FiresOrientationChanged()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -181,7 +182,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update detects dimension change
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_DetectsDimensionChange()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -199,7 +200,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update fires display resized when dimensions change
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_FiresDisplayResizedWhenDimensionsChange()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -223,7 +224,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update fires orientation changed when orientation changes
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_FiresOrientationChangedWhenOrientationChanges()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -244,7 +245,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update does not fire events when no changes
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_DoesNotFireEventsWhenNoChanges()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -268,7 +269,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update fires display resized only when dimensions change
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_FiresDisplayResizedOnlyWhenDimensionsChange()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -295,7 +296,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update detects fullscreen state change when internal state differs
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_DetectsFullscreenStateChangeWhenInternalStateDiffers()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -323,7 +324,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update does not fire fullscreen changed when state matches
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void Update_DoesNotFireFullscreenChangedWhenStateMatches()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -344,7 +345,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that toggle fullscreen when already fullscreen enters exit fullscreen path
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void ToggleFullscreen_WhenAlreadyFullscreen_EntersExitFullscreenPath()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -369,7 +370,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale unknown value returns default
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetRenderingScale_UnknownValue_ReturnsDefault()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -389,7 +390,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on display resized subscribe and unsubscribe works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnDisplayResized_SubscribeAndUnsubscribe_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -410,7 +411,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on orientation changed subscribe and unsubscribe works
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnOrientationChanged_SubscribeAndUnsubscribe_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -431,7 +432,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on fullscreen changed subscribe does not fire on failed enter
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void OnFullscreenChanged_Subscribe_DoesNotFireOnFailedEnter()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -452,7 +453,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get aspect ratio after set resolution updates
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetAspectRatio_AfterSetResolution_Updates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -466,7 +467,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get aspect ratio after update updates
         /// </summary>
-        [Fact]
+        [WebOnlyAttribute]
         public void GetAspectRatio_AfterUpdate_Updates()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();

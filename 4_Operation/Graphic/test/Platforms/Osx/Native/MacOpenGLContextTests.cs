@@ -37,7 +37,7 @@ using Xunit;
 
 namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
 {
-    public class MacOpenGLContextTests
+    public class MacOpenGlContextTests
     {
         [DllImport("/usr/lib/libSystem.B.dylib")]
         private static extern int pthread_main_np();
