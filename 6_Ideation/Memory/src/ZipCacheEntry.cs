@@ -46,7 +46,9 @@ namespace Alis.Core.Aspect.Memory
         /// <value>The raw byte array containing the full compressed archive content.</value>
         internal byte[] PackBytes { get; set; }
 
-        /// <summary>
+       
+#if !NETSTANDARD2_0 && !NET461
+         /// <summary>
         ///     Gets a read-only span over the raw byte content of the assets.pack archive,
         ///     providing allocation-free access to the underlying packed data.
         ///     Available on .NET Core 2.1+ / .NET 5+ / .NET Standard 2.1+ targets where
@@ -54,7 +56,6 @@ namespace Alis.Core.Aspect.Memory
         ///     supported; omitted on legacy .NET Framework and .NET Standard 2.0 where
         ///     <see cref="ReadOnlySpan{T}" /> usage is constrained.
         /// </summary>
-#if !NETSTANDARD2_0 && !NET461
         internal ReadOnlySpan<byte> PackBytesReadOnly => PackBytes;
 #endif
 
