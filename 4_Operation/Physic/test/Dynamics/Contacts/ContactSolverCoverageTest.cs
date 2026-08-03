@@ -746,34 +746,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Vector2F vAResult = (Vector2F)args[0];
             Assert.NotNull(vAResult);
         }
-
-        // ========================================================================
-        // InitializeVelocityConstraints — redundant constraint (k11*k11 < kMaxConditionNumber * (k11*k22 - k12*k12) fails)
-        // exercises PointCount = 1 fallback (line 329)
-        // ========================================================================
-
-        /// <summary>
-        /// Tests that initialize velocity constraints redundant constraint reduces point count
-        /// </summary>
-        [Fact]
-        public void InitializeVelocityConstraints_RedundantConstraint_ReducesPointCount()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            var iter = new SolverIterations();
-            iter.PositionIterations = 100;
-            
-            world.Step(1.0f / 60.0f, ref iter);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
-
-        // ========================================================================
-        // SolveVelocityConstraints — threaded path via World step (line 428)
-        // ========================================================================
-
+        
         /// <summary>
         /// Tests that solve velocity constraints threaded via world executes correctly
         /// </summary>

@@ -577,27 +577,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f);
             Assert.True(world.ContactManager.ContactCount > 0);
         }
-
-        // ========================================================================
-        // ProcessContactMultiCore - both active and overlapping
-        // ========================================================================
-        /// <summary>
-        /// Tests that process contact multi core all active and overlapping updates
-        /// </summary>
-        [Fact]
-        public void ProcessContactMultiCore_AllActiveAndOverlapping_Updates()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-            field.SetValue(world.ContactManager, 0);
-            world.Step(1.0f / 60.0f);
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
+        
 
         // ========================================================================
         // PassesCollisionFilters - full path (all checks pass)

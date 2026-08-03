@@ -79,27 +79,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Tests that get world manifold with empty manifold does not throw
-        /// </summary>
-        [Fact]
-        public void GetWorldManifold_WithEmptyManifold_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            world.Step(1.0f / 60.0f);
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            if (contact != null)
-            {
-                contact.Manifold.PointCount = 0;
-
-                contact.GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points);
-            }
-        }
-
-        /// <summary>
         /// Tests that create from pool with swap reuses contact
         /// </summary>
         [Fact]

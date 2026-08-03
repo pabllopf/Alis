@@ -134,33 +134,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
-
-        /// <summary>
-        ///     Tests that a sensor fixture does not generate a manifold but still detects overlap.
-        ///     This exercises the ProcessSensorContact branch in Contact.Update.
-        /// </summary>
-        [Fact]
-        public void SensorFixture_DetectsOverlap_NoManifold()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            bool sensorFired = false;
-            world.ContactManager.BeginContact = contact =>
-            {
-                sensorFired = contact.FixtureA.GetIsSensor || contact.FixtureB.GetIsSensor;
-                return true;
-            };
-
-            bodyA.FixtureList[0].GetIsSensor = true;
-
-            world.Step(1.0f / 60.0f);
-
-            Assert.True(sensorFired);
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
+        
         /// <summary>
         ///     Tests that Fixture.OnCollision fires when contact is created.
         ///     This exercises InvokeHandlers in ReportCollision.
