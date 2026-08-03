@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+#if NET5_0_OR_GREATER 
                 return CollectionsMarshal.AsSpan(_vertices);
 #else
                 return _vertices.ToArray().AsSpan(0, _vertices.Count);
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get
             {
-#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+#if NET5_0_OR_GREATER
                 return CollectionsMarshal.AsSpan(Normals);
 #else
                 return Normals.ToArray().AsSpan(0, Normals.Count);

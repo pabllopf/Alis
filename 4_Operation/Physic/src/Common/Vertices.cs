@@ -112,7 +112,7 @@ public Vertices(IEnumerable<Vector2F> vertices)
         /// </example>
         public List<Vertices> Holes { get; set; }
 
-#if NET5_0_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+#if NET5_0_OR_GREATER 
         /// <summary>
         ///     Returns a span over the internal vertex data.
         ///     Zero-allocation access to the underlying list buffer.
