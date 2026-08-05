@@ -31,6 +31,7 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is available invoke does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsAvailable_Invoke_DoesNotThrow()
         {
             bool result = Sensor.IsAvailable(Sensor.Type.Accelerometer);
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is available invoke with gyroscope returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsAvailable_Invoke_WithGyroscope_ReturnsFalse()
         {
             bool result = Sensor.IsAvailable(Sensor.Type.Gyroscope);
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is available invoke with all types returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsAvailable_Invoke_WithAllTypes_ReturnsFalse()
         {
             foreach (Sensor.Type type in Enum.GetValues(typeof(Sensor.Type)))
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set enabled invoke does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetEnabled_Invoke_DoesNotThrow()
         {
             Sensor.SetEnabled(Sensor.Type.Accelerometer, true);
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set enabled invoke with false does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetEnabled_Invoke_WithFalse_DoesNotThrow()
         {
             Sensor.SetEnabled(Sensor.Type.Gyroscope, false);
@@ -100,7 +101,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set enabled invoke with all types does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetEnabled_Invoke_WithAllTypes_DoesNotThrow()
         {
             foreach (Sensor.Type type in Enum.GetValues(typeof(Sensor.Type)))
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get value invoke does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetValue_Invoke_DoesNotThrow()
         {
             Vector3F result = Sensor.GetValue(Sensor.Type.Accelerometer);
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get value invoke with gyroscope does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetValue_Invoke_WithGyroscope_DoesNotThrow()
         {
             Vector3F result = Sensor.GetValue(Sensor.Type.Gyroscope);
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf sensor is available dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfSensor_isAvailable_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Sensor).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf sensor set enabled dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfSensor_setEnabled_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Sensor).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -183,7 +184,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf sensor get value dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfSensor_getValue_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Sensor).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);

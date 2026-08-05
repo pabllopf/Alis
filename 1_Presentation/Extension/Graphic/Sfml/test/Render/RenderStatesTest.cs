@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor blend mode only sets blend mode
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_BlendModeOnly_SetsBlendMode()
         {
             BlendMode mode = BlendMode.Add;
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor transform only sets transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_TransformOnly_SetsTransform()
         {
             Transform transform = new Transform(2, 0, 0, 0, 2, 0, 0, 0, 1);
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor texture only sets texture
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_TextureOnly_SetsTexture()
         {
             RenderStates states = new RenderStates((Texture)null);
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor shader only sets shader
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ShaderOnly_SetsShader()
         {
             RenderStates states = new RenderStates((Shader)null);
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor full sets all properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Full_SetsAllProperties()
         {
             BlendMode mode = BlendMode.Multiply;
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy copies all properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_CopiesAllProperties()
         {
             BlendMode mode = BlendMode.None;
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that default returns expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Default_ReturnsExpectedValues()
         {
             RenderStates states = RenderStates.Default;
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that blend mode get set works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_GetSet_Works()
         {
             RenderStates states = new RenderStates(BlendMode.Alpha);
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that transform get set works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Transform_GetSet_Works()
         {
             RenderStates states = new RenderStates(Transform.Identity);
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that texture get set works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Texture_GetSet_Works()
         {
             RenderStates states = new RenderStates(BlendMode.Alpha, Transform.Identity, null, null);
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that shader get set works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Shader_GetSet_Works()
         {
             RenderStates states = new RenderStates(BlendMode.Alpha, Transform.Identity, null, null);
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that marshal with null texture and shader sets int ptr zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Marshal_WithNullTextureAndShader_SetsIntPtrZero()
         {
             RenderStates states = new RenderStates(BlendMode.Alpha, Transform.Identity, null, null);
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that marshal returns expected blend mode and transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Marshal_ReturnsExpectedBlendModeAndTransform()
         {
             BlendMode mode = BlendMode.Multiply;

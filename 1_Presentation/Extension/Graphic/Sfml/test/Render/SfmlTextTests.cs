@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default sets empty string null font size 30
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Default_SetsEmptyStringNullFontSize30()
         {
             using SfmlText text = new SfmlText();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor string and font sets displayed string and font and size 30
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_StringAndFont_SetsDisplayedStringAndFontAndSize30()
         {
             using SfmlText text = new SfmlText("Hello", null);
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor string font size sets all properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_StringFontSize_SetsAllProperties()
         {
             using SfmlText text = new SfmlText("Test", null, 42);
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy copies all properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_CopiesAllProperties()
         {
             using SfmlText original = new SfmlText("Copy", null, 20);
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that fill color get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void FillColor_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that outline color get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OutlineColor_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that outline thickness get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OutlineThickness_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that displayed string get set roundtrips
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DisplayedString_GetSet_Roundtrips()
         {
             using SfmlText text = new SfmlText();
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that displayed string get set with unicode chars
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DisplayedString_GetSet_WithUnicodeChars()
         {
             using SfmlText text = new SfmlText();
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that displayed string get set empty string
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DisplayedString_GetSet_EmptyString()
         {
             using SfmlText text = new SfmlText();
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that font get set roundtrips
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Font_GetSet_Roundtrips()
         {
             using SfmlText text = new SfmlText();
@@ -171,7 +172,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that character size get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CharacterSize_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that character size get set zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CharacterSize_GetSet_Zero()
         {
             using SfmlText text = new SfmlText();
@@ -193,7 +194,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that letter spacing get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void LetterSpacing_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -204,7 +205,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that letter spacing get set default
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void LetterSpacing_GetSet_Default()
         {
             using SfmlText text = new SfmlText();
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that line spacing get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void LineSpacing_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that line spacing get set default
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void LineSpacing_GetSet_Default()
         {
             using SfmlText text = new SfmlText();
@@ -235,7 +236,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that style get set returns expected
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Style_GetSet_ReturnsExpected()
         {
             using SfmlText text = new SfmlText();
@@ -246,7 +247,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that style get set none
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Style_GetSet_None()
         {
             using SfmlText text = new SfmlText();
@@ -257,7 +258,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that style get set all flags
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Style_GetSet_AllFlags()
         {
             using SfmlText text = new SfmlText();
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string contains all components
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ContainsAllComponents()
         {
             using SfmlText text = new SfmlText();
@@ -287,7 +288,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw with mock target does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
             using SfmlText text = new SfmlText("Draw", null);
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw updates transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_UpdatesTransform()
         {
             using SfmlText text = new SfmlText("Draw", null);
@@ -312,7 +313,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_SetsCPointerToZero()
         {
             SfmlText text = new SfmlText();
@@ -324,7 +325,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that dispose calls destroy
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CallsDestroy()
         {
             SfmlText text = new SfmlText();
@@ -335,7 +336,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default dispose does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Default_Dispose_DoesNotThrow()
         {
             SfmlText text = new SfmlText();
@@ -345,7 +346,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that position and rotation affects transform
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Position_AndRotation_AffectsTransform()
         {
             using SfmlText text = new SfmlText("Test", null);

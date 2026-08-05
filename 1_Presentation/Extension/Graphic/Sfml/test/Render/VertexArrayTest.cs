@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex array is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexArray_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(VertexArray)));
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex array implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexArray_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(VertexArray)));
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default c pointer not null
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Default_CPointerNotNull()
         {
             using VertexArray va = new VertexArray();
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor primitive type sets primitive type
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PrimitiveType_SetsPrimitiveType()
         {
             using VertexArray va = new VertexArray(PrimitiveType.Triangles);
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor primitive type c pointer not null
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PrimitiveType_CPointerNotNull()
         {
             using VertexArray va = new VertexArray(PrimitiveType.Lines);
@@ -91,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor primitive type and vertex count sets primitive type
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PrimitiveTypeAndVertexCount_SetsPrimitiveType()
         {
             using VertexArray va = new VertexArray(PrimitiveType.Quads, 4);
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor primitive type and vertex count sets vertex count
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PrimitiveTypeAndVertexCount_SetsVertexCount()
         {
             using VertexArray va = new VertexArray(PrimitiveType.Points, 3);
@@ -111,7 +112,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy copies properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_CopiesProperties()
         {
             using VertexArray original = new VertexArray(PrimitiveType.Triangles, 2);
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count default returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_Default_ReturnsZero()
         {
             using VertexArray va = new VertexArray();
@@ -134,7 +135,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count after resize returns correct count
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_AfterResize_ReturnsCorrectCount()
         {
             using VertexArray va = new VertexArray();
@@ -145,7 +146,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count after append increments count
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_AfterAppend_IncrementsCount()
         {
             using VertexArray va = new VertexArray();
@@ -156,7 +157,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type get set roundtrips
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_GetSet_Roundtrips()
         {
             using VertexArray va = new VertexArray();
@@ -167,7 +168,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type default returns points
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_Default_ReturnsPoints()
         {
             using VertexArray va = new VertexArray();
@@ -177,7 +178,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that indexer get returns vertex at position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Indexer_Get_ReturnsVertexAtPosition()
         {
             using VertexArray va = new VertexArray();
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that indexer set modifies vertex
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Indexer_Set_ModifiesVertex()
         {
             using VertexArray va = new VertexArray();
@@ -206,7 +207,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bounds empty array returns zero rect
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bounds_EmptyArray_ReturnsZeroRect()
         {
             using VertexArray va = new VertexArray();
@@ -220,7 +221,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bounds with vertices returns non empty
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bounds_WithVertices_ReturnsNonEmpty()
         {
             using VertexArray va = new VertexArray();
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that clear removes all vertices
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Clear_RemovesAllVertices()
         {
             using VertexArray va = new VertexArray();
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that resize to zero clears array
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Resize_ToZero_ClearsArray()
         {
             using VertexArray va = new VertexArray();
@@ -259,7 +260,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that resize to larger extends array
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Resize_ToLarger_ExtendsArray()
         {
             using VertexArray va = new VertexArray();
@@ -271,7 +272,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that append adds vertex at end
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Append_AddsVertexAtEnd()
         {
             using VertexArray va = new VertexArray();
@@ -285,7 +286,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw with mock target does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
             using VertexArray va = new VertexArray();
@@ -297,7 +298,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_SetsCPointerToZero()
         {
             VertexArray va = new VertexArray();
@@ -309,7 +310,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that dispose calls destroy
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CallsDestroy()
         {
             VertexArray va = new VertexArray();
@@ -320,7 +321,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default dispose does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Default_Dispose_DoesNotThrow()
         {
             VertexArray va = new VertexArray();
@@ -330,7 +331,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type all values can be set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_AllValues_CanBeSet()
         {
             using VertexArray va = new VertexArray();
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_Property_Exists()
         {
             Assert.NotNull(typeof(VertexArray).GetProperty("VertexCount"));
@@ -362,7 +363,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_Property_Exists()
         {
             var prop = typeof(VertexArray).GetProperty("PrimitiveType");
@@ -374,7 +375,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bounds property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bounds_Property_Exists()
         {
             Assert.NotNull(typeof(VertexArray).GetProperty("Bounds"));
@@ -383,7 +384,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that indexer exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Indexer_Exists()
         {
             var prop = typeof(VertexArray).GetProperty("Item");
@@ -393,7 +394,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that clear resize append methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Clear_Resize_Append_Methods_Exist()
         {
             Assert.NotNull(typeof(VertexArray).GetMethod("Clear"));

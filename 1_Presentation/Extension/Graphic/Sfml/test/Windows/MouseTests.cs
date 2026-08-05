@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed with left button returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_WithLeftButton_ReturnsBool()
         {
             bool result = Mouse.IsButtonPressed(Mouse.Button.Left);
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed with right button returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_WithRightButton_ReturnsBool()
         {
             bool result = Mouse.IsButtonPressed(Mouse.Button.Right);
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed with middle button returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_WithMiddleButton_ReturnsBool()
         {
             bool result = Mouse.IsButtonPressed(Mouse.Button.Middle);
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed with x button 1 returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_WithXButton1_ReturnsBool()
         {
             bool result = Mouse.IsButtonPressed(Mouse.Button.XButton1);
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed with x button 2 returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_WithXButton2_ReturnsBool()
         {
             bool result = Mouse.IsButtonPressed(Mouse.Button.XButton2);
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position no param returns vector 2 f
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_NoParam_ReturnsVector2F()
         {
             Vector2F position = Mouse.GetPosition();
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position with null window returns vector 2 f
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_WithNullWindow_ReturnsVector2F()
         {
             Vector2F position = Mouse.GetPosition(null);
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position with window calls internal get mouse position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_WithWindow_CallsInternalGetMousePosition()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position with window returns from window
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_WithWindow_ReturnsFromWindow()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set position with window calls internal set mouse position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetPosition_WithWindow_CallsInternalSetMousePosition()
         {
             MockMouseWindow window = new MockMouseWindow();
@@ -222,7 +223,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set position with window sets position on window
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetPosition_WithWindow_SetsPositionOnWindow()
         {
             MockMouseWindow window = new MockMouseWindow();

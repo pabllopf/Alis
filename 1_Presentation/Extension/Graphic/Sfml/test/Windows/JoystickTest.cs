@@ -29,6 +29,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -42,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that axis enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Axis_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Joystick.Axis.X);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constants are correct
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constants_AreCorrect()
         {
             Assert.Equal(8u, Joystick.Count);
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is connected invoke returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsConnected_Invoke_ReturnsFalse()
         {
             bool result = Joystick.IsConnected(0);
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is connected invoke with max joystick returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsConnected_Invoke_WithMaxJoystick_ReturnsFalse()
         {
             bool result = Joystick.IsConnected(7);
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get button count invoke returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetButtonCount_Invoke_ReturnsZero()
         {
             uint result = Joystick.GetButtonCount(0);
@@ -99,7 +100,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get button count invoke with max joystick returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetButtonCount_Invoke_WithMaxJoystick_ReturnsZero()
         {
             uint result = Joystick.GetButtonCount(7);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that has axis invoke with x returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void HasAxis_Invoke_WithX_ReturnsFalse()
         {
             bool result = Joystick.HasAxis(0, Joystick.Axis.X);
@@ -119,7 +120,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that has axis invoke with all axes returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void HasAxis_Invoke_WithAllAxes_ReturnsFalse()
         {
             foreach (Joystick.Axis axis in System.Enum.GetValues(typeof(Joystick.Axis)))
@@ -132,7 +133,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed invoke returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_Invoke_ReturnsFalse()
         {
             bool result = Joystick.IsButtonPressed(0, 0);
@@ -142,7 +143,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed invoke with max button returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_Invoke_WithMaxButton_ReturnsFalse()
         {
             bool result = Joystick.IsButtonPressed(0, 31);
@@ -152,7 +153,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get axis position invoke returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetAxisPosition_Invoke_ReturnsZero()
         {
             float result = Joystick.GetAxisPosition(0, Joystick.Axis.X);
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get axis position invoke with all axes returns zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetAxisPosition_Invoke_WithAllAxes_ReturnsZero()
         {
             foreach (Joystick.Axis axis in System.Enum.GetValues(typeof(Joystick.Axis)))
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that update invoke does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_Invoke_DoesNotThrow()
         {
             Joystick.Update();
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get identification invoke does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetIdentification_Invoke_DoesNotThrow()
         {
             Joystick.Identification result = Joystick.GetIdentification(0);
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get identification invoke returns non empty name
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetIdentification_Invoke_ReturnsNonEmptyName()
         {
             Joystick.Identification result = Joystick.GetIdentification(0);
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that identification struct has properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Identification_Struct_HasProperties()
         {
             System.Type identType = typeof(Joystick.Identification);
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that identification struct can set properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Identification_Struct_CanSetProperties()
         {
             Joystick.Identification ident = new Joystick.Identification
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick is connected dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_isConnected_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -254,7 +255,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick get button count dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_getButtonCount_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -274,7 +275,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick has axis dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_hasAxis_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -294,7 +295,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick is button pressed dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_isButtonPressed_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -314,7 +315,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick get axis position dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_getAxisPosition_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -334,7 +335,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick update dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_update_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -354,7 +355,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sf joystick get identification dll import exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfJoystick_getIdentification_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Joystick).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);

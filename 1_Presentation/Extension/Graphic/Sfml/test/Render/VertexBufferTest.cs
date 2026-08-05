@@ -30,6 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Moq;
 using Xunit;
 
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex buffer is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexBuffer_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(VertexBuffer)));
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex buffer implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexBuffer_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(VertexBuffer)));
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage specifier has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void UsageSpecifier_HasCorrectValues()
         {
             Assert.Equal(0, (int)VertexBuffer.UsageSpecifier.Stream);
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor with params c pointer not null
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithParams_CPointerNotNull()
         {
             using VertexBuffer vb = new VertexBuffer(3, PrimitiveType.Triangles, VertexBuffer.UsageSpecifier.Static);
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor with params sets primitive type
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithParams_SetsPrimitiveType()
         {
             using VertexBuffer vb = new VertexBuffer(3, PrimitiveType.Triangles, VertexBuffer.UsageSpecifier.Static);
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor with params sets usage
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithParams_SetsUsage()
         {
             using VertexBuffer vb = new VertexBuffer(3, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Stream);
@@ -102,7 +103,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor with params sets vertex count
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithParams_SetsVertexCount()
         {
             using VertexBuffer vb = new VertexBuffer(5, PrimitiveType.Lines, VertexBuffer.UsageSpecifier.Dynamic);
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy copies properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_CopiesProperties()
         {
             using VertexBuffer original = new VertexBuffer(2, PrimitiveType.Quads, VertexBuffer.UsageSpecifier.Static);
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that available static returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Available_Static_ReturnsBool()
         {
             bool available = VertexBuffer.Available;
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count returns correct value
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_ReturnsCorrectValue()
         {
             using VertexBuffer vb = new VertexBuffer(7, PrimitiveType.TriangleStrip, VertexBuffer.UsageSpecifier.Static);
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that native handle returns value
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void NativeHandle_ReturnsValue()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type get set roundtrips
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_GetSet_Roundtrips()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -168,7 +169,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type all values can be set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_AllValues_CanBeSet()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -191,7 +192,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage get set roundtrips
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Usage_GetSet_Roundtrips()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Stream);
@@ -202,7 +203,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage all values can be set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Usage_AllValues_CanBeSet()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -217,7 +218,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw with mock target does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_WithMockTarget_DoesNotThrow()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update vertex array returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_VertexArray_ReturnsBool()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update vertex array with offset returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_VertexArrayWithOffset_ReturnsBool()
         {
             using VertexBuffer vb = new VertexBuffer(2, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update vertex array with count and offset returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_VertexArrayWithCountAndOffset_ReturnsBool()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -265,7 +266,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update vertex buffer returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_VertexBuffer_ReturnsBool()
         {
             using VertexBuffer source = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -277,7 +278,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that swap exchanges contents
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Swap_ExchangesContents()
         {
             using VertexBuffer vb1 = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_SetsCPointerToZero()
         {
             VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -302,7 +303,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that dispose calls destroy
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CallsDestroy()
         {
             VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -313,7 +314,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor dispose does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Dispose_DoesNotThrow()
         {
             VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -323,7 +324,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that vertex count property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void VertexCount_Property_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetProperty("VertexCount"));
@@ -332,7 +333,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that native handle property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void NativeHandle_Property_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetProperty("NativeHandle"));
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that primitive type property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_Property_Exists()
         {
             System.Reflection.PropertyInfo prop = typeof(VertexBuffer).GetProperty("PrimitiveType");
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Usage_Property_Exists()
         {
             System.Reflection.PropertyInfo prop = typeof(VertexBuffer).GetProperty("Usage");
@@ -365,7 +366,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_Methods_Exist()
         {
             Assert.NotNull(typeof(VertexBuffer).GetMethod("Update", new System.Type[] { typeof(Vertex[]) }));
@@ -377,7 +378,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that swap method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Swap_Method_Exists()
         {
             Assert.NotNull(typeof(VertexBuffer).GetMethod("Swap"));
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that available property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Available_Property_Exists()
         {
             System.Reflection.PropertyInfo prop = typeof(VertexBuffer).GetProperty("Available");
@@ -397,7 +398,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that available returns without throwing
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Available_ReturnsWithoutThrowing()
         {
             bool available = VertexBuffer.Available;
@@ -406,7 +407,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage specifier stream value zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void UsageSpecifier_Stream_ValueZero()
         {
             Assert.Equal(0, (int)VertexBuffer.UsageSpecifier.Stream);
@@ -415,7 +416,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage specifier dynamic value one
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void UsageSpecifier_Dynamic_ValueOne()
         {
             Assert.Equal(1, (int)VertexBuffer.UsageSpecifier.Dynamic);
@@ -424,7 +425,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that usage specifier static value two
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void UsageSpecifier_Static_ValueTwo()
         {
             Assert.Equal(2, (int)VertexBuffer.UsageSpecifier.Static);
@@ -433,7 +434,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default primitive type is points
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_DefaultPrimitiveType_IsPoints()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
@@ -443,7 +444,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor default usage is static
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_DefaultUsage_IsStatic()
         {
             using VertexBuffer vb = new VertexBuffer(1, PrimitiveType.Points, VertexBuffer.UsageSpecifier.Static);
