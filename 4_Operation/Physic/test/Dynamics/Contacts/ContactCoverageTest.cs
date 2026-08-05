@@ -54,7 +54,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -70,7 +72,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateCircle(3.0f, 1.0f, new Vector2F(0.0f, -2.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -86,7 +90,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateRectangle(4.0f, 4.0f, 1.0f, new Vector2F(0.0f, -1.5f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -108,7 +114,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateChainShape(vertices, new Vector2F(0.0f, 0.0f));
             world.CreateCircle(3.0f, 1.0f, new Vector2F(0.0f, -2.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -130,7 +138,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateChainShape(vertices, new Vector2F(0.0f, 0.0f));
             world.CreateRectangle(4.0f, 4.0f, 1.0f, new Vector2F(0.0f, -1.5f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -153,7 +163,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(collisionFired);
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -177,7 +189,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return false;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(collisionFired);
         }
@@ -200,7 +214,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(collisionFired);
         }
@@ -223,7 +239,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(beginContactFired);
         }
@@ -245,13 +263,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 endContactFired = true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 
             bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-
-            world.Step(1.0f / 60.0f);
+            
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(endContactFired);
         }
@@ -271,7 +292,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             void OnPreSolve(Contact contact, ref Manifold oldManifold) => preSolveFired = true;
             world.ContactManager.PreSolve = OnPreSolve;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(preSolveFired);
         }
@@ -289,7 +312,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             for (int i = 0; i < 5; i++)
             {
-                world.Step(1.0f / 60.0f);
+                SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -309,12 +334,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bool sepFired = false;
             bodyA.OnSeparation += (_, _, _) => sepFired = true;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
 
-            world.Step(1.0f / 60.0f);
+          
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(sepFired);
         }
@@ -337,12 +366,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
 
-            world.Step(1.0f / 60.0f);
+
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(sepFired);
         }
@@ -364,7 +397,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bodyA.OnCollision += handler1;
             bodyA.OnCollision += handler2;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(2, fireCount);
         }
@@ -386,7 +421,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bodyA.OnCollision += handler1;
             bodyA.OnCollision += handler2;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             // Both handlers fire regardless of return values
             Assert.Equal(2, fireCount);
@@ -404,7 +441,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Contact contact = world.ContactManager.ContactList.Next;
             Assert.NotNull(contact);
@@ -434,13 +473,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             // Both bodies are now inactive (moved far apart or disabled)
             bodyA.Awake = false;
             bodyB.Awake = false;
-
-            world.Step(1.0f / 60.0f);
+            
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(beginFired);
         }
@@ -464,7 +506,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -483,19 +527,24 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 
             // Separate bodies to destroy contacts (populate pool)
             bodyA.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(200.0f, 200.0f), 0.0f);
-            world.Step(1.0f / 60.0f);
+
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             Assert.Equal(0, world.ContactManager.ContactCount);
 
             // Bring back together (will reuse from pool)
             bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(0.5f, 0.0f), 0.0f);
-            world.Step(1.0f / 60.0f);
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -522,7 +571,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return true;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(beginFired);
         }
@@ -541,7 +592,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, -0.5f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -560,7 +613,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -621,7 +676,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Contact contact = world.ContactManager.ContactList.Next;
             if (contact != null && contact.Manifold.PointCount > 0)
@@ -644,12 +701,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bool sepFired = false;
             world.ContactManager.EndContact = contact => sepFired = true;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-
-            world.Step(1.0f / 60.0f);
+            
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(sepFired);
         }
@@ -684,12 +744,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             int endCount = 0;
             world.ContactManager.EndContact = contact => endCount++;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
             bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-
-            world.Step(1.0f / 60.0f);
+            
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(endCount > 0);
         }
@@ -705,17 +768,23 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             Body dynamicBody = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 
             dynamicBody.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
 
-            world.Step(1.0f / 60.0f);
+
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             Assert.Equal(0, world.ContactManager.ContactCount);
 
             dynamicBody.SetTransform(new Vector2F(0.0f, -1.0f), 0.0f);
 
-            world.Step(1.0f / 60.0f);
+
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount >= 0);
         }
@@ -732,7 +801,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             world.ContactManager.PreSolve = null;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
@@ -752,7 +823,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 return false;
             };
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             if (world.ContactManager.ContactList.Next != null)
             {
@@ -787,7 +860,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             bodyA.FixtureList[0].GetIsSensor = true;
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Contact contact = world.ContactManager.ContactList.Next;
             if (contact != null)

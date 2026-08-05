@@ -111,7 +111,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.MaxTorque = 5.0f;
             world.Add(joint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;
@@ -171,7 +173,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.MaxForce = 0.1f;
             world.Add(joint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;
@@ -228,7 +232,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.MaxTorque = 0.0f;
             world.Add(joint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;

@@ -550,7 +550,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -579,7 +581,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -608,7 +612,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -637,7 +643,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -666,7 +674,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -695,7 +705,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
         }
@@ -726,7 +738,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                world.Step(1.0f / 60.0f);
+                SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(gearJoint);
@@ -758,7 +772,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                world.Step(1.0f / 60.0f);
+                SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(gearJoint);
@@ -788,7 +804,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Vector2F force = gearJoint.GetReactionForce(1.0f);
             Assert.NotNull(gearJoint);
@@ -818,7 +836,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             float torque = gearJoint.GetReactionTorque(1.0f);
             Assert.NotNull(gearJoint);

@@ -505,7 +505,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyB = world.CreateBody(new Vector2F(3.0f, 0.0f), 0.0f, BodyType.Dynamic);
             bodyB.CreateCircle(5.0f, 1.0f);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             fixtureA2.GetCollisionGroup = -1;
 

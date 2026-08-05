@@ -80,7 +80,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F start = body.Position;
 
             body.ApplyForce(new Vector2F(20.0f, 0.0f));
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(body.Position.X > start.X);
         }
@@ -331,7 +333,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             body.ApplyTorque(10.0f);
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotEqual(0.0f, body.AngularVelocity);
         }
@@ -347,7 +351,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             body.ApplyAngularImpulse(5.0f);
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotEqual(0.0f, body.AngularVelocity);
         }

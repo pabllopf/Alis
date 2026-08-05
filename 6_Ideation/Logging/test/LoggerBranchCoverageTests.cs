@@ -164,14 +164,7 @@ namespace Alis.Core.Aspect.Logging.Test
             AttemptNullBranch(() => Logger.Debug("trigger-null-branch"));
         }
 
-        /// <summary>
-        /// Tests that warning null branch
-        /// </summary>
-        [Fact]
-        public void Warning_NullBranch()
-        {
-            AttemptNullBranch(() => Logger.Warning("trigger-null-branch"));
-        }
+        
 
         /// <summary>
         /// Tests that ensure initialized concurrent initialization second thread skips

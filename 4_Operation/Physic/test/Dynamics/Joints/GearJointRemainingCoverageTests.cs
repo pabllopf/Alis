@@ -66,7 +66,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            world.Step(1.0f / 60.0f);
+            SolverIterations iterations = new SolverIterations();
+            iterations.PositionIterations = 10;
+            world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyB.GetIslandIndex;
             int indexB = bodyD.GetIslandIndex;
