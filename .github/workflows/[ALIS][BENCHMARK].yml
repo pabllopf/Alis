@@ -23,14 +23,14 @@ jobs:
     runs-on: macos-13
     steps:
       - name: Check
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           ref: master
           fetch: 0
 
 
       - name: setup
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: |
             3.0.103

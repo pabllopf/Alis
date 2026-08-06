@@ -1,4 +1,4 @@
-name: "[ALIS][CORE][ECS][SONARCLOUD]"
+name: "[ALIS][SONARCLOUD]"
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
   pull_request:
     types: [ opened, synchronize, reopened ]
-
+  
 jobs:
   build-and-analyze:
     permissions:
@@ -22,7 +22,7 @@ jobs:
       repository-projects: write
       security-events: write
       statuses: write
-    if: contains(github.event.head_commit.message, 'scan:')
+    if: contains(github.event.head_commit.message, 'fix:')
     runs-on: macos-15-intel
 
     steps:
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-
+        
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
@@ -41,7 +41,7 @@ jobs:
           dotnet tool install --global coverlet.console --version 6.0.4
           dotnet tool install --global dotnet-sonarscanner --version 8.0.2
           
-          dotnet sonarscanner begin /k:"pabllopf-official_alis-core-ecs" /o:"pabllopf-official" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ECS }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
-          dotnet build -c Debug -f net8.0 ./4_Operation/Ecs/src/Alis.Core.Ecs.csproj
-          dotnet test -f net8.0 -c Debug ./4_Operation/Ecs/test/Alis.Core.Ecs.Test.csproj --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
-          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN_ALIS_CORE_ECS }}"
+          dotnet sonarscanner begin /k:"${{ secrets.SONAR_PROJECT_KEY }}" /o:"${{ secrets.SONAR_ORGANIZATION }}" /d:sonar.scanner.scanAll=false /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.scanner.skipJreProvisioning=false /d:sonar.language=cs /d:sonar.dotnet.version=8.0 /d:sonar.verbose=false /d:sonar.cs.opencover.reportsPaths="./.test/**/*.opencover.xml"
+          dotnet build -c Debug --verbosity quiet -f net8.0 ./alis_design.slnx
+          dotnet test --no-build -m:4 --verbosity quiet -f net8.0 -c Debug ./alis_design.slnx --collect "XPlat Code Coverage;Format=opencover" --results-directory ./.test
+          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
