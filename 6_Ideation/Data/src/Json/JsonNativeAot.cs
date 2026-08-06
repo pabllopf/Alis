@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Data.Json.Serialization;
 
 namespace Alis.Core.Aspect.Data.Json
 {
-    
     /// <summary>
     ///     Provides a static facade for JSON serialization, deserialization, parsing, and file I/O
     ///     operations. This class is designed to be AOT-compatible by avoiding runtime code generation
