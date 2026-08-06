@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Logging.Formatters;
 namespace Alis.Core.Aspect.Logging
 {
 
-
     /// <summary>
     ///     Factory for creating and configuring logger instances.
     ///     Uses a fluent builder pattern for configuration.
