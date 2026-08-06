@@ -40,26 +40,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
     public class VulkanTests
     {
         /// <summary>
-        ///     Vulkans the is supported returns bool
-        /// </summary>
-        [RequiresDisplay]
-        public void Vulkan_IsSupported_ReturnsBool()
-        {
-            bool isSupported = Vulkan.IsSupported;
-
-            Assert.True(isSupported || !isSupported);
-        }
-
-        /// <summary>
-        ///     Vulkans the is supported does not throw
-        /// </summary>
-        [RequiresDisplay]
-        public void Vulkan_IsSupported_DoesNotThrow()
-        {
-            _ = Vulkan.IsSupported;
-        }
-
-        /// <summary>
         ///     Vulkans the is supported no display does not throw
         /// </summary>
         [Fact]
