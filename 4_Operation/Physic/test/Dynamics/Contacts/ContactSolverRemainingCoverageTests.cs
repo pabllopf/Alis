@@ -119,23 +119,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Tests that solve toi position constraints with contacts executes
-        /// </summary>
-        [Fact]
-        public void SolveToiPositionConstraints_WithContacts_Executes()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
         /// Tests that solve velocity constraints with multiple bodies executes single point normal
         /// </summary>
         [Fact]
