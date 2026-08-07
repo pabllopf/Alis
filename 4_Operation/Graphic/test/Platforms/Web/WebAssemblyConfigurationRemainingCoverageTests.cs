@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with config with icon path throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithConfigWithIconPath_ThrowsInvalidOperationException()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration
@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with config with size throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithConfigWithSize_ThrowsInvalidOperationException()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration
@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with config with fullscreen throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithConfigWithFullscreen_ThrowsInvalidOperationException()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with config with pointer lock throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithConfigWithPointerLock_ThrowsInvalidOperationException()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfiguration
@@ -122,7 +122,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with action valid action throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithAction_ValidAction_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with action chained full config throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithAction_ChainedFullConfig_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -166,7 +166,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for game development throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForGameDevelopment_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for game development with custom size throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForGameDevelopment_WithCustomSize_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -190,7 +190,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for low end device throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForLowEndDevice_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -200,7 +200,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for low end device with custom size throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForLowEndDevice_WithCustomSize_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -214,7 +214,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for high end device throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForHighEndDevice_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(
@@ -224,7 +224,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create for high end device with custom size throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateForHighEndDevice_WithCustomSize_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(

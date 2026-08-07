@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register mouse callbacks does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterMouseCallbacks_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -79,7 +79,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register gamepad callbacks does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterGamepadCallbacks_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -94,7 +94,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register window callbacks does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterWindowCallbacks_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepads returns empty array on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetConnectedGamepads_ReturnsEmptyArrayOnNativeFailure()
         {
             int[] result = EmscriptenWeb.GetConnectedGamepads();
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad axes returns empty array on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadAxes_ReturnsEmptyArrayOnNativeFailure()
         {
             float[] result = EmscriptenWeb.GetGamepadAxes(0);
@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad buttons returns empty array on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadButtons_ReturnsEmptyArrayOnNativeFailure()
         {
             bool[] result = EmscriptenWeb.GetGamepadButtons(0);
@@ -154,7 +154,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show canvas does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowCanvas_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ShowCanvas());
@@ -168,7 +168,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that hide canvas does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void HideCanvas_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.HideCanvas());
@@ -182,7 +182,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window title does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetWindowTitle_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle("Test Title"));
@@ -192,7 +192,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window title null title does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetWindowTitle_NullTitle_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowTitle(null));
@@ -206,7 +206,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set canvas size does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetCanvasSize_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetCanvasSize(800, 600));
@@ -216,7 +216,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set canvas size zero dimensions does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetCanvasSize_ZeroDimensions_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetCanvasSize(0, 0));
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set canvas size negative dimensions does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetCanvasSize_NegativeDimensions_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetCanvasSize(-1, -1));
@@ -240,7 +240,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetWindowIcon_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon("/icon.png"));
@@ -250,7 +250,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon null path does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetWindowIcon_NullPath_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon(null));
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that set window icon empty path does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SetWindowIcon_EmptyPath_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.SetWindowIcon(string.Empty));
@@ -274,7 +274,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window position x returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetWindowPositionX_ReturnsDefaultOnNativeFailure()
         {
             int result = EmscriptenWeb.GetWindowPositionX();
@@ -288,7 +288,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window position y returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetWindowPositionY_ReturnsDefaultOnNativeFailure()
         {
             int result = EmscriptenWeb.GetWindowPositionY();
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get device pixel ratio returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetDevicePixelRatio_ReturnsDefaultOnNativeFailure()
         {
             float result = EmscriptenWeb.GetDevicePixelRatio();
@@ -316,7 +316,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that request fullscreen returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RequestFullscreen_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.RequestFullscreen();
@@ -330,7 +330,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that exit fullscreen returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ExitFullscreen_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.ExitFullscreen();
@@ -344,7 +344,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is fullscreen enabled returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsFullscreenEnabled_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.IsFullscreenEnabled();
@@ -358,7 +358,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that lock pointer returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void LockPointer_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.LockPointer();
@@ -372,7 +372,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that unlock pointer returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void UnlockPointer_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.UnlockPointer();
@@ -386,7 +386,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is pointer locked returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsPointerLocked_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.IsPointerLocked();
@@ -400,7 +400,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.VibrateGamepad(0, 0.5f, 0.5f, 100.0f);
@@ -410,7 +410,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad negative index returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_NegativeIndex_ReturnsFalse()
         {
             bool result = EmscriptenWeb.VibrateGamepad(-1, 1.0f, 1.0f, 50.0f);
@@ -420,7 +420,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad zero duration returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_ZeroDuration_ReturnsFalse()
         {
             bool result = EmscriptenWeb.VibrateGamepad(0, 0.0f, 0.0f, 0.0f);
@@ -434,7 +434,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get system time ms returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetSystemTimeMs_ReturnsDefaultOnNativeFailure()
         {
             double result = EmscriptenWeb.GetSystemTimeMs();
@@ -448,7 +448,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog default mime returns null on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_DefaultMime_ReturnsNullOnNativeFailure()
         {
             string result = EmscriptenWeb.OpenFileDialog();
@@ -458,7 +458,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog custom mime returns null on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_CustomMime_ReturnsNullOnNativeFailure()
         {
             string result = EmscriptenWeb.OpenFileDialog("image/png,image/jpeg");
@@ -468,7 +468,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog null mime returns null on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_NullMime_ReturnsNullOnNativeFailure()
         {
             string result = EmscriptenWeb.OpenFileDialog(null);
@@ -478,7 +478,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog empty mime returns null on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_EmptyMime_ReturnsNullOnNativeFailure()
         {
             string result = EmscriptenWeb.OpenFileDialog(string.Empty);
@@ -492,7 +492,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that save file returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SaveFile_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.SaveFile("test.txt", Array.Empty<byte>(), 0);
@@ -502,7 +502,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that save file with data returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SaveFile_WithData_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.SaveFile("test.bin", new byte[] { 0x01, 0x02, 0x03 }, 3);
@@ -512,7 +512,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that save file null filename returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SaveFile_NullFilename_ReturnsFalse()
         {
             bool result = EmscriptenWeb.SaveFile(null, Array.Empty<byte>(), 0);
@@ -522,7 +522,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that save file null data returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SaveFile_NullData_ReturnsFalse()
         {
             bool result = EmscriptenWeb.SaveFile("file.dat", null, 0);
@@ -536,7 +536,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that copy to clipboard returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CopyToClipboard_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.CopyToClipboard("test text");
@@ -546,7 +546,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that copy to clipboard null text returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CopyToClipboard_NullText_ReturnsFalse()
         {
             bool result = EmscriptenWeb.CopyToClipboard(null);
@@ -556,7 +556,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that copy to clipboard empty text returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CopyToClipboard_EmptyText_ReturnsFalse()
         {
             bool result = EmscriptenWeb.CopyToClipboard(string.Empty);
@@ -570,7 +570,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that paste from clipboard returns null on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void PasteFromClipboard_ReturnsNullOnNativeFailure()
         {
             string result = EmscriptenWeb.PasteFromClipboard();
@@ -584,7 +584,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert("Alert message"));
@@ -594,7 +594,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert null message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_NullMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert(null));
@@ -604,7 +604,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert empty message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_EmptyMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ShowAlert(string.Empty));
@@ -618,7 +618,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.ShowConfirm("Confirm?");
@@ -628,7 +628,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm null message returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_NullMessage_ReturnsFalse()
         {
             bool result = EmscriptenWeb.ShowConfirm(null);
@@ -638,7 +638,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm empty message returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_EmptyMessage_ReturnsFalse()
         {
             bool result = EmscriptenWeb.ShowConfirm(string.Empty);
@@ -652,7 +652,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get language returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetLanguage_ReturnsDefaultOnNativeFailure()
         {
             string result = EmscriptenWeb.GetLanguage();
@@ -666,7 +666,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is online returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsOnline_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.IsOnline();
@@ -680,7 +680,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get battery level returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBatteryLevel_ReturnsDefaultOnNativeFailure()
         {
             float result = EmscriptenWeb.GetBatteryLevel();
@@ -694,7 +694,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is charging returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsCharging_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.IsCharging();
@@ -708,7 +708,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get orientation returns default on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetOrientation_ReturnsDefaultOnNativeFailure()
         {
             int result = EmscriptenWeb.GetOrientation();
@@ -722,7 +722,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that request camera permission returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RequestCameraPermission_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.RequestCameraPermission();
@@ -736,7 +736,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that request microphone permission returns false on native failure
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RequestMicrophonePermission_ReturnsFalseOnNativeFailure()
         {
             bool result = EmscriptenWeb.RequestMicrophonePermission();
@@ -750,7 +750,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog("log message"));
@@ -760,7 +760,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log null message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_NullMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog(null));
@@ -774,7 +774,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console warn does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleWarn_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn("warn message"));
@@ -784,7 +784,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console warn null message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleWarn_NullMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn(null));
@@ -798,7 +798,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console error does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleError_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError("error message"));
@@ -808,7 +808,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console error null message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleError_NullMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError(null));
@@ -822,7 +822,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register keyboard callbacks all non default int ptr does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterKeyboardCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -838,7 +838,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register mouse callbacks all non default int ptr does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterMouseCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -854,7 +854,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register gamepad callbacks all non default int ptr does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterGamepadCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -869,7 +869,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that register window callbacks all non default int ptr does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void RegisterWindowCallbacks_AllNonDefaultIntPtr_DoesNotThrow()
         {
             Exception ex = Record.Exception(() =>
@@ -885,7 +885,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad axes multiple indices all return empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadAxes_MultipleIndices_AllReturnEmpty()
         {
             for (int i = 0; i < 4; i++)
@@ -899,7 +899,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad axes negative index returns empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadAxes_NegativeIndex_ReturnsEmpty()
         {
             float[] result = EmscriptenWeb.GetGamepadAxes(-1);
@@ -914,7 +914,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad buttons multiple indices all return empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadButtons_MultipleIndices_AllReturnEmpty()
         {
             for (int i = 0; i < 4; i++)
@@ -928,7 +928,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get gamepad buttons negative index returns empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetGamepadButtons_NegativeIndex_ReturnsEmpty()
         {
             bool[] result = EmscriptenWeb.GetGamepadButtons(-1);
@@ -943,7 +943,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepads called multiple times returns empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetConnectedGamepads_CalledMultipleTimes_ReturnsEmpty()
         {
             for (int i = 0; i < 3; i++)
@@ -961,7 +961,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get system time ms called multiple times returns zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetSystemTimeMs_CalledMultipleTimes_ReturnsZero()
         {
             for (int i = 0; i < 3; i++)
@@ -978,7 +978,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get window position called multiple times returns zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetWindowPosition_CalledMultipleTimes_ReturnsZero()
         {
             for (int i = 0; i < 3; i++)
@@ -995,7 +995,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog all mime types returns null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_AllMimeTypes_ReturnsNull()
         {
             string result = EmscriptenWeb.OpenFileDialog("*/*");
@@ -1005,7 +1005,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that open file dialog called multiple times returns null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OpenFileDialog_CalledMultipleTimes_ReturnsNull()
         {
             for (int i = 0; i < 3; i++)
@@ -1021,7 +1021,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that paste from clipboard called multiple times returns null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void PasteFromClipboard_CalledMultipleTimes_ReturnsNull()
         {
             for (int i = 0; i < 3; i++)
@@ -1037,7 +1037,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get language called multiple times returns default
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetLanguage_CalledMultipleTimes_ReturnsDefault()
         {
             for (int i = 0; i < 3; i++)
@@ -1053,7 +1053,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that save file large data array returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void SaveFile_LargeDataArray_ReturnsFalse()
         {
             byte[] data = new byte[1024 * 1024];
@@ -1068,7 +1068,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm long message returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_LongMessage_ReturnsFalse()
         {
             string longMsg = new string('A', 1000);
@@ -1083,7 +1083,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad max values returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_MaxValues_ReturnsFalse()
         {
             bool result = EmscriptenWeb.VibrateGamepad(10, float.MaxValue, float.MaxValue, float.MaxValue);
@@ -1097,7 +1097,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log empty message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_EmptyMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleLog(string.Empty));
@@ -1107,7 +1107,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console warn empty message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleWarn_EmptyMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleWarn(string.Empty));
@@ -1117,7 +1117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console error empty message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleError_EmptyMessage_DoesNotThrow()
         {
             Exception ex = Record.Exception(() => EmscriptenWeb.ConsoleError(string.Empty));
@@ -1131,7 +1131,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert very long message does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_VeryLongMessage_DoesNotThrow()
         {
             string longMsg = new string('B', 5000);

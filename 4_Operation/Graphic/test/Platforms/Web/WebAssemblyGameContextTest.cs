@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that constructor with config throws on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Constructor_WithConfig_ThrowsOnNonWebAssembly()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => new WebAssemblyGameContext(new WebAssemblyConfiguration()));
@@ -61,7 +61,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that default constructor throws on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DefaultConstructor_ThrowsOnNonWebAssembly()
         {
             Assert.Throws<InvalidOperationException>(() => new WebAssemblyGameContext());
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with width height title throws on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithWidthHeightTitle_ThrowsOnNonWebAssembly()
         {
             InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => WebAssemblyGameContext.Create(800, 600, "Test"));
@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with null configure throws null reference exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithNullConfigure_ThrowsNullReferenceException()
         {
             Assert.Throws<NullReferenceException>(() => WebAssemblyGameContext.Create((Action<WebAssemblyConfigurationBuilder>)null));
@@ -89,7 +89,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create with configure throws on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Create_WithConfigure_ThrowsOnNonWebAssembly()
         {
             Assert.Throws<InvalidOperationException>(() => WebAssemblyGameContext.Create(b => b.WithTitle("Test")));
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleLog("test log");
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console warn does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleWarn_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleWarn("test warn");
@@ -119,7 +119,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console error does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleError_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleError("test error");
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_DoesNotThrow()
         {
             WebAssemblyGameContext.ShowAlert("test alert");
@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
@@ -149,7 +149,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is fullscreen returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsFullscreen_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.IsFullscreen());
@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that lock pointer unlock pointer is pointer locked return false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void LockPointer_UnlockPointer_IsPointerLocked_ReturnFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.LockPointer());
@@ -169,7 +169,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get device language returns non null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetDeviceLanguage_ReturnsNonNull()
         {
             string lang = WebAssemblyGameContext.GetDeviceLanguage();
@@ -179,7 +179,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get battery level returns default
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBatteryLevel_ReturnsDefault()
         {
             float level = WebAssemblyGameContext.GetBatteryLevel();
@@ -189,7 +189,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is charging returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsCharging_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.IsCharging());
@@ -198,7 +198,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is online returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsOnline_ReturnsFalse()
         {
             Assert.False(WebAssemblyGameContext.IsOnline());
@@ -207,7 +207,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get refresh rate returns sixty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRefreshRate_ReturnsSixty()
         {
             Assert.Equal(60, WebAssemblyGameContext.GetRefreshRate());
@@ -216,7 +216,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.VibrateGamepad(0));
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log warn error static methods do not throw with various inputs
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_Warn_Error_StaticMethods_DoNotThrow_WithVariousInputs()
         {
             WebAssemblyGameContext.ConsoleLog(string.Empty);
@@ -240,7 +240,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert show confirm do not throw with various inputs
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_ShowConfirm_DoNotThrow_WithVariousInputs()
         {
             WebAssemblyGameContext.ShowAlert(string.Empty);

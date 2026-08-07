@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager register key binding multiple keys works
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_RegisterKeyBinding_MultipleKeys_Works()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager register key binding same action twice adds keys
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_RegisterKeyBinding_SameActionTwice_AddsKeys()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager clear key binding removes action
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_ClearKeyBinding_RemovesAction()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -97,7 +97,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager clear key binding non existent does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_ClearKeyBinding_NonExistent_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action active non existent action returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionActive_NonExistentAction_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -119,7 +119,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action active with pressed key returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionActive_WithPressedKey_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -132,7 +132,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action active after key up returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionActive_AfterKeyUp_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action just pressed no keys in queue returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionJustPressed_NoKeysInQueue_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -158,7 +158,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action just pressed matching key returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionJustPressed_MatchingKey_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -171,7 +171,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action just pressed non matching key returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionJustPressed_NonMatchingKey_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action just pressed consumes key from queue
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionJustPressed_ConsumesKeyFromQueue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -198,7 +198,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is action just pressed non existent action returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsActionJustPressed_NonExistentAction_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -211,7 +211,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager get mouse position returns default coords
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_GetMousePosition_ReturnsDefaultCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -224,7 +224,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager get mouse position after move returns new coords
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_GetMousePosition_AfterMove_ReturnsNewCoords()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -238,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager get mouse wheel delta default returns zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_GetMouseWheelDelta_Default_ReturnsZero()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -249,7 +249,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager get mouse wheel delta after wheel returns delta
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_GetMouseWheelDelta_AfterWheel_ReturnsDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -262,7 +262,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is mouse button down default returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsMouseButtonDown_Default_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -273,7 +273,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is mouse button down after click returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsMouseButtonDown_AfterClick_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -285,7 +285,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is mouse button down right button
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsMouseButtonDown_RightButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -298,7 +298,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is mouse button down invalid button returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsMouseButtonDown_InvalidButton_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -310,7 +310,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is mouse button down after mouse up returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsMouseButtonDown_AfterMouseUp_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -325,7 +325,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager get connected gamepad indices empty returns empty
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_GetConnectedGamepadIndices_Empty_ReturnsEmpty()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -338,7 +338,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager try get gamepad state no gamepad returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_TryGetGamepadState_NoGamepad_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -351,7 +351,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is gamepad button just pressed no gamepad returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsGamepadButtonJustPressed_NoGamepad_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -362,7 +362,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager is gamepad button just released no gamepad returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_IsGamepadButtonJustReleased_NoGamepad_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -375,7 +375,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager update does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_Update_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -386,7 +386,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager update multiple times does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_Update_MultipleTimes_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -399,7 +399,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager update does not reset wheel delta
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_Update_DoesNotResetWheelDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -414,7 +414,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager vibrate gamepad returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -427,7 +427,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager constructor null platform throws
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_Constructor_NullPlatform_Throws()
         {
             Assert.Throws<ArgumentNullException>(() =>
@@ -439,7 +439,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding default has no keys
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_Default_HasNoKeys()
         {
             KeyBinding binding = new KeyBinding();
@@ -449,7 +449,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding add key adds key
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_AddKey_AddsKey()
         {
             KeyBinding binding = new KeyBinding();
@@ -460,7 +460,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding add key duplicate key does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_AddKey_DuplicateKey_DoesNotThrow()
         {
             KeyBinding binding = new KeyBinding();
@@ -472,7 +472,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding remove key removes key
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_RemoveKey_RemovesKey()
         {
             KeyBinding binding = new KeyBinding();
@@ -484,7 +484,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding remove key non existent does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_RemoveKey_NonExistent_DoesNotThrow()
         {
             KeyBinding binding = new KeyBinding();
@@ -495,7 +495,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding clear removes all keys
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_Clear_RemovesAllKeys()
         {
             KeyBinding binding = new KeyBinding();
@@ -511,7 +511,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding multiple keys all detected
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_MultipleKeys_AllDetected()
         {
             KeyBinding binding = new KeyBinding();
@@ -527,7 +527,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context constructor creates instance
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_Constructor_CreatesInstance()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -540,7 +540,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context constructor null platform throws
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_Constructor_NullPlatform_Throws()
         {
             Assert.Throws<ArgumentNullException>(() =>
@@ -550,7 +550,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context try get text input empty returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_TryGetTextInput_Empty_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -563,7 +563,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context try get text input with input returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_TryGetTextInput_WithInput_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -577,7 +577,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context update does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_Update_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -588,7 +588,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context lock pointer returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_LockPointer_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.LockPointer());
@@ -597,7 +597,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context unlock pointer returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_UnlockPointer_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.UnlockPointer());
@@ -606,7 +606,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context is pointer locked returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_IsPointerLocked_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.IsPointerLocked());
@@ -615,7 +615,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context request fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_RequestFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.RequestFullscreen());
@@ -624,7 +624,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context exit fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.ExitFullscreen());
@@ -633,7 +633,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input context is fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputContext_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputContext.IsFullscreen());
@@ -644,7 +644,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that touch point default is active and begin
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void TouchPoint_Default_IsActiveAndBegin()
         {
             TouchPoint touch = new TouchPoint();
@@ -655,7 +655,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that touch point set properties works
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void TouchPoint_SetProperties_Works()
         {
             TouchPoint touch = new TouchPoint
@@ -765,7 +765,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that web assembly input manager get key name unknown key returns unknown
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void WebAssemblyInputManager_GetKeyName_UnknownKey_ReturnsUnknown()
         {
             string name = WebAssemblyInputManager.GetKeyName(ConsoleKey.NoName);

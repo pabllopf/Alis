@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale low returns point 75
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRenderingScale_Low_ReturnsPoint75()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale medium returns point 875
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRenderingScale_Medium_ReturnsPoint875()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale high returns one
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRenderingScale_High_ReturnsOne()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale very high returns one point 25
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRenderingScale_VeryHigh_ReturnsOnePoint25()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get rendering scale ultra returns one point 5
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetRenderingScale_Ultra_ReturnsOnePoint5()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();

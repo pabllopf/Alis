@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game 3 d returns configuration with correct defaults
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Game3D_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game3D();
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that puzzle game returns configuration with correct defaults
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void PuzzleGame_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.PuzzleGame();
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that mobile game returns configuration with correct defaults
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void MobileGame_ReturnsConfigurationWithCorrectDefaults()
         {
             WebAssemblyConfiguration config = GameContextPresets.MobileGame();
@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that constructor null configuration throws argument null exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Constructor_NullConfiguration_ThrowsArgumentNullException()
         {
             Assert.Throws<ArgumentNullException>(() => new WebAssemblyGameContext(null));

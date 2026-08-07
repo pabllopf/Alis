@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad input example skipped on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadInputExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display management example skipped on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManagementExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that fps game example skipped on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void FpsGameExample_SkippedOnNonBrowser()
         {
             Assert.True(true);
@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils apply deadzone within deadzone zeroes output
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_ApplyDeadzone_WithinDeadzone_ZeroesOutput()
         {
             float x = 0.1f;
@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils apply deadzone outside deadzone normalizes
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_ApplyDeadzone_OutsideDeadzone_Normalizes()
         {
             float x = 0.5f;
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils apply deadzone zero input stays zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_ApplyDeadzone_ZeroInput_StaysZero()
         {
             float x = 0;
@@ -121,7 +121,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils apply deadzone custom deadzone works
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_ApplyDeadzone_CustomDeadzone_Works()
         {
             float x = 0.3f;
@@ -134,7 +134,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils apply deadzone at deadzone boundary zeroes output
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_ApplyDeadzone_AtDeadzoneBoundary_ZeroesOutput()
         {
             float x = 0.15f;
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils normalize input within bounds no change
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_NormalizeInput_WithinBounds_NoChange()
         {
             float x = 0.3f;
@@ -160,7 +160,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils normalize input exceeds bounds normalizes
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_NormalizeInput_ExceedsBounds_Normalizes()
         {
             float x = 2.0f;
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils normalize input zero input no change
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_NormalizeInput_ZeroInput_NoChange()
         {
             float x = 0;
@@ -213,7 +213,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game development utils get key name delegates to input manager
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameDevelopmentUtils_GetKeyName_DelegatesToInputManager()
         {
             Assert.Equal("A", GameDevelopmentUtils.GetKeyName(ConsoleKey.A));

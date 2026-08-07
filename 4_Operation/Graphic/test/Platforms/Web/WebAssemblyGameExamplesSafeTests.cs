@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that ApplyDeadzone applies scaling for values above the deadzone.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ApplyDeadzone_AboveDeadzone_AppliesScaling()
         {
             float x = 0.5f;
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that NormalizeInput normalizes when magnitude exceeds 1.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void NormalizeInput_MagnitudeAboveOne_Normalizes()
         {
             float x = 2.0f;
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that NormalizeInput keeps values unchanged when magnitude is <= 1.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void NormalizeInput_MagnitudeBelowOrEqualOne_KeepsValues()
         {
             float x = 0.3f;
@@ -120,7 +120,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetKeyName returns a non-null, non-empty string for any ConsoleKey.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetKeyName_ReturnsString()
         {
             string name = GameDevelopmentUtils.GetKeyName(ConsoleKey.A);
@@ -131,7 +131,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GetKeyName returns correct known names.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetKeyName_ReturnsCorrectName()
         {
             Assert.Equal("A", GameDevelopmentUtils.GetKeyName(ConsoleKey.A));

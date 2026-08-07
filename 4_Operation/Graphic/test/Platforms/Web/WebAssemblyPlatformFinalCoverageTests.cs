@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet c maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetC_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet d maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetD_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet e maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetE_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet f maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetF_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet g maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetG_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -109,7 +109,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet h maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetH_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -120,7 +120,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet i maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetI_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -131,7 +131,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet j maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetJ_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -142,7 +142,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet k maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetK_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -153,7 +153,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet l maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetL_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -164,7 +164,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet m maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetM_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -175,7 +175,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet n maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetN_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet o maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetO_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -197,7 +197,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet p maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetP_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -208,7 +208,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet q maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetQ_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -219,7 +219,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet r maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetR_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -230,7 +230,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet s maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetS_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -241,7 +241,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet t maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetT_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -252,7 +252,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet u maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetU_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -263,7 +263,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet v maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetV_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -274,7 +274,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet w maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetW_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -285,7 +285,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet x maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetX_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -296,7 +296,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code alphabet y maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_AlphabetY_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -307,7 +307,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 1 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number1_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -318,7 +318,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 2 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number2_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -329,7 +329,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 3 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number3_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -340,7 +340,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 4 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number4_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -351,7 +351,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 5 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number5_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -362,7 +362,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 6 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number6_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -373,7 +373,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 7 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number7_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -384,7 +384,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code number 8 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Number8_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -395,7 +395,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 2 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF2_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -406,7 +406,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 3 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF3_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -417,7 +417,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 4 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF4_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -428,7 +428,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 5 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF5_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -439,7 +439,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 6 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF6_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -450,7 +450,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 7 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF7_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -461,7 +461,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 8 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF8_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -472,7 +472,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 9 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF9_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -483,7 +483,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 10 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF10_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -494,7 +494,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code function key f 11 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_FunctionKeyF11_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -505,7 +505,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 1 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad1_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -516,7 +516,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 2 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad2_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -527,7 +527,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 3 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad3_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -538,7 +538,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 4 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad4_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -549,7 +549,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 5 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad5_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -560,7 +560,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 6 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad6_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -571,7 +571,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 7 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad7_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -582,7 +582,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that convert key code numpad 8 maps correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConvertKeyCode_Numpad8_MapsCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -593,7 +593,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse down valid button sets button
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseDown_ValidButton_SetsButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -607,7 +607,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse down valid button 4 sets button
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseDown_ValidButton4_SetsButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -619,7 +619,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse up valid button clears button
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseUp_ValidButton_ClearsButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -634,7 +634,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse up valid button 4 clears button
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseUp_ValidButton4_ClearsButton()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -647,7 +647,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse down valid buttons all set correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseDown_ValidButtons_AllSetCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -665,7 +665,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on mouse up valid buttons all cleared correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnMouseUp_ValidButtons_AllClearedCorrectly()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -687,7 +687,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left stick x default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftStickX_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -697,7 +697,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left stick x can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftStickX_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -708,7 +708,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left stick y default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftStickY_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -718,7 +718,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left stick y can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftStickY_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -729,7 +729,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right stick x default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightStickX_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -739,7 +739,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right stick x can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightStickX_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -750,7 +750,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right stick y default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightStickY_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -760,7 +760,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right stick y can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightStickY_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -771,7 +771,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left trigger default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftTrigger_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -781,7 +781,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state left trigger can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_LeftTrigger_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -792,7 +792,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right trigger default is zero
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightTrigger_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
@@ -802,7 +802,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad state right trigger can set
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadState_RightTrigger_CanSet()
         {
             GamepadState state = new GamepadState();
@@ -813,7 +813,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad connect new index creates state
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnGamepadConnect_NewIndex_CreatesState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -825,7 +825,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that on gamepad disconnect existing index sets disconnected
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OnGamepadDisconnect_ExistingIndex_SetsDisconnected()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -838,7 +838,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that initialize short overload returns false when egl fails
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Initialize_ShortOverload_ReturnsFalse_WhenEglFails()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();

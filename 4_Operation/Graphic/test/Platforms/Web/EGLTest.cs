@@ -65,7 +65,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that egl constants lib egl is correct string
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void EglConstants_LibEgl_IsCorrectString()
         {
             Assert.Equal("libEGL", EGL.LibEgl);

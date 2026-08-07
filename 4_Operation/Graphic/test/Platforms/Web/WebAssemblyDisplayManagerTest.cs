@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display mode set properties works
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayMode_SetProperties_Works()
         {
             DisplayMode mode = new DisplayMode
@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display mode to string returns expected format
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayMode_ToString_ReturnsExpectedFormat()
         {
             DisplayMode mode = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display mode to string with zero refresh rate
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayMode_ToString_WithZeroRefreshRate()
         {
             DisplayMode mode = new DisplayMode { Width = 800, Height = 600, RefreshRate = 0 };
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display mode to string with different refresh rates
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayMode_ToString_WithDifferentRefreshRates()
         {
             DisplayMode mode60 = new DisplayMode { Width = 1920, Height = 1080, RefreshRate = 60 };
@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display mode multiple modes different instances
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayMode_MultipleModes_DifferentInstances()
         {
             DisplayMode mode1 = new DisplayMode { Width = 800, Height = 600 };
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display event args can set properties
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayEventArgs_CanSetProperties()
         {
             DisplayEventArgs args = new DisplayEventArgs { Width = 1024, Height = 768 };
@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that orientation event args can set properties
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void OrientationEventArgs_CanSetProperties()
         {
             OrientationEventArgs args = new OrientationEventArgs { Orientation = ScreenOrientation.Landscape };
@@ -164,7 +164,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get width returns platform width
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetWidth_ReturnsPlatformWidth()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -175,7 +175,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get height returns platform height
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetHeight_ReturnsPlatformHeight()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get aspect ratio correct calculation
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetAspectRatio_CorrectCalculation()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -198,7 +198,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get aspect ratio widescreen
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetAspectRatio_Widescreen()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -211,7 +211,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get orientation landscape
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetOrientation_Landscape()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -222,7 +222,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get orientation portrait
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetOrientation_Portrait()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -234,7 +234,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get orientation square
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetOrientation_Square()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -246,7 +246,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get device pixel ratio returns default on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -258,7 +258,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager constructor null platform throws
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_Constructor_NullPlatform_Throws()
         {
             Assert.Throws<ArgumentNullException>(() =>
@@ -269,7 +269,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager toggle fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_ToggleFullscreen_ReturnsFalseOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -280,7 +280,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager enter fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_EnterFullscreen_ReturnsFalseOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager exit fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_ExitFullscreen_ReturnsFalseOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -302,7 +302,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager is fullscreen returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_IsFullscreen_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyDisplayManager.IsFullscreen());
@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get supported modes returns modes
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetSupportedModes_ReturnsModes()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -327,7 +327,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get supported modes contains standard resolutions
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetSupportedModes_ContainsStandardResolutions()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -341,7 +341,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get supported modes contains fullscreen mode
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetSupportedModes_ContainsFullscreenMode()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -353,7 +353,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager find display mode existing mode returns mode
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_FindDisplayMode_ExistingMode_ReturnsMode()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -367,7 +367,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager find display mode non existing returns null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_FindDisplayMode_NonExisting_ReturnsNull()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -379,7 +379,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager find display mode 640x 480 returns mode
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_FindDisplayMode_640x480_ReturnsMode()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -415,7 +415,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get display quality default is high
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetDisplayQuality_DefaultIsHigh()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -426,7 +426,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager set display quality changes quality
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_SetDisplayQuality_ChangesQuality()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -440,7 +440,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get system language returns default on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetSystemLanguage_ReturnsDefaultOnNonBrowser()
         {
             string lang = WebAssemblyDisplayManager.GetSystemLanguage();
@@ -450,7 +450,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager is online returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_IsOnline_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyDisplayManager.IsOnline());
@@ -459,7 +459,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get battery level returns default on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
             float level = WebAssemblyDisplayManager.GetBatteryLevel();
@@ -469,7 +469,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager is charging returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_IsCharging_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyDisplayManager.IsCharging());
@@ -478,7 +478,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager get refresh rate returns 60
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_GetRefreshRate_Returns60()
         {
             Assert.Equal(60, WebAssemblyDisplayManager.RefreshRate);
@@ -487,7 +487,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager save screenshot returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_SaveScreenshot_ReturnsTrue()
         {
             bool result = WebAssemblyDisplayManager.SaveScreenshot("screenshot.png");

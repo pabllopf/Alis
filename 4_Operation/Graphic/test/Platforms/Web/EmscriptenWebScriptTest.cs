@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script returns non empty string
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBridgeScript_ReturnsNonEmptyString()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains key functions
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBridgeScript_ContainsKeyFunctions()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains emscripten web bridge
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBridgeScript_ContainsEmscriptenWebBridge()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -117,7 +117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains array helpers
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBridgeScript_ContainsArrayHelpers()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get bridge script contains init function
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetBridgeScript_ContainsInitFunction()
         {
             string script = EmscriptenWebScript.BridgeScript;
@@ -144,7 +144,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get html template returns non empty string
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetHtmlTemplate_ReturnsNonEmptyString()
         {
             string html = EmscriptenWebScript.HtmlTemplate;
@@ -155,7 +155,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get html template contains required elements
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetHtmlTemplate_ContainsRequiredElements()
         {
             string html = EmscriptenWebScript.HtmlTemplate;

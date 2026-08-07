@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad input state update sets current and previous
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadInputState_Update_SetsCurrentAndPrevious()
         {
             GamepadInputState state = new GamepadInputState();
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that gamepad input state update multiple times shifts correctly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GamepadInputState_Update_MultipleTimes_ShiftsCorrectly()
         {
             GamepadInputState state = new GamepadInputState();
@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding is active with no keys returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_IsActive_WithNoKeys_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding is active with key down returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_IsActive_WithKeyDown_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -126,7 +126,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding is active with key up returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_IsActive_WithKeyUp_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -140,7 +140,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that key binding is active multiple keys one down returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void KeyBinding_IsActive_MultipleKeys_OneDown_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get gamepad state with connected gamepad returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void TryGetGamepadState_WithConnectedGamepad_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -175,7 +175,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get gamepad state with previous state sets previous
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void TryGetGamepadState_WithPreviousState_SetsPrevious()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -191,7 +191,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that try get gamepad state disconnected gamepad returns true with connected false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void TryGetGamepadState_DisconnectedGamepad_ReturnsTrueWithConnectedFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -212,7 +212,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just pressed no previous state button down returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustPressed_NoPreviousState_ButtonDown_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just pressed no previous state button up returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustPressed_NoPreviousState_ButtonUp_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -238,7 +238,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just pressed with previous state returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustPressed_WithPreviousState_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -254,7 +254,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just pressed with previous state button up returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustPressed_WithPreviousState_ButtonUp_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -268,7 +268,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just pressed with previous state button released returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustPressed_WithPreviousState_ButtonReleased_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -289,7 +289,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just released no previous state returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustReleased_NoPreviousState_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -301,7 +301,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just released with previous state returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustReleased_WithPreviousState_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -315,7 +315,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just released with previous state button down returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustReleased_WithPreviousState_ButtonDown_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -331,7 +331,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just released with previous state released returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustReleased_WithPreviousState_Released_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -348,7 +348,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is gamepad button just released with previous state pressed returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsGamepadButtonJustReleased_WithPreviousState_Pressed_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -368,7 +368,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update with connected gamepad does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Update_WithConnectedGamepad_DoesNotThrow()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -381,7 +381,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update multiple times with gamepad tracks previous state
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Update_MultipleTimes_WithGamepad_TracksPreviousState()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -401,7 +401,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is action just pressed multiple keys first non matching then matching returns true
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsActionJustPressed_MultipleKeys_FirstNonMatchingThenMatching_ReturnsTrue()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -415,7 +415,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is action just pressed multiple non matching keys returns false
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsActionJustPressed_MultipleNonMatchingKeys_ReturnsFalse()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -433,7 +433,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update get mouse wheel delta after update returns last delta
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Update_GetMouseWheelDelta_AfterUpdate_ReturnsLastDelta()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -446,7 +446,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that update get mouse position after update returns current
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Update_GetMousePosition_AfterUpdate_ReturnsCurrent()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -465,7 +465,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepad indices with connected returns indices
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetConnectedGamepadIndices_WithConnected_ReturnsIndices()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -481,7 +481,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that get connected gamepad indices after disconnect excludes index
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GetConnectedGamepadIndices_AfterDisconnect_ExcludesIndex()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
@@ -501,7 +501,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad default duration returns false on non browser
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_DefaultDuration_ReturnsFalseOnNonBrowser()
         {
             Assert.False(WebAssemblyInputManager.VibrateGamepad(0, 0.5f, 0.5f));

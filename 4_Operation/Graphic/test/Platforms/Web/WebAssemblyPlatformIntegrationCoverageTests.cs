@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create game context with custom size throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateGameContext_WithCustomSize_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform game 2 d throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_Game2D_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform game 3 d throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_Game3D_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform low end throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_LowEnd_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -97,7 +97,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform high end throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_HighEnd_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform mobile throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_Mobile_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -117,7 +117,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that create optimized platform web returns instance
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void CreateOptimizedPlatform_Web_ReturnsInstance()
         {
             WebAssemblyPlatform platform = WebAssemblyPlatformIntegration.CreateOptimizedPlatform(OptimizationProfile.Web);
@@ -132,7 +132,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that multiplatform game engine constructor throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void MultiplatformGameEngine_Constructor_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>
@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that input manager constructor null context stores null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void InputManager_Constructor_NullContext_StoresNull()
         {
             InputManager manager = new InputManager(null);
@@ -160,7 +160,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager constructor null context stores null
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_Constructor_NullContext_StoresNull()
         {
             DisplayManager manager = new DisplayManager(null);
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that display manager is fullscreen returns default
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void DisplayManager_IsFullscreen_ReturnsDefault()
         {
             Assert.False(DisplayManager.IsFullscreen());
@@ -183,7 +183,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that quick start run minimal game throws invalid operation exception
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void QuickStart_RunMinimalGame_ThrowsInvalidOperationException()
         {
             Assert.Throws<InvalidOperationException>(() =>

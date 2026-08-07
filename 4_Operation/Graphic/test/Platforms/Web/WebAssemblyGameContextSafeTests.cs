@@ -22,7 +22,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that constructor with config throws on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void Constructor_WithConfig_ThrowsOnNonWebAssembly()
         {
             Assert.ThrowsAny<Exception>(() => new WebAssemblyGameContext(new WebAssemblyConfiguration()));
@@ -31,7 +31,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 2 d returns non null config
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game2D_ReturnsNonNullConfig()
         {
             Assert.NotNull(GameContextPresets.Game2D());
@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 3 d returns non null config
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game3D_ReturnsNonNullConfig()
         {
             Assert.NotNull(GameContextPresets.Game3D());
@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets puzzle game returns non null config
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_PuzzleGame_ReturnsNonNullConfig()
         {
             Assert.NotNull(GameContextPresets.PuzzleGame());
@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets mobile game returns non null config
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_MobileGame_ReturnsNonNullConfig()
         {
             Assert.NotNull(GameContextPresets.MobileGame());
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 2 d width is 1280
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game2D_WidthIs1280()
         {
             Assert.Equal(1280, GameContextPresets.Game2D().WindowWidth);
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets game 3 d width is 1920
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game3D_WidthIs1920()
         {
             Assert.Equal(1920, GameContextPresets.Game3D().WindowWidth);
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that game context presets mobile game width is 720
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_MobileGame_WidthIs720()
         {
             Assert.Equal(720, GameContextPresets.MobileGame().WindowWidth);
@@ -94,7 +94,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console log does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleLog_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleLog("test");
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console warn does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleWarn_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleWarn("test");
@@ -112,7 +112,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that console error does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConsoleError_DoesNotThrow()
         {
             WebAssemblyGameContext.ConsoleError("test");
@@ -121,7 +121,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show alert does not throw
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowAlert_DoesNotThrow()
         {
             WebAssemblyGameContext.ShowAlert("test");
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that show confirm returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ShowConfirm_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.ShowConfirm("test"));
@@ -139,7 +139,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that is fullscreen returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void IsFullscreen_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.IsFullscreen());
@@ -148,7 +148,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         /// Tests that vibrate gamepad returns false on non web assembly
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void VibrateGamepad_ReturnsFalse_OnNonWebAssembly()
         {
             Assert.False(WebAssemblyGameContext.VibrateGamepad(0));

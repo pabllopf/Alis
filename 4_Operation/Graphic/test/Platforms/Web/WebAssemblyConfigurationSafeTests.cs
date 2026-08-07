@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that WebAssemblyConfigurationBuilder can chain multiple method calls.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void ConfigurationBuilder_CanChainMethods()
         {
             WebAssemblyConfiguration config = new WebAssemblyConfigurationBuilder()
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GameContextPresets.Game2D returns a non-null configuration.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game2D_ReturnsNonNull()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game2D();
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GameContextPresets.Game3D returns a non-null configuration.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_Game3D_ReturnsNonNull()
         {
             WebAssemblyConfiguration config = GameContextPresets.Game3D();
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// <summary>
         ///     Tests that GameContextPresets.MobileGame returns a non-null configuration.
         /// </summary>
-        [WebOnlyAttribute]
+        [WebOnly]
         public void GameContextPresets_MobileGame_ReturnsNonNull()
         {
             WebAssemblyConfiguration config = GameContextPresets.MobileGame();
