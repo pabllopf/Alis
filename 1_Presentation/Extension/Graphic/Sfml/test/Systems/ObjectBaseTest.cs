@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -81,7 +82,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that the constructor sets <see cref="ObjectBase.CPointer" />.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_SetsCPointer()
         {
             IntPtr ptr = new IntPtr(123);
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that the protected setter of <see cref="ObjectBase.CPointer" /> updates the value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CPointer_Set_Protected_UpdatesValue()
         {
             IntPtr ptr1 = new IntPtr(123);
@@ -108,7 +109,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="ObjectBase.Dispose()" /> calls <see cref="ObjectBase.Destroy" /> with <c>true</c>.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CallsDestroyWithTrue()
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="ObjectBase.Dispose()" /> sets <see cref="ObjectBase.CPointer" /> to <see cref="IntPtr.Zero" />.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_SetsCPointerToZero()
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that calling <see cref="ObjectBase.Dispose()" /> multiple times only calls <see cref="ObjectBase.Destroy" /> once.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CalledMultipleTimes_OnlyDestroysOnce()
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that <see cref="ObjectBase.Dispose(bool)" /> with <c>false</c> does not crash.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_WithFalse_DoesNotCrash()
         {
             TestObjectBase obj = new TestObjectBase(new IntPtr(123));
@@ -156,7 +157,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that disposing an object with a zero pointer does not call <see cref="ObjectBase.Destroy" />.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_WithZeroPointer_DoesNotCallDestroy()
         {
             TestObjectBase obj = new TestObjectBase(IntPtr.Zero);

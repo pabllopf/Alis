@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Moq;
 using Xunit;
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that render window implements i render target
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RenderWindow_ImplementsIRenderTarget()
         {
             Assert.True(typeof(IRenderTarget).IsAssignableFrom(typeof(RenderWindow)));
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that render window is assignable from window
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RenderWindow_IsAssignableFromWindow()
         {
             Assert.True(typeof(Window).IsAssignableFrom(typeof(RenderWindow)));
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that is open property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsOpen_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("IsOpen"));
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that settings property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Settings_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("Settings"));
@@ -80,7 +81,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that position property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Position_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("Position"));
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that system handle property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SystemHandle_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("SystemHandle"));
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("Size"));
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that default view property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DefaultView_Property_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetProperty("DefaultView"));
@@ -116,7 +117,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that clear methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Clear_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("Clear", Type.EmptyTypes));
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that set view method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetView_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("SetView"));
@@ -135,7 +136,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get view method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetView_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("GetView"));
@@ -144,7 +145,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get viewport method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetViewport_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("GetViewport"));
@@ -153,7 +154,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that map pixel to coords methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MapPixelToCoords_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("MapPixelToCoords", new[] { typeof(Vector2F) }));
@@ -163,7 +164,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that map coords to pixel methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MapCoordsToPixel_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("MapCoordsToPixel", new[] { typeof(Vector2F) }));
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("Draw", new[] { typeof(IDrawable) }));
@@ -187,7 +188,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that push gl states method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PushGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("PushGlStates"));
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that pop gl states method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PopGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("PopGlStates"));
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that reset gl states method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ResetGlStates_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("ResetGlStates"));
@@ -214,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that close set title set icon methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Close_SetTitle_SetIcon_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("Close"));
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that set visible set vertical sync enabled set mouse cursor visible methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetVisible_SetVerticalSyncEnabled_SetMouseCursorVisible_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("SetVisible"));
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that set mouse cursor grabbed set mouse cursor set key repeat enabled methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetMouseCursorGrabbed_SetMouseCursor_SetKeyRepeatEnabled_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("SetMouseCursorGrabbed"));
@@ -247,7 +248,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that set framerate limit set joystick threshold set active methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetFramerateLimit_SetJoystickThreshold_SetActive_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("SetFramerateLimit"));
@@ -258,7 +259,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that request focus has focus display capture methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RequestFocus_HasFocus_Display_Capture_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("RequestFocus"));
@@ -270,7 +271,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that poll event wait event methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PollEvent_WaitEvent_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("PollEvent"));
@@ -280,7 +281,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that internal get mouse position internal set mouse position methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InternalGetMousePosition_InternalSetMousePosition_Methods_Exist()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("InternalGetMousePosition"));
@@ -290,7 +291,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that internal get touch position method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InternalGetTouchPosition_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("InternalGetTouchPosition"));
@@ -299,7 +300,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("Destroy"));
@@ -308,7 +309,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(RenderWindow).GetMethod("ToString"));

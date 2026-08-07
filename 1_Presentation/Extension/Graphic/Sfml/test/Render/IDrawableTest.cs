@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that drawable implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Drawable_ImplementsIDrawable()
         {
             TestDrawable drawable = new TestDrawable();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that draw calls implementation
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Draw_CallsImplementation()
         {
             TestDrawable drawable = new TestDrawable();

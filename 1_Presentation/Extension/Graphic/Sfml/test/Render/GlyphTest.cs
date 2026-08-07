@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests default field values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Default_Fields_HaveExpectedValues()
         {
             Glyph g = new Glyph();

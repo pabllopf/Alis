@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse button event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseButtonEvent_Default_HasZeroValues()
         {
             MouseButtonEvent e = new MouseButtonEvent();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse button event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseButtonEventArgs_Constructor_SetsProperties()
         {
             MouseButtonEvent e = new MouseButtonEvent { Button = Mouse.Button.Left, X = 100, Y = 200 };
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse button event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseButtonEventArgs_ToString_IncludesPropertyNames()
         {
             MouseButtonEvent e = new MouseButtonEvent { Button = Mouse.Button.Right, X = 1, Y = 2 };

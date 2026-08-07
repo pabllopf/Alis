@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests the 2-parameter constructor.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_TwoParams_AssignsFields()
         {
             ContextSettings cs = new ContextSettings(24, 8);
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests the 3-parameter constructor with antialiasing.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ThreeParams_AssignsFields()
         {
             ContextSettings cs = new ContextSettings(24, 8, 4);
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests the 7-parameter constructor with all values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_SevenParams_AssignsAllFields()
         {
             ContextSettings cs = new ContextSettings(32, 8, 8, 4, 5, ContextSettings.Attributes.Core | ContextSettings.Attributes.Debug, true);
@@ -86,7 +87,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests ToString includes component names.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_IncludesComponentNames()
         {
             ContextSettings cs = new ContextSettings(24, 8);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sensor event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SensorEvent_Default_HasZeroValues()
         {
             SensorEvent e = new SensorEvent();
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sensor event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SensorEventArgs_Constructor_SetsProperties()
         {
             SensorEvent e = new SensorEvent { Type = Sensor.Type.Gyroscope, X = 1.0f, Y = 2.0f, Z = 3.0f };
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that sensor event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SensorEventArgs_ToString_IncludesPropertyNames()
         {
             SensorEvent e = new SensorEvent { Type = Sensor.Type.Accelerometer };

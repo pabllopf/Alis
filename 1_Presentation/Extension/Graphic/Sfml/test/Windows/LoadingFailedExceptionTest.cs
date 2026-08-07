@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that default constructor sets default message
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DefaultConstructor_SetsDefaultMessage()
         {
             LoadingFailedException ex = new LoadingFailedException();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with resource name sets message
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithResourceName_SetsMessage()
         {
             LoadingFailedException ex = new LoadingFailedException("texture");
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with resource name and inner exception sets message
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithResourceNameAndInnerException_SetsMessage()
         {
             Exception inner = new Exception("cause");
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with resource name and filename sets message
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithResourceNameAndFilename_SetsMessage()
         {
             LoadingFailedException ex = new LoadingFailedException("font", "arial.ttf");
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with resource name filename and inner exception sets message
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithResourceNameFilenameAndInnerException_SetsMessage()
         {
             Exception inner = new Exception("io error");

@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructors and field assignment.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_AssignsFields()
         {
             IntRect rect = new IntRect(1, 2, 3, 4);
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains method for points inside and outside.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_Works()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Intersects method for overlapping and non-overlapping rectangles.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Intersects_Works()
         {
             IntRect r1 = new IntRect(0, 0, 10, 10);
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Intersects with overlap output.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Intersects_OverlapOutput_Works()
         {
             IntRect r1 = new IntRect(0, 0, 10, 10);
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests ToString returns the expected format.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ReturnsExpectedFormat()
         {
             IntRect rect = new IntRect(1, 2, 3, 4);
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the Vector2F constructor.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_FromVector2F_AssignsFields()
         {
             IntRect rect = new IntRect(new Vector2F(1, 2), new Vector2F(3, 4));
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a point on the left boundary.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_OnLeftBoundary_ReturnsTrue()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a point on the right boundary (exclusive).
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_OnRightBoundary_ReturnsFalse()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a point on the top boundary.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_OnTopBoundary_ReturnsTrue()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -150,7 +151,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a point on the bottom boundary.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_OnBottomBoundary_ReturnsFalse()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a point completely outside.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_OutsideBothAxes_ReturnsFalse()
         {
             IntRect rect = new IntRect(0, 0, 10, 10);
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Contains with a rectangle that has negative width and height.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contains_NegativeDimensions_WorksCorrectly()
         {
             IntRect rect = new IntRect(10, 10, -10, -10);
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Intersects with rectangles that have negative dimensions.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Intersects_NegativeDimensions_WorksCorrectly()
         {
             IntRect r1 = new IntRect(10, 10, -10, -10);
@@ -192,7 +193,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Intersects with touching edges (no overlap).
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Intersects_TouchingEdges_ReturnsFalse()
         {
             IntRect r1 = new IntRect(0, 0, 10, 10);
@@ -203,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Intersects with no overlap verifies overlap is cleared.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Intersects_NoOverlap_OverlapCleared()
         {
             IntRect r1 = new IntRect(0, 0, 10, 10);
@@ -218,7 +219,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Equals with another IntRect — equal values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_EqualValues_ReturnsTrue()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -229,7 +230,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Equals with another IntRect — different values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_DifferentValues_ReturnsFalse()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests Equals with object parameter.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_ObjectParameter_WorksCorrectly()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests GetHashCode for equal rects.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_EqualRects_ReturnsSameValue()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests GetHashCode for different rects.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_DifferentRects_ReturnsDifferentValue()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -275,7 +276,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the equality operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Operator_Equality_WorksCorrectly()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -288,7 +289,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the inequality operator.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Operator_Inequality_WorksCorrectly()
         {
             IntRect r1 = new IntRect(1, 2, 3, 4);
@@ -301,7 +302,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests explicit cast to FloatRect.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ExplicitCast_ToFloatRect_WorksCorrectly()
         {
             IntRect rect = new IntRect(1, 2, 3, 4);

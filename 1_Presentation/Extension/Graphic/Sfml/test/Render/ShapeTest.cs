@@ -1,5 +1,6 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that shape is abstract
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Shape_IsAbstract()
         {
             Assert.True(typeof(Shape).IsAbstract);
@@ -21,7 +22,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that shape is assignable from transformable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Shape_IsAssignableFromTransformable()
         {
             Assert.True(typeof(Transformable).IsAssignableFrom(typeof(Shape)));
@@ -30,7 +31,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that shape implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Shape_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(Shape)));
@@ -39,7 +40,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that texture texture rect properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Texture_TextureRect_Properties_Exist()
         {
             Assert.NotNull(typeof(Shape).GetProperty("Texture"));
@@ -49,7 +50,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that fill color outline color properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void FillColor_OutlineColor_Properties_Exist()
         {
             Assert.NotNull(typeof(Shape).GetProperty("FillColor"));
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that outline thickness property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OutlineThickness_Property_Exists()
         {
             Assert.NotNull(typeof(Shape).GetProperty("OutlineThickness"));
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get point count get point are abstract
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPointCount_GetPoint_AreAbstract()
         {
             Assert.True(typeof(Shape).GetMethod("GetPointCount").IsAbstract);
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get local bounds get global bounds methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetLocalBounds_GetGlobalBounds_Methods_Exist()
         {
             Assert.NotNull(typeof(Shape).GetMethod("GetLocalBounds"));

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor and field assignment.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_AssignsFields()
         {
             Ivec4 v = new Ivec4(1, 2, 3, 4);
@@ -53,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from Color copies byte components directly.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_FromColor_CopiesComponents()
         {
             Color color = new Color(10, 20, 30, 40);

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that key event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void KeyEvent_Default_HasZeroValues()
         {
             KeyEvent e = new KeyEvent();
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that key event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void KeyEventArgs_Constructor_SetsProperties()
         {
             KeyEvent e = new KeyEvent { Code = Keyboard.Key.Space, Alt = 1, Control = 0, Shift = 1, System = 0 };
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that key event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void KeyEventArgs_ToString_IncludesPropertyNames()
         {
             KeyEvent e = new KeyEvent { Code = Keyboard.Key.Enter };

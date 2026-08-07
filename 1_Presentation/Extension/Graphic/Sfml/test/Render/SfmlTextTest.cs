@@ -1,5 +1,6 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that sfml text is assignable from transformable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfmlText_IsAssignableFromTransformable()
         {
             Assert.True(typeof(Transformable).IsAssignableFrom(typeof(SfmlText)));
@@ -21,7 +22,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that sfml text implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfmlText_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(SfmlText)));
@@ -30,7 +31,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that fill color outline color properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void FillColor_OutlineColor_Properties_Exist()
         {
             Assert.NotNull(typeof(SfmlText).GetProperty("FillColor"));
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that outline thickness displayed string properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OutlineThickness_DisplayedString_Properties_Exist()
         {
             Assert.NotNull(typeof(SfmlText).GetProperty("OutlineThickness"));
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that font character size properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Font_CharacterSize_Properties_Exist()
         {
             Assert.NotNull(typeof(SfmlText).GetProperty("Font"));
@@ -60,7 +61,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that letter spacing line spacing properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void LetterSpacing_LineSpacing_Properties_Exist()
         {
             Assert.NotNull(typeof(SfmlText).GetProperty("LetterSpacing"));
@@ -70,7 +71,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that style property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Style_Property_Exists()
         {
             Assert.NotNull(typeof(SfmlText).GetProperty("Style"));
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that find character pos get local bounds get global bounds methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void FindCharacterPos_GetLocalBounds_GetGlobalBounds_Methods_Exist()
         {
             Assert.NotNull(typeof(SfmlText).GetMethod("FindCharacterPos"));

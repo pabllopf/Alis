@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests TextEvent default field values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TextEvent_Default_HasZeroValue()
         {
             TextEvent e = new TextEvent();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests TextEventArgs constructor sets Unicode from TextEvent.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TextEventArgs_Constructor_SetsUnicode()
         {
             TextEvent e = new TextEvent { Unicode = 65 };
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests TextEventArgs ToString includes property name.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TextEventArgs_ToString_IncludesUnicode()
         {
             TextEvent e = new TextEvent { Unicode = 65 };

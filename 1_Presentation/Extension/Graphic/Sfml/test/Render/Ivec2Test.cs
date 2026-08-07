@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor and field assignment.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_AssignsFields()
         {
             Ivec2 v = new Ivec2(1, 2);
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor from Vector2F copies components.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_FromVector2F_CopiesFields()
         {
             Vector2F source = new Vector2F(3.0f, 4.0f);
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the implicit cast from Vector2F.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ImplicitCast_FromVector2F_Works()
         {
             Vector2F vec2f = new Vector2F(5.0f, 6.0f);

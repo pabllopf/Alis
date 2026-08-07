@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that default type is none
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Default_TypeIsNone()
         {
             Event evt = default;
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type can be set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Type_CanBeSet()
         {
             Event evt = default;
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type can be set to gained focus
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Type_CanBeSetToGainedFocus()
         {
             Event evt = default;
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type and size field roundtrip
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TypeAndSizeField_Roundtrip()
         {
             Event evt = default;
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type and key field roundtrip
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TypeAndKeyField_Roundtrip()
         {
             Event evt = default;
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type and mouse moved roundtrip
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TypeAndMouseMoved_Roundtrip()
         {
             Event evt = default;

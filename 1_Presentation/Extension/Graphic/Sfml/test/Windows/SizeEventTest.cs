@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests SizeEvent default field values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SizeEvent_Default_HasZeroValues()
         {
             SizeEvent e = new SizeEvent();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests SizeEventArgs constructor sets properties from SizeEvent.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SizeEventArgs_Constructor_SetsProperties()
         {
             SizeEvent e = new SizeEvent { Width = 800, Height = 600 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests SizeEventArgs ToString includes property names.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SizeEventArgs_ToString_IncludesPropertyNames()
         {
             SizeEvent e = new SizeEvent { Width = 1024, Height = 768 };

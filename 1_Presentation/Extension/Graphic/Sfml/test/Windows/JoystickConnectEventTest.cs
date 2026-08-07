@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick connect event default has zero value
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickConnectEvent_Default_HasZeroValue()
         {
             JoystickConnectEvent e = new JoystickConnectEvent();
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick connect event args constructor sets joystick id
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickConnectEventArgs_Constructor_SetsJoystickId()
         {
             JoystickConnectEvent e = new JoystickConnectEvent { JoystickId = 3 };
@@ -61,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick connect event args to string includes joystick id
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickConnectEventArgs_ToString_IncludesJoystickId()
         {
             JoystickConnectEvent e = new JoystickConnectEvent { JoystickId = 1 };

@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that constructor should create a valid StreamAdaptor with non-null InputStreamPtr
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ShouldCreateValidAdaptorWithNonNullInputStreamPtr()
         {
             MemoryStream stream = CreateTestStream(new byte[] { 0x01, 0x02, 0x03, 0x04 });
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that constructor should not throw with empty stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ShouldNotThrowWithEmptyStream()
         {
             MemoryStream stream = CreateTestStream(Array.Empty<byte>());
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that constructor should not throw with large stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ShouldNotThrowWithLargeStream()
         {
             byte[] largeData = new byte[1024 * 1024]; // 1MB
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that InputStreamPtr remains valid after successful read operations
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InputStreamPtr_ValidAfterConstruction()
         {
             byte[] data = new byte[] { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // "Hello"
@@ -131,7 +132,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that StreamAdaptor implements IDisposable correctly
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void StreamAdaptor_ShouldImplementIDisposable()
         {
             MemoryStream stream = CreateTestStream(new byte[] { 0x01 });

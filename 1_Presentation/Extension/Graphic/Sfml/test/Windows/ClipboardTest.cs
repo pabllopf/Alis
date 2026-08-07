@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that clipboard is a static class.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Clipboard_IsStaticClass()
         {
             Assert.True(typeof(Clipboard).IsAbstract && typeof(Clipboard).IsSealed);
@@ -52,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that contents property exists.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contents_Property_Exists()
         {
             PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that contents property has getter and setter.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contents_Property_Has_Getter_And_Setter()
         {
             PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that contents property type is string.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Contents_Property_Type_Is_String()
         {
             PropertyInfo property = typeof(Clipboard).GetProperty("Contents");
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that sfClipboard_getUnicodeString dll import method exists.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfClipboard_getUnicodeString_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Clipboard).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that sfClipboard_setUnicodeString dll import method exists.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SfClipboard_setUnicodeString_DllImport_Exists()
         {
             MethodInfo[] methods = typeof(Clipboard).GetMethods(BindingFlags.Static | BindingFlags.NonPublic);

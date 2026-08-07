@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the default constructor creates a zero-initialized blend mode.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void DefaultConstructor_CreatesZeroInitialized()
         {
             BlendMode mode = new BlendMode();
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the two-parameter constructor initializes color and alpha factors.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TwoParamConstructor_SetsColorAndAlphaFactors()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the three-parameter constructor with custom equation.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ThreeParamConstructor_SetsCustomEquation()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.DstColor, BlendMode.Factor.Zero, BlendMode.Equation.Subtract);
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the six-parameter constructor with separate color and alpha configs.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SixParamConstructor_SetsSeparateColorAndAlpha()
         {
             BlendMode mode = new BlendMode(
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that predefined blend modes have expected values.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PredefinedModes_HaveExpectedValues()
         {
             Assert.Equal(new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha, BlendMode.Equation.Add,
@@ -123,7 +124,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests equality operators and Equals methods.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equality_WorksCorrectly()
         {
             BlendMode a = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -141,7 +142,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that GetHashCode is consistent for equal blend modes.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_ConsistentForEqualModes()
         {
             BlendMode a = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -153,7 +154,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals returns false for different types.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_WithDifferentType_ReturnsFalse()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.Zero, BlendMode.Factor.Zero);

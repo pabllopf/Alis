@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using SfmlRender = Alis.Extension.Graphic.Sfml.Render;
 using Xunit;
 
@@ -40,43 +41,43 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that none has value 0
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void None_HasValue0() => Assert.Equal(0, (int) SfmlRender.Styles.None);
 
         /// <summary>
         /// Tests that bold has value 1
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bold_HasValue1() => Assert.Equal(1, (int) SfmlRender.Styles.Bold);
 
         /// <summary>
         /// Tests that italic has value 2
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Italic_HasValue2() => Assert.Equal(2, (int) SfmlRender.Styles.Italic);
 
         /// <summary>
         /// Tests that underlined has value 4
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Underlined_HasValue4() => Assert.Equal(4, (int) SfmlRender.Styles.Underlined);
 
         /// <summary>
         /// Tests that strike through has value 8
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void StrikeThrough_HasValue8() => Assert.Equal(8, (int) SfmlRender.Styles.StrikeThrough);
 
         /// <summary>
         /// Tests that bold italic combined
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BoldItalic_Combined() => Assert.Equal(3, (int) (SfmlRender.Styles.Bold | SfmlRender.Styles.Italic));
 
         /// <summary>
         /// Tests that all combined
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void All_Combined() => Assert.Equal(15, (int) (SfmlRender.Styles.Bold | SfmlRender.Styles.Italic | SfmlRender.Styles.Underlined | SfmlRender.Styles.StrikeThrough));
     }
 }

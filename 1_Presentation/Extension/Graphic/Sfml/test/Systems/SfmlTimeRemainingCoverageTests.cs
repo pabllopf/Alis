@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equals boxed object returns true
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_BoxedObject_ReturnsTrue()
         {
             SfmlTime t = default;
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equals non sfml time object returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_NonSfmlTimeObject_ReturnsFalse()
         {
             SfmlTime t = default;
@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that equals null object returns false
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_NullObject_ReturnsFalse()
         {
             SfmlTime t = default;

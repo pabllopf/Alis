@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick move event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickMoveEvent_Default_HasZeroValues()
         {
             JoystickMoveEvent e = new JoystickMoveEvent();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick move event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickMoveEventArgs_Constructor_SetsProperties()
         {
             JoystickMoveEvent e = new JoystickMoveEvent { JoystickId = 1, Axis = Joystick.Axis.X, Position = 50.0f };
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick move event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickMoveEventArgs_ToString_IncludesPropertyNames()
         {
             JoystickMoveEvent e = new JoystickMoveEvent { JoystickId = 1, Position = 0.5f };

@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that default fields are zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Default_FieldsAreZero()
         {
             InputStream stream = default;
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read delegate can be assigned
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ReadDelegate_CanBeAssigned()
         {
             InputStream stream = default;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that seek delegate can be assigned
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SeekDelegate_CanBeAssigned()
         {
             InputStream stream = default;
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that tell delegate can be assigned
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TellDelegate_CanBeAssigned()
         {
             InputStream stream = default;
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that get size delegate can be assigned
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetSizeDelegate_CanBeAssigned()
         {
             InputStream stream = default;
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read delegate returns correct value
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ReadDelegate_ReturnsCorrectValue()
         {
             InputStream stream = default;
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that seek delegate returns correct value
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SeekDelegate_ReturnsCorrectValue()
         {
             InputStream stream = default;
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that all delegates work simultaneously
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void AllDelegates_WorkSimultaneously()
         {
             InputStream stream = default;

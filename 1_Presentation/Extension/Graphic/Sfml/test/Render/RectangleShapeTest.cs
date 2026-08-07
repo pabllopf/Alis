@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that rectangle shape is assignable from shape
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RectangleShape_IsAssignableFromShape()
         {
             Assert.True(typeof(Shape).IsAssignableFrom(typeof(RectangleShape)));
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that rectangle shape implements i drawable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RectangleShape_ImplementsIDrawable()
         {
             Assert.True(typeof(IDrawable).IsAssignableFrom(typeof(RectangleShape)));
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_Property_Exists()
         {
             var prop = typeof(RectangleShape).GetProperty("Size");
@@ -72,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get point count method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPointCount_Method_Exists()
         {
             var method = typeof(RectangleShape).GetMethod("GetPointCount");
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get point method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPoint_Method_Exists()
         {
             var method = typeof(RectangleShape).GetMethod("GetPoint", new[] { typeof(uint) });

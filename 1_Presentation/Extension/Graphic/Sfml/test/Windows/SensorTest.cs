@@ -1,4 +1,6 @@
 // license header
+
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -12,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that type enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Type_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Sensor.Type.Accelerometer);
@@ -27,7 +29,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is available method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsAvailable_Method_Exists()
         {
             Assert.NotNull(typeof(Sensor).GetMethod("IsAvailable"));
@@ -36,7 +38,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set enabled method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetEnabled_Method_Exists()
         {
             Assert.NotNull(typeof(Sensor).GetMethod("SetEnabled"));
@@ -45,7 +47,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get value method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetValue_Method_Exists()
         {
             Assert.NotNull(typeof(Sensor).GetMethod("GetValue"));

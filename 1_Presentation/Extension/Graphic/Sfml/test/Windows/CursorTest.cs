@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor type has expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CursorType_HasExpectedValues()
         {
             Assert.Equal(0, (int)Cursor.CursorType.Arrow);

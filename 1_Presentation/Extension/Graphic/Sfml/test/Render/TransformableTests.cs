@@ -478,7 +478,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that protected int ptr constructor sets c pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ProtectedIntPtrConstructor_SetsCPointer()
         {
             IntPtr expected = new IntPtr(42);

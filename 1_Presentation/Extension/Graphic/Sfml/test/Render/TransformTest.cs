@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructor and field assignment.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_AssignsFields()
         {
             Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -58,7 +59,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Identity returns identity matrix.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Identity_ReturnsIdentityMatrix()
         {
             Transform t = Transform.Identity;
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that GetHashCode returns consistent value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_ReturnsConsistentValue()
         {
             Transform t1 = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that GetHashCode differs for different transforms.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_DiffersForDifferentTransforms()
         {
             Transform t1 = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that ToString returns formatted matrix.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ReturnsFormattedMatrix()
         {
             Transform t = new Transform(1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals with null returns false.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_WithNull_ReturnsFalse()
         {
             Transform t = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals with non-Transform returns false.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_WithNonTransform_ReturnsFalse()
         {
             Transform t = new Transform(1, 0, 0, 0, 1, 0, 0, 0, 1);

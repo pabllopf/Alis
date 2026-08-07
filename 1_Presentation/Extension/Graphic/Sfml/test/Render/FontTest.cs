@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that font is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Font_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Font)));
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that font implements i disposable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Font_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Font)));
@@ -65,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that info struct has family property
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Info_Struct_HasFamilyProperty()
         {
             Type infoType = typeof(Font).GetNestedType("Info");
@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that info family property is read write
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Info_Family_Property_IsReadWrite()
         {
             Type infoType = typeof(Font).GetNestedType("Info");
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that info marshal data struct has family field
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InfoMarshalData_Struct_HasFamilyField()
         {
             Type infoType = typeof(Font).GetNestedType("InfoMarshalData", BindingFlags.NonPublic);
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor filename exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Filename_Exists()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(new[] { typeof(string) });
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor stream exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Stream_Exists()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(new[] { typeof(Stream) });
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor bytes exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Bytes_Exists()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(new[] { typeof(byte[]) });
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_Exists()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(new[] { typeof(Font) });
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor int ptr is private
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_IntPtr_IsPrivate()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(IntPtr) }, null);
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get glyph method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetGlyph_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetGlyph", new[] { typeof(uint), typeof(uint), typeof(bool), typeof(float) });
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get kerning method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetKerning_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetKerning", new[] { typeof(uint), typeof(uint), typeof(uint) });
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get line spacing method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetLineSpacing_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetLineSpacing", new[] { typeof(uint) });
@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get underline position method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetUnderlinePosition_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetUnderlinePosition", new[] { typeof(uint) });
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get underline thickness method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetUnderlineThickness_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetUnderlineThickness", new[] { typeof(uint) });
@@ -215,7 +215,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get texture method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetTexture_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetTexture", new[] { typeof(uint) });
@@ -226,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that get info method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetInfo_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("GetInfo", Type.EmptyTypes);
@@ -237,7 +237,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("ToString", Type.EmptyTypes);
@@ -248,7 +248,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_Method_Exists()
         {
             MethodInfo method = typeof(Font).GetMethod("Destroy", new[] { typeof(bool) });
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string is override
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
             MethodInfo method = typeof(Font).GetMethod("ToString");
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy is override
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
             MethodInfo method = typeof(Font).GetMethod("Destroy");
@@ -282,7 +282,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that pinned objects field exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PinnedObjects_Field_Exists()
         {
             FieldInfo field = typeof(Font).GetField("_pinnedObjects", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -293,7 +293,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that my textures field exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MyTextures_Field_Exists()
         {
             FieldInfo field = typeof(Font).GetField("myTextures", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -304,7 +304,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that info struct can instantiate and set family
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Info_Struct_CanInstantiateAndSetFamily()
         {
             Font.Info info = new Font.Info();
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that info struct default family is null
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Info_Struct_DefaultFamilyIsNull()
         {
             Font.Info info = new Font.Info();
@@ -353,7 +353,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string returns font
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ReturnsFont()
         {
             ConstructorInfo ctor = typeof(Font).GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, new[] { typeof(IntPtr) }, null);

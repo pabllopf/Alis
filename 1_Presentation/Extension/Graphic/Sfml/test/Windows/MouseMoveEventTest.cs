@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse move event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseMoveEvent_Default_HasZeroValues()
         {
             MouseMoveEvent e = new MouseMoveEvent();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse move event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseMoveEventArgs_Constructor_SetsProperties()
         {
             MouseMoveEvent e = new MouseMoveEvent { X = 320, Y = 240 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse move event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseMoveEventArgs_ToString_IncludesPropertyNames()
         {
             MouseMoveEvent e = new MouseMoveEvent { X = 1, Y = 2 };

@@ -1,4 +1,6 @@
 // license header
+
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -12,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is down method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsDown_Method_Exists()
         {
             Assert.NotNull(typeof(Touch).GetMethod("IsDown"));
@@ -21,7 +23,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Touch).GetMethod("GetPosition", new[] { typeof(uint) }));

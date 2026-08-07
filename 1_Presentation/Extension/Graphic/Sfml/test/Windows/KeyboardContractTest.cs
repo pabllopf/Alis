@@ -31,6 +31,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -44,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Keyboard is a static class.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Keyboard_ShouldBeStaticClass()
         {
             Assert.True(typeof(Keyboard).IsClass);
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Keyboard defines the Key enum.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Keyboard_ShouldDefineKeyEnum()
         {
             Type keyType = typeof(Keyboard).GetNestedType("Key", BindingFlags.Public);
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.Unknown has value -1.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_Unknown_ShouldBeNegativeOne()
         {
             Assert.Equal(-1, (int)Keyboard.Key.Unknown);
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.A has value 0.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_A_ShouldBeZero()
         {
             Assert.Equal(0, (int)Keyboard.Key.A);
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.B has value 1.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_B_ShouldBeOne()
         {
             Assert.Equal(1, (int)Keyboard.Key.B);
@@ -94,7 +95,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.Escape has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_Escape_ShouldHaveCorrectValue()
         {
             Assert.Equal(36, (int)Keyboard.Key.Escape);
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.Space has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_Space_ShouldHaveCorrectValue()
         {
             Assert.Equal(57, (int)Keyboard.Key.Space);
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.Enter has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_Enter_ShouldHaveCorrectValue()
         {
             Assert.Equal(58, (int)Keyboard.Key.Enter);
@@ -121,7 +122,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.LControl has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_LControl_ShouldHaveCorrectValue()
         {
             Assert.Equal(37, (int)Keyboard.Key.LControl);
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.LShift has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_LShift_ShouldHaveCorrectValue()
         {
             Assert.Equal(38, (int)Keyboard.Key.LShift);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.LAlt has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_LAlt_ShouldHaveCorrectValue()
         {
             Assert.Equal(39, (int)Keyboard.Key.LAlt);
@@ -148,7 +149,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.LSystem has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_LSystem_ShouldHaveCorrectValue()
         {
             Assert.Equal(40, (int)Keyboard.Key.LSystem);
@@ -157,7 +158,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.RControl has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_RControl_ShouldHaveCorrectValue()
         {
             Assert.Equal(41, (int)Keyboard.Key.RControl);
@@ -166,7 +167,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.RShift has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_RShift_ShouldHaveCorrectValue()
         {
             Assert.Equal(42, (int)Keyboard.Key.RShift);
@@ -175,7 +176,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.RAlt has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_RAlt_ShouldHaveCorrectValue()
         {
             Assert.Equal(43, (int)Keyboard.Key.RAlt);
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that Key.RSystem has correct value.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Key_RSystem_ShouldHaveCorrectValue()
         {
             Assert.Equal(44, (int)Keyboard.Key.RSystem);
@@ -193,7 +194,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Verifies that all public methods on Keyboard are static.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void AllPublicMethods_ShouldBeStatic()
         {
             MethodInfo[] methods = typeof(Keyboard)

@@ -32,6 +32,7 @@ using System.Linq;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Audios;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 using RenderStyles = Alis.Extension.Graphic.Sfml.Render.Styles;
 using WindowStyles = Alis.Extension.Graphic.Sfml.Windows.Styles;
@@ -48,7 +49,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that PrimitiveType has all expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_HasExpectedValues()
         {
             Assert.Equal(0, (int) PrimitiveType.Points);
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that PrimitiveType aliases match their source values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_AliasesMatchSourceValues()
         {
             Assert.Equal(PrimitiveType.LineStrip, PrimitiveType.LinesStrip);
@@ -74,7 +75,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that PrimitiveType has 10 distinct values (including aliases)
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void PrimitiveType_HasCorrectNumberOfDistinctValues()
         {
             // 7 unique values + 3 aliases = 10 enum members but only 7 distinct integer values
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that SoundStatus has all expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SoundStatus_HasExpectedValues()
         {
             Assert.Equal(0, (int) SoundStatus.Stopped);
@@ -103,7 +104,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that SoundStatus has exactly 3 values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SoundStatus_HasCorrectNumberOfValues()
         {
             Array values = Enum.GetValues(typeof(SoundStatus));
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Windows Styles has correct flag values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void WindowsStyles_HasCorrectFlagValues()
         {
             Assert.Equal(0, (int) WindowStyles.None);
@@ -130,7 +131,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Windows Styles.Default is the correct combination
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void WindowsStyles_Default_IsCorrectCombination()
         {
             Assert.Equal(WindowStyles.Titlebar | WindowStyles.Resize | WindowStyles.Close, WindowStyles.Default);
@@ -153,7 +154,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Windows Styles can be combined with bitwise OR
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void WindowsStyles_CanBeCombined()
         {
             WindowStyles combined = WindowStyles.Titlebar | WindowStyles.Resize;
@@ -170,7 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Render Styles has correct flag values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RenderStyles_HasCorrectFlagValues()
         {
             Assert.Equal(0, (int) RenderStyles.None);
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Render Styles can be combined with bitwise OR
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void RenderStyles_CanBeCombined()
         {
             RenderStyles boldItalic = RenderStyles.Bold | RenderStyles.Italic;
@@ -213,7 +214,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.Factor has all expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Factor_HasExpectedValues()
         {
             Array values = Enum.GetValues(typeof(BlendMode.Factor));
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.Equation has all expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Equation_HasExpectedValues()
         {
             Array values = Enum.GetValues(typeof(BlendMode.Equation));
@@ -252,7 +253,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.Alpha has the expected factor values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Alpha_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.SrcAlpha, BlendMode.Alpha.ColorSrcFactor);
@@ -266,7 +267,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.Add has the expected factor values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Add_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.SrcAlpha, BlendMode.Add.ColorSrcFactor);
@@ -281,7 +282,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.Multiply has the expected factor values (2-factor ctor propagates to alpha)
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Multiply_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.DstColor, BlendMode.Multiply.ColorSrcFactor);
@@ -296,7 +297,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode.None has the expected factor values (2-factor ctor propagates to alpha)
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_None_HasExpectedFactors()
         {
             Assert.Equal(BlendMode.Factor.One, BlendMode.None.ColorSrcFactor);
@@ -311,7 +312,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that all BlendMode static readonly fields are distinct instances
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_StaticFields_AreDistinct()
         {
             Assert.NotEqual(BlendMode.Alpha, BlendMode.Add);
@@ -325,7 +326,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode equality works correctly
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Equality_WorksCorrectly()
         {
             BlendMode mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode GetHashCode is consistent with Equals
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_GetHashCode_IsConsistentWithEquals()
         {
             BlendMode mode1 = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -353,7 +354,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode Equals(object) returns false for non-BlendMode types
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_Equals_WithNonBlendMode_ReturnsFalse()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.OneMinusSrcAlpha);
@@ -370,7 +371,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode 2-factor constructor sets correct defaults
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_TwoFactorConstructor_SetsCorrectDefaults()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.SrcAlpha, BlendMode.Factor.One);
@@ -386,7 +387,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode 3-factor constructor sets correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_ThreeFactorConstructor_SetsCorrectValues()
         {
             BlendMode mode = new BlendMode(BlendMode.Factor.DstColor, BlendMode.Factor.Zero, BlendMode.Equation.Subtract);
@@ -402,7 +403,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that BlendMode 6-factor constructor sets all values independently
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void BlendMode_SixFactorConstructor_SetsAllValuesIndependently()
         {
             BlendMode mode = new BlendMode(
@@ -424,7 +425,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Vertex position-only constructor sets default color and tex coords
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Vertex_PositionOnlyConstructor_SetsDefaults()
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
@@ -438,7 +439,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Vertex position+color constructor sets default tex coords
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Vertex_PositionColorConstructor_SetsDefaultTexCoords()
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
@@ -453,7 +454,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Vertex position+texCoords constructor sets default color
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Vertex_PositionTexCoordsConstructor_SetsDefaultColor()
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
@@ -468,7 +469,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Vertex full constructor sets all values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Vertex_FullConstructor_SetsAllValues()
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);
@@ -484,7 +485,7 @@ namespace Alis.Extension.Graphic.Sfml.Test
         /// <summary>
         ///     Tests that Vertex.ToString includes all components
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Vertex_ToString_IncludesAllComponents()
         {
             Vector2F position = new Vector2F(1.0f, 2.0f);

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -40,25 +41,25 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that audio returns csfml audio
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Audio_ReturnsCsfmlAudio() => Assert.Equal("csfml-audio", Csfml.Audio);
 
         /// <summary>
         /// Tests that graphics returns csfml graphics
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Graphics_ReturnsCsfmlGraphics() => Assert.Equal("csfml-graphics", Csfml.Graphics);
 
         /// <summary>
         /// Tests that system returns csfml system
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void System_ReturnsCsfmlSystem() => Assert.Equal("csfml-system", Csfml.System);
 
         /// <summary>
         /// Tests that window returns csfml window
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Window_ReturnsCsfmlWindow() => Assert.Equal("csfml-window", Csfml.Window);
     }
 }

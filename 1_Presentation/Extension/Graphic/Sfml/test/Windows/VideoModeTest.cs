@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with width and height sets defaults
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithWidthAndHeight_SetsDefaults()
         {
             VideoMode vm = new VideoMode(800, 600);
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with width height and bpp sets all fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithWidthHeightAndBpp_SetsAllFields()
         {
             VideoMode vm = new VideoMode(1024, 768, 16);
@@ -64,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that to string includes component names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_IncludesComponentNames()
         {
             VideoMode vm = new VideoMode(1920, 1080);
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with zero values sets correctly.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithZeroValues_SetsCorrectly()
         {
             VideoMode vm = new VideoMode(0, 0, 0);
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that fields can be set directly.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Fields_CanBeSetDirectly()
         {
             VideoMode vm = new VideoMode(0, 0);
@@ -105,7 +106,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that ToString returns correct format.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ReturnsCorrectFormat()
         {
             VideoMode vm = new VideoMode(640, 480, 16);

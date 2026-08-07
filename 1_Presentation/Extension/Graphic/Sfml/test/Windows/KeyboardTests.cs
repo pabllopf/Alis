@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with a key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithAKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.A);
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with space key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithSpaceKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.Space);
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with enter key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithEnterKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.Enter);
@@ -73,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with escape key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithEscapeKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.Escape);
@@ -84,7 +85,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with unknown key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithUnknownKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.Unknown);
@@ -95,7 +96,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed with shift key returns bool
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_WithShiftKey_ReturnsBool()
         {
             bool result = Keyboard.IsKeyPressed(Keyboard.Key.LShift);
@@ -106,7 +107,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set virtual keyboard visible with true does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetVirtualKeyboardVisible_WithTrue_DoesNotThrow()
         {
             Keyboard.SetVirtualKeyboardVisible(true);
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set virtual keyboard visible with false does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetVirtualKeyboardVisible_WithFalse_DoesNotThrow()
         {
             Keyboard.SetVirtualKeyboardVisible(false);
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is key pressed method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsKeyPressed_Method_Exists()
         {
             Assert.NotNull(typeof(Keyboard).GetMethod("IsKeyPressed"));
@@ -133,7 +134,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set virtual keyboard visible method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetVirtualKeyboardVisible_Method_Exists()
         {
             Assert.NotNull(typeof(Keyboard).GetMethod("SetVirtualKeyboardVisible"));

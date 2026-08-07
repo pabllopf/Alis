@@ -1,4 +1,6 @@
 // license header
+
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -12,7 +14,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that button enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Button_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Mouse.Button.Left);
@@ -26,7 +28,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that wheel enum has correct values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Wheel_Enum_HasCorrectValues()
         {
             Assert.Equal(0, (int)Mouse.Wheel.VerticalWheel);
@@ -36,7 +38,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that is button pressed method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IsButtonPressed_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("IsButtonPressed"));
@@ -45,7 +47,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("GetPosition", new[] { typeof(Window) }));
@@ -54,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that get position no param method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetPosition_NoParam_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("GetPosition", System.Type.EmptyTypes));
@@ -63,7 +65,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set position method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetPosition_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("SetPosition", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F) }));
@@ -72,7 +74,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that set position with window method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void SetPosition_WithWindow_Method_Exists()
         {
             Assert.NotNull(typeof(Mouse).GetMethod("SetPosition", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F), typeof(Window) }));

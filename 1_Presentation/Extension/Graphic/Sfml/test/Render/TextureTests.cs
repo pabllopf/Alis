@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that texture is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Texture_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Texture)));
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that texture implements i disposable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Texture_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Texture)));
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that native handle property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void NativeHandle_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("NativeHandle"));
@@ -72,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that smooth property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Smooth_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("Smooth"));
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that srgb property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Srgb_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("Srgb"));
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that repeated property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Repeated_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("Repeated"));
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("Size"));
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that maximum size property exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MaximumSize_Property_Exists()
         {
             Assert.NotNull(typeof(Texture).GetProperty("MaximumSize"));
@@ -117,7 +117,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that copy to image method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CopyToImage_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("CopyToImage"));
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with byte array method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithByteArray_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(byte[]) }));
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with byte array width height xy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithByteArrayWidthHeightXY_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(byte[]), typeof(float), typeof(float), typeof(uint), typeof(uint) }));
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with texture and xy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithTextureAndXY_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(Texture), typeof(uint), typeof(uint) }));
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with image method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithImage_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(Image) }));
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with image and xy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithImageAndXY_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(Image), typeof(uint), typeof(uint) }));
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with window method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithWindow_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(Window) }));
@@ -180,7 +180,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with window and xy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithWindowAndXY_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(Window), typeof(uint), typeof(uint) }));
@@ -189,7 +189,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with render window method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithRenderWindow_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(RenderWindow) }));
@@ -198,7 +198,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update with render window and xy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_WithRenderWindowAndXY_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(RenderWindow), typeof(uint), typeof(uint) }));
@@ -207,7 +207,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that generate mipmap method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GenerateMipmap_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("GenerateMipmap"));
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that swap method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Swap_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Swap"));
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bind static method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bind_StaticMethod_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) }));
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("ToString"));
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Destroy"));
@@ -252,7 +252,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor width height exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WidthHeight_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(uint), typeof(uint) }));
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor filename exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Filename_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(string) }));
@@ -270,7 +270,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor filename and area exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_FilenameAndArea_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(string), typeof(IntRect) }));
@@ -279,7 +279,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor stream exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Stream_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(System.IO.Stream) }));
@@ -288,7 +288,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor stream and area exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_StreamAndArea_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(System.IO.Stream), typeof(IntRect) }));
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor image exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Image_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(Image) }));
@@ -306,7 +306,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor image and area exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ImageAndArea_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(Image), typeof(IntRect) }));
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor bytes exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Bytes_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(byte[]) }));
@@ -324,7 +324,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor copy exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_Copy_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(new[] { typeof(Texture) }));
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor int ptr exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_IntPtr_Exists()
         {
             Assert.NotNull(typeof(Texture).GetConstructor(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance, null, new[] { typeof(IntPtr) }, null));
@@ -342,7 +342,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that smooth property is read write
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Smooth_Property_IsReadWrite()
         {
             var prop = typeof(Texture).GetProperty("Smooth");
@@ -354,7 +354,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that srgb property is read write
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Srgb_Property_IsReadWrite()
         {
             var prop = typeof(Texture).GetProperty("Srgb");
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that repeated property is read write
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Repeated_Property_IsReadWrite()
         {
             var prop = typeof(Texture).GetProperty("Repeated");
@@ -378,7 +378,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size property is read only
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_Property_IsReadOnly()
         {
             var prop = typeof(Texture).GetProperty("Size");
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that native handle property is read only
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void NativeHandle_Property_IsReadOnly()
         {
             var prop = typeof(Texture).GetProperty("NativeHandle");
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that maximum size property is static
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MaximumSize_Property_IsStatic()
         {
             var prop = typeof(Texture).GetProperty("MaximumSize");
@@ -413,7 +413,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that maximum size property is read only
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MaximumSize_Property_IsReadOnly()
         {
             var prop = typeof(Texture).GetProperty("MaximumSize");
@@ -425,7 +425,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bind method is static
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bind_Method_IsStatic()
         {
             var method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });
@@ -436,7 +436,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string is override
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
             var method = typeof(Texture).GetMethod("ToString");
@@ -448,7 +448,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy is override
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
             var method = typeof(Texture).GetMethod("Destroy");

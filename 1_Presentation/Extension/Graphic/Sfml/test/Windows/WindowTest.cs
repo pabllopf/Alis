@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that InvokeEventHandler with a null handler does not throw.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InvokeEventHandler_NullHandler_DoesNotThrow()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that InvokeEventHandler with a handler invokes it.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InvokeEventHandler_WithHandler_InvokesHandler()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that InvokeEventHandler generic with a null handler does not throw.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InvokeEventHandler_Generic_NullHandler_DoesNotThrow()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that InvokeEventHandler generic with a handler invokes it.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InvokeEventHandler_Generic_WithHandler_InvokesHandler()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -112,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with Closed event invokes the Closed event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_Closed_InvokesClosedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -129,7 +130,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with GainedFocus invokes the GainedFocus event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_GainedFocus_InvokesGainedFocusEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with LostFocus invokes the LostFocus event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_LostFocus_InvokesLostFocusEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -163,7 +164,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseEntered invokes the MouseEntered event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseEntered_InvokesMouseEnteredEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseLeft invokes the MouseLeft event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseLeft_InvokesMouseLeftEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -197,7 +198,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with Resized invokes the Resized event with SizeEventArgs.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_Resized_InvokesResizedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -215,7 +216,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with KeyPressed invokes the KeyPressed event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_KeyPressed_InvokesKeyPressedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -233,7 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with KeyReleased invokes the KeyReleased event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_KeyReleased_InvokesKeyReleasedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with TextEntered invokes the TextEntered event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_TextEntered_InvokesTextEnteredEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -269,7 +270,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseButtonPressed invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseButtonPressed_InvokesMouseButtonPressedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -287,7 +288,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseButtonReleased invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseButtonReleased_InvokesMouseButtonReleasedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -305,7 +306,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseMoved invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseMoved_InvokesMouseMovedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -323,7 +324,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseWheelMoved invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseWheelMoved_InvokesMouseWheelMovedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -341,7 +342,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with MouseWheelScrolled invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_MouseWheelScrolled_InvokesMouseWheelScrolledEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -359,7 +360,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with JoystickButtonPressed invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_JoystickButtonPressed_InvokesJoystickButtonPressedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -377,7 +378,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with JoystickButtonReleased invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_JoystickButtonReleased_InvokesJoystickButtonReleasedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -395,7 +396,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with JoystickMoved invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_JoystickMoved_InvokesJoystickMovedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -413,7 +414,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with JoystickConnected invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_JoystickConnected_InvokesJoystickConnectedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -431,7 +432,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with JoystickDisconnected invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_JoystickDisconnected_InvokesJoystickDisconnectedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -449,7 +450,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with TouchBegan invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_TouchBegan_InvokesTouchBeganEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -467,7 +468,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with TouchMoved invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_TouchMoved_InvokesTouchMovedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -485,7 +486,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with TouchEnded invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_TouchEnded_InvokesTouchEndedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -503,7 +504,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with SensorChanged invokes the event.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_SensorChanged_InvokesSensorChangedEvent()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);
@@ -521,7 +522,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         ///     Tests that CallEventHandler with unregistered events does not throw.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CallEventHandler_NoHandler_DoesNotThrow()
         {
             TestWindow window = new TestWindow(IntPtr.Zero);

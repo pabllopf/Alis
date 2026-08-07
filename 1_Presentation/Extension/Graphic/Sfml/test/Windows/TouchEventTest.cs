@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that touch event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TouchEvent_Default_HasZeroValues()
         {
             TouchEvent e = new TouchEvent();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that touch event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TouchEventArgs_Constructor_SetsProperties()
         {
             TouchEvent e = new TouchEvent { Finger = 1u, X = 50, Y = 100 };
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that touch event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void TouchEventArgs_ToString_IncludesPropertyNames()
         {
             TouchEvent e = new TouchEvent { Finger = 0u };

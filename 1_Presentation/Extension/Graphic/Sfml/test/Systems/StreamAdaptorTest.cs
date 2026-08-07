@@ -30,6 +30,7 @@
 using System;
 using System.IO;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that StreamAdaptor constructor creates a valid instance
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_ShouldCreateValidInstance()
         {
             Assert.NotNull(_streamAdaptor);
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that InputStreamPtr returns a valid pointer
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void InputStreamPtr_ShouldReturnValidPointer()
         {
             Assert.NotEqual(IntPtr.Zero, _streamAdaptor.InputStreamPtr);
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that StreamAdaptor with empty stream works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithEmptyStream_ShouldCreateValidInstance()
         {
             MemoryStream emptyStream = new MemoryStream();
@@ -101,7 +102,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that StreamAdaptor with non-empty stream works
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithNonEmptyStream_ShouldCreateValidInstance()
         {
             byte[] data = new byte[1024];
@@ -120,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that multiple StreamAdaptor instances can be created
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MultipleInstances_ShouldWorkIndependently()
         {
             MemoryStream stream1 = new MemoryStream(new byte[] { 1, 2, 3 });
@@ -137,7 +138,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         ///     Tests that StreamAdaptor with large stream works.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithLargeStream_ShouldCreateValidInstance()
         {
             byte[] data = new byte[65536];

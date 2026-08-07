@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -43,7 +44,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Cursor)));
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor type is nested enum
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CursorType_IsNestedEnum()
         {
             Assert.True(typeof(Cursor.CursorType).IsEnum);
@@ -62,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor implements i disposable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(Cursor)));
@@ -71,7 +72,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with system type does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithSystemType_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with system type hand does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithSystemType_Hand_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Hand);
@@ -93,7 +94,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with system type text does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithSystemType_Text_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Text);
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with system type wait does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithSystemType_Wait_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Wait);
@@ -115,7 +116,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that constructor with system type all values does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_WithSystemTypeAllValues_DoesNotThrow()
         {
             foreach (Cursor.CursorType type in Enum.GetValues(typeof(Cursor.CursorType)))
@@ -128,7 +129,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that destroy sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_SetsCPointerToZero()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that destroy called twice does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_CalledTwice_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -151,7 +152,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that destroy with disposing true sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingTrue_SetsCPointerToZero()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -162,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that destroy with disposing false sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_WithDisposingFalse_SetsCPointerToZero()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -173,7 +174,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that dispose sets c pointer to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_SetsCPointerToZero()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that dispose called multiple times does not throw
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_CalledMultipleTimes_DoesNotThrow()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -196,7 +197,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor with system type constructor invokes native call
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_WithSystemType_ConstructorInvokesNativeCall()
         {
             Cursor cursor = new Cursor(Cursor.CursorType.Arrow);
@@ -207,7 +208,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor has destroy method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_HasDestroyMethod()
         {
             Assert.NotNull(typeof(Cursor).GetMethod("Destroy", new[] { typeof(bool) }));
@@ -216,7 +217,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor has c pointer property
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_HasCPointerProperty()
         {
             Assert.NotNull(typeof(Cursor).GetProperty("CPointer"));
@@ -225,7 +226,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor has constructor with cursor type
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_HasConstructorWithCursorType()
         {
             Assert.NotNull(typeof(Cursor).GetConstructor(new[] { typeof(Cursor.CursorType) }));
@@ -234,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor has constructor with pixels size and hotspot
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_HasConstructorWithPixelsSizeAndHotspot()
         {
             Assert.NotNull(typeof(Cursor).GetConstructor(new[]
@@ -248,7 +249,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that cursor system cursor can be constructed with all types
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Cursor_SystemCursor_CanBeConstructedWithAllTypes()
         {
             foreach (Cursor.CursorType type in Enum.GetValues(typeof(Cursor.CursorType)))

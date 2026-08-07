@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor position only sets fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PositionOnly_SetsFields()
         {
             Vertex v = new Vertex(new Vector2F(1, 2));
@@ -55,7 +56,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor position and color sets fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PositionAndColor_SetsFields()
         {
             Vertex v = new Vertex(new Vector2F(3, 4), Color.Black);
@@ -69,7 +70,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor position and tex coords sets fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PositionAndTexCoords_SetsFields()
         {
             Vertex v = new Vertex(new Vector2F(5, 6), new Vector2F(7, 8));
@@ -83,7 +84,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that constructor position color tex coords sets fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_PositionColorTexCoords_SetsFields()
         {
             Vertex v = new Vertex(new Vector2F(9, 10), Color.Blue, new Vector2F(11, 12));
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that fields are mutable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Fields_AreMutable()
         {
             Vertex v = new Vertex(new Vector2F(0, 0));
@@ -114,7 +115,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string contains fields
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_ContainsFields()
         {
             Vertex v = new Vertex(new Vector2F(1, 2), Color.Red, new Vector2F(3, 4));

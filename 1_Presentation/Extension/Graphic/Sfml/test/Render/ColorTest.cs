@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the constructors and ToInteger method.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Constructor_And_ToInteger_Works()
         {
             Color color = new Color(10, 20, 30, 40);
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests the copy constructor.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CopyConstructor_Works()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -67,7 +68,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests equality and inequality.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equality_Works()
         {
             Color c1 = new Color(1, 2, 3, 4);
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests ToString returns a non-empty string.
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_NotEmpty()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -92,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that static colors have expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void StaticColors_HaveExpectedValues()
         {
             Assert.Equal(new Color(0, 0, 0), Color.Black);
@@ -109,7 +110,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that operator add clamps to 255
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OperatorAdd_ClampsTo255()
         {
             Color c1 = new Color(200, 200, 200, 200);
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that operator subtract clamps to zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OperatorSubtract_ClampsToZero()
         {
             Color c1 = new Color(50, 50, 50, 50);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that operator multiply scales correctly
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OperatorMultiply_ScalesCorrectly()
         {
             Color c1 = new Color(128, 128, 128, 128);
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that operator multiply with half reduces by factor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void OperatorMultiply_WithHalfReducesByFactor()
         {
             Color white = new Color(255, 255, 255, 255);
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that three param constructor sets alpha to 255
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ThreeParamConstructor_SetsAlphaTo255()
         {
             Color color = new Color(10, 20, 30);
@@ -182,7 +183,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals(object) returns true for matching boxed colors
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_Object_ReturnsTrueForMatchingColor()
         {
             Color c1 = new Color(10, 20, 30, 40);
@@ -194,7 +195,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that Equals(object) returns false for non-Color object
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Equals_Object_ReturnsFalseForNonColor()
         {
             Color color = new Color(1, 2, 3, 4);
@@ -205,7 +206,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         ///     Tests that GetHashCode returns consistent values for equal colors
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetHashCode_EqualColors_ReturnsSameValue()
         {
             Color c1 = new Color(10, 20, 30, 40);

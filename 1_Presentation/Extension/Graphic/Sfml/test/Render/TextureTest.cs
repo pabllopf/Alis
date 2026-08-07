@@ -1,6 +1,7 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that texture is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Texture_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(Texture)));
@@ -23,7 +24,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that native handle smooth srgb repeated properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void NativeHandle_Smooth_Srgb_Repeated_Properties_Exist()
         {
             Assert.NotNull(typeof(Texture).GetProperty("NativeHandle"));
@@ -35,7 +36,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size maximum size properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_MaximumSize_Properties_Exist()
         {
             Assert.NotNull(typeof(Texture).GetProperty("Size"));
@@ -45,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that copy to image method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CopyToImage_Method_Exists()
         {
             Assert.NotNull(typeof(Texture).GetMethod("CopyToImage"));
@@ -54,7 +55,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that update multiple overloads exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Update_MultipleOverloads_Exist()
         {
             Assert.NotNull(typeof(Texture).GetMethod("Update", new[] { typeof(byte[]) }));
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that generate mipmap swap bind methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GenerateMipmap_Swap_Bind_Methods_Exist()
         {
             Assert.NotNull(typeof(Texture).GetMethod("GenerateMipmap"));
@@ -77,7 +78,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that bind is static
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Bind_IsStatic()
         {
             var method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });

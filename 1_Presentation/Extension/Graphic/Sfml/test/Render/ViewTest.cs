@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view is assignable from object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_IsAssignableFromObjectBase()
         {
             Assert.True(typeof(ObjectBase).IsAssignableFrom(typeof(View)));
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view implements i disposable
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_ImplementsIDisposable()
         {
             Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(View)));
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view has default constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_HasDefaultConstructor()
         {
             ConstructorInfo ctor = typeof(View).GetConstructor(Type.EmptyTypes);
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view has float rect constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_HasFloatRectConstructor()
         {
             ConstructorInfo ctor = typeof(View).GetConstructor(new[] { typeof(FloatRect) });
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view has center size constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_HasCenterSizeConstructor()
         {
             ConstructorInfo ctor = typeof(View).GetConstructor(new[] { typeof(Vector2F), typeof(Vector2F) });
@@ -93,7 +93,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view has copy constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_HasCopyConstructor()
         {
             ConstructorInfo ctor = typeof(View).GetConstructor(new[] { typeof(View) });
@@ -103,7 +103,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that view has internal int ptr constructor
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void View_HasInternalIntPtrConstructor()
         {
             ConstructorInfo ctor = typeof(View).GetConstructor(BindingFlags.Instance | BindingFlags.NonPublic, null, new[] { typeof(IntPtr) }, null);
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that center size rotation viewport properties exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Center_Size_Rotation_Viewport_Properties_Exist()
         {
             Assert.NotNull(typeof(View).GetProperty("Center"));
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that center property has get and set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Center_Property_HasGetAndSet()
         {
             PropertyInfo prop = typeof(View).GetProperty("Center");
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that size property has get and set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Size_Property_HasGetAndSet()
         {
             PropertyInfo prop = typeof(View).GetProperty("Size");
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that rotation property has get and set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Rotation_Property_HasGetAndSet()
         {
             PropertyInfo prop = typeof(View).GetProperty("Rotation");
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that viewport property has get and set
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Viewport_Property_HasGetAndSet()
         {
             PropertyInfo prop = typeof(View).GetProperty("Viewport");
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that reset move rotate zoom methods exist
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Reset_Move_Rotate_Zoom_Methods_Exist()
         {
             Assert.NotNull(typeof(View).GetMethod("Reset"));
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that to string method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void ToString_Method_Exists()
         {
             Assert.NotNull(typeof(View).GetMethod("ToString"));
@@ -191,7 +191,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy method exists
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_Method_Exists()
         {
             Assert.NotNull(typeof(View).GetMethod("Destroy"));
@@ -200,7 +200,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that destroy overrides object base
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Destroy_OverridesObjectBase()
         {
             MethodInfo destroy = typeof(View).GetMethod("Destroy");
@@ -211,7 +211,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that c pointer property inherited
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void CPointer_Property_Inherited()
         {
             PropertyInfo prop = typeof(View).GetProperty("CPointer", BindingFlags.Instance | BindingFlags.Public);
@@ -396,7 +396,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that reset accepts float rect parameter
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Reset_AcceptsFloatRectParameter()
         {
             ParameterInfo[] parameters = typeof(View).GetMethod("Reset").GetParameters();

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse wheel scroll event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseWheelScrollEvent_Default_HasZeroValues()
         {
             MouseWheelScrollEvent e = new MouseWheelScrollEvent();
@@ -52,7 +53,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse wheel scroll event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseWheelScrollEventArgs_Constructor_SetsProperties()
         {
             MouseWheelScrollEvent e = new MouseWheelScrollEvent { Wheel = Mouse.Wheel.VerticalWheel, Delta = 1.5f, X = 50, Y = 100 };
@@ -66,7 +67,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that mouse wheel scroll event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void MouseWheelScrollEventArgs_ToString_IncludesPropertyNames()
         {
             MouseWheelScrollEvent e = new MouseWheelScrollEvent { Delta = 1.0f };

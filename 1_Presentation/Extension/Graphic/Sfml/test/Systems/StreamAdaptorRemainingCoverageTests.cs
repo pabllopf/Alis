@@ -31,6 +31,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Extension.Graphic.Sfml.Systems;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Systems
@@ -56,7 +57,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read should return correct bytes
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Read_ShouldReturnCorrectBytes()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -82,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read should return partial bytes when buffer larger than stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Read_ShouldReturnPartialBytes_WhenBufferLargerThanStream()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -104,7 +105,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read should return zero when stream empty
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Read_ShouldReturnZero_WhenStreamEmpty()
         {
             var (adaptor, stream) = CreateAdaptor(Array.Empty<byte>());
@@ -126,7 +127,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that seek should update position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Seek_ShouldUpdatePosition()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -140,7 +141,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that seek to end should return length
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Seek_ToEnd_ShouldReturnLength()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -154,7 +155,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that seek to beginning should return zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Seek_ToBeginning_ShouldReturnZero()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that tell should return current position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Tell_ShouldReturnCurrentPosition()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -184,7 +185,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that tell should return zero initially
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Tell_ShouldReturnZero_Initially()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -198,7 +199,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that get size should return stream length
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetSize_ShouldReturnStreamLength()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -212,7 +213,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that get size should return zero for empty stream
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void GetSize_ShouldReturnZero_ForEmptyStream()
         {
             var (adaptor, stream) = CreateAdaptor(Array.Empty<byte>());
@@ -226,7 +227,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that dispose should free memory
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Dispose_ShouldFreeMemory()
         {
             using StreamAdaptor adaptor = new StreamAdaptor(new MemoryStream(new byte[] { 1, 2, 3 }));
@@ -236,7 +237,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read after seek should read from correct position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Read_AfterSeek_ShouldReadFromCorrectPosition()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -264,7 +265,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that read should read zero bytes when size is zero
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Read_ShouldReadZeroBytes_WhenSizeIsZero()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30 });
@@ -286,7 +287,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that tell after seek should return updated position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Tell_AfterSeek_ShouldReturnUpdatedPosition()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
@@ -301,7 +302,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         /// <summary>
         /// Tests that tell after read should return updated position
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void Tell_AfterRead_ShouldReturnUpdatedPosition()
         {
             var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });

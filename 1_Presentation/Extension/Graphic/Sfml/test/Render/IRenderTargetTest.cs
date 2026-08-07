@@ -1,5 +1,6 @@
 // license header
 using Alis.Extension.Graphic.Sfml.Render;
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render
@@ -12,7 +13,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target is interface
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_IsInterface()
         {
             Assert.True(typeof(IRenderTarget).IsInterface);
@@ -21,7 +22,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines size property
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesSizeProperty()
         {
             var prop = typeof(IRenderTarget).GetProperty("Size");
@@ -32,7 +33,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines default view property
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesDefaultViewProperty()
         {
             Assert.NotNull(typeof(IRenderTarget).GetProperty("DefaultView"));
@@ -41,7 +42,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines get view method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesGetViewMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("GetView"));
@@ -50,7 +51,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines set view method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesSetViewMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("SetView"));
@@ -59,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines get viewport method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesGetViewportMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("GetViewport"));
@@ -68,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines map pixel to coords method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesMapPixelToCoordsMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("MapPixelToCoords", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F) }));
@@ -78,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines map coords to pixel method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesMapCoordsToPixelMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("MapCoordsToPixel", new[] { typeof(Alis.Core.Aspect.Math.Vector.Vector2F) }));
@@ -88,7 +89,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines clear method
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesClearMethod()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("Clear", System.Type.EmptyTypes));
@@ -98,7 +99,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines draw methods
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesDrawMethods()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("Draw", new[] { typeof(IDrawable) }));
@@ -110,7 +111,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         /// <summary>
         /// Tests that i render target defines gl methods
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesGlMethods()
         {
             Assert.NotNull(typeof(IRenderTarget).GetMethod("PushGlStates"));

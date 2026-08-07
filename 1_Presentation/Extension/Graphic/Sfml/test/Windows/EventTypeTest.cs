@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that event type has expected values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void EventType_HasExpectedValues()
         {
             Assert.Equal(0, (int)EventType.Closed);

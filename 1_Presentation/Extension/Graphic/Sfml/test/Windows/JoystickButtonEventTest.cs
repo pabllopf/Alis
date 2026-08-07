@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 
@@ -40,7 +41,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick button event default has zero values
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickButtonEvent_Default_HasZeroValues()
         {
             JoystickButtonEvent e = new JoystickButtonEvent();
@@ -51,7 +52,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick button event args constructor sets properties
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickButtonEventArgs_Constructor_SetsProperties()
         {
             JoystickButtonEvent e = new JoystickButtonEvent { JoystickId = 2, Button = 5 };
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         /// <summary>
         /// Tests that joystick button event args to string includes property names
         /// </summary>
-        [Fact]
+        [RequireCSfmlSystemFact]
         public void JoystickButtonEventArgs_ToString_IncludesPropertyNames()
         {
             JoystickButtonEvent e = new JoystickButtonEvent { JoystickId = 1, Button = 3 };
