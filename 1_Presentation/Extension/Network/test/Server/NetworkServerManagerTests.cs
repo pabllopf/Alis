@@ -227,8 +227,6 @@ namespace Alis.Extension.Network.Test.Server
             CancellationTokenSource cts = new CancellationTokenSource();
             int callCount = 0;
 
-            TaskCompletionSource<bool> firstCallComplete = new TaskCompletionSource<bool>();
-
             mockTransport
                 .Setup(t => t.ReceiveAsync(It.IsAny<CancellationToken>()))
                 .Returns(async (CancellationToken ct) =>

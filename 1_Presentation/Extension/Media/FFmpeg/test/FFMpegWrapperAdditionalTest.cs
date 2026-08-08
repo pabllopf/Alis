@@ -51,7 +51,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         {
             // Arrange & Act
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
-            (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test_output");
+            (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test_output");
 
             // Assert
             Assert.NotNull(output);
@@ -73,7 +73,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
                 string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
 
                 // Act
-                (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test");
+                (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test");
 
                 // Assert - command should execute without error even with hide_banner
                 Assert.NotNull(output);
@@ -99,7 +99,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
                 string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
 
                 // Act
-                (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test");
+                (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test");
 
                 // Assert
                 Assert.NotNull(output);
@@ -360,7 +360,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
 
             // Act
-            (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test", false);
+            (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test", false);
 
             // Assert - should not contain extra newlines from prettify
             Assert.NotNull(output);
@@ -376,7 +376,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
 
             // Act
-            (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test", true);
+            (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test", true);
 
             // Assert - should contain newlines from prettify
             Assert.NotNull(output);

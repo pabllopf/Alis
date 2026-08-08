@@ -61,7 +61,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.False(entity.Has<Velocity>());
 
             // Accessing a non-present component triggers the error path in GetComponentSpan
-            Exception ex = Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
+            Assert.ThrowsAny<Exception>(() => entity.Get<Velocity>());
 
             scene.Dispose();
         }
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact] public void Archetype_EnsureCapacity_DoesNothingWhenSufficient()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            scene.Create(new Position());
 
             int countBefore = scene.EntityCount;
             // Request capacity less than current, should trigger early return
@@ -428,7 +428,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new Scene();
             GameObject entity = scene.Create(new Position());
 
-            int archetypeCountBefore = scene.EntityCount;
             entity.Add(new Velocity());
             entity.Remove<Position>();
 
@@ -493,7 +492,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact] public void Archetype_DataProperty_ReturnsValidFields()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position());
+            scene.Create(new Position());
 
             Fields data = scene.DefaultArchetype.Data;
             Assert.NotNull(data.Map);

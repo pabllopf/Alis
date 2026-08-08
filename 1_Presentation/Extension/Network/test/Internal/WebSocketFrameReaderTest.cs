@@ -128,7 +128,7 @@ namespace Alis.Extension.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[2]);
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
 
-            WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
+            WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
 
         }
 
@@ -144,7 +144,7 @@ namespace Alis.Extension.Network.Test.Internal
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1]);
             ArraySegment<byte> maskKey = new ArraySegment<byte>(new byte[4]);
 
-            WebSocketFrame result = WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
+            WebSocketFrameReader.DecodeCloseFrame(isFinBitSet, opCode, count, buffer, maskKey);
 
         }
 
@@ -163,7 +163,7 @@ namespace Alis.Extension.Network.Test.Internal
             await stream.WriteAsync(bytes, 0, bytes.Length);
             stream.Position = 0;
 
-            uint result = await WebSocketFrameReader.ReadShortLength(stream, smallBuffer, cancellationToken);
+            await WebSocketFrameReader.ReadShortLength(stream, smallBuffer, cancellationToken);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Network.Test.Internal
             await stream.WriteAsync(bytes, 0, bytes.Length);
             stream.Position = 0;
 
-            uint result = await WebSocketFrameReader.ReadLongLength(stream, smallBuffer, cancellationToken);
+            await WebSocketFrameReader.ReadLongLength(stream, smallBuffer, cancellationToken);
         }
 
         /// <summary>

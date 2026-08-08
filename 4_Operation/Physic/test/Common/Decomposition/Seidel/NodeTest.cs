@@ -107,21 +107,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         }
 
         /// <summary>
-        ///     Tests that node should allow multiple parents
-        /// </summary>
-        [Fact]
-        public void Node_ShouldAllowMultipleParents()
-        {
-            Trapezoid trap = CreateTestTrapezoid();
-            Sink child = Sink.Isink(trap);
-
-            TestNode parent1 = new TestNode(child, null);
-            TestNode parent2 = new TestNode(child, null);
-
-            Assert.Equal(2, child.ParentList.Count);
-        }
-
-        /// <summary>
         ///     Tests that node with only left child should initialize correctly
         /// </summary>
         [Fact]

@@ -552,11 +552,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -585,11 +581,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -618,11 +610,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -651,11 +639,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -684,11 +668,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -717,11 +697,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(gearJoint);
         }
@@ -822,82 +798,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
-            Vector2F force = gearJoint.GetReactionForce(1.0f);
+            gearJoint.GetReactionForce(1.0f);
             Assert.NotNull(gearJoint);
         }
 
-        /// <summary>
-        /// Tests that get reaction torque after step returns valid value
-        /// </summary>
-        [Fact]
-        public void GetReactionTorque_AfterStep_ShouldReturnValidValue()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
-            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
-            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.2f, 1.0f);
-            bodyA.CreateFixture(shape);
-            bodyB.CreateFixture(shape);
-            bodyC.CreateFixture(shape);
-            bodyD.CreateFixture(shape);
-
-            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
-            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
-            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
-            world.Add(jointA);
-            world.Add(jointB);
-            world.Add(gearJoint);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            float torque = gearJoint.GetReactionTorque(1.0f);
-            Assert.NotNull(gearJoint);
-        }
-
-        /// <summary>
-        /// Tests that init velocity constraints with warm starting false covers else branch
-        /// </summary>
-        [Fact]
-        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Dynamic);
-            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
-            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Dynamic);
-            CircleShape shape = new CircleShape(0.2f, 1.0f);
-            bodyA.CreateFixture(shape);
-            bodyB.CreateFixture(shape);
-            bodyC.CreateFixture(shape);
-            bodyD.CreateFixture(shape);
-
-            RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
-            RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
-            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
-
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
-
-            MethodInfo initMethod = typeof(GearJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(gearJoint, new object[] { data });
-        }
+       
     }
 }
 

@@ -129,7 +129,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             AudioPlayer player = new AudioPlayer("input.wav", _fakeFfplayPath);
 
-            Process result = player.PlayInBackground(runPureBackground: true);
+            player.PlayInBackground(runPureBackground: true);
 
             FieldInfo ffplaypField = typeof(AudioPlayer).GetField("ffplayp",
                 BindingFlags.NonPublic | BindingFlags.Instance);

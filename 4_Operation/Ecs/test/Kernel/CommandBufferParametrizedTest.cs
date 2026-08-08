@@ -64,7 +64,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             using Scene scene = new Scene();
             CommandBuffer buffer = new(scene);
-            Position pos = new Position {X = 10, Y = 20};
 
             buffer.Playback();
 
@@ -104,7 +103,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void CommandBuffer_Dispose_Works()
         {
             using Scene scene = new Scene();
-            CommandBuffer buffer = new(scene);
 
             Assert.True(true);
         }

@@ -168,7 +168,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
         public void GetMouseState_ReturnsValidState()
         {
             MacNativePlatform platform = new MacNativePlatform();
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.NotNull(buttons);
             Assert.Equal(5, buttons.Length);
         }

@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
 
             // Act: Add a fixture
-            Fixture fixture = body.CreateCircle(0.5f, 1.0f);
+            body.CreateCircle(0.5f, 1.0f);
 
             // Assert: Fixture count should be 1
             Assert.Equal(1, body.FixtureList.Count);

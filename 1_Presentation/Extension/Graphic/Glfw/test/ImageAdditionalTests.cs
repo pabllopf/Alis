@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Glfw.Test
             {
                 pixelDataOffset = 54 + 256 * 4;
             }
-            int bytesPerPixel = bitsPerPixel / 8;
+
             int rowSize = (width * bitsPerPixel + 31) / 32 * 4;
             int pixelDataSize = rowSize * height;
 

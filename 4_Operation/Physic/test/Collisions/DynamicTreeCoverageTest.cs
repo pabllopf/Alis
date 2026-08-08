@@ -327,7 +327,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Aabb aabb1 = new Aabb(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 1.0f));
             Aabb aabb2 = new Aabb(new Vector2F(2.0f, 0.0f), new Vector2F(3.0f, 1.0f));
             int proxy1 = tree.AddProxy(ref aabb1);
-            int proxy2 = tree.AddProxy(ref aabb2);
+            tree.AddProxy(ref aabb2);
 
             float cost = tree.ComputeChildCost(proxy1, new Aabb(new Vector2F(0.5f, 0.5f), new Vector2F(2.5f, 1.5f)), 1.0f);
 

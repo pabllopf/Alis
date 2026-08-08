@@ -15,7 +15,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void ComponentEvent_IsStruct()
         {
-            ComponentEvent evt = new ComponentEvent();
             Assert.True(typeof(ComponentEvent).IsValueType);
         }
 

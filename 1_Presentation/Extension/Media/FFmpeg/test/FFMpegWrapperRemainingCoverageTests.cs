@@ -52,7 +52,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             {
                 FfMpegWrapper.HideFFmpegBanner = false;
                 string echoPath = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "echo" : "/bin/echo";
-                (string output, string error) = FfMpegWrapper.RunCommand(echoPath, "test_hide_banner_false");
+                (string output, string _) = FfMpegWrapper.RunCommand(echoPath, "test_hide_banner_false");
                 Assert.NotNull(output);
             }
             finally

@@ -676,8 +676,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddFocusEvent_ShouldAddFocusEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -687,8 +685,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddInputCharacter_ShouldAddInputCharacter()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -707,8 +703,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddKeyEvent_ShouldAddKeyEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -718,8 +712,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddMouseButtonEvent_ShouldAddMouseButtonEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -729,8 +721,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddMousePosEvent_ShouldAddMousePosEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -740,8 +730,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddMouseViewportEvent_ShouldAddMouseViewportEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -751,8 +739,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void AddMouseWheelEvent_ShouldAddMouseWheelEvent()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -762,8 +748,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ClearInputCharacters_ShouldClearInputCharacters()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -773,8 +757,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ClearInputKeys_ShouldClearInputKeys()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -784,8 +766,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetAppAcceptingEvents_ShouldSetAppAcceptingEvents()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -795,8 +775,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetKeyEventNativeData_ShouldSetKeyEventNativeData()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>
@@ -806,8 +784,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetKeyEventNativeData_WithLegacyIndex_ShouldSetKeyEventNativeData()
         {
             ImGuiIo io = new ImGuiIo();
-            ImGuiIoPtr ioPtr = new ImGuiIoPtr(io);
-
         }
 
         /// <summary>

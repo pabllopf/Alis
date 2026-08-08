@@ -379,7 +379,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.True(buttons[4]);
         }
 
@@ -391,7 +391,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 5, 0, 0, 10, 20);
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.False(buttons[0]);
             Assert.False(buttons[1]);
             Assert.False(buttons[2]);
@@ -407,7 +407,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", -1, 0, 0, 10, 20);
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.False(buttons[0]);
         }
 
@@ -807,7 +807,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void WebAssemblyPlatform_GetWindowMetrics_ReturnsDefaultValuesOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
+            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int _, out int _);
             Assert.Equal(0, winX);
             Assert.Equal(0, winY);
             Assert.Equal(800, winW);
@@ -822,8 +822,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void WebAssemblyPlatform_GetMouseState_ReturnsClonedArray()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            platform.GetMouseState(out int x1, out int y1, out bool[] buttons1);
-            platform.GetMouseState(out int x2, out int y2, out bool[] buttons2);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons1);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons2);
             Assert.NotSame(buttons1, buttons2);
         }
 
@@ -837,7 +837,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             InvokePrivate(platform, "OnMouseDown", 0, 0, 0, 10, 20);
             InvokePrivate(platform, "OnMouseDown", 2, 0, 0, 10, 20);
             InvokePrivate(platform, "OnMouseDown", 4, 0, 0, 10, 20);
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.True(buttons[0]);
             Assert.False(buttons[1]);
             Assert.True(buttons[2]);

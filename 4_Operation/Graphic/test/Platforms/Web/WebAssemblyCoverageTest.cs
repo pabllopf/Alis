@@ -105,7 +105,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [WebOnly]
         public void WebAssemblyPlatform_Initialize_AlreadyInitialized_ReturnsTrue()
         {
-            WebAssemblyPlatform platform = new WebAssemblyPlatform();
         }
 
         // =====================================================================

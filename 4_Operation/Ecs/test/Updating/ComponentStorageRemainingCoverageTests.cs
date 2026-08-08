@@ -254,8 +254,8 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             NoneUpdate<int> target = new NoneUpdate<int>(4);
             IdTable<int> source = new IdTable<int>();
-            source.Create(out int idx0) = 10;
-            source.Create(out int idx1) = 20;
+            source.Create(out int _) = 10;
+            source.Create(out int _) = 20;
             source.Create(out int idx2) = 30;
 
             target.PullComponentFrom(source, 1, idx2);
@@ -271,8 +271,8 @@ namespace Alis.Core.Ecs.Test.Updating
         {
             NoneUpdate<string> target = new NoneUpdate<string>(4);
             IdTable<string> source = new IdTable<string>();
-            source.Create(out int idx0) = "a";
-            source.Create(out int idx1) = "b";
+            source.Create(out int _) = "a";
+            source.Create(out int _) = "b";
             source.Create(out int idx2) = "c";
 
             target.PullComponentFrom(source, 0, idx2);

@@ -78,7 +78,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject entity, Ref<Position> _) in query.EnumerateWithEntities<Position>())
             {
                 count++;
                 Assert.True(entity.IsAlive);
@@ -102,7 +102,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>, With<Health>>();
             int count = 0;
-            foreach ((GameObject entity, Ref<Position> pos, Ref<Health> health) in query.EnumerateWithEntities<Position, Health>())
+            foreach ((GameObject entity, Ref<Position> _, Ref<Health> _) in query.EnumerateWithEntities<Position, Health>())
             {
                 count++;
                 Assert.True(entity.IsAlive);
@@ -182,7 +182,7 @@ namespace Alis.Core.Ecs.Test
             // Act
             Query query = scene.Query<With<Position>>();
             int totalX = 0;
-            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject _, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
             {
                 totalX += (int) pos.Value.X;
             }

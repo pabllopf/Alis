@@ -53,11 +53,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyForce(new Vector2F(100.0f, 0.0f), new Vector2F(0.0f, 1.0f));
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0.0f, body.AngularVelocity, 4);
         }
@@ -99,11 +95,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F before = body.Position;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(before.X, body.Position.X, 4);
             Assert.Equal(before.Y, body.Position.Y, 4);
@@ -152,11 +144,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             DistanceJoint joint = JointFactory.CreateDistanceJoint(world, bodyA, bodyB);
             joint.CollideConnected = false;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }

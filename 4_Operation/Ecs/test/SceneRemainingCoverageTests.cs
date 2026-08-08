@@ -95,7 +95,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject go1 = scene.Create();
             GameObject go2 = scene.Create();
-            GameObject go3 = scene.Create();
+            scene.Create();
             Assert.Equal(3, scene.EntityCount);
             go1.Delete();
             Assert.Equal(2, scene.EntityCount);
@@ -414,7 +414,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health> result = scene.CreateMany<Position, Health>(2);
+            scene.CreateMany<Position, Health>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -426,7 +426,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity> result = scene.CreateMany<Position, Health, Velocity>(2);
+            scene.CreateMany<Position, Health, Velocity>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -438,7 +438,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity, Damage> result = scene.CreateMany<Position, Health, Velocity, Damage>(2);
+            scene.CreateMany<Position, Health, Velocity, Damage>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -450,7 +450,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity, Damage, Armor> result = scene.CreateMany<Position, Health, Velocity, Damage, Armor>(2);
+            scene.CreateMany<Position, Health, Velocity, Damage, Armor>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -462,8 +462,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform> result =
-                scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(2);
+            scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -475,8 +474,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestComponent> result =
-                scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestComponent>(2);
+            scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestComponent>(2);
             Assert.Equal(2, callCount);
         }
 
@@ -488,8 +486,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             int callCount = 0;
             scene.EntityCreated += _ => callCount++;
-            ChunkTuple<Position, Health, Velocity, Damage, Armor, Transform, TestComponent, AnotherComponent> result =
-                scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestComponent, AnotherComponent>(2);
+            scene.CreateMany<Position, Health, Velocity, Damage, Armor, Transform, TestComponent, AnotherComponent>(2);
             Assert.Equal(2, callCount);
         }
 

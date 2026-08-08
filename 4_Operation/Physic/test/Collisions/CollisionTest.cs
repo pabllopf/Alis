@@ -551,7 +551,7 @@ namespace Alis.Core.Physic.Test.Collisions
             newPoint1.Id.Key = 44;
             newManifold.Points[1] = newPoint1;
 
-            Collision.GetPointStates(out FixedArray2<PointState> state1, out FixedArray2<PointState> state2, ref oldManifold, ref newManifold);
+            Collision.GetPointStates(out FixedArray2<PointState> _, out FixedArray2<PointState> state2, ref oldManifold, ref newManifold);
 
             Assert.Equal(PointState.Add, state2[0]);
             Assert.Equal(PointState.Add, state2[1]);

@@ -52,7 +52,7 @@ namespace Alis.Extension.Updater.Test
         [Theory, MemberData(nameof(IsZipPackageCases))]
         public void IsZipPackage_Matrix(int caseId, string fileName, bool expected)
         {
-            UpdateManager sut = CreateManagerFast();
+            CreateManagerFast();
 
             bool result = UpdateManager.IsZipPackage(fileName);
 
@@ -69,7 +69,7 @@ namespace Alis.Extension.Updater.Test
         [Theory, MemberData(nameof(IsDmgPackageCases))]
         public void IsDmgPackage_Matrix(int caseId, string fileName, bool expected)
         {
-            UpdateManager sut = CreateManagerFast();
+            CreateManagerFast();
 
             bool result = UpdateManager.IsDmgPackage(fileName);
 
@@ -86,7 +86,7 @@ namespace Alis.Extension.Updater.Test
         [Theory, MemberData(nameof(GetPackageTypeCases))]
         public void GetPackageType_Matrix(int caseId, string fileName, string expected)
         {
-            UpdateManager sut = CreateManagerFast();
+            CreateManagerFast();
 
             string result = UpdateManager.GetPackageType(fileName);
 

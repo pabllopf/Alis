@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
 
             controller.Update(0.016f);
 
@@ -268,7 +268,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(5, 5));
 
             controller.Update(0.016f);

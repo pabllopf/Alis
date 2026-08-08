@@ -391,7 +391,7 @@ namespace Alis.Extension.Updater.Test
                     using (NetworkStream stream = client.GetStream())
                     {
                         byte[] buffer = new byte[4096];
-                        int bytesRead = stream.Read(buffer, 0, buffer.Length);
+                        stream.Read(buffer, 0, buffer.Length);
                         string body = _responseContent;
                         string response = "HTTP/1.1 200 OK\r\n" +
                             "Content-Type: application/octet-stream\r\n" +

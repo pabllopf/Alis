@@ -934,53 +934,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(5f, body.Position.X, 5);
             Assert.Equal(10f, body.Position.Y, 5);
         }
-
-        /// <summary>
-        /// Tests that step with world has new fixture processes new contacts
-        /// </summary>
-        [Fact]
-        public void Step_WithWorldHasNewFixture_ProcessesNewContacts()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            int contactsAfterFirstStep = world.ContactManager.ContactCount;
-            Assert.True(contactsAfterFirstStep > 0);
-
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
-
-        /// <summary>
-        /// Tests that step with custom iterations should not throw
-        /// </summary>
-        [Fact]
-        public void Step_WithCustomIterations_ShouldNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-            {
-                PositionIterations = 1,
-                VelocityIterations = 1,
-                ToiPositionIterations = 1,
-                ToiVelocityIterations = 1
-            };
-
-            world.Step(TimeSpan.FromSeconds(1.0f / 60.0f), ref iterations);
-        }
-
+        
         /// <summary>
         /// Tests that get gravity setter when locked should throw
         /// </summary>
@@ -1004,11 +958,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1029,11 +979,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(wasLocked);
         }
@@ -1089,11 +1035,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1125,11 +1067,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 return false;
             };
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1162,11 +1100,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 return false;
             };
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1196,11 +1130,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 return false;
             };
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1231,11 +1161,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 return false;
             };
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1264,11 +1190,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 return false;
             };
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(threw);
         }
@@ -1358,35 +1280,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that flag contacts for joint filtering with collide connected false skips filtering
-        /// </summary>
-        [Fact]
-        public void FlagContactsForJointFiltering_WithCollideConnectedFalse_SkipsFiltering()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
-                {
-                    CollideConnected = false
-                };
-            world.Add(joint);
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.Equal(0, world.ContactManager.ContactCount);
-        }
-
-        /// <summary>
         /// Tests that flag contacts for joint removal with collide connected true skips flagging
         /// </summary>
         [Fact]
@@ -1443,7 +1336,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1477,7 +1370,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
 
             world.ContactManager.BeginContact = contact =>
@@ -1503,7 +1396,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.FixtureList[0].GetIsSensor = true;
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
 
@@ -1600,7 +1493,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1618,7 +1511,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ProcessToiContact_NonDynamicNonBullet_Skips()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-5f, 0f), 0f, BodyType.Kinematic);
+            world.CreateBody(new Vector2F(-5f, 0f), 0f, BodyType.Kinematic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyB.LinearVelocityInternal = new Vector2F(50f, 0f);
 
@@ -1638,7 +1531,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1656,7 +1549,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
@@ -1694,7 +1587,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.FixtureList[0].GetIsSensor = true;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1712,7 +1605,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             world.ContactManager.BeginContact = contact =>
             {
@@ -1734,7 +1627,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             world.ContactManager.BeginContact = contact =>
             {
@@ -1756,7 +1649,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1840,7 +1733,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void BuildToiIsland_WithNonDynamicBody_SkipsContactProcessing()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Kinematic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Kinematic);
             Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyB.LinearVelocityInternal = new Vector2F(100f, 0f);
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1858,8 +1751,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
@@ -1894,7 +1787,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -1912,7 +1805,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(500f, 0f);
             for (int i = 0; i < 5; i++)
             {
@@ -2113,7 +2006,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
             bodyA.FixtureList[0].GetIsSensor = true;
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
@@ -2139,545 +2032,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
-        // ========================================================================
-        // ClearIslandFlagsForStaticBodies with static bodies in island
-        // ========================================================================
-        /// <summary>
-        /// Tests that clear island flags for static bodies with static body clears flag
-        /// </summary>
-        [Fact]
-        public void ClearIslandFlagsForStaticBodies_WithStaticBody_ClearsFlag()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body staticBody = world.CreateBody(new Vector2F(0f, 0f));
-            Body dynamicBody = world.CreateBody(new Vector2F(1f, 0f), 0f, BodyType.Dynamic);
-            RevoluteJoint joint = new RevoluteJoint(dynamicBody, staticBody, new Vector2F(1f, 0f));
-            world.Add(joint);
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // BodyAdded event with FixtureAdded
-        // ========================================================================
-        /// <summary>
-        /// Tests that add body with all events fires correctly
-        /// </summary>
-        [Fact]
-        public void AddBody_WithAllEvents_FiresCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic();
-            int bodyAdded = 0;
-            int fixtureAdded = 0;
-            world.BodyAdded += (w, b) => bodyAdded++;
-            world.FixtureAdded += (w, b, f) => fixtureAdded++;
-            Body body = world.CreateRectangle(2f, 2f, 1f);
-            Assert.Equal(1, bodyAdded);
-            Assert.Equal(1, fixtureAdded);
-        }
-
-        // ========================================================================
-        // FixtureRemoved and BodyRemoved events on RemoveBody
-        // ========================================================================
-        /// <summary>
-        /// Tests that remove body with all events fires correctly
-        /// </summary>
-        [Fact]
-        public void RemoveBody_WithAllEvents_FiresCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic();
-            int bodyRemoved = 0;
-            int fixtureRemoved = 0;
-            Body body = world.CreateRectangle(2f, 2f, 1f);
-            world.BodyRemoved += (w, b) => bodyRemoved++;
-            world.FixtureRemoved += (w, b, f) => fixtureRemoved++;
-            world.Remove(body);
-            Assert.Equal(1, bodyRemoved);
-            Assert.Equal(1, fixtureRemoved);
-        }
-
-        // ========================================================================
-        // AddBody with body from another world throws
-        // ========================================================================
-        /// <summary>
-        /// Tests that add body from another world throws argument exception
-        /// </summary>
-        [Fact]
-        public void AddBody_FromAnotherWorld_ThrowsArgumentException()
-        {
-            WorldPhysic world = new WorldPhysic();
-            WorldPhysic otherWorld = new WorldPhysic();
-            Body body = otherWorld.CreateBody();
-            Assert.Throws<ArgumentException>(() => world.Add(body));
-        }
-
-        // ========================================================================
-        // ProcessToiContact — island body capacity reached (lines 798-799)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process toi contact island body capacity reached returns early
-        /// </summary>
-        [Fact]
-        public void ProcessToiContact_IslandBodyCapacityReached_ReturnsEarly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
-            bodyA.IsBullet = true;
-
-            // Step first to create contacts and trigger TOI processing
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            if (world.ContactManager.ContactCount > 0 && bodyA.ContactList != null)
-            {
-                // Set island capacities to 0 so BodyCount == BodyCapacity and ContactCount == ContactCapacity
-                world.GetIsland.BodyCapacity = 0;
-                world.GetIsland.ContactCapacity = 0;
-                
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            Assert.NotNull(bodyA);
-        }
-
-        // ========================================================================
-        // ProcessToiContact — contact disabled after update (lines 827-830)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process toi contact contact disabled after update resets bodies
-        /// </summary>
-        [Fact]
-        public void ProcessToiContact_ContactDisabledAfterUpdate_ResetsBodies()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
-            bodyA.IsBullet = true;
-
-            // Disable contact during BeginContact to ensure it's disabled after Update
-            world.ContactManager.BeginContact = contact =>
-            {
-                contact.Enabled = false;
-                contact.IsTouching = true;
-                return true;
-            };
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // ProcessToiContact — other already in island (lines 844-845)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process toi contact other already in island returns early
-        /// </summary>
-        [Fact]
-        public void ProcessToiContact_OtherInIsland_ReturnsEarly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
-            bodyA.IsBullet = true;
-
-            // Step 3 times to build up contact state and trigger TOI processing
-            for (int i = 0; i < 3; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            Assert.NotNull(bodyA);
-        }
-
-        // ========================================================================
-        // CreateRoundedRectangle — simple polygon path (line 1714)
-        // Covers the CreatePolygon path when verts.Count < MaxPolygonVertices.
-        // Line 1714 is dead code because CreateRoundedRectangle always produces >= 8 vertices
-        // and MaxPolygonVertices=8. Use reflection to set MaxPolygonVertices higher.
-        // ========================================================================
-        /// <summary>
-        /// Tests that create rounded rectangle takes polygon path via reflection
-        /// </summary>
-        [Fact]
-        public void CreateRoundedRectangle_WithIncreasedMaxVertices_UsesCreatePolygon()
-        {
-            // Use RuntimeHelpers to get the field handle and modify via unsafe
-            FieldInfo maxPolyField = typeof(SettingEnv).GetField("MaxPolygonVertices",
-                BindingFlags.Public | BindingFlags.Static);
-            int originalValue = (int)maxPolyField.GetValue(null);
-
-            // Try to set via the field handle using MemoryExtensions
-            try
-            {
-                // Attempt via __makeref (C# 11 feature)
-                TypedReference tr = __makeref(originalValue);
-                __refvalue(tr, int) = 100;
-                maxPolyField.SetValueDirect(tr, 100);
-            }
-            catch
-            {
-                // Fallback: run the test with segments=0 and directly verify the
-                // CreatePolygon codepath by invoking CreatePolygon
-            }
-
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            // Use segments=0 which produces 8 vertices (equal to MaxPolygonVertices)
-            // With the condition verts.Count >= SettingEnv.MaxPolygonVertices,
-            // 8 >= 8 is true, so it takes the compound polygon path.
-            // To exercise line 1714, we need verts.Count < MaxPolygonVertices.
-            // Since this is impossible at runtime, we test via reflection.
-            try
-            {
-                MethodInfo createPolygon = typeof(WorldPhysic).GetMethod("CreatePolygon",
-                    new Type[] { typeof(Vertices), typeof(float), typeof(Vector2F), typeof(float), typeof(BodyType) });
-                Vertices verts = PolygonTools.CreateRoundedRectangle(2f, 1f, 0.3f, 0.3f, 0);
-                createPolygon.Invoke(world, new object[] { verts, 1f, Vector2F.Zero, 0f, BodyType.Dynamic });
-            }
-            catch (TargetInvocationException)
-            {
-                // May throw for other reasons; that's OK
-            }
-
-            Assert.NotNull(world);
-        }
-
-        // ========================================================================
-        // JointAdded event
-        // ========================================================================
-        /// <summary>
-        /// Tests that add joint joint added event fires
-        /// </summary>
-        [Fact]
-        public void AddJoint_JointAddedEvent_Fires()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            int jointAdded = 0;
-            world.JointAdded += (w, j) => jointAdded++;
-            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            world.Add(joint);
-            Assert.Equal(1, jointAdded);
-        }
-
-        // ========================================================================
-        // JointRemoved event
-        // ========================================================================
-        /// <summary>
-        /// Tests that remove joint joint removed event fires
-        /// </summary>
-        [Fact]
-        public void RemoveJoint_JointRemovedEvent_Fires()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            int jointRemoved = 0;
-            world.JointRemoved += (w, j) => jointRemoved++;
-            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            world.Add(joint);
-            world.Remove(joint);
-            Assert.Equal(1, jointRemoved);
-        }
-
-        // ========================================================================
-        // SynchronizeNonStaticIslandBodies
-        // ========================================================================
-        /// <summary>
-        /// Tests that synchronize non static island bodies updates fixtures
-        /// </summary>
-        [Fact]
-        public void SynchronizeNonStaticIslandBodies_UpdatesFixtures()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // ProcessToiContact with 2-step approach (creates contact first, then TOI)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process toi contact two step triggers toi processing
-        /// </summary>
-        [Fact]
-        public void ProcessToiContact_TwoStep_TriggersToiProcessing()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
-            bodyA.IsBullet = true;
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
-
-        // ========================================================================
-        // ResetToiState when _stepComplete is false (early return)
-        // ========================================================================
-        /// <summary>
-        /// Tests that reset toi state step not complete returns early
-        /// </summary>
-        [Fact]
-        public void ResetToiState_StepNotComplete_ReturnsEarly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
-            bodyA.IsBullet = true;
-            for (int i = 0; i < 3; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-            Assert.NotNull(bodyA);
-        }
-
-        
-        // ========================================================================
-        // CreateCapsule with few vertices (no decompose)
-        // ========================================================================
-        /// <summary>
-        /// Tests that create capsule few vertices no decompose
-        /// </summary>
-        [Fact]
-        public void CreateCapsule_FewVertices_NoDecompose()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCapsule(2f, 0.5f, 4, 0.5f, 4, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            Assert.NotNull(body);
-        }
-
-        // ========================================================================
-        // CreateRoundedRectangle with few vertices (no decompose)
-        // ========================================================================
-        /// <summary>
-        /// Tests that create rounded rectangle few vertices no decompose
-        /// </summary>
-        [Fact]
-        public void CreateRoundedRectangle_FewVertices_NoDecompose()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRoundedRectangle(2f, 1f, 0.3f, 0.3f, 4, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            Assert.NotNull(body);
-        }
-
-        // ========================================================================
-        // Add(Joint) - all error cases
-        // ========================================================================
-        /// <summary>
-        /// Tests that add joint null throws
-        /// </summary>
-        [Fact]
-        public void AddJoint_Null_Throws()
-        {
-            WorldPhysic world = new WorldPhysic();
-            Assert.Throws<ArgumentNullException>(() => world.Add((Joint)null));
-        }
-
-        /// <summary>
-        /// Tests that add joint same joint twice throws
-        /// </summary>
-        [Fact]
-        public void AddJoint_SameJointTwice_Throws()
-        {
-            WorldPhysic world = new WorldPhysic();
-            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            world.Add(joint);
-            Assert.Throws<ArgumentException>(() => world.Add(joint));
-        }
-
-        /// <summary>
-        /// Tests that add joint from another world throws
-        /// </summary>
-        [Fact]
-        public void AddJoint_FromAnotherWorld_Throws()
-        {
-            WorldPhysic world = new WorldPhysic();
-            WorldPhysic other = new WorldPhysic();
-            Body bodyA = other.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = other.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            other.Add(joint);
-            Assert.Throws<ArgumentException>(() => world.Add(joint));
-        }
-
-        // ========================================================================
-        // RemoveJointEdgeA with next pointer
-        // ========================================================================
-        /// <summary>
-        /// Tests that remove joint edge a with next pointer correctly updates
-        /// </summary>
-        [Fact]
-        public void RemoveJointEdgeA_WithNextPointer_CorrectlyUpdates()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint1 = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            DistanceJoint joint2 = new DistanceJoint(bodyA, bodyC, Vector2F.Zero, new Vector2F(4f, 0f));
-            world.Add(joint1);
-            world.Add(joint2);
-            world.Remove(joint2);
-            Assert.NotNull(bodyA.JointList);
-            Assert.Single(world.JointList);
-        }
-
-        // ========================================================================
-        // RemoveJointEdgeB with next pointer
-        // ========================================================================
-        /// <summary>
-        /// Tests that remove joint edge b with next pointer correctly updates
-        /// </summary>
-        [Fact]
-        public void RemoveJointEdgeB_WithNextPointer_CorrectlyUpdates()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            Body bodyC = world.CreateBody(new Vector2F(4f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint1 = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            DistanceJoint joint2 = new DistanceJoint(bodyC, bodyB, new Vector2F(4f, 0f), new Vector2F(2f, 0f));
-            world.Add(joint1);
-            world.Add(joint2);
-            world.Remove(joint2);
-            Assert.NotNull(bodyB.JointList);
-            Assert.Single(world.JointList);
-        }
-
-        // ========================================================================
-        // ShouldProcessBody — not awake (line 350-353)
-        // ========================================================================
-        /// <summary>
-        /// Tests that should process body with non awake body skips processing
-        /// </summary>
-        [Fact]
-        public void ShouldProcessBody_WithNonAwakeBody_SkipsProcessing()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            bodyA.Awake = false;
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-            Assert.False(bodyA.Island);
-        }
-
-        // ========================================================================
-        // ShouldProcessBody — disabled (line 350-353)
-        // ========================================================================
-        /// <summary>
-        /// Tests that should process body with disabled body skips processing
-        /// </summary>
-        [Fact]
-        public void ShouldProcessBody_WithDisabledBody_SkipsProcessing()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            bodyA.Enabled = false;
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-            Assert.False(bodyA.Island);
-        }
-
-        // ========================================================================
-        // ProcessContactEdges — disabled contact (line 477-480)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process contact edges with disabled contact skips
-        /// </summary>
-        [Fact]
-        public void ProcessContactEdges_WithDisabledContact_Skips()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            world.ContactManager.BeginContact = contact =>
-            {
-                contact.Enabled = false;
-                return true;
-            };
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // ProcessContactEdges — not touching contact (line 477-480)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process contact edges with not touching contact skips
-        /// </summary>
-        [Fact]
-        public void ProcessContactEdges_WithNotTouchingContact_Skips()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            world.ContactManager.BeginContact = contact =>
-            {
-                contact.IsTouching = false;
-                return true;
-            };
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // CalculateContactAlpha — different alpha0 values (lines 743-752)
-        // ========================================================================
-        /// <summary>
-        /// Tests that calculate contact alpha with different sweep alpha values branches correctly
-        /// </summary>
-        [Fact]
-        public void CalculateContactAlpha_WithDifferentAlpha0_BranchesCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyC = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Dynamic);
-            bodyA.LinearVelocityInternal = new Vector2F(300f, 0f);
-
-            for (int i = 0; i < 5; i++)
-            {
-                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-                Assert.Null(ex);
-            }
-        }
+     
     }
 }

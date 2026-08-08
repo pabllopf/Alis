@@ -218,7 +218,7 @@ namespace Alis.Core.Aspect.Logging.Test
                 MemoryLogOutput memoryOutput = new MemoryLogOutput(0);
                 factory.AddOutput(memoryOutput);
 
-                ILogger logger = factory.CreateLogger("ConcurrentTest");
+                factory.CreateLogger("ConcurrentTest");
                 const int threadCount = 10;
                 const int messagesPerThread = 100;
                 List<Task> tasks = new List<Task>();

@@ -236,10 +236,6 @@ namespace Alis.Extension.Thread.Test.Scheduling
         {
             BatchPartition partition = new BatchPartition(10, 20);
 
-            int startIndex = partition.StartIndex;
-            int length = partition.Length;
-            int endIndex = partition.EndIndex;
-
             PropertyInfo startProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.StartIndex));
             PropertyInfo lengthProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.Length));
             PropertyInfo endProperty = typeof(BatchPartition).GetProperty(nameof(BatchPartition.EndIndex));

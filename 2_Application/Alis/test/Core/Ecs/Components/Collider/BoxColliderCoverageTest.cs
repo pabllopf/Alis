@@ -100,7 +100,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_OnStart_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the public OnStart method via reflection
@@ -122,7 +121,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_OnCollision_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private OnCollision method via reflection
@@ -140,7 +138,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_OnSeparation_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private OnSeparation method via reflection
@@ -158,7 +155,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_InitializeShaders_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private InitializeShaders method via reflection
@@ -176,7 +172,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_RenderBoxCollider_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the private RenderBoxCollider method via reflection
@@ -311,7 +306,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_StaticVertices_ShouldHaveCorrectValues()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the static Vertices array via reflection
@@ -402,7 +396,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_Equals_Method_ShouldExist()
         {
             // Arrange
-            BoxCollider collider = new BoxCollider();
             Type colliderType = typeof(BoxCollider);
 
             // Act - Get the Equals method via reflection

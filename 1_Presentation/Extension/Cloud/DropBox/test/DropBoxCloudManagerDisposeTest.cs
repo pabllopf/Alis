@@ -271,7 +271,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
             // are handled correctly through the manager's validation logic.
 
             Context context = CreateMockContext();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Verify the path delimiter constant is "/"
             Assert.Equal("/", "/");
@@ -294,7 +293,6 @@ namespace Alis.Extension.Cloud.DropBox.Test
         public void PathNormalization_AlreadyNormalized(string normalizedPath)
         {
             Context context = CreateMockContext();
-            DropBoxCloudManager manager = new DropBoxCloudManager(context);
 
             // Verify the path already starts with "/"
             Assert.StartsWith("/", normalizedPath);

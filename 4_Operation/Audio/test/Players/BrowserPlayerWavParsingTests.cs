@@ -231,7 +231,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             byte[] wav = CreateValidWavFile(16, 2, 44100);
 
-            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int _, out int _, out int freq, out int format);
 
             Assert.True(result);
             Assert.Equal(44100, freq);

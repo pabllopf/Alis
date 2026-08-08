@@ -100,7 +100,7 @@ namespace Alis.Core.Audio.Test.Players
 
                 if (device != IntPtr.Zero)
                 {
-                    IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
+                    OpenAl.alcCreateContext(device, IntPtr.Zero);
 
                     Assert.True(true);
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Audio.Test.Players
                 {
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
 
-                    bool result = OpenAl.alcMakeContextCurrent(context);
+                    OpenAl.alcMakeContextCurrent(context);
 
                     Assert.True(true);
 
@@ -152,7 +152,7 @@ namespace Alis.Core.Audio.Test.Players
 
                 if (device != IntPtr.Zero)
                 {
-                    bool result = OpenAl.alcCloseDevice(device);
+                    OpenAl.alcCloseDevice(device);
 
                     Assert.True(true);
                 }
@@ -621,7 +621,7 @@ namespace Alis.Core.Audio.Test.Players
                 if (device != IntPtr.Zero)
                 {
                     // Act
-                    IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
+                    OpenAl.alcCreateContext(device, IntPtr.Zero);
 
                     // Assert
                     Assert.True(true);
@@ -646,7 +646,7 @@ namespace Alis.Core.Audio.Test.Players
             try
             {
                 // Arrange & Act
-                bool result = OpenAl.alcMakeContextCurrent(IntPtr.Zero);
+                OpenAl.alcMakeContextCurrent(IntPtr.Zero);
 
                 // Assert - Method callable
                 Assert.True(true);
@@ -667,7 +667,7 @@ namespace Alis.Core.Audio.Test.Players
             try
             {
                 // Arrange & Act
-                bool result = OpenAl.alcCloseDevice(IntPtr.Zero);
+                OpenAl.alcCloseDevice(IntPtr.Zero);
 
                 // Assert - Method callable
                 Assert.True(true);
@@ -696,7 +696,7 @@ namespace Alis.Core.Audio.Test.Players
                     OpenAl.alcMakeContextCurrent(context);
 
                     // Act
-                    OpenAl.alGenSources(0, out uint source);
+                    OpenAl.alGenSources(0, out uint _);
 
                     // Assert - Method callable
                     Assert.True(true);
@@ -729,7 +729,7 @@ namespace Alis.Core.Audio.Test.Players
                     OpenAl.alcMakeContextCurrent(context);
 
                     // Act
-                    OpenAl.alGenBuffers(0, out uint buffer);
+                    OpenAl.alGenBuffers(0, out uint _);
 
                     // Assert - Method callable
                     Assert.True(true);
@@ -1001,7 +1001,7 @@ namespace Alis.Core.Audio.Test.Players
                 {
                     // Act - Full initialization sequence
                     IntPtr context = OpenAl.alcCreateContext(device, IntPtr.Zero);
-                    bool contextSet = OpenAl.alcMakeContextCurrent(context);
+                    OpenAl.alcMakeContextCurrent(context);
                     OpenAl.alGenSources(1, out uint source);
                     OpenAl.alGenBuffers(1, out uint buffer);
 

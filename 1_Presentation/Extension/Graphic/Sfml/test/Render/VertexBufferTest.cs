@@ -401,7 +401,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Available_ReturnsWithoutThrowing()
         {
-            bool available = VertexBuffer.Available;
         }
 
         /// <summary>

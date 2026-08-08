@@ -55,8 +55,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void GetKey_AfterGet_ReturnsValidIndex()
         {
-            FastLookup lookup = new FastLookup();
-
             uint key1 = FastLookup.GetKey(10, new GameObjectType(5));
             uint key2 = FastLookup.GetKey(20, new GameObjectType(5));
 
@@ -68,8 +66,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void GetKey_DifferentInputs_DifferentKeys()
         {
-            FastLookup lookup = new FastLookup();
-
             uint key1 = FastLookup.GetKey(5, new GameObjectType(10));
             uint key2 = FastLookup.GetKey(5, new GameObjectType(11));
             uint key3 = FastLookup.GetKey(6, new GameObjectType(10));
@@ -84,8 +80,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void GetKey_BoundaryValues_GeneratesValidKeys()
         {
-            FastLookup lookup = new FastLookup();
-
             uint key1 = FastLookup.GetKey(0, new GameObjectType(0));
             uint key2 = FastLookup.GetKey(ushort.MaxValue, new GameObjectType(ushort.MaxValue));
 
@@ -97,7 +91,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void GetKey_SameInputs_GeneratesSameKey()
         {
-            FastLookup lookup = new FastLookup();
             ushort id = 42;
             GameObjectType archetype = new GameObjectType(10);
 
@@ -112,7 +105,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void GetKey_ManyRequests_AllUnique()
         {
-            FastLookup lookup = new FastLookup();
             HashSet<uint> keys = new HashSet<uint>();
 
             for (ushort i = 0; i < 100; i++)

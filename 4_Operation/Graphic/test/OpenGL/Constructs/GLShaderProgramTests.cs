@@ -638,8 +638,6 @@ namespace Alis.Core.Graphic.Test.Constructs
         {
             Init();
             GlShaderProgram program = new GlShaderProgram("vs", "fs");
-            uint vsId = program.VertexShader.ShaderId;
-            uint fsId = program.FragmentShader.ShaderId;
 
             program.Dispose();
 

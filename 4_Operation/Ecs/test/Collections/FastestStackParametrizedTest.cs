@@ -138,7 +138,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             FastestStack<int> stack = new();
 
-            bool success = stack.TryPop(out int result);
+            bool success = stack.TryPop(out int _);
 
             Assert.False(success);
         }
@@ -169,7 +169,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             FastestStack<int> stack = new();
 
-            bool success = stack.TryPeek(out int result);
+            bool success = stack.TryPeek(out int _);
 
             Assert.False(success);
         }

@@ -96,7 +96,6 @@ namespace Alis.Core.Aspect.Logging.Test.Filters
         [Fact]
         public void LogLevelFilter_MultipleFilterInstances_ShouldBeIndependent()
         {
-            LogLevelFilter filter1 = new LogLevelFilter(LogLevel.Info);
             LogLevelFilter filter2 = new LogLevelFilter(LogLevel.Error);
 
             ILogEntry infoEntry = CreateEntry(LogLevel.Info);

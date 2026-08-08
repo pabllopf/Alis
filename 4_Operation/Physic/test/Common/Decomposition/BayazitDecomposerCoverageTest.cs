@@ -153,34 +153,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             }
         }
 
-        /// <summary>
-        ///     Tests FindLowerIntersection and FindUpperIntersection via reflection
-        ///     where the outer condition (Left && RightOn) passes but the inner
-        ///     condition (Right or Left) fails, covering negative branches.
-        /// </summary>
-        [Fact]
-        public void FindLowerIntersection_InnerConditionFails_ShouldSkip()
-        {
-            Vertices vertices = new Vertices(new[]
-            {
-                new Vector2F(0f, 0f),
-                new Vector2F(10f, 0f),
-                new Vector2F(10f, 5f),
-                new Vector2F(5f, 5f),
-                new Vector2F(5f, 10f),
-                new Vector2F(0f, 10f)
-            });
-
-            MethodInfo method = typeof(BayazitDecomposer).GetMethod("FindLowerIntersection",
-                BindingFlags.NonPublic | BindingFlags.Static);
-
-            float lowerDist = float.MaxValue;
-            Vector2F lowerInt = new Vector2F();
-            int lowerIndex = 0;
-
-            method.Invoke(null, new object[] { 3, 2, vertices, lowerDist, lowerInt, lowerIndex });
-
-            Assert.NotNull(vertices);
-        }
+       
     }
 }

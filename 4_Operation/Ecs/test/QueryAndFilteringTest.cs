@@ -60,7 +60,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>>();
             int count = 0;
-            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject _, Ref<Position> _) in query.EnumerateWithEntities<Position>())
             {
                 count++;
             }
@@ -158,7 +158,7 @@ namespace Alis.Core.Ecs.Test
 
             Query query = scene.Query<With<Position>>();
             float totalX = 0;
-            foreach ((GameObject entity, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
+            foreach ((GameObject _, Ref<Position> pos) in query.EnumerateWithEntities<Position>())
             {
                 totalX += pos.Value.X;
             }
@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 0, Y = 0}, new Health {Value = 100});
-            GameObject entity2 = scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
+            scene.Create(new Position {X = 1, Y = 1}, new Health {Value = 100});
 
             entity1.Remove<Health>();
 

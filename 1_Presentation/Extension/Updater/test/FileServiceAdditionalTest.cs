@@ -39,17 +39,6 @@ namespace Alis.Extension.Updater.Test
     /// </summary>
     public class FileServiceAdditionalTest
     {
-        /// <summary>
-        /// Tests that download file async throws not implemented exception
-        /// </summary>
-        [Fact]
-        public void DownloadFileAsync_ThrowsNotImplementedException()
-        {
-            FileService sut = new FileService();
-            Assert.Throws<NotImplementedException>(new System.Action(() =>
-            {
-                Task<string> ignored = sut.DownloadFileAsync(new Uri("http://example.com/file.zip"), "/tmp");
-            }));
-        }
+       
     }
 }

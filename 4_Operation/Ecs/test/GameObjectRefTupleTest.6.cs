@@ -113,7 +113,7 @@ namespace Alis.Core.Ecs.Test
                 Item6 = new Ref<TestComponent2>(new[] {test2}, 0)
             };
 
-            (GameObject go, Ref<Position> posRef, Ref<Velocity> velRef, Ref<Health> healthRef, Ref<Armor> armorRef, Ref<TestComponent> testRef, Ref<TestComponent2> test2Ref) = tuple;
+            (GameObject go, Ref<Position> posRef, Ref<Velocity> _, Ref<Health> _, Ref<Armor> _, Ref<TestComponent> testRef, Ref<TestComponent2> test2Ref) = tuple;
 
             Assert.Equal(entity, go);
             Assert.Equal(5, posRef.Value.X);

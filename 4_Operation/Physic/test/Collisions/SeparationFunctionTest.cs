@@ -226,7 +226,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             // Set triggers Points mode
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int _, out int _, 0.0f);
 
             Assert.True(separation > 0.0f || float.IsNaN(separation));
         }
@@ -304,7 +304,7 @@ namespace Alis.Core.Physic.Test.Collisions
             cache.IndexB[1] = 0;
 
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int _, out int _, 0.0f);
 
             Assert.False(float.IsNaN(separation));
         }
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Test.Collisions
             cache.IndexB[1] = 1;
 
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int _, out int _, 0.0f);
 
             Assert.False(float.IsNaN(separation));
         }
@@ -398,7 +398,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void FindMinSeparation_WithUninitializedData_DoesNotCrash()
         {
-            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int _, out int _, 0.0f);
             Assert.False(float.IsNaN(separation));
         }
 

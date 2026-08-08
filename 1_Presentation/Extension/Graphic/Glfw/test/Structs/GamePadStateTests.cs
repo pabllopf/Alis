@@ -62,8 +62,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
             try
             {
-                nint basePtr = ptr;
-
                 for (int i = 0; i < 15; i++)
                 {
                     Marshal.WriteByte(ptr, i, (byte)(i == (int)GamePadButton.A ? (byte)InputState.Press : (byte)InputState.Release));

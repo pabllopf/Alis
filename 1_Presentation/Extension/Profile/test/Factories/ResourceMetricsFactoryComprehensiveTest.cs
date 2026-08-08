@@ -143,7 +143,6 @@ namespace Alis.Extension.Profile.Test.Factories
         public void CreateEmpty_ReturnsResourceMetricsWithDefaultValues()
         {
             IResourceMonitor monitor = new MockResourceMonitor();
-            ResourceMetricsFactory factory = new ResourceMetricsFactory(monitor);
 
             ResourceMetrics metrics = ResourceMetricsFactory.CreateEmpty();
 
@@ -161,7 +160,6 @@ namespace Alis.Extension.Profile.Test.Factories
         public void CreateEmpty_ReturnsSameAsResourceMetricsEmpty()
         {
             IResourceMonitor monitor = new MockResourceMonitor();
-            ResourceMetricsFactory factory = new ResourceMetricsFactory(monitor);
 
             ResourceMetrics empty = ResourceMetricsFactory.CreateEmpty();
             ResourceMetrics staticEmpty = ResourceMetrics.Empty;

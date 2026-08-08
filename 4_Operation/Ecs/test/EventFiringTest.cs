@@ -171,11 +171,11 @@ namespace Alis.Core.Ecs.Test
             void Handler(GameObject _) => eventCount++;
 
             scene.EntityCreated += Handler;
-            GameObject entity1 = scene.Create();
+            scene.Create();
             Assert.Equal(1, eventCount);
 
             scene.EntityCreated -= Handler;
-            GameObject entity2 = scene.Create();
+            scene.Create();
 
             Assert.Equal(1, eventCount); // Should still be 1
         }

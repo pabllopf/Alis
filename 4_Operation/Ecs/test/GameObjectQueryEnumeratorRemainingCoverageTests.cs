@@ -437,7 +437,6 @@ namespace Alis.Core.Ecs.Test
 
             try
             {
-                GameObjectRefTuple<Position> cur = enumerator.Current;
                 Assert.Fail("Expected exception");
             }
             catch

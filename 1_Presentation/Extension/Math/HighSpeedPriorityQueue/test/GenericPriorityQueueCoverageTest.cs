@@ -53,8 +53,8 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
                 queue.Enqueue(nodes[i], i + 1);
             }
 
-            TestNode last = queue.Dequeue();
-            TestNode second = queue.Dequeue();
+            queue.Dequeue();
+            queue.Dequeue();
 
             Assert.True(queue.IsValidQueue());
             Assert.Equal(3, queue.Count);

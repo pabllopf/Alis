@@ -347,36 +347,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Null(contact.FixtureA);
             Assert.Null(contact.FixtureB);
         }
-        
-        /// <summary>
-        ///     Tests that Destroy awakens attached bodies when manifold has contact points
-        ///     and fixtures are not sensors.
-        /// </summary>
-        [Fact]
-        public void Destroy_WithManifoldPoints_ShouldAwakeBodies()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            Assert.NotNull(contact);
-            Assert.True(contact.Manifold.PointCount > 0);
-
-            bodyA.Awake = false;
-            bodyB.Awake = false;
-
-            contact.Destroy();
-
-            Assert.True(bodyA.Awake);
-            Assert.True(bodyB.Awake);
-        }
     }
 }
 

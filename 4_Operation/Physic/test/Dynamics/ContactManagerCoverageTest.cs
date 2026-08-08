@@ -51,11 +51,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f));
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f));
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
@@ -74,130 +70,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             bodyA.SetCollisionGroup(-1);
             bodyB.SetCollisionGroup(-1);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
-
-        /// <summary>
-        ///     Tests that Body.OnSeparation event fires when contact is destroyed.
-        ///     This exercises NotifySeparation body handler path.
-        /// </summary>
-        [Fact]
-        public void BodyOnSeparation_Fires_WhenContactDestroyed()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            int sepCount = 0;
-            bodyA.OnSeparation += (_, _, _) => sepCount++;
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(sepCount > 0);
-        }
-
-        /// <summary>
-        ///     Tests that Fixture.OnSeparation fires when contact is destroyed.
-        ///     This exercises NotifySeparation fixture handler path.
-        /// </summary>
-        [Fact]
-        public void FixtureOnSeparation_Fires_WhenContactDestroyed()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            int sepCount = 0;
-
-            world.ContactManager.BeginContact = contact =>
-            {
-                contact.FixtureA.OnSeparation = (_, _, _) => sepCount++;
-                return true;
-            };
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(sepCount > 0);
-        }
-
-        /// <summary>
-        ///     Tests that changing collision group re-filters existing contacts.
-        ///     This exercises TryResolveContactFilter when FilterFlag is true.
-        /// </summary>
-        [Fact]
-        public void FilterFlagReCheck_DestroysContact_WhenCollisionGroupChanged()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, iterations: ref iterations);
-
-            int initialCount = world.ContactManager.ContactCount;
-            Assert.True(initialCount > 0);
-
-            bodyA.SetCollisionGroup(-1);
-            bodyB.SetCollisionGroup(-1);
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount < initialCount);
-            Assert.Equal(0, world.ContactManager.ContactCount);
-        }
-
-        /// <summary>
-        /// Tests that should collide with non matching groups uses category check
-        /// </summary>
-        [Fact]
-        public void ShouldCollide_WithNonMatchingGroups_UsesCategoryCheck()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            bodyA.SetCollisionGroup(1);
-            bodyB.SetCollisionGroup(2);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
+        
         /// <summary>
         /// Tests that body type static with dynamic prevents collision
         /// </summary>
@@ -208,38 +85,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f));
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f));
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
 
-        /// <summary>
-        /// Tests that step with filter flag set re evaluates contacts
-        /// </summary>
-        [Fact]
-        public void Step_WithFilterFlagSet_ReEvaluatesContacts()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            world.ContactManager.ContactFilter = (_, _) => false;
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
     }
 }

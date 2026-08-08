@@ -111,7 +111,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             List<int> list = new List<int> {1, 2, 3, 4, 5};
 
-            int[] result = EnumerableHelpers.ToArray(list, out int length);
+            EnumerableHelpers.ToArray(list, out int length);
 
             Assert.Equal(list.Count, length);
         }

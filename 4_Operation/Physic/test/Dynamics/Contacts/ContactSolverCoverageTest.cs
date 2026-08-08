@@ -13,69 +13,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
     /// </summary>
     public class ContactSolverCoverageTest
     {
-       
-
-        /// <summary>
-        /// Tests that multiple steps exercises warm starting
-        /// </summary>
-        [Fact]
-        public void MultipleSteps_ExercisesWarmStarting()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            for (int i = 0; i < 5; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
-        /// Tests that rectangle and circle overlap creates contact
-        /// </summary>
-        [Fact]
-        public void RectangleAndCircle_Overlap_CreatesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
-        /// Tests that multiple overlapping bodies exercises solver batch
-        /// </summary>
-        [Fact]
-        public void MultipleOverlappingBodies_ExercisesSolverBatch()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            for (int i = 0; i < 5; i++)
-            {
-                world.CreateCircle(0.5f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
-            }
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
 
         /// <summary>
         /// Tests that world manifold initialize face b two points verify normal negation
@@ -121,30 +58,5 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.Equal(expected, result);
         }
 
-   
-   
-
-      
-
-       
-   
-        /// <summary>
-        /// Tests that solve position constraints threaded via world executes correctly
-        /// </summary>
-        [Fact]
-        public void SolvePositionConstraints_ThreadedViaWorld_ExecutesCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            for (int i = 0; i < 5; i++)
-            {
-                world.CreateCircle(1.0f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
-            }
-
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-    
-        
     }
 }

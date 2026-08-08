@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Scene world = new Scene();
             GameObject entity = world.Create();
 
-            Scene retrievedWorld = GameObjectMarshal.GetWorld(entity);
+            GameObjectMarshal.GetWorld(entity);
 
             Assert.True(true);
 
@@ -140,7 +140,7 @@ namespace Alis.Core.Ecs.Test.Marshalling
             GameObject entity = world.Create();
             entity.Add(new Position());
 
-            Scene retrievedWorld = GameObjectMarshal.GetWorld(entity);
+            GameObjectMarshal.GetWorld(entity);
 
             Assert.True(true);
 
@@ -173,8 +173,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
             GameObject entity1 = world1.Create();
             GameObject entity2 = world2.Create();
 
-            Scene retrievedWorld1 = GameObjectMarshal.GetWorld(entity1);
-            Scene retrievedWorld2 = GameObjectMarshal.GetWorld(entity2);
+            GameObjectMarshal.GetWorld(entity1);
+            GameObjectMarshal.GetWorld(entity2);
 
             Assert.True(true);
 

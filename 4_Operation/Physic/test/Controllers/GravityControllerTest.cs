@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
 
             controller.Update(0.016f);
 
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Test.Controllers
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body body1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body body2 = world.CreateBody(new Vector2F(5, 5), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(5, 5), 0, BodyType.Dynamic);
             controller.AddBody(body1);
 
             controller.Update(0.016f);
@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f);
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
-            Body body = world.CreateBody(new Vector2F(10, 10), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 10), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Static);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Static);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
             controller.AddBody(controllerBody);
 
@@ -334,7 +334,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controllerBody.Enabled = false;
             controller.AddBody(controllerBody);
@@ -353,7 +353,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f, 100f, 50f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -371,7 +371,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f, 10f, 0f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f, 100f, 50f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(5, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(5, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -406,7 +406,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(100f, 10f, 0f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(100, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -426,7 +426,7 @@ namespace Alis.Core.Physic.Test.Controllers
                 };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -447,7 +447,7 @@ namespace Alis.Core.Physic.Test.Controllers
                 };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -467,7 +467,7 @@ namespace Alis.Core.Physic.Test.Controllers
                 };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -488,7 +488,7 @@ namespace Alis.Core.Physic.Test.Controllers
                 };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -517,7 +517,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -540,7 +540,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -585,7 +585,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -607,7 +607,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -630,7 +630,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -675,7 +675,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -697,7 +697,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
             controller.AddPoint(new Vector2F(-10, 0));
@@ -725,7 +725,7 @@ namespace Alis.Core.Physic.Test.Controllers
             };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             Body controllerBody = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             controller.AddBody(controllerBody);
 
@@ -743,7 +743,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(float.MaxValue);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body body = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
             controller.AddPoint(new Vector2F(0, 0));
 
             controller.Update(0.016f);
@@ -760,7 +760,7 @@ namespace Alis.Core.Physic.Test.Controllers
             GravityController controller = new GravityController(10.0f);
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
-            Body worldBody = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
+            world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
 
             controller.Update(0.016f);
 

@@ -659,10 +659,6 @@ namespace Alis.Extension.Network.Test.Internal
         {
             // Arrange: Create stream and test data
             using MemoryStream stream = new MemoryStream();
-            byte[] maskKey = { 0x01, 0x02, 0x03, 0x04 };
-            byte[] frameData = { 0x10, 0x20, 0x30, 0x40 };
-            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[16]);
-            CancellationToken cancellationToken = CancellationToken.None;
 
             // Act: Write complete frame data using all methods
             BinaryReaderWriter.WriteInt(0x12345678, stream, true);

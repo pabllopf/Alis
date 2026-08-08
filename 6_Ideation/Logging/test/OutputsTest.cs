@@ -61,7 +61,6 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void ConsoleLogOutput_Disable_ShouldNotWrite()
         {
-            MemoryLogOutput memoryOutput = new MemoryLogOutput();
             ConsoleLogOutput consoleOutput = new ConsoleLogOutput();
             consoleOutput.IsEnabled = false;
 

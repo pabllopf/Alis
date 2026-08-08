@@ -68,12 +68,12 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             ChunkTuple<Position> c1 = scene.CreateMany<Position>(2);
-            ChunkTuple<Position, Velocity> c2 = scene.CreateMany<Position, Velocity>(2);
-            ChunkTuple<Position, Velocity, Health> c3 = scene.CreateMany<Position, Velocity, Health>(2);
-            ChunkTuple<Position, Velocity, Health, Transform> c4 = scene.CreateMany<Position, Velocity, Health, Transform>(2);
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent> c5 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> c6 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
-            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> c7 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
+            scene.CreateMany<Position, Velocity>(2);
+            scene.CreateMany<Position, Velocity, Health>(2);
+            scene.CreateMany<Position, Velocity, Health, Transform>(2);
+            scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
+            scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
+            scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
             ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> c8 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
             Assert.Equal(2, c1.Span.Length);
             Assert.Equal(2, c8.Span1.Length);

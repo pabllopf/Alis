@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithContainedShape_InsideRectangle_ReturnsNonEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(20f, 20f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(20f, 20f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 100f);
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithContainedShape_InsideCircle_ReturnsNonEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(10f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            world.CreateCircle(10f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 100f);
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithZeroRadius_FarFromBodies_ReturnsEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(100f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(10f, 10f, 1f, new Vector2F(100f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-100f, 0), 0f, 100f);
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithZeroMaxForce_ReturnsNonEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            world.CreateRectangle(10f, 10f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 0f);
@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithDynamicBodyOutsideExplosion_ShouldTriggerRaycast()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithDynamicCircleOutsideExplosion_ShouldTriggerCreatePolygonFromCircle()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(3f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
+            world.CreateCircle(3f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
@@ -427,7 +427,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Static);
-            Body dynamicBody = world.CreateRectangle(4f, 4f, 1f, new Vector2F(20f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(4f, 4f, 1f, new Vector2F(20f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
@@ -442,8 +442,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithMultipleDynamicBodies_ShouldAffectAllHitByRays()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body1 = world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
-            Body body2 = world.CreateCircle(3f, 1f, new Vector2F(0, 15f), BodyType.Dynamic);
+            world.CreateRectangle(4f, 4f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            world.CreateCircle(3f, 1f, new Vector2F(0, 15f), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
@@ -458,7 +458,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithDynamicBodyAtAngle_ShouldCalculateAngleBounds()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 10f), 0f, BodyType.Dynamic);
+            world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 10f), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 100f);
@@ -473,7 +473,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithLargeRadiusAndMaxForce_ShouldNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(5f, 5f, 1f, new Vector2F(100f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(5f, 5f, 1f, new Vector2F(100f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-50f, 0), 200f, 1000f);
@@ -488,7 +488,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithExplosionCloseToRectangleEdge_ShouldProcessRayCast()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-1f, 0), 20f, 50f);
@@ -503,7 +503,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithExplosionCloseToCircleEdge_ShouldProcessCreatePolygonFromCircle()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(5f, 1f, new Vector2F(12f, 0), BodyType.Dynamic);
+            world.CreateCircle(5f, 1f, new Vector2F(12f, 0), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(-1f, 0), 20f, 50f);
@@ -534,7 +534,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithMaxForceZeroAndBodyOutside_ShouldNotThrow()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(3f, 1f, new Vector2F(10f, 0), BodyType.Dynamic);
+            world.CreateCircle(3f, 1f, new Vector2F(10f, 0), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 30f, 0f);
@@ -549,7 +549,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithBodyVeryCloseToExplosion_ShouldProcessRayHit()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(2f, 2f, 1f, new Vector2F(3f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(3f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
@@ -564,7 +564,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithLargeRectangleBody_ShouldComputeAngleBounds()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(20f, 2f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(20f, 2f, 1f, new Vector2F(15f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 50f, 200f);
@@ -579,7 +579,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithExplosionBehindBody_ShouldStillProcessRayCast()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(4f, 4f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(25f, 0), 30f, 100f);
@@ -594,7 +594,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithCircleShapeBodyLargeRadius_ShouldApplyImpulses()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(6f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
+            world.CreateCircle(6f, 1f, new Vector2F(20f, 0), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 500f);
@@ -662,8 +662,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithRectangleAndCircle_DynamicBodies_ShouldProcessMultipleShapes()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body rect = world.CreateRectangle(2f, 2f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
-            Body circle = world.CreateCircle(2f, 1f, new Vector2F(0, 12f), BodyType.Dynamic);
+            world.CreateRectangle(2f, 2f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
+            world.CreateCircle(2f, 1f, new Vector2F(0, 12f), BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 30f, 100f);
@@ -696,7 +696,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithOverlappingAngleBounds_ProcessesRayHits()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
+            world.CreateRectangle(10f, 10f, 1f, new Vector2F(5f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 100f, 100f);
@@ -711,7 +711,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithContainedCircleShape_ProcessesContainedShapes()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(5f, 1f, Vector2F.Zero, BodyType.Dynamic);
+            world.CreateCircle(5f, 1f, Vector2F.Zero, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 1f, 100f);
@@ -726,7 +726,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithExplosionAtBodyCenter_TriggersContainedShapes()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
 
             Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
@@ -997,7 +997,6 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateRectangle(10f, 10f, 1f, new Vector2F(10f, 0), 0f, BodyType.Dynamic);
             RealExplosion explosion = new RealExplosion(world);
-            Fixture fixture = body.FixtureList[0];
 
             explosion.AddNewShapeData(body, 0.0f, 1.0f);
 

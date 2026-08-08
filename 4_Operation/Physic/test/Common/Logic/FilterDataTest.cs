@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             };
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
-            Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
+            body.CreateFixture(new CircleShape(1.0f, 1.0f));
 
 
             bool result = filter.IsActiveOn(body);

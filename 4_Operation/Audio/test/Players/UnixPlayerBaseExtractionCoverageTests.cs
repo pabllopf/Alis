@@ -83,7 +83,6 @@ namespace Alis.Core.Audio.Test.Players
         {
             SetupAssembly();
 
-            MacPlayer player = new MacPlayer();
             MethodInfo extractMethod = typeof(UnixPlayerBase).GetMethod(
                 "ExtractWavFromResourcesAsync",
                 BindingFlags.NonPublic | BindingFlags.Static);

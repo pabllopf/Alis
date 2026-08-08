@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             };
             Vector2F normal = new Vector2F(0.0f, 1.0f);
 
-            float area = circle.ComputeSubmergedArea(ref normal, -10.0f, ref transform, out Vector2F sc);
+            float area = circle.ComputeSubmergedArea(ref normal, -10.0f, ref transform, out Vector2F _);
 
             Assert.Equal(0.0f, area, 5);
         }
@@ -334,7 +334,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             };
             Vector2F normal = new Vector2F(0.0f, -1.0f);
 
-            float area = circle.ComputeSubmergedArea(ref normal, 10.0f, ref transform, out Vector2F sc);
+            float area = circle.ComputeSubmergedArea(ref normal, 10.0f, ref transform, out Vector2F _);
 
             Assert.True(area > 0.0f);
         }
@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             };
             Vector2F normal = new Vector2F(0.0f, -1.0f);
 
-            float area = circle.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F sc);
+            float area = circle.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F _);
 
             Assert.True(area > 0.0f);
             Assert.True(area < Constant.Pi * 1.0f);
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -471,7 +471,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 0.01f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -495,7 +495,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -519,7 +519,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -543,7 +543,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = circle.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = circle.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }

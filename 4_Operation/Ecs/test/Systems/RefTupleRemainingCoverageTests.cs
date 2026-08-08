@@ -46,7 +46,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int> tuple = new RefTuple<int>();
 
-            tuple.Deconstruct(out Ref<int> r1);
+            tuple.Deconstruct(out Ref<int> _);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int> tuple = new RefTuple<int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int> tuple = new RefTuple<int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int, int> tuple = new RefTuple<int, int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int, int, int> tuple = new RefTuple<int, int, int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int, int, int, int> tuple = new RefTuple<int, int, int, int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int, int, int, int, int> tuple = new RefTuple<int, int, int, int, int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6, out Ref<int> r7);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Ecs.Test.Systems
         {
             RefTuple<int, int, int, int, int, int, int, int> tuple = new RefTuple<int, int, int, int, int, int, int, int>();
 
-            tuple.Deconstruct(out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6, out Ref<int> r7, out Ref<int> r8);
+            tuple.Deconstruct(out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _);
         }
 
         /// <summary>

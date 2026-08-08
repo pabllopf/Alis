@@ -243,7 +243,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnWindowResize", 1920, 1080);
-            platform.GetWindowMetrics(out int winX, out int winY, out int winW, out int winH, out int fbW, out int fbH);
+            platform.GetWindowMetrics(out int _, out int _, out int winW, out int winH, out int _, out int _);
             Assert.Equal(1920, winW);
             Assert.Equal(1080, winH);
         }

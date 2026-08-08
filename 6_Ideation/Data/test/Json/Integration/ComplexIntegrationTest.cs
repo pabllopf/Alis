@@ -651,7 +651,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
-                MinimalClass restored = JsonNativeAot.Deserialize<MinimalClass>(json);
+                JsonNativeAot.Deserialize<MinimalClass>(json);
             }
 
             sw.Stop();
@@ -680,7 +680,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
             for (int i = 0; i < iterations; i++)
             {
                 string json = JsonNativeAot.Serialize(obj);
-                ProductClass restored = JsonNativeAot.Deserialize<ProductClass>(json);
+                JsonNativeAot.Deserialize<ProductClass>(json);
             }
 
             sw.Stop();

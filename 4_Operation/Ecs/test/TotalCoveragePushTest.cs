@@ -29,14 +29,14 @@ namespace Alis.Core.Ecs.Test
                 new TestComponent { Value = 6 }, new AnotherComponent { Data = 7 },
                 new Damage { Value = 8 }, new Armor { Value = 9 });
 
-            go.Deconstruct(out Ref<Position> p);
-            go.Deconstruct(out Ref<Position> p2, out Ref<Velocity> v2);
-            go.Deconstruct(out Ref<Position> p3, out Ref<Velocity> v3, out Ref<Health> h3);
-            go.Deconstruct(out Ref<Position> p4, out Ref<Velocity> v4, out Ref<Health> h4, out Ref<Transform> t4);
-            go.Deconstruct(out Ref<Position> p5, out Ref<Velocity> v5, out Ref<Health> h5, out Ref<Transform> t5, out Ref<TestComponent> tc5);
-            go.Deconstruct(out Ref<Position> p6, out Ref<Velocity> v6, out Ref<Health> h6, out Ref<Transform> t6, out Ref<TestComponent> tc6, out Ref<AnotherComponent> a6);
-            go.Deconstruct(out Ref<Position> p7, out Ref<Velocity> v7, out Ref<Health> h7, out Ref<Transform> t7, out Ref<TestComponent> tc7, out Ref<AnotherComponent> a7, out Ref<Damage> d7);
-            go.Deconstruct(out Ref<Position> p8, out Ref<Velocity> v8, out Ref<Health> h8, out Ref<Transform> t8, out Ref<TestComponent> tc8, out Ref<AnotherComponent> a8, out Ref<Damage> d8, out Ref<Armor> ar8);
+            go.Deconstruct(out Ref<Position> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _);
+            go.Deconstruct(out Ref<Position> _, out Ref<Velocity> _, out Ref<Health> _, out Ref<Transform> _, out Ref<TestComponent> _, out Ref<AnotherComponent> _, out Ref<Damage> _, out Ref<Armor> _);
         }
 
         /// <summary>

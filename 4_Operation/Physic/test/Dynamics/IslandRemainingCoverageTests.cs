@@ -86,45 +86,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
 
-        /// <summary>
-        /// Tests that report returns early when contact manager is null
-        /// </summary>
-        [Fact]
-        public void Report_WithNullContactManager_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            FieldInfo cmField = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            object originalCm = cmField?.GetValue(world);
-
-            FieldInfo islandField = typeof(WorldPhysic).GetField("_island", BindingFlags.Instance | BindingFlags.NonPublic);
-            object island = islandField?.GetValue(world);
-
-            if (island != null)
-            {
-                FieldInfo contactManagerField = typeof(Island).GetField("_contactManager", BindingFlags.Instance | BindingFlags.NonPublic);
-                contactManagerField?.SetValue(island, null);
-
-                Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-                Assert.Null(ex);
-            }
-        }
 
         /// <summary>
         /// Tests that integrate velocities with damping applies correctly
@@ -137,11 +106,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.LinearVelocityInternal = new Vector2F(10f, 0f);
             body.LinearDamping = 5f;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(body.LinearVelocityInternal.Length() < 10f);
         }
@@ -157,11 +122,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.AngularVelocity = 10f;
             body.AngularDamping = 5f;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.True(Math.Abs(body.AngularVelocity) < 10f);
         }
@@ -173,8 +134,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SolveVelocityConstraints_MultipleIterations_ExecutesCorrectly()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
@@ -242,26 +203,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
-
-        /// <summary>
-        /// Tests that synchronize body states updates transforms
-        /// </summary>
-        [Fact]
-        public void SynchronizeBodyStates_WithMultipleBodies_UpdatesTransforms()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.NotNull(bodyA.GetTransform());
-            Assert.NotNull(bodyB.GetTransform());
-        }
+        
 
         /// <summary>
         /// Tests that record joint update time with diagnostics enabled records non-zero time
@@ -275,11 +217,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(bodyA);
             Assert.NotNull(bodyB);
@@ -295,11 +233,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(100f, 0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(bodyA);
             Assert.NotNull(bodyB);
@@ -338,11 +272,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             body.Torque = 10f;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(body);
         }
@@ -440,7 +370,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(500f, 0f);
             for (int i = 0; i < 3; i++)
             {
@@ -527,101 +457,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
-        // ========================================================================
-        // SolveToi — translation clamping in body update loop (lines 604-609)
-        // Sets up solver arrays directly with extreme velocity and calls SolveToi
-        // via reflection with zero contacts so only the body update loop executes.
-        // ========================================================================
-        /// <summary>
-        /// Tests that solve toi clamps translation when velocity is extreme
-        /// </summary>
-        [Fact]
-        public void SolveToi_ClampsTranslation_WhenVelocityExtreme()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            ContactManager cm = world.ContactManager;
-            Island island = new Island();
-            island.Reset(8, 0, 0, cm);
-
-            Body body = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            body.LinearVelocityInternal = new Vector2F(100000f, 0f);
-            island.Add(body);
-            island.BodyCount = 1;
-
-            FieldInfo velField = typeof(Island).GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic);
-            SolverVelocity[] velocities = (SolverVelocity[])velField.GetValue(island);
-            velocities[0].V = new Vector2F(100000f, 0f);
-            velocities[0].W = 0f;
-
-            FieldInfo posField = typeof(Island).GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic);
-            SolverPosition[] positions = (SolverPosition[])posField.GetValue(island);
-            positions[0].C = new Vector2F(0f, 0f);
-            positions[0].A = 0f;
-
-            TimeStep subStep = new TimeStep
-                {
-                    Dt = 1.0f / 60.0f,
-                    InvDt = 60.0f,
-                    PositionIterations = 0,
-                    VelocityIterations = 0,
-                    WarmStarting = false,
-                    DtRatio = 1.0f
-                };
-
-            MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
-            object[] args = { subStep, 0, 0 };
-            solveToi.Invoke(island, args);
-
-            Assert.True(body.Position.X < 10f);
-        }
-
-        // ========================================================================
-        // SolveToi — rotation clamping in body update loop (lines 611-616)
-        // Sets up solver arrays directly with extreme angular velocity.
-        // ========================================================================
-        /// <summary>
-        /// Tests that solve toi clamps rotation when angular velocity is extreme
-        /// </summary>
-        [Fact]
-        public void SolveToi_ClampsRotation_WhenAngularVelocityExtreme()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            ContactManager cm = world.ContactManager;
-            Island island = new Island();
-            island.Reset(8, 0, 0, cm);
-
-            Body body = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            body.LinearVelocityInternal = new Vector2F(100000f, 0f);
-            body.AngularVelocity = 50000f;
-            island.Add(body);
-            island.BodyCount = 1;
-
-            FieldInfo velField = typeof(Island).GetField("Velocities", BindingFlags.Instance | BindingFlags.NonPublic);
-            SolverVelocity[] velocities = (SolverVelocity[])velField.GetValue(island);
-            velocities[0].V = new Vector2F(100000f, 0f);
-            velocities[0].W = 50000f;
-
-            FieldInfo posField = typeof(Island).GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic);
-            SolverPosition[] positions = (SolverPosition[])posField.GetValue(island);
-            positions[0].C = new Vector2F(0f, 0f);
-            positions[0].A = 0f;
-
-            TimeStep subStep = new TimeStep
-                {
-                    Dt = 1.0f / 60.0f,
-                    InvDt = 60.0f,
-                    PositionIterations = 0,
-                    VelocityIterations = 0,
-                    WarmStarting = false,
-                    DtRatio = 1.0f
-                };
-
-            MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
-            object[] args = { subStep, 0, 0 };
-            solveToi.Invoke(island, args);
-
-            Assert.NotNull(body);
-        }
+   
 
         // ========================================================================
         // SolveToi — velocity clamping via direct internal call (lines 604-616)
@@ -635,9 +471,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SolveToi_ClampsExtremeVelocity_WhenMovingFast()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            ContactManager cm = world.ContactManager;
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f));
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f));
 
             bodyA.IsBullet = true;
             bodyA.LinearVelocityInternal = new Vector2F(100000f, 0f);

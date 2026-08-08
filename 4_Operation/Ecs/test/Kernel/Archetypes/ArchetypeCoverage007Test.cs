@@ -263,25 +263,25 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             // Create entities with many distinct component combinations
             // to force the GlobalWorldTables.ComponentTagLocationTable resize
             GameObject e1 = scene.Create(new Position());
-            GameObject e2 = scene.Create(new Velocity());
-            GameObject e3 = scene.Create(new Health());
-            GameObject e4 = scene.Create(new Damage());
+            scene.Create(new Velocity());
+            scene.Create(new Health());
+            scene.Create(new Damage());
             GameObject e5 = scene.Create(new Armor());
-            GameObject e6 = scene.Create(new Transform());
-            GameObject e7 = scene.Create(new TagComponent());
-            GameObject e8 = scene.Create(new AnotherComponent());
+            scene.Create(new Transform());
+            scene.Create(new TagComponent());
+            scene.Create(new AnotherComponent());
 
             // Combinations of 2
-            GameObject e9 = scene.Create(new Position(), new Velocity());
+            scene.Create(new Position(), new Velocity());
             GameObject e10 = scene.Create(new Position(), new Health());
-            GameObject e11 = scene.Create(new Position(), new Damage());
-            GameObject e12 = scene.Create(new Position(), new Armor());
-            GameObject e13 = scene.Create(new Velocity(), new Health());
-            GameObject e14 = scene.Create(new Velocity(), new Damage());
+            scene.Create(new Position(), new Damage());
+            scene.Create(new Position(), new Armor());
+            scene.Create(new Velocity(), new Health());
+            scene.Create(new Velocity(), new Damage());
 
             // Combinations of 3
             GameObject e15 = scene.Create(new Position(), new Velocity(), new Health());
-            GameObject e16 = scene.Create(new Position(), new Velocity(), new Damage());
+            scene.Create(new Position(), new Velocity(), new Damage());
             GameObject e17 = scene.Create(new Position(), new Velocity(), new Armor());
 
             // Verify all entities alive

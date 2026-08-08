@@ -68,7 +68,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 Item1 = new Ref<int>(buffer, 0)
             };
 
-            tuple.Deconstruct(out GameObject outGo, out Ref<int> outRef);
+            tuple.Deconstruct(out GameObject outGo, out Ref<int> _);
 
             Assert.Equal(gameObject, outGo);
         }
@@ -87,7 +87,7 @@ namespace Alis.Core.Ecs.Test.Systems
                 Item1 = new Ref<int>(buffer, 0)
             };
 
-            tuple.Deconstruct(out GameObject outGo, out Ref<int> outRef);
+            tuple.Deconstruct(out GameObject _, out Ref<int> outRef);
 
             Assert.Equal(42, outRef.Value);
         }

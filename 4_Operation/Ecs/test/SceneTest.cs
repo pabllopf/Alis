@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new Scene();
 
-            ChunkTuple<TestComponent> chunkTuple = scene.CreateMany<TestComponent>(5);
+            scene.CreateMany<TestComponent>(5);
 
             Assert.Equal(5, scene.EntityCount);
         }

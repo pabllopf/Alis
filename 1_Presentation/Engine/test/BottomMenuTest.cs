@@ -206,7 +206,6 @@ namespace Alis.App.Engine.Test
         public void BottomMenu_ShouldHaveSpaceWorkProperty()
         {
             SpaceWork spaceWork = CreateSpaceWork();
-            BottomMenu menu = new BottomMenu(spaceWork);
 
             PropertyInfo property = typeof(BottomMenu).GetProperty("SpaceWork");
 

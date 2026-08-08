@@ -45,7 +45,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_ClearSelection_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -54,7 +53,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_DeleteChars_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             int pos = 0;
             int bytesCount = 5;
         }
@@ -65,7 +63,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_HasSelection_ShouldReturnByte()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -82,10 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_InsertChars_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             int pos = 0;
-            byte[] text = {65, 66, 67};
-            byte[] textEnd = {68, 69, 70};
         }
 
         /// <summary>
@@ -94,7 +88,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiInputTextCallbackData_SelectAll_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -103,7 +96,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddFocusEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             byte focused = 1;
         }
 
@@ -113,7 +105,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharacter_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             uint c = 65;
         }
 
@@ -123,8 +114,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharactersUTF8_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
-            byte[] str = {65, 66, 67};
         }
 
         /// <summary>
@@ -133,7 +122,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddInputCharacterUTF16_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             ushort c = 65;
         }
 
@@ -143,7 +131,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddKeyAnalogEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             ImGuiKey key = ImGuiKey.Tab;
             byte down = 1;
             float v = 0.5f;
@@ -155,7 +142,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddKeyEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             ImGuiKey key = ImGuiKey.Tab;
             byte down = 1;
         }
@@ -166,7 +152,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseButtonEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             int button = 0;
             byte down = 1;
         }
@@ -177,7 +162,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddMousePosEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             float x = 100.0f;
             float y = 200.0f;
         }
@@ -188,7 +172,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseViewportEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             uint id = 1;
         }
 
@@ -198,7 +181,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_AddMouseWheelEvent_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             float whX = 1.0f;
             float whY = 1.0f;
         }
@@ -209,7 +191,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_ClearInputCharacters_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -218,7 +199,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_ClearInputKeys_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -235,7 +215,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_SetAppAcceptingEvents_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             byte acceptingEvents = 1;
         }
 
@@ -245,7 +224,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiIO_SetKeyEventNativeData_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             ImGuiKey key = ImGuiKey.Tab;
             int nativeKeycode = 65;
             int nativeScancode = 66;
@@ -258,7 +236,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiListClipper_Begin_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             int itemsCount = 10;
             float itemsHeight = 20.0f;
         }
@@ -269,7 +246,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiListClipper_End_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -278,7 +254,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiListClipper_ForceDisplayRangeByIndices_ShouldInvokeNativeMethod()
         {
-            IntPtr self = new IntPtr(1);
             int itemMin = 0;
             int itemMax = 10;
         }
@@ -297,7 +272,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ImGuiListClipper_Step_ShouldReturnByte()
         {
-            IntPtr self = new IntPtr(1);
         }
 
         /// <summary>
@@ -332,7 +306,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ImGuiPayload_IsDataType_ShouldReturnByte()
         {
             ImGuiPayload self = new ImGuiPayload();
-            byte[] type = {65, 66, 67};
         }
 
         /// <summary>
@@ -481,7 +454,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
-            IntPtr defaultVal = new IntPtr(1);
         }
 
         /// <summary>
@@ -535,7 +507,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStorage self = new ImGuiStorage();
             uint key = 1;
-            IntPtr val = new IntPtr(1);
         }
 
         /// <summary>
@@ -565,7 +536,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ImGuiStoragePair_ImGuiStoragePair_Ptr_ShouldReturnIntPtr()
         {
             uint key = 1;
-            IntPtr valP = new IntPtr(1);
         }
 
         /// <summary>

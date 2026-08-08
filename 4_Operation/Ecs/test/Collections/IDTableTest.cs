@@ -213,7 +213,7 @@ namespace Alis.Core.Ecs.Test.Collections
             IdTable<int> table = new IdTable<int>();
             ref int slot1 = ref table.Create(out int idx1);
             slot1 = 10;
-            ref int slot2 = ref table.Create(out int idx2);
+            ref int slot2 = ref table.Create(out int _);
             slot2 = 20;
 
             table.Consume(idx1);

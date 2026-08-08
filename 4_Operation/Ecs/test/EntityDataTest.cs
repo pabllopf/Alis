@@ -603,13 +603,6 @@ namespace Alis.Core.Ecs.Test
         /// </remarks>
         [Fact] public void EntityData_SerializationProduces8ByteBlock()
         {
-            EntityData entityData = new EntityData
-            {
-                EntityID = 12345,
-                EntityVersion = 42,
-                WorldID = 7
-            };
-
             int size = Marshal.SizeOf<EntityData>();
             Assert.Equal(8, size);
 

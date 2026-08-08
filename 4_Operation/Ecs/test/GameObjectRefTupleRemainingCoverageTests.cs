@@ -271,7 +271,7 @@ namespace Alis.Core.Ecs.Test
                 Item1 = item1
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1);
 
             Assert.Equal(42, (int)r1);
         }
@@ -293,7 +293,7 @@ namespace Alis.Core.Ecs.Test
                 Item2 = item2
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> r2);
 
             Assert.Equal(42, (int)r1);
             Assert.Equal(100, (int)r2);
@@ -334,7 +334,7 @@ namespace Alis.Core.Ecs.Test
                 Item3 = item3
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3);
 
             Assert.Equal(1, (int)r1);
             Assert.Equal(2, (int)r2);
@@ -364,7 +364,7 @@ namespace Alis.Core.Ecs.Test
                 Item4 = item4
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4);
 
             Assert.Equal(10, (int)r1);
             Assert.Equal(20, (int)r2);
@@ -398,7 +398,7 @@ namespace Alis.Core.Ecs.Test
                 Item5 = item5
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5);
 
             Assert.Equal(100, (int)r1);
             Assert.Equal(200, (int)r2);
@@ -436,7 +436,7 @@ namespace Alis.Core.Ecs.Test
                 Item6 = item6
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> r6);
 
             Assert.Equal(5, (int)r1);
             Assert.Equal(30, (int)r6);
@@ -474,7 +474,7 @@ namespace Alis.Core.Ecs.Test
                 Item7 = item7
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6, out Ref<int> r7);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> r7);
 
             Assert.Equal(7, (int)r1);
             Assert.Equal(49, (int)r7);
@@ -515,7 +515,7 @@ namespace Alis.Core.Ecs.Test
                 Item8 = item8
             };
 
-            tuple.Deconstruct(out GameObject go, out Ref<int> r1, out Ref<int> r2, out Ref<int> r3, out Ref<int> r4, out Ref<int> r5, out Ref<int> r6, out Ref<int> r7, out Ref<int> r8);
+            tuple.Deconstruct(out GameObject _, out Ref<int> r1, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> _, out Ref<int> r8);
 
             Assert.Equal(11, (int)r1);
             Assert.Equal(88, (int)r8);

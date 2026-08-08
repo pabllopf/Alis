@@ -281,7 +281,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
         {
             VideoFrame frame = new VideoFrame(10, 10);
             byte[] data = new byte[300];
-            byte[] originalBuffer = frame.RawData;
 
             frame.Load(new MemoryStream(data));
 

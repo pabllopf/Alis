@@ -109,7 +109,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
-            GameObject entity2 = scene.Create(new Position {X = 2});
+            scene.Create(new Position {X = 2});
 
             Query query = scene.Query<With<Position>, With<Health>>();
 

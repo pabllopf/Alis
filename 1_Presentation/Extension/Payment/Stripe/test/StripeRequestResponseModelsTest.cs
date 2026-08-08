@@ -333,9 +333,6 @@ namespace Alis.Extension.Payment.Stripe.Test
             Dictionary<string, string> metadata1 = new Dictionary<string, string> {{"key1", "value1"}};
             Dictionary<string, string> metadata2 = new Dictionary<string, string> {{"key2", "value2"}};
 
-            StripeCheckoutSessionRequest request1 = new StripeCheckoutSessionRequest {Metadata = metadata1};
-            StripePaymentIntentRequest request2 = new StripePaymentIntentRequest {Metadata = metadata2};
-
             metadata1["key1"] = "modified";
 
             Assert.Equal("modified", metadata1["key1"]);

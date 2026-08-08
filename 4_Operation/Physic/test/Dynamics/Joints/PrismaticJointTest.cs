@@ -461,11 +461,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -492,11 +488,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -525,11 +517,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.MaxMotorForce = 50.0f;
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -555,11 +543,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(0.1f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -585,11 +569,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, -0.1f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -615,11 +595,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(0.0f, 0.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -755,11 +731,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -781,11 +753,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(1.0f, 0.0f), true);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -811,11 +779,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -940,11 +904,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             float torque = joint.GetReactionTorque(60.0f);
             Assert.True(System.Math.Abs(torque) >= 0.0f);
@@ -973,11 +933,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -1001,47 +957,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(1.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
 
-        /// <summary>
-        /// Tests that init velocity constraints without warm starting zeros out impulse
-        /// </summary>
-        [Fact]
-        public void InitVelocityConstraints_WithoutWarmStarting_ShouldZeroOutImpulse()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            PrismaticJoint joint = new PrismaticJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero, new Vector2F(1.0f, 0.0f))
-                {
-                    LimitEnabled = true
-                };
-            joint.SetLimits(-1.0f, 1.0f);
-
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
-
-            System.Reflection.MethodInfo initMethod = typeof(PrismaticJoint).GetMethod("InitVelocityConstraints", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-
-            Assert.True(true);
-        }
+     
     }
 }

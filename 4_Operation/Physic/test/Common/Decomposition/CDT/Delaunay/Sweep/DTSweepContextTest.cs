@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             ctx.Tail = tail;
             ctx.CreateAdvancingFront();
 
-            AdvancingFrontNode node = ctx.LocateNode(new TriangulationPoint(5, 0));
+            ctx.LocateNode(new TriangulationPoint(5, 0));
 
             // LocateNode delegates to AFront.LocateNode which may return null
             Assert.NotNull(ctx.AFront);

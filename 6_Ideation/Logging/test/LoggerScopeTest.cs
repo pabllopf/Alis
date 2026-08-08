@@ -49,8 +49,6 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             Stack<object> stack = new Stack<object>();
 
-            LoggerScope scope = new LoggerScope("TestScope", stack, () => { });
-
             Assert.Single(stack);
             Assert.Equal("TestScope", stack.Peek());
         }
@@ -167,7 +165,6 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_MultipleScopes_ShouldPopInLifoOrder()
         {
             Stack<object> stack = new Stack<object>();
-            LoggerScope scope1 = new LoggerScope("A", stack, () => { });
             LoggerScope scope2 = new LoggerScope("B", stack, () => { });
 
             scope2.Dispose();
@@ -198,8 +195,6 @@ namespace Alis.Core.Aspect.Logging.Test
             Stack<object> stack = new Stack<object>();
             var scopeObject = new {Id = 123, Name = "TestScope"};
 
-            LoggerScope scope = new LoggerScope(scopeObject, stack, () => { });
-
             Assert.Single(stack);
             Assert.Equal(scopeObject, stack.Peek());
         }
@@ -212,8 +207,6 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             Stack<object> stack = new Stack<object>();
             int scopeId = 42;
-
-            LoggerScope scope = new LoggerScope(scopeId, stack, () => { });
 
             Assert.Single(stack);
             Assert.Equal(42, stack.Pop());
@@ -249,8 +242,6 @@ namespace Alis.Core.Aspect.Logging.Test
         public void LoggerScope_NullScope_ShouldBeAllowed()
         {
             Stack<object> stack = new Stack<object>();
-
-            LoggerScope scope = new LoggerScope(null, stack, () => { });
 
             Assert.Single(stack);
             Assert.Null(stack.Peek());

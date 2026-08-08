@@ -177,8 +177,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         [RequireFfmpegFact]
         public void AudioPlayer_PlayInBackground_RunPureBackground_ReturnsProcessWithoutAssigningFfplayp()
         {
-            AudioPlayer player = new AudioPlayer("test.mp3");
-
             // Cannot call PlayInBackground without ffplay, but the runPureBranch logic exists:
             // When runPureBackground=true, ffplayp is NOT assigned (player won't be killed on dispose)
             // This is a critical behavioral difference from runPureBackground=false
@@ -262,8 +260,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         [RequireFfmpegFact]
         public void AudioPlayer_Dispose_KillsNonExitedProcess()
         {
-            AudioPlayer player = new AudioPlayer();
-
             // Cannot test with actual process without ffplay, but the Dispose(bool) logic exists:
             // When !OpenedForWriting and ffplayp != null && !ffplayp.HasExited, it calls ffplayp.Kill()
             // This test verifies the guard path exists
@@ -275,8 +271,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         [RequireFfmpegFact]
         public void AudioPlayer_Dispose_CallsCloseWriteWhenOpened()
         {
-            AudioPlayer player = new AudioPlayer();
-
             // Cannot test with actual open state without ffplay, but the Dispose(bool) logic exists:
             // When OpenedForWriting is true, it calls CloseWrite()
             // This test verifies the guard path exists

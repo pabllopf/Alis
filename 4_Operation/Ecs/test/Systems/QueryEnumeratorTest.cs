@@ -55,7 +55,6 @@ namespace Alis.Core.Ecs.Test.Systems
             using QueryEnumerator<Position> enumerator = query.Enumerate<Position>().GetEnumerator();
             while (enumerator.MoveNext())
             {
-                Ref<Position> current = enumerator.Current.Item1;
                 count++;
             }
 

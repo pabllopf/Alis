@@ -131,7 +131,7 @@ namespace Alis.Core.Audio.Test.Players
             byte[] wav = BuildWavWithDataSize(dataSize: 0, channels: 1, sampleRate: 44100, bitsPerSample: 16);
 
             // Act
-            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int _, out int _);
 
             // Assert
             Assert.False(result);
@@ -160,7 +160,7 @@ namespace Alis.Core.Audio.Test.Players
             // No data chunk — FindDataChunk will leave dataOffset=0, dataSize=0
 
             // Act
-            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wav, out int dataOffset, out int dataSize, out int _, out int _);
 
             // Assert
             Assert.False(result);
@@ -352,7 +352,6 @@ namespace Alis.Core.Audio.Test.Players
             offset += 4;
 
             // fmt chunk
-            int fmtStart = offset;
             Encoding.ASCII.GetBytes("fmt ").CopyTo(wav, offset);
             offset += 4;
             BitConverter.GetBytes(fmtSize).CopyTo(wav, offset);

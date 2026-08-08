@@ -476,7 +476,7 @@ namespace Alis.Extension.Network.Test.Core
             NetworkSerializer serializer = new NetworkSerializer();
             string json = serializer.SerializeEnvelope(envelope);
 
-            foreach ((TcpClient client, NetworkStream stream) in clients)
+            foreach ((TcpClient _, NetworkStream stream) in clients)
             {
                 byte[] frame = BuildTextFrame(json);
                 await stream.WriteAsync(frame, 0, frame.Length);
@@ -547,7 +547,7 @@ namespace Alis.Extension.Network.Test.Core
             byte[] frame = BuildTextFrame(json);
             await stream.WriteAsync(frame, 0, frame.Length);
 
-            (string clientId, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
+            (string _, NetworkMessageEnvelope received) = await transport.ReceiveAsync();
             Assert.Equal(envelope.MessageId, received.MessageId);
 
             client.Close();
@@ -597,8 +597,8 @@ namespace Alis.Extension.Network.Test.Core
             await stream.WriteAsync(frame1, 0, frame1.Length);
             await stream.WriteAsync(frame2, 0, frame2.Length);
 
-            (string id1, NetworkMessageEnvelope msg1) = await transport.ReceiveAsync();
-            (string id2, NetworkMessageEnvelope msg2) = await transport.ReceiveAsync();
+            (string _, NetworkMessageEnvelope msg1) = await transport.ReceiveAsync();
+            (string _, NetworkMessageEnvelope msg2) = await transport.ReceiveAsync();
 
             Assert.Equal("first", msg1.MessageId);
             Assert.Equal("second", msg2.MessageId);

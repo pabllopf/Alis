@@ -612,7 +612,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseDown", 4, 10, 20, 100, 200);
-            platform.GetMouseState(out int x, out int y, out bool[] buttons);
+            platform.GetMouseState(out int _, out int _, out bool[] buttons);
             Assert.True(buttons[4]);
         }
 

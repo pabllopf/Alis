@@ -146,7 +146,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not playing, Pause should be a no-op (guarded by if (Playing && !Paused))
-            Task task = _player.Pause();
+            _player.Pause();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);
@@ -161,7 +161,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not paused, Resume should be a no-op (guarded by if (Playing && Paused))
-            Task task = _player.Resume();
+            _player.Resume();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);
@@ -176,7 +176,7 @@ namespace Alis.Core.Audio.Test
             _player = CreatePlayer();
 
             // When not playing, Stop should be a no-op (guarded by if (Playing))
-            Task task = _player.Stop();
+            _player.Stop();
 
             Assert.False(_player.Playing);
             Assert.False(_player.Paused);

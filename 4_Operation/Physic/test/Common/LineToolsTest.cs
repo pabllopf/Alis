@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F b0 = new Vector2F(0, 10);
             Vector2F b1 = new Vector2F(5, 10);
 
-            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out Vector2F intersection);
+            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out Vector2F _);
 
             Assert.False(intersects);
         }
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F b0 = new Vector2F(0, 0);
             Vector2F b1 = new Vector2F(10, 0);
 
-            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out Vector2F intersection);
+            bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out Vector2F _);
 
             Assert.False(intersects);
         }
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F p3 = new Vector2F(0, 10);
             Vector2F p4 = new Vector2F(10, 0);
 
-            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, true, true, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, true, true, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F q1 = new Vector2F(0, 5);
             Vector2F q2 = new Vector2F(10, 5);
 
-            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref q1, ref q2, true, true, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref q1, ref q2, true, true, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F q1 = new Vector2F(5, 0);
             Vector2F q2 = new Vector2F(5, 10);
 
-            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref q1, ref q2, true, true, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref q1, ref q2, true, true, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F p3 = new Vector2F(5, -1);
             Vector2F p4 = new Vector2F(5, 1);
 
-            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, false, false, out Vector2F intersection);
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, false, false, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -433,7 +433,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F p3 = new Vector2F(0, 10);
             Vector2F p4 = new Vector2F(10, 0);
 
-            bool intersects = LineTools.LineIntersect(p1, p2, p3, p4, true, true, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(p1, p2, p3, p4, true, true, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F p3 = new Vector2F(0, 10);
             Vector2F p4 = new Vector2F(10, 0);
 
-            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(ref p1, ref p2, ref p3, ref p4, out Vector2F _);
 
             Assert.True(intersects);
         }
@@ -497,7 +497,7 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F p3 = new Vector2F(0, 10);
             Vector2F p4 = new Vector2F(10, 0);
 
-            bool intersects = LineTools.LineIntersect(p1, p2, p3, p4, out Vector2F point);
+            bool intersects = LineTools.LineIntersect(p1, p2, p3, p4, out Vector2F _);
 
             Assert.True(intersects);
         }

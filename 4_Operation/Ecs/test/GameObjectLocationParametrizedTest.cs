@@ -48,7 +48,6 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new Scene();
             GameObject[] entities = new GameObject[entityCount];
-            HashSet<int> ids = new HashSet<int>();
 
             for (int i = 0; i < entityCount; i++)
             {

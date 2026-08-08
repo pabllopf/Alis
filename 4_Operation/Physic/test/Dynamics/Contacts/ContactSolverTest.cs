@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> points);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> _);
 
             Assert.Equal(Vector2F.Zero, normal);
         }
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = new ControllerTransform(Vector2F.Zero, 0.0f);
             ControllerTransform xfB = new ControllerTransform(new Vector2F(2.0f, 0.0f), 0.0f);
 
-            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> points);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> _);
 
             Assert.NotEqual(Vector2F.Zero, normal);
         }
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
             ControllerTransform xfB = new ControllerTransform(new Vector2F(3.0f, 0.0f), 0.0f);
 
-            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> points);
+            ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f, out Vector2F normal, out FixedArray2<Vector2F> _);
 
             Assert.NotEqual(Vector2F.Zero, normal);
         }

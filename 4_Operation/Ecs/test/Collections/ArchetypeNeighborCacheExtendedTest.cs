@@ -151,7 +151,7 @@ namespace Alis.Core.Ecs.Test.Collections
             cache.Set(ushort.MaxValue, 2);
 
             int idx1 = cache.Traverse(ushort.MinValue);
-            int idx2 = cache.Traverse(ushort.MaxValue);
+            cache.Traverse(ushort.MaxValue);
 
             if (idx1 != 32)
             {

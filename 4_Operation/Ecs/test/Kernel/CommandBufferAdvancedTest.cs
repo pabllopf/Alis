@@ -89,7 +89,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void CommandBuffer_CanDeferComponentAdditions()
         {
             Scene scene = new Scene();
-            CommandBuffer buffer = new CommandBuffer(new Scene());
             GameObject entity = scene.Create();
 
             entity.Add(new Position());
@@ -156,9 +155,9 @@ namespace Alis.Core.Ecs.Test.Kernel
             CommandBuffer buffer2 = new CommandBuffer(new Scene());
             CommandBuffer buffer3 = new CommandBuffer(new Scene());
 
-            GameObject e1 = scene.Create();
-            GameObject e2 = scene.Create();
-            GameObject e3 = scene.Create();
+            scene.Create();
+            scene.Create();
+            scene.Create();
 
             Assert.NotNull(buffer1);
             Assert.NotNull(buffer2);

@@ -360,7 +360,6 @@ namespace Alis.Extension.Network.Test.Core
 
             using (WebSocketNetworkTransport transport2 = new WebSocketNetworkTransport())
             {
-                NetworkTransportState state2 = transport2.State;
             }
 
             // Assert: Transport remains stable

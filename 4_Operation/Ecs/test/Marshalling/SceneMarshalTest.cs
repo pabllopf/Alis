@@ -294,7 +294,7 @@ namespace Alis.Core.Ecs.Test.Marshalling
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position { X = 1, Y = 2 });
-            GameObject entity2 = scene.Create(new Position { X = 3, Y = 4 });
+            scene.Create(new Position { X = 3, Y = 4 });
 
             Span<Position> buffer = SceneMarshal.GetRawBuffer<Position>(scene, entity1, out int index);
 

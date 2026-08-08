@@ -63,7 +63,7 @@ namespace Alis.Extension.Profile.Test.Utilities
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             IProfilerService service = new ProfilerService(mockTracker, factory);
 
-            using (ProfilerScope scope = new ProfilerScope(service))
+            using (new ProfilerScope(service))
             {
                 Assert.True(service.IsActive);
             }
@@ -112,7 +112,7 @@ namespace Alis.Extension.Profile.Test.Utilities
             ProfileSnapshot capturedSnapshot = default(ProfileSnapshot);
             bool callbackInvoked = false;
 
-            using (ProfilerScope scope = new ProfilerScope(service, snapshot =>
+            using (new ProfilerScope(service, snapshot =>
                    {
                        capturedSnapshot = snapshot;
                        callbackInvoked = true;
@@ -140,7 +140,7 @@ namespace Alis.Extension.Profile.Test.Utilities
 
             bool wasActive = false;
 
-            using (ProfilerScope scope = new ProfilerScope(service))
+            using (new ProfilerScope(service))
             {
                 wasActive = service.IsActive;
             }
@@ -208,7 +208,7 @@ namespace Alis.Extension.Profile.Test.Utilities
             ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
             IProfilerService service = new ProfilerService(mockTracker, factory);
 
-            using (ProfilerScope scope = new ProfilerScope(service))
+            using (new ProfilerScope(service))
             {
             }
 
@@ -224,11 +224,11 @@ namespace Alis.Extension.Profile.Test.Utilities
             IProfilerService service1 = ProfilerServiceBuilder.CreateDefault();
             IProfilerService service2 = ProfilerServiceBuilder.CreateDefault();
 
-            using (ProfilerScope scope1 = new ProfilerScope(service1))
+            using (new ProfilerScope(service1))
             {
                 Assert.True(service1.IsActive);
 
-                using (ProfilerScope scope2 = new ProfilerScope(service2))
+                using (new ProfilerScope(service2))
                 {
                     Assert.True(service2.IsActive);
                 }

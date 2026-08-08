@@ -149,8 +149,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void Clear_ShouldClearPayload()
         {
-            ImGuiPayload payload = new ImGuiPayload {Data = new IntPtr(123), DataSize = 100};
-
         }
 
         /// <summary>
@@ -204,8 +202,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsDataType_ShouldReturnTrueForMatchingType()
         {
-            ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
-
         }
 
         /// <summary>
@@ -214,9 +210,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsDataType_ShouldReturnFalseForNonMatchingType()
         {
-            ImGuiPayload payload = new ImGuiPayload {DataType = Encoding.UTF8.GetBytes("test\0")};
-
-
         }
 
         /// <summary>
@@ -225,8 +218,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsDelivery_ShouldReturnTrueWhenDeliveryIsSet()
         {
-            ImGuiPayload payload = new ImGuiPayload {Delivery = 1};
-
         }
 
         /// <summary>
@@ -235,8 +226,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsDelivery_ShouldReturnFalseWhenDeliveryIsNotSet()
         {
-            ImGuiPayload payload = new ImGuiPayload {Delivery = 0};
-
         }
 
         /// <summary>
@@ -245,8 +234,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsPreview_ShouldReturnTrueWhenPreviewIsSet()
         {
-            ImGuiPayload payload = new ImGuiPayload {Preview = 1};
-
         }
 
         /// <summary>
@@ -255,8 +242,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void IsPreview_ShouldReturnFalseWhenPreviewIsNotSet()
         {
-            ImGuiPayload payload = new ImGuiPayload {Preview = 0};
-
         }
     }
 }

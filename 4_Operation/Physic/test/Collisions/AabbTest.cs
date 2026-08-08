@@ -462,7 +462,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }
@@ -481,7 +481,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }
@@ -500,7 +500,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.True(hit);
         }
@@ -519,7 +519,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input, false);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input, false);
 
             Assert.True(hit);
         }
@@ -557,7 +557,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.True(hit);
         }
@@ -576,7 +576,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.True(hit);
         }
@@ -659,7 +659,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 0.2f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }
@@ -678,7 +678,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }
@@ -697,7 +697,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            bool hit = aabb.RayCast(out RayCastOutput output, ref input);
+            bool hit = aabb.RayCast(out RayCastOutput _, ref input);
 
             Assert.False(hit);
         }

@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithBodyInRange_ShouldReturnNonEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
@@ -233,7 +233,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithNoBodiesInRange_ShouldReturnEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(100f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(100f, 0), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
@@ -264,7 +264,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithStaticBody_ShouldReturnEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Static);
+            world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Static);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
@@ -279,8 +279,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithMultipleBodies_ShouldReturnAllAffected()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body1 = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
-            Body body2 = world.CreateCircle(1f, 1f, new Vector2F(-5f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(-5f, 0), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
@@ -296,7 +296,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithBodyInsideAabbButOutsideRadius_ShouldReturnEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(4f, 4f), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(4f, 4f), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithBodyOutsideRadiusButInsideAabb_ShouldReturnEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(8f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(8f, 0), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
@@ -342,7 +342,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void Activate_WithZeroRadius_ShouldReturnEmpty()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
+            world.CreateCircle(1f, 1f, new Vector2F(5f, 0), BodyType.Dynamic);
             SimpleExplosion explosion = new SimpleExplosion(world);
 
             Dictionary<Body, Vector2F> result = explosion.Activate(Vector2F.Zero, 0f, 100f);

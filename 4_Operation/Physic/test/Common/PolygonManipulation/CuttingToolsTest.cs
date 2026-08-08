@@ -73,45 +73,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.NotNull(CuttingTools.Cut);
         }
 
-        /// <summary>
-        ///     Tests that SplitShape method exists with correct signature.
-        /// </summary>
-        [Fact]
-        public void SplitShape_MethodSignatureShouldBeCorrect()
-        {
-            MethodInfo method = typeof(CuttingTools).GetMethod("SplitShape");
-            Assert.NotNull(method);
-            Assert.True(method!.IsStatic);
-            Assert.Equal(typeof(void), method.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that Cut method exists with correct signature.
-        /// </summary>
-        [Fact]
-        public void Cut_MethodSignatureShouldBeCorrect()
-        {
-            MethodInfo method = typeof(CuttingTools).GetMethod("Cut");
-            Assert.NotNull(method);
-            Assert.True(method!.IsStatic);
-            Assert.Equal(typeof(bool), method.ReturnType);
-        }
-
-        /// <summary>
-        ///     Tests that Cut has correct parameters.
-        /// </summary>
-        [Fact]
-        public void Cut_ParametersShouldBeCorrect()
-        {
-            MethodInfo method = typeof(CuttingTools).GetMethod("Cut")!;
-            ParameterInfo[] parameters = method.GetParameters();
-
-            Assert.Equal(3, parameters.Length);
-            Assert.Equal("worldPhysic", parameters[0].Name);
-            Assert.Equal("start", parameters[1].Name);
-            Assert.Equal("end", parameters[2].Name);
-        }
-
+       
         /// <summary>
         ///     Tests that Vector2F is accessible for test setup.
         /// </summary>

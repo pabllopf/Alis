@@ -493,7 +493,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
 
             // NextFrame() delegates to NextFrame(1024) which creates AudioFrame(Metadata.Channels, ...)
             // Metadata is null when not loaded, causing NullReferenceException
-            NullReferenceException ex = Assert.Throws<NullReferenceException>(() => reader.NextFrame());
+            Assert.Throws<NullReferenceException>(() => reader.NextFrame());
         }
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         {
             AudioReader reader = new AudioReader(_tempFile);
 
-            NullReferenceException ex = Assert.Throws<NullReferenceException>(() => reader.NextFrame(1024));
+            Assert.Throws<NullReferenceException>(() => reader.NextFrame(1024));
 
             // The method creates AudioFrame(Metadata.Channels, ...) before checking OpenedForReading
             // Metadata is null when not loaded, causing NullReferenceException

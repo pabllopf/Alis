@@ -426,7 +426,6 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         [Fact]
         public void Get_ThrowsInvalidOperationException_WhenTypeNotFound()
         {
-            Context context = new Context();
             InternalRuntime<AManager> runtime = new InternalRuntime<AManager>();
 
             InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() => runtime.Get<TestRuntime>());

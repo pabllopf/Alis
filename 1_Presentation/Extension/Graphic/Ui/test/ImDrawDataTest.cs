@@ -165,7 +165,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void Clear_ShouldClearData()
         {
-            ImDrawData drawData = new ImDrawData {Valid = 1, CmdListsCount = 5};
         }
 
         /// <summary>
@@ -189,8 +188,6 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImDrawData drawData = new ImDrawData {CmdListsCount = 1, CmdListsPtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImDrawList>())};
             ImDrawList drawList = new ImDrawList();
             Marshal.StructureToPtr(drawList, drawData.CmdListsPtr, false);
-            Vector2F fbScale = new Vector2F(2.0f, 2.0f);
-
         }
 
         /// <summary>
@@ -218,7 +215,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ScaleClipRects_ThrowsDllNotFoundException()
         {
             ImDrawData drawData = new ImDrawData();
-            Vector2F fbScale = new Vector2F(1.0f, 1.0f);
         }
 
         /// <summary>

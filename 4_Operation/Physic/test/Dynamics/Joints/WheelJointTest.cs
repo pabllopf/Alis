@@ -448,11 +448,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                     MaxMotorTorque = 50.0f
                 };
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.True(true);
         }
 
@@ -473,11 +469,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -501,11 +493,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                     MaxMotorTorque = 50.0f
                 };
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -528,11 +516,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                     DampingRatio = 0.5f
                 };
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -558,11 +542,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                     DampingRatio = 0.5f
                 };
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -581,11 +561,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, new Vector2F(0, 0), new Vector2F(0.0f, 1.0f), useWorldCoordinates: true);
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -630,11 +606,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             joint.GetReactionForce(60.0f);
             Assert.True(true);
         }
@@ -654,11 +626,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyB.CreateFixture(shapeB);
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 
@@ -681,11 +649,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                     DampingRatio = 0.5f
                 };
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
             Assert.NotNull(joint);
         }
 

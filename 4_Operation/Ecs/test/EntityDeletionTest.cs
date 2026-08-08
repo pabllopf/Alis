@@ -65,9 +65,9 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void Query_ExcludesDeletedEntities()
         {
             using Scene scene = new Scene();
-            GameObject entity1 = scene.Create(new Position {X = 1});
+            scene.Create(new Position {X = 1});
             GameObject entity2 = scene.Create(new Position {X = 2});
-            GameObject entity3 = scene.Create(new Position {X = 3});
+            scene.Create(new Position {X = 3});
 
             entity2.Delete();
 
@@ -88,9 +88,9 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new Position {X = 1});
-            GameObject entity2 = scene.Create(new Position {X = 2});
+            scene.Create(new Position {X = 2});
             GameObject entity3 = scene.Create(new Position {X = 3});
-            GameObject entity4 = scene.Create(new Position {X = 4});
+            scene.Create(new Position {X = 4});
 
             entity1.Delete();
             entity3.Delete();

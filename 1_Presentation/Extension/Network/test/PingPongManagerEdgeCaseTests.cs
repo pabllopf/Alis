@@ -149,7 +149,6 @@ namespace Alis.Extension.Network.Test
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), new MemoryStream(),
                 TimeSpan.FromSeconds(30), null, false, true, null);
             using CancellationTokenSource cts = new CancellationTokenSource();
-            PingPongManager manager = new PingPongManager(guid, webSocket, TimeSpan.FromMilliseconds(500), cts.Token);
 
             await Task.Delay(100);
 

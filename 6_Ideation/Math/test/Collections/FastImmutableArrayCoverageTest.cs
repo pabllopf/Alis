@@ -99,10 +99,7 @@ namespace Alis.Core.Aspect.Math.Test.Collections
             builder.Add(2);
             builder.Add(3);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() =>
-            {
-                ref readonly int ref1 = ref builder.ItemRef(3);
-            });
+            Assert.Throws<ArgumentOutOfRangeException>(() => { builder.ItemRef(3); });
         }
 
         /// <summary>

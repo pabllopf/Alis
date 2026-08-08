@@ -79,11 +79,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUserTextureIdAndMinMax_AddsImage()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-
         }
 
         /// <summary>
@@ -92,12 +87,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUserTextureIdMinMaxAndUvMin_AddsImage()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-            Vector2F uvMin = new Vector2F(0, 0);
-
         }
 
         /// <summary>
@@ -106,13 +95,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUserTextureIdMinMaxUvMinAndUvMax_AddsImage()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-            Vector2F uvMin = new Vector2F(0, 0);
-            Vector2F uvMax = new Vector2F(1, 1);
-
         }
 
         /// <summary>
@@ -121,14 +103,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUserTextureIdMinMaxUvMinUvMaxAndCol_AddsImage()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-            Vector2F uvMin = new Vector2F(0, 0);
-            Vector2F uvMax = new Vector2F(1, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -137,13 +112,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdAndPoints_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-
         }
 
         /// <summary>
@@ -152,14 +120,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdPointsAndUv1_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-            Vector2F uv1 = new Vector2F(0, 0);
-
         }
 
         /// <summary>
@@ -168,15 +128,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdPointsUv1AndUv2_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-            Vector2F uv1 = new Vector2F(0, 0);
-            Vector2F uv2 = new Vector2F(1, 0);
-
         }
 
         /// <summary>
@@ -185,16 +136,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2AndUv3_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-            Vector2F uv1 = new Vector2F(0, 0);
-            Vector2F uv2 = new Vector2F(1, 0);
-            Vector2F uv3 = new Vector2F(1, 1);
-
         }
 
         /// <summary>
@@ -203,17 +144,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3AndUv4_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-            Vector2F uv1 = new Vector2F(0, 0);
-            Vector2F uv2 = new Vector2F(1, 0);
-            Vector2F uv3 = new Vector2F(1, 1);
-            Vector2F uv4 = new Vector2F(0, 1);
-
         }
 
         /// <summary>
@@ -222,18 +152,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUserTextureIdPointsUv1Uv2Uv3Uv4AndCol_AddsImageQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
-            Vector2F uv1 = new Vector2F(0, 0);
-            Vector2F uv2 = new Vector2F(1, 0);
-            Vector2F uv3 = new Vector2F(1, 1);
-            Vector2F uv4 = new Vector2F(0, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -242,12 +161,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColAndRounding_AddsImageRounded()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-            Vector2F uvMin = new Vector2F(0, 0);
-            Vector2F uvMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
 
@@ -259,12 +172,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageRounded_WithUserTextureIdMinMaxUvMinUvMaxColRoundingAndFlags_AddsImageRounded()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            IntPtr userTextureId = new IntPtr(1);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
-            Vector2F uvMin = new Vector2F(0, 0);
-            Vector2F uvMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
@@ -277,11 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddLine_WithP1P2AndCol_AddsLine()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -290,9 +193,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddLine_WithP1P2ColAndThickness_AddsLine()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 1);
             uint col = 4294967295;
             float thickness = 2.0f;
 
@@ -304,8 +204,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgon_WithCenterRadiusColAndNumSegments_AddsNgon()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F center = new Vector2F(0, 0);
             float radius = 1.0f;
             uint col = 4294967295;
             int numSegments = 6;
@@ -318,8 +216,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgon_WithCenterRadiusColNumSegmentsAndThickness_AddsNgon()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F center = new Vector2F(0, 0);
             float radius = 1.0f;
             uint col = 4294967295;
             int numSegments = 6;
@@ -333,8 +229,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgonFilled_WithCenterRadiusColAndNumSegments_AddsNgonFilled()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F center = new Vector2F(0, 0);
             float radius = 1.0f;
             uint col = 4294967295;
             int numSegments = 6;
@@ -347,8 +241,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddPolyline_WithPointsNumPointsColFlagsAndThickness_AddsPolyline()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F[] points = new Vector2F[3] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)};
+            _ = new Vector2F[3] {new Vector2F(0, 0), new Vector2F(1, 1), new Vector2F(2, 2)};
             int numPoints = 3;
             uint col = 4294967295;
             ImDrawFlags flags = 0;
@@ -362,13 +255,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuad_WithP1P2P3P4AndCol_AddsQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -377,11 +264,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuad_WithP1P2P3P4ColAndThickness_AddsQuad()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
             uint col = 4294967295;
             float thickness = 2.0f;
 
@@ -393,13 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuadFilled_WithP1P2P3P4AndCol_AddsQuadFilled()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(1, 1);
-            Vector2F p4 = new Vector2F(0, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -408,11 +284,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithPMinPMaxAndCol_AddsRect()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -421,9 +293,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithPMinPMaxColAndRounding_AddsRect()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
 
@@ -435,9 +304,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithPMinPMaxColRoundingAndFlags_AddsRect()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
@@ -450,9 +316,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithPMinPMaxColRoundingFlagsAndThickness_AddsRect()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
@@ -466,11 +329,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_WithPMinPMaxAndCol_AddsRectFilled()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -479,9 +338,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_WithPMinPMaxColAndRounding_AddsRectFilled()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
 
@@ -493,9 +349,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_WithPMinPMaxColRoundingAndFlags_AddsRectFilled()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint col = 4294967295;
             float rounding = 0.5f;
             ImDrawFlags flags = 0;
@@ -509,9 +362,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilledMultiColor_WithPMinPMaxColUprLeftColUprRightColBotRightAndColBotLeft_AddsRectFilledMultiColor()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F pMin = new Vector2F(0, 0);
-            Vector2F pMax = new Vector2F(1, 1);
             uint colUprLeft = 4294967295;
             uint colUprRight = 4294967295;
             uint colBotRight = 4294967295;
@@ -525,12 +375,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddTriangle_WithP1P2P3AndCol_AddsTriangle()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
-            Vector2F p1 = new Vector2F(0, 0);
-            Vector2F p2 = new Vector2F(1, 0);
-            Vector2F p3 = new Vector2F(0.5f, 1);
             uint col = 4294967295;
-
         }
 
         /// <summary>
@@ -539,7 +384,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddDrawCmd_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -548,7 +392,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -557,7 +400,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUvMin_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -566,7 +408,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUvMinUvMax_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -575,7 +416,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImage_WithUvMinUvMaxCol_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -584,7 +424,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -593,7 +432,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUv1_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -602,7 +440,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUv1Uv2_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -611,7 +448,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUv1Uv2Uv3_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -620,7 +456,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageQuad_WithUv1Uv2Uv3Uv4_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -629,7 +464,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageRounded_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -638,7 +472,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddImageRounded_WithFlags_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -647,7 +480,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddLine_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -656,7 +488,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddLine_WithThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -665,7 +496,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgon_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -674,7 +504,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgon_WithThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -683,7 +512,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddNgonFilled_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -692,7 +520,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddPolyline_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
             Vector2F points = new Vector2F();
         }
 
@@ -702,7 +529,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuad_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -711,7 +537,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuad_WithThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -720,7 +545,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddQuadFilled_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -729,7 +553,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -738,7 +561,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithRounding_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -747,7 +569,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithRoundingFlags_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -756,7 +577,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRect_WithRoundingFlagsThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -765,7 +585,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -774,7 +593,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_WithRounding_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -783,7 +601,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilled_WithRoundingFlags_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -792,7 +609,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddRectFilledMultiColor_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -801,7 +617,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddTriangle_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -810,7 +625,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddTriangle_WithThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -819,7 +633,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void AddTriangleFilled_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -828,7 +641,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ChannelsMerge_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -837,7 +649,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ChannelsSetCurrent_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -846,7 +657,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ChannelsSplit_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -855,7 +665,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void CloneOutput_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -864,7 +673,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void GetClipRectMax_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -873,7 +681,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void GetClipRectMin_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -882,7 +689,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathArcTo_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -891,7 +697,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathArcTo_WithNumSegments_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -900,7 +705,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathArcToFast_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -909,7 +713,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathBezierCubicCurveTo_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -918,7 +721,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathBezierCubicCurveTo_WithNumSegments_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -927,7 +729,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathBezierQuadraticCurveTo_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -936,7 +737,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathBezierQuadraticCurveTo_WithNumSegments_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -945,7 +745,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathClear_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -954,7 +753,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathFillConvex_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -963,7 +761,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathLineTo_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -972,7 +769,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathLineToMergeDuplicate_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -981,7 +777,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathRect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -990,7 +785,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathRect_WithRounding_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -999,7 +793,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathRect_WithRoundingFlags_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1008,7 +801,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathStroke_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1017,7 +809,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathStroke_WithFlags_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1026,7 +817,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PathStroke_WithFlagsThickness_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1035,7 +825,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PopClipRect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1044,7 +833,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PopTextureId_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1053,7 +841,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimQuadUv_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1062,7 +849,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimRect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1071,7 +857,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimRectUv_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1080,7 +865,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimReserve_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1089,7 +873,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimUnreserve_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1098,7 +881,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimVtx_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1107,7 +889,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimWriteIdx_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1116,7 +897,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PrimWriteVtx_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1125,7 +905,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PushClipRect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>
@@ -1134,7 +913,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void PushClipRect_WithIntersect_ThrowsDllNotFoundException()
         {
-            ImDrawListPtr drawList = new ImDrawListPtr(IntPtr.Zero);
         }
 
         /// <summary>

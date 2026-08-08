@@ -327,7 +327,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void FormatEnumToMasks_ForArgb8888_IncludesAlpha()
         {
-            bool result = Sdl.FormatEnumToMasks(Sdl.PixelFormatArgb8888, out int bpp, out uint rMask, out uint gMask, out uint bMask, out uint aMask);
+            bool result = Sdl.FormatEnumToMasks(Sdl.PixelFormatArgb8888, out int _, out uint _, out uint _, out uint _, out uint aMask);
 
             Assert.True(result);
             Assert.NotEqual(0u, aMask);
@@ -372,7 +372,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void ComposeCustomBlendMode_ReturnsValidMode()
         {
-            BlendModes mode = Sdl.ComposeCustomBlendMode(BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd, BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd);
+            Sdl.ComposeCustomBlendMode(BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd, BlendFactor.SdlBlendFactorZero, BlendFactor.SdlBlendFactorOne, BlendOperation.SdlBlendOperationAdd);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void GetKeyFromScancode_DoesNotThrow()
         {
-            KeyCodes key = Sdl.GetKeyFromScancode(SdlScancode.SdlScancodeA);
+            Sdl.GetKeyFromScancode(SdlScancode.SdlScancodeA);
         }
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void GetScancodeFromKey_DoesNotThrow()
         {
-            SdlScancode scancode = Sdl.GetScancodeFromKey(KeyCodes.Unknown);
+            Sdl.GetScancodeFromKey(KeyCodes.Unknown);
         }
 
         /// <summary>
@@ -409,7 +409,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void GetScancodeFromName_DoesNotThrow()
         {
-            SdlScancode sc = Sdl.GetScancodeFromName("A");
+            Sdl.GetScancodeFromName("A");
         }
 
         /// <summary>
@@ -428,7 +428,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void GetKeyFromName_DoesNotThrow()
         {
-            KeyCodes key = Sdl.GetKeyFromName("A");
+            Sdl.GetKeyFromName("A");
         }
 
         /// <summary>
@@ -480,7 +480,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             Sdl.Init(InitSettings.InitEvents);
 
-            byte state = Sdl.GetEventState(EventType.FirstEvent);
+            Sdl.GetEventState(EventType.FirstEvent);
 
             Sdl.Quit();
         }

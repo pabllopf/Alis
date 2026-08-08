@@ -112,7 +112,7 @@ namespace Alis.Extension.Updater.Test
         [Fact]
         public void HandleCancellationRequest_ReturnsExpectedValue()
         {
-            UpdateManager sut = CreateManager();
+            CreateManager();
 
             bool notCancelled = UpdateManager.HandleCancellationRequest(CancellationToken.None);
             using CancellationTokenSource cts = new CancellationTokenSource();
@@ -129,7 +129,7 @@ namespace Alis.Extension.Updater.Test
         [Fact]
         public void GetArchitecture_ReturnsLowercaseToken()
         {
-            UpdateManager sut = CreateManager();
+            CreateManager();
 
             string architecture = UpdateManager.GetArchitecture();
 
@@ -143,7 +143,7 @@ namespace Alis.Extension.Updater.Test
         [Fact]
         public void GetSelectedAsset_ReturnsMatchingEntry()
         {
-            UpdateManager sut = CreateManager();
+            CreateManager();
             Dictionary<string, object> release = new Dictionary<string, object>
             {
                 {
@@ -305,7 +305,7 @@ namespace Alis.Extension.Updater.Test
         [MacOsOnly]
         public void GetDmgMountPath_ReturnsExpectedVolumesPath()
         {
-            UpdateManager sut = CreateManager();
+            CreateManager();
 
             string mountPath = UpdateManager.GetDmgMountPath("/tmp/example.dmg");
 

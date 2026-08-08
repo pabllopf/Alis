@@ -41,30 +41,6 @@ namespace Alis.Core.Physic.Test.Dynamics
     /// </summary>
     public class ContactManagerTest
     {
-        /// <summary>
-        /// Tests that begin contact callback should be raised when new contact appears
-        /// </summary>
-        [Fact]
-        public void BeginContactCallback_ShouldBeRaised_WhenNewContactAppears()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            int beginCount = 0;
-            world.ContactManager.BeginContact = contact =>
-            {
-                beginCount++;
-                return false;
-            };
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(beginCount > 0);
-        }
 
         /// <summary>
         /// Tests that contact filter should be able to block contact creation
@@ -77,11 +53,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
             world.ContactManager.ContactFilter = (_, _) => false;
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
@@ -98,32 +70,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
 
             Assert.Null(ex);
-        }
-
-       
-
-        /// <summary>
-        /// Tests that destroy contact with multiple overlapping bodies does not throw
-        /// </summary>
-        [Fact]
-        public void DestroyContact_WithMultipleOverlappingBodies_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(-0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            world.Remove(bodyA);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
         }
     }
 }

@@ -218,7 +218,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
             entity.Delete();
 
-            Ref<Position> result = entity.TryGetCore<Position>(out bool exists);
+            entity.TryGetCore<Position>(out bool exists);
 
             Assert.False(exists);
         }

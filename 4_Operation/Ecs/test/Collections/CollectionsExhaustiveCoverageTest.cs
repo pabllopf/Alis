@@ -475,7 +475,7 @@ namespace Alis.Core.Ecs.Test.Collections
             table.InvokeEventWithAndConsume(genericEvent, gameObject, index0);
             Assert.Equal(1, tracker.CallCount);
 
-            ref string afterConsume = ref table.Create(out int reusedIndex0);
+            table.Create(out int reusedIndex0);
             Assert.Equal(index0, reusedIndex0);
 
             table.Dispose();

@@ -352,7 +352,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = chain.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = chain.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.True(hit);
         }
@@ -399,7 +399,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 1.0f
         };
 
-        bool hit = chain.RayCast(out RayCastOutput output, ref input, ref transform, 2);
+        bool hit = chain.RayCast(out RayCastOutput _, ref input, ref transform, 2);
 
         Assert.False(hit);
     }

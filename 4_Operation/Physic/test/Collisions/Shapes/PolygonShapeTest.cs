@@ -378,7 +378,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F _);
 
             Assert.Equal(0, area);
         }
@@ -411,7 +411,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             // Normal pointing up, offset high above all vertices
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F _);
 
             Assert.True(area > 0);
         }
@@ -428,7 +428,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             // Normal pointing up, water level cuts through the triangle
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, 0.5f, ref transform, out Vector2F _);
 
             Assert.True(area > 0);
             Assert.True(area < polygon.MassData.Mass / polygon.GetDensity);
@@ -445,7 +445,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F normal = new Vector2F(0, -1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, -0.5f, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, -0.5f, ref transform, out Vector2F _);
 
             Assert.True(area >= 0);
         }
@@ -477,7 +477,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             ControllerTransform transform = new ControllerTransform(new Vector2F(1, 1), 0.5f);
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, 10, ref transform, out Vector2F _);
 
             Assert.True(area > 0);
         }
@@ -499,7 +499,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -521,7 +521,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 0.1f
             };
 
-            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             // Water level that cuts through creating exactly one dive transition
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, 1.5f, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, 1.5f, ref transform, out Vector2F _);
 
             Assert.True(area >= 0);
         }
@@ -554,7 +554,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F normal = new Vector2F(0, 1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, 1.0f, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, 1.0f, ref transform, out Vector2F _);
 
             Assert.True(area >= 0);
         }
@@ -586,7 +586,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             ControllerTransform transform = ControllerTransform.Identity;
             Vector2F normal = new Vector2F(0, -1);
 
-            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F sc);
+            float area = polygon.ComputeSubmergedArea(ref normal, -10, ref transform, out Vector2F _);
 
             Assert.Equal(0, area);
         }
@@ -637,7 +637,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }

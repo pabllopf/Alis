@@ -148,7 +148,7 @@ namespace Alis.Core.Ecs.Test
             );
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>, With<TestComponent>, With<AnotherComponent>>();
 
-            foreach ((Ref<Position> pos, Ref<Velocity> vel, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> test, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
+            foreach ((Ref<Position> pos, Ref<Velocity> _, Ref<Health> health, Ref<Transform> trans, Ref<TestComponent> _, Ref<AnotherComponent> another) in query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>())
             {
                 Position p = pos.Value;
                 p.X = 100;

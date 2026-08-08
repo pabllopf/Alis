@@ -152,7 +152,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             ShortSparseSet<int> set = new ShortSparseSet<int>();
 
-            bool result = set.TryGet(999, out int value);
+            bool result = set.TryGet(999, out int _);
 
             Assert.False(result);
         }

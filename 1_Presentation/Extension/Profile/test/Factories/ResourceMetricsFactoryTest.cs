@@ -129,7 +129,6 @@ namespace Alis.Extension.Profile.Test.Factories
         {
             // Arrange
             MockResourceMonitor mockMonitor = new MockResourceMonitor();
-            ResourceMetricsFactory factory = new ResourceMetricsFactory(mockMonitor);
 
             // Act
             ResourceMetrics empty = ResourceMetricsFactory.CreateEmpty();

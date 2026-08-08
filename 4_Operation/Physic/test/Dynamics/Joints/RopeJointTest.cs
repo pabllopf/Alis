@@ -330,11 +330,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -488,11 +484,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.001f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -546,11 +538,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;
@@ -602,11 +590,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;

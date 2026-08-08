@@ -250,7 +250,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void DisplayManager_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
             Assert.Equal(1.0f, ratio, 5);
         }

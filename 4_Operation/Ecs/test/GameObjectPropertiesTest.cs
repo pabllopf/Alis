@@ -501,7 +501,7 @@ namespace Alis.Core.Ecs.Test
         using Scene scene = new Scene();
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
 
-        bool result = gameObject.TryGet<Velocity>(out Ref<Velocity> value);
+        bool result = gameObject.TryGet<Velocity>(out Ref<Velocity> _);
 
         Assert.False(result);
     }
@@ -515,7 +515,7 @@ namespace Alis.Core.Ecs.Test
         GameObject gameObject = scene.Create(new Position {X = 1, Y = 2});
         gameObject.Delete();
 
-        bool result = gameObject.TryGet<Position>(out Ref<Position> value);
+        bool result = gameObject.TryGet<Position>(out Ref<Position> _);
 
         Assert.False(result);
     }

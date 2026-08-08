@@ -72,7 +72,7 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
             GameObject entity = scene.Create();
 
-            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
+            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(new Position {X = 1, Y = 2});
             entity.Delete();
 
-            Assert.Throws<InvalidOperationException>(() => { entity.Deconstruct(out Ref<Position> pos); });
+            Assert.Throws<InvalidOperationException>(() => { entity.Deconstruct(out Ref<Position> _); });
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Ecs.Test
         {
             GameObject nullEntity = GameObject.Null;
 
-            Assert.Throws<NullReferenceException>(() => { nullEntity.Deconstruct(out Ref<Position> pos); });
+            Assert.Throws<NullReferenceException>(() => { nullEntity.Deconstruct(out Ref<Position> _); });
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Alis.Core.Ecs.Test
 
             entity.Remove<Position>();
 
-            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> pos); });
+            Assert.Throws<NullReferenceException>(() => { entity.Deconstruct(out Ref<Position> _); });
         }
 
         /// <summary>

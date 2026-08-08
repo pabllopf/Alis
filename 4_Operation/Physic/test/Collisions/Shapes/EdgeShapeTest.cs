@@ -330,7 +330,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 1.0f
         };
 
-        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+        bool hit = edge.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
         Assert.False(hit);
     }
@@ -350,7 +350,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 0.1f
         };
 
-        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+        bool hit = edge.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
         Assert.False(hit);
     }
@@ -370,7 +370,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 1.0f
         };
 
-        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+        bool hit = edge.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
         Assert.False(hit);
     }
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 1.0f
         };
 
-        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+        bool hit = edge.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
         Assert.False(hit);
     }
@@ -410,7 +410,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             MaxFraction = 1.0f
         };
 
-        bool hit = edge.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+        bool hit = edge.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
         Assert.False(hit);
     }

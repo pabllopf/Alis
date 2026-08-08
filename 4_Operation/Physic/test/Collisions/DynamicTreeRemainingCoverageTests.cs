@@ -165,13 +165,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Aabb a1 = new Aabb(new Vector2F(0, 0), new Vector2F(1, 1));
             Aabb a2 = new Aabb(new Vector2F(2, 0), new Vector2F(3, 1));
             int p1 = tree.AddProxy(ref a1);
-            int p2 = tree.AddProxy(ref a2);
+            tree.AddProxy(ref a2);
 
             float leafCost = tree.ComputeChildCost(p1, new Aabb(new Vector2F(0.5f, 0.5f), new Vector2F(2.5f, 1.5f)), 1.0f);
             Assert.True(leafCost >= 0);
 
             Aabb a3 = new Aabb(new Vector2F(4, 0), new Vector2F(5, 1));
-            int p3 = tree.AddProxy(ref a3);
+            tree.AddProxy(ref a3);
 
             Aabb leafAabb = new Aabb(new Vector2F(1, 0), new Vector2F(3, 1));
             int sibling = tree.FindBestSibling(leafAabb);

@@ -132,7 +132,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             byte[] wavData = CreateValidWavHeader(16, 2);
 
-            bool result = BrowserPlayer.TryParseWav(wavData, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wavData, out int _, out int _, out int _, out int format);
 
             Assert.True(result);
             Assert.Equal(0x1103, format);
@@ -146,7 +146,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             byte[] wavData = CreateValidWavHeader(8, 1);
 
-            bool result = BrowserPlayer.TryParseWav(wavData, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wavData, out int _, out int _, out int _, out int format);
 
             Assert.True(result);
             Assert.Equal(0x1100, format);
@@ -160,7 +160,7 @@ namespace Alis.Core.Audio.Test.Players
         {
             byte[] wavData = CreateValidWavHeader(8, 2);
 
-            bool result = BrowserPlayer.TryParseWav(wavData, out int dataOffset, out int dataSize, out int freq, out int format);
+            bool result = BrowserPlayer.TryParseWav(wavData, out int _, out int _, out int _, out int format);
 
             Assert.True(result);
             Assert.Equal(0x1102, format);
@@ -255,7 +255,7 @@ namespace Alis.Core.Audio.Test.Players
             byte[] wavData = CreateWavWithDataChunk();
 
             int pos = 12;
-            BrowserPlayer.FindDataChunk(wavData, ref pos, out int dataOffset, out int dataSize);
+            BrowserPlayer.FindDataChunk(wavData, ref pos, out int _, out int dataSize);
 
             // The actual implementation returns 0 when the chunk is not properly aligned
             Assert.Equal(0, dataSize);

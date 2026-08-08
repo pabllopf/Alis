@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 MaxFraction = 1.0f
             };
 
-            bool hit = polygon.RayCast(out RayCastOutput output, ref input, ref transform, 0);
+            bool hit = polygon.RayCast(out RayCastOutput _, ref input, ref transform, 0);
 
             Assert.False(hit);
         }

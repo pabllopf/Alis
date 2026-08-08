@@ -257,10 +257,8 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void FindAdjacentArchetypeId_CacheMiss_TriesSceneGraph()
         {
             // Arrange — cache miss (key not in any slot)
-            FastLookup lookup = new FastLookup();
 
             // Create a mock type with id=100
-            TestTypeId typeId = new TestTypeId(100);
 
             // Act — cache miss, tries scene.ArchetypeGraphEdges, then GetAdjacentArchetypeCold
             // Since scene is null, this will throw — but we verify the path

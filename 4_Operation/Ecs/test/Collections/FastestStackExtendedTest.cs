@@ -181,7 +181,6 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             // Arrange
             FastestStack<int> stack = new FastestStack<int>(10);
-            int initialCapacity = stack.Capacity;
 
             // Act
             for (int i = 0; i < 20; i++)

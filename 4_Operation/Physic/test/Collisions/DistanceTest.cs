@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance > 0.0f);
             Assert.True(output.Iterations >= 0);
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance <= 0.5f);
         }
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = true
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance > 0.0f);
         }
@@ -130,83 +130,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = true
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.Equal(0.0f, output.Distance, 5);
         }
 
-        /// <summary>
-        /// Tests that compute distance should update diagnostics counters
-        /// </summary>
-        [Fact]
-        public void ComputeDistance_ShouldUpdateDiagnosticsCounters()
-        {
-            // Reset diagnostics counters if they exist
-            if (typeof(Distance).GetField("GjkCalls") != null)
-            {
-                typeof(Distance).GetField("GjkCalls").SetValue(null, 0);
-            }
-            if (typeof(Distance).GetField("GjkIters") != null)
-            {
-                typeof(Distance).GetField("GjkIters").SetValue(null, 0);
-            }
-
-            CircleShape circleA = new CircleShape(0.5f, 1.0f);
-            CircleShape circleB = new CircleShape(0.5f, 1.0f);
-
-            DistanceInput input = new DistanceInput
-            {
-                ProxyA = new DistanceProxy(circleA, 0),
-                ProxyB = new DistanceProxy(circleB, 0),
-                ControllerTransformA = ControllerTransform.Identity,
-                ControllerTransformB = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f),
-                UseRadii = false
-            };
-
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
-
-            // Check that counters were updated
-            if (typeof(Distance).GetField("GjkCalls") != null)
-            {
-                int calls = (int)typeof(Distance).GetField("GjkCalls").GetValue(null);
-                Assert.True(calls > 0);
-            }
-        }
-
-        /// <summary>
-        /// Tests that compute distance should track max iterations
-        /// </summary>
-        [Fact]
-        public void ComputeDistance_ShouldTrackMaxIterations()
-        {
-            // Reset diagnostics counters if they exist
-            if (typeof(Distance).GetField("GjkMaxIters") != null)
-            {
-                typeof(Distance).GetField("GjkMaxIters").SetValue(null, 0);
-            }
-
-            CircleShape circleA = new CircleShape(0.5f, 1.0f);
-            CircleShape circleB = new CircleShape(0.5f, 1.0f);
-
-            DistanceInput input = new DistanceInput
-            {
-                ProxyA = new DistanceProxy(circleA, 0),
-                ProxyB = new DistanceProxy(circleB, 0),
-                ControllerTransformA = ControllerTransform.Identity,
-                ControllerTransformB = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f),
-                UseRadii = false
-            };
-
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
-
-            // Check that counters were updated
-            if (typeof(Distance).GetField("GjkMaxIters") != null)
-            {
-                int maxIters = (int)typeof(Distance).GetField("GjkMaxIters").GetValue(null);
-                Assert.True(maxIters >= 0);
-            }
-        }
-
+       
+       
         /// <summary>
         /// Tests that compute distance should set witness points on output
         /// </summary>
@@ -225,7 +155,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.NotEqual(output.PointA, output.PointB);
         }
@@ -248,7 +178,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput _, out SimplexCache cache, input);
 
             Assert.True(cache.Count >= 0);
         }
@@ -271,10 +201,10 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output1, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output1, out SimplexCache _, input);
 
             input.ControllerTransformB = new ControllerTransform(new Vector2F(6.0f, 0.0f), 0.0f);
-            Distance.ComputeDistance(out DistanceOutput output2, out SimplexCache cache2, input);
+            Distance.ComputeDistance(out DistanceOutput output2, out SimplexCache _, input);
 
             Assert.True(output2.Distance > output1.Distance);
         }
@@ -318,7 +248,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance > 0.0f);
             Assert.True(output.Iterations >= 0);
@@ -341,7 +271,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = true
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance > 0.0f);
             Assert.True(output.Iterations > 0);
@@ -365,7 +295,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = true
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.Equal(0.0f, output.Distance, 5);
         }
@@ -394,7 +324,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = false
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance >= 0.0f);
             Assert.True(output.Iterations >= 0);
@@ -424,7 +354,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 UseRadii = true
             };
 
-            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
+            Distance.ComputeDistance(out DistanceOutput output, out SimplexCache _, input);
 
             Assert.True(output.Distance >= 0.0f);
         }

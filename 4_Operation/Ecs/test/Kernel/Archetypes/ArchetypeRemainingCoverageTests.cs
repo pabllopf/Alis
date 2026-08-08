@@ -177,7 +177,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         [Fact] public void DataProperty_Get_ReturnsFieldsWithMapAndComponents()
         {
             using Scene scene = new Scene();
-            GameObject entity = scene.Create(new Position { X = 5, Y = 10 });
+            scene.Create(new Position { X = 5, Y = 10 });
 
             Fields data = scene.DefaultArchetype.Data;
             Assert.NotNull(data.Map);

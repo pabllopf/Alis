@@ -88,7 +88,6 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void ResizeArrayFromPool_DataPreservation_ContentIntact()
         {
-            FastestArrayPool<int> pool = FastestArrayPool<int>.Instance;
             int[] arr = {1, 2, 3, 4, 5};
             int[] originalCopy = (int[]) arr.Clone();
 

@@ -418,7 +418,6 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void InputManager_VibrateGamepad_ReturnsFalseOnNonBrowser()
         {
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
-            WebAssemblyInputManager manager = new WebAssemblyInputManager(platform);
             Assert.False(WebAssemblyInputManager.VibrateGamepad(0, 1.0f, 0.5f));
         }
 

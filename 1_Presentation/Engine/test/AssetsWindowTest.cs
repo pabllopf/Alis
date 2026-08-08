@@ -225,7 +225,6 @@ namespace Alis.App.Engine.Test
         public void AssetsWindow_HasRequiredMethods()
         {
             SpaceWork spaceWork = CreateSpaceWorkWithResources();
-            AssetsWindow window = new AssetsWindow(spaceWork);
 
             MethodInfo initializeMethod = typeof(AssetsWindow).GetMethod("Initialize");
             MethodInfo renderMethod = typeof(AssetsWindow).GetMethod("Render");

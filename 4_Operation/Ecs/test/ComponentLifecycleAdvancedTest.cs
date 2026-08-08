@@ -247,7 +247,7 @@ namespace Alis.Core.Ecs.Test
 
             for (int i = 0; i < entityCount; i++)
             {
-                GameObject entity = scene.Create(new Position {X = i, Y = i});
+                scene.Create(new Position {X = i, Y = i});
             }
 
             Query query = scene.Query<With<Position>>();

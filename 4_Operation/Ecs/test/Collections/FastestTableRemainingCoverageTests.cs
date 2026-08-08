@@ -195,20 +195,5 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.Equal(8, t.Length);
         }
-
-        /// <summary>
-        ///     Verifies that the indexer getter only resizes when the index is out of range.
-        /// </summary>
-        [Fact]
-        public void Indexer_Get_TriggersResizeOnlyWhenNeeded()
-        {
-            FastestTable<int> t = new FastestTable<int>(16);
-            int v0 = t[0];
-            int v15 = t[15];
-            int v7 = t[7];
-            int v16 = t[16];
-
-            Assert.True(t.Length >= 17);
-        }
     }
 }

@@ -122,7 +122,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             List<int> list = new List<int> {10, 20, 30, 40, 50};
 
-            int[] array = EnumerableHelpers.ToArray(list, out int length);
+            int[] array = EnumerableHelpers.ToArray(list, out int _);
 
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);

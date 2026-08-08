@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         public void Set_SupportsGenericTypeParameter()
         {
             SetBuilder builder = new SetBuilder();
-            Builder result1 = builder.Set<int>("value1");
+            builder.Set<int>("value1");
             Builder result2 = builder.Set<string>("value2");
             Assert.Equal("value2", result2.SetValue);
         }

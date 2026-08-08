@@ -1699,8 +1699,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void SetTexId_SetsId()
         {
             ImFontAtlasPtr atlas = new ImFontAtlasPtr();
-            IntPtr id = new IntPtr(123);
-
         }
 
         /// <summary>

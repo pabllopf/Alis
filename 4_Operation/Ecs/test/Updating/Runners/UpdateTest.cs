@@ -348,8 +348,8 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
         {
             using Scene scene = new Scene();
             GameObject entity1 = scene.Create(new OrderTrackingComponent {Order = 0});
-            GameObject entity2 = scene.Create(new OrderTrackingComponent {Order = 0});
-            GameObject entity3 = scene.Create(new OrderTrackingComponent {Order = 0});
+            scene.Create(new OrderTrackingComponent {Order = 0});
+            scene.Create(new OrderTrackingComponent {Order = 0});
 
             scene.Update();
 

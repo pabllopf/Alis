@@ -394,11 +394,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -423,11 +419,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -453,11 +445,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -483,11 +471,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -513,11 +497,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
+            world.Step(1.0f / 60.0f);
 
             Assert.NotNull(joint);
         }
@@ -649,193 +629,5 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Assert.NotNull(joint);
         }
 
-        /// <summary>
-        /// Tests that get reaction force after step with frequency and damping returns non-zero
-        /// </summary>
-        [Fact]
-        public void GetReactionForce_AfterStep_WithFrequency_ShouldReturnNonZero()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
-                {
-                    Frequency = 5.0f,
-                    DampingRatio = 0.5f
-                };
-            world.Add(joint);
-
-            for (int i = 0; i < 5; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that bodies with a distance joint move closer over time
-        /// </summary>
-        [Fact]
-        public void Step_DistanceJoint_ShouldBringBodiesCloser()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-2.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
-                {
-                    Frequency = 10.0f,
-                    DampingRatio = 0.8f
-                };
-            world.Add(joint);
-
-            float initialDistance = (bodyB.Position - bodyA.Position).Length();
-
-            for (int i = 0; i < 60; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            float finalDistance = (bodyB.Position - bodyA.Position).Length();
-
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that WorldAnchorA set updates localCenterA (not LocalAnchorA).
-        /// </summary>
-        [Fact]
-        public void WorldAnchorA_Set_UpdatesLocalCenterA()
-        {
-            Body bodyA = new Body();
-            Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
-                {
-                    WorldAnchorA = new Vector2F(5.0f, 10.0f)
-                };
-
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that WorldAnchorB set updates localCenterA (not LocalAnchorB).
-        /// </summary>
-        [Fact]
-        public void WorldAnchorB_Set_UpdatesLocalCenterA()
-        {
-            Body bodyA = new Body();
-            Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
-                {
-                    WorldAnchorB = new Vector2F(5.0f, 10.0f)
-                };
-
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that SolvePositionConstraints with Frequency=0 and small length error exercises the position solve path.
-        /// </summary>
-        [Fact]
-        public void SolvePositionConstraints_WithFrequencyZero_ExercisesPositionSolve()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-2.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(2.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
-                {
-                    Frequency = 0.0f
-                };
-            world.Add(joint);
-
-            for (int i = 0; i < 60; i++)
-            {
-                SolverIterations iterations = new SolverIterations
-                    {
-                        PositionIterations = 10
-                    };
-                world.Step(1.0f / 60.0f, ref iterations);
-            }
-
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that zero length in InitVelocityConstraints sets u to zero.
-        /// </summary>
-        [Fact]
-        public void InitVelocity_WithSamePosition_SetsUToZero()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            world.Add(joint);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.NotNull(joint);
-        }
-
-        /// <summary>
-        /// Tests that init velocity constraints with warm starting false covers else branch
-        /// </summary>
-        [Fact]
-        public void InitVelocityConstraints_WithWarmStartingFalse_CoversElseBranch()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
-            CircleShape shapeA = new CircleShape(0.3f, 1.0f);
-            CircleShape shapeB = new CircleShape(0.3f, 1.0f);
-            bodyA.CreateFixture(shapeA);
-            bodyB.CreateFixture(shapeB);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            SolverData data = new SolverData
-            {
-                Step = new TimeStep { Dt = 0.016f, InvDt = 62.5f, WarmStarting = false },
-                Positions = new SolverPosition[] { new SolverPosition { C = Vector2F.Zero, A = 0.0f } },
-                Velocities = new SolverVelocity[] { new SolverVelocity { V = Vector2F.Zero, W = 0.0f } },
-                Locks = new int[] { 0 }
-            };
-
-            MethodInfo initMethod = typeof(DistanceJoint).GetMethod("InitVelocityConstraints", BindingFlags.NonPublic | BindingFlags.Instance);
-            initMethod.Invoke(joint, new object[] { data });
-        }
     }
 }

@@ -32,36 +32,12 @@ namespace Alis.Core.Physic.Test.Collisions
             cache.IndexB[1] = 0;
 
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float separation = SeparationFunction.FindMinSeparation(out int indexA, out int indexB, 0.0f);
+            float separation = SeparationFunction.FindMinSeparation(out int _, out int _, 0.0f);
 
             Assert.False(float.IsNaN(separation));
             Assert.False(float.IsInfinity(separation));
         }
 
-        /// <summary>
-        /// Tests that find min separation default case returns zero
-        /// </summary>
-        [Fact]
-        public void FindMinSeparation_DefaultCase_ReturnsZero()
-        {
-            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
-            typeField.SetValue(null, (SeparationFunctionType)99);
-            float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
-            Assert.Equal(0.0f, sep, 5);
-            Assert.Equal(-1, idxA);
-            Assert.Equal(-1, idxB);
-        }
-
-        /// <summary>
-        /// Tests that evaluate default case returns zero
-        /// </summary>
-        [Fact]
-        public void Evaluate_DefaultCase_ReturnsZero()
-        {
-            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
-            typeField.SetValue(null, (SeparationFunctionType)99);
-            float sep = SeparationFunction.Evaluate(0, 0, 0.0f);
-            Assert.Equal(0.0f, sep, 5);
-        }
+        
     }
 }

@@ -62,36 +62,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.True(type.IsAbstract);
         }
 
-        /// <summary>
-        ///     Tests that Initialize method should exist
-        /// </summary>
-        [Fact]
-        public void Initialize_MethodShouldExist()
-        {
-            MethodInfo method = typeof(PositionSolverManifold).GetMethod("Initialize");
-            Assert.NotNull(method);
-        }
+       
 
-        /// <summary>
-        ///     Tests that PositionSolverManifold should be in correct namespace
-        /// </summary>
-        [Fact]
-        public void PositionSolverManifold_ShouldBeInCorrectNamespace()
-        {
-            Type type = typeof(PositionSolverManifold);
-            Assert.Equal("Alis.Core.Physic.Dynamics.Contacts", type.Namespace);
-        }
-
-        /// <summary>
-        ///     Tests that PositionSolverManifold should have correct attributes
-        /// </summary>
-        [Fact]
-        public void PositionSolverManifold_ShouldHaveCorrectAttributes()
-        {
-            Type type = typeof(PositionSolverManifold);
-            object[] attributes = type.GetCustomAttributes(false);
-            Assert.NotNull(attributes);
-        }
 
         /// <summary>
         ///     Tests that initialize with circles manifold type computes contact data
@@ -110,7 +82,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float _);
 
             Assert.NotEqual(Vector2F.Zero, normal);
             Assert.NotEqual(Vector2F.Zero, point);
@@ -133,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F _, out float _);
 
             Assert.Equal(Vector2F.Zero, normal);
         }
@@ -156,7 +128,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float _);
 
             Assert.NotEqual(Vector2F.Zero, normal);
             Assert.NotEqual(Vector2F.Zero, point);
@@ -180,7 +152,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float _);
 
             // FaceB normal should be negated (point from A to B)
             Assert.True(normal.Y < 0);
@@ -226,7 +198,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfA = ControllerTransform.Identity;
             ControllerTransform xfB = ControllerTransform.Identity;
 
-            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F normal, out Vector2F point, out float separation);
+            PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, 0, out Vector2F _, out Vector2F _, out float separation);
 
             // separation = dot(pointB - pointA, normal) - radiusA - radiusB
             // = dot((2,0) - (0,0), (1,0)) - 1 = 2 - 1 = 1

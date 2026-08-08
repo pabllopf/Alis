@@ -65,9 +65,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void ComponentAlreadyExistsException_MessageContainsTypeName()
         {
-            Type testType = typeof(Position);
-
-            ComponentAlreadyExistsException ex = new ComponentAlreadyExistsException();
         }
 
         /// <summary>

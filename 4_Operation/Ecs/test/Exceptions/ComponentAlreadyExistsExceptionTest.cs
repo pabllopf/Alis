@@ -51,8 +51,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void Exception_CanBeCreatedWithTypeParameter()
         {
-            Type testType = typeof(int);
-
             ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             Assert.NotNull(exception);
@@ -66,8 +64,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void Exception_IsInstanceOfExceptionBaseClass()
         {
-            Type testType = typeof(object);
-
             ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             Assert.IsAssignableFrom<Exception>(exception);
@@ -82,7 +78,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         [Fact] public void Exception_CanBeCaughtAsGeneralException()
         {
             bool exceptionCaught = false;
-            Type testType = typeof(double);
 
             try
             {
@@ -105,7 +100,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         [Fact] public void Exception_CanBeCaughtSpecifically()
         {
             bool exceptionCaught = false;
-            Type testType = typeof(float);
 
             try
             {
@@ -127,8 +121,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void Exception_WithComplexType_ShowsCorrectName()
         {
-            Type testType = typeof(List<int>);
-
             ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             Assert.NotNull(exception.Message);
@@ -143,8 +135,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void Exception_HasNoInnerExceptionByDefault()
         {
-            Type testType = typeof(bool);
-
             ComponentAlreadyExistsException exception = new ComponentAlreadyExistsException();
 
             Assert.Null(exception.InnerException);
@@ -158,8 +148,6 @@ namespace Alis.Core.Ecs.Test.Exceptions
         /// </remarks>
         [Fact] public void MultipleExceptions_WithSameType_HaveSameMessage()
         {
-            Type testType = typeof(char);
-
             ComponentAlreadyExistsException exception1 = new ComponentAlreadyExistsException();
             ComponentAlreadyExistsException exception2 = new ComponentAlreadyExistsException();
 

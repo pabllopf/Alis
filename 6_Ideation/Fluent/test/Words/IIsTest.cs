@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         public void Is_WithDifferentTypeParameters()
         {
             IsBuilder builder = new IsBuilder();
-            Builder result1 = builder.Is<int>("first");
+            builder.Is<int>("first");
             Builder result2 = builder.Is<string>("second");
             Assert.Equal("second", result2.IsValue);
         }

@@ -70,7 +70,6 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
         [Fact]
         public void Case1_ShouldCreateFourTrapezoids()
         {
-            TrapezoidalMap map = new TrapezoidalMap();
             Point p1 = new Point(0, 0);
             Point p2 = new Point(10, 0);
             Point p3 = new Point(10, 10);

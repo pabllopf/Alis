@@ -349,7 +349,7 @@ namespace Alis.Extension.Network.Test.Server
             bool errorFired = false;
             manager.Error += (sender, args) => { errorFired = true; };
 
-            Exception ex = await Assert.ThrowsAnyAsync<Exception>(() =>
+            await Assert.ThrowsAnyAsync<Exception>(() =>
                 manager.ListenAsync(new Uri("ws://invalid-host-that-cannot-be-resolved:8888")));
 
             Assert.True(errorFired);

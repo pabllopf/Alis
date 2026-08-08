@@ -107,7 +107,7 @@ namespace Alis.Core.Ecs.Test
             GameObject entity = scene.Create(new Position {X = 5, Y = 10});
 
             bool hasPos = entity.TryGet(out Ref<Position> posRef);
-            bool hasHealth = entity.TryGet(out Ref<Health> healthRef);
+            bool hasHealth = entity.TryGet(out Ref<Health> _);
 
             Assert.True(hasPos);
             Assert.Equal(5, posRef.Value.X);

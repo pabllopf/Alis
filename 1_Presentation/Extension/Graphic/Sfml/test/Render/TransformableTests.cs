@@ -282,7 +282,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Transform_MultiplePropertyChanges_CachesAfterAccess()
         {
             Transformable t = new Transformable();
-            Transform first = t.Transform;
             t.Position = new Vector2F(1, 2);
             Transform second = t.Transform;
             Transform third = t.Transform;

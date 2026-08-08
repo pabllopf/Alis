@@ -42,7 +42,7 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void NextInt_ShouldReturnValue()
         {
-            int result = SecureRandom.NextInt();
+            SecureRandom.NextInt();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void NextChar_ShouldReturnValue()
         {
-            char result = SecureRandom.NextChar();
+            SecureRandom.NextChar();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void NextLong_ShouldReturnValue()
         {
-            long result = SecureRandom.NextLong();
+            SecureRandom.NextLong();
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Security.Test
         [Fact]
         public void NextByte_ShouldReturnValue()
         {
-            byte result = SecureRandom.NextByte();
+            SecureRandom.NextByte();
         }
 
         /// <summary>

@@ -123,7 +123,7 @@ namespace Alis.Core.Aspect.Logging.Test.Outputs
             Directory.CreateDirectory(tempDir);
 
             string path1 = Path.Combine(tempDir, "LogFile.txt");
-            string path2 = Path.Combine(tempDir, "logfile.txt");
+            Path.Combine(tempDir, "logfile.txt");
 
             using (FileLogOutput output1 = new FileLogOutput(path1))
             {

@@ -131,7 +131,7 @@ namespace Alis.Extension.Network.Test.Internal
             WebSocketImplementation webSocket = new WebSocketImplementation(guid, () => new MemoryStream(), stream, TimeSpan.FromSeconds(30), "permessage-deflate", true, true, "subProtocol");
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
 
-            EndOfStreamException result = await Assert.ThrowsAsync<EndOfStreamException>(() => webSocket.ReceiveAsync(buffer, CancellationToken.None));
+            await Assert.ThrowsAsync<EndOfStreamException>(() => webSocket.ReceiveAsync(buffer, CancellationToken.None));
 
         }
 
