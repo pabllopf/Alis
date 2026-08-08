@@ -1,3 +1,5 @@
+using System.Buffers;
+using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -18,7 +20,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastestArrayPool_RentAndReturn_MaintainsCapacity()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             int[] arr = pool.Rent(5);
             Assert.True(arr.Length >= 5);
             pool.Return(arr);
@@ -29,7 +31,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastestArrayPool_RentZero_ReturnsEmpty()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             int[] arr = pool.Rent(0);
             Assert.NotNull(arr);
             pool.Return(arr);
@@ -130,7 +132,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void EnumerableHelpers_EmptyEnumerator_YieldsNothing()
         {
-            var e = EnumerableHelpers.GetEmptyEnumerator<int>();
+            IEnumerator<int> e = EnumerableHelpers.GetEmptyEnumerator<int>();
             Assert.False(e.MoveNext());
         }
 
@@ -190,8 +192,8 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new();
             scene.Create(new Position { X = 42 });
             Query query = scene.Query<With<Position>>();
-            var enumerable = query.EnumerateWithEntities<Position>();
-            using var enumerator = enumerable.GetEnumerator();
+            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
+            using Ecs.Systems.GameObjectQueryEnumerator<Position> enumerator = enumerable.GetEnumerator();
             Assert.True(enumerator.MoveNext());
             Assert.Equal(42, enumerator.Current.Item1.Value.X);
         }
@@ -203,7 +205,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             scene.Create(new Position());
-            var archetype = scene.DefaultArchetype;
+            Archetype archetype = scene.DefaultArchetype;
             Fields data = archetype.Data;
             Assert.NotNull(data.Map);
             Assert.NotNull(data.Components);

@@ -14,7 +14,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void RunChunk_WithIntSpan_ExecutesAction()
         {
-            var action = new TestChunkAction();
+            TestChunkAction action = new TestChunkAction();
             Span<int> span = [1, 2, 3];
             action.RunChunk(span);
             Assert.Equal(6, action.Sum);
@@ -25,7 +25,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void RunChunk_WithEmptySpan_ExecutesAction()
         {
-            var action = new TestChunkAction();
+            TestChunkAction action = new TestChunkAction();
             Span<int> span = [];
             action.RunChunk(span);
             Assert.Equal(0, action.Sum);
@@ -47,7 +47,7 @@ namespace Alis.Core.Ecs.Test.Systems
             /// <param name="arg">The arg</param>
             public void RunChunk(Span<int> arg)
             {
-                foreach (var v in arg) Sum += v;
+                foreach (int v in arg) Sum += v;
             }
         }
     }

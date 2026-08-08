@@ -407,7 +407,7 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourcePathByName("file.txt");
 
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             Task.Run(() =>
             {
@@ -448,11 +448,11 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourceMemoryStreamByName("real.txt")?.Dispose();
 
-            var zipCache = GetZipCache();
-            var entry = (ZipCacheEntry)zipCache[assemblyName];
+            IDictionary zipCache = GetZipCache();
+            ZipCacheEntry entry = (ZipCacheEntry)zipCache[assemblyName];
 
             string originalKey = null;
-            foreach (var kvp in entry.EntriesByFullNameLower)
+            foreach (KeyValuePair<string, ZipEntryInfo> kvp in entry.EntriesByFullNameLower)
             {
                 if (kvp.Value.FullName == "real.txt")
                 {
@@ -461,7 +461,7 @@ namespace Alis.Core.Aspect.Memory.Test
                 }
             }
 
-            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out var info))
+            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out ZipEntryInfo info))
             {
                 info.FullName = "nonexistent.txt";
             }
@@ -496,8 +496,8 @@ namespace Alis.Core.Aspect.Memory.Test
             string compositeKey = assemblyName.ToLowerInvariant() + "|file.txt";
             GetPathCache()[compositeKey] = path;
 
-            var zipCache = GetZipCache();
-            var entry = (ZipCacheEntry)zipCache[assemblyName];
+            IDictionary zipCache = GetZipCache();
+            ZipCacheEntry entry = (ZipCacheEntry)zipCache[assemblyName];
             entry.EntriesByFullNameLower.Clear();
             entry.EntriesByFileNameLower.Clear();
 
@@ -522,7 +522,7 @@ namespace Alis.Core.Aspect.Memory.Test
             GetZipCache().Remove(assemblyName);
             GetLoaders().Remove(assemblyName);
 
-            var method = typeof(AssetRegistry).GetMethod("EnsureZipCachedForActiveAssembly",
+            MethodInfo method = typeof(AssetRegistry).GetMethod("EnsureZipCachedForActiveAssembly",
                 BindingFlags.NonPublic | BindingFlags.Static);
 
             TargetInvocationException tie = Assert.Throws<TargetInvocationException>(() =>
@@ -542,9 +542,9 @@ namespace Alis.Core.Aspect.Memory.Test
 
             AssetRegistry.GetResourceMemoryStreamByName("file.txt")?.Dispose();
 
-            var zipCache = GetZipCache();
-            var entry = (ZipCacheEntry)zipCache[assemblyName];
-            var info = entry.EntriesByFullNameLower["file.txt"];
+            IDictionary zipCache = GetZipCache();
+            ZipCacheEntry entry = (ZipCacheEntry)zipCache[assemblyName];
+            ZipEntryInfo info = entry.EntriesByFullNameLower["file.txt"];
             long originalLength = info.Length;
             info.Length = (long)int.MaxValue + 1;
 
@@ -575,9 +575,9 @@ namespace Alis.Core.Aspect.Memory.Test
             File.Delete(path);
             GetPathCache().Clear();
 
-            var zipCache = GetZipCache();
-            var entry = (ZipCacheEntry)zipCache[assemblyName];
-            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out var info))
+            IDictionary zipCache = GetZipCache();
+            ZipCacheEntry entry = (ZipCacheEntry)zipCache[assemblyName];
+            if (entry.EntriesByFullNameLower.TryGetValue("real.txt", out ZipEntryInfo info))
             {
                 info.FullName = "fake.txt";
             }
@@ -609,7 +609,7 @@ namespace Alis.Core.Aspect.Memory.Test
             string path = AssetRegistry.GetResourcePathByName("file.txt");
             Assert.True(File.Exists(path));
 
-            using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+            using CancellationTokenSource cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
             bool done = false;
 
             Task.Run(() =>

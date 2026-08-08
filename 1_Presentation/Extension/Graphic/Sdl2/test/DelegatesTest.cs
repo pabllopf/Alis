@@ -46,8 +46,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlAudioCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlAudioCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlAudioCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -69,8 +69,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlEventFilter_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlEventFilter);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlEventFilter);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -92,8 +92,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlHitTest_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlHitTest);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlHitTest);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -115,8 +115,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlIPhoneAnimationCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlIPhoneAnimationCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlIPhoneAnimationCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -138,8 +138,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlLogOutputFunction_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlLogOutputFunction);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlLogOutputFunction);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -172,8 +172,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlMainFunc_HasNoUnmanagedFunctionPointerAttribute()
         {
-            var type = typeof(SdlMainFunc);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlMainFunc);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.Null(attr);
         }
 
@@ -183,8 +183,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlTimerCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlTimerCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlTimerCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -206,8 +206,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWindowsMessageHook_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWindowsMessageHook);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWindowsMessageHook);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -229,8 +229,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWopsCloseCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWopsCloseCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWopsCloseCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -252,8 +252,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWopsReadCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWopsReadCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWopsReadCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -275,8 +275,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWopsSeekCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWopsSeekCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWopsSeekCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -298,8 +298,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWopsSizeCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWopsSizeCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWopsSizeCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }
@@ -321,8 +321,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void SdlWopsWriteCallback_HasCorrectAttributeAndSignature()
         {
-            var type = typeof(SdlWopsWriteCallback);
-            var attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
+            Type type = typeof(SdlWopsWriteCallback);
+            UnmanagedFunctionPointerAttribute attr = (UnmanagedFunctionPointerAttribute)Attribute.GetCustomAttribute(type, typeof(UnmanagedFunctionPointerAttribute));
             Assert.NotNull(attr);
             Assert.Equal(CallingConvention.Cdecl, attr.CallingConvention);
         }

@@ -46,7 +46,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_CalledTwice_ThrowsInvalidOperationException()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18881"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18881"));
             await transport.StartAsync();
             await Assert.ThrowsAsync<InvalidOperationException>(() => transport.StartAsync());
         }
@@ -57,7 +57,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_ValidHost_StartsSuccessfully()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18882"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18882"));
             await transport.StartAsync();
             Assert.Equal(NetworkTransportState.Connected, transport.State);
         }
@@ -68,7 +68,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StopAsync_AfterStart_Disconnects()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18883"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18883"));
             await transport.StartAsync();
             await transport.StopAsync();
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
@@ -80,8 +80,8 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task ReceiveAsync_WithoutCancellation_ThrowsOperationCanceledExceptionOnCtsCancel()
         {
-            using var transport = new WebSocketNetworkTransport();
-            using var cts = new CancellationTokenSource();
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
+            using CancellationTokenSource cts = new CancellationTokenSource();
             Task receiveTask = transport.ReceiveAsync(cts.Token);
             cts.Cancel();
             Exception ex = await Record.ExceptionAsync(() => receiveTask);
@@ -94,7 +94,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task SendAsync_WithNullEnvelope_Throws()
         {
-            using var transport = new WebSocketNetworkTransport();
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
             await Assert.ThrowsAsync<InvalidOperationException>(() => transport.SendAsync("client-id", null));
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task BroadcastAsync_WithExceptClientId_DoesNotThrow()
         {
-            using var transport = new WebSocketNetworkTransport();
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
             NetworkMessageEnvelope envelope = new NetworkMessageEnvelope { MessageId = "test" };
             Exception ex = await Record.ExceptionAsync(() => transport.BroadcastAsync(envelope, "some-client-id"));
             Assert.Null(ex);

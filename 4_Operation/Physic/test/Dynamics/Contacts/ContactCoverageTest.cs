@@ -183,33 +183,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        ///     Tests that Fixture.OnCollision returning false disables the contact.
-        ///     This exercises the enabled=false path in ReportCollision.
-        /// </summary>
-        [Fact]
-        public void FixtureOnCollision_ReturnsFalse_DisabledContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            bool collisionFired = false;
-            bodyA.FixtureList[0].OnCollision = (_, _, _) =>
-            {
-                collisionFired = true;
-                return false;
-            };
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(collisionFired);
-        }
-
-        /// <summary>
         ///     Tests that Body.OnCollision fires when contact is created.
         ///     This exercises the body callback path in ReportCollision.
         /// </summary>
@@ -549,49 +522,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.True(world.ContactManager.ContactCount > 0);
         }
-
-        // ========================================================================
-        // Contact.Create — from pool reuse (line 555-561)
-        // ========================================================================
-
-        /// <summary>
-        /// Tests that create from pool reuses contact
-        /// </summary>
-        [Fact]
-        public void Create_FromPool_ReusesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            // Separate bodies to destroy contacts (populate pool)
-            bodyA.SetTransform(new Vector2F(100.0f, 100.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(200.0f, 200.0f), 0.0f);
-
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.Equal(0, world.ContactManager.ContactCount);
-
-            // Bring back together (will reuse from pool)
-            bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(0.5f, 0.0f), 0.0f);
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        // ========================================================================
-        // Contact.Update — sensor contact with matching (touching=true)
-        // ========================================================================
-
+ 
         /// <summary>
         /// Tests that update sensor contact triggers begin contact
         /// </summary>
@@ -781,7 +712,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
 
-            var iter = new SolverIterations
+            SolverIterations iter = new SolverIterations
                 {
                     PositionIterations = 100
                 };

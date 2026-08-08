@@ -30,10 +30,10 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Create(new Position { X = 1, Y = 2 });
             Archetype archetype = scene.DefaultArchetype;
             Fields data = archetype.Data;
-            var method = typeof(Fields).GetMethod("GetComponentDataReference",
+            MethodInfo method = typeof(Fields).GetMethod("GetComponentDataReference",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.NotNull(method);
-            var genericMethod = method.MakeGenericMethod(typeof(Position));
+            MethodInfo genericMethod = method.MakeGenericMethod(typeof(Position));
             try
             {
                 genericMethod.Invoke(data, null);
@@ -52,7 +52,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new();
             scene.Create(new Alis.Core.Ecs.Test.Models.Position { X = 42, Y = 84 });
 
-            var worldItem = Archetype<Alis.Core.Ecs.Test.Models.Position>.CreateNewOrGetExistingArchetypes(scene);
+            WorldArchetypeTableItem worldItem = Archetype<Alis.Core.Ecs.Test.Models.Position>.CreateNewOrGetExistingArchetypes(scene);
             Archetype arch = worldItem.Archetype;
             Fields fields = arch.Data;
 

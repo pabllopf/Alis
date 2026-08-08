@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Xunit;
 
@@ -85,7 +86,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         {
             Component.ResetForTests();
 
-            var result = Component.GetExistingOrSetupNewComponent<Guid>();
+            (ComponentId ComponentID, IdTable<Guid> Stack, ComponentDelegates<Guid>.InitDelegate Initer, ComponentDelegates<Guid>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Guid>();
 
             Assert.NotEqual(default(ComponentId), result.ComponentID);
             Assert.True(result.ComponentID.RawIndex >= 0);

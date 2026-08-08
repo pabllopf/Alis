@@ -20,7 +20,7 @@ namespace Alis.Core.Ecs.Test
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
                                        With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
+            foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> _ in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
                                                         TestComponent, AnotherComponent, Damage, Armor>())
             {
                 count++;
@@ -82,7 +82,7 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position(), new Velocity());
             Query query = scene.Query<With<Position>, Not<Velocity>>();
             int count = 0;
-            foreach (var _ in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> _ in query.EnumerateWithEntities<Position>())
             {
                 count++;
             }

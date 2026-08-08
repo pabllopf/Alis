@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.Test.Constructs
                 ActiveUniformType.IntSamplerBuffer, ActiveUniformType.IntSampler2DMultisample,
                 ActiveUniformType.IntSampler2DMultisampleArray
             };
-            foreach (var t in samplerTypes)
+            foreach (ActiveUniformType t in samplerTypes)
                 Assert.Equal(typeof(int), TypeFromUniformType.Invoke(null, new object[] { t }));
         }
 
@@ -143,7 +143,7 @@ namespace Alis.Core.Graphic.Test.Constructs
                 ActiveUniformType.UnsignedIntSampler2DMultisample,
                 ActiveUniformType.UnsignedIntSampler2DMultisampleArray
             };
-            foreach (var t in types)
+            foreach (ActiveUniformType t in types)
                 Assert.Equal(typeof(uint), TypeFromUniformType.Invoke(null, new object[] { t }));
         }
 
@@ -173,7 +173,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void TypeFromUniformType_FloatMat3_Throws()
         {
-            var ex = Assert.Throws<TargetInvocationException>(
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(
                 () => TypeFromUniformType.Invoke(null, new object[] { ActiveUniformType.FloatMat3 }));
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void TypeFromAttributeType_FloatMat3_Throws()
         {
-            var ex = Assert.Throws<TargetInvocationException>(
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(
                 () => TypeFromAttributeType.Invoke(null, new object[] { ActiveAttribType.FloatMat3 }));
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }

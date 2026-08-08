@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Redifinition;
@@ -19,7 +20,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastestArrayPool_ReturnClearTrue_Works()
         {
-            var pool = FastestArrayPool<string>.Shared;
+            ArrayPool<string> pool = FastestArrayPool<string>.Shared;
             string[] arr = pool.Rent(10);
             arr[0] = "test";
             pool.Return(arr, true);
@@ -31,7 +32,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void FastestArrayPool_RentAndReturn_RefType()
         {
-            var pool = FastestArrayPool<object>.Shared;
+            ArrayPool<object> pool = FastestArrayPool<object>.Shared;
             object[] arr = pool.Rent(5);
             arr[0] = new object();
             pool.Return(arr, false);
@@ -106,7 +107,7 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void FastLookup_SetArchetype_CircularBuffer()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position());
+            GameObject go = scene.Create(new Position());
             for (int i = 0; i < 15; i++)
             {
                 go.Add(new Velocity { X = i });
@@ -182,7 +183,7 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentRunnerFactory_CreateStronglyTyped_Works()
         {
-            var factory = new NoneUpdateRunnerFactory<Position>();
+            NoneUpdateRunnerFactory<Position> factory = new NoneUpdateRunnerFactory<Position>();
             ComponentStorage<Position> storage = ((IComponentStorageBaseFactory<Position>)factory).CreateStronglyTyped(10);
             Assert.Equal(10, storage.Buffer.Length);
         }
@@ -242,7 +243,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             scene.Create(new Position());
-            var go = scene.Create(new Position(), new Velocity());
+            GameObject go = scene.Create(new Position(), new Velocity());
             go.Add(new Health());
             go.Add(new Transform());
             go.Add(new TestComponent());

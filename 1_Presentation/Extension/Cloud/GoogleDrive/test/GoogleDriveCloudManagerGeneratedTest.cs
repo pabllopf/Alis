@@ -94,9 +94,9 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         /// <returns>The drive service</returns>
         private static DriveService CreateMockDriveService(Func<HttpRequestMessage, HttpResponseMessage> callback)
         {
-            var handler = new CallbackHttpMessageHandler(callback);
-            var httpClient = new ConfigurableHttpClient(handler);
-            var factory = new Mock<IHttpClientFactory>();
+            CallbackHttpMessageHandler handler = new CallbackHttpMessageHandler(callback);
+            ConfigurableHttpClient httpClient = new ConfigurableHttpClient(handler);
+            Mock<IHttpClientFactory> factory = new Mock<IHttpClientFactory>();
             factory.Setup(f => f.CreateHttpClient(It.IsAny<CreateHttpClientArgs>())).Returns(httpClient);
             return new DriveService(new BaseClientService.Initializer
             {
@@ -167,7 +167,7 @@ namespace Alis.Extension.Cloud.GoogleDrive.Test
         /// <returns>The response</returns>
         private static HttpResponseMessage InitiateUploadResponse(string uploadUri)
         {
-            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK)
             {
                 Content = new StringContent("{}", Encoding.UTF8, "application/json")
             };

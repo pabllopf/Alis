@@ -60,7 +60,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Read_ShouldReturnCorrectBytes()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 IntPtr buffer = Marshal.AllocHGlobal(8);
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Read_ShouldReturnPartialBytes_WhenBufferLargerThanStream()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 IntPtr buffer = Marshal.AllocHGlobal(16);
@@ -108,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Read_ShouldReturnZero_WhenStreamEmpty()
         {
-            var (adaptor, stream) = CreateAdaptor(Array.Empty<byte>());
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(Array.Empty<byte>());
             using (adaptor)
             {
                 IntPtr buffer = Marshal.AllocHGlobal(4);
@@ -130,7 +130,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Seek_ShouldUpdatePosition()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 long newPos = stream.Seek(3, IntPtr.Zero);
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Seek_ToEnd_ShouldReturnLength()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 long newPos = stream.Seek(8, IntPtr.Zero);
@@ -158,7 +158,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Seek_ToBeginning_ShouldReturnZero()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 stream.Seek(5, IntPtr.Zero);
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Tell_ShouldReturnCurrentPosition()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 stream.Seek(4, IntPtr.Zero);
@@ -188,7 +188,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Tell_ShouldReturnZero_Initially()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 long pos = stream.Tell(IntPtr.Zero);
@@ -202,7 +202,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void GetSize_ShouldReturnStreamLength()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 long size = stream.GetSize(IntPtr.Zero);
@@ -216,7 +216,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void GetSize_ShouldReturnZero_ForEmptyStream()
         {
-            var (adaptor, stream) = CreateAdaptor(Array.Empty<byte>());
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(Array.Empty<byte>());
             using (adaptor)
             {
                 long size = stream.GetSize(IntPtr.Zero);
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Read_AfterSeek_ShouldReadFromCorrectPosition()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 stream.Seek(3, IntPtr.Zero);
@@ -268,7 +268,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Read_ShouldReadZeroBytes_WhenSizeIsZero()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30 });
             using (adaptor)
             {
                 IntPtr buffer = Marshal.AllocHGlobal(1);
@@ -290,7 +290,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Tell_AfterSeek_ShouldReturnUpdatedPosition()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 stream.Seek(5, IntPtr.Zero);
@@ -305,7 +305,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         [RequireCSfmlSystemFact]
         public void Tell_AfterRead_ShouldReturnUpdatedPosition()
         {
-            var (adaptor, stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
+            (StreamAdaptor adaptor, InputStream stream) = CreateAdaptor(new byte[] { 10, 20, 30, 40, 50, 60, 70, 80 });
             using (adaptor)
             {
                 IntPtr buffer = Marshal.AllocHGlobal(3);

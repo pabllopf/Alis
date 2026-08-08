@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -63,7 +64,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Size_Property_Exists()
         {
-            var prop = typeof(RectangleShape).GetProperty("Size");
+            PropertyInfo prop = typeof(RectangleShape).GetProperty("Size");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -76,7 +77,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void GetPointCount_Method_Exists()
         {
-            var method = typeof(RectangleShape).GetMethod("GetPointCount");
+            MethodInfo method = typeof(RectangleShape).GetMethod("GetPointCount");
             Assert.NotNull(method);
             Assert.Equal(typeof(uint), method.ReturnType);
         }
@@ -87,7 +88,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void GetPoint_Method_Exists()
         {
-            var method = typeof(RectangleShape).GetMethod("GetPoint", new[] { typeof(uint) });
+            MethodInfo method = typeof(RectangleShape).GetMethod("GetPoint", new[] { typeof(uint) });
             Assert.NotNull(method);
             Assert.Equal(typeof(Vector2F), method.ReturnType);
         }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
@@ -117,7 +118,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Color_Property_IsReadWrite()
         {
-            var prop = typeof(Sprite).GetProperty("Color");
+            PropertyInfo prop = typeof(Sprite).GetProperty("Color");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -138,7 +139,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Texture_Property_IsReadWrite()
         {
-            var prop = typeof(Sprite).GetProperty("Texture");
+            PropertyInfo prop = typeof(Sprite).GetProperty("Texture");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -159,7 +160,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void TextureRect_Property_IsReadWrite()
         {
-            var prop = typeof(Sprite).GetProperty("TextureRect");
+            PropertyInfo prop = typeof(Sprite).GetProperty("TextureRect");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -216,7 +217,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
-            var method = typeof(Sprite).GetMethod("ToString");
+            MethodInfo method = typeof(Sprite).GetMethod("ToString");
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);
@@ -228,7 +229,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
-            var method = typeof(Sprite).GetMethod("Destroy");
+            MethodInfo method = typeof(Sprite).GetMethod("Destroy");
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);
@@ -240,7 +241,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Sprite_HasPublicParameterlessConstructor()
         {
-            var ctor = typeof(Sprite).GetConstructor(Type.EmptyTypes);
+            ConstructorInfo ctor = typeof(Sprite).GetConstructor(Type.EmptyTypes);
             Assert.NotNull(ctor);
             Assert.True(ctor.IsPublic);
         }
@@ -251,7 +252,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void GetLocalBounds_ReturnsFloatRect()
         {
-            var method = typeof(Sprite).GetMethod("GetLocalBounds");
+            MethodInfo method = typeof(Sprite).GetMethod("GetLocalBounds");
             Assert.NotNull(method);
             Assert.Equal(typeof(FloatRect), method.ReturnType);
         }
@@ -262,7 +263,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void GetGlobalBounds_ReturnsFloatRect()
         {
-            var method = typeof(Sprite).GetMethod("GetGlobalBounds");
+            MethodInfo method = typeof(Sprite).GetMethod("GetGlobalBounds");
             Assert.NotNull(method);
             Assert.Equal(typeof(FloatRect), method.ReturnType);
         }
@@ -273,7 +274,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Color_Property_TypeIsColor()
         {
-            var prop = typeof(Sprite).GetProperty("Color");
+            PropertyInfo prop = typeof(Sprite).GetProperty("Color");
             Assert.NotNull(prop);
             Assert.Equal(typeof(Color), prop.PropertyType);
         }
@@ -284,7 +285,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Texture_Property_TypeIsTexture()
         {
-            var prop = typeof(Sprite).GetProperty("Texture");
+            PropertyInfo prop = typeof(Sprite).GetProperty("Texture");
             Assert.NotNull(prop);
             Assert.Equal(typeof(Texture), prop.PropertyType);
         }
@@ -295,7 +296,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void TextureRect_Property_TypeIsIntRect()
         {
-            var prop = typeof(Sprite).GetProperty("TextureRect");
+            PropertyInfo prop = typeof(Sprite).GetProperty("TextureRect");
             Assert.NotNull(prop);
             Assert.Equal(typeof(IntRect), prop.PropertyType);
         }

@@ -46,7 +46,7 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public async Task InitializeAsync_ShouldSetStateToIdle()
         {
-            var config = new NetworkConfig();
+            NetworkConfig config = new NetworkConfig();
             await _manager.InitializeAsync(config);
 
             Assert.Equal(NetworkManagerState.Idle, _manager.State);
@@ -58,7 +58,7 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public async Task InitializeAsync_ShouldSetConfig()
         {
-            var config = new NetworkConfig
+            NetworkConfig config = new NetworkConfig
             {
                 MaxPlayers = 16,
                 TickRate = 30,
@@ -95,7 +95,7 @@ namespace Alis.Extension.Network.Test.Client
         {
             await _manager.InitializeAsync(new NetworkConfig());
 
-            var exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
+            InvalidOperationException exception = await Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _manager.InitializeAsync(new NetworkConfig()));
 
             Assert.Equal("Already initialized", exception.Message);
@@ -109,7 +109,7 @@ namespace Alis.Extension.Network.Test.Client
         {
             Assert.Equal(NetworkManagerState.Uninitialized, _manager.State);
 
-            var exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
+            Task<InvalidOperationException> exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _manager.StartAsync(CancellationToken.None));
 
             Assert.Equal("Cannot start in current state", exception.Result.Message);
@@ -145,7 +145,7 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public void GetConnectedPlayers_WhenNotConnected_ShouldReturnEmptyList()
         {
-            var players = _manager.GetConnectedPlayers();
+            IReadOnlyList<NetworkPlayer> players = _manager.GetConnectedPlayers();
 
             Assert.NotNull(players);
             Assert.Empty(players);
@@ -157,7 +157,7 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public void GetPlayer_WhenNotConnected_ShouldReturnNull()
         {
-            var player = _manager.GetPlayer("any-id");
+            NetworkPlayer player = _manager.GetPlayer("any-id");
 
             Assert.Null(player);
         }
@@ -168,9 +168,9 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public void SendMessageAsync_WhenNotConnected_ShouldThrowInvalidOperationException()
         {
-            var message = new TestJsonMessage { Data = "test" };
+            TestJsonMessage message = new TestJsonMessage { Data = "test" };
 
-            var exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
+            Task<InvalidOperationException> exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _manager.SendMessageAsync("target", "channel", message));
 
             Assert.Equal("Not connected to server", exception.Result.Message);
@@ -182,9 +182,9 @@ namespace Alis.Extension.Network.Test.Client
         [Fact]
         public void BroadcastMessageAsync_WhenNotConnected_ShouldThrowInvalidOperationException()
         {
-            var message = new TestJsonMessage { Data = "test" };
+            TestJsonMessage message = new TestJsonMessage { Data = "test" };
 
-            var exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
+            Task<InvalidOperationException> exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _manager.BroadcastMessageAsync("channel", message));
 
             Assert.Equal("Not connected to server", exception.Result.Message);
@@ -209,7 +209,7 @@ namespace Alis.Extension.Network.Test.Client
         {
             Assert.Equal(NetworkManagerState.Uninitialized, _manager.State);
 
-            var exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
+            Task<InvalidOperationException> exception = Assert.ThrowsAsync<InvalidOperationException>(() =>
                 _manager.ConnectAsync(new Uri("ws://localhost"), "player"));
 
             Assert.Equal("Cannot connect in current state", exception.Result.Message);

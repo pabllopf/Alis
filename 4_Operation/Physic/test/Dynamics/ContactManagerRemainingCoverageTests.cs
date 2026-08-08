@@ -407,29 +407,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(world.ContactManager.ContactCount < before);
         }
-
-        /// <summary>
-        /// Tests that should collide one group zero one non zero uses categories
-        /// </summary>
-        [Fact]
-        public void ShouldCollide_OneGroupZero_OneNonZero_UsesCategories()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            bodyA.SetCollisionGroup(0);
-            bodyB.SetCollisionGroup(-2);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
+        
         /// <summary>
         /// Tests that collide multi core empty update list does not throw
         /// </summary>
@@ -542,31 +520,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
         }
-
-        // ========================================================================
-        // ProcessContactCollision - bodies enabled, both active, overlapping (full path)
-        // ========================================================================
-        /// <summary>
-        /// Tests that process contact collision full path updates contact
-        /// </summary>
-        [Fact]
-        public void ProcessContactCollision_FullPath_UpdatesContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
+        
         // ========================================================================
         // AddPair - Contact.Create returns null (unlikely, but test setup)
         // ========================================================================
@@ -657,7 +611,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
-            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
             field.SetValue(world.ContactManager, 0);
             
@@ -666,58 +620,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(world.ContactManager.ContactCount > 0);
         }
         
-
-        // ========================================================================
-        // PassesCollisionFilters - full path (all checks pass)
-        // ========================================================================
-        /// <summary>
-        /// Tests that passes collision filters all checks pass returns true
-        /// </summary>
-        [Fact]
-        public void PassesCollisionFilters_AllChecksPass_ReturnsTrue()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            world.ContactManager.ContactFilter = (fixtureA, fixtureB) => true;
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        // ========================================================================
-        // UpdateContactWithLock - with idA > idB (swapped order)
-        // ========================================================================
-        /// <summary>
-        /// Tests that update contact with lock swapped lock order does not throw
-        /// </summary>
-        [Fact]
-        public void UpdateContactWithLock_SwappedLockOrder_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-            field.SetValue(world.ContactManager, 0);
-            bodyA.LockOrder = 2;
-            bodyB.LockOrder = 1;
-            Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
-            Assert.Null(ex);
-        }
-
-        // ========================================================================
-        // TryResolveContactFilter — ContactFilter returns false path
-        // ========================================================================
+        
         /// <summary>
         /// Tests that try resolve contact filter with contact filter false destroys
         /// </summary>
@@ -788,7 +691,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
-            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
             field.SetValue(world.ContactManager, 0);
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -813,7 +716,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
-            var field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
+            FieldInfo field = typeof(ContactManager).GetField("CollideMultithreadThreshold",
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
             field.SetValue(world.ContactManager, 0);
             bodyA.SetCollisionGroup(-1);

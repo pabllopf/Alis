@@ -251,7 +251,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task AcceptConnectionsAsync_ClientConnects_HandlesConnection()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
             Assert.Equal(NetworkTransportState.Connected, transport.State);
 
@@ -282,7 +282,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task AcceptConnectionsAsync_NonWebSocketRequest_ReturnsGracefully()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             using (TcpClient client = new TcpClient())
@@ -310,7 +310,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task ReceiveFromClientAsync_TextFrame_EnqueuesMessage()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             (TcpClient client, NetworkStream stream) = await ConnectAndHandshakeAsync("127.0.0.1", port);
@@ -355,7 +355,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task ReceiveFromClientAsync_CloseFrame_RemovesClient()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             (TcpClient client, NetworkStream stream) = await ConnectAndHandshakeAsync("127.0.0.1", port);
@@ -380,7 +380,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task HandleClientAsync_MalformedData_HandlesGracefully()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             using (TcpClient client = new TcpClient())
@@ -405,7 +405,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task SendAsync_ToConnectedClient_SendsMessage()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             (TcpClient client, NetworkStream stream) = await ConnectAndHandshakeAsync("127.0.0.1", port);
@@ -431,7 +431,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task StopAsync_WithConnectedClients_ClosesAll()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             List<TcpClient> clients = new List<TcpClient>();
@@ -457,7 +457,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task MultipleClients_CanSendAndReceive()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             List<(TcpClient Client, NetworkStream Stream)> clients = new List<(TcpClient, NetworkStream)>();
@@ -476,7 +476,7 @@ namespace Alis.Extension.Network.Test.Core
             NetworkSerializer serializer = new NetworkSerializer();
             string json = serializer.SerializeEnvelope(envelope);
 
-            foreach (var (client, stream) in clients)
+            foreach ((TcpClient client, NetworkStream stream) in clients)
             {
                 byte[] frame = BuildTextFrame(json);
                 await stream.WriteAsync(frame, 0, frame.Length);
@@ -489,7 +489,7 @@ namespace Alis.Extension.Network.Test.Core
                 Assert.Equal(envelope.MessageId, received.MessageId);
             }
 
-            foreach (var (client, _) in clients)
+            foreach ((TcpClient client, NetworkStream _) in clients)
             {
                 client.Close();
             }
@@ -530,7 +530,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task StartAsync_StopAsync_Restart_Works()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
             Assert.Equal(NetworkTransportState.Connected, transport.State);
             await transport.StopAsync();
@@ -561,7 +561,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task AcceptConnectionsAsync_Cancelled_StopsLoop()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             using CancellationTokenSource cts = new CancellationTokenSource();
             Task startTask = transport.StartAsync(cts.Token);
             await startTask;
@@ -579,7 +579,7 @@ namespace Alis.Extension.Network.Test.Core
         public async Task ReceiveAsync_SequentialMessages_ReturnsInOrder()
         {
             int port = GetNextPort();
-            using var transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri($"ws://127.0.0.1:{port}"));
             await transport.StartAsync();
 
             (TcpClient client, NetworkStream stream) = await ConnectAndHandshakeAsync("127.0.0.1", port);

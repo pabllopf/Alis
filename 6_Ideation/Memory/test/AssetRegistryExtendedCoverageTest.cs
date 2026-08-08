@@ -188,7 +188,7 @@ namespace Alis.Core.Aspect.Memory.Test
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
             SetupAssembly(assemblyName, zipBytes);
 
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
             bool hit = false;
 
             Task bgTask = Task.Run(() =>
@@ -242,7 +242,7 @@ namespace Alis.Core.Aspect.Memory.Test
             byte[] zipBytes = CreateTestZipBytes(new Dictionary<string, string> {{"file.txt", "content"}});
             SetupAssembly(assemblyName, zipBytes);
 
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
             bool hit = false;
 
             Task bgTask = Task.Run(() =>

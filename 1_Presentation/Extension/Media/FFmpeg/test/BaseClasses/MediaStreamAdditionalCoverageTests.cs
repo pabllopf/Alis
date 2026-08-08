@@ -14,7 +14,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void CodecTimeBase_ShouldBeSettable()
         {
-            var s = new MediaStream { CodecTimeBase = "1/50" };
+            MediaStream s = new MediaStream { CodecTimeBase = "1/50" };
             Assert.Equal("1/50", s.CodecTimeBase);
         }
 
@@ -23,7 +23,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void CodecTagString_ShouldBeSettable()
         {
-            var s = new MediaStream { CodecTagString = "avc1" };
+            MediaStream s = new MediaStream { CodecTagString = "avc1" };
             Assert.Equal("avc1", s.CodecTagString);
         }
 
@@ -32,7 +32,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void CodecTag_ShouldBeSettable()
         {
-            var s = new MediaStream { CodecTag = "0x31637661" };
+            MediaStream s = new MediaStream { CodecTag = "0x31637661" };
             Assert.Equal("0x31637661", s.CodecTag);
         }
 
@@ -41,7 +41,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void CodedWidth_ShouldBeSettable()
         {
-            var s = new MediaStream { CodedWidth = 1920 };
+            MediaStream s = new MediaStream { CodedWidth = 1920 };
             Assert.Equal(1920, s.CodedWidth);
         }
 
@@ -50,7 +50,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void CodedHeight_ShouldBeSettable()
         {
-            var s = new MediaStream { CodedHeight = 1080 };
+            MediaStream s = new MediaStream { CodedHeight = 1080 };
             Assert.Equal(1080, s.CodedHeight);
         }
 
@@ -59,7 +59,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void HasBFrames_ShouldBeSettable()
         {
-            var s = new MediaStream { HasBFrames = 2 };
+            MediaStream s = new MediaStream { HasBFrames = 2 };
             Assert.Equal(2, s.HasBFrames);
         }
 
@@ -68,7 +68,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void SampleAspectRatio_ShouldBeSettable()
         {
-            var s = new MediaStream { SampleAspectRatio = "1:1" };
+            MediaStream s = new MediaStream { SampleAspectRatio = "1:1" };
             Assert.Equal("1:1", s.SampleAspectRatio);
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void DisplayAspectRatio_ShouldBeSettable()
         {
-            var s = new MediaStream { DisplayAspectRatio = "16:9" };
+            MediaStream s = new MediaStream { DisplayAspectRatio = "16:9" };
             Assert.Equal("16:9", s.DisplayAspectRatio);
         }
 
@@ -86,7 +86,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ColorRange_ShouldBeSettable()
         {
-            var s = new MediaStream { ColorRange = "tv" };
+            MediaStream s = new MediaStream { ColorRange = "tv" };
             Assert.Equal("tv", s.ColorRange);
         }
 
@@ -95,7 +95,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ColorSpace_ShouldBeSettable()
         {
-            var s = new MediaStream { ColorSpace = "bt709" };
+            MediaStream s = new MediaStream { ColorSpace = "bt709" };
             Assert.Equal("bt709", s.ColorSpace);
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ColorTransfer_ShouldBeSettable()
         {
-            var s = new MediaStream { ColorTransfer = "bt709" };
+            MediaStream s = new MediaStream { ColorTransfer = "bt709" };
             Assert.Equal("bt709", s.ColorTransfer);
         }
 
@@ -113,7 +113,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ColorPrimaries_ShouldBeSettable()
         {
-            var s = new MediaStream { ColorPrimaries = "bt709" };
+            MediaStream s = new MediaStream { ColorPrimaries = "bt709" };
             Assert.Equal("bt709", s.ColorPrimaries);
         }
 
@@ -122,7 +122,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ChromaLocation_ShouldBeSettable()
         {
-            var s = new MediaStream { ChromaLocation = "left" };
+            MediaStream s = new MediaStream { ChromaLocation = "left" };
             Assert.Equal("left", s.ChromaLocation);
         }
 
@@ -131,7 +131,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void Refs_ShouldBeSettable()
         {
-            var s = new MediaStream { Refs = 4 };
+            MediaStream s = new MediaStream { Refs = 4 };
             Assert.Equal(4, s.Refs);
         }
 
@@ -140,7 +140,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void NalLengthSize_ShouldBeSettable()
         {
-            var s = new MediaStream { NalLengthSize = "4" };
+            MediaStream s = new MediaStream { NalLengthSize = "4" };
             Assert.Equal("4", s.NalLengthSize);
         }
 
@@ -149,7 +149,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void RFrameRate_ShouldBeSettable()
         {
-            var s = new MediaStream { RFrameRate = "30/1" };
+            MediaStream s = new MediaStream { RFrameRate = "30/1" };
             Assert.Equal("30/1", s.RFrameRate);
         }
 
@@ -158,7 +158,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void TimeBase_ShouldBeSettable()
         {
-            var s = new MediaStream { TimeBase = "1/90000" };
+            MediaStream s = new MediaStream { TimeBase = "1/90000" };
             Assert.Equal("1/90000", s.TimeBase);
         }
 
@@ -167,7 +167,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void StartPts_ShouldBeSettable()
         {
-            var s = new MediaStream { StartPts = 0 };
+            MediaStream s = new MediaStream { StartPts = 0 };
             Assert.Equal(0, s.StartPts);
         }
 
@@ -176,7 +176,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void StartTime_ShouldBeSettable()
         {
-            var s = new MediaStream { StartTime = "0.000000" };
+            MediaStream s = new MediaStream { StartTime = "0.000000" };
             Assert.Equal("0.000000", s.StartTime);
         }
 
@@ -185,7 +185,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void DurationTs_ShouldBeSettable()
         {
-            var s = new MediaStream { DurationTs = 1024 };
+            MediaStream s = new MediaStream { DurationTs = 1024 };
             Assert.Equal(1024, s.DurationTs);
         }
 
@@ -194,7 +194,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void NbFrames_ShouldBeSettable()
         {
-            var s = new MediaStream { NbFrames = "300" };
+            MediaStream s = new MediaStream { NbFrames = "300" };
             Assert.Equal("300", s.NbFrames);
         }
 
@@ -203,7 +203,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void MaxBitRate_ShouldBeSettable()
         {
-            var s = new MediaStream { MaxBitRate = "8000000" };
+            MediaStream s = new MediaStream { MaxBitRate = "8000000" };
             Assert.Equal("8000000", s.MaxBitRate);
         }
 
@@ -212,7 +212,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void SampleFmt_ShouldBeSettable()
         {
-            var s = new MediaStream { SampleFmt = "s16" };
+            MediaStream s = new MediaStream { SampleFmt = "s16" };
             Assert.Equal("s16", s.SampleFmt);
         }
 
@@ -221,7 +221,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void ChannelLayout_ShouldBeSettable()
         {
-            var s = new MediaStream { ChannelLayout = "stereo" };
+            MediaStream s = new MediaStream { ChannelLayout = "stereo" };
             Assert.Equal("stereo", s.ChannelLayout);
         }
 
@@ -230,7 +230,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// </summary>
         [RequireFfmpegFact] public void BitsPerSample_ShouldBeSettable()
         {
-            var s = new MediaStream { BitsPerSample = 16 };
+            MediaStream s = new MediaStream { BitsPerSample = 16 };
             Assert.Equal(16, s.BitsPerSample);
         }
     }

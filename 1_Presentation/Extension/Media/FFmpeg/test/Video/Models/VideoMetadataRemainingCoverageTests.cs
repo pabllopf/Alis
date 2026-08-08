@@ -16,13 +16,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenVideoStreamExists_ReturnsStream()
         {
-            var videoStream = new MediaStream { CodecType = "video" };
-            var metadata = new VideoMetadata
+            MediaStream videoStream = new MediaStream { CodecType = "video" };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { videoStream }
             };
 
-            var result = metadata.GetFirstVideoStream();
+            MediaStream result = metadata.GetFirstVideoStream();
 
             Assert.NotNull(result);
             Assert.True(result.IsVideo);
@@ -34,13 +34,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstVideoStream_WhenNoVideoStream_ReturnsNull()
         {
-            var audioStream = new MediaStream { CodecType = "audio" };
-            var metadata = new VideoMetadata
+            MediaStream audioStream = new MediaStream { CodecType = "audio" };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { audioStream }
             };
 
-            var result = metadata.GetFirstVideoStream();
+            MediaStream result = metadata.GetFirstVideoStream();
 
             Assert.Null(result);
         }
@@ -51,13 +51,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenAudioStreamExists_ReturnsStream()
         {
-            var audioStream = new MediaStream { CodecType = "audio" };
-            var metadata = new VideoMetadata
+            MediaStream audioStream = new MediaStream { CodecType = "audio" };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { audioStream }
             };
 
-            var result = metadata.GetFirstAudioStream();
+            MediaStream result = metadata.GetFirstAudioStream();
 
             Assert.NotNull(result);
             Assert.True(result.IsAudio);
@@ -69,13 +69,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstAudioStream_WhenNoAudioStream_ReturnsNull()
         {
-            var videoStream = new MediaStream { CodecType = "video" };
-            var metadata = new VideoMetadata
+            MediaStream videoStream = new MediaStream { CodecType = "video" };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { videoStream }
             };
 
-            var result = metadata.GetFirstAudioStream();
+            MediaStream result = metadata.GetFirstAudioStream();
 
             Assert.Null(result);
         }
@@ -86,15 +86,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstVideoStream_WithMultipleStreams_ReturnsFirstVideo()
         {
-            var audioStream = new MediaStream { CodecType = "audio" };
-            var videoStream1 = new MediaStream { CodecType = "video", Index = 1 };
-            var videoStream2 = new MediaStream { CodecType = "video", Index = 2 };
-            var metadata = new VideoMetadata
+            MediaStream audioStream = new MediaStream { CodecType = "audio" };
+            MediaStream videoStream1 = new MediaStream { CodecType = "video", Index = 1 };
+            MediaStream videoStream2 = new MediaStream { CodecType = "video", Index = 2 };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { audioStream, videoStream1, videoStream2 }
             };
 
-            var result = metadata.GetFirstVideoStream();
+            MediaStream result = metadata.GetFirstVideoStream();
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Index);
@@ -106,15 +106,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         [RequireFfmpegFact]
         public void GetFirstAudioStream_WithMultipleStreams_ReturnsFirstAudio()
         {
-            var videoStream = new MediaStream { CodecType = "video" };
-            var audioStream1 = new MediaStream { CodecType = "audio", Index = 1 };
-            var audioStream2 = new MediaStream { CodecType = "audio", Index = 2 };
-            var metadata = new VideoMetadata
+            MediaStream videoStream = new MediaStream { CodecType = "video" };
+            MediaStream audioStream1 = new MediaStream { CodecType = "audio", Index = 1 };
+            MediaStream audioStream2 = new MediaStream { CodecType = "audio", Index = 2 };
+            VideoMetadata metadata = new VideoMetadata
             {
                 Streams = new[] { videoStream, audioStream1, audioStream2 }
             };
 
-            var result = metadata.GetFirstAudioStream();
+            MediaStream result = metadata.GetFirstAudioStream();
 
             Assert.NotNull(result);
             Assert.Equal(1, result.Index);

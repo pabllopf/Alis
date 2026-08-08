@@ -1,3 +1,5 @@
+using System;
+using System.Buffers;
 using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -56,7 +58,7 @@ namespace Alis.Core.Ecs.Test
         public void NeighborCache_ViaAddRemove_ExercisesPaths()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position());
+            GameObject go = scene.Create(new Position());
             for (int i = 0; i < 15; i++)
             {
                 go.Add(new Velocity { X = i });
@@ -80,7 +82,7 @@ namespace Alis.Core.Ecs.Test
                 new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
             Query query = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>,
                 With<TestComponent>, With<AnotherComponent>, With<Damage>, With<Armor>>();
-            foreach (var tuple in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
+            foreach (GameObjectRefTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> tuple in query.EnumerateWithEntities<Position, Velocity, Health, Transform,
                 TestComponent, AnotherComponent, Damage, Armor>())
             {
                 Assert.True(tuple.GameObject.IsAlive);
@@ -180,11 +182,11 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void FastestArrayPool_ClearBuckets_Works()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             int[] arr = pool.Rent(100);
             pool.Return(arr);
-            var type = pool.GetType();
-            var method = type.GetMethod("ClearBuckets",
+            Type type = pool.GetType();
+            MethodInfo method = type.GetMethod("ClearBuckets",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             if (method != null)
                 method.Invoke(pool, null);
@@ -196,12 +198,12 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void FastestArrayPool_GlobalClearBuckets_Invokes()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             int[] arr = pool.Rent(100);
             pool.Return(arr);
             Gen2GcCallback.Register(() =>
             {
-                var method = pool.GetType().GetMethod("ClearBuckets", BindingFlags.Instance | BindingFlags.NonPublic);
+                MethodInfo method = pool.GetType().GetMethod("ClearBuckets", BindingFlags.Instance | BindingFlags.NonPublic);
                 method?.Invoke(pool, null);
                 return false;
             });
@@ -225,7 +227,7 @@ namespace Alis.Core.Ecs.Test
         public void DeleteComponentData_WithDelete_Works()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position());
+            GameObject go = scene.Create(new Position());
             go.Delete();
             scene.Update();
         }

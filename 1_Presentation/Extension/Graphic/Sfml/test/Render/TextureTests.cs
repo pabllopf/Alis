@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Systems;
@@ -344,7 +345,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Smooth_Property_IsReadWrite()
         {
-            var prop = typeof(Texture).GetProperty("Smooth");
+            PropertyInfo prop = typeof(Texture).GetProperty("Smooth");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -356,7 +357,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Srgb_Property_IsReadWrite()
         {
-            var prop = typeof(Texture).GetProperty("Srgb");
+            PropertyInfo prop = typeof(Texture).GetProperty("Srgb");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -368,7 +369,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Repeated_Property_IsReadWrite()
         {
-            var prop = typeof(Texture).GetProperty("Repeated");
+            PropertyInfo prop = typeof(Texture).GetProperty("Repeated");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -380,7 +381,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Size_Property_IsReadOnly()
         {
-            var prop = typeof(Texture).GetProperty("Size");
+            PropertyInfo prop = typeof(Texture).GetProperty("Size");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -392,7 +393,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void NativeHandle_Property_IsReadOnly()
         {
-            var prop = typeof(Texture).GetProperty("NativeHandle");
+            PropertyInfo prop = typeof(Texture).GetProperty("NativeHandle");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -404,7 +405,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void MaximumSize_Property_IsStatic()
         {
-            var prop = typeof(Texture).GetProperty("MaximumSize");
+            PropertyInfo prop = typeof(Texture).GetProperty("MaximumSize");
             Assert.NotNull(prop);
             Assert.True(prop.GetMethod.IsStatic);
         }
@@ -415,7 +416,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void MaximumSize_Property_IsReadOnly()
         {
-            var prop = typeof(Texture).GetProperty("MaximumSize");
+            PropertyInfo prop = typeof(Texture).GetProperty("MaximumSize");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -427,7 +428,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Bind_Method_IsStatic()
         {
-            var method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });
+            MethodInfo method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
         }
@@ -438,7 +439,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
-            var method = typeof(Texture).GetMethod("ToString");
+            MethodInfo method = typeof(Texture).GetMethod("ToString");
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);
@@ -450,7 +451,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
-            var method = typeof(Texture).GetMethod("Destroy");
+            MethodInfo method = typeof(Texture).GetMethod("Destroy");
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);

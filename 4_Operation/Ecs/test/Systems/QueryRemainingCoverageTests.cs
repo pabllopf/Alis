@@ -153,7 +153,7 @@ namespace Alis.Core.Ecs.Test.Systems
             FastImmutableArray<Rule> rules = new FastImmutableArray<Rule>([Rule.HasComponent(Component<Position>.Id)]);
 
             Query query = scene.CreateQuery(rules);
-            var enumerable = query.EnumerateWithEntities<Position>();
+            Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
 
             Assert.NotNull(enumerable);
         }

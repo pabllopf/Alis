@@ -1180,7 +1180,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ClientConnectingToIpAddress_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ClientConnectingToIpAddress(Guid.NewGuid(), "127.0.0.1", 8080);
         }
 
@@ -1190,7 +1190,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ClientConnectingToHost_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ClientConnectingToHost(Guid.NewGuid(), "localhost", 8080);
         }
 
@@ -1200,7 +1200,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void AttemtingToSecureSslConnection_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.AttemtingToSecureSslConnection(Guid.NewGuid());
         }
 
@@ -1210,7 +1210,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ConnectionSecured_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ConnectionSecured(Guid.NewGuid());
         }
 
@@ -1220,7 +1220,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ConnectionNotSecure_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ConnectionNotSecure(Guid.NewGuid());
         }
 
@@ -1230,7 +1230,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void SslCertificateError_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.SslCertificateError(SslPolicyErrors.RemoteCertificateChainErrors);
         }
 
@@ -1240,7 +1240,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandshakeSent_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.HandshakeSent(Guid.NewGuid(), "header");
         }
 
@@ -1250,7 +1250,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ReadingHttpResponse_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ReadingHttpResponse(Guid.NewGuid());
         }
 
@@ -1260,7 +1260,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ReadHttpResponseError_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ReadHttpResponseError(Guid.NewGuid(), "error");
         }
 
@@ -1270,7 +1270,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void InvalidHttpResponseCode_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), "response");
         }
 
@@ -1280,7 +1280,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandshakeFailure_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.HandshakeFailure(Guid.NewGuid(), "message");
         }
 
@@ -1290,7 +1290,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ClientHandshakeSuccess_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ClientHandshakeSuccess(Guid.NewGuid());
         }
 
@@ -1300,7 +1300,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ServerHandshakeSuccess_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ServerHandshakeSuccess(Guid.NewGuid());
         }
 
@@ -1310,7 +1310,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void AcceptWebSocketStarted_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.AcceptWebSocketStarted(Guid.NewGuid());
         }
 
@@ -1320,7 +1320,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void SendingHandshakeResponse_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.SendingHandshakeResponse(Guid.NewGuid(), "response");
         }
 
@@ -1330,7 +1330,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketVersionNotSupported_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), "exception");
         }
 
@@ -1340,7 +1340,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void BadRequest_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.BadRequest(Guid.NewGuid(), "exception");
         }
 
@@ -1350,7 +1350,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void UsePerMessageDeflate_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.UsePerMessageDeflate(Guid.NewGuid());
         }
 
@@ -1360,7 +1360,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void NoMessageCompression_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.NoMessageCompression(Guid.NewGuid());
         }
 
@@ -1370,7 +1370,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void KeepAliveIntervalZero_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.KeepAliveIntervalZero(Guid.NewGuid());
         }
 
@@ -1380,7 +1380,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void PingPongManagerStarted_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.PingPongManagerStarted(Guid.NewGuid(), 30);
         }
 
@@ -1390,7 +1390,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void PingPongManagerEnded_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.PingPongManagerEnded(Guid.NewGuid());
         }
 
@@ -1400,7 +1400,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void KeepAliveIntervalExpired_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.KeepAliveIntervalExpired(Guid.NewGuid(), 30);
         }
 
@@ -1410,7 +1410,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeout_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
@@ -1420,7 +1420,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeoutCancelled_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
@@ -1430,7 +1430,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeoutError_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), "closeEx", WebSocketCloseStatus.NormalClosure, "desc", "ex");
         }
 
@@ -1440,7 +1440,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void TryGetBufferNotSupported_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), "MemoryStream");
         }
 
@@ -1450,7 +1450,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void SendingFrame_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.SendingFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024, true);
         }
 
@@ -1460,7 +1460,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ReceivedFrame_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ReceivedFrame(Guid.NewGuid(), WebSocketOpCode.TextFrame, true, 1024);
         }
 
@@ -1470,7 +1470,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputNoHandshake_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
@@ -1480,7 +1480,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseHandshakeStarted_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
@@ -1490,7 +1490,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseHandshakeRespond_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, "desc");
         }
 
@@ -1500,7 +1500,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseHandshakeComplete_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseHandshakeComplete(Guid.NewGuid());
         }
 
@@ -1510,7 +1510,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseFrameReceivedInUnexpectedState_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, "desc");
         }
 
@@ -1520,7 +1520,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketDispose_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketDispose(Guid.NewGuid(), WebSocketState.Open);
         }
 
@@ -1530,7 +1530,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketDisposeCloseTimeout_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketDisposeCloseTimeout(Guid.NewGuid(), WebSocketState.Open);
         }
 
@@ -1540,7 +1540,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketDisposeError_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, "error");
         }
 
@@ -1550,7 +1550,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void InvalidStateBeforeClose_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.InvalidStateBeforeClose(Guid.NewGuid(), WebSocketState.Open);
         }
 
@@ -1560,7 +1560,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void InvalidStateBeforeCloseOutput_EventEnabled_WritesEvent()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.InvalidStateBeforeCloseOutput(Guid.NewGuid(), WebSocketState.Open);
         }
 
@@ -1570,7 +1570,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandshakeSent_NullHttpHeader_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.HandshakeSent(Guid.NewGuid(), null);
         }
 
@@ -1580,7 +1580,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void ReadHttpResponseError_NullException_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.ReadHttpResponseError(Guid.NewGuid(), null);
         }
 
@@ -1590,7 +1590,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void InvalidHttpResponseCode_NullResponse_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.InvalidHttpResponseCode(Guid.NewGuid(), null);
         }
 
@@ -1600,7 +1600,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandshakeFailure_NullMessage_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.HandshakeFailure(Guid.NewGuid(), null);
         }
 
@@ -1610,7 +1610,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void SendingHandshakeResponse_NullResponse_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.SendingHandshakeResponse(Guid.NewGuid(), null);
         }
 
@@ -1620,7 +1620,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketVersionNotSupported_NullException_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketVersionNotSupported(Guid.NewGuid(), null);
         }
 
@@ -1630,7 +1630,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void BadRequest_NullException_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.BadRequest(Guid.NewGuid(), null);
         }
 
@@ -1640,7 +1640,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void TryGetBufferNotSupported_NullStreamType_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.TryGetBufferNotSupported(Guid.NewGuid(), null);
         }
 
@@ -1650,7 +1650,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeout_NullDescriptions_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeout(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null, null);
         }
 
@@ -1660,7 +1660,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeoutCancelled_NullDescriptions_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeoutCancelled(Guid.NewGuid(), 30, WebSocketCloseStatus.NormalClosure, null, null);
         }
 
@@ -1670,7 +1670,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputAutoTimeoutError_NullDescriptions_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputAutoTimeoutError(Guid.NewGuid(), null, WebSocketCloseStatus.NormalClosure, null, null);
         }
 
@@ -1680,7 +1680,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseOutputNoHandshake_NullStatusDescription_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseOutputNoHandshake(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
@@ -1690,7 +1690,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseHandshakeStarted_NullStatusDescription_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseHandshakeStarted(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
@@ -1700,7 +1700,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseHandshakeRespond_NullStatusDescription_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseHandshakeRespond(Guid.NewGuid(), WebSocketCloseStatus.NormalClosure, null);
         }
 
@@ -1710,7 +1710,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void CloseFrameReceivedInUnexpectedState_NullStatusDescription_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.CloseFrameReceivedInUnexpectedState(Guid.NewGuid(), WebSocketState.Open, WebSocketCloseStatus.NormalClosure, null);
         }
 
@@ -1720,7 +1720,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void WebSocketDisposeError_NullException_UsesEmptyString()
         {
-            using var listener = new TestEventListener();
+            using TestEventListener listener = new TestEventListener();
             Events.Log.WebSocketDisposeError(Guid.NewGuid(), WebSocketState.Open, null);
         }
     }

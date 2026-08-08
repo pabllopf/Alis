@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Extension.Network.Client;
@@ -168,7 +169,7 @@ namespace Alis.Extension.Network.Test.Client
         public void GetConnectedPlayers_WithNullSession_ReturnsEmptyList()
         {
             using NetworkClientManager mgr = new NetworkClientManager();
-            var players = mgr.GetConnectedPlayers();
+            IReadOnlyList<NetworkPlayer> players = mgr.GetConnectedPlayers();
             Assert.NotNull(players);
             Assert.Empty(players);
         }

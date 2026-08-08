@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         [Fact]
         public void Interface_IsImplementedByAnimator()
         {
-            var animator = new Animator();
+            Animator animator = new Animator();
             Assert.IsAssignableFrom<IAnimator>(animator);
         }
     }

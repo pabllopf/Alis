@@ -104,8 +104,8 @@ namespace Alis.Core.Aspect.Logging.Test
         [Fact]
         public void Logger_Trace_WithNullDefaultLogger_DoesNotThrow()
         {
-            var field = typeof(Logger).GetField("_defaultLogger", BindingFlags.NonPublic | BindingFlags.Static);
-            var saved = field.GetValue(null);
+            FieldInfo field = typeof(Logger).GetField("_defaultLogger", BindingFlags.NonPublic | BindingFlags.Static);
+            object saved = field.GetValue(null);
             try
             {
                 field.SetValue(null, null);

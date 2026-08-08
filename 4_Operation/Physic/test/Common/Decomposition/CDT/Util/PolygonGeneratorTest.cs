@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void RandomCircleSweep_WithValidInput_ReturnsPolygonWithCorrectVertexCount()
         {
             int vertexCount = 10;
-            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
 
             Assert.Equal(vertexCount, polygon.GetPoints.Count);
         }
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void RandomCircleSweep_WithManyVertices_ReturnsCorrectCount()
         {
             int vertexCount = 500;
-            var polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep(100.0, vertexCount);
 
             Assert.Equal(vertexCount, polygon.GetPoints.Count);
         }
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void RandomCircleSweep2_WithValidInput_ReturnsPolygonWithCorrectVertexCount()
         {
             int vertexCount = 10;
-            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
 
             Assert.Equal(vertexCount, polygon.GetPoints.Count);
         }
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         public void RandomCircleSweep2_WithManyVertices_ReturnsCorrectCount()
         {
             int vertexCount = 500;
-            var polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
+            Physic.Common.Decomposition.CDT.Polygon.Polygon polygon = PolygonGenerator.RandomCircleSweep2(100.0, vertexCount);
 
             Assert.Equal(vertexCount, polygon.GetPoints.Count);
         }

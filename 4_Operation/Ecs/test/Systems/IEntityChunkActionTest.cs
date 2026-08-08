@@ -14,7 +14,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void Interface_CanBeImplemented()
         {
-            var action = new TestEntityChunkAction();
+            TestEntityChunkAction action = new TestEntityChunkAction();
             Assert.NotNull(action);
         }
 
@@ -23,7 +23,7 @@ namespace Alis.Core.Ecs.Test.Systems
         /// </summary>
         [Fact] public void RunChunk_WithEmptySpan_DoesNotThrow()
         {
-            var action = new TestEntityChunkAction();
+            TestEntityChunkAction action = new TestEntityChunkAction();
             ReadOnlySpan<GameObject> span = [];
             action.RunChunk(span);
             Assert.Equal(0, action.Count);

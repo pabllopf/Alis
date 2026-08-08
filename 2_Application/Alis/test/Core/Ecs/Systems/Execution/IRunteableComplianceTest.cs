@@ -1,3 +1,4 @@
+using System.Reflection;
 using Alis.Core.Ecs.Systems.Execution;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         [Fact]
         public void Interface_CanBeImplemented()
         {
-            var runteable = new TestRunteable();
+            TestRunteable runteable = new TestRunteable();
             Assert.IsAssignableFrom<IRunteable>(runteable);
         }
 
@@ -24,7 +25,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         [Fact]
         public void Interface_IsEmptyMarker()
         {
-            var methods = typeof(IRunteable).GetMethods();
+            MethodInfo[] methods = typeof(IRunteable).GetMethods();
             Assert.Empty(methods);
         }
 

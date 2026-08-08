@@ -1,4 +1,6 @@
 // license header
+
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -77,7 +79,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Bind_StaticMethod_Exists()
         {
-            var method = typeof(Shader).GetMethod("Bind", new[] { typeof(Shader) });
+            MethodInfo method = typeof(Shader).GetMethod("Bind", new[] { typeof(Shader) });
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
         }
@@ -88,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void FromString_StaticMethod_Exists()
         {
-            var method = typeof(Shader).GetMethod("FromString", new[] { typeof(string), typeof(string), typeof(string) });
+            MethodInfo method = typeof(Shader).GetMethod("FromString", new[] { typeof(string), typeof(string), typeof(string) });
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
         }

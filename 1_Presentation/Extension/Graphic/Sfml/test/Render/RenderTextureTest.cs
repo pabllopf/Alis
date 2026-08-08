@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
@@ -75,7 +76,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Texture_Property_Exists()
         {
-            var prop = typeof(RenderTexture).GetProperty("Texture");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("Texture");
             Assert.NotNull(prop);
         }
 
@@ -85,7 +86,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Texture_Property_IsReadOnly()
         {
-            var prop = typeof(RenderTexture).GetProperty("Texture");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("Texture");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -97,7 +98,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void MaximumAntialiasingLevel_Property_Exists()
         {
-            var prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
             Assert.NotNull(prop);
         }
 
@@ -107,7 +108,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void MaximumAntialiasingLevel_Property_IsStatic()
         {
-            var prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
             Assert.NotNull(prop);
             Assert.True(prop.GetMethod.IsStatic);
         }
@@ -118,7 +119,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void MaximumAntialiasingLevel_Property_IsReadOnly()
         {
-            var prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("MaximumAntialiasingLevel");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -139,7 +140,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Repeated_Property_IsReadWrite()
         {
-            var prop = typeof(RenderTexture).GetProperty("Repeated");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("Repeated");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -160,7 +161,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Smooth_Property_IsReadWrite()
         {
-            var prop = typeof(RenderTexture).GetProperty("Smooth");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("Smooth");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -181,7 +182,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Size_Property_IsReadOnly()
         {
-            var prop = typeof(RenderTexture).GetProperty("Size");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("Size");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -202,7 +203,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void DefaultView_Property_IsReadOnly()
         {
-            var prop = typeof(RenderTexture).GetProperty("DefaultView");
+            PropertyInfo prop = typeof(RenderTexture).GetProperty("DefaultView");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -412,7 +413,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
-            var method = typeof(RenderTexture).GetMethod("ToString", Type.EmptyTypes);
+            MethodInfo method = typeof(RenderTexture).GetMethod("ToString", Type.EmptyTypes);
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);
@@ -433,7 +434,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
-            var method = typeof(RenderTexture).GetMethod("Destroy", new[] { typeof(bool) });
+            MethodInfo method = typeof(RenderTexture).GetMethod("Destroy", new[] { typeof(bool) });
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);

@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         [Fact]
         public void Interface_IsImplementedByBoxCollider()
         {
-            var collider = new BoxCollider();
+            BoxCollider collider = new BoxCollider();
             Assert.IsAssignableFrom<IBoxCollider>(collider);
         }
     }

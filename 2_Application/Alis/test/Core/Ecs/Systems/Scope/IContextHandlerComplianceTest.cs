@@ -14,8 +14,8 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         [Fact]
         public void Interface_IsImplementedByContextHandler()
         {
-            var ctx = new Context();
-            var handler = new ContextHandler(ctx);
+            Context ctx = new Context();
+            ContextHandler handler = new ContextHandler(ctx);
             Assert.IsAssignableFrom<IContextHandler<Context>>(handler);
         }
     }

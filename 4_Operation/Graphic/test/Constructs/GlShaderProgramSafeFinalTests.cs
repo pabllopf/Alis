@@ -31,7 +31,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         /// <summary>
         /// Tests that type from attribute type float mat 3 throws
         /// </summary>
-        [Fact] public void TypeFromAttributeType_FloatMat3_Throws() { var ex = Assert.Throws<TargetInvocationException>(() => Ta.Invoke(null, new object[] { ActiveAttribType.FloatMat3 })); Assert.IsType<InvalidOperationException>(ex.InnerException); }
+        [Fact] public void TypeFromAttributeType_FloatMat3_Throws() { TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() => Ta.Invoke(null, new object[] { ActiveAttribType.FloatMat3 })); Assert.IsType<InvalidOperationException>(ex.InnerException); }
         /// <summary>
         /// Tests that type from attribute type float mat 4 returns matrix
         /// </summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         /// <summary>
         /// Tests that type from uniform type float mat 3 throws
         /// </summary>
-        [Fact] public void TypeFromUniformType_FloatMat3_Throws() { var ex = Assert.Throws<TargetInvocationException>(() => Tu.Invoke(null, new object[] { ActiveUniformType.FloatMat3 })); Assert.IsType<InvalidOperationException>(ex.InnerException); }
+        [Fact] public void TypeFromUniformType_FloatMat3_Throws() { TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() => Tu.Invoke(null, new object[] { ActiveUniformType.FloatMat3 })); Assert.IsType<InvalidOperationException>(ex.InnerException); }
         /// <summary>
         /// Tests that type from uniform type float mat 4 returns matrix
         /// </summary>

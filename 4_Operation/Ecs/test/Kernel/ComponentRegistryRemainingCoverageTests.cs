@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Fluent.Components;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
 using Xunit;
@@ -85,7 +86,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             GenerationServices.RegisterInit<LifecycleComponent>();
             GenerationServices.RegisterDestroy<LifecycleComponent>();
 
-            var result = Component.GetExistingOrSetupNewComponent<LifecycleComponent>();
+            (ComponentId ComponentID, IdTable<LifecycleComponent> Stack, ComponentDelegates<LifecycleComponent>.InitDelegate Initer, ComponentDelegates<LifecycleComponent>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<LifecycleComponent>();
 
             Assert.NotNull(result.Destroyer);
             Assert.NotNull(result.Initer);

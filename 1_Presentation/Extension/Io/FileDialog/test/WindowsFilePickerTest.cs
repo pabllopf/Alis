@@ -113,7 +113,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFilterString_WithFilters_ReturnsFormatted()
         {
-            var filters = new List<FilePickerFilter>
+            List<FilePickerFilter> filters = new List<FilePickerFilter>
             {
                 new("Text files", ".txt"),
                 new("Images", ".png")
@@ -132,7 +132,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithAllOptions_ContainsCorrectParts()
         {
-            var options = new FilePickerOptions("Open File")
+            FilePickerOptions options = new FilePickerOptions("Open File")
             {
                 DefaultPath = @"C:\Users\test",
                 Filters = new List<FilePickerFilter> { new("Text files", ".txt") },
@@ -154,7 +154,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutDefaultPath_OmitsInitialDirectory()
         {
-            var options = new FilePickerOptions("Open File");
+            FilePickerOptions options = new FilePickerOptions("Open File");
 
             string script = WindowsFilePicker.BuildOpenFileScript(options);
 
@@ -167,7 +167,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutFilters_OmitsFilter()
         {
-            var options = new FilePickerOptions("Open File")
+            FilePickerOptions options = new FilePickerOptions("Open File")
             {
                 DefaultPath = @"C:\test"
             };
@@ -183,7 +183,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutMultiple_OmitsMultiselect()
         {
-            var options = new FilePickerOptions("Open File")
+            FilePickerOptions options = new FilePickerOptions("Open File")
             {
                 DefaultPath = @"C:\test"
             };
@@ -199,7 +199,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithAllOptions_ContainsCorrectParts()
         {
-            var options = new FilePickerOptions("Select Folder")
+            FilePickerOptions options = new FilePickerOptions("Select Folder")
             {
                 DefaultPath = @"C:\Users"
             };
@@ -217,7 +217,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithoutDefaultPath_OmitsSelectedPathAssignment()
         {
-            var options = new FilePickerOptions("Select Folder");
+            FilePickerOptions options = new FilePickerOptions("Select Folder");
 
             string script = WindowsFilePicker.BuildFolderSelectScript(options);
 
@@ -312,8 +312,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFile_WithValidOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test File");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -327,8 +327,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFiles_WithValidOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -342,8 +342,8 @@ C:\b.txt", false);
         [Fact]
         public void PickFolder_WithValidOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -359,8 +359,8 @@ C:\b.txt", false);
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\file.txt";
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test File");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -377,8 +377,8 @@ C:\b.txt", false);
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\a.txt
 C:\mock\b.txt";
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -394,8 +394,8 @@ C:\mock\b.txt";
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => @"C:\mock\folder";
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -412,8 +412,8 @@ C:\mock\b.txt";
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test File");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -430,8 +430,8 @@ C:\mock\b.txt";
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -448,8 +448,8 @@ C:\mock\b.txt";
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new WindowsFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            WindowsFilePicker picker = new WindowsFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -463,7 +463,7 @@ C:\mock\b.txt";
         [Fact]
         public void PickFile_NullOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
+            WindowsFilePicker picker = new WindowsFilePicker();
 
             FilePickerResult result = picker.PickFile(null);
 
@@ -478,7 +478,7 @@ C:\mock\b.txt";
         [Fact]
         public void PickFiles_NullOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
+            WindowsFilePicker picker = new WindowsFilePicker();
 
             FilePickerResult result = picker.PickFiles(null);
 
@@ -493,7 +493,7 @@ C:\mock\b.txt";
         [Fact]
         public void PickFolder_NullOptions_ReturnsError()
         {
-            var picker = new WindowsFilePicker();
+            WindowsFilePicker picker = new WindowsFilePicker();
 
             FilePickerResult result = picker.PickFolder(null);
 

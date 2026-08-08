@@ -19,7 +19,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void GetDirectoryName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -38,7 +38,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void GetFileName_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -57,7 +57,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void IsValidPath_WithMustExistFalseAndLoggerThrowsInsideTry_ShouldCatchAndReturnFalse()
         {
-            var logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -76,7 +76,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void NormalizePath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnNull()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -95,7 +95,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void ConvertPathSeparators_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnOriginal()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -115,7 +115,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void SplitMultiplePaths_WhenLoggerThrowsAfterProcessing_ShouldCatchAndReturnEmpty()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 6 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 6 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -135,7 +135,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void SplitMultiplePaths_WhenNormalizePathLoggerThrows_ShouldCatchAndReturnEmpty()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {

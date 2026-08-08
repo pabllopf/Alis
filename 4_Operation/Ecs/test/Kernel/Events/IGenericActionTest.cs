@@ -13,7 +13,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void Invoke_WithRefType_ExecutesAction()
         {
-            var action = new TestGenericAction();
+            TestGenericAction action = new TestGenericAction();
             int value = 42;
             action.Invoke(ref value);
             Assert.Equal(84, value);
@@ -24,7 +24,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void Invoke_WithStringRef_ExecutesAction()
         {
-            var action = new StringGenericAction();
+            StringGenericAction action = new StringGenericAction();
             string value = "hello";
             action.Invoke(ref value);
             Assert.Equal("hello!", value);
@@ -35,7 +35,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void Invoke_WithTParam_ExecutesAction()
         {
-            var action = new TypedGenericAction();
+            TypedGenericAction action = new TypedGenericAction();
             int result = 0;
             action.Invoke(42, ref result);
             Assert.Equal(42, result);

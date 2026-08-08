@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         [Fact]
         public void Interface_IsImplementedBySprite()
         {
-            var sprite = new Sprite();
+            Sprite sprite = new Sprite();
             Assert.IsAssignableFrom<ISprite>(sprite);
         }
     }

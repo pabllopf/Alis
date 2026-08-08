@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.Audio;
+using Alis.Extension.Media.FFmpeg.Audio.Models;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Xunit;
 
@@ -205,13 +206,13 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         [RequireFfmpegFact]
         public void ResolveBitDepth_WithVariousFormats_SetsCorrectDepth()
         {
-            var m = () => new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata();
+            Func<AudioMetadata> m = () => new Alis.Extension.Media.FFmpeg.Audio.Models.AudioMetadata();
 
-            var md64 = m(); md64.SampleFormat = "s64"; AudioReader.ResolveBitDepth(md64); Assert.Equal(64, md64.BitDepth);
-            var md32 = m(); md32.SampleFormat = "s32"; AudioReader.ResolveBitDepth(md32); Assert.Equal(32, md32.BitDepth);
-            var md24 = m(); md24.SampleFormat = "s24"; AudioReader.ResolveBitDepth(md24); Assert.Equal(24, md24.BitDepth);
-            var md16 = m(); md16.SampleFormat = "s16"; AudioReader.ResolveBitDepth(md16); Assert.Equal(16, md16.BitDepth);
-            var md8 = m(); md8.SampleFormat = "u8"; AudioReader.ResolveBitDepth(md8); Assert.Equal(8, md8.BitDepth);
+            AudioMetadata md64 = m(); md64.SampleFormat = "s64"; AudioReader.ResolveBitDepth(md64); Assert.Equal(64, md64.BitDepth);
+            AudioMetadata md32 = m(); md32.SampleFormat = "s32"; AudioReader.ResolveBitDepth(md32); Assert.Equal(32, md32.BitDepth);
+            AudioMetadata md24 = m(); md24.SampleFormat = "s24"; AudioReader.ResolveBitDepth(md24); Assert.Equal(24, md24.BitDepth);
+            AudioMetadata md16 = m(); md16.SampleFormat = "s16"; AudioReader.ResolveBitDepth(md16); Assert.Equal(16, md16.BitDepth);
+            AudioMetadata md8 = m(); md8.SampleFormat = "u8"; AudioReader.ResolveBitDepth(md8); Assert.Equal(8, md8.BitDepth);
         }
 
         /// <summary>

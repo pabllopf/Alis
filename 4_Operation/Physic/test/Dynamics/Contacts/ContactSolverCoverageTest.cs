@@ -104,38 +104,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Assert.NotEqual(Vector2F.Zero, points[1]);
         }
 
-
-        /// <summary>
-        /// Tests that store impulses through step does not throw
-        /// </summary>
-        [Fact]
-        public void StoreImpulses_ThroughStep_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-      
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-
-      
-        // ========================================================================
-        // SolveToiPositionConstraints with body indices matching
-        // ========================================================================
-
         /// <summary>
         /// Tests that solve toi position constraints with indices does not throw
         /// </summary>

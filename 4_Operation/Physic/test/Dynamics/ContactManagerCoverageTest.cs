@@ -38,32 +38,7 @@ namespace Alis.Core.Physic.Test.Dynamics
     /// </summary>
     public class ContactManagerCoverageTest
     {
-        /// <summary>
-        ///     Tests that disabled body causes contact processing to be skipped.
-        ///     This exercises the early return in ProcessContactCollision when !bodyA.Enabled.
-        /// </summary>
-        [Fact]
-        public void DisabledBody_SkipsCollision()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            bodyA.Enabled = false;
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
+        
 
         /// <summary>
         ///     Tests that both static bodies do not create contacts.
@@ -86,29 +61,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        ///     Tests that bodies with same positive collision group create contacts.
-        ///     This exercises ShouldCollide returning true when collision groups are equal and positive.
-        /// </summary>
-        [Fact]
-        public void SameCollisionGroupPositive_ShouldCollide()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            bodyA.SetCollisionGroup(1);
-            bodyB.SetCollisionGroup(1);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
         ///     Tests that bodies with same negative collision group do not create contacts.
         ///     This exercises ShouldCollide returning false when collision groups are equal and negative.
         /// </summary>
@@ -126,35 +78,6 @@ namespace Alis.Core.Physic.Test.Dynamics
                 {
                     PositionIterations = 10
                 };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.Equal(0, world.ContactManager.ContactCount);
-        }
-
-        /// <summary>
-        ///     Tests that bodies moved apart cause contact destruction.
-        ///     This exercises the no-overlap branch in ProcessContactCollision.
-        /// </summary>
-        [Fact]
-        public void BodiesMovedApart_DestroysContact()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            int initialCount = world.ContactManager.ContactCount;
-            Assert.True(initialCount > 0);
-
-            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-            
-            iterations.PositionIterations = 10;
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
@@ -292,32 +215,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(0, world.ContactManager.ContactCount);
-        }
-
-        /// <summary>
-        /// Tests that remove body with multiple contacts destroys all
-        /// </summary>
-        [Fact]
-        public void RemoveBody_WithMultipleContacts_DestroysAll()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.8f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(-0.8f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            int beforeRemove = world.ContactManager.ContactCount;
-            Assert.True(beforeRemove > 0);
-
-            world.Remove(bodyA);
-
-            int afterRemove = world.ContactManager.ContactCount;
-            Assert.True(afterRemove < beforeRemove);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 using System;
 using Alis.Core.Ecs.Exceptions;
+using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 
@@ -141,7 +142,7 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             GameObject go = scene.Create(new Velocity { X = 42 });
-            bool found = go.TryGet<Velocity>(out var velRef);
+            bool found = go.TryGet<Velocity>(out Ref<Velocity> velRef);
             Assert.True(found);
             Assert.Equal(42, velRef.Value.X);
         }

@@ -28,7 +28,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public ImGuiIOPtrRemainingCoverageTests()
         {
             _nativePtr = Marshal.AllocHGlobal(Marshal.SizeOf<ImGuiIo>());
-            var io = new ImGuiIo();
+            ImGuiIo io = new ImGuiIo();
             Marshal.StructureToPtr(io, _nativePtr, false);
             _ioPtr = new ImGuiIoPtr(_nativePtr);
         }
@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void NativePtr_ShouldReturnConstructorValue()
         {
-            var ptr = new ImGuiIoPtr(_nativePtr);
+            ImGuiIoPtr ptr = new ImGuiIoPtr(_nativePtr);
             Assert.Equal(_nativePtr, ptr.NativePtr);
         }
 
@@ -77,7 +77,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ConfigFlags_GetSet_ShouldRoundtrip()
         {
-            var val = ImGuiConfigFlags.DockingEnable;
+            ImGuiConfigFlags val = ImGuiConfigFlags.DockingEnable;
             _ioPtr.ConfigFlags = val;
             Assert.Equal(val, _ioPtr.ConfigFlags);
         }
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendFlags_GetSet_ShouldRoundtrip()
         {
-            var val = ImGuiBackendFlags.RendererHasVtxOffset;
+            ImGuiBackendFlags val = ImGuiBackendFlags.RendererHasVtxOffset;
             _ioPtr.BackendFlags = val;
             Assert.Equal(val, _ioPtr.BackendFlags);
         }
@@ -99,7 +99,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void DisplaySize_GetSet_ShouldRoundtrip()
         {
-            var val = new Vector2F(1920f, 1080f);
+            Vector2F val = new Vector2F(1920f, 1080f);
             _ioPtr.DisplaySize = val;
             Assert.Equal(val, _ioPtr.DisplaySize);
         }
@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void UserData_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(42);
+            IntPtr val = new IntPtr(42);
             _ioPtr.UserData = val;
             Assert.Equal(val, _ioPtr.UserData);
         }
@@ -141,7 +141,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void DisplayFramebufferScale_GetSet_ShouldRoundtrip()
         {
-            var val = new Vector2F(2f, 2f);
+            Vector2F val = new Vector2F(2f, 2f);
             _ioPtr.DisplayFramebufferScale = val;
             Assert.Equal(val, _ioPtr.DisplayFramebufferScale);
         }
@@ -162,7 +162,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendPlatformName_GetSet_ShouldRoundtrip()
         {
-            var str = new NullTerminatedString(new byte[] { (byte)'t', (byte)'e', (byte)'s', (byte)'t' });
+            NullTerminatedString str = new NullTerminatedString(new byte[] { (byte)'t', (byte)'e', (byte)'s', (byte)'t' });
             _ioPtr.BackendPlatformName = str;
             Assert.Equal("test", _ioPtr.BackendPlatformName.ToString());
         }
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendPlatformUserData_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(100);
+            IntPtr val = new IntPtr(100);
             _ioPtr.BackendPlatformUserData = val;
             Assert.Equal(val, _ioPtr.BackendPlatformUserData);
         }
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendRendererUserData_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(200);
+            IntPtr val = new IntPtr(200);
             _ioPtr.BackendRendererUserData = val;
             Assert.Equal(val, _ioPtr.BackendRendererUserData);
         }
@@ -195,7 +195,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendLanguageUserData_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(300);
+            IntPtr val = new IntPtr(300);
             _ioPtr.BackendLanguageUserData = val;
             Assert.Equal(val, _ioPtr.BackendLanguageUserData);
         }
@@ -206,7 +206,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void GetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(400);
+            IntPtr val = new IntPtr(400);
             _ioPtr.GetClipboardTextFn = val;
             Assert.Equal(val, _ioPtr.GetClipboardTextFn);
         }
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void SetClipboardTextFn_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(500);
+            IntPtr val = new IntPtr(500);
             _ioPtr.SetClipboardTextFn = val;
             Assert.Equal(val, _ioPtr.SetClipboardTextFn);
         }
@@ -228,7 +228,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ClipboardUserData_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(600);
+            IntPtr val = new IntPtr(600);
             _ioPtr.ClipboardUserData = val;
             Assert.Equal(val, _ioPtr.ClipboardUserData);
         }
@@ -239,7 +239,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void SetPlatformImeDataFn_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(700);
+            IntPtr val = new IntPtr(700);
             _ioPtr.SetPlatformImeDataFn = val;
             Assert.Equal(val, _ioPtr.SetPlatformImeDataFn);
         }
@@ -250,7 +250,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void UnusedPadding_GetSet_ShouldRoundtrip()
         {
-            var val = new IntPtr(800);
+            IntPtr val = new IntPtr(800);
             _ioPtr.UnusedPadding = val;
             Assert.Equal(val, _ioPtr.UnusedPadding);
         }
@@ -391,7 +391,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDelta_GetSet_ShouldRoundtrip()
         {
-            var val = new Vector2F(10f, 20f);
+            Vector2F val = new Vector2F(10f, 20f);
             _ioPtr.MouseDelta = val;
             Assert.Equal(val, _ioPtr.MouseDelta);
         }
@@ -402,7 +402,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MousePos_GetSet_ShouldRoundtrip()
         {
-            var val = new Vector2F(100f, 200f);
+            Vector2F val = new Vector2F(100f, 200f);
             _ioPtr.MousePos = val;
             Assert.Equal(val, _ioPtr.MousePos);
         }
@@ -483,7 +483,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void KeyMods_GetSet_ShouldRoundtrip()
         {
-            var val = ImGuiKey.ImGuiModCtrl | ImGuiKey.ImGuiModShift;
+            ImGuiKey val = ImGuiKey.ImGuiModCtrl | ImGuiKey.ImGuiModShift;
             _ioPtr.KeyMods = val;
             Assert.Equal(val, _ioPtr.KeyMods);
         }
@@ -504,7 +504,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MousePosPrev_GetSet_ShouldRoundtrip()
         {
-            var val = new Vector2F(50f, 60f);
+            Vector2F val = new Vector2F(50f, 60f);
             _ioPtr.MousePosPrev = val;
             Assert.Equal(val, _ioPtr.MousePosPrev);
         }
@@ -608,7 +608,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void KeyMap_Get_ShouldReturnList()
         {
-            var keyMap = _ioPtr.KeyMap;
+            List<int> keyMap = _ioPtr.KeyMap;
             Assert.NotNull(keyMap);
             Assert.IsType<List<int>>(keyMap);
         }
@@ -619,10 +619,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void KeysDown_GetSet_ShouldRoundtrip()
         {
-            var keysDown = new List<bool>(512);
+            List<bool> keysDown = new List<bool>(512);
             for (int i = 0; i < 512; i++) keysDown.Add(i % 2 == 0);
             _ioPtr.KeysDown = keysDown;
-            var result = _ioPtr.KeysDown;
+            List<bool> result = _ioPtr.KeysDown;
             for (int i = 0; i < 512; i++)
             {
                 Assert.Equal(keysDown[i], result[i]);
@@ -635,9 +635,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDown_GetSet_ShouldRoundtrip()
         {
-            var mouseDown = new List<bool> { true, false, true, false, true };
+            List<bool> mouseDown = new List<bool> { true, false, true, false, true };
             _ioPtr.MouseDown = mouseDown;
-            var result = _ioPtr.MouseDown;
+            List<bool> result = _ioPtr.MouseDown;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(mouseDown[i], result[i]);
@@ -650,9 +650,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseClickedTime_GetSet_ShouldRoundtrip()
         {
-            var times = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0 };
+            List<double> times = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0 };
             _ioPtr.MouseClickedTime = times;
-            var result = _ioPtr.MouseClickedTime;
+            List<double> result = _ioPtr.MouseClickedTime;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(times[i], result[i]);
@@ -665,9 +665,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseClicked_GetSet_ShouldRoundtrip()
         {
-            var clicked = new List<bool> { true, false, true, false, true };
+            List<bool> clicked = new List<bool> { true, false, true, false, true };
             _ioPtr.MouseClicked = clicked;
-            var result = _ioPtr.MouseClicked;
+            List<bool> result = _ioPtr.MouseClicked;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(clicked[i], result[i]);
@@ -680,9 +680,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDoubleClicked_GetSet_ShouldRoundtrip()
         {
-            var dblClicked = new List<bool> { false, true, false, true, false };
+            List<bool> dblClicked = new List<bool> { false, true, false, true, false };
             _ioPtr.MouseDoubleClicked = dblClicked;
-            var result = _ioPtr.MouseDoubleClicked;
+            List<bool> result = _ioPtr.MouseDoubleClicked;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(dblClicked[i], result[i]);
@@ -695,9 +695,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseClickedCount_GetSet_ShouldRoundtrip()
         {
-            var counts = new List<ushort> { 1, 2, 3, 4, 5 };
+            List<ushort> counts = new List<ushort> { 1, 2, 3, 4, 5 };
             _ioPtr.MouseClickedCount = counts;
-            var result = _ioPtr.MouseClickedCount;
+            List<ushort> result = _ioPtr.MouseClickedCount;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(counts[i], result[i]);
@@ -710,9 +710,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseClickedLastCount_GetSet_ShouldRoundtrip()
         {
-            var counts = new List<ushort> { 5, 4, 3, 2, 1 };
+            List<ushort> counts = new List<ushort> { 5, 4, 3, 2, 1 };
             _ioPtr.MouseClickedLastCount = counts;
-            var result = _ioPtr.MouseClickedLastCount;
+            List<ushort> result = _ioPtr.MouseClickedLastCount;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(counts[i], result[i]);
@@ -725,9 +725,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseReleased_GetSet_ShouldRoundtrip()
         {
-            var released = new List<bool> { true, true, false, false, true };
+            List<bool> released = new List<bool> { true, true, false, false, true };
             _ioPtr.MouseReleased = released;
-            var result = _ioPtr.MouseReleased;
+            List<bool> result = _ioPtr.MouseReleased;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(released[i], result[i]);
@@ -740,9 +740,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDownOwned_GetSet_ShouldRoundtrip()
         {
-            var owned = new List<bool> { false, false, true, true, false };
+            List<bool> owned = new List<bool> { false, false, true, true, false };
             _ioPtr.MouseDownOwned = owned;
-            var result = _ioPtr.MouseDownOwned;
+            List<bool> result = _ioPtr.MouseDownOwned;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(owned[i], result[i]);
@@ -755,9 +755,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDownOwnedUnlessPopupClose_GetSet_ShouldRoundtrip()
         {
-            var owned = new List<bool> { true, false, true, false, true };
+            List<bool> owned = new List<bool> { true, false, true, false, true };
             _ioPtr.MouseDownOwnedUnlessPopupClose = owned;
-            var result = _ioPtr.MouseDownOwnedUnlessPopupClose;
+            List<bool> result = _ioPtr.MouseDownOwnedUnlessPopupClose;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(owned[i], result[i]);
@@ -770,9 +770,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDownDuration_GetSet_ShouldRoundtrip()
         {
-            var durations = new List<float> { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f };
+            List<float> durations = new List<float> { 0.1f, 0.2f, 0.3f, 0.4f, 0.5f };
             _ioPtr.MouseDownDuration = durations;
-            var result = _ioPtr.MouseDownDuration;
+            List<float> result = _ioPtr.MouseDownDuration;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(durations[i], result[i]);
@@ -785,9 +785,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDownDurationPrev_GetSet_ShouldRoundtrip()
         {
-            var durations = new List<float> { 0.5f, 0.4f, 0.3f, 0.2f, 0.1f };
+            List<float> durations = new List<float> { 0.5f, 0.4f, 0.3f, 0.2f, 0.1f };
             _ioPtr.MouseDownDurationPrev = durations;
-            var result = _ioPtr.MouseDownDurationPrev;
+            List<float> result = _ioPtr.MouseDownDurationPrev;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(durations[i], result[i]);
@@ -800,9 +800,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void MouseDragMaxDistanceSqr_GetSet_ShouldRoundtrip()
         {
-            var distances = new List<float> { 1f, 2f, 3f, 4f, 5f };
+            List<float> distances = new List<float> { 1f, 2f, 3f, 4f, 5f };
             _ioPtr.MouseDragMaxDistanceSqr = distances;
-            var result = _ioPtr.MouseDragMaxDistanceSqr;
+            List<float> result = _ioPtr.MouseDragMaxDistanceSqr;
             for (int i = 0; i < 5; i++)
             {
                 Assert.Equal(distances[i], result[i]);
@@ -815,8 +815,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void Constructor_FromImGuiIo_ShouldAllocateAndMarshal()
         {
-            var src = new ImGuiIo { DeltaTime = 0.033f };
-            var ptr = new ImGuiIoPtr(src);
+            ImGuiIo src = new ImGuiIo { DeltaTime = 0.033f };
+            ImGuiIoPtr ptr = new ImGuiIoPtr(src);
             Assert.NotEqual(IntPtr.Zero, ptr.NativePtr);
         }
 
@@ -837,7 +837,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void BackendRendererName_Get_ShouldReturnDefault()
         {
-            var name = _ioPtr.BackendRendererName;
+            NullTerminatedString name = _ioPtr.BackendRendererName;
             Assert.NotNull(name);
         }
 
@@ -847,7 +847,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ReadOnly_Fonts_ShouldReturnImFontAtlasPtr()
         {
-            var fonts = _ioPtr.Fonts;
+            ImFontAtlasPtr fonts = _ioPtr.Fonts;
             Assert.NotNull(fonts);
         }
 
@@ -857,7 +857,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ReadOnly_FontDefault_ShouldReturnImFontPtr()
         {
-            var font = _ioPtr.FontDefault;
+            ImFontPtr font = _ioPtr.FontDefault;
             Assert.NotNull(font);
         }
 
@@ -867,10 +867,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void NavInputs_GetSet_ShouldRoundtrip()
         {
-            var navInputs = new List<float>(16);
+            List<float> navInputs = new List<float>(16);
             for (int i = 0; i < 16; i++) navInputs.Add(i * 0.1f);
             _ioPtr.NavInputs = navInputs;
-            var result = _ioPtr.NavInputs;
+            List<float> result = _ioPtr.NavInputs;
             for (int i = 0; i < 16; i++)
             {
                 Assert.Equal(navInputs[i], result[i]);
@@ -883,10 +883,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void KeyMap_Set_ShouldUpdateValue()
         {
-            var keyMap = new List<int>(652);
+            List<int> keyMap = new List<int>(652);
             for (int i = 0; i < 652; i++) keyMap.Add(i);
             _ioPtr.KeyMap = keyMap;
-            var result = _ioPtr.KeyMap;
+            List<int> result = _ioPtr.KeyMap;
             for (int i = 0; i < 10; i++)
             {
                 Assert.Equal(i, result[i]);

@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void FindMinSeparation_DefaultCase_ReturnsZero()
         {
-            var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
+            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
             Assert.Equal(0.0f, sep, 5);
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void Evaluate_DefaultCase_ReturnsZero()
         {
-            var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
+            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.Evaluate(0, 0, 0.0f);
             Assert.Equal(0.0f, sep, 5);

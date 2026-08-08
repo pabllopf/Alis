@@ -1,6 +1,7 @@
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Timers;
 using Alis.Core.Audio.Players;
 using Xunit;
 
@@ -116,7 +117,7 @@ namespace Alis.Core.Audio.Test.Players
                 BindingFlags.NonPublic | BindingFlags.Instance);
             method?.Invoke(player, new object[] { "Status test.wav Length" });
 
-            var timer = (System.Timers.Timer)timerField?.GetValue(player);
+            Timer timer = (System.Timers.Timer)timerField?.GetValue(player);
             Assert.Equal(5000, timer?.Interval);
         }
 

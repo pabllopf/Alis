@@ -1,4 +1,6 @@
 // license header
+
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
@@ -89,7 +91,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         [RequireCSfmlSystemFact]
         public void SetActive_NoParam_CallsSetActiveTrue()
         {
-            var method = typeof(Window).GetMethod("SetActive", System.Type.EmptyTypes);
+            MethodInfo method = typeof(Window).GetMethod("SetActive", System.Type.EmptyTypes);
             Assert.NotNull(method);
         }
 

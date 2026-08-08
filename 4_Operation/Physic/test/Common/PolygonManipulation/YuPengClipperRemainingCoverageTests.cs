@@ -24,7 +24,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
                 new Vector2F(0f, 0f),
                 new Vector2F(10f, 0f)
             };
-            var method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
+            MethodInfo method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
                 BindingFlags.Static | BindingFlags.NonPublic);
             method.Invoke(null, new object[] { verts, new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(20f, 0f) });
             Assert.Equal(2, verts.Count);
@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
                 new Vector2F(0f, 0f),
                 new Vector2F(10f, 0f)
             };
-            var method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
+            MethodInfo method = typeof(YuPengClipper).GetMethod("InsertIntersectionPoint",
                 BindingFlags.Static | BindingFlags.NonPublic);
             method.Invoke(null, new object[] { verts, new Vector2F(0f, 0f), new Vector2F(10f, 0f), new Vector2F(0f, 0f) });
             Assert.Equal(2, verts.Count);

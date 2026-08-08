@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
         [Fact]
         public void Interface_IsImplementedByTimeSetting()
         {
-            var timeSetting = new TimeSetting();
+            TimeSetting timeSetting = new TimeSetting();
             Assert.IsAssignableFrom<ITimeSetting>(timeSetting);
         }
     }

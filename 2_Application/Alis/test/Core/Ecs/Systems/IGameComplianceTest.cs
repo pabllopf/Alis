@@ -1,3 +1,4 @@
+using System.Reflection;
 using Alis.Core.Ecs.Systems;
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace Alis.Test.Core.Ecs.Systems
         [Fact]
         public void Interface_IsImplementedByVideoGame()
         {
-            var game = new VideoGame();
+            VideoGame game = new VideoGame();
             Assert.IsAssignableFrom<IGame>(game);
         }
 
@@ -24,7 +25,7 @@ namespace Alis.Test.Core.Ecs.Systems
         [Fact]
         public void Interface_HasRunAndExitMethods()
         {
-            var methods = typeof(IGame).GetMethods();
+            MethodInfo[] methods = typeof(IGame).GetMethods();
             Assert.Contains(methods, m => m.Name == "Run");
             Assert.Contains(methods, m => m.Name == "Exit");
         }

@@ -1,4 +1,6 @@
 // license header
+
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Xunit;
@@ -25,7 +27,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void IRenderTarget_DefinesSizeProperty()
         {
-            var prop = typeof(IRenderTarget).GetProperty("Size");
+            PropertyInfo prop = typeof(IRenderTarget).GetProperty("Size");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
         }

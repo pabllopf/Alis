@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -65,7 +66,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Image_ConstructorOverloads_Exist()
         {
-            var ctors = typeof(Image).GetConstructors();
+            ConstructorInfo[] ctors = typeof(Image).GetConstructors();
             Assert.Contains(ctors, c => c.GetParameters().Length == 2 && c.GetParameters()[0].ParameterType == typeof(uint) && c.GetParameters()[1].ParameterType == typeof(uint));
             Assert.Contains(ctors, c => c.GetParameters().Length == 3 && c.GetParameters()[0].ParameterType == typeof(uint) && c.GetParameters()[1].ParameterType == typeof(uint) && c.GetParameters()[2].ParameterType == typeof(Color));
             Assert.Contains(ctors, c => c.GetParameters().Length == 1 && c.GetParameters()[0].ParameterType == typeof(string));
@@ -79,7 +80,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Image_StreamConstructor_Exists()
         {
-            var ctor = typeof(Image).GetConstructor(new[] { typeof(Stream) });
+            ConstructorInfo ctor = typeof(Image).GetConstructor(new[] { typeof(Stream) });
             Assert.NotNull(ctor);
         }
 
@@ -89,7 +90,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Image_CopyConstructor_Exists()
         {
-            var ctor = typeof(Image).GetConstructor(new[] { typeof(Image) });
+            ConstructorInfo ctor = typeof(Image).GetConstructor(new[] { typeof(Image) });
             Assert.NotNull(ctor);
         }
 
@@ -99,10 +100,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Image_InternalConstructor_Exists()
         {
-            var ctors = typeof(Image).GetConstructors(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            ConstructorInfo[] ctors = typeof(Image).GetConstructors(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
             Assert.Contains(ctors, c =>
             {
-                var parameters = c.GetParameters();
+                ParameterInfo[] parameters = c.GetParameters();
                 return parameters.Length == 1 && parameters[0].ParameterType == typeof(IntPtr);
             });
         }
@@ -113,7 +114,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Pixels_Property_Exists()
         {
-            var prop = typeof(Image).GetProperty("Pixels");
+            PropertyInfo prop = typeof(Image).GetProperty("Pixels");
             Assert.NotNull(prop);
             Assert.Equal(typeof(byte[]), prop.PropertyType);
         }
@@ -124,7 +125,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Pixels_Property_IsReadOnly()
         {
-            var prop = typeof(Image).GetProperty("Pixels");
+            PropertyInfo prop = typeof(Image).GetProperty("Pixels");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -136,7 +137,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Size_Property_Exists()
         {
-            var prop = typeof(Image).GetProperty("Size");
+            PropertyInfo prop = typeof(Image).GetProperty("Size");
             Assert.NotNull(prop);
         }
 
@@ -146,7 +147,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Size_Property_IsReadOnly()
         {
-            var prop = typeof(Image).GetProperty("Size");
+            PropertyInfo prop = typeof(Image).GetProperty("Size");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.False(prop.CanWrite);
@@ -158,7 +159,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void CPointer_Property_Exists()
         {
-            var prop = typeof(Image).GetProperty("CPointer");
+            PropertyInfo prop = typeof(Image).GetProperty("CPointer");
             Assert.NotNull(prop);
             Assert.Equal(typeof(IntPtr), prop.PropertyType);
         }
@@ -169,7 +170,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void SaveToFile_Method_Exists()
         {
-            var method = typeof(Image).GetMethod("SaveToFile");
+            MethodInfo method = typeof(Image).GetMethod("SaveToFile");
             Assert.NotNull(method);
             Assert.Equal(typeof(bool), method.ReturnType);
         }
@@ -180,7 +181,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void CreateMaskFromColor_SingleParam_Exists()
         {
-            var method = typeof(Image).GetMethod("CreateMaskFromColor", new[] { typeof(Color) });
+            MethodInfo method = typeof(Image).GetMethod("CreateMaskFromColor", new[] { typeof(Color) });
             Assert.NotNull(method);
         }
 
@@ -190,7 +191,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void CreateMaskFromColor_TwoParams_Exists()
         {
-            var method = typeof(Image).GetMethod("CreateMaskFromColor", new[] { typeof(Color), typeof(byte) });
+            MethodInfo method = typeof(Image).GetMethod("CreateMaskFromColor", new[] { typeof(Color), typeof(byte) });
             Assert.NotNull(method);
         }
 
@@ -231,7 +232,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void ToString_Method_Exists()
         {
-            var method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
+            MethodInfo method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
             Assert.NotNull(method);
         }
 
@@ -241,7 +242,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void ToString_IsOverride()
         {
-            var method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
+            MethodInfo method = typeof(Image).GetMethod("ToString", Type.EmptyTypes);
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);
@@ -253,7 +254,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Destroy_Method_Exists()
         {
-            var method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
+            MethodInfo method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
             Assert.NotNull(method);
         }
 
@@ -263,7 +264,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Destroy_IsOverride()
         {
-            var method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
+            MethodInfo method = typeof(Image).GetMethod("Destroy", new[] { typeof(bool) });
             Assert.NotNull(method);
             Assert.True(method.IsVirtual);
             Assert.NotEqual(method.GetBaseDefinition(), method);

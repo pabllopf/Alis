@@ -20,7 +20,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void Interface_IsImplementedBySetting()
         {
-            var setting = new Setting();
+            Setting setting = new Setting();
             Assert.IsAssignableFrom<ISetting>(setting);
         }
 
@@ -30,7 +30,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void Interface_HasAllSettingProperties()
         {
-            var setting = new Setting();
+            Setting setting = new Setting();
             Assert.NotNull(setting.General);
             Assert.NotNull(setting.Audio);
             Assert.NotNull(setting.Graphic);
@@ -45,7 +45,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void IAudioSetting_IsImplemented()
         {
-            var audio = new AudioSetting();
+            AudioSetting audio = new AudioSetting();
             Assert.IsAssignableFrom<IAudioSetting>(audio);
         }
 
@@ -55,7 +55,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void IGeneralSetting_IsImplemented()
         {
-            var general = new GeneralSetting();
+            GeneralSetting general = new GeneralSetting();
             Assert.IsAssignableFrom<IGeneralSetting>(general);
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void IGraphicSetting_IsImplemented()
         {
-            var graphic = new GraphicSetting();
+            GraphicSetting graphic = new GraphicSetting();
             Assert.IsAssignableFrom<IGraphicSetting>(graphic);
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void IInputSetting_IsImplemented()
         {
-            var input = new InputSetting();
+            InputSetting input = new InputSetting();
             Assert.IsAssignableFrom<IInputSetting>(input);
         }
 
@@ -85,7 +85,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void INetworkSetting_IsImplemented()
         {
-            var network = new NetworkSetting();
+            NetworkSetting network = new NetworkSetting();
             Assert.IsAssignableFrom<INetworkSetting>(network);
         }
 
@@ -95,7 +95,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         [Fact]
         public void IPhysicSetting_IsImplemented()
         {
-            var physic = new PhysicSetting();
+            PhysicSetting physic = new PhysicSetting();
             Assert.IsAssignableFrom<IPhysicSetting>(physic);
         }
     }

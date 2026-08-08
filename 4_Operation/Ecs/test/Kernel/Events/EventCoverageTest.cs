@@ -15,7 +15,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void ComponentEvent_IsStruct()
         {
-            var evt = new ComponentEvent();
+            ComponentEvent evt = new ComponentEvent();
             Assert.True(typeof(ComponentEvent).IsValueType);
         }
 
@@ -45,7 +45,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         /// </summary>
         [Fact] public void GenericEvent_CanBeConstructed()
         {
-            var evt = new GenericEvent();
+            GenericEvent evt = new GenericEvent();
             Assert.NotNull(evt);
         }
 
@@ -66,7 +66,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
         [Fact] public void DeleteComponent_CanProcess()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position(), new Velocity());
+            GameObject go = scene.Create(new Position(), new Velocity());
             go.Remove<Velocity>();
             Assert.True(go.IsAlive);
         }
@@ -89,7 +89,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             using Scene scene = new();
             scene.Create(new Position { X = 42 });
             Query query = scene.Query<With<Position>>();
-            foreach (var tuple in query.EnumerateWithEntities<Position>())
+            foreach (Ecs.Systems.GameObjectRefTuple<Position> tuple in query.EnumerateWithEntities<Position>())
             {
                 Assert.Equal(42, tuple.Item1.Value.X);
             }

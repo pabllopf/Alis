@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         {
             MethodInfo method = typeof(GlShaderProgram).GetMethod("TypeFromAttributeType", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
-            var ex = Assert.Throws<TargetInvocationException>(() => method.Invoke(null, new object[] { ActiveAttribType.FloatMat3 }));
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() => method.Invoke(null, new object[] { ActiveAttribType.FloatMat3 }));
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
 
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         {
             MethodInfo method = typeof(GlShaderProgram).GetMethod("TypeFromUniformType", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
-            var ex = Assert.Throws<TargetInvocationException>(() => method.Invoke(null, new object[] { ActiveUniformType.FloatMat3 }));
+            TargetInvocationException ex = Assert.Throws<TargetInvocationException>(() => method.Invoke(null, new object[] { ActiveUniformType.FloatMat3 }));
             Assert.IsType<InvalidOperationException>(ex.InnerException);
         }
 

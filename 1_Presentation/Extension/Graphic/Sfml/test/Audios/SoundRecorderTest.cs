@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Constructor_ShouldSetCPointerToNonZero()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.NotEqual(IntPtr.Zero, recorder.CPointer);
         }
 
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void SampleRate_ShouldReturnValue()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.True(recorder.SampleRate > 0);
         }
 
@@ -163,7 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void ChannelCount_Default_ShouldBeOne()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.Equal(1u, recorder.ChannelCount);
         }
 
@@ -173,7 +173,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void ChannelCount_Set_ShouldReflectChange()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             recorder.ChannelCount = 2u;
             Assert.Equal(2u, recorder.ChannelCount);
         }
@@ -184,7 +184,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void ToString_ShouldContainSoundRecorder()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.Contains("[SoundRecorder]", recorder.ToString());
         }
 
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void ToString_ShouldContainSampleRate()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.Contains("SampleRate(", recorder.ToString());
         }
 
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Start_Default_ShouldReturnBool()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             bool result = recorder.Start();
             if (result)
             {
@@ -219,7 +219,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Start_WithSampleRate_ShouldReturnBool()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             bool result = recorder.Start(22050);
             if (result)
             {
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Stop_ShouldNotThrow()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             recorder.Stop();
         }
 
@@ -244,7 +244,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void SetProcessingInterval_ThrowsEntryPointNotFound()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             Assert.Throws<EntryPointNotFoundException>(() => recorder.ExposeSetProcessingInterval(SfmlTime.FromMilliseconds(50)));
         }
 
@@ -254,7 +254,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void SetDevice_WithDefaultDevice_ShouldReturnTrue()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             string defaultDevice = Alis.Extension.Graphic.Sfml.Audios.SoundRecorder.DefaultDevice;
             bool result = recorder.SetDevice(defaultDevice);
             Assert.True(result);
@@ -266,7 +266,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void GetDevice_ShouldReturnString()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             string device = recorder.GetDevice();
             Assert.NotNull(device);
             Assert.NotEqual(string.Empty, device);
@@ -296,7 +296,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Dispose_ShouldSetCPointerToZero()
         {
-            var recorder = new TestSoundRecorder();
+            TestSoundRecorder recorder = new TestSoundRecorder();
             IntPtr ptr = recorder.CPointer;
             Assert.NotEqual(IntPtr.Zero, ptr);
             recorder.Dispose();
@@ -309,7 +309,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Destroy_ShouldSetCPointerToZero()
         {
-            var recorder = new TestSoundRecorder();
+            TestSoundRecorder recorder = new TestSoundRecorder();
             IntPtr ptr = recorder.CPointer;
             Assert.NotEqual(IntPtr.Zero, ptr);
             recorder.Destroy(true);
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void SetDevice_WithInvalidName_ShouldReturnFalse()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             bool result = recorder.SetDevice("NonExistentDevice_XYZ");
             Assert.False(result);
         }
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         [RequireCSfmlAudioFact]
         public void Start_AndStop_ShouldToggleRecording()
         {
-            using var recorder = new TestSoundRecorder();
+            using TestSoundRecorder recorder = new TestSoundRecorder();
             bool started = recorder.Start(44100);
             if (started)
             {

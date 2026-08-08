@@ -80,7 +80,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutMultiple_ContainsCorrectParts()
         {
-            var options = new FilePickerOptions("Open File")
+            FilePickerOptions options = new FilePickerOptions("Open File")
             {
                 DefaultPath = "/Users/test"
             };
@@ -100,7 +100,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithMultiple_ContainsMultipleAllowed()
         {
-            var options = new FilePickerOptions("Open Files");
+            FilePickerOptions options = new FilePickerOptions("Open Files");
 
             string script = MacFilePicker.BuildOpenFileScript(options, true);
 
@@ -114,7 +114,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutTitle_OmitsPrompt()
         {
-            var options = new FilePickerOptions { Title = null };
+            FilePickerOptions options = new FilePickerOptions { Title = null };
 
             string script = MacFilePicker.BuildOpenFileScript(options, false);
 
@@ -128,7 +128,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildOpenFileScript_WithoutDefaultPath_OmitsLocation()
         {
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             string script = MacFilePicker.BuildOpenFileScript(options, false);
 
@@ -141,7 +141,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithAllOptions_ContainsCorrectParts()
         {
-            var options = new FilePickerOptions("Select Folder")
+            FilePickerOptions options = new FilePickerOptions("Select Folder")
             {
                 DefaultPath = "/Users/test"
             };
@@ -160,7 +160,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithoutTitle_OmitsPrompt()
         {
-            var options = new FilePickerOptions { Title = null };
+            FilePickerOptions options = new FilePickerOptions { Title = null };
 
             string script = MacFilePicker.BuildFolderSelectScript(options);
 
@@ -174,7 +174,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderSelectScript_WithoutDefaultPath_OmitsLocation()
         {
-            var options = new FilePickerOptions("Select");
+            FilePickerOptions options = new FilePickerOptions("Select");
 
             string script = MacFilePicker.BuildFolderSelectScript(options);
 
@@ -269,7 +269,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFile_NullOptions_ReturnsError()
         {
-            var picker = new MacFilePicker();
+            MacFilePicker picker = new MacFilePicker();
 
             FilePickerResult result = picker.PickFile(null);
 
@@ -284,7 +284,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFiles_NullOptions_ReturnsError()
         {
-            var picker = new MacFilePicker();
+            MacFilePicker picker = new MacFilePicker();
 
             FilePickerResult result = picker.PickFiles(null);
 
@@ -299,7 +299,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFolder_NullOptions_ReturnsError()
         {
-            var picker = new MacFilePicker();
+            MacFilePicker picker = new MacFilePicker();
 
             FilePickerResult result = picker.PickFolder(null);
 
@@ -316,8 +316,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/file.txt";
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test File");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -333,8 +333,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/a.txt\n/Users/mock/b.txt";
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -350,8 +350,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/Users/mock/folder";
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -368,8 +368,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test File");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -386,8 +386,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -404,8 +404,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         {
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => throw new InvalidOperationException("Simulated failure");
 
-            var picker = new MacFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            MacFilePicker picker = new MacFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 

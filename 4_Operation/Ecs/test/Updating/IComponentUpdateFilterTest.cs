@@ -14,7 +14,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void Interface_CanBeImplemented()
         {
-            var filter = new TestUpdateFilter();
+            TestUpdateFilter filter = new TestUpdateFilter();
             Assert.NotNull(filter);
         }
 
@@ -23,7 +23,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void UpdateSubset_WithEmptySpan_DoesNotThrow()
         {
-            var filter = new TestUpdateFilter();
+            TestUpdateFilter filter = new TestUpdateFilter();
             ReadOnlySpan<ArchetypeDeferredUpdateRecord> span = [];
             filter.UpdateSubset(span);
             Assert.Equal(1, filter.CallCount);
@@ -34,7 +34,7 @@ namespace Alis.Core.Ecs.Test.Updating
         /// </summary>
         [Fact] public void Interface_CanBeUsedAsParameter()
         {
-            var filter = new TestUpdateFilter();
+            TestUpdateFilter filter = new TestUpdateFilter();
             UseFilter(filter);
             Assert.Equal(1, filter.CallCount);
         }

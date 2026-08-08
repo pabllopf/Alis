@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
@@ -366,7 +367,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void PrimitiveType_Property_Exists()
         {
-            var prop = typeof(VertexArray).GetProperty("PrimitiveType");
+            PropertyInfo prop = typeof(VertexArray).GetProperty("PrimitiveType");
             Assert.NotNull(prop);
             Assert.True(prop.CanRead);
             Assert.True(prop.CanWrite);
@@ -387,7 +388,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Indexer_Exists()
         {
-            var prop = typeof(VertexArray).GetProperty("Item");
+            PropertyInfo prop = typeof(VertexArray).GetProperty("Item");
             Assert.NotNull(prop);
         }
 

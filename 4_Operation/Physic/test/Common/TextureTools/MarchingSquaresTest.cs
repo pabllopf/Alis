@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
@@ -1588,7 +1589,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
                 for (int y = 0; y < 10; y++)
                     fs[x, y] = 1;
 
-            var ctx = Activator.CreateInstance(marchCellCtxType,
+            object ctx = Activator.CreateInstance(marchCellCtxType,
                 new object[] { f, fs, ps, domain, 5, 2f, 2, true, ret, 2f });
 
             object pre = null;
@@ -1736,14 +1737,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             // All negative fs in first cell -> key = 15 -> non-zero polygon
             fs[0, 0] = -1; fs[1, 0] = -1; fs[1, 1] = -1; fs[0, 1] = -1;
 
-            var ctx = Activator.CreateInstance(marchCellCtxType,
+            object ctx = Activator.CreateInstance(marchCellCtxType,
                 new object[] { f, fs, ps, domain, 5, 2f, 2, false, ret, 2f });
 
             object pre = null;
             processCell.Invoke(null, new object[] { 0, 0f, 2f, pre, ctx });
 
             MethodInfo getList = polyListType.GetMethod("GetListOfElements");
-            var elements = (System.Collections.IList)getList.Invoke(ret, null);
+            IList elements = (System.Collections.IList)getList.Invoke(ret, null);
             Assert.NotEmpty(elements);
         }
 
@@ -1767,14 +1768,14 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             fs[0, 0] = -1; fs[1, 0] = -1; fs[1, 1] = -1; fs[0, 1] = -1;
 
-            var ctx = Activator.CreateInstance(marchCellCtxType,
+            object ctx = Activator.CreateInstance(marchCellCtxType,
                 new object[] { f, fs, ps, domain, 5, 2f, 2, true, ret, 2f });
 
             object pre = null;
             processCell.Invoke(null, new object[] { 0, 0f, 2f, pre, ctx });
 
             MethodInfo getList = polyListType.GetMethod("GetListOfElements");
-            var elements = (System.Collections.IList)getList.Invoke(ret, null);
+            IList elements = (System.Collections.IList)getList.Invoke(ret, null);
             Assert.NotEmpty(elements);
         }
 

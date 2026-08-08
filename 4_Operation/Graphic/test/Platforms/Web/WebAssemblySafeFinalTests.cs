@@ -16,7 +16,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [WebOnly]
         public void GameContextPresets_Game2D_Works()
         {
-            var c = GameContextPresets.Game2D();
+            WebAssemblyConfiguration c = GameContextPresets.Game2D();
             Assert.Equal(1280, c.WindowWidth);
             Assert.Equal("2D Game", c.WindowTitle);
         }
@@ -27,7 +27,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [WebOnly]
         public void GameContextPresets_Game3D_Works()
         {
-            var c = GameContextPresets.Game3D();
+            WebAssemblyConfiguration c = GameContextPresets.Game3D();
             Assert.Equal(1920, c.WindowWidth);
             Assert.Equal("3D Game", c.WindowTitle);
         }
@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [WebOnly]
         public void GameContextPresets_PuzzleGame_Works()
         {
-            var c = GameContextPresets.PuzzleGame();
+            WebAssemblyConfiguration c = GameContextPresets.PuzzleGame();
             Assert.Equal(800, c.WindowWidth);
         }
 
@@ -48,7 +48,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         [WebOnly]
         public void GameContextPresets_MobileGame_Works()
         {
-            var c = GameContextPresets.MobileGame();
+            WebAssemblyConfiguration c = GameContextPresets.MobileGame();
             Assert.Equal(720, c.WindowWidth);
             Assert.True(c.TouchInputEnabled);
         }
@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         /// Tests that get supported platforms contains
         /// </summary>
         [WebOnly]
-        public void GetSupportedPlatforms_Contains() { var p = WebAssemblyPlatformIntegration.GetSupportedPlatforms(); Assert.Contains("WebAssembly", p); Assert.Contains("WASM", p); }
+        public void GetSupportedPlatforms_Contains() { string[] p = WebAssemblyPlatformIntegration.GetSupportedPlatforms(); Assert.Contains("WebAssembly", p); Assert.Contains("WASM", p); }
         /// <summary>
         /// Tests that get platform valid returns
         /// </summary>

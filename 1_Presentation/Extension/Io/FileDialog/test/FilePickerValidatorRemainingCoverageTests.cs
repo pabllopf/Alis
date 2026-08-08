@@ -18,7 +18,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void IsValidFilePath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnFalse()
         {
-            var logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -37,7 +37,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void IsValidDirectoryPath_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnFalse()
         {
-            var logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -56,7 +56,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void IsFileExtensionAllowed_WhenLoggerThrowsInsideTry_ShouldCatchAndReturnFalse()
         {
-            var logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowWarningOnCall = 1 };
             Logger.SetDefaultLogger(logger);
             try
             {

@@ -17,7 +17,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithInvalidIPAddress_ThrowsFormatException()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://999.999.999.999:1234"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://999.999.999.999:1234"));
             await Assert.ThrowsAsync<FormatException>(() => transport.StartAsync());
         }
 
@@ -27,7 +27,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithInvalidIPAddress_ResetsStateToDisconnected()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://999.999.999.999:1234"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://999.999.999.999:1234"));
             try
             {
                 await transport.StartAsync();
@@ -44,7 +44,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithInvalidHostName_ThrowsFormatException()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://invalid-host-name-that-cannot-parse:1234"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://invalid-host-name-that-cannot-parse:1234"));
             await Assert.ThrowsAsync<FormatException>(() => transport.StartAsync());
         }
 
@@ -54,7 +54,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithInvalidHostName_ResetsStateToDisconnected()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://invalid-host-name-that-cannot-parse:1234"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://invalid-host-name-that-cannot-parse:1234"));
             try
             {
                 await transport.StartAsync();
@@ -71,7 +71,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithAlreadyStartedTransport_ThrowsInvalidOperationException()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18891"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18891"));
             await transport.StartAsync();
             InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => transport.StartAsync());
             Assert.Contains("already started", ex.Message, StringComparison.OrdinalIgnoreCase);
@@ -83,8 +83,8 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithPortInUse_ThrowsSocketException()
         {
-            using var transport1 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18892"));
-            using var transport2 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18892"));
+            using WebSocketNetworkTransport transport1 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18892"));
+            using WebSocketNetworkTransport transport2 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18892"));
             await transport1.StartAsync();
             System.Net.Sockets.SocketException ex = await Assert.ThrowsAsync<System.Net.Sockets.SocketException>(() => transport2.StartAsync());
             Assert.Contains("already in use", ex.Message, StringComparison.OrdinalIgnoreCase);
@@ -96,8 +96,8 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StartAsync_WithPortInUse_ResetsStateToDisconnected()
         {
-            using var transport1 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18894"));
-            using var transport2 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18894"));
+            using WebSocketNetworkTransport transport1 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18894"));
+            using WebSocketNetworkTransport transport2 = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18894"));
             await transport1.StartAsync();
             try
             {
@@ -115,7 +115,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task StopAsync_AfterStart_TransitionsToDisconnected()
         {
-            using var transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18893"));
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport(new Uri("ws://127.0.0.1:18893"));
             await transport.StartAsync();
             await transport.StopAsync();
             Assert.Equal(NetworkTransportState.Disconnected, transport.State);
@@ -145,7 +145,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task BroadcastAsync_WithExceptClientIdAndNoClients_DoesNotThrow()
         {
-            using var transport = new WebSocketNetworkTransport();
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
             NetworkMessageEnvelope envelope = new NetworkMessageEnvelope { MessageId = "test" };
             Exception ex = await Record.ExceptionAsync(() => transport.BroadcastAsync(envelope, "non-existent-client"));
             Assert.Null(ex);
@@ -157,7 +157,7 @@ namespace Alis.Extension.Network.Test.Core
         [Fact]
         public async Task BroadcastAsync_WithCancellationToken_DoesNotThrow()
         {
-            using var transport = new WebSocketNetworkTransport();
+            using WebSocketNetworkTransport transport = new WebSocketNetworkTransport();
             NetworkMessageEnvelope envelope = new NetworkMessageEnvelope { MessageId = "test" };
             using CancellationTokenSource cts = new CancellationTokenSource();
             Exception ex = await Record.ExceptionAsync(() => transport.BroadcastAsync(envelope, null, cts.Token));

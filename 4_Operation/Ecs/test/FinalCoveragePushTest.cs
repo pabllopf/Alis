@@ -67,14 +67,14 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void Scene_CreateMany_1To8Arities_AllWork()
         {
             using Scene scene = new();
-            var c1 = scene.CreateMany<Position>(2);
-            var c2 = scene.CreateMany<Position, Velocity>(2);
-            var c3 = scene.CreateMany<Position, Velocity, Health>(2);
-            var c4 = scene.CreateMany<Position, Velocity, Health, Transform>(2);
-            var c5 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
-            var c6 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
-            var c7 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
-            var c8 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
+            ChunkTuple<Position> c1 = scene.CreateMany<Position>(2);
+            ChunkTuple<Position, Velocity> c2 = scene.CreateMany<Position, Velocity>(2);
+            ChunkTuple<Position, Velocity, Health> c3 = scene.CreateMany<Position, Velocity, Health>(2);
+            ChunkTuple<Position, Velocity, Health, Transform> c4 = scene.CreateMany<Position, Velocity, Health, Transform>(2);
+            ChunkTuple<Position, Velocity, Health, Transform, TestComponent> c5 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent>(2);
+            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> c6 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>(2);
+            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> c7 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>(2);
+            ChunkTuple<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> c8 = scene.CreateMany<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>(2);
             Assert.Equal(2, c1.Span.Length);
             Assert.Equal(2, c8.Span1.Length);
         }
@@ -86,10 +86,10 @@ namespace Alis.Core.Ecs.Test
         {
             using Scene scene = new();
             scene.Create(new Position(), new Velocity(), new Health(), new Transform());
-            var q1 = scene.Query<With<Position>>();
-            var q2 = scene.Query<With<Position>, With<Velocity>>();
-            var q3 = scene.Query<With<Position>, With<Velocity>, With<Health>>();
-            var q4 = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
+            Query q1 = scene.Query<With<Position>>();
+            Query q2 = scene.Query<With<Position>, With<Velocity>>();
+            Query q3 = scene.Query<With<Position>, With<Velocity>, With<Health>>();
+            Query q4 = scene.Query<With<Position>, With<Velocity>, With<Health>, With<Transform>>();
             Assert.NotNull(q1); Assert.NotNull(q2); Assert.NotNull(q3); Assert.NotNull(q4);
         }
 
@@ -145,8 +145,8 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentRegistry_GetComponentId_Works()
         {
-            var id1 = Component<Position>.Id;
-            var id2 = Component<Velocity>.Id;
+            ComponentId id1 = Component<Position>.Id;
+            ComponentId id2 = Component<Velocity>.Id;
             Assert.NotEqual(id1.RawIndex, id2.RawIndex);
         }
 
@@ -155,8 +155,8 @@ namespace Alis.Core.Ecs.Test
         /// </summary>
         [Fact] public void ComponentRegistry_SameType_ReturnsConsistentId()
         {
-            var id1 = Component<Health>.Id;
-            var id2 = Component<Health>.Id;
+            ComponentId id1 = Component<Health>.Id;
+            ComponentId id2 = Component<Health>.Id;
             Assert.Equal(id1.RawIndex, id2.RawIndex);
         }
 

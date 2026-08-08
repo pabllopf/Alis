@@ -23,7 +23,7 @@ namespace Alis.Test.Core.Ecs.Systems.Scope
         [Fact]
         public void Interface_CanBeImplemented()
         {
-            var context = new TestContext();
+            TestContext context = new TestContext();
             Assert.IsAssignableFrom<IContext>(context);
         }
 

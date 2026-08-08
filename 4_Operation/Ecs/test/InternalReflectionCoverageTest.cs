@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs.Test
             Archetype archetype = scene.DefaultArchetype;
             Fields fields = archetype.Data;
 
-            var method = typeof(Fields).GetMethod("GetComponentDataReference",
+            MethodInfo method = typeof(Fields).GetMethod("GetComponentDataReference",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.NotNull(method);
             Assert.NotNull(fields.Map);
@@ -161,10 +161,10 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(archetypeT);
 
             Type closed = archetypeT.MakeGenericType(typeof(Position));
-            var idField = closed.GetField("Id", BindingFlags.Static | BindingFlags.Public);
+            FieldInfo idField = closed.GetField("Id", BindingFlags.Static | BindingFlags.Public);
             Assert.NotNull(idField);
 
-            var id = idField.GetValue(null);
+            object id = idField.GetValue(null);
             Assert.NotNull(id);
         }
 
@@ -179,11 +179,11 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(archetypeT);
 
             Type closed = archetypeT.MakeGenericType(typeof(Position));
-            var field = closed.GetField("ArchetypeComponentIDs",
+            FieldInfo field = closed.GetField("ArchetypeComponentIDs",
                 BindingFlags.Static | BindingFlags.Public);
             Assert.NotNull(field);
 
-            var val = field.GetValue(null);
+            object val = field.GetValue(null);
             Assert.NotNull(val);
         }
 
@@ -198,7 +198,7 @@ namespace Alis.Core.Ecs.Test
             Assert.NotNull(archetypeT);
 
             Type closed = archetypeT.MakeGenericType(typeof(Position));
-            var method = closed.GetMethod("CreateNewOrGetExistingArchetypes",
+            MethodInfo method = closed.GetMethod("CreateNewOrGetExistingArchetypes",
                 BindingFlags.Static | BindingFlags.NonPublic);
             Assert.NotNull(method);
 
@@ -229,7 +229,7 @@ namespace Alis.Core.Ecs.Test
         public void Component_StoreAndGet_HandleWorks()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position { X = 100 });
+            GameObject go = scene.Create(new Position { X = 100 });
             ComponentHandle handle = Component<Position>.StoreComponent(in go.Get<Position>());
             Assert.True(typeof(ComponentHandle).IsValueType);
             handle.Dispose();

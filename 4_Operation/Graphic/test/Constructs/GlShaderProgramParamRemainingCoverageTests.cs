@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void Constructor_3Params_SetsFieldsCorrectly()
         {
-            var param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "testName");
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "testName");
 
             Assert.Equal(typeof(int), param.Type);
             Assert.Equal(ParamType.Uniform, param.ParamType);
@@ -57,7 +57,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void Constructor_5Params_SetsFieldsCorrectly()
         {
-            var param = new GlShaderProgramParam(typeof(float), ParamType.Attribute, "attrName", 42u, 7);
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Attribute, "attrName", 42u, 7);
 
             Assert.Equal(typeof(float), param.Type);
             Assert.Equal(ParamType.Attribute, param.ParamType);
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void Constructor_5Params_ProgramId_DefaultsToZero()
         {
-            var param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "p", 99u, -1);
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "p", 99u, -1);
 
             Assert.Equal(0u, param.Program);
             Assert.Equal(0u, param.ProgramId);
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void Location_GetSet_Works()
         {
-            var param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
             param.Location = 42;
             Assert.Equal(42, param.Location);
             param.Location = -5;
@@ -96,7 +96,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void Program_GetSet_Works()
         {
-            var param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
             param.Program = 123u;
             Assert.Equal(123u, param.Program);
         }
@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void ProgramId_GetSet_Works()
         {
-            var param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(int), ParamType.Uniform, "n");
             param.ProgramId = 456u;
             Assert.Equal(456u, param.ProgramId);
         }
@@ -132,10 +132,10 @@ namespace Alis.Core.Graphic.Test.Constructs
         [InlineData(100)]
         public void SetValue_FloatArray_InvalidLength_ThrowsArgumentException(int length)
         {
-            var param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
-            var array = new float[length];
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
+            float[] array = new float[length];
 
-            var ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
             Assert.Equal("param", ex.ParamName);
         }
 
@@ -145,10 +145,10 @@ namespace Alis.Core.Graphic.Test.Constructs
         [Fact]
         public void SetValue_FloatArray_LengthZero_ThrowsArgumentException()
         {
-            var param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
-            var array = Array.Empty<float>();
+            GlShaderProgramParam param = new GlShaderProgramParam(typeof(float), ParamType.Uniform, "x");
+            float[] array = Array.Empty<float>();
 
-            var ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
+            ArgumentException ex = Assert.Throws<ArgumentException>(() => param.SetValue(array));
             Assert.Equal("param", ex.ParamName);
         }
     }

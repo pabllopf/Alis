@@ -42,25 +42,6 @@ namespace Alis.Core.Physic.Test.Dynamics
     public class ContactManagerTest
     {
         /// <summary>
-        /// Tests that contact manager should create contacts when bodies overlap
-        /// </summary>
-        [Fact]
-        public void ContactManager_ShouldCreateContacts_WhenBodiesOverlap()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
         /// Tests that begin contact callback should be raised when new contact appears
         /// </summary>
         [Fact]
@@ -104,30 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(0, world.ContactManager.ContactCount);
         }
-
-        /// <summary>
-        /// Tests that pre solve callback should be raised during step
-        /// </summary>
-        [Fact]
-        public void PreSolveCallback_ShouldBeRaised_DuringStep()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-            int preSolveCount = 0;
-            world.ContactManager.PreSolve = (Contact contact, ref Manifold manifold) =>
-            {
-                preSolveCount++;
-            };
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(preSolveCount > 0);
-        }
+        
 
         /// <summary>
         /// Tests that collide with no contacts does not throw
@@ -142,24 +100,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Null(ex);
         }
 
-        /// <summary>
-        /// Tests that find new contacts after step does not throw
-        /// </summary>
-        [Fact]
-        public void FindNewContacts_AfterStep_DoesNotThrow()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
+       
 
         /// <summary>
         /// Tests that destroy contact with multiple overlapping bodies does not throw

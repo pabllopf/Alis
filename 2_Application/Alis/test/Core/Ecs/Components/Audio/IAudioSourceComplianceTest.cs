@@ -1,4 +1,6 @@
+using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Components.Audio;
+using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 
 namespace Alis.Test.Core.Ecs.Components.Audio
@@ -14,7 +16,7 @@ namespace Alis.Test.Core.Ecs.Components.Audio
         [Fact]
         public void Interface_IsImplementedByAudioSource()
         {
-            var source = new AudioSource();
+            AudioSource source = new AudioSource();
             Assert.IsAssignableFrom<IAudioSource>(source);
         }
 
@@ -24,8 +26,8 @@ namespace Alis.Test.Core.Ecs.Components.Audio
         [Fact]
         public void AudioSource_ImplementsIOnStart()
         {
-            var source = new AudioSource();
-            var onStart = source as Alis.Core.Aspect.Fluent.Components.IOnStart;
+            AudioSource source = new AudioSource();
+            IOnStart onStart = source as Alis.Core.Aspect.Fluent.Components.IOnStart;
             Assert.NotNull(onStart);
         }
 
@@ -35,8 +37,8 @@ namespace Alis.Test.Core.Ecs.Components.Audio
         [Fact]
         public void AudioSource_ImplementsIOnUpdate()
         {
-            var source = new AudioSource();
-            var onUpdate = source as Alis.Core.Aspect.Fluent.Components.IOnUpdate;
+            AudioSource source = new AudioSource();
+            IOnUpdate onUpdate = source as Alis.Core.Aspect.Fluent.Components.IOnUpdate;
             Assert.NotNull(onUpdate);
         }
 
@@ -46,8 +48,8 @@ namespace Alis.Test.Core.Ecs.Components.Audio
         [Fact]
         public void AudioSource_ImplementsIOnExit()
         {
-            var source = new AudioSource();
-            var onExit = source as Alis.Core.Aspect.Fluent.Components.IOnExit;
+            AudioSource source = new AudioSource();
+            IOnExit onExit = source as Alis.Core.Aspect.Fluent.Components.IOnExit;
             Assert.NotNull(onExit);
         }
 
@@ -57,8 +59,8 @@ namespace Alis.Test.Core.Ecs.Components.Audio
         [Fact]
         public void AudioSource_HasContextProperty()
         {
-            var source = new AudioSource();
-            var context = source.Context;
+            AudioSource source = new AudioSource();
+            Context context = source.Context;
             Assert.Null(context);
         }
     }

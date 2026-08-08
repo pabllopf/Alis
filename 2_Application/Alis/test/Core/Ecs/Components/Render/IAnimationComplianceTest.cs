@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         [Fact]
         public void Interface_IsImplementedByAnimation()
         {
-            var anim = new Animation();
+            Animation anim = new Animation();
             Assert.IsAssignableFrom<IAnimation>(anim);
         }
 
@@ -24,7 +24,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         [Fact]
         public void Animation_HasDefaultProperties()
         {
-            var anim = new Animation();
+            Animation anim = new Animation();
             Assert.NotNull(anim.Frames);
             Assert.Empty(anim.Frames);
         }

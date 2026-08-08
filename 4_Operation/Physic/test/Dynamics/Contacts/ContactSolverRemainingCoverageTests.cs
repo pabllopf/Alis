@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveFrictionImpulse",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 2,
                     TangentSpeed = 0f,
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 1,
                     Normal = new Vector2F(1f, 0f),
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             vc.Points[0].Ra = new Vector2F(0f, 0f);
             vc.Points[0].Rb = new Vector2F(0f, 0f);
 
-            var points = new FixedArray2<Vector2F>
+            FixedArray2<Vector2F> points = new FixedArray2<Vector2F>
                 {
                     [0] = new Vector2F(0f, 0f)
                 };
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             solver.GetType().GetField("Positions", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(solver, positions);
 
-            var pc = new ContactPositionConstraint
+            ContactPositionConstraint pc = new ContactPositionConstraint
             {
                 IndexA = 0,
                 IndexB = 1,
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 2,
                     Normal = new Vector2F(1f, 0f)
@@ -882,7 +882,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 1,
                     Normal = new Vector2F(1f, 0f),
@@ -890,7 +890,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 };
             vc.Points[0].Ra = new Vector2F(0f, 0f);
             vc.Points[0].Rb = new Vector2F(0f, 0f);
-            var points = new FixedArray2<Vector2F>
+            FixedArray2<Vector2F> points = new FixedArray2<Vector2F>
                 {
                     [0] = new Vector2F(0f, 0f)
                 };
@@ -910,7 +910,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 2,
                     Normal = new Vector2F(1f, 0f)
@@ -948,7 +948,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint
+            ContactVelocityConstraint vc = new ContactVelocityConstraint
                 {
                     PointCount = 2,
                     Normal = new Vector2F(1f, 0f)

@@ -52,7 +52,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "duplicate"
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -73,7 +73,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "fraudulent"
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -94,7 +94,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "requested_by_customer"
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -115,7 +115,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = null
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -136,7 +136,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Reason = "unknown_reason"
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -157,7 +157,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 Amount = 500
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreateRefundAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);
@@ -237,7 +237,7 @@ namespace Alis.Extension.Payment.Stripe.Test
                 CustomerId = "cus_test123"
             };
 
-            var exception = await Record.ExceptionAsync(() => gateway.CreatePaymentIntentAsync(request));
+            Exception exception = await Record.ExceptionAsync(() => gateway.CreatePaymentIntentAsync(request));
             Assert.NotNull(exception);
             Assert.IsNotType<ArgumentException>(exception);
             Assert.IsNotType<ArgumentNullException>(exception);

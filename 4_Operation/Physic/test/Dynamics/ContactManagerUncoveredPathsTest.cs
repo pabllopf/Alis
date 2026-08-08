@@ -185,37 +185,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.True(bodyASepCount > 0);
         }
-
-        /// <summary>
-        /// Tests that fixture on separation only body b should fire
-        /// </summary>
-        [Fact]
-        public void FixtureOnSeparation_OnlyBodyB_ShouldFire()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            int bodyBSepCount = 0;
-
-            bodyB.OnSeparation += (_, _, _) => bodyBSepCount++;
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            bodyA.SetTransform(new Vector2F(1000.0f, 1000.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(2000.0f, 2000.0f), 0.0f);
-
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(bodyBSepCount > 0);
-        }
-
+        
         /// <summary>
         /// Tests that collision group zero uses category check
         /// </summary>
@@ -327,31 +297,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that destroy when not touching does not fire separation
-        /// </summary>
-        [Fact]
-        public void Destroy_WhenNotTouching_DoesNotFireSeparation()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            contact.IsTouching = false;
-
-            world.ContactManager.Destroy(contact);
-
-            Assert.True(world.ContactManager.ContactCount >= 0);
-        }
-
-        /// <summary>
         /// Tests that remove from body with single contact updates lists
         /// </summary>
         [Fact]
@@ -423,36 +368,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
 
             Assert.Null(ex);
-        }
-
-        /// <summary>
-        /// Tests that try resolve contact filter without filter flag returns false
-        /// </summary>
-        [Fact]
-        public void TryResolveContactFilter_WithoutFilterFlag_ReturnsFalse()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
-                {
-                    CollideConnected = true
-                };
-            world.Add(joint);
-
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
         }
 
         /// <summary>

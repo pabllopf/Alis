@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -23,7 +24,7 @@ namespace Alis.Core.Ecs.Test.Collections
         /// </summary>
         [Fact] public void EnumerableHelpers_EmptyEnumerator_Works()
         {
-            var enumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
+            IEnumerator<int> enumerator = EnumerableHelpers.GetEmptyEnumerator<int>();
             Assert.False(enumerator.MoveNext());
         }
 
@@ -35,7 +36,7 @@ namespace Alis.Core.Ecs.Test.Collections
             FastestStack<int> stack = new FastestStack<int>();
             stack.Push(1);
             stack.Push(2);
-            using var enumerator = stack.GetEnumerator();
+            using FastestStack<int>.Enumerator enumerator = stack.GetEnumerator();
             Assert.True(enumerator.MoveNext());
             Assert.Equal(2, enumerator.Current);
         }
@@ -46,7 +47,7 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void FastestStack_Enumerator_Empty_NoMove()
         {
             FastestStack<int> stack = new FastestStack<int>();
-            using var enumerator = stack.GetEnumerator();
+            using FastestStack<int>.Enumerator enumerator = stack.GetEnumerator();
             Assert.False(enumerator.MoveNext());
         }
     }

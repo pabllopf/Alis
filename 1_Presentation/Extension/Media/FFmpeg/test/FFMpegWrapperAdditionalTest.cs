@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -510,7 +511,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void FFMpegWrapper_GetEncoders_ShouldReturnEncoders()
         {
             // Arrange & Act
-            var encoders = FfMpegWrapper.GetEncoders("ffmpeg");
+            Dictionary<string, (string Description, MediaType Type)> encoders = FfMpegWrapper.GetEncoders("ffmpeg");
 
             // Assert
             Assert.NotNull(encoders);
@@ -526,7 +527,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
         public void FFMpegWrapper_GetDecoders_ShouldReturnDecoders()
         {
             // Arrange & Act
-            var decoders = FfMpegWrapper.GetDecoders("ffmpeg");
+            Dictionary<string, (string Description, MediaType Type)> decoders = FfMpegWrapper.GetDecoders("ffmpeg");
 
             // Assert
             Assert.NotNull(decoders);

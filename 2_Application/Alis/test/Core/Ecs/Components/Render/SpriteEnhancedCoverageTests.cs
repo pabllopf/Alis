@@ -371,7 +371,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
             Sprite sprite = new Sprite(context, "test.png", 5);
 
-            var (ctx, name, depth) = sprite;
+            (Context ctx, string name, int depth) = sprite;
 
             Assert.Equal(context, ctx);
             Assert.Equal("test.png", name);

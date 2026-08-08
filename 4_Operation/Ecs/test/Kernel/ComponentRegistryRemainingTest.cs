@@ -1,4 +1,5 @@
 using System;
+using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
@@ -34,7 +35,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void GetExistingOrSetupNewComponent_ForNewType_ReturnsValidDelegates()
         {
-            var result = Component.GetExistingOrSetupNewComponent<Velocity>();
+            (ComponentId ComponentID, IdTable<Velocity> Stack, ComponentDelegates<Velocity>.InitDelegate Initer, ComponentDelegates<Velocity>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Velocity>();
             Assert.NotNull(result.ComponentID);
         }
 
@@ -55,7 +56,7 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
         {
-            var result = Component.GetExistingOrSetupNewComponent<Armor>();
+            (ComponentId ComponentID, IdTable<Armor> Stack, ComponentDelegates<Armor>.InitDelegate Initer, ComponentDelegates<Armor>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Armor>();
 
             Assert.NotNull(result.ComponentID);
             Assert.Null(result.Initer);
@@ -79,8 +80,8 @@ namespace Alis.Core.Ecs.Test.Kernel
         /// </summary>
         [Fact] public void GetExistingOrSetupNewComponent_ExistingType_ReturnsCachedDelegates()
         {
-            var first = Component.GetExistingOrSetupNewComponent<Damage>();
-            var second = Component.GetExistingOrSetupNewComponent<Damage>();
+            (ComponentId ComponentID, IdTable<Damage> Stack, ComponentDelegates<Damage>.InitDelegate Initer, ComponentDelegates<Damage>.DestroyDelegate Destroyer) first = Component.GetExistingOrSetupNewComponent<Damage>();
+            (ComponentId ComponentID, IdTable<Damage> Stack, ComponentDelegates<Damage>.InitDelegate Initer, ComponentDelegates<Damage>.DestroyDelegate Destroyer) second = Component.GetExistingOrSetupNewComponent<Damage>();
 
             Assert.Equal(first.ComponentID, second.ComponentID);
             Assert.Equal(first.Initer, second.Initer);

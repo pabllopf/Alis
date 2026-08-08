@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
@@ -24,12 +25,12 @@ namespace Alis.Core.Ecs.Test
                 .GetType("Alis.Core.Ecs.Updating.Runners.UpdateLoop");
             Assert.NotNull(updateLoopType);
 
-            var methods = updateLoopType.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
-            var run2 = FindMethodByParamCount(methods, "Run", 6);
-            var run4 = FindMethodByParamCount(methods, "Run", 8);
-            var run6 = FindMethodByParamCount(methods, "Run", 10);
-            var run7 = FindMethodByParamCount(methods, "Run", 11);
-            var run8 = FindMethodByParamCount(methods, "Run", 12);
+            MethodInfo[] methods = updateLoopType.GetMethods(BindingFlags.Static | BindingFlags.NonPublic);
+            MethodInfo run2 = FindMethodByParamCount(methods, "Run", 6);
+            MethodInfo run4 = FindMethodByParamCount(methods, "Run", 8);
+            MethodInfo run6 = FindMethodByParamCount(methods, "Run", 10);
+            MethodInfo run7 = FindMethodByParamCount(methods, "Run", 11);
+            MethodInfo run8 = FindMethodByParamCount(methods, "Run", 12);
             Assert.NotNull(run2);
             Assert.NotNull(run4);
             Assert.NotNull(run6);
@@ -58,10 +59,10 @@ namespace Alis.Core.Ecs.Test
             scene.Create(new Position { X = 42 });
             Archetype archetype = scene.DefaultArchetype;
             Fields fields = archetype.Data;
-            var method = typeof(Fields).GetMethod("GetComponentDataReference",
+            MethodInfo method = typeof(Fields).GetMethod("GetComponentDataReference",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             Assert.NotNull(method);
-            var generic = method.MakeGenericMethod(typeof(Position));
+            MethodInfo generic = method.MakeGenericMethod(typeof(Position));
             try
             {
                 generic.Invoke(fields, null);
@@ -78,10 +79,10 @@ namespace Alis.Core.Ecs.Test
             Type archetypeT = typeof(Archetype).Assembly
                 .GetType("Alis.Core.Ecs.Kernel.Archetypes.Archetype`1");
             Assert.NotNull(archetypeT);
-            var closed = archetypeT.MakeGenericType(typeof(Position));
-            var idField = closed.GetField("Id", BindingFlags.Static | BindingFlags.Public);
+            Type closed = archetypeT.MakeGenericType(typeof(Position));
+            FieldInfo idField = closed.GetField("Id", BindingFlags.Static | BindingFlags.Public);
             Assert.NotNull(idField);
-            var id = idField.GetValue(null);
+            object id = idField.GetValue(null);
             Assert.NotNull(id);
         }
 
@@ -91,7 +92,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void FastestArrayPool_BucketIndex_AllBitPaths()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             foreach (int size in new[] { 0, 1, 16, 32, 64, 128, 256, 512, 1024, 4096, 65536, 131072, 262144, 524288, 1048576 })
             {
                 int[] arr = pool.Rent(size);
@@ -107,7 +108,7 @@ namespace Alis.Core.Ecs.Test
         public void FastLookup_CacheMiss_All8SlotsFilled()
         {
             using Scene scene = new();
-            var go = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
+            GameObject go = scene.Create(new Position(), new Velocity(), new Health(), new Transform(),
                                    new TestComponent(), new AnotherComponent(), new Damage(), new Armor());
             for (int i = 0; i < 20; i++)
             {
@@ -153,7 +154,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void FastestArrayPool_ReturnClearRefType_MixedTypes()
         {
-            var pool = FastestArrayPool<object>.Shared;
+            ArrayPool<object> pool = FastestArrayPool<object>.Shared;
             object[] arr = pool.Rent(10);
             arr[0] = "test";
             arr[1] = 42;
@@ -168,7 +169,7 @@ namespace Alis.Core.Ecs.Test
         [Fact]
         public void FastestArrayPool_BucketSizeBoundaries()
         {
-            var pool = FastestArrayPool<int>.Shared;
+            ArrayPool<int> pool = FastestArrayPool<int>.Shared;
             int[] arr = pool.Rent(1 << 29);
             Assert.NotNull(arr);
             pool.Return(arr);
@@ -183,7 +184,7 @@ namespace Alis.Core.Ecs.Test
         /// <returns>The method info</returns>
         private static MethodInfo FindMethodByParamCount(MethodInfo[] methods, string name, int paramCount)
         {
-            foreach (var m in methods)
+            foreach (MethodInfo m in methods)
             {
                 if (m.Name == name && m.GetParameters().Length == paramCount)
                     return m;

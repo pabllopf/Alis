@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Timers;
 using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Players;
 using Alis.Core.Audio.Test.Players.Attributes;
@@ -219,7 +220,7 @@ namespace Alis.Core.Audio.Test.Players
             
             FieldInfo timerField = typeof(WindowsPlayer).GetField("_playbackTimer",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            var timer = (System.Timers.Timer)timerField?.GetValue(_player);
+            Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
             Assert.NotNull(timer);
 
             MethodInfo handlerMethod = typeof(WindowsPlayer).GetMethod("HandlePlaybackFinished",
@@ -246,7 +247,7 @@ namespace Alis.Core.Audio.Test.Players
                 BindingFlags.NonPublic | BindingFlags.Instance);
             execMethod?.Invoke(_player, new object[] { "Status test.wav Length" });
 
-            var timer = (System.Timers.Timer)timerField?.GetValue(_player);
+            Timer timer = (System.Timers.Timer)timerField?.GetValue(_player);
             Assert.Equal(5000, timer?.Interval);
         }
 
@@ -282,12 +283,12 @@ namespace Alis.Core.Audio.Test.Players
             wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
 
             byte[] zipBytes;
-            using (var zipMs = new MemoryStream())
+            using (MemoryStream zipMs = new MemoryStream())
             {
-                using (var archive = new ZipArchive(zipMs, ZipArchiveMode.Create, true))
+                using (ZipArchive archive = new ZipArchive(zipMs, ZipArchiveMode.Create, true))
                 {
-                    var entry = archive.CreateEntry(entryName, CompressionLevel.Optimal);
-                    using (var s = entry.Open()) s.Write(wavBytes, 0, wavBytes.Length);
+                    ZipArchiveEntry entry = archive.CreateEntry(entryName, CompressionLevel.Optimal);
+                    using (Stream s = entry.Open()) s.Write(wavBytes, 0, wavBytes.Length);
                 }
                 zipBytes = zipMs.ToArray();
             }
@@ -320,12 +321,12 @@ namespace Alis.Core.Audio.Test.Players
             wavBytes[0] = (byte)'R'; wavBytes[1] = (byte)'I'; wavBytes[2] = (byte)'F'; wavBytes[3] = (byte)'F';
 
             byte[] zipBytes;
-            using (var zipMs = new System.IO.MemoryStream())
+            using (MemoryStream zipMs = new System.IO.MemoryStream())
             {
-                using (var archive = new System.IO.Compression.ZipArchive(zipMs, System.IO.Compression.ZipArchiveMode.Create, true))
+                using (ZipArchive archive = new System.IO.Compression.ZipArchive(zipMs, System.IO.Compression.ZipArchiveMode.Create, true))
                 {
-                    var entry = archive.CreateEntry(entryName, System.IO.Compression.CompressionLevel.Optimal);
-                    using (var s = entry.Open()) s.Write(wavBytes, 0, wavBytes.Length);
+                    ZipArchiveEntry entry = archive.CreateEntry(entryName, System.IO.Compression.CompressionLevel.Optimal);
+                    using (Stream s = entry.Open()) s.Write(wavBytes, 0, wavBytes.Length);
                 }
                 zipBytes = zipMs.ToArray();
             }

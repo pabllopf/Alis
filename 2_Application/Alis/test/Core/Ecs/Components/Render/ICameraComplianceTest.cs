@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
         [Fact]
         public void Interface_IsImplementedByCamera()
         {
-            var camera = new Camera();
+            Camera camera = new Camera();
             Assert.IsAssignableFrom<ICamera>(camera);
         }
     }

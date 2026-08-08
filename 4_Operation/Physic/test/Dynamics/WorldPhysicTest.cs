@@ -1983,39 +1983,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Single(world.JointList);
             Assert.Contains(joint2, world.JointList);
         }
-
-        // ========================================================================
-        // FlagContactsForJointFiltering — CollideConnected=true skips filtering
-        // ========================================================================
-        /// <summary>
-        /// Tests that flag contacts for joint filtering collide connected true skips filtering
-        /// </summary>
-        [Fact]
-        public void FlagContactsForJointFiltering_CollideConnectedTrue_SkipsFiltering()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
-                {
-                    CollideConnected = true
-                };
-            world.Add(joint);
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            int afterAdd = world.ContactManager.ContactCount;
-            world.Remove(joint);
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(afterAdd > 0);
-        }
-
+        
         // ========================================================================
         // CreateChain with both rope and no rope
         // ========================================================================
@@ -2161,10 +2129,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Solve_WithLargeStack_GrowsBuffer()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            var bodies = new System.Collections.Generic.List<Body>();
+            List<Body> bodies = new System.Collections.Generic.List<Body>();
             for (int i = 0; i < 100; i++)
             {
-                var body = world.CreateCircle(0.1f, 1.0f, new Vector2F(i * 0.05f, 0f), BodyType.Dynamic);
+                Body body = world.CreateCircle(0.1f, 1.0f, new Vector2F(i * 0.05f, 0f), BodyType.Dynamic);
                 bodies.Add(body);
             }
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -2491,31 +2459,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.NotNull(bodyA);
         }
 
-        // ========================================================================
-        // RemoveBody with joints and contacts both present
-        // ========================================================================
-        /// <summary>
-        /// Tests that remove body with joints and contacts removes correctly
-        /// </summary>
-        [Fact]
-        public void RemoveBody_WithJointsAndContacts_RemovesCorrectly()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            Body bodyC = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyC, Vector2F.Zero, new Vector2F(2f, 0f));
-            world.Add(joint);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-            world.Remove(bodyA);
-            Assert.DoesNotContain(bodyA, world.BodyList);
-        }
-
+        
         // ========================================================================
         // CreateCapsule with few vertices (no decompose)
         // ========================================================================

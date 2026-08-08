@@ -17,7 +17,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void ExecuteCommand_WhenLoggerThrowsInsideTry_ShouldLogErrorAndRethrow()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 2 };
             Logger.SetDefaultLogger(logger);
             try
             {
@@ -36,7 +36,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void CommandExists_WhenLoggerThrowsInsideTry_ShouldLogWarningAndReturnFalse()
         {
-            var logger = new ThrowingLogger { ThrowTraceOnCall = 4 };
+            ThrowingLogger logger = new ThrowingLogger { ThrowTraceOnCall = 4 };
             Logger.SetDefaultLogger(logger);
             try
             {

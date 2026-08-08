@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
@@ -81,7 +82,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Graphic
 
             Assert.ThrowsAny<Exception>(() =>
             {
-                var method = typeof(GraphicManager).GetMethod("RenderPreview",
+                MethodInfo method = typeof(GraphicManager).GetMethod("RenderPreview",
                     System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
                 method.Invoke(manager, null);
             });

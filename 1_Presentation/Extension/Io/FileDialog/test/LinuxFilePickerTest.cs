@@ -91,8 +91,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithAllOptions_AddsCorrectArgs()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Open File")
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Open File")
             {
                 DefaultPath = "/home/user",
                 Filters = new List<FilePickerFilter> { new("Text files", ".txt") }
@@ -115,8 +115,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutTitle_SkipsTitle()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions { DefaultPath = "/tmp" };
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions { DefaultPath = "/tmp" };
 
             LinuxFilePicker.BuildZenityFileDialogArguments(args, options, false);
 
@@ -132,8 +132,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutDefaultPath_SkipsFilename()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test");
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             LinuxFilePicker.BuildZenityFileDialogArguments(args, options, false);
 
@@ -148,8 +148,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithoutFilters_SkipsFilters()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test");
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             LinuxFilePicker.BuildZenityFileDialogArguments(args, options, false);
 
@@ -162,8 +162,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithEmptyFilters_SkipsFilters()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test")
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test")
             {
                 Filters = new List<FilePickerFilter>()
             };
@@ -179,8 +179,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithMultiple_AddsGetOpenFilenames()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Open Files")
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Open Files")
             {
                 DefaultPath = "/home/user",
                 Filters = new List<FilePickerFilter> { new("Text files", ".txt") }
@@ -199,8 +199,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutMultiple_AddsGetOpenFilename()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Open File") { DefaultPath = "/tmp" };
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Open File") { DefaultPath = "/tmp" };
 
             LinuxFilePicker.BuildKdialogFileDialogArguments(args, options, false);
 
@@ -214,8 +214,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutDefaultPath_AddsTilde()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test");
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             LinuxFilePicker.BuildKdialogFileDialogArguments(args, options, false);
 
@@ -228,8 +228,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutTitle_SkipsTitle()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
 
             LinuxFilePicker.BuildKdialogFileDialogArguments(args, options, false);
 
@@ -242,8 +242,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithoutFilters_SkipsFilterArg()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test") { DefaultPath = "/tmp" };
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test") { DefaultPath = "/tmp" };
 
             LinuxFilePicker.BuildKdialogFileDialogArguments(args, options, false);
 
@@ -256,7 +256,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFileDialogArguments_WithZenity_ReturnsZenityArgs()
         {
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             string result = LinuxFilePicker.BuildFileDialogArguments("zenity", options, false);
 
@@ -270,7 +270,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFileDialogArguments_WithKdialog_ReturnsKdialogArgs()
         {
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             string result = LinuxFilePicker.BuildFileDialogArguments("kdialog", options, false);
 
@@ -283,7 +283,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithAllOptions_ReturnsCorrectArgs()
         {
-            var options = new FilePickerOptions("Select Folder")
+            FilePickerOptions options = new FilePickerOptions("Select Folder")
             {
                 DefaultPath = "/home/user"
             };
@@ -302,7 +302,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithoutTitle_SkipsTitle()
         {
-            var options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
+            FilePickerOptions options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("zenity", options);
 
@@ -315,7 +315,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Zenity_WithoutDefaultPath_SkipsFilename()
         {
-            var options = new FilePickerOptions("Select");
+            FilePickerOptions options = new FilePickerOptions("Select");
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("zenity", options);
 
@@ -328,7 +328,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithAllOptions_ReturnsCorrectArgs()
         {
-            var options = new FilePickerOptions("Select Folder")
+            FilePickerOptions options = new FilePickerOptions("Select Folder")
             {
                 DefaultPath = "/home/user"
             };
@@ -346,7 +346,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithoutDefaultPath_AddsTilde()
         {
-            var options = new FilePickerOptions("Select Folder");
+            FilePickerOptions options = new FilePickerOptions("Select Folder");
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("kdialog", options);
 
@@ -359,7 +359,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildFolderDialogArguments_Kdialog_WithoutTitle_SkipsTitle()
         {
-            var options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
+            FilePickerOptions options = new FilePickerOptions { DefaultPath = "/tmp", Title = null };
 
             string result = LinuxFilePicker.BuildFolderDialogArguments("kdialog", options);
 
@@ -465,8 +465,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFile_OnNonLinux_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test File");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -480,8 +480,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFiles_OnNonLinux_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -495,8 +495,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFolder_OnNonLinux_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -539,7 +539,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/test/output.txt";
 
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             string result = LinuxFilePicker.ExecuteFileDialog(options, false);
 
@@ -555,7 +555,7 @@ namespace Alis.Extension.Io.FileDialog.Test
             FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/test/folder";
 
-            var options = new FilePickerOptions("Test");
+            FilePickerOptions options = new FilePickerOptions("Test");
 
             string result = LinuxFilePicker.ExecuteFolderDialog(options);
 
@@ -571,8 +571,8 @@ namespace Alis.Extension.Io.FileDialog.Test
             FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/file.txt";
 
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test File");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test File");
 
             FilePickerResult result = picker.PickFile(options);
 
@@ -589,8 +589,8 @@ namespace Alis.Extension.Io.FileDialog.Test
             FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/a.txt|/mock/b.txt";
 
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test Files");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Files");
 
             FilePickerResult result = picker.PickFiles(options);
 
@@ -607,8 +607,8 @@ namespace Alis.Extension.Io.FileDialog.Test
             FilePickerExecutor.CommandExistsOverride = cmd => cmd == "zenity";
             FilePickerExecutor.ExecuteCommandOverride = (file, args, timeout) => "/mock/folder";
 
-            var picker = new LinuxFilePicker();
-            var options = new FilePickerOptions("Test Folder");
+            LinuxFilePicker picker = new LinuxFilePicker();
+            FilePickerOptions options = new FilePickerOptions("Test Folder");
 
             FilePickerResult result = picker.PickFolder(options);
 
@@ -622,7 +622,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFile_NullOptions_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
+            LinuxFilePicker picker = new LinuxFilePicker();
             FilePickerResult result = picker.PickFile(null);
 
             Assert.False(result.IsSuccess);
@@ -635,7 +635,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFiles_NullOptions_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
+            LinuxFilePicker picker = new LinuxFilePicker();
             FilePickerResult result = picker.PickFiles(null);
 
             Assert.False(result.IsSuccess);
@@ -648,7 +648,7 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void PickFolder_NullOptions_ReturnsError()
         {
-            var picker = new LinuxFilePicker();
+            LinuxFilePicker picker = new LinuxFilePicker();
             FilePickerResult result = picker.PickFolder(null);
 
             Assert.False(result.IsSuccess);
@@ -661,8 +661,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildZenityFileDialogArguments_WithNullFilters_SkipsFilters()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test")
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test")
             {
                 Filters = null
             };
@@ -678,8 +678,8 @@ namespace Alis.Extension.Io.FileDialog.Test
         [Fact]
         public void BuildKdialogFileDialogArguments_WithNullFilters_SkipsFilters()
         {
-            var args = new List<string>();
-            var options = new FilePickerOptions("Test")
+            List<string> args = new List<string>();
+            FilePickerOptions options = new FilePickerOptions("Test")
             {
                 DefaultPath = "/tmp",
                 Filters = null

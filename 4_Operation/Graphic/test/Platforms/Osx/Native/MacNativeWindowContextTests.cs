@@ -47,7 +47,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             if (!IsMainThread()) return;
             ObjectiveCInterop.NSApplicationLoad();
-            var ex = Record.Exception(() => new MacWindow(-1, -1, "Negative"));
+            Exception ex = Record.Exception(() => new MacWindow(-1, -1, "Negative"));
             if (ex != null)
             {
                 Assert.IsAssignableFrom<Exception>(ex);
@@ -176,7 +176,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             MacWindow window = CreateWindow(800, 600, "GL Test");
             if (window == null) return;
-            var ex = Record.Exception(() => new MacOpenGLContext(window));
+            Exception ex = Record.Exception(() => new MacOpenGLContext(window));
             if (ex != null)
             {
                 Assert.IsAssignableFrom<Exception>(ex);
@@ -231,7 +231,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             MacOpenGLContext context = CreateContextIfPossible();
             if (context != null)
             {
-                var ex = Record.Exception(() => context.MakeCurrent());
+                Exception ex = Record.Exception(() => context.MakeCurrent());
                 if (ex != null)
                 {
                     Assert.IsAssignableFrom<Exception>(ex);
@@ -248,7 +248,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             MacOpenGLContext context = CreateContextIfPossible();
             if (context != null)
             {
-                var ex = Record.Exception(() => context.SwapBuffers());
+                Exception ex = Record.Exception(() => context.SwapBuffers());
                 if (ex != null)
                 {
                     Assert.IsAssignableFrom<Exception>(ex);
@@ -329,7 +329,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             MacWindow window = CreateWindow(800, 600, "Helper");
             if (window == null) return null;
-            var ex = Record.Exception(() => new MacOpenGLContext(window));
+            Exception ex = Record.Exception(() => new MacOpenGLContext(window));
             return ex == null ? new MacOpenGLContext(window) : null;
         }
     }

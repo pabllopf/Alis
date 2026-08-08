@@ -110,7 +110,7 @@ namespace Alis.Core.Ecs.Test.Collections
             ushort componentId = 7;
             GameObjectType from = _scene.DefaultArchetype.Id;
             Archetype to = _scene.DefaultArchetype;
-            var typeId = new TestTypeId(componentId);
+            TestTypeId typeId = new TestTypeId(componentId);
 
             lookup.SetArchetype(componentId, from, to);
             GameObjectType result = lookup.FindAdjacentArchetypeId(typeId, from, _scene, ArchetypeEdgeType.AddComponent);
@@ -126,7 +126,7 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             FastLookup lookup = new FastLookup();
             ushort componentId = 42;
-            var typeId = new TestTypeId(componentId);
+            TestTypeId typeId = new TestTypeId(componentId);
             GameObjectType from = _scene.DefaultArchetype.Id;
 
             ArchetypeEdgeKey edgeKey = ArchetypeEdgeKey.Component(new ComponentId(componentId), from, ArchetypeEdgeType.AddComponent);
@@ -146,7 +146,7 @@ namespace Alis.Core.Ecs.Test.Collections
             FastLookup lookup = new FastLookup();
             Component.RegisterComponent<System.Uri>();
             ComponentId componentId = Component.GetComponentId(typeof(System.Uri));
-            var typeId = new TestTypeId(componentId.RawIndex);
+            TestTypeId typeId = new TestTypeId(componentId.RawIndex);
             GameObjectType from = _scene.DefaultArchetype.Id;
 
             GameObjectType result = lookup.FindAdjacentArchetypeId(typeId, from, _scene, ArchetypeEdgeType.AddComponent);

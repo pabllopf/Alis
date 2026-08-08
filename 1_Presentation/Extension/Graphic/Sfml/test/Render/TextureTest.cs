@@ -1,4 +1,6 @@
 // license header
+
+using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
@@ -81,7 +83,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         [RequireCSfmlSystemFact]
         public void Bind_IsStatic()
         {
-            var method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });
+            MethodInfo method = typeof(Texture).GetMethod("Bind", new[] { typeof(Texture) });
             Assert.NotNull(method);
             Assert.True(method.IsStatic);
         }

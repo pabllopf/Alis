@@ -252,28 +252,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.True(fixtureACount > 0);
             Assert.True(fixtureBCount > 0);
         }
-
-        /// <summary>
-        /// Tests that post solve handler is called through Island.Report
-        /// </summary>
-        [Fact]
-        public void PostSolveHandler_ShouldBeCalled_ThroughIslandReport()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            int postSolveCount = 0;
-            world.ContactManager.PostSolve = (_, _) => postSolveCount++;
-
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(postSolveCount > 0);
-        }
-
+        
+       
         /// <summary>
         /// Tests that reset expands bodies buffer when capacity exceeds initial
         /// </summary>

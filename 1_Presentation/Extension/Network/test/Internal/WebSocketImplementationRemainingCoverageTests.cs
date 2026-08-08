@@ -70,11 +70,11 @@ namespace Alis.Extension.Network.Test.Internal
         public void GetBuffer_TryGetBufferSucceeds_ReturnsBuffer()
         {
             byte[] arr = new byte[100];
-            using var ms = new MemoryStream(arr, 0, arr.Length, true, true);
+            using MemoryStream ms = new MemoryStream(arr, 0, arr.Length, true, true);
             byte[] data = Encoding.UTF8.GetBytes("Hello");
             ms.Write(data, 0, data.Length);
 
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ArraySegment<byte> result = ws.GetBuffer(ms);
 
             Assert.Equal(data.Length, result.Count);
@@ -86,11 +86,11 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void GetBuffer_TryGetBufferFails_UsesToArray()
         {
-            using var ms = new MemoryStream();
+            using MemoryStream ms = new MemoryStream();
             byte[] data = Encoding.UTF8.GetBytes("HelloWorld");
             ms.Write(data, 0, data.Length);
 
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ArraySegment<byte> result = ws.GetBuffer(ms);
 
             Assert.Equal(data.Length, result.Count);
@@ -102,10 +102,10 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task HandlePing_NullArray_ReturnsNull()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] payload = Encoding.UTF8.GetBytes("ping");
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Ping, payload.Length, new ArraySegment<byte>(payload));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             WebSocketReceiveResult result = await ws.HandlePing(frame, default, cts);
 
@@ -118,7 +118,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandlePong_NullArray_ReturnsNull()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, 0, default);
 
             WebSocketReceiveResult result = ws.HandlePong(frame, default);
@@ -132,7 +132,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseAsync_StateNotOpen_LogsOnly()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ws.Abort();
 
             await ws.CloseAsync(WebSocketCloseStatus.NormalClosure, "test", CancellationToken.None);
@@ -146,7 +146,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAsync_StateNotOpen_LogsOnly()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ws.Abort();
 
             await ws.CloseOutputAsync(WebSocketCloseStatus.NormalClosure, "test", CancellationToken.None);
@@ -160,7 +160,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAutoTimeoutAsync_NormalPath_DoesNotThrow()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             Exception ex = new Exception("test");
 
             await ws.CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "error", ex);
@@ -174,7 +174,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAutoTimeoutAsync_WithIncludeException_DoesNotThrow()
         {
-            var ws = CreateWs(includeException: true);
+            WebSocketImplementation ws = CreateWs(includeException: true);
             Exception ex = new Exception("test");
 
             await ws.CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.InternalServerError, "error", ex);
@@ -188,7 +188,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void GetOppCode_InvalidMessageType_ThrowsNotSupportedException()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             WebSocketMessageType invalid = (WebSocketMessageType)255;
 
             Assert.Throws<NotSupportedException>(() => ws.GetOppCode(invalid));
@@ -200,7 +200,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task RespondToCloseFrame_UnexpectedState_DoesNotSendClose()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ws.Abort();
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.ConnectionClose, 0,
                 WebSocketCloseStatus.NormalClosure, "Normal", new ArraySegment<byte>(new byte[0]));
@@ -217,7 +217,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task ReadWebSocketFrame_WithCursorContinuation_ReadsFromCursor()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("HelloWorld");
             ws.Stream.Write(data, 0, data.Length);
             ws.Stream.Position = 0;
@@ -237,7 +237,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task ReadWebSocketFrame_CatchBlock_Throws()
         {
-            var ws = CreateWs(includeException: true);
+            WebSocketImplementation ws = CreateWs(includeException: true);
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[1024]);
 
             await Assert.ThrowsAsync<EndOfStreamException>(() =>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task SendPongFrame_Exception_CallsCloseOutputAutoTimeout()
         {
-            var ws = CreateWs(stream: new ThrowingWriteStream());
+            WebSocketImplementation ws = CreateWs(stream: new ThrowingWriteStream());
             byte[] data = new byte[10];
             ArraySegment<byte> payload = new ArraySegment<byte>(data);
 
@@ -268,7 +268,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void Dispose_StreamCloseThrows_Caught()
         {
-            var ws = CreateWs(stream: new ThrowingOnDisposeStream());
+            WebSocketImplementation ws = CreateWs(stream: new ThrowingOnDisposeStream());
 
             ws.Dispose();
 
@@ -281,10 +281,10 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task HandleWebSocketOpCodes_Ping_ReturnsNull()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("ping");
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Ping, data.Length, new ArraySegment<byte>(data));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
             ArraySegment<byte> buffer = new ArraySegment<byte>(data);
 
             WebSocketReceiveResult result = await ws.HandleWebSocketOpCodes(frame, buffer, cts, true);
@@ -298,9 +298,9 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleWebSocketOpCodes_Pong_ReturnsNull()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, 0, default);
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
 
@@ -313,10 +313,10 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleWebSocketOpCodes_TextFrame_ReturnsResult()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("Hello");
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.TextFrame, data.Length, new ArraySegment<byte>(data));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
 
@@ -329,10 +329,10 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleWebSocketOpCodes_BinaryFrame_ReturnsResult()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("Hello");
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.BinaryFrame, data.Length, new ArraySegment<byte>(data));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
 
@@ -345,10 +345,10 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleWebSocketOpCodes_ContinuationFrame_ReturnsResult()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("Hello");
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.ContinuationFrame, data.Length, new ArraySegment<byte>(data));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             WebSocketReceiveResult result = ws.HandleWebSocketOpCodes(frame, default, cts, true).Result;
 
@@ -361,9 +361,9 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task HandleWebSocketOpCodes_UnknownOpCode_ThrowsNotSupportedException()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             WebSocketFrame frame = new WebSocketFrame(true, (WebSocketOpCode)255, 0, new ArraySegment<byte>(new byte[0]));
-            using var cts = new CancellationTokenSource();
+            using CancellationTokenSource cts = new CancellationTokenSource();
 
             await Assert.ThrowsAsync<NotSupportedException>(() =>
                 ws.HandleWebSocketOpCodes(frame, default, cts, true));
@@ -375,7 +375,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandleBinaryFrame_NotFinalFrame_SetsContinuationType()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("Hello");
             WebSocketFrame frame = new WebSocketFrame(false, WebSocketOpCode.BinaryFrame, data.Length, new ArraySegment<byte>(data));
 
@@ -391,7 +391,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void HandlePong_WithEventHandler_InvokesEvent()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             byte[] data = Encoding.UTF8.GetBytes("pong");
             ArraySegment<byte> buffer = new ArraySegment<byte>(data);
             WebSocketFrame frame = new WebSocketFrame(true, WebSocketOpCode.Pong, data.Length, buffer);
@@ -410,7 +410,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void Dispose_CloseOutputThrowsOperationCanceled_Caught()
         {
-            var ws = new WebSocketImplementation(
+            WebSocketImplementation ws = new WebSocketImplementation(
                 Guid.NewGuid(),
                 () => new MemoryStream(),
                 new OperationCanceledMemoryStream(),
@@ -431,7 +431,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAutoTimeoutAsync_OperationCanceled_Caught()
         {
-            var ws = new WebSocketImplementation(
+            WebSocketImplementation ws = new WebSocketImplementation(
                 Guid.NewGuid(),
                 () => new MemoryStream(),
                 new OperationCanceledMemoryStream(),
@@ -453,7 +453,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public async Task CloseOutputAutoTimeoutAsync_GenericException_Caught()
         {
-            var ws = new WebSocketImplementation(
+            WebSocketImplementation ws = new WebSocketImplementation(
                 Guid.NewGuid(),
                 () => new MemoryStream(),
                 new ThrowingWriteStream(),
@@ -559,7 +559,7 @@ namespace Alis.Extension.Network.Test.Internal
         [Fact]
         public void OnPong_NullHandler_DoesNotThrow()
         {
-            var ws = CreateWs();
+            WebSocketImplementation ws = CreateWs();
             ws.OnPong(new PongEventArgs(new ArraySegment<byte>(new byte[0])));
         }
 

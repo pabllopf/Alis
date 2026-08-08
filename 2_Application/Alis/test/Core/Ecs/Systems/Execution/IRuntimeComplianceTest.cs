@@ -14,7 +14,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         [Fact]
         public void Interface_CanBeImplemented()
         {
-            var runtime = new TestRuntime();
+            TestRuntime runtime = new TestRuntime();
             Assert.IsAssignableFrom<IRuntime>(runtime);
         }
 
@@ -24,7 +24,7 @@ namespace Alis.Test.Core.Ecs.Systems.Execution
         [Fact]
         public void AllLifecycleMethods_CanBeCalled()
         {
-            var runtime = new TestRuntime();
+            TestRuntime runtime = new TestRuntime();
             runtime.OnEnable();
             runtime.OnInit();
             runtime.OnAwake();

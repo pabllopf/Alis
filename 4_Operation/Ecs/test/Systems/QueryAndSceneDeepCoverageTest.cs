@@ -129,7 +129,7 @@ namespace Alis.Core.Ecs.Test.Systems
             scene.Create(new Position { X = 1 });
             scene.Create(new Position { X = 2 });
             Query query = scene.Query<With<Position>>();
-            foreach (var chunk in query.EnumerateChunks<Position>())
+            foreach (ChunkTuple<Position> chunk in query.EnumerateChunks<Position>())
             {
                 Assert.Equal(2, chunk.Span.Length);
             }
@@ -143,7 +143,7 @@ namespace Alis.Core.Ecs.Test.Systems
             using Scene scene = new();
             scene.CreateMany<Position, Velocity>(2);
             Query query = scene.Query<With<Position>, With<Velocity>>();
-            foreach (var chunk in query.EnumerateChunks<Position, Velocity>())
+            foreach (ChunkTuple<Position, Velocity> chunk in query.EnumerateChunks<Position, Velocity>())
             {
                 Assert.Equal(2, chunk.Span1.Length);
                 Assert.Equal(2, chunk.Span2.Length);

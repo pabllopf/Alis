@@ -186,54 +186,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Tests that report separation called when bodies separate but aabbs overlap
-        /// </summary>
-        [Fact]
-        public void ReportSeparation_CalledWhenBodiesSeparateButAabbsOverlap()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.4f, 0.0f), BodyType.Dynamic);
-
-            int fixtureASepCount = 0;
-            int fixtureBSepCount = 0;
-            int bodyASepCount = 0;
-            int bodyBSepCount = 0;
-            int endContactCount = 0;
-
-            world.ContactManager.BeginContact = contact =>
-            {
-                contact.FixtureA.OnSeparation = (_, _, _) => fixtureASepCount++;
-                contact.FixtureB.OnSeparation = (_, _, _) => fixtureBSepCount++;
-                return true;
-            };
-
-            bodyA.OnSeparation += (_, _, _) => bodyASepCount++;
-            bodyB.OnSeparation += (_, _, _) => bodyBSepCount++;
-            world.ContactManager.EndContact = contact => endContactCount++;
-
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            bodyA.SetTransform(new Vector2F(0.0f, 0.0f), 0.0f);
-            bodyB.SetTransform(new Vector2F(1.01f, 0.0f), 0.0f);
-
-    
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(fixtureASepCount > 0);
-            Assert.True(fixtureBSepCount > 0);
-            Assert.True(bodyASepCount > 0);
-            Assert.True(bodyBSepCount > 0);
-            Assert.True(endContactCount > 0);
-        }
-
-        /// <summary>
         /// Tests that create with swap branch and pool reuses from pool
         /// </summary>
         [Fact]

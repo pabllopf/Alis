@@ -26,9 +26,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_FailedOnMaxIter()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -36,7 +36,7 @@ namespace Alis.Core.Physic.Test
                 SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_PushBackTouching()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test
                 SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -66,9 +66,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_PushBackMaxIterBreak()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test
                 SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -86,9 +86,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void SepFunc_FindMinSepDefault()
         {
-            var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
+            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
-            float sep = SeparationFunction.FindMinSeparation(out var idxA, out var idxB, 0.0f);
+            float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
             Assert.Equal(0.0f, sep, 5);
             Assert.Equal(-1, idxA);
             Assert.Equal(-1, idxB);
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void SepFunc_EvaluateDefault()
         {
-            var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
+            FieldInfo typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.Evaluate(0, 0, 0.0f);
             Assert.Equal(0.0f, sep, 5);
@@ -112,16 +112,16 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactMgr_TryResolveFilterShouldCollideFalse()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             world.ContactManager.BeginContact = c => { c.FilterFlag = true; return true; };
-            var joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
                 {
                     CollideConnected = false
                 };
@@ -138,11 +138,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_BarySeparation2ExceedsRadius()
         {
-            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var circle = new CircleShape(0.1f, 1.0f);
-            var xfPoly = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(0.3f, 0.3f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            CircleShape circle = new CircleShape(0.1f, 1.0f);
+            ControllerTransform xfPoly = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(0.3f, 0.3f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -153,11 +153,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_PolygonsFewClipPoints()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
-            var xfA = ControllerTransform.Identity;
-            var xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -168,17 +168,17 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EpColliderPolygonAxisExceedsRadius()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex0 = true,
                     Vertex0 = new Vector2F(-0.5f, 0.0f),
                     HasVertex3 = true,
                     Vertex3 = new Vector2F(1.5f, 0.0f)
                 };
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(5.0f, 5.0f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(5.0f, 5.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.Equal(0, manifold.PointCount);
         }
@@ -189,11 +189,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EpColliderFewClipPoints()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.0f), (float)Math.PI / 2.0f);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.0f), (float)Math.PI / 2.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -204,11 +204,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EpColliderPolygonSepExceedsRadius()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(3.0f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(3.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -219,11 +219,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EpColliderSelectPrimaryUnknown()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.Equal(0, manifold.PointCount);
         }
@@ -234,17 +234,17 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EdgeCircleBothEdges()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex0 = true,
                     Vertex0 = new Vector2F(-0.5f, 0.0f),
                     HasVertex3 = true,
                     Vertex3 = new Vector2F(1.5f, 0.0f)
                 };
-            var circle = new CircleShape(0.2f, 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(1.2f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            CircleShape circle = new CircleShape(0.2f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.2f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -255,8 +255,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ResetToiStateEarlyReturn()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
             world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.IsBullet = true;
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
@@ -273,9 +273,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcContactAlphaDifferentAlpha0()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             bodyA.Sweep.Alpha0 = 0.3f;
@@ -289,9 +289,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ProcessToiContactFullPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             for (int i = 0; i < 3; i++)
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_StepLockedThrows()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             bool threw = false;
             world.ContactManager.BeginContact = contact =>
             {
@@ -335,9 +335,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_SolveToiClamping()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
             bodyA.AngularVelocity = 10000f;
             for (int i = 0; i < 3; i++)
@@ -353,10 +353,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_ProcessJointEdgesOtherEnabled()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
-            var bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            var joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
+            Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
             world.Add(joint);
             Record.Exception(() => world.Step(1.0f / 60.0f));
         }
@@ -367,10 +367,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_ApplyLinearImpulseRefPoint()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var impulse = new Vector2F(10f, 0f);
-            var point = new Vector2F(1f, 1f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Vector2F impulse = new Vector2F(10f, 0f);
+            Vector2F point = new Vector2F(1f, 1f);
             body.ApplyLinearImpulse(ref impulse, ref point);
             Assert.True(body.LinearVelocityInternal.X > 0);
         }
@@ -381,9 +381,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Terrain_RemoveOldDataWithBodyMap()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
-            var terrain = new Terrain(world, area)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Aabb area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+            Terrain terrain = new Terrain(world, area)
             {
                 PointsPerUnit = 2,
                 CellSize = 2,
@@ -402,9 +402,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Marching_CombineScanLines()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
-            var terrain = new Terrain(world, area)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Aabb area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+            Terrain terrain = new Terrain(world, area)
             {
                 PointsPerUnit = 2,
                 CellSize = 3,
@@ -423,10 +423,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircularData()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
             Assert.NotNull(result);
         }
 
@@ -436,10 +436,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircularDataWrapping()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 5f, 100f);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 5f, 100f);
             Assert.NotNull(result);
         }
 
@@ -449,15 +449,15 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EdgeCircleHasVertex3()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex3 = true,
                     Vertex3 = new Vector2F(1.5f, 0.0f)
                 };
-            var circle = new CircleShape(0.2f, 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(1.3f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            CircleShape circle = new CircleShape(0.2f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.3f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -468,15 +468,15 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EdgeCircleHasVertex0()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex0 = true,
                     Vertex0 = new Vector2F(-0.5f, 0.0f)
                 };
-            var circle = new CircleShape(0.2f, 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(-0.3f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            CircleShape circle = new CircleShape(0.2f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-0.3f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -490,17 +490,17 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void SepFunc_FaceBFlipAxis()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var proxyA = new DistanceProxy(shapeA, 0);
-            var proxyB = new DistanceProxy(shapeB, 0);
-            var sweepA = new Sweep { C0 = new Vector2F(0.0f, 2.0f), C = new Vector2F(0.0f, 2.0f), LocalCenter = Vector2F.Zero };
-            var sweepB = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
-            var cache = new SimplexCache { Count = 2 };
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = new Vector2F(0.0f, 2.0f), C = new Vector2F(0.0f, 2.0f), LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+            SimplexCache cache = new SimplexCache { Count = 2 };
             cache.IndexA[0] = 0; cache.IndexA[1] = 0;
             cache.IndexB[0] = 0; cache.IndexB[1] = 1;
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float sep = SeparationFunction.FindMinSeparation(out var idxA, out var idxB, 0.0f);
+            float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
             Assert.False(float.IsNaN(sep));
         }
 
@@ -513,9 +513,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_SolveToiDisabledContact()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             world.ContactManager.BeginContact = contact =>
             {
@@ -534,9 +534,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ProcessToiSensorSkip()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             bodyA.FixtureList[0].GetIsSensor = true;
@@ -553,9 +553,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcContactAlphaToiFlag()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.Awake = false;
             bodyB.Awake = false;
@@ -571,9 +571,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_RemoveBodyWithEvents()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             int removed = 0;
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             world.BodyRemoved += (w, b) => removed++;
             world.Remove(body);
             Assert.Equal(1, removed);
@@ -588,9 +588,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactMgr_TryResolveFilterFull()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -601,7 +601,7 @@ namespace Alis.Core.Physic.Test
                 c.FilterFlag = true;
                 return true;
             };
-            var joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position)
                 {
                     CollideConnected = true
                 };
@@ -621,7 +621,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_ReportNullCM()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
@@ -629,12 +629,12 @@ namespace Alis.Core.Physic.Test
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
-            var islandField = typeof(WorldPhysic).GetField("<GetIsland>k__BackingField",
+            FieldInfo islandField = typeof(WorldPhysic).GetField("<GetIsland>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
-            var island = islandField?.GetValue(world) as Island;
+            Island island = islandField?.GetValue(world) as Island;
             if (island != null)
             {
-                var cmField = typeof(Island).GetField("_contactManager",
+                FieldInfo cmField = typeof(Island).GetField("_contactManager",
                     BindingFlags.Instance | BindingFlags.NonPublic);
                 cmField?.SetValue(island, null);
                 Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -650,9 +650,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_GetBodyTypeWhileLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.GetBodyType = BodyType.Static);
@@ -668,9 +668,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_EnabledWhileLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.Enabled = false);
@@ -686,9 +686,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_LocalCenterLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.LocalCenter = Vector2F.Zero);
@@ -704,9 +704,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_MassLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.Mass = 10f);
@@ -722,9 +722,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_InertiaLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.Inertia = 5f);
@@ -740,12 +740,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_AddFixtureLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
-            var shape = new CircleShape(0.5f, 1.0f);
+            CircleShape shape = new CircleShape(0.5f, 1.0f);
             Assert.Throws<InvalidOperationException>(() => body.Add(new Fixture(shape)));
             lockedField?.SetValue(world, false);
         }
@@ -759,9 +759,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_RemoveFixtureLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => body.Remove(body.FixtureList[0]));
@@ -777,12 +777,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_SetTransformLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero, 0f, BodyType.Dynamic);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
-            var pos = Vector2F.Zero;
+            Vector2F pos = Vector2F.Zero;
             Assert.Throws<InvalidOperationException>(() => body.SetTransformIgnoreContacts(ref pos, 0f));
             lockedField?.SetValue(world, false);
         }
@@ -796,10 +796,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircularWrap()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(5f, 5f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 10f, 100f);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 10f, 100f);
             Assert.NotNull(result);
         }
 
@@ -812,9 +812,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Terrain_RemoveOldDataBodies()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
-            var terrain = new Terrain(world, area)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Aabb area = new Aabb(new Vector2F(0f, 0f), new Vector2F(10f, 10f));
+            Terrain terrain = new Terrain(world, area)
             {
                 PointsPerUnit = 4,
                 CellSize = 4,
@@ -837,8 +837,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ClearLocked_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            FieldInfo lockedField = typeof(WorldPhysic).GetField("<GetIsLocked>k__BackingField",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             lockedField?.SetValue(world, true);
             Assert.Throws<InvalidOperationException>(() => world.Clear());
@@ -854,7 +854,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_OnCollisionEvent()
         {
-            var body = new Body();
+            Body body = new Body();
             int count = 0;
             body.OnCollision += (a, b, c) => { count++; return true; };
             body.OnCollision += (a, b, c) => true;
@@ -871,9 +871,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_RemoveFixtureWithContact()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            var other = world.CreateRectangle(2f, 2f, 1f, new Vector2F(0.5f, 0f), 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body other = world.CreateRectangle(2f, 2f, 1f, new Vector2F(0.5f, 0f), 0f, BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -892,10 +892,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_FixtureRemovedEvent()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             int removed = 0;
             world.FixtureRemoved += (w, b, f) => removed++;
-            var body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
             body.Remove(body.FixtureList[0]);
             Assert.Equal(1, removed);
         }
@@ -909,10 +909,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_ApplyLinearImpulseStatic()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Static);
-            var impulse = new Vector2F(10f, 0f);
-            var point = new Vector2F(1f, 1f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Static);
+            Vector2F impulse = new Vector2F(10f, 0f);
+            Vector2F point = new Vector2F(1f, 1f);
             body.ApplyLinearImpulse(ref impulse, ref point);
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
         }
@@ -926,7 +926,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_OnSeparationEvent()
         {
-            var body = new Body();
+            Body body = new Body();
             int count = 0;
             body.OnSeparation += (a, b, c) => count++;
             body.OnSeparation -= (a, b, c) => count++;
@@ -942,10 +942,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactMgr_AddPairNullContact()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
             bodyA.GetBodyType = BodyType.Dynamic;
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
             Record.Exception(() => world.Step(1.0f / 60.0f));
         }
 
@@ -958,10 +958,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactMgr_PassesFilters_BeforeCollisionAFalse()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            foreach (var f in bodyA.FixtureList) f.BeforeCollision = (_, _) => false;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            foreach (Fixture f in bodyA.FixtureList) f.BeforeCollision = (_, _) => false;
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -979,10 +979,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactMgr_PassesFilters_BeforeCollisionBFalse()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            foreach (var f in bodyB.FixtureList) f.BeforeCollision = (_, _) => false;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
+            foreach (Fixture f in bodyB.FixtureList) f.BeforeCollision = (_, _) => false;
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1000,9 +1000,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Terrain_RemoveOldData_WithBodies()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var area = new Aabb(new Vector2F(0f, 0f), new Vector2F(5f, 5f));
-            var terrain = new Terrain(world, area)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Aabb area = new Aabb(new Vector2F(0f, 0f), new Vector2F(5f, 5f));
+            Terrain terrain = new Terrain(world, area)
             {
                 PointsPerUnit = 3,
                 CellSize = 3,
@@ -1026,12 +1026,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircularFull()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(8f, 8f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
             world.CreateCircle(2f, 1f, new Vector2F(-5f, -5f), BodyType.Dynamic);
             world.CreateCircle(2f, 1f, new Vector2F(5f, 5f), BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 20f, 100f);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 20f, 100f);
             Assert.NotNull(result);
         }
 
@@ -1044,11 +1044,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Body_ApplyLinearImpulseSleeping()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             body.Awake = false;
-            var impulse = new Vector2F(10f, 0f);
-            var point = new Vector2F(1f, 1f);
+            Vector2F impulse = new Vector2F(10f, 0f);
+            Vector2F point = new Vector2F(1f, 1f);
             body.ApplyLinearImpulse(ref impulse, ref point);
             Assert.True(body.LinearVelocityInternal.X > 0);
         }
@@ -1063,17 +1063,17 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void SepFunc_FaceBFlipAxisFull()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var proxyA = new DistanceProxy(shapeA, 0);
-            var proxyB = new DistanceProxy(shapeB, 0);
-            var sweepA = new Sweep { C0 = new Vector2F(0.0f, 5.0f), C = new Vector2F(0.0f, 5.0f), LocalCenter = Vector2F.Zero };
-            var sweepB = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
-            var cache = new SimplexCache { Count = 2 };
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            DistanceProxy proxyA = new DistanceProxy(shapeA, 0);
+            DistanceProxy proxyB = new DistanceProxy(shapeB, 0);
+            Sweep sweepA = new Sweep { C0 = new Vector2F(0.0f, 5.0f), C = new Vector2F(0.0f, 5.0f), LocalCenter = Vector2F.Zero };
+            Sweep sweepB = new Sweep { C0 = Vector2F.Zero, C = Vector2F.Zero, LocalCenter = Vector2F.Zero };
+            SimplexCache cache = new SimplexCache { Count = 2 };
             cache.IndexA[0] = 0; cache.IndexA[1] = 0;
             cache.IndexB[0] = 0; cache.IndexB[1] = 1;
             SeparationFunction.Set(ref cache, ref proxyA, ref sweepA, ref proxyB, ref sweepB, 0.0f);
-            float sep = SeparationFunction.FindMinSeparation(out var idxA, out var idxB, 0.0f);
+            float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
             Assert.False(float.IsNaN(sep));
         }
 
@@ -1083,9 +1083,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_MaxIterations_Failed()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.01f, 0.01f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -1109,7 +1109,7 @@ namespace Alis.Core.Physic.Test
                 },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -1165,7 +1165,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_StepDisabled()
         {
-            var world = new WorldPhysic(Vector2F.Zero)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero)
                 {
                     GetEnabled = false
                 };
@@ -1183,12 +1183,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_BodyAddedFixtureAdded()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             bool bodyAdded = false;
             bool fixtureAdded = false;
             world.BodyAdded = (w, b) => bodyAdded = true;
             world.FixtureAdded = (w, b, f) => fixtureAdded = true;
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             Assert.True(bodyAdded);
             Assert.True(fixtureAdded);
         }
@@ -1199,10 +1199,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_BodyRemovedDelegate()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             bool removed = false;
             world.BodyRemoved = (w, b) => removed = true;
-            var body = world.CreateBody(Vector2F.Zero);
+            Body body = world.CreateBody(Vector2F.Zero);
             world.Remove(body);
             Assert.True(removed);
         }
@@ -1213,7 +1213,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_RemoveNullBody_Throws()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Assert.Throws<ArgumentNullException>(() => world.Remove((Body)null));
         }
 
@@ -1223,9 +1223,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_CreateChainShape()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var verts = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(1, 1) };
-            var body = world.CreateChainShape(verts);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Vertices verts = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(1, 1) };
+            Body body = world.CreateChainShape(verts);
             Assert.NotNull(body);
         }
 
@@ -1235,8 +1235,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void WorldPhysic_QueryAabbCallback()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRectangle(1, 1, 1, Vector2F.Zero, 0, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(1, 1, 1, Vector2F.Zero, 0, BodyType.Dynamic);
             bool queried = false;
             world.QueryAabb(f =>
             {
@@ -1252,14 +1252,14 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_TryResolveFilterRejects()
         {
-            var world = new WorldPhysic(Vector2F.Zero)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero)
                 {
                     ContactManager = {
                         ContactFilter = (a, b) => false
                     }
                 };
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1274,11 +1274,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_UpdateContactWithLock()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1293,10 +1293,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_Activate()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(new Vector2F(0, 0), 10.0f, 100.0f);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(new Vector2F(0, 0), 10.0f, 100.0f);
             Assert.NotNull(result);
         }
 
@@ -1306,7 +1306,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_SolveWithGravity()
         {
-            var world = new WorldPhysic(new Vector2F(0, -9.81f));
+            WorldPhysic world = new WorldPhysic(new Vector2F(0, -9.81f));
             world.CreateCircle(0.5f, 1.0f, new Vector2F(0, 5), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
@@ -1322,11 +1322,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactSolver_MultiCoreSolve()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("VelocityConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.6f, 0.0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1347,8 +1347,8 @@ namespace Alis.Core.Physic.Test
             data[0, 2] = 1;  data[1, 2] = 1;  data[2, 2] = 1; data[3, 2] = 1;
             data[0, 3] = 1;  data[1, 3] = 1;  data[2, 3] = 1; data[3, 3] = 1;
 
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, false);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, false);
             Assert.NotNull(result);
         }
 
@@ -1364,8 +1364,8 @@ namespace Alis.Core.Physic.Test
             data[0, 2] = 1;  data[1, 2] = 1;  data[2, 2] = 1; data[3, 2] = 1;
             data[0, 3] = 1;  data[1, 3] = 1;  data[2, 3] = 1; data[3, 3] = 1;
 
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -1379,9 +1379,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ResetToiState_EarlyReturn()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var method = typeof(WorldPhysic).GetMethod("ResetToiState", BindingFlags.Instance | BindingFlags.NonPublic);
-            var stepCompleteField = typeof(WorldPhysic).GetField("_stepComplete", BindingFlags.Instance | BindingFlags.NonPublic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            MethodInfo method = typeof(WorldPhysic).GetMethod("ResetToiState", BindingFlags.Instance | BindingFlags.NonPublic);
+            FieldInfo stepCompleteField = typeof(WorldPhysic).GetField("_stepComplete", BindingFlags.Instance | BindingFlags.NonPublic);
             stepCompleteField?.SetValue(world, false);
             method?.Invoke(world, null);
             stepCompleteField?.SetValue(world, true);
@@ -1397,9 +1397,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_SolveToi_NonTouchingAfterUpdate()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             bodyB.IsBullet = true;
@@ -1424,9 +1424,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_SolveToi_StaticBodySkip()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Static);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Static);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             SolverIterations iterations = new SolverIterations
@@ -1447,9 +1447,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcContactAlpha_ToiFlagPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
             bodyA.IsBullet = true;
             // Step once to create contact
@@ -1459,17 +1459,17 @@ namespace Alis.Core.Physic.Test
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             // Set ToiFlag on any contact via reflection
-            var contactRef = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
-            var cm = contactRef?.GetValue(world) as ContactManager;
+            FieldInfo contactRef = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            ContactManager cm = contactRef?.GetValue(world) as ContactManager;
             if (cm != null && cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
                     contact.ToiFlag = true;
                     contact.Toi = 0.5f;
-                    var calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
-                    var result = (float)calcMethod.Invoke(world, new object[] { contact });
+                    MethodInfo calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
+                    float result = (float)calcMethod.Invoke(world, new object[] { contact });
                     Assert.Equal(0.5f, result, 5);
                 }
             }
@@ -1485,9 +1485,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcContactAlpha_Alpha0Advance()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.Sweep.Alpha0 = 0.3f;
             bodyB.Sweep.Alpha0 = 0.6f;
             bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
@@ -1510,16 +1510,16 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ProcessToiContact_CapacityReached()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var island = world.GetIsland;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Island island = world.GetIsland;
             // Fill island to capacity via direct manipulation
-            var bodyCapField = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
-            var contactCapField = typeof(Island).GetField("_contactCount", BindingFlags.Instance | BindingFlags.NonPublic);
-            var bodyCountField = typeof(Island).GetField("_bodyCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            FieldInfo bodyCapField = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
+            FieldInfo contactCapField = typeof(Island).GetField("_contactCount", BindingFlags.Instance | BindingFlags.NonPublic);
+            FieldInfo bodyCountField = typeof(Island).GetField("_bodyCount", BindingFlags.Instance | BindingFlags.NonPublic);
             if (bodyCapField != null) bodyCapField.SetValue(island, 0);
             if (bodyCountField != null) bodyCountField.SetValue(island, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             bodyB.IsBullet = true;
@@ -1541,9 +1541,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ProcessToiContact_NonBulletDynamicSkip()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = false;
             bodyB.IsBullet = false;
@@ -1565,10 +1565,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_AddBody_FixtureAddedEvent()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             int count = 0;
             world.FixtureAdded = (w, b, f) => count++;
-            var body = new Body();
+            Body body = new Body();
             body.CreateCircle(1.0f, 1.0f);
             body.GetBodyType = BodyType.Dynamic;
             world.Add(body);
@@ -1585,9 +1585,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_TestPoint_ReturnsFixture()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(2f, 2f, 1f, new Vector2F(0f, 0f), 0f, BodyType.Static);
-            var result = world.TestPoint(new Vector2F(0.5f, 0.5f));
+            Fixture result = world.TestPoint(new Vector2F(0.5f, 0.5f));
             Assert.NotNull(result);
         }
 
@@ -1601,8 +1601,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateCapsule_PolygonPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCapsule(1.0f, 0.3f, 4, 0.3f, 4, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(1.0f, 0.3f, 4, 0.3f, 4, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -1616,8 +1616,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateRoundedRectangle_PolygonPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRoundedRectangle(0.5f, 0.5f, 0.1f, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRoundedRectangle(0.5f, 0.5f, 0.1f, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -1630,10 +1630,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_AddPair_NullContact()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
             bodyA.GetBodyType = BodyType.Dynamic;
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1650,9 +1650,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ContactAlreadyExists_Swapped()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1671,9 +1671,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessCollision_BodyDisabled()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1693,11 +1693,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessMultiCore_BodyDisabled()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -1718,21 +1718,21 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_TryResolveFilter_ContactFilterRejects()
         {
-            var world = new WorldPhysic(Vector2F.Zero)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero)
                 {
                     ContactManager = {
                         ContactFilter = (a, b) => false
                     }
                 };
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             world.ContactManager.BeginContact = c => { c.FilterFlag = true; return true; };
-            var joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, bodyA.Position, bodyB.Position);
             world.Add(joint);
             iterations.PositionIterations = 10;
             world.Step(1.0f / 60.0f, ref iterations);
@@ -1748,11 +1748,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_UpdateLock_SameOrder()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             bodyA.LockOrder = 1;
             bodyB.LockOrder = 1;
             SolverIterations iterations = new SolverIterations
@@ -1778,11 +1778,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_Bary_U1Zero_RExceeds()
         {
-            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var circle = new CircleShape(0.01f, 1.0f);
-            var xfPoly = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(1.1f, 0.9f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            CircleShape circle = new CircleShape(0.01f, 1.0f);
+            ControllerTransform xfPoly = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.1f, 0.9f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -1797,11 +1797,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_Bary_U2Zero_RExceeds()
         {
-            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var circle = new CircleShape(0.01f, 1.0f);
-            var xfPoly = ControllerTransform.Identity;
-            var xfCircle = new ControllerTransform(new Vector2F(-1.1f, 0.9f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            CircleShape circle = new CircleShape(0.01f, 1.0f);
+            ControllerTransform xfPoly = ControllerTransform.Identity;
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-1.1f, 0.9f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -1816,11 +1816,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_FindMaxSeparation_Search()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
-            var xfA = ControllerTransform.Identity;
-            var xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -1835,11 +1835,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_Polygons_FaceBPath()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfA = ControllerTransform.Identity;
-            var xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.8f, 0.0f), (float)Math.PI / 4.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -1854,11 +1854,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void EpCollider_SelectPrimary_Else()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(0.0f, 3.0f), 0.0f);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.0f, 3.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.Equal(0, manifold.PointCount);
         }
@@ -1872,11 +1872,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void EpCollider_Collide_UnknownNormal()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(10.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.Equal(0, manifold.PointCount);
         }
@@ -1890,11 +1890,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void EpCollider_Collide_BackFace()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
-            var xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.2f), (float)Math.PI);
-            var manifold = new Manifold();
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, 0.2f), (float)Math.PI);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -1908,8 +1908,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_UpdateSleep_SleepPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             body.SleepingAllowed = true;
             body.LinearVelocityInternal = Vector2F.Zero;
             body.AngularVelocity = 0f;
@@ -1935,9 +1935,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_SolveToi_TranslationRotationClamp()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
             bodyA.AngularVelocity = 10000f;
             bodyA.IsBullet = true;
@@ -1957,7 +1957,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_Report_NullCM()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
@@ -1965,8 +1965,8 @@ namespace Alis.Core.Physic.Test
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
-            var island = world.GetIsland;
-            var cmField = typeof(Island).GetField("_contactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            Island island = world.GetIsland;
+            FieldInfo cmField = typeof(Island).GetField("_contactManager", BindingFlags.Instance | BindingFlags.NonPublic);
             if (cmField != null)
             {
                 cmField.SetValue(island, null);
@@ -1985,12 +1985,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactSolver_MultiCore_Thresholds()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("VelocityConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
             cm.GetType().GetField("PositionConstraintsMultithreadThreshold", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -2008,11 +2008,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircular_Wrap()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateRectangle(20f, 20f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
             world.CreateRectangle(20f, 20f, 1f, new Vector2F(5f, 5f), 0f, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 25f, 100f);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 25f, 100f);
             Assert.NotNull(result);
         }
 
@@ -2030,8 +2030,8 @@ namespace Alis.Core.Physic.Test
             data[0, 1] = -1; data[1, 1] = 1;  data[2, 1] = -1;
             data[0, 2] = -1; data[1, 2] = -1; data[2, 2] = -1;
 
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -2049,8 +2049,8 @@ namespace Alis.Core.Physic.Test
             data[0, 1] = 1; data[1, 1] = 1; data[2, 1] = 1;
             data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = -1;
 
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -2063,7 +2063,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_Triangulate()
         {
-            var points = new Vertices
+            Vertices points = new Vertices
             {
                 new Vector2F(0, 0),
                 new Vector2F(4, 0),
@@ -2071,7 +2071,7 @@ namespace Alis.Core.Physic.Test
                 new Vector2F(2, 2),
                 new Vector2F(0, 4)
             };
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotEmpty(result);
         }
 
@@ -2084,7 +2084,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_ComplexTriangulate()
         {
-            var points = new Vertices
+            Vertices points = new Vertices
             {
                 new Vector2F(0, 0),
                 new Vector2F(4, 0),
@@ -2093,7 +2093,7 @@ namespace Alis.Core.Physic.Test
                 new Vector2F(0, 4),
                 new Vector2F(-1, 2)
             };
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotEmpty(result);
         }
 
@@ -2106,13 +2106,13 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_LargeTriangulate()
         {
-            var points = new Vertices();
+            Vertices points = new Vertices();
             for (int i = 0; i < 12; i++)
             {
                 float angle = (float)i / 12 * (float)Math.PI * 2;
                 points.Add(new Vector2F((float)Math.Cos(angle) * 5, (float)Math.Sin(angle) * 5));
             }
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotNull(result);
         }
 
@@ -2125,18 +2125,18 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_EdgeCircle_VertexNormals()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex0 = true,
                     Vertex0 = new Vector2F(-0.5f, 0.0f),
                     HasVertex3 = true,
                     Vertex3 = new Vector2F(1.5f, 0.0f)
                 };
-            var circle = new CircleShape(0.2f, 1.0f);
-            var xfEdge = ControllerTransform.Identity;
+            CircleShape circle = new CircleShape(0.2f, 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
             // Place circle near vertex0 region of edge
-            var xfCircle = new ControllerTransform(new Vector2F(-0.4f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-0.4f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndCircle(ref manifold, edge, ref xfEdge, circle, ref xfCircle);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -2150,8 +2150,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateCapsule_SimpleCapsule()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCapsule(0.5f, 0.3f, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(0.5f, 0.3f, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -2165,9 +2165,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_Calculate_FailedOnMaxIter()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.02f, 0.02f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -2191,7 +2191,7 @@ namespace Alis.Core.Physic.Test
                 },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -2205,9 +2205,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_PushBackIter_Touching()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -2215,7 +2215,7 @@ namespace Alis.Core.Physic.Test
                 SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -2235,9 +2235,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_SolveToi_DisabledAfterUpdate()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-2f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             // Step with PreSolve that disables the contact
@@ -2263,9 +2263,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcContactAlpha_Alpha0Advance_Hit()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-3f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(50f, 0f);
             bodyA.IsBullet = true;
             // Step to create contact
@@ -2275,21 +2275,21 @@ namespace Alis.Core.Physic.Test
                 };
             world.Step(1.0f / 60.0f, ref iterations);
             // Now directly set unequal alpha0 values
-            var cmField = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
-            var cm = cmField?.GetValue(world) as ContactManager;
+            FieldInfo cmField = typeof(WorldPhysic).GetField("ContactManager", BindingFlags.Instance | BindingFlags.NonPublic);
+            ContactManager cm = cmField?.GetValue(world) as ContactManager;
             if (cm != null && cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
-                    var fA = contact.FixtureA;
-                    var fB = contact.FixtureB;
+                    Fixture fA = contact.FixtureA;
+                    Fixture fB = contact.FixtureB;
                     fA.GetBody.Sweep.Alpha0 = 0.2f;
                     fB.GetBody.Sweep.Alpha0 = 0.8f;
-                    var method = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
+                    MethodInfo method = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
                     if (method != null)
                     {
-                        var result = (float)method.Invoke(world, new object[] { contact });
+                        float result = (float)method.Invoke(world, new object[] { contact });
                         Assert.True(result >= 0);
                     }
                 }
@@ -2306,10 +2306,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_ProcessToiContact_Reflection()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            var bodyC = world.CreateCircle(0.5f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            Body bodyC = world.CreateCircle(0.5f, 1.0f, new Vector2F(5f, 0f), BodyType.Dynamic);
             bodyA.IsBullet = true;
 
             // Step multiple times to create contacts between bodies
@@ -2323,7 +2323,7 @@ namespace Alis.Core.Physic.Test
                 world.Step(1.0f / 60.0f, ref iterations);
             }
 
-            var ptcMethod = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+            MethodInfo ptcMethod = typeof(WorldPhysic).GetMethod("ProcessToiContact",
                 BindingFlags.Instance | BindingFlags.NonPublic);
 
             // Find a contact edge to use
@@ -2348,11 +2348,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_TestPoint_InsideFixture()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Static);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(2f, 2f, 1f, Vector2F.Zero, 0f, BodyType.Static);
             body.CreateCircle(0.3f, 1.0f, new Vector2F(0.5f, 0.5f));
             // Point inside the rectangle
-            var result = world.TestPoint(new Vector2F(0.2f, 0.2f));
+            Fixture result = world.TestPoint(new Vector2F(0.2f, 0.2f));
             Assert.NotNull(result);
         }
 
@@ -2365,8 +2365,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateCapsule_Direct()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateCapsule(0.5f, 0.1f, 3, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateCapsule(0.5f, 0.1f, 3, 0.1f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -2379,8 +2379,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateRounded_Direct()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRoundedRectangle(0.3f, 0.3f, 0.05f, 0.05f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRoundedRectangle(0.3f, 0.3f, 0.05f, 0.05f, 3, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -2394,12 +2394,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_AddPair_Null()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var edgeBody = world.CreateEdge(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body edgeBody = world.CreateEdge(new Vector2F(0f, 0f), new Vector2F(1f, 0f));
             edgeBody.GetBodyType = BodyType.Dynamic;
-            var circleBody = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            Body circleBody = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
             // Make fixtures incompatible - one is a sensor, other isn't
-            foreach (var f in edgeBody.FixtureList) f.GetIsSensor = true;
+            foreach (Fixture f in edgeBody.FixtureList) f.GetIsSensor = true;
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -2417,9 +2417,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ContactAlreadyExists_SwappedFixtures()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             // Add two overlapping circles that share the same fixture pair but swapped
             bodyA.CreateCircle(0.5f, 1.0f, new Vector2F(0.3f, 0f));
             for (int i = 0; i < 3; i++)
@@ -2442,9 +2442,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessCollision_DisabledBody()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -2465,12 +2465,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessMulti_DisabledBody()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -2490,11 +2490,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_TryResolve_ContactFilterPath()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.ContactFilter = (a, b) => false;
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             // Create contact then flag it for filtering
             SolverIterations iterations = new SolverIterations
                 {
@@ -2503,7 +2503,7 @@ namespace Alis.Core.Physic.Test
             world.Step(1.0f / 60.0f, ref iterations);
             if (cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
                     contact.FilterFlag = true;
@@ -2522,12 +2522,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_UpdateLock_SameOrderEx()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             bodyA.LockOrder = 0;
             bodyB.LockOrder = 0;
             SolverIterations iterations = new SolverIterations
@@ -2547,12 +2547,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_AcquireLocks_Spin()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -2571,12 +2571,12 @@ namespace Alis.Core.Physic.Test
         public void Collision_Barycentric_EarlyReturns()
         {
             // u1 <= 0 case with r > radius^2
-            var poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var circle = new CircleShape(0.01f, 1.0f);
-            var xfPoly = ControllerTransform.Identity;
+            PolygonShape poly = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            CircleShape circle = new CircleShape(0.01f, 1.0f);
+            ControllerTransform xfPoly = ControllerTransform.Identity;
             // Place circle far from vertex v1 to get u1 <= 0 and r > radius^2
-            var xfCircle = new ControllerTransform(new Vector2F(1.5f, 1.5f), 0.0f);
-            var manifold = new Manifold();
+            ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.5f, 1.5f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygonAndCircle(ref manifold, poly, ref xfPoly, circle, ref xfCircle);
             Assert.True(manifold.PointCount <= 1);
         }
@@ -2591,11 +2591,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_FindMaxSep_BetterEdge()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 1.0f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
-            var xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 6.0f);
-            var xfB = ControllerTransform.Identity;
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 6.0f);
+            ControllerTransform xfB = ControllerTransform.Identity;
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -2610,11 +2610,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_Polygons_FaceB()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(5.0f, 0.5f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfA = ControllerTransform.Identity;
-            var xfB = new ControllerTransform(new Vector2F(0.6f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(5.0f, 0.5f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.6f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -2628,18 +2628,18 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void EpCollider_Collide_BackFaceCulling()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f))
                 {
                     HasVertex0 = true,
                     Vertex0 = new Vector2F(-0.5f, 0.0f),
                     HasVertex3 = true,
                     Vertex3 = new Vector2F(1.5f, 0.0f)
                 };
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
             // Place polygon behind the edge normal
-            var xfPolygon = new ControllerTransform(new Vector2F(0.5f, -0.3f), 0.0f);
-            var manifold = new Manifold();
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(0.5f, -0.3f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -2653,12 +2653,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void EpCollider_SelectPrimary_ElseBranch()
         {
-            var edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
-            var polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
-            var xfEdge = ControllerTransform.Identity;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(1.0f, 0.0f));
+            PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(2.0f, 2.0f), 1.0f);
+            ControllerTransform xfEdge = ControllerTransform.Identity;
             // Far away so no overlap, triggering the "unknown" axis selection
-            var xfPolygon = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(5.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollideEdgeAndPolygon(ref manifold, edge, ref xfEdge, polygon, ref xfPolygon);
             Assert.Equal(0, manifold.PointCount);
         }
@@ -2672,9 +2672,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_SolveToi_Clamping_All()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(10000f, 0f);
             bodyA.AngularVelocity = 10000f;
             bodyA.IsBullet = true;
@@ -2698,7 +2698,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_Report_NullContactManager()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
@@ -2706,8 +2706,8 @@ namespace Alis.Core.Physic.Test
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
-            var island = world.GetIsland;
-            var cmField = typeof(Island).GetField("_contactManager",
+            Island island = world.GetIsland;
+            FieldInfo cmField = typeof(Island).GetField("_contactManager",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             if (cmField != null)
             {
@@ -2715,39 +2715,6 @@ namespace Alis.Core.Physic.Test
                 iterations.PositionIterations = 10;
                 world.Step(1.0f / 60.0f, ref iterations);
             }
-        }
-
-        // ========================================================================
-        // ContactSolver - multicore threshold paths (lines 326, 329-330, 532-533, etc.)
-        // ========================================================================
-        /// <summary>
-        /// Tests that contact solver multi core all
-        /// </summary>
-        [Fact]
-        public void ContactSolver_MultiCore_All()
-        {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
-
-            // Set both velocity and position constraints thresholds to 0 to force multicore
-            var velField = cm.GetType().GetField("VelocityConstraintsMultithreadThreshold",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            velField?.SetValue(cm, 0);
-            var posField = cm.GetType().GetField("PositionConstraintsMultithreadThreshold",
-                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            posField?.SetValue(cm, 0);
-
-            var bodyA = world.CreateCircle(0.3f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.3f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
-            var bodyC = world.CreateCircle(0.3f, 1.0f, new Vector2F(-0.5f, 0f), BodyType.Dynamic);
-            
-            SolverIterations solverIterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-
-            world.Step(1.0f / 60.0f, ref solverIterations);
-            world.Step(1.0f / 60.0f, ref solverIterations);
         }
 
         // ========================================================================
@@ -2760,11 +2727,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircular_360()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             // Create a large body that wraps around the explosion center
-            var body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var result = explosion.Activate(Vector2F.Zero, 25f, 100f);
+            Body body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            Dictionary<Fixture, Vector2F> result = explosion.Activate(Vector2F.Zero, 25f, 100f);
             Assert.NotNull(result);
         }
 
@@ -2781,8 +2748,8 @@ namespace Alis.Core.Physic.Test
             data[0, 0] = 1; data[1, 0] = 1; data[2, 0] = 1;
             data[0, 1] = 1; data[1, 1] = -1; data[2, 1] = 1;
             data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = 1;
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(2, 2) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -2800,8 +2767,8 @@ namespace Alis.Core.Physic.Test
             data[0, 1] = 1; data[1, 1] = 1; data[2, 1] = 1; data[3, 1] = 1;
             data[0, 2] = 1; data[1, 2] = 1; data[2, 2] = -1; data[3, 2] = -1;
             data[0, 3] = 1; data[1, 3] = 1; data[2, 3] = -1; data[3, 3] = -1;
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(3, 3) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -2814,12 +2781,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_Triangulate_EdgeEvents()
         {
-            var points = new Vertices
+            Vertices points = new Vertices
             {
                 new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(5, 3),
                 new Vector2F(3, 4), new Vector2F(0, 3)
             };
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotEmpty(result);
         }
 
@@ -2832,12 +2799,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_FinalizeConvexHull()
         {
-            var points = new Vertices
+            Vertices points = new Vertices
             {
                 new Vector2F(0, 0), new Vector2F(4, 0), new Vector2F(5, 2),
                 new Vector2F(4, 5), new Vector2F(0, 5), new Vector2F(-1, 2)
             };
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotEmpty(result);
         }
 
@@ -2850,12 +2817,12 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void DTSweep_SweepConstraints()
         {
-            var points = new Vertices
+            Vertices points = new Vertices
             {
                 new Vector2F(0, 0), new Vector2F(6, 0), new Vector2F(6, 4),
                 new Vector2F(4, 6), new Vector2F(0, 6), new Vector2F(-2, 4)
             };
-            var result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
+            List<Vertices> result = Triangulate.ConvexPartition(points, TriangulationAlgorithm.Delauny);
             Assert.NotEmpty(result);
         }
 
@@ -2868,9 +2835,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Island_SolveToi_TransClamp()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(1000f, 0f);
             bodyA.AngularVelocity = 1000f;
             bodyA.IsBullet = true;
@@ -2896,24 +2863,24 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessCollision_DisabledDirect()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
-            var cm = world.ContactManager;
+            ContactManager cm = world.ContactManager;
             if (cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
-                    var pccMethod = typeof(ContactManager).GetMethod("ProcessContactCollision",
+                    MethodInfo pccMethod = typeof(ContactManager).GetMethod("ProcessContactCollision",
                         BindingFlags.Instance | BindingFlags.NonPublic);
                     // Disable body via direct field (not property which destroys contacts)
-                    var enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
+                    FieldInfo enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
                     enabledField?.SetValue(bodyA, false);
                     pccMethod?.Invoke(cm, new object[] { contact });
                 }
@@ -2930,78 +2897,40 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_ProcessMulti_DisabledDirect()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
                 };
             world.Step(1.0f / 60.0f, ref iterations);
-            var cm = world.ContactManager;
+            ContactManager cm = world.ContactManager;
             if (cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
-                    var pcmcMethod = typeof(ContactManager).GetMethod("ProcessContactMultiCore",
+                    MethodInfo pcmcMethod = typeof(ContactManager).GetMethod("ProcessContactMultiCore",
                         BindingFlags.Instance | BindingFlags.NonPublic);
-                    var enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
+                    FieldInfo enabledField = typeof(Body).GetField("_enabled", BindingFlags.Instance | BindingFlags.NonPublic);
                     enabledField?.SetValue(bodyA, false);
                     int lockOrder = 0;
                     pcmcMethod?.Invoke(cm, new object[] { contact, lockOrder });
                 }
             }
         }
-
-        // ========================================================================
-        // ContactManager - Direct TryResolveContactFilter with ContactFilter reject
-        // Lines 655-665
-        // ========================================================================
-        /// <summary>
-        /// Tests that contact manager try resolve filter reject direct
-        /// </summary>
-        [Fact]
-        public void ContactManager_TryResolve_FilterRejectDirect()
-        {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
-            SolverIterations iterations = new SolverIterations
-                {
-                    PositionIterations = 10
-                };
-            world.Step(1.0f / 60.0f, ref iterations);
-            if (cm.ContactCount > 0)
-            {
-                var contact = cm.ContactList.Next;
-                if (contact != cm.ContactList)
-                {
-                    var tryResolve = typeof(ContactManager).GetMethod("TryResolveContactFilter",
-                        BindingFlags.Instance | BindingFlags.NonPublic);
-                    contact.FilterFlag = true;
-                    cm.ContactFilter = (a, b) => false;
-                    var args = new object[] { contact, bodyA, bodyB, contact.FixtureA, contact.FixtureB };
-                    tryResolve?.Invoke(cm, args);
-                }
-            }
-        }
-
-        // ========================================================================
-        // ContactManager - Direct UpdateContactWithLock same lock order
-        // Lines 683-684
-        // ========================================================================
+        
         /// <summary>
         /// Tests that contact manager update lock same order direct
         /// </summary>
         [Fact]
         public void ContactManager_UpdateLock_SameOrderDirect()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -3009,14 +2938,14 @@ namespace Alis.Core.Physic.Test
             world.Step(1.0f / 60.0f, ref iterations);
             if (cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList)
                 {
-                    var updateLock = typeof(ContactManager).GetMethod("UpdateContactWithLock",
+                    MethodInfo updateLock = typeof(ContactManager).GetMethod("UpdateContactWithLock",
                         BindingFlags.Instance | BindingFlags.NonPublic);
                     bodyA.LockOrder = 0;
                     bodyB.LockOrder = 0;
-                    var ex = Record.Exception(() =>
+                    Exception ex = Record.Exception(() =>
                         updateLock?.Invoke(cm, new object[] { contact }));
                     Assert.NotNull(ex);
                     Assert.IsType<TargetInvocationException>(ex);
@@ -3035,10 +2964,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_AcquireLocks_Normal()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
-            var acquireLock = typeof(ContactManager).GetMethod("AcquireLocks",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            MethodInfo acquireLock = typeof(ContactManager).GetMethod("AcquireLocks",
                 BindingFlags.Static | BindingFlags.NonPublic);
             bodyA.Lock = 0;
             bodyB.Lock = 0;
@@ -3056,9 +2985,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TimeOfImpact_TryHandle_Touching()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(1.0f, 1.0f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -3066,7 +2995,7 @@ namespace Alis.Core.Physic.Test
                 SweepB = new Sweep { LocalCenter = Vector2F.Zero, C0 = Vector2F.Zero, C = Vector2F.Zero, A0 = 0.0f, A = 0.0f, Alpha0 = 0.0f },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -3080,35 +3009,35 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void RealExplosion_MergeCircular_DataFull()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
-            var explosion = new RealExplosion(world);
-            var dataField = typeof(RealExplosion).GetField("_data",
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRectangle(30f, 30f, 1f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            RealExplosion explosion = new RealExplosion(world);
+            FieldInfo dataField = typeof(RealExplosion).GetField("_data",
                 BindingFlags.Instance | BindingFlags.NonPublic);
             if (dataField != null)
             {
-                var dataType = typeof(RealExplosion).GetNestedType("ShapeData",
+                Type dataType = typeof(RealExplosion).GetNestedType("ShapeData",
                     BindingFlags.NonPublic);
                 if (dataType != null)
                 {
-                    var listType = typeof(List<>).MakeGenericType(dataType);
-                    var list = Activator.CreateInstance(listType);
-                    var addMethod = listType.GetMethod("Add");
+                    Type listType = typeof(List<>).MakeGenericType(dataType);
+                    object list = Activator.CreateInstance(listType);
+                    MethodInfo addMethod = listType.GetMethod("Add");
 
                     // Create two shape data entries with same body and matching min/max
-                    var sd1 = Activator.CreateInstance(dataType);
-                    var sd1Body = dataType.GetField("Body");
-                    var sd1Min = dataType.GetField("Min");
-                    var sd1Max = dataType.GetField("Max");
+                    object sd1 = Activator.CreateInstance(dataType);
+                    FieldInfo sd1Body = dataType.GetField("Body");
+                    FieldInfo sd1Min = dataType.GetField("Min");
+                    FieldInfo sd1Max = dataType.GetField("Max");
                     sd1Body?.SetValue(sd1, body);
                     sd1Min?.SetValue(sd1, 0.0f);
                     sd1Max?.SetValue(sd1, (float)Math.PI);
                     addMethod?.Invoke(list, new[] { sd1 });
 
-                    var sd2 = Activator.CreateInstance(dataType);
-                    var sd2Body = dataType.GetField("Body");
-                    var sd2Min = dataType.GetField("Min");
-                    var sd2Max = dataType.GetField("Max");
+                    object sd2 = Activator.CreateInstance(dataType);
+                    FieldInfo sd2Body = dataType.GetField("Body");
+                    FieldInfo sd2Min = dataType.GetField("Min");
+                    FieldInfo sd2Max = dataType.GetField("Max");
                     sd2Body?.SetValue(sd2, body);
                     sd2Min?.SetValue(sd2, (float)Math.PI);
                     sd2Max?.SetValue(sd2, (float)Math.PI * 2);
@@ -3116,7 +3045,7 @@ namespace Alis.Core.Physic.Test
 
                     dataField.SetValue(explosion, list);
 
-                    var mergeMethod = typeof(RealExplosion).GetMethod("MergeCircularData",
+                    MethodInfo mergeMethod = typeof(RealExplosion).GetMethod("MergeCircularData",
                         BindingFlags.Instance | BindingFlags.NonPublic);
                     mergeMethod?.Invoke(explosion, null);
                 }
@@ -3138,8 +3067,8 @@ namespace Alis.Core.Physic.Test
                 for (int y = 0; y < 5; y++)
                     data[x, y] = -1;
             data[2, 2] = 1;
-            var domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(4, 4) };
-            var result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
+            Aabb domain = new Aabb { LowerBound = new Vector2F(0, 0), UpperBound = new Vector2F(4, 4) };
+            List<Vertices> result = MarchingSquares.DetectSquares(domain, 1.0f, 1.0f, data, 1, true);
             Assert.NotNull(result);
         }
 
@@ -3152,9 +3081,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateCapsule_Small()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             // Use topEdges=1, bottomEdges=1 to get only 4 vertices (< MaxPolygonVertices=8)
-            var body = world.CreateCapsule(1.0f, 0.2f, 1, 0.2f, 1, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            Body body = world.CreateCapsule(1.0f, 0.2f, 1, 0.2f, 1, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -3167,8 +3096,8 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CreateRounded_Small()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var body = world.CreateRoundedRectangle(0.2f, 0.2f, 0.03f, 0.03f, 2, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body body = world.CreateRoundedRectangle(0.2f, 0.2f, 0.03f, 0.03f, 2, 1.0f, Vector2F.Zero, 0f, BodyType.Dynamic);
             Assert.NotNull(body);
         }
 
@@ -3181,9 +3110,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ProcessToiContact_DirectCall()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-10f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(200f, 0f);
             bodyA.IsBullet = true;
             bodyB.IsBullet = true;
@@ -3195,7 +3124,7 @@ namespace Alis.Core.Physic.Test
             }
 
             // Now directly call ProcessToiContact via reflection on the existing contact
-            var ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+            MethodInfo ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
                 BindingFlags.Instance | BindingFlags.NonPublic);
 
             bool called = false;
@@ -3230,9 +3159,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void TOI_MaxIter_Failure()
         {
-            var shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
-            var shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
-            var input = new ToiInput
+            PolygonShape shapeA = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
+            PolygonShape shapeB = new PolygonShape(PolygonTools.CreateRectangle(0.001f, 0.001f), 1.0f);
+            ToiInput input = new ToiInput
             {
                 ProxyA = new DistanceProxy(shapeA, 0),
                 ProxyB = new DistanceProxy(shapeB, 0),
@@ -3256,7 +3185,7 @@ namespace Alis.Core.Physic.Test
                 },
                 TMax = 1.0f
             };
-            TimeOfImpact.CalculateTimeOfImpact(out var output, ref input);
+            TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
             Assert.NotNull(output);
         }
 
@@ -3269,11 +3198,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_FindMaxSep_SearchFull()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.2f, 1.0f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(3.0f, 3.0f), 1.0f);
-            var xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 3.0f);
-            var xfB = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.2f, 1.0f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(3.0f, 3.0f), 1.0f);
+            ControllerTransform xfA = new ControllerTransform(new Vector2F(0.0f, 0.0f), (float)Math.PI / 3.0f);
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.0f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -3287,11 +3216,11 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void Collision_ClipFace_FewPoints()
         {
-            var polyA = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 0.1f), 1.0f);
-            var polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 10.0f), 1.0f);
-            var xfA = ControllerTransform.Identity;
-            var xfB = new ControllerTransform(new Vector2F(0.05f, 0.0f), 0.0f);
-            var manifold = new Manifold();
+            PolygonShape polyA = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 0.1f), 1.0f);
+            PolygonShape polyB = new PolygonShape(PolygonTools.CreateRectangle(10.0f, 10.0f), 1.0f);
+            ControllerTransform xfA = ControllerTransform.Identity;
+            ControllerTransform xfB = new ControllerTransform(new Vector2F(0.05f, 0.0f), 0.0f);
+            Manifold manifold = new Manifold();
             Collision.CollidePolygons(ref manifold, polyA, ref xfA, polyB, ref xfB);
             Assert.True(manifold.PointCount >= 0);
         }
@@ -3305,10 +3234,10 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_AddPair_Direct()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateEdge(Vector2F.Zero, new Vector2F(1f, 0f));
             bodyA.GetBodyType = BodyType.Dynamic;
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
             for (int i = 0; i < 5; i++)
             {
                 SolverIterations iterations = new SolverIterations
@@ -3328,14 +3257,14 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void ContactManager_MultiCore_Acquire()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var cm = world.ContactManager;
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            ContactManager cm = world.ContactManager;
             cm.GetType().GetField("CollideMultithreadThreshold",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
             cm.GetType().GetField("VelocityConstraintsMultithreadThreshold",
                 BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)?.SetValue(cm, 0);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.6f, 0f), BodyType.Dynamic);
             SolverIterations iterations = new SolverIterations
                 {
                     PositionIterations = 10
@@ -3352,9 +3281,9 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void World_CalcAlpha_BB_LessThan_BA()
         {
-            var world = new WorldPhysic(Vector2F.Zero);
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-5f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             bodyA.LinearVelocityInternal = new Vector2F(100f, 0f);
             bodyA.IsBullet = true;
             SolverIterations iterations = new SolverIterations
@@ -3363,20 +3292,20 @@ namespace Alis.Core.Physic.Test
                 };
             world.Step(1.0f / 60.0f, ref iterations);
 
-            var cmField = typeof(WorldPhysic).GetField("ContactManager",
+            FieldInfo cmField = typeof(WorldPhysic).GetField("ContactManager",
                 BindingFlags.Instance | BindingFlags.NonPublic);
-            var cm = cmField?.GetValue(world) as ContactManager;
+            ContactManager cm = cmField?.GetValue(world) as ContactManager;
             if (cm != null && cm.ContactCount > 0)
             {
-                var contact = cm.ContactList.Next;
+                Contact contact = cm.ContactList.Next;
                 if (contact != cm.ContactList && cm.ContactCount > 0)
                 {
                     // Set bB.Alpha0 < bA.Alpha0 to trigger the else if branch
-                    var fA = contact.FixtureA;
-                    var fB = contact.FixtureB;
+                    Fixture fA = contact.FixtureA;
+                    Fixture fB = contact.FixtureB;
                     fA.GetBody.Sweep.Alpha0 = 0.8f;
                     fB.GetBody.Sweep.Alpha0 = 0.2f;
-                    var calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha",
+                    MethodInfo calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha",
                         BindingFlags.Instance | BindingFlags.NonPublic);
                     calcMethod?.Invoke(world, new object[] { contact });
                 }
@@ -3403,12 +3332,12 @@ namespace Alis.Core.Physic.Test
         {
             if (setCapacity == true)
             {
-                var island = world.GetIsland;
-                var bcf = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
+                Island island = world.GetIsland;
+                FieldInfo bcf = typeof(Island).GetField("_bodyCapacity", BindingFlags.Instance | BindingFlags.NonPublic);
                 bcf?.SetValue(island, 0);
             }
 
-            var ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
+            MethodInfo ptc = typeof(WorldPhysic).GetMethod("ProcessToiContact",
                 BindingFlags.Instance | BindingFlags.NonPublic);
 
             // Try both bodyA and bodyB contact lists
@@ -3434,14 +3363,14 @@ namespace Alis.Core.Physic.Test
         public void ProcessToiContact_AllPaths()
         {
             // Create world with gravity disabled
-            var world = new WorldPhysic(Vector2F.Zero)
+            WorldPhysic world = new WorldPhysic(Vector2F.Zero)
                 {
                     GetGravity = Vector2F.Zero
                 };
 
             // Create overlapping bodies that will definitely produce a contact
-            var bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-0.4f, 0f), BodyType.Dynamic);
-            var bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.4f, 0f), BodyType.Dynamic);
+            Body bodyA = world.CreateCircle(0.5f, 1.0f, new Vector2F(-0.4f, 0f), BodyType.Dynamic);
+            Body bodyB = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.4f, 0f), BodyType.Dynamic);
             bodyA.IsBullet = true;
             bodyA.Awake = true;
             bodyB.Awake = true;

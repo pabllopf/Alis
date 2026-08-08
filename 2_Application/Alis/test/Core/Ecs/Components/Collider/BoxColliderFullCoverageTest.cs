@@ -151,7 +151,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             Assert.Throws<TargetInvocationException>(() =>
             {
-                var method = typeof(BoxCollider).GetMethod("InitializeShaders",
+                MethodInfo method = typeof(BoxCollider).GetMethod("InitializeShaders",
                     BindingFlags.Instance | BindingFlags.NonPublic);
                 method.Invoke(collider, null);
             });

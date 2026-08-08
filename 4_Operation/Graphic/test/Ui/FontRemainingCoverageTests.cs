@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_SetsNameFile()
         {
-            var font = new Font("TestFont", 1, 12);
+            Font font = new Font("TestFont", 1, 12);
             Assert.Equal("TestFont", font.NameFile);
         }
 
@@ -53,7 +53,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_SetsDepth()
         {
-            var font = new Font("TestFont", 5, 12);
+            Font font = new Font("TestFont", 5, 12);
             Assert.Equal(5, font.Depth);
         }
 
@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void NameFile_CanGetAndSet()
         {
-            var font = new Font("Original", 1, 12);
+            Font font = new Font("Original", 1, 12);
             font.NameFile = "Modified";
             Assert.Equal("Modified", font.NameFile);
         }
@@ -74,7 +74,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Depth_CanGetAndSet()
         {
-            var font = new Font("Test", 1, 12);
+            Font font = new Font("Test", 1, 12);
             font.Depth = 42;
             Assert.Equal(42, font.Depth);
         }
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_WithNullNameFile()
         {
-            var font = new Font(null, 1, 12);
+            Font font = new Font(null, 1, 12);
             Assert.Null(font.NameFile);
         }
 
@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_WithEmptyNameFile()
         {
-            var font = new Font("", 1, 12);
+            Font font = new Font("", 1, 12);
             Assert.Equal("", font.NameFile);
         }
 
@@ -105,7 +105,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_WithNegativeDepth()
         {
-            var font = new Font("Test", -5, 12);
+            Font font = new Font("Test", -5, 12);
             Assert.Equal(-5, font.Depth);
         }
 
@@ -115,7 +115,7 @@ namespace Alis.Core.Graphic.Test.Ui
         [Fact]
         public void Constructor_WithZeroDepth()
         {
-            var font = new Font("Test", 0, 12);
+            Font font = new Font("Test", 0, 12);
             Assert.Equal(0, font.Depth);
         }
     }
