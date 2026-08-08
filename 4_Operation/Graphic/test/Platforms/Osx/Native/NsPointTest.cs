@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             FieldInfo xField = typeof(NsPoint).GetField("X");
 
             Assert.NotNull(xField);
-            Assert.Equal(typeof(double), xField.FieldType, 5);
+            Assert.Equal(typeof(double), xField.FieldType);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             FieldInfo yField = typeof(NsPoint).GetField("Y");
 
             Assert.NotNull(yField);
-            Assert.Equal(typeof(double), yField.FieldType, 5);
+            Assert.Equal(typeof(double), yField.FieldType);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             NsPoint point = new NsPoint {X = 10.5, Y = 20.5};
 
-            Assert.Equal(10.5, point.X, 5);
-            Assert.Equal(20.5, point.Y, 5);
+            Assert.Equal(10.5, point.X);
+            Assert.Equal(20.5, point.Y);
         }
 
         /// <summary>
@@ -124,8 +124,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             point.X = 5.0;
             point.Y = 10.0;
 
-            Assert.Equal(5.0, point.X, 5);
-            Assert.Equal(10.0, point.Y, 5);
+            Assert.Equal(5.0, point.X);
+            Assert.Equal(10.0, point.Y);
         }
 
         /// <summary>
@@ -136,8 +136,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             NsPoint point = new NsPoint {X = 3.14159265358979, Y = 2.71828182845905};
 
-            Assert.Equal(3.14159265358979, point.X, 5);
-            Assert.Equal(2.71828182845905, point.Y, 5);
+            Assert.Equal(3.14159265358979, point.X);
+            Assert.Equal(2.71828182845905, point.Y);
         }
 
         /// <summary>
@@ -148,8 +148,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         {
             NsPoint point = new NsPoint();
 
-            Assert.Equal(0.0, point.X, 5);
-            Assert.Equal(0.0, point.Y, 5);
+            Assert.Equal(0.0, point.X);
+            Assert.Equal(0.0, point.Y);
         }
 
         /// <summary>

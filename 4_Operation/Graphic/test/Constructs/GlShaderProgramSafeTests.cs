@@ -107,7 +107,7 @@ namespace Alis.Core.Graphic.Test.Constructs
             MethodInfo method = typeof(GlShaderProgram).GetMethod("TypeFromAttributeType", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
             Type result = (Type)method.Invoke(null, new object[] { ActiveAttribType.Float });
-            Assert.Equal(typeof(float), result, 5);
+            Assert.Equal(typeof(float), result);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Graphic.Test.Constructs
             MethodInfo method = typeof(GlShaderProgram).GetMethod("TypeFromUniformType", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(method);
             Type result = (Type)method.Invoke(null, new object[] { ActiveUniformType.Float });
-            Assert.Equal(typeof(float), result, 5);
+            Assert.Equal(typeof(float), result);
         }
 
         /// <summary>

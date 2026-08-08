@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(byte[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(byte[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(short[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(short[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(short[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(short[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(short[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ushort[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ushort[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ushort[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ushort[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ushort[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(int[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(int[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(int[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(int[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(int[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(uint[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(uint[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(uint[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(uint[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(uint[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(long[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(long[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(long[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -333,7 +333,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(long[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(long[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ulong[]), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ulong[]), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -377,7 +377,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ulong[]), typeof(int), typeof(int), typeof(double) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ulong[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -399,7 +399,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram", new[] { typeof(string), typeof(ulong[]), typeof(int), typeof(int), typeof(double), typeof(ImPlotRange), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -473,7 +473,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(float).MakeByRefType(), typeof(float).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(double).MakeByRefType(), typeof(double).MakeByRefType(), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(double).MakeByRefType(), typeof(double).MakeByRefType(), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -539,7 +539,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(double).MakeByRefType(), typeof(double).MakeByRefType(), typeof(int), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(double).MakeByRefType(), typeof(double).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -561,7 +561,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(double).MakeByRefType(), typeof(double).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -572,7 +572,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(sbyte).MakeByRefType(), typeof(sbyte).MakeByRefType(), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -583,7 +583,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(sbyte).MakeByRefType(), typeof(sbyte).MakeByRefType(), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -594,7 +594,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(sbyte).MakeByRefType(), typeof(sbyte).MakeByRefType(), typeof(int), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(sbyte).MakeByRefType(), typeof(sbyte).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -616,7 +616,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(sbyte).MakeByRefType(), typeof(sbyte).MakeByRefType(), typeof(int), typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -627,7 +627,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(byte).MakeByRefType(), typeof(byte).MakeByRefType(), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -638,7 +638,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(byte).MakeByRefType(), typeof(byte).MakeByRefType(), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>
@@ -649,7 +649,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             MethodInfo method = GetPublicStaticMethod("PlotHistogram2D", new[] { typeof(string), typeof(byte).MakeByRefType(), typeof(byte).MakeByRefType(), typeof(int), typeof(int), typeof(int) });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType, 5);
+            Assert.Equal(typeof(double), method.ReturnType);
         }
 
         /// <summary>

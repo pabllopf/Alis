@@ -480,7 +480,7 @@ namespace Alis.Core.Graphic.Test.Constructs
             Assert.Equal(typeof(Vector3F), attrib.Type);
             Assert.NotNull(uniform);
             Assert.Equal(ParamType.Uniform, uniform.ParamType);
-            Assert.Equal(typeof(float), uniform.Type, 5);
+            Assert.Equal(typeof(float), uniform.Type);
         }
 
         /// <summary>
