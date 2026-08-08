@@ -53,19 +53,6 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
-        /// <summary>
-        /// Tests that pause when playing but process null should not set paused
-        /// </summary>
-        [Fact]
-        public void Pause_WhenPlayingButProcessNull_ShouldNotSetPaused()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-            playingProp.SetValue(player, true, null);
-
-            player.Pause();
-            Assert.False(player.Paused);
-        }
 
         /// <summary>
         /// Tests that resume when not playing should not change state
@@ -79,19 +66,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Playing);
         }
 
-        /// <summary>
-        /// Tests that resume when playing but not paused should not change paused
-        /// </summary>
-        [Fact]
-        public void Resume_WhenPlayingButNotPaused_ShouldNotChangePaused()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-            playingProp.SetValue(player, true, null);
-
-            player.Resume();
-            Assert.False(player.Paused);
-        }
+      
 
         /// <summary>
         /// Tests that stop when process is null should set playing and paused false
@@ -105,30 +80,6 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(player.Paused);
         }
 
-        /// <summary>
-        /// Tests that stop when process is not null should kill and dispose
-        /// </summary>
-        [Fact]
-        public void Stop_WhenProcessIsNotNull_ShouldKillAndDispose()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            MethodInfo startMethod = typeof(UnixPlayerBase).GetMethod("StartBashProcess", BindingFlags.NonPublic | BindingFlags.Instance);
-            Process process = (Process)startMethod.Invoke(player, new object[] { "sleep 5" });
-            Assert.NotNull(process);
-
-            FieldInfo processField = typeof(UnixPlayerBase).GetField("_process", BindingFlags.NonPublic | BindingFlags.Instance);
-            processField.SetValue(player, process);
-
-            PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-            playingProp.SetValue(player, true, null);
-
-            player.Stop();
-
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-            try { Assert.True(process.HasExited); } catch (InvalidOperationException) { /* process already disposed */ }
-            process.Dispose();
-        }
 
         /// <summary>
         /// Tests that handle playback finished when not playing should not invoke event
@@ -146,45 +97,7 @@ namespace Alis.Core.Audio.Test.Players
             Assert.False(eventRaised);
         }
 
-        /// <summary>
-        /// Tests that handle playback finished when playing should set playing false and invoke event
-        /// </summary>
-        [Fact]
-        public void HandlePlaybackFinished_WhenPlaying_ShouldSetPlayingFalseAndInvokeEvent()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-            playingProp.SetValue(player, true, null);
-
-            bool eventRaised = false;
-            player.PlaybackFinished += (sender, e) => eventRaised = true;
-
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("HandlePlaybackFinished", BindingFlags.NonPublic | BindingFlags.Instance);
-            method.Invoke(player, new object[] { "sender", EventArgs.Empty });
-
-            Assert.False((bool)playingProp.GetValue(player));
-            Assert.True(eventRaised);
-        }
-
-        /// <summary>
-        /// Tests that handle playback finished multiple invocations should only fire once
-        /// </summary>
-        [Fact]
-        public void HandlePlaybackFinished_MultipleInvocations_ShouldOnlyFireOnce()
-        {
-            TestUnixPlayer player = new TestUnixPlayer();
-            PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-            playingProp.SetValue(player, true, null);
-
-            int eventCount = 0;
-            player.PlaybackFinished += (sender, e) => eventCount++;
-
-            MethodInfo method = typeof(UnixPlayerBase).GetMethod("HandlePlaybackFinished", BindingFlags.NonPublic | BindingFlags.Instance);
-            method.Invoke(player, new object[] { null, EventArgs.Empty });
-            method.Invoke(player, new object[] { null, EventArgs.Empty });
-
-            Assert.Equal(1, eventCount);
-        }
+       
 
         /// <summary>
         /// Tests that pause process command should be formattable

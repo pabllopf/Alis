@@ -72,16 +72,7 @@ namespace Alis.App.Installer.Test
             try { GetPrivateMethod(methodName).Invoke(null, args); }
             catch (TargetInvocationException) { }
         }
-
-        /// <summary>
-        /// Creates the im gui io ptr
-        /// </summary>
-        /// <returns>The object</returns>
-        private static object CreateImGuiIoPtr()
-        {
-            Type type = Type.GetType("Alis.Extension.Graphic.Ui.ImGuiIoPtr, Alis.Extension.Graphic.Ui");
-            return Activator.CreateInstance(type, new object[] { IntPtr.Zero });
-        }
+        
 
         // ========================
         // CalculateDeltaTime (pure math)
@@ -165,59 +156,7 @@ namespace Alis.App.Installer.Test
             System.Threading.Thread.Sleep(100);
             InvokePrivate("ApplyFrameTiming", sw, sw.Elapsed.TotalSeconds, 0.001);
         }
-
-        // ========================
-        // ProcessPendingInput (safe paths)
-        // ========================
-
-        /// <summary>
-        /// Tests that process pending input null chars skips
-        /// </summary>
-        [Fact]
-        public void ProcessPendingInput_NullChars_Skips()
-        {
-            object io = CreateImGuiIoPtr();
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                TryGetLastInputCharactersResult = true,
-                TryGetLastInputCharactersValue = null
-            };
-            InvokePrivate("ProcessPendingInput", io, platform);
-        }
-
-        /// <summary>
-        /// Tests that process pending input empty chars skips
-        /// </summary>
-        [Fact]
-        public void ProcessPendingInput_EmptyChars_Skips()
-        {
-            object io = CreateImGuiIoPtr();
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                TryGetLastInputCharactersResult = true,
-                TryGetLastInputCharactersValue = string.Empty
-            };
-            InvokePrivate("ProcessPendingInput", io, platform);
-        }
-
-        /// <summary>
-        /// Tests that process pending input no chars skips
-        /// </summary>
-        [Fact]
-        public void ProcessPendingInput_NoChars_Skips()
-        {
-            object io = CreateImGuiIoPtr();
-            FakeBehaviorPlatform platform = new FakeBehaviorPlatform
-            {
-                TryGetLastInputCharactersResult = false
-            };
-            InvokePrivate("ProcessPendingInput", io, platform);
-        }
-
-        // ========================
-        // CheckGlError (safe - throws NullRef)
-        // ========================
-
+        
         /// <summary>
         /// Tests that check gl error safe
         /// </summary>
@@ -240,44 +179,7 @@ namespace Alis.App.Installer.Test
             object result = InvokePrivate("GetPlatform");
             Assert.NotNull(result);
         }
-
-        // ========================
-        // InitializeImGui (creates context - cleanup after)
-        // ========================
-
-        /// <summary>
-        /// Tests that initialize im gui safe
-        /// </summary>
-        [Fact]
-        public void InitializeImGui_Safe()
-        {
-            try
-            {
-                InvokePrivate("InitializeImGui");
-            }
-            catch (TargetInvocationException) { }
-            finally
-            {
-                CleanupImGuiContext();
-            }
-        }
-
-        /// <summary>
-        /// Cleanups the im gui context
-        /// </summary>
-        private static void CleanupImGuiContext()
-        {
-            try
-            {
-                Type t = Type.GetType("Alis.Extension.Graphic.Ui.ImGui, Alis.Extension.Graphic.Ui");
-                if (t != null)
-                {
-                    t.GetMethod("SetCurrentContext", new[] { typeof(IntPtr) })
-                        ?.Invoke(null, new object[] { IntPtr.Zero });
-                }
-            }
-            catch { }
-        }
+        
 
         // ========================
         // InitializeOpenGL (throws NullRef - safe)

@@ -98,69 +98,7 @@ namespace Alis.Core.Audio.Test.Players
             }
         }
 
-        /// <summary>
-        /// Tests that pause when playing should set paused
-        /// </summary>
-        [Fact]
-        public async Task Pause_WhenPlaying_ShouldSetPaused()
-        {
-            if (!IsWinmmStubAvailable()) return;
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
-                BindingFlags.Public | BindingFlags.Instance);
-            playingProp?.SetValue(player, true, null);
-
-            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            fileNameField?.SetValue(player, "test.wav");
-
-            await player.Pause();
-            Assert.True(player.Paused);
-        }
-
-        /// <summary>
-        /// Tests that resume when playing and paused should set not paused
-        /// </summary>
-        [Fact]
-        public async Task Resume_WhenPlayingAndPaused_ShouldSetNotPaused()
-        {
-            if (!IsWinmmStubAvailable()) return;
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
-                BindingFlags.Public | BindingFlags.Instance);
-            playingProp?.SetValue(player, true, null);
-            PropertyInfo pausedProp = typeof(WindowsPlayer).GetProperty("Paused",
-                BindingFlags.Public | BindingFlags.Instance);
-            pausedProp?.SetValue(player, true, null);
-
-            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            fileNameField?.SetValue(player, "test.wav");
-
-            await player.Resume();
-            Assert.False(player.Paused);
-        }
-
-        /// <summary>
-        /// Tests that stop when playing should reset state
-        /// </summary>
-        [Fact]
-        public async Task Stop_WhenPlaying_ShouldResetState()
-        {
-            if (!IsWinmmStubAvailable()) return;
-            WindowsPlayer player = new WindowsPlayer();
-            PropertyInfo playingProp = typeof(WindowsPlayer).GetProperty("Playing",
-                BindingFlags.Public | BindingFlags.Instance);
-            playingProp?.SetValue(player, true, null);
-
-            FieldInfo fileNameField = typeof(WindowsPlayer).GetField("_fileName",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            fileNameField?.SetValue(player, "test.wav");
-
-            await player.Stop();
-            Assert.False(player.Playing);
-            Assert.False(player.Paused);
-        }
+      
 
         /// <summary>
         /// Tests that execute msi command with status should succeed

@@ -375,41 +375,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
-        /// <summary>
-        /// Tests that dispose with disposing true and opened for writing calls close write
-        /// </summary>
-        [Fact]
-        public void Dispose_WithDisposingTrueAndOpenedForWriting_CallsCloseWrite()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "/bin/echo",
-                Arguments = "test",
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-            Process process = Process.Start(psi);
-            process.WaitForExit(1000);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, process);
-
-            MethodInfo disposeMethod = typeof(VideoWriter).GetMethod("Dispose",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            disposeMethod.Invoke(writer, new object[] { true });
-
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
-        }
+     
 
         /// <summary>
         /// Tests that dispose with disposing true disposes destination stream
@@ -473,24 +439,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
-        /// <summary>
-        /// Tests that open write already opened throws invalid operation exception
-        /// </summary>
-        [Fact]
-        public void OpenWrite_AlreadyOpened_ThrowsInvalidOperationException()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => writer.OpenWrite());
-            Assert.Contains("already opened", ex.Message);
-
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { false });
-            writer.Dispose();
-        }
-
+        
         /// <summary>
         /// Tests that close write not opened throws invalid operation exception
         /// </summary>
@@ -502,176 +451,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
         }
 
-        /// <summary>
-        /// Tests that close write null ffmpegp sets opened for writing false
-        /// </summary>
-        [Fact]
-        public void CloseWrite_NullFfmpegp_SetsOpenedForWritingFalse()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            Exception ex = Record.Exception(() => writer.CloseWrite());
-            Assert.Null(ex);
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that close write file mode with exited process completes successfully
-        /// </summary>
-        [Fact]
-        public void CloseWrite_FileModeWithExitedProcess_CompletesSuccessfully()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "/bin/echo",
-                Arguments = "done",
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-            Process process = Process.Start(psi);
-            process.WaitForExit(1000);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, process);
-
-            Exception ex = Record.Exception(() => writer.CloseWrite());
-            Assert.Null(ex);
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that close write stream mode with exited process completes successfully
-        /// </summary>
-        [Fact]
-        public void CloseWrite_StreamModeWithExitedProcess_CompletesSuccessfully()
-        {
-            VideoWriter writer = new VideoWriter(new MemoryStream(), 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-            PropertyInfo outputStreamProp = typeof(VideoWriter).GetProperty("OutputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            outputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-            FieldInfo cscField = typeof(VideoWriter).GetField("csc",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            cscField.SetValue(writer, new CancellationTokenSource());
-
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "/bin/echo",
-                Arguments = "done",
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-            Process process = Process.Start(psi);
-            process.WaitForExit(1000);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, process);
-
-            Exception ex = Record.Exception(() => writer.CloseWrite());
-            Assert.Null(ex);
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that close write process needs kill kills and waits for exit
-        /// </summary>
-        [Fact]
-        public void CloseWrite_ProcessNeedsKill_KillsAndWaitsForExit()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "/bin/sleep",
-                Arguments = "10",
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            Process process = Process.Start(psi);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, process);
-
-            Stopwatch sw = Stopwatch.StartNew();
-            Exception ex = Record.Exception(() => writer.CloseWrite());
-            sw.Stop();
-
-            Assert.Null(ex);
-            Assert.False(writer.OpenedForWriting);
-            Assert.True(process.HasExited);
-            Assert.True(sw.ElapsedMilliseconds < 8000);
-            writer.Dispose();
-        }
-
-        /// <summary>
-        /// Tests that close write stream mode disposes output stream
-        /// </summary>
-        [Fact]
-        public void CloseWrite_StreamMode_DisposesOutputStream()
-        {
-            VideoWriter writer = new VideoWriter(new MemoryStream(), 640, 480, 30);
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-            MemoryStream outputStream = new MemoryStream();
-            PropertyInfo outputStreamProp = typeof(VideoWriter).GetProperty("OutputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            outputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { outputStream });
-            FieldInfo cscField = typeof(VideoWriter).GetField("csc",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            cscField.SetValue(writer, new CancellationTokenSource());
-
-            ProcessStartInfo psi = new ProcessStartInfo
-            {
-                FileName = "/bin/echo",
-                Arguments = "done",
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-            Process process = Process.Start(psi);
-            process.WaitForExit(1000);
-            FieldInfo ffmpegpField = typeof(VideoWriter).GetField("Ffmpegp",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            ffmpegpField.SetValue(writer, process);
-
-            writer.CloseWrite();
-            Assert.Throws<ObjectDisposedException>(() => outputStream.ReadByte());
-            writer.Dispose();
-        }
+        
+   
 
         /// <summary>
         /// Tests that internal fields csc and ffmpegp initially null

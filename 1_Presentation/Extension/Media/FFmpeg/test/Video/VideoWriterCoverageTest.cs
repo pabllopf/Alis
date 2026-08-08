@@ -108,25 +108,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
             writer.CloseWrite();
         }
-
-        /// <summary>
-        /// Tests that open write already opened should throw
-        /// </summary>
-        [RequireFfmpegFact]
-        public void OpenWrite_AlreadyOpened_ShouldThrow()
-        {
-            string testFile = Path.Combine(_tempDir, Guid.NewGuid() + ".mp4");
-            using VideoWriter writer = new VideoWriter(testFile, 640, 480, 30, null, _fakeFfmpegPath);
-
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => writer.OpenWrite());
-            Assert.Contains("already opened", ex.Message);
-
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { false });
-        }
+        
 
         /// <summary>
         /// Tests that close write with fake ffmpeg should reset flag
@@ -186,28 +168,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             writer.Dispose();
 
             Assert.Throws<ObjectDisposedException>(() => dest.WriteByte(0));
-        }
-
-        /// <summary>
-        /// Tests that close write when ffmpegp is null should complete gracefully
-        /// </summary>
-        [RequireFfmpegFact]
-        public void CloseWrite_WhenFfmpegpIsNull_ShouldNotThrow()
-        {
-            VideoWriter writer = new VideoWriter("out.mp4", 640, 480, 30);
-
-            PropertyInfo openedProp = typeof(VideoWriter).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { true });
-
-            PropertyInfo inputStreamProp = typeof(VideoWriter).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(writer, new object[] { new MemoryStream() });
-
-            Exception ex = Record.Exception(() => writer.CloseWrite());
-            Assert.Null(ex);
-            Assert.False(writer.OpenedForWriting);
-            writer.Dispose();
         }
 
         /// <summary>

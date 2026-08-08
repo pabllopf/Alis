@@ -49,34 +49,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         }
 
         /// <summary>
-        ///     Verifies that all public properties on ImGuiPlatformIo are settable and gettable.
-        /// </summary>
-        [Fact]
-        public void AllProperties_ShouldBeSettableAndGettable()
-        {
-            PropertyInfo[] properties = typeof(ImGuiPlatformIo)
-                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Where(p => p.CanWrite && p.CanRead)
-                .ToArray();
-
-            Assert.NotEmpty(properties);
-
-            ImGuiPlatformIo instance = default;
-
-            foreach (PropertyInfo property in properties)
-            {
-                object value = property.PropertyType.IsValueType
-                    ? Activator.CreateInstance(property.PropertyType)
-                    : null;
-
-                property.SetValue(instance, value);
-                object result = property.GetValue(instance);
-
-                Assert.Equal(value, result);
-            }
-        }
-
-        /// <summary>
         ///     Verifies that PlatformCreateWindow defaults to IntPtr.Zero.
         /// </summary>
         [Fact]

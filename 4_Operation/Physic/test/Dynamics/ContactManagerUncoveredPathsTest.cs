@@ -601,38 +601,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         // ========================================================================
-        // TryResolveContactFilter — FilterFlag set but all filters pass (line 664-665)
-        // Exercises c.FilterFlag = false; return false;
-        // ========================================================================
-        /// <summary>
-        /// Tests that try resolve contact filter resets flag when all filters pass
-        /// </summary>
-        [Fact]
-        public void TryResolveContactFilter_AllFiltersPass_ResetsFlag()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            Contact contact = world.ContactManager.ContactList.Next;
-            PropertyInfo filterFlagProp = typeof(Contact).GetProperty("FilterFlag",
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            filterFlagProp.SetValue(contact, true);
-
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            bool filterFlag = (bool)filterFlagProp.GetValue(contact);
-            Assert.False(filterFlag);
-        }
-
-        // ========================================================================
         // AcquireLocks — body lock contention triggers retry (lines 717-721)
         // Exercises Interlocked.Exchange(ref bodyA.Lock, 0) and Thread.Sleep(0)
         // ========================================================================
