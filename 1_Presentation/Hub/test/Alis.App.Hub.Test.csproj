@@ -30,8 +30,8 @@
         <PackageReference Include="Moq" Version="4.20.70"/>
     </ItemGroup>
 
-     <PropertyGroup>
-        <NoWarn>$(NoWarn);ALIS009;CS0219;ALIS010;ALIS001;ALIS003;ALIS002;ALIS005;ALIS006;ALIS007;ALIS008</NoWarn>
+      <PropertyGroup>
+        <NoWarn>$(NoWarn);ALIS009;CS0219;CS0168;ALIS010;ALIS001;ALIS003;ALIS002;ALIS005;ALIS006;ALIS007;ALIS008</NoWarn>
     </PropertyGroup>
     
     <ItemGroup>
