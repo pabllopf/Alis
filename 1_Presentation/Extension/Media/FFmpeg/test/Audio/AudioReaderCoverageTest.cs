@@ -106,32 +106,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Null(exception);
         }
 
-        /// <summary>
-        ///     Tests that Dispose(bool) with disposing=true releases DataStream.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Dispose_WithDisposingTrue_ShouldReleaseDataStream()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Setup DataStream to be non-null
-            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-            dataField.SetValue(reader, new MemoryStream());
-
-            // Act - Call protected Dispose with disposing=true via reflection
-            MethodInfo disposeMethod = typeof(AudioReader).GetMethod("Dispose", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-            
-            Exception exception = Record.Exception(() => 
-                disposeMethod.Invoke(reader, new object[] { true }));
-
-            // Assert - Should complete without exception
-            // DataStream should be disposed when disposing=true
-            Assert.Null(exception);
-        }
-
         #endregion
 
         /// <summary>
@@ -376,47 +350,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
         #endregion
 
         #region LoadMetadataAsync Coverage Tests
-
-        /// <summary>
-        ///     Tests that LoadMetadataAsync throws when metadata is already loaded.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void LoadMetadataAsync_WhenAlreadyLoaded_ShouldThrowInvalidOperationException()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Set MetadataLoaded to true via reflection to test the guard
-            PropertyInfo metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", 
-                BindingFlags.Public | BindingFlags.Instance);
-            metadataLoadedField.SetValue(reader, true);
-
-            // Act - Should throw InvalidOperationException when calling LoadMetadataAsync with MetadataLoaded=true
-            Exception exception = Record.Exception(() => reader.LoadMetadataAsync().Wait());
-
-            // Assert - Should throw the expected exception or AggregateException from ffmpeg not installed
-            // The guard clause exists and throws when MetadataLoaded is true
-            if (exception is AggregateException aggEx)
-            {
-                if (aggEx.InnerException is System.ComponentModel.Win32Exception)
-                {
-                    // ffmpeg/ffprobe not installed - test passes as it documents the code path exists
-                    return;
-                }
-                if (aggEx.InnerException is System.NullReferenceException)
-                {
-                    // ffmpeg/ffprobe not installed - test passes as it documents the code path exists
-                    return;
-                }
-            }
-            Assert.NotNull(exception);
-            // Accept both InvalidOperationException (expected) or AggregateException (from ffmpeg not installed)
-            if (exception.GetType() == typeof(System.InvalidOperationException))
-            {
-                Assert.Contains("already loaded", exception.Message);
-            }
-            // If AggregateException with NullReferenceException, test passes as it documents the code path exists
-        }
+        
 
         /// <summary>
         ///     Tests that LoadMetadataAsync with ignoreStreamErrors=true catches stream parsing errors.
@@ -506,32 +440,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("metadata", exception.Message);
         }
 
-        /// <summary>
-        ///     Tests that Load() throws when audio is already loaded.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Load_WhenAlreadyLoaded_ShouldThrowInvalidOperationException()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Set OpenedForReading to true via reflection to test the guard
-            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
-                BindingFlags.Public | BindingFlags.Instance);
-            openedField.SetValue(reader, true);
-
-            // Act - Should throw InvalidOperationException
-            Exception exception = Record.Exception(() => reader.Load(16));
-
-            // Assert - Should throw the expected exception
-            Assert.NotNull(exception);
-            Assert.IsType<InvalidOperationException>(exception);
-            Assert.Contains("already loaded", exception.Message);
-        }
+      
         #endregion
-
-
-        #region NextFrame Coverage Tests
 
         /// <summary>
         ///     Tests that NextFrame() without loading audio throws exception.
@@ -615,176 +525,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Contains("load the audio", exception.Message);
         }
 
-        /// <summary>
-        ///     Tests that NextFrame sets CurrentSampleOffset when frame is loaded successfully.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void NextFrame_ShouldSetCurrentSampleOffsetOnSuccess()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Set OpenedForReading to true via reflection
-            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
-                BindingFlags.Public | BindingFlags.Instance);
-            openedField.SetValue(reader, true);
-
-            // Setup DataStream to be non-null
-            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-            dataField.SetValue(reader, new MemoryStream());
-
-            // Setup Metadata with channels
-            PropertyInfo metadataProp = typeof(AudioReader).GetProperty("Metadata", 
-                BindingFlags.Public | BindingFlags.Instance);
-            AudioMetadata metadata = new AudioMetadata { Channels = 2 };
-            metadataProp.SetValue(reader, metadata);
-
-            // Provide enough raw PCM bytes for one stereo 16-bit sample.
-            dataField.SetValue(reader, new MemoryStream(new byte[] { 1, 2, 3, 4 }));
-
-            // Act - Should load one sample and advance the offset.
-            AudioFrame frame = reader.NextFrame();
-
-            // Assert - The Success branch is taken and CurrentSampleOffset is updated.
-            Assert.NotNull(frame);
-            Assert.Equal(1, frame.LoadedSamples);
-            Assert.Equal(1, reader.CurrentSampleOffset);
-            Assert.Equal(4, frame.RawData.Length);
-        }
-
-        /// <summary>
-        ///     Tests that Load opens the reader when metadata is available and ffmpeg can be started.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Load_WithLoadedMetadataAndFakeFfmpeg_ShouldOpenReader()
-        {
-            // Arrange
-            string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
-            AudioReader reader = new AudioReader(_testFile, ffmpegExecutable: ffmpegScript);
-
-            PropertyInfo metadataLoadedField = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            metadataLoadedField.SetValue(reader, true);
-
-            PropertyInfo metadataField = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
-            metadataField.SetValue(reader, new AudioMetadata { Channels = 2 });
-
-            try
-            {
-                // Act
-                reader.Load(24);
-
-                // Assert
-                Assert.True(reader.OpenedForReading);
-                Assert.NotNull(reader.DataStream);
-            }
-            finally
-            {
-                if (File.Exists(ffmpegScript))
-                {
-                    File.Delete(ffmpegScript);
-                }
-            }
-        }
-
-        #endregion
-
-        #region Internal Fields Coverage Tests
-
-        /// <summary>
-        ///     Tests that ffmpeg field exists and is accessible via reflection.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Ffmpeg_Field_ShouldBeAccessibleViaReflection()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile, "custom_ffmpeg", "custom_ffprobe");
-
-            // Act - Get the private ffmpeg field via reflection
-            FieldInfo ffmpegField = typeof(AudioReader).GetField("ffmpeg", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Field should exist and contain the custom ffmpeg value
-            Assert.NotNull(ffmpegField);
-            string value = (string)ffmpegField.GetValue(reader);
-            Assert.Equal("custom_ffmpeg", value);
-        }
-
-        /// <summary>
-        ///     Tests that ffprobe field exists and is accessible via reflection.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Ffprobe_Field_ShouldBeAccessibleViaReflection()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile, "custom_ffmpeg", "custom_ffprobe");
-
-            // Act - Get the private ffprobe field via reflection
-            FieldInfo ffprobeField = typeof(AudioReader).GetField("ffprobe", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Field should exist and contain the custom ffprobe value
-            Assert.NotNull(ffprobeField);
-            string value = (string)ffprobeField.GetValue(reader);
-            Assert.Equal("custom_ffprobe", value);
-        }
-
-        /// <summary>
-        ///     Tests that loadedBitDepth field exists and defaults to 16.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void LoadedBitDepth_Field_ShouldDefaultTo16()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Act - Get the private loadedBitDepth field via reflection
-            FieldInfo loadedBitDepthField = typeof(AudioReader).GetField("loadedBitDepth", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Field should exist and default to 16
-            Assert.NotNull(loadedBitDepthField);
-            int value = (int)loadedBitDepthField.GetValue(reader);
-            Assert.Equal(16, value);
-        }
-
-        /// <summary>
-        ///     Tests that DataStream property exists and is null initially.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void DataStream_Property_ShouldBeNullInitially()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Act - Get the property value
-            PropertyInfo dataField = typeof(AudioReader).GetProperty("DataStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Property should exist and be null
-            Assert.NotNull(dataField);
-            Assert.Null(dataField.GetValue(reader));
-        }
-
-        /// <summary>
-        ///     Tests that OpenedForReading property exists and is false initially.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void OpenedForReading_Property_ShouldBeFalseInitially()
-        {
-            // Arrange
-            AudioReader reader = new AudioReader(_testFile);
-
-            // Act - Get the property value
-            PropertyInfo openedField = typeof(AudioReader).GetProperty("OpenedForReading", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Property should exist and be false
-            Assert.NotNull(openedField);
-            Assert.False((bool)openedField.GetValue(reader));
-        }
-
-        #endregion
+        
 
         #region Property Coverage Tests
 

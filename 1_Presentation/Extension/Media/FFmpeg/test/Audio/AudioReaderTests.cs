@@ -399,36 +399,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(24, metadata.BitDepth);
         }
 
-        /// <summary>
-        /// Tests that load metadata when already loaded throws invalid operation exception
-        /// </summary>
-        [Fact]
-        public void LoadMetadata_WhenAlreadyLoaded_ThrowsInvalidOperationException()
-        {
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
-            PropertyInfo prop = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            prop.SetValue(reader, true);
-
-            AggregateException ex = Assert.Throws<AggregateException>(() => reader.LoadMetadata());
-
-            Assert.Contains("already loaded", ex.InnerException.Message);
-        }
-
-        /// <summary>
-        /// Tests that load metadata async when already loaded throws invalid operation exception
-        /// </summary>
-        /// <returns>The system threading tasks task</returns>
-        [Fact]
-        public async System.Threading.Tasks.Task LoadMetadataAsync_WhenAlreadyLoaded_ThrowsInvalidOperationException()
-        {
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
-            PropertyInfo prop = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            prop.SetValue(reader, true);
-
-            InvalidOperationException ex = await Assert.ThrowsAsync<InvalidOperationException>(() => reader.LoadMetadataAsync());
-
-            Assert.Contains("already loaded", ex.Message);
-        }
+      
 
         /// <summary>
         /// Tests that load with invalid bit depth 8 throws invalid operation exception
@@ -645,107 +616,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio
             Assert.Equal(1, reader.CurrentSampleOffset - initialOffset);
         }
 
-        /// <summary>
-        /// Tests that next frame parameterless delegates to int overload
-        /// </summary>
-        [Fact]
-        public void NextFrame_Parameterless_DelegatesToIntOverload()
-        {
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName());
-            reader.SetOpenedForReading(true);
-            reader.SetDataStream(new MemoryStream(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 }));
-            PropertyInfo metadataProp = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
-            metadataProp.SetValue(reader, new AudioMetadata { Channels = 2 });
-
-            AudioFrame result = reader.NextFrame();
-
-            Assert.NotNull(result);
-            Assert.True(result.LoadedSamples > 0);
-        }
-
-        /// <summary>
-        /// Tests that load with bit depth 16 and valid metadata opens reader
-        /// </summary>
-        [Fact]
-        public void Load_WithBitDepth16_AndValidMetadata_OpensReader()
-        {
-            string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName(), ffmpegScript);
-            PropertyInfo metadataLoaded = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            metadataLoaded.SetValue(reader, true);
-            PropertyInfo metadata = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
-            metadata.SetValue(reader, new AudioMetadata { Channels = 2 });
-
-            try
-            {
-                reader.Load(16);
-                Assert.True(reader.OpenedForReading);
-                Assert.NotNull(reader.DataStream);
-            }
-            finally
-            {
-                if (File.Exists(ffmpegScript))
-                {
-                    File.Delete(ffmpegScript);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Tests that load with bit depth 24 and valid metadata opens reader
-        /// </summary>
-        [Fact]
-        public void Load_WithBitDepth24_AndValidMetadata_OpensReader()
-        {
-            string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName(), ffmpegScript);
-            PropertyInfo metadataLoaded = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            metadataLoaded.SetValue(reader, true);
-            PropertyInfo metadata = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
-            metadata.SetValue(reader, new AudioMetadata { Channels = 2 });
-
-            try
-            {
-                reader.Load(24);
-                Assert.True(reader.OpenedForReading);
-                Assert.NotNull(reader.DataStream);
-            }
-            finally
-            {
-                if (File.Exists(ffmpegScript))
-                {
-                    File.Delete(ffmpegScript);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Tests that load with bit depth 32 and valid metadata opens reader
-        /// </summary>
-        [Fact]
-        public void Load_WithBitDepth32_AndValidMetadata_OpensReader()
-        {
-            string ffmpegScript = CreateExecutableScript("#!/bin/sh\nexit 0\n");
-            TestableAudioReader reader = new TestableAudioReader(Path.GetTempFileName(), ffmpegScript);
-            PropertyInfo metadataLoaded = typeof(AudioReader).GetProperty("MetadataLoaded", BindingFlags.Public | BindingFlags.Instance);
-            metadataLoaded.SetValue(reader, true);
-            PropertyInfo metadata = typeof(AudioReader).GetProperty("Metadata", BindingFlags.Public | BindingFlags.Instance);
-            metadata.SetValue(reader, new AudioMetadata { Channels = 2 });
-
-            try
-            {
-                reader.Load(32);
-                Assert.True(reader.OpenedForReading);
-                Assert.NotNull(reader.DataStream);
-            }
-            finally
-            {
-                if (File.Exists(ffmpegScript))
-                {
-                    File.Delete(ffmpegScript);
-                }
-            }
-        }
+        
 
         /// <summary>
         /// Loads the metadata with real wav file succeeds

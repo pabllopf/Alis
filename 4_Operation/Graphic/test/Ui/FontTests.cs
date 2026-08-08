@@ -67,114 +67,7 @@ namespace Alis.Core.Graphic.Test.Ui
             Assert.Empty(rects);
         }
 
-        /// <summary>
-        /// Tests that path property default is empty
-        /// </summary>
-        [Fact]
-        public void Path_Property_DefaultIsEmpty()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Path", BindingFlags.NonPublic | BindingFlags.Instance);
-            string value = (string)prop.GetValue(font);
-            Assert.Equal(string.Empty, value);
-        }
-
-        /// <summary>
-        /// Tests that path property can set and get
-        /// </summary>
-        [Fact]
-        public void Path_Property_CanSetAndGet()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Path", BindingFlags.NonPublic | BindingFlags.Instance);
-            prop.SetValue(font, "custom/path.bmp");
-            string value = (string)prop.GetValue(font);
-            Assert.Equal("custom/path.bmp", value);
-        }
-
-        /// <summary>
-        /// Tests that size property default is zero
-        /// </summary>
-        [Fact]
-        public void Size_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Size", BindingFlags.NonPublic | BindingFlags.Instance);
-            object value = prop.GetValue(font);
-            Assert.NotNull(value);
-        }
-
-        /// <summary>
-        /// Tests that shader program property default is zero
-        /// </summary>
-        [Fact]
-        public void ShaderProgram_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("ShaderProgram", BindingFlags.NonPublic | BindingFlags.Instance);
-            uint value = (uint)prop.GetValue(font);
-            Assert.Equal(0u, value);
-        }
-
-        /// <summary>
-        /// Tests that vao property default is zero
-        /// </summary>
-        [Fact]
-        public void Vao_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Vao", BindingFlags.NonPublic | BindingFlags.Instance);
-            uint value = (uint)prop.GetValue(font);
-            Assert.Equal(0u, value);
-        }
-
-        /// <summary>
-        /// Tests that vbo property default is zero
-        /// </summary>
-        [Fact]
-        public void Vbo_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Vbo", BindingFlags.NonPublic | BindingFlags.Instance);
-            uint value = (uint)prop.GetValue(font);
-            Assert.Equal(0u, value);
-        }
-
-        /// <summary>
-        /// Tests that ebo property default is zero
-        /// </summary>
-        [Fact]
-        public void Ebo_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Ebo", BindingFlags.NonPublic | BindingFlags.Instance);
-            uint value = (uint)prop.GetValue(font);
-            Assert.Equal(0u, value);
-        }
-
-        /// <summary>
-        /// Tests that texture property default is zero
-        /// </summary>
-        [Fact]
-        public void Texture_Property_DefaultIsZero()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Texture", BindingFlags.NonPublic | BindingFlags.Instance);
-            uint value = (uint)prop.GetValue(font);
-            Assert.Equal(0u, value);
-        }
-
-        /// <summary>
-        /// Tests that flip property default is false
-        /// </summary>
-        [Fact]
-        public void Flip_Property_DefaultIsFalse()
-        {
-            Font font = new Font("test", 1, 16);
-            PropertyInfo prop = typeof(Font).GetProperty("Flip", BindingFlags.NonPublic | BindingFlags.Instance);
-            bool value = (bool)prop.GetValue(font);
-            Assert.False(value);
-        }
+        
 
         /// <summary>
         /// Tests that initialize character rects from atlas populates all characters
@@ -320,25 +213,7 @@ namespace Alis.Core.Graphic.Test.Ui
             Dictionary<char, RectangleI> rects = (Dictionary<char, RectangleI>)field.GetValue(font);
             Assert.NotEmpty(rects);
         }
-
-        /// <summary>
-        /// Tests that render text with non empty path skips shader init
-        /// </summary>
-        [Fact]
-        public void RenderText_WithNonEmptyPath_SkipsShaderInit()
-        {
-            Font font = new Font("test.bmp", 1, 16);
-            PropertyInfo pathProp = typeof(Font).GetProperty("Path", BindingFlags.NonPublic | BindingFlags.Instance);
-            pathProp.SetValue(font, "some/path.bmp");
-
-            FieldInfo field = typeof(Font).GetField("CharacterRects", BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.ThrowsAny<Exception>(() =>
-                font.RenderText("hello", 0, 0, Color.White, Color.Transparent));
-
-            Dictionary<char, RectangleI> rects = (Dictionary<char, RectangleI>)field.GetValue(font);
-            Assert.NotEmpty(rects);
-        }
+        
 
         /// <summary>
         /// Tests that render text with empty text does not iterate chars

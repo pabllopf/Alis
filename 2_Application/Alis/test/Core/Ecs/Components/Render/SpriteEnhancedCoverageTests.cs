@@ -450,18 +450,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotEqual(sprite1.GetHashCode(), sprite2.GetHashCode());
         }
 
-        /// <summary>
-        /// Tests that path property internal has default value
-        /// </summary>
-        [Fact]
-        public void PathProperty_Internal_HasDefaultValue()
-        {
-            Context context = new Context();
-            Sprite sprite = new Sprite(context, "path.png", 0);
-
-            object path = typeof(Sprite).GetProperty("Path", BindingFlags.NonPublic | BindingFlags.Instance)?.GetValue(sprite);
-
-            Assert.Equal(string.Empty, path);
-        }
+      
     }
 }

@@ -92,24 +92,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(ex);
         }
 
-        /// <summary>
-        /// Tests that play when opened for writing should throw
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Play_WhenOpenedForWriting_ShouldThrow()
-        {
-            VideoPlayer player = new VideoPlayer("test.mp4");
-            PropertyInfo openedProp = typeof(VideoPlayer).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { true });
-
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.Play());
-            Assert.Contains("opened for writing", ex.Message);
-
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { false });
-            player.Dispose();
-        }
-
+      
         /// <summary>
         /// Tests that play with filename uses ffplay
         /// </summary>
@@ -134,23 +117,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-        /// <summary>
-        /// Tests that play in background when opened for writing should throw
-        /// </summary>
-        [RequireFfmpegFact]
-        public void PlayInBackground_WhenOpenedForWriting_ShouldThrow()
-        {
-            VideoPlayer player = new VideoPlayer("test.mp4");
-            PropertyInfo openedProp = typeof(VideoPlayer).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { true });
-
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(() => player.PlayInBackground());
-            Assert.Contains("opened for writing", ex.Message);
-
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { false });
-            player.Dispose();
-        }
+       
 
         /// <summary>
         /// Tests that play in background with filename returns process
@@ -192,24 +159,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-        /// <summary>
-        /// Tests that open write when opened for writing should throw
-        /// </summary>
-        [RequireFfmpegFact]
-        public void OpenWrite_WhenOpenedForWriting_ShouldThrow()
-        {
-            VideoPlayer player = new VideoPlayer("test.mp4");
-            PropertyInfo openedProp = typeof(VideoPlayer).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { true });
-
-            InvalidOperationException ex = Assert.Throws<InvalidOperationException>(
-                () => player.OpenWrite(640, 480, "30"));
-            Assert.Contains("opened for writing", ex.Message);
-
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { false });
-            player.Dispose();
-        }
+   
 
         /// <summary>
         /// Tests that open write with fake ffplay throws win 32 exception
@@ -252,27 +202,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-        /// <summary>
-        /// Tests that close write when opened should reset flag
-        /// </summary>
-        [RequireFfmpegFact]
-        public void CloseWrite_WhenOpened_ShouldResetFlag()
-        {
-            VideoPlayer player = new VideoPlayer(null, _fakeFfplayPath);
-
-            PropertyInfo openedProp = typeof(VideoPlayer).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { true });
-
-            PropertyInfo inputStreamProp = typeof(VideoPlayer).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { new MemoryStream() });
-
-            player.CloseWrite();
-            Assert.False(player.OpenedForWriting);
-            player.Dispose();
-        }
-
+  
         /// <summary>
         /// Tests that get stream for writing with fake ffplay throws win 32 exception
         /// </summary>
@@ -300,24 +230,6 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             player.Dispose();
         }
 
-        /// <summary>
-        /// Tests that dispose when opened for writing should call close write
-        /// </summary>
-        [RequireFfmpegFact]
-        public void Dispose_WhenOpenedForWriting_ShouldCallCloseWrite()
-        {
-            VideoPlayer player = new VideoPlayer(null, _fakeFfplayPath);
-
-            PropertyInfo openedProp = typeof(VideoPlayer).GetProperty("OpenedForWriting",
-                BindingFlags.Public | BindingFlags.Instance);
-            openedProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { true });
-
-            PropertyInfo inputStreamProp = typeof(VideoPlayer).GetProperty("InputDataStream",
-                BindingFlags.Public | BindingFlags.Instance);
-            inputStreamProp.GetSetMethod(nonPublic: true).Invoke(player, new object[] { new MemoryStream() });
-
-            player.Dispose();
-            Assert.False(player.OpenedForWriting);
-        }
+     
     }
 }

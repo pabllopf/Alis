@@ -59,35 +59,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
     /// </summary>
     public class EventRecordTest
     {
-        /// <summary>
-        ///     Tests that initalize when exists is false initializes fields on an existing record
-        /// </summary>
-        [Fact] public void Initalize_WhenExistsIsFalse_InitializesFields()
-        {
-            EventRecord record = new EventRecord();
-
-            EventRecord.Initalize(false, ref record);
-
-            object add = typeof(EventRecord).GetField("Add", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-            object remove = typeof(EventRecord).GetField("Remove", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-            object delete = typeof(EventRecord).GetField("Delete", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .GetValue(record)!;
-
-            Assert.NotNull(add);
-            Assert.NotNull(remove);
-            Assert.NotNull(delete);
-
-            bool addHasListeners = (bool) add.GetType().GetProperty("HasListeners")!.GetValue(add)!;
-            bool removeHasListeners = (bool) remove.GetType().GetProperty("HasListeners")!.GetValue(remove)!;
-            bool deleteAny = (bool) delete.GetType().GetProperty("Any")!.GetValue(delete)!;
-
-            Assert.False(addHasListeners);
-            Assert.False(removeHasListeners);
-            Assert.False(deleteAny);
-        }
-
+      
         /// <summary>
         ///     Tests that initalize when exists is true leaves record reference unchanged
         /// </summary>

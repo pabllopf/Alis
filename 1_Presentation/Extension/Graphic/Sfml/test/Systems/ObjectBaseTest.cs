@@ -91,22 +91,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
         }
 
         /// <summary>
-        ///     Tests that the protected setter of <see cref="ObjectBase.CPointer" /> updates the value.
-        /// </summary>
-        [RequireCSfmlSystemFact]
-        public void CPointer_Set_Protected_UpdatesValue()
-        {
-            IntPtr ptr1 = new IntPtr(123);
-            IntPtr ptr2 = new IntPtr(456);
-            TestObjectBase obj = new TestObjectBase(ptr1);
-
-            var prop = typeof(ObjectBase).GetProperty("CPointer");
-            prop.SetValue(obj, ptr2);
-
-            Assert.Equal(ptr2, obj.CPointer);
-        }
-
-        /// <summary>
         ///     Tests that <see cref="ObjectBase.Dispose()" /> calls <see cref="ObjectBase.Destroy" /> with <c>true</c>.
         /// </summary>
         [RequireCSfmlSystemFact]

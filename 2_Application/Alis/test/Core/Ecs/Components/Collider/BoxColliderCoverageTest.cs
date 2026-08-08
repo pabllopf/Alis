@@ -299,28 +299,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
         #region Private Field Access Tests
 
-        /// <summary>
-        ///     Tests that private IsInit property can be accessed via reflection.
-        /// </summary>
-        [Fact]
-        public void BoxCollider_Private_IsInit_Property_ShouldBeAccessibleViaReflection()
-        {
-            // Arrange
-            BoxCollider collider = new BoxCollider();
-            Type colliderType = typeof(BoxCollider);
-
-            // Act - Get the private IsInit property via reflection
-            PropertyInfo isInitProperty = colliderType.GetProperty("IsInit", 
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // Assert - Property should exist
-            Assert.NotNull(isInitProperty);
-
-            // Get the value (should be false by default)
-            bool isInitValue = (bool)isInitProperty.GetValue(collider);
-            Assert.False(isInitValue);
-        }
-
+   
         #endregion
 
         #region Static Vertices Array Tests

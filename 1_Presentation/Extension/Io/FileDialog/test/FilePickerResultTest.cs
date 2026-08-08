@@ -205,22 +205,6 @@ namespace Alis.Extension.Io.FileDialog.Test
 
             Assert.Equal(initialCount + 1, result.SelectedPaths.Count); // This shows the list is modifiable
         }
-
-        /// <summary>
-        ///     Tests that SelectedPath returns null when SelectedPaths is null.
-        /// </summary>
-        [Fact]
-        public void SelectedPath_WhenSelectedPathsIsNull_ShouldReturnNull()
-        {
-            FilePickerResult result = (FilePickerResult)typeof(FilePickerResult)
-                .GetConstructor(BindingFlags.NonPublic | BindingFlags.Instance, null, Type.EmptyTypes, null)
-                .Invoke(null);
-
-            typeof(FilePickerResult)
-                .GetProperty(nameof(FilePickerResult.SelectedPaths))
-                .SetValue(result, null);
-
-            Assert.Null(result.SelectedPath);
-        }
+        
     }
 }

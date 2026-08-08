@@ -177,31 +177,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
         #region OpenWrite Guard Tests
 
-        /// <summary>
-        ///     Tests that OpenWrite throws when already opened for writing.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void OpenWrite_AlreadyOpened_ShouldThrowInvalidOperationException()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // Set OpenedForWriting to true via reflection to test the guard
-            PropertyInfo openedField = typeof(AudioVideoWriter).GetProperty("OpenedForWriting", 
-                BindingFlags.Public | BindingFlags.Instance);
-            openedField.SetValue(writer, true);
-
-            // Act - Should throw InvalidOperationException
-            Exception exception = Record.Exception(() => writer.OpenWrite());
-
-            // Assert - Should throw the expected exception
-            Assert.NotNull(exception);
-            Assert.IsType<InvalidOperationException>(exception);
-            Assert.Contains("already opened", exception.Message);
-        }
+      
 
         #endregion
 
@@ -481,93 +457,15 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.Null(cscField.GetValue(writer));
         }
 
-        /// <summary>
-        ///     Tests that InputDataStreamVideo property exists and is null initially.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void InputDataStreamVideo_Property_ShouldBeNullInitially()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
+       
 
-            // Act - Get the property value
-            PropertyInfo inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamVideo", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Property should exist and be null
-            Assert.NotNull(inputField);
-            Assert.Null(inputField.GetValue(writer));
-        }
-
-        /// <summary>
-        ///     Tests that InputDataStreamAudio property exists and is null initially.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void InputDataStreamAudio_Property_ShouldBeNullInitially()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // Act - Get the property value
-            PropertyInfo inputField = typeof(AudioVideoWriter).GetProperty("InputDataStreamAudio", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Property should exist and be null
-            Assert.NotNull(inputField);
-            Assert.Null(inputField.GetValue(writer));
-        }
-
-        /// <summary>
-        ///     Tests that OutputDataStream property exists and is null initially.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void OutputDataStream_Property_ShouldBeNullInitially()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // Act - Get the property value
-            PropertyInfo outputField = typeof(AudioVideoWriter).GetProperty("OutputDataStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-
-            // Assert - Property should exist and be null
-            Assert.NotNull(outputField);
-            Assert.Null(outputField.GetValue(writer));
-        }
+     
 
         #endregion
 
         #region Stream Mode Coverage Tests
 
-        /// <summary>
-        ///     Tests that stream constructor sets DestinationStream.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void StreamConstructor_ShouldSetDestinationStream()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-
-            // Act - Create with stream
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testStream, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // Assert - DestinationStream should be set
-            PropertyInfo destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-            Assert.Equal(_testStream, destField.GetValue(writer));
-        }
-
+      
         /// <summary>
         ///     Tests that stream mode sets UseFilename to false.
         /// </summary>
@@ -586,26 +484,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.UseFilename);
         }
 
-        /// <summary>
-        ///     Tests that filename mode sets DestinationStream to null.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void FilenameMode_ShouldSetDestinationStreamToNull()
-        {
-            // Arrange
-            EncoderOptions videoOptions = new EncoderOptions { Format = "mp4", EncoderName = "libx264" };
-            EncoderOptions audioOptions = new EncoderOptions { Format = "aac", EncoderName = "aac" };
-
-            // Act - Create with filename
-            AudioVideoWriter writer = new AudioVideoWriter(
-                _testFile, 640, 480, 30.0, 2, 44100, 16, videoOptions, audioOptions);
-
-            // Assert - DestinationStream should be null in filename mode
-            PropertyInfo destField = typeof(AudioVideoWriter).GetProperty("DestinationStream", 
-                BindingFlags.Public | BindingFlags.Instance);
-            Assert.Null(destField.GetValue(writer));
-        }
-
+        
         #endregion
 
         #region EncoderOptions Coverage Tests

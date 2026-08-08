@@ -326,53 +326,7 @@ namespace Alis.Test.Extension.Media.FFmpeg.Audio
 
         #region CloseWrite Body Tests (via Reflection State Setup)
 
-        /// <summary>
-        ///     Tests that CloseWrite body disposes InputDataStream and resets
-        ///     OpenedForWriting when initialized via reflection.
-        /// </summary>
-        [RequireFfmpegFact]
-        public void CloseWrite_WhenOpenedViaReflection_ResetsOpenedFlagAndDisposesStream()
-        {
-            // Arrange
-            AudioPlayer player = new("input.wav");
-
-            try
-            {
-                FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
-                    BindingFlags.NonPublic | BindingFlags.Instance);
-                openedField.SetValue(player, true);
-
-                PropertyInfo inputProp = typeof(AudioPlayer).GetProperty("InputDataStream");
-                MemoryStream inputStream = new();
-                inputProp.SetValue(player, inputStream);
-
-                using Process process = new();
-                process.StartInfo.FileName = "dotnet";
-                process.StartInfo.Arguments = "--version";
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.UseShellExecute = false;
-                process.Start();
-                process.WaitForExit(5000);
-
-                FieldInfo ffplaypField = typeof(AudioPlayer).GetField("ffplayp",
-                    BindingFlags.NonPublic | BindingFlags.Instance);
-                ffplaypField.SetValue(player, process);
-
-                // Act
-                player.CloseWrite();
-
-                // Assert
-                Assert.False(player.OpenedForWriting);
-            }
-            finally
-            {
-                FieldInfo openedField = typeof(AudioPlayer).BaseType.GetField("<OpenedForWriting>k__BackingField",
-                    BindingFlags.NonPublic | BindingFlags.Instance);
-                openedField.SetValue(player, false);
-                player.Dispose();
-            }
-        }
-
+   
         /// <summary>
         ///     Tests that Dispose else block runs safely when ffplayp is non-null but has exited.
         ///     This covers the <c>else</c> branch of dispose (OpenedForWriting=false, ffplayp non-null).

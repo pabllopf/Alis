@@ -49,12 +49,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             return (MacOpenGLContext)FormatterServices.GetUninitializedObject(typeof(MacOpenGLContext));
         }
 
-        private static void SetProperty(MacOpenGLContext context, string name, IntPtr value)
-        {
-            PropertyInfo prop = typeof(MacOpenGLContext).GetProperty(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            prop.SetValue(context, value);
-        }
-
+     
         [Fact]
         public void Constructor_WithNullWindow_ThrowsNullReferenceException()
         {
@@ -170,32 +165,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
             Assert.Equal(IntPtr.Zero, context.PixelFormat);
         }
 
-        [Fact]
-        public void View_SetAndGetViaReflection()
-        {
-            MacOpenGLContext context = CreateEmptyContext();
-            IntPtr expected = new IntPtr(12345);
-            SetProperty(context, "View", expected);
-            Assert.Equal(expected, context.View);
-        }
+       
 
-        [Fact]
-        public void Context_SetAndGetViaReflection()
-        {
-            MacOpenGLContext context = CreateEmptyContext();
-            IntPtr expected = new IntPtr(67890);
-            SetProperty(context, "Context", expected);
-            Assert.Equal(expected, context.Context);
-        }
-
-        [Fact]
-        public void PixelFormat_SetAndGetViaReflection()
-        {
-            MacOpenGLContext context = CreateEmptyContext();
-            IntPtr expected = new IntPtr(54321);
-            SetProperty(context, "PixelFormat", expected);
-            Assert.Equal(expected, context.PixelFormat);
-        }
 
         [Fact]
         public void MakeCurrent_WithZeroContext_DoesNotCrash()

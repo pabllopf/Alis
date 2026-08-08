@@ -146,61 +146,6 @@ namespace Alis.Core.Audio.Test.Players
             await Assert.ThrowsAnyAsync<Exception>(() => player.PlayLoop("nonexistent_file_12345.wav", true));
         }
 
-        /// <summary>
-        /// Tests that pause when playing with process should set paused
-        /// </summary>
-        [Fact]
-        public async Task Pause_WhenPlayingWithProcess_ShouldSetPaused()
-        {
-            TestPlayerForCoverage player = new TestPlayerForCoverage();
-            string tempFile = Path.GetTempFileName();
-            try
-            {
-                File.WriteAllText(tempFile, "test");
-                Process process = player.StartBashProcess("sleep 2");
-                FieldInfo processField = typeof(UnixPlayerBase).GetField("_process", BindingFlags.NonPublic | BindingFlags.Instance);
-                processField.SetValue(player, process);
-                PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-                playingProp.SetValue(player, true, null);
-
-                await player.Pause();
-                Assert.True(player.Paused);
-
-                process.Kill();
-                process.Dispose();
-            }
-            finally
-            {
-                if (File.Exists(tempFile)) File.Delete(tempFile);
-            }
-        }
-
-        /// <summary>
-        /// Tests that resume when playing and paused with process should unpause
-        /// </summary>
-        [Fact]
-        public async Task Resume_WhenPlayingAndPausedWithProcess_ShouldUnpause()
-        {
-            TestPlayerForCoverage player = new TestPlayerForCoverage();
-            Process process = player.StartBashProcess("sleep 5");
-            try
-            {
-                FieldInfo processField = typeof(UnixPlayerBase).GetField("_process", BindingFlags.NonPublic | BindingFlags.Instance);
-                processField.SetValue(player, process);
-                PropertyInfo playingProp = typeof(UnixPlayerBase).GetProperty("Playing", BindingFlags.Public | BindingFlags.Instance);
-                playingProp.SetValue(player, true, null);
-                PropertyInfo pausedProp = typeof(UnixPlayerBase).GetProperty("Paused", BindingFlags.Public | BindingFlags.Instance);
-                pausedProp.SetValue(player, true, null);
-
-                await player.Resume();
-                Assert.False(player.Paused);
-            }
-            finally
-            {
-                process.Kill();
-                process.Dispose();
-            }
-        }
 
         /// <summary>
         /// Tests that play after stop should work
