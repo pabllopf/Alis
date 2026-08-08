@@ -31,6 +31,7 @@ using System;
 
 namespace Alis.Core.Aspect.Time
 {
+    
     /// <summary>
     ///     Provides a high-resolution time measurement utility similar to a stopwatch,
     ///     allowing callers to measure elapsed time with start, stop, reset, and restart operations.
