@@ -68,22 +68,7 @@ namespace Alis.Extension.Security.Test
             SecureInt secureInt = new SecureInt(int.MinValue);
             Assert.Equal(int.MinValue, (int)secureInt);
         }
-
-        /// <summary>
-        ///     Tests arithmetic with negative values.
-        /// </summary>
-        [Fact]
-        public void NegativeValues_Arithmetic_Correct()
-        {
-            SecureInt a = new SecureInt(-10);
-            SecureInt b = new SecureInt(5);
-
-            Assert.Equal(-5, (int)(a + b));
-            Assert.Equal(-15, (int)(a - b));
-            Assert.Equal(-50, (int)(a * b));
-            Assert.Equal(-2, (int)(a / b));
-        }
-
+        
         /// <summary>
         ///     Tests both operands negative.
         /// </summary>

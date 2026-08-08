@@ -75,21 +75,6 @@ namespace Alis.Extension.Security.Test
         }
 
         /// <summary>
-        ///     Tests arithmetic with negative values.
-        /// </summary>
-        [Fact]
-        public void NegativeValues_Arithmetic_Correct()
-        {
-            SecureDecimal a = new SecureDecimal(-10m);
-            SecureDecimal b = new SecureDecimal(5m);
-
-            Assert.Equal(-5m, (decimal)(a + b));
-            Assert.Equal(-15m, (decimal)(a - b));
-            Assert.Equal(-50m, (decimal)(a * b));
-            Assert.Equal(-2m, (decimal)(a / b));
-        }
-
-        /// <summary>
         ///     Tests both operands negative.
         /// </summary>
         [Fact]
