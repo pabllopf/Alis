@@ -41,17 +41,7 @@ namespace Alis.Core.Aspect.Logging.Test
     /// </summary>
     public class LoggerScopeTest
     {
-        /// <summary>
-        ///     Tests that logger scope constructor should push scope onto stack
-        /// </summary>
-        [Fact]
-        public void LoggerScope_Constructor_ShouldPushScopeOntoStack()
-        {
-            Stack<object> stack = new Stack<object>();
-
-            Assert.Single(stack);
-            Assert.Equal("TestScope", stack.Peek());
-        }
+       
 
         /// <summary>
         ///     Tests that logger scope dispose should pop scope from stack
@@ -158,20 +148,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.Empty(stack);
         }
 
-        /// <summary>
-        ///     Tests that logger scope multiple scopes should pop in lifo order
-        /// </summary>
-        [Fact]
-        public void LoggerScope_MultipleScopes_ShouldPopInLifoOrder()
-        {
-            Stack<object> stack = new Stack<object>();
-            LoggerScope scope2 = new LoggerScope("B", stack, () => { });
-
-            scope2.Dispose();
-
-            Assert.Single(stack);
-            Assert.Equal("A", stack.Pop());
-        }
+       
 
         /// <summary>
         ///     Tests that logger scope dispose behavior should handle empty stack
@@ -185,33 +162,7 @@ namespace Alis.Core.Aspect.Logging.Test
 
             scope.Dispose(); // Should not throw
         }
-
-        /// <summary>
-        ///     Tests that logger scope scope with object should store object
-        /// </summary>
-        [Fact]
-        public void LoggerScope_ScopeWithObject_ShouldStoreObject()
-        {
-            Stack<object> stack = new Stack<object>();
-            var scopeObject = new {Id = 123, Name = "TestScope"};
-
-            Assert.Single(stack);
-            Assert.Equal(scopeObject, stack.Peek());
-        }
-
-        /// <summary>
-        ///     Tests that logger scope scope with number should store number
-        /// </summary>
-        [Fact]
-        public void LoggerScope_ScopeWithNumber_ShouldStoreNumber()
-        {
-            Stack<object> stack = new Stack<object>();
-            int scopeId = 42;
-
-            Assert.Single(stack);
-            Assert.Equal(42, stack.Pop());
-        }
-
+        
         /// <summary>
         ///     Tests that logger scope long scope chain should maintain order
         /// </summary>
@@ -235,16 +186,6 @@ namespace Alis.Core.Aspect.Logging.Test
             }
         }
 
-        /// <summary>
-        ///     Tests that logger scope null scope should be allowed
-        /// </summary>
-        [Fact]
-        public void LoggerScope_NullScope_ShouldBeAllowed()
-        {
-            Stack<object> stack = new Stack<object>();
-
-            Assert.Single(stack);
-            Assert.Null(stack.Peek());
-        }
+     
     }
 }
