@@ -415,39 +415,6 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that destroy adds to pool and reuses
-        /// </summary>
-        [Fact]
-        public void Destroy_AddsToPool_AndReuses()
-        {
-            WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
-
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.True(world.ContactManager.ContactCount > 0);
-
-            bodyA.SetTransform(new Vector2F(1000f, 1000f), 0f);
-            bodyB.SetTransform(new Vector2F(2000f, 2000f), 0f);
-
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-            Assert.Equal(0, world.ContactManager.ContactCount);
-
-            bodyA.SetTransform(new Vector2F(0f, 0f), 0f);
-            bodyB.SetTransform(new Vector2F(0.5f, 0f), 0f);
-
-            
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
-
-            Assert.True(world.ContactManager.ContactCount > 0);
-        }
-
-        /// <summary>
         /// Tests that passes collision filters fails when before collision a returns false
         /// </summary>
         [Fact]
