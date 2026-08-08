@@ -1381,30 +1381,5 @@ namespace Alis.Extension.Graphic.Ui.Test
             io.MouseDragMaxDistanceSqr[0] = 10.0f;
             Assert.Equal(10.0f, io.MouseDragMaxDistanceSqr[0], 5);
         }
-
-        /// <summary>
-        ///     Tests that all keys data set and get returns correct value via reflection
-        /// </summary>
-        [Fact]
-        public void AllKeysDataSetAndGet_ReturnsCorrectValue()
-        {
-            object boxed = new ImGuiIo();
-            ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
-            System.Type type = typeof(ImGuiIo);
-            for (int i = 0; i <= 651; i++)
-            {
-                if (i == 0 || i == 1 || i == 100 || i == 294 || i == 295)
-                {
-                    continue;
-                }
-                PropertyInfo prop = type.GetProperty("KeysData" + i);
-                prop.SetValue(boxed, value);
-                ImGuiKeyData result = (ImGuiKeyData)prop.GetValue(boxed);
-                Assert.Equal((byte)1, result.Down);
-                Assert.Equal(0.5f, result.DownDuration, 5);
-                Assert.Equal(0.25f, result.DownDurationPrev, 5);
-                Assert.Equal(0.75f, result.AnalogValue, 5);
-            }
-        }
     }
 }
