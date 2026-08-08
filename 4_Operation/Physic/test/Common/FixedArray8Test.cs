@@ -62,16 +62,17 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_Set_ShouldUpdateAllValues()
         {
-            FixedArray8<int> array = new FixedArray8<int>();
-
-            array[0] = 100;
-            array[1] = 200;
-            array[2] = 300;
-            array[3] = 400;
-            array[4] = 500;
-            array[5] = 600;
-            array[6] = 700;
-            array[7] = 800;
+            FixedArray8<int> array = new FixedArray8<int>
+                {
+                    [0] = 100,
+                    [1] = 200,
+                    [2] = 300,
+                    [3] = 400,
+                    [4] = 500,
+                    [5] = 600,
+                    [6] = 700,
+                    [7] = 800
+                };
 
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
@@ -154,10 +155,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void FirstAndLastIndices_ShouldWorkCorrectly()
         {
-            FixedArray8<int> array = new FixedArray8<int>();
-
-            array[0] = 1;
-            array[7] = 8;
+            FixedArray8<int> array = new FixedArray8<int>
+                {
+                    [0] = 1,
+                    [7] = 8
+                };
 
             Assert.Equal(1, array[0]);
             Assert.Equal(8, array[7]);
@@ -169,10 +171,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void MiddleIndices_ShouldWorkCorrectly()
         {
-            FixedArray8<int> array = new FixedArray8<int>();
-
-            array[3] = 30;
-            array[4] = 40;
+            FixedArray8<int> array = new FixedArray8<int>
+                {
+                    [3] = 30,
+                    [4] = 40
+                };
 
             Assert.Equal(30, array[3]);
             Assert.Equal(40, array[4]);
@@ -184,10 +187,11 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_WithComplexType_ShouldWork()
         {
-            FixedArray8<string> array = new FixedArray8<string>();
-
-            array[0] = "Zero";
-            array[7] = "Seven";
+            FixedArray8<string> array = new FixedArray8<string>
+                {
+                    [0] = "Zero",
+                    [7] = "Seven"
+                };
 
             Assert.Equal("Zero", array[0]);
             Assert.Equal("Seven", array[7]);

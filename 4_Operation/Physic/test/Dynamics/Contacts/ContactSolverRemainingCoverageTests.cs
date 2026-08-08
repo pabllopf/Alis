@@ -46,8 +46,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             Body bodyB = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -127,8 +129,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(bodyA.Position.X <= 0f || bodyB.Position.X >= 0.5f);
@@ -146,9 +150,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.True(world.ContactManager.ContactCount >= 0);
@@ -166,9 +172,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             for (int i = 0; i < 3; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -183,11 +191,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveFrictionImpulse",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 2;
-            vc.TangentSpeed = 0f;
-            vc.Friction = 0.5f;
-            vc.Normal = new Vector2F(1f, 0f);
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 2,
+                    TangentSpeed = 0f,
+                    Friction = 0.5f,
+                    Normal = new Vector2F(1f, 0f)
+                };
 
             vc.Points[0].NormalImpulse = 1.0f;
             vc.Points[0].TangentImpulse = 0f;
@@ -225,15 +235,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 1;
-            vc.Normal = new Vector2F(1f, 0f);
-            vc.Restitution = 0.5f;
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 1,
+                    Normal = new Vector2F(1f, 0f),
+                    Restitution = 0.5f
+                };
             vc.Points[0].Ra = new Vector2F(0f, 0f);
             vc.Points[0].Rb = new Vector2F(0f, 0f);
 
-            var points = new FixedArray2<Vector2F>();
-            points[0] = new Vector2F(0f, 0f);
+            var points = new FixedArray2<Vector2F>
+                {
+                    [0] = new Vector2F(0f, 0f)
+                };
 
             Type dataType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.Contacts.VelocityConstraintInitData");
             object data = Activator.CreateInstance(dataType,
@@ -284,10 +298,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 RadiusB = 0.5f,
                 Type = ManifoldType.FaceA,
                 LocalNormal = new Vector2F(1f, 0f),
-                LocalPoint = new Vector2F(0.5f, 0f)
+                LocalPoint = new Vector2F(0.5f, 0f),
+                LocalPoints = {
+                    [0] = new Vector2F(-0.5f, -0.5f),
+                    [1] = new Vector2F(-0.5f, 0.5f)
+                }
             };
-            pc.LocalPoints[0] = new Vector2F(-0.5f, -0.5f);
-            pc.LocalPoints[1] = new Vector2F(-0.5f, 0.5f);
 
             float result = (float)method.Invoke(solver, new object[] { pc });
             Assert.True(result <= 0f);
@@ -302,9 +318,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
 
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 2;
-            vc.Normal = new Vector2F(1f, 0f);
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 2,
+                    Normal = new Vector2F(1f, 0f)
+                };
             vc.K.Ex = new Vector2F(2f, 1f);
             vc.K.Ey = new Vector2F(1f, 2f);
             vc.NormalMass = vc.K.Inverse;
@@ -864,14 +882,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("InitializeVelocityConstraintPoints",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 1;
-            vc.Normal = new Vector2F(1f, 0f);
-            vc.Restitution = 0.5f;
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 1,
+                    Normal = new Vector2F(1f, 0f),
+                    Restitution = 0.5f
+                };
             vc.Points[0].Ra = new Vector2F(0f, 0f);
             vc.Points[0].Rb = new Vector2F(0f, 0f);
-            var points = new FixedArray2<Vector2F>();
-            points[0] = new Vector2F(0f, 0f);
+            var points = new FixedArray2<Vector2F>
+                {
+                    [0] = new Vector2F(0f, 0f)
+                };
             Type dataType = typeof(ContactSolver).Assembly.GetType("Alis.Core.Physic.Dynamics.Contacts.VelocityConstraintInitData");
             object data = Activator.CreateInstance(dataType,
                 new object[] { Vector2F.Zero, new Vector2F(1f, 0f), 1f, 1f, 1f, 1f, new Vector2F(0f, 1f), new Vector2F(2f, 0f), 0f, Vector2F.Zero, 0f });
@@ -888,9 +910,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 2;
-            vc.Normal = new Vector2F(1f, 0f);
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 2,
+                    Normal = new Vector2F(1f, 0f)
+                };
             vc.K.Ex = new Vector2F(2f, 0f);
             vc.K.Ey = new Vector2F(0f, 2f);
             vc.NormalMass = vc.K.Inverse;
@@ -924,9 +948,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             MethodInfo method = typeof(ContactSolver).GetMethod("SolveTwoPointNormal",
                 BindingFlags.Static | BindingFlags.NonPublic);
-            var vc = new ContactVelocityConstraint();
-            vc.PointCount = 2;
-            vc.Normal = new Vector2F(1f, 0f);
+            var vc = new ContactVelocityConstraint
+                {
+                    PointCount = 2,
+                    Normal = new Vector2F(1f, 0f)
+                };
             vc.K.Ex = new Vector2F(2f, 0f);
             vc.K.Ey = new Vector2F(0f, 2f);
             vc.NormalMass = vc.K.Inverse;

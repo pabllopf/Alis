@@ -231,8 +231,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void ComputeAabb_WithOffsetPosition_ShouldWork()
         {
-            CircleShape circle = new CircleShape(1.0f, 1.0f);
-            circle.Position = new Vector2F(2.0f, 3.0f);
+            CircleShape circle = new CircleShape(1.0f, 1.0f)
+                {
+                    Position = new Vector2F(2.0f, 3.0f)
+                };
             ControllerTransform transform = new ControllerTransform
             {
                 Position = new Vector2F(5.0f, 5.0f),
@@ -299,8 +301,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void ComputeSubmergedArea_AboveWater_ReturnsZero()
         {
-            CircleShape circle = new CircleShape(1.0f, 1.0f);
-            circle.Position = new Vector2F(0.0f, 0.0f);
+            CircleShape circle = new CircleShape(1.0f, 1.0f)
+                {
+                    Position = new Vector2F(0.0f, 0.0f)
+                };
             ControllerTransform transform = new ControllerTransform
             {
                 Position = new Vector2F(0.0f, 0.0f),
@@ -319,8 +323,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void ComputeSubmergedArea_UnderWater_ReturnsFullArea()
         {
-            CircleShape circle = new CircleShape(1.0f, 1.0f);
-            circle.Position = new Vector2F(0.0f, 0.0f);
+            CircleShape circle = new CircleShape(1.0f, 1.0f)
+                {
+                    Position = new Vector2F(0.0f, 0.0f)
+                };
             ControllerTransform transform = new ControllerTransform
             {
                 Position = new Vector2F(0.0f, 0.0f),
@@ -367,8 +373,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Clone_CreatesIndependentCopy()
         {
-            CircleShape original = new CircleShape(2.0f, 1.0f);
-            original.Position = new Vector2F(3.0f, 4.0f);
+            CircleShape original = new CircleShape(2.0f, 1.0f)
+                {
+                    Position = new Vector2F(3.0f, 4.0f)
+                };
 
             CircleShape clone = (CircleShape)original.Clone();
 
@@ -384,8 +392,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void ComputeSubmergedArea_PartiallySubmerged_ReturnsPartialArea()
         {
-            CircleShape circle = new CircleShape(1.0f, 1.0f);
-            circle.Position = new Vector2F(0.0f, 0.0f);
+            CircleShape circle = new CircleShape(1.0f, 1.0f)
+                {
+                    Position = new Vector2F(0.0f, 0.0f)
+                };
             ControllerTransform transform = new ControllerTransform
             {
                 Position = new Vector2F(0.0f, 0.0f),

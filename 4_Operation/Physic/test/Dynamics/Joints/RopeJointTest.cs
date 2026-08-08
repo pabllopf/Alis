@@ -183,9 +183,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.MaxLength = 5.0f;
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    MaxLength = 5.0f
+                };
 
             Assert.Equal(5.0f, joint.MaxLength, 5);
         }
@@ -226,8 +227,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void WorldAnchorB_Get_ShouldReturnBodyBGetWorldPoint()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(5.0f, 3.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(5.0f, 3.0f)
+                };
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
 
             Vector2F anchor = joint.WorldAnchorB;
@@ -243,9 +246,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorA = new Vector2F(5.0f, 10.0f);
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorA = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.Equal(new Vector2F(5.0f, 10.0f), joint.LocalAnchorA);
         }
@@ -258,9 +262,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorB = new Vector2F(5.0f, 10.0f);
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorB = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.Equal(new Vector2F(5.0f, 10.0f), joint.LocalAnchorB);
         }
@@ -325,8 +330,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -346,15 +353,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.MaxLength = 1.0f;
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    MaxLength = 1.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -379,9 +390,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -401,15 +414,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.MaxLength = 0.5f;
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    MaxLength = 0.5f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 30; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -434,9 +451,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -469,8 +488,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.001f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -490,15 +511,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.MaxLength = 10.0f;
+            RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    MaxLength = 10.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -511,8 +536,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void InitVelocityConstraints_WithZeroMassBodies_ShouldSetMassToZero()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Static);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Static);
+            Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0));
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0));
             CircleShape shapeA = new CircleShape(0.3f, 1.0f);
             CircleShape shapeB = new CircleShape(0.3f, 1.0f);
             bodyA.CreateFixture(shapeA);
@@ -521,27 +546,33 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;
             int maxIndex = Math.Max(indexA, indexB);
 
-            TimeStep step = new TimeStep();
-            step.Dt = 1.0f / 60.0f;
-            step.InvDt = 60.0f;
-            step.DtRatio = 1.0f;
-            step.PositionIterations = 3;
-            step.VelocityIterations = 8;
-            step.WarmStarting = false;
+            TimeStep step = new TimeStep
+                {
+                    Dt = 1.0f / 60.0f,
+                    InvDt = 60.0f,
+                    DtRatio = 1.0f,
+                    PositionIterations = 3,
+                    VelocityIterations = 8,
+                    WarmStarting = false
+                };
 
-            SolverData data = new SolverData();
-            data.Step = step;
-            data.Positions = new SolverPosition[maxIndex + 1];
-            data.Velocities = new SolverVelocity[maxIndex + 1];
-            data.Locks = new int[maxIndex + 1];
+            SolverData data = new SolverData
+                {
+                    Step = step,
+                    Positions = new SolverPosition[maxIndex + 1],
+                    Velocities = new SolverVelocity[maxIndex + 1],
+                    Locks = new int[maxIndex + 1]
+                };
 
             data.Positions[indexA] = new SolverPosition { C = bodyA.Sweep.C, A = bodyA.Sweep.A };
             data.Positions[indexB] = new SolverPosition { C = bodyB.Sweep.C, A = bodyB.Sweep.A };
@@ -571,27 +602,33 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
             int indexB = bodyB.GetIslandIndex;
             int maxIndex = Math.Max(indexA, indexB);
 
-            TimeStep step = new TimeStep();
-            step.Dt = 1.0f / 60.0f;
-            step.InvDt = 60.0f;
-            step.DtRatio = 1.0f;
-            step.PositionIterations = 3;
-            step.VelocityIterations = 8;
-            step.WarmStarting = false;
+            TimeStep step = new TimeStep
+                {
+                    Dt = 1.0f / 60.0f,
+                    InvDt = 60.0f,
+                    DtRatio = 1.0f,
+                    PositionIterations = 3,
+                    VelocityIterations = 8,
+                    WarmStarting = false
+                };
 
-            SolverData data = new SolverData();
-            data.Step = step;
-            data.Positions = new SolverPosition[maxIndex + 1];
-            data.Velocities = new SolverVelocity[maxIndex + 1];
-            data.Locks = new int[maxIndex + 1];
+            SolverData data = new SolverData
+                {
+                    Step = step,
+                    Positions = new SolverPosition[maxIndex + 1],
+                    Velocities = new SolverVelocity[maxIndex + 1],
+                    Locks = new int[maxIndex + 1]
+                };
 
             data.Positions[indexA] = new SolverPosition { C = bodyA.Sweep.C, A = bodyA.Sweep.A };
             data.Positions[indexB] = new SolverPosition { C = bodyB.Sweep.C, A = bodyB.Sweep.A };

@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void CreateRevoluteJoint_ShouldReturnJointConnectedToBodies()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body anchor = world.CreateCircle(0.2f, 0.0f, new Vector2F(0.0f, 1.0f), BodyType.Static);
+            Body anchor = world.CreateCircle(0.2f, 0.0f, new Vector2F(0.0f, 1.0f));
             Body body = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
 
             RevoluteJoint joint = JointFactory.CreateRevoluteJoint(world, anchor, body, new Vector2F(0.0f, 1.0f));

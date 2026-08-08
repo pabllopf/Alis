@@ -85,9 +85,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.MaxForce = 500.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 500.0f
+                };
 
             Assert.Equal(500.0f, joint.MaxForce, 5);
         }
@@ -100,9 +101,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.MaxTorque = 100.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxTorque = 100.0f
+                };
 
             Assert.Equal(100.0f, joint.MaxTorque, 5);
         }
@@ -161,9 +163,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.AngularOffset = 0.5f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    AngularOffset = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.AngularOffset, 5);
         }
@@ -190,10 +193,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Constructor_WithUseWorldCoordinatesFalse_ShouldUseWorldCoordinates()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(5.0f, 3.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(5.0f, 3.0f)
+                };
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB, false);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB);
 
             Assert.Equal(JointType.Motor, joint.JointType);
         }
@@ -247,8 +252,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void WorldAnchorB_Get_ShouldReturnBodyBPosition()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(5.0f, 6.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(5.0f, 6.0f)
+                };
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
 
             Vector2F anchor = joint.WorldAnchorB;
@@ -264,9 +271,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.WorldAnchorA = new Vector2F(10.0f, 20.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    WorldAnchorA = new Vector2F(10.0f, 20.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -279,9 +287,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.WorldAnchorB = new Vector2F(15.0f, 25.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    WorldAnchorB = new Vector2F(15.0f, 25.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -335,8 +344,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -356,12 +367,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 50.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 50.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -381,12 +396,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxTorque = 25.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -406,13 +425,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 50.0f;
-            joint.MaxTorque = 25.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 50.0f,
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -432,15 +455,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 100.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 100.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -460,15 +487,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxTorque = 50.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxTorque = 50.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -488,15 +519,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.LinearOffset = new Vector2F(0.5f, 0.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    LinearOffset = new Vector2F(0.5f, 0.0f)
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -516,15 +551,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.AngularOffset = 0.1f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    AngularOffset = 0.1f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -544,15 +583,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 100.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 100.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
@@ -573,15 +616,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxTorque = 50.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxTorque = 50.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             float torque = joint.GetReactionTorque(1.0f / 60.0f);
@@ -602,16 +649,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 50.0f;
-            joint.MaxTorque = 25.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 50.0f,
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 30; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -631,16 +682,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxTorque = 50.0f;
-            joint.MaxForce = 0.0f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxTorque = 50.0f,
+                    MaxForce = 0.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             float torque = joint.GetReactionTorque(1.0f / 60.0f);
@@ -661,16 +716,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-            joint.MaxForce = 500.0f;
-            joint.LinearOffset = new Vector2F(10.0f, 10.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    MaxForce = 500.0f,
+                    LinearOffset = new Vector2F(10.0f, 10.0f)
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -698,9 +757,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.AngularOffset = 0.3f;
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    AngularOffset = 0.3f
+                };
 
             Assert.Equal(0.3f, joint.AngularOffset, 5);
         }
@@ -713,9 +773,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            MotorJoint joint = new MotorJoint(bodyA, bodyB);
-
-            joint.LinearOffset = new Vector2F(1.0f, 2.0f);
+            MotorJoint joint = new MotorJoint(bodyA, bodyB)
+                {
+                    LinearOffset = new Vector2F(1.0f, 2.0f)
+                };
 
             Assert.Equal(new Vector2F(1.0f, 2.0f), joint.LinearOffset);
         }
@@ -793,8 +854,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
             world.Add(joint);
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -819,18 +882,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.InvI = 1.0f;
             bodyB.InvI = 1.0f;
 
-            SolverData data = new SolverData();
-            data.Step = new TimeStep { WarmStarting = false };
-            data.Positions = new SolverPosition[2]
-            {
-                new SolverPosition { C = Vector2F.Zero, A = 0f },
-                new SolverPosition { C = Vector2F.Zero, A = 0f }
-            };
-            data.Velocities = new SolverVelocity[2]
-            {
-                new SolverVelocity { V = Vector2F.Zero, W = 0f },
-                new SolverVelocity { V = Vector2F.Zero, W = 0f }
-            };
+            SolverData data = new SolverData
+                {
+                    Step = new TimeStep { WarmStarting = false },
+                    Positions = new SolverPosition[2]
+                    {
+                        new SolverPosition { C = Vector2F.Zero, A = 0f },
+                        new SolverPosition { C = Vector2F.Zero, A = 0f }
+                    },
+                    Velocities = new SolverVelocity[2]
+                    {
+                        new SolverVelocity { V = Vector2F.Zero, W = 0f },
+                        new SolverVelocity { V = Vector2F.Zero, W = 0f }
+                    }
+                };
 
             joint.InitVelocityConstraints(ref data);
 

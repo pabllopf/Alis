@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange: Create a static body
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f));
             body.CreateCircle(0.5f, 1.0f);
 
             // Act: Change to dynamic
@@ -536,7 +536,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Arrange: Create one dynamic and one static body
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f));
 
             body1.CreateCircle(0.5f, 1.0f);
             body2.CreateCircle(0.5f, 1.0f);
@@ -557,8 +557,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange: Create two static bodies
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
-            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f));
+            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f));
 
             body1.CreateCircle(0.5f, 1.0f);
             body2.CreateCircle(0.5f, 1.0f);
@@ -844,8 +844,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetBodyType_SetSameValue_DoesNotThrow()
         {
-            Body body = new Body();
-            body.GetBodyType = BodyType.Static;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Static
+                };
 
             Assert.Equal(BodyType.Static, body.GetBodyType);
         }
@@ -982,8 +984,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Inertia_Getter_ComputesFullValue()
         {
-            Body body = new Body();
-            body.GetBodyType = BodyType.Dynamic;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Dynamic
+                };
             body.Sweep.LocalCenter = new Vector2F(1.0f, 1.0f);
             body.Mass = 2.0f;
 
@@ -1061,8 +1065,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void IgnoreCcd_Property_ShouldBeSettable()
         {
-            Body body = new Body();
-            body.IgnoreCcd = true;
+            Body body = new Body
+                {
+                    IgnoreCcd = true
+                };
             Assert.True(body.IgnoreCcd);
             body.IgnoreCcd = false;
             Assert.False(body.IgnoreCcd);
@@ -1086,8 +1092,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetIslandIndex_Property_ShouldBeSettable()
         {
-            Body body = new Body();
-            body.GetIslandIndex = 5;
+            Body body = new Body
+                {
+                    GetIslandIndex = 5
+                };
             Assert.Equal(5, body.GetIslandIndex);
         }
 

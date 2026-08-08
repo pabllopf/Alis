@@ -120,8 +120,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void LocalCenter_Setter_OnDynamic_WithoutWorld_UpdatesCenterAndVelocity()
         {
-            Body body = new Body();
-            body.GetBodyType = BodyType.Dynamic;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Dynamic
+                };
             body.Sweep.C = new Vector2F(5.0f, 5.0f);
             body.AngularVelocity = 2.0f;
 
@@ -316,9 +318,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Sweep_Field_CanBeAssigned()
         {
             Body body = new Body();
-            Sweep newSweep = new Sweep();
-            newSweep.A = 1.0f;
-            newSweep.C = new Vector2F(3.0f, 4.0f);
+            Sweep newSweep = new Sweep
+                {
+                    A = 1.0f,
+                    C = new Vector2F(3.0f, 4.0f)
+                };
 
             body.Sweep = newSweep;
 

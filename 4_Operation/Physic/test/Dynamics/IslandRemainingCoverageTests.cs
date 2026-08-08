@@ -67,9 +67,11 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(bodyA);
@@ -101,8 +103,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 
@@ -133,8 +137,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.LinearVelocityInternal = new Vector2F(10f, 0f);
             body.LinearDamping = 5f;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(body.LinearVelocityInternal.Length() < 10f);
@@ -151,8 +157,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.AngularVelocity = 10f;
             body.AngularDamping = 5f;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(Math.Abs(body.AngularVelocity) < 10f);
@@ -181,8 +189,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            joint.Enabled = false;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f))
+                {
+                    Enabled = false
+                };
             world.Add(joint);
 
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
@@ -198,15 +208,19 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            joint.Enabled = false;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f))
+                {
+                    Enabled = false
+                };
             world.Add(joint);
 
             for (int i = 0; i < 5; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(bodyA);
@@ -239,8 +253,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(bodyA.GetTransform());
@@ -259,8 +275,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(bodyA);
@@ -277,8 +295,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(100f, 0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(bodyA);
@@ -292,14 +312,16 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void UpdateSleepState_WithMixedBodyTypes_ProcessesCorrectly()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body staticBody = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Static);
+            Body staticBody = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f));
             Body dynamicBody = world.CreateCircle(1.0f, 1.0f, new Vector2F(10f, 0f), BodyType.Dynamic);
 
             for (int i = 0; i < 300; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.False(dynamicBody.Awake);
@@ -316,8 +338,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateCircle(1.0f, 1.0f, Vector2F.Zero, BodyType.Dynamic);
             body.Torque = 10f;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(body);
@@ -333,7 +357,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             ContactManager contactManager = world.ContactManager;
             Island island = new Island();
             island.Reset(4, 4, 4, contactManager);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f));
 
             island.Add(body);
 
@@ -354,9 +378,11 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             for (int i = 0; i < 5; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(bodyA);
@@ -394,9 +420,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.SleepingAllowed = true;
             for (int i = 0; i < 600; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
             Assert.False(body.Awake);
         }
@@ -465,8 +493,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(0f, 0f), 0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(2f, 0f), 0f, BodyType.Dynamic);
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f));
-            joint.CollideConnected = false;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2f, 0f))
+                {
+                    CollideConnected = false
+                };
             world.Add(joint);
             Exception ex = Record.Exception(() => world.Step(1.0f / 60.0f));
             Assert.Null(ex);
@@ -528,13 +558,15 @@ namespace Alis.Core.Physic.Test.Dynamics
             positions[0].C = new Vector2F(0f, 0f);
             positions[0].A = 0f;
 
-            TimeStep subStep = new TimeStep();
-            subStep.Dt = 1.0f / 60.0f;
-            subStep.InvDt = 60.0f;
-            subStep.PositionIterations = 0;
-            subStep.VelocityIterations = 0;
-            subStep.WarmStarting = false;
-            subStep.DtRatio = 1.0f;
+            TimeStep subStep = new TimeStep
+                {
+                    Dt = 1.0f / 60.0f,
+                    InvDt = 60.0f,
+                    PositionIterations = 0,
+                    VelocityIterations = 0,
+                    WarmStarting = false,
+                    DtRatio = 1.0f
+                };
 
             MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
             object[] args = { subStep, 0, 0 };
@@ -574,13 +606,15 @@ namespace Alis.Core.Physic.Test.Dynamics
             positions[0].C = new Vector2F(0f, 0f);
             positions[0].A = 0f;
 
-            TimeStep subStep = new TimeStep();
-            subStep.Dt = 1.0f / 60.0f;
-            subStep.InvDt = 60.0f;
-            subStep.PositionIterations = 0;
-            subStep.VelocityIterations = 0;
-            subStep.WarmStarting = false;
-            subStep.DtRatio = 1.0f;
+            TimeStep subStep = new TimeStep
+                {
+                    Dt = 1.0f / 60.0f,
+                    InvDt = 60.0f,
+                    PositionIterations = 0,
+                    VelocityIterations = 0,
+                    WarmStarting = false,
+                    DtRatio = 1.0f
+                };
 
             MethodInfo solveToi = typeof(Island).GetMethod("SolveToi", BindingFlags.Instance | BindingFlags.NonPublic);
             object[] args = { subStep, 0, 0 };
@@ -603,7 +637,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             ContactManager cm = world.ContactManager;
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0f, 0f), BodyType.Dynamic);
-            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f), BodyType.Static);
+            Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0f));
 
             bodyA.IsBullet = true;
             bodyA.LinearVelocityInternal = new Vector2F(100000f, 0f);
@@ -611,9 +645,11 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(bodyA);

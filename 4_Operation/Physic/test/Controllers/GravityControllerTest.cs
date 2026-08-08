@@ -79,9 +79,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void StrengthProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.Strength = 20.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    Strength = 20.0f
+                };
 
             Assert.Equal(20.0f, controller.Strength, 5);
         }
@@ -92,9 +93,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void MinRadiusProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.MinRadius = 5.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    MinRadius = 5.0f
+                };
 
             Assert.Equal(5.0f, controller.MinRadius, 5);
         }
@@ -105,9 +107,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void MaxRadiusProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.MaxRadius = 50.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    MaxRadius = 50.0f
+                };
 
             Assert.Equal(50.0f, controller.MaxRadius, 5);
         }
@@ -118,9 +121,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void GravityTypeProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.GravityType = GravityType.Linear;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    GravityType = GravityType.Linear
+                };
 
             Assert.Equal(GravityType.Linear, controller.GravityType);
         }
@@ -254,8 +258,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Update_WithLinearGravityType_ShouldExecuteWithoutErrors()
         {
-            GravityController controller = new GravityController(10.0f, 100f, 1f);
-            controller.GravityType = GravityType.Linear;
+            GravityController controller = new GravityController(10.0f, 100f, 1f)
+                {
+                    GravityType = GravityType.Linear
+                };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body body1 = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
@@ -414,8 +420,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Update_WithBodyGravityAndLinearType_ShouldApplyForce()
         {
-            GravityController controller = new GravityController(100f, 200f, 1f);
-            controller.GravityType = GravityType.Linear;
+            GravityController controller = new GravityController(100f, 200f, 1f)
+                {
+                    GravityType = GravityType.Linear
+                };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
@@ -433,8 +441,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Update_WithPointGravityAndLinearType_ShouldApplyForce()
         {
-            GravityController controller = new GravityController(100f, 200f, 1f);
-            controller.GravityType = GravityType.Linear;
+            GravityController controller = new GravityController(100f, 200f, 1f)
+                {
+                    GravityType = GravityType.Linear
+                };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
@@ -451,8 +461,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Update_WithBodyGravityAndDistanceSquaredType_ShouldApplyForce()
         {
-            GravityController controller = new GravityController(100f, 200f, 1f);
-            controller.GravityType = GravityType.DistanceSquared;
+            GravityController controller = new GravityController(100f, 200f, 1f)
+                {
+                    GravityType = GravityType.DistanceSquared
+                };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);
@@ -470,8 +482,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void Update_WithPointGravityAndDistanceSquaredType_ShouldApplyForce()
         {
-            GravityController controller = new GravityController(100f, 200f, 1f);
-            controller.GravityType = GravityType.DistanceSquared;
+            GravityController controller = new GravityController(100f, 200f, 1f)
+                {
+                    GravityType = GravityType.DistanceSquared
+                };
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             controller.WorldPhysic = world;
             Body worldBody = world.CreateBody(new Vector2F(20, 0), 0, BodyType.Dynamic);

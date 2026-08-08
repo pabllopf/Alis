@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Kinematic);
-            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Static);
+            Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f));
 
             Assert.False(bodyA.ShouldCollide(bodyB));
         }
@@ -175,10 +175,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Mass_Setter_OnStaticBody_DoesNothing()
         {
-            Body body = new Body();
-            body.GetBodyType = BodyType.Static;
-
-            body.Mass = 5.0f;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Static,
+                    Mass = 5.0f
+                };
 
             Assert.Equal(0.0f, body.Mass, 5);
         }
@@ -190,10 +191,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Inertia_Setter_OnStaticBody_DoesNothing()
         {
-            Body body = new Body();
-            body.GetBodyType = BodyType.Static;
-
-            body.Inertia = 5.0f;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Static,
+                    Inertia = 5.0f
+                };
 
             Assert.Equal(0.0f, body.Inertia, 5);
         }
@@ -206,8 +208,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Enabled_True_WithoutWorld_DoesNotThrow()
         {
-            Body body = new Body();
-            body.Enabled = false;
+            Body body = new Body
+                {
+                    Enabled = false
+                };
             Assert.False(body.Enabled);
 
             body.Enabled = true;
@@ -223,8 +227,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Enabled_False_WithoutWorld_DoesNotThrow()
         {
-            Body body = new Body();
-            body.Enabled = false;
+            Body body = new Body
+                {
+                    Enabled = false
+                };
 
             Assert.False(body.Enabled);
         }

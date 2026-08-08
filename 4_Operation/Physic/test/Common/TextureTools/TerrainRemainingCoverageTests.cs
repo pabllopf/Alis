@@ -19,10 +19,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RemoveOldData_WithPopulatedBodyMap_RemovesBodies()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             sbyte[,] data = new sbyte[10, 10];

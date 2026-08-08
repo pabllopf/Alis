@@ -110,9 +110,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
-            TestJoint joint = new TestJoint(bodyA, bodyB);
-
-            joint.Breakpoint = 100.0f;
+            TestJoint joint = new TestJoint(bodyA, bodyB)
+                {
+                    Breakpoint = 100.0f
+                };
 
             Assert.Equal(100.0f, joint.Breakpoint, 5);
         }
@@ -126,9 +127,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
-            TestJoint joint = new TestJoint(bodyA, bodyB);
-
-            joint.Enabled = false;
+            TestJoint joint = new TestJoint(bodyA, bodyB)
+                {
+                    Enabled = false
+                };
 
             Assert.False(joint.Enabled);
         }
@@ -142,9 +144,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
-            TestJoint joint = new TestJoint(bodyA, bodyB);
-
-            joint.CollideConnected = true;
+            TestJoint joint = new TestJoint(bodyA, bodyB)
+                {
+                    CollideConnected = true
+                };
 
             Assert.True(joint.CollideConnected);
         }
@@ -206,8 +209,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
-            TestJoint joint = new TestJoint(bodyA, bodyB);
-            joint.Enabled = false;
+            TestJoint joint = new TestJoint(bodyA, bodyB)
+                {
+                    Enabled = false
+                };
 
             joint.Validate(1.0f);
 
@@ -223,8 +228,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody();
             Body bodyB = world.CreateBody();
-            BreakableJoint joint = new BreakableJoint(bodyA, bodyB);
-            joint.Breakpoint = 0.001f;
+            BreakableJoint joint = new BreakableJoint(bodyA, bodyB)
+                {
+                    Breakpoint = 0.001f
+                };
             float raisedError = 0;
             joint.Broke += (_, error) => raisedError = error;
 

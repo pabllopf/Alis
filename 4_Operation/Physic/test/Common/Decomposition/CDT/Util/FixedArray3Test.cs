@@ -61,9 +61,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexZero()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-
-            array[0] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test"
+                };
 
             Assert.Equal("test", array[0]);
         }
@@ -74,9 +75,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexOne()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-
-            array[1] = "value";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [1] = "value"
+                };
 
             Assert.Equal("value", array[1]);
         }
@@ -87,9 +89,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexTwo()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-
-            array[2] = "data";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [2] = "data"
+                };
 
             Assert.Equal("data", array[2]);
         }
@@ -122,8 +125,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Contains_ShouldReturnTrue_WhenValuePresent()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test"
+                };
 
             bool result = array.Contains("test");
 
@@ -136,8 +141,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Contains_ShouldReturnFalse_WhenValueNotPresent()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test"
+                };
 
             bool result = array.Contains("missing");
 
@@ -150,8 +157,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void IndexOf_ShouldReturnCorrectIndex()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[1] = "value";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [1] = "value"
+                };
 
             int index = array.IndexOf("value");
 
@@ -164,8 +173,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void IndexOf_ShouldReturnNegativeOne_WhenValueNotFound()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test"
+                };
 
             int index = array.IndexOf("missing");
 
@@ -178,10 +189,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Clear_ShouldSetAllValuesToNull()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "a";
-            array[1] = "b";
-            array[2] = "c";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "a",
+                    [1] = "b",
+                    [2] = "c"
+                };
 
             array.Clear();
 
@@ -196,10 +209,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void ClearWithValue_ShouldClearSpecificValue()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "test";
-            array[1] = "other";
-            array[2] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test",
+                    [1] = "other",
+                    [2] = "test"
+                };
 
             array.Clear("test");
 
@@ -214,10 +229,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void GetEnumerator_ShouldEnumerateAllValues()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "first";
-            array[1] = "second";
-            array[2] = "third";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "first",
+                    [1] = "second",
+                    [2] = "third"
+                };
 
             List<string> values = array.ToList();
 
@@ -233,8 +250,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void FixedArray_ShouldBeValueType()
         {
-            FixedArray3<string> array1 = new FixedArray3<string>();
-            array1[0] = "test";
+            FixedArray3<string> array1 = new FixedArray3<string>
+                {
+                    [0] = "test"
+                };
             FixedArray3<string> array2 = array1;
 
             array2[0] = "modified";
@@ -248,10 +267,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void FixedArray_ShouldSupportForeachIteration()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "a";
-            array[1] = null;
-            array[2] = "c";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "a",
+                    [1] = null,
+                    [2] = "c"
+                };
 
             int nonNullCount = 0;
             foreach (string value in array)
@@ -285,10 +306,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void IndexOf_ShouldReturnFirstOccurrence()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "unique";
-            array[1] = "test";
-            array[2] = "test";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "unique",
+                    [1] = "test",
+                    [2] = "test"
+                };
 
             int index = array.IndexOf("test");
 
@@ -301,10 +324,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Contains_ShouldWorkWithNullValues()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "test";
-            array[1] = null;
-            array[2] = "data";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "test",
+                    [1] = null,
+                    [2] = "data"
+                };
 
             bool result = array.Contains(null);
 
@@ -339,10 +364,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void NonGenericGetEnumerator_IsCallable()
         {
-            FixedArray3<string> array = new FixedArray3<string>();
-            array[0] = "a";
-            array[1] = "b";
-            array[2] = "c";
+            FixedArray3<string> array = new FixedArray3<string>
+                {
+                    [0] = "a",
+                    [1] = "b",
+                    [2] = "c"
+                };
 
             IEnumerator enumerator = ((IEnumerable)array).GetEnumerator();
 
@@ -362,8 +389,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void FixedArray_ShouldSupportClassConstraint()
         {
-            FixedArray3<object> array = new FixedArray3<object>();
-            array[0] = new object();
+            FixedArray3<object> array = new FixedArray3<object>
+                {
+                    [0] = new object()
+                };
 
             Assert.NotNull(array[0]);
         }

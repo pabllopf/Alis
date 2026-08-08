@@ -386,10 +386,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Position_Setter_WhenWorldIsNull_ShouldSetDirectly()
         {
             // Arrange
-            Body body = new Body();
-
-            // Act
-            body.Position = new Vector2F(10.0f, 20.0f);
+            Body body = new Body
+                {
+                    // Act
+                    Position = new Vector2F(10.0f, 20.0f)
+                };
 
             // Assert
             Assert.Equal(10.0f, body.Position.X, 5);
@@ -424,10 +425,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Rotation_Setter_WhenWorldIsNull_ShouldSetDirectly()
         {
             // Arrange
-            Body body = new Body();
-
-            // Act
-            body.Rotation = 1.5f;
+            Body body = new Body
+                {
+                    // Act
+                    Rotation = 1.5f
+                };
 
             // Assert
             Assert.Equal(1.5f, body.Rotation, 5);
@@ -479,11 +481,13 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetRevolutions_ShouldComputeCorrectValue()
         {
             // Arrange
-            Body body = new Body();
+            Body body = new Body
+                {
+                    // Act & Assert
+                    // Full rotation = 2*PI radians = 1 revolution
+                    Rotation = (float)(2 * Math.PI)
+                };
 
-            // Act & Assert
-            // Full rotation = 2*PI radians = 1 revolution
-            body.Rotation = (float)(2 * Math.PI);
             Assert.Equal(1.0f, body.GetRevolutions, 5);
 
             // Half rotation = PI radians = 0.5 revolutions

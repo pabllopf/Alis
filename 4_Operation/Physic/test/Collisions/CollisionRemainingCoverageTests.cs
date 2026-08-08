@@ -169,11 +169,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_FirstClipUnderflow_Coverage()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 0.3f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -192,11 +194,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_EpCollider_SecondClipUnderflow_Coverage()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -214,11 +218,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_EpFirstClipUnderflow_ThinPolygon()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 2.0f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -241,11 +247,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_SelectPrimaryAxis_PolygonAxisUnknown_ReturnsEdgeAxis()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.3f, 0.3f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -314,11 +322,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_BuildManifoldPoints_EdgeBPath()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.1f, 2.0f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -336,9 +346,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_SelectFrontLowerLimit_NoAdjacents()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = false,
+                    HasVertex3 = false
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -356,10 +368,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_RegionA_WithPreviousEdge_NoEarlyReturn()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(0.0f, -1.0f);
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(0.0f, -1.0f),
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             ControllerTransform xfCircle = new ControllerTransform(new Vector2F(-0.2f, 0.15f), 0.0f);
@@ -376,10 +390,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_RegionB_WithNextEdge_NoEarlyReturn()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(2.0f, -1.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = false,
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(2.0f, -1.0f)
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             ControllerTransform xfCircle = new ControllerTransform(new Vector2F(2.2f, 0.15f), 0.0f);
@@ -396,9 +412,11 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_RegionAB_NormalFlip_ProducesContact()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = false,
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.5f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             ControllerTransform xfCircle = new ControllerTransform(new Vector2F(1.0f, -0.4f), 0.0f);
@@ -415,11 +433,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_BackFace_ComputeLimitsBackPath()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 0.0f);
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 0.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 0.0f),
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 0.0f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -471,10 +491,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex0Only_NonConvex_BackFace()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-0.5f, 0.5f);
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-0.5f, 0.5f),
+                    HasVertex3 = false
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -492,10 +514,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndPolygon_HasVertex3Only_NonConvex_FrontFace()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(2.5f, -0.5f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    HasVertex0 = false,
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(2.5f, -0.5f)
+                };
 
             PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(0.5f, 0.5f), 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
@@ -581,11 +605,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float rot = (i % 15) * 0.2f;
                 bool hv0 = (i % 3) == 0;
                 bool hv3 = (i % 5) == 0;
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = hv0;
-                edge.Vertex0 = new Vector2F(-1.0f, (i % 5) * 0.2f);
-                edge.HasVertex3 = hv3;
-                edge.Vertex3 = new Vector2F(3.0f, (i / 5 % 5) * 0.2f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = hv0,
+                        Vertex0 = new Vector2F(-1.0f, (i % 5) * 0.2f),
+                        HasVertex3 = hv3,
+                        Vertex3 = new Vector2F(3.0f, (i / 5 % 5) * 0.2f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);
@@ -656,11 +682,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float x = (i % 80) * 0.1f - 4.0f;
                 float y = ((i / 80) % 30) * 0.1f - 1.5f;
                 float rot = (i % 30) * ((float)Math.PI / 15.0f);
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = (i % 3) == 0;
-                edge.Vertex0 = new Vector2F(-1.0f, (i % 7) * 0.3f - 0.9f);
-                edge.HasVertex3 = (i % 4) == 0;
-                edge.Vertex3 = new Vector2F(3.0f, ((i / 7) % 7) * 0.3f - 0.9f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = (i % 3) == 0,
+                        Vertex0 = new Vector2F(-1.0f, (i % 7) * 0.3f - 0.9f),
+                        HasVertex3 = (i % 4) == 0,
+                        Vertex3 = new Vector2F(3.0f, ((i / 7) % 7) * 0.3f - 0.9f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);
@@ -710,11 +738,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float h = 0.1f + ((i / 20) % 20) * 0.1f;
                 float x = ((i / 400) % 20) * 0.05f - 0.5f;
                 float y = ((i / 400) % 20) * 0.1f - 1.0f;
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = (i % 2) == 0;
-                edge.Vertex0 = new Vector2F(-1.0f, (i % 5) * 0.2f - 0.4f);
-                edge.HasVertex3 = (i % 3) == 0;
-                edge.Vertex3 = new Vector2F(3.0f, (i % 5) * 0.2f - 0.4f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = (i % 2) == 0,
+                        Vertex0 = new Vector2F(-1.0f, (i % 5) * 0.2f - 0.4f),
+                        HasVertex3 = (i % 3) == 0,
+                        Vertex3 = new Vector2F(3.0f, (i % 5) * 0.2f - 0.4f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), 0.0f);

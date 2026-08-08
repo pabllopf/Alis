@@ -66,8 +66,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyB.GetIslandIndex;
@@ -454,10 +456,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void InitVelocityConstraints_WithStaticBodies_CoversMassZeroBranch()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
-            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Static);
-            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Static);
-            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Static);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0));
+            Body bodyB = world.CreateBody(new Vector2F(1, 0));
+            Body bodyC = world.CreateBody(new Vector2F(2, 0));
+            Body bodyD = world.CreateBody(new Vector2F(3, 0));
 
             RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));
@@ -501,10 +503,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void InitVelocityConstraints_WithStaticBodiesAndWarmStarting_CoversMassZeroBranch()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Static);
-            Body bodyB = world.CreateBody(new Vector2F(1, 0), 0, BodyType.Static);
-            Body bodyC = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Static);
-            Body bodyD = world.CreateBody(new Vector2F(3, 0), 0, BodyType.Static);
+            Body bodyA = world.CreateBody(new Vector2F(0, 0));
+            Body bodyB = world.CreateBody(new Vector2F(1, 0));
+            Body bodyC = world.CreateBody(new Vector2F(2, 0));
+            Body bodyD = world.CreateBody(new Vector2F(3, 0));
 
             RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0));
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(2.5f, 0));

@@ -133,9 +133,10 @@ namespace Alis.Core.Physic.Test.Common
             string content = "Hello World";
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
-                FileBuffer buffer = new FileBuffer(stream);
-
-                buffer.Position = 5;
+                FileBuffer buffer = new FileBuffer(stream)
+                    {
+                        Position = 5
+                    };
 
                 Assert.Equal(5, buffer.Position);
             }
@@ -213,9 +214,11 @@ namespace Alis.Core.Physic.Test.Common
             string content = "ABC";
             using (MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(content)))
             {
-                FileBuffer buffer = new FileBuffer(stream);
+                FileBuffer buffer = new FileBuffer(stream)
+                    {
+                        Position = 0
+                    };
 
-                buffer.Position = 0;
                 char c = buffer.Next;
 
                 Assert.Equal('A', c);

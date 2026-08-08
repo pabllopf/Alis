@@ -73,9 +73,10 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             MarchingSquares.GeomPoly geomPoly1 = new MarchingSquares.GeomPoly();
             MarchingSquares.GeomPoly geomPoly2 = new MarchingSquares.GeomPoly();
-            GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1);
-
-            geomPolyVal.GeomP = geomPoly2;
+            GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1)
+                {
+                    GeomP = geomPoly2
+                };
 
             Assert.Equal(geomPoly2, geomPolyVal.GeomP);
         }
@@ -122,9 +123,11 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         {
             MarchingSquares.GeomPoly geomPoly1 = new MarchingSquares.GeomPoly();
             MarchingSquares.GeomPoly geomPoly2 = new MarchingSquares.GeomPoly();
-            GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1);
+            GeomPolyVal geomPolyVal = new GeomPolyVal(geomPoly1, 1)
+                {
+                    GeomP = geomPoly2
+                };
 
-            geomPolyVal.GeomP = geomPoly2;
             geomPolyVal.GeomP = null;
 
             Assert.Null(geomPolyVal.GeomP);

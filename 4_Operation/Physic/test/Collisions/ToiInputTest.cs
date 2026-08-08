@@ -127,13 +127,14 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void ToiInput_ShouldAllowSettingPropertiesIndependently()
         {
-            ToiInput input = new ToiInput();
-
-            input.ProxyA = new DistanceProxy();
-            input.ProxyB = new DistanceProxy();
-            input.SweepA = new Sweep();
-            input.SweepB = new Sweep();
-            input.TMax = 0.75f;
+            ToiInput input = new ToiInput
+                {
+                    ProxyA = new DistanceProxy(),
+                    ProxyB = new DistanceProxy(),
+                    SweepA = new Sweep(),
+                    SweepB = new Sweep(),
+                    TMax = 0.75f
+                };
 
             Assert.NotNull(input.ProxyA);
             Assert.NotNull(input.ProxyB);

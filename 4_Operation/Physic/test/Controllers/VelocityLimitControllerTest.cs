@@ -109,9 +109,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void MaxLinearVelocityProperty_ShouldSetAndGetCorrectly()
         {
-            VelocityLimitController controller = new VelocityLimitController();
-
-            controller.MaxLinearVelocity = 100.0f;
+            VelocityLimitController controller = new VelocityLimitController
+                {
+                    MaxLinearVelocity = 100.0f
+                };
 
             Assert.Equal(100.0f, controller.MaxLinearVelocity, 5);
         }
@@ -122,9 +123,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void MaxAngularVelocityProperty_ShouldSetAndGetCorrectly()
         {
-            VelocityLimitController controller = new VelocityLimitController();
-
-            controller.MaxAngularVelocity = 20.0f;
+            VelocityLimitController controller = new VelocityLimitController
+                {
+                    MaxAngularVelocity = 20.0f
+                };
 
             Assert.Equal(20.0f, controller.MaxAngularVelocity, 5);
         }
@@ -208,8 +210,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(100f, 0f);
@@ -227,8 +231,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(5.0f, 0f);
@@ -245,8 +251,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(0.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(0.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
@@ -263,8 +271,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.AngularVelocity = 100f;
@@ -282,8 +292,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.AngularVelocity = 5.0f;
@@ -300,8 +312,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.AngularVelocity = 500f;
@@ -318,8 +332,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
             body.ControllerFilter.IgnoreController(controller.ControllerCategories);
 
@@ -337,8 +353,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 2.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.AngularVelocity = 200f;
@@ -372,8 +390,10 @@ namespace Alis.Core.Physic.Test.Controllers
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body1 = world.CreateCircle(1f, 1f, new Vector2F(0, 0), BodyType.Dynamic);
             Body body2 = world.CreateCircle(1f, 1f, new Vector2F(10, 0), BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body1);
             controller.AddBody(body2);
 
@@ -395,8 +415,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             controller.MaxLinearVelocity = 5.0f;
@@ -415,8 +437,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             controller.MaxAngularVelocity = 2.0f;
@@ -451,8 +475,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(0.0f, 0.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(0.0f, 0.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
@@ -471,8 +497,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 100.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(100f, 0f);
@@ -491,8 +519,10 @@ namespace Alis.Core.Physic.Test.Controllers
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
             body.Enabled = false;
-            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(5.0f, 5.0f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
@@ -509,8 +539,10 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateCircle(1f, 1f, Vector2F.Zero, BodyType.Dynamic);
-            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.5f);
-            controller.WorldPhysic = world;
+            VelocityLimitController controller = new VelocityLimitController(100.0f, 0.5f)
+                {
+                    WorldPhysic = world
+                };
             controller.AddBody(body);
 
             body.AngularVelocity = 100f;

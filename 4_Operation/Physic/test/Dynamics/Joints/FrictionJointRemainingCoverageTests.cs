@@ -107,12 +107,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxTorque = 5.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxTorque = 5.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
@@ -169,12 +173,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 0.1f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 0.1f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;
@@ -227,13 +235,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 0.0f;
-            joint.MaxTorque = 0.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 0.0f,
+                    MaxTorque = 0.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;

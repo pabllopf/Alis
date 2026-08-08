@@ -128,8 +128,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, 0));
             GravityController controller = new GravityController(100f) { WorldPhysic = world };
-            Body source = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Static);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(5.0f, 0.0f), BodyType.Static);
+            Body source = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f));
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(5.0f, 0.0f));
             controller.AddBody(source);
 
             controller.Update(1.0f / 60.0f);

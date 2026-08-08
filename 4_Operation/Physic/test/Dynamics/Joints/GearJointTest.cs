@@ -107,9 +107,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RevoluteJoint jointA = new RevoluteJoint(bodyA, bodyB, new Vector2F(1, 0));
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
-            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
+            GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB)
+                {
+                    Ratio = 3f
+                };
 
-            gearJoint.Ratio = 3f;
             Assert.Equal(3f, gearJoint.Ratio, 5);
         }
 
@@ -367,7 +369,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyD1 = world.CreateBody(new Vector2F(6, 0), 0, BodyType.Dynamic);
             RevoluteJoint jointA1 = new RevoluteJoint(bodyA1, bodyB1, new Vector2F(1, 0));
             RevoluteJoint jointB1 = new RevoluteJoint(bodyC1, bodyD1, new Vector2F(5, 0));
-            GearJoint gearJoint1 = new GearJoint(bodyA1, bodyC1, jointA1, jointB1, 1.0f);
+            GearJoint gearJoint1 = new GearJoint(bodyA1, bodyC1, jointA1, jointB1);
 
             // Second gear joint with different ratio
             Body bodyA2 = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
@@ -550,8 +552,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -581,8 +585,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -612,8 +618,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -643,8 +651,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -674,8 +684,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -705,8 +717,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(gearJoint);
@@ -738,9 +752,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(gearJoint);
@@ -772,9 +788,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(gearJoint);
@@ -804,8 +822,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Vector2F force = gearJoint.GetReactionForce(1.0f);
@@ -836,8 +856,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             world.Add(jointB);
             world.Add(gearJoint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             float torque = gearJoint.GetReactionTorque(1.0f);

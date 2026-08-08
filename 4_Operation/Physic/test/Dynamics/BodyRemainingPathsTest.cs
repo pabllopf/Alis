@@ -53,8 +53,10 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyForce(new Vector2F(100.0f, 0.0f), new Vector2F(0.0f, 1.0f));
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(0.0f, body.AngularVelocity, 4);
@@ -74,9 +76,11 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.True(ignores.Position.Y > normal.Position.Y, "IgnoreGravity body should fall slower (or not at all) than normal body");
@@ -95,8 +99,10 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F before = body.Position;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(before.X, body.Position.X, 4);
@@ -111,7 +117,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SleepWake_Cycle_WorksOverSteps()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0.0f, -9.81f));
-            world.CreateRectangle(10.0f, 1.0f, 0.0f, new Vector2F(0.0f, -5.0f), 0.0f, BodyType.Static);
+            world.CreateRectangle(10.0f, 1.0f, 0.0f, new Vector2F(0.0f, -5.0f));
             Body body = world.CreateCircle(0.5f, 1.0f, new Vector2F(0.0f, 5.0f), BodyType.Dynamic);
             body.SleepingAllowed = true;
 
@@ -146,8 +152,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             DistanceJoint joint = JointFactory.CreateDistanceJoint(world, bodyA, bodyB);
             joint.CollideConnected = false;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(0, world.ContactManager.ContactCount);

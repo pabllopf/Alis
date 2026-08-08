@@ -83,9 +83,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void StrengthProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.Strength = 20.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    Strength = 20.0f
+                };
 
             Assert.Equal(20.0f, controller.Strength, 5);
         }
@@ -96,9 +97,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void MinRadiusProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.MinRadius = 5.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    MinRadius = 5.0f
+                };
 
             Assert.Equal(5.0f, controller.MinRadius, 5);
         }
@@ -109,9 +111,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void MaxRadiusProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.MaxRadius = 50.0f;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    MaxRadius = 50.0f
+                };
 
             Assert.Equal(50.0f, controller.MaxRadius, 5);
         }
@@ -122,9 +125,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GravityTypeProperty_ShouldSetAndGetCorrectly()
         {
-            GravityController controller = new GravityController(10.0f);
-
-            controller.GravityType = GravityType.Linear;
+            GravityController controller = new GravityController(10.0f)
+                {
+                    GravityType = GravityType.Linear
+                };
 
             Assert.Equal(GravityType.Linear, controller.GravityType);
         }

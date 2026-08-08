@@ -57,8 +57,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void IdProperty_ShouldSetAndGetCorrectly()
         {
             ClipVertex clipVertex = new ClipVertex();
-            ContactId contactId = new ContactId();
-            contactId.Key = 12345;
+            ContactId contactId = new ContactId
+                {
+                    Key = 12345
+                };
 
             clipVertex.Id = contactId;
 

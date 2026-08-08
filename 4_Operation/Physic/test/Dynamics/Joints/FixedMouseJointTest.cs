@@ -79,9 +79,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void MaxForce_ShouldRoundTrip()
         {
             Body body = new Body();
-            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
-
-            joint.MaxForce = 500.0f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero)
+                {
+                    MaxForce = 500.0f
+                };
 
             Assert.Equal(500.0f, joint.MaxForce, 5);
         }
@@ -93,9 +94,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Frequency_ShouldRoundTrip()
         {
             Body body = new Body();
-            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
-
-            joint.Frequency = 10.0f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero)
+                {
+                    Frequency = 10.0f
+                };
 
             Assert.Equal(10.0f, joint.Frequency, 5);
         }
@@ -107,9 +109,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void DampingRatio_ShouldRoundTrip()
         {
             Body body = new Body();
-            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
-
-            joint.DampingRatio = 0.5f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero)
+                {
+                    DampingRatio = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.DampingRatio, 5);
         }
@@ -151,9 +154,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(new Vector2F(5.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
-
-            joint.WorldAnchorA = new Vector2F(8.0f, 3.0f);
+            FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero)
+                {
+                    WorldAnchorA = new Vector2F(8.0f, 3.0f)
+                };
 
             Assert.Equal(new Vector2F(3.0f, 3.0f), joint.LocalAnchorA);
         }
@@ -314,8 +318,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(Vector2F.Zero, 1.0f, BodyType.Dynamic);
             body.Inertia = 1.0f;
-            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.0f, 1.0f));
-            joint.Frequency = 5.0f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.0f, 1.0f))
+                {
+                    Frequency = 5.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -340,8 +346,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body body = world.CreateBody(Vector2F.Zero, 1.0f, BodyType.Dynamic);
             body.Inertia = 1.0f;
-            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.0f, 1.0f));
-            joint.Frequency = 0.0f;
+            FixedMouseJoint joint = new FixedMouseJoint(body, new Vector2F(0.0f, 1.0f))
+                {
+                    Frequency = 0.0f
+                };
 
             SolverData data = new SolverData
             {

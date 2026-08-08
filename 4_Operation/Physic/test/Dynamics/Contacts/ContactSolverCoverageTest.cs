@@ -27,9 +27,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             for (int i = 0; i < 5; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -45,8 +47,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -64,8 +68,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 world.CreateCircle(0.5f, 1.0f, new Vector2F(i * 0.3f, 0.0f), BodyType.Dynamic);
             }
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount >= 0);
@@ -109,8 +115,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.5f, 0.0f), 0.0f, BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);

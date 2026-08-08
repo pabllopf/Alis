@@ -83,9 +83,10 @@ namespace Alis.Core.Physic.Test.Controllers
         public void VelocityProperty_ShouldSetAndGetCorrectly()
         {
             Aabb container = new Aabb(new Vector2F(0, 0), new Vector2F(10, 10));
-            BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10));
-
-            controller.Velocity = new Vector2F(5, 0);
+            BuoyancyController controller = new BuoyancyController(container, 1.0f, 1.0f, 1.0f, new Vector2F(0, -10))
+                {
+                    Velocity = new Vector2F(5, 0)
+                };
 
             Assert.Equal(new Vector2F(5, 0), controller.Velocity);
         }
@@ -338,8 +339,10 @@ namespace Alis.Core.Physic.Test.Controllers
         public void Update_WithFluidVelocity_ShouldApplyLinearDrag()
         {
             Aabb container = new Aabb(new Vector2F(-5, -10), new Vector2F(5, 5));
-            BuoyancyController controller = new BuoyancyController(container, 1.0f, 0.5f, 0.1f, new Vector2F(0, -10));
-            controller.Velocity = new Vector2F(2, 0);
+            BuoyancyController controller = new BuoyancyController(container, 1.0f, 0.5f, 0.1f, new Vector2F(0, -10))
+                {
+                    Velocity = new Vector2F(2, 0)
+                };
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             controller.WorldPhysic = world;
 

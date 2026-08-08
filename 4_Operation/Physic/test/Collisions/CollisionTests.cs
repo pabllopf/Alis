@@ -122,11 +122,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float x = (iter % 100) * 0.06f - 3.0f;
                 float y = (iter / 100 % 60) * 0.04f - 1.2f;
                 float rot = (iter % 30) * ((float)Math.PI / 15.0f);
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = (iter % 3) == 0;
-                edge.Vertex0 = new Vector2F(-1.0f, (iter % 7) * 0.3f - 0.9f);
-                edge.HasVertex3 = (iter % 4) == 0;
-                edge.Vertex3 = new Vector2F(3.0f, ((iter / 7) % 7) * 0.3f - 0.9f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = (iter % 3) == 0,
+                        Vertex0 = new Vector2F(-1.0f, (iter % 7) * 0.3f - 0.9f),
+                        HasVertex3 = (iter % 4) == 0,
+                        Vertex3 = new Vector2F(3.0f, ((iter / 7) % 7) * 0.3f - 0.9f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);
@@ -150,11 +152,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float h = ((iter / 20) % 20 + 1) * 0.1f;
                 bool hv0 = (iter % 3) == 0;
                 bool hv3 = (iter % 5) == 0;
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = hv0;
-                edge.Vertex0 = new Vector2F(-1.0f, (iter % 5) * 0.3f - 0.6f);
-                edge.HasVertex3 = hv3;
-                edge.Vertex3 = new Vector2F(3.0f, ((iter / 5) % 5) * 0.3f - 0.6f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = hv0,
+                        Vertex0 = new Vector2F(-1.0f, (iter % 5) * 0.3f - 0.6f),
+                        HasVertex3 = hv3,
+                        Vertex3 = new Vector2F(3.0f, ((iter / 5) % 5) * 0.3f - 0.6f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);
@@ -176,11 +180,13 @@ namespace Alis.Core.Physic.Test.Collisions
                 float x = (iter % 150) * 0.04f - 3.0f;
                 float y = (iter / 150 % 80) * 0.03f - 1.2f;
                 float rot = (iter % 36) * ((float)Math.PI / 18.0f);
-                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-                edge.HasVertex0 = (iter % 2) == 0;
-                edge.Vertex0 = new Vector2F(-1.0f, (iter % 11) * 0.2f - 1.0f);
-                edge.HasVertex3 = (iter % 3) == 0;
-                edge.Vertex3 = new Vector2F(3.0f, ((iter / 11) % 11) * 0.2f - 1.0f);
+                EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                    {
+                        HasVertex0 = (iter % 2) == 0,
+                        Vertex0 = new Vector2F(-1.0f, (iter % 11) * 0.2f - 1.0f),
+                        HasVertex3 = (iter % 3) == 0,
+                        Vertex3 = new Vector2F(3.0f, ((iter / 11) % 11) * 0.2f - 1.0f)
+                    };
                 PolygonShape polygon = new PolygonShape(PolygonTools.CreateRectangle(w, h), 1.0f);
                 ControllerTransform xfEdge = ControllerTransform.Identity;
                 ControllerTransform xfPolygon = new ControllerTransform(new Vector2F(x, y), rot);

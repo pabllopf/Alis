@@ -178,8 +178,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
             TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
 
-            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
-            triangle.IsInterior = true;
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3)
+                {
+                    IsInterior = true
+                };
             Assert.True(triangle.IsInterior);
         }
 

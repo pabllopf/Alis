@@ -114,9 +114,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-
-            joint.TargetAngle = 1.5f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    TargetAngle = 1.5f
+                };
 
             Assert.Equal(1.5f, joint.TargetAngle, 5);
         }
@@ -155,9 +156,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-
-            joint.Softness = 0.5f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    Softness = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.Softness, 5);
         }
@@ -228,9 +230,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-
-            joint.BiasFactor = 0.5f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    BiasFactor = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.BiasFactor, 5);
         }
@@ -243,9 +246,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-
-            joint.MaxImpulse = 100.0f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    MaxImpulse = 100.0f
+                };
 
             Assert.Equal(100.0f, joint.MaxImpulse, 5);
         }
@@ -297,8 +301,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void WorldAnchorB_Get_ShouldReturnBodyBPosition()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(3.0f, 7.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(3.0f, 7.0f)
+                };
             AngleJoint joint = new AngleJoint(bodyA, bodyB);
 
             Vector2F anchor = joint.WorldAnchorB;
@@ -315,9 +321,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(Vector2F.Zero, 0.0f, BodyType.Dynamic);
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-
-            joint.TargetAngle = 1.5f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    TargetAngle = 1.5f
+                };
 
             Assert.Equal(1.5f, joint.TargetAngle, 5);
         }
@@ -362,10 +369,12 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(Vector2F.Zero, 1.0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f), 1.0f, BodyType.Dynamic);
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-            joint.TargetAngle = 0.5f;
-            joint.BiasFactor = 0.3f;
-            joint.Softness = 0.1f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    TargetAngle = 0.5f,
+                    BiasFactor = 0.3f,
+                    Softness = 0.1f
+                };
 
             SolverData data = new SolverData
             {
@@ -402,8 +411,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f), 1.0f, BodyType.Dynamic);
             bodyA.Inertia = 1.0f;
             bodyB.Inertia = 1.0f;
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-            joint.TargetAngle = 0.5f;
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    TargetAngle = 0.5f
+                };
 
             // First initialize velocity constraints to set _bias and _massFactor
             SolverData initData = new SolverData
@@ -449,9 +460,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0.0f), 1.0f, BodyType.Dynamic);
             bodyA.Inertia = 1.0f;
             bodyB.Inertia = 1.0f;
-            AngleJoint joint = new AngleJoint(bodyA, bodyB);
-            joint.TargetAngle = 10.0f;
-            joint.MaxImpulse = 0.01f; // Very low max impulse
+            AngleJoint joint = new AngleJoint(bodyA, bodyB)
+                {
+                    TargetAngle = 10.0f,
+                    MaxImpulse = 0.01f // Very low max impulse
+                };
 
             SolverData initData = new SolverData
             {

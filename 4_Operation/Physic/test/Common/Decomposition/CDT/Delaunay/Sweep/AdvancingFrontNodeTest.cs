@@ -115,9 +115,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void PrevProperty_ShouldSetAndGetCorrectly()
         {
             AdvancingFrontNode node1 = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            AdvancingFrontNode node2 = new AdvancingFrontNode(new TriangulationPoint(1, 1));
-
-            node2.Prev = node1;
+            AdvancingFrontNode node2 = new AdvancingFrontNode(new TriangulationPoint(1, 1))
+                {
+                    Prev = node1
+                };
 
             Assert.Equal(node1, node2.Prev);
             Assert.True(node2.HasPrev);

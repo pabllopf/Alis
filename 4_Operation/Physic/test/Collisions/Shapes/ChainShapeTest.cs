@@ -297,8 +297,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0),
                 new Vector2F(3, 0)
             };
-            ChainShape chain = new ChainShape(vertices);
-            chain.PrevVertex = new Vector2F(0, 0);
+            ChainShape chain = new ChainShape(vertices)
+                {
+                    PrevVertex = new Vector2F(0, 0)
+                };
 
             EdgeShape edge = chain.GetChildEdge(0);
 
@@ -318,8 +320,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 new Vector2F(2, 0),
                 new Vector2F(3, 0)
             };
-            ChainShape chain = new ChainShape(vertices);
-            chain.NextVertex = new Vector2F(4, 0);
+            ChainShape chain = new ChainShape(vertices)
+                {
+                    NextVertex = new Vector2F(4, 0)
+                };
 
             EdgeShape edge = chain.GetChildEdge(1);
 
@@ -427,8 +431,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
     [Fact]
     public void ComputeProperties_ShouldBeCallable()
     {
-        ChainShape chain = new ChainShape();
-        chain.GetDensity = 2.0f;
+        ChainShape chain = new ChainShape
+            {
+                GetDensity = 2.0f
+            };
 
         Assert.Equal(2.0f, chain.GetDensity, 5);
     }

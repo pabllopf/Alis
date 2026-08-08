@@ -95,10 +95,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             triangle.Neighbors[0] = neighbor;
             neighbor.Neighbors[2] = triangle;
 
-            DtSweepContext tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            DtSweepContext tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {

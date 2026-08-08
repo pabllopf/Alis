@@ -117,14 +117,18 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetPointStates_ShouldMarkPersistAndAddCorrectly()
         {
-            Manifold oldManifold = new Manifold();
-            oldManifold.PointCount = 1;
+            Manifold oldManifold = new Manifold
+                {
+                    PointCount = 1
+                };
             ManifoldPoint oldPoint = oldManifold.Points[0];
             oldPoint.Id.Key = 11;
             oldManifold.Points[0] = oldPoint;
 
-            Manifold newManifold = new Manifold();
-            newManifold.PointCount = 2;
+            Manifold newManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint newPoint0 = newManifold.Points[0];
             newPoint0.Id.Key = 11;
             newManifold.Points[0] = newPoint0;
@@ -195,14 +199,18 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetPointStates_ShouldMarkRemoveCorrectly()
         {
-            Manifold oldManifold = new Manifold();
-            oldManifold.PointCount = 1;
+            Manifold oldManifold = new Manifold
+                {
+                    PointCount = 1
+                };
             ManifoldPoint oldPoint = oldManifold.Points[0];
             oldPoint.Id.Key = 11;
             oldManifold.Points[0] = oldPoint;
 
-            Manifold newManifold = new Manifold();
-            newManifold.PointCount = 1;
+            Manifold newManifold = new Manifold
+                {
+                    PointCount = 1
+                };
             ManifoldPoint newPoint = newManifold.Points[0];
             newPoint.Id.Key = 22;
             newManifold.Points[0] = newPoint;
@@ -368,10 +376,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_ShouldProduceContact_InRegionA_NoPreviousEdge()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            // Isolated edge: HasVertex0 = false, HasVertex3 = false
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    // Isolated edge: HasVertex0 = false, HasVertex3 = false
+                    HasVertex0 = false,
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             // Position in region A (near vertex 1)
@@ -389,11 +399,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_ShouldReturnEarly_WhenCircleInPreviousEdgeRegion()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            // Connected edge before: HasVertex0 = true with previous vertex
-            edge.HasVertex0 = true;
-            edge.Vertex0 = new Vector2F(-1.0f, 1.0f);
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    // Connected edge before: HasVertex0 = true with previous vertex
+                    HasVertex0 = true,
+                    Vertex0 = new Vector2F(-1.0f, 1.0f),
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             // Position in region A and inside previous edge area (triggers early return)
@@ -412,10 +424,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_ShouldProduceContact_InRegionB_NoNextEdge()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            // Isolated edge
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    // Isolated edge
+                    HasVertex0 = false,
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             // Position in region B (near vertex 2)
@@ -433,11 +447,13 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_ShouldReturnEarly_WhenCircleInNextEdgeRegion()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            // Connected edge after: HasVertex3 = true with next vertex
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = true;
-            edge.Vertex3 = new Vector2F(3.0f, 1.0f);
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    // Connected edge after: HasVertex3 = true with next vertex
+                    HasVertex0 = false,
+                    HasVertex3 = true,
+                    Vertex3 = new Vector2F(3.0f, 1.0f)
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             // Position in region B and inside next edge area (triggers early return)
@@ -456,10 +472,12 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void CollideEdgeAndCircle_ShouldProduceFaceManifold_InRegionAB()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f));
-            // Isolated edge (no connectivity)
-            edge.HasVertex0 = false;
-            edge.HasVertex3 = false;
+            EdgeShape edge = new EdgeShape(new Vector2F(0.0f, 0.0f), new Vector2F(2.0f, 0.0f))
+                {
+                    // Isolated edge (no connectivity)
+                    HasVertex0 = false,
+                    HasVertex3 = false
+                };
             CircleShape circle = new CircleShape(0.3f, 1.0f);
             ControllerTransform xfEdge = ControllerTransform.Identity;
             // Position in region AB (between vertices, above edge)
@@ -481,8 +499,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetPointStates_ShouldMarkAllRemoves_WhenNoContactsPersist()
         {
-            Manifold oldManifold = new Manifold();
-            oldManifold.PointCount = 2;
+            Manifold oldManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint oldPoint0 = oldManifold.Points[0];
             oldPoint0.Id.Key = 11;
             oldManifold.Points[0] = oldPoint0;
@@ -490,8 +510,10 @@ namespace Alis.Core.Physic.Test.Collisions
             oldPoint1.Id.Key = 22;
             oldManifold.Points[1] = oldPoint1;
 
-            Manifold newManifold = new Manifold();
-            newManifold.PointCount = 2;
+            Manifold newManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint newPoint0 = newManifold.Points[0];
             newPoint0.Id.Key = 33;
             newManifold.Points[0] = newPoint0;
@@ -513,11 +535,15 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetPointStates_ShouldMarkAllAdds_WhenNoOldContacts()
         {
-            Manifold oldManifold = new Manifold();
-            oldManifold.PointCount = 0;
+            Manifold oldManifold = new Manifold
+                {
+                    PointCount = 0
+                };
 
-            Manifold newManifold = new Manifold();
-            newManifold.PointCount = 2;
+            Manifold newManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint newPoint0 = newManifold.Points[0];
             newPoint0.Id.Key = 33;
             newManifold.Points[0] = newPoint0;
@@ -537,8 +563,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void GetPointStates_ShHandleMixedStates_WithTwoPoints()
         {
-            Manifold oldManifold = new Manifold();
-            oldManifold.PointCount = 2;
+            Manifold oldManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint oldPoint0 = oldManifold.Points[0];
             oldPoint0.Id.Key = 11;
             oldManifold.Points[0] = oldPoint0;
@@ -546,8 +574,10 @@ namespace Alis.Core.Physic.Test.Collisions
             oldPoint1.Id.Key = 22;
             oldManifold.Points[1] = oldPoint1;
 
-            Manifold newManifold = new Manifold();
-            newManifold.PointCount = 2;
+            Manifold newManifold = new Manifold
+                {
+                    PointCount = 2
+                };
             ManifoldPoint newPoint0 = newManifold.Points[0];
             newPoint0.Id.Key = 11;
             newManifold.Points[0] = newPoint0;

@@ -102,8 +102,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             Vertices vertices = new Vertices { new Vector2F(0, 0), new Vector2F(1, 0), new Vector2F(0, 1) };
             PolygonShape a = new PolygonShape(vertices, 1.0f);
-            PolygonShape b = new PolygonShape(vertices, 1.0f);
-            b.MassData = new MassData();
+            PolygonShape b = new PolygonShape(vertices, 1.0f)
+                {
+                    MassData = new MassData()
+                };
 
             bool result = a.CompareTo(b);
 

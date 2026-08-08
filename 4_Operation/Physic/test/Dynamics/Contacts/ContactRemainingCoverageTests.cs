@@ -49,16 +49,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Update_NonOverlappingBodies_NoCallbacksFired()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(-100.0f, 0.0f), BodyType.Static);
-            world.CreateCircle(1.0f, 1.0f, new Vector2F(100.0f, 0.0f), BodyType.Static);
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(-100.0f, 0.0f));
+            world.CreateCircle(1.0f, 1.0f, new Vector2F(100.0f, 0.0f));
 
             bool beginFired = false;
             bool endFired = false;
             world.ContactManager.BeginContact = contact => { beginFired = true; return true; };
             world.ContactManager.EndContact = contact => { endFired = true; };
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.False(beginFired);
@@ -75,8 +77,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             world.CreateEdge(new Vector2F(0.0f, -5.0f), new Vector2F(0.0f, 5.0f));
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount >= 0);
@@ -92,8 +96,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateEdge(new Vector2F(-5.0f, 0.0f), new Vector2F(5.0f, 0.0f));
             Body dynamicBody = world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, -1.0f), 0.0f, BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 
@@ -128,8 +134,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bodyA.OnCollision += handler1;
             bodyA.OnCollision += handler2;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.Equal(2, fireCount);
@@ -141,10 +149,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void ResetRestitution_WithEqualValues_ReturnsSameValue()
         {
-            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureA.GetRestitution = 0.5f;
-            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureB.GetRestitution = 0.5f;
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetRestitution = 0.5f
+                };
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetRestitution = 0.5f
+                };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
 
             contact.ResetRestitution();
@@ -158,10 +170,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void ResetFriction_WithEqualValues_ReturnsSameValue()
         {
-            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureA.GetFriction = 0.5f;
-            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureB.GetFriction = 0.5f;
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetFriction = 0.5f
+                };
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetFriction = 0.5f
+                };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
 
             contact.ResetFriction();
@@ -196,8 +212,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             bodyB.OnSeparation += (_, _, _) => bodyBSepCount++;
             world.ContactManager.EndContact = contact => endContactCount++;
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 

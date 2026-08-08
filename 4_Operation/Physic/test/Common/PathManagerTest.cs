@@ -51,8 +51,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(10, 0)});
-            path.Closed = false;
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(5, 0), new Vector2F(10, 0)})
+                {
+                    Closed = false
+                };
 
             PathManager.ConvertPathToEdges(path, body, 2);
 
@@ -73,8 +75,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(5, 0),
                 new Vector2F(5, 5),
                 new Vector2F(0, 5)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             PathManager.ConvertPathToEdges(path, body, 2);
 
@@ -95,8 +99,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(2, 0),
                 new Vector2F(2, 2),
                 new Vector2F(0, 2)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             PathManager.ConvertPathToPolygon(path, body, 1.0f, 4);
 
@@ -111,8 +117,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody();
-            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(5, 0)});
-            path.Closed = false;
+            Path path = new Path(new[] {new Vector2F(0, 0), new Vector2F(5, 0)})
+                {
+                    Closed = false
+                };
 
             Assert.Throws<InvalidOperationException>(() => PathManager.ConvertPathToPolygon(path, body, 1.0f, 2));
         }

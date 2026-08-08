@@ -43,8 +43,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void IsLeaf_ShouldReturnTrue_WhenChild1IsNullNode()
         {
-            TreeNode<int> node = new TreeNode<int>();
-            node.Child1 = DynamicTree<int>.NullNode;
+            TreeNode<int> node = new TreeNode<int>
+                {
+                    Child1 = DynamicTree<int>.NullNode
+                };
 
             Assert.True(node.IsLeaf());
         }
@@ -55,8 +57,10 @@ namespace Alis.Core.Physic.Test.Collisions
         [Fact]
         public void IsLeaf_ShouldReturnFalse_WhenChild1IsValid()
         {
-            TreeNode<int> node = new TreeNode<int>();
-            node.Child1 = 0;
+            TreeNode<int> node = new TreeNode<int>
+                {
+                    Child1 = 0
+                };
 
             Assert.False(node.IsLeaf());
         }

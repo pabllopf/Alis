@@ -61,8 +61,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic();
 
-            SimpleExplosion explosion = new SimpleExplosion(world);
-            explosion.Power = 2f;
+            SimpleExplosion explosion = new SimpleExplosion(world)
+                {
+                    Power = 2f
+                };
 
             Assert.Equal(2f, explosion.Power, 5);
         }
@@ -131,8 +133,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         {
             WorldPhysic world = new WorldPhysic();
 
-            SimpleExplosion explosion = new SimpleExplosion(world);
-            explosion.Power = 2f;
+            SimpleExplosion explosion = new SimpleExplosion(world)
+                {
+                    Power = 2f
+                };
 
             float percentPower1 = new SimpleExplosion(world).GetPercent(5f, 10f);
             float percentPower2 = explosion.GetPercent(5f, 10f);
@@ -369,8 +373,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         public void GetPercent_WithPowerZero_ShouldReturnZero()
         {
             WorldPhysic world = new WorldPhysic();
-            SimpleExplosion explosion = new SimpleExplosion(world);
-            explosion.Power = 0f;
+            SimpleExplosion explosion = new SimpleExplosion(world)
+                {
+                    Power = 0f
+                };
 
             float percent = explosion.GetPercent(5f, 10f);
 

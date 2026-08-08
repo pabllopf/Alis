@@ -78,8 +78,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void Xf_Setter_ShouldSetX()
         {
-            TriangulationPoint point = new TriangulationPoint(0.0, 0.0);
-            point.Xf = 4.2f;
+            TriangulationPoint point = new TriangulationPoint(0.0, 0.0)
+                {
+                    Xf = 4.2f
+                };
 
             Assert.Equal(4.2, point.X, 5);
         }
@@ -90,8 +92,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void Yf_Setter_ShouldSetY()
         {
-            TriangulationPoint point = new TriangulationPoint(0.0, 0.0);
-            point.Yf = 3.7f;
+            TriangulationPoint point = new TriangulationPoint(0.0, 0.0)
+                {
+                    Yf = 3.7f
+                };
 
             Assert.Equal(3.7, point.Y, 5);
         }

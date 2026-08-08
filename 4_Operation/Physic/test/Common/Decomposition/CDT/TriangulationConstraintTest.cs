@@ -100,9 +100,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         [Fact]
         public void TriangulationConstraint_ShouldAllowNullAssignments()
         {
-            TriangulationConstraint constraint = new TriangulationConstraint();
-            constraint.P = new TriangulationPoint(5, 5);
-            constraint.Q = new TriangulationPoint(10, 10);
+            TriangulationConstraint constraint = new TriangulationConstraint
+                {
+                    P = new TriangulationPoint(5, 5),
+                    Q = new TriangulationPoint(10, 10)
+                };
 
             constraint.P = null;
             constraint.Q = null;

@@ -80,8 +80,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F start = body.Position;
 
             body.ApplyForce(new Vector2F(20.0f, 0.0f));
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(body.Position.X > start.X);
@@ -333,8 +335,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             body.ApplyTorque(10.0f);
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotEqual(0.0f, body.AngularVelocity);
@@ -351,8 +355,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.CreateCircle(0.5f, 1.0f);
 
             body.ApplyAngularImpulse(5.0f);
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotEqual(0.0f, body.AngularVelocity);
@@ -400,9 +406,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void LinearVelocity_Setter_OnStaticBody_ShouldReturnEarly()
         {
-            Body body = new Body();
-
-            body.LinearVelocity = new Vector2F(10.0f, 5.0f);
+            Body body = new Body
+                {
+                    LinearVelocity = new Vector2F(10.0f, 5.0f)
+                };
 
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
         }
@@ -413,9 +420,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void AngularVelocity_Setter_OnStaticBody_ShouldReturnEarly()
         {
-            Body body = new Body();
-
-            body.AngularVelocity = 5.0f;
+            Body body = new Body
+                {
+                    AngularVelocity = 5.0f
+                };
 
             Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
@@ -519,9 +527,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Rotation_Setter_WithoutWorld_ShouldSetSweepA()
         {
-            Body body = new Body();
-
-            body.Rotation = 2.0f;
+            Body body = new Body
+                {
+                    Rotation = 2.0f
+                };
 
             Assert.Equal(2.0f, body.Sweep.A, 5);
         }
@@ -558,9 +567,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Mass_Setter_OnNonDynamicBody_ShouldReturnEarly()
         {
-            Body body = new Body();
-
-            body.Mass = 5.0f;
+            Body body = new Body
+                {
+                    Mass = 5.0f
+                };
 
             Assert.Equal(0.0f, body.Mass, 5);
         }
@@ -571,9 +581,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Inertia_Setter_OnNonDynamicBody_ShouldReturnEarly()
         {
-            Body body = new Body();
-
-            body.Inertia = 10.0f;
+            Body body = new Body
+                {
+                    Inertia = 10.0f
+                };
 
             Assert.Equal(0.0f, body.Inertia, 5);
         }
@@ -764,8 +775,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ShouldCollide_BothStatic_ShouldReturnFalse()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
-            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body1 = world.CreateBody(new Vector2F(0.0f, 0.0f));
+            Body body2 = world.CreateBody(new Vector2F(1.0f, 0.0f));
 
             Assert.False(body1.ShouldCollide(body2));
         }
@@ -1024,9 +1035,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void FixedRotation_Setter_WithSameValue_ShouldReturnEarly()
         {
-            Body body = new Body();
+            Body body = new Body
+                {
+                    FixedRotation = false
+                };
 
-            body.FixedRotation = false;
             body.FixedRotation = false;
 
             Assert.False(body.FixedRotation);
@@ -1266,7 +1279,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetBodyType_ToDynamic_ShouldWakeBodyAndResetMass()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Static);
+            Body body = world.CreateBody(new Vector2F(0.0f, 0.0f));
 
             body.GetBodyType = BodyType.Dynamic;
             body.CreateCircle(0.5f, 1.0f);
@@ -1640,8 +1653,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Tag_CanStoreCustomData()
         {
-            Body body = new Body();
-            body.Tag = new object();
+            Body body = new Body
+                {
+                    Tag = new object()
+                };
 
             Assert.NotNull(body.Tag);
         }
@@ -1663,10 +1678,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void InvMassAndInvI_AreSettableProperties()
         {
-            Body body = new Body();
-
-            body.InvMass = 0.5f;
-            body.InvI = 0.25f;
+            Body body = new Body
+                {
+                    InvMass = 0.5f,
+                    InvI = 0.25f
+                };
 
             Assert.Equal(0.5f, body.InvMass, 5);
             Assert.Equal(0.25f, body.InvI, 5);
@@ -1678,10 +1694,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void ForceAndTorque_AreSettableProperties()
         {
-            Body body = new Body();
-
-            body.Force = new Vector2F(10.0f, 5.0f);
-            body.Torque = 2.5f;
+            Body body = new Body
+                {
+                    Force = new Vector2F(10.0f, 5.0f),
+                    Torque = 2.5f
+                };
 
             Assert.Equal(10.0f, body.Force.X, 5);
             Assert.Equal(5.0f, body.Force.Y, 5);
@@ -1717,9 +1734,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Island_FlagIsSettable()
         {
-            Body body = new Body();
-
-            body.Island = true;
+            Body body = new Body
+                {
+                    Island = true
+                };
 
             Assert.True(body.Island);
         }
@@ -1730,9 +1748,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void LinearVelocityInternal_IsAccessible()
         {
-            Body body = new Body();
-
-            body.LinearVelocityInternal = new Vector2F(1.0f, 2.0f);
+            Body body = new Body
+                {
+                    LinearVelocityInternal = new Vector2F(1.0f, 2.0f)
+                };
 
             Assert.Equal(1.0f, body.LinearVelocityInternal.X, 5);
             Assert.Equal(2.0f, body.LinearVelocityInternal.Y, 5);
@@ -1744,9 +1763,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void SleepTime_IsSettable()
         {
-            Body body = new Body();
-
-            body.SleepTime = 5.0f;
+            Body body = new Body
+                {
+                    SleepTime = 5.0f
+                };
 
             Assert.Equal(5.0f, body.SleepTime, 5);
         }

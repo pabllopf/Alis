@@ -189,9 +189,11 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 1,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { IndexA = 5, IndexB = 10 }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { IndexA = 5, IndexB = 10 };
 
             SimplexCache cache = new SimplexCache();
             simplex.WriteCache(ref cache);
@@ -211,11 +213,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { IndexA = 0, IndexB = 0 },
+                        [1] = new SimplexVertex { IndexA = 1, IndexB = 1 },
+                        [2] = new SimplexVertex { IndexA = 2, IndexB = 2 }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { IndexA = 0, IndexB = 0 };
-            simplex.V[1] = new SimplexVertex { IndexA = 1, IndexB = 1 };
-            simplex.V[2] = new SimplexVertex { IndexA = 2, IndexB = 2 };
 
             SimplexCache cache = new SimplexCache();
             simplex.WriteCache(ref cache);
@@ -238,10 +242,12 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(2.0f, 0.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(2.0f, 0.0f) };
 
             Vector2F direction = simplex.GetSearchDirection();
 
@@ -257,10 +263,12 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) };
 
             simplex.Solve2();
 
@@ -277,10 +285,12 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) };
 
             simplex.Solve2();
 
@@ -297,10 +307,12 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(-2.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(2.0f, 0.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(-2.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(2.0f, 0.0f) };
 
             simplex.Solve2();
 
@@ -318,11 +330,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) };
 
             simplex.Solve3();
 
@@ -339,11 +353,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) };
 
             simplex.Solve3();
 
@@ -360,11 +376,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(0.0f, 0.0f) };
 
             simplex.Solve3();
 
@@ -381,11 +399,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(3.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(-2.0f, -2.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(3.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(-2.0f, -2.0f) };
 
             simplex.Solve3();
 
@@ -404,11 +424,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(-1.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(-1.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) };
 
             simplex.Solve3();
 
@@ -424,11 +446,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(0.0f, -1.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(3.0f, 0.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(0.0f, -1.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(3.0f, 0.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(0.0f, 1.0f) };
 
             simplex.Solve3();
 
@@ -444,11 +468,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(-1.0f, 0.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(0.0f, 3.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(-1.0f, 0.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(1.0f, 0.0f) };
 
             simplex.Solve3();
 
@@ -479,10 +505,12 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 2,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(1.0f, 1.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(1.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(1.0f, 1.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(1.0f, 1.0f) };
 
             float metric = simplex.GetMetric();
 
@@ -498,11 +526,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(10.0f, -3.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(10.0f, -3.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) };
 
             simplex.Solve3();
 
@@ -518,11 +548,13 @@ namespace Alis.Core.Physic.Test.Collisions
             Simplex simplex = new Simplex
             {
                 Count = 3,
-                V = new FixedArray3<SimplexVertex>()
+                V = new FixedArray3<SimplexVertex>
+                    {
+                        [0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) },
+                        [1] = new SimplexVertex { W = new Vector2F(2.0f, -1.0f) },
+                        [2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) }
+                    }
             };
-            simplex.V[0] = new SimplexVertex { W = new Vector2F(-5.0f, 0.0f) };
-            simplex.V[1] = new SimplexVertex { W = new Vector2F(2.0f, -1.0f) };
-            simplex.V[2] = new SimplexVertex { W = new Vector2F(5.0f, 1.0f) };
 
             simplex.Solve3();
 

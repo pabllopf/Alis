@@ -100,9 +100,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.Frequency = 5.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 5.0f
+                };
 
             Assert.Equal(5.0f, joint.Frequency, 5);
         }
@@ -115,9 +116,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.DampingRatio = 0.5f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    DampingRatio = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.DampingRatio, 5);
         }
@@ -130,9 +132,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.Length = 3.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Length = 3.0f
+                };
 
             Assert.Equal(3.0f, joint.Length, 5);
         }
@@ -286,8 +289,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void WorldAnchorB_Get_ShouldReturnBodyBGetWorldPoint()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(5.0f, 3.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(5.0f, 3.0f)
+                };
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
 
             Vector2F anchor = joint.WorldAnchorB;
@@ -303,9 +308,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorA = new Vector2F(5.0f, 10.0f);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorA = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -318,9 +324,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorB = new Vector2F(5.0f, 10.0f);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorB = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -387,8 +394,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -408,12 +417,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 5.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 5.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -433,13 +446,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 10.0f;
-            joint.DampingRatio = 0.5f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 10.0f,
+                    DampingRatio = 0.5f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -459,13 +476,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 10.0f;
-            joint.DampingRatio = 1.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 10.0f,
+                    DampingRatio = 1.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -485,13 +506,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 10.0f;
-            joint.DampingRatio = 2.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 10.0f,
+                    DampingRatio = 2.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -516,9 +541,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -538,16 +565,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 5.0f;
-            joint.DampingRatio = 0.3f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 5.0f,
+                    DampingRatio = 0.3f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -567,15 +598,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 3.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 3.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -595,16 +630,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 20.0f;
-            joint.DampingRatio = 1.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 20.0f,
+                    DampingRatio = 1.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 30; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -624,16 +663,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 5.0f;
-            joint.DampingRatio = 0.5f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 5.0f,
+                    DampingRatio = 0.5f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 5; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
@@ -654,18 +697,22 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 10.0f;
-            joint.DampingRatio = 0.8f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 10.0f,
+                    DampingRatio = 0.8f
+                };
             world.Add(joint);
 
             float initialDistance = (bodyB.Position - bodyA.Position).Length();
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             float finalDistance = (bodyB.Position - bodyA.Position).Length();
@@ -681,9 +728,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorA = new Vector2F(5.0f, 10.0f);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorA = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -696,9 +744,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-
-            joint.WorldAnchorB = new Vector2F(5.0f, 10.0f);
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    WorldAnchorB = new Vector2F(5.0f, 10.0f)
+                };
 
             Assert.NotNull(joint);
         }
@@ -717,15 +766,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
-            joint.Frequency = 0.0f;
+            DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f))
+                {
+                    Frequency = 0.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -748,8 +801,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);

@@ -86,9 +86,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MaxForce = 300.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 300.0f
+                };
 
             Assert.Equal(300.0f, joint.MaxForce, 5);
         }
@@ -101,9 +102,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MaxTorque = 50.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxTorque = 50.0f
+                };
 
             Assert.Equal(50.0f, joint.MaxTorque, 5);
         }
@@ -272,8 +274,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void WorldAnchorB_Get_ShouldReturnBodyBGetWorldPoint()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Position = new Vector2F(5.0f, 3.0f);
+            Body bodyB = new Body
+                {
+                    Position = new Vector2F(5.0f, 3.0f)
+                };
             FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
 
             Vector2F anchor = joint.WorldAnchorB;
@@ -290,9 +294,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(5.0f, 0.0f), 0.0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(10.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.WorldAnchorA = new Vector2F(8.0f, 3.0f);
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    WorldAnchorA = new Vector2F(8.0f, 3.0f)
+                };
 
             Assert.Equal(new Vector2F(3.0f, 3.0f), joint.LocalAnchorA);
         }
@@ -306,9 +311,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
             Body bodyA = world.CreateBody(new Vector2F(5.0f, 0.0f), 0.0f, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(10.0f, 0.0f), 0.0f, BodyType.Dynamic);
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.WorldAnchorB = new Vector2F(15.0f, 4.0f);
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    WorldAnchorB = new Vector2F(15.0f, 4.0f)
+                };
 
             Assert.Equal(new Vector2F(5.0f, 4.0f), joint.LocalAnchorB);
         }
@@ -362,8 +368,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -383,12 +391,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 50.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 50.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -408,12 +420,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxTorque = 25.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -433,13 +449,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 50.0f;
-            joint.MaxTorque = 25.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 50.0f,
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -459,15 +479,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 500.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 500.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -487,15 +511,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxTorque = 50.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxTorque = 50.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -515,15 +543,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 100.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 100.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
@@ -544,16 +576,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 50.0f;
-            joint.MaxTorque = 25.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 50.0f,
+                    MaxTorque = 25.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 30; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -573,15 +609,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxTorque = 50.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxTorque = 50.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             float torque = joint.GetReactionTorque(1.0f / 60.0f);
@@ -602,13 +642,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 0.0f;
-            joint.MaxTorque = 0.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 0.0f,
+                    MaxTorque = 0.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -624,7 +668,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             Vector2F anchor = new Vector2F(2.0f, 3.0f);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, anchor, false);
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, anchor);
 
             Assert.Equal(anchor, joint.LocalAnchorA);
             Assert.Equal(anchor, joint.LocalAnchorB);
@@ -644,13 +688,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 0.0f;
-            joint.MaxTorque = 0.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 0.0f,
+                    MaxTorque = 0.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -670,15 +718,19 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 1.0f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 1.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -698,12 +750,16 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MaxForce = 0.1f;
+            FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxForce = 0.1f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             int indexA = bodyA.GetIslandIndex;

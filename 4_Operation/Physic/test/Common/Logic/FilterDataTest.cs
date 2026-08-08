@@ -175,8 +175,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void AddEnabledCategory_ShouldAddCategory()
         {
-            TestFilterData filter = new TestFilterData();
-            filter.EnabledOnCategories = Categories.None;
+            TestFilterData filter = new TestFilterData
+                {
+                    EnabledOnCategories = Categories.None
+                };
 
             filter.AddEnabledCategory(Categories.Cat3);
 
@@ -335,8 +337,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void IsActiveOn_ShouldReturnTrue_WhenEnabledCategoryMatches()
         {
-            TestFilterData filter = new TestFilterData();
-            filter.EnabledOnCategories = Categories.Cat2;
+            TestFilterData filter = new TestFilterData
+                {
+                    EnabledOnCategories = Categories.Cat2
+                };
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body body = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             Fixture fixture = body.CreateFixture(new CircleShape(1.0f, 1.0f));
@@ -388,8 +392,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
         [Fact]
         public void IsInEnabledInCategory_ShouldReturnFalse_ForNotEnabledCategory()
         {
-            TestFilterData filter = new TestFilterData();
-            filter.EnabledOnCategories = Categories.Cat2;
+            TestFilterData filter = new TestFilterData
+                {
+                    EnabledOnCategories = Categories.Cat2
+                };
 
             bool result = filter.IsInEnabledInCategory(Categories.Cat1);
 

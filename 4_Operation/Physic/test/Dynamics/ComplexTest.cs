@@ -182,9 +182,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Phase_Zero_ShouldReturnOne()
         {
-            Complex complex = new Complex(1.0f, 1.0f);
-
-            complex.Phase = 0.0f;
+            Complex complex = new Complex(1.0f, 1.0f)
+                {
+                    Phase = 0.0f
+                };
 
             Assert.Equal(1.0f, complex.R, 5);
             Assert.Equal(0.0f, complex.I, 5);

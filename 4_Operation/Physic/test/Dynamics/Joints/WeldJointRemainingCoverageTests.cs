@@ -51,8 +51,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(10, 0), 0, BodyType.Dynamic);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
             world.Add(joint);
 
             SolverData initData = new SolverData
@@ -211,8 +213,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -249,9 +253,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
-            joint.DampingRatio = 1.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f,
+                    DampingRatio = 1.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -288,9 +294,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
-            joint.DampingRatio = 1.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f,
+                    DampingRatio = 1.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -326,16 +334,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
-            joint.DampingRatio = 1.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f,
+                    DampingRatio = 1.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Vector2F force = joint.GetReactionForce(1.0f / 60.0f);
@@ -357,16 +369,20 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
-            joint.DampingRatio = 1.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f,
+                    DampingRatio = 1.0f
+                };
             world.Add(joint);
 
             for (int i = 0; i < 10; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             float torque = joint.GetReactionTorque(1.0f / 60.0f);

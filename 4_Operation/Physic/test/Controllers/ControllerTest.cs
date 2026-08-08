@@ -69,9 +69,10 @@ namespace Alis.Core.Physic.Test.Controllers
         [Fact]
         public void EnabledProperty_ShouldSetAndGetCorrectly()
         {
-            TestController controller = new TestController();
-
-            controller.Enabled = false;
+            TestController controller = new TestController
+                {
+                    Enabled = false
+                };
 
             Assert.False(controller.Enabled);
         }

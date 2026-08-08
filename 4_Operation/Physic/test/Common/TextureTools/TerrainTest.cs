@@ -47,10 +47,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void Initialize_SetsUpInternalStructures()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
 
             terrain.Initialize();
 
@@ -65,10 +67,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void ApplyData_WithInBoundsData_WritesToTerrainMap()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             sbyte[,] data = new sbyte[10, 10];
@@ -92,10 +96,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void ApplyData_WithOutOfBoundsOffset_DoesNotWrite()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             sbyte originalValue = terrain._terrainMap[0, 0];
@@ -120,10 +126,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void ModifyTerrain_WithValidCoordinates_UpdatesTerrainAndDirtyArea()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             Vector2F location = terrain._topLeft + new Vector2F(1, -1);
@@ -139,10 +147,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void ModifyTerrain_WithOutOfBoundsCoordinates_DoesNothing()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             sbyte originalValue = terrain._terrainMap[0, 0];
@@ -159,10 +169,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RegenerateTerrain_ResetsDirtyArea()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             Vector2F location = terrain._topLeft + new Vector2F(1, -1);
@@ -180,10 +192,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RegenerateTerrain_ClampsBoundsToGrid()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             terrain._dirtyArea = new Aabb(
@@ -203,10 +217,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RemoveOldData_WithEmptyBodyMap_DoesNotThrow()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             terrain.RemoveOldData(0, 1, 0, 1);
@@ -219,10 +235,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void GenerateTerrain_WithUniformMap_ReturnsEarly()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             for (int x = 0; x < terrain._xnum; x++)
@@ -243,10 +261,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void ModifyTerrain_UpdatesDirtyAreaBounds()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             terrain._dirtyArea = new Aabb(
@@ -268,10 +288,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RegenerateTerrain_ClampsXStartToZero()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             terrain._dirtyArea = new Aabb(
@@ -290,10 +312,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void RegenerateTerrain_ClampsXEndToXnum()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             terrain._dirtyArea = new Aabb(
@@ -313,10 +337,12 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
         public void GenerateTerrain_WithMixedTerrainMap_CoversNonEarlyReturnPath()
         {
             WorldPhysic world = new WorldPhysic();
-            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100);
-            terrain.PointsPerUnit = 2;
-            terrain.CellSize = 10;
-            terrain.SubCellSize = 2;
+            Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 100)
+                {
+                    PointsPerUnit = 2,
+                    CellSize = 10,
+                    SubCellSize = 2
+                };
             terrain.Initialize();
 
             // Apply a block of -1 data to create mixed boundary conditions in the terrain map.

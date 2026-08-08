@@ -228,8 +228,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void ReferenceAngle_Constructor_SetsFromBodies()
         {
             Body bodyA = new Body();
-            Body bodyB = new Body();
-            bodyB.Rotation = 0.3f;
+            Body bodyB = new Body
+                {
+                    Rotation = 0.3f
+                };
 
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
 
@@ -293,9 +295,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
 
             Assert.True(joint.LimitEnabled);
         }
@@ -308,9 +311,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.LowerLimit = -1.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LowerLimit = -1.0f
+                };
 
             Assert.Equal(-1.0f, joint.LowerLimit, 5);
         }
@@ -323,9 +327,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LowerLimit = -1.0f
+                };
 
-            joint.LowerLimit = -1.0f;
             float current = joint.LowerLimit;
             joint.LowerLimit = -1.0f;
 
@@ -340,9 +346,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.UpperLimit = 2.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    UpperLimit = 2.0f
+                };
 
             Assert.Equal(2.0f, joint.UpperLimit, 5);
         }
@@ -355,9 +362,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    UpperLimit = 2.0f
+                };
 
-            joint.UpperLimit = 2.0f;
             float current = joint.UpperLimit;
             joint.UpperLimit = 2.0f;
 
@@ -385,9 +394,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MotorEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MotorEnabled = true
+                };
 
             Assert.True(joint.MotorEnabled);
         }
@@ -400,9 +410,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MotorSpeed = 5.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MotorSpeed = 5.0f
+                };
 
             Assert.Equal(5.0f, joint.MotorSpeed, 5);
         }
@@ -415,9 +426,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MaxMotorTorque = 100.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MaxMotorTorque = 100.0f
+                };
 
             Assert.Equal(100.0f, joint.MaxMotorTorque, 5);
         }
@@ -430,9 +442,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-
-            joint.MotorImpulse = 25.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MotorImpulse = 25.0f
+                };
 
             Assert.Equal(25.0f, joint.MotorImpulse, 5);
         }
@@ -478,9 +491,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MotorImpulse = 10.0f
+                };
 
-            joint.MotorImpulse = 10.0f;
             float result = joint.GetMotorTorque(2.0f);
 
             Assert.Equal(20.0f, result, 5);
@@ -550,8 +565,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -571,14 +588,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.MotorEnabled = true;
-            joint.MotorSpeed = 5.0f;
-            joint.MaxMotorTorque = 50.0f;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    MotorEnabled = true,
+                    MotorSpeed = 5.0f,
+                    MaxMotorTorque = 50.0f
+                };
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -598,13 +619,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-0.5f, 0.5f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -624,13 +649,17 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(0.0f, 0.0f);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -650,14 +679,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(0.1f, 1.0f);
             bodyB.Rotation = -0.5f;
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -677,14 +710,18 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-1.0f, -0.1f);
             bodyB.Rotation = 0.5f;
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -719,8 +756,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
             world.Add(joint);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.NotNull(joint);
@@ -733,13 +772,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Step_WithLimitAndMotor_MultipleSteps()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
-            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
+            Body bodyA = world.CreateBody(Vector2F.Zero);
             Body bodyB = world.CreateBody(new Vector2F(0, 1), 0, BodyType.Dynamic);
             CircleShape shape = new CircleShape(0.3f, 1.0f);
             bodyB.CreateFixture(shape);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-0.5f, 0.5f);
             joint.MotorEnabled = true;
             joint.MotorSpeed = 5.0f;
@@ -748,9 +789,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -770,17 +813,21 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-0.1f, 0.8f);
             bodyB.Rotation = -0.5f;
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -800,17 +847,21 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-0.8f, 0.1f);
             bodyB.Rotation = 0.5f;
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -823,7 +874,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Step_LimitWithGravity_SwingsThroughLimit()
         {
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -20));
-            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
+            Body bodyA = world.CreateBody(Vector2F.Zero);
             Body bodyB = world.CreateBody(new Vector2F(0, 1), 0, BodyType.Dynamic);
             CircleShape shape = new CircleShape(0.2f, 10.0f);
             bodyB.CreateFixture(shape);
@@ -836,9 +887,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             for (int i = 0; i < 120; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -851,22 +904,26 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Step_LimitAtLower_WithWorldAnchorOffset_Warmstarting()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
+            Body bodyA = world.CreateBody(Vector2F.Zero);
             Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             CircleShape shape = new CircleShape(0.5f, 10.0f);
             bodyB.CreateFixture(shape);
             bodyB.AngularVelocity = -5.0f;
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0), true);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0), true)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(0.1f, 0.8f);
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -879,22 +936,26 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Step_LimitAtUpper_WithWorldAnchorOffset_Warmstarting()
         {
             WorldPhysic world = new WorldPhysic(Vector2F.Zero);
-            Body bodyA = world.CreateBody(Vector2F.Zero, 0, BodyType.Static);
+            Body bodyA = world.CreateBody(Vector2F.Zero);
             Body bodyB = world.CreateBody(Vector2F.Zero, 0, BodyType.Dynamic);
             CircleShape shape = new CircleShape(0.5f, 10.0f);
             bodyB.CreateFixture(shape);
             bodyB.AngularVelocity = 5.0f;
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0), true);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, new Vector2F(0.5f, 0), true)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-0.8f, -0.1f);
             world.Add(joint);
 
             for (int i = 0; i < 60; i++)
             {
-                SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
-            world.Step(1.0f / 60.0f, ref iterations);
+                SolverIterations iterations = new SolverIterations
+                    {
+                        PositionIterations = 10
+                    };
+                world.Step(1.0f / 60.0f, ref iterations);
             }
 
             Assert.NotNull(joint);
@@ -914,8 +975,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
-            joint.LimitEnabled = true;
+            RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero)
+                {
+                    LimitEnabled = true
+                };
             joint.SetLimits(-1.0f, 1.0f);
 
             SolverData data = new SolverData

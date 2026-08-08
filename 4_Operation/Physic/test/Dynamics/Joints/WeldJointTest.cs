@@ -85,9 +85,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-
-            joint.ReferenceAngle = 0.5f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    ReferenceAngle = 0.5f
+                };
 
             Assert.Equal(0.5f, joint.ReferenceAngle, 5);
         }
@@ -100,9 +101,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
 
             Assert.Equal(10.0f, joint.FrequencyHz, 5);
         }
@@ -115,9 +117,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             Body bodyA = new Body();
             Body bodyB = new Body();
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-
-            joint.DampingRatio = 0.8f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    DampingRatio = 0.8f
+                };
 
             Assert.Equal(0.8f, joint.DampingRatio, 5);
         }
@@ -148,9 +151,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-
-            joint.WorldAnchorA = new Vector2F(1, 0);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    WorldAnchorA = new Vector2F(1, 0)
+                };
 
             Vector2F anchor = joint.WorldAnchorA;
             Assert.False(float.IsNaN(anchor.X));
@@ -183,9 +187,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WorldPhysic world = new WorldPhysic(new Vector2F(0, -10));
             Body bodyA = world.CreateBody(new Vector2F(0, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(2, 0), 0, BodyType.Dynamic);
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-
-            joint.WorldAnchorB = new Vector2F(2, 1);
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    WorldAnchorB = new Vector2F(2, 1)
+                };
 
             Vector2F anchor = joint.WorldAnchorB;
             Assert.False(float.IsNaN(anchor.X));
@@ -224,8 +229,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -252,8 +259,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 1.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 1.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -392,8 +401,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
 
             SolverData data = new SolverData
             {
@@ -422,8 +433,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyA = world.CreateBody(new Vector2F(-1.0f, 0), 0, BodyType.Dynamic);
             Body bodyB = world.CreateBody(new Vector2F(1.0f, 0), 0, BodyType.Dynamic);
 
-            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero);
-            joint.FrequencyHz = 10.0f;
+            WeldJoint joint = new WeldJoint(bodyA, bodyB, Vector2F.Zero, Vector2F.Zero)
+                {
+                    FrequencyHz = 10.0f
+                };
 
             SolverData data = new SolverData
             {

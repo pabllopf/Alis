@@ -117,9 +117,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void HasVertex0Property_ShouldSetAndGetCorrectly()
         {
-            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-
-            edge.HasVertex0 = true;
+            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One)
+                {
+                    HasVertex0 = true
+                };
 
             Assert.True(edge.HasVertex0);
         }
@@ -130,9 +131,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void HasVertex3Property_ShouldSetAndGetCorrectly()
         {
-            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-
-            edge.HasVertex3 = true;
+            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One)
+                {
+                    HasVertex3 = true
+                };
 
             Assert.True(edge.HasVertex3);
         }
@@ -224,11 +226,13 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void EdgeShape_ShouldSupportAdjacentVertices()
         {
-            EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(10, 0));
-            edge.HasVertex0 = true;
-            edge.HasVertex3 = true;
-            edge.Vertex0 = new Vector2F(-10, 0);
-            edge.Vertex3 = new Vector2F(20, 0);
+            EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(10, 0))
+                {
+                    HasVertex0 = true,
+                    HasVertex3 = true,
+                    Vertex0 = new Vector2F(-10, 0),
+                    Vertex3 = new Vector2F(20, 0)
+                };
 
             Assert.True(edge.HasVertex0);
             Assert.True(edge.HasVertex3);
@@ -253,9 +257,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         [Fact]
         public void Set_ShouldResetHasVertexFlags()
         {
-            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One);
-            edge.HasVertex0 = true;
-            edge.HasVertex3 = true;
+            EdgeShape edge = new EdgeShape(Vector2F.Zero, Vector2F.One)
+                {
+                    HasVertex0 = true,
+                    HasVertex3 = true
+                };
 
             edge.Set(new Vector2F(5, 5), new Vector2F(10, 10));
 
@@ -550,11 +556,13 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
     [Fact]
     public void Clone_ShouldCopyAllProperties()
     {
-        EdgeShape original = new EdgeShape(new Vector2F(1, 2), new Vector2F(3, 4));
-        original.HasVertex0 = true;
-        original.HasVertex3 = true;
-        original.Vertex0 = new Vector2F(-1, 0);
-        original.Vertex3 = new Vector2F(5, 4);
+        EdgeShape original = new EdgeShape(new Vector2F(1, 2), new Vector2F(3, 4))
+            {
+                HasVertex0 = true,
+                HasVertex3 = true,
+                Vertex0 = new Vector2F(-1, 0),
+                Vertex3 = new Vector2F(5, 4)
+            };
 
         EdgeShape clone = (EdgeShape)original.Clone();
 
@@ -594,10 +602,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
     [Fact]
     public void VertexSetter_UpdatesCentroid()
     {
-        EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(10, 0));
-
-        edge.Vertex1 = new Vector2F(2, 2);
-        edge.Vertex2 = new Vector2F(8, 6);
+        EdgeShape edge = new EdgeShape(new Vector2F(0, 0), new Vector2F(10, 0))
+            {
+                Vertex1 = new Vector2F(2, 2),
+                Vertex2 = new Vector2F(8, 6)
+            };
 
         Vector2F expectedCentroid = new Vector2F(5, 4);
 

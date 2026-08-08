@@ -521,9 +521,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var p1 = new TriangulationPoint(-1, 1);
             var p2 = new TriangulationPoint(0, 0);
             var p3 = new TriangulationPoint(1, 1);
-            var middle = new AdvancingFrontNode(p2);
-            middle.Next = new AdvancingFrontNode(p3);
-            middle.Prev = new AdvancingFrontNode(p1);
+            var middle = new AdvancingFrontNode(p2)
+                {
+                    Next = new AdvancingFrontNode(p3),
+                    Prev = new AdvancingFrontNode(p1)
+                };
             double result = (double)m.Invoke(null, new object[] { middle });
             Assert.True(Math.Abs(result) > 0);
         }
@@ -536,9 +538,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void BasinAngle_WithThreeNodesForward_ReturnsAngle()
         {
             MethodInfo m = GetMethod("BasinAngle", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 1));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 0));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(2, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 1))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 0))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        }
+                };
             double result = (double)m.Invoke(null, new object[] { node });
             Assert.True(result > 0);
         }
@@ -609,8 +615,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var p2 = new TriangulationPoint(1, 0);
             var p3 = new TriangulationPoint(0, 1);
             var triangle = new DelaunayTriangle(p1, p2, p3);
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             bool result = (bool)m.Invoke(null, new object[] { tcx, triangle });
             Assert.False(result);
         }
@@ -627,8 +635,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var p2 = new TriangulationPoint(1, 0);
             var p3 = new TriangulationPoint(0, 1);
             var triangle = new DelaunayTriangle(p1, p2, p3);
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             bool result = (bool)m.Invoke(null, new object[] { tcx, triangle, 0 });
             Assert.False(result);
         }
@@ -649,8 +659,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[2] = ot;
             ot.Neighbors[0] = t;
             ot.EdgeIsConstrained[0] = true;
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             bool result = (bool)m.Invoke(null, new object[] { tcx, t, 2 });
             Assert.False(result);
         }
@@ -683,9 +695,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void LargeHole_DontFill_WithSmallAngle_ReturnsFalse()
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(5, 5));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(6, 6));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(4, 6));
+            var node = new AdvancingFrontNode(new TriangulationPoint(5, 5))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(6, 6)),
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(4, 6))
+                };
             bool result = (bool)m.Invoke(null, new object[] { node });
             Assert.False(result);
         }
@@ -697,12 +711,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void LargeHole_DontFill_WithLargeAngleAndNullNextPrev_ReturnsTrue()
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            // Points where Angle(origin, next, prev) > PiDiv2:
-            // For atan2(dot, cross) > PiDiv2, we need cross < 0
-            // origin=(0,0), next=(1,0), prev=(0,-1): cross = 1*(-1)-0*0 = -1, dot = 1*0+0*(-1) = 0, atan2(0,-1) = PI > PiDiv2
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 0));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    // Points where Angle(origin, next, prev) > PiDiv2:
+                    // For atan2(dot, cross) > PiDiv2, we need cross < 0
+                    // origin=(0,0), next=(1,0), prev=(0,-1): cross = 1*(-1)-0*0 = -1, dot = 1*0+0*(-1) = 0, atan2(0,-1) = PI > PiDiv2
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 0)),
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1))
+                };
             bool result = (bool)m.Invoke(null, new object[] { node });
             Assert.True(result);
         }
@@ -727,8 +743,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var op = p4; // must be in ot, and (p,op) must be an edge of ot
             var t = new DelaunayTriangle(p1, p2, p3);
             var ot = new DelaunayTriangle(p2, p4, p3);
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             DelaunayTriangle result = (DelaunayTriangle)m.Invoke(null, new object[] { tcx, Orientation.Ccw, t, ot, p, op });
             Assert.Same(t, result);
         }
@@ -752,8 +770,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var op = p2; // must be in t, and (p,op) must be an edge of t
             var t = new DelaunayTriangle(p1, p2, p3);
             var ot = new DelaunayTriangle(p2, p4, p3);
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             DelaunayTriangle result = (DelaunayTriangle)m.Invoke(null, new object[] { tcx, Orientation.Cw, t, ot, p, op });
             Assert.Same(ot, result);
         }
@@ -768,11 +788,15 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void IsShallow_WithWidthGreaterThanHeight_ReturnsTrue()
         {
             MethodInfo m = GetMethod("IsShallow", typeof(DtSweepContext), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.Basin.LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3));
-            tcx.Basin.RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3));
-            tcx.Basin.LeftHighest = true;
-            tcx.Basin.Width = 5.0;
+            var tcx = new DtSweepContext
+                {
+                    Basin = {
+                        LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3)),
+                        RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3)),
+                        LeftHighest = true,
+                        Width = 5.0
+                    }
+                };
             var node = new AdvancingFrontNode(new TriangulationPoint(2, 1));
             bool result = (bool)m.Invoke(null, new object[] { tcx, node });
             Assert.True(result);
@@ -785,11 +809,15 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void IsShallow_WithWidthLessThanHeight_ReturnsFalse()
         {
             MethodInfo m = GetMethod("IsShallow", typeof(DtSweepContext), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.Basin.LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3));
-            tcx.Basin.RightNode = new AdvancingFrontNode(new TriangulationPoint(2, 3));
-            tcx.Basin.LeftHighest = true;
-            tcx.Basin.Width = 2.0;
+            var tcx = new DtSweepContext
+                {
+                    Basin = {
+                        LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3)),
+                        RightNode = new AdvancingFrontNode(new TriangulationPoint(2, 3)),
+                        LeftHighest = true,
+                        Width = 2.0
+                    }
+                };
             var node = new AdvancingFrontNode(new TriangulationPoint(1, 1));
             bool result = (bool)m.Invoke(null, new object[] { tcx, node });
             Assert.False(result);
@@ -802,11 +830,15 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void IsShallow_WithRightHighest_ReturnsTrue()
         {
             MethodInfo m = GetMethod("IsShallow", typeof(DtSweepContext), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.Basin.LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 1));
-            tcx.Basin.RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3));
-            tcx.Basin.LeftHighest = false;
-            tcx.Basin.Width = 5.0;
+            var tcx = new DtSweepContext
+                {
+                    Basin = {
+                        LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 1)),
+                        RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3)),
+                        LeftHighest = false,
+                        Width = 5.0
+                    }
+                };
             var node = new AdvancingFrontNode(new TriangulationPoint(2, 1));
             bool result = (bool)m.Invoke(null, new object[] { tcx, node });
             Assert.True(result);
@@ -842,11 +874,15 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void FillBasinReq_WithShallow_ReturnsEarly()
         {
             MethodInfo m = GetMethod("FillBasinReq", typeof(DtSweepContext), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.Basin.LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3));
-            tcx.Basin.RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3));
-            tcx.Basin.LeftHighest = true;
-            tcx.Basin.Width = 5.0;
+            var tcx = new DtSweepContext
+                {
+                    Basin = {
+                        LeftNode = new AdvancingFrontNode(new TriangulationPoint(0, 3)),
+                        RightNode = new AdvancingFrontNode(new TriangulationPoint(5, 3)),
+                        LeftHighest = true,
+                        Width = 5.0
+                    }
+                };
             var node = new AdvancingFrontNode(new TriangulationPoint(2, 1));
             tcx.Triangulatable = new MockTriangulatable();
             m.Invoke(null, new object[] { tcx, node });
@@ -1010,8 +1046,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var t = new DelaunayTriangle(p1, p3, p2);
             t.Neighbors[0] = flipTriangle;
             flipTriangle.Neighbors[0] = t;
-            var tcx = new DtSweepContext();
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    Triangulatable = new MockTriangulatable()
+                };
             try
             {
                 m.Invoke(null, new object[] { tcx, ep, eq, flipTriangle, t, p });
@@ -1031,9 +1069,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
             // Angle > PiDiv2 and prev2Node != null but !AngleExceedsPlus90DegreesOrIsNegative → false
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 0));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 0)),
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1))
+                };
             node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(2, -1));
             // prev2 is null, next2 is not null
             // If AngleExceedsPlus90DegreesOrIsNegative(node.Point, next2Node.Point, prevNode.Point) is false
@@ -1055,19 +1095,26 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             MethodInfo m = GetMethod("FillEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = true;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(0, 0), new TriangulationPoint(2, 2));
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = true,
+                        ConstrainedEdge = new DtSweepConstraint(
+                            new TriangulationPoint(0, 0), new TriangulationPoint(2, 2))
+                    }
+                };
             var p1 = new TriangulationPoint(-1, 1);
             var p2 = new TriangulationPoint(1, 1);
             var p3 = new TriangulationPoint(3, 1);
             var p4 = new TriangulationPoint(0, 2);
             var p5 = new TriangulationPoint(2, 2);
             var t1 = new DelaunayTriangle(p1, p2, p3);
-            var node = new AdvancingFrontNode(p2) { Triangle = t1 };
-            node.Next = new AdvancingFrontNode(p3);
-            node.Next.Next = new AdvancingFrontNode(p5);
+            var node = new AdvancingFrontNode(p2) { Triangle = t1,
+                Next = new AdvancingFrontNode(p3)
+                    {
+                        Next = new AdvancingFrontNode(p5)
+                    }
+            };
             tcx.Triangulatable = new MockTriangulatable();
             tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
             tcx.Head = new TriangulationPoint(-5, -1);
@@ -1085,17 +1132,24 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             MethodInfo m = GetMethod("FillEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = false;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(2, 0), new TriangulationPoint(0, 2));
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = false,
+                        ConstrainedEdge = new DtSweepConstraint(
+                            new TriangulationPoint(2, 0), new TriangulationPoint(0, 2))
+                    }
+                };
             var p1 = new TriangulationPoint(-1, 1);
             var p2 = new TriangulationPoint(1, 1);
             var p3 = new TriangulationPoint(3, 1);
             var t1 = new DelaunayTriangle(p1, p2, p3);
-            var node = new AdvancingFrontNode(p2) { Triangle = t1 };
-            node.Prev = new AdvancingFrontNode(p1);
-            node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(-2, 0));
+            var node = new AdvancingFrontNode(p2) { Triangle = t1,
+                Prev = new AdvancingFrontNode(p1)
+                    {
+                        Prev = new AdvancingFrontNode(new TriangulationPoint(-2, 0))
+                    }
+            };
             tcx.Triangulatable = new MockTriangulatable();
             tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
             tcx.Head = new TriangulationPoint(-5, -1);
@@ -1117,16 +1171,24 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             MethodInfo m = GetMethod("FillRightAboveEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = true;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(0, 0), new TriangulationPoint(4, 0));
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = true,
+                        ConstrainedEdge = new DtSweepConstraint(
+                            new TriangulationPoint(0, 0), new TriangulationPoint(4, 0))
+                    }
+                };
             var p1 = new TriangulationPoint(0, 0);
             var p2 = new TriangulationPoint(1, 1);
             var p3 = new TriangulationPoint(2, 0);
-            var node = new AdvancingFrontNode(p1);
-            node.Next = new AdvancingFrontNode(p2);
-            node.Next.Next = new AdvancingFrontNode(p3);
+            var node = new AdvancingFrontNode(p1)
+                {
+                    Next = new AdvancingFrontNode(p2)
+                        {
+                            Next = new AdvancingFrontNode(p3)
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
             tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
             tcx.Head = new TriangulationPoint(-5, -1);
@@ -1144,16 +1206,24 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         {
             MethodInfo m = GetMethod("FillRightAboveEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = true;
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(
-                new TriangulationPoint(0, 0), new TriangulationPoint(4, 0));
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = true,
+                        ConstrainedEdge = new DtSweepConstraint(
+                            new TriangulationPoint(0, 0), new TriangulationPoint(4, 0))
+                    }
+                };
             var p1 = new TriangulationPoint(0, 0);
             var p2 = new TriangulationPoint(1, 1);
             var p3 = new TriangulationPoint(2, 0);
-            var node = new AdvancingFrontNode(p1);
-            node.Next = new AdvancingFrontNode(p2);
-            node.Next.Next = new AdvancingFrontNode(p3);
+            var node = new AdvancingFrontNode(p1)
+                {
+                    Next = new AdvancingFrontNode(p2)
+                        {
+                            Next = new AdvancingFrontNode(p3)
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
             tcx.Points.Add(p1); tcx.Points.Add(p2); tcx.Points.Add(p3);
             tcx.Head = new TriangulationPoint(-5, -1);
@@ -1701,8 +1771,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             MethodInfo mAbove = GetMethod("FillRightAboveEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = true;
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = true
+                    }
+                };
             // edge.P = (8,0), edge.Q = (0,4) → Right = 8>0 = true
             var edge = new DtSweepConstraint(
                 new TriangulationPoint(0, 4), new TriangulationPoint(8, 0));
@@ -1711,9 +1785,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             // Build node chain: node(0,0)→next(3,2)→nextNext(7,1)
             // node.Next.X=3 < edge.P.X=8 → enters while body
             // Orient2d(Q=(0,4), Next=(3,2), P=(8,0)) = Ccw
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(7, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(3, 2))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(7, 1))
+                        }
+                };
 
             tcx.Triangulatable = new MockTriangulatable();
 
@@ -1745,8 +1823,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             MethodInfo m = GetMethod("FillLeftAboveEdgeEvent",
                 typeof(DtSweepContext), typeof(DtSweepConstraint), typeof(AdvancingFrontNode));
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.Right = false;
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        Right = false
+                    }
+                };
             // edge.P = (0, 0), edge.Q = (8, 4) → Right = 0>8 = false
             var edge = new DtSweepConstraint(
                 new TriangulationPoint(0, 0), new TriangulationPoint(8, 4));
@@ -1755,9 +1837,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             // node at (5, 2), node.Prev at (3, 1), node.Prev.Prev at (1, 0)
             // node.Prev.X=3 > edge.P.X=0 → enters while body
             // Orient2d(Q=(8,4), Prev=(3,1), P=(0,0)) = Cw needed
-            var node = new AdvancingFrontNode(new TriangulationPoint(5, 2));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(3, 1));
-            node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(1, 0));
+            var node = new AdvancingFrontNode(new TriangulationPoint(5, 2))
+                {
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(3, 1))
+                        {
+                            Prev = new AdvancingFrontNode(new TriangulationPoint(1, 0))
+                        }
+                };
 
             tcx.Triangulatable = new MockTriangulatable();
 
@@ -1790,10 +1876,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(0, 0), new TriangulationPoint(5, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(2, 1));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(4, 2));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(-1, -1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(4, 2))
+                        },
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(-1, -1))
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -1825,10 +1915,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(0, 0), new TriangulationPoint(5, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(2, 1));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(4, 2));
-            node.Next.Next.Next = new AdvancingFrontNode(new TriangulationPoint(6, 3));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(4, 2))
+                                {
+                                    Next = new AdvancingFrontNode(new TriangulationPoint(6, 3))
+                                }
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -1860,9 +1956,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(0, 0), new TriangulationPoint(5, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(1, 1));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(5, 3));
+            var node = new AdvancingFrontNode(new TriangulationPoint(1, 1))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(3, 2))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(5, 3))
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -1894,10 +1994,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(0, 0), new TriangulationPoint(5, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(4, 2));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(2, 1));
-            node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(6, 3));
+            var node = new AdvancingFrontNode(new TriangulationPoint(4, 2))
+                {
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        {
+                            Prev = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                        },
+                    Next = new AdvancingFrontNode(new TriangulationPoint(6, 3))
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -1929,10 +2033,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(0, 0), new TriangulationPoint(5, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(4, 2));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(2, 1));
-            node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(1, 0));
-            node.Prev.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(4, 2))
+                {
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        {
+                            Prev = new AdvancingFrontNode(new TriangulationPoint(1, 0))
+                                {
+                                    Prev = new AdvancingFrontNode(new TriangulationPoint(0, -1))
+                                }
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -1964,9 +2074,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 new TriangulationPoint(5, 0), new TriangulationPoint(0, 5));
             tcx.EdgeEvent.ConstrainedEdge = edge;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(4, 1));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(2, 2));
-            node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(0, 3));
+            var node = new AdvancingFrontNode(new TriangulationPoint(4, 1))
+                {
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(2, 2))
+                        {
+                            Prev = new AdvancingFrontNode(new TriangulationPoint(0, 3))
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -2008,10 +2122,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             // Constrain edge across p3 (edge p1-p2)
             t.EdgeIsConstrained[2] = true;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(p1, p4);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(p1, p4),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             Assert.Throws<TargetInvocationException>(() =>
                 m.Invoke(null, new object[] { tcx, p1, p2, t, p3 }));
@@ -2045,10 +2163,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[0] = ot;
             ot.Neighbors[2] = t;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(ep, eq);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(ep, eq),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2087,10 +2209,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[2] = ot;
             ot.Neighbors[2] = t;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2128,10 +2254,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[0] = flipTriangle;
             flipTriangle.Neighbors[2] = t;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(ep, eq);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(ep, eq),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2170,10 +2300,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var v3 = new TriangulationPoint(2, 3);
             var triangle = new DelaunayTriangle(point, v2, v3);
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             Assert.Throws<TargetInvocationException>(() =>
                 m.Invoke(null, new object[] { tcx, ep, eq, triangle, point }));
@@ -2206,10 +2340,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var v3 = new TriangulationPoint(2, 3);
             var triangle = new DelaunayTriangle(point, v2, v3);
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             Assert.Throws<TargetInvocationException>(() =>
                 m.Invoke(null, new object[] { tcx, ep, eq, triangle, point }));
@@ -2242,10 +2380,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t1.Neighbors[1] = t2;
             t2.Neighbors[2] = t3;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2320,10 +2462,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var pPrev = new TriangulationPoint(-1, 1);
             var pNext = new TriangulationPoint(1, 0.5);
 
-            var nodeMid = new AdvancingFrontNode(pMid);
-            nodeMid.Prev = new AdvancingFrontNode(pPrev);
-            nodeMid.Next = new AdvancingFrontNode(pNext);
-            nodeMid.Next.Next = new AdvancingFrontNode(new TriangulationPoint(2, 0));
+            var nodeMid = new AdvancingFrontNode(pMid)
+                {
+                    Prev = new AdvancingFrontNode(pPrev),
+                    Next = new AdvancingFrontNode(pNext)
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(2, 0))
+                        }
+                };
 
             tcx.Head = new TriangulationPoint(-5, -1);
             tcx.Tail = new TriangulationPoint(5, -1);
@@ -2489,14 +2635,18 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void LargeHole_DontFill_Next2Present_AngleNotExceeding_ReturnsFalse()
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            // Points where angle exceeds 90 degrees: use large angle
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 2));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 2));
-            // next2: angle close to Pi/2 but not exceeding 90
-            // For AngleExceedsPlus90DegreesOrIsNegative to be false:
-            // angle (origin, next2, prev) must be <= Pi/2 and >= 0
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(2, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    // Points where angle exceeds 90 degrees: use large angle
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 2)),
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 2))
+                        {
+                            // next2: angle close to Pi/2 but not exceeding 90
+                            // For AngleExceedsPlus90DegreesOrIsNegative to be false:
+                            // angle (origin, next2, prev) must be <= Pi/2 and >= 0
+                            Next = new AdvancingFrontNode(new TriangulationPoint(2, 1))
+                        }
+                };
 
             bool result = (bool)m.Invoke(null, new object[] { node });
             Assert.False(result);
@@ -2511,10 +2661,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void LargeHole_DontFill_Prev2Present_AngleNotExceeding_ReturnsFalse()
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 2));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 2));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(2, 2));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 2)),
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 2))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(2, 2))
+                        }
+                };
             // prev2 is not null
             node.Prev.Prev = new AdvancingFrontNode(new TriangulationPoint(-2, 1));
 
@@ -2829,10 +2983,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[0] = ot;
             ot.Neighbors[0] = t;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(p1, p4);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(p1, p4),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2863,10 +3021,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var p2 = new TriangulationPoint(0, 2);
             var p3 = new TriangulationPoint(2, 2);
             var triangle = new DelaunayTriangle(ep, p1, p2);
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(ep, eq);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(ep, eq),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -2904,10 +3066,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t1.Neighbors[2] = t2;
             t2.Neighbors[1] = t3;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -3075,9 +3241,11 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         public void LargeHole_DontFill_WithNext2PresentButNotExceeding_ReturnsFalse()
         {
             MethodInfo m = GetMethod("LargeHole_DontFill", typeof(AdvancingFrontNode));
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(1, 0));
-            node.Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(1, 0)),
+                    Prev = new AdvancingFrontNode(new TriangulationPoint(-1, 1))
+                };
             node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(1, -1));
             bool result = (bool)m.Invoke(null, new object[] { node });
             // With acute angles, LargeHole_DontFill returns false
@@ -3107,9 +3275,13 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             tcx.EdgeEvent.ConstrainedEdge = edge;
             tcx.EdgeEvent.Right = true;
 
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(7, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(3, 2))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(7, 1))
+                        }
+                };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -3150,15 +3322,22 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             // IsEdgeSideOfTriangle returns false, then recursive EdgeEvent
             // throws PointOnEdgeException when collinear + not contains
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    }
+                };
 
             // Create a node whose triangle triggers the exception path
-            var node = new AdvancingFrontNode(point) { Triangle = triangle };
-            node.Next = new AdvancingFrontNode(v2);
-            node.Next.Triangle = new DelaunayTriangle(v2, v3, point);
-            node.Next.Next = new AdvancingFrontNode(v3);
+            var node = new AdvancingFrontNode(point) { Triangle = triangle,
+                Next = new AdvancingFrontNode(v2)
+                    {
+                        Triangle = new DelaunayTriangle(v2, v3, point),
+                        Next = new AdvancingFrontNode(v3)
+                    }
+            };
             tcx.Triangulatable = new MockTriangulatable();
 
             try
@@ -3196,10 +3375,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var p3 = new TriangulationPoint(2, -3);
 
             var t1 = new DelaunayTriangle(p1, p2, p3);
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -3278,10 +3461,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             t.Neighbors[2] = ot; // across p3: edge p1-p2 shared with ot at...
             ot.Neighbors[1] = t; // across p4: edge p2-p3 shared with t
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(p1, p5);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(p1, p5),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -3320,10 +3507,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             flipTriangle.Neighbors[2] = t; // across p3: edge eq-p1 shared with t
             t.Neighbors[1] = flipTriangle;
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             try
             {
@@ -3361,10 +3552,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             var v3 = new TriangulationPoint(2, 3);
             var triangle = new DelaunayTriangle(point, v2, v3);
 
-            var tcx = new DtSweepContext();
-            tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-            tcx.EdgeEvent.Right = true;
-            tcx.Triangulatable = new MockTriangulatable();
+            var tcx = new DtSweepContext
+                {
+                    EdgeEvent = {
+                        ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                        Right = true
+                    },
+                    Triangulatable = new MockTriangulatable()
+                };
 
             Assert.Throws<TargetInvocationException>(() =>
                 m.Invoke(null, new object[] { tcx, ep, eq, triangle, point }));
@@ -3393,10 +3588,16 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             tcx.EdgeEvent.Right = true; // P.X=8 > Q.X=4
 
             // Chain: node(0,0) → n1(3,2) → n2(7,1) → n3(9,1)
-            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0));
-            node.Next = new AdvancingFrontNode(new TriangulationPoint(3, 2));
-            node.Next.Next = new AdvancingFrontNode(new TriangulationPoint(7, 1));
-            node.Next.Next.Next = new AdvancingFrontNode(new TriangulationPoint(9, 1));
+            var node = new AdvancingFrontNode(new TriangulationPoint(0, 0))
+                {
+                    Next = new AdvancingFrontNode(new TriangulationPoint(3, 2))
+                        {
+                            Next = new AdvancingFrontNode(new TriangulationPoint(7, 1))
+                                {
+                                    Next = new AdvancingFrontNode(new TriangulationPoint(9, 1))
+                                }
+                        }
+                };
 
             tcx.Triangulatable = new MockTriangulatable();
             m.Invoke(null, new object[] { tcx, edge, node });
@@ -3540,10 +3741,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 var neighbor = new DelaunayTriangle(new TriangulationPoint(3, 1), ep2, new TriangulationPoint(2, 3));
                 triangle3.Neighbors[1] = neighbor;
 
-                var tcx2 = new DtSweepContext();
-                tcx2.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq2, ep2);
-                tcx2.EdgeEvent.Right = true;
-                tcx2.Triangulatable = new MockTriangulatable();
+                var tcx2 = new DtSweepContext
+                    {
+                        EdgeEvent = {
+                            ConstrainedEdge = new DtSweepConstraint(eq2, ep2),
+                            Right = true
+                        },
+                        Triangulatable = new MockTriangulatable()
+                    };
                 try { m.Invoke(null, new object[] { tcx2, ep2, eq2, triangle3, point3 }); }
                 catch (TargetInvocationException) { }
             }
@@ -3557,10 +3762,14 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
                 var v3 = new TriangulationPoint(2, 3);
                 var triangle = new DelaunayTriangle(point, v2, v3);
 
-                var tcx = new DtSweepContext();
-                tcx.EdgeEvent.ConstrainedEdge = new DtSweepConstraint(eq, ep);
-                tcx.EdgeEvent.Right = true;
-                tcx.Triangulatable = new MockTriangulatable();
+                var tcx = new DtSweepContext
+                    {
+                        EdgeEvent = {
+                            ConstrainedEdge = new DtSweepConstraint(eq, ep),
+                            Right = true
+                        },
+                        Triangulatable = new MockTriangulatable()
+                    };
                 Assert.Throws<TargetInvocationException>(() =>
                     m.Invoke(null, new object[] { tcx, ep, eq, triangle, point }));
             }

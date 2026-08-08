@@ -44,10 +44,12 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_Get_ShouldReturnCorrectValues()
         {
-            FixedArray3<int> array = new FixedArray3<int>();
-            array[0] = 10;
-            array[1] = 20;
-            array[2] = 30;
+            FixedArray3<int> array = new FixedArray3<int>
+                {
+                    [0] = 10,
+                    [1] = 20,
+                    [2] = 30
+                };
 
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);
@@ -60,11 +62,12 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_Set_ShouldUpdateAllValues()
         {
-            FixedArray3<int> array = new FixedArray3<int>();
-
-            array[0] = 100;
-            array[1] = 200;
-            array[2] = 300;
+            FixedArray3<int> array = new FixedArray3<int>
+                {
+                    [0] = 100,
+                    [1] = 200,
+                    [2] = 300
+                };
 
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
@@ -110,10 +113,12 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_WithFloatValues_ShouldWork()
         {
-            FixedArray3<float> array = new FixedArray3<float>();
-            array[0] = 1.5f;
-            array[1] = 2.5f;
-            array[2] = 3.5f;
+            FixedArray3<float> array = new FixedArray3<float>
+                {
+                    [0] = 1.5f,
+                    [1] = 2.5f,
+                    [2] = 3.5f
+                };
 
             Assert.Equal(1.5f, array[0], 5);
             Assert.Equal(2.5f, array[1], 5);
@@ -139,12 +144,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void MultipleSetsOnSameIndex_ShouldUpdateCorrectly()
         {
-            FixedArray3<int> array = new FixedArray3<int>();
-
-            array[0] = 10;
-            array[0] = 20;
-            array[1] = 30;
-            array[1] = 40;
+            FixedArray3<int> array = new FixedArray3<int>
+                {
+                    [0] = 10,
+                    [0] = 20,
+                    [1] = 30,
+                    [1] = 40
+                };
 
             Assert.Equal(20, array[0]);
             Assert.Equal(40, array[1]);

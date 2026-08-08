@@ -87,9 +87,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         public void PreviousProperty_ShouldSetAndGetCorrectly()
         {
             PolygonPoint point1 = new PolygonPoint(0, 0);
-            PolygonPoint point2 = new PolygonPoint(5, 5);
-
-            point2.Previous = point1;
+            PolygonPoint point2 = new PolygonPoint(5, 5)
+                {
+                    Previous = point1
+                };
 
             Assert.Equal(point1, point2.Previous);
         }
@@ -163,8 +164,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         [Fact]
         public void PolygonPoint_ShouldAllowNullNext()
         {
-            PolygonPoint point = new PolygonPoint(5, 5);
-            point.Next = new PolygonPoint(10, 10);
+            PolygonPoint point = new PolygonPoint(5, 5)
+                {
+                    Next = new PolygonPoint(10, 10)
+                };
 
             point.Next = null;
 
@@ -177,8 +180,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         [Fact]
         public void PolygonPoint_ShouldAllowNullPrevious()
         {
-            PolygonPoint point = new PolygonPoint(5, 5);
-            point.Previous = new PolygonPoint(0, 0);
+            PolygonPoint point = new PolygonPoint(5, 5)
+                {
+                    Previous = new PolygonPoint(0, 0)
+                };
 
             point.Previous = null;
 

@@ -54,8 +54,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             CircleShape shapeB = new CircleShape(0.5f, 1.0f);
             bodyA.CreateFixture(shapeA);
             bodyB.CreateFixture(shapeB);
-            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
-            joint.MotorEnabled = true;
+            WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f))
+                {
+                    MotorEnabled = true
+                };
 
             SolverData data = new SolverData
             {

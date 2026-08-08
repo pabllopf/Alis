@@ -113,8 +113,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void GetPercent_WithNegativeBaseAndEvenPower_ShouldReturnZero()
         {
             // Arrange — set power to 2 (exponential)
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 2f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 2f
+                };
 
             // Act — distance > radius creates negative base for Math.Pow
             float result = _explosion.GetPercent(distance: 15f, radius: 10f);
@@ -152,8 +154,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void GetPercent_ExponentialPowerGivesDifferentDistribution()
         {
             // Arrange — exponential power = 2
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 2f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 2f
+                };
 
             // Act — compare linear vs exponential at same distances
             float linearResult = _explosion.GetPercent(distance: 5f, radius: 10f);
@@ -171,8 +175,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void GetPercent_SubLinearPowerGivesMoreUniformDistribution()
         {
             // Arrange — sub-linear power = 0.5
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 0.5f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 0.5f
+                };
 
             // Act
             float result1 = _explosion.GetPercent(distance: 5f, radius: 10f);
@@ -189,8 +195,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void GetPercent_HighPowerConcentratesForceNearCenter()
         {
             // Arrange — high power = 5 (very concentrated)
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 5f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 5f
+                };
 
             // Act — compare near-center vs edge
             float centerResult = _explosion.GetPercent(distance: 1f, radius: 10f);
@@ -207,8 +215,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void GetPercent_WhenPowerIsZeroAndDistanceEqualsRadius_ShouldReturnZero()
         {
             // Arrange — power = 0, distance = radius → (1 - 0)^0 - 1 = 1 - 1 = 0
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 0f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 0f
+                };
 
             // Act
             float result = _explosion.GetPercent(distance: 10f, radius: 10f);
@@ -298,8 +308,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void Power_ShouldBeSettableAfterConstruction()
         {
             // Arrange & Act
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 2f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 2f
+                };
 
             // Assert
             Assert.Equal(2f, _explosion.Power, 5);
@@ -311,8 +323,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void Power_Zero_ShouldBeValid()
         {
             // Arrange & Act
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 0f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 0f
+                };
 
             // Assert
             Assert.Equal(0f, _explosion.Power, 5);
@@ -324,8 +338,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void Power_HighValue_ShouldBeValid()
         {
             // Arrange & Act
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 10f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 10f
+                };
 
             // Assert
             Assert.Equal(10f, _explosion.Power, 5);
@@ -337,8 +353,10 @@ namespace Alis.Core.Physic.Test
         [Fact] public void Power_FractionalValue_ShouldBeValid()
         {
             // Arrange & Act
-            _explosion = new SimpleExplosion(CreateMockWorld());
-            _explosion.Power = 0.3f;
+            _explosion = new SimpleExplosion(CreateMockWorld())
+                {
+                    Power = 0.3f
+                };
 
             // Assert
             Assert.Equal(0.3f, _explosion.Power, 5);

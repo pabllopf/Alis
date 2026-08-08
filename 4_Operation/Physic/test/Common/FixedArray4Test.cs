@@ -44,11 +44,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_Get_ShouldReturnCorrectValues()
         {
-            FixedArray4<int> array = new FixedArray4<int>();
-            array[0] = 10;
-            array[1] = 20;
-            array[2] = 30;
-            array[3] = 40;
+            FixedArray4<int> array = new FixedArray4<int>
+                {
+                    [0] = 10,
+                    [1] = 20,
+                    [2] = 30,
+                    [3] = 40
+                };
 
             Assert.Equal(10, array[0]);
             Assert.Equal(20, array[1]);
@@ -62,12 +64,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_Set_ShouldUpdateAllValues()
         {
-            FixedArray4<int> array = new FixedArray4<int>();
-
-            array[0] = 100;
-            array[1] = 200;
-            array[2] = 300;
-            array[3] = 400;
+            FixedArray4<int> array = new FixedArray4<int>
+                {
+                    [0] = 100,
+                    [1] = 200,
+                    [2] = 300,
+                    [3] = 400
+                };
 
             Assert.Equal(100, array[0]);
             Assert.Equal(200, array[1]);
@@ -114,11 +117,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void Indexer_WithDoubleValues_ShouldWork()
         {
-            FixedArray4<double> array = new FixedArray4<double>();
-            array[0] = 1.1;
-            array[1] = 2.2;
-            array[2] = 3.3;
-            array[3] = 4.4;
+            FixedArray4<double> array = new FixedArray4<double>
+                {
+                    [0] = 1.1,
+                    [1] = 2.2,
+                    [2] = 3.3,
+                    [3] = 4.4
+                };
 
             Assert.Equal(1.1, array[0], 5);
             Assert.Equal(2.2, array[1], 5);
@@ -146,12 +151,13 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void UpdatingAllIndices_ShouldWorkCorrectly()
         {
-            FixedArray4<string> array = new FixedArray4<string>();
-
-            array[0] = "One";
-            array[1] = "Two";
-            array[2] = "Three";
-            array[3] = "Four";
+            FixedArray4<string> array = new FixedArray4<string>
+                {
+                    [0] = "One",
+                    [1] = "Two",
+                    [2] = "Three",
+                    [3] = "Four"
+                };
 
             Assert.Equal("One", array[0]);
             Assert.Equal("Two", array[1]);

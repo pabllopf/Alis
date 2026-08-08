@@ -235,8 +235,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Contact contact = new Contact(fixture, 0, otherFixture, 0);
             contact.Manifold.PointCount = 1;
 
-            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
-            constraint.PointCount = 1;
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint
+                {
+                    PointCount = 1
+                };
             constraint.Points[0].NormalImpulse = 600.0f;
 
             breakableBody.PostSolve(contact, constraint);
@@ -260,8 +262,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Contact contact = new Contact(fixture, 0, otherFixture, 0);
             contact.Manifold.PointCount = 1;
 
-            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
-            constraint.PointCount = 1;
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint
+                {
+                    PointCount = 1
+                };
             constraint.Points[0].NormalImpulse = 100.0f;
 
             breakableBody.PostSolve(contact, constraint);
@@ -284,8 +288,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Contact contact = new Contact(fixture, 0, otherFixture, 0);
             contact.Manifold.PointCount = 1;
 
-            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
-            constraint.PointCount = 1;
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint
+                {
+                    PointCount = 1
+                };
             constraint.Points[0].NormalImpulse = 600.0f;
 
             breakableBody.PostSolve(contact, constraint);
@@ -307,8 +313,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Contact contact = new Contact(unrelatedFixture, 0, otherFixture, 0);
             contact.Manifold.PointCount = 1;
 
-            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
-            constraint.PointCount = 1;
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint
+                {
+                    PointCount = 1
+                };
             constraint.Points[0].NormalImpulse = 600.0f;
 
             breakableBody.PostSolve(contact, constraint);
@@ -325,18 +333,22 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Body body = new Body();
-            body.GetBodyType = BodyType.Dynamic;
-            body.LinearVelocity = new Vector2F(3.0f, 4.0f);
-            body.AngularVelocity = 2.0f;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Dynamic,
+                    LinearVelocity = new Vector2F(3.0f, 4.0f),
+                    AngularVelocity = 2.0f
+                };
 
             Fixture fixture = new Fixture(new PolygonShape(new Alis.Core.Physic.Common.Vertices(new[]
             {
                 new Vector2F(0f, 0f),
                 new Vector2F(1f, 0f),
                 new Vector2F(1f, 1f)
-            }), 1.0f));
-            fixture.GetBody = body;
+            }), 1.0f))
+            {
+                GetBody = body
+            };
             breakableBody.Parts.Add(fixture);
 
             breakableBody.CacheVelocities();
@@ -362,10 +374,12 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Mock<WorldPhysic> mockWorld = new Mock<WorldPhysic>();
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Body body = new Body();
-            body.GetBodyType = BodyType.Dynamic;
-            body.LinearVelocity = new Vector2F(1.0f, 2.0f);
-            body.AngularVelocity = 3.0f;
+            Body body = new Body
+                {
+                    GetBodyType = BodyType.Dynamic,
+                    LinearVelocity = new Vector2F(1.0f, 2.0f),
+                    AngularVelocity = 3.0f
+                };
 
             for (int i = 0; i < 10; i++)
             {
@@ -374,8 +388,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
                     new Vector2F(0f, 0f),
                     new Vector2F(1f, 0f),
                     new Vector2F(1f, 1f)
-                }), 1.0f));
-                fixture.GetBody = body;
+                }), 1.0f))
+                {
+                    GetBody = body
+                };
                 breakableBody.Parts.Add(fixture);
             }
 
@@ -418,8 +434,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 })
             };
 
-            BreakableBody breakableBody = new BreakableBody(mockWorld.Object, vertices, 1.0f);
-            breakableBody.State = BreakableBodyState.ShouldBreak;
+            BreakableBody breakableBody = new BreakableBody(mockWorld.Object, vertices, 1.0f)
+                {
+                    State = BreakableBodyState.ShouldBreak
+                };
 
             mockWorld.Setup(w => w.Remove(mockMainBody.Object));
 
@@ -482,8 +500,10 @@ namespace Alis.Core.Physic.Test.Common.Logic
             Contact contact = new Contact(fixture, 0, otherFixture, 0);
             contact.Manifold.PointCount = 2;
 
-            ContactVelocityConstraint constraint = new ContactVelocityConstraint();
-            constraint.PointCount = 2;
+            ContactVelocityConstraint constraint = new ContactVelocityConstraint
+                {
+                    PointCount = 2
+                };
             constraint.Points[0].NormalImpulse = 100.0f;
             constraint.Points[1].NormalImpulse = 600.0f;
 

@@ -26,8 +26,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void AttachedToBody_SetTrue_ShouldBeTrue()
         {
-            Vertices vertices = new Vertices();
-            vertices.AttachedToBody = true;
+            Vertices vertices = new Vertices
+                {
+                    AttachedToBody = true
+                };
             Assert.True(vertices.AttachedToBody);
         }
 

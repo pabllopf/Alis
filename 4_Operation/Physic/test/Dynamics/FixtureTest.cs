@@ -115,10 +115,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void FrictionAndRestitution_ShouldPersistAssignedValues()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.GetFriction = 0.9f;
-            fixture.GetRestitution = 0.2f;
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    GetFriction = 0.9f,
+                    GetRestitution = 0.2f
+                };
 
             Assert.Equal(0.9f, fixture.GetFriction, 5);
             Assert.Equal(0.2f, fixture.GetRestitution, 5);
@@ -191,9 +192,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void Tag_ShouldSetAndGetValue()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.Tag = "my-tag";
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    Tag = "my-tag"
+                };
 
             Assert.Equal("my-tag", fixture.Tag);
         }
@@ -204,9 +206,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetCollisionGroup_SameValue_ShouldNotRefilter()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.GetCollisionGroup = 0;
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    GetCollisionGroup = 0
+                };
 
             Assert.Equal((short)0, fixture.GetCollisionGroup);
         }
@@ -217,9 +220,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetCollidesWith_SameValue_ShouldNotRefilter()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.GetCollidesWith = Categories.All;
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    GetCollidesWith = Categories.All
+                };
 
             Assert.Equal(Categories.All, fixture.GetCollidesWith);
         }
@@ -230,9 +234,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetCollisionCategories_SameValue_ShouldNotRefilter()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.GetCollisionCategories = Categories.Cat1;
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    GetCollisionCategories = Categories.Cat1
+                };
 
             Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
         }
@@ -243,9 +248,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         [Fact]
         public void GetIsSensor_WithNoBody_ShouldNotThrow()
         {
-            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f));
-
-            fixture.GetIsSensor = true;
+            Fixture fixture = new Fixture(new CircleShape(0.4f, 1.0f))
+                {
+                    GetIsSensor = true
+                };
 
             Assert.True(fixture.GetIsSensor);
         }
@@ -482,8 +488,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body2 = world.CreateBody(new Vector2F(2.0f, 0.0f), 0.0f, BodyType.Dynamic);
             body2.CreateCircle(5.0f, 1.0f);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 3;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 3
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             fixture1.GetCollisionGroup = -1;
@@ -505,8 +513,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body bodyB = world.CreateBody(new Vector2F(3.0f, 0.0f), 0.0f, BodyType.Dynamic);
             bodyB.CreateCircle(5.0f, 1.0f);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             fixtureA2.GetCollisionGroup = -1;

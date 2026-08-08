@@ -107,8 +107,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Friction_SetAndGet_ShouldRoundtrip()
         {
-            Contact contact = new Contact(null, 0, null, 0);
-            contact.Friction = 0.5f;
+            Contact contact = new Contact(null, 0, null, 0)
+                {
+                    Friction = 0.5f
+                };
             Assert.Equal(0.5f, contact.Friction, 5);
         }
 
@@ -128,8 +130,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Restitution_SetAndGet_ShouldRoundtrip()
         {
-            Contact contact = new Contact(null, 0, null, 0);
-            contact.Restitution = 0.3f;
+            Contact contact = new Contact(null, 0, null, 0)
+                {
+                    Restitution = 0.3f
+                };
             Assert.Equal(0.3f, contact.Restitution, 5);
         }
 
@@ -149,8 +153,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void TangentSpeed_SetAndGet_ShouldRoundtrip()
         {
-            Contact contact = new Contact(null, 0, null, 0);
-            contact.TangentSpeed = 2.5f;
+            Contact contact = new Contact(null, 0, null, 0)
+                {
+                    TangentSpeed = 2.5f
+                };
             Assert.Equal(2.5f, contact.TangentSpeed, 5);
         }
 
@@ -170,8 +176,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void Enabled_SetAndGet_ShouldRoundtrip()
         {
-            Contact contact = new Contact(null, 0, null, 0);
-            contact.Enabled = false;
+            Contact contact = new Contact(null, 0, null, 0)
+                {
+                    Enabled = false
+                };
             Assert.False(contact.Enabled);
             contact.Enabled = true;
             Assert.True(contact.Enabled);
@@ -193,8 +201,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void IsTouching_SetAndGet_ShouldRoundtrip()
         {
-            Contact contact = new Contact(null, 0, null, 0);
-            contact.IsTouching = true;
+            Contact contact = new Contact(null, 0, null, 0)
+                {
+                    IsTouching = true
+                };
             Assert.True(contact.IsTouching);
             contact.IsTouching = false;
             Assert.False(contact.IsTouching);
@@ -250,10 +260,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void ResetFriction_WithValidFixtures_ShouldMixFrictions()
         {
-            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureA.GetFriction = 0.5f;
-            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureB.GetFriction = 0.7f;
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetFriction = 0.5f
+                };
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetFriction = 0.7f
+                };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
 
             contact.ResetFriction();
@@ -267,10 +281,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         [Fact]
         public void ResetRestitution_WithValidFixtures_ShouldMixRestitutions()
         {
-            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureA.GetRestitution = 0.3f;
-            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f));
-            fixtureB.GetRestitution = 0.1f;
+            Fixture fixtureA = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetRestitution = 0.3f
+                };
+            Fixture fixtureB = new Fixture(new CircleShape(0.5f, 1.0f))
+                {
+                    GetRestitution = 0.1f
+                };
             Contact contact = new Contact(fixtureA, 0, fixtureB, 0);
 
             contact.ResetRestitution();
@@ -345,8 +363,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -364,8 +384,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             world.CreateRectangle(2.0f, 2.0f, 1.0f, new Vector2F(0.0f, 0.0f), 0.0f, BodyType.Dynamic);
             world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.5f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Assert.True(world.ContactManager.ContactCount > 0);
@@ -382,8 +404,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
 
             Contact contact = world.ContactManager.ContactList.Next;
@@ -409,8 +433,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             Body bodyA = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.0f, 0.0f), BodyType.Dynamic);
             Body bodyB = world.CreateCircle(1.0f, 1.0f, new Vector2F(0.5f, 0.0f), BodyType.Dynamic);
 
-            SolverIterations iterations = new SolverIterations();
-            iterations.PositionIterations = 10;
+            SolverIterations iterations = new SolverIterations
+                {
+                    PositionIterations = 10
+                };
             world.Step(1.0f / 60.0f, ref iterations);
             Assert.True(world.ContactManager.ContactCount > 0);
 

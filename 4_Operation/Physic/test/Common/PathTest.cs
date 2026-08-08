@@ -238,9 +238,10 @@ namespace Alis.Core.Physic.Test.Common
         [Fact]
         public void ClosedProperty_ShouldSetAndGetCorrectly()
         {
-            Path path = new Path();
-
-            path.Closed = true;
+            Path path = new Path
+                {
+                    Closed = true
+                };
 
             Assert.True(path.Closed);
         }
@@ -353,8 +354,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(0, 0),
                 new Vector2F(10, 0),
                 new Vector2F(10, 10)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             Vector2F position = path.GetPosition(0.5f);
 
@@ -372,8 +375,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(0, 0),
                 new Vector2F(10, 0),
                 new Vector2F(10, 10)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             Vector2F position = path.GetPosition(0f);
 
@@ -410,8 +415,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(0, 0),
                 new Vector2F(10, 0),
                 new Vector2F(10, 10)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             float length = path.GetLength();
 
@@ -445,8 +452,10 @@ namespace Alis.Core.Physic.Test.Common
                 new Vector2F(0, 0),
                 new Vector2F(5, 5),
                 new Vector2F(10, 0)
-            });
-            path.Closed = true;
+            })
+            {
+                Closed = true
+            };
 
             List<Vector3F> subdivisions = path.SubdivideEvenly(5);
 

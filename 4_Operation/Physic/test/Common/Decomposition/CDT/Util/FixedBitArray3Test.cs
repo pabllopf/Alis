@@ -60,9 +60,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexZero()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-
-            array[0] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true
+                };
 
             Assert.True(array[0]);
         }
@@ -73,9 +74,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexOne()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-
-            array[1] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [1] = true
+                };
 
             Assert.True(array[1]);
         }
@@ -86,9 +88,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Indexer_ShouldSetAndGetValueAtIndexTwo()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [2] = true
+                };
 
             Assert.True(array[2]);
         }
@@ -121,8 +124,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Contains_ShouldReturnTrue_WhenValuePresent()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true
+                };
 
             bool result = array.Contains(true);
 
@@ -148,8 +153,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void IndexOf_ShouldReturnCorrectIndex()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[1] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [1] = true
+                };
 
             int index = array.IndexOf(true);
 
@@ -175,10 +182,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Clear_ShouldSetAllValuesToFalse()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = true;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = true,
+                    [2] = true
+                };
 
             array.Clear();
 
@@ -193,10 +202,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void ClearWithValue_ShouldClearSpecificValue()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             array.Clear(true);
 
@@ -211,10 +222,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void GetEnumerator_ShouldEnumerateAllValues()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             List<bool> values = array.ToList();
 
@@ -230,8 +243,10 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void FixedBitArray_ShouldBeValueType()
         {
-            FixedBitArray3 array1 = new FixedBitArray3();
-            array1[0] = true;
+            FixedBitArray3 array1 = new FixedBitArray3
+                {
+                    [0] = true
+                };
             FixedBitArray3 array2 = array1;
 
             array2[0] = false;
@@ -245,10 +260,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void FixedBitArray_ShouldSupportForeachIteration()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             int trueCount = 0;
             foreach (bool value in array)
@@ -268,10 +285,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void IndexOf_ShouldReturnFirstOccurrence()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = false;
-            array[1] = true;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = false,
+                    [1] = true,
+                    [2] = true
+                };
 
             int index = array.IndexOf(true);
 
@@ -284,10 +303,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void Contains_ShouldWorkWithFalseValue()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             bool result = array.Contains(false);
 
@@ -300,10 +321,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void ClearWithFalse_ShouldClearFalseValues()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             array.Clear(false);
 
@@ -340,10 +363,12 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Util
         [Fact]
         public void NonGenericGetEnumerator_IsCallable()
         {
-            FixedBitArray3 array = new FixedBitArray3();
-            array[0] = true;
-            array[1] = false;
-            array[2] = true;
+            FixedBitArray3 array = new FixedBitArray3
+                {
+                    [0] = true,
+                    [1] = false,
+                    [2] = true
+                };
 
             IEnumerator enumerator = ((IEnumerable)array).GetEnumerator();
 
