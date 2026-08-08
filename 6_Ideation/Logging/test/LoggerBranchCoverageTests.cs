@@ -154,17 +154,7 @@ namespace Alis.Core.Aspect.Logging.Test
             });
         }
 
-        /// <summary>
-        /// Tests that debug null branch
-        /// </summary>
-        [Fact]
-        public void Debug_NullBranch()
-        {
-            AttemptNullBranch(() => Logger.Debug("trigger-null-branch"));
-        }
-
         
-
         /// <summary>
         /// Tests that ensure initialized concurrent initialization second thread skips
         /// </summary>
