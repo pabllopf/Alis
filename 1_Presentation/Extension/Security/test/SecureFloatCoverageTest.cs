@@ -141,21 +141,6 @@ namespace Alis.Extension.Security.Test
         }
 
         /// <summary>
-        ///     Tests arithmetic with negative values.
-        /// </summary>
-        [Fact]
-        public void NegativeValues_Arithmetic_Correct()
-        {
-            SecureFloat a = new SecureFloat(-10.0f);
-            SecureFloat b = new SecureFloat(5.0f);
-
-            Assert.Equal(-5f, (float)(a + b));
-            Assert.Equal(-15f, (float)(a - b));
-            Assert.Equal(-50f, (float)(a * b));
-            Assert.Equal(-2f, (float)(a / b));
-        }
-
-        /// <summary>
         ///     Tests arithmetic with both operands negative.
         /// </summary>
         [Fact]

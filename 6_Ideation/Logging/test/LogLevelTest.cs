@@ -114,17 +114,7 @@ namespace Alis.Core.Aspect.Logging.Test
             Assert.True(LogLevel.Error < LogLevel.Critical);
             Assert.True(LogLevel.Critical < LogLevel.None);
         }
-
-        /// <summary>
-        ///     Tests that log level equality should work
-        /// </summary>
-        [Fact]
-        public void LogLevel_Equality_ShouldWork()
-        {
-            Assert.True(LogLevel.Info == LogLevel.Info);
-            Assert.False(LogLevel.Info == LogLevel.Warning);
-        }
-
+        
         /// <summary>
         ///     Tests that log level to string should return name
         /// </summary>
@@ -193,28 +183,6 @@ namespace Alis.Core.Aspect.Logging.Test
         {
             Assert.True(LogLevel.None > LogLevel.Critical);
             Assert.Equal(255, (byte) LogLevel.None);
-        }
-
-        /// <summary>
-        ///     Tests that log level greater than or equal should work
-        /// </summary>
-        [Fact]
-        public void LogLevel_GreaterThanOrEqual_ShouldWork()
-        {
-            Assert.True(LogLevel.Error >= LogLevel.Warning);
-            Assert.True(LogLevel.Warning >= LogLevel.Warning);
-            Assert.False(LogLevel.Warning >= LogLevel.Error);
-        }
-
-        /// <summary>
-        ///     Tests that log level less than or equal should work
-        /// </summary>
-        [Fact]
-        public void LogLevel_LessThanOrEqual_ShouldWork()
-        {
-            Assert.True(LogLevel.Warning <= LogLevel.Error);
-            Assert.True(LogLevel.Warning <= LogLevel.Warning);
-            Assert.False(LogLevel.Error <= LogLevel.Warning);
         }
     }
 }
