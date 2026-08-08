@@ -30,7 +30,6 @@
 using System;
 using Alis.Extension.Math.ProceduralDungeon.Models;
 using Alis.Extension.Math.ProceduralDungeon.Services;
-using Alis.Extension.Math.ProceduralDungeon.Test.Mocks;
 using Xunit;
 
 namespace Alis.Extension.Math.ProceduralDungeon.Test.Services

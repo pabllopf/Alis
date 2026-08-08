@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
-using Alis.Core.Ecs.Systems.Scope;
 using Context = Alis.Core.Ecs.Systems.Scope.Context;
 using Xunit;
 

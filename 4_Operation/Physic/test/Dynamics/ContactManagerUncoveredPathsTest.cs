@@ -3,8 +3,6 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;

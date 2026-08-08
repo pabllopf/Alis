@@ -33,7 +33,6 @@ using System.Reflection;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
-using Alis.Extension.Graphic.Sfml.Windows;
 using Xunit;
 using LoadingFailedException = Alis.Extension.Graphic.Sfml.Windows.LoadingFailedException;
 

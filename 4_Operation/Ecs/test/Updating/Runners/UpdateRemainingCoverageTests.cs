@@ -30,7 +30,6 @@
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Updating;
-using Alis.Core.Ecs.Updating.Runners;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Updating.Runners

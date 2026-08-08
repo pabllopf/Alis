@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Kernel;
 using Xunit;
 

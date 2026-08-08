@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collisions.Shapes;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;

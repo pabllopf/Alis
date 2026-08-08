@@ -30,8 +30,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Physic.Common.Decomposition.CDT;
-using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
-using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 using CDP = Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 using Xunit;
 

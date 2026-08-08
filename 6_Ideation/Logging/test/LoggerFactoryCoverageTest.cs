@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using Alis.Core.Aspect.Logging.Abstractions;
-using Alis.Core.Aspect.Logging.Filters;
 using Alis.Core.Aspect.Logging.Formatters;
 using Alis.Core.Aspect.Logging.Outputs;
 using Xunit;

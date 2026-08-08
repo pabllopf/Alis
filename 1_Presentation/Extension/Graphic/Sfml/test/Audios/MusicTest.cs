@@ -29,7 +29,6 @@
 
 using System;
 using System.IO;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Audios;
 using Alis.Extension.Graphic.Sfml.Systems;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;

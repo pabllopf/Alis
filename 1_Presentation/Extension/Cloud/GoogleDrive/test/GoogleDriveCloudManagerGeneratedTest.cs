@@ -38,12 +38,9 @@ using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Google;
 using Google.Apis.Drive.v3;
-using Google.Apis.Drive.v3.Data;
 using Google.Apis.Http;
 using Google.Apis.Services;
-using Google.Apis.Upload;
 using Moq;
-using Moq.Protected;
 using Xunit;
 using File = System.IO.File;
 

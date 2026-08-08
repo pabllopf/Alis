@@ -1,7 +1,6 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Reflection;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;

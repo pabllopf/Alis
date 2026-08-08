@@ -1,7 +1,6 @@
 using System.Reflection;
 using Alis.Builder.Core.Ecs.System;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Systems.Configuration.Graphic;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;
 

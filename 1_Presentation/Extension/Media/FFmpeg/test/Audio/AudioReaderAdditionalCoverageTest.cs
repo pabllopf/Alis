@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using Alis.Extension.Media.FFmpeg.Audio;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;

@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test

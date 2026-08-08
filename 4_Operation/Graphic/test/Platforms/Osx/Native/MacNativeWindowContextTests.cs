@@ -1,6 +1,5 @@
 #if osxarm64 || osxarm || osxx64 || osx
 using System;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.Platforms.Osx.Native;
 using Xunit;

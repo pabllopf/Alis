@@ -1,9 +1,7 @@
-using System;
 using System.Reflection;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
-using Alis.Core.Ecs.Kernel.Events;
 using Alis.Core.Ecs.Redifinition;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;

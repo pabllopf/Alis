@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
-using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.Decomposition.CDT;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;

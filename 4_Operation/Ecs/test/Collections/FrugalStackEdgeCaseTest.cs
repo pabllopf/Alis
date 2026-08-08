@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.CompilerServices;
 using Alis.Core.Ecs.Collections;
 using Xunit;
 

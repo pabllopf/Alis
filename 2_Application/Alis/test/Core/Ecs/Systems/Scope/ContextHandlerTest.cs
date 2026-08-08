@@ -29,7 +29,6 @@
 
 using System;
 using System.Threading;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;

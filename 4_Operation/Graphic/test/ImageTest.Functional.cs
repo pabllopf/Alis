@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using Xunit;
 
 namespace Alis.Core.Graphic.Test

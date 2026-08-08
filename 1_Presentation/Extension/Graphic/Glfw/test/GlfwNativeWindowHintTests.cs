@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text;
-using Alis.Extension.Graphic.Glfw.Enums;
-using Alis.Extension.Graphic.Glfw.Test.Attributes;
-
 namespace Alis.Extension.Graphic.Glfw.Test
 {
     /// <summary>

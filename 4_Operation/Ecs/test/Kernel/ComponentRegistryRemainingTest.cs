@@ -1,5 +1,4 @@
 using System;
-using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Events;

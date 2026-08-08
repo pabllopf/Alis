@@ -1,9 +1,7 @@
 using System;
 using System.IO;
-using System.IO.Compression;
 using System.Text;
 using System.Threading.Tasks;
-using Alis.Core.Aspect.Memory;
 using Alis.Core.Audio.Players;
 using Xunit;
 

@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.Video;
-using Alis.Extension.Media.FFmpeg.Video.Models;
 using Xunit;
 
 namespace Alis.Extension.Media.FFmpeg.Test.Video

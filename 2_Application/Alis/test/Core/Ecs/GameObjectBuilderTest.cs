@@ -28,13 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Builder.Core.Ecs.Components.Audio;
 using Alis.Builder.Core.Ecs.Components.Collider;
-using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Builder.Core.Ecs.Entity;
 using Alis.Core.Ecs;
 using Alis.Core.Ecs.Components;
-using Alis.Core.Ecs.Components.Audio;
 using Alis.Core.Ecs.Components.Collider;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;

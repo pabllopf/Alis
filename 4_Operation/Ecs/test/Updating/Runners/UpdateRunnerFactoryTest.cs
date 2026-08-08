@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Updating;

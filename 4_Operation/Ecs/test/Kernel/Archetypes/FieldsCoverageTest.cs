@@ -1,9 +1,5 @@
-using System;
 using System.Reflection;
-using Alis.Core.Ecs.Collections;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
-using Alis.Core.Ecs.Updating;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test.Kernel.Archetypes

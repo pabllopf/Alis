@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Ecs.System.ConfigurationBuilders;
 using Alis.Core.Ecs.Systems.Configuration;
 using Xunit;

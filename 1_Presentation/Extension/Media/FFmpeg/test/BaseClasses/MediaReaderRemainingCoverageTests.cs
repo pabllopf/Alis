@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;

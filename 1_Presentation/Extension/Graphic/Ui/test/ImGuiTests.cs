@@ -28,10 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Vector;
-using Alis.Extension.Graphic.Ui.Test.Attributes;
-using Xunit;
 
 namespace Alis.Extension.Graphic.Ui.Test
 {

@@ -1,4 +1,3 @@
-using System;
 using Alis.Core.Graphic.Platforms.Web;
 using Alis.Core.Graphic.Test.Attributes;
 using Xunit;

@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
-using Alis.Core.Audio;
 using Alis.Core.Audio.Players;
 using Xunit;
 

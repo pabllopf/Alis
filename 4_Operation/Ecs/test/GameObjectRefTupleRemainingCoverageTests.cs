@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Ecs;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Systems;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test

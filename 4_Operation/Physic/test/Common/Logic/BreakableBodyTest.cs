@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Collisions.Shapes;

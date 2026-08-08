@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Linq;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test

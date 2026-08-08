@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math.Collections;
-using Alis.Core.Ecs.Exceptions;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;

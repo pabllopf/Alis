@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Text;
 using Alis.Core.Audio.Players;
 using Xunit;

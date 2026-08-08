@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Extension.Math.HighSpeedPriorityQueue;
 using Xunit;
 
 namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test

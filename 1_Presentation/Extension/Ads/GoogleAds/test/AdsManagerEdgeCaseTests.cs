@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Ecs.Systems.Scope;
-using Alis.Extension.Ads.GoogleAds;
 using Xunit;
 
 namespace Alis.Extension.Ads.GoogleAds.Test

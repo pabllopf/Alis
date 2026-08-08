@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Common;
 using Xunit;

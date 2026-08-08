@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Components.Render;
 using Alis.Core.Ecs.Systems.Scope;

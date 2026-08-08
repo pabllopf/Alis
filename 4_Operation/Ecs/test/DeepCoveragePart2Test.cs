@@ -1,11 +1,9 @@
-using System;
 using System.Linq;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Kernel.Archetypes;
 using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
-using Alis.Core.Ecs.Updating;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test

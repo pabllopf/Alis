@@ -29,7 +29,6 @@
 
 using System;
 using System.Reflection;
-using Alis.Core.Ecs.Kernel;
 using Alis.Core.Ecs.Test.Models;
 using Alis.Core.Ecs.Updating;
 using Xunit;

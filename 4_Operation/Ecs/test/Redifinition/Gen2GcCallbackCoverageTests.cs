@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections;
 using System.Reflection;
 using Alis.Core.Ecs.Redifinition;
 using Xunit;

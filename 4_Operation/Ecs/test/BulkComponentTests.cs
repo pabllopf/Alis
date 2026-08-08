@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Ecs.Systems;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;
 

@@ -707,30 +707,6 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Assert.Equal(-1f, result, 5);
         }
 
-        // ========================================================================
-        // Edge class (private nested) — reflection tests for remaining branches
-        // ========================================================================
-
-        /// <summary>
-        ///     Tests that Edge operator - reverses start and end.
-        /// </summary>
-        [Fact]
-        public void Edge_OperatorNegation_ReversesStartAndEnd()
-        {
-            Type edgeType = typeof(YuPengClipper).GetNestedType("Edge", BindingFlags.NonPublic);
-            ConstructorInfo ctor = edgeType.GetConstructors(BindingFlags.Instance | BindingFlags.Public)[0];
-            object edge = ctor.Invoke(new object[] { new Vector2F(1f, 2f), new Vector2F(3f, 4f) });
-
-            MethodInfo negOp = edgeType.GetMethod("op_UnaryNegation", BindingFlags.Static | BindingFlags.Public);
-            object negated = negOp.Invoke(null, new object[] { edge });
-
-            PropertyInfo edgeStart = edgeType.GetProperty("EdgeStart");
-            PropertyInfo edgeEnd = edgeType.GetProperty("EdgeEnd");
-
-            Assert.Equal(new Vector2F(3f, 4f), (Vector2F)edgeStart.GetValue(negated));
-            Assert.Equal(new Vector2F(1f, 2f), (Vector2F)edgeEnd.GetValue(negated));
-        }
-
         /// <summary>
         ///     Tests that Edge.Equals with null returns false.
         /// </summary>

@@ -28,13 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.IO;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows;
-using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Ui;
 using Xunit;

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Common.TextureTools;
 using Alis.Core.Physic.Dynamics;
 using Xunit;

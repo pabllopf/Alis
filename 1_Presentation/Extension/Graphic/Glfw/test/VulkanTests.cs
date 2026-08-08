@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.InteropServices;
-using Alis.Extension.Graphic.Glfw.Test.Attributes;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Glfw.Test

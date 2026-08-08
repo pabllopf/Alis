@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Extension.Graphic.Sfml.Render;
 using Alis.Extension.Graphic.Sfml.Test.Attributes;
 using Alis.Extension.Graphic.Sfml.Windows;
-using Moq;
 using Xunit;
 
 namespace Alis.Extension.Graphic.Sfml.Test.Render

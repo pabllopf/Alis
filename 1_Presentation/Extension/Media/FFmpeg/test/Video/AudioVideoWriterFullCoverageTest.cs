@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
-using Alis.Extension.Media.FFmpeg.Audio;
-using Alis.Extension.Media.FFmpeg.Encoding;
 using Alis.Extension.Media.FFmpeg.Test.Attributes;
 using Alis.Extension.Media.FFmpeg.Video;
 using Xunit;

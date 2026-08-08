@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Dynamics;

@@ -31,8 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using Alis.Core.Aspect.Logging.Abstractions;
-using Alis.Core.Aspect.Logging.Formatters;
-using Alis.Core.Aspect.Logging.Outputs;
 using Xunit;
 
 namespace Alis.Core.Aspect.Logging.Test

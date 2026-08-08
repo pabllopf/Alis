@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Components;
 using Alis.Core.Ecs;
-using Alis.Core.Ecs.Components;
 using Alis.Core.Ecs.Systems.Configuration;
 using Alis.Core.Ecs.Systems.Manager.Graphic;
-using Alis.Core.Ecs.Systems.Scope;
 using Context = Alis.Core.Ecs.Systems.Scope.Context;
 using Xunit;
 

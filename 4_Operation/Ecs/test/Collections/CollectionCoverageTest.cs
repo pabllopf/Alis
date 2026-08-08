@@ -1,4 +1,3 @@
-using System;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Test.Models;
 using Xunit;

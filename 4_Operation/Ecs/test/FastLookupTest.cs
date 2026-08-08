@@ -30,7 +30,6 @@
 using System;
 using Alis.Core.Ecs.Collections;
 using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Kernel.Archetypes;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test

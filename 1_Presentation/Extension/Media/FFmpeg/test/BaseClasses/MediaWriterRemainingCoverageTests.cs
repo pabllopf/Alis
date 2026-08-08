@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics;
 using System.IO;
 using Alis.Extension.Media.FFmpeg.BaseClasses;

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.CompilerServices;
 using Alis.App.Engine.Core;
 using Alis.App.Engine.Windows;

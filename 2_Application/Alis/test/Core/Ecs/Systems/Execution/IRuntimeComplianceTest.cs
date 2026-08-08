@@ -1,6 +1,5 @@
 using Alis.Core.Ecs.Systems.Execution;
 using Xunit;
-using System.Linq;
 
 namespace Alis.Test.Core.Ecs.Systems.Execution
 {

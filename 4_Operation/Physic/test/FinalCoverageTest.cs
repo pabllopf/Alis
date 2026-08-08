@@ -8,7 +8,6 @@ using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Common.Decomposition;
 using Alis.Core.Physic.Common.Logic;
 using Alis.Core.Physic.Common.TextureTools;
-using Alis.Core.Physic.Controllers;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;

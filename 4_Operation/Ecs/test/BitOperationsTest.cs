@@ -29,7 +29,6 @@
 
 using System;
 using System.Reflection;
-using Alis.Core.Ecs;
 using Xunit;
 
 namespace Alis.Core.Ecs.Test

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Xunit;

@@ -48,10 +48,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 
-using Alis.Core.Ecs.Kernel;
-using Alis.Core.Ecs.Test.Models;
-using Xunit;
-
 namespace Alis.Core.Ecs.Test
 {
     /// <summary>

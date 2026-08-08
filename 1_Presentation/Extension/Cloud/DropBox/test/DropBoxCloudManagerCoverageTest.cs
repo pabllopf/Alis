@@ -3,8 +3,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Ecs.Systems.Scope;
 using Dropbox.Api;
-using Dropbox.Api.Files;
-using Moq;
 using Xunit;
 
 [assembly: CollectionBehavior(DisableTestParallelization = true)]

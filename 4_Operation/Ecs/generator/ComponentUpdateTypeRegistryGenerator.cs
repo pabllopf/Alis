@@ -30,12 +30,10 @@ using System;
 
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using Alis.Core.Ecs.Generator.Models;
-using Alis.Core.Ecs.Generator.Structures;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
