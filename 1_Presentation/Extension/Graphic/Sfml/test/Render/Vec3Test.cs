@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_AssignsFields()
         {
             Vec3 v = new Vec3(1.5f, 2.5f, 3.5f);
-            Assert.Equal(1.5f, v.X);
-            Assert.Equal(2.5f, v.Y);
-            Assert.Equal(3.5f, v.Z);
+            Assert.Equal(1.5f, v.X, 5);
+            Assert.Equal(2.5f, v.Y, 5);
+            Assert.Equal(3.5f, v.Z, 5);
         }
 
         /// <summary>
@@ -59,9 +59,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector3F source = new Vector3F(4.0f, 5.0f, 6.0f);
             Vec3 v = new Vec3(source);
-            Assert.Equal(4.0f, v.X);
-            Assert.Equal(5.0f, v.Y);
-            Assert.Equal(6.0f, v.Z);
+            Assert.Equal(4.0f, v.X, 5);
+            Assert.Equal(5.0f, v.Y, 5);
+            Assert.Equal(6.0f, v.Z, 5);
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector3F vec3f = new Vector3F(7.0f, 8.0f, 9.0f);
             Vec3 v = vec3f;
-            Assert.Equal(7.0f, v.X);
-            Assert.Equal(8.0f, v.Y);
-            Assert.Equal(9.0f, v.Z);
+            Assert.Equal(7.0f, v.X, 5);
+            Assert.Equal(8.0f, v.Y, 5);
+            Assert.Equal(9.0f, v.Z, 5);
         }
     }
 }

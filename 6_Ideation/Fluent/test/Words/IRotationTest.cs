@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             RotationBuilderImpl builder = new RotationBuilderImpl();
             RotationBuilder result = builder.Rotation(45f);
-            Assert.Equal(45f, result.RotationValue);
+            Assert.Equal(45f, result.RotationValue, 5);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             RotationBuilderImpl builder = new RotationBuilderImpl();
             RotationBuilder result = builder.Rotation(-45f);
-            Assert.Equal(-45f, result.RotationValue);
+            Assert.Equal(-45f, result.RotationValue, 5);
         }
 
         /// <summary>

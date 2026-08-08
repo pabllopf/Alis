@@ -49,15 +49,15 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0u, glyph.Colored);
             Assert.Equal(0u, glyph.Visible);
             Assert.Equal(0u, glyph.Codepoint);
-            Assert.Equal(0f, glyph.AdvanceX);
-            Assert.Equal(0f, glyph.X0);
-            Assert.Equal(0f, glyph.Y0);
-            Assert.Equal(0f, glyph.X1);
-            Assert.Equal(0f, glyph.Y1);
-            Assert.Equal(0f, glyph.U0);
-            Assert.Equal(0f, glyph.V0);
-            Assert.Equal(0f, glyph.U1);
-            Assert.Equal(0f, glyph.V1);
+            Assert.Equal(0f, glyph.AdvanceX, 5);
+            Assert.Equal(0f, glyph.X0, 5);
+            Assert.Equal(0f, glyph.Y0, 5);
+            Assert.Equal(0f, glyph.X1, 5);
+            Assert.Equal(0f, glyph.Y1, 5);
+            Assert.Equal(0f, glyph.U0, 5);
+            Assert.Equal(0f, glyph.V0, 5);
+            Assert.Equal(0f, glyph.U1, 5);
+            Assert.Equal(0f, glyph.V1, 5);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph glyph = default;
             glyph.AdvanceX = 0.75f;
-            Assert.Equal(0.75f, glyph.AdvanceX);
+            Assert.Equal(0.75f, glyph.AdvanceX, 5);
         }
 
         /// <summary>
@@ -97,10 +97,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             glyph.Y0 = 2f;
             glyph.X1 = 3f;
             glyph.Y1 = 4f;
-            Assert.Equal(1f, glyph.X0);
-            Assert.Equal(2f, glyph.Y0);
-            Assert.Equal(3f, glyph.X1);
-            Assert.Equal(4f, glyph.Y1);
+            Assert.Equal(1f, glyph.X0, 5);
+            Assert.Equal(2f, glyph.Y0, 5);
+            Assert.Equal(3f, glyph.X1, 5);
+            Assert.Equal(4f, glyph.Y1, 5);
         }
 
         /// <summary>
@@ -114,10 +114,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             glyph.V0 = 6f;
             glyph.U1 = 7f;
             glyph.V1 = 8f;
-            Assert.Equal(5f, glyph.U0);
-            Assert.Equal(6f, glyph.V0);
-            Assert.Equal(7f, glyph.U1);
-            Assert.Equal(8f, glyph.V1);
+            Assert.Equal(5f, glyph.U0, 5);
+            Assert.Equal(6f, glyph.V0, 5);
+            Assert.Equal(7f, glyph.U1, 5);
+            Assert.Equal(8f, glyph.V1, 5);
         }
     }
 }

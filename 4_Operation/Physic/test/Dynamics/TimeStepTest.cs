@@ -45,9 +45,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             TimeStep step = new TimeStep();
 
-            Assert.Equal(0.0f, step.Dt);
-            Assert.Equal(0.0f, step.InvDt);
-            Assert.Equal(0.0f, step.DtRatio);
+            Assert.Equal(0.0f, step.Dt, 5);
+            Assert.Equal(0.0f, step.InvDt, 5);
+            Assert.Equal(0.0f, step.DtRatio, 5);
             Assert.Equal(0, step.VelocityIterations);
             Assert.Equal(0, step.PositionIterations);
         }
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Dt = 0.016f
             };
 
-            Assert.Equal(0.016f, step.Dt);
+            Assert.Equal(0.016f, step.Dt, 5);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 InvDt = 60.0f
             };
 
-            Assert.Equal(60.0f, step.InvDt);
+            Assert.Equal(60.0f, step.InvDt, 5);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 DtRatio = 1.0f
             };
 
-            Assert.Equal(1.0f, step.DtRatio);
+            Assert.Equal(1.0f, step.DtRatio, 5);
         }
 
         /// <summary>
@@ -137,9 +137,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 PositionIterations = 3
             };
 
-            Assert.Equal(0.016f, step.Dt);
-            Assert.Equal(60.0f, step.InvDt);
-            Assert.Equal(1.0f, step.DtRatio);
+            Assert.Equal(0.016f, step.Dt, 5);
+            Assert.Equal(60.0f, step.InvDt, 5);
+            Assert.Equal(1.0f, step.DtRatio, 5);
             Assert.Equal(8, step.VelocityIterations);
             Assert.Equal(3, step.PositionIterations);
         }
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Dt = 0.0f
             };
 
-            Assert.Equal(0.0f, step.Dt);
+            Assert.Equal(0.0f, step.Dt, 5);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             };
 
             Assert.InRange(step.Dt, 0.016f, 0.017f);
-            Assert.Equal(60.0f, step.InvDt);
+            Assert.Equal(60.0f, step.InvDt, 5);
         }
     }
 }

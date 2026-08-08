@@ -912,7 +912,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiIo io = new ImGuiIo();
             io.NavInputs = new float[16];
             io.NavInputs[5] = 0.8f;
-            Assert.Equal(0.8f, io.NavInputs[5]);
+            Assert.Equal(0.8f, io.NavInputs[5], 5);
         }
 
         /// <summary>
@@ -937,9 +937,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
             io.KeysData0 = value;
             Assert.Equal((byte)1, io.KeysData0.Down);
-            Assert.Equal(0.5f, io.KeysData0.DownDuration);
-            Assert.Equal(0.25f, io.KeysData0.DownDurationPrev);
-            Assert.Equal(0.75f, io.KeysData0.AnalogValue);
+            Assert.Equal(0.5f, io.KeysData0.DownDuration, 5);
+            Assert.Equal(0.25f, io.KeysData0.DownDurationPrev, 5);
+            Assert.Equal(0.75f, io.KeysData0.AnalogValue, 5);
         }
 
         /// <summary>
@@ -952,9 +952,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
             io.KeysData1 = value;
             Assert.Equal((byte)1, io.KeysData1.Down);
-            Assert.Equal(0.5f, io.KeysData1.DownDuration);
-            Assert.Equal(0.25f, io.KeysData1.DownDurationPrev);
-            Assert.Equal(0.75f, io.KeysData1.AnalogValue);
+            Assert.Equal(0.5f, io.KeysData1.DownDuration, 5);
+            Assert.Equal(0.25f, io.KeysData1.DownDurationPrev, 5);
+            Assert.Equal(0.75f, io.KeysData1.AnalogValue, 5);
         }
 
         /// <summary>
@@ -967,9 +967,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
             io.KeysData100 = value;
             Assert.Equal((byte)1, io.KeysData100.Down);
-            Assert.Equal(0.5f, io.KeysData100.DownDuration);
-            Assert.Equal(0.25f, io.KeysData100.DownDurationPrev);
-            Assert.Equal(0.75f, io.KeysData100.AnalogValue);
+            Assert.Equal(0.5f, io.KeysData100.DownDuration, 5);
+            Assert.Equal(0.25f, io.KeysData100.DownDurationPrev, 5);
+            Assert.Equal(0.75f, io.KeysData100.AnalogValue, 5);
         }
 
         /// <summary>
@@ -982,9 +982,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
             io.KeysData294 = value;
             Assert.Equal((byte)1, io.KeysData294.Down);
-            Assert.Equal(0.5f, io.KeysData294.DownDuration);
-            Assert.Equal(0.25f, io.KeysData294.DownDurationPrev);
-            Assert.Equal(0.75f, io.KeysData294.AnalogValue);
+            Assert.Equal(0.5f, io.KeysData294.DownDuration, 5);
+            Assert.Equal(0.25f, io.KeysData294.DownDurationPrev, 5);
+            Assert.Equal(0.75f, io.KeysData294.AnalogValue, 5);
         }
 
         /// <summary>
@@ -997,9 +997,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiKeyData value = new ImGuiKeyData { Down = 1, DownDuration = 0.5f, DownDurationPrev = 0.25f, AnalogValue = 0.75f };
             io.KeysData295 = value;
             Assert.Equal((byte)1, io.KeysData295.Down);
-            Assert.Equal(0.5f, io.KeysData295.DownDuration);
-            Assert.Equal(0.25f, io.KeysData295.DownDurationPrev);
-            Assert.Equal(0.75f, io.KeysData295.AnalogValue);
+            Assert.Equal(0.5f, io.KeysData295.DownDuration, 5);
+            Assert.Equal(0.25f, io.KeysData295.DownDurationPrev, 5);
+            Assert.Equal(0.75f, io.KeysData295.AnalogValue, 5);
         }
 
         /// <summary>
@@ -1009,8 +1009,8 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultState_HasZeroedValues()
         {
             ImGuiIo io = new ImGuiIo();
-            Assert.Equal(0f, io.DeltaTime);
-            Assert.Equal(0f, io.IniSavingRate);
+            Assert.Equal(0f, io.DeltaTime, 5);
+            Assert.Equal(0f, io.IniSavingRate, 5);
             Assert.Equal(0, io.FontAllowUserScaling);
             Assert.Equal(IntPtr.Zero, io.UserData);
             Assert.Equal(IntPtr.Zero, io.Fonts);
@@ -1259,7 +1259,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiIo io = new ImGuiIo();
             io.MouseClickedTime = new double[5];
             io.MouseClickedTime[3] = 1.5;
-            Assert.Equal(1.5, io.MouseClickedTime[3]);
+            Assert.Equal(1.5, io.MouseClickedTime[3], 5);
         }
 
         /// <summary>
@@ -1355,7 +1355,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiIo io = new ImGuiIo();
             io.MouseDownDuration = new float[5];
             io.MouseDownDuration[1] = 0.5f;
-            Assert.Equal(0.5f, io.MouseDownDuration[1]);
+            Assert.Equal(0.5f, io.MouseDownDuration[1], 5);
         }
 
         /// <summary>
@@ -1367,7 +1367,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiIo io = new ImGuiIo();
             io.MouseDownDurationPrev = new float[5];
             io.MouseDownDurationPrev[2] = 0.3f;
-            Assert.Equal(0.3f, io.MouseDownDurationPrev[2]);
+            Assert.Equal(0.3f, io.MouseDownDurationPrev[2], 5);
         }
 
         /// <summary>
@@ -1379,7 +1379,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiIo io = new ImGuiIo();
             io.MouseDragMaxDistanceSqr = new float[5];
             io.MouseDragMaxDistanceSqr[0] = 10.0f;
-            Assert.Equal(10.0f, io.MouseDragMaxDistanceSqr[0]);
+            Assert.Equal(10.0f, io.MouseDragMaxDistanceSqr[0], 5);
         }
 
         /// <summary>
@@ -1401,9 +1401,9 @@ namespace Alis.Extension.Graphic.Ui.Test
                 prop.SetValue(boxed, value);
                 ImGuiKeyData result = (ImGuiKeyData)prop.GetValue(boxed);
                 Assert.Equal((byte)1, result.Down);
-                Assert.Equal(0.5f, result.DownDuration);
-                Assert.Equal(0.25f, result.DownDurationPrev);
-                Assert.Equal(0.75f, result.AnalogValue);
+                Assert.Equal(0.5f, result.DownDuration, 5);
+                Assert.Equal(0.25f, result.DownDurationPrev, 5);
+                Assert.Equal(0.75f, result.AnalogValue, 5);
             }
         }
     }

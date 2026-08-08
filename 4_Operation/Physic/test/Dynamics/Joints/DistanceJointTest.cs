@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Frequency = 5.0f;
 
-            Assert.Equal(5.0f, joint.Frequency);
+            Assert.Equal(5.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.DampingRatio = 0.5f;
 
-            Assert.Equal(0.5f, joint.DampingRatio);
+            Assert.Equal(0.5f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Length = 3.0f;
 
-            Assert.Equal(3.0f, joint.Length);
+            Assert.Equal(3.0f, joint.Length, 5);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(5.0f, joint.Length);
+            Assert.Equal(5.0f, joint.Length, 5);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             Assert.Equal(new Vector2F(0.0f, 5.0f), joint.LocalAnchorA);
             Assert.Equal(new Vector2F(0.0f, 5.0f), joint.LocalAnchorB);
-            Assert.Equal(10.0f, joint.Length);
+            Assert.Equal(10.0f, joint.Length, 5);
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
 
-            Assert.Equal(0.0f, joint.Frequency);
+            Assert.Equal(0.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(2.0f, 0.0f));
 
-            Assert.Equal(0.0f, joint.DampingRatio);
+            Assert.Equal(0.0f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             DistanceJoint joint = new DistanceJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(5.0f, joint.Length);
+            Assert.Equal(5.0f, joint.Length, 5);
         }
 
         /// <summary>

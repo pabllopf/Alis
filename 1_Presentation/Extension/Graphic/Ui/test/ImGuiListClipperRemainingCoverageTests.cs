@@ -49,8 +49,8 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(0, clipper.DisplayStart);
             Assert.Equal(0, clipper.DisplayEnd);
             Assert.Equal(0, clipper.ItemsCount);
-            Assert.Equal(0f, clipper.ItemsHeight);
-            Assert.Equal(0f, clipper.StartPosY);
+            Assert.Equal(0f, clipper.ItemsHeight, 5);
+            Assert.Equal(0f, clipper.StartPosY, 5);
             Assert.Equal(IntPtr.Zero, clipper.TempData);
         }
 
@@ -79,8 +79,8 @@ namespace Alis.Extension.Graphic.Ui.Test
             clipper.ItemsHeight = 25.5f;
             clipper.StartPosY = 30.0f;
             clipper.TempData = new IntPtr(99);
-            Assert.Equal(25.5f, clipper.ItemsHeight);
-            Assert.Equal(30.0f, clipper.StartPosY);
+            Assert.Equal(25.5f, clipper.ItemsHeight, 5);
+            Assert.Equal(30.0f, clipper.StartPosY, 5);
             Assert.Equal(new IntPtr(99), clipper.TempData);
         }
     }

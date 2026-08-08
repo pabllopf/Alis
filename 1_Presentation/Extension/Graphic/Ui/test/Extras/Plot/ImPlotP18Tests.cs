@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void PlotHistogram2D_AllOverloads_ShouldReturnDouble()
         {
             MethodInfo[] overloads = GetPublicStaticMethods("PlotHistogram2D");
-            Assert.All(overloads, m => Assert.Equal(typeof(double), m.ReturnType));
+            Assert.All(overloads, m => Assert.Equal(typeof(double), m.ReturnType, 5));
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -258,7 +258,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(short).MakeByRefType(), typeof(short).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(ushort).MakeByRefType(), typeof(ushort).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(int).MakeByRefType(), typeof(int).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -359,7 +359,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(uint).MakeByRefType(), typeof(uint).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(long).MakeByRefType(), typeof(long).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(string), typeof(ulong).MakeByRefType(), typeof(ulong).MakeByRefType(), typeof(int)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 typeof(int), typeof(int), typeof(ImPlotRect), typeof(ImPlotHistogramFlags)
             });
             Assert.NotNull(method);
-            Assert.Equal(typeof(double), method.ReturnType);
+            Assert.Equal(typeof(double), method.ReturnType, 5);
         }
 
         /// <summary>

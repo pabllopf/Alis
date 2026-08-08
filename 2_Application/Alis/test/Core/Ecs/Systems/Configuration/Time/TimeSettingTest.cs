@@ -44,9 +44,9 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
         public void DefaultValues_ShouldBeCorrect()
         {
             TimeSetting setting = new TimeSetting();
-            Assert.Equal(0.016f, setting.FixedTimeStep);
-            Assert.Equal(0.25f, setting.MaximumAllowedTimeStep);
-            Assert.Equal(1.0f, setting.TimeScale);
+            Assert.Equal(0.016f, setting.FixedTimeStep, 5);
+            Assert.Equal(0.25f, setting.MaximumAllowedTimeStep, 5);
+            Assert.Equal(1.0f, setting.TimeScale, 5);
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Time
         public void CustomConstructor_ShouldStoreValues()
         {
             TimeSetting setting = new TimeSetting(0.033f, 0.5f, 2.0f);
-            Assert.Equal(0.033f, setting.FixedTimeStep);
-            Assert.Equal(0.5f, setting.MaximumAllowedTimeStep);
-            Assert.Equal(2.0f, setting.TimeScale);
+            Assert.Equal(0.033f, setting.FixedTimeStep, 5);
+            Assert.Equal(0.5f, setting.MaximumAllowedTimeStep, 5);
+            Assert.Equal(2.0f, setting.TimeScale, 5);
         }
 
         /// <summary>

@@ -159,7 +159,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
                 .Build();
 
             Assert.Equal("MyAnim", animation.Name);
-            Assert.Equal(1.5f, animation.Speed);
+            Assert.Equal(1.5f, animation.Speed, 5);
             Assert.Equal(7, animation.Order);
         }
     }

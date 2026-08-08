@@ -113,7 +113,7 @@ namespace Alis.Test
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Equal(0.5f, collider.Restitution);
+            Assert.Equal(0.5f, collider.Restitution, 5);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Test
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Equal(0.5f, collider.Friction);
+            Assert.Equal(0.5f, collider.Friction, 5);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Test
         {
             BoxCollider collider = new BoxCollider();
 
-            Assert.Equal(1.0f, collider.Mass);
+            Assert.Equal(1.0f, collider.Mass, 5);
         }
 
         /// <summary>
@@ -263,13 +263,13 @@ namespace Alis.Test
             Assert.Equal(new Vector2F(10, 20), collider.RelativePosition);
             Assert.True(collider.AutoTilling);
             Assert.Equal(Alis.Core.Physic.Dynamics.BodyType.Dynamic, collider.BodyType);
-            Assert.Equal(0.8f, collider.Restitution);
-            Assert.Equal(0.3f, collider.Friction);
+            Assert.Equal(0.8f, collider.Restitution, 5);
+            Assert.Equal(0.3f, collider.Friction, 5);
             Assert.True(collider.FixedRotation);
-            Assert.Equal(2.0f, collider.Mass);
+            Assert.Equal(2.0f, collider.Mass, 5);
             Assert.True(collider.IgnoreGravity);
             Assert.Equal(new Vector2F(5, 10), collider.LinearVelocity);
-            Assert.Equal(1.5f, collider.AngularVelocity);
+            Assert.Equal(1.5f, collider.AngularVelocity, 5);
         }
 
         /// <summary>

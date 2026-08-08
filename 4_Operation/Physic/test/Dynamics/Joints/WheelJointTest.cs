@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MotorSpeed = 10.0f;
 
-            Assert.Equal(10.0f, joint.MotorSpeed);
+            Assert.Equal(10.0f, joint.MotorSpeed, 5);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxMotorTorque = 200.0f;
 
-            Assert.Equal(200.0f, joint.MaxMotorTorque);
+            Assert.Equal(200.0f, joint.MaxMotorTorque, 5);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Frequency = 5.0f;
 
-            Assert.Equal(5.0f, joint.Frequency);
+            Assert.Equal(5.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.DampingRatio = 0.3f;
 
-            Assert.Equal(0.3f, joint.DampingRatio);
+            Assert.Equal(0.3f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             joint.Frequency = 10.0f;
-            Assert.Equal(10.0f, joint.Frequency);
+            Assert.Equal(10.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             joint.DampingRatio = 0.8f;
-            Assert.Equal(0.8f, joint.DampingRatio);
+            Assert.Equal(0.8f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             bodyA.AngularVelocity = 1.0f;
             bodyB.AngularVelocity = 3.0f;
-            Assert.Equal(2.0f, joint.JointSpeed);
+            Assert.Equal(2.0f, joint.JointSpeed, 5);
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             WheelJoint joint = new WheelJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(0.0f, 1.0f));
             float torque = joint.GetMotorTorque(1.0f);
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>

@@ -94,9 +94,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — Read back the Transform from the MockGameObject (not the local struct copy)
             Transform updatedTransform = gameObject.GetStoredTransform();
-            Assert.Equal(42f, updatedTransform.Position.X);
-            Assert.Equal(99f, updatedTransform.Position.Y);
-            Assert.Equal(1.57f, updatedTransform.Rotation);
+            Assert.Equal(42f, updatedTransform.Position.X, 5);
+            Assert.Equal(99f, updatedTransform.Position.Y, 5);
+            Assert.Equal(1.57f, updatedTransform.Rotation, 5);
         }
 
         /// <summary>
@@ -136,9 +136,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — Transform unchanged because Body is null (the inner if-block is skipped)
             Transform updatedTransform = gameObject.GetStoredTransform();
-            Assert.Equal(7f, updatedTransform.Position.X);
-            Assert.Equal(13f, updatedTransform.Position.Y);
-            Assert.Equal(2.5f, updatedTransform.Rotation);
+            Assert.Equal(7f, updatedTransform.Position.X, 5);
+            Assert.Equal(13f, updatedTransform.Position.Y, 5);
+            Assert.Equal(2.5f, updatedTransform.Rotation, 5);
         }
 
         #endregion

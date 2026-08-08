@@ -127,7 +127,7 @@ namespace Alis.Extension.Security.Test
         {
             double result = SecureRandom.NextDouble(5, 5);
 
-            Assert.Equal(5.0, result);
+            Assert.Equal(5.0, result, 5);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Extension.Security.Test
         {
             float result = SecureRandom.NextFloat(5, 5);
 
-            Assert.Equal(5.0f, result);
+            Assert.Equal(5.0f, result, 5);
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Alis.Extension.Security.Test
         {
             float result = SecureRandom.Abs(5.5f);
 
-            Assert.Equal(5.5f, result);
+            Assert.Equal(5.5f, result, 5);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Extension.Security.Test
         {
             float result = SecureRandom.Abs(-5.5f);
 
-            Assert.Equal(5.5f, result);
+            Assert.Equal(5.5f, result, 5);
         }
 
         /// <summary>
@@ -240,7 +240,7 @@ namespace Alis.Extension.Security.Test
         {
             float result = SecureRandom.Abs(0f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
     }
 }

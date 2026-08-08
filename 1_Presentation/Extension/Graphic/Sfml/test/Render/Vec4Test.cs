@@ -45,10 +45,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Constructor_AssignsFields()
         {
             Vec4 v = new Vec4(1.0f, 2.0f, 3.0f, 4.0f);
-            Assert.Equal(1.0f, v.X);
-            Assert.Equal(2.0f, v.Y);
-            Assert.Equal(3.0f, v.Z);
-            Assert.Equal(4.0f, v.W);
+            Assert.Equal(1.0f, v.X, 5);
+            Assert.Equal(2.0f, v.Y, 5);
+            Assert.Equal(3.0f, v.Z, 5);
+            Assert.Equal(4.0f, v.W, 5);
         }
 
         /// <summary>
@@ -59,10 +59,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Color color = new Color(128, 64, 32, 255);
             Vec4 v = new Vec4(color);
-            Assert.Equal(128.0f / 255.0f, v.X);
-            Assert.Equal(64.0f / 255.0f, v.Y);
-            Assert.Equal(32.0f / 255.0f, v.Z);
-            Assert.Equal(255.0f / 255.0f, v.W);
+            Assert.Equal(128.0f / 255.0f, v.X, 5);
+            Assert.Equal(64.0f / 255.0f, v.Y, 5);
+            Assert.Equal(32.0f / 255.0f, v.Z, 5);
+            Assert.Equal(255.0f / 255.0f, v.W, 5);
         }
     }
 }

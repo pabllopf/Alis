@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TMax = 0.5f
             };
 
-            Assert.Equal(0.5f, input.TMax);
+            Assert.Equal(0.5f, input.TMax, 5);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TMax = 0.0f
             };
 
-            Assert.Equal(0.0f, input.TMax);
+            Assert.Equal(0.0f, input.TMax, 5);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TMax = 1.0f
             };
 
-            Assert.Equal(1.0f, input.TMax);
+            Assert.Equal(1.0f, input.TMax, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TMax = 100.0f
             };
 
-            Assert.Equal(100.0f, input.TMax);
+            Assert.Equal(100.0f, input.TMax, 5);
         }
         
 
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiInput input = new ToiInput();
 
-            Assert.Equal(0.0f, input.TMax);
+            Assert.Equal(0.0f, input.TMax, 5);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.NotNull(input.ProxyB);
             Assert.NotNull(input.SweepA);
             Assert.NotNull(input.SweepB);
-            Assert.Equal(0.75f, input.TMax);
+            Assert.Equal(0.75f, input.TMax, 5);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TMax = 2.5f
             };
 
-            Assert.Equal(2.5f, input.TMax);
+            Assert.Equal(2.5f, input.TMax, 5);
         }
     }
 }

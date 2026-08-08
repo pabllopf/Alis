@@ -48,7 +48,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Equal(string.Empty, animation.Name);
             Assert.Equal(0, animation.Order);
-            Assert.Equal(0f, animation.Speed);
+            Assert.Equal(0f, animation.Speed, 5);
             Assert.NotNull(animation.Frames);
             Assert.Empty(animation.Frames);
         }
@@ -79,7 +79,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(5, animation.Order);
 
             animation.Speed = 2.5f;
-            Assert.Equal(2.5f, animation.Speed);
+            Assert.Equal(2.5f, animation.Speed, 5);
 
             List<Frame> frames = new List<Frame>();
             animation.Frames = frames;
@@ -124,7 +124,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal(10, animation.Order);
 
             animation.Speed = 5f;
-            Assert.Equal(5f, animation.Speed);
+            Assert.Equal(5f, animation.Speed, 5);
 
             List<Frame> frames = new List<Frame>
             {
@@ -147,7 +147,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.NotNull(animation.Frames);
             Assert.IsType<List<Frame>>(animation.Frames);
             Assert.Equal(0, animation.Order);
-            Assert.Equal(0f, animation.Speed);
+            Assert.Equal(0f, animation.Speed, 5);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.NotNull(animation.Name);
             Assert.Equal(0, animation.Order);
-            Assert.Equal(0f, animation.Speed);
+            Assert.Equal(0f, animation.Speed, 5);
             Assert.NotNull(animation.Frames);
 
             Assert.NotNull(animation.AddFrame);
@@ -176,7 +176,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Equal("Walk", animation.Name);
             Assert.Equal(1, animation.Order);
-            Assert.Equal(2f, animation.Speed);
+            Assert.Equal(2f, animation.Speed, 5);
             Assert.NotNull(animation.Frames);
             Assert.Empty(animation.Frames);
         }
@@ -197,7 +197,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Equal("Run", animation.Name);
             Assert.Equal(2, animation.Order);
-            Assert.Equal(3f, animation.Speed);
+            Assert.Equal(3f, animation.Speed, 5);
             Assert.Same(frames, animation.Frames);
             Assert.Equal(2, animation.Frames.Count);
         }

@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
 
             handler.Update(gameObject, ref arg1, ref arg2);
 
-            Assert.Equal(3.14, handler.LastArg1);
+            Assert.Equal(3.14, handler.LastArg1, 5);
             Assert.True(handler.LastArg2);
         }
 

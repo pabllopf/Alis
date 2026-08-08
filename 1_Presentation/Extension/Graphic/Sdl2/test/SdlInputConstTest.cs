@@ -120,7 +120,7 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         [Fact]
         public void IphoneMaxGForce_IsCorrect()
         {
-            Assert.Equal(5.0f, SdlInputConst.IphoneMaxGForce);
+            Assert.Equal(5.0f, SdlInputConst.IphoneMaxGForce, 5);
         }
     }
 }

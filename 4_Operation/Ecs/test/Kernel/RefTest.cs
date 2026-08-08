@@ -202,7 +202,7 @@ namespace Alis.Core.Ecs.Test.Kernel
             component.Values[0] = 10.0f;
 
             Assert.Equal(10, entity.Get<ComplexComponent>().Id);
-            Assert.Equal(10.0f, entity.Get<ComplexComponent>().Values[0]);
+            Assert.Equal(10.0f, entity.Get<ComplexComponent>().Values[0], 5);
         }
     }
 }

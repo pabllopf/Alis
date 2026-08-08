@@ -85,7 +85,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultDpiScale_ShouldBeZero()
         {
             ImGuiViewport viewport = default;
-            Assert.Equal(0f, viewport.DpiScale);
+            Assert.Equal(0f, viewport.DpiScale, 5);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiViewport viewport = default;
             viewport.DpiScale = 1.5f;
-            Assert.Equal(1.5f, viewport.DpiScale);
+            Assert.Equal(1.5f, viewport.DpiScale, 5);
         }
         /// <summary>
         ///     Tests that default work pos should be zero

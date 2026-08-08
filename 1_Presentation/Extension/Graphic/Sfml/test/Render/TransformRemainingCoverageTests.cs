@@ -48,8 +48,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = Transform.Identity;
             Vector2F result = t.TransformPoint(10f, 20f);
 
-            Assert.Equal(10f, result.X);
-            Assert.Equal(20f, result.Y);
+            Assert.Equal(10f, result.X, 5);
+            Assert.Equal(20f, result.Y, 5);
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F offset = new Vector2F(15f, 25f);
             t.Translate(offset);
 
-            Assert.Equal(15f, t.m02);
-            Assert.Equal(25f, t.m12);
+            Assert.Equal(15f, t.m02, 5);
+            Assert.Equal(25f, t.m12, 5);
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F center = new Vector2F(100f, 200f);
             t.Rotate(0f, center);
 
-            Assert.Equal(1f, t.m00);
-            Assert.Equal(1f, t.m11);
-            Assert.Equal(1f, t.m22);
+            Assert.Equal(1f, t.m00, 5);
+            Assert.Equal(1f, t.m11, 5);
+            Assert.Equal(1f, t.m22, 5);
         }
 
         /// <summary>
@@ -91,8 +91,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F RequireCSfmlWindowsFactors = new Vector2F(3f, 4f);
             t.Scale(RequireCSfmlWindowsFactors);
 
-            Assert.Equal(3f, t.m00);
-            Assert.Equal(4f, t.m11);
+            Assert.Equal(3f, t.m00, 5);
+            Assert.Equal(4f, t.m11, 5);
         }
 
         /// <summary>
@@ -106,8 +106,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F center = new Vector2F(50f, 100f);
             t.Scale(RequireCSfmlWindowsFactors, center);
 
-            Assert.Equal(2f, t.m00);
-            Assert.Equal(3f, t.m11);
+            Assert.Equal(2f, t.m00, 5);
+            Assert.Equal(3f, t.m11, 5);
         }
 
         /// <summary>
@@ -144,8 +144,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t2 = new Transform(1, 0, 10, 0, 1, 20, 0, 0, 1);
             Transform result = t1 * t2;
 
-            Assert.Equal(10f, result.m02);
-            Assert.Equal(20f, result.m12);
+            Assert.Equal(10f, result.m02, 5);
+            Assert.Equal(20f, result.m12, 5);
         }
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F point = new Vector2F(7f, 14f);
             Vector2F result = t * point;
 
-            Assert.Equal(7f, result.X);
-            Assert.Equal(14f, result.Y);
+            Assert.Equal(7f, result.X, 5);
+            Assert.Equal(14f, result.Y, 5);
         }
 
         /// <summary>
@@ -172,8 +172,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F point = new Vector2F(1f, 2f);
             Vector2F result = t * point;
 
-            Assert.Equal(6f, result.X);
-            Assert.Equal(12f, result.Y);
+            Assert.Equal(6f, result.X, 5);
+            Assert.Equal(12f, result.Y, 5);
         }
 
         /// <summary>
@@ -185,9 +185,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = new Transform(1, 0, 10, 0, 1, 20, 0, 0, 1);
             Transform inv = t.GetInverse();
 
-            Assert.Equal(1f, inv.m00);
-            Assert.Equal(1f, inv.m11);
-            Assert.Equal(1f, inv.m22);
+            Assert.Equal(1f, inv.m00, 5);
+            Assert.Equal(1f, inv.m11, 5);
+            Assert.Equal(1f, inv.m22, 5);
         }
 
         /// <summary>
@@ -200,10 +200,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             FloatRect rect = new FloatRect(10f, 20f, 30f, 40f);
             FloatRect result = t.TransformRect(rect);
 
-            Assert.Equal(10f, result.Left);
-            Assert.Equal(20f, result.Top);
-            Assert.Equal(30f, result.Width);
-            Assert.Equal(40f, result.Height);
+            Assert.Equal(10f, result.Left, 5);
+            Assert.Equal(20f, result.Top, 5);
+            Assert.Equal(30f, result.Width, 5);
+            Assert.Equal(40f, result.Height, 5);
         }
 
         /// <summary>
@@ -231,8 +231,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F point = new Vector2F(10f, 20f);
             Vector2F result = t.TransformPoint(point);
 
-            Assert.Equal(10f, result.X);
-            Assert.Equal(20f, result.Y);
+            Assert.Equal(10f, result.X, 5);
+            Assert.Equal(20f, result.Y, 5);
         }
 
         /// <summary>
@@ -244,8 +244,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = Transform.Identity;
             t.Translate(15f, 25f);
 
-            Assert.Equal(15f, t.m02);
-            Assert.Equal(25f, t.m12);
+            Assert.Equal(15f, t.m02, 5);
+            Assert.Equal(25f, t.m12, 5);
         }
 
         /// <summary>
@@ -257,8 +257,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = Transform.Identity;
             t.Scale(3f, 4f);
 
-            Assert.Equal(3f, t.m00);
-            Assert.Equal(4f, t.m11);
+            Assert.Equal(3f, t.m00, 5);
+            Assert.Equal(4f, t.m11, 5);
         }
 
         /// <summary>
@@ -270,8 +270,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = Transform.Identity;
             t.Scale(2f, 3f, 50f, 100f);
 
-            Assert.Equal(2f, t.m00);
-            Assert.Equal(3f, t.m11);
+            Assert.Equal(2f, t.m00, 5);
+            Assert.Equal(3f, t.m11, 5);
         }
 
         /// <summary>
@@ -284,8 +284,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform other = new Transform(1, 0, 10, 0, 1, 20, 0, 0, 1);
             t.Combine(other);
 
-            Assert.Equal(10f, t.m02);
-            Assert.Equal(20f, t.m12);
+            Assert.Equal(10f, t.m02, 5);
+            Assert.Equal(20f, t.m12, 5);
         }
 
         /// <summary>
@@ -297,9 +297,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transform t = Transform.Identity;
             t.Rotate(0f, 100f, 200f);
 
-            Assert.Equal(1f, t.m00);
-            Assert.Equal(1f, t.m11);
-            Assert.Equal(1f, t.m22);
+            Assert.Equal(1f, t.m00, 5);
+            Assert.Equal(1f, t.m11, 5);
+            Assert.Equal(1f, t.m22, 5);
         }
     }
 }

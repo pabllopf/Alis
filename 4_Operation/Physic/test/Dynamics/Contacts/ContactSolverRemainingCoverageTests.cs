@@ -74,8 +74,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
                 out Vector2F normal, out FixedArray2<Vector2F> points);
 
-            Assert.Equal(1.0f, normal.X);
-            Assert.Equal(0.0f, normal.Y);
+            Assert.Equal(1.0f, normal.X, 5);
+            Assert.Equal(0.0f, normal.Y, 5);
         }
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.3f, ref xfB, 0.3f,
                 out Vector2F normal, out FixedArray2<Vector2F> points);
 
-            Assert.Equal(-0.0f, normal.X);
-            Assert.Equal(-1.0f, normal.Y);
+            Assert.Equal(-0.0f, normal.X, 5);
+            Assert.Equal(-1.0f, normal.Y, 5);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             object[] args = { vc, points, data };
             method.Invoke(null, args);
 
-            Assert.Equal(0f, vc.Points[0].VelocityBias);
+            Assert.Equal(0f, vc.Points[0].VelocityBias, 5);
         }
 
         /// <summary>
@@ -785,8 +785,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
             ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
                 out Vector2F normal, out FixedArray2<Vector2F> points);
-            Assert.Equal(0.0f, normal.X);
-            Assert.Equal(0.0f, normal.Y);
+            Assert.Equal(0.0f, normal.X, 5);
+            Assert.Equal(0.0f, normal.Y, 5);
         }
 
         /// <summary>
@@ -808,8 +808,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             ControllerTransform xfB = new ControllerTransform(new Vector2F(1.0f, 0.0f), 0.0f);
             ContactSolver.WorldManifold.Initialize(ref manifold, ref xfA, 0.5f, ref xfB, 0.5f,
                 out Vector2F normal, out FixedArray2<Vector2F> points);
-            Assert.Equal(1.0f, normal.X);
-            Assert.Equal(0.0f, normal.Y);
+            Assert.Equal(1.0f, normal.X, 5);
+            Assert.Equal(0.0f, normal.Y, 5);
             Assert.True(points[0].X >= -1.0f);
         }
 

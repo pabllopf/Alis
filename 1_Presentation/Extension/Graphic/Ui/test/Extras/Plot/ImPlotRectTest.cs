@@ -50,10 +50,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
             };
 
-            Assert.Equal(0.0, rect.X.Min);
-            Assert.Equal(100.0, rect.X.Max);
-            Assert.Equal(0.0, rect.Y.Min);
-            Assert.Equal(200.0, rect.Y.Max);
+            Assert.Equal(0.0, rect.X.Min, 5);
+            Assert.Equal(100.0, rect.X.Max, 5);
+            Assert.Equal(0.0, rect.Y.Min, 5);
+            Assert.Equal(200.0, rect.Y.Max, 5);
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 Y = new ImPlotRange { Min = 0.0, Max = 200.0 }
             };
 
-            Assert.Equal(-50.5, rect.X.Min);
-            Assert.Equal(100.0, rect.X.Max);
+            Assert.Equal(-50.5, rect.X.Min, 5);
+            Assert.Equal(100.0, rect.X.Max, 5);
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 Y = new ImPlotRange { Min = 0.0, Max = 999.99 }
             };
 
-            Assert.Equal(0.0, rect.Y.Min);
-            Assert.Equal(999.99, rect.Y.Max);
+            Assert.Equal(0.0, rect.Y.Min, 5);
+            Assert.Equal(999.99, rect.Y.Max, 5);
         }
 
         /// <summary>
@@ -103,10 +103,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             rect.X = new ImPlotRange { Min = -100.0, Max = 50.0 };
             rect.Y = new ImPlotRange { Min = -200.0, Max = 300.0 };
 
-            Assert.Equal(-100.0, rect.X.Min);
-            Assert.Equal(50.0, rect.X.Max);
-            Assert.Equal(-200.0, rect.Y.Min);
-            Assert.Equal(300.0, rect.Y.Max);
+            Assert.Equal(-100.0, rect.X.Min, 5);
+            Assert.Equal(50.0, rect.X.Max, 5);
+            Assert.Equal(-200.0, rect.Y.Min, 5);
+            Assert.Equal(300.0, rect.Y.Max, 5);
         }
 
         /// <summary>
@@ -159,10 +159,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 Y = new ImPlotRange { Min = -2000.0, Max = -1000.0 }
             };
 
-            Assert.Equal(-1000.0, rect.X.Min);
-            Assert.Equal(-500.0, rect.X.Max);
-            Assert.Equal(-2000.0, rect.Y.Min);
-            Assert.Equal(-1000.0, rect.Y.Max);
+            Assert.Equal(-1000.0, rect.X.Min, 5);
+            Assert.Equal(-500.0, rect.X.Max, 5);
+            Assert.Equal(-2000.0, rect.Y.Min, 5);
+            Assert.Equal(-1000.0, rect.Y.Max, 5);
         }
 
         /// <summary>
@@ -195,10 +195,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 Y = new ImPlotRange { Min = 0.0, Max = 0.0 }
             };
 
-            Assert.Equal(0.0, rect.X.Min);
-            Assert.Equal(0.0, rect.X.Max);
-            Assert.Equal(0.0, rect.Y.Min);
-            Assert.Equal(0.0, rect.Y.Max);
+            Assert.Equal(0.0, rect.X.Min, 5);
+            Assert.Equal(0.0, rect.X.Max, 5);
+            Assert.Equal(0.0, rect.Y.Min, 5);
+            Assert.Equal(0.0, rect.Y.Max, 5);
         }
 
         /// <summary>
@@ -212,8 +212,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
                 X = new ImPlotRange { Min = 10.0, Max = 20.0 }
             };
 
-            Assert.Equal(10.0, rect.X.Min);
-            Assert.Equal(20.0, rect.X.Max);
+            Assert.Equal(10.0, rect.X.Min, 5);
+            Assert.Equal(20.0, rect.X.Max, 5);
             Assert.Equal(default(ImPlotRange), rect.Y);
         }
 
@@ -229,8 +229,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             };
 
             Assert.Equal(default(ImPlotRange), rect.X);
-            Assert.Equal(30.0, rect.Y.Min);
-            Assert.Equal(40.0, rect.Y.Max);
+            Assert.Equal(30.0, rect.Y.Min, 5);
+            Assert.Equal(40.0, rect.Y.Max, 5);
         }
     }
 }

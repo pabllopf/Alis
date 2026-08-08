@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiPlatformImeData data = default;
             Assert.Equal(0, data.WantVisible);
             Assert.Equal(default, data.InputPos);
-            Assert.Equal(0f, data.InputLineHeight);
+            Assert.Equal(0f, data.InputLineHeight, 5);
         }
 
         /// <summary>

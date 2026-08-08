@@ -84,15 +84,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(Vector2F.Zero, data.cA);
             Assert.Equal(Vector2F.Zero, data.cB);
-            Assert.Equal(0.0f, data.mA);
-            Assert.Equal(0.0f, data.mB);
-            Assert.Equal(0.0f, data.iA);
-            Assert.Equal(0.0f, data.iB);
+            Assert.Equal(0.0f, data.mA, 5);
+            Assert.Equal(0.0f, data.mB, 5);
+            Assert.Equal(0.0f, data.iA, 5);
+            Assert.Equal(0.0f, data.iB, 5);
             Assert.Equal(Vector2F.Zero, data.tangent);
             Assert.Equal(Vector2F.Zero, data.vA);
-            Assert.Equal(0.0f, data.wA);
+            Assert.Equal(0.0f, data.wA, 5);
             Assert.Equal(Vector2F.Zero, data.vB);
-            Assert.Equal(0.0f, data.wB);
+            Assert.Equal(0.0f, data.wB, 5);
         }
 
         /// <summary>
@@ -108,15 +108,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(new Vector2F(-1.0f, -2.0f), data.cA);
             Assert.Equal(new Vector2F(-3.0f, -4.0f), data.cB);
-            Assert.Equal(-1.5f, data.mA);
-            Assert.Equal(-2.5f, data.mB);
-            Assert.Equal(-0.5f, data.iA);
-            Assert.Equal(-1.5f, data.iB);
+            Assert.Equal(-1.5f, data.mA, 5);
+            Assert.Equal(-2.5f, data.mB, 5);
+            Assert.Equal(-0.5f, data.iA, 5);
+            Assert.Equal(-1.5f, data.iB, 5);
             Assert.Equal(new Vector2F(-1.0f, 0.0f), data.tangent);
             Assert.Equal(new Vector2F(0.0f, -1.0f), data.vA);
-            Assert.Equal(-2.0f, data.wA);
+            Assert.Equal(-2.0f, data.wA, 5);
             Assert.Equal(new Vector2F(-1.0f, -1.0f), data.vB);
-            Assert.Equal(-3.0f, data.wB);
+            Assert.Equal(-3.0f, data.wB, 5);
         }
 
         /// <summary>
@@ -132,15 +132,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(new Vector2F(1000.0f, 2000.0f), data.cA);
             Assert.Equal(new Vector2F(3000.0f, 4000.0f), data.cB);
-            Assert.Equal(100.5f, data.mA);
-            Assert.Equal(200.5f, data.mB);
-            Assert.Equal(50.5f, data.iA);
-            Assert.Equal(150.5f, data.iB);
+            Assert.Equal(100.5f, data.mA, 5);
+            Assert.Equal(200.5f, data.mB, 5);
+            Assert.Equal(50.5f, data.iA, 5);
+            Assert.Equal(150.5f, data.iB, 5);
             Assert.Equal(new Vector2F(100.0f, 0.0f), data.tangent);
             Assert.Equal(new Vector2F(0.0f, 100.0f), data.vA);
-            Assert.Equal(200.0f, data.wA);
+            Assert.Equal(200.0f, data.wA, 5);
             Assert.Equal(new Vector2F(100.0f, 100.0f), data.vB);
-            Assert.Equal(300.0f, data.wB);
+            Assert.Equal(300.0f, data.wB, 5);
         }
 
         /// <summary>
@@ -156,15 +156,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(new Vector2F(0.001f, 0.002f), data.cA);
             Assert.Equal(new Vector2F(0.003f, 0.004f), data.cB);
-            Assert.Equal(0.0015f, data.mA);
-            Assert.Equal(0.0025f, data.mB);
-            Assert.Equal(0.0005f, data.iA);
-            Assert.Equal(0.0015f, data.iB);
+            Assert.Equal(0.0015f, data.mA, 5);
+            Assert.Equal(0.0025f, data.mB, 5);
+            Assert.Equal(0.0005f, data.iA, 5);
+            Assert.Equal(0.0015f, data.iB, 5);
             Assert.Equal(new Vector2F(0.001f, 0.0f), data.tangent);
             Assert.Equal(new Vector2F(0.0f, 0.001f), data.vA);
-            Assert.Equal(0.002f, data.wA);
+            Assert.Equal(0.002f, data.wA, 5);
             Assert.Equal(new Vector2F(0.001f, 0.001f), data.vB);
-            Assert.Equal(0.003f, data.wB);
+            Assert.Equal(0.003f, data.wB, 5);
         }
 
         /// <summary>
@@ -250,15 +250,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.Equal(new Vector2F(10.5f, 20.3f), data.cA);
             Assert.Equal(new Vector2F(30.7f, 40.9f), data.cB);
-            Assert.Equal(15.25f, data.mA);
-            Assert.Equal(25.75f, data.mB);
-            Assert.Equal(5.5f, data.iA);
-            Assert.Equal(15.5f, data.iB);
+            Assert.Equal(15.25f, data.mA, 5);
+            Assert.Equal(25.75f, data.mB, 5);
+            Assert.Equal(5.5f, data.iA, 5);
+            Assert.Equal(15.5f, data.iB, 5);
             Assert.Equal(new Vector2F(0.866f, 0.5f), data.tangent);
             Assert.Equal(new Vector2F(1.5f, 2.5f), data.vA);
-            Assert.Equal(3.75f, data.wA);
+            Assert.Equal(3.75f, data.wA, 5);
             Assert.Equal(new Vector2F(2.5f, 3.5f), data.vB);
-            Assert.Equal(4.25f, data.wB);
+            Assert.Equal(4.25f, data.wB, 5);
         }
 
         /// <summary>

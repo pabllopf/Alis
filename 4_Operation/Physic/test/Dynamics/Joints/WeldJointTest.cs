@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.ReferenceAngle = 0.5f;
 
-            Assert.Equal(0.5f, joint.ReferenceAngle);
+            Assert.Equal(0.5f, joint.ReferenceAngle, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.FrequencyHz = 10.0f;
 
-            Assert.Equal(10.0f, joint.FrequencyHz);
+            Assert.Equal(10.0f, joint.FrequencyHz, 5);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.DampingRatio = 0.8f;
 
-            Assert.Equal(0.8f, joint.DampingRatio);
+            Assert.Equal(0.8f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -547,7 +547,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
     }
 }

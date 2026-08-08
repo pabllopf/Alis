@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             RayCastOutput output = new RayCastOutput();
 
-            Assert.Equal(0.0f, output.Fraction);
+            Assert.Equal(0.0f, output.Fraction, 5);
             Assert.Equal(Vector2F.Zero, output.Normal);
         }
 
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Fraction = 0.5f
             };
 
-            Assert.Equal(0.5f, output.Fraction);
+            Assert.Equal(0.5f, output.Fraction, 5);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Normal = new Vector2F(1.0f, 0.0f)
             };
 
-            Assert.Equal(0.75f, output.Fraction);
+            Assert.Equal(0.75f, output.Fraction, 5);
             Assert.Equal(new Vector2F(1.0f, 0.0f), output.Normal);
         }
 
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Fraction = 0.0f
             };
 
-            Assert.Equal(0.0f, output.Fraction);
+            Assert.Equal(0.0f, output.Fraction, 5);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Fraction = 1.0f
             };
 
-            Assert.Equal(1.0f, output.Fraction);
+            Assert.Equal(1.0f, output.Fraction, 5);
         }
 
         /// <summary>

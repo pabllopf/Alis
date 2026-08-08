@@ -216,22 +216,22 @@ namespace Alis.Core.Graphic.Test
             );
             Gl.UniformMatrix4Fv(0, mat);
 
-            Assert.Equal(1f, captured[0]);
-            Assert.Equal(2f, captured[1]);
-            Assert.Equal(3f, captured[2]);
-            Assert.Equal(4f, captured[3]);
-            Assert.Equal(5f, captured[4]);
-            Assert.Equal(6f, captured[5]);
-            Assert.Equal(7f, captured[6]);
-            Assert.Equal(8f, captured[7]);
-            Assert.Equal(9f, captured[8]);
-            Assert.Equal(10f, captured[9]);
-            Assert.Equal(11f, captured[10]);
-            Assert.Equal(12f, captured[11]);
-            Assert.Equal(13f, captured[12]);
-            Assert.Equal(14f, captured[13]);
-            Assert.Equal(15f, captured[14]);
-            Assert.Equal(16f, captured[15]);
+            Assert.Equal(1f, captured[0], 5);
+            Assert.Equal(2f, captured[1], 5);
+            Assert.Equal(3f, captured[2], 5);
+            Assert.Equal(4f, captured[3], 5);
+            Assert.Equal(5f, captured[4], 5);
+            Assert.Equal(6f, captured[5], 5);
+            Assert.Equal(7f, captured[6], 5);
+            Assert.Equal(8f, captured[7], 5);
+            Assert.Equal(9f, captured[8], 5);
+            Assert.Equal(10f, captured[9], 5);
+            Assert.Equal(11f, captured[10], 5);
+            Assert.Equal(12f, captured[11], 5);
+            Assert.Equal(13f, captured[12], 5);
+            Assert.Equal(14f, captured[13], 5);
+            Assert.Equal(15f, captured[14], 5);
+            Assert.Equal(16f, captured[15], 5);
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Graphic.Test
             IntPtr fp = Marshal.GetFunctionPointerForDelegate(mock);
             Init(name => name == "glLineWidth" ? fp : IntPtr.Zero);
             Gl.GlLineWidth(2.5f);
-            Assert.Equal(2.5f, captured);
+            Assert.Equal(2.5f, captured, 5);
         }
 
         /// <summary>

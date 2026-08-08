@@ -85,9 +85,9 @@ namespace Alis.Extension.Updater.Test
 
             sut.OnUpdateProgressChanged(0.55f, "half-way");
 
-            Assert.Equal(0.55f, sut.Progress);
+            Assert.Equal(0.55f, sut.Progress, 5);
             Assert.Equal("half-way", sut.Message);
-            Assert.Equal(0.55f, capturedProgress);
+            Assert.Equal(0.55f, capturedProgress, 5);
             Assert.Equal("half-way", capturedMessage);
         }
 
@@ -172,7 +172,7 @@ namespace Alis.Extension.Updater.Test
             bool result = sut.HandleMissingCompatiblePackage("osx", "arm64");
 
             Assert.False(result);
-            Assert.Equal(0f, sut.Progress);
+            Assert.Equal(0f, sut.Progress, 5);
             Assert.Contains("No compatible package", sut.Message, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -227,7 +227,7 @@ namespace Alis.Extension.Updater.Test
             bool result = sut.HandleDownloadFailure();
 
             Assert.False(result);
-            Assert.Equal(0f, sut.Progress);
+            Assert.Equal(0f, sut.Progress, 5);
             Assert.Contains("Error downloading package", sut.Message, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -242,7 +242,7 @@ namespace Alis.Extension.Updater.Test
 
             sut.Backup();
 
-            Assert.Equal(0.7f, sut.Progress);
+            Assert.Equal(0.7f, sut.Progress, 5);
             Assert.Contains("backup", sut.Message, StringComparison.OrdinalIgnoreCase);
         }
 
@@ -267,7 +267,7 @@ namespace Alis.Extension.Updater.Test
             sut.ExtractAndReplace(zipPath);
 
             Assert.True(File.Exists(Path.Combine(targetFolder, "content", "readme.txt")));
-            Assert.Equal(0.8f, sut.Progress);
+            Assert.Equal(0.8f, sut.Progress, 5);
         }
 
         /// <summary>

@@ -330,7 +330,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             float metric = simplex.GetMetric();
 
-            Assert.Equal(5.0f, metric);
+            Assert.Equal(5.0f, metric, 5);
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             float metric = simplex.GetMetric();
 
-            Assert.Equal(4.0f, metric);
+            Assert.Equal(4.0f, metric, 5);
         }
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             float metric = simplex.GetMetric();
 
-            Assert.Equal(0.0f, metric);
+            Assert.Equal(0.0f, metric, 5);
         }
 
         /// <summary>

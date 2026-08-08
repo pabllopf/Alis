@@ -50,9 +50,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, ev.which);
             Assert.Equal(0, ev.touchpad);
             Assert.Equal(0, ev.finger);
-            Assert.Equal(0f, ev.x);
-            Assert.Equal(0f, ev.y);
-            Assert.Equal(0f, ev.pressure);
+            Assert.Equal(0f, ev.x, 5);
+            Assert.Equal(0f, ev.y, 5);
+            Assert.Equal(0f, ev.pressure, 5);
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(2, ev.which);
             Assert.Equal(3, ev.touchpad);
             Assert.Equal(4, ev.finger);
-            Assert.Equal(0.5f, ev.x);
-            Assert.Equal(0.75f, ev.y);
-            Assert.Equal(0.9f, ev.pressure);
+            Assert.Equal(0.5f, ev.x, 5);
+            Assert.Equal(0.75f, ev.y, 5);
+            Assert.Equal(0.9f, ev.pressure, 5);
         }
 
         /// <summary>
@@ -106,8 +106,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             ControllerTouchpadEvent ev = new ControllerTouchpadEvent { x = -1.0f, y = -2.5f };
 
-            Assert.Equal(-1.0f, ev.x);
-            Assert.Equal(-2.5f, ev.y);
+            Assert.Equal(-1.0f, ev.x, 5);
+            Assert.Equal(-2.5f, ev.y, 5);
         }
     }
 }

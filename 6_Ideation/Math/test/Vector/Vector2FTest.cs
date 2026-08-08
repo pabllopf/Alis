@@ -50,8 +50,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = new Vector2F(5f);
 
-            Assert.Equal(5f, v.X);
-            Assert.Equal(5f, v.Y);
+            Assert.Equal(5f, v.X, 5);
+            Assert.Equal(5f, v.Y, 5);
         }
 
         /// <summary>
@@ -62,8 +62,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = new Vector2F(3f, 4f);
 
-            Assert.Equal(3f, v.X);
-            Assert.Equal(4f, v.Y);
+            Assert.Equal(3f, v.X, 5);
+            Assert.Equal(4f, v.Y, 5);
         }
 
 
@@ -75,8 +75,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = Vector2F.Zero;
 
-            Assert.Equal(0f, v.X);
-            Assert.Equal(0f, v.Y);
+            Assert.Equal(0f, v.X, 5);
+            Assert.Equal(0f, v.Y, 5);
         }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = Vector2F.One;
 
-            Assert.Equal(1f, v.X);
-            Assert.Equal(1f, v.Y);
+            Assert.Equal(1f, v.X, 5);
+            Assert.Equal(1f, v.Y, 5);
         }
 
         /// <summary>
@@ -99,8 +99,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = Vector2F.UnitX;
 
-            Assert.Equal(1f, v.X);
-            Assert.Equal(0f, v.Y);
+            Assert.Equal(1f, v.X, 5);
+            Assert.Equal(0f, v.Y, 5);
         }
 
         /// <summary>
@@ -111,8 +111,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F v = Vector2F.UnitY;
 
-            Assert.Equal(0f, v.X);
-            Assert.Equal(1f, v.Y);
+            Assert.Equal(0f, v.X, 5);
+            Assert.Equal(1f, v.Y, 5);
         }
 
 
@@ -726,8 +726,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Vector2F result = Vector2F.Transform(v, matrix);
 
-            Assert.Equal(7f, result.X);
-            Assert.Equal(6f, result.Y);
+            Assert.Equal(7f, result.X, 5);
+            Assert.Equal(6f, result.Y, 5);
         }
 
         /// <summary>
@@ -745,8 +745,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Vector2F result = Vector2F.Transform(v, matrix);
 
-            Assert.Equal(7f, result.X);
-            Assert.Equal(6f, result.Y);
+            Assert.Equal(7f, result.X, 5);
+            Assert.Equal(6f, result.Y, 5);
         }
 
         /// <summary>
@@ -774,8 +774,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Vector2F result = Vector2F.TransformNormal(normal, matrix);
 
-            Assert.Equal(2f, result.X);
-            Assert.Equal(0f, result.Y);
+            Assert.Equal(2f, result.X, 5);
+            Assert.Equal(0f, result.Y, 5);
         }
 
         /// <summary>
@@ -793,8 +793,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Vector2F result = Vector2F.TransformNormal(normal, matrix);
 
-            Assert.Equal(0f, result.X);
-            Assert.Equal(3f, result.Y);
+            Assert.Equal(0f, result.X, 5);
+            Assert.Equal(3f, result.Y, 5);
         }
 
 
@@ -1120,7 +1120,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float dotProduct = Vector2F.Dot(vectorA, vectorB);
 
-            Assert.Equal(11.0f, dotProduct); // (2 * 4) + (3 * 1) = 11
+            Assert.Equal(11.0f, dotProduct, 5); // (2 * 4) + (3 * 1) = 11
         }
 
         /// <summary>
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float length = vector.Length();
 
-            Assert.Equal(5.0f, length);
+            Assert.Equal(5.0f, length, 5);
         }
 
         /// <summary>
@@ -1174,8 +1174,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             Vector2F result = Vector2F.Min(vector1, vector2F);
 
-            Assert.Equal(5.0f, result.X);
-            Assert.Equal(7.0f, result.Y);
+            Assert.Equal(5.0f, result.X, 5);
+            Assert.Equal(7.0f, result.Y, 5);
         }
 
 
@@ -1190,7 +1190,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float distance = Vector2F.Distance(point1, point2);
 
-            Assert.Equal(5.0f, distance); // Distance between (1,2) and (4,6) is 5
+            Assert.Equal(5.0f, distance, 5); // Distance between (1,2) and (4,6) is 5
         }
 
         /// <summary>

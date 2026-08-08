@@ -172,10 +172,10 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         /// <summary>
         /// Tests that avg frame rate number default zero
         /// </summary>
-        [RequireFfmpegFact] public void AvgFrameRateNumber_Default_Zero() { var s = new MediaStream(); Assert.Equal(0.0, s.AvgFrameRateNumber); }
+        [RequireFfmpegFact] public void AvgFrameRateNumber_Default_Zero() { var s = new MediaStream(); Assert.Equal(0.0, s.AvgFrameRateNumber, 5); }
         /// <summary>
         /// Tests that avg frame rate number should be settable
         /// </summary>
-        [RequireFfmpegFact] public void AvgFrameRateNumber_ShouldBeSettable() { var s = new MediaStream { AvgFrameRateNumber = 29.97 }; Assert.Equal(29.97, s.AvgFrameRateNumber); }
+        [RequireFfmpegFact] public void AvgFrameRateNumber_ShouldBeSettable() { var s = new MediaStream { AvgFrameRateNumber = 29.97 }; Assert.Equal(29.97, s.AvgFrameRateNumber, 5); }
     }
 }

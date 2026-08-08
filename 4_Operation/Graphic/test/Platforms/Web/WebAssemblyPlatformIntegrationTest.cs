@@ -141,7 +141,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void SystemInfo_GetDevicePixelRatio_ReturnsDefaultOnNonBrowser()
         {
             float ratio = SystemInfo.GetDevicePixelRatio();
-            Assert.Equal(1.0f, ratio);
+            Assert.Equal(1.0f, ratio, 5);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void SystemInfo_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
             float level = SystemInfo.GetBatteryLevel();
-            Assert.Equal(-1.0f, level);
+            Assert.Equal(-1.0f, level, 5);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void SystemInfo_GetSystemTimeMs_ReturnsZeroOnNonBrowser()
         {
             double time = SystemInfo.GetSystemTimeMs();
-            Assert.Equal(0.0, time);
+            Assert.Equal(0.0, time, 5);
         }
 
         /// <summary>

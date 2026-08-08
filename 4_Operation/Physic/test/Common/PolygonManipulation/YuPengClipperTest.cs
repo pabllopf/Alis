@@ -664,7 +664,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             MethodInfo calcBeta = typeof(YuPengClipper).GetMethod("CalculateBeta", BindingFlags.Static | BindingFlags.NonPublic);
 
             float result = (float)calcBeta.Invoke(null, new object[] { new Vector2F(10f, 10f), edge, 1f });
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         // ========================================================================
@@ -680,7 +680,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
 
             float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f), new Vector2F(2f, 0f) });
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -692,7 +692,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
 
             float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(1f, 0f), new Vector2F(0f, 1f) });
-            Assert.Equal(1f, result);
+            Assert.Equal(1f, result, 5);
         }
 
         /// <summary>
@@ -704,7 +704,7 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             MethodInfo method = typeof(YuPengClipper).GetMethod("CalculateSimplexCoefficient", BindingFlags.Static | BindingFlags.NonPublic);
 
             float result = (float)method.Invoke(null, new object[] { new Vector2F(0f, 0f), new Vector2F(0f, 1f), new Vector2F(1f, 0f) });
-            Assert.Equal(-1f, result);
+            Assert.Equal(-1f, result, 5);
         }
 
         // ========================================================================

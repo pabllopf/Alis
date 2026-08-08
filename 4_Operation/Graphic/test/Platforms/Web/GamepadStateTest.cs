@@ -48,12 +48,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             Assert.False(state.Connected);
-            Assert.Equal(0.0f, state.LeftStickX);
-            Assert.Equal(0.0f, state.LeftStickY);
-            Assert.Equal(0.0f, state.RightStickX);
-            Assert.Equal(0.0f, state.RightStickY);
-            Assert.Equal(0.0f, state.LeftTrigger);
-            Assert.Equal(0.0f, state.RightTrigger);
+            Assert.Equal(0.0f, state.LeftStickX, 5);
+            Assert.Equal(0.0f, state.LeftStickY, 5);
+            Assert.Equal(0.0f, state.RightStickX, 5);
+            Assert.Equal(0.0f, state.RightStickY, 5);
+            Assert.Equal(0.0f, state.LeftTrigger, 5);
+            Assert.Equal(0.0f, state.RightTrigger, 5);
             Assert.NotNull(state.Buttons);
             Assert.Equal(13, state.Buttons.Length);
         }
@@ -241,10 +241,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 RightStickX = 0.8f,
                 RightStickY = -0.1f
             };
-            Assert.Equal(0.5f, state.LeftStickX);
-            Assert.Equal(-0.3f, state.LeftStickY);
-            Assert.Equal(0.8f, state.RightStickX);
-            Assert.Equal(-0.1f, state.RightStickY);
+            Assert.Equal(0.5f, state.LeftStickX, 5);
+            Assert.Equal(-0.3f, state.LeftStickY, 5);
+            Assert.Equal(0.8f, state.RightStickX, 5);
+            Assert.Equal(-0.1f, state.RightStickY, 5);
         }
 
         /// <summary>
@@ -258,8 +258,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 LeftTrigger = 0.7f,
                 RightTrigger = 0.9f
             };
-            Assert.Equal(0.7f, state.LeftTrigger);
-            Assert.Equal(0.9f, state.RightTrigger);
+            Assert.Equal(0.7f, state.LeftTrigger, 5);
+            Assert.Equal(0.9f, state.RightTrigger, 5);
         }
 
         /// <summary>

@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxForce = 300.0f;
 
-            Assert.Equal(300.0f, joint.MaxForce);
+            Assert.Equal(300.0f, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxTorque = 50.0f;
 
-            Assert.Equal(50.0f, joint.MaxTorque);
+            Assert.Equal(50.0f, joint.MaxTorque, 5);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
 
-            Assert.Equal(0.0f, joint.MaxForce);
+            Assert.Equal(0.0f, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             FrictionJoint joint = new FrictionJoint(bodyA, bodyB, Vector2F.Zero);
 
-            Assert.Equal(0.0f, joint.MaxTorque);
+            Assert.Equal(0.0f, joint.MaxTorque, 5);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(62.5f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>

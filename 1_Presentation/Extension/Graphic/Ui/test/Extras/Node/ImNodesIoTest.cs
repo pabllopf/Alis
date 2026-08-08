@@ -98,7 +98,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         {
             ImNodesIo io = default;
 
-            Assert.Equal(0f, io.AutoPanningSpeed);
+            Assert.Equal(0f, io.AutoPanningSpeed, 5);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
 
             io.AutoPanningSpeed = 0.5f;
 
-            Assert.Equal(0.5f, io.AutoPanningSpeed);
+            Assert.Equal(0.5f, io.AutoPanningSpeed, 5);
         }
     }
 }

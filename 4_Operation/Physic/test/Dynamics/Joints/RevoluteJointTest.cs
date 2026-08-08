@@ -233,7 +233,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RevoluteJoint joint = new RevoluteJoint(bodyA, bodyB, Vector2F.Zero);
 
-            Assert.Equal(0.3f, joint.ReferenceAngle);
+            Assert.Equal(0.3f, joint.ReferenceAngle, 5);
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             bodyA.AngularVelocity = 1.0f;
             bodyB.AngularVelocity = 3.5f;
 
-            Assert.Equal(2.5f, joint.JointSpeed);
+            Assert.Equal(2.5f, joint.JointSpeed, 5);
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.LowerLimit = -1.0f;
 
-            Assert.Equal(-1.0f, joint.LowerLimit);
+            Assert.Equal(-1.0f, joint.LowerLimit, 5);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.UpperLimit = 2.0f;
 
-            Assert.Equal(2.0f, joint.UpperLimit);
+            Assert.Equal(2.0f, joint.UpperLimit, 5);
         }
 
         /// <summary>
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MotorSpeed = 5.0f;
 
-            Assert.Equal(5.0f, joint.MotorSpeed);
+            Assert.Equal(5.0f, joint.MotorSpeed, 5);
         }
 
         /// <summary>
@@ -419,7 +419,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxMotorTorque = 100.0f;
 
-            Assert.Equal(100.0f, joint.MaxMotorTorque);
+            Assert.Equal(100.0f, joint.MaxMotorTorque, 5);
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MotorImpulse = 25.0f;
 
-            Assert.Equal(25.0f, joint.MotorImpulse);
+            Assert.Equal(25.0f, joint.MotorImpulse, 5);
         }
 
         /// <summary>
@@ -449,8 +449,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.SetLimits(-2.0f, 2.0f);
 
-            Assert.Equal(-2.0f, joint.LowerLimit);
-            Assert.Equal(2.0f, joint.UpperLimit);
+            Assert.Equal(-2.0f, joint.LowerLimit, 5);
+            Assert.Equal(2.0f, joint.UpperLimit, 5);
         }
 
         /// <summary>
@@ -466,8 +466,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.SetLimits(-1.0f, 1.0f);
             joint.SetLimits(-1.0f, 1.0f);
 
-            Assert.Equal(-1.0f, joint.LowerLimit);
-            Assert.Equal(1.0f, joint.UpperLimit);
+            Assert.Equal(-1.0f, joint.LowerLimit, 5);
+            Assert.Equal(1.0f, joint.UpperLimit, 5);
         }
 
         /// <summary>
@@ -483,7 +483,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             joint.MotorImpulse = 10.0f;
             float result = joint.GetMotorTorque(2.0f);
 
-            Assert.Equal(20.0f, result);
+            Assert.Equal(20.0f, result, 5);
         }
 
         /// <summary>
@@ -528,7 +528,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>

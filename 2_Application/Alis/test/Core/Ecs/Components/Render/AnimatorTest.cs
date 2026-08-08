@@ -350,14 +350,14 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Animation current = animator.CurrentAnimation;
 
             Assert.Equal("idle", current.Name);
-            Assert.Equal(1f, current.Speed);
+            Assert.Equal(1f, current.Speed, 5);
 
             animator.Play("walk");
 
             current = animator.CurrentAnimation;
 
             Assert.Equal("walk", current.Name);
-            Assert.Equal(2f, current.Speed);
+            Assert.Equal(2f, current.Speed, 5);
         }
 
         /// <summary>
@@ -372,7 +372,7 @@ namespace Alis.Test.Core.Ecs.Components.Render
 
             Assert.Null(current.Name);
             Assert.Equal(0, current.Order);
-            Assert.Equal(0f, current.Speed);
+            Assert.Equal(0f, current.Speed, 5);
             Assert.Null(current.Frames);
         }
 

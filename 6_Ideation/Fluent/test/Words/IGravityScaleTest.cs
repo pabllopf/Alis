@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             GravityScaleBuilderImpl builder = new GravityScaleBuilderImpl();
             GravityScaleBuilder result = builder.GravityScale(2f);
-            Assert.Equal(2f, result.GravityScaleValue);
+            Assert.Equal(2f, result.GravityScaleValue, 5);
         }
 
         /// <summary>

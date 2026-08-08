@@ -63,16 +63,16 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             BoxCollider collider = new BoxCollider();
 
             // Assert — Width / Height
-            Assert.Equal(10f, collider.Width);
-            Assert.Equal(10f, collider.Height);
+            Assert.Equal(10f, collider.Width, 5);
+            Assert.Equal(10f, collider.Height, 5);
 
             // Assert — Rotation
-            Assert.Equal(0f, collider.Rotation);
+            Assert.Equal(0f, collider.Rotation, 5);
 
             // Assert — RelativePosition (default constructor creates a zero vector)
             Vector2F relativePos = collider.RelativePosition;
-            Assert.Equal(0f, relativePos.X);
-            Assert.Equal(0f, relativePos.Y);
+            Assert.Equal(0f, relativePos.X, 5);
+            Assert.Equal(0f, relativePos.Y, 5);
 
             // Assert — AutoTilling
             Assert.False(collider.AutoTilling);
@@ -81,25 +81,25 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(BodyType.Static, collider.BodyType);
 
             // Assert — Restitution / Friction
-            Assert.Equal(0.5f, collider.Restitution);
-            Assert.Equal(0.5f, collider.Friction);
+            Assert.Equal(0.5f, collider.Restitution, 5);
+            Assert.Equal(0.5f, collider.Friction, 5);
 
             // Assert — FixedRotation
             Assert.False(collider.FixedRotation);
 
             // Assert — Mass
-            Assert.Equal(1.0f, collider.Mass);
+            Assert.Equal(1.0f, collider.Mass, 5);
 
             // Assert — IgnoreGravity
             Assert.False(collider.IgnoreGravity);
 
             // Assert — LinearVelocity (default constructor creates a zero vector)
             Vector2F linVel = collider.LinearVelocity;
-            Assert.Equal(0f, linVel.X);
-            Assert.Equal(0f, linVel.Y);
+            Assert.Equal(0f, linVel.X, 5);
+            Assert.Equal(0f, linVel.Y, 5);
 
             // Assert — AngularVelocity
-            Assert.Equal(0f, collider.AngularVelocity);
+            Assert.Equal(0f, collider.AngularVelocity, 5);
 
             // Assert — IsTrigger (default value for bool)
             Assert.False(collider.IsTrigger);
@@ -109,8 +109,8 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — SizeOfTexture (default value for struct)
             Vector2F size = collider.SizeOfTexture;
-            Assert.Equal(0f, size.X);
-            Assert.Equal(0f, size.Y);
+            Assert.Equal(0f, size.X, 5);
+            Assert.Equal(0f, size.Y, 5);
         }
 
         #endregion
@@ -146,45 +146,45 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — scalar properties
             Assert.True(collider.IsTrigger);
-            Assert.Equal(42f, collider.Width);
-            Assert.Equal(17f, collider.Height);
-            Assert.Equal(1.57f, collider.Rotation);
+            Assert.Equal(42f, collider.Width, 5);
+            Assert.Equal(17f, collider.Height, 5);
+            Assert.Equal(1.57f, collider.Rotation, 5);
 
             // Assert — RelativePosition
             Vector2F pos = collider.RelativePosition;
-            Assert.Equal(3.3f, pos.X);
-            Assert.Equal(7.7f, pos.Y);
+            Assert.Equal(3.3f, pos.X, 5);
+            Assert.Equal(7.7f, pos.Y, 5);
 
             // Assert — AutoTilling / BodyType
             Assert.True(collider.AutoTilling);
             Assert.Equal(BodyType.Dynamic, collider.BodyType);
 
             // Assert — Restitution / Friction
-            Assert.Equal(0.9f, collider.Restitution);
-            Assert.Equal(0.1f, collider.Friction);
+            Assert.Equal(0.9f, collider.Restitution, 5);
+            Assert.Equal(0.1f, collider.Friction, 5);
 
             // Assert — FixedRotation / Mass
             Assert.True(collider.FixedRotation);
-            Assert.Equal(2.5f, collider.Mass);
+            Assert.Equal(2.5f, collider.Mass, 5);
 
             // Assert — IgnoreGravity
             Assert.True(collider.IgnoreGravity);
 
             // Assert — LinearVelocity
             Vector2F linVel = collider.LinearVelocity;
-            Assert.Equal(1.1f, linVel.X);
-            Assert.Equal(2.2f, linVel.Y);
+            Assert.Equal(1.1f, linVel.X, 5);
+            Assert.Equal(2.2f, linVel.Y, 5);
 
             // Assert — AngularVelocity
-            Assert.Equal(0.75f, collider.AngularVelocity);
+            Assert.Equal(0.75f, collider.AngularVelocity, 5);
 
             // Assert — Body (settings has no body reference)
             Assert.Null(collider.Body);
 
             // Assert — SizeOfTexture (settings has no texture size)
             Vector2F size = collider.SizeOfTexture;
-            Assert.Equal(0f, size.X);
-            Assert.Equal(0f, size.Y);
+            Assert.Equal(0f, size.X, 5);
+            Assert.Equal(0f, size.Y, 5);
         }
 
         /// <summary>
@@ -216,16 +216,16 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert
             Assert.False(collider.IsTrigger);
-            Assert.Equal(0f, collider.Width);
-            Assert.Equal(0f, collider.Height);
-            Assert.Equal(0f, collider.Rotation);
+            Assert.Equal(0f, collider.Width, 5);
+            Assert.Equal(0f, collider.Height, 5);
+            Assert.Equal(0f, collider.Rotation, 5);
             Assert.Equal(BodyType.Static, collider.BodyType);
-            Assert.Equal(0f, collider.Restitution);
-            Assert.Equal(0f, collider.Friction);
+            Assert.Equal(0f, collider.Restitution, 5);
+            Assert.Equal(0f, collider.Friction, 5);
             Assert.False(collider.FixedRotation);
-            Assert.Equal(0f, collider.Mass);
+            Assert.Equal(0f, collider.Mass, 5);
             Assert.False(collider.IgnoreGravity);
-            Assert.Equal(0f, collider.AngularVelocity);
+            Assert.Equal(0f, collider.AngularVelocity, 5);
         }
 
         #endregion
@@ -257,17 +257,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — read back each property
             Assert.True(collider.IsTrigger);
-            Assert.Equal(5.0f, collider.Width);
-            Assert.Equal(3.0f, collider.Height);
-            Assert.Equal(0.5f, collider.Rotation);
+            Assert.Equal(5.0f, collider.Width, 5);
+            Assert.Equal(3.0f, collider.Height, 5);
+            Assert.Equal(0.5f, collider.Rotation, 5);
             Assert.True(collider.AutoTilling);
             Assert.Equal(BodyType.Kinematic, collider.BodyType);
-            Assert.Equal(0.8f, collider.Restitution);
-            Assert.Equal(0.2f, collider.Friction);
+            Assert.Equal(0.8f, collider.Restitution, 5);
+            Assert.Equal(0.2f, collider.Friction, 5);
             Assert.True(collider.FixedRotation);
-            Assert.Equal(4.0f, collider.Mass);
+            Assert.Equal(4.0f, collider.Mass, 5);
             Assert.True(collider.IgnoreGravity);
-            Assert.Equal(2.0f, collider.AngularVelocity);
+            Assert.Equal(2.0f, collider.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -287,16 +287,16 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert
             Vector2F pos = collider.RelativePosition;
-            Assert.Equal(10f, pos.X);
-            Assert.Equal(20f, pos.Y);
+            Assert.Equal(10f, pos.X, 5);
+            Assert.Equal(20f, pos.Y, 5);
 
             Vector2F linVel = collider.LinearVelocity;
-            Assert.Equal(5f, linVel.X);
-            Assert.Equal(15f, linVel.Y);
+            Assert.Equal(5f, linVel.X, 5);
+            Assert.Equal(15f, linVel.Y, 5);
 
             Vector2F size = collider.SizeOfTexture;
-            Assert.Equal(2f, size.X);
-            Assert.Equal(4f, size.Y);
+            Assert.Equal(2f, size.X, 5);
+            Assert.Equal(4f, size.Y, 5);
         }
 
         /// <summary>
@@ -422,19 +422,19 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — each positional property is accessible
             Assert.True(settings.IsTrigger);
-            Assert.Equal(7f, settings.Width);
-            Assert.Equal(11f, settings.Height);
-            Assert.Equal(0.25f, settings.Rotation);
+            Assert.Equal(7f, settings.Width, 5);
+            Assert.Equal(11f, settings.Height, 5);
+            Assert.Equal(0.25f, settings.Rotation, 5);
             Assert.Equal(new Vector2F(1f, 2f), settings.RelativePosition);
             Assert.True(settings.AutoTilling);
             Assert.Equal(BodyType.Kinematic, settings.BodyType);
-            Assert.Equal(0.3f, settings.Restitution);
-            Assert.Equal(0.4f, settings.Friction);
+            Assert.Equal(0.3f, settings.Restitution, 5);
+            Assert.Equal(0.4f, settings.Friction, 5);
             Assert.True(settings.FixedRotation);
-            Assert.Equal(1.5f, settings.Mass);
+            Assert.Equal(1.5f, settings.Mass, 5);
             Assert.True(settings.IgnoreGravity);
             Assert.Equal(new Vector2F(0.1f, 0.2f), settings.LinearVelocity);
-            Assert.Equal(0.3f, settings.AngularVelocity);
+            Assert.Equal(0.3f, settings.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -505,9 +505,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — Transform unchanged because Body is null
             ref Transform transform = ref gameObject.Get<Transform>();
-            Assert.Equal(7f, transform.Position.X);
-            Assert.Equal(13f, transform.Position.Y);
-            Assert.Equal(2.5f, transform.Rotation);
+            Assert.Equal(7f, transform.Position.X, 5);
+            Assert.Equal(13f, transform.Position.Y, 5);
+            Assert.Equal(2.5f, transform.Rotation, 5);
         }
 
         /// <summary>
@@ -529,9 +529,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
 
             // Assert — Transform unchanged
             ref Transform transform = ref gameObject.Get<Transform>();
-            Assert.Equal(5f, transform.Position.X);
-            Assert.Equal(5f, transform.Position.Y);
-            Assert.Equal(1.0f, transform.Rotation);
+            Assert.Equal(5f, transform.Position.X, 5);
+            Assert.Equal(5f, transform.Position.Y, 5);
+            Assert.Equal(1.0f, transform.Rotation, 5);
         }
 
         #endregion
@@ -563,9 +563,9 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnUpdate(gameObject);
 
             ref Transform transform = ref gameObject.Get<Transform>();
-            Assert.Equal(15f, transform.Position.X);
-            Assert.Equal(25f, transform.Position.Y);
-            Assert.Equal(1.5f, transform.Rotation);
+            Assert.Equal(15f, transform.Position.X, 5);
+            Assert.Equal(25f, transform.Position.Y, 5);
+            Assert.Equal(1.5f, transform.Rotation, 5);
         }
 
         /// <summary>
@@ -591,17 +591,17 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             collider.OnUpdate(gameObject);
 
             ref Transform transform = ref gameObject.Get<Transform>();
-            Assert.Equal(3f, transform.Position.X);
-            Assert.Equal(7f, transform.Position.Y);
-            Assert.Equal(0.5f, transform.Rotation);
+            Assert.Equal(3f, transform.Position.X, 5);
+            Assert.Equal(7f, transform.Position.Y, 5);
+            Assert.Equal(0.5f, transform.Rotation, 5);
 
             collider.Body.Position = new Vector2F(10f, 20f);
             collider.Body.Rotation = 2.0f;
             collider.OnUpdate(gameObject);
 
-            Assert.Equal(10f, transform.Position.X);
-            Assert.Equal(20f, transform.Position.Y);
-            Assert.Equal(2.0f, transform.Rotation);
+            Assert.Equal(10f, transform.Position.X, 5);
+            Assert.Equal(20f, transform.Position.Y, 5);
+            Assert.Equal(2.0f, transform.Rotation, 5);
         }
 
         #endregion

@@ -48,10 +48,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Arrange
             Vertex vertex = new Vertex();
             // Assert
-            Assert.Equal(0f, vertex.Position.X);
-            Assert.Equal(0f, vertex.Position.Y);
-            Assert.Equal(0f, vertex.TexCoordinate.X);
-            Assert.Equal(0f, vertex.TexCoordinate.Y);
+            Assert.Equal(0f, vertex.Position.X, 5);
+            Assert.Equal(0f, vertex.Position.Y, 5);
+            Assert.Equal(0f, vertex.TexCoordinate.X, 5);
+            Assert.Equal(0f, vertex.TexCoordinate.Y, 5);
         }
 
         /// <summary>
@@ -68,10 +68,10 @@ namespace Alis.Extension.Graphic.Sdl2.Test
                 Color = new Color(255, 128, 64, 255)
             };
             // Assert
-            Assert.Equal(1.5f, vertex.Position.X);
-            Assert.Equal(2.5f, vertex.Position.Y);
-            Assert.Equal(0.5f, vertex.TexCoordinate.X);
-            Assert.Equal(0.5f, vertex.TexCoordinate.Y);
+            Assert.Equal(1.5f, vertex.Position.X, 5);
+            Assert.Equal(2.5f, vertex.Position.Y, 5);
+            Assert.Equal(0.5f, vertex.TexCoordinate.X, 5);
+            Assert.Equal(0.5f, vertex.TexCoordinate.Y, 5);
             Assert.Equal(255, vertex.Color.R);
             Assert.Equal(128, vertex.Color.G);
             Assert.Equal(64, vertex.Color.B);

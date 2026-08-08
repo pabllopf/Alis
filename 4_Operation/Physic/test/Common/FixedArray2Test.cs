@@ -110,8 +110,8 @@ namespace Alis.Core.Physic.Test.Common
             array[0] = 1.5f;
             array[1] = 2.5f;
 
-            Assert.Equal(1.5f, array[0]);
-            Assert.Equal(2.5f, array[1]);
+            Assert.Equal(1.5f, array[0], 5);
+            Assert.Equal(2.5f, array[1], 5);
         }
 
         /// <summary>

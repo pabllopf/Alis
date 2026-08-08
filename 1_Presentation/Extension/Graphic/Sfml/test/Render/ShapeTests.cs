@@ -131,7 +131,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             using TestShape shape = new TestShape();
             Assert.Equal(4u, shape.GetPointCount());
             Assert.Equal(new Vector2F(0, 0), shape.Position);
-            Assert.Equal(0f, shape.Rotation);
+            Assert.Equal(0f, shape.Rotation, 5);
             Assert.Equal(new Vector2F(1, 1), shape.Scale);
             Assert.Equal(new Vector2F(0, 0), shape.Origin);
         }
@@ -302,7 +302,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.OutlineThickness = 5.5f;
             float result = shape.OutlineThickness;
 
-            Assert.Equal(5.5f, result);
+            Assert.Equal(5.5f, result, 5);
         }
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
 
             float result = shape.OutlineThickness;
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>

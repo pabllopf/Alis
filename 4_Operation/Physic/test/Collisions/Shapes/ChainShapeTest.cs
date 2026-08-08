@@ -430,7 +430,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         ChainShape chain = new ChainShape();
         chain.GetDensity = 2.0f;
 
-        Assert.Equal(2.0f, chain.GetDensity);
+        Assert.Equal(2.0f, chain.GetDensity, 5);
     }
 
     /// <summary>

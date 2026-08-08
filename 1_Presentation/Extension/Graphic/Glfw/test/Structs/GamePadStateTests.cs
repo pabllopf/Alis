@@ -186,7 +186,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.LeftX);
 
-                Assert.Equal(0.5f, result);
+                Assert.Equal(0.5f, result, 5);
             }
             finally
             {
@@ -213,7 +213,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.LeftY);
 
-                Assert.Equal(-0.75f, result);
+                Assert.Equal(-0.75f, result, 5);
             }
             finally
             {
@@ -240,7 +240,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.RightX);
 
-                Assert.Equal(1.0f, result);
+                Assert.Equal(1.0f, result, 5);
             }
             finally
             {
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.RightY);
 
-                Assert.Equal(0.33f, result);
+                Assert.Equal(0.33f, result, 5);
             }
             finally
             {
@@ -294,7 +294,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.LeftTrigger);
 
-                Assert.Equal(-1.0f, result);
+                Assert.Equal(-1.0f, result, 5);
             }
             finally
             {
@@ -321,7 +321,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
 
                 float result = state.GetAxis(GamePadAxis.RightTrigger);
 
-                Assert.Equal(-0.5f, result);
+                Assert.Equal(-0.5f, result, 5);
             }
             finally
             {

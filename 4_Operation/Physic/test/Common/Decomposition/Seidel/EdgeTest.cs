@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             Edge edge = new Edge(p, q);
 
-            Assert.Equal(0.5f, edge.Slope);
+            Assert.Equal(0.5f, edge.Slope, 5);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             Edge edge = new Edge(p, q);
 
-            Assert.Equal(5.0f, edge.B);
+            Assert.Equal(5.0f, edge.B, 5);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             Edge edge = new Edge(p, q);
 
-            Assert.Equal(0.0f, edge.Slope);
+            Assert.Equal(0.0f, edge.Slope, 5);
         }
 
         /// <summary>

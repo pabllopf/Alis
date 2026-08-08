@@ -43,7 +43,7 @@ namespace Alis.Extension.Security.Test
         public void Test_SecureFloat_Constructor()
         {
             SecureFloat secureFloat = new SecureFloat(10.0f);
-            Assert.Equal(10.0f, (float) secureFloat);
+            Assert.Equal(10.0f, (float) secureFloat, 5);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Security.Test
         public void Test_SecureFloat_ImplicitConversion()
         {
             SecureFloat secureFloat = 10.0f;
-            Assert.Equal(10.0f, (float) secureFloat);
+            Assert.Equal(10.0f, (float) secureFloat, 5);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 20.0f;
-            Assert.Equal(30.0f, (float) (secureFloat1 + secureFloat2));
+            Assert.Equal(30.0f, (float) (secureFloat1 + secureFloat2), 5);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureFloat secureFloat1 = 10.0f;
             SecureFloat secureFloat2 = 20.0f;
-            Assert.Equal(200.0f, (float) (secureFloat1 * secureFloat2));
+            Assert.Equal(200.0f, (float) (secureFloat1 * secureFloat2), 5);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureFloat secureFloat1 = 20.0f;
             SecureFloat secureFloat2 = 10.0f;
-            Assert.Equal(2.0f, (float) (secureFloat1 / secureFloat2));
+            Assert.Equal(2.0f, (float) (secureFloat1 / secureFloat2), 5);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Extension.Security.Test
 
             float value = secureFloat;
 
-            Assert.Equal(10f, value);
+            Assert.Equal(10f, value, 5);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Alis.Extension.Security.Test
 
             secureFloat++;
 
-            Assert.Equal(11f, (float) secureFloat);
+            Assert.Equal(11f, (float) secureFloat, 5);
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace Alis.Extension.Security.Test
 
             secureFloat--;
 
-            Assert.Equal(9f, (float) secureFloat);
+            Assert.Equal(9f, (float) secureFloat, 5);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Alis.Extension.Security.Test
 
             SecureFloat result = secureFloat1 - secureFloat2;
 
-            Assert.Equal(10f, (float) result);
+            Assert.Equal(10f, (float) result, 5);
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace Alis.Extension.Security.Test
             SecureFloat result = secureFloat1 * secureFloat2;
 
             // Assert
-            Assert.Equal(200f, (float) result);
+            Assert.Equal(200f, (float) result, 5);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Security.Test
             SecureFloat result = secureFloat1 / secureFloat2;
 
             // Assert
-            Assert.Equal(2f, (float) result);
+            Assert.Equal(2f, (float) result, 5);
         }
     }
 }

@@ -124,7 +124,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiViewport viewport = new ImGuiViewport();
             ImGuiViewportPtr viewportPtr = new ImGuiViewportPtr(viewport);
-            Assert.Equal(default(float), viewportPtr.DpiScale);
+            Assert.Equal(default(float), viewportPtr.DpiScale, 5);
         }
 
         /// <summary>

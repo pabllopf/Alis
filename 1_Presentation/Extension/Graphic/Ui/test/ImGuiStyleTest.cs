@@ -47,7 +47,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.Alpha = 0.5f;
-            Assert.Equal(0.5f, style.Alpha);
+            Assert.Equal(0.5f, style.Alpha, 5);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.DisabledAlpha = 0.3f;
-            Assert.Equal(0.3f, style.DisabledAlpha);
+            Assert.Equal(0.3f, style.DisabledAlpha, 5);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.WindowRounding = 5.0f;
-            Assert.Equal(5.0f, style.WindowRounding);
+            Assert.Equal(5.0f, style.WindowRounding, 5);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.WindowBorderSize = 1.0f;
-            Assert.Equal(1.0f, style.WindowBorderSize);
+            Assert.Equal(1.0f, style.WindowBorderSize, 5);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.ChildRounding = 3.0f;
-            Assert.Equal(3.0f, style.ChildRounding);
+            Assert.Equal(3.0f, style.ChildRounding, 5);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.ChildBorderSize = 2.0f;
-            Assert.Equal(2.0f, style.ChildBorderSize);
+            Assert.Equal(2.0f, style.ChildBorderSize, 5);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.PopupRounding = 4.0f;
-            Assert.Equal(4.0f, style.PopupRounding);
+            Assert.Equal(4.0f, style.PopupRounding, 5);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.PopupBorderSize = 1.5f;
-            Assert.Equal(1.5f, style.PopupBorderSize);
+            Assert.Equal(1.5f, style.PopupBorderSize, 5);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.FrameRounding = 2.0f;
-            Assert.Equal(2.0f, style.FrameRounding);
+            Assert.Equal(2.0f, style.FrameRounding, 5);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.FrameBorderSize = 1.0f;
-            Assert.Equal(1.0f, style.FrameBorderSize);
+            Assert.Equal(1.0f, style.FrameBorderSize, 5);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.IndentSpacing = 10.0f;
-            Assert.Equal(10.0f, style.IndentSpacing);
+            Assert.Equal(10.0f, style.IndentSpacing, 5);
         }
 
         /// <summary>
@@ -275,7 +275,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.ColumnsMinSpacing = 5.0f;
-            Assert.Equal(5.0f, style.ColumnsMinSpacing);
+            Assert.Equal(5.0f, style.ColumnsMinSpacing, 5);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.ScrollbarSize = 15.0f;
-            Assert.Equal(15.0f, style.ScrollbarSize);
+            Assert.Equal(15.0f, style.ScrollbarSize, 5);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.ScrollbarRounding = 3.0f;
-            Assert.Equal(3.0f, style.ScrollbarRounding);
+            Assert.Equal(3.0f, style.ScrollbarRounding, 5);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.GrabMinSize = 8.0f;
-            Assert.Equal(8.0f, style.GrabMinSize);
+            Assert.Equal(8.0f, style.GrabMinSize, 5);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.GrabRounding = 2.0f;
-            Assert.Equal(2.0f, style.GrabRounding);
+            Assert.Equal(2.0f, style.GrabRounding, 5);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.LogSliderDeadzone = 0.1f;
-            Assert.Equal(0.1f, style.LogSliderDeadzone);
+            Assert.Equal(0.1f, style.LogSliderDeadzone, 5);
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.TabRounding = 4.0f;
-            Assert.Equal(4.0f, style.TabRounding);
+            Assert.Equal(4.0f, style.TabRounding, 5);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.TabBorderSize = 1.0f;
-            Assert.Equal(1.0f, style.TabBorderSize);
+            Assert.Equal(1.0f, style.TabBorderSize, 5);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.TabMinWidthForCloseButton = 20.0f;
-            Assert.Equal(20.0f, style.TabMinWidthForCloseButton);
+            Assert.Equal(20.0f, style.TabMinWidthForCloseButton, 5);
         }
 
         /// <summary>
@@ -433,7 +433,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.MouseCursorScale = 1.5f;
-            Assert.Equal(1.5f, style.MouseCursorScale);
+            Assert.Equal(1.5f, style.MouseCursorScale, 5);
         }
 
         /// <summary>
@@ -477,7 +477,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.CurveTessellationTol = 1.25f;
-            Assert.Equal(1.25f, style.CurveTessellationTol);
+            Assert.Equal(1.25f, style.CurveTessellationTol, 5);
         }
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.CircleTessellationMaxError = 0.3f;
-            Assert.Equal(0.3f, style.CircleTessellationMaxError);
+            Assert.Equal(0.3f, style.CircleTessellationMaxError, 5);
         }
 
         /// <summary>

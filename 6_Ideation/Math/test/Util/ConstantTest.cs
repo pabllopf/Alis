@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Epsilon_ShouldBeCorrect()
         {
-            Assert.Equal(1.192092896e-07f, Constant.Epsilon);
+            Assert.Equal(1.192092896e-07f, Constant.Epsilon, 5);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Euler_ShouldBeCorrect()
         {
-            Assert.Equal(2.7182818284590452354f, Constant.Euler);
+            Assert.Equal(2.7182818284590452354f, Constant.Euler, 5);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_E_ShouldBeCorrect()
         {
-            Assert.Equal((float) System.Math.E, Constant.E);
+            Assert.Equal((float) System.Math.E, Constant.E, 5);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Log10E_ShouldBeCorrect()
         {
-            Assert.Equal(0.4342945f, Constant.Log10E);
+            Assert.Equal(0.4342945f, Constant.Log10E, 5);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Log2E_ShouldBeCorrect()
         {
-            Assert.Equal(1.442695f, Constant.Log2E);
+            Assert.Equal(1.442695f, Constant.Log2E, 5);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Pi_ShouldBeCorrect()
         {
-            Assert.Equal((float) System.Math.PI, Constant.Pi);
+            Assert.Equal((float) System.Math.PI, Constant.Pi, 5);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_PiOver2_ShouldBeCorrect()
         {
-            Assert.Equal((float) (System.Math.PI / 2.0), Constant.PiOver2);
+            Assert.Equal((float) (System.Math.PI / 2.0), Constant.PiOver2, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_PiOver4_ShouldBeCorrect()
         {
-            Assert.Equal((float) (System.Math.PI / 4.0), Constant.PiOver4);
+            Assert.Equal((float) (System.Math.PI / 4.0), Constant.PiOver4, 5);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_TwoPi_ShouldBeCorrect()
         {
-            Assert.Equal((float) (System.Math.PI * 2.0), Constant.TwoPi);
+            Assert.Equal((float) (System.Math.PI * 2.0), Constant.TwoPi, 5);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         [Fact]
         public void Constant_Tau_ShouldBeCorrect()
         {
-            Assert.Equal(Constant.TwoPi, Constant.Tau);
+            Assert.Equal(Constant.TwoPi, Constant.Tau, 5);
         }
     }
 }

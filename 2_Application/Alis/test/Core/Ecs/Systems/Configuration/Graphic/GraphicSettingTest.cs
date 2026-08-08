@@ -47,14 +47,14 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
         {
             GraphicSetting setting = new GraphicSetting();
 
-            Assert.Equal(60.0, setting.TargetFrames);
+            Assert.Equal(60.0, setting.TargetFrames, 5);
             Assert.Equal("OpenGL", setting.Target);
             Assert.False(setting.PreviewMode);
             Assert.Equal(Color.White, setting.GridColor);
             Assert.False(setting.HasGrid);
             Assert.Equal(Color.Black, setting.BackgroundColor);
-            Assert.Equal(800f, setting.WindowSize.X);
-            Assert.Equal(600f, setting.WindowSize.Y);
+            Assert.Equal(800f, setting.WindowSize.X, 5);
+            Assert.Equal(600f, setting.WindowSize.Y, 5);
             Assert.True(setting.IsResizable);
         }
 
@@ -70,14 +70,14 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
                 Color.Red, true, Color.Blue,
                 windowSize, false);
 
-            Assert.Equal(120.0, setting.TargetFrames);
+            Assert.Equal(120.0, setting.TargetFrames, 5);
             Assert.Equal("Vulkan", setting.Target);
             Assert.True(setting.PreviewMode);
             Assert.Equal(Color.Red, setting.GridColor);
             Assert.True(setting.HasGrid);
             Assert.Equal(Color.Blue, setting.BackgroundColor);
-            Assert.Equal(1920f, setting.WindowSize.X);
-            Assert.Equal(1080f, setting.WindowSize.Y);
+            Assert.Equal(1920f, setting.WindowSize.X, 5);
+            Assert.Equal(1080f, setting.WindowSize.Y, 5);
             Assert.False(setting.IsResizable);
         }
 
@@ -90,7 +90,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
             GraphicSetting setting = new GraphicSetting();
 
             setting.TargetFrames = 144.0;
-            Assert.Equal(144.0, setting.TargetFrames);
+            Assert.Equal(144.0, setting.TargetFrames, 5);
 
             setting.Target = "DirectX";
             Assert.Equal("DirectX", setting.Target);
@@ -102,8 +102,8 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
             Assert.True(setting.HasGrid);
 
             setting.WindowSize = new Vector2F(1024, 768);
-            Assert.Equal(1024f, setting.WindowSize.X);
-            Assert.Equal(768f, setting.WindowSize.Y);
+            Assert.Equal(1024f, setting.WindowSize.X, 5);
+            Assert.Equal(768f, setting.WindowSize.Y, 5);
 
             setting.IsResizable = false;
             Assert.False(setting.IsResizable);

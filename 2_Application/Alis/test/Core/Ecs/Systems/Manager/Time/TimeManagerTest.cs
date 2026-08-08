@@ -72,7 +72,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
             Context context = new Context();
             TimeManager timeManager = context.TimeManager;
 
-            Assert.Equal(1.0, timeManager.OneSecond);
+            Assert.Equal(1.0, timeManager.OneSecond, 5);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
             Context context = new Context();
             TimeManager timeManager = context.TimeManager;
 
-            Assert.Equal(0.016f, timeManager.Setting.FixedTimeStep);
+            Assert.Equal(0.016f, timeManager.Setting.FixedTimeStep, 5);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
             Context context = new Context();
             TimeManager timeManager = context.TimeManager;
 
-            Assert.Equal(1f, timeManager.TimeScale);
+            Assert.Equal(1f, timeManager.TimeScale, 5);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.DeltaTime = 0.05f;
 
-            Assert.Equal(0.05f, timeManager.DeltaTime);
+            Assert.Equal(0.05f, timeManager.DeltaTime, 5);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedDeltaTime = 0.033f;
 
-            Assert.Equal(0.033f, timeManager.FixedDeltaTime);
+            Assert.Equal(0.033f, timeManager.FixedDeltaTime, 5);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FrameCount = 42.0f;
 
-            Assert.Equal(42.0f, timeManager.FrameCount);
+            Assert.Equal(42.0f, timeManager.FrameCount, 5);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.MaximumDeltaTime = 0.1f;
 
-            Assert.Equal(0.1f, timeManager.MaximumDeltaTime);
+            Assert.Equal(0.1f, timeManager.MaximumDeltaTime, 5);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.SmoothDeltaTime = 0.016f;
 
-            Assert.Equal(0.016f, timeManager.SmoothDeltaTime);
+            Assert.Equal(0.016f, timeManager.SmoothDeltaTime, 5);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.Time = 5.5f;
 
-            Assert.Equal(5.5f, timeManager.Time);
+            Assert.Equal(5.5f, timeManager.Time, 5);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedTime = 1.5f;
 
-            Assert.Equal(1.5f, timeManager.FixedTime);
+            Assert.Equal(1.5f, timeManager.FixedTime, 5);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedTimeAsDouble = 2.5;
 
-            Assert.Equal(2.5, timeManager.FixedTimeAsDouble);
+            Assert.Equal(2.5, timeManager.FixedTimeAsDouble, 5);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedUnscaledDeltaTime = 0.02f;
 
-            Assert.Equal(0.02f, timeManager.FixedUnscaledDeltaTime);
+            Assert.Equal(0.02f, timeManager.FixedUnscaledDeltaTime, 5);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedUnscaledTime = 3.0f;
 
-            Assert.Equal(3.0f, timeManager.FixedUnscaledTime);
+            Assert.Equal(3.0f, timeManager.FixedUnscaledTime, 5);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.FixedUnscaledTimeAsDouble = 4.0;
 
-            Assert.Equal(4.0, timeManager.FixedUnscaledTimeAsDouble);
+            Assert.Equal(4.0, timeManager.FixedUnscaledTimeAsDouble, 5);
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.TimeAsDouble = 6.0;
 
-            Assert.Equal(6.0, timeManager.TimeAsDouble);
+            Assert.Equal(6.0, timeManager.TimeAsDouble, 5);
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.UnscaledDeltaTime = 0.03f;
 
-            Assert.Equal(0.03f, timeManager.UnscaledDeltaTime);
+            Assert.Equal(0.03f, timeManager.UnscaledDeltaTime, 5);
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.UnscaledTime = 7.0f;
 
-            Assert.Equal(7.0f, timeManager.UnscaledTime);
+            Assert.Equal(7.0f, timeManager.UnscaledTime, 5);
         }
 
         /// <summary>
@@ -378,7 +378,7 @@ namespace Alis.Test.Core.Ecs.Systems.Manager.Time
 
             timeManager.UnscaledTimeAsDouble = 8.0;
 
-            Assert.Equal(8.0, timeManager.UnscaledTimeAsDouble);
+            Assert.Equal(8.0, timeManager.UnscaledTimeAsDouble, 5);
     }
     }
 }

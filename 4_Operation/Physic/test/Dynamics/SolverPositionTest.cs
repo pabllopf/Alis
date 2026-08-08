@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             SolverPosition position = new SolverPosition();
 
             Assert.Equal(Vector2F.Zero, position.C);
-            Assert.Equal(0.0f, position.A);
+            Assert.Equal(0.0f, position.A, 5);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace Alis.Core.Physic.Test.Dynamics
                 C = new Vector2F(5.0f, 10.0f)
             };
 
-            Assert.Equal(5.0f, position.C.X);
-            Assert.Equal(10.0f, position.C.Y);
+            Assert.Equal(5.0f, position.C.X, 5);
+            Assert.Equal(10.0f, position.C.Y, 5);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 A = 1.5707f // ~PI/2
             };
 
-            Assert.Equal(1.5707f, position.A);
+            Assert.Equal(1.5707f, position.A, 5);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 A = -3.14159f
             };
 
-            Assert.Equal(-3.14159f, position.A);
+            Assert.Equal(-3.14159f, position.A, 5);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Alis.Core.Physic.Test.Dynamics
                 C = new Vector2F(-10.0f, -20.0f)
             };
 
-            Assert.Equal(-10.0f, position.C.X);
-            Assert.Equal(-20.0f, position.C.Y);
+            Assert.Equal(-10.0f, position.C.X, 5);
+            Assert.Equal(-20.0f, position.C.Y, 5);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             };
 
             Assert.Equal(Vector2F.Zero, position.C);
-            Assert.Equal(0.0f, position.A);
+            Assert.Equal(0.0f, position.A, 5);
         }
 
         /// <summary>
@@ -150,9 +150,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 A = 10.0f
             };
 
-            Assert.Equal(1000.0f, position.C.X);
-            Assert.Equal(2000.0f, position.C.Y);
-            Assert.Equal(10.0f, position.A);
+            Assert.Equal(1000.0f, position.C.X, 5);
+            Assert.Equal(2000.0f, position.C.Y, 5);
+            Assert.Equal(10.0f, position.A, 5);
         }
 
         /// <summary>

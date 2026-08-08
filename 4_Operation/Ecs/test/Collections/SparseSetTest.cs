@@ -122,8 +122,8 @@ namespace Alis.Core.Ecs.Test.Collections
             sparseSet[2] = 3.14159;
             sparseSet[7] = 2.71828;
 
-            Assert.Equal(3.14159, sparseSet[2]);
-            Assert.Equal(2.71828, sparseSet[7]);
+            Assert.Equal(3.14159, sparseSet[2], 5);
+            Assert.Equal(2.71828, sparseSet[7], 5);
         }
 
 

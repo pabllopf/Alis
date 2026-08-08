@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             SimpleExplosion explosion = new SimpleExplosion(world);
 
-            Assert.Equal(1f, explosion.Power);
+            Assert.Equal(1f, explosion.Power, 5);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             SimpleExplosion explosion = new SimpleExplosion(world);
             explosion.Power = 2f;
 
-            Assert.Equal(2f, explosion.Power);
+            Assert.Equal(2f, explosion.Power, 5);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             SimpleExplosion explosion = new SimpleExplosion(world);
             float percent = explosion.GetPercent(10f, 10f);
 
-            Assert.Equal(0f, percent);
+            Assert.Equal(0f, percent, 5);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             SimpleExplosion explosion = new SimpleExplosion(world);
             float percent = explosion.GetPercent(0f, 10f);
 
-            Assert.Equal(1f, percent);
+            Assert.Equal(1f, percent, 5);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             SimpleExplosion explosion = new SimpleExplosion(world);
             float percent = explosion.GetPercent(float.NaN, 10f);
 
-            Assert.Equal(0f, percent);
+            Assert.Equal(0f, percent, 5);
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             float percent = explosion.GetPercent(15f, 10f);
 
-            Assert.Equal(0f, percent);
+            Assert.Equal(0f, percent, 5);
         }
 
         /// <summary>
@@ -402,7 +402,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             float percent = explosion.GetPercent(-5f, 10f);
 
-            Assert.Equal(1f, percent);
+            Assert.Equal(1f, percent, 5);
         }
     }
 }

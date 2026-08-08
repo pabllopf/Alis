@@ -61,10 +61,10 @@ namespace Alis.Test.Core.Ecs.Components
             Transform transform = new Transform();
 
             transform.Rotation = 45f;
-            Assert.Equal(45f, transform.Rotation);
+            Assert.Equal(45f, transform.Rotation, 5);
 
             transform.Rotation = -90f;
-            Assert.Equal(-90f, transform.Rotation);
+            Assert.Equal(-90f, transform.Rotation, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Test.Core.Ecs.Components
             transform.OnExit(null!);
 
             Assert.Equal(new Vector2F(5f, 5f), transform.Position);
-            Assert.Equal(30f, transform.Rotation);
+            Assert.Equal(30f, transform.Rotation, 5);
             Assert.Equal(new Vector2F(2f, 2f), transform.Scale);
         }
 
@@ -131,8 +131,8 @@ namespace Alis.Test.Core.Ecs.Components
             Transform transform = new Transform();
 
             transform.Position = new Vector2F(-10f, -20f);
-            Assert.Equal(-10f, transform.Position.X);
-            Assert.Equal(-20f, transform.Position.Y);
+            Assert.Equal(-10f, transform.Position.X, 5);
+            Assert.Equal(-20f, transform.Position.Y, 5);
         }
 
         /// <summary>
@@ -144,8 +144,8 @@ namespace Alis.Test.Core.Ecs.Components
             Transform transform = new Transform();
 
             transform.Scale = Vector2F.Zero;
-            Assert.Equal(0f, transform.Scale.X);
-            Assert.Equal(0f, transform.Scale.Y);
+            Assert.Equal(0f, transform.Scale.X, 5);
+            Assert.Equal(0f, transform.Scale.Y, 5);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Alis.Test.Core.Ecs.Components
             transform.OnExit(null!);
 
             Assert.Equal(new Vector2F(10f, 20f), transform.Position);
-            Assert.Equal(45f, transform.Rotation);
+            Assert.Equal(45f, transform.Rotation, 5);
             Assert.Equal(Vector2F.One, transform.Scale);
         }
 
@@ -198,7 +198,7 @@ namespace Alis.Test.Core.Ecs.Components
             transform.OnExit(null!);
 
             Assert.Equal(new Vector2F(0f, 0f), transform.Position);
-            Assert.Equal(0f, transform.Rotation);
+            Assert.Equal(0f, transform.Rotation, 5);
             Assert.Equal(new Vector2F(0f, 0f), transform.Scale);
         }
     }

@@ -46,10 +46,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix2X2 matrix = new Matrix2X2(1.0f, 2.0f, 3.0f, 4.0f);
 
-            Assert.Equal(1.0f, matrix.Ex.X);
-            Assert.Equal(3.0f, matrix.Ex.Y);
-            Assert.Equal(2.0f, matrix.Ey.X);
-            Assert.Equal(4.0f, matrix.Ey.Y);
+            Assert.Equal(1.0f, matrix.Ex.X, 5);
+            Assert.Equal(3.0f, matrix.Ex.Y, 5);
+            Assert.Equal(2.0f, matrix.Ey.X, 5);
+            Assert.Equal(4.0f, matrix.Ey.Y, 5);
         }
 
         /// <summary>
@@ -61,10 +61,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix2X2 matrix = new Matrix2X2();
             matrix.Set(new Vector2F(1.0f, 2.0f), new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(1.0f, matrix.Ex.X);
-            Assert.Equal(2.0f, matrix.Ex.Y);
-            Assert.Equal(3.0f, matrix.Ey.X);
-            Assert.Equal(4.0f, matrix.Ey.Y);
+            Assert.Equal(1.0f, matrix.Ex.X, 5);
+            Assert.Equal(2.0f, matrix.Ex.Y, 5);
+            Assert.Equal(3.0f, matrix.Ey.X, 5);
+            Assert.Equal(4.0f, matrix.Ey.Y, 5);
         }
 
         /// <summary>
@@ -76,10 +76,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix2X2 matrix = new Matrix2X2();
             matrix.SetIdentity();
 
-            Assert.Equal(1.0f, matrix.Ex.X);
-            Assert.Equal(0.0f, matrix.Ex.Y);
-            Assert.Equal(0.0f, matrix.Ey.X);
-            Assert.Equal(1.0f, matrix.Ey.Y);
+            Assert.Equal(1.0f, matrix.Ex.X, 5);
+            Assert.Equal(0.0f, matrix.Ex.Y, 5);
+            Assert.Equal(0.0f, matrix.Ey.X, 5);
+            Assert.Equal(1.0f, matrix.Ey.Y, 5);
         }
 
         /// <summary>
@@ -91,10 +91,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix2X2 matrix = new Matrix2X2();
             matrix.SetZero();
 
-            Assert.Equal(0.0f, matrix.Ex.X);
-            Assert.Equal(0.0f, matrix.Ex.Y);
-            Assert.Equal(0.0f, matrix.Ey.X);
-            Assert.Equal(0.0f, matrix.Ey.Y);
+            Assert.Equal(0.0f, matrix.Ex.X, 5);
+            Assert.Equal(0.0f, matrix.Ex.Y, 5);
+            Assert.Equal(0.0f, matrix.Ey.X, 5);
+            Assert.Equal(0.0f, matrix.Ey.Y, 5);
         }
 
 
@@ -108,10 +108,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix2X2 matrix2 = new Matrix2X2(5.0f, 6.0f, 7.0f, 8.0f);
             Matrix2X2 result = matrix1 + matrix2;
 
-            Assert.Equal(6.0f, result.Ex.X);
-            Assert.Equal(10.0f, result.Ex.Y);
-            Assert.Equal(8.0f, result.Ey.X);
-            Assert.Equal(12.0f, result.Ey.Y);
+            Assert.Equal(6.0f, result.Ex.X, 5);
+            Assert.Equal(10.0f, result.Ex.Y, 5);
+            Assert.Equal(8.0f, result.Ey.X, 5);
+            Assert.Equal(12.0f, result.Ey.Y, 5);
         }
 
         /// <summary>
@@ -183,8 +183,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Matrix2X2 inverse = matrix.Inverse;
 
-            Assert.Equal(0f, inverse.Ex.X);
-            Assert.Equal(0f, inverse.Ex.Y);
+            Assert.Equal(0f, inverse.Ex.X, 5);
+            Assert.Equal(0f, inverse.Ex.Y, 5);
         }
 
         /// <summary>
@@ -195,10 +195,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix2X2 matrix = new Matrix2X2(0f);
 
-            Assert.Equal(1f, matrix.Ex.X);
-            Assert.Equal(0f, matrix.Ex.Y);
-            Assert.Equal(0f, matrix.Ey.X);
-            Assert.Equal(1f, matrix.Ey.Y);
+            Assert.Equal(1f, matrix.Ex.X, 5);
+            Assert.Equal(0f, matrix.Ex.Y, 5);
+            Assert.Equal(0f, matrix.Ey.X, 5);
+            Assert.Equal(1f, matrix.Ey.Y, 5);
             Assert.Equal(0f, matrix.GetAngle(), 4);
         }
 

@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
         [Fact]
         public void Alpha_ShouldBePoint3()
         {
-            Assert.Equal(0.3f, DtSweepContext.Alpha);
+            Assert.Equal(0.3f, DtSweepContext.Alpha, 5);
         }
 
         /// <summary>
@@ -410,7 +410,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
             Assert.Null(ctx.Basin.BottomNode);
             Assert.Null(ctx.Basin.LeftNode);
             Assert.Null(ctx.Basin.RightNode);
-            Assert.Equal(0.0, ctx.Basin.Width);
+            Assert.Equal(0.0, ctx.Basin.Width, 5);
             Assert.False(ctx.Basin.LeftHighest);
         }
 

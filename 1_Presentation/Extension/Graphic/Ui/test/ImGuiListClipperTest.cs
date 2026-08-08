@@ -79,7 +79,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
             listClipper.ItemsHeight = 25.5f;
-            Assert.Equal(25.5f, listClipper.ItemsHeight);
+            Assert.Equal(25.5f, listClipper.ItemsHeight, 5);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiListClipper listClipper = new ImGuiListClipper();
             listClipper.StartPosY = 30.0f;
-            Assert.Equal(30.0f, listClipper.StartPosY);
+            Assert.Equal(30.0f, listClipper.StartPosY, 5);
         }
 
         /// <summary>

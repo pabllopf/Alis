@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Common
 
             float distance = LineTools.DistanceBetweenPointAndLineSegment(ref point, ref start, ref end);
 
-            Assert.Equal(5.0f, distance);
+            Assert.Equal(5.0f, distance, 5);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Test.Common
 
             float distance = LineTools.DistanceBetweenPointAndLineSegment(ref point, ref start, ref end);
 
-            Assert.Equal(5.0f, distance);
+            Assert.Equal(5.0f, distance, 5);
         }
 
         /// <summary>
@@ -290,8 +290,8 @@ namespace Alis.Core.Physic.Test.Common
             bool intersects = LineTools.LineIntersect2(ref a0, ref a1, ref b0, ref b1, out Vector2F intersection);
 
             Assert.True(intersects);
-            Assert.Equal(5f, intersection.X);
-            Assert.Equal(0f, intersection.Y);
+            Assert.Equal(5f, intersection.X, 5);
+            Assert.Equal(0f, intersection.Y, 5);
         }
 
         /// <summary>

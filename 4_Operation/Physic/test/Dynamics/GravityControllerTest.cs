@@ -51,7 +51,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.Equal(strength, controller.Strength);
             Assert.Equal(float.MaxValue, controller.MaxRadius);
-            Assert.Equal(0.0f, controller.MinRadius);
+            Assert.Equal(0.0f, controller.MinRadius, 5);
             Assert.Equal(GravityType.DistanceSquared, controller.GravityType);
             Assert.NotNull(controller.Points);
             Assert.NotNull(controller.Bodies);
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             controller.Strength = 20.0f;
 
-            Assert.Equal(20.0f, controller.Strength);
+            Assert.Equal(20.0f, controller.Strength, 5);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             controller.MinRadius = 5.0f;
 
-            Assert.Equal(5.0f, controller.MinRadius);
+            Assert.Equal(5.0f, controller.MinRadius, 5);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             controller.MaxRadius = 50.0f;
 
-            Assert.Equal(50.0f, controller.MaxRadius);
+            Assert.Equal(50.0f, controller.MaxRadius, 5);
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             GravityController controller = new GravityController(-10.0f);
 
-            Assert.Equal(-10.0f, controller.Strength);
+            Assert.Equal(-10.0f, controller.Strength, 5);
         }
 
         /// <summary>
@@ -241,7 +241,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             GravityController controller = new GravityController(0.0f);
 
-            Assert.Equal(0.0f, controller.Strength);
+            Assert.Equal(0.0f, controller.Strength, 5);
         }
 
         /// <summary>

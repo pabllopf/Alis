@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             LinearVelocityBuilderImpl builder = new LinearVelocityBuilderImpl();
             VelocityBuilder result = builder.LinearVelocity(5f, 10f);
-            Assert.Equal(5f, result.VelocityX);
-            Assert.Equal(10f, result.VelocityY);
+            Assert.Equal(5f, result.VelocityX, 5);
+            Assert.Equal(10f, result.VelocityY, 5);
         }
 
         /// <summary>

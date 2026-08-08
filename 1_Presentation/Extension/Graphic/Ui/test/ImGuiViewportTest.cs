@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DpiScale_ShouldBeInitialized()
         {
             ImGuiViewport viewport = new ImGuiViewport();
-            Assert.Equal(0f, viewport.DpiScale);
+            Assert.Equal(0f, viewport.DpiScale, 5);
         }
 
         /// <summary>

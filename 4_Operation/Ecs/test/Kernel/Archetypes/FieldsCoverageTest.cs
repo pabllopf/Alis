@@ -62,8 +62,8 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             ref Alis.Core.Ecs.Test.Models.Position pos = ref fields.GetComponentDataReference<Alis.Core.Ecs.Test.Models.Position>();
 
-            Assert.Equal(42f, pos.X);
-            Assert.Equal(84f, pos.Y);
+            Assert.Equal(42f, pos.X, 5);
+            Assert.Equal(84f, pos.Y, 5);
         }
 
         /// <summary>

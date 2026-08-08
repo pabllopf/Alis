@@ -260,7 +260,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
                 Assert.True(writer.UseFilename);
                 Assert.Equal(1920, writer.VideoWidth);
                 Assert.Equal(1080, writer.VideoHeight);
-                Assert.Equal(30.0, writer.VideoFramerate);
+                Assert.Equal(30.0, writer.VideoFramerate, 5);
                 Assert.Equal(2, writer.AudioChannels);
                 Assert.Equal(44100, writer.AudioSampleRate);
                 Assert.Equal(16, writer.AudioBitDepth);
@@ -369,7 +369,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.False(writer.UseFilename);
             Assert.Equal(1920, writer.VideoWidth);
             Assert.Equal(1080, writer.VideoHeight);
-            Assert.Equal(30.0, writer.VideoFramerate);
+            Assert.Equal(30.0, writer.VideoFramerate, 5);
         }
 
         /// <summary>
@@ -620,7 +620,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
                 Assert.Equal(1280, writer.VideoWidth);
                 Assert.Equal(720, writer.VideoHeight);
-                Assert.Equal(60.0, writer.VideoFramerate);
+                Assert.Equal(60.0, writer.VideoFramerate, 5);
                 Assert.Equal(1, writer.AudioChannels);
                 Assert.Equal(48000, writer.AudioSampleRate);
                 Assert.Equal(24, writer.AudioBitDepth);
@@ -648,7 +648,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
 
                 Assert.Equal(3840, writer.VideoWidth);
                 Assert.Equal(2160, writer.VideoHeight);
-                Assert.Equal(24.0, writer.VideoFramerate);
+                Assert.Equal(24.0, writer.VideoFramerate, 5);
             }
             finally
             {

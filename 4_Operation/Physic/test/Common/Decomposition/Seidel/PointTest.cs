@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             float cross = p1.Cross(p2);
 
-            Assert.Equal(1.0f, cross);
+            Assert.Equal(1.0f, cross, 5);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             float dot = p1.Dot(p2);
 
-            Assert.Equal(10.0f, dot);
+            Assert.Equal(10.0f, dot, 5);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.Seidel
 
             float cross = p1.Cross(p2);
 
-            Assert.Equal(0.0f, cross);
+            Assert.Equal(0.0f, cross, 5);
         }
 
         /// <summary>

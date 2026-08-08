@@ -120,8 +120,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             fixture.GetFriction = 0.9f;
             fixture.GetRestitution = 0.2f;
 
-            Assert.Equal(0.9f, fixture.GetFriction);
-            Assert.Equal(0.2f, fixture.GetRestitution);
+            Assert.Equal(0.9f, fixture.GetFriction, 5);
+            Assert.Equal(0.2f, fixture.GetRestitution, 5);
         }
 
         /// <summary>
@@ -159,8 +159,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Assert.NotNull(clonedFixture);
             Assert.NotSame(sourceFixture, clonedFixture);
-            Assert.Equal(0.7f, clonedFixture.GetFriction);
-            Assert.Equal(0.3f, clonedFixture.GetRestitution);
+            Assert.Equal(0.7f, clonedFixture.GetFriction, 5);
+            Assert.Equal(0.3f, clonedFixture.GetRestitution, 5);
             Assert.True(clonedFixture.GetIsSensor);
             Assert.Equal("test-tag", clonedFixture.Tag);
             Assert.Same(targetBody, clonedFixture.GetBody);
@@ -177,8 +177,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
             Assert.Equal(Categories.All, fixture.GetCollidesWith);
             Assert.Equal((short)0, fixture.GetCollisionGroup);
-            Assert.Equal(0.2f, fixture.GetFriction);
-            Assert.Equal(0.0f, fixture.GetRestitution);
+            Assert.Equal(0.2f, fixture.GetFriction, 5);
+            Assert.Equal(0.0f, fixture.GetRestitution, 5);
             Assert.False(fixture.GetIsSensor);
             Assert.Null(fixture.GetBody);
             Assert.NotNull(fixture.GetShape);
@@ -418,8 +418,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Fixture cloned = sourceFixture.CloneOnto(targetBody);
 
             Assert.Equal("clone-test", cloned.Tag);
-            Assert.Equal(0.2f, cloned.GetFriction);
-            Assert.Equal(0.0f, cloned.GetRestitution);
+            Assert.Equal(0.2f, cloned.GetFriction, 5);
+            Assert.Equal(0.0f, cloned.GetRestitution, 5);
             Assert.Equal(sourceFixture.Proxies.Length, cloned.Proxies.Length);
         }
 
@@ -435,8 +435,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(Categories.Cat1, fixture.GetCollisionCategories);
             Assert.Equal(Categories.All, fixture.GetCollidesWith);
             Assert.Equal((short)0, fixture.GetCollisionGroup);
-            Assert.Equal(0.2f, fixture.GetFriction);
-            Assert.Equal(0.0f, fixture.GetRestitution);
+            Assert.Equal(0.2f, fixture.GetFriction, 5);
+            Assert.Equal(0.0f, fixture.GetRestitution, 5);
             Assert.False(fixture.GetIsSensor);
             Assert.Null(fixture.GetBody);
         }

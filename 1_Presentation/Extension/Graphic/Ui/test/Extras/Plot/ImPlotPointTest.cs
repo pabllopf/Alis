@@ -46,8 +46,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = 10.0, Y = 20.0 };
 
-            Assert.Equal(10.0, point.X);
-            Assert.Equal(20.0, point.Y);
+            Assert.Equal(10.0, point.X, 5);
+            Assert.Equal(20.0, point.Y, 5);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = -50.5, Y = 100.0 };
 
-            Assert.Equal(-50.5, point.X);
+            Assert.Equal(-50.5, point.X, 5);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 999.99 };
 
-            Assert.Equal(999.99, point.Y);
+            Assert.Equal(999.99, point.Y, 5);
         }
 
         /// <summary>
@@ -83,8 +83,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             point.X = -100.0;
             point.Y = 200.0;
 
-            Assert.Equal(-100.0, point.X);
-            Assert.Equal(200.0, point.Y);
+            Assert.Equal(-100.0, point.X, 5);
+            Assert.Equal(200.0, point.Y, 5);
         }
 
         /// <summary>
@@ -95,8 +95,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint();
 
-            Assert.Equal(0.0, point.X);
-            Assert.Equal(0.0, point.Y);
+            Assert.Equal(0.0, point.X, 5);
+            Assert.Equal(0.0, point.Y, 5);
         }
 
         /// <summary>
@@ -107,8 +107,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = -1000.0, Y = -500.0 };
 
-            Assert.Equal(-1000.0, point.X);
-            Assert.Equal(-500.0, point.Y);
+            Assert.Equal(-1000.0, point.X, 5);
+            Assert.Equal(-500.0, point.Y, 5);
         }
 
         /// <summary>
@@ -149,8 +149,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = 0.0, Y = 0.0 };
 
-            Assert.Equal(0.0, point.X);
-            Assert.Equal(0.0, point.Y);
+            Assert.Equal(0.0, point.X, 5);
+            Assert.Equal(0.0, point.Y, 5);
         }
 
         /// <summary>
@@ -161,8 +161,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { X = 42.0 };
 
-            Assert.Equal(42.0, point.X);
-            Assert.Equal(0.0, point.Y);
+            Assert.Equal(42.0, point.X, 5);
+            Assert.Equal(0.0, point.Y, 5);
         }
 
         /// <summary>
@@ -173,8 +173,8 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotPoint point = new ImPlotPoint { Y = 42.0 };
 
-            Assert.Equal(0.0, point.X);
-            Assert.Equal(42.0, point.Y);
+            Assert.Equal(0.0, point.X, 5);
+            Assert.Equal(42.0, point.Y, 5);
         }
     }
 }

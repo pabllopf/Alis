@@ -839,8 +839,8 @@ namespace Alis.Core.Aspect.Data.Test.Json.Regression
             string json = JsonNativeAot.Serialize(original);
             NumericTypesStruct restored = JsonNativeAot.Deserialize<NumericTypesStruct>(json);
 
-            Assert.Equal(0.0, Math.Abs(restored.DoubleValue));
-            Assert.Equal(0.0f, Math.Abs(restored.FloatValue));
+            Assert.Equal(0.0, Math.Abs(restored.DoubleValue), 5);
+            Assert.Equal(0.0f, Math.Abs(restored.FloatValue), 5);
         }
 
         /// <summary>

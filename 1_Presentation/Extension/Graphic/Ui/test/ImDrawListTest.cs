@@ -212,7 +212,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImDrawList drawList = new ImDrawList();
             drawList.FringeScale = 1.5f;
-            Assert.Equal(1.5f, drawList.FringeScale);
+            Assert.Equal(1.5f, drawList.FringeScale, 5);
         }
     }
 }

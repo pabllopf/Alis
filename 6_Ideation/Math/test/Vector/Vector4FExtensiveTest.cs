@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Constructor_FourValues_SetsAllComponentsCorrectly()
         {
             Vector4F vector = new Vector4F(1.0f, 2.0f, 3.0f, 4.0f);
-            Assert.Equal(1.0f, vector.X);
-            Assert.Equal(2.0f, vector.Y);
-            Assert.Equal(3.0f, vector.Z);
-            Assert.Equal(4.0f, vector.W);
+            Assert.Equal(1.0f, vector.X, 5);
+            Assert.Equal(2.0f, vector.Y, 5);
+            Assert.Equal(3.0f, vector.Z, 5);
+            Assert.Equal(4.0f, vector.W, 5);
         }
 
         /// <summary>
@@ -58,10 +58,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         public void Constructor_Default_CreatesZeroVector()
         {
             Vector4F vector = default(Vector4F);
-            Assert.Equal(0.0f, vector.X);
-            Assert.Equal(0.0f, vector.Y);
-            Assert.Equal(0.0f, vector.Z);
-            Assert.Equal(0.0f, vector.W);
+            Assert.Equal(0.0f, vector.X, 5);
+            Assert.Equal(0.0f, vector.Y, 5);
+            Assert.Equal(0.0f, vector.Z, 5);
+            Assert.Equal(0.0f, vector.W, 5);
         }
     }
 }

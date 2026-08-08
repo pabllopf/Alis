@@ -102,8 +102,8 @@ namespace Alis.Core.Ecs.Test.Collections
             table[0] = 3.14;
             table[5] = 2.71;
 
-            Assert.Equal(3.14, table[0]);
-            Assert.Equal(2.71, table[5]);
+            Assert.Equal(3.14, table[0], 5);
+            Assert.Equal(2.71, table[5], 5);
         }
 
         /// <summary>

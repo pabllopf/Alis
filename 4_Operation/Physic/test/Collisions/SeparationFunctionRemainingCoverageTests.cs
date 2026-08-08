@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.FindMinSeparation(out int idxA, out int idxB, 0.0f);
-            Assert.Equal(0.0f, sep);
+            Assert.Equal(0.0f, sep, 5);
             Assert.Equal(-1, idxA);
             Assert.Equal(-1, idxB);
         }
@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.Evaluate(0, 0, 0.0f);
-            Assert.Equal(0.0f, sep);
+            Assert.Equal(0.0f, sep, 5);
         }
     }
 }

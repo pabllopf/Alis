@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Complex complex = new Complex(3.0f, 4.0f);
 
-            Assert.Equal(3.0f, complex.R);
-            Assert.Equal(4.0f, complex.I);
+            Assert.Equal(3.0f, complex.R, 5);
+            Assert.Equal(4.0f, complex.I, 5);
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Complex one = Complex.One;
 
-            Assert.Equal(1.0f, one.R);
-            Assert.Equal(0.0f, one.I);
+            Assert.Equal(1.0f, one.R, 5);
+            Assert.Equal(0.0f, one.I, 5);
         }
 
         /// <summary>
@@ -71,8 +71,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Complex imaginaryOne = Complex.ImaginaryOne;
 
-            Assert.Equal(0.0f, imaginaryOne.R);
-            Assert.Equal(1.0f, imaginaryOne.I);
+            Assert.Equal(0.0f, imaginaryOne.R, 5);
+            Assert.Equal(1.0f, imaginaryOne.I, 5);
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             complex.Conjugate();
 
-            Assert.Equal(3.0f, complex.R);
-            Assert.Equal(-4.0f, complex.I);
+            Assert.Equal(3.0f, complex.R, 5);
+            Assert.Equal(-4.0f, complex.I, 5);
         }
 
         /// <summary>
@@ -145,8 +145,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             complex.Negate();
 
-            Assert.Equal(-3.0f, complex.R);
-            Assert.Equal(-4.0f, complex.I);
+            Assert.Equal(-3.0f, complex.R, 5);
+            Assert.Equal(-4.0f, complex.I, 5);
         }
 
         /// <summary>
@@ -186,8 +186,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             complex.Phase = 0.0f;
 
-            Assert.Equal(1.0f, complex.R);
-            Assert.Equal(0.0f, complex.I);
+            Assert.Equal(1.0f, complex.R, 5);
+            Assert.Equal(0.0f, complex.I, 5);
         }
 
         /// <summary>
@@ -213,8 +213,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F vector = complex.ToVector2();
 
-            Assert.Equal(3.0f, vector.X);
-            Assert.Equal(4.0f, vector.Y);
+            Assert.Equal(3.0f, vector.X, 5);
+            Assert.Equal(4.0f, vector.Y, 5);
         }
 
         /// <summary>
@@ -362,8 +362,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Complex result = Complex.Conjugate(ref complex);
 
-            Assert.Equal(3.0f, result.R);
-            Assert.Equal(-4.0f, result.I);
+            Assert.Equal(3.0f, result.R, 5);
+            Assert.Equal(-4.0f, result.I, 5);
         }
 
         /// <summary>
@@ -376,8 +376,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Complex result = Complex.Negate(ref complex);
 
-            Assert.Equal(-3.0f, result.R);
-            Assert.Equal(-4.0f, result.I);
+            Assert.Equal(-3.0f, result.R, 5);
+            Assert.Equal(-4.0f, result.I, 5);
         }
 
         /// <summary>

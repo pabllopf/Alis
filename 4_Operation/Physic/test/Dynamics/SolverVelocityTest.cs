@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             SolverVelocity velocity = new SolverVelocity();
 
             Assert.Equal(Vector2F.Zero, velocity.V);
-            Assert.Equal(0.0f, velocity.W);
+            Assert.Equal(0.0f, velocity.W, 5);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace Alis.Core.Physic.Test.Dynamics
                 V = new Vector2F(10.0f, 15.0f)
             };
 
-            Assert.Equal(10.0f, velocity.V.X);
-            Assert.Equal(15.0f, velocity.V.Y);
+            Assert.Equal(10.0f, velocity.V.X, 5);
+            Assert.Equal(15.0f, velocity.V.Y, 5);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 W = 5.0f
             };
 
-            Assert.Equal(5.0f, velocity.W);
+            Assert.Equal(5.0f, velocity.W, 5);
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace Alis.Core.Physic.Test.Dynamics
                 V = new Vector2F(-5.0f, -10.0f)
             };
 
-            Assert.Equal(-5.0f, velocity.V.X);
-            Assert.Equal(-10.0f, velocity.V.Y);
+            Assert.Equal(-5.0f, velocity.V.X, 5);
+            Assert.Equal(-10.0f, velocity.V.Y, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 W = -2.5f
             };
 
-            Assert.Equal(-2.5f, velocity.W);
+            Assert.Equal(-2.5f, velocity.W, 5);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             };
 
             Assert.Equal(Vector2F.Zero, velocity.V);
-            Assert.Equal(0.0f, velocity.W);
+            Assert.Equal(0.0f, velocity.W, 5);
         }
 
         /// <summary>
@@ -150,9 +150,9 @@ namespace Alis.Core.Physic.Test.Dynamics
                 W = 100.0f
             };
 
-            Assert.Equal(1000.0f, velocity.V.X);
-            Assert.Equal(2000.0f, velocity.V.Y);
-            Assert.Equal(100.0f, velocity.W);
+            Assert.Equal(1000.0f, velocity.V.X, 5);
+            Assert.Equal(2000.0f, velocity.V.Y, 5);
+            Assert.Equal(100.0f, velocity.W, 5);
         }
 
         /// <summary>

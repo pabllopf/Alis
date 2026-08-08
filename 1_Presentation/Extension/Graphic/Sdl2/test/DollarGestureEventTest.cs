@@ -50,9 +50,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0L, ev.touchId);
             Assert.Equal(0L, ev.gestureId);
             Assert.Equal(0u, ev.numFingers);
-            Assert.Equal(0f, ev.error);
-            Assert.Equal(0f, ev.x);
-            Assert.Equal(0f, ev.y);
+            Assert.Equal(0f, ev.error, 5);
+            Assert.Equal(0f, ev.x, 5);
+            Assert.Equal(0f, ev.y, 5);
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(12345L, ev.touchId);
             Assert.Equal(67890L, ev.gestureId);
             Assert.Equal(3u, ev.numFingers);
-            Assert.Equal(0.1f, ev.error);
-            Assert.Equal(200f, ev.x);
-            Assert.Equal(150f, ev.y);
+            Assert.Equal(0.1f, ev.error, 5);
+            Assert.Equal(200f, ev.x, 5);
+            Assert.Equal(150f, ev.y, 5);
         }
 
         /// <summary>

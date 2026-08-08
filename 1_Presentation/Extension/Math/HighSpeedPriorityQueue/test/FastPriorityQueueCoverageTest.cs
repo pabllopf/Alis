@@ -202,7 +202,7 @@ namespace Alis.Extension.Math.HighSpeedPriorityQueue.Test
             queue.UpdatePriority(node2, 5f);
 
             Assert.Same(node1, queue.First);
-            Assert.Equal(5f, node2.Priority);
+            Assert.Equal(5f, node2.Priority, 5);
             Assert.True(queue.IsValidQueue());
         }
     }

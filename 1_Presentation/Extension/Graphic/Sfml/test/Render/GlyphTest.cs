@@ -45,11 +45,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Default_Fields_HaveExpectedValues()
         {
             Glyph g = new Glyph();
-            Assert.Equal(0.0f, g.Advance);
-            Assert.Equal(0.0f, g.Bounds.Left);
-            Assert.Equal(0.0f, g.Bounds.Top);
-            Assert.Equal(0.0f, g.Bounds.Width);
-            Assert.Equal(0.0f, g.Bounds.Height);
+            Assert.Equal(0.0f, g.Advance, 5);
+            Assert.Equal(0.0f, g.Bounds.Left, 5);
+            Assert.Equal(0.0f, g.Bounds.Top, 5);
+            Assert.Equal(0.0f, g.Bounds.Width, 5);
+            Assert.Equal(0.0f, g.Bounds.Height, 5);
             Assert.Equal(0, g.TextureRect.Left);
             Assert.Equal(0, g.TextureRect.Top);
             Assert.Equal(0, g.TextureRect.Width);

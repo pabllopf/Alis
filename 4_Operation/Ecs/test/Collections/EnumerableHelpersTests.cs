@@ -144,8 +144,8 @@ namespace Alis.Core.Ecs.Test.Collections
             List<double> source = new List<double> { 1.1, 2.2, 3.3 };
             EnumerableHelpers.ToSpan(source, destination, out int length);
             Assert.Equal(3, length);
-            Assert.Equal(1.1, destination[0]);
-            Assert.Equal(3.3, destination[2]);
+            Assert.Equal(1.1, destination[0], 5);
+            Assert.Equal(3.3, destination[2], 5);
         }
 
         /// <summary>

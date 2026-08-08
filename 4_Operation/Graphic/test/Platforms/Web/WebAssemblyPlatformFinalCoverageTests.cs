@@ -691,7 +691,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_LeftStickX_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.LeftStickX);
+            Assert.Equal(0.0f, state.LeftStickX, 5);
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.LeftStickX = 0.5f;
-            Assert.Equal(0.5f, state.LeftStickX);
+            Assert.Equal(0.5f, state.LeftStickX, 5);
         }
 
         /// <summary>
@@ -712,7 +712,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_LeftStickY_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.LeftStickY);
+            Assert.Equal(0.0f, state.LeftStickY, 5);
         }
 
         /// <summary>
@@ -723,7 +723,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.LeftStickY = 0.5f;
-            Assert.Equal(0.5f, state.LeftStickY);
+            Assert.Equal(0.5f, state.LeftStickY, 5);
         }
 
         /// <summary>
@@ -733,7 +733,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_RightStickX_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.RightStickX);
+            Assert.Equal(0.0f, state.RightStickX, 5);
         }
 
         /// <summary>
@@ -744,7 +744,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.RightStickX = 0.5f;
-            Assert.Equal(0.5f, state.RightStickX);
+            Assert.Equal(0.5f, state.RightStickX, 5);
         }
 
         /// <summary>
@@ -754,7 +754,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_RightStickY_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.RightStickY);
+            Assert.Equal(0.0f, state.RightStickY, 5);
         }
 
         /// <summary>
@@ -765,7 +765,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.RightStickY = 0.5f;
-            Assert.Equal(0.5f, state.RightStickY);
+            Assert.Equal(0.5f, state.RightStickY, 5);
         }
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_LeftTrigger_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.LeftTrigger);
+            Assert.Equal(0.0f, state.LeftTrigger, 5);
         }
 
         /// <summary>
@@ -786,7 +786,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.LeftTrigger = 0.5f;
-            Assert.Equal(0.5f, state.LeftTrigger);
+            Assert.Equal(0.5f, state.LeftTrigger, 5);
         }
 
         /// <summary>
@@ -796,7 +796,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GamepadState_RightTrigger_DefaultIsZero()
         {
             GamepadState state = new GamepadState();
-            Assert.Equal(0.0f, state.RightTrigger);
+            Assert.Equal(0.0f, state.RightTrigger, 5);
         }
 
         /// <summary>
@@ -807,7 +807,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             GamepadState state = new GamepadState();
             state.RightTrigger = 0.5f;
-            Assert.Equal(0.5f, state.RightTrigger);
+            Assert.Equal(0.5f, state.RightTrigger, 5);
         }
 
         /// <summary>

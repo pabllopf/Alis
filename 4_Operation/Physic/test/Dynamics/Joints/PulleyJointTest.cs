@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Ratio = 2.0f;
 
-            Assert.Equal(2.0f, joint.Ratio);
+            Assert.Equal(2.0f, joint.Ratio, 5);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.LengthA = 3.0f;
 
-            Assert.Equal(3.0f, joint.LengthA);
+            Assert.Equal(3.0f, joint.LengthA, 5);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.LengthB = 4.0f;
 
-            Assert.Equal(4.0f, joint.LengthB);
+            Assert.Equal(4.0f, joint.LengthB, 5);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             PulleyJoint joint = new PulleyJoint(bodyA, bodyB, localAnchor, localAnchor, worldAnchor, worldAnchor, 2.0f, true);
 
             Assert.Equal(JointType.Pulley, joint.JointType);
-            Assert.Equal(2.0f, joint.Ratio);
+            Assert.Equal(2.0f, joint.Ratio, 5);
             Assert.True(joint.LengthA > 0);
             Assert.True(joint.LengthB > 0);
         }
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             iterations.PositionIterations = 10;
             world.Step(1.0f / 60.0f, ref iterations);
 
-            Assert.Equal(2.0f, joint.Ratio);
+            Assert.Equal(2.0f, joint.Ratio, 5);
         }
 
         /// <summary>

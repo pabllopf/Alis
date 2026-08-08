@@ -160,10 +160,10 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx.Native
         public void GetWindowFrame_ReturnsDefault_ForNilWindow()
         {
             NsRect frame = ObjectiveCInterop.GetWindowFrame(IntPtr.Zero);
-            Assert.Equal(0.0, frame.x);
-            Assert.Equal(0.0, frame.y);
-            Assert.Equal(0.0, frame.width);
-            Assert.Equal(0.0, frame.height);
+            Assert.Equal(0.0, frame.x, 5);
+            Assert.Equal(0.0, frame.y, 5);
+            Assert.Equal(0.0, frame.width, 5);
+            Assert.Equal(0.0, frame.height, 5);
         }
 
         /// <summary>

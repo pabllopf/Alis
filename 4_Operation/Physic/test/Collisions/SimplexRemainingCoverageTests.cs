@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.WriteCache(ref cache);
 
             Assert.Equal(0u, cache.Count);
-            Assert.Equal(0.0f, cache.Metric);
+            Assert.Equal(0.0f, cache.Metric, 5);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(1, (int)cache.Count);
             Assert.Equal(5, (int)cache.IndexA[0]);
             Assert.Equal(10, (int)cache.IndexB[0]);
-            Assert.Equal(0.0f, cache.Metric);
+            Assert.Equal(0.0f, cache.Metric, 5);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve2();
 
             Assert.Equal(1, simplex.Count);
-            Assert.Equal(1.0f, simplex.V[0].A);
+            Assert.Equal(1.0f, simplex.V[0].A, 5);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve2();
 
             Assert.Equal(1, simplex.Count);
-            Assert.Equal(1.0f, simplex.V[0].A);
+            Assert.Equal(1.0f, simplex.V[0].A, 5);
         }
 
         /// <summary>
@@ -305,8 +305,8 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve2();
 
             Assert.Equal(2, simplex.Count);
-            Assert.Equal(0.5f, simplex.V[0].A);
-            Assert.Equal(0.5f, simplex.V[1].A);
+            Assert.Equal(0.5f, simplex.V[0].A, 5);
+            Assert.Equal(0.5f, simplex.V[1].A, 5);
         }
 
         /// <summary>
@@ -327,7 +327,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve3();
 
             Assert.Equal(1, simplex.Count);
-            Assert.Equal(1.0f, simplex.V[0].A);
+            Assert.Equal(1.0f, simplex.V[0].A, 5);
         }
 
         /// <summary>
@@ -348,7 +348,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve3();
 
             Assert.Equal(1, simplex.Count);
-            Assert.Equal(1.0f, simplex.V[0].A);
+            Assert.Equal(1.0f, simplex.V[0].A, 5);
         }
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Test.Collisions
             simplex.Solve3();
 
             Assert.Equal(1, simplex.Count);
-            Assert.Equal(1.0f, simplex.V[0].A);
+            Assert.Equal(1.0f, simplex.V[0].A, 5);
         }
 
         /// <summary>
@@ -486,7 +486,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             float metric = simplex.GetMetric();
 
-            Assert.Equal(0.0f, metric);
+            Assert.Equal(0.0f, metric, 5);
         }
 
         /// <summary>

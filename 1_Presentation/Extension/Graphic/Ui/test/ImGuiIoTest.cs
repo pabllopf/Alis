@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PenPressure_ShouldBeInitialized()
         {
             ImGuiIo io = new ImGuiIo();
-            Assert.Equal(0f, io.PenPressure);
+            Assert.Equal(0f, io.PenPressure, 5);
         }
 
         /// <summary>

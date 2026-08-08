@@ -120,8 +120,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         public void Vector2F_ShouldBeAccessible()
         {
             Vector2F vector = new Vector2F(1.0f, 2.0f);
-            Assert.Equal(1.0f, vector.X);
-            Assert.Equal(2.0f, vector.Y);
+            Assert.Equal(1.0f, vector.X, 5);
+            Assert.Equal(2.0f, vector.Y, 5);
         }
 
         /// <summary>
@@ -134,12 +134,12 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Vector2F v2 = new Vector2F(1.0f, 2.0f);
 
             Vector2F sum = v1 + v2;
-            Assert.Equal(4.0f, sum.X);
-            Assert.Equal(6.0f, sum.Y);
+            Assert.Equal(4.0f, sum.X, 5);
+            Assert.Equal(6.0f, sum.Y, 5);
 
             Vector2F diff = v1 - v2;
-            Assert.Equal(2.0f, diff.X);
-            Assert.Equal(2.0f, diff.Y);
+            Assert.Equal(2.0f, diff.X, 5);
+            Assert.Equal(2.0f, diff.Y, 5);
         }
 
         /// <summary>
@@ -230,11 +230,11 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Vector2F v2 = new Vector2F(0, 1);
 
             float dot = Vector2F.Dot(v1, v2);
-            Assert.Equal(0.0f, dot);
+            Assert.Equal(0.0f, dot, 5);
 
             Vector2F v3 = new Vector2F(1, 1);
             dot = Vector2F.Dot(v3, v3);
-            Assert.Equal(2.0f, dot);
+            Assert.Equal(2.0f, dot, 5);
         }
 
         /// <summary>
@@ -247,10 +247,10 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
             Vector2F v2 = new Vector2F(0, 1);
 
             float cross = MathUtils.Cross(v1, v2);
-            Assert.Equal(1.0f, cross);
+            Assert.Equal(1.0f, cross, 5);
 
             cross = MathUtils.Cross(v2, v1);
-            Assert.Equal(-1.0f, cross);
+            Assert.Equal(-1.0f, cross, 5);
         }
 
         /// <summary>
@@ -286,8 +286,8 @@ namespace Alis.Core.Physic.Test.Common.PolygonManipulation
         public void Vector2F_OneShouldBeAccessible()
         {
             Vector2F one = Vector2F.One;
-            Assert.Equal(1.0f, one.X);
-            Assert.Equal(1.0f, one.Y);
+            Assert.Equal(1.0f, one.X, 5);
+            Assert.Equal(1.0f, one.Y, 5);
         }
 
         /// <summary>

@@ -81,7 +81,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             InputSetting setting = new InputSetting();
 
-            Assert.Equal(0.1f, setting.MouseSensitivity);
+            Assert.Equal(0.1f, setting.MouseSensitivity, 5);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             InputSetting setting = new InputSetting(1.75f);
 
-            Assert.Equal(1.75f, setting.MouseSensitivity);
+            Assert.Equal(1.75f, setting.MouseSensitivity, 5);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             GraphicSetting setting = new GraphicSetting();
 
-            Assert.Equal(60.0, setting.TargetFrames);
+            Assert.Equal(60.0, setting.TargetFrames, 5);
             Assert.Equal("OpenGL", setting.Target);
             Assert.False(setting.PreviewMode);
             Assert.False(setting.HasGrid);
@@ -127,7 +127,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
                 new Vector2F(1920, 1080),
                 false);
 
-            Assert.Equal(144.0, setting.TargetFrames);
+            Assert.Equal(144.0, setting.TargetFrames, 5);
             Assert.Equal("Vulkan", setting.Target);
             Assert.True(setting.PreviewMode);
             Assert.True(setting.HasGrid);
@@ -226,7 +226,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
             Assert.Equal(general.Name, setting.General.Name);
             Assert.Equal(20, setting.Audio.Volume);
             Assert.Equal(120, setting.Graphic.TargetFrames);
-            Assert.Equal(0.5f, setting.Input.MouseSensitivity);
+            Assert.Equal(0.5f, setting.Input.MouseSensitivity, 5);
             Assert.Equal(7777, setting.Network.Port);
             Assert.Equal(new Vector2F(1, 2), setting.Physic.Gravity);
         }

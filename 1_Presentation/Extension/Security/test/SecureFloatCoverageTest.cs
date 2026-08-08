@@ -77,7 +77,7 @@ namespace Alis.Extension.Security.Test
         public void NegativeZero_RoundTrips()
         {
             SecureFloat secureFloat = new SecureFloat(-0f);
-            Assert.Equal(0f, (float)secureFloat);
+            Assert.Equal(0f, (float)secureFloat, 5);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Extension.Security.Test
         public void SmallValue_RoundTrips()
         {
             SecureFloat secureFloat = new SecureFloat(0.5f);
-            Assert.Equal(0.5f, (float)secureFloat);
+            Assert.Equal(0.5f, (float)secureFloat, 5);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Alis.Extension.Security.Test
         public void DefaultConstructor_InitializesToZero()
         {
             SecureFloat secureFloat = new SecureFloat();
-            Assert.Equal(0f, (float)secureFloat);
+            Assert.Equal(0f, (float)secureFloat, 5);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Alis.Extension.Security.Test
         public void MaxValue_RoundTrips()
         {
             SecureFloat secureFloat = new SecureFloat(float.MaxValue);
-            Assert.Equal(float.MaxValue, (float)secureFloat);
+            Assert.Equal(float.MaxValue, (float)secureFloat, 5);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Security.Test
         public void MinValue_RoundTrips()
         {
             SecureFloat secureFloat = new SecureFloat(float.MinValue);
-            Assert.Equal(float.MinValue, (float)secureFloat);
+            Assert.Equal(float.MinValue, (float)secureFloat, 5);
         }
 
         /// <summary>

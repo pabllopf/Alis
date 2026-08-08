@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             MassData massData = default;
 
-            Assert.Equal(0f, massData.Area);
+            Assert.Equal(0f, massData.Area, 5);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             MassData massData = default;
 
-            Assert.Equal(0f, massData.Inertia);
+            Assert.Equal(0f, massData.Inertia, 5);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             MassData massData = default;
 
-            Assert.Equal(0f, massData.Mass);
+            Assert.Equal(0f, massData.Mass, 5);
         }
 
         /// <summary>

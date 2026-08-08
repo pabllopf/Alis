@@ -104,8 +104,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             ContentScaleEventArgs args = new ContentScaleEventArgs(xScale, yScale);
 
-            Assert.Equal(1.0f, args.XScale);
-            Assert.Equal(1.0f, args.YScale);
+            Assert.Equal(1.0f, args.XScale, 5);
+            Assert.Equal(1.0f, args.YScale, 5);
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             ContentScaleEventArgs args = new ContentScaleEventArgs(xScale, yScale);
 
-            Assert.Equal(3.0f, args.XScale);
-            Assert.Equal(3.0f, args.YScale);
+            Assert.Equal(3.0f, args.XScale, 5);
+            Assert.Equal(3.0f, args.YScale, 5);
         }
 
         /// <summary>

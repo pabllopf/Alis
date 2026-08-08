@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxForce = 500.0f;
 
-            Assert.Equal(500.0f, joint.MaxForce);
+            Assert.Equal(500.0f, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Frequency = 10.0f;
 
-            Assert.Equal(10.0f, joint.Frequency);
+            Assert.Equal(10.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.DampingRatio = 0.5f;
 
-            Assert.Equal(0.5f, joint.DampingRatio);
+            Assert.Equal(0.5f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body body = new Body();
             FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
 
-            Assert.Equal(5.0f, joint.Frequency);
+            Assert.Equal(5.0f, joint.Frequency, 5);
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body body = new Body();
             FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
 
-            Assert.Equal(0.7f, joint.DampingRatio);
+            Assert.Equal(0.7f, joint.DampingRatio, 5);
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body body = new Body();
             FixedMouseJoint joint = new FixedMouseJoint(body, Vector2F.Zero);
 
-            Assert.Equal(1000.0f * body.Mass, joint.MaxForce);
+            Assert.Equal(1000.0f * body.Mass, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>

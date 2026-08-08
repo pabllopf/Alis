@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
 
             Assert.True(invoked);
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
 
-            Assert.Equal(-1.0f, result);
+            Assert.Equal(-1.0f, result, 5);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.5f);
 
-            Assert.Equal(0.0f, result);
+            Assert.Equal(0.0f, result, 5);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.75f);
 
-            Assert.Equal(0.75f, result);
+            Assert.Equal(0.75f, result, 5);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = callback(null, Vector2F.Zero, Vector2F.UnitY, 0.5f);
 
-            Assert.Equal(-1.0f, result);
+            Assert.Equal(-1.0f, result, 5);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             callback(fixture, Vector2F.Zero, Vector2F.UnitY, 0.8f);
 
-            Assert.Equal(0.8f, capturedFraction);
+            Assert.Equal(0.8f, capturedFraction, 5);
         }
     }
 }

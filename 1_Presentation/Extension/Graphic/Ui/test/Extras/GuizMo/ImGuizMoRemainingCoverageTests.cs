@@ -117,22 +117,22 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         {
             float[] values = GetPrivateArray("cameraProjection");
 
-            Assert.Equal(2.0f / 800.0f, values[0]);
-            Assert.Equal(0.0f, values[1]);
-            Assert.Equal(0.0f, values[2]);
-            Assert.Equal(0.0f, values[3]);
-            Assert.Equal(0.0f, values[4]);
-            Assert.Equal(2.0f / 600.0f, values[5]);
-            Assert.Equal(0.0f, values[6]);
-            Assert.Equal(0.0f, values[7]);
-            Assert.Equal(0.0f, values[8]);
-            Assert.Equal(0.0f, values[9]);
-            Assert.Equal(-1.0f, values[10]);
-            Assert.Equal(0.0f, values[11]);
-            Assert.Equal(-1.0f, values[12]);
-            Assert.Equal(-1.0f, values[13]);
-            Assert.Equal(0.0f, values[14]);
-            Assert.Equal(1.0f, values[15]);
+            Assert.Equal(2.0f / 800.0f, values[0], 5);
+            Assert.Equal(0.0f, values[1], 5);
+            Assert.Equal(0.0f, values[2], 5);
+            Assert.Equal(0.0f, values[3], 5);
+            Assert.Equal(0.0f, values[4], 5);
+            Assert.Equal(2.0f / 600.0f, values[5], 5);
+            Assert.Equal(0.0f, values[6], 5);
+            Assert.Equal(0.0f, values[7], 5);
+            Assert.Equal(0.0f, values[8], 5);
+            Assert.Equal(0.0f, values[9], 5);
+            Assert.Equal(-1.0f, values[10], 5);
+            Assert.Equal(0.0f, values[11], 5);
+            Assert.Equal(-1.0f, values[12], 5);
+            Assert.Equal(-1.0f, values[13], 5);
+            Assert.Equal(0.0f, values[14], 5);
+            Assert.Equal(1.0f, values[15], 5);
         }
 
         /// <summary>
@@ -143,11 +143,11 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         {
             float[] values = GetPrivateArray("matrix");
 
-            Assert.Equal(1.0f, values[0]);
-            Assert.Equal(1.0f, values[5]);
-            Assert.Equal(1.0f, values[10]);
-            Assert.Equal(2.0f, values[14]);
-            Assert.Equal(1.0f, values[15]);
+            Assert.Equal(1.0f, values[0], 5);
+            Assert.Equal(1.0f, values[5], 5);
+            Assert.Equal(1.0f, values[10], 5);
+            Assert.Equal(2.0f, values[14], 5);
+            Assert.Equal(1.0f, values[15], 5);
         }
 
         /// <summary>
@@ -157,9 +157,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void StaticFields_MatrixRotation_ShouldBeZero()
         {
             float[] values = GetPrivateArray("matrixRotation");
-            Assert.Equal(0.0f, values[0]);
-            Assert.Equal(0.0f, values[1]);
-            Assert.Equal(0.0f, values[2]);
+            Assert.Equal(0.0f, values[0], 5);
+            Assert.Equal(0.0f, values[1], 5);
+            Assert.Equal(0.0f, values[2], 5);
         }
 
         /// <summary>
@@ -169,9 +169,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void StaticFields_MatrixScale_ShouldBeZero()
         {
             float[] values = GetPrivateArray("matrixScale");
-            Assert.Equal(0.0f, values[0]);
-            Assert.Equal(0.0f, values[1]);
-            Assert.Equal(0.0f, values[2]);
+            Assert.Equal(0.0f, values[0], 5);
+            Assert.Equal(0.0f, values[1], 5);
+            Assert.Equal(0.0f, values[2], 5);
         }
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void StaticFields_MatrixTranslation_ShouldBeZero()
         {
             float[] values = GetPrivateArray("matrixTranslation");
-            Assert.Equal(0.0f, values[0]);
-            Assert.Equal(0.0f, values[1]);
-            Assert.Equal(0.0f, values[2]);
+            Assert.Equal(0.0f, values[0], 5);
+            Assert.Equal(0.0f, values[1], 5);
+            Assert.Equal(0.0f, values[2], 5);
         }
 
         /// <summary>
@@ -195,9 +195,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             FieldInfo field = typeof(ImGuizMo).GetField("rotation", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(field);
             Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X);
-            Assert.Equal(0.0f, value.Y);
-            Assert.Equal(0.0f, value.Z);
+            Assert.Equal(0.0f, value.X, 5);
+            Assert.Equal(0.0f, value.Y, 5);
+            Assert.Equal(0.0f, value.Z, 5);
         }
 
         /// <summary>
@@ -209,9 +209,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             FieldInfo field = typeof(ImGuizMo).GetField("scale", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(field);
             Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X);
-            Assert.Equal(0.0f, value.Y);
-            Assert.Equal(0.0f, value.Z);
+            Assert.Equal(0.0f, value.X, 5);
+            Assert.Equal(0.0f, value.Y, 5);
+            Assert.Equal(0.0f, value.Z, 5);
         }
 
         /// <summary>
@@ -223,9 +223,9 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             FieldInfo field = typeof(ImGuizMo).GetField("translation", BindingFlags.NonPublic | BindingFlags.Static);
             Assert.NotNull(field);
             Vector3F value = (Vector3F)field.GetValue(null);
-            Assert.Equal(0.0f, value.X);
-            Assert.Equal(0.0f, value.Y);
-            Assert.Equal(0.0f, value.Z);
+            Assert.Equal(0.0f, value.X, 5);
+            Assert.Equal(0.0f, value.Y, 5);
+            Assert.Equal(0.0f, value.Z, 5);
         }
 
         /// <summary>
@@ -310,10 +310,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void CanonicalMatrices_CameraView_ShouldHaveOnesOnDiagonal()
         {
             float[] values = GetPrivateArray("cameraView");
-            Assert.Equal(1.0f, values[0]);
-            Assert.Equal(1.0f, values[5]);
-            Assert.Equal(1.0f, values[10]);
-            Assert.Equal(1.0f, values[15]);
+            Assert.Equal(1.0f, values[0], 5);
+            Assert.Equal(1.0f, values[5], 5);
+            Assert.Equal(1.0f, values[10], 5);
+            Assert.Equal(1.0f, values[15], 5);
         }
 
         /// <summary>
@@ -323,10 +323,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
         public void CanonicalMatrices_IdentityMatrix_ShouldHaveOnesOnDiagonal()
         {
             float[] values = GetPrivateArray("identityMatrix");
-            Assert.Equal(1.0f, values[0]);
-            Assert.Equal(1.0f, values[5]);
-            Assert.Equal(1.0f, values[10]);
-            Assert.Equal(1.0f, values[15]);
+            Assert.Equal(1.0f, values[0], 5);
+            Assert.Equal(1.0f, values[5], 5);
+            Assert.Equal(1.0f, values[10], 5);
+            Assert.Equal(1.0f, values[15], 5);
         }
 
         /// <summary>

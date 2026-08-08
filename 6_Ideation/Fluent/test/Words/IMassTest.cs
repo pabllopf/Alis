@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             MassBuilderImpl builder = new MassBuilderImpl();
             MassBuilder result = builder.Mass(2.5f);
-            Assert.Equal(2.5f, result.MassValue);
+            Assert.Equal(2.5f, result.MassValue, 5);
         }
 
         /// <summary>

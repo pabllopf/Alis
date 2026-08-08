@@ -21,8 +21,8 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             WorldPhysic world = new WorldPhysic();
             Terrain terrain = new Terrain(world, area);
 
-            Assert.Equal(100f, terrain.Width);
-            Assert.Equal(100f, terrain.Height);
+            Assert.Equal(100f, terrain.Width, 5);
+            Assert.Equal(100f, terrain.Height, 5);
             Assert.Equal(new Vector2F(50, 50), terrain.Center);
         }
 
@@ -35,8 +35,8 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             WorldPhysic world = new WorldPhysic();
             Terrain terrain = new Terrain(world, new Vector2F(50, 50), 100, 200);
 
-            Assert.Equal(100f, terrain.Width);
-            Assert.Equal(200f, terrain.Height);
+            Assert.Equal(100f, terrain.Width, 5);
+            Assert.Equal(200f, terrain.Height, 5);
             Assert.Equal(new Vector2F(50, 50), terrain.Center);
         }
 

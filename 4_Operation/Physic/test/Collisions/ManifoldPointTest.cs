@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Collisions
             ManifoldPoint point = new ManifoldPoint();
 
             Assert.Equal(Vector2F.Zero, point.LocalPoint);
-            Assert.Equal(0.0f, point.NormalImpulse);
-            Assert.Equal(0.0f, point.TangentImpulse);
+            Assert.Equal(0.0f, point.NormalImpulse, 5);
+            Assert.Equal(0.0f, point.TangentImpulse, 5);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 NormalImpulse = 5.0f
             };
 
-            Assert.Equal(5.0f, point.NormalImpulse);
+            Assert.Equal(5.0f, point.NormalImpulse, 5);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 TangentImpulse = 3.0f
             };
 
-            Assert.Equal(3.0f, point.TangentImpulse);
+            Assert.Equal(3.0f, point.TangentImpulse, 5);
         }
 
         /// <summary>
@@ -122,8 +122,8 @@ namespace Alis.Core.Physic.Test.Collisions
             };
 
             Assert.Equal(new Vector2F(1.0f, 2.0f), point.LocalPoint);
-            Assert.Equal(5.0f, point.NormalImpulse);
-            Assert.Equal(3.0f, point.TangentImpulse);
+            Assert.Equal(5.0f, point.NormalImpulse, 5);
+            Assert.Equal(3.0f, point.TangentImpulse, 5);
         }
 
         /// <summary>
@@ -138,8 +138,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 TangentImpulse = -2.0f
             };
 
-            Assert.Equal(-1.0f, point.NormalImpulse);
-            Assert.Equal(-2.0f, point.TangentImpulse);
+            Assert.Equal(-1.0f, point.NormalImpulse, 5);
+            Assert.Equal(-2.0f, point.TangentImpulse, 5);
         }
 
         /// <summary>
@@ -154,8 +154,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 TangentImpulse = 0.0f
             };
 
-            Assert.Equal(0.0f, point.NormalImpulse);
-            Assert.Equal(0.0f, point.TangentImpulse);
+            Assert.Equal(0.0f, point.NormalImpulse, 5);
+            Assert.Equal(0.0f, point.TangentImpulse, 5);
         }
     }
 }

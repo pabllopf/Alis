@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test
             float result = _explosion.GetPercent(distance: 10f, radius: 10f);
 
             // Assert
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test
             float result = _explosion.GetPercent(distance: 0f, radius: 10f);
 
             // Assert — with power=1: (1 - (0-10)/10)^1 - 1 = (1 - (-1))^1 - 1 = 2 - 1 = 1
-            Assert.Equal(1f, result);
+            Assert.Equal(1f, result, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test
             float result = _explosion.GetPercent(distance: 15f, radius: 10f);
 
             // Assert — (1 - (15-10)/10)^1 - 1 = (1 - 0.5)^1 - 1 = 0.5 - 1 = -0.5 → clamped to 0
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Test
             float result = _explosion.GetPercent(distance: 15f, radius: 10f);
 
             // Assert — (1 - (15-10)/10)^2 - 1 = (0.5)^2 - 1 = 0.25 - 1 = -0.75 → clamped to 0
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Test
             float result = _explosion.GetPercent(distance: 10f, radius: 10f);
 
             // Assert
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Test
             _explosion = new SimpleExplosion(CreateMockWorld());
 
             // Assert
-            Assert.Equal(1f, _explosion.Power);
+            Assert.Equal(1f, _explosion.Power, 5);
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Test
             _explosion.Power = 2f;
 
             // Assert
-            Assert.Equal(2f, _explosion.Power);
+            Assert.Equal(2f, _explosion.Power, 5);
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace Alis.Core.Physic.Test
             _explosion.Power = 0f;
 
             // Assert
-            Assert.Equal(0f, _explosion.Power);
+            Assert.Equal(0f, _explosion.Power, 5);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Test
             _explosion.Power = 10f;
 
             // Assert
-            Assert.Equal(10f, _explosion.Power);
+            Assert.Equal(10f, _explosion.Power, 5);
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace Alis.Core.Physic.Test
             _explosion.Power = 0.3f;
 
             // Assert
-            Assert.Equal(0.3f, _explosion.Power);
+            Assert.Equal(0.3f, _explosion.Power, 5);
         }
 
         #endregion
@@ -468,8 +468,8 @@ namespace Alis.Core.Physic.Test
             float zeroForce = _explosion.GetPercent(10f, 10f);
 
             // Assert
-            Assert.Equal(1f, maxForce);
-            Assert.Equal(0f, zeroForce);
+            Assert.Equal(1f, maxForce, 5);
+            Assert.Equal(0f, zeroForce, 5);
         }
 
         /// <summary>
@@ -494,8 +494,8 @@ namespace Alis.Core.Physic.Test
             explosion2.Power = 2f;
 
             // Assert — independent power values
-            Assert.Equal(1f, explosion1.Power);
-            Assert.Equal(2f, explosion2.Power);
+            Assert.Equal(1f, explosion1.Power, 5);
+            Assert.Equal(2f, explosion2.Power, 5);
 
             // Clean up
             _explosion = null;

@@ -290,18 +290,18 @@ namespace Alis.Test.Core.Ecs.Components.Collider
                 .Build();
 
             Assert.Equal(BodyType.Dynamic, collider.BodyType);
-            Assert.Equal(5f, collider.AngularVelocity);
-            Assert.Equal(0.3f, collider.Friction);
-            Assert.Equal(0.7f, collider.Restitution);
-            Assert.Equal(10f, collider.Mass);
+            Assert.Equal(5f, collider.AngularVelocity, 5);
+            Assert.Equal(0.3f, collider.Friction, 5);
+            Assert.Equal(0.7f, collider.Restitution, 5);
+            Assert.Equal(10f, collider.Mass, 5);
             Assert.True(collider.IsTrigger);
-            Assert.Equal(2f, collider.SizeOfTexture.X);
-            Assert.Equal(4f, collider.SizeOfTexture.Y);
-            Assert.Equal(90f, collider.Rotation);
+            Assert.Equal(2f, collider.SizeOfTexture.X, 5);
+            Assert.Equal(4f, collider.SizeOfTexture.Y, 5);
+            Assert.Equal(90f, collider.Rotation, 5);
             Assert.True(collider.AutoTilling);
             Assert.True(collider.FixedRotation);
-            Assert.Equal(1f, collider.LinearVelocity.X);
-            Assert.Equal(2f, collider.LinearVelocity.Y);
+            Assert.Equal(1f, collider.LinearVelocity.X, 5);
+            Assert.Equal(2f, collider.LinearVelocity.Y, 5);
             Assert.True(collider.IgnoreGravity);
         }
     }

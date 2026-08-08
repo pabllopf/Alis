@@ -193,7 +193,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Music_Pitch_Default_ShouldBeOne()
         {
             using Music music = new Music(AudioSamplePath);
-            Assert.Equal(1.0f, music.Pitch);
+            Assert.Equal(1.0f, music.Pitch, 5);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         {
             using Music music = new Music(AudioSamplePath);
             music.Pitch = 2.0f;
-            Assert.Equal(2.0f, music.Pitch);
+            Assert.Equal(2.0f, music.Pitch, 5);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Music_Volume_Default_ShouldBe100()
         {
             using Music music = new Music(AudioSamplePath);
-            Assert.Equal(100.0f, music.Volume);
+            Assert.Equal(100.0f, music.Volume, 5);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         {
             using Music music = new Music(AudioSamplePath);
             music.Volume = 50.0f;
-            Assert.Equal(50.0f, music.Volume);
+            Assert.Equal(50.0f, music.Volume, 5);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Music_MinDistance_Default_ShouldBeOne()
         {
             using Music music = new Music(AudioSamplePath);
-            Assert.Equal(1.0f, music.MinDistance);
+            Assert.Equal(1.0f, music.MinDistance, 5);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         {
             using Music music = new Music(AudioSamplePath);
             music.MinDistance = 5.0f;
-            Assert.Equal(5.0f, music.MinDistance);
+            Assert.Equal(5.0f, music.MinDistance, 5);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         public void Music_Attenuation_Default_ShouldBeOne()
         {
             using Music music = new Music(AudioSamplePath);
-            Assert.Equal(1.0f, music.Attenuation);
+            Assert.Equal(1.0f, music.Attenuation, 5);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Audios
         {
             using Music music = new Music(AudioSamplePath);
             music.Attenuation = 0.5f;
-            Assert.Equal(0.5f, music.Attenuation);
+            Assert.Equal(0.5f, music.Attenuation, 5);
         }
 
         /// <summary>

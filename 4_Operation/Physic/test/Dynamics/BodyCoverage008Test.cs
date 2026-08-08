@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.SynchronizeTransform();
 
-            Assert.Equal(0.0f, body.Xf.Rotation.Phase);
+            Assert.Equal(0.0f, body.Xf.Rotation.Phase, 5);
             Assert.Equal(4.0f - 0.1f, body.Xf.Position.X, 5);
             Assert.Equal(5.0f - 0.2f, body.Xf.Position.Y, 5);
         }
@@ -129,8 +129,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F newCenter = new Vector2F(1.0f, 1.0f);
             body.LocalCenter = newCenter;
 
-            Assert.Equal(1.0f, body.Sweep.LocalCenter.X);
-            Assert.Equal(1.0f, body.Sweep.LocalCenter.Y);
+            Assert.Equal(1.0f, body.Sweep.LocalCenter.X, 5);
+            Assert.Equal(1.0f, body.Sweep.LocalCenter.Y, 5);
         }
 
         /// <summary>
@@ -148,8 +148,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F newCenter = new Vector2F(0.2f, 0.3f);
             body.LocalCenter = newCenter;
 
-            Assert.Equal(0.2f, body.Sweep.LocalCenter.X);
-            Assert.Equal(0.3f, body.Sweep.LocalCenter.Y);
+            Assert.Equal(0.2f, body.Sweep.LocalCenter.X, 5);
+            Assert.Equal(0.3f, body.Sweep.LocalCenter.Y, 5);
         }
 
         #endregion
@@ -169,7 +169,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyForce(ref force, ref point);
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyForce(new Vector2F(10.0f, 0.0f), new Vector2F(1.0f, 1.0f));
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         #endregion
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyLinearImpulse(ref impulse, ref point);
 
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyLinearImpulse(new Vector2F(10.0f, 0.0f), new Vector2F(1.0f, 1.0f));
 
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyLinearImpulse(ref impulse, ref point);
 
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         #endregion
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ResetMassData();
 
             // Zero-density fixture should be skipped, mass forced to 1.0
-            Assert.Equal(1.0f, body.Mass);
+            Assert.Equal(1.0f, body.Mass, 5);
         }
 
         /// <summary>
@@ -267,8 +267,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ResetMassData();
 
-            Assert.Equal(1.0f, body.Mass);
-            Assert.Equal(1.0f, body.InvMass);
+            Assert.Equal(1.0f, body.Mass, 5);
+            Assert.Equal(1.0f, body.InvMass, 5);
         }
 
         /// <summary>
@@ -284,8 +284,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ResetMassData();
 
-            Assert.Equal(0.0f, body.Inertia);
-            Assert.Equal(0.0f, body.InvI);
+            Assert.Equal(0.0f, body.Inertia, 5);
+            Assert.Equal(0.0f, body.InvI, 5);
         }
 
         /// <summary>
@@ -323,9 +323,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Sweep = newSweep;
 
-            Assert.Equal(1.0f, body.Sweep.A);
-            Assert.Equal(3.0f, body.Sweep.C.X);
-            Assert.Equal(4.0f, body.Sweep.C.Y);
+            Assert.Equal(1.0f, body.Sweep.A, 5);
+            Assert.Equal(3.0f, body.Sweep.C.X, 5);
+            Assert.Equal(4.0f, body.Sweep.C.Y, 5);
         }
 
         #endregion

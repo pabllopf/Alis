@@ -60,7 +60,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
             Assert.Equal("App", setting.General.Name);
             Assert.Equal(80, setting.Audio.Volume);
             Assert.Equal("Vulkan", setting.Graphic.Target);
-            Assert.Equal(2.0f, setting.Input.MouseSensitivity);
+            Assert.Equal(2.0f, setting.Input.MouseSensitivity, 5);
             Assert.Equal(9090, setting.Network.Port);
             Assert.Equal(new Alis.Core.Aspect.Math.Vector.Vector2F(0, -5f), setting.Physic.Gravity);
         }

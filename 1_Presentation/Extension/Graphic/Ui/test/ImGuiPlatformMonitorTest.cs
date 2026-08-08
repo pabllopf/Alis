@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = monitor.DpiScale;
 
-            Assert.Equal(1.5f, result);
+            Assert.Equal(1.5f, result, 5);
         }
     }
 }

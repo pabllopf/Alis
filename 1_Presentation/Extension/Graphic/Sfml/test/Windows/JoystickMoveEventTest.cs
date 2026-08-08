@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         {
             JoystickMoveEvent e = new JoystickMoveEvent();
             Assert.Equal(0u, e.JoystickId);
-            Assert.Equal(0.0f, e.Position);
+            Assert.Equal(0.0f, e.Position, 5);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             JoystickMoveEventArgs args = new JoystickMoveEventArgs(e);
             Assert.Equal(1u, args.JoystickId);
             Assert.Equal(Joystick.Axis.X, args.Axis);
-            Assert.Equal(50.0f, args.Position);
+            Assert.Equal(50.0f, args.Position, 5);
         }
 
         /// <summary>

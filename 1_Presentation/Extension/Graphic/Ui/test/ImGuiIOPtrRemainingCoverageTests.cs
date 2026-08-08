@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DeltaTime_GetSet_ShouldRoundtrip()
         {
             _ioPtr.DeltaTime = 0.016f;
-            Assert.Equal(0.016f, _ioPtr.DeltaTime);
+            Assert.Equal(0.016f, _ioPtr.DeltaTime, 5);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void FontGlobalScale_GetSet_ShouldRoundtrip()
         {
             _ioPtr.FontGlobalScale = 1.5f;
-            Assert.Equal(1.5f, _ioPtr.FontGlobalScale);
+            Assert.Equal(1.5f, _ioPtr.FontGlobalScale, 5);
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Framerate_GetSet_ShouldRoundtrip()
         {
             _ioPtr.Framerate = 60f;
-            Assert.Equal(60f, _ioPtr.Framerate);
+            Assert.Equal(60f, _ioPtr.Framerate, 5);
         }
 
         /// <summary>
@@ -414,7 +414,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void MouseWheel_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MouseWheel = 1.5f;
-            Assert.Equal(1.5f, _ioPtr.MouseWheel);
+            Assert.Equal(1.5f, _ioPtr.MouseWheel, 5);
         }
 
         /// <summary>
@@ -424,7 +424,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void MouseWheelH_GetSet_ShouldRoundtrip()
         {
             _ioPtr.MouseWheelH = 2.5f;
-            Assert.Equal(2.5f, _ioPtr.MouseWheelH);
+            Assert.Equal(2.5f, _ioPtr.MouseWheelH, 5);
         }
 
         /// <summary>
@@ -516,7 +516,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void PenPressure_GetSet_ShouldRoundtrip()
         {
             _ioPtr.PenPressure = 0.5f;
-            Assert.Equal(0.5f, _ioPtr.PenPressure);
+            Assert.Equal(0.5f, _ioPtr.PenPressure, 5);
         }
 
         /// <summary>
@@ -575,15 +575,15 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ReadOnlyProperties_ShouldHaveDefaultValues()
         {
-            Assert.Equal(0f, _ioPtr.MouseDoubleClickTime);
-            Assert.Equal(0f, _ioPtr.MouseDoubleClickMaxDist);
-            Assert.Equal(0f, _ioPtr.MouseDragThreshold);
-            Assert.Equal(0f, _ioPtr.KeyRepeatDelay);
-            Assert.Equal(0f, _ioPtr.KeyRepeatRate);
-            Assert.Equal(0f, _ioPtr.HoverDelayNormal);
-            Assert.Equal(0f, _ioPtr.HoverDelayShort);
-            Assert.Equal(0f, _ioPtr.IniSavingRate);
-            Assert.Equal(0f, _ioPtr.ConfigMemoryCompactTimer);
+            Assert.Equal(0f, _ioPtr.MouseDoubleClickTime, 5);
+            Assert.Equal(0f, _ioPtr.MouseDoubleClickMaxDist, 5);
+            Assert.Equal(0f, _ioPtr.MouseDragThreshold, 5);
+            Assert.Equal(0f, _ioPtr.KeyRepeatDelay, 5);
+            Assert.Equal(0f, _ioPtr.KeyRepeatRate, 5);
+            Assert.Equal(0f, _ioPtr.HoverDelayNormal, 5);
+            Assert.Equal(0f, _ioPtr.HoverDelayShort, 5);
+            Assert.Equal(0f, _ioPtr.IniSavingRate, 5);
+            Assert.Equal(0f, _ioPtr.ConfigMemoryCompactTimer, 5);
             Assert.False(_ioPtr.FontAllowUserScaling);
             Assert.False(_ioPtr.ConfigDockingNoSplit);
             Assert.False(_ioPtr.ConfigDockingAlwaysTabBar);

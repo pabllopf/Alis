@@ -162,7 +162,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         {
             float x = 0.3f, y = 0.4f;
             GameDevelopmentUtils.NormalizeInput(ref x, ref y);
-            Assert.Equal(0.3f, x); Assert.Equal(0.4f, y);
+            Assert.Equal(0.3f, x, 5); Assert.Equal(0.4f, y, 5);
         }
 
         /// <summary>

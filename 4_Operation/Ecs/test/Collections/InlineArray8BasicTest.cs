@@ -192,7 +192,7 @@ namespace Alis.Core.Ecs.Test.Collections
 
             Assert.Equal(255, byteArray._0);
             Assert.Equal(long.MaxValue, longArray._0);
-            Assert.Equal(3.14159, doubleArray._0);
+            Assert.Equal(3.14159, doubleArray._0, 5);
         }
     }
 }

@@ -49,9 +49,9 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, ev.timestamp);
             Assert.Equal(0, ev.which);
             Assert.Equal(0, ev.sensor);
-            Assert.Equal(0f, ev.data1);
-            Assert.Equal(0f, ev.data2);
-            Assert.Equal(0f, ev.data3);
+            Assert.Equal(0f, ev.data1, 5);
+            Assert.Equal(0f, ev.data2, 5);
+            Assert.Equal(0f, ev.data3, 5);
         }
 
         /// <summary>

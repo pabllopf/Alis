@@ -46,10 +46,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Default_ValuesAreZero()
         {
             ImDrawVert vert = default;
-            Assert.Equal(0f, vert.Pos.X);
-            Assert.Equal(0f, vert.Pos.Y);
-            Assert.Equal(0f, vert.Uv.X);
-            Assert.Equal(0f, vert.Uv.Y);
+            Assert.Equal(0f, vert.Pos.X, 5);
+            Assert.Equal(0f, vert.Pos.Y, 5);
+            Assert.Equal(0f, vert.Uv.X, 5);
+            Assert.Equal(0f, vert.Uv.Y, 5);
             Assert.Equal(0u, vert.Col);
         }
 
@@ -62,10 +62,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImDrawVert vert = default;
             vert.Pos = new Vector2F(1f, 2f);
             vert.Uv = new Vector2F(3f, 4f);
-            Assert.Equal(1f, vert.Pos.X);
-            Assert.Equal(2f, vert.Pos.Y);
-            Assert.Equal(3f, vert.Uv.X);
-            Assert.Equal(4f, vert.Uv.Y);
+            Assert.Equal(1f, vert.Pos.X, 5);
+            Assert.Equal(2f, vert.Pos.Y, 5);
+            Assert.Equal(3f, vert.Uv.X, 5);
+            Assert.Equal(4f, vert.Uv.Y, 5);
         }
 
         /// <summary>

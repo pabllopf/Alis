@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFont font = new ImFont {FallbackAdvanceX = 1.23f};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
-            Assert.Equal(1.23f, fontPtr.FallbackAdvanceX);
+            Assert.Equal(1.23f, fontPtr.FallbackAdvanceX, 5);
             Marshal.FreeHGlobal(nativePtr);
         }
 
@@ -432,7 +432,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFont font = new ImFont {FontSize = 12.34f};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
-            Assert.Equal(12.34f, fontPtr.FontSize);
+            Assert.Equal(12.34f, fontPtr.FontSize, 5);
             Marshal.FreeHGlobal(nativePtr);
         }
 
@@ -548,7 +548,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFont font = new ImFont {Scale = 2.34f};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
-            Assert.Equal(2.34f, fontPtr.Scale);
+            Assert.Equal(2.34f, fontPtr.Scale, 5);
             Marshal.FreeHGlobal(nativePtr);
         }
 
@@ -562,7 +562,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFont font = new ImFont {Ascent = 3.45f};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
-            Assert.Equal(3.45f, fontPtr.Ascent);
+            Assert.Equal(3.45f, fontPtr.Ascent, 5);
             Marshal.FreeHGlobal(nativePtr);
         }
 
@@ -576,7 +576,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFont font = new ImFont {Descent = 4.56f};
             Marshal.StructureToPtr(font, nativePtr, false);
             ImFontPtr fontPtr = new ImFontPtr(nativePtr);
-            Assert.Equal(4.56f, fontPtr.Descent);
+            Assert.Equal(4.56f, fontPtr.Descent, 5);
             Marshal.FreeHGlobal(nativePtr);
         }
 

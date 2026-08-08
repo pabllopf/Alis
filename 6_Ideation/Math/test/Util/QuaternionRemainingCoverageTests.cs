@@ -120,10 +120,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Quaternion value = default;
 
-            Assert.Equal(0.0f, value.X);
-            Assert.Equal(0.0f, value.Y);
-            Assert.Equal(0.0f, value.Z);
-            Assert.Equal(0.0f, value.W);
+            Assert.Equal(0.0f, value.X, 5);
+            Assert.Equal(0.0f, value.Y, 5);
+            Assert.Equal(0.0f, value.Z, 5);
+            Assert.Equal(0.0f, value.W, 5);
         }
 
         /// <summary>
@@ -134,10 +134,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Quaternion value = new Quaternion(-1.0f, -2.0f, -3.0f, -4.0f);
 
-            Assert.Equal(-1.0f, value.X);
-            Assert.Equal(-2.0f, value.Y);
-            Assert.Equal(-3.0f, value.Z);
-            Assert.Equal(-4.0f, value.W);
+            Assert.Equal(-1.0f, value.X, 5);
+            Assert.Equal(-2.0f, value.Y, 5);
+            Assert.Equal(-3.0f, value.Z, 5);
+            Assert.Equal(-4.0f, value.W, 5);
         }
 
         /// <summary>
@@ -148,10 +148,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Quaternion value = new Quaternion(0.0f, 0.0f, 0.0f, 0.0f);
 
-            Assert.Equal(0.0f, value.X);
-            Assert.Equal(0.0f, value.Y);
-            Assert.Equal(0.0f, value.Z);
-            Assert.Equal(0.0f, value.W);
+            Assert.Equal(0.0f, value.X, 5);
+            Assert.Equal(0.0f, value.Y, 5);
+            Assert.Equal(0.0f, value.Z, 5);
+            Assert.Equal(0.0f, value.W, 5);
         }
 
         /// <summary>
@@ -162,10 +162,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             Quaternion value = new Quaternion(-1.0f, 2.0f, -3.0f, 4.0f);
 
-            Assert.Equal(-1.0f, value.X);
-            Assert.Equal(2.0f, value.Y);
-            Assert.Equal(-3.0f, value.Z);
-            Assert.Equal(4.0f, value.W);
+            Assert.Equal(-1.0f, value.X, 5);
+            Assert.Equal(2.0f, value.Y, 5);
+            Assert.Equal(-3.0f, value.Z, 5);
+            Assert.Equal(4.0f, value.W, 5);
         }
 
         /// <summary>

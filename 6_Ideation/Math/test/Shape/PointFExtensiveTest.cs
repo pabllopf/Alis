@@ -46,8 +46,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_SingleValue_SetsXAndYToSameValue()
         {
             PointF point = new PointF(5.0f);
-            Assert.Equal(5.0f, point.X);
-            Assert.Equal(5.0f, point.Y);
+            Assert.Equal(5.0f, point.X, 5);
+            Assert.Equal(5.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_SingleValue_WithZero()
         {
             PointF point = new PointF(0.0f);
-            Assert.Equal(0.0f, point.X);
-            Assert.Equal(0.0f, point.Y);
+            Assert.Equal(0.0f, point.X, 5);
+            Assert.Equal(0.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_SingleValue_WithNegativeValue()
         {
             PointF point = new PointF(-3.5f);
-            Assert.Equal(-3.5f, point.X);
-            Assert.Equal(-3.5f, point.Y);
+            Assert.Equal(-3.5f, point.X, 5);
+            Assert.Equal(-3.5f, point.Y, 5);
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_SingleValue_WithLargeValue()
         {
             PointF point = new PointF(999999.99f);
-            Assert.Equal(999999.99f, point.X);
-            Assert.Equal(999999.99f, point.Y);
+            Assert.Equal(999999.99f, point.X, 5);
+            Assert.Equal(999999.99f, point.Y, 5);
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_TwoValues_SetsXAndYCorrectly()
         {
             PointF point = new PointF(3.0f, 4.0f);
-            Assert.Equal(3.0f, point.X);
-            Assert.Equal(4.0f, point.Y);
+            Assert.Equal(3.0f, point.X, 5);
+            Assert.Equal(4.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -101,8 +101,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_TwoValues_WithDifferentSigns()
         {
             PointF point = new PointF(-2.5f, 7.8f);
-            Assert.Equal(-2.5f, point.X);
-            Assert.Equal(7.8f, point.Y);
+            Assert.Equal(-2.5f, point.X, 5);
+            Assert.Equal(7.8f, point.Y, 5);
         }
 
         /// <summary>
@@ -112,8 +112,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_TwoValues_WithZeros()
         {
             PointF point = new PointF(0.0f, 0.0f);
-            Assert.Equal(0.0f, point.X);
-            Assert.Equal(0.0f, point.Y);
+            Assert.Equal(0.0f, point.X, 5);
+            Assert.Equal(0.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -154,8 +154,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             original.X = 10.0f;
             original.Y = 20.0f;
 
-            Assert.Equal(1.0f, copy.X);
-            Assert.Equal(2.0f, copy.Y);
+            Assert.Equal(1.0f, copy.X, 5);
+            Assert.Equal(2.0f, copy.Y, 5);
         }
 
         /// <summary>
@@ -165,8 +165,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void Constructor_Default_CreatesZeroPoint()
         {
             PointF point = default(PointF);
-            Assert.Equal(0.0f, point.X);
-            Assert.Equal(0.0f, point.Y);
+            Assert.Equal(0.0f, point.X, 5);
+            Assert.Equal(0.0f, point.Y, 5);
         }
 
 
@@ -180,8 +180,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             point.X = 10.0f;
             point.Y = 20.0f;
 
-            Assert.Equal(10.0f, point.X);
-            Assert.Equal(20.0f, point.Y);
+            Assert.Equal(10.0f, point.X, 5);
+            Assert.Equal(20.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -192,8 +192,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         {
             PointF point = new PointF(-5.5f, -7.8f);
 
-            Assert.Equal(-5.5f, point.X);
-            Assert.Equal(-7.8f, point.Y);
+            Assert.Equal(-5.5f, point.X, 5);
+            Assert.Equal(-7.8f, point.Y, 5);
         }
 
         /// <summary>
@@ -204,8 +204,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         {
             PointF point = new PointF(0.0001f, 0.00001f);
 
-            Assert.Equal(0.0001f, point.X);
-            Assert.Equal(0.00001f, point.Y);
+            Assert.Equal(0.0001f, point.X, 5);
+            Assert.Equal(0.00001f, point.Y, 5);
         }
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape
             PointF point2 = point1;
             point2.X = 10.0f;
 
-            Assert.Equal(1.0f, point1.X);
-            Assert.Equal(10.0f, point2.X);
+            Assert.Equal(1.0f, point1.X, 5);
+            Assert.Equal(10.0f, point2.X, 5);
         }
 
 

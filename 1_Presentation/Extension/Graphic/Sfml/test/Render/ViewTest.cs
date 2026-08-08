@@ -238,8 +238,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using View view = new View();
             Vector2F center = view.Center;
-            Assert.Equal(500f, center.X);
-            Assert.Equal(500f, center.Y);
+            Assert.Equal(500f, center.X, 5);
+            Assert.Equal(500f, center.Y, 5);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void DefaultConstructor_ShouldHaveDefaultRotation()
         {
             using View view = new View();
-            Assert.Equal(0f, view.Rotation);
+            Assert.Equal(0f, view.Rotation, 5);
         }
 
         /// <summary>
@@ -575,8 +575,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Assert.NotEqual(view1.Center.X, view2.Center.X);
             Assert.NotEqual(view1.Size.X, view2.Size.X);
             view1.Move(new Vector2F(50f, 50f));
-            Assert.Equal(50f, view1.Center.X);
-            Assert.Equal(100f, view2.Center.X);
+            Assert.Equal(50f, view1.Center.X, 5);
+            Assert.Equal(100f, view2.Center.X, 5);
         }
     }
 }

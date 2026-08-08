@@ -417,8 +417,8 @@ namespace Alis.Core.Ecs.Test
         object result = gameObject.Get(Component<Position>.Id);
 
         Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(5f, pos.X);
-        Assert.Equal(10f, pos.Y);
+        Assert.Equal(5f, pos.X, 5);
+        Assert.Equal(10f, pos.Y, 5);
     }
 
     /// <summary>
@@ -432,8 +432,8 @@ namespace Alis.Core.Ecs.Test
         object result = gameObject.Get(typeof(Position));
 
         Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(3f, pos.X);
-        Assert.Equal(7f, pos.Y);
+        Assert.Equal(3f, pos.X, 5);
+        Assert.Equal(7f, pos.Y, 5);
     }
 
     /// <summary>
@@ -459,8 +459,8 @@ namespace Alis.Core.Ecs.Test
 
         object result = gameObject.Get(Component<Position>.Id);
         Position pos = Assert.IsType<Position>(result);
-        Assert.Equal(10f, pos.X);
-        Assert.Equal(20f, pos.Y);
+        Assert.Equal(10f, pos.X, 5);
+        Assert.Equal(20f, pos.Y, 5);
     }
 
     /// <summary>
@@ -474,8 +474,8 @@ namespace Alis.Core.Ecs.Test
         gameObject.Set(typeof(Position), new Position {X = 99, Y = 100});
 
         ref Position pos = ref gameObject.Get<Position>();
-        Assert.Equal(99f, pos.X);
-        Assert.Equal(100f, pos.Y);
+        Assert.Equal(99f, pos.X, 5);
+        Assert.Equal(100f, pos.Y, 5);
     }
 
     /// <summary>
@@ -489,8 +489,8 @@ namespace Alis.Core.Ecs.Test
         bool result = gameObject.TryGet<Position>(out Ref<Position> value);
 
         Assert.True(result);
-        Assert.Equal(1f, value.Value.X);
-        Assert.Equal(2f, value.Value.Y);
+        Assert.Equal(1f, value.Value.X, 5);
+        Assert.Equal(2f, value.Value.Y, 5);
     }
 
     /// <summary>

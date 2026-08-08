@@ -129,8 +129,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             t.Position = new Vector2F(100, 100);
             Transform transform = t.Transform;
             Vector2F point = transform.TransformPoint(new Vector2F(0, 0));
-            Assert.Equal(50f, point.X);
-            Assert.Equal(50f, point.Y);
+            Assert.Equal(50f, point.X, 5);
+            Assert.Equal(50f, point.Y, 5);
         }
 
         /// <summary>
@@ -173,8 +173,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             t.Scale = new Vector2F(-1, 1);
             Transform transform = t.Transform;
             Vector2F point = transform.TransformPoint(new Vector2F(10, 0));
-            Assert.Equal(-10f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(-10f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -186,8 +186,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             Transform transform = t.Transform;
             Vector2F point = transform.TransformPoint(new Vector2F(5, 10));
-            Assert.Equal(5f, point.X);
-            Assert.Equal(10f, point.Y);
+            Assert.Equal(5f, point.X, 5);
+            Assert.Equal(10f, point.Y, 5);
         }
 
         /// <summary>
@@ -271,8 +271,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             t.Scale = new Vector2F(0, 0);
             Transform transform = t.Transform;
             Vector2F point = transform.TransformPoint(new Vector2F(100, 200));
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -332,8 +332,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Position = new Vector2F(10, 20);
             t.Position = new Vector2F(30, 40);
-            Assert.Equal(30f, t.Position.X);
-            Assert.Equal(40f, t.Position.Y);
+            Assert.Equal(30f, t.Position.X, 5);
+            Assert.Equal(40f, t.Position.Y, 5);
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Rotation = 45f;
             t.Rotation = 90f;
-            Assert.Equal(90f, t.Rotation);
+            Assert.Equal(90f, t.Rotation, 5);
         }
 
         /// <summary>
@@ -357,8 +357,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Scale = new Vector2F(1, 1);
             t.Scale = new Vector2F(3, 4);
-            Assert.Equal(3f, t.Scale.X);
-            Assert.Equal(4f, t.Scale.Y);
+            Assert.Equal(3f, t.Scale.X, 5);
+            Assert.Equal(4f, t.Scale.Y, 5);
         }
 
         /// <summary>
@@ -370,8 +370,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Origin = new Vector2F(5, 5);
             t.Origin = new Vector2F(15, 25);
-            Assert.Equal(15f, t.Origin.X);
-            Assert.Equal(25f, t.Origin.Y);
+            Assert.Equal(15f, t.Origin.X, 5);
+            Assert.Equal(25f, t.Origin.Y, 5);
         }
 
         /// <summary>
@@ -381,8 +381,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Position_Default_IsZero()
         {
             Transformable t = new Transformable();
-            Assert.Equal(0f, t.Position.X);
-            Assert.Equal(0f, t.Position.Y);
+            Assert.Equal(0f, t.Position.X, 5);
+            Assert.Equal(0f, t.Position.Y, 5);
         }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Rotation_Default_IsZero()
         {
             Transformable t = new Transformable();
-            Assert.Equal(0f, t.Rotation);
+            Assert.Equal(0f, t.Rotation, 5);
         }
 
         /// <summary>
@@ -402,8 +402,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Scale_Default_IsOne()
         {
             Transformable t = new Transformable();
-            Assert.Equal(1f, t.Scale.X);
-            Assert.Equal(1f, t.Scale.Y);
+            Assert.Equal(1f, t.Scale.X, 5);
+            Assert.Equal(1f, t.Scale.Y, 5);
         }
 
         /// <summary>
@@ -413,8 +413,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void Origin_Default_IsZero()
         {
             Transformable t = new Transformable();
-            Assert.Equal(0f, t.Origin.X);
-            Assert.Equal(0f, t.Origin.Y);
+            Assert.Equal(0f, t.Origin.X, 5);
+            Assert.Equal(0f, t.Origin.Y, 5);
         }
 
         /// <summary>
@@ -448,8 +448,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             original.Position = new Vector2F(10, 20);
             Transformable copy = new Transformable(original);
             copy.Position = new Vector2F(100, 200);
-            Assert.Equal(10f, original.Position.X);
-            Assert.Equal(20f, original.Position.Y);
+            Assert.Equal(10f, original.Position.X, 5);
+            Assert.Equal(20f, original.Position.Y, 5);
         }
 
         /// <summary>

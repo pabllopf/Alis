@@ -252,7 +252,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             WebAssemblyDisplayManager manager = new WebAssemblyDisplayManager(platform);
             float ratio = WebAssemblyDisplayManager.GetDevicePixelRatio();
-            Assert.Equal(1.0f, ratio);
+            Assert.Equal(1.0f, ratio, 5);
         }
 
         /// <summary>
@@ -463,7 +463,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void DisplayManager_GetBatteryLevel_ReturnsDefaultOnNonBrowser()
         {
             float level = WebAssemblyDisplayManager.GetBatteryLevel();
-            Assert.Equal(-1.0f, level);
+            Assert.Equal(-1.0f, level, 5);
         }
 
         /// <summary>

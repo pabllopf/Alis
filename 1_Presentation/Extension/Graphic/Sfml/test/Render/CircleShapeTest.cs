@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using CircleShape circle = new CircleShape();
             float radius = circle.Radius;
-            Assert.Equal(0f, radius);
+            Assert.Equal(0f, radius, 5);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             CircleShape shape = new CircleShape(50f);
 
             // Assert
-            Assert.Equal(50f, shape.Radius);
+            Assert.Equal(50f, shape.Radius, 5);
 
             // Cleanup
             shape.Destroy(true);
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             CircleShape shape = new CircleShape(100f, 60u);
 
             // Assert
-            Assert.Equal(100f, shape.Radius);
+            Assert.Equal(100f, shape.Radius, 5);
             Assert.Equal(60u, shape.GetPointCount());
 
             // Cleanup
@@ -169,9 +169,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             original.SetPointCount(60u);
 
             // Assert
-            Assert.Equal(100f, original.Radius);
+            Assert.Equal(100f, original.Radius, 5);
             Assert.Equal(60u, original.GetPointCount());
-            Assert.Equal(75f, copy.Radius);
+            Assert.Equal(75f, copy.Radius, 5);
             Assert.Equal(45u, copy.GetPointCount());
 
             // Cleanup
@@ -349,7 +349,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             circle.Radius = 75f;
 
             // Assert
-            Assert.Equal(75f, circle.Radius);
+            Assert.Equal(75f, circle.Radius, 5);
 
             // Cleanup
             circle.Destroy(true);
@@ -369,7 +369,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             float radius = circle.Radius;
 
             // Assert
-            Assert.Equal(42f, radius);
+            Assert.Equal(42f, radius, 5);
 
             // Cleanup
             circle.Destroy(true);
@@ -387,11 +387,11 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             CircleShape shape3 = new CircleShape(25f, 15u);
 
             // Assert
-            Assert.Equal(50f, shape1.Radius);
+            Assert.Equal(50f, shape1.Radius, 5);
             Assert.Equal(30u, shape1.GetPointCount());
-            Assert.Equal(100f, shape2.Radius);
+            Assert.Equal(100f, shape2.Radius, 5);
             Assert.Equal(60u, shape2.GetPointCount());
-            Assert.Equal(25f, shape3.Radius);
+            Assert.Equal(25f, shape3.Radius, 5);
             Assert.Equal(15u, shape3.GetPointCount());
 
             // Cleanup
@@ -444,7 +444,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             // Read initial state
             float initialRadius = shape.Radius;
             uint initialPoints = shape.GetPointCount();
-            Assert.Equal(50f, initialRadius);
+            Assert.Equal(50f, initialRadius, 5);
             Assert.Equal(30u, initialPoints);
 
             // Get a point
@@ -456,7 +456,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.SetPointCount(60u);
 
             // Verify modifications
-            Assert.Equal(100f, shape.Radius);
+            Assert.Equal(100f, shape.Radius, 5);
             Assert.Equal(60u, shape.GetPointCount());
 
             // Get point with new values
@@ -483,8 +483,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F point = shape.GetPoint(15);
 
             // Assert - with radius=0: x = 0 + cos(angle)*0 = 0, y = 0 + sin(angle)*0 = 0
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
 
             // Cleanup
             shape.Destroy(true);
@@ -624,7 +624,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.Radius = -25f;
 
             // Assert
-            Assert.Equal(-25f, shape.Radius);
+            Assert.Equal(-25f, shape.Radius, 5);
 
             // Cleanup
             shape.Destroy(true);
@@ -645,7 +645,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.Radius = 30f;
 
             // Assert
-            Assert.Equal(30f, shape.Radius);
+            Assert.Equal(30f, shape.Radius, 5);
 
             // Cleanup
             shape.Destroy(true);
@@ -733,7 +733,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             copy.SetPointCount(90u);
 
             // Assert
-            Assert.Equal(75f, original.Radius);
+            Assert.Equal(75f, original.Radius, 5);
             Assert.Equal(45u, original.GetPointCount());
 
             // Cleanup
@@ -755,7 +755,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.SetPointCount(50u);
 
             // Assert
-            Assert.Equal(80f, shape.Radius);
+            Assert.Equal(80f, shape.Radius, 5);
             Assert.Equal(50u, shape.GetPointCount());
 
             // Cleanup

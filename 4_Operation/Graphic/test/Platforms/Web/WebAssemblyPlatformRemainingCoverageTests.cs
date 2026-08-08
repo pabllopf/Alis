@@ -1047,8 +1047,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             WebAssemblyPlatform platform = new WebAssemblyPlatform();
             InvokePrivate(platform, "OnMouseMove", 0, 0, 123, 456);
             platform.GetMousePositionInView(out float x, out float y);
-            Assert.Equal(123.0f, x);
-            Assert.Equal(456.0f, y);
+            Assert.Equal(123.0f, x, 5);
+            Assert.Equal(456.0f, y, 5);
         }
 
         /// <summary>

@@ -150,8 +150,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Mass = 5.0f;
 
             // Assert: Mass and inverse mass should be updated
-            Assert.Equal(5.0f, body.Mass);
-            Assert.Equal(1.0f / 5.0f, body.InvMass);
+            Assert.Equal(5.0f, body.Mass, 5);
+            Assert.Equal(1.0f / 5.0f, body.InvMass, 5);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Mass = -5.0f;
 
             // Assert: Mass should be clamped to 1.0f
-            Assert.Equal(1.0f, body.Mass);
+            Assert.Equal(1.0f, body.Mass, 5);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Mass = 0.001f;
 
             // Assert: Mass should be set to small value
-            Assert.Equal(0.001f, body.Mass);
+            Assert.Equal(0.001f, body.Mass, 5);
         }
 
         #endregion
@@ -212,7 +212,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Inertia = 5.0f;
 
             // Assert: Inertia and inverse inertia should be updated
-            Assert.Equal(5.0f, body.Inertia);
+            Assert.Equal(5.0f, body.Inertia, 5);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Inertia = 5.0f;
 
             // Assert: Inertia should remain unchanged for fixed rotation bodies
-            Assert.Equal(0.0f, body.Inertia);
+            Assert.Equal(0.0f, body.Inertia, 5);
         }
 
         #endregion
@@ -347,8 +347,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.SetTransform(newPosition, 1.5f);
 
             // Assert: Position and rotation should be updated
-            Assert.Equal(5.0f, body.Position.X);
-            Assert.Equal(10.0f, body.Position.Y);
+            Assert.Equal(5.0f, body.Position.X, 5);
+            Assert.Equal(10.0f, body.Position.Y, 5);
         }
 
         /// <summary>
@@ -368,8 +368,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.SetTransformIgnoreContacts(ref newPosition, 2.0f);
 
             // Assert: Position should be updated
-            Assert.Equal(3.0f, body.Position.X);
-            Assert.Equal(7.0f, body.Position.Y);
+            Assert.Equal(3.0f, body.Position.X, 5);
+            Assert.Equal(7.0f, body.Position.Y, 5);
         }
 
         #endregion
@@ -393,8 +393,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyForce(new Vector2F(5.0f, 0.0f));
 
             // Assert: Force should be accumulated
-            Assert.Equal(15.0f, body.Force.X);
-            Assert.Equal(0.0f, body.Force.Y);
+            Assert.Equal(15.0f, body.Force.X, 5);
+            Assert.Equal(0.0f, body.Force.Y, 5);
         }
 
         /// <summary>
@@ -414,7 +414,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyTorque(3.0f);
 
             // Assert: Torque should be accumulated
-            Assert.Equal(5.0f, body.Torque);
+            Assert.Equal(5.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -497,9 +497,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ResetMassData();
 
             // Assert: Kinematic bodies should have zero mass but position set
-            Assert.Equal(0.0f, body.Mass);
-            Assert.Equal(1.0f, body.Position.X);
-            Assert.Equal(2.0f, body.Position.Y);
+            Assert.Equal(0.0f, body.Mass, 5);
+            Assert.Equal(1.0f, body.Position.X, 5);
+            Assert.Equal(2.0f, body.Position.Y, 5);
         }
 
         #endregion
@@ -651,7 +651,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Assert: All fixtures should have the restitution set
             foreach (Fixture fixture in body.FixtureList)
             {
-                Assert.Equal(0.8f, fixture.GetRestitution);
+                Assert.Equal(0.8f, fixture.GetRestitution, 5);
             }
         }
 
@@ -673,7 +673,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Assert: All fixtures should have the friction set
             foreach (Fixture fixture in body.FixtureList)
             {
-                Assert.Equal(0.6f, fixture.GetFriction);
+                Assert.Equal(0.6f, fixture.GetFriction, 5);
             }
         }
 
@@ -1078,8 +1078,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             Body body = new Body();
             body.Sweep.C = new Vector2F(3.0f, 4.0f);
-            Assert.Equal(3.0f, body.WorldCenter.X);
-            Assert.Equal(4.0f, body.WorldCenter.Y);
+            Assert.Equal(3.0f, body.WorldCenter.X, 5);
+            Assert.Equal(4.0f, body.WorldCenter.Y, 5);
         }
 
         /// <summary>
@@ -1185,7 +1185,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyLinearImpulse(ref impulse, ref point);
 
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         #endregion

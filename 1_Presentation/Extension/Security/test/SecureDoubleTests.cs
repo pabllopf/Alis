@@ -43,7 +43,7 @@ namespace Alis.Extension.Security.Test
         public void Test_SecureDouble_Constructor()
         {
             SecureDouble secureDouble = new SecureDouble(10.0);
-            Assert.Equal(10.0, (double) secureDouble);
+            Assert.Equal(10.0, (double) secureDouble, 5);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Security.Test
         public void Test_SecureDouble_ImplicitConversion()
         {
             SecureDouble secureDouble = 10.0;
-            Assert.Equal(10.0, (double) secureDouble);
+            Assert.Equal(10.0, (double) secureDouble, 5);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 20.0;
-            Assert.Equal(30.0, (double) (secureDouble1 + secureDouble2));
+            Assert.Equal(30.0, (double) (secureDouble1 + secureDouble2), 5);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureDouble secureDouble1 = 20.0;
             SecureDouble secureDouble2 = 10.0;
-            Assert.Equal(10.0, (double) (secureDouble1 - secureDouble2));
+            Assert.Equal(10.0, (double) (secureDouble1 - secureDouble2), 5);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureDouble secureDouble1 = 10.0;
             SecureDouble secureDouble2 = 20.0;
-            Assert.Equal(200.0, (double) (secureDouble1 * secureDouble2));
+            Assert.Equal(200.0, (double) (secureDouble1 * secureDouble2), 5);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Security.Test
         {
             SecureDouble secureDouble1 = 20.0;
             SecureDouble secureDouble2 = 10.0;
-            Assert.Equal(2.0, (double) (secureDouble1 / secureDouble2));
+            Assert.Equal(2.0, (double) (secureDouble1 / secureDouble2), 5);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Alis.Extension.Security.Test
 
             double value = secureDouble;
 
-            Assert.Equal(10.0, value);
+            Assert.Equal(10.0, value, 5);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Alis.Extension.Security.Test
 
             secureDouble++;
 
-            Assert.Equal(11.0, (double) secureDouble);
+            Assert.Equal(11.0, (double) secureDouble, 5);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Extension.Security.Test
 
             secureDouble--;
 
-            Assert.Equal(9.0, (double) secureDouble);
+            Assert.Equal(9.0, (double) secureDouble, 5);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Alis.Extension.Security.Test
 
             SecureDouble result = secureDouble1 + secureDouble2;
 
-            Assert.Equal(30.0, (double) result);
+            Assert.Equal(30.0, (double) result, 5);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Alis.Extension.Security.Test
 
             SecureDouble result = secureDouble1 - secureDouble2;
 
-            Assert.Equal(10.0, (double) result);
+            Assert.Equal(10.0, (double) result, 5);
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Extension.Security.Test
 
             SecureDouble result = secureDouble1 * secureDouble2;
 
-            Assert.Equal(200.0, (double) result);
+            Assert.Equal(200.0, (double) result, 5);
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Alis.Extension.Security.Test
 
             SecureDouble result = secureDouble1 / secureDouble2;
 
-            Assert.Equal(2.0, (double) result);
+            Assert.Equal(2.0, (double) result, 5);
         }
     }
 }

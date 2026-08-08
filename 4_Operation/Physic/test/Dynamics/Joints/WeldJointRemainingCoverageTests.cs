@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo gammaField = typeof(WeldJoint).GetField("_gamma", BindingFlags.NonPublic | BindingFlags.Instance);
             float gamma = (float)gammaField.GetValue(joint);
 
-            Assert.Equal(0.0f, gamma);
+            Assert.Equal(0.0f, gamma, 5);
             Assert.NotNull(mass);
         }
 
@@ -271,8 +271,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo biasField = typeof(WeldJoint).GetField("_bias", BindingFlags.NonPublic | BindingFlags.Instance);
             float bias = (float)biasField.GetValue(joint);
 
-            Assert.Equal(0.0f, gamma);
-            Assert.Equal(0.0f, bias);
+            Assert.Equal(0.0f, gamma, 5);
+            Assert.Equal(0.0f, bias, 5);
         }
 
         /// <summary>

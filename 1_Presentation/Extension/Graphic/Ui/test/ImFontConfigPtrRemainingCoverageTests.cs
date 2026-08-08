@@ -154,8 +154,8 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ptr.GlyphMinAdvanceX = 3.14f;
 
                 ImFontConfig result = Marshal.PtrToStructure<ImFontConfig>(nativePtr);
-                Assert.Equal(3.14f, result.GlyphMinAdvanceX);
-                Assert.Equal(3.14f, ptr.GlyphMinAdvanceX);
+                Assert.Equal(3.14f, result.GlyphMinAdvanceX, 5);
+                Assert.Equal(3.14f, ptr.GlyphMinAdvanceX, 5);
             }
             finally
             {

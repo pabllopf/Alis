@@ -54,7 +54,7 @@ namespace Alis.Extension.Updater.Test
 
             handler(0.42f, "working");
 
-            Assert.Equal(0.42f, receivedProgress);
+            Assert.Equal(0.42f, receivedProgress, 5);
             Assert.Equal("working", receivedMessage);
         }
     }

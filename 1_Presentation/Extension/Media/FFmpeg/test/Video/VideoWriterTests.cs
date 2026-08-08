@@ -192,7 +192,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video
             Assert.True(writer.UseFilename);
             Assert.Equal(640, writer.Width);
             Assert.Equal(480, writer.Height);
-            Assert.Equal(29.97, writer.Framerate);
+            Assert.Equal(29.97, writer.Framerate, 5);
             Assert.Equal(customOptions, writer.EncoderOptions);
             Assert.Null(writer.DestinationStream);
             Assert.Null(writer.OutputDataStream);

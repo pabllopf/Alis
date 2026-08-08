@@ -31,7 +31,7 @@ namespace Alis.Core.Graphic.Test.Constructs
         public void Constructor_5Params_SetsFields()
         {
             var param = new GlShaderProgramParam(typeof(float), ParamType.Attribute, "attr", 42u, 7);
-            Assert.Equal(typeof(float), param.Type);
+            Assert.Equal(typeof(float), param.Type, 5);
             Assert.Equal(ParamType.Attribute, param.ParamType);
             Assert.Equal("attr", param.Name);
         }

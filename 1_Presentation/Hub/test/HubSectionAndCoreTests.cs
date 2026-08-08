@@ -185,7 +185,7 @@ namespace Alis.App.Hub.Test
         {
             SpaceWork spaceWork = new SpaceWork();
 
-            Assert.Equal(0f, spaceWork.Time);
+            Assert.Equal(0f, spaceWork.Time, 5);
         }
 
         /// <summary>

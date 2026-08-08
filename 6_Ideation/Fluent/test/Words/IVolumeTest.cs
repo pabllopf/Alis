@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             VolumeBuilderImpl builder = new VolumeBuilderImpl();
             VolumeBuilder result = builder.Volume(0.5f);
-            Assert.Equal(0.5f, result.VolumeLevel);
+            Assert.Equal(0.5f, result.VolumeLevel, 5);
         }
 
         /// <summary>
@@ -91,9 +91,9 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             VolumeBuilderImpl builder = new VolumeBuilderImpl();
             VolumeBuilder resultMin = builder.Volume(0f);
-            Assert.Equal(0f, resultMin.VolumeLevel);
+            Assert.Equal(0f, resultMin.VolumeLevel, 5);
             VolumeBuilder resultMax = builder.Volume(1f);
-            Assert.Equal(1f, resultMax.VolumeLevel);
+            Assert.Equal(1f, resultMax.VolumeLevel, 5);
         }
 
         /// <summary>

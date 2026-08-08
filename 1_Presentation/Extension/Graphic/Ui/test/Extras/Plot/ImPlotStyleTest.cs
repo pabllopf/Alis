@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void LineWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.LineWeight);
+            Assert.Equal(default(float), style.LineWeight, 5);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void MarkerSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.MarkerSize);
+            Assert.Equal(default(float), style.MarkerSize, 5);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void MarkerWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.MarkerWeight);
+            Assert.Equal(default(float), style.MarkerWeight, 5);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void FillAlpha_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.FillAlpha);
+            Assert.Equal(default(float), style.FillAlpha, 5);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void ErrorBarSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.ErrorBarSize);
+            Assert.Equal(default(float), style.ErrorBarSize, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void ErrorBarWeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.ErrorBarWeight);
+            Assert.Equal(default(float), style.ErrorBarWeight, 5);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void DigitalBitHeight_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.DigitalBitHeight);
+            Assert.Equal(default(float), style.DigitalBitHeight, 5);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void DigitalBitGap_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.DigitalBitGap);
+            Assert.Equal(default(float), style.DigitalBitGap, 5);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void PlotBorderSize_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.PlotBorderSize);
+            Assert.Equal(default(float), style.PlotBorderSize, 5);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void MinorAlpha_ShouldBeInitialized()
         {
             ImPlotStyle style = new ImPlotStyle();
-            Assert.Equal(default(float), style.MinorAlpha);
+            Assert.Equal(default(float), style.MinorAlpha, 5);
         }
 
         /// <summary>

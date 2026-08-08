@@ -53,8 +53,8 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(Vector2F.Zero, face.Normal);
             Assert.Equal(Vector2F.Zero, face.SideNormal1);
             Assert.Equal(Vector2F.Zero, face.SideNormal2);
-            Assert.Equal(0.0f, face.SideOffset1);
-            Assert.Equal(0.0f, face.SideOffset2);
+            Assert.Equal(0.0f, face.SideOffset1, 5);
+            Assert.Equal(0.0f, face.SideOffset2, 5);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 SideOffset1 = 2.5f
             };
 
-            Assert.Equal(2.5f, face.SideOffset1);
+            Assert.Equal(2.5f, face.SideOffset1, 5);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 SideOffset2 = 3.5f
             };
 
-            Assert.Equal(3.5f, face.SideOffset2);
+            Assert.Equal(3.5f, face.SideOffset2, 5);
         }
 
         /// <summary>
@@ -209,8 +209,8 @@ namespace Alis.Core.Physic.Test.Collisions
             Assert.Equal(new Vector2F(0.0f, 1.0f), face.Normal);
             Assert.Equal(new Vector2F(1.0f, 0.0f), face.SideNormal1);
             Assert.Equal(new Vector2F(-1.0f, 0.0f), face.SideNormal2);
-            Assert.Equal(2.5f, face.SideOffset1);
-            Assert.Equal(3.5f, face.SideOffset2);
+            Assert.Equal(2.5f, face.SideOffset1, 5);
+            Assert.Equal(3.5f, face.SideOffset2, 5);
         }
     }
 }

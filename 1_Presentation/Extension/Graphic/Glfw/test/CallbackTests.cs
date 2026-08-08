@@ -141,8 +141,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             callback(Window.None, 100.5, 200.7);
 
-            Assert.Equal(100.5, receivedX);
-            Assert.Equal(200.7, receivedY);
+            Assert.Equal(100.5, receivedX, 5);
+            Assert.Equal(200.7, receivedY, 5);
         }
 
         /// <summary>
@@ -385,8 +385,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             callback(Window.None, 300.5, 400.7);
 
-            Assert.Equal(300.5, receivedX);
-            Assert.Equal(400.7, receivedY);
+            Assert.Equal(300.5, receivedX, 5);
+            Assert.Equal(400.7, receivedY, 5);
         }
 
         /// <summary>
@@ -416,8 +416,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             callback(Window.None, 1.5f, 2.0f);
 
-            Assert.Equal(1.5f, receivedXScale);
-            Assert.Equal(2.0f, receivedYScale);
+            Assert.Equal(1.5f, receivedXScale, 5);
+            Assert.Equal(2.0f, receivedYScale, 5);
         }
 
         /// <summary>

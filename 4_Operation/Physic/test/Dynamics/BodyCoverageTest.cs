@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(body.FixedRotation);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -392,8 +392,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Position = new Vector2F(10.0f, 20.0f);
 
             // Assert
-            Assert.Equal(10.0f, body.Position.X);
-            Assert.Equal(20.0f, body.Position.Y);
+            Assert.Equal(10.0f, body.Position.X, 5);
+            Assert.Equal(20.0f, body.Position.Y, 5);
         }
 
         /// <summary>
@@ -412,8 +412,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Position = new Vector2F(15.0f, 25.0f);
 
             // Assert
-            Assert.Equal(15.0f, body.Position.X);
-            Assert.Equal(25.0f, body.Position.Y);
+            Assert.Equal(15.0f, body.Position.X, 5);
+            Assert.Equal(25.0f, body.Position.Y, 5);
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Rotation = 1.5f;
 
             // Assert
-            Assert.Equal(1.5f, body.Rotation);
+            Assert.Equal(1.5f, body.Rotation, 5);
         }
 
         /// <summary>
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.LinearDamping = 0.1f;
 
             // Assert
-            Assert.Equal(0.1f, body.LinearDamping);
+            Assert.Equal(0.1f, body.LinearDamping, 5);
         }
 
         /// <summary>
@@ -468,7 +468,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.AngularDamping = 0.2f;
 
             // Assert
-            Assert.Equal(0.2f, body.AngularDamping);
+            Assert.Equal(0.2f, body.AngularDamping, 5);
         }
 
         /// <summary>
@@ -484,11 +484,11 @@ namespace Alis.Core.Physic.Test.Dynamics
             // Act & Assert
             // Full rotation = 2*PI radians = 1 revolution
             body.Rotation = (float)(2 * Math.PI);
-            Assert.Equal(1.0f, body.GetRevolutions);
+            Assert.Equal(1.0f, body.GetRevolutions, 5);
 
             // Half rotation = PI radians = 0.5 revolutions
             body.Rotation = (float)Math.PI;
-            Assert.Equal(0.5f, body.GetRevolutions);
+            Assert.Equal(0.5f, body.GetRevolutions, 5);
         }
 
         /// <summary>

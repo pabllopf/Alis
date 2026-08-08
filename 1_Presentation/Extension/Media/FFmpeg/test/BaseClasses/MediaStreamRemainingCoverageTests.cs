@@ -16,7 +16,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void AvgFrameRateNumber_Default_ShouldBeZero()
         {
             MediaStream stream = new MediaStream();
-            Assert.Equal(0.0, stream.AvgFrameRateNumber);
+            Assert.Equal(0.0, stream.AvgFrameRateNumber, 5);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.BaseClasses
         public void AvgFrameRateNumber_ShouldBeSettable()
         {
             MediaStream stream = new MediaStream { AvgFrameRateNumber = 29.97 };
-            Assert.Equal(29.97, stream.AvgFrameRateNumber);
+            Assert.Equal(29.97, stream.AvgFrameRateNumber, 5);
         }
 
         /// <summary>

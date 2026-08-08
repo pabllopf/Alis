@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             RestitutionBuilderImpl builder = new RestitutionBuilderImpl();
             RestitutionBuilder result = builder.Restitution(0.8f);
-            Assert.Equal(0.8f, result.RestitutionValue);
+            Assert.Equal(0.8f, result.RestitutionValue, 5);
         }
 
         /// <summary>

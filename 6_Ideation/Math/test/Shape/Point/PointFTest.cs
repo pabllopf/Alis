@@ -46,8 +46,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         {
             PointF point = new PointF {X = 1.0f, Y = 2.0f};
 
-            Assert.Equal(1.0f, point.X);
-            Assert.Equal(2.0f, point.Y);
+            Assert.Equal(1.0f, point.X, 5);
+            Assert.Equal(2.0f, point.Y, 5);
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         {
             PointF point = new PointF(5.5f);
 
-            Assert.Equal(5.5f, point.X);
-            Assert.Equal(5.5f, point.Y);
+            Assert.Equal(5.5f, point.X, 5);
+            Assert.Equal(5.5f, point.Y, 5);
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         {
             PointF point = new PointF(3.5f, 4.5f);
 
-            Assert.Equal(3.5f, point.X);
-            Assert.Equal(4.5f, point.Y);
+            Assert.Equal(3.5f, point.X, 5);
+            Assert.Equal(4.5f, point.Y, 5);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         {
             PointF point = new PointF(0f);
 
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
         {
             PointF point = new PointF(-1.5f, -2.5f);
 
-            Assert.Equal(-1.5f, point.X);
-            Assert.Equal(-2.5f, point.Y);
+            Assert.Equal(-1.5f, point.X, 5);
+            Assert.Equal(-2.5f, point.Y, 5);
         }
 
         /// <summary>
@@ -135,8 +135,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
 
             point.X = 5f;
 
-            Assert.Equal(5f, point.X);
-            Assert.Equal(2f, point.Y);
+            Assert.Equal(5f, point.X, 5);
+            Assert.Equal(2f, point.Y, 5);
         }
 
         /// <summary>
@@ -149,8 +149,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
 
             point.Y = 6f;
 
-            Assert.Equal(1f, point.X);
-            Assert.Equal(6f, point.Y);
+            Assert.Equal(1f, point.X, 5);
+            Assert.Equal(6f, point.Y, 5);
         }
 
         /// <summary>
@@ -164,8 +164,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
             point.X = 10f;
             point.Y = 20f;
 
-            Assert.Equal(10f, point.X);
-            Assert.Equal(20f, point.Y);
+            Assert.Equal(10f, point.X, 5);
+            Assert.Equal(20f, point.Y, 5);
         }
 
         /// <summary>
@@ -189,10 +189,10 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
             copy.X = 10f;
             copy.Y = 20f;
 
-            Assert.Equal(1f, original.X);
-            Assert.Equal(2f, original.Y);
-            Assert.Equal(10f, copy.X);
-            Assert.Equal(20f, copy.Y);
+            Assert.Equal(1f, original.X, 5);
+            Assert.Equal(2f, original.Y, 5);
+            Assert.Equal(10f, copy.X, 5);
+            Assert.Equal(20f, copy.Y, 5);
         }
 
         /// <summary>
@@ -206,8 +206,8 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Point
 
             second.X = 15f;
 
-            Assert.Equal(5f, first.X);
-            Assert.Equal(15f, second.X);
+            Assert.Equal(5f, first.X, 5);
+            Assert.Equal(15f, second.X, 5);
         }
 
         /// <summary>

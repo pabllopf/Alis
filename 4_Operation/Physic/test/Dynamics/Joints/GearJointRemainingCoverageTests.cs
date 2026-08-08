@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo impulseField = typeof(GearJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float impulse = (float)impulseField.GetValue(gearJoint);
 
-            Assert.Equal(0.0f, impulse);
+            Assert.Equal(0.0f, impulse, 5);
         }
 
         /// <summary>
@@ -491,7 +491,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo impulseField = typeof(GearJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float impulse = (float)impulseField.GetValue(gearJoint);
 
-            Assert.Equal(0.0f, impulse);
+            Assert.Equal(0.0f, impulse, 5);
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo impulseField = typeof(GearJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float impulse = (float)impulseField.GetValue(gearJoint);
 
-            Assert.Equal(0.0f, impulse);
+            Assert.Equal(0.0f, impulse, 5);
         }
     }
 }

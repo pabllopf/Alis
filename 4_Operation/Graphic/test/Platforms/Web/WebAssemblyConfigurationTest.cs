@@ -65,8 +65,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.KeyboardInputEnabled);
             Assert.True(config.MouseInputEnabled);
             Assert.True(config.TouchInputEnabled);
-            Assert.Equal(0.15f, config.GamepadDeadzone);
-            Assert.Equal(0.1f, config.TriggerDeadzone);
+            Assert.Equal(0.15f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.1f, config.TriggerDeadzone, 5);
             Assert.False(config.DebugMode);
         }
 
@@ -523,8 +523,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 .WithGamepadDeadzone(1.0f)
                 .Build();
 
-            Assert.Equal(0.0f, configMin.GamepadDeadzone);
-            Assert.Equal(1.0f, configMax.GamepadDeadzone);
+            Assert.Equal(0.0f, configMin.GamepadDeadzone, 5);
+            Assert.Equal(1.0f, configMax.GamepadDeadzone, 5);
         }
 
         /// <summary>
@@ -540,8 +540,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 .WithTriggerDeadzone(1.0f)
                 .Build();
 
-            Assert.Equal(0.0f, configMin.TriggerDeadzone);
-            Assert.Equal(1.0f, configMax.TriggerDeadzone);
+            Assert.Equal(0.0f, configMin.TriggerDeadzone, 5);
+            Assert.Equal(1.0f, configMax.TriggerDeadzone, 5);
         }
 
         // =====================================================================

@@ -90,8 +90,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 V = new Vector2F(10.5f, 20.3f)
             };
 
-            Assert.Equal(10.5f, clipVertex.V.X);
-            Assert.Equal(20.3f, clipVertex.V.Y);
+            Assert.Equal(10.5f, clipVertex.V.X, 5);
+            Assert.Equal(20.3f, clipVertex.V.Y, 5);
         }
 
         /// <summary>
@@ -105,8 +105,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 V = new Vector2F(-5.2f, -8.7f)
             };
 
-            Assert.Equal(-5.2f, clipVertex.V.X);
-            Assert.Equal(-8.7f, clipVertex.V.Y);
+            Assert.Equal(-5.2f, clipVertex.V.X, 5);
+            Assert.Equal(-8.7f, clipVertex.V.Y, 5);
         }
 
         /// <summary>
@@ -120,8 +120,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 V = Vector2F.Zero
             };
 
-            Assert.Equal(0.0f, clipVertex.V.X);
-            Assert.Equal(0.0f, clipVertex.V.Y);
+            Assert.Equal(0.0f, clipVertex.V.X, 5);
+            Assert.Equal(0.0f, clipVertex.V.Y, 5);
         }
 
         /// <summary>

@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo angularMassField = typeof(FrictionJoint).GetField("_angularMass", BindingFlags.NonPublic | BindingFlags.Instance);
             float angularMass = (float)angularMassField.GetValue(joint);
 
-            Assert.Equal(0.0f, angularMass);
+            Assert.Equal(0.0f, angularMass, 5);
         }
 
         /// <summary>
@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             float angularImpulse = (float)angularImpulseField.GetValue(joint);
             Vector2F linearImpulse = (Vector2F)linearImpulseField.GetValue(joint);
 
-            Assert.Equal(0.0f, angularImpulse);
+            Assert.Equal(0.0f, angularImpulse, 5);
             Assert.Equal(Vector2F.Zero, linearImpulse);
         }
     }

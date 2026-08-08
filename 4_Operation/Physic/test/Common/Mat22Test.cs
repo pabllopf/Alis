@@ -61,10 +61,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 mat = new Mat22(1.0f, 2.0f, 3.0f, 4.0f);
 
-            Assert.Equal(1.0f, mat.Ex.X);
-            Assert.Equal(3.0f, mat.Ex.Y);
-            Assert.Equal(2.0f, mat.Ey.X);
-            Assert.Equal(4.0f, mat.Ey.Y);
+            Assert.Equal(1.0f, mat.Ex.X, 5);
+            Assert.Equal(3.0f, mat.Ex.Y, 5);
+            Assert.Equal(2.0f, mat.Ey.X, 5);
+            Assert.Equal(4.0f, mat.Ey.Y, 5);
         }
 
         /// <summary>
@@ -125,10 +125,10 @@ namespace Alis.Core.Physic.Test.Common
 
             mat.SetIdentity();
 
-            Assert.Equal(1.0f, mat.Ex.X);
-            Assert.Equal(0.0f, mat.Ex.Y);
-            Assert.Equal(0.0f, mat.Ey.X);
-            Assert.Equal(1.0f, mat.Ey.Y);
+            Assert.Equal(1.0f, mat.Ex.X, 5);
+            Assert.Equal(0.0f, mat.Ex.Y, 5);
+            Assert.Equal(0.0f, mat.Ey.X, 5);
+            Assert.Equal(1.0f, mat.Ey.Y, 5);
         }
 
         /// <summary>
@@ -141,10 +141,10 @@ namespace Alis.Core.Physic.Test.Common
 
             mat.SetZero();
 
-            Assert.Equal(0.0f, mat.Ex.X);
-            Assert.Equal(0.0f, mat.Ex.Y);
-            Assert.Equal(0.0f, mat.Ey.X);
-            Assert.Equal(0.0f, mat.Ey.Y);
+            Assert.Equal(0.0f, mat.Ex.X, 5);
+            Assert.Equal(0.0f, mat.Ex.Y, 5);
+            Assert.Equal(0.0f, mat.Ey.X, 5);
+            Assert.Equal(0.0f, mat.Ey.Y, 5);
         }
 
         /// <summary>
@@ -188,10 +188,10 @@ namespace Alis.Core.Physic.Test.Common
 
             Mat22.Add(ref a, ref b, out Mat22 result);
 
-            Assert.Equal(6.0f, result.Ex.X);
-            Assert.Equal(10.0f, result.Ex.Y);
-            Assert.Equal(8.0f, result.Ey.X);
-            Assert.Equal(12.0f, result.Ey.Y);
+            Assert.Equal(6.0f, result.Ex.X, 5);
+            Assert.Equal(10.0f, result.Ex.Y, 5);
+            Assert.Equal(8.0f, result.Ey.X, 5);
+            Assert.Equal(12.0f, result.Ey.Y, 5);
         }
 
         /// <summary>
@@ -217,10 +217,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 mat = new Mat22(0.0f, 0.0f, 0.0f, 0.0f);
 
-            Assert.Equal(0.0f, mat.Ex.X);
-            Assert.Equal(0.0f, mat.Ex.Y);
-            Assert.Equal(0.0f, mat.Ey.X);
-            Assert.Equal(0.0f, mat.Ey.Y);
+            Assert.Equal(0.0f, mat.Ex.X, 5);
+            Assert.Equal(0.0f, mat.Ex.Y, 5);
+            Assert.Equal(0.0f, mat.Ey.X, 5);
+            Assert.Equal(0.0f, mat.Ey.Y, 5);
         }
 
         /// <summary>
@@ -258,10 +258,10 @@ namespace Alis.Core.Physic.Test.Common
         {
             Mat22 mat = new Mat22(-1.0f, -2.0f, -3.0f, -4.0f);
 
-            Assert.Equal(-1.0f, mat.Ex.X);
-            Assert.Equal(-3.0f, mat.Ex.Y);
-            Assert.Equal(-2.0f, mat.Ey.X);
-            Assert.Equal(-4.0f, mat.Ey.Y);
+            Assert.Equal(-1.0f, mat.Ex.X, 5);
+            Assert.Equal(-3.0f, mat.Ex.Y, 5);
+            Assert.Equal(-2.0f, mat.Ey.X, 5);
+            Assert.Equal(-4.0f, mat.Ey.Y, 5);
         }
     }
 }

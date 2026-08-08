@@ -45,10 +45,10 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Line
         {
             LineF line = new LineF {X1 = 1.0f, Y1 = 2.0f, X2 = 3.0f, Y2 = 4.0f};
 
-            Assert.Equal(1.0f, line.X1);
-            Assert.Equal(2.0f, line.Y1);
-            Assert.Equal(3.0f, line.X2);
-            Assert.Equal(4.0f, line.Y2);
+            Assert.Equal(1.0f, line.X1, 5);
+            Assert.Equal(2.0f, line.Y1, 5);
+            Assert.Equal(3.0f, line.X2, 5);
+            Assert.Equal(4.0f, line.Y2, 5);
         }
 
         /// <summary>

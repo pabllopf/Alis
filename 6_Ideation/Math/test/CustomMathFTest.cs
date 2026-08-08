@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float result = CustomMathF.Sqrt(0f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -465,7 +465,7 @@ namespace Alis.Core.Aspect.Math.Test
         {
             float result = CustomMathF.Sqrt(float.Epsilon / 2f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>

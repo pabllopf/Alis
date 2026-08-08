@@ -90,7 +90,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImColor color = new ImColor();
             color.SetHsv(0, 1, 1, 0.5f);
-            Assert.Equal(0.5f, color.Value.W);
+            Assert.Equal(0.5f, color.Value.W, 5);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImColor color = new ImColor();
             color.SetHsv(0, 1, 1, 0.5f);
-            Assert.Equal(0.5f, color.Value.W);
+            Assert.Equal(0.5f, color.Value.W, 5);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImColor color = new ImColor();
             color.SetHsv(0.5f, 0.5f, 0.5f, 0.5f);
-            Assert.Equal(0.5f, color.Value.W);
+            Assert.Equal(0.5f, color.Value.W, 5);
         }
     }
 }

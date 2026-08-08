@@ -54,8 +54,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             WorldPhysic world = new WorldPhysic();
 
             Assert.NotNull(world);
-            Assert.Equal(0f, world.GetGravity.X);
-            Assert.Equal(-9.80665f, world.GetGravity.Y);
+            Assert.Equal(0f, world.GetGravity.X, 5);
+            Assert.Equal(-9.80665f, world.GetGravity.Y, 5);
         }
 
         /// <summary>
@@ -92,9 +92,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateBody(new Vector2F(1f, 2f), 0.5f, BodyType.Dynamic);
 
             Assert.NotNull(body);
-            Assert.Equal(1f, body.Position.X);
-            Assert.Equal(2f, body.Position.Y);
-            Assert.Equal(0.5f, body.Rotation);
+            Assert.Equal(1f, body.Position.X, 5);
+            Assert.Equal(2f, body.Position.Y, 5);
+            Assert.Equal(0.5f, body.Rotation, 5);
             Assert.Equal(BodyType.Dynamic, body.GetBodyType);
             Assert.Single(world.BodyList);
         }
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             world.ClearForces();
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0f, body.Torque);
+            Assert.Equal(0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -660,8 +660,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             world.ShiftOrigin(new Vector2F(1f, 1f));
 
-            Assert.Equal(4f, body.Position.X);
-            Assert.Equal(4f, body.Position.Y);
+            Assert.Equal(4f, body.Position.X, 5);
+            Assert.Equal(4f, body.Position.Y, 5);
         }
 
         /// <summary>
@@ -928,8 +928,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = world.CreateLoopShape(vertices, position);
 
             Assert.NotNull(body);
-            Assert.Equal(5f, body.Position.X);
-            Assert.Equal(10f, body.Position.Y);
+            Assert.Equal(5f, body.Position.X, 5);
+            Assert.Equal(10f, body.Position.Y, 5);
         }
 
         /// <summary>

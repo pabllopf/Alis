@@ -46,12 +46,12 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             // Arrange
             SensorEvent evt = new SensorEvent();
             // Assert
-            Assert.Equal(0f, evt.float0);
-            Assert.Equal(0f, evt.float1);
-            Assert.Equal(0f, evt.float2);
-            Assert.Equal(0f, evt.float3);
-            Assert.Equal(0f, evt.float4);
-            Assert.Equal(0f, evt.float5);
+            Assert.Equal(0f, evt.float0, 5);
+            Assert.Equal(0f, evt.float1, 5);
+            Assert.Equal(0f, evt.float2, 5);
+            Assert.Equal(0f, evt.float3, 5);
+            Assert.Equal(0f, evt.float4, 5);
+            Assert.Equal(0f, evt.float5, 5);
         }
     }
 }

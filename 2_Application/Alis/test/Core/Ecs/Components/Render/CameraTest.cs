@@ -151,11 +151,11 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Vector2F resolution = new Vector2F(800f, 600f);
 
             Camera camera = new Camera(context, position, resolution);
-            Assert.Equal(0f, camera.Position.X);
+            Assert.Equal(0f, camera.Position.X, 5);
 
             camera.Position = new Vector2F(100f, 200f);
-            Assert.Equal(100f, camera.Position.X);
-            Assert.Equal(200f, camera.Position.Y);
+            Assert.Equal(100f, camera.Position.X, 5);
+            Assert.Equal(200f, camera.Position.Y, 5);
         }
 
         /// <summary>
@@ -208,12 +208,12 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Camera camera = new Camera(context, position, resolution);
 
             camera.Position = new Vector2F(10f, 20f);
-            Assert.Equal(800f, camera.Resolution.X);
-            Assert.Equal(600f, camera.Resolution.Y);
+            Assert.Equal(800f, camera.Resolution.X, 5);
+            Assert.Equal(600f, camera.Resolution.Y, 5);
 
             camera.Resolution = new Vector2F(1920f, 1080f);
-            Assert.Equal(10f, camera.Position.X);
-            Assert.Equal(20f, camera.Position.Y);
+            Assert.Equal(10f, camera.Position.X, 5);
+            Assert.Equal(20f, camera.Position.Y, 5);
         }
     }
 }

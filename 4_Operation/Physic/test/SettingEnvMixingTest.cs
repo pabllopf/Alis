@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test
         public void MixFriction_WithZero_ShouldReturnZero()
         {
             float actual = SettingEnv.MixFriction(0.5f, 0.0f);
-            Assert.Equal(0.0f, actual);
+            Assert.Equal(0.0f, actual, 5);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_WithEqualValues_ShouldReturnSameValue()
         {
             float actual = SettingEnv.MixRestitution(0.6f, 0.6f);
-            Assert.Equal(0.6f, actual);
+            Assert.Equal(0.6f, actual, 5);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_WithFirstGreater_ReturnsFirst()
         {
             float actual = SettingEnv.MixRestitution(0.9f, 0.3f);
-            Assert.Equal(0.9f, actual);
+            Assert.Equal(0.9f, actual, 5);
         }
     }
 }

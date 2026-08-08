@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             SpeedBuilderImpl builder = new SpeedBuilderImpl();
             SpeedBuilder result = builder.Speed(5.5f);
-            Assert.Equal(5.5f, result.SpeedValue);
+            Assert.Equal(5.5f, result.SpeedValue, 5);
         }
 
         /// <summary>

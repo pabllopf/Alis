@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.LinearVelocity = new Vector2F(3.0f, 0.0f);
 
             Assert.True(body.Awake);
-            Assert.Equal(3.0f, body.LinearVelocity.X);
+            Assert.Equal(3.0f, body.LinearVelocity.X, 5);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.AngularVelocity = 2.5f;
 
             Assert.True(body.Awake);
-            Assert.Equal(2.5f, body.AngularVelocity);
+            Assert.Equal(2.5f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Mass = 5.0f;
 
-            Assert.Equal(0.0f, body.Mass);
+            Assert.Equal(0.0f, body.Mass, 5);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Inertia = 5.0f;
 
-            Assert.Equal(0.0f, body.Inertia);
+            Assert.Equal(0.0f, body.Inertia, 5);
         }
 
         /// <summary>

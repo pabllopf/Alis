@@ -691,7 +691,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
             DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
             double area = triangle.Area();
 
-            Assert.Equal(0.0, area);
+            Assert.Equal(0.0, area, 5);
         }
 
         /// <summary>

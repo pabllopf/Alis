@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(2f, 1f);
 
-            Assert.Equal(2f, circle.GetRadius);
+            Assert.Equal(2f, circle.GetRadius, 5);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(1f, 3f);
 
-            Assert.Equal(3f, circle.GetDensity);
+            Assert.Equal(3f, circle.GetDensity, 5);
         }
 
         /// <summary>

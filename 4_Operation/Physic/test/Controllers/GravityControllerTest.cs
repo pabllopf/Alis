@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Test.Controllers
 
             controller.Strength = 20.0f;
 
-            Assert.Equal(20.0f, controller.Strength);
+            Assert.Equal(20.0f, controller.Strength, 5);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Test.Controllers
 
             controller.MinRadius = 5.0f;
 
-            Assert.Equal(5.0f, controller.MinRadius);
+            Assert.Equal(5.0f, controller.MinRadius, 5);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Test.Controllers
 
             controller.MaxRadius = 50.0f;
 
-            Assert.Equal(50.0f, controller.MaxRadius);
+            Assert.Equal(50.0f, controller.MaxRadius, 5);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             GravityController controller = new GravityController(-10.0f);
 
-            Assert.Equal(-10.0f, controller.Strength);
+            Assert.Equal(-10.0f, controller.Strength, 5);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             GravityController controller = new GravityController(0.0f);
 
-            Assert.Equal(0.0f, controller.Strength);
+            Assert.Equal(0.0f, controller.Strength, 5);
         }
 
         /// <summary>

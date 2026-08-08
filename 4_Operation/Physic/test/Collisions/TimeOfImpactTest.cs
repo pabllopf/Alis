@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collisions
             TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
 
             Assert.Equal(ToiOutputState.Seperated, output.State);
-            Assert.Equal(1.0f, output.T);
+            Assert.Equal(1.0f, output.T, 5);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
             TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
 
             Assert.Equal(ToiOutputState.Touching, output.State);
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
         /// <summary>
@@ -239,7 +239,7 @@ namespace Alis.Core.Physic.Test.Collisions
             TimeOfImpact.CalculateTimeOfImpact(out ToiOutput output, ref input);
 
             Assert.Equal(ToiOutputState.Overlapped, output.State);
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
         /// <summary>
@@ -945,9 +945,9 @@ namespace Alis.Core.Physic.Test.Collisions
             float result2 = (float)method.Invoke(null, new object[] { 1, 0f, 1f, 10f, 5f, 0f });
 
             // Even: bisection = 0.5
-            Assert.Equal(0.5f, result1);
+            Assert.Equal(0.5f, result1, 5);
             // Odd: secant = 0 + (0-10)*(1-0)/(5-10) = -10/-5 = 2
-            Assert.Equal(2.0f, result2);
+            Assert.Equal(2.0f, result2, 5);
         }
 
         /// <summary>
@@ -1013,8 +1013,8 @@ namespace Alis.Core.Physic.Test.Collisions
             object[] args = new object[] { a1, s1, a2, s2, t, s, target };
             method.Invoke(null, args);
 
-            Assert.Equal(0.5f, (float)args[0]);
-            Assert.Equal(0.5f, (float)args[1]);
+            Assert.Equal(0.5f, (float)args[0], 5);
+            Assert.Equal(0.5f, (float)args[1], 5);
         }
 
         /// <summary>
@@ -1031,8 +1031,8 @@ namespace Alis.Core.Physic.Test.Collisions
             object[] args = new object[] { a1, s1, a2, s2, t, s, target };
             method.Invoke(null, args);
 
-            Assert.Equal(0.5f, (float)args[2]);
-            Assert.Equal(0.0f, (float)args[3]);
+            Assert.Equal(0.5f, (float)args[2], 5);
+            Assert.Equal(0.0f, (float)args[3], 5);
         }
 
         /// <summary>

@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             MethodInfo method = typeof(GamePadState).GetMethod("GetAxis", BindingFlags.Public | BindingFlags.Instance);
 
             Assert.NotNull(method);
-            Assert.Equal(typeof(float), method.ReturnType);
+            Assert.Equal(typeof(float), method.ReturnType, 5);
         }
     }
 }

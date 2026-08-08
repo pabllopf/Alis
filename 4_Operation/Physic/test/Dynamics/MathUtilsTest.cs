@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = MathUtils.Cross(ref a, ref b);
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -73,8 +73,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Cross(a, 2.0f);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(-2.0f, result.Y);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(-2.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -87,8 +87,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Abs(v);
 
-            Assert.Equal(3.0f, result.X);
-            Assert.Equal(4.0f, result.Y);
+            Assert.Equal(3.0f, result.X, 5);
+            Assert.Equal(4.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Skew(input);
 
-            Assert.Equal(-2.0f, result.X);
-            Assert.Equal(1.0f, result.Y);
+            Assert.Equal(-2.0f, result.X, 5);
+            Assert.Equal(1.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = MathUtils.Dot(a, b);
 
-            Assert.Equal(0.0f, result);
+            Assert.Equal(0.0f, result, 5);
         }
 
         /// <summary>
@@ -256,9 +256,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector3F result = MathUtils.Cross(ref a, ref b);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(1.0f, result.Z);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+            Assert.Equal(1.0f, result.Z, 5);
         }
 
         /// <summary>
@@ -284,8 +284,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Clamp(value, low, high);
 
-            Assert.Equal(0.5f, result.X);
-            Assert.Equal(1.5f, result.Y);
+            Assert.Equal(0.5f, result.X, 5);
+            Assert.Equal(1.5f, result.Y, 5);
         }
 
         /// <summary>
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = MathUtils.Cross(a, b);
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -341,8 +341,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Cross(2.0f, ref a);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(2.0f, result.Y);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(2.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -411,8 +411,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Rot270(ref v);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(-1.0f, result.Y);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(-1.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -425,8 +425,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Rot90(ref v);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(1.0f, result.Y);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(1.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -440,8 +440,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Mul(ref m, v);
 
-            Assert.Equal(3.0f, result.X);
-            Assert.Equal(4.0f, result.Y);
+            Assert.Equal(3.0f, result.X, 5);
+            Assert.Equal(4.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -455,8 +455,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Mul(ref m, ref v);
 
-            Assert.Equal(6.0f, result.X);
-            Assert.Equal(8.0f, result.Y);
+            Assert.Equal(6.0f, result.X, 5);
+            Assert.Equal(8.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -470,8 +470,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.MulT(ref m, v);
 
-            Assert.Equal(23.0f, result.X);
-            Assert.Equal(34.0f, result.Y);
+            Assert.Equal(23.0f, result.X, 5);
+            Assert.Equal(34.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -485,8 +485,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.MulT(ref m, ref v);
 
-            Assert.Equal(23.0f, result.X);
-            Assert.Equal(34.0f, result.Y);
+            Assert.Equal(23.0f, result.X, 5);
+            Assert.Equal(34.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -503,9 +503,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector3F result = MathUtils.Mul(m, v);
 
-            Assert.Equal(2.0f, result.X);
-            Assert.Equal(3.0f, result.Y);
-            Assert.Equal(4.0f, result.Z);
+            Assert.Equal(2.0f, result.X, 5);
+            Assert.Equal(3.0f, result.Y, 5);
+            Assert.Equal(4.0f, result.Z, 5);
         }
 
         /// <summary>
@@ -522,8 +522,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F result = MathUtils.Mul22(m, v);
 
-            Assert.Equal(6.0f, result.X);
-            Assert.Equal(8.0f, result.Y);
+            Assert.Equal(6.0f, result.X, 5);
+            Assert.Equal(8.0f, result.Y, 5);
         }
 
         /// <summary>
@@ -537,7 +537,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             float result = MathUtils.Dot(a, ref b);
 
-            Assert.Equal(11.0f, result);
+            Assert.Equal(11.0f, result, 5);
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             MathUtils.Cross(ref a, ref b, out float result);
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>

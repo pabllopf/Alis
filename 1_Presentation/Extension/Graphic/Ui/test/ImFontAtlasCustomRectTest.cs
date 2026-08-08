@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void GlyphAdvanceX_ShouldBeInitialized()
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
-            Assert.Equal(default(float), rect.GlyphAdvanceX);
+            Assert.Equal(default(float), rect.GlyphAdvanceX, 5);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontAtlasCustomRect rect = new ImFontAtlasCustomRect();
             rect.GlyphAdvanceX = 1.5f;
-            Assert.Equal(1.5f, rect.GlyphAdvanceX);
+            Assert.Equal(1.5f, rect.GlyphAdvanceX, 5);
         }
 
         /// <summary>

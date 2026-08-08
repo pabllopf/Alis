@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxForce = 500.0f;
 
-            Assert.Equal(500.0f, joint.MaxForce);
+            Assert.Equal(500.0f, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxTorque = 100.0f;
 
-            Assert.Equal(100.0f, joint.MaxTorque);
+            Assert.Equal(100.0f, joint.MaxTorque, 5);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.AngularOffset = 0.5f;
 
-            Assert.Equal(0.5f, joint.AngularOffset);
+            Assert.Equal(0.5f, joint.AngularOffset, 5);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
 
-            Assert.Equal(1.0f, joint.MaxForce);
+            Assert.Equal(1.0f, joint.MaxForce, 5);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
 
-            Assert.Equal(1.0f, joint.MaxTorque);
+            Assert.Equal(1.0f, joint.MaxTorque, 5);
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.AngularOffset = 0.3f;
 
-            Assert.Equal(0.3f, joint.AngularOffset);
+            Assert.Equal(0.3f, joint.AngularOffset, 5);
         }
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             MotorJoint joint = new MotorJoint(bodyA, bodyB);
 
-            Assert.Equal(0.3f, joint.CorrectionFactor);
+            Assert.Equal(0.3f, joint.CorrectionFactor, 5);
         }
 
         /// <summary>

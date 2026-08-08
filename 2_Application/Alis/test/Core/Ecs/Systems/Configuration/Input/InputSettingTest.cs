@@ -45,7 +45,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Input
         {
             InputSetting setting = new InputSetting();
 
-            Assert.Equal(0.1f, setting.MouseSensitivity);
+            Assert.Equal(0.1f, setting.MouseSensitivity, 5);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Input
         {
             InputSetting setting = new InputSetting(0.5f);
 
-            Assert.Equal(0.5f, setting.MouseSensitivity);
+            Assert.Equal(0.5f, setting.MouseSensitivity, 5);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Input
             InputSetting setting = new InputSetting();
 
             setting.MouseSensitivity = 0.75f;
-            Assert.Equal(0.75f, setting.MouseSensitivity);
+            Assert.Equal(0.75f, setting.MouseSensitivity, 5);
         }
 
         /// <summary>

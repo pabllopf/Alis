@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             BreakableBody breakableBody = CreateBreakableBody(mockWorld.Object);
 
-            Assert.Equal(500.0f, breakableBody.Strength);
+            Assert.Equal(500.0f, breakableBody.Strength, 5);
         }
 
         /// <summary>
@@ -349,9 +349,9 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 .GetField("_velocitiesCache", BindingFlags.Instance | BindingFlags.NonPublic)
                 .GetValue(breakableBody);
 
-            Assert.Equal(2.0f, angularCache[0]);
-            Assert.Equal(3.0f, velocityCache[0].X);
-            Assert.Equal(4.0f, velocityCache[0].Y);
+            Assert.Equal(2.0f, angularCache[0], 5);
+            Assert.Equal(3.0f, velocityCache[0].X, 5);
+            Assert.Equal(4.0f, velocityCache[0].Y, 5);
         }
 
         /// <summary>

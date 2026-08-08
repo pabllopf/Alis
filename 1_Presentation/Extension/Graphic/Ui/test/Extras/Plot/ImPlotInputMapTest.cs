@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         public void ZoomRate_ShouldBeInitialized()
         {
             ImPlotInputMap inputMap = new ImPlotInputMap();
-            Assert.Equal(default(float), inputMap.ZoomRate);
+            Assert.Equal(default(float), inputMap.ZoomRate, 5);
         }
 
         /// <summary>

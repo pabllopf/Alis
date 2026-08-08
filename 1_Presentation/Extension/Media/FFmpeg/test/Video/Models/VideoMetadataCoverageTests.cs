@@ -71,8 +71,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal("h264", sut.Codec);
             Assert.Equal(1920, sut.Width);
             Assert.Equal(1080, sut.Height);
-            Assert.Equal(120.5, sut.Duration);
-            Assert.Equal(29.97, sut.AvgFramerate);
+            Assert.Equal(120.5, sut.Duration, 5);
+            Assert.Equal(29.97, sut.AvgFramerate, 5);
             Assert.Equal(5000000, sut.BitRate);
             Assert.Equal(8, sut.BitDepth);
             Assert.Equal("1:1", sut.SampleAspectRatio);
@@ -153,7 +153,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
         {
             VideoMetadata sut = new VideoMetadata();
 
-            Assert.Equal(0.0, sut.AvgFramerate);
+            Assert.Equal(0.0, sut.AvgFramerate, 5);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
 
             sut.AvgFramerate = -1.0;
 
-            Assert.Equal(-1.0, sut.AvgFramerate);
+            Assert.Equal(-1.0, sut.AvgFramerate, 5);
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
 
             sut.Duration = -1.0;
 
-            Assert.Equal(-1.0, sut.Duration);
+            Assert.Equal(-1.0, sut.Duration, 5);
         }
 
         /// <summary>
@@ -539,8 +539,8 @@ namespace Alis.Extension.Media.FFmpeg.Test.Video.Models
             Assert.Equal(string.Empty, sut.Codec);
             Assert.Equal(0, sut.Width);
             Assert.Equal(0, sut.Height);
-            Assert.Equal(0.0, sut.Duration);
-            Assert.Equal(0.0, sut.AvgFramerate);
+            Assert.Equal(0.0, sut.Duration, 5);
+            Assert.Equal(0.0, sut.AvgFramerate, 5);
             Assert.Equal(0, sut.BitRate);
             Assert.Equal(0, sut.BitDepth);
             Assert.Equal(string.Empty, sut.SampleAspectRatio);

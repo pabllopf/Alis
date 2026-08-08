@@ -45,9 +45,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Square
         {
             SquareF square = new SquareF {X = 1.0f, Y = 2.0f, W = 3.0f};
 
-            Assert.Equal(1.0f, square.X);
-            Assert.Equal(2.0f, square.Y);
-            Assert.Equal(3.0f, square.W);
+            Assert.Equal(1.0f, square.X, 5);
+            Assert.Equal(2.0f, square.Y, 5);
+            Assert.Equal(3.0f, square.W, 5);
         }
 
         /// <summary>

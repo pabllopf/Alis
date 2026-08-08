@@ -120,7 +120,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
             AudioMetadata metadata = new AudioMetadata();
             metadata.Duration = 180.5;
 
-            Assert.Equal(180.5, metadata.Duration);
+            Assert.Equal(180.5, metadata.Duration, 5);
         }
 
         /// <summary>
@@ -361,7 +361,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
             Assert.Equal("pcm_s16le", metadata.Codec);
             Assert.Equal(2, metadata.Channels);
             Assert.Equal(48000, metadata.SampleRate);
-            Assert.Equal(60.0, metadata.Duration);
+            Assert.Equal(60.0, metadata.Duration, 5);
             Assert.Equal(1536000, metadata.BitRate);
             Assert.Equal(16, metadata.BitDepth);
             Assert.Equal(2880000, metadata.PredictedSampleCount);

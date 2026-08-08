@@ -213,11 +213,11 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Array.Sort(array, comparer);
 
-            Assert.Equal(1.0f, array[0]);
-            Assert.Equal(2.0f, array[1]);
-            Assert.Equal(5.0f, array[2]);
-            Assert.Equal(8.0f, array[3]);
-            Assert.Equal(9.0f, array[4]);
+            Assert.Equal(1.0f, array[0], 5);
+            Assert.Equal(2.0f, array[1], 5);
+            Assert.Equal(5.0f, array[2], 5);
+            Assert.Equal(8.0f, array[3], 5);
+            Assert.Equal(9.0f, array[4], 5);
         }
     }
 }

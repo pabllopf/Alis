@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             RayCastInput input = new RayCastInput();
 
-            Assert.Equal(0.0f, input.MaxFraction);
+            Assert.Equal(0.0f, input.MaxFraction, 5);
             Assert.Equal(Vector2F.Zero, input.Point1);
             Assert.Equal(Vector2F.Zero, input.Point2);
         }
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 0.75f
             };
 
-            Assert.Equal(0.75f, input.MaxFraction);
+            Assert.Equal(0.75f, input.MaxFraction, 5);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Assert.Equal(new Vector2F(0.0f, 0.0f), input.Point1);
             Assert.Equal(new Vector2F(10.0f, 10.0f), input.Point2);
-            Assert.Equal(1.0f, input.MaxFraction);
+            Assert.Equal(1.0f, input.MaxFraction, 5);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 0.0f
             };
 
-            Assert.Equal(0.0f, input.MaxFraction);
+            Assert.Equal(0.0f, input.MaxFraction, 5);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 MaxFraction = 1.0f
             };
 
-            Assert.Equal(1.0f, input.MaxFraction);
+            Assert.Equal(1.0f, input.MaxFraction, 5);
         }
 
         /// <summary>

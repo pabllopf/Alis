@@ -50,8 +50,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
 
             ref Position retrieved = ref SceneMarshal.GetComponent<Position>(scene, entity);
 
-            Assert.Equal(10f, retrieved.X);
-            Assert.Equal(20f, retrieved.Y);
+            Assert.Equal(10f, retrieved.X, 5);
+            Assert.Equal(20f, retrieved.Y, 5);
         }
 
         /// <summary>
@@ -68,8 +68,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
             retrieved.Y = 200;
 
             Position updated = entity.Get<Position>();
-            Assert.Equal(100f, updated.X);
-            Assert.Equal(200f, updated.Y);
+            Assert.Equal(100f, updated.X, 5);
+            Assert.Equal(200f, updated.Y, 5);
         }
 
         /// <summary>
@@ -99,10 +99,10 @@ namespace Alis.Core.Ecs.Test.Marshalling
             ref Position pos1 = ref SceneMarshal.GetComponent<Position>(scene, entity1);
             ref Position pos2 = ref SceneMarshal.GetComponent<Position>(scene, entity2);
 
-            Assert.Equal(10f, pos1.X);
-            Assert.Equal(20f, pos1.Y);
-            Assert.Equal(30f, pos2.X);
-            Assert.Equal(40f, pos2.Y);
+            Assert.Equal(10f, pos1.X, 5);
+            Assert.Equal(20f, pos1.Y, 5);
+            Assert.Equal(30f, pos2.X, 5);
+            Assert.Equal(40f, pos2.Y, 5);
         }
 
         /// <summary>
@@ -118,8 +118,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
             pos.X = 999;
             pos.Y = 888;
 
-            Assert.Equal(999f, entity.Get<Position>().X);
-            Assert.Equal(888f, entity.Get<Position>().Y);
+            Assert.Equal(999f, entity.Get<Position>().X, 5);
+            Assert.Equal(888f, entity.Get<Position>().Y, 5);
         }
 
         /// <summary>
@@ -135,8 +135,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
 
             Assert.True(buffer.Length > 0);
             Assert.True(index >= 0);
-            Assert.Equal(5f, buffer[index].X);
-            Assert.Equal(10f, buffer[index].Y);
+            Assert.Equal(5f, buffer[index].X, 5);
+            Assert.Equal(10f, buffer[index].Y, 5);
         }
 
         /// <summary>
@@ -152,8 +152,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
             buffer[index] = new Position { X = 50, Y = 100 };
 
             Position updated = entity.Get<Position>();
-            Assert.Equal(50f, updated.X);
-            Assert.Equal(100f, updated.Y);
+            Assert.Equal(50f, updated.X, 5);
+            Assert.Equal(100f, updated.Y, 5);
         }
 
         /// <summary>
@@ -169,10 +169,10 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Span<Position> buffer1 = SceneMarshal.GetRawBuffer<Position>(scene, entity1, out int index1);
             Span<Position> buffer2 = SceneMarshal.GetRawBuffer<Position>(scene, entity2, out int index2);
 
-            Assert.Equal(1f, buffer1[index1].X);
-            Assert.Equal(2f, buffer1[index1].Y);
-            Assert.Equal(3f, buffer2[index2].X);
-            Assert.Equal(4f, buffer2[index2].Y);
+            Assert.Equal(1f, buffer1[index1].X, 5);
+            Assert.Equal(2f, buffer1[index1].Y, 5);
+            Assert.Equal(3f, buffer2[index2].X, 5);
+            Assert.Equal(4f, buffer2[index2].Y, 5);
         }
 
         /// <summary>
@@ -186,8 +186,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
 
             ref Velocity retrieved = ref SceneMarshal.Get<Velocity>(scene, entity.EntityID);
 
-            Assert.Equal(1f, retrieved.X);
-            Assert.Equal(2f, retrieved.Y);
+            Assert.Equal(1f, retrieved.X, 5);
+            Assert.Equal(2f, retrieved.Y, 5);
         }
 
         /// <summary>
@@ -204,8 +204,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
             retrieved.Y = 20;
 
             Velocity updated = entity.Get<Velocity>();
-            Assert.Equal(10f, updated.X);
-            Assert.Equal(20f, updated.Y);
+            Assert.Equal(10f, updated.X, 5);
+            Assert.Equal(20f, updated.Y, 5);
         }
 
         /// <summary>
@@ -221,10 +221,10 @@ namespace Alis.Core.Ecs.Test.Marshalling
             ref Velocity vel1 = ref SceneMarshal.Get<Velocity>(scene, entity1.EntityID);
             ref Velocity vel2 = ref SceneMarshal.Get<Velocity>(scene, entity2.EntityID);
 
-            Assert.Equal(1f, vel1.X);
-            Assert.Equal(2f, vel1.Y);
-            Assert.Equal(3f, vel2.X);
-            Assert.Equal(4f, vel2.Y);
+            Assert.Equal(1f, vel1.X, 5);
+            Assert.Equal(2f, vel1.Y, 5);
+            Assert.Equal(3f, vel2.X, 5);
+            Assert.Equal(4f, vel2.Y, 5);
         }
 
         /// <summary>
@@ -254,17 +254,17 @@ namespace Alis.Core.Ecs.Test.Marshalling
             ref Health health = ref SceneMarshal.GetComponent<Health>(scene, entity);
             ref Velocity vel = ref SceneMarshal.GetComponent<Velocity>(scene, entity);
 
-            Assert.Equal(1f, pos.X);
+            Assert.Equal(1f, pos.X, 5);
             Assert.Equal(50, health.Value);
-            Assert.Equal(3f, vel.X);
+            Assert.Equal(3f, vel.X, 5);
 
             pos.X = 10;
             health.Value = 99;
             vel.Y = 40;
 
-            Assert.Equal(10f, entity.Get<Position>().X);
+            Assert.Equal(10f, entity.Get<Position>().X, 5);
             Assert.Equal(99, entity.Get<Health>().Value);
-            Assert.Equal(40f, entity.Get<Velocity>().Y);
+            Assert.Equal(40f, entity.Get<Velocity>().Y, 5);
         }
 
         /// <summary>
@@ -280,10 +280,10 @@ namespace Alis.Core.Ecs.Test.Marshalling
             Span<Position> posBuffer = SceneMarshal.GetRawBuffer<Position>(scene, entityPos, out int posIndex);
             Span<Velocity> velBuffer = SceneMarshal.GetRawBuffer<Velocity>(scene, entityVel, out int velIndex);
 
-            Assert.Equal(10f, posBuffer[posIndex].X);
-            Assert.Equal(20f, posBuffer[posIndex].Y);
-            Assert.Equal(30f, velBuffer[velIndex].X);
-            Assert.Equal(40f, velBuffer[velIndex].Y);
+            Assert.Equal(10f, posBuffer[posIndex].X, 5);
+            Assert.Equal(20f, posBuffer[posIndex].Y, 5);
+            Assert.Equal(30f, velBuffer[velIndex].X, 5);
+            Assert.Equal(40f, velBuffer[velIndex].Y, 5);
         }
 
         /// <summary>
@@ -300,8 +300,8 @@ namespace Alis.Core.Ecs.Test.Marshalling
 
             Assert.Equal(2, buffer.Length);
             Assert.True(index >= 0);
-            Assert.Equal(1f, buffer[0].X);
-            Assert.Equal(3f, buffer[1].X);
+            Assert.Equal(1f, buffer[0].X, 5);
+            Assert.Equal(3f, buffer[1].X, 5);
         }
     }
 }

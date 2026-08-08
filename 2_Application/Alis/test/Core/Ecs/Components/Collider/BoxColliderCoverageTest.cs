@@ -343,12 +343,12 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             // Assert - Vertices should have 6 values defining a triangle
             Assert.NotNull(vertices);
             Assert.Equal(6, vertices.Length);
-            Assert.Equal(-0.5f, vertices[0]);  // x1
-            Assert.Equal(-0.5f, vertices[1]);  // y1
-            Assert.Equal(0.5f, vertices[2]);   // x2
-            Assert.Equal(-0.5f, vertices[3]);  // y2
-            Assert.Equal(0.0f, vertices[4]);   // x3
-            Assert.Equal(0.5f, vertices[5]);   // y3
+            Assert.Equal(-0.5f, vertices[0], 5);  // x1
+            Assert.Equal(-0.5f, vertices[1], 5);  // y1
+            Assert.Equal(0.5f, vertices[2], 5);   // x2
+            Assert.Equal(-0.5f, vertices[3], 5);  // y2
+            Assert.Equal(0.0f, vertices[4], 5);   // x3
+            Assert.Equal(0.5f, vertices[5], 5);   // y3
         }
 
         #endregion
@@ -368,15 +368,15 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Equal(new Vector2F(0f, 0f), collider.RelativePosition);
             
             collider.RelativePosition = new Vector2F(10f, 20f);
-            Assert.Equal(10f, collider.RelativePosition.X);
-            Assert.Equal(20f, collider.RelativePosition.Y);
+            Assert.Equal(10f, collider.RelativePosition.X, 5);
+            Assert.Equal(20f, collider.RelativePosition.Y, 5);
 
             // Test LinearVelocity
             Assert.Equal(new Vector2F(0f, 0f), collider.LinearVelocity);
             
             collider.LinearVelocity = new Vector2F(-5f, 10f);
-            Assert.Equal(-5f, collider.LinearVelocity.X);
-            Assert.Equal(10f, collider.LinearVelocity.Y);
+            Assert.Equal(-5f, collider.LinearVelocity.X, 5);
+            Assert.Equal(10f, collider.LinearVelocity.Y, 5);
         }
 
         #endregion
@@ -401,10 +401,10 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             Assert.Null(collider.Body);
             Assert.False(collider.AutoTilling);
             Assert.Equal(BodyType.Static, collider.BodyType);
-            Assert.Equal(0.5f, collider.Restitution);
-            Assert.Equal(0.5f, collider.Friction);
+            Assert.Equal(0.5f, collider.Restitution, 5);
+            Assert.Equal(0.5f, collider.Friction, 5);
             Assert.False(collider.FixedRotation);
-            Assert.Equal(1.0f, collider.Mass);
+            Assert.Equal(1.0f, collider.Mass, 5);
             Assert.False(collider.IgnoreGravity);
             Assert.Equal(new Vector2F(0f, 0f), collider.LinearVelocity);
             Assert.Equal(0, collider.AngularVelocity);

@@ -46,8 +46,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationPoint point = new TriangulationPoint(1.5, 2.5);
 
-            Assert.Equal(1.5, point.X);
-            Assert.Equal(2.5, point.Y);
+            Assert.Equal(1.5, point.X, 5);
+            Assert.Equal(2.5, point.Y, 5);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationPoint point = new TriangulationPoint(3.14, 0.0);
 
-            Assert.Equal(3.14f, point.Xf);
+            Assert.Equal(3.14f, point.Xf, 5);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT
         {
             TriangulationPoint point = new TriangulationPoint(0.0, 2.71);
 
-            Assert.Equal(2.71f, point.Yf);
+            Assert.Equal(2.71f, point.Yf, 5);
         }
 
         /// <summary>

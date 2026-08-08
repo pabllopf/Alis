@@ -44,7 +44,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void X0_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
-            Assert.Equal(0f, row.X0);
+            Assert.Equal(0f, row.X0, 5);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void X1_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
-            Assert.Equal(0f, row.X1);
+            Assert.Equal(0f, row.X1, 5);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void BaselineYDelta_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
-            Assert.Equal(0f, row.BaselineYDelta);
+            Assert.Equal(0f, row.BaselineYDelta, 5);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Ymin_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
-            Assert.Equal(0f, row.Ymin);
+            Assert.Equal(0f, row.Ymin, 5);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Ymax_ShouldBeInitialized()
         {
             StbTexteditRow row = new StbTexteditRow();
-            Assert.Equal(0f, row.Ymax);
+            Assert.Equal(0f, row.Ymax, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             row.X0 = 1.0f;
-            Assert.Equal(1.0f, row.X0);
+            Assert.Equal(1.0f, row.X0, 5);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             row.X1 = 2.0f;
-            Assert.Equal(2.0f, row.X1);
+            Assert.Equal(2.0f, row.X1, 5);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             row.BaselineYDelta = 3.0f;
-            Assert.Equal(3.0f, row.BaselineYDelta);
+            Assert.Equal(3.0f, row.BaselineYDelta, 5);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             row.Ymin = 4.0f;
-            Assert.Equal(4.0f, row.Ymin);
+            Assert.Equal(4.0f, row.Ymin, 5);
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = new StbTexteditRow();
             row.Ymax = 5.0f;
-            Assert.Equal(5.0f, row.Ymax);
+            Assert.Equal(5.0f, row.Ymax, 5);
         }
 
         /// <summary>

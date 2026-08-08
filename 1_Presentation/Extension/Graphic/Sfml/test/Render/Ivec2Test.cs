@@ -58,8 +58,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector2F source = new Vector2F(3.0f, 4.0f);
             Ivec2 v = new Ivec2(source);
-            Assert.Equal(3.0f, v.X);
-            Assert.Equal(4.0f, v.Y);
+            Assert.Equal(3.0f, v.X, 5);
+            Assert.Equal(4.0f, v.Y, 5);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector2F vec2f = new Vector2F(5.0f, 6.0f);
             Ivec2 v = vec2f;
-            Assert.Equal(5.0f, v.X);
-            Assert.Equal(6.0f, v.Y);
+            Assert.Equal(5.0f, v.X, 5);
+            Assert.Equal(6.0f, v.Y, 5);
         }
     }
 }

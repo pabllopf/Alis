@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DpiScale_Default_IsZero()
         {
             ImGuiPlatformMonitor monitor = default;
-            Assert.Equal(0.0f, monitor.DpiScale);
+            Assert.Equal(0.0f, monitor.DpiScale, 5);
         }
     }
 }

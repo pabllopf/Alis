@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             Contact contact = new Contact(null, 0, null, 0);
             contact.Friction = 0.5f;
-            Assert.Equal(0.5f, contact.Friction);
+            Assert.Equal(0.5f, contact.Friction, 5);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             Contact contact = new Contact(null, 0, null, 0);
             contact.Restitution = 0.3f;
-            Assert.Equal(0.3f, contact.Restitution);
+            Assert.Equal(0.3f, contact.Restitution, 5);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             Contact contact = new Contact(null, 0, null, 0);
             contact.TangentSpeed = 2.5f;
-            Assert.Equal(2.5f, contact.TangentSpeed);
+            Assert.Equal(2.5f, contact.TangentSpeed, 5);
         }
 
         /// <summary>

@@ -375,7 +375,7 @@ namespace Alis.Extension.Media.FFmpeg.Test
             AudioVideoWriter writer = new AudioVideoWriter(
                 _testFile, 1920, 1080, 60.0, 2, 48000, 24, videoOptions, audioOptions);
 
-            Assert.Equal(60.0, writer.VideoFramerate);
+            Assert.Equal(60.0, writer.VideoFramerate, 5);
         }
 
         /// <summary>

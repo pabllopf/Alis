@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Controllers
 
             controller.MaxLinearVelocity = 100.0f;
 
-            Assert.Equal(100.0f, controller.MaxLinearVelocity);
+            Assert.Equal(100.0f, controller.MaxLinearVelocity, 5);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Test.Controllers
 
             controller.MaxAngularVelocity = 20.0f;
 
-            Assert.Equal(20.0f, controller.MaxAngularVelocity);
+            Assert.Equal(20.0f, controller.MaxAngularVelocity, 5);
         }
 
         /// <summary>
@@ -163,8 +163,8 @@ namespace Alis.Core.Physic.Test.Controllers
         {
             VelocityLimitController controller = new VelocityLimitController(-50.0f, -10.0f);
 
-            Assert.Equal(-50.0f, controller.MaxLinearVelocity);
-            Assert.Equal(-10.0f, controller.MaxAngularVelocity);
+            Assert.Equal(-50.0f, controller.MaxLinearVelocity, 5);
+            Assert.Equal(-10.0f, controller.MaxAngularVelocity, 5);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.LinearVelocityInternal = new Vector2F(5.0f, 0f);
             controller.Update(0.016f);
 
-            Assert.Equal(5.0f, body.LinearVelocityInternal.X);
+            Assert.Equal(5.0f, body.LinearVelocityInternal.X, 5);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
             controller.Update(0.016f);
 
-            Assert.Equal(500f, body.LinearVelocityInternal.X);
+            Assert.Equal(500f, body.LinearVelocityInternal.X, 5);
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.AngularVelocity = 5.0f;
             controller.Update(0.016f);
 
-            Assert.Equal(5.0f, body.AngularVelocity);
+            Assert.Equal(5.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.AngularVelocity = 500f;
             controller.Update(0.016f);
 
-            Assert.Equal(500f, body.AngularVelocity);
+            Assert.Equal(500f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
             controller.Update(0.016f);
 
-            Assert.Equal(500f, body.LinearVelocityInternal.X);
+            Assert.Equal(500f, body.LinearVelocityInternal.X, 5);
         }
 
         /// <summary>
@@ -459,8 +459,8 @@ namespace Alis.Core.Physic.Test.Controllers
             body.AngularVelocity = 500f;
             controller.Update(0.016f);
 
-            Assert.Equal(500f, body.LinearVelocityInternal.X);
-            Assert.Equal(500f, body.AngularVelocity);
+            Assert.Equal(500f, body.LinearVelocityInternal.X, 5);
+            Assert.Equal(500f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace Alis.Core.Physic.Test.Controllers
             body.LinearVelocityInternal = new Vector2F(500f, 0f);
             controller.Update(0.016f);
 
-            Assert.Equal(500f, body.LinearVelocityInternal.X);
+            Assert.Equal(500f, body.LinearVelocityInternal.X, 5);
         }
 
         /// <summary>

@@ -69,7 +69,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiPlatformImeData platformImeData = new ImGuiPlatformImeData();
             platformImeData.InputLineHeight = 15.5f;
-            Assert.Equal(15.5f, platformImeData.InputLineHeight);
+            Assert.Equal(15.5f, platformImeData.InputLineHeight, 5);
         }
     }
 }

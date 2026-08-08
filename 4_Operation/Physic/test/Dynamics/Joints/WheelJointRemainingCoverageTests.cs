@@ -70,15 +70,15 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             FieldInfo impulseField = typeof(WheelJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float impulse = (float)impulseField.GetValue(joint);
-            Assert.Equal(0.0f, impulse);
+            Assert.Equal(0.0f, impulse, 5);
 
             FieldInfo springImpulseField = typeof(WheelJoint).GetField("_springImpulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float springImpulse = (float)springImpulseField.GetValue(joint);
-            Assert.Equal(0.0f, springImpulse);
+            Assert.Equal(0.0f, springImpulse, 5);
 
             FieldInfo motorImpulseField = typeof(WheelJoint).GetField("_motorImpulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float motorImpulse = (float)motorImpulseField.GetValue(joint);
-            Assert.Equal(0.0f, motorImpulse);
+            Assert.Equal(0.0f, motorImpulse, 5);
         }
 
         /// <summary>

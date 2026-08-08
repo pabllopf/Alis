@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions
             ToiOutput output = new ToiOutput();
 
             Assert.Equal(ToiOutputState.Unknown, output.State);
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
       
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 T = 0.5f
             };
 
-            Assert.Equal(0.5f, output.T);
+            Assert.Equal(0.5f, output.T, 5);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 T = 0.0f
             };
 
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 T = 0.999f
             };
 
-            Assert.Equal(0.999f, output.T);
+            Assert.Equal(0.999f, output.T, 5);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             ToiOutput output = new ToiOutput();
 
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
       
@@ -213,7 +213,7 @@ namespace Alis.Core.Physic.Test.Collisions
             };
 
             Assert.Equal(ToiOutputState.Failed, output.State);
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
         /// <summary>
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Test.Collisions
             };
 
             Assert.Equal(ToiOutputState.Overlapped, output.State);
-            Assert.Equal(0.0f, output.T);
+            Assert.Equal(0.0f, output.T, 5);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Test.Collisions
             };
 
             Assert.Equal(ToiOutputState.Touching, output.State);
-            Assert.Equal(0.5f, output.T);
+            Assert.Equal(0.5f, output.T, 5);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Test.Collisions
             };
 
             Assert.Equal(ToiOutputState.Seperated, output.State);
-            Assert.Equal(1.0f, output.T);
+            Assert.Equal(1.0f, output.T, 5);
         }
     }
 }

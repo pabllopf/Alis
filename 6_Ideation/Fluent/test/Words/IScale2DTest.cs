@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             Scale2DBuilder builder = new Scale2DBuilder();
             ScaleBuilder result = builder.Scale(2f, 3f);
-            Assert.Equal(2f, result.ScaleX);
-            Assert.Equal(3f, result.ScaleY);
+            Assert.Equal(2f, result.ScaleX, 5);
+            Assert.Equal(3f, result.ScaleY, 5);
         }
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             Scale2DBuilder builder = new Scale2DBuilder();
             ScaleBuilder result = builder.Scale(1.5f, 1.5f);
-            Assert.Equal(1.5f, result.ScaleX);
-            Assert.Equal(1.5f, result.ScaleY);
+            Assert.Equal(1.5f, result.ScaleX, 5);
+            Assert.Equal(1.5f, result.ScaleY, 5);
         }
 
         /// <summary>

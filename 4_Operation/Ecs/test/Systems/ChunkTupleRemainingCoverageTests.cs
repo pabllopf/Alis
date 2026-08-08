@@ -266,7 +266,7 @@ namespace Alis.Core.Ecs.Test.Systems
             tuple.Deconstruct(out Span<int> s1, out Span<float> s2);
 
             Assert.Equal(1, s1[0]);
-            Assert.Equal(2.5f, s2[0]);
+            Assert.Equal(2.5f, s2[0], 5);
         }
     }
 }

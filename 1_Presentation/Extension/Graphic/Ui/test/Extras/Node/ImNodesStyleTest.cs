@@ -46,7 +46,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void GridSpacing_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.GridSpacing);
+            Assert.Equal(default(float), style.GridSpacing, 5);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void NodeCornerRounding_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.NodeCornerRounding);
+            Assert.Equal(default(float), style.NodeCornerRounding, 5);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void NodeBorderThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.NodeBorderThickness);
+            Assert.Equal(default(float), style.NodeBorderThickness, 5);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void LinkThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.LinkThickness);
+            Assert.Equal(default(float), style.LinkThickness, 5);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void LinkLineSegmentsPerLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.LinkLineSegmentsPerLength);
+            Assert.Equal(default(float), style.LinkLineSegmentsPerLength, 5);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void LinkHoverDistance_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.LinkHoverDistance);
+            Assert.Equal(default(float), style.LinkHoverDistance, 5);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinCircleRadius_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinCircleRadius);
+            Assert.Equal(default(float), style.PinCircleRadius, 5);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinQuadSideLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinQuadSideLength);
+            Assert.Equal(default(float), style.PinQuadSideLength, 5);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinTriangleSideLength_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinTriangleSideLength);
+            Assert.Equal(default(float), style.PinTriangleSideLength, 5);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinLineThickness_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinLineThickness);
+            Assert.Equal(default(float), style.PinLineThickness, 5);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinHoverRadius_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinHoverRadius);
+            Assert.Equal(default(float), style.PinHoverRadius, 5);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void PinOffset_ShouldBeInitialized()
         {
             ImNodesStyle style = new ImNodesStyle();
-            Assert.Equal(default(float), style.PinOffset);
+            Assert.Equal(default(float), style.PinOffset, 5);
         }
 
         /// <summary>

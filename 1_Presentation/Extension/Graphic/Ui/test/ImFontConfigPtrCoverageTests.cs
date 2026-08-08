@@ -130,16 +130,16 @@ namespace Alis.Extension.Graphic.Ui.Test
                 Assert.Equal(0, ptr.FontDataSize);
                 Assert.False(ptr.FontDataOwnedByAtlas);
                 Assert.Equal(0, ptr.FontNo);
-                Assert.Equal(0.0f, ptr.SizePixels);
+                Assert.Equal(0.0f, ptr.SizePixels, 5);
                 Assert.Equal(0, ptr.OversampleH);
                 Assert.Equal(0, ptr.OversampleV);
                 Assert.False(ptr.SnapH);
                 Assert.Equal(IntPtr.Zero, ptr.GlyphRanges);
-                Assert.Equal(0.0f, ptr.GlyphMinAdvanceX);
-                Assert.Equal(0.0f, ptr.GlyphMaxAdvanceX);
+                Assert.Equal(0.0f, ptr.GlyphMinAdvanceX, 5);
+                Assert.Equal(0.0f, ptr.GlyphMaxAdvanceX, 5);
                 Assert.False(ptr.MergeMode);
                 Assert.Equal(0u, ptr.FontBuilderFlags);
-                Assert.Equal(0.0f, ptr.RasterizerMultiply);
+                Assert.Equal(0.0f, ptr.RasterizerMultiply, 5);
                 Assert.Equal((ushort)0, ptr.EllipsisChar);
             }
             finally
@@ -283,7 +283,7 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImFontConfig config = new ImFontConfig { SizePixels = 24.0f };
                 Marshal.StructureToPtr(config, nativePtr, false);
                 ImFontConfigPtr ptr = new ImFontConfigPtr(nativePtr);
-                Assert.Equal(24.0f, ptr.SizePixels);
+                Assert.Equal(24.0f, ptr.SizePixels, 5);
             }
             finally
             {
@@ -513,7 +513,7 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImFontConfig config = new ImFontConfig { GlyphMinAdvanceX = 2.5f };
                 Marshal.StructureToPtr(config, nativePtr, false);
                 ImFontConfigPtr ptr = new ImFontConfigPtr(nativePtr);
-                Assert.Equal(2.5f, ptr.GlyphMinAdvanceX);
+                Assert.Equal(2.5f, ptr.GlyphMinAdvanceX, 5);
             }
             finally
             {
@@ -535,8 +535,8 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImFontConfigPtr ptr = new ImFontConfigPtr(nativePtr);
                 ptr.GlyphMinAdvanceX = 7.5f;
                 ImFontConfig result = Marshal.PtrToStructure<ImFontConfig>(nativePtr);
-                Assert.Equal(7.5f, result.GlyphMinAdvanceX);
-                Assert.Equal(7.5f, ptr.GlyphMinAdvanceX);
+                Assert.Equal(7.5f, result.GlyphMinAdvanceX, 5);
+                Assert.Equal(7.5f, ptr.GlyphMinAdvanceX, 5);
             }
             finally
             {
@@ -556,7 +556,7 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImFontConfig config = new ImFontConfig { GlyphMaxAdvanceX = 64.0f };
                 Marshal.StructureToPtr(config, nativePtr, false);
                 ImFontConfigPtr ptr = new ImFontConfigPtr(nativePtr);
-                Assert.Equal(64.0f, ptr.GlyphMaxAdvanceX);
+                Assert.Equal(64.0f, ptr.GlyphMaxAdvanceX, 5);
             }
             finally
             {
@@ -682,7 +682,7 @@ namespace Alis.Extension.Graphic.Ui.Test
                 ImFontConfig config = new ImFontConfig { RasterizerMultiply = 2.0f };
                 Marshal.StructureToPtr(config, nativePtr, false);
                 ImFontConfigPtr ptr = new ImFontConfigPtr(nativePtr);
-                Assert.Equal(2.0f, ptr.RasterizerMultiply);
+                Assert.Equal(2.0f, ptr.RasterizerMultiply, 5);
             }
             finally
             {

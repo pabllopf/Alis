@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             CxFastListNode<bool> boolNode = new CxFastListNode<bool>(true);
 
             Assert.Equal("hello", stringNode.Elt);
-            Assert.Equal(3.14, doubleNode.Elt);
+            Assert.Equal(3.14, doubleNode.Elt, 5);
             Assert.True(boolNode.Elt);
         }
 

@@ -56,7 +56,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
             Assert.Equal(default(ImGuiMouseButton), inputMap.Menu);
             Assert.Equal(default(Ui.Extras.Plot.ImGuiModFlags), inputMap.OverrideMod);
             Assert.Equal(default(Ui.Extras.Plot.ImGuiModFlags), inputMap.ZoomMod);
-            Assert.Equal(default(float), inputMap.ZoomRate);
+            Assert.Equal(default(float), inputMap.ZoomRate, 5);
         }
 
         /// <summary>

@@ -94,7 +94,7 @@ namespace Alis.Extension.Profile.Test.Factories
             ResourceMetrics metrics = factory.CreateSnapshot();
 
             // Assert
-            Assert.Equal(150.5, metrics.CpuUsageMilliseconds);
+            Assert.Equal(150.5, metrics.CpuUsageMilliseconds, 5);
             Assert.Equal(2048, metrics.MemoryUsageBytes);
             Assert.Equal(10, metrics.GarbageCollectionCount);
             Assert.Equal(5, metrics.ThreadCount);

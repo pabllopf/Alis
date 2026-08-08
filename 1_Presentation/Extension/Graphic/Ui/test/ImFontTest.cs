@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = font.FallbackAdvanceX;
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = font.FontSize;
 
-            Assert.Equal(12.0f, result);
+            Assert.Equal(12.0f, result, 5);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = font.Scale;
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = font.Ascent;
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float result = font.Descent;
 
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>

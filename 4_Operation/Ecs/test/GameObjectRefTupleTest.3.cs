@@ -130,7 +130,7 @@ namespace Alis.Core.Ecs.Test
             tuple.Item3.Value.Value = 200;
 
             Assert.Equal(1, entity.Get<Position>().X);
-            Assert.Equal(0.5, entity.Get<Velocity>().X);
+            Assert.Equal(0.5, entity.Get<Velocity>().X, 5);
             Assert.Equal(75, entity.Get<Health>().Value);
 
             world.Dispose();
@@ -210,7 +210,7 @@ namespace Alis.Core.Ecs.Test
 
             Assert.Equal(entity, tuple.GameObject);
             Assert.Equal(42, tuple.Item1.Value.X);
-            Assert.Equal(1.5f, tuple.Item2.Value.X);
+            Assert.Equal(1.5f, tuple.Item2.Value.X, 5);
             Assert.Equal(150, tuple.Item3.Value.Value);
 
             world.Dispose();

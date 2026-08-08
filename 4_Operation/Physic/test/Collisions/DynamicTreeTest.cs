@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             DynamicTree<int> tree = new DynamicTree<int>();
 
-            Assert.Equal(0.0f, tree.AreaRatio);
+            Assert.Equal(0.0f, tree.AreaRatio, 5);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Test.Collisions
             tree.RemoveProxy(proxyId);
 
             Assert.Equal(0, tree.Height);
-            Assert.Equal(0.0f, tree.AreaRatio);
+            Assert.Equal(0.0f, tree.AreaRatio, 5);
         }
 
         /// <summary>

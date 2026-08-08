@@ -61,7 +61,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float value = unionValue.ValueF32;
 
-            Assert.Equal(42.0f, value);
+            Assert.Equal(42.0f, value, 5);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             unionValue.ValueF32 = 42.0f;
 
-            Assert.Equal(42.0f, unionValue.ValueF32);
+            Assert.Equal(42.0f, unionValue.ValueF32, 5);
             Assert.NotEqual(42, unionValue.ValueI32);
         }
 

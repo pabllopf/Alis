@@ -46,15 +46,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X3 matrix = new Matrix3X3(new Vector3F(1.0f, 2.0f, 3.0f), new Vector3F(4.0f, 5.0f, 6.0f), new Vector3F(7.0f, 8.0f, 9.0f));
 
-            Assert.Equal(1.0f, matrix.Ex.X);
-            Assert.Equal(2.0f, matrix.Ex.Y);
-            Assert.Equal(3.0f, matrix.Ex.Z);
-            Assert.Equal(4.0f, matrix.Ey.X);
-            Assert.Equal(5.0f, matrix.Ey.Y);
-            Assert.Equal(6.0f, matrix.Ey.Z);
-            Assert.Equal(7.0f, matrix.Ez.X);
-            Assert.Equal(8.0f, matrix.Ez.Y);
-            Assert.Equal(9.0f, matrix.Ez.Z);
+            Assert.Equal(1.0f, matrix.Ex.X, 5);
+            Assert.Equal(2.0f, matrix.Ex.Y, 5);
+            Assert.Equal(3.0f, matrix.Ex.Z, 5);
+            Assert.Equal(4.0f, matrix.Ey.X, 5);
+            Assert.Equal(5.0f, matrix.Ey.Y, 5);
+            Assert.Equal(6.0f, matrix.Ey.Z, 5);
+            Assert.Equal(7.0f, matrix.Ez.X, 5);
+            Assert.Equal(8.0f, matrix.Ez.Y, 5);
+            Assert.Equal(9.0f, matrix.Ez.Z, 5);
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3F(1.0f, 2.0f, 3.0f), new Vector3F(4.0f, 5.0f, 6.0f), new Vector3F(7.0f, 8.0f, 9.0f));
             Vector3F result = matrix.Solve33(new Vector3F(1.0f, 2.0f, 3.0f));
 
-            Assert.Equal(0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(0.0f, result.Z);
+            Assert.Equal(0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+            Assert.Equal(0.0f, result.Z, 5);
         }
 
         /// <summary>
@@ -80,8 +80,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 matrix = new Matrix3X3(new Vector3F(1.0f, 2.0f, 3.0f), new Vector3F(4.0f, 5.0f, 6.0f), new Vector3F(7.0f, 8.0f, 9.0f));
             Vector2F result = matrix.Solve22(new Vector2F(1.0f, 2.0f));
 
-            Assert.Equal(1.0f, result.X);
-            Assert.Equal(0.0f, result.Y);
+            Assert.Equal(1.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
         }
 
 
@@ -95,15 +95,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
 
-            Assert.Equal(0.0f, result.Ex.X);
-            Assert.Equal(0.0f, result.Ex.Y);
-            Assert.Equal(0.0f, result.Ex.Z);
-            Assert.Equal(0.0f, result.Ey.X);
-            Assert.Equal(0.0f, result.Ey.Y);
-            Assert.Equal(0f, result.Ey.Z);
-            Assert.Equal(0f, result.Ez.X);
-            Assert.Equal(0f, result.Ez.Y);
-            Assert.Equal(0f, result.Ez.Z);
+            Assert.Equal(0.0f, result.Ex.X, 5);
+            Assert.Equal(0.0f, result.Ex.Y, 5);
+            Assert.Equal(0.0f, result.Ex.Z, 5);
+            Assert.Equal(0.0f, result.Ey.X, 5);
+            Assert.Equal(0.0f, result.Ey.Y, 5);
+            Assert.Equal(0f, result.Ey.Z, 5);
+            Assert.Equal(0f, result.Ez.X, 5);
+            Assert.Equal(0f, result.Ez.Y, 5);
+            Assert.Equal(0f, result.Ez.Z, 5);
         }
 
         /// <summary>
@@ -114,15 +114,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X3 matrix = new Matrix3X3(1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f);
 
-            Assert.Equal(1.0f, matrix.Ex.X);
-            Assert.Equal(2.0f, matrix.Ex.Y);
-            Assert.Equal(3.0f, matrix.Ex.Z);
-            Assert.Equal(4.0f, matrix.Ey.X);
-            Assert.Equal(5.0f, matrix.Ey.Y);
-            Assert.Equal(6.0f, matrix.Ey.Z);
-            Assert.Equal(7.0f, matrix.Ez.X);
-            Assert.Equal(8.0f, matrix.Ez.Y);
-            Assert.Equal(9.0f, matrix.Ez.Z);
+            Assert.Equal(1.0f, matrix.Ex.X, 5);
+            Assert.Equal(2.0f, matrix.Ex.Y, 5);
+            Assert.Equal(3.0f, matrix.Ex.Z, 5);
+            Assert.Equal(4.0f, matrix.Ey.X, 5);
+            Assert.Equal(5.0f, matrix.Ey.Y, 5);
+            Assert.Equal(6.0f, matrix.Ey.Z, 5);
+            Assert.Equal(7.0f, matrix.Ez.X, 5);
+            Assert.Equal(8.0f, matrix.Ez.Y, 5);
+            Assert.Equal(9.0f, matrix.Ez.Z, 5);
         }
 
         /// <summary>
@@ -135,15 +135,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X3 result = new Matrix3X3();
             matrix.GetSymInverse33(ref result);
 
-            Assert.Equal(0f, result.Ex.X);
-            Assert.Equal(0.0f, result.Ex.Y);
-            Assert.Equal(0f, result.Ex.Z);
-            Assert.Equal(0f, result.Ey.X);
-            Assert.Equal(0f, result.Ey.Y);
-            Assert.Equal(0f, result.Ey.Z);
-            Assert.Equal(0f, result.Ez.X);
-            Assert.Equal(0f, result.Ez.Y);
-            Assert.Equal(0f, result.Ez.Z);
+            Assert.Equal(0f, result.Ex.X, 5);
+            Assert.Equal(0.0f, result.Ex.Y, 5);
+            Assert.Equal(0f, result.Ex.Z, 5);
+            Assert.Equal(0f, result.Ey.X, 5);
+            Assert.Equal(0f, result.Ey.Y, 5);
+            Assert.Equal(0f, result.Ey.Z, 5);
+            Assert.Equal(0f, result.Ez.X, 5);
+            Assert.Equal(0f, result.Ez.Y, 5);
+            Assert.Equal(0f, result.Ez.Z, 5);
         }
 
         /// <summary>
@@ -159,15 +159,15 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             matrix.Ez = new Vector3F(7, 8, 9);
             matrix.GetSymInverse33(ref result);
 
-            Assert.Equal(0.0f, result.Ex.X);
-            Assert.Equal(0.0f, result.Ex.Y);
-            Assert.Equal(0.0f, result.Ex.Z);
-            Assert.Equal(0.0f, result.Ey.X);
-            Assert.Equal(0.0f, result.Ey.Y);
-            Assert.Equal(0.0f, result.Ey.Z);
-            Assert.Equal(0.0f, result.Ez.X);
-            Assert.Equal(0.0f, result.Ez.Y);
-            Assert.Equal(0.0f, result.Ez.Z);
+            Assert.Equal(0.0f, result.Ex.X, 5);
+            Assert.Equal(0.0f, result.Ex.Y, 5);
+            Assert.Equal(0.0f, result.Ex.Z, 5);
+            Assert.Equal(0.0f, result.Ey.X, 5);
+            Assert.Equal(0.0f, result.Ey.Y, 5);
+            Assert.Equal(0.0f, result.Ey.Z, 5);
+            Assert.Equal(0.0f, result.Ez.X, 5);
+            Assert.Equal(0.0f, result.Ez.Y, 5);
+            Assert.Equal(0.0f, result.Ez.Z, 5);
         }
 
         /// <summary>
@@ -180,9 +180,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Vector3F b = new Vector3F(1.0f, 2.0f, 3.0f);
             Vector3F result = matrix.Solve33(b);
 
-            Assert.Equal(0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(0.0f, result.Z);
+            Assert.Equal(0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+            Assert.Equal(0.0f, result.Z, 5);
         }
 
         /// <summary>
@@ -200,9 +200,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Vector3F b = new Vector3F(1.0f, 2.0f, 3.0f);
             Vector3F result = matrix.Solve33(b);
 
-            Assert.Equal(0.0f, result.X);
-            Assert.Equal(0.0f, result.Y);
-            Assert.Equal(0.0f, result.Z);
+            Assert.Equal(0.0f, result.X, 5);
+            Assert.Equal(0.0f, result.Y, 5);
+            Assert.Equal(0.0f, result.Z, 5);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Vector3F result = matrix.Solve33(b);
 
-            Assert.Equal(0f, result.X);
+            Assert.Equal(0f, result.X, 5);
         }
 
         /// <summary>
@@ -563,9 +563,9 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Vector3F result = matrix.Solve33(new Vector3F(1, 2, 3));
 
-            Assert.Equal(1f, result.X);
-            Assert.Equal(2f, result.Y);
-            Assert.Equal(3f, result.Z);
+            Assert.Equal(1f, result.X, 5);
+            Assert.Equal(2f, result.Y, 5);
+            Assert.Equal(3f, result.Z, 5);
         }
 
         /// <summary>

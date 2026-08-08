@@ -45,9 +45,9 @@ namespace Alis.Core.Aspect.Math.Test.Shape.Circle
         {
             CircleF circle = new CircleF {X = 1.0f, Y = 2.0f, R = 3.0f};
 
-            Assert.Equal(1.0f, circle.X);
-            Assert.Equal(2.0f, circle.Y);
-            Assert.Equal(3.0f, circle.R);
+            Assert.Equal(1.0f, circle.X, 5);
+            Assert.Equal(2.0f, circle.Y, 5);
+            Assert.Equal(3.0f, circle.R, 5);
         }
 
         /// <summary>

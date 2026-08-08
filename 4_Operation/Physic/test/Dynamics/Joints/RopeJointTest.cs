@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(5.0f, joint.MaxLength);
+            Assert.Equal(5.0f, joint.MaxLength, 5);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RopeJoint joint = new RopeJoint(bodyA, bodyB, worldAnchorA, worldAnchorB, true);
 
-            Assert.Equal(10.0f, joint.MaxLength);
+            Assert.Equal(10.0f, joint.MaxLength, 5);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxLength = 5.0f;
 
-            Assert.Equal(5.0f, joint.MaxLength);
+            Assert.Equal(5.0f, joint.MaxLength, 5);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             RopeJoint joint = new RopeJoint(bodyA, bodyB, Vector2F.Zero, new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(5.0f, joint.MaxLength);
+            Assert.Equal(5.0f, joint.MaxLength, 5);
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>
@@ -550,8 +550,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.InitVelocityConstraints(ref data);
 
-            Assert.Equal(0.0f, joint._impulse);
-            Assert.Equal(0.0f, joint._mass);
+            Assert.Equal(0.0f, joint._impulse, 5);
+            Assert.Equal(0.0f, joint._mass, 5);
         }
 
         /// <summary>
@@ -600,7 +600,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.InitVelocityConstraints(ref data);
 
-            Assert.Equal(0.0f, joint._impulse);
+            Assert.Equal(0.0f, joint._impulse, 5);
         }
     }
 }

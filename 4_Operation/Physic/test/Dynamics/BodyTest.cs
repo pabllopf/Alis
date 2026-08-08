@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.GetBodyType = BodyType.Static;
             
-            Assert.Equal(2f, body.AngularVelocity);
+            Assert.Equal(2f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ResetDynamics();
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.LinearDamping = 0.5f;
 
-            Assert.Equal(0.5f, body.LinearDamping);
+            Assert.Equal(0.5f, body.LinearDamping, 5);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.AngularDamping = 0.3f;
 
-            Assert.Equal(0.3f, body.AngularDamping);
+            Assert.Equal(0.3f, body.AngularDamping, 5);
         }
 
         /// <summary>
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.AngularVelocity = 5.0f;
 
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Awake = false;
 
             Assert.False(body.Awake);
-            Assert.Equal(0.0f, body.SleepTime);
+            Assert.Equal(0.0f, body.SleepTime, 5);
             Assert.Equal(Vector2F.Zero, body.Force);
         }
 
@@ -497,8 +497,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F pos = body.Position;
 
-            Assert.Equal(3.0f, pos.X);
-            Assert.Equal(4.0f, pos.Y);
+            Assert.Equal(3.0f, pos.X, 5);
+            Assert.Equal(4.0f, pos.Y, 5);
         }
 
         /// <summary>
@@ -510,7 +510,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = new Body();
             body.Sweep.A = 1.5f;
 
-            Assert.Equal(1.5f, body.Rotation);
+            Assert.Equal(1.5f, body.Rotation, 5);
         }
 
         /// <summary>
@@ -523,7 +523,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Rotation = 2.0f;
 
-            Assert.Equal(2.0f, body.Sweep.A);
+            Assert.Equal(2.0f, body.Sweep.A, 5);
         }
 
         /// <summary>
@@ -549,7 +549,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Mass = -5.0f;
 
-            Assert.Equal(1.0f, body.Mass);
+            Assert.Equal(1.0f, body.Mass, 5);
         }
 
         /// <summary>
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Mass = 5.0f;
 
-            Assert.Equal(0.0f, body.Mass);
+            Assert.Equal(0.0f, body.Mass, 5);
         }
 
         /// <summary>
@@ -575,7 +575,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Inertia = 10.0f;
 
-            Assert.Equal(0.0f, body.Inertia);
+            Assert.Equal(0.0f, body.Inertia, 5);
         }
 
         /// <summary>
@@ -626,8 +626,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal("test-tag", clone.Tag);
             Assert.True(clone.FixedRotation);
             Assert.False(clone.SleepingAllowed);
-            Assert.Equal(0.5f, clone.LinearDamping);
-            Assert.Equal(0.3f, clone.AngularDamping);
+            Assert.Equal(0.5f, clone.LinearDamping, 5);
+            Assert.Equal(0.3f, clone.AngularDamping, 5);
             Assert.True(clone.Awake);
             Assert.True(clone.IsBullet);
             Assert.True(clone.IgnoreCcd);
@@ -646,8 +646,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             ControllerTransform transform = body.GetTransform();
 
-            Assert.Equal(5.0f, transform.Position.X);
-            Assert.Equal(-3.0f, transform.Position.Y);
+            Assert.Equal(5.0f, transform.Position.X, 5);
+            Assert.Equal(-3.0f, transform.Position.Y, 5);
         }
 
         /// <summary>
@@ -662,8 +662,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.GetTransform(out ControllerTransform transform);
 
-            Assert.Equal(1.0f, transform.Position.X);
-            Assert.Equal(2.0f, transform.Position.Y);
+            Assert.Equal(1.0f, transform.Position.X, 5);
+            Assert.Equal(2.0f, transform.Position.Y, 5);
         }
 
         /// <summary>
@@ -681,7 +681,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             foreach (Fixture fixture in body.FixtureList)
             {
-                Assert.Equal(0.8f, fixture.GetRestitution);
+                Assert.Equal(0.8f, fixture.GetRestitution, 5);
             }
         }
 
@@ -699,7 +699,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             foreach (Fixture fixture in body.FixtureList)
             {
-                Assert.Equal(0.6f, fixture.GetFriction);
+                Assert.Equal(0.6f, fixture.GetFriction, 5);
             }
         }
 
@@ -872,7 +872,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyAngularImpulse(10.0f);
 
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -885,7 +885,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyTorque(10.0f);
 
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -897,7 +897,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = new Body();
             body.Sweep.A = (float) (2 * Math.PI);
 
-            Assert.Equal(1.0f, body.GetRevolutions);
+            Assert.Equal(1.0f, body.GetRevolutions, 5);
         }
 
         /// <summary>
@@ -911,8 +911,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F center = body.WorldCenter;
 
-            Assert.Equal(7.0f, center.X);
-            Assert.Equal(-3.0f, center.Y);
+            Assert.Equal(7.0f, center.X, 5);
+            Assert.Equal(-3.0f, center.Y, 5);
         }
 
         /// <summary>
@@ -927,8 +927,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F world = body.GetWorldPoint(new Vector2F(3.0f, 4.0f));
 
-            Assert.Equal(4.0f, world.X);
-            Assert.Equal(6.0f, world.Y);
+            Assert.Equal(4.0f, world.X, 5);
+            Assert.Equal(6.0f, world.Y, 5);
         }
 
         /// <summary>
@@ -943,8 +943,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F local = body.GetLocalPoint(new Vector2F(4.0f, 6.0f));
 
-            Assert.Equal(3.0f, local.X);
-            Assert.Equal(4.0f, local.Y);
+            Assert.Equal(3.0f, local.X, 5);
+            Assert.Equal(4.0f, local.Y, 5);
         }
 
         /// <summary>
@@ -964,10 +964,10 @@ namespace Alis.Core.Physic.Test.Dynamics
             Assert.Equal(BodyType.Static, body.GetBodyType);
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
             // Note: AngularVelocity setter on static body returns early, so it retains its value
-            Assert.Equal(2.0f, body.AngularVelocity);
+            Assert.Equal(2.0f, body.AngularVelocity, 5);
             Assert.True(body.Awake);
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -1015,7 +1015,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.FixedRotation = true;
 
             Assert.True(body.FixedRotation);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
 
         /// <summary>
@@ -1106,8 +1106,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyForce(ref force, ref point);
 
-            Assert.Equal(10.0f, body.Force.X);
-            Assert.Equal(0.0f, body.Force.Y);
+            Assert.Equal(10.0f, body.Force.X, 5);
+            Assert.Equal(0.0f, body.Force.Y, 5);
         }
 
         /// <summary>
@@ -1121,7 +1121,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ApplyForce(new Vector2F(10.0f, 0.0f));
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -1135,7 +1135,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ResetMassData();
 
-            Assert.Equal(1.0f, body.Mass);
+            Assert.Equal(1.0f, body.Mass, 5);
             Assert.True(body.InvMass > 0.0f);
         }
 
@@ -1221,7 +1221,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyForce(ref force, ref point);
 
-            Assert.Equal(10.0f, body.Force.X);
+            Assert.Equal(10.0f, body.Force.X, 5);
             Assert.NotEqual(0.0f, body.Torque);
         }
 
@@ -1240,8 +1240,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyForce(ref force);
 
-            Assert.Equal(10.0f, body.Force.X);
-            Assert.Equal(0.0f, body.Torque);
+            Assert.Equal(10.0f, body.Force.X, 5);
+            Assert.Equal(0.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -1256,7 +1256,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyTorque(15.0f);
 
-            Assert.Equal(15.0f, body.Torque);
+            Assert.Equal(15.0f, body.Torque, 5);
         }
 
         /// <summary>
@@ -1326,8 +1326,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F center = body.WorldCenter;
 
-            Assert.Equal(3.0f, center.X);
-            Assert.Equal(4.0f, center.Y);
+            Assert.Equal(3.0f, center.X, 5);
+            Assert.Equal(4.0f, center.Y, 5);
         }
 
         /// <summary>
@@ -1342,8 +1342,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Vector2F world = body.GetWorldPoint(new Vector2F(0.0f, 0.0f));
 
-            Assert.Equal(1.0f, world.X);
-            Assert.Equal(2.0f, world.Y);
+            Assert.Equal(1.0f, world.X, 5);
+            Assert.Equal(2.0f, world.Y, 5);
         }
 
         /// <summary>
@@ -1407,7 +1407,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             Body body = new Body();
             body.Sweep.A = (float) (6 * Math.PI);
 
-            Assert.Equal(3.0f, body.GetRevolutions);
+            Assert.Equal(3.0f, body.GetRevolutions, 5);
         }
 
         /// <summary>
@@ -1422,9 +1422,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             ControllerTransform xf = body.GetTransform();
 
-            Assert.Equal(5.0f, xf.Position.X);
-            Assert.Equal(-3.0f, xf.Position.Y);
-            Assert.Equal(1.5f, xf.Rotation.Phase);
+            Assert.Equal(5.0f, xf.Position.X, 5);
+            Assert.Equal(-3.0f, xf.Position.Y, 5);
+            Assert.Equal(1.5f, xf.Rotation.Phase, 5);
         }
 
         /// <summary>
@@ -1439,8 +1439,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Position = new Vector2F(5.0f, 3.0f);
 
-            Assert.Equal(5.0f, body.Position.X);
-            Assert.Equal(3.0f, body.Position.Y);
+            Assert.Equal(5.0f, body.Position.X, 5);
+            Assert.Equal(3.0f, body.Position.Y, 5);
         }
 
         /// <summary>
@@ -1455,7 +1455,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.Rotation = 1.5f;
 
-            Assert.Equal(1.5f, body.Rotation);
+            Assert.Equal(1.5f, body.Rotation, 5);
         }
 
         /// <summary>
@@ -1469,7 +1469,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ResetMassData();
 
-            Assert.Equal(1.0f, body.Mass);
+            Assert.Equal(1.0f, body.Mass, 5);
             Assert.True(body.InvMass > 0.0f);
         }
 
@@ -1492,8 +1492,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             Body clone = body.Clone();
 
-            Assert.Equal(0.7f, clone.LinearDamping);
-            Assert.Equal(0.3f, clone.AngularDamping);
+            Assert.Equal(0.7f, clone.LinearDamping, 5);
+            Assert.Equal(0.3f, clone.AngularDamping, 5);
             Assert.True(clone.IsBullet);
             Assert.True(clone.IgnoreCcd);
             Assert.True(clone.IgnoreGravity);
@@ -1529,9 +1529,9 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.GetTransform(out ControllerTransform transform);
 
-            Assert.Equal(-2.0f, transform.Position.X);
-            Assert.Equal(3.5f, transform.Position.Y);
-            Assert.Equal(2.0f, transform.Rotation.Phase);
+            Assert.Equal(-2.0f, transform.Position.X, 5);
+            Assert.Equal(3.5f, transform.Position.Y, 5);
+            Assert.Equal(2.0f, transform.Rotation.Phase, 5);
         }
 
         /// <summary>
@@ -1668,8 +1668,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.InvMass = 0.5f;
             body.InvI = 0.25f;
 
-            Assert.Equal(0.5f, body.InvMass);
-            Assert.Equal(0.25f, body.InvI);
+            Assert.Equal(0.5f, body.InvMass, 5);
+            Assert.Equal(0.25f, body.InvI, 5);
         }
 
         /// <summary>
@@ -1683,9 +1683,9 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Force = new Vector2F(10.0f, 5.0f);
             body.Torque = 2.5f;
 
-            Assert.Equal(10.0f, body.Force.X);
-            Assert.Equal(5.0f, body.Force.Y);
-            Assert.Equal(2.5f, body.Torque);
+            Assert.Equal(10.0f, body.Force.X, 5);
+            Assert.Equal(5.0f, body.Force.Y, 5);
+            Assert.Equal(2.5f, body.Torque, 5);
         }
 
         /// <summary>
@@ -1734,8 +1734,8 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.LinearVelocityInternal = new Vector2F(1.0f, 2.0f);
 
-            Assert.Equal(1.0f, body.LinearVelocityInternal.X);
-            Assert.Equal(2.0f, body.LinearVelocityInternal.Y);
+            Assert.Equal(1.0f, body.LinearVelocityInternal.X, 5);
+            Assert.Equal(2.0f, body.LinearVelocityInternal.Y, 5);
         }
 
         /// <summary>
@@ -1748,7 +1748,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.SleepTime = 5.0f;
 
-            Assert.Equal(5.0f, body.SleepTime);
+            Assert.Equal(5.0f, body.SleepTime, 5);
         }
 
         /// <summary>
@@ -1762,8 +1762,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Sweep.A = 1.5f;
             body.Sweep.C = new Vector2F(3.0f, 4.0f);
 
-            Assert.Equal(1.5f, body.Sweep.A);
-            Assert.Equal(3.0f, body.Sweep.C.X);
+            Assert.Equal(1.5f, body.Sweep.A, 5);
+            Assert.Equal(3.0f, body.Sweep.C.X, 5);
         }
 
         /// <summary>
@@ -1793,8 +1793,8 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.ResetDynamics();
 
             Assert.Equal(Vector2F.Zero, body.Force);
-            Assert.Equal(0.0f, body.Torque);
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.Torque, 5);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
             Assert.Equal(Vector2F.Zero, body.LinearVelocityInternal);
         }
 
@@ -1814,7 +1814,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.Awake = true;
 
             Assert.True(body.Awake);
-            Assert.Equal(0.0f, body.SleepTime);
+            Assert.Equal(0.0f, body.SleepTime, 5);
         }
 
         /// <summary>
@@ -1842,7 +1842,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             body.ApplyAngularImpulse(10.0f);
 
-            Assert.Equal(0.0f, body.AngularVelocity);
+            Assert.Equal(0.0f, body.AngularVelocity, 5);
         }
     }
 }

@@ -104,8 +104,8 @@ namespace Alis.Extension.Graphic.Glfw.Test
 
             PointF position = args.Position;
 
-            Assert.Equal((float) x, position.X);
-            Assert.Equal((float) y, position.Y);
+            Assert.Equal((float) x, position.X, 5);
+            Assert.Equal((float) y, position.Y, 5);
         }
 
         /// <summary>

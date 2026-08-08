@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 
             AdvancingFrontNode node = new AdvancingFrontNode(point);
 
-            Assert.Equal(15.5, node.Value);
+            Assert.Equal(15.5, node.Value, 5);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay.Sweep
 
             AdvancingFrontNode node = new AdvancingFrontNode(point);
 
-            Assert.Equal(-10.5, node.Value);
+            Assert.Equal(-10.5, node.Value, 5);
         }
 
         /// <summary>

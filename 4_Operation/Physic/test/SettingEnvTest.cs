@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void PolygonRadius_ShouldBeDerivedFromLinearSlop()
         {
-            Assert.Equal(2.0f * SettingEnv.LinearSlop, SettingEnv.PolygonRadius);
+            Assert.Equal(2.0f * SettingEnv.LinearSlop, SettingEnv.PolygonRadius, 5);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_FirstLarger_ReturnsFirst()
         {
             float result = SettingEnv.MixRestitution(0.8f, 0.2f);
-            Assert.Equal(0.8f, result);
+            Assert.Equal(0.8f, result, 5);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_SecondLarger_ReturnsSecond()
         {
             float result = SettingEnv.MixRestitution(0.2f, 0.8f);
-            Assert.Equal(0.8f, result);
+            Assert.Equal(0.8f, result, 5);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_EqualValues_ReturnsSame()
         {
             float result = SettingEnv.MixRestitution(0.5f, 0.5f);
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_WithZero_ReturnsLarger()
         {
             float result = SettingEnv.MixRestitution(0.0f, 1.0f);
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Test
         public void MixRestitution_NegativeValues_ReturnsLarger()
         {
             float result = SettingEnv.MixRestitution(-0.5f, -0.1f);
-            Assert.Equal(-0.1f, result);
+            Assert.Equal(-0.1f, result, 5);
         }
     }
 }

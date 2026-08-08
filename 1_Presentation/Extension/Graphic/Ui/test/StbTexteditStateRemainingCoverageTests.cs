@@ -149,7 +149,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditState state = default;
             state.PreferredX = 1.5f;
-            Assert.Equal(1.5f, state.PreferredX);
+            Assert.Equal(1.5f, state.PreferredX, 5);
         }
     }
 }

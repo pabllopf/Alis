@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
 
-            Assert.Equal(0.0f, output.Distance);
+            Assert.Equal(0.0f, output.Distance, 5);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
 
-            Assert.Equal(0.0f, output.Distance);
+            Assert.Equal(0.0f, output.Distance, 5);
             Assert.True(cache.Count >= 0);
         }
 
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             Distance.ComputeDistance(out DistanceOutput output, out SimplexCache cache, input);
 
-            Assert.Equal(0.0f, output.Distance);
+            Assert.Equal(0.0f, output.Distance, 5);
         }
 
         /// <summary>

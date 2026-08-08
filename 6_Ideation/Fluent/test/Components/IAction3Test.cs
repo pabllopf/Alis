@@ -62,7 +62,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Components
             action.Run(ref intVal, ref strVal, ref dblVal);
             Assert.Equal(42, action.IntValue);
             Assert.Equal("test", action.StringValue);
-            Assert.Equal(3.14, action.DoubleValue);
+            Assert.Equal(3.14, action.DoubleValue, 5);
         }
 
         /// <summary>

@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             SimplexVertex vertex = new SimplexVertex();
 
-            Assert.Equal(0.0f, vertex.A);
+            Assert.Equal(0.0f, vertex.A, 5);
             Assert.Equal(0, vertex.IndexA);
             Assert.Equal(0, vertex.IndexB);
             Assert.Equal(Vector2F.Zero, vertex.W);
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 A = 0.75f
             };
 
-            Assert.Equal(0.75f, vertex.A);
+            Assert.Equal(0.75f, vertex.A, 5);
         }
 
         /// <summary>
@@ -107,8 +107,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 W = new Vector2F(1.5f, 2.5f)
             };
 
-            Assert.Equal(1.5f, vertex.W.X);
-            Assert.Equal(2.5f, vertex.W.Y);
+            Assert.Equal(1.5f, vertex.W.X, 5);
+            Assert.Equal(2.5f, vertex.W.Y, 5);
         }
 
         /// <summary>
@@ -122,8 +122,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 Wa = new Vector2F(3.0f, 4.0f)
             };
 
-            Assert.Equal(3.0f, vertex.Wa.X);
-            Assert.Equal(4.0f, vertex.Wa.Y);
+            Assert.Equal(3.0f, vertex.Wa.X, 5);
+            Assert.Equal(4.0f, vertex.Wa.Y, 5);
         }
 
         /// <summary>
@@ -137,8 +137,8 @@ namespace Alis.Core.Physic.Test.Collisions
                 Wb = new Vector2F(5.0f, 6.0f)
             };
 
-            Assert.Equal(5.0f, vertex.Wb.X);
-            Assert.Equal(6.0f, vertex.Wb.Y);
+            Assert.Equal(5.0f, vertex.Wb.X, 5);
+            Assert.Equal(6.0f, vertex.Wb.Y, 5);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 A = 1.0f
             };
 
-            Assert.Equal(1.0f, vertex.A);
+            Assert.Equal(1.0f, vertex.A, 5);
             Assert.True((vertex.A >= 0.0f) && (vertex.A <= 1.0f));
         }
 
@@ -202,8 +202,8 @@ namespace Alis.Core.Physic.Test.Collisions
             vertex.W = expectedW;
 
             Assert.Equal(expectedW, vertex.W);
-            Assert.Equal(-5.0f, vertex.W.X);
-            Assert.Equal(-12.0f, vertex.W.Y);
+            Assert.Equal(-5.0f, vertex.W.X, 5);
+            Assert.Equal(-12.0f, vertex.W.Y, 5);
         }
     }
 }

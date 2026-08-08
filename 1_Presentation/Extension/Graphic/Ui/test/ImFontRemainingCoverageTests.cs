@@ -46,11 +46,11 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Default_ValuesAreZero()
         {
             ImFont font = default;
-            Assert.Equal(0f, font.FallbackAdvanceX);
-            Assert.Equal(0f, font.FontSize);
-            Assert.Equal(0f, font.Scale);
-            Assert.Equal(0f, font.Ascent);
-            Assert.Equal(0f, font.Descent);
+            Assert.Equal(0f, font.FallbackAdvanceX, 5);
+            Assert.Equal(0f, font.FontSize, 5);
+            Assert.Equal(0f, font.Scale, 5);
+            Assert.Equal(0f, font.Ascent, 5);
+            Assert.Equal(0f, font.Descent, 5);
             Assert.Equal(0, font.ConfigDataCount);
             Assert.Equal(0, font.FallbackChar);
             Assert.Equal(0, font.EllipsisChar);
@@ -97,11 +97,11 @@ namespace Alis.Extension.Graphic.Ui.Test
             font.DotChar = 42;
             font.DirtyLookupTables = 1;
             font.MetricsTotalSurface = 999;
-            Assert.Equal(1.0f, font.FallbackAdvanceX);
-            Assert.Equal(12.0f, font.FontSize);
-            Assert.Equal(2.0f, font.Scale);
-            Assert.Equal(0.8f, font.Ascent);
-            Assert.Equal(0.2f, font.Descent);
+            Assert.Equal(1.0f, font.FallbackAdvanceX, 5);
+            Assert.Equal(12.0f, font.FontSize, 5);
+            Assert.Equal(2.0f, font.Scale, 5);
+            Assert.Equal(0.8f, font.Ascent, 5);
+            Assert.Equal(0.2f, font.Descent, 5);
             Assert.Equal(5, font.ConfigDataCount);
             Assert.Equal(65, font.FallbackChar);
             Assert.Equal(46, font.EllipsisChar);

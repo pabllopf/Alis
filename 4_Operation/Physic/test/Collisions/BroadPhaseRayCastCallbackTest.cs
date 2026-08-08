@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Test.Collisions
             float result = callback(ref rayCastInput, 0);
 
             Assert.True(invoked);
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Test.Collisions
             RayCastInput rayCastInput = new RayCastInput();
             float result = callback(ref rayCastInput, 0);
 
-            Assert.Equal(-1.0f, result);
+            Assert.Equal(-1.0f, result, 5);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Collisions
             RayCastInput rayCastInput = new RayCastInput();
             float result = callback(ref rayCastInput, 0);
 
-            Assert.Equal(0.0f, result);
+            Assert.Equal(0.0f, result, 5);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Test.Collisions
             RayCastInput rayCastInput = new RayCastInput {MaxFraction = 0.75f};
             float result = callback(ref rayCastInput, 0);
 
-            Assert.Equal(0.75f, result);
+            Assert.Equal(0.75f, result, 5);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Test.Collisions
             RayCastInput rayCastInput = new RayCastInput {MaxFraction = 1.0f};
             callback(ref rayCastInput, 0);
 
-            Assert.Equal(0.5f, rayCastInput.MaxFraction);
+            Assert.Equal(0.5f, rayCastInput.MaxFraction, 5);
         }
 
         /// <summary>

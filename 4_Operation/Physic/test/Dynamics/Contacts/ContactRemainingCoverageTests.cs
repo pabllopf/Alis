@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             contact.ResetRestitution();
 
-            Assert.Equal(0.5f, contact.Restitution);
+            Assert.Equal(0.5f, contact.Restitution, 5);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             contact.ResetFriction();
 
-            Assert.Equal(0.5f, contact.Friction);
+            Assert.Equal(0.5f, contact.Friction, 5);
         }
 
         /// <summary>

@@ -46,10 +46,10 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void Default_ValuesAreZero()
         {
             ImDrawCmdHeader header = default;
-            Assert.Equal(0f, header.ClipRect.X);
-            Assert.Equal(0f, header.ClipRect.Y);
-            Assert.Equal(0f, header.ClipRect.Z);
-            Assert.Equal(0f, header.ClipRect.W);
+            Assert.Equal(0f, header.ClipRect.X, 5);
+            Assert.Equal(0f, header.ClipRect.Y, 5);
+            Assert.Equal(0f, header.ClipRect.Z, 5);
+            Assert.Equal(0f, header.ClipRect.W, 5);
             Assert.Equal(IntPtr.Zero, header.TextureId);
             Assert.Equal(0u, header.VtxOffset);
         }
@@ -63,10 +63,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImDrawCmdHeader header = default;
             Vector4F expected = new Vector4F(1f, 2f, 3f, 4f);
             header.ClipRect = expected;
-            Assert.Equal(1f, header.ClipRect.X);
-            Assert.Equal(2f, header.ClipRect.Y);
-            Assert.Equal(3f, header.ClipRect.Z);
-            Assert.Equal(4f, header.ClipRect.W);
+            Assert.Equal(1f, header.ClipRect.X, 5);
+            Assert.Equal(2f, header.ClipRect.Y, 5);
+            Assert.Equal(3f, header.ClipRect.Z, 5);
+            Assert.Equal(4f, header.ClipRect.W, 5);
         }
 
         /// <summary>

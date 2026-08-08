@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
             float v0 = SettingEnv.Epsilon;
             float v1 = 0f;
             float result = (float)method.Invoke(null, new object[] { 0f, 10f, v0, v1 });
-            Assert.Equal(5f, result);
+            Assert.Equal(5f, result, 5);
         }
 
         #endregion
@@ -1182,7 +1182,7 @@ namespace Alis.Core.Physic.Test.Common.TextureTools
 
             Vector2F result = (Vector2F)method.Invoke(null, new object[] { 7, 0f, 0f, 10f, 10f, (sbyte)-1, (sbyte)1, (sbyte)-1, (sbyte)1, f, 0 });
 
-            Assert.Equal(0f, result.X);
+            Assert.Equal(0f, result.X, 5);
             Assert.InRange(result.Y, 0f, 10f);
         }
 

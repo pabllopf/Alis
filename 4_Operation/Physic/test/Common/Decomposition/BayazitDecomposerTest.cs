@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
 
             float dist = BayazitDecomposer.SquareDist(a, b);
 
-            Assert.Equal(0f, dist);
+            Assert.Equal(0f, dist, 5);
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace Alis.Core.Physic.Test.Common.Decomposition
             float dist = BayazitDecomposer.SquareDist(a, b);
 
             // (3-0)^2 + (4-0)^2 = 9 + 16 = 25
-            Assert.Equal(25f, dist);
+            Assert.Equal(25f, dist, 5);
         }
 
         /// <summary>

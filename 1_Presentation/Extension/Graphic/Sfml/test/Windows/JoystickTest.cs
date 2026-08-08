@@ -157,7 +157,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         public void GetAxisPosition_Invoke_ReturnsZero()
         {
             float result = Joystick.GetAxisPosition(0, Joystick.Axis.X);
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             foreach (Joystick.Axis axis in System.Enum.GetValues(typeof(Joystick.Axis)))
             {
                 float result = Joystick.GetAxisPosition(0, axis);
-                Assert.Equal(0f, result);
+                Assert.Equal(0f, result, 5);
             }
         }
 

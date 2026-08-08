@@ -146,8 +146,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Osx
         {
             MacNativePlatform platform = new MacNativePlatform();
             platform.GetMousePositionInView(out float x, out float y);
-            Assert.Equal(0f, x);
-            Assert.Equal(0f, y);
+            Assert.Equal(0f, x, 5);
+            Assert.Equal(0f, y, 5);
         }
 
         [Fact]

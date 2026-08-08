@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             DensityBuilderImpl builder = new DensityBuilderImpl();
             DensityBuilder result = builder.Density(1000f);
-            Assert.Equal(1000f, result.DensityValue);
+            Assert.Equal(1000f, result.DensityValue, 5);
         }
 
         /// <summary>

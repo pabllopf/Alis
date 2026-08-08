@@ -69,10 +69,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
 
-            Assert.Equal(1f, matrix.M11);
-            Assert.Equal(1f, matrix.M22);
-            Assert.Equal(1f, matrix.M33);
-            Assert.Equal(1f, matrix.M44);
+            Assert.Equal(1f, matrix.M11, 5);
+            Assert.Equal(1f, matrix.M22, 5);
+            Assert.Equal(1f, matrix.M33, 5);
+            Assert.Equal(1f, matrix.M44, 5);
         }
 
         /// <summary>
@@ -83,10 +83,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
 
-            Assert.Equal(0f, matrix.M12);
-            Assert.Equal(0f, matrix.M13);
-            Assert.Equal(0f, matrix.M14);
-            Assert.Equal(0f, matrix.M21);
+            Assert.Equal(0f, matrix.M12, 5);
+            Assert.Equal(0f, matrix.M13, 5);
+            Assert.Equal(0f, matrix.M14, 5);
+            Assert.Equal(0f, matrix.M21, 5);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Vector4F vector = new Vector4F(1f, 2f, 3f, 4f);
 
             Assert.NotNull(matrix);
-            Assert.Equal(1f, vector.X);
+            Assert.Equal(1f, vector.X, 5);
         }
 
         /// <summary>

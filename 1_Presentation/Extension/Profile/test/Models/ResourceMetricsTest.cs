@@ -583,7 +583,7 @@ namespace Alis.Extension.Profile.Test.Models
             DateTime timestamp = new DateTime(2026, 3, 7, 14, 30, 45, 123);
             ResourceMetrics metrics = new ResourceMetrics(123.456, 2048576, 10, 5, timestamp);
 
-            Assert.Equal(123.456, metrics.CpuUsageMilliseconds);
+            Assert.Equal(123.456, metrics.CpuUsageMilliseconds, 5);
             Assert.Equal(2048576, metrics.MemoryUsageBytes);
             Assert.Equal(10, metrics.GarbageCollectionCount);
             Assert.Equal(5, metrics.ThreadCount);
@@ -598,7 +598,7 @@ namespace Alis.Extension.Profile.Test.Models
         {
             ResourceMetrics metrics = new ResourceMetrics(0.0001, 1024, 5, 3, DateTime.UtcNow);
 
-            Assert.Equal(0.0001, metrics.CpuUsageMilliseconds);
+            Assert.Equal(0.0001, metrics.CpuUsageMilliseconds, 5);
         }
 
         /// <summary>

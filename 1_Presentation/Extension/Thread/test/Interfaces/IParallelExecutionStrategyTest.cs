@@ -219,7 +219,7 @@ namespace Alis.Extension.Thread.Test.Interfaces
 
             Assert.Equal(2, strategy.CanExecuteCallCount);
             Assert.Equal(1, strategy.GetBatchSizeCallCount);
-            Assert.Equal(typeof(double), strategy.LastCheckedType);
+            Assert.Equal(typeof(double), strategy.LastCheckedType, 5);
         }
 
         /// <summary>

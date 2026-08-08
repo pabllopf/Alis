@@ -73,10 +73,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             try
             {
                 Assert.NotEqual(IntPtr.Zero, ptr.NativePtr);
-                Assert.Equal(4.25f, ptr.FallbackAdvanceX);
-                Assert.Equal(16.0f, ptr.FontSize);
+                Assert.Equal(4.25f, ptr.FallbackAdvanceX, 5);
+                Assert.Equal(16.0f, ptr.FontSize, 5);
                 Assert.True(ptr.DirtyLookupTables);
-                Assert.Equal(2.0f, ptr.Scale);
+                Assert.Equal(2.0f, ptr.Scale, 5);
                 Assert.Equal(512, ptr.MetricsTotalSurface);
             }
             finally

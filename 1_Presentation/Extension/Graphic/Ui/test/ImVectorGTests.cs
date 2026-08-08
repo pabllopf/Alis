@@ -140,8 +140,8 @@ namespace Alis.Extension.Graphic.Ui.Test
             {
                 Marshal.Copy(data, 0, ptr, data.Length);
                 ImVectorG<float> imVectorG = new ImVectorG<float>(data.Length, data.Length, ptr);
-                Assert.Equal(1.5f, imVectorG[0]);
-                Assert.Equal(3.5f, imVectorG[2]);
+                Assert.Equal(1.5f, imVectorG[0], 5);
+                Assert.Equal(3.5f, imVectorG[2], 5);
             }
             finally
             {

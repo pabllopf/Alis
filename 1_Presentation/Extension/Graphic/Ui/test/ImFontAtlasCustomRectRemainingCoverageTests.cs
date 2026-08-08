@@ -51,9 +51,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal((ushort)0, rect.X);
             Assert.Equal((ushort)0, rect.Y);
             Assert.Equal(0u, rect.GlyphId);
-            Assert.Equal(0f, rect.GlyphAdvanceX);
-            Assert.Equal(0f, rect.GlyphOffset.X);
-            Assert.Equal(0f, rect.GlyphOffset.Y);
+            Assert.Equal(0f, rect.GlyphAdvanceX, 5);
+            Assert.Equal(0f, rect.GlyphOffset.X, 5);
+            Assert.Equal(0f, rect.GlyphOffset.Y, 5);
             Assert.Equal(IntPtr.Zero, rect.Font);
         }
 
@@ -94,9 +94,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontAtlasCustomRect rect = default;
             rect.GlyphAdvanceX = 1.5f;
             rect.GlyphOffset = new Vector2F(2.5f, 3.5f);
-            Assert.Equal(1.5f, rect.GlyphAdvanceX);
-            Assert.Equal(2.5f, rect.GlyphOffset.X);
-            Assert.Equal(3.5f, rect.GlyphOffset.Y);
+            Assert.Equal(1.5f, rect.GlyphAdvanceX, 5);
+            Assert.Equal(2.5f, rect.GlyphOffset.X, 5);
+            Assert.Equal(3.5f, rect.GlyphOffset.Y, 5);
         }
 
         /// <summary>

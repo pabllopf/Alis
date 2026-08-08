@@ -546,10 +546,10 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImFontPtr ptr2 = new ImFontPtr(font2);
             try
             {
-                Assert.Equal(1.0f, ptr1.FallbackAdvanceX);
-                Assert.Equal(10.0f, ptr1.FontSize);
-                Assert.Equal(2.0f, ptr2.FallbackAdvanceX);
-                Assert.Equal(20.0f, ptr2.FontSize);
+                Assert.Equal(1.0f, ptr1.FallbackAdvanceX, 5);
+                Assert.Equal(10.0f, ptr1.FontSize, 5);
+                Assert.Equal(2.0f, ptr2.FallbackAdvanceX, 5);
+                Assert.Equal(20.0f, ptr2.FontSize, 5);
             }
             finally
             {

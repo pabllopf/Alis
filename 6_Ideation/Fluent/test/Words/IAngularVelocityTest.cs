@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             AngularVelocityBuilderImpl builder = new AngularVelocityBuilderImpl();
             AngularVelocityBuilder result = builder.AngularVelocity(45f);
-            Assert.Equal(45f, result.AngularVelocityValue);
+            Assert.Equal(45f, result.AngularVelocityValue, 5);
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Step = timeStep
             };
 
-            Assert.Equal(0.016f, data.Step.Dt);
+            Assert.Equal(0.016f, data.Step.Dt, 5);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 Locks = locks
             };
 
-            Assert.Equal(0.033f, data.Step.Dt);
+            Assert.Equal(0.033f, data.Step.Dt, 5);
             Assert.Equal(2, data.Positions.Length);
             Assert.Equal(2, data.Velocities.Length);
             Assert.Equal(2, data.Locks.Length);

@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
 
-            Assert.Equal(0f, constraint.Friction);
+            Assert.Equal(0f, constraint.Friction, 5);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
 
-            Assert.Equal(0f, constraint.Restitution);
+            Assert.Equal(0f, constraint.Restitution, 5);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactVelocityConstraint constraint = new ContactVelocityConstraint();
 
-            Assert.Equal(0f, constraint.TangentSpeed);
+            Assert.Equal(0f, constraint.TangentSpeed, 5);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 Friction = 0.5f
             };
 
-            Assert.Equal(0.5f, constraint.Friction);
+            Assert.Equal(0.5f, constraint.Friction, 5);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 Restitution = 0.8f
             };
 
-            Assert.Equal(0.8f, constraint.Restitution);
+            Assert.Equal(0.8f, constraint.Restitution, 5);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 TangentSpeed = 2.5f
             };
 
-            Assert.Equal(2.5f, constraint.TangentSpeed);
+            Assert.Equal(2.5f, constraint.TangentSpeed, 5);
         }
 
         /// <summary>

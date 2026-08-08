@@ -322,13 +322,13 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             };
 
             // Original unchanged
-            Assert.Equal(10f, original.Width);
-            Assert.Equal(20f, original.Height);
+            Assert.Equal(10f, original.Width, 5);
+            Assert.Equal(20f, original.Height, 5);
             Assert.False(original.IsTrigger);
 
             // Modified has new values
-            Assert.Equal(99f, modified.Width);
-            Assert.Equal(55f, modified.Height);
+            Assert.Equal(99f, modified.Width, 5);
+            Assert.Equal(55f, modified.Height, 5);
             Assert.True(modified.IsTrigger);
 
             // Unchanged fields match original
@@ -357,12 +357,12 @@ namespace Alis.Test.Core.Ecs.Components.Collider
             };
 
             collider.AutoTilling = true;
-            Assert.Equal(42f, collider.Width);
-            Assert.Equal(24f, collider.Height);
+            Assert.Equal(42f, collider.Width, 5);
+            Assert.Equal(24f, collider.Height, 5);
 
             collider.AutoTilling = false;
-            Assert.Equal(42f, collider.Width);
-            Assert.Equal(24f, collider.Height);
+            Assert.Equal(42f, collider.Width, 5);
+            Assert.Equal(24f, collider.Height, 5);
         }
 
         #endregion

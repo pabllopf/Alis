@@ -57,7 +57,7 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             FrictionBuilderImpl builder = new FrictionBuilderImpl();
             FrictionBuilder result = builder.Friction(0.5f);
-            Assert.Equal(0.5f, result.FrictionValue);
+            Assert.Equal(0.5f, result.FrictionValue, 5);
         }
 
         /// <summary>

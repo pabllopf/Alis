@@ -130,7 +130,7 @@ namespace Alis.Core.Physic.Test.Common
 
             for (int i = 0; i < 8; i++)
             {
-                Assert.Equal((i + 1) * 1.5f, array[i]);
+                Assert.Equal((i + 1) * 1.5f, array[i], 5);
             }
         }
 

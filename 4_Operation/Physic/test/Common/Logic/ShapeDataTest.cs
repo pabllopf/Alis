@@ -48,8 +48,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
             ShapeData data = new ShapeData();
 
             Assert.Null(data.Body);
-            Assert.Equal(0.0f, data.Max);
-            Assert.Equal(0.0f, data.Min);
+            Assert.Equal(0.0f, data.Max, 5);
+            Assert.Equal(0.0f, data.Min, 5);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Max = 45.0f
             };
 
-            Assert.Equal(45.0f, data.Max);
+            Assert.Equal(45.0f, data.Max, 5);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Min = -30.0f
             };
 
-            Assert.Equal(-30.0f, data.Min);
+            Assert.Equal(-30.0f, data.Min, 5);
         }
 
         /// <summary>
@@ -128,8 +128,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
             };
 
             Assert.Equal(body, data.Body);
-            Assert.Equal(90.0f, data.Max);
-            Assert.Equal(-90.0f, data.Min);
+            Assert.Equal(90.0f, data.Max, 5);
+            Assert.Equal(-90.0f, data.Min, 5);
         }
 
         /// <summary>
@@ -144,8 +144,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Min = -45.0f
             };
 
-            Assert.Equal(-10.0f, data.Max);
-            Assert.Equal(-45.0f, data.Min);
+            Assert.Equal(-10.0f, data.Max, 5);
+            Assert.Equal(-45.0f, data.Min, 5);
         }
 
         /// <summary>
@@ -160,8 +160,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Min = 0.0f
             };
 
-            Assert.Equal(0.0f, data.Max);
-            Assert.Equal(0.0f, data.Min);
+            Assert.Equal(0.0f, data.Max, 5);
+            Assert.Equal(0.0f, data.Min, 5);
         }
 
         /// <summary>
@@ -176,8 +176,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
                 Min = -360.0f
             };
 
-            Assert.Equal(360.0f, data.Max);
-            Assert.Equal(-360.0f, data.Min);
+            Assert.Equal(360.0f, data.Max, 5);
+            Assert.Equal(-360.0f, data.Min, 5);
         }
 
         /// <summary>

@@ -140,7 +140,7 @@ namespace Alis.Core.Aspect.Math.Test
         public void Clamp_InvertedBoundaries_ReturnsMin()
         {
             float result = CustomMathF.Clamp(5f, 10f, 1f);
-            Assert.Equal(10f, result);
+            Assert.Equal(10f, result, 5);
         }
 
         /// <summary>

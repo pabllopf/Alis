@@ -167,9 +167,9 @@ namespace Alis.Core.Ecs.Test.Collections
             EnumerableHelpers.ToSpan(source, destination, out int length);
 
             Assert.Equal(3, length);
-            Assert.Equal(1.1, destination[0]);
-            Assert.Equal(2.2, destination[1]);
-            Assert.Equal(3.3, destination[2]);
+            Assert.Equal(1.1, destination[0], 5);
+            Assert.Equal(2.2, destination[1], 5);
+            Assert.Equal(3.3, destination[2], 5);
         }
 
         /// <summary>

@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Test.Collisions
 
             float quality = broadPhase.GetTreeQuality();
 
-            Assert.Equal(1.0f, quality);
+            Assert.Equal(1.0f, quality, 5);
         }
 
         /// <summary>

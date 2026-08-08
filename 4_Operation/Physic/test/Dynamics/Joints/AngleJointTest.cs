@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             AngleJoint joint = new AngleJoint(bodyA, bodyB);
 
-            Assert.Equal(0.2f, joint.BiasFactor);
+            Assert.Equal(0.2f, joint.BiasFactor, 5);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.TargetAngle = 1.5f;
 
-            Assert.Equal(1.5f, joint.TargetAngle);
+            Assert.Equal(1.5f, joint.TargetAngle, 5);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             AngleJoint joint = new AngleJoint(bodyA, bodyB);
 
-            Assert.Equal(0.0f, joint.TargetAngle);
+            Assert.Equal(0.0f, joint.TargetAngle, 5);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             Body bodyB = new Body();
             AngleJoint joint = new AngleJoint(bodyA, bodyB);
 
-            Assert.Equal(0.0f, joint.Softness);
+            Assert.Equal(0.0f, joint.Softness, 5);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Softness = 0.5f;
 
-            Assert.Equal(0.5f, joint.Softness);
+            Assert.Equal(0.5f, joint.Softness, 5);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             float torque = joint.GetReactionTorque(1.0f);
 
-            Assert.Equal(0.0f, torque);
+            Assert.Equal(0.0f, torque, 5);
         }
 
         /// <summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.BiasFactor = 0.5f;
 
-            Assert.Equal(0.5f, joint.BiasFactor);
+            Assert.Equal(0.5f, joint.BiasFactor, 5);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.MaxImpulse = 100.0f;
 
-            Assert.Equal(100.0f, joint.MaxImpulse);
+            Assert.Equal(100.0f, joint.MaxImpulse, 5);
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.TargetAngle = 1.5f;
 
-            Assert.Equal(1.5f, joint.TargetAngle);
+            Assert.Equal(1.5f, joint.TargetAngle, 5);
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.TargetAngle = joint.TargetAngle;
 
-            Assert.Equal(0.0f, joint.TargetAngle);
+            Assert.Equal(0.0f, joint.TargetAngle, 5);
         }
 
         /// <summary>

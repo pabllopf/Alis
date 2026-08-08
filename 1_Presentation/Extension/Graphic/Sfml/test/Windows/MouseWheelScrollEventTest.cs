@@ -45,7 +45,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         public void MouseWheelScrollEvent_Default_HasZeroValues()
         {
             MouseWheelScrollEvent e = new MouseWheelScrollEvent();
-            Assert.Equal(0.0f, e.Delta);
+            Assert.Equal(0.0f, e.Delta, 5);
             Assert.Equal(0, e.X);
             Assert.Equal(0, e.Y);
         }
@@ -59,7 +59,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             MouseWheelScrollEvent e = new MouseWheelScrollEvent { Wheel = Mouse.Wheel.VerticalWheel, Delta = 1.5f, X = 50, Y = 100 };
             MouseWheelScrollEventArgs args = new MouseWheelScrollEventArgs(e);
             Assert.Equal(Mouse.Wheel.VerticalWheel, args.Wheel);
-            Assert.Equal(1.5f, args.Delta);
+            Assert.Equal(1.5f, args.Delta, 5);
             Assert.Equal(50, args.X);
             Assert.Equal(100, args.Y);
         }

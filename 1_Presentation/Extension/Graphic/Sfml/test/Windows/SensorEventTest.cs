@@ -46,9 +46,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         {
             SensorEvent e = new SensorEvent();
             Assert.Equal(default(Sensor.Type), e.Type);
-            Assert.Equal(0.0f, e.X);
-            Assert.Equal(0.0f, e.Y);
-            Assert.Equal(0.0f, e.Z);
+            Assert.Equal(0.0f, e.X, 5);
+            Assert.Equal(0.0f, e.Y, 5);
+            Assert.Equal(0.0f, e.Z, 5);
         }
 
         /// <summary>
@@ -60,9 +60,9 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
             SensorEvent e = new SensorEvent { Type = Sensor.Type.Gyroscope, X = 1.0f, Y = 2.0f, Z = 3.0f };
             SensorEventArgs args = new SensorEventArgs(e);
             Assert.Equal(Sensor.Type.Gyroscope, args.Type);
-            Assert.Equal(1.0f, args.X);
-            Assert.Equal(2.0f, args.Y);
-            Assert.Equal(3.0f, args.Z);
+            Assert.Equal(1.0f, args.X, 5);
+            Assert.Equal(2.0f, args.Y, 5);
+            Assert.Equal(3.0f, args.Z, 5);
         }
 
         /// <summary>

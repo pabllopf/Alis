@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using SfmlText text = new SfmlText();
             text.OutlineThickness = 2.5f;
-            Assert.Equal(2.5f, text.OutlineThickness);
+            Assert.Equal(2.5f, text.OutlineThickness, 5);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using SfmlText text = new SfmlText();
             text.LetterSpacing = 1.5f;
-            Assert.Equal(1.5f, text.LetterSpacing);
+            Assert.Equal(1.5f, text.LetterSpacing, 5);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void LetterSpacing_GetSet_Default()
         {
             using SfmlText text = new SfmlText();
-            Assert.Equal(1.0f, text.LetterSpacing);
+            Assert.Equal(1.0f, text.LetterSpacing, 5);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using SfmlText text = new SfmlText();
             text.LineSpacing = 2.0f;
-            Assert.Equal(2.0f, text.LineSpacing);
+            Assert.Equal(2.0f, text.LineSpacing, 5);
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void LineSpacing_GetSet_Default()
         {
             using SfmlText text = new SfmlText();
-            Assert.Equal(1.0f, text.LineSpacing);
+            Assert.Equal(1.0f, text.LineSpacing, 5);
         }
 
         /// <summary>

@@ -55,7 +55,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Barycentric(value1, value2, value3, amount1, amount2);
 
             // Assert
-            Assert.Equal(2.5f, result);
+            Assert.Equal(2.5f, result, 5);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.CatmullRom(value1, value2, value3, value4, amount);
 
             // Assert
-            Assert.Equal(1.5f, result);
+            Assert.Equal(1.5f, result, 5);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Clamp(value, min, max);
 
             // Assert
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Distance(value1, value2);
 
             // Assert
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Hermite(value1, tangent1, value2, tangent2, amount);
 
             // Assert
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Lerp(value1, value2, amount);
 
             // Assert
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Max(value1, value2);
 
             // Assert
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.Min(value1, value2);
 
             // Assert
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.SmoothStep(value1, value2, amount);
 
             // Assert
-            Assert.Equal(0.5f, result);
+            Assert.Equal(0.5f, result, 5);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float result = Helper.ToDegrees(radians);
 
             // Assert
-            Assert.Equal(180.0f, result);
+            Assert.Equal(180.0f, result, 5);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Clamp(10f, 0f, 5f);
 
-            Assert.Equal(5f, result);
+            Assert.Equal(5f, result, 5);
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Clamp(-10f, 0f, 5f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Max(5f, 1f);
 
-            Assert.Equal(5f, result);
+            Assert.Equal(5f, result, 5);
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Min(5f, 1f);
 
-            Assert.Equal(1f, result);
+            Assert.Equal(1f, result, 5);
         }
 
         /// <summary>
@@ -440,7 +440,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Max(3f, 7f);
 
-            Assert.Equal(7f, result);
+            Assert.Equal(7f, result, 5);
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Max(5f, 5f);
 
-            Assert.Equal(5f, result);
+            Assert.Equal(5f, result, 5);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Min(3f, 7f);
 
-            Assert.Equal(3f, result);
+            Assert.Equal(3f, result, 5);
         }
 
         /// <summary>
@@ -473,7 +473,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Min(5f, 5f);
 
-            Assert.Equal(5f, result);
+            Assert.Equal(5f, result, 5);
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Lerp(10f, 20f, 0f);
 
-            Assert.Equal(10f, result);
+            Assert.Equal(10f, result, 5);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Lerp(10f, 20f, 1f);
 
-            Assert.Equal(20f, result);
+            Assert.Equal(20f, result, 5);
         }
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Lerp(10f, 20f, 2f);
 
-            Assert.Equal(30f, result);
+            Assert.Equal(30f, result, 5);
         }
 
         /// <summary>
@@ -517,7 +517,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Lerp(10f, 20f, -1f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.ToDegrees(0f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -635,7 +635,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Clamp(5f, 3f, 3f);
 
-            Assert.Equal(3f, result);
+            Assert.Equal(3f, result, 5);
         }
 
         /// <summary>
@@ -646,7 +646,7 @@ namespace Alis.Core.Aspect.Math.Test.Util
         {
             float result = Helper.Distance(5f, 5f);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>

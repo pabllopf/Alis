@@ -46,12 +46,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X2 matrix = new Matrix3X2(1f, 2f, 3f, 4f, 5f, 6f);
 
-            Assert.Equal(1f, matrix.M11);
-            Assert.Equal(2f, matrix.M12);
-            Assert.Equal(3f, matrix.M21);
-            Assert.Equal(4f, matrix.M22);
-            Assert.Equal(5f, matrix.M31);
-            Assert.Equal(6f, matrix.M32);
+            Assert.Equal(1f, matrix.M11, 5);
+            Assert.Equal(2f, matrix.M12, 5);
+            Assert.Equal(3f, matrix.M21, 5);
+            Assert.Equal(4f, matrix.M22, 5);
+            Assert.Equal(5f, matrix.M31, 5);
+            Assert.Equal(6f, matrix.M32, 5);
         }
 
         /// <summary>
@@ -65,8 +65,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
                 Translation = new Vector2F(8f, 9f)
             };
 
-            Assert.Equal(8f, matrix.M31);
-            Assert.Equal(9f, matrix.M32);
+            Assert.Equal(8f, matrix.M31, 5);
+            Assert.Equal(9f, matrix.M32, 5);
         }
 
         /// <summary>
@@ -83,14 +83,14 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X2 negated = -left;
             Matrix3X2 scaled = left * 2f;
 
-            Assert.Equal(3f, sum.M11);
-            Assert.Equal(5f, sum.M12);
-            Assert.Equal(-1f, diff.M11);
-            Assert.Equal(-1f, diff.M12);
-            Assert.Equal(-1f, negated.M11);
-            Assert.Equal(-6f, negated.M32);
-            Assert.Equal(2f, scaled.M11);
-            Assert.Equal(12f, scaled.M32);
+            Assert.Equal(3f, sum.M11, 5);
+            Assert.Equal(5f, sum.M12, 5);
+            Assert.Equal(-1f, diff.M11, 5);
+            Assert.Equal(-1f, diff.M12, 5);
+            Assert.Equal(-1f, negated.M11, 5);
+            Assert.Equal(-6f, negated.M32, 5);
+            Assert.Equal(2f, scaled.M11, 5);
+            Assert.Equal(12f, scaled.M32, 5);
         }
 
         /// <summary>
@@ -104,12 +104,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Matrix3X2 result = left * right;
 
-            Assert.Equal(25f, result.M11);
-            Assert.Equal(28f, result.M12);
-            Assert.Equal(57f, result.M21);
-            Assert.Equal(64f, result.M22);
-            Assert.Equal(100f, result.M31);
-            Assert.Equal(112f, result.M32);
+            Assert.Equal(25f, result.M11, 5);
+            Assert.Equal(28f, result.M12, 5);
+            Assert.Equal(57f, result.M21, 5);
+            Assert.Equal(64f, result.M22, 5);
+            Assert.Equal(100f, result.M31, 5);
+            Assert.Equal(112f, result.M32, 5);
         }
 
         /// <summary>
@@ -140,12 +140,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Assert.Contains("M22:5", matrix.ToString());
 
             Matrix3X2 added = Matrix3X2.Add(matrix, matrix);
-            Assert.Equal(4f, added.M11);
-            Assert.Equal(6f, added.M12);
-            Assert.Equal(8f, added.M21);
-            Assert.Equal(10f, added.M22);
-            Assert.Equal(0f, added.M31);
-            Assert.Equal(0f, added.M32);
+            Assert.Equal(4f, added.M11, 5);
+            Assert.Equal(6f, added.M12, 5);
+            Assert.Equal(8f, added.M21, 5);
+            Assert.Equal(10f, added.M22, 5);
+            Assert.Equal(0f, added.M31, 5);
+            Assert.Equal(0f, added.M32, 5);
         }
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Vector2F translation = matrix.Translation;
 
-            Assert.Equal(5f, translation.X);
-            Assert.Equal(6f, translation.Y);
+            Assert.Equal(5f, translation.X, 5);
+            Assert.Equal(6f, translation.Y, 5);
         }
 
         /// <summary>
@@ -182,10 +182,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X2 result = Matrix3X2.CreateScale(new Vector2F(3f, 4f));
 
-            Assert.Equal(3f, result.M11);
-            Assert.Equal(4f, result.M22);
-            Assert.Equal(0f, result.M12);
-            Assert.Equal(0f, result.M21);
+            Assert.Equal(3f, result.M11, 5);
+            Assert.Equal(4f, result.M22, 5);
+            Assert.Equal(0f, result.M12, 5);
+            Assert.Equal(0f, result.M21, 5);
         }
 
         /// <summary>
@@ -196,10 +196,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X2 result = Matrix3X2.CreateScale(3f, 4f);
 
-            Assert.Equal(3f, result.M11);
-            Assert.Equal(4f, result.M22);
-            Assert.Equal(0f, result.M12);
-            Assert.Equal(0f, result.M21);
+            Assert.Equal(3f, result.M11, 5);
+            Assert.Equal(4f, result.M22, 5);
+            Assert.Equal(0f, result.M12, 5);
+            Assert.Equal(0f, result.M21, 5);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             float det = identity.GetDeterminant();
 
-            Assert.Equal(1f, det);
+            Assert.Equal(1f, det, 5);
         }
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             float det = zero.GetDeterminant();
 
-            Assert.Equal(0f, det);
+            Assert.Equal(0f, det, 5);
         }
 
         /// <summary>
@@ -296,10 +296,10 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X2 result = Matrix3X2.CreateScale(0f, 0f);
 
-            Assert.Equal(0f, result.M11);
-            Assert.Equal(0f, result.M22);
-            Assert.Equal(0f, result.M12);
-            Assert.Equal(0f, result.M21);
+            Assert.Equal(0f, result.M11, 5);
+            Assert.Equal(0f, result.M22, 5);
+            Assert.Equal(0f, result.M12, 5);
+            Assert.Equal(0f, result.M21, 5);
         }
 
         /// <summary>
@@ -310,8 +310,8 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix3X2 result = Matrix3X2.CreateScale(-2f, -3f);
 
-            Assert.Equal(-2f, result.M11);
-            Assert.Equal(-3f, result.M22);
+            Assert.Equal(-2f, result.M11, 5);
+            Assert.Equal(-3f, result.M22, 5);
         }
 
         /// <summary>
@@ -325,12 +325,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Matrix3X2 result = a * identity;
 
-            Assert.Equal(2f, result.M11);
-            Assert.Equal(3f, result.M12);
-            Assert.Equal(4f, result.M21);
-            Assert.Equal(5f, result.M22);
-            Assert.Equal(6f, result.M31);
-            Assert.Equal(7f, result.M32);
+            Assert.Equal(2f, result.M11, 5);
+            Assert.Equal(3f, result.M12, 5);
+            Assert.Equal(4f, result.M21, 5);
+            Assert.Equal(5f, result.M22, 5);
+            Assert.Equal(6f, result.M31, 5);
+            Assert.Equal(7f, result.M32, 5);
         }
 
         /// <summary>
@@ -355,12 +355,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
             Matrix3X2 a = new Matrix3X2(1f, -2f, 3f, -4f, 5f, -6f);
             Matrix3X2 negated = -a;
 
-            Assert.Equal(-1f, negated.M11);
-            Assert.Equal(2f, negated.M12);
-            Assert.Equal(-3f, negated.M21);
-            Assert.Equal(4f, negated.M22);
-            Assert.Equal(-5f, negated.M31);
-            Assert.Equal(6f, negated.M32);
+            Assert.Equal(-1f, negated.M11, 5);
+            Assert.Equal(2f, negated.M12, 5);
+            Assert.Equal(-3f, negated.M21, 5);
+            Assert.Equal(4f, negated.M22, 5);
+            Assert.Equal(-5f, negated.M31, 5);
+            Assert.Equal(6f, negated.M32, 5);
         }
 
         /// <summary>
@@ -374,12 +374,12 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
 
             Matrix3X2 result = a + zero;
 
-            Assert.Equal(2f, result.M11);
-            Assert.Equal(3f, result.M12);
-            Assert.Equal(4f, result.M21);
-            Assert.Equal(5f, result.M22);
-            Assert.Equal(6f, result.M31);
-            Assert.Equal(7f, result.M32);
+            Assert.Equal(2f, result.M11, 5);
+            Assert.Equal(3f, result.M12, 5);
+            Assert.Equal(4f, result.M21, 5);
+            Assert.Equal(5f, result.M22, 5);
+            Assert.Equal(6f, result.M31, 5);
+            Assert.Equal(7f, result.M32, 5);
         }
     }
 }

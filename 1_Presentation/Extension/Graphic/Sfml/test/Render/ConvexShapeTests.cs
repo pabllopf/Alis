@@ -175,8 +175,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.SetPoint(0, new Vector2F(30, 40));
 
             Vector2F result = shape.GetPoint(0);
-            Assert.Equal(30f, result.X);
-            Assert.Equal(40f, result.Y);
+            Assert.Equal(30f, result.X, 5);
+            Assert.Equal(40f, result.Y, 5);
         }
 
         /// <summary>

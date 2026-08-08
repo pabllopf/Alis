@@ -339,12 +339,12 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
                 LeftTrigger = 0.75f,
                 RightTrigger = 0.25f
             };
-            Assert.Equal(0.5f, state.LeftStickX);
-            Assert.Equal(-0.5f, state.LeftStickY);
-            Assert.Equal(1.0f, state.RightStickX);
-            Assert.Equal(-1.0f, state.RightStickY);
-            Assert.Equal(0.75f, state.LeftTrigger);
-            Assert.Equal(0.25f, state.RightTrigger);
+            Assert.Equal(0.5f, state.LeftStickX, 5);
+            Assert.Equal(-0.5f, state.LeftStickY, 5);
+            Assert.Equal(1.0f, state.RightStickX, 5);
+            Assert.Equal(-1.0f, state.RightStickY, 5);
+            Assert.Equal(0.75f, state.LeftTrigger, 5);
+            Assert.Equal(0.25f, state.RightTrigger, 5);
         }
 
         /// <summary>
@@ -430,8 +430,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.KeyboardInputEnabled);
             Assert.True(config.MouseInputEnabled);
             Assert.True(config.TouchInputEnabled);
-            Assert.Equal(0.15f, config.GamepadDeadzone);
-            Assert.Equal(0.1f, config.TriggerDeadzone);
+            Assert.Equal(0.15f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.1f, config.TriggerDeadzone, 5);
             Assert.False(config.DebugMode);
             Assert.Null(config.IconPath);
         }
@@ -476,8 +476,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.KeyboardInputEnabled);
             Assert.True(config.MouseInputEnabled);
             Assert.False(config.TouchInputEnabled);
-            Assert.Equal(0.2f, config.GamepadDeadzone);
-            Assert.Equal(0.05f, config.TriggerDeadzone);
+            Assert.Equal(0.2f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.05f, config.TriggerDeadzone, 5);
             Assert.True(config.DebugMode);
             Assert.Equal("icon.png", config.IconPath);
         }
@@ -845,8 +845,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.KeyboardInputEnabled);
             Assert.True(config.MouseInputEnabled);
             Assert.True(config.TouchInputEnabled);
-            Assert.Equal(0.15f, config.GamepadDeadzone);
-            Assert.Equal(0.1f, config.TriggerDeadzone);
+            Assert.Equal(0.15f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.1f, config.TriggerDeadzone, 5);
             Assert.False(config.Fullscreen);
             Assert.False(config.PointerLock);
             Assert.False(config.DebugMode);
@@ -895,8 +895,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.False(config.KeyboardInputEnabled);
             Assert.False(config.MouseInputEnabled);
             Assert.False(config.TouchInputEnabled);
-            Assert.Equal(0.3f, config.GamepadDeadzone);
-            Assert.Equal(0.2f, config.TriggerDeadzone);
+            Assert.Equal(0.3f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.2f, config.TriggerDeadzone, 5);
             Assert.True(config.DebugMode);
             Assert.Equal("custom.ico", config.IconPath);
         }

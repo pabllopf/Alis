@@ -47,8 +47,8 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Physic
         {
             PhysicSetting setting = new PhysicSetting();
 
-            Assert.Equal(-9.81f, setting.Gravity.Y);
-            Assert.Equal(0f, setting.Gravity.X);
+            Assert.Equal(-9.81f, setting.Gravity.Y, 5);
+            Assert.Equal(0f, setting.Gravity.X, 5);
             Assert.False(setting.Debug);
             Assert.Equal(0, setting.DebugColor.R);
             Assert.Equal(0, setting.DebugColor.G);
@@ -66,7 +66,7 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Physic
             Color debugColor = new Color(255, 0, 0, 255);
             PhysicSetting setting = new PhysicSetting(gravity, true, debugColor);
 
-            Assert.Equal(-5f, setting.Gravity.Y);
+            Assert.Equal(-5f, setting.Gravity.Y, 5);
             Assert.True(setting.Debug);
             Assert.Equal(255, setting.DebugColor.R);
             Assert.Equal(255, setting.DebugColor.A);
@@ -81,8 +81,8 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Physic
             PhysicSetting setting = new PhysicSetting();
 
             setting.Gravity = new Vector2F(1, 1);
-            Assert.Equal(1f, setting.Gravity.X);
-            Assert.Equal(1f, setting.Gravity.Y);
+            Assert.Equal(1f, setting.Gravity.X, 5);
+            Assert.Equal(1f, setting.Gravity.Y, 5);
 
             setting.Debug = true;
             Assert.True(setting.Debug);

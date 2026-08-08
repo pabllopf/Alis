@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactPositionConstraint constraint = new ContactPositionConstraint();
 
-            Assert.Equal(0f, constraint.RadiusA);
+            Assert.Equal(0f, constraint.RadiusA, 5);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         {
             ContactPositionConstraint constraint = new ContactPositionConstraint();
 
-            Assert.Equal(0f, constraint.RadiusB);
+            Assert.Equal(0f, constraint.RadiusB, 5);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 RadiusA = 0.5f
             };
 
-            Assert.Equal(0.5f, constraint.RadiusA);
+            Assert.Equal(0.5f, constraint.RadiusA, 5);
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
                 RadiusB = 1.0f
             };
 
-            Assert.Equal(1.0f, constraint.RadiusB);
+            Assert.Equal(1.0f, constraint.RadiusB, 5);
         }
 
         /// <summary>

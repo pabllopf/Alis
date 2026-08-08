@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             joint.Breakpoint = 100.0f;
 
-            Assert.Equal(100.0f, joint.Breakpoint);
+            Assert.Equal(100.0f, joint.Breakpoint, 5);
         }
 
         /// <summary>

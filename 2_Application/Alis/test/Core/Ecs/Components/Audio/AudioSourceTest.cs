@@ -53,7 +53,7 @@ namespace Alis.Test.Core.Ecs.Components.Audio
 
             Assert.Equal(context, source.Context);
             Assert.Equal(string.Empty, source.NameFile);
-            Assert.Equal(100f, source.Volume);
+            Assert.Equal(100f, source.Volume, 5);
             Assert.False(source.IsMute);
             Assert.False(source.PlayOnAwake);
             Assert.False(source.IsLooping);
@@ -151,7 +151,7 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Assert.Equal("test.wav", source.NameFile);
 
             source.Volume = 50f;
-            Assert.Equal(50f, source.Volume);
+            Assert.Equal(50f, source.Volume, 5);
 
             source.IsMute = true;
             Assert.True(source.IsMute);

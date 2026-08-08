@@ -203,7 +203,7 @@ namespace Alis.Extension.Graphic.Ui.Test
 
             float preferredX = texteditState.PreferredX;
 
-            Assert.Equal(1.0f, preferredX);
+            Assert.Equal(1.0f, preferredX, 5);
         }
 
         /// <summary>

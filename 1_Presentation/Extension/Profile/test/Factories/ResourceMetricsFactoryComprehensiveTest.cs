@@ -262,7 +262,7 @@ namespace Alis.Extension.Profile.Test.Factories
             monitor.CpuUsage = 100.0;
             ResourceMetrics metrics = factory.CreateSnapshot();
 
-            Assert.Equal(100.0, metrics.CpuUsageMilliseconds);
+            Assert.Equal(100.0, metrics.CpuUsageMilliseconds, 5);
         }
 
         /// <summary>

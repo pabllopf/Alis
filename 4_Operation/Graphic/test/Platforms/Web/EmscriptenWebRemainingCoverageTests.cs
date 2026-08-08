@@ -306,7 +306,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GetDevicePixelRatio_ReturnsDefaultOnNativeFailure()
         {
             float result = EmscriptenWeb.GetDevicePixelRatio();
-            Assert.Equal(1.0f, result);
+            Assert.Equal(1.0f, result, 5);
         }
 
         // =====================================================================
@@ -438,7 +438,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GetSystemTimeMs_ReturnsDefaultOnNativeFailure()
         {
             double result = EmscriptenWeb.GetSystemTimeMs();
-            Assert.Equal(0.0, result);
+            Assert.Equal(0.0, result, 5);
         }
 
         // =====================================================================
@@ -684,7 +684,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
         public void GetBatteryLevel_ReturnsDefaultOnNativeFailure()
         {
             float result = EmscriptenWeb.GetBatteryLevel();
-            Assert.Equal(-1.0f, result);
+            Assert.Equal(-1.0f, result, 5);
         }
 
         // =====================================================================
@@ -967,7 +967,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             for (int i = 0; i < 3; i++)
             {
                 double result = EmscriptenWeb.GetSystemTimeMs();
-                Assert.Equal(0.0, result);
+                Assert.Equal(0.0, result, 5);
             }
         }
 

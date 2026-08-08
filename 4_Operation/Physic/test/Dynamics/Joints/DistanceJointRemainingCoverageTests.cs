@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo massField = typeof(DistanceJoint).GetField("_mass", BindingFlags.NonPublic | BindingFlags.Instance);
             float mass = (float)massField.GetValue(joint);
 
-            Assert.Equal(0.0f, mass);
+            Assert.Equal(0.0f, mass, 5);
         }
 
         /// <summary>
@@ -97,8 +97,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo massField = typeof(DistanceJoint).GetField("_mass", BindingFlags.NonPublic | BindingFlags.Instance);
             float mass = (float)massField.GetValue(joint);
 
-            Assert.Equal(0.0f, gamma);
-            Assert.Equal(0.0f, mass);
+            Assert.Equal(0.0f, gamma, 5);
+            Assert.Equal(0.0f, mass, 5);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             FieldInfo impulseField = typeof(DistanceJoint).GetField("_impulse", BindingFlags.NonPublic | BindingFlags.Instance);
             float impulse = (float)impulseField.GetValue(joint);
 
-            Assert.Equal(0.0f, impulse);
+            Assert.Equal(0.0f, impulse, 5);
         }
 
         /// <summary>

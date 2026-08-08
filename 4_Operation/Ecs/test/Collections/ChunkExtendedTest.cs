@@ -88,8 +88,8 @@ namespace Alis.Core.Ecs.Test.Collections
             chunk[0] = 3.14;
             chunk[10] = 2.71;
 
-            Assert.Equal(3.14, chunk[0]);
-            Assert.Equal(2.71, chunk[10]);
+            Assert.Equal(3.14, chunk[0], 5);
+            Assert.Equal(2.71, chunk[10], 5);
             chunk.Return();
         }
 

@@ -950,7 +950,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiIo io = new ImGuiIo();
             io.ConfigMemoryCompactTimer = 1.0f;
-            Assert.Equal(1.0f, io.ConfigMemoryCompactTimer);
+            Assert.Equal(1.0f, io.ConfigMemoryCompactTimer, 5);
         }
 
         /// <summary>
@@ -1158,7 +1158,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiIo io = new ImGuiIo();
             io.Framerate = 60.0f;
-            Assert.Equal(60.0f, io.Framerate);
+            Assert.Equal(60.0f, io.Framerate, 5);
         }
 
         /// <summary>
@@ -1248,7 +1248,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiIo io = new ImGuiIo();
             io.MouseWheel = 1.0f;
-            Assert.Equal(1.0f, io.MouseWheel);
+            Assert.Equal(1.0f, io.MouseWheel, 5);
         }
 
         /// <summary>
@@ -1259,7 +1259,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiIo io = new ImGuiIo();
             io.MouseWheelH = 1.0f;
-            Assert.Equal(1.0f, io.MouseWheelH);
+            Assert.Equal(1.0f, io.MouseWheelH, 5);
         }
 
         /// <summary>

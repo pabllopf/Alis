@@ -90,8 +90,8 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
             Assert.True(config.KeyboardInputEnabled);
             Assert.True(config.MouseInputEnabled);
             Assert.False(config.TouchInputEnabled);
-            Assert.Equal(0.2f, config.GamepadDeadzone);
-            Assert.Equal(0.05f, config.TriggerDeadzone);
+            Assert.Equal(0.2f, config.GamepadDeadzone, 5);
+            Assert.Equal(0.05f, config.TriggerDeadzone, 5);
             Assert.True(config.DebugMode);
         }
 

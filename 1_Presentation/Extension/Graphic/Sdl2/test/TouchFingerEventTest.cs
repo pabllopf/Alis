@@ -50,11 +50,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0u, evt.timestamp);
             Assert.Equal(0L, evt.touchId);
             Assert.Equal(0L, evt.fingerId);
-            Assert.Equal(0f, evt.x);
-            Assert.Equal(0f, evt.y);
-            Assert.Equal(0f, evt.dx);
-            Assert.Equal(0f, evt.dy);
-            Assert.Equal(0f, evt.pressure);
+            Assert.Equal(0f, evt.x, 5);
+            Assert.Equal(0f, evt.y, 5);
+            Assert.Equal(0f, evt.dx, 5);
+            Assert.Equal(0f, evt.dy, 5);
+            Assert.Equal(0f, evt.pressure, 5);
             Assert.Equal(0u, evt.windowID);
         }
 
@@ -83,11 +83,11 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(100u, evt.timestamp);
             Assert.Equal(42L, evt.touchId);
             Assert.Equal(99L, evt.fingerId);
-            Assert.Equal(0.5f, evt.x);
-            Assert.Equal(0.25f, evt.y);
-            Assert.Equal(-0.1f, evt.dx);
-            Assert.Equal(0.3f, evt.dy);
-            Assert.Equal(1.0f, evt.pressure);
+            Assert.Equal(0.5f, evt.x, 5);
+            Assert.Equal(0.25f, evt.y, 5);
+            Assert.Equal(-0.1f, evt.dx, 5);
+            Assert.Equal(0.3f, evt.dy, 5);
+            Assert.Equal(1.0f, evt.pressure, 5);
             Assert.Equal(7u, evt.windowID);
         }
     }

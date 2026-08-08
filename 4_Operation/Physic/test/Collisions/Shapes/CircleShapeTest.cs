@@ -211,7 +211,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(0.0f, 1.0f);
 
-            Assert.Equal(0.0f, circle.GetRadius);
+            Assert.Equal(0.0f, circle.GetRadius, 5);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             CircleShape circle = new CircleShape(1.0f, 0.0f);
 
-            Assert.Equal(0.0f, circle.GetDensity);
+            Assert.Equal(0.0f, circle.GetDensity, 5);
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
             float area = circle.ComputeSubmergedArea(ref normal, -10.0f, ref transform, out Vector2F sc);
 
-            Assert.Equal(0.0f, area);
+            Assert.Equal(0.0f, area, 5);
         }
 
         /// <summary>

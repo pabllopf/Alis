@@ -139,9 +139,9 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             TimeSetting setting = new TimeSetting();
 
-            Assert.Equal(0.016f, setting.FixedTimeStep);
-            Assert.Equal(0.25f, setting.MaximumAllowedTimeStep);
-            Assert.Equal(1.0f, setting.TimeScale);
+            Assert.Equal(0.016f, setting.FixedTimeStep, 5);
+            Assert.Equal(0.25f, setting.MaximumAllowedTimeStep, 5);
+            Assert.Equal(1.0f, setting.TimeScale, 5);
         }
 
         /// <summary>
@@ -152,9 +152,9 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             TimeSetting setting = new TimeSetting(0.02f, 0.5f, 2.0f);
 
-            Assert.Equal(0.02f, setting.FixedTimeStep);
-            Assert.Equal(0.5f, setting.MaximumAllowedTimeStep);
-            Assert.Equal(2.0f, setting.TimeScale);
+            Assert.Equal(0.02f, setting.FixedTimeStep, 5);
+            Assert.Equal(0.5f, setting.MaximumAllowedTimeStep, 5);
+            Assert.Equal(2.0f, setting.TimeScale, 5);
         }
 
         /// <summary>

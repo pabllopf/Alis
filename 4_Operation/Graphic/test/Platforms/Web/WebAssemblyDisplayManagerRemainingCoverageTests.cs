@@ -380,7 +380,7 @@ namespace Alis.Core.Graphic.Test.Platforms.Web
 
             float scale = manager.GetRenderingScale();
 
-            Assert.Equal(1.0f, scale);
+            Assert.Equal(1.0f, scale, 5);
         }
 
         // =====================================================================

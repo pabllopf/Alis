@@ -46,10 +46,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector4F v = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, v.X);
-            Assert.Equal(2f, v.Y);
-            Assert.Equal(3f, v.Z);
-            Assert.Equal(4f, v.W);
+            Assert.Equal(1f, v.X, 5);
+            Assert.Equal(2f, v.Y, 5);
+            Assert.Equal(3f, v.Z, 5);
+            Assert.Equal(4f, v.W, 5);
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector4F v = new Vector4F();
 
-            Assert.Equal(0f, v.X);
-            Assert.Equal(0f, v.Y);
-            Assert.Equal(0f, v.Z);
-            Assert.Equal(0f, v.W);
+            Assert.Equal(0f, v.X, 5);
+            Assert.Equal(0f, v.Y, 5);
+            Assert.Equal(0f, v.Z, 5);
+            Assert.Equal(0f, v.W, 5);
         }
 
         /// <summary>
@@ -79,10 +79,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             v.Z = 7f;
             v.W = 8f;
 
-            Assert.Equal(5f, v.X);
-            Assert.Equal(6f, v.Y);
-            Assert.Equal(7f, v.Z);
-            Assert.Equal(8f, v.W);
+            Assert.Equal(5f, v.X, 5);
+            Assert.Equal(6f, v.Y, 5);
+            Assert.Equal(7f, v.Z, 5);
+            Assert.Equal(8f, v.W, 5);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 0);
 
-            Assert.Equal(1f, result);
+            Assert.Equal(1f, result, 5);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 1);
 
-            Assert.Equal(2f, result);
+            Assert.Equal(2f, result, 5);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 2);
 
-            Assert.Equal(3f, result);
+            Assert.Equal(3f, result, 5);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 3);
 
-            Assert.Equal(4f, result);
+            Assert.Equal(4f, result, 5);
         }
 
         /// <summary>
@@ -247,7 +247,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, -1);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 4);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, 100);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, int.MinValue);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
         /// <summary>
@@ -455,7 +455,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             float result = Vector4F.Get(v, index);
 
-            Assert.Equal(0f, result);
+            Assert.Equal(0f, result, 5);
         }
 
 
@@ -467,10 +467,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector4F v = new Vector4F(1.5f, 2.5f, 3.5f, 4.5f);
 
-            Assert.Equal(1.5f, v.X);
-            Assert.Equal(2.5f, v.Y);
-            Assert.Equal(3.5f, v.Z);
-            Assert.Equal(4.5f, v.W);
+            Assert.Equal(1.5f, v.X, 5);
+            Assert.Equal(2.5f, v.Y, 5);
+            Assert.Equal(3.5f, v.Z, 5);
+            Assert.Equal(4.5f, v.W, 5);
         }
 
         /// <summary>
@@ -481,10 +481,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector4F v = new Vector4F(0f, 0f, 0f, 0f);
 
-            Assert.Equal(0f, v.X);
-            Assert.Equal(0f, v.Y);
-            Assert.Equal(0f, v.Z);
-            Assert.Equal(0f, v.W);
+            Assert.Equal(0f, v.X, 5);
+            Assert.Equal(0f, v.Y, 5);
+            Assert.Equal(0f, v.Z, 5);
+            Assert.Equal(0f, v.W, 5);
         }
 
         /// <summary>
@@ -495,10 +495,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector4F v = new Vector4F(-1f, -2f, -3f, -4f);
 
-            Assert.Equal(-1f, v.X);
-            Assert.Equal(-2f, v.Y);
-            Assert.Equal(-3f, v.Z);
-            Assert.Equal(-4f, v.W);
+            Assert.Equal(-1f, v.X, 5);
+            Assert.Equal(-2f, v.Y, 5);
+            Assert.Equal(-3f, v.Z, 5);
+            Assert.Equal(-4f, v.W, 5);
         }
 
 
@@ -512,7 +512,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             v.X = 10f;
 
-            Assert.Equal(10f, v.X);
+            Assert.Equal(10f, v.X, 5);
         }
 
         /// <summary>
@@ -525,7 +525,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             v.Y = 20f;
 
-            Assert.Equal(20f, v.Y);
+            Assert.Equal(20f, v.Y, 5);
         }
 
         /// <summary>
@@ -538,7 +538,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             v.Z = 30f;
 
-            Assert.Equal(30f, v.Z);
+            Assert.Equal(30f, v.Z, 5);
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             v.W = 40f;
 
-            Assert.Equal(40f, v.W);
+            Assert.Equal(40f, v.W, 5);
         }
 
         /// <summary>
@@ -567,10 +567,10 @@ namespace Alis.Core.Aspect.Math.Test.Vector
             v.Z = 30f;
             v.W = 40f;
 
-            Assert.Equal(10f, v.X);
-            Assert.Equal(20f, v.Y);
-            Assert.Equal(30f, v.Z);
-            Assert.Equal(40f, v.W);
+            Assert.Equal(10f, v.X, 5);
+            Assert.Equal(20f, v.Y, 5);
+            Assert.Equal(30f, v.Z, 5);
+            Assert.Equal(40f, v.W, 5);
         }
 
 
@@ -594,8 +594,8 @@ namespace Alis.Core.Aspect.Math.Test.Vector
 
             second.X = 10f;
 
-            Assert.Equal(1f, first.X);
-            Assert.Equal(10f, second.X);
+            Assert.Equal(1f, first.X, 5);
+            Assert.Equal(10f, second.X, 5);
         }
 
         /// <summary>

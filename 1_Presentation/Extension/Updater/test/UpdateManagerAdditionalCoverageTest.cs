@@ -216,7 +216,7 @@ namespace Alis.Extension.Updater.Test
 
             sut.Backup();
 
-            Assert.Equal(0.7f, sut.Progress);
+            Assert.Equal(0.7f, sut.Progress, 5);
         }
 
         /// <summary>

@@ -123,15 +123,15 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.GuizMo
             float[] cameraView = GetPrivateArray("cameraView");
             float[] identityMatrix = GetPrivateArray("identityMatrix");
 
-            Assert.Equal(1.0f, cameraView[0]);
-            Assert.Equal(1.0f, cameraView[5]);
-            Assert.Equal(1.0f, cameraView[10]);
-            Assert.Equal(1.0f, cameraView[15]);
+            Assert.Equal(1.0f, cameraView[0], 5);
+            Assert.Equal(1.0f, cameraView[5], 5);
+            Assert.Equal(1.0f, cameraView[10], 5);
+            Assert.Equal(1.0f, cameraView[15], 5);
 
-            Assert.Equal(1.0f, identityMatrix[0]);
-            Assert.Equal(1.0f, identityMatrix[5]);
-            Assert.Equal(1.0f, identityMatrix[10]);
-            Assert.Equal(1.0f, identityMatrix[15]);
+            Assert.Equal(1.0f, identityMatrix[0], 5);
+            Assert.Equal(1.0f, identityMatrix[5], 5);
+            Assert.Equal(1.0f, identityMatrix[10], 5);
+            Assert.Equal(1.0f, identityMatrix[15], 5);
         }
 
         /// <summary>

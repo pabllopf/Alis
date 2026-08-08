@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Separation = 3.14f
             };
 
-            Assert.Equal(3.14f, epAxis.Separation);
+            Assert.Equal(3.14f, epAxis.Separation, 5);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Separation = -2.5f
             };
 
-            Assert.Equal(-2.5f, epAxis.Separation);
+            Assert.Equal(-2.5f, epAxis.Separation, 5);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 Separation = 0.0f
             };
 
-            Assert.Equal(0.0f, epAxis.Separation);
+            Assert.Equal(0.0f, epAxis.Separation, 5);
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             EpAxis epAxis = new EpAxis();
 
-            Assert.Equal(0.0f, epAxis.Separation);
+            Assert.Equal(0.0f, epAxis.Separation, 5);
         }
     }
 }

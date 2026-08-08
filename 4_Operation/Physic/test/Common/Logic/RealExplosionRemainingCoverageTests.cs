@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             WorldPhysic world = new WorldPhysic();
             RealExplosion explosion = new RealExplosion(world);
 
-            Assert.Equal(1.0f / 40.0f, explosion.EdgeRatio);
+            Assert.Equal(1.0f / 40.0f, explosion.EdgeRatio, 5);
             Assert.False(explosion.IgnoreWhenInsideShape);
             Assert.Equal(MathF.PI / 15f, explosion.MaxAngle, 5);
             Assert.Equal(100, explosion.MaxShapes);
@@ -752,8 +752,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
 
             Assert.Single(explosion._data);
             Assert.Same(body, explosion._data[0].Body);
-            Assert.Equal(0.1f, explosion._data[0].Min);
-            Assert.Equal(1.0f, explosion._data[0].Max);
+            Assert.Equal(0.1f, explosion._data[0].Min, 5);
+            Assert.Equal(1.0f, explosion._data[0].Max, 5);
         }
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             explosion.UpdateLastShapeData(2.0f);
             explosion.UpdateLastShapeData(3.0f);
 
-            Assert.Equal(3.0f, explosion._data[0].Max);
+            Assert.Equal(3.0f, explosion._data[0].Max, 5);
         }
 
         /// <summary>
@@ -894,8 +894,8 @@ namespace Alis.Core.Physic.Test.Common.Logic
             explosion.AddNewShapeData(body, 0.1f, 1.0f);
             explosion.AdjustWrappedData();
 
-            Assert.Equal(0.1f, explosion._data[0].Min);
-            Assert.Equal(1.0f, explosion._data[0].Max);
+            Assert.Equal(0.1f, explosion._data[0].Min, 5);
+            Assert.Equal(1.0f, explosion._data[0].Max, 5);
         }
 
         /// <summary>

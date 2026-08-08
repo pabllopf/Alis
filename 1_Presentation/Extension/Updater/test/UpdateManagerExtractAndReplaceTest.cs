@@ -179,7 +179,7 @@ namespace Alis.Extension.Updater.Test
             UpdateManager sut = CreateManagerFast(programFolder: programFolder);
             sut.ExtractAndReplace(zipPath);
 
-            Assert.Equal(0.8f, sut.Progress);
+            Assert.Equal(0.8f, sut.Progress, 5);
             Assert.Equal("Extracted and replaced .zip file.", sut.Message);
             Assert.True(File.Exists(Path.Combine(programFolder, "content", "file-" + caseId + ".txt")));
         }

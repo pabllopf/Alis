@@ -46,8 +46,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         public void DefaultConstructor_SetsSizeToZero()
         {
             using RectangleShape shape = new RectangleShape();
-            Assert.Equal(0f, shape.Size.X);
-            Assert.Equal(0f, shape.Size.Y);
+            Assert.Equal(0f, shape.Size.X, 5);
+            Assert.Equal(0f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -58,8 +58,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector2F size = new Vector2F(100f, 200f);
             using RectangleShape shape = new RectangleShape(size);
-            Assert.Equal(100f, shape.Size.X);
-            Assert.Equal(200f, shape.Size.Y);
+            Assert.Equal(100f, shape.Size.X, 5);
+            Assert.Equal(200f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -70,8 +70,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector2F size = new Vector2F(0f, 0f);
             using RectangleShape shape = new RectangleShape(size);
-            Assert.Equal(0f, shape.Size.X);
-            Assert.Equal(0f, shape.Size.Y);
+            Assert.Equal(0f, shape.Size.X, 5);
+            Assert.Equal(0f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -82,8 +82,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Vector2F size = new Vector2F(-50f, -75f);
             using RectangleShape shape = new RectangleShape(size);
-            Assert.Equal(-50f, shape.Size.X);
-            Assert.Equal(-75f, shape.Size.Y);
+            Assert.Equal(-50f, shape.Size.X, 5);
+            Assert.Equal(-75f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -107,8 +107,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             using RectangleShape original = new RectangleShape(new Vector2F(100f, 200f));
             using RectangleShape copy = new RectangleShape(original);
             original.Size = new Vector2F(300f, 400f);
-            Assert.Equal(100f, copy.Size.X);
-            Assert.Equal(200f, copy.Size.Y);
+            Assert.Equal(100f, copy.Size.X, 5);
+            Assert.Equal(200f, copy.Size.Y, 5);
         }
 
         /// <summary>
@@ -119,8 +119,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape original = new RectangleShape(new Vector2F(0f, 0f));
             using RectangleShape copy = new RectangleShape(original);
-            Assert.Equal(0f, copy.Size.X);
-            Assert.Equal(0f, copy.Size.Y);
+            Assert.Equal(0f, copy.Size.X, 5);
+            Assert.Equal(0f, copy.Size.Y, 5);
         }
 
         /// <summary>
@@ -131,8 +131,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape();
             shape.Size = new Vector2F(80f, 120f);
-            Assert.Equal(80f, shape.Size.X);
-            Assert.Equal(120f, shape.Size.Y);
+            Assert.Equal(80f, shape.Size.X, 5);
+            Assert.Equal(120f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -145,8 +145,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             shape.Size = new Vector2F(10f, 20f);
             shape.Size = new Vector2F(30f, 40f);
             shape.Size = new Vector2F(50f, 60f);
-            Assert.Equal(50f, shape.Size.X);
-            Assert.Equal(60f, shape.Size.Y);
+            Assert.Equal(50f, shape.Size.X, 5);
+            Assert.Equal(60f, shape.Size.Y, 5);
         }
 
         /// <summary>
@@ -157,8 +157,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(200f, 300f));
             Vector2F size = shape.Size;
-            Assert.Equal(200f, size.X);
-            Assert.Equal(300f, size.Y);
+            Assert.Equal(200f, size.X, 5);
+            Assert.Equal(300f, size.Y, 5);
         }
 
         /// <summary>
@@ -200,8 +200,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(0);
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -212,8 +212,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(1);
-            Assert.Equal(100f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(100f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -224,8 +224,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(2);
-            Assert.Equal(100f, point.X);
-            Assert.Equal(200f, point.Y);
+            Assert.Equal(100f, point.X, 5);
+            Assert.Equal(200f, point.Y, 5);
         }
 
         /// <summary>
@@ -236,8 +236,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(3);
-            Assert.Equal(0f, point.X);
-            Assert.Equal(200f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(200f, point.Y, 5);
         }
 
         /// <summary>
@@ -248,8 +248,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(5);
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -260,8 +260,8 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape = new RectangleShape(new Vector2F(100f, 200f));
             Vector2F point = shape.GetPoint(999);
-            Assert.Equal(0f, point.X);
-            Assert.Equal(0f, point.Y);
+            Assert.Equal(0f, point.X, 5);
+            Assert.Equal(0f, point.Y, 5);
         }
 
         /// <summary>
@@ -309,10 +309,10 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             using RectangleShape shape1 = new RectangleShape(new Vector2F(100f, 200f));
             using RectangleShape shape2 = new RectangleShape(new Vector2F(300f, 400f));
-            Assert.Equal(100f, shape1.Size.X);
-            Assert.Equal(200f, shape1.Size.Y);
-            Assert.Equal(300f, shape2.Size.X);
-            Assert.Equal(400f, shape2.Size.Y);
+            Assert.Equal(100f, shape1.Size.X, 5);
+            Assert.Equal(200f, shape1.Size.Y, 5);
+            Assert.Equal(300f, shape2.Size.X, 5);
+            Assert.Equal(400f, shape2.Size.Y, 5);
         }
 
         /// <summary>

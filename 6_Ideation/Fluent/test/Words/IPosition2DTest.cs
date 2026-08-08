@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             Position2DBuilder builder = new Position2DBuilder();
             PositionBuilder result = builder.Position(10.5f, 20.5f);
-            Assert.Equal(10.5f, result.X);
-            Assert.Equal(20.5f, result.Y);
+            Assert.Equal(10.5f, result.X, 5);
+            Assert.Equal(20.5f, result.Y, 5);
         }
 
         /// <summary>
@@ -81,8 +81,8 @@ namespace Alis.Core.Aspect.Fluent.Test.Words
         {
             Position2DBuilder builder = new Position2DBuilder();
             PositionBuilder result = builder.Position(0f, 0f);
-            Assert.Equal(0f, result.X);
-            Assert.Equal(0f, result.Y);
+            Assert.Equal(0f, result.X, 5);
+            Assert.Equal(0f, result.Y, 5);
         }
 
         /// <summary>

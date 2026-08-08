@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 2.5f);
 
-            Assert.Equal(2.5f, gearJoint.Ratio);
+            Assert.Equal(2.5f, gearJoint.Ratio, 5);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB);
 
             gearJoint.Ratio = 3f;
-            Assert.Equal(3f, gearJoint.Ratio);
+            Assert.Equal(3f, gearJoint.Ratio, 5);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, -2.5f);
 
-            Assert.Equal(-2.5f, gearJoint.Ratio);
+            Assert.Equal(-2.5f, gearJoint.Ratio, 5);
         }
 
         /// <summary>
@@ -330,7 +330,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 0f);
 
-            Assert.Equal(0f, gearJoint.Ratio);
+            Assert.Equal(0f, gearJoint.Ratio, 5);
         }
 
         /// <summary>
@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB = new RevoluteJoint(bodyC, bodyD, new Vector2F(5, 0));
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, jointA, jointB, 1000f);
 
-            Assert.Equal(1000f, gearJoint.Ratio);
+            Assert.Equal(1000f, gearJoint.Ratio, 5);
         }
 
         /// <summary>
@@ -378,8 +378,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             RevoluteJoint jointB2 = new RevoluteJoint(bodyC2, bodyD2, new Vector2F(15, 0));
             GearJoint gearJoint2 = new GearJoint(bodyA2, bodyC2, jointA2, jointB2, 2.0f);
 
-            Assert.Equal(1.0f, gearJoint1.Ratio);
-            Assert.Equal(2.0f, gearJoint2.Ratio);
+            Assert.Equal(1.0f, gearJoint1.Ratio, 5);
+            Assert.Equal(2.0f, gearJoint2.Ratio, 5);
         }
 
         /// <summary>

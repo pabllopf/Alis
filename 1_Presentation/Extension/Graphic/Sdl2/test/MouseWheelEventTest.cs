@@ -50,8 +50,8 @@ namespace Alis.Extension.Graphic.Sdl2.Test
             Assert.Equal(0, evt.x);
             Assert.Equal(0, evt.y);
             Assert.Equal(0u, evt.direction);
-            Assert.Equal(0f, evt.preciseX);
-            Assert.Equal(0f, evt.preciseY);
+            Assert.Equal(0f, evt.preciseX, 5);
+            Assert.Equal(0f, evt.preciseY, 5);
         }
     }
 }

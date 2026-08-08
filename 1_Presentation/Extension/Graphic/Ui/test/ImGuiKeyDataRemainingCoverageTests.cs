@@ -47,9 +47,9 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiKeyData keyData = default;
             Assert.Equal(0, keyData.Down);
-            Assert.Equal(0f, keyData.DownDuration);
-            Assert.Equal(0f, keyData.DownDurationPrev);
-            Assert.Equal(0f, keyData.AnalogValue);
+            Assert.Equal(0f, keyData.DownDuration, 5);
+            Assert.Equal(0f, keyData.DownDurationPrev, 5);
+            Assert.Equal(0f, keyData.AnalogValue, 5);
         }
 
         /// <summary>
@@ -73,9 +73,9 @@ namespace Alis.Extension.Graphic.Ui.Test
             keyData.DownDuration = 1.5f;
             keyData.DownDurationPrev = 2.5f;
             keyData.AnalogValue = 3.5f;
-            Assert.Equal(1.5f, keyData.DownDuration);
-            Assert.Equal(2.5f, keyData.DownDurationPrev);
-            Assert.Equal(3.5f, keyData.AnalogValue);
+            Assert.Equal(1.5f, keyData.DownDuration, 5);
+            Assert.Equal(2.5f, keyData.DownDurationPrev, 5);
+            Assert.Equal(3.5f, keyData.AnalogValue, 5);
         }
     }
 }

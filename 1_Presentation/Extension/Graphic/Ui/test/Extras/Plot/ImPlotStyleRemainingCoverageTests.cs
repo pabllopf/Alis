@@ -49,7 +49,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.LineWeight = 1.5f;
 
-            Assert.Equal(1.5f, style.LineWeight);
+            Assert.Equal(1.5f, style.LineWeight, 5);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.MarkerSize = 5.0f;
 
-            Assert.Equal(5.0f, style.MarkerSize);
+            Assert.Equal(5.0f, style.MarkerSize, 5);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.MarkerWeight = 2.0f;
 
-            Assert.Equal(2.0f, style.MarkerWeight);
+            Assert.Equal(2.0f, style.MarkerWeight, 5);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.FillAlpha = 0.5f;
 
-            Assert.Equal(0.5f, style.FillAlpha);
+            Assert.Equal(0.5f, style.FillAlpha, 5);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.ErrorBarSize = 4.0f;
 
-            Assert.Equal(4.0f, style.ErrorBarSize);
+            Assert.Equal(4.0f, style.ErrorBarSize, 5);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.ErrorBarWeight = 1.5f;
 
-            Assert.Equal(1.5f, style.ErrorBarWeight);
+            Assert.Equal(1.5f, style.ErrorBarWeight, 5);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.DigitalBitHeight = 8.0f;
 
-            Assert.Equal(8.0f, style.DigitalBitHeight);
+            Assert.Equal(8.0f, style.DigitalBitHeight, 5);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.DigitalBitGap = 4.0f;
 
-            Assert.Equal(4.0f, style.DigitalBitGap);
+            Assert.Equal(4.0f, style.DigitalBitGap, 5);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.PlotBorderSize = 1.0f;
 
-            Assert.Equal(1.0f, style.PlotBorderSize);
+            Assert.Equal(1.0f, style.PlotBorderSize, 5);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.MinorAlpha = 0.25f;
 
-            Assert.Equal(0.25f, style.MinorAlpha);
+            Assert.Equal(0.25f, style.MinorAlpha, 5);
         }
 
         /// <summary>
@@ -290,10 +290,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.Colors0 = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, style.Colors0.X);
-            Assert.Equal(2f, style.Colors0.Y);
-            Assert.Equal(3f, style.Colors0.Z);
-            Assert.Equal(4f, style.Colors0.W);
+            Assert.Equal(1f, style.Colors0.X, 5);
+            Assert.Equal(2f, style.Colors0.Y, 5);
+            Assert.Equal(3f, style.Colors0.Z, 5);
+            Assert.Equal(4f, style.Colors0.W, 5);
         }
 
         /// <summary>
@@ -306,10 +306,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.Colors5 = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, style.Colors5.X);
-            Assert.Equal(2f, style.Colors5.Y);
-            Assert.Equal(3f, style.Colors5.Z);
-            Assert.Equal(4f, style.Colors5.W);
+            Assert.Equal(1f, style.Colors5.X, 5);
+            Assert.Equal(2f, style.Colors5.Y, 5);
+            Assert.Equal(3f, style.Colors5.Z, 5);
+            Assert.Equal(4f, style.Colors5.W, 5);
         }
 
         /// <summary>
@@ -322,10 +322,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.Colors10 = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, style.Colors10.X);
-            Assert.Equal(2f, style.Colors10.Y);
-            Assert.Equal(3f, style.Colors10.Z);
-            Assert.Equal(4f, style.Colors10.W);
+            Assert.Equal(1f, style.Colors10.X, 5);
+            Assert.Equal(2f, style.Colors10.Y, 5);
+            Assert.Equal(3f, style.Colors10.Z, 5);
+            Assert.Equal(4f, style.Colors10.W, 5);
         }
 
         /// <summary>
@@ -338,10 +338,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.Colors15 = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, style.Colors15.X);
-            Assert.Equal(2f, style.Colors15.Y);
-            Assert.Equal(3f, style.Colors15.Z);
-            Assert.Equal(4f, style.Colors15.W);
+            Assert.Equal(1f, style.Colors15.X, 5);
+            Assert.Equal(2f, style.Colors15.Y, 5);
+            Assert.Equal(3f, style.Colors15.Z, 5);
+            Assert.Equal(4f, style.Colors15.W, 5);
         }
 
         /// <summary>
@@ -354,10 +354,10 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
 
             style.Colors20 = new Vector4F(1f, 2f, 3f, 4f);
 
-            Assert.Equal(1f, style.Colors20.X);
-            Assert.Equal(2f, style.Colors20.Y);
-            Assert.Equal(3f, style.Colors20.Z);
-            Assert.Equal(4f, style.Colors20.W);
+            Assert.Equal(1f, style.Colors20.X, 5);
+            Assert.Equal(2f, style.Colors20.Y, 5);
+            Assert.Equal(3f, style.Colors20.Z, 5);
+            Assert.Equal(4f, style.Colors20.W, 5);
         }
 
         /// <summary>
@@ -431,13 +431,13 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Plot
         {
             ImPlotStyle style = new ImPlotStyle();
 
-            Assert.Equal(0f, style.LineWeight);
+            Assert.Equal(0f, style.LineWeight, 5);
             Assert.Equal(0, style.Marker);
             Assert.Equal(default(Vector2F), style.MajorTickLen);
-            Assert.Equal(0f, style.Colors0.X);
-            Assert.Equal(0f, style.Colors0.Y);
-            Assert.Equal(0f, style.Colors0.Z);
-            Assert.Equal(0f, style.Colors0.W);
+            Assert.Equal(0f, style.Colors0.X, 5);
+            Assert.Equal(0f, style.Colors0.Y, 5);
+            Assert.Equal(0f, style.Colors0.Z, 5);
+            Assert.Equal(0f, style.Colors0.W, 5);
             Assert.Equal(default(ImPlotColormap), style.Colormap);
             Assert.Equal((byte)0, style.UseLocalTime);
         }

@@ -121,7 +121,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
             UnionValue value = new UnionValue {ValueF32 = 456.78f};
             storagePair.Value = value;
-            Assert.Equal(456.78f, storagePair.Value.ValueF32);
+            Assert.Equal(456.78f, storagePair.Value.ValueF32, 5);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiStoragePair storagePair = new ImGuiStoragePair();
             storagePair.Value = new UnionValue {ValueI32 = 100};
             storagePair.Value = new UnionValue {ValueF32 = 200.0f};
-            Assert.Equal(200.0f, storagePair.Value.ValueF32);
+            Assert.Equal(200.0f, storagePair.Value.ValueF32, 5);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             ImGuiStoragePair storagePair = default;
             Assert.Equal(0u, storagePair.Key);
             Assert.Equal(0, storagePair.Value.ValueI32);
-            Assert.Equal(0.0f, storagePair.Value.ValueF32);
+            Assert.Equal(0.0f, storagePair.Value.ValueF32, 5);
             Assert.Equal(System.IntPtr.Zero, storagePair.Value.ValuePtr);
         }
     }

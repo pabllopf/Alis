@@ -292,7 +292,7 @@ namespace Alis.Core.Audio.Test.Players
                 object result = getDurationMethod.Invoke(player, new object[] { tempFile });
 
                 double duration = (double)result;
-                Assert.Equal(1.0, duration);
+                Assert.Equal(1.0, duration, 5);
             }
             finally
             {

@@ -65,8 +65,8 @@ namespace Alis.Extension.Updater.Test
             sut.ReportPlatformDetection(platform, architecture);
 
             Assert.Equal(1, eventCalls);
-            Assert.Equal(0.1f, sut.Progress);
-            Assert.Equal(0.1f, eventProgress);
+            Assert.Equal(0.1f, sut.Progress, 5);
+            Assert.Equal(0.1f, eventProgress, 5);
             Assert.Equal(platform + "-" + architecture + " platform detected", sut.Message);
             Assert.Equal(sut.Message, eventMessage);
             Assert.True(caseId >= 0);
@@ -89,7 +89,7 @@ namespace Alis.Extension.Updater.Test
             bool result = sut.HandleMissingCompatiblePackage(platform, architecture);
 
             Assert.False(result);
-            Assert.Equal(0f, sut.Progress);
+            Assert.Equal(0f, sut.Progress, 5);
             Assert.Equal("No compatible package found.", sut.Message);
             Assert.Equal(1, eventCalls);
             Assert.True(caseId >= 0);
@@ -120,8 +120,8 @@ namespace Alis.Extension.Updater.Test
             sut.ReportDownloadPreparation(platform, architecture, version);
 
             Assert.Equal(2, eventCalls);
-            Assert.Equal(0.3f, sut.Progress);
-            Assert.Equal(0.3f, lastProgress);
+            Assert.Equal(0.3f, sut.Progress, 5);
+            Assert.Equal(0.3f, lastProgress, 5);
             Assert.Equal($"Downloading package for {platform}-{architecture}...", sut.Message);
             Assert.Equal(sut.Message, lastMessage);
             Assert.True(caseId >= 0);

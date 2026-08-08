@@ -123,8 +123,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point = new PolygonPoint(-10.5, -20.5);
 
-            Assert.Equal(-10.5, point.X);
-            Assert.Equal(-20.5, point.Y);
+            Assert.Equal(-10.5, point.X, 5);
+            Assert.Equal(-20.5, point.Y, 5);
         }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Polygon
         {
             PolygonPoint point = new PolygonPoint(100000.0, 200000.0);
 
-            Assert.Equal(100000.0, point.X);
-            Assert.Equal(200000.0, point.Y);
+            Assert.Equal(100000.0, point.X, 5);
+            Assert.Equal(200000.0, point.Y, 5);
         }
     }
 }

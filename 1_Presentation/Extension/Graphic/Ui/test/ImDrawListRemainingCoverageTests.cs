@@ -51,7 +51,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             Assert.Equal(IntPtr.Zero, drawList.OwnerName);
             Assert.Equal(IntPtr.Zero, drawList.VtxWritePtr);
             Assert.Equal(IntPtr.Zero, drawList.IdxWritePtr);
-            Assert.Equal(0f, drawList.FringeScale);
+            Assert.Equal(0f, drawList.FringeScale, 5);
             Assert.Equal(ImDrawListFlags.None, drawList.Flags);
         }
 
@@ -110,7 +110,7 @@ namespace Alis.Extension.Graphic.Ui.Test
             drawList.CmdHeader = header;
             drawList.Splitter = splitter;
             Assert.Equal(ImDrawListFlags.AntiAliasedLines | ImDrawListFlags.AllowVtxOffset, drawList.Flags);
-            Assert.Equal(1.5f, drawList.FringeScale);
+            Assert.Equal(1.5f, drawList.FringeScale, 5);
             Assert.Equal(header, drawList.CmdHeader);
             Assert.Equal(splitter, drawList.Splitter);
         }

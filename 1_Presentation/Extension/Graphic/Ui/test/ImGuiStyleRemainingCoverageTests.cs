@@ -330,7 +330,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.DisabledAlpha = 0.0f;
-            Assert.Equal(0.0f, style.DisabledAlpha);
+            Assert.Equal(0.0f, style.DisabledAlpha, 5);
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.WindowBorderSize = -1.0f;
-            Assert.Equal(-1.0f, style.WindowBorderSize);
+            Assert.Equal(-1.0f, style.WindowBorderSize, 5);
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.MouseCursorScale = 0.0f;
-            Assert.Equal(0.0f, style.MouseCursorScale);
+            Assert.Equal(0.0f, style.MouseCursorScale, 5);
         }
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.CurveTessellationTol = -0.5f;
-            Assert.Equal(-0.5f, style.CurveTessellationTol);
+            Assert.Equal(-0.5f, style.CurveTessellationTol, 5);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImGuiStyle style = new ImGuiStyle();
             style.CircleTessellationMaxError = 1000.0f;
-            Assert.Equal(1000.0f, style.CircleTessellationMaxError);
+            Assert.Equal(1000.0f, style.CircleTessellationMaxError, 5);
         }
 
         // ---------------------------------------------------------------
@@ -714,26 +714,26 @@ namespace Alis.Extension.Graphic.Ui.Test
             style.CurveTessellationTol = 2.5f;
             style.CircleTessellationMaxError = 0.5f;
 
-            Assert.Equal(0.8f, style.Alpha);
-            Assert.Equal(0.2f, style.DisabledAlpha);
+            Assert.Equal(0.8f, style.Alpha, 5);
+            Assert.Equal(0.2f, style.DisabledAlpha, 5);
             Assert.Equal(new Vector2F(11, 22), style.WindowPadding);
-            Assert.Equal(6.0f, style.WindowRounding);
-            Assert.Equal(2.0f, style.WindowBorderSize);
+            Assert.Equal(6.0f, style.WindowRounding, 5);
+            Assert.Equal(2.0f, style.WindowBorderSize, 5);
             Assert.Equal(new Vector2F(120, 240), style.WindowMinSize);
             Assert.Equal(new Vector2F(0.3f, 0.7f), style.WindowTitleAlign);
             Assert.Equal(new Vector2F(7, 14), style.FramePadding);
-            Assert.Equal(3.0f, style.FrameRounding);
-            Assert.Equal(1.5f, style.FrameBorderSize);
+            Assert.Equal(3.0f, style.FrameRounding, 5);
+            Assert.Equal(1.5f, style.FrameBorderSize, 5);
             Assert.Equal(new Vector2F(9, 18), style.ItemSpacing);
             Assert.Equal(new Vector2F(5, 10), style.ItemInnerSpacing);
             Assert.Equal(new Vector2F(8, 16), style.CellPadding);
             Assert.Equal(new Vector2F(3, 6), style.TouchExtraPadding);
-            Assert.Equal(20.0f, style.IndentSpacing);
-            Assert.Equal(18.0f, style.ScrollbarSize);
-            Assert.Equal(10.0f, style.GrabMinSize);
-            Assert.Equal(2.0f, style.MouseCursorScale);
-            Assert.Equal(2.5f, style.CurveTessellationTol);
-            Assert.Equal(0.5f, style.CircleTessellationMaxError);
+            Assert.Equal(20.0f, style.IndentSpacing, 5);
+            Assert.Equal(18.0f, style.ScrollbarSize, 5);
+            Assert.Equal(10.0f, style.GrabMinSize, 5);
+            Assert.Equal(2.0f, style.MouseCursorScale, 5);
+            Assert.Equal(2.5f, style.CurveTessellationTol, 5);
+            Assert.Equal(0.5f, style.CircleTessellationMaxError, 5);
         }
     }
 }

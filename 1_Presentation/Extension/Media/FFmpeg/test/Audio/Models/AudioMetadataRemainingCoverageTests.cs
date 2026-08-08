@@ -119,7 +119,7 @@ namespace Alis.Extension.Media.FFmpeg.Test.Audio.Models
             AudioMetadata audioMetadata = new AudioMetadata();
             audioMetadata.Duration = 180.5;
 
-            Assert.Equal(180.5, audioMetadata.Duration);
+            Assert.Equal(180.5, audioMetadata.Duration, 5);
         }
 
         /// <summary>

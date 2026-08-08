@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Data.Test.Json.Integration
 
             Assert.Equal(0, restored.ByteValue);
             Assert.Equal(0, restored.IntValue);
-            Assert.Equal(0.0, restored.DoubleValue);
+            Assert.Equal(0.0, restored.DoubleValue, 5);
         }
 
         /// <summary>

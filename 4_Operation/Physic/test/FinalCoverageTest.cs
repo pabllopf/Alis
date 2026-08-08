@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test
             var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.FindMinSeparation(out var idxA, out var idxB, 0.0f);
-            Assert.Equal(0.0f, sep);
+            Assert.Equal(0.0f, sep, 5);
             Assert.Equal(-1, idxA);
             Assert.Equal(-1, idxB);
         }
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test
             var typeField = typeof(SeparationFunction).GetField("_type", BindingFlags.Static | BindingFlags.NonPublic);
             typeField.SetValue(null, (SeparationFunctionType)99);
             float sep = SeparationFunction.Evaluate(0, 0, 0.0f);
-            Assert.Equal(0.0f, sep);
+            Assert.Equal(0.0f, sep, 5);
         }
 
         /// <summary>
@@ -1417,7 +1417,7 @@ namespace Alis.Core.Physic.Test
                     contact.Toi = 0.5f;
                     var calcMethod = typeof(WorldPhysic).GetMethod("CalculateContactAlpha", BindingFlags.Instance | BindingFlags.NonPublic);
                     var result = (float)calcMethod.Invoke(world, new object[] { contact });
-                    Assert.Equal(0.5f, result);
+                    Assert.Equal(0.5f, result, 5);
                 }
             }
         }

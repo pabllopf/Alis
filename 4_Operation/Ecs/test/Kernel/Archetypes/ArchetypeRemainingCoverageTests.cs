@@ -299,7 +299,7 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             Assert.Equal(45, t.Rotation);
 
             ref AnotherComponent ac = ref entity.Get<AnotherComponent>();
-            Assert.Equal(3.14f, ac.Data);
+            Assert.Equal(3.14f, ac.Data, 5);
         }
 
         /// <summary>

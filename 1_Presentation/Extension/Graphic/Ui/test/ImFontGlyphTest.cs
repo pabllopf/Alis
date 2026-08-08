@@ -78,7 +78,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.AdvanceX = 10.5f;
-            Assert.Equal(10.5f, fontGlyph.AdvanceX);
+            Assert.Equal(10.5f, fontGlyph.AdvanceX, 5);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.X0 = 1.0f;
-            Assert.Equal(1.0f, fontGlyph.X0);
+            Assert.Equal(1.0f, fontGlyph.X0, 5);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.Y0 = 2.0f;
-            Assert.Equal(2.0f, fontGlyph.Y0);
+            Assert.Equal(2.0f, fontGlyph.Y0, 5);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.X1 = 3.0f;
-            Assert.Equal(3.0f, fontGlyph.X1);
+            Assert.Equal(3.0f, fontGlyph.X1, 5);
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.Y1 = 4.0f;
-            Assert.Equal(4.0f, fontGlyph.Y1);
+            Assert.Equal(4.0f, fontGlyph.Y1, 5);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.U0 = 0.1f;
-            Assert.Equal(0.1f, fontGlyph.U0);
+            Assert.Equal(0.1f, fontGlyph.U0, 5);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.V0 = 0.2f;
-            Assert.Equal(0.2f, fontGlyph.V0);
+            Assert.Equal(0.2f, fontGlyph.V0, 5);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.U1 = 0.3f;
-            Assert.Equal(0.3f, fontGlyph.U1);
+            Assert.Equal(0.3f, fontGlyph.U1, 5);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImFontGlyph fontGlyph = new ImFontGlyph();
             fontGlyph.V1 = 0.4f;
-            Assert.Equal(0.4f, fontGlyph.V1);
+            Assert.Equal(0.4f, fontGlyph.V1, 5);
         }
     }
 }

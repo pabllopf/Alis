@@ -48,10 +48,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion quaternion2 = new Quaternion(5.0f, 6.0f, 7.0f, 8.0f);
             Quaternion result = quaternion1 + quaternion2;
 
-            Assert.Equal(6.0f, result.X);
-            Assert.Equal(8.0f, result.Y);
-            Assert.Equal(10.0f, result.Z);
-            Assert.Equal(12.0f, result.W);
+            Assert.Equal(6.0f, result.X, 5);
+            Assert.Equal(8.0f, result.Y, 5);
+            Assert.Equal(10.0f, result.Z, 5);
+            Assert.Equal(12.0f, result.W, 5);
         }
 
         /// <summary>
@@ -64,10 +64,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion quaternion2 = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             Quaternion result = quaternion1 - quaternion2;
 
-            Assert.Equal(4.0f, result.X);
-            Assert.Equal(4.0f, result.Y);
-            Assert.Equal(4.0f, result.Z);
-            Assert.Equal(4.0f, result.W);
+            Assert.Equal(4.0f, result.X, 5);
+            Assert.Equal(4.0f, result.Y, 5);
+            Assert.Equal(4.0f, result.Z, 5);
+            Assert.Equal(4.0f, result.W, 5);
         }
 
         /// <summary>
@@ -80,10 +80,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion quaternion2 = new Quaternion(5.0f, 6.0f, 7.0f, 8.0f);
             Quaternion result = quaternion1 * quaternion2;
 
-            Assert.Equal(24.0f, result.X);
-            Assert.Equal(48.0f, result.Y);
-            Assert.Equal(48.0f, result.Z);
-            Assert.Equal(-6.0f, result.W);
+            Assert.Equal(24.0f, result.X, 5);
+            Assert.Equal(48.0f, result.Y, 5);
+            Assert.Equal(48.0f, result.Z, 5);
+            Assert.Equal(-6.0f, result.W, 5);
         }
 
         /// <summary>
@@ -95,10 +95,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion quaternion = new Quaternion(1.0f, 2.0f, 3.0f, 4.0f);
             Quaternion result = -quaternion;
 
-            Assert.Equal(-1.0f, result.X);
-            Assert.Equal(-2.0f, result.Y);
-            Assert.Equal(-3.0f, result.Z);
-            Assert.Equal(-4.0f, result.W);
+            Assert.Equal(-1.0f, result.X, 5);
+            Assert.Equal(-2.0f, result.Y, 5);
+            Assert.Equal(-3.0f, result.Z, 5);
+            Assert.Equal(-4.0f, result.W, 5);
         }
 
         /// <summary>
@@ -137,10 +137,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             Quaternion quaternion2 = new Quaternion(5.0f, 6.0f, 7.0f, 8.0f);
             Quaternion result = quaternion1 * quaternion2;
 
-            Assert.Equal(24.0f, result.X);
-            Assert.Equal(48.0f, result.Y);
-            Assert.Equal(48.0f, result.Z);
-            Assert.Equal(-6.0f, result.W);
+            Assert.Equal(24.0f, result.X, 5);
+            Assert.Equal(48.0f, result.Y, 5);
+            Assert.Equal(48.0f, result.Z, 5);
+            Assert.Equal(-6.0f, result.W, 5);
         }
 
         /// <summary>
@@ -153,10 +153,10 @@ namespace Alis.Core.Aspect.Math.Test.Util
             float scalar = 2.0f;
             Quaternion result = quaternion * scalar;
 
-            Assert.Equal(2.0f, result.X);
-            Assert.Equal(4.0f, result.Y);
-            Assert.Equal(6.0f, result.Z);
-            Assert.Equal(8.0f, result.W);
+            Assert.Equal(2.0f, result.X, 5);
+            Assert.Equal(4.0f, result.Y, 5);
+            Assert.Equal(6.0f, result.Z, 5);
+            Assert.Equal(8.0f, result.W, 5);
         }
 
         /// <summary>

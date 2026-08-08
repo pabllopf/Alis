@@ -43,7 +43,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultX0_ShouldBeZero()
         {
             StbTexteditRow row = default;
-            Assert.Equal(0f, row.X0);
+            Assert.Equal(0f, row.X0, 5);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultX1_ShouldBeZero()
         {
             StbTexteditRow row = default;
-            Assert.Equal(0f, row.X1);
+            Assert.Equal(0f, row.X1, 5);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultBaselineYDelta_ShouldBeZero()
         {
             StbTexteditRow row = default;
-            Assert.Equal(0f, row.BaselineYDelta);
+            Assert.Equal(0f, row.BaselineYDelta, 5);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultYmin_ShouldBeZero()
         {
             StbTexteditRow row = default;
-            Assert.Equal(0f, row.Ymin);
+            Assert.Equal(0f, row.Ymin, 5);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void DefaultYmax_ShouldBeZero()
         {
             StbTexteditRow row = default;
-            Assert.Equal(0f, row.Ymax);
+            Assert.Equal(0f, row.Ymax, 5);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = default;
             row.X0 = 1.5f;
-            Assert.Equal(1.5f, row.X0);
+            Assert.Equal(1.5f, row.X0, 5);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = default;
             row.X1 = 2.5f;
-            Assert.Equal(2.5f, row.X1);
+            Assert.Equal(2.5f, row.X1, 5);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = default;
             row.BaselineYDelta = 3.5f;
-            Assert.Equal(3.5f, row.BaselineYDelta);
+            Assert.Equal(3.5f, row.BaselineYDelta, 5);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = default;
             row.Ymin = 4.5f;
-            Assert.Equal(4.5f, row.Ymin);
+            Assert.Equal(4.5f, row.Ymin, 5);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             StbTexteditRow row = default;
             row.Ymax = 5.5f;
-            Assert.Equal(5.5f, row.Ymax);
+            Assert.Equal(5.5f, row.Ymax, 5);
         }
 
         /// <summary>

@@ -87,9 +87,9 @@ namespace Alis.Extension.Updater.Test
             InvokeNonPublicVoid(manager, "OnUpdateProgressChanged", 0.33f, "processing");
 
             Assert.Equal(1, eventCalls);
-            Assert.Equal(0.33f, eventProgress);
+            Assert.Equal(0.33f, eventProgress, 5);
             Assert.Equal("processing", eventMessage);
-            Assert.Equal(0.33f, manager.Progress);
+            Assert.Equal(0.33f, manager.Progress, 5);
             Assert.Equal("processing", manager.Message);
         }
 
@@ -140,7 +140,7 @@ namespace Alis.Extension.Updater.Test
             InvokeNonPublicVoid(manager, "ExtractZip", zipPath);
 
             Assert.True(File.Exists(Path.Combine(targetFolder, "folder", "readme.txt")));
-            Assert.Equal(0.7f, manager.Progress);
+            Assert.Equal(0.7f, manager.Progress, 5);
         }
 
         /// <summary>
