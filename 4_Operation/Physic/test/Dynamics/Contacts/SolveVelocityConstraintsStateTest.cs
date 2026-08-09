@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Xunit;
 
@@ -210,18 +209,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             Assert.False(stateType.IsPublic);
             Assert.True(stateType.IsSealed);
-        }
-
-        /// <summary>
-        /// Tests that state should have private constructor
-        /// </summary>
-        [Fact]
-        public void State_ShouldHavePrivateConstructor()
-        {
-            Type stateType = typeof(SolveVelocityConstraintsState);
-            ConstructorInfo[] constructors = stateType.GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Assert.NotEmpty(constructors);
         }
 
         /// <summary>

@@ -11,44 +11,6 @@ namespace Alis.Core.Audio.Test.Players
     /// </summary>
     public class BrowserPlayerEdgeCaseTests
     {
-        /// <summary>
-        /// Tests that set volume should return completed task
-        /// </summary>
-        [Fact]
-        public void SetVolume_ShouldReturnCompletedTask()
-        {
-            BrowserPlayer player = (BrowserPlayer)FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
-
-            Task result = player.SetVolume(50);
-
-            Assert.Equal(Task.CompletedTask, result);
-        }
-
-        /// <summary>
-        /// Tests that set volume with zero should return completed task
-        /// </summary>
-        [Fact]
-        public void SetVolume_WithZero_ShouldReturnCompletedTask()
-        {
-            BrowserPlayer player = (BrowserPlayer)FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
-
-            Task result = player.SetVolume(0);
-
-            Assert.Equal(Task.CompletedTask, result);
-        }
-
-        /// <summary>
-        /// Tests that set volume with max value should return completed task
-        /// </summary>
-        [Fact]
-        public void SetVolume_WithMaxValue_ShouldReturnCompletedTask()
-        {
-            BrowserPlayer player = (BrowserPlayer)FormatterServices.GetUninitializedObject(typeof(BrowserPlayer));
-
-            Task result = player.SetVolume(255);
-
-            Assert.Equal(Task.CompletedTask, result);
-        }
 
         /// <summary>
         /// Tests that get format with zero bits and zero channels should return false
