@@ -512,7 +512,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new Scene();
 
             GameObjectType id = scene.DefaultArchetype.Id;
-            Assert.NotNull(id);
 
             scene.Dispose();
         }
@@ -528,7 +527,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             using Scene scene = new Scene();
 
             FastImmutableArray<ComponentId> types = scene.DefaultArchetype.ArchetypeTypeArray;
-            Assert.NotNull(types);
 
             scene.Dispose();
         }

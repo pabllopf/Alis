@@ -44,8 +44,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         public void GameControllerType_DefaultInitialization_CreatesValidStruct()
         {
             GameControllerType controllerType = new GameControllerType();
-
-            Assert.NotNull(controllerType);
         }
 
         /// <summary>
@@ -69,9 +67,6 @@ namespace Alis.Extension.Graphic.Sdl2.Test
         {
             GameControllerType type1 = new GameControllerType();
             GameControllerType type2 = new GameControllerType();
-
-            Assert.NotNull(type1);
-            Assert.NotNull(type2);
         }
     }
 }

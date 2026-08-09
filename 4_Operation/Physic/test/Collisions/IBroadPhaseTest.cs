@@ -128,8 +128,6 @@ namespace Alis.Core.Physic.Test.Collisions
             TestBroadPhase broadPhase = new TestBroadPhase();
 
             broadPhase.GetFatAabb(0, out Aabb aabb);
-
-            Assert.NotNull(aabb);
         }
 
         /// <summary>

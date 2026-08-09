@@ -70,8 +70,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
         public void Frame_Constructor_ShouldNotThrow()
         {
             Frame frame = new Frame();
-
-            Assert.NotNull(frame);
         }
 
         /// <summary>
@@ -138,7 +136,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Assert.Equal("test_frame.png", frame.NameFile);
 
             Frame frame2 = new Frame();
-            Assert.NotNull(frame2);
         }
     }
 }

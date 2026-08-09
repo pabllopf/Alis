@@ -59,7 +59,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Clock clock = new Clock();
             clock.Restart();
             SfmlTime elapsed = clock.ElapsedSfmlTime;
-            Assert.NotNull(elapsed);
             Assert.True(elapsed.AsMicroseconds() >= 0);
             clock.Destroy(true);
         }
@@ -87,7 +86,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             Clock clock = new Clock();
             Sleep(1);
             SfmlTime elapsed = clock.Restart();
-            Assert.NotNull(elapsed);
             Assert.True(elapsed.AsMicroseconds() >= 0);
             clock.Destroy(true);
         }
@@ -173,9 +171,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime t1 = clock.ElapsedSfmlTime;
             SfmlTime t2 = clock.ElapsedSfmlTime;
             SfmlTime t3 = clock.ElapsedSfmlTime;
-            Assert.NotNull(t1);
-            Assert.NotNull(t2);
-            Assert.NotNull(t3);
             clock.Destroy(true);
         }
 

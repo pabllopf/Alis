@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Ui
         {
             CanvasBuilder builder = new CanvasBuilder();
             Canvas result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

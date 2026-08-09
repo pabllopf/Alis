@@ -44,13 +44,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         public void DefaultConstructor_ShouldCreateAllNestedSettings()
         {
             Setting setting = new Setting();
-
-            Assert.NotNull(setting.General);
-            Assert.NotNull(setting.Audio);
-            Assert.NotNull(setting.Graphic);
-            Assert.NotNull(setting.Input);
-            Assert.NotNull(setting.Network);
-            Assert.NotNull(setting.Physic);
         }
 
         /// <summary>

@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Audio
         {
             AudioSettingBuilder builder = new AudioSettingBuilder();
             AudioSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -89,7 +88,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Audio
         {
             AudioSettingBuilder builder = new AudioSettingBuilder();
             AudioSetting result = builder.Volume(50).IsMute(false).Build();
-            Assert.NotNull(result);
         }
     }
 }

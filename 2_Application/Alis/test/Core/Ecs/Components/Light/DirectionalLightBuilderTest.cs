@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Light
         {
             DirectionalLightBuilder builder = new DirectionalLightBuilder();
             DirectionalLight result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

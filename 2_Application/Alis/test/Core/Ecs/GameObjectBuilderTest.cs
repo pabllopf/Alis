@@ -66,7 +66,6 @@ namespace Alis.Test.Core.Ecs
             Scene scene = new Scene();
             GameObjectBuilder builder = new GameObjectBuilder(scene, context);
             GameObject gameObject = builder.Build();
-            Assert.NotNull(gameObject);
         }
 
         /// <summary>

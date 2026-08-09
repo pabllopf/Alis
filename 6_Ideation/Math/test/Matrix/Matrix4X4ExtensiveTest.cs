@@ -58,7 +58,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         public void Identity_IsCreated()
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
-            Assert.NotNull(matrix);
         }
 
         /// <summary>
@@ -96,7 +95,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         [Theory, InlineData(1f), InlineData(2f), InlineData(0.5f), InlineData(-1f)]
         public void CreateScale_WithValue_CreatesScaleMatrix(float scale)
         {
-            Assert.NotNull(Matrix4X4.Identity);
         }
 
 
@@ -108,8 +106,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix = Matrix4X4.Identity;
             Vector4F vector = new Vector4F(1f, 2f, 3f, 4f);
-
-            Assert.NotNull(matrix);
             Assert.Equal(1f, vector.X, 5);
         }
 
@@ -122,9 +118,6 @@ namespace Alis.Core.Aspect.Math.Test.Matrix
         {
             Matrix4X4 matrix1 = Matrix4X4.Identity;
             Matrix4X4 matrix2 = Matrix4X4.Identity;
-
-            Assert.NotNull(matrix1);
-            Assert.NotNull(matrix2);
         }
 
 

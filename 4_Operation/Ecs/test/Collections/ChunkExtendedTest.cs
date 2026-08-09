@@ -44,8 +44,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void Constructor_WithCapacity_ChunkCreated()
         {
             Chunk<int> chunk = new Chunk<int>(100);
-
-            Assert.NotNull(chunk);
             chunk.Return();
         }
 

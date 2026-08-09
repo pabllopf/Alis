@@ -74,7 +74,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectType type = new GameObjectType(0);
 
             // Assert
-            Assert.NotNull(type);
         }
 
         /// <summary>

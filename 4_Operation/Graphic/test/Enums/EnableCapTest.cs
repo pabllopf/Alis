@@ -197,11 +197,6 @@ namespace Alis.Core.Graphic.Test.Enums
             EnableCap depthTestCap = EnableCap.DepthTest;
             EnableCap scissorTestCap = EnableCap.ScissorTest;
             EnableCap cullFaceCap = EnableCap.CullFace;
-
-            Assert.NotNull(blendCap);
-            Assert.NotNull(depthTestCap);
-            Assert.NotNull(scissorTestCap);
-            Assert.NotNull(cullFaceCap);
         }
     }
 }

@@ -186,10 +186,6 @@ namespace Alis.Core.Graphic.Test.Enums
             ProgramParameter linkStatus = ProgramParameter.LinkStatus;
             ProgramParameter infoLogLength = ProgramParameter.InfoLogLength;
             ProgramParameter activeUniforms = ProgramParameter.ActiveUniforms;
-
-            Assert.NotNull(linkStatus);
-            Assert.NotNull(infoLogLength);
-            Assert.NotNull(activeUniforms);
         }
     }
 }

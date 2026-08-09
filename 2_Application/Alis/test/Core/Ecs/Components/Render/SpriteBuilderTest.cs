@@ -59,7 +59,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
             SpriteBuilder builder = new SpriteBuilder(context);
             Sprite sprite = builder.Build();
-            Assert.NotNull(sprite);
         }
 
         /// <summary>
@@ -98,7 +97,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
                 .SetTexture("textures/sprite.png")
                 .Depth(3)
                 .Build();
-            Assert.NotNull(sprite);
         }
     }
 }

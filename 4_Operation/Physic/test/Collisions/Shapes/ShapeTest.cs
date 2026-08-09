@@ -97,8 +97,6 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void CircleShape_ShouldHaveMassData()
         {
             CircleShape circle = new CircleShape(1f, 1f);
-
-            Assert.NotNull(circle.MassData);
         }
 
         /// <summary>

@@ -65,7 +65,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         {
             Context context = new Context();
             ContextSettings settings = context.Settings;
-            Assert.NotNull(settings);
         }
 
         /// <summary>

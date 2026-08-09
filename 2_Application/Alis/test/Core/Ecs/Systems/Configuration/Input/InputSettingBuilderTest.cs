@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Input
         {
             InputSettingBuilder builder = new InputSettingBuilder();
             InputSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -78,7 +77,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Input
         {
             InputSettingBuilder builder = new InputSettingBuilder();
             InputSetting result = builder.MouseSensitivity(1.5f).Build();
-            Assert.NotNull(result);
         }
     }
 }

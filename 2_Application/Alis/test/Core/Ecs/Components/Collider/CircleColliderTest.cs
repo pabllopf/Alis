@@ -55,8 +55,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void CircleCollider_DefaultState_ShouldBeValid()
         {
             CircleCollider collider = new CircleCollider();
-
-            Assert.NotNull(collider);
         }
 
         /// <summary>
@@ -99,8 +97,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void CircleCollider_Constructor_ShouldNotThrow()
         {
             CircleCollider collider = new CircleCollider();
-
-            Assert.NotNull(collider);
         }
 
         /// <summary>
@@ -111,9 +107,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             CircleCollider collider1 = new CircleCollider();
             CircleCollider collider2 = new CircleCollider();
-
-            Assert.NotNull(collider1);
-            Assert.NotNull(collider2);
         }
 
         /// <summary>
@@ -123,8 +116,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void CircleCollider_Constructor_WithoutParameters_ShouldNotThrow()
         {
             CircleCollider collider = new CircleCollider();
-
-            Assert.NotNull(collider);
             Assert.IsType<CircleCollider>(collider);
         }
     }

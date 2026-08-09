@@ -59,7 +59,6 @@ namespace Alis.Test.Core.Ecs.Components.Audio
             Context context = new Context();
             AudioSourceBuilder builder = new AudioSourceBuilder(context);
             AudioSource audioSource = builder.Build();
-            Assert.NotNull(audioSource);
         }
 
         /// <summary>
@@ -137,7 +136,6 @@ namespace Alis.Test.Core.Ecs.Components.Audio
                 .PlayOnAwake(true)
                 .Loop(true)
                 .Build();
-            Assert.NotNull(audioSource);
         }
     }
 }

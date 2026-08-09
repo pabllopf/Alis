@@ -52,8 +52,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void FrugalStack_CanBeCreated()
         {
             FrugalStack<int> stack = new FrugalStack<int>();
-
-            Assert.NotNull(stack);
             Assert.False(stack.Any);
         }
 

@@ -58,8 +58,6 @@ namespace Alis.Extension.Graphic.Glfw.Test.Structs
             IntPtr handle = new IntPtr(12345);
 
             Window window = new Window(handle);
-
-            Assert.NotNull(window);
         }
 
         /// <summary>

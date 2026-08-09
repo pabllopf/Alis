@@ -304,9 +304,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             ControllerTransform right = new ControllerTransform(new Vector2F(2.0f, 3.0f), 0.25f);
 
             ControllerTransform.Divide(ref left, ref right, out ControllerTransform result);
-
-            Assert.NotNull(result.Position);
-            Assert.NotNull(result.Rotation);
         }
 
         /// <summary>

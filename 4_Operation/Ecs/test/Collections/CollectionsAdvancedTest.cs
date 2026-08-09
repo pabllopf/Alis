@@ -118,8 +118,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void ArchetypeNeighborCache_CachesTransitions()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>

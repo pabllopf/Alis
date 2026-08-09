@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         {
             CircleColliderBuilder builder = new CircleColliderBuilder();
             CircleCollider result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

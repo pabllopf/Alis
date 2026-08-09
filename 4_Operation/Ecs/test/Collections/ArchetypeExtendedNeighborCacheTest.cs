@@ -50,8 +50,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void v2_ArchetypeNeighborCache_CanBeCreated()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -63,8 +61,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void ArchetypeNeighborCache_HasValidInitialState()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -77,9 +73,6 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
             ArchetypeNeighborCache cache2 = cache1;
-
-            Assert.NotNull(cache1);
-            Assert.NotNull(cache2);
         }
 
         /// <summary>
@@ -91,8 +84,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void ArchetypeNeighborCache_CanBeDefaultInitialized()
         {
             ArchetypeNeighborCache cache = default(ArchetypeNeighborCache);
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -105,9 +96,6 @@ namespace Alis.Core.Ecs.Test.Collections
         {
             ArchetypeNeighborCache cache1 = new ArchetypeNeighborCache();
             ArchetypeNeighborCache cache2 = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache1);
-            Assert.NotNull(cache2);
         }
     }
 }

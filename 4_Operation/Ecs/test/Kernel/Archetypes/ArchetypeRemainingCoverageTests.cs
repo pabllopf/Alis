@@ -568,7 +568,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.Create(new Velocity());
 
             FastImmutableArray<ComponentId> types = scene.DefaultArchetype.ArchetypeTypeArray;
-            Assert.NotNull(types);
         }
 
         /// <summary>
@@ -745,7 +744,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
 
             Archetype archetype = scene.DefaultArchetype;
             ref GameObjectIdOnly first = ref archetype.GetEntityDataReference();
-            Assert.NotNull(first);
         }
 
         /// <summary>
@@ -755,7 +753,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void ArchetypeStaticConstructor_InitializesNull()
         {
             GameObjectType nullId = Archetype<Position>.Null;
-            Assert.NotNull(nullId);
         }
 
         /// <summary>

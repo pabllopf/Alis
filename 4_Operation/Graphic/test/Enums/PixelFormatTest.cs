@@ -208,10 +208,6 @@ namespace Alis.Core.Graphic.Test.Enums
             PixelFormat rgbFormat = PixelFormat.Rgb;
             PixelFormat rgbaFormat = PixelFormat.Rgba;
             PixelFormat redFormat = PixelFormat.Red;
-
-            Assert.NotNull(rgbFormat);
-            Assert.NotNull(rgbaFormat);
-            Assert.NotNull(redFormat);
         }
     }
 }

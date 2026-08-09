@@ -61,7 +61,6 @@ namespace Alis.Extension.Network.Test.Internal
 
             // Assert: Method returns immediately without error
             Assert.NotNull(stream);
-            Assert.NotNull(buffer);
         }
 
         /// <summary>

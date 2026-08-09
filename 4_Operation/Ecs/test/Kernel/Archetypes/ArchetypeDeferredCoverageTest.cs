@@ -374,7 +374,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
             scene.ExitDisallowState(null);
 
             GameObjectType id = scene.DefaultArchetype.Id;
-            Assert.NotNull(id);
         }
 
         /// <summary>

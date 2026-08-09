@@ -52,8 +52,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             GameObjectIdOnly entity = new GameObjectIdOnly(1, 0);
 
             CreateCommand command = new CreateCommand(entity, 0, 10);
-
-            Assert.NotNull(command);
         }
 
         /// <summary>
@@ -69,8 +67,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             int bufferLength = 50;
 
             CreateCommand command = new CreateCommand(entity, bufferIndex, bufferLength);
-
-            Assert.NotNull(command);
         }
 
         /// <summary>
@@ -114,8 +110,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void CreateCommand_WithZeroIndices()
         {
             CreateCommand command = new CreateCommand(new GameObjectIdOnly(0, 0), 0, 0);
-
-            Assert.NotNull(command);
         }
 
         /// <summary>
@@ -127,8 +121,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void CreateCommand_WithMaxValues()
         {
             CreateCommand command = new CreateCommand(new GameObjectIdOnly(int.MaxValue, ushort.MaxValue), int.MaxValue, int.MaxValue);
-
-            Assert.NotNull(command);
         }
     }
 }

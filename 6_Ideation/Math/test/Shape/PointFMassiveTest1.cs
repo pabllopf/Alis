@@ -176,7 +176,6 @@ namespace Alis.Core.Aspect.Math.Test.Shape
         public void PointF_Operation_1(float x, float y)
         {
             PointF shape = new PointF(x, y);
-            Assert.NotNull(shape);
         }
     }
 }

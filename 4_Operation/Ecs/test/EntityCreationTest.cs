@@ -49,8 +49,6 @@ namespace Alis.Core.Ecs.Test
             using Scene scene = new Scene();
 
             GameObject entity = scene.Create();
-
-            Assert.NotNull(entity);
             Assert.True(entity.IsAlive);
             Assert.False(entity.IsNull);
         }

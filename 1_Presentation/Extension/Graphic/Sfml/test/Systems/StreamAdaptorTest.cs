@@ -129,9 +129,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
 
             StreamAdaptor adaptor1 = new StreamAdaptor(stream1);
             StreamAdaptor adaptor2 = new StreamAdaptor(stream2);
-
-            Assert.NotNull(adaptor1.InputStreamPtr);
-            Assert.NotNull(adaptor2.InputStreamPtr);
             Assert.NotEqual(adaptor1.InputStreamPtr, adaptor2.InputStreamPtr);
         }
 

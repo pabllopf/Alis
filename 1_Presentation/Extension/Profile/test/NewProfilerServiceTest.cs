@@ -136,8 +136,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.StopProfiling();
-
-            Assert.NotNull(snapshot);
             Assert.Equal(TimeSpan.FromMilliseconds(500), snapshot.ElapsedTime);
             Assert.True(mockTracker.StopCalled);
         }
@@ -177,8 +175,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.GetCurrentSnapshot();
-
-            Assert.NotNull(snapshot);
             Assert.Equal(TimeSpan.FromMilliseconds(250), snapshot.ElapsedTime);
             Assert.True(service.IsActive); // Still active
             Assert.False(mockTracker.StopCalled); // Should not stop

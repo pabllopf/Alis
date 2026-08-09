@@ -196,10 +196,6 @@ namespace Alis.Core.Graphic.Test.Enums
             BufferTarget arrayBuffer = BufferTarget.ArrayBuffer;
             BufferTarget elementArrayBuffer = BufferTarget.ElementArrayBuffer;
             BufferTarget uniformBuffer = BufferTarget.UniformBuffer;
-
-            Assert.NotNull(arrayBuffer);
-            Assert.NotNull(elementArrayBuffer);
-            Assert.NotNull(uniformBuffer);
         }
     }
 }

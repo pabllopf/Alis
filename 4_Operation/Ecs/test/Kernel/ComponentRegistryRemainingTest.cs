@@ -36,7 +36,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void GetExistingOrSetupNewComponent_ForNewType_ReturnsValidDelegates()
         {
             (ComponentId ComponentID, IdTable<Velocity> Stack, ComponentDelegates<Velocity>.InitDelegate Initer, ComponentDelegates<Velocity>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Velocity>();
-            Assert.NotNull(result.ComponentID);
         }
 
         /// <summary>
@@ -57,8 +56,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void GetExistingOrSetupNewComponent_PlainStructWithoutLifecycle_ReturnsNullDelegates()
         {
             (ComponentId ComponentID, IdTable<Armor> Stack, ComponentDelegates<Armor>.InitDelegate Initer, ComponentDelegates<Armor>.DestroyDelegate Destroyer) result = Component.GetExistingOrSetupNewComponent<Armor>();
-
-            Assert.NotNull(result.ComponentID);
             Assert.Null(result.Initer);
             Assert.Null(result.Destroyer);
         }

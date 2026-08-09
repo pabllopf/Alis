@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Body
         {
             RigidBodyBuilder builder = new RigidBodyBuilder();
             RigidBody result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

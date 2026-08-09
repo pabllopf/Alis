@@ -195,13 +195,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration
         {
             Setting setting = new Setting();
 
-            Assert.NotNull(setting.General);
-            Assert.NotNull(setting.Audio);
-            Assert.NotNull(setting.Graphic);
-            Assert.NotNull(setting.Input);
-            Assert.NotNull(setting.Network);
-            Assert.NotNull(setting.Physic);
-
             Assert.Equal(100, setting.Audio.Volume);
             Assert.Equal("OpenGL", setting.Graphic.Target);
             Assert.Equal(8080, setting.Network.Port);

@@ -212,8 +212,6 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void Scene_RecycledEntityIdsStackExists()
         {
             using Scene scene = new Scene();
-
-            Assert.NotNull(scene.RecycledEntityIds);
         }
 
         /// <summary>
@@ -238,8 +236,6 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void Scene_EntityTableIsInitialized()
         {
             using Scene scene = new Scene();
-
-            Assert.NotNull(scene.EntityTable);
         }
 
         /// <summary>

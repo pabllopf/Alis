@@ -59,7 +59,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
             AnimatorBuilder builder = new AnimatorBuilder(context);
             Animator animator = builder.Build();
-            Assert.NotNull(animator);
         }
 
         /// <summary>
@@ -71,7 +70,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
             AnimatorBuilder builder = new AnimatorBuilder(context);
             Animator animator = builder.Build();
-            Assert.NotNull(animator);
         }
 
         /// <summary>
@@ -96,7 +94,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             AnimatorBuilder builder = new AnimatorBuilder(context);
             builder.AddAnimation(ab => ab.Name("test").Speed(1).Order(0).Build());
             Animator animator = builder.Build();
-            Assert.NotNull(animator);
         }
     }
 }

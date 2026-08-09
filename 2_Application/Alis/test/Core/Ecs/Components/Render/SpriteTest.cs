@@ -102,8 +102,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
 
             Sprite sprite = new Sprite(context, string.Empty, 0);
-
-            Assert.NotNull(sprite);
         }
 
         /// <summary>
@@ -162,8 +160,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
 
             Sprite sprite = new Sprite(context, string.Empty, 0);
-
-            Assert.NotNull(sprite);
             Assert.Equal(string.Empty, sprite.NameFile);
         }
 

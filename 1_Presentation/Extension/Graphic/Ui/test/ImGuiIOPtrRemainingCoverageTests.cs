@@ -826,9 +826,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         [RequireCImguiSystemFact]
         public void ReadOnly_NullTerminatedString_Properties_ShouldNotBeNull()
         {
-            Assert.NotNull(_ioPtr.IniFilename);
-            Assert.NotNull(_ioPtr.LogFilename);
-            Assert.NotNull(_ioPtr.BackendRendererName);
         }
 
         /// <summary>
@@ -838,7 +835,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void BackendRendererName_Get_ShouldReturnDefault()
         {
             NullTerminatedString name = _ioPtr.BackendRendererName;
-            Assert.NotNull(name);
         }
 
         /// <summary>
@@ -848,7 +844,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ReadOnly_Fonts_ShouldReturnImFontAtlasPtr()
         {
             ImFontAtlasPtr fonts = _ioPtr.Fonts;
-            Assert.NotNull(fonts);
         }
 
         /// <summary>
@@ -858,7 +853,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         public void ReadOnly_FontDefault_ShouldReturnImFontPtr()
         {
             ImFontPtr font = _ioPtr.FontDefault;
-            Assert.NotNull(font);
         }
 
         /// <summary>

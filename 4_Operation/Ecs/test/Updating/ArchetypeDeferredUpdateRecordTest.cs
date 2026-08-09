@@ -50,8 +50,6 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact] public void ArchetypeDeferredUpdateRecord_CanBeCreated()
         {
             ArchetypeDeferredUpdateRecord record = new ArchetypeDeferredUpdateRecord(null, null, 10);
-
-            Assert.NotNull(record);
         }
 
         /// <summary>

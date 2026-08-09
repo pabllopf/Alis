@@ -52,8 +52,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void InlineArray8_CanBeCreated()
         {
             InlineArray8<int> array = new InlineArray8<int>();
-
-            Assert.NotNull(array);
         }
 
         /// <summary>

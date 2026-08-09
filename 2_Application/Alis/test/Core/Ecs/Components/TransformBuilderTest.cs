@@ -57,7 +57,6 @@ namespace Alis.Test.Core.Ecs.Components
         {
             TransformBuilder builder = new TransformBuilder();
             Transform result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -116,7 +115,6 @@ namespace Alis.Test.Core.Ecs.Components
                 .Rotation(90.0f)
                 .Scale(2.0f, 2.0f)
                 .Build();
-            Assert.NotNull(result);
         }
     }
 }

@@ -223,7 +223,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void Archetype_T_GetHash_WithOddCount_HitsBothLoops()
         {
             GameObjectType id = Archetype<Position, Velocity, Health>.Id;
-            Assert.NotNull(id);
         }
 
         /// <summary>
@@ -233,7 +232,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Archetypes
         public void Archetype_T_GetHash_WithEvenCount_HitsFirstLoop()
         {
             GameObjectType id = Archetype<Position, Velocity>.Id;
-            Assert.NotNull(id);
         }
 
         /// <summary>

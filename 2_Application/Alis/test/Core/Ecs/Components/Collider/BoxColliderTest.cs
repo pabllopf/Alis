@@ -228,22 +228,7 @@ namespace Alis.Test.Core.Ecs.Components.Collider
         public void BoxCollider_ShouldHaveExpectedPublicMembers()
         {
             BoxCollider collider = new BoxCollider();
-
-            Assert.NotNull(collider.IsTrigger);
-            Assert.NotNull(collider.Width);
-            Assert.NotNull(collider.Height);
-            Assert.NotNull(collider.Rotation);
-            Assert.NotNull(collider.RelativePosition);
             Assert.Null(collider.Body);
-            Assert.NotNull(collider.AutoTilling);
-            Assert.NotNull(collider.BodyType);
-            Assert.NotNull(collider.Restitution);
-            Assert.NotNull(collider.Friction);
-            Assert.NotNull(collider.FixedRotation);
-            Assert.NotNull(collider.Mass);
-            Assert.NotNull(collider.IgnoreGravity);
-            Assert.NotNull(collider.LinearVelocity);
-            Assert.NotNull(collider.AngularVelocity);
             Assert.NotNull(collider.OnUpdate);
             Assert.NotNull(collider.OnStart);
             Assert.NotNull(collider.OnExit);

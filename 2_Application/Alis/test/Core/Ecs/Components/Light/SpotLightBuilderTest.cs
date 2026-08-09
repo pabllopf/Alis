@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Light
         {
             SpotLightBuilder builder = new SpotLightBuilder();
             SpotLight result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

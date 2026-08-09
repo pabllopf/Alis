@@ -284,8 +284,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
             VelocityConstraintInitData data = new VelocityConstraintInitData(
                 Vector2F.One, Vector2F.One * 2, 1.0f, 1.0f, 1.0f, 1.0f,
                 Vector2F.One, Vector2F.One, 1.0f, Vector2F.One, 1.0f);
-
-            Assert.NotNull(data);
             Assert.Equal(Vector2F.One, data.cA);
         }
     }

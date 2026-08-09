@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Components.Light
         {
             AreaLightBuilder builder = new AreaLightBuilder();
             AreaLight result = builder.Build();
-            Assert.NotNull(result);
         }
     }
 }

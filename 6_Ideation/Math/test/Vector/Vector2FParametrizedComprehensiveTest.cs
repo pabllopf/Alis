@@ -85,8 +85,6 @@ namespace Alis.Core.Aspect.Math.Test.Vector
         {
             Vector2F vector = new Vector2F(vectorValue);
             Vector2F result = vector * scalar;
-
-            Assert.NotNull(result);
         }
     }
 }

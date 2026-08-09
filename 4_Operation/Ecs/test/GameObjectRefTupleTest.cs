@@ -54,7 +54,6 @@ namespace Alis.Core.Ecs.Test
             };
 
             Assert.Equal(entity, refTuple.GameObject);
-            Assert.NotNull(refTuple.Item1);
 
             world.Dispose();
         }

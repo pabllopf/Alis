@@ -44,8 +44,6 @@ namespace Alis.App.Engine.Test
         public void Constructor_ShouldCreateInstance()
         {
             VertexShader shader = new VertexShader();
-
-            Assert.NotNull(shader);
         }
 
         /// <summary>

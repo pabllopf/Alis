@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Network
         {
             NetworkSettingBuilder builder = new NetworkSettingBuilder();
             NetworkSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>

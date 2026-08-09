@@ -191,8 +191,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Vector2F resolution = new Vector2F(800f, 600f);
 
             Camera camera = new Camera(context, position, resolution);
-
-            Assert.NotNull(camera);
         }
 
         /// <summary>

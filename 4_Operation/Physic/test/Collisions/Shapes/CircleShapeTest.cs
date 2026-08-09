@@ -242,8 +242,6 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             };
 
             circle.ComputeAabb(out Aabb aabb, ref transform, 0);
-
-            Assert.NotNull(aabb);
         }
 
         /// <summary>

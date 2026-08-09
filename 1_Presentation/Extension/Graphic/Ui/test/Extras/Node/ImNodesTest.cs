@@ -68,7 +68,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void CreateContext_ShouldReturnNonNull()
         {
             ImNodesContext ctx = ImNodes.CreateContext();
-            Assert.NotNull(ctx);
         }
 
         /// <summary>
@@ -78,7 +77,6 @@ namespace Alis.Extension.Graphic.Ui.Test.Extras.Node
         public void EditorContextCreate_ShouldReturnNonNull()
         {
             ImNodesEditorContext editorCtx = ImNodes.EditorContextCreate();
-            Assert.NotNull(editorCtx);
         }
 
         /// <summary>

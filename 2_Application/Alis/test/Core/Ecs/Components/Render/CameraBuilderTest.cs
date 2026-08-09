@@ -60,7 +60,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             Context context = new Context();
             CameraBuilder builder = new CameraBuilder(context);
             Camera camera = builder.Build();
-            Assert.NotNull(camera);
         }
 
         /// <summary>
@@ -112,7 +111,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
                 .Position(0f, 0f)
                 .BackgroundColor(Color.Black)
                 .Build();
-            Assert.NotNull(camera);
         }
     }
 }

@@ -53,8 +53,6 @@ namespace Alis.Core.Ecs.Test.Kernel
             ComponentId componentId = new ComponentId(0);
 
             DeleteComponent deleteComp = new DeleteComponent(entity, componentId);
-
-            Assert.NotNull(deleteComp);
             Assert.Equal(1, deleteComp.Entity.ID);
         }
 

@@ -76,8 +76,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
                 new EntityUpdate<StubComp, StubArg1, StubArg2, StubArg3, StubArg4, StubArg5>(8);
 
             ref StubComp comp = ref update.GetComponentStorageDataReference();
-
-            Assert.NotNull(comp);
         }
 
         /// <summary>
@@ -91,8 +89,6 @@ namespace Alis.Core.Ecs.Test.Updating.Runners
             StubComp value = new StubComp();
             update[0] = value;
             ref StubComp result = ref update[0];
-
-            Assert.NotNull(result);
         }
 
         /// <summary>

@@ -525,7 +525,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Vector2F point = shape.GetPoint(lastIndex);
 
             // Assert
-            Assert.NotNull(point);
 
             // Cleanup
             shape.Destroy(true);
@@ -544,7 +543,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             for (uint i = 0; i < shape.GetPointCount(); i++)
             {
                 Vector2F point = shape.GetPoint(i);
-                Assert.NotNull(point);
             }
 
             // Cleanup

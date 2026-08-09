@@ -46,8 +46,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void Constructor_Default_CreatedSuccessfully()
         {
             FastLookup lookup = new FastLookup();
-
-            Assert.NotNull(lookup);
         }
 
         /// <summary>

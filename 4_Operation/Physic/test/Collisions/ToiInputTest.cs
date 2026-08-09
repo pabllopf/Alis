@@ -135,11 +135,6 @@ namespace Alis.Core.Physic.Test.Collisions
                     SweepB = new Sweep(),
                     TMax = 0.75f
                 };
-
-            Assert.NotNull(input.ProxyA);
-            Assert.NotNull(input.ProxyB);
-            Assert.NotNull(input.SweepA);
-            Assert.NotNull(input.SweepB);
             Assert.Equal(0.75f, input.TMax, 5);
         }
 

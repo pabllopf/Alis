@@ -236,8 +236,6 @@ namespace Alis.Core.Physic.Test.Common
             };
 
             sweep.Normalize();
-
-            Assert.NotNull(sweep);
         }
     }
 }

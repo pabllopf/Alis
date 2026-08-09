@@ -253,8 +253,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, prismaticA, revoluteB);
 
             Assert.Equal(JointType.Gear, gearJoint.JointType);
-            Assert.NotNull(gearJoint.WorldAnchorA);
-            Assert.NotNull(gearJoint.WorldAnchorB);
         }
 
         /// <summary>
@@ -274,8 +272,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             GearJoint gearJoint = new GearJoint(bodyA, bodyC, revoluteA, prismaticB);
 
             Assert.Equal(JointType.Gear, gearJoint.JointType);
-            Assert.NotNull(gearJoint.WorldAnchorA);
-            Assert.NotNull(gearJoint.WorldAnchorB);
         }
 
         /// <summary>

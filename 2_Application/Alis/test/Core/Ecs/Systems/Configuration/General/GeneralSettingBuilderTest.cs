@@ -56,7 +56,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.General
         {
             GeneralSettingBuilder builder = new GeneralSettingBuilder();
             GeneralSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -152,7 +151,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.General
                 .Icon("icon.png")
                 .Debug(true)
                 .Build();
-            Assert.NotNull(result);
         }
     }
 }

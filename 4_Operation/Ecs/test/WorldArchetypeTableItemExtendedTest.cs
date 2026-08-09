@@ -63,8 +63,6 @@ namespace Alis.Core.Ecs.Test
         [Fact] public void WorldArchetypeTableItem_FieldsAreAccessible()
         {
             WorldArchetypeTableItem item = new WorldArchetypeTableItem(null, null);
-
-            Assert.NotNull(item);
             Assert.True(item.Archetype == null || item.Archetype != null);
         }
 
@@ -78,9 +76,6 @@ namespace Alis.Core.Ecs.Test
         {
             WorldArchetypeTableItem item1 = new WorldArchetypeTableItem(null, null);
             WorldArchetypeTableItem item2 = item1;
-
-            Assert.NotNull(item1);
-            Assert.NotNull(item2);
         }
 
         /// <summary>

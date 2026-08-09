@@ -186,10 +186,6 @@ namespace Alis.Core.Graphic.Test.Enums
             PixelType byteType = PixelType.Byte;
             PixelType unsignedByteType = PixelType.UnsignedByte;
             PixelType floatType = PixelType.Float;
-
-            Assert.NotNull(byteType);
-            Assert.NotNull(unsignedByteType);
-            Assert.NotNull(floatType);
         }
     }
 }

@@ -54,8 +54,6 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ArchetypeNeighborCache_CanBeCreated()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -72,8 +70,6 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObject gameObject = scene.Create();
             gameObject.Add(new Position());
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -94,8 +90,6 @@ namespace Alis.Core.Ecs.Test.Collections
                 GameObject go = scene.Create();
                 go.Add(new Position());
             }
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -109,8 +103,6 @@ namespace Alis.Core.Ecs.Test.Collections
         public void ArchetypeNeighborCache_CanBeClearedIfNeeded()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>
@@ -135,8 +127,6 @@ namespace Alis.Core.Ecs.Test.Collections
             GameObject e3 = scene.Create();
             e3.Add(new Position());
             e3.Add(new Velocity());
-
-            Assert.NotNull(cache);
             Assert.True(e1.Has<Position>());
             Assert.True(e2.Has<Velocity>());
             Assert.True(e3.Has<Position>());
@@ -161,8 +151,6 @@ namespace Alis.Core.Ecs.Test.Collections
             entity.Add(new Velocity());
             entity.Remove<Position>();
             entity.Add(new Health());
-
-            Assert.NotNull(cache);
             Assert.False(entity.Has<Position>());
             Assert.True(entity.Has<Velocity>());
             Assert.True(entity.Has<Health>());
@@ -193,8 +181,6 @@ namespace Alis.Core.Ecs.Test.Collections
                     entities[i].Add(new Velocity());
                 }
             }
-
-            Assert.NotNull(cache);
             int positionCount = 0;
             int velocityCount = 0;
 
@@ -235,9 +221,6 @@ namespace Alis.Core.Ecs.Test.Collections
 
             GameObject e2 = scene2.Create();
             e2.Add(new Velocity());
-
-            Assert.NotNull(cache1);
-            Assert.NotNull(cache2);
             Assert.True(e1.Has<Position>());
             Assert.False(e1.Has<Velocity>());
             Assert.True(e2.Has<Velocity>());
@@ -276,8 +259,6 @@ namespace Alis.Core.Ecs.Test.Collections
             entity.Remove<Health>();
             Assert.False(entity.Has<Velocity>());
             Assert.False(entity.Has<Health>());
-
-            Assert.NotNull(cache);
         }
     }
 }

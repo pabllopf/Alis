@@ -88,7 +88,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImDrawChannel channel = default;
             ImVectorG<ImDrawCmd> ptr = channel.CmdBufferPtr;
-            Assert.NotNull(ptr);
         }
 
         /// <summary>
@@ -99,7 +98,6 @@ namespace Alis.Extension.Graphic.Ui.Test
         {
             ImDrawChannel channel = default;
             ImVectorG<ushort> ptr = channel.IdxBufferPtr;
-            Assert.NotNull(ptr);
         }
     }
 }

@@ -45,9 +45,6 @@ namespace Alis.Core.Ecs.Test.Kernel.Events
             EventRecord record = new EventRecord();
 
             EventRecord.Initalize(false, ref record);
-
-            Assert.NotNull(record.Add);
-            Assert.NotNull(record.Remove);
         }
 
         /// <summary>

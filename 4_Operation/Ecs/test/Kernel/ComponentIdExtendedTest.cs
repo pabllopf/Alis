@@ -51,8 +51,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void ComponentId_CanBeCreated()
         {
             ComponentId componentId = new ComponentId(0);
-
-            Assert.NotNull(componentId);
         }
 
         /// <summary>

@@ -184,8 +184,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.StopProfiling();
-
-            Assert.NotNull(snapshot);
             Assert.NotEqual(ResourceMetrics.Empty, snapshot.StartMetrics);
         }
 
@@ -219,8 +217,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.GetCurrentSnapshot();
-
-            Assert.NotNull(snapshot);
             Assert.NotEqual(DateTime.MinValue, snapshot.StartTime);
         }
 
@@ -236,8 +232,6 @@ namespace Alis.Extension.Profile.Test
             ProfilerService service = new ProfilerService(timeTracker, factory);
 
             ProfileSnapshot snapshot = service.GetCurrentSnapshot();
-
-            Assert.NotNull(snapshot);
             Assert.Equal(DateTime.MinValue, snapshot.StartTime);
         }
 
@@ -274,13 +268,11 @@ namespace Alis.Extension.Profile.Test
             Assert.True(service.IsActive);
             ProfileSnapshot snapshot1 = service.StopProfiling();
             Assert.False(service.IsActive);
-            Assert.NotNull(snapshot1);
 
             service.StartProfiling();
             Assert.True(service.IsActive);
             ProfileSnapshot snapshot2 = service.StopProfiling();
             Assert.False(service.IsActive);
-            Assert.NotNull(snapshot2);
         }
 
         /// <summary>
@@ -303,9 +295,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
             Thread.Sleep(10);
             ProfileSnapshot snapshot = service.StopProfiling();
-
-            Assert.NotNull(snapshot.StartMetrics);
-            Assert.NotNull(snapshot.EndMetrics);
             Assert.True(snapshot.ElapsedTime.TotalMilliseconds >= 0);
         }
 
@@ -322,8 +311,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.GetCurrentSnapshot();
-
-            Assert.NotNull(snapshot);
             Assert.True(snapshot.ElapsedTime >= TimeSpan.Zero);
         }
 
@@ -369,7 +356,6 @@ namespace Alis.Extension.Profile.Test
 
             ProfileSnapshot snapshot = service.StopProfiling();
             Assert.False(service.IsActive);
-            Assert.NotNull(snapshot);
         }
 
         /// <summary>
@@ -405,8 +391,6 @@ namespace Alis.Extension.Profile.Test
             service.StartProfiling();
 
             ProfileSnapshot snapshot = service.StopProfiling();
-
-            Assert.NotNull(snapshot.EndMetrics);
             Assert.NotEqual(DateTime.MinValue, snapshot.EndTime);
         }
 

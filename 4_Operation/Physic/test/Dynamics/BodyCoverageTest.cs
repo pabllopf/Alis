@@ -230,12 +230,11 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             // Local center should be computed and valid
-            Assert.NotNull(localCenter);
         }
 
         /// <summary>
         ///     Tests that LocalCenter getter returns center of mass position.
-    ///     This covers the Sweep.C read branch.
+        ///     This covers the Sweep.C read branch.
         /// </summary>
         [Fact]
         public void LocalCenter_Getter_WhenDynamic_ShouldReturnCenterOfMass()
@@ -249,13 +248,12 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F localCenter = body.LocalCenter;
 
             // Assert
-            Assert.NotNull(localCenter);
             // Center of mass should be computed for the circle shape
         }
 
         /// <summary>
         ///     Tests that Awake setter wakes up body and resets sleep time.
-    ///     This covers the awake=true branch with sleep time reset.
+        ///     This covers the awake=true branch with sleep time reset.
         /// </summary>
         [Fact]
         public void Awake_Setter_True_WhenCurrentlyAsleep_ShouldResetSleepTime()

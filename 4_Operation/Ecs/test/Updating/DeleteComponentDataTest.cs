@@ -50,8 +50,6 @@ namespace Alis.Core.Ecs.Test.Updating
         [Fact] public void DeleteComponentData_CanBeCreated()
         {
             DeleteComponentData data = new DeleteComponentData(5, 10);
-
-            Assert.NotNull(data);
             Assert.Equal(5, data.ToIndex);
             Assert.Equal(10, data.FromIndex);
         }

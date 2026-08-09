@@ -56,8 +56,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void MonitorNoneStruct_ShouldHaveValidValue()
         {
             Monitor none = Monitor.None;
-
-            Assert.NotNull(none);
         }
 
         /// <summary>
@@ -101,8 +99,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void WindowNoneStruct_ShouldHaveValidValue()
         {
             Window none = Window.None;
-
-            Assert.NotNull(none);
         }
 
         /// <summary>
@@ -135,8 +131,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
         public void CursorNoneStruct_ShouldHaveValidValue()
         {
             Cursor none = Cursor.None;
-
-            Assert.NotNull(none);
         }
 
         /// <summary>
@@ -247,10 +241,6 @@ namespace Alis.Extension.Graphic.Glfw.Test
             Monitor monitor = default(Monitor);
             Window window = default(Window);
             Cursor cursor = default(Cursor);
-
-            Assert.NotNull(monitor);
-            Assert.NotNull(window);
-            Assert.NotNull(cursor);
         }
 
         /// <summary>

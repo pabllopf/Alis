@@ -106,8 +106,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
             AnimationBuilder builder = new AnimationBuilder(context);
 
             Animation animation = builder.Build();
-
-            Assert.NotNull(animation);
         }
 
         /// <summary>

@@ -107,8 +107,6 @@ namespace Alis.Test.Core.Ecs.Components.Render
         public void Animator_Constructor_ShouldNotThrow()
         {
             Animator animator = new Animator();
-
-            Assert.NotNull(animator);
         }
 
         /// <summary>

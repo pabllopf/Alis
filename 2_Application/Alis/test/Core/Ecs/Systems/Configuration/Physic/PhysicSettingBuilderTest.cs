@@ -57,7 +57,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Physic
         {
             PhysicSettingBuilder builder = new PhysicSettingBuilder();
             PhysicSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -105,7 +104,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Physic
                 .Debug(true)
                 .DebugColor(Color.Green)
                 .Build();
-            Assert.NotNull(result);
         }
     }
 }

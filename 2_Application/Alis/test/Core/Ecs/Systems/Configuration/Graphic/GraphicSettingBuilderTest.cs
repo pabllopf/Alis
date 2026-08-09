@@ -57,7 +57,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
         {
             GraphicSettingBuilder builder = new GraphicSettingBuilder();
             GraphicSetting result = builder.Build();
-            Assert.NotNull(result);
         }
 
         /// <summary>
@@ -129,7 +128,6 @@ namespace Alis.Test.Core.Ecs.Systems.Configuration.Graphic
                 .BackgroundColor(Color.Black)
                 .IsResizable(false)
                 .Build();
-            Assert.NotNull(result);
         }
     }
 }

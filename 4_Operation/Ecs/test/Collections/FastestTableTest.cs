@@ -51,8 +51,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void FastestTable_CanBeCreatedWithCapacity()
         {
             FastestTable<int> table = new FastestTable<int>(10);
-
-            Assert.NotNull(table);
         }
 
         /// <summary>

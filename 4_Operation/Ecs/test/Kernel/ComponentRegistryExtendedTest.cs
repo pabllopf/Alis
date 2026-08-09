@@ -46,8 +46,6 @@ namespace Alis.Core.Ecs.Test.Kernel
         [Fact] public void GetComponentId_VoidType_Succeeds()
         {
             ComponentId id = Component.GetComponentId(typeof(void));
-
-            Assert.NotNull(id);
         }
 
         /// <summary>

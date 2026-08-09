@@ -189,7 +189,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Windows
         public void GetIdentification_Invoke_DoesNotThrow()
         {
             Joystick.Identification result = Joystick.GetIdentification(0);
-            Assert.NotNull(result);
         }
 
         /// <summary>

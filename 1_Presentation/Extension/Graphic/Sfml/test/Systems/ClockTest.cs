@@ -66,7 +66,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime elapsedTime = clock.ElapsedSfmlTime;
 
             // Assert
-            Assert.NotNull(elapsedTime);
 
             // Cleanup
             clock.Destroy(true);
@@ -104,9 +103,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime restart3 = clock.Restart();
 
             // Assert - All returns should be valid
-            Assert.NotNull(restart1);
             Assert.NotNull(restart2);
-            Assert.NotNull(restart3);
 
             // Cleanup
             clock.Destroy(true);
@@ -166,9 +163,7 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
             SfmlTime time3 = clock3.ElapsedSfmlTime;
 
             // Assert - All should be valid
-            Assert.NotNull(time1);
             Assert.NotNull(time2);
-            Assert.NotNull(time3);
 
             // Cleanup
             clock1.Destroy(true);
@@ -187,15 +182,12 @@ namespace Alis.Extension.Graphic.Sfml.Test.Systems
 
             // Read initial time
             SfmlTime initialTime = clock.ElapsedSfmlTime;
-            Assert.NotNull(initialTime);
 
             // Restart and get elapsed time
             SfmlTime restartedTime = clock.Restart();
-            Assert.NotNull(restartedTime);
 
             // Read time after restart
             SfmlTime afterRestart = clock.ElapsedSfmlTime;
-            Assert.NotNull(afterRestart);
 
             // Destroy
             clock.Destroy(true);

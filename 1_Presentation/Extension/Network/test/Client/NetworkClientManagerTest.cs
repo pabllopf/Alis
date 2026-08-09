@@ -78,8 +78,6 @@ namespace Alis.Extension.Network.Test.Client
         public void Id_ShouldBeValidGuidFormat()
         {
             Guid id = Guid.Parse(_manager.Id);
-
-            Assert.NotNull(id);
         }
 
         /// <summary>

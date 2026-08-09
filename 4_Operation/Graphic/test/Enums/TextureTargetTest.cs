@@ -149,9 +149,6 @@ namespace Alis.Core.Graphic.Test.Enums
         {
             TextureTarget texture2D = TextureTarget.Texture2D;
             TextureTarget textureCube = TextureTarget.TextureCubeMap;
-
-            Assert.NotNull(texture2D);
-            Assert.NotNull(textureCube);
         }
 
         /// <summary>

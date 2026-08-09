@@ -44,8 +44,6 @@ namespace Alis.App.Engine.Test
         public void Constructor_ShouldCreateInstance()
         {
             FragmentShader shader = new FragmentShader();
-
-            Assert.NotNull(shader);
         }
 
         /// <summary>

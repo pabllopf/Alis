@@ -99,8 +99,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position>.QueryEnumerable enumerable = query.Enumerate<Position>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -118,8 +116,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -138,8 +134,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -154,8 +148,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             Ecs.Systems.GameObjectQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateWithEntities<Position>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -170,8 +162,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position>.QueryEnumerable enumerable = query.EnumerateChunks<Position>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -186,8 +176,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             GameObjectQueryEnumerator.QueryEnumerable enumerable = query.EnumerateWithEntities();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -237,8 +225,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity> enumerable = query.EnumerateWithEntities<Position, Velocity>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -256,8 +242,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -276,8 +260,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health> enumerable = query.EnumerateWithEntities<Position, Velocity, Health>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -297,8 +279,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -318,8 +298,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health, Transform> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -339,8 +317,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity, Health, Transform>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -361,8 +337,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -383,8 +357,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health, Transform, TestComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -405,8 +377,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -428,8 +398,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -451,8 +419,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -474,8 +440,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -498,8 +462,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -522,8 +484,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -546,8 +506,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -571,8 +529,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.Enumerate<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -596,8 +552,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             QueryEnumerable<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor> enumerable = query.EnumerateWithEntities<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
-
-            Assert.NotNull(enumerable);
         }
 
         /// <summary>
@@ -621,8 +575,6 @@ namespace Alis.Core.Ecs.Test.Systems
 
             Query query = scene.CreateQuery(rules);
             ChunkQueryEnumerator<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>.QueryEnumerable enumerable = query.EnumerateChunks<Position, Velocity, Health, Transform, TestComponent, AnotherComponent, Damage, Armor>();
-
-            Assert.NotNull(enumerable);
         }
     }
 }

@@ -49,7 +49,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Position = new Vector2F(10, 20);
             Transform transform = t.Transform;
-            Assert.NotNull(transform);
         }
 
         /// <summary>
@@ -72,7 +71,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Rotation = 90f;
             Transform transform = t.Transform;
-            Assert.NotNull(transform);
         }
 
         /// <summary>
@@ -96,7 +94,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
             Transformable t = new Transformable();
             t.Scale = new Vector2F(2, 2);
             Transform transform = t.Transform;
-            Assert.NotNull(transform);
         }
 
         /// <summary>
@@ -132,7 +129,6 @@ namespace Alis.Extension.Graphic.Sfml.Test.Render
         {
             Transformable t = new Transformable();
             Transform inverse = t.InverseTransform;
-            Assert.NotNull(inverse);
         }
 
         /// <summary>

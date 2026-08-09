@@ -44,8 +44,6 @@ namespace Alis.Core.Ecs.Test.Collections
         [Fact] public void Constructor_DefaultCreation_SuccessfulInitialization()
         {
             ArchetypeNeighborCache cache = new ArchetypeNeighborCache();
-
-            Assert.NotNull(cache);
         }
 
         /// <summary>

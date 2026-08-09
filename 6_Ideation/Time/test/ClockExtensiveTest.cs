@@ -282,7 +282,6 @@ namespace Alis.Core.Aspect.Time.Test
             clock.Start();
 
             TimeSpan timespan = clock.Elapsed;
-            Assert.NotNull(timespan);
         }
     }
 }

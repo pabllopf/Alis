@@ -44,7 +44,6 @@ namespace Alis.Test.Core.Ecs.Components.Ui
         public void Canvas_DefaultConstructor_ShouldCreateInstance()
         {
             Canvas canvas = default;
-            Assert.NotNull(canvas);
         }
 
         /// <summary>

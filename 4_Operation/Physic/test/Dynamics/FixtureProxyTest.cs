@@ -105,8 +105,6 @@ namespace Alis.Core.Physic.Test.Dynamics
                 ChildIndex = 3,
                 ProxyId = 50
             };
-
-            Assert.NotNull(proxy.Aabb);
             Assert.Equal(3, proxy.ChildIndex);
             Assert.Equal(50, proxy.ProxyId);
         }

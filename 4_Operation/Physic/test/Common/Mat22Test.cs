@@ -232,8 +232,6 @@ namespace Alis.Core.Physic.Test.Common
             Mat22 singular = new Mat22(1.0f, 2.0f, 2.0f, 4.0f);
 
             Mat22 inverse = singular.Inverse;
-
-            Assert.NotNull(inverse);
         }
 
         /// <summary>
@@ -246,8 +244,6 @@ namespace Alis.Core.Physic.Test.Common
             Vector2F b = new Vector2F(1.0f, 2.0f);
 
             Vector2F result = singular.Solve(b);
-
-            Assert.NotNull(result);
         }
 
         /// <summary>

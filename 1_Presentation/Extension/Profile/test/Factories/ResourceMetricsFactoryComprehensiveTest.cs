@@ -131,9 +131,6 @@ namespace Alis.Extension.Profile.Test.Factories
             ResourceMetrics metrics1 = factory.CreateSnapshot();
             Thread.Sleep(10);
             ResourceMetrics metrics2 = factory.CreateSnapshot();
-
-            Assert.NotNull(metrics1);
-            Assert.NotNull(metrics2);
         }
 
         /// <summary>

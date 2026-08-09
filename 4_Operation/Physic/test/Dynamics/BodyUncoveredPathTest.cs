@@ -767,7 +767,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             ControllerTransform transform = body.GetTransform();
 
             // Assert: Transform should be returned
-            Assert.NotNull(transform);
         }
 
         /// <summary>
@@ -786,7 +785,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             body.GetTransform(out ControllerTransform transform);
 
             // Assert: Transform should be set
-            Assert.NotNull(transform);
         }
 
         #endregion
@@ -830,7 +828,6 @@ namespace Alis.Core.Physic.Test.Dynamics
             Vector2F localPoint = body.GetLocalPoint(ref worldPoint);
 
             // Assert: Local point should be calculated
-            Assert.NotNull(localPoint);
         }
 
         #endregion
