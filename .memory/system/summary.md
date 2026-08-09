@@ -415,3 +415,11 @@
 - **Coverage After**: ~97.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: Deep geometric edge cases (adjacent-split, vertex-score +3)
+
+## SeparationFunction.cs
+
+- **File**: `4_Operation/Physic/src/Collisions/SeparationFunction.cs`
+- **Coverage Before**: 95.7%
+- **Coverage After**: 96.7% (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: `default:` defensive branches — unreachable, enum fully enumerated
