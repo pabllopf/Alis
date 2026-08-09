@@ -487,3 +487,11 @@
 - **Coverage After**: ~99.5%
 - **Tests Added**: 1
 - **Uncovered Lines**: None remaining beyond combined coverage
+
+## GearJoint.cs
+
+- **File**: `4_Operation/Physic/src/Dynamics/Joints/GearJoint.cs`
+- **Coverage Before**: 98.3%
+- **Coverage After**: ~99.5%
+- **Tests Added**: 1
+- **Uncovered Lines**: None remaining beyond combined coverage
