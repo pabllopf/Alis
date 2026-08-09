@@ -335,3 +335,11 @@
 - **Coverage After**: ~90.0%
 - **Tests Added**: 10
 - **Uncovered Lines**: Broadphase proxy internals (`TouchProxies`, `Synchronize`, `DestroyProxies`)
+
+## TimeOfImpact.cs
+
+- **File**: `4_Operation/Physic/src/Collisions/TimeOfImpact.cs`
+- **Coverage Before**: 86.9%
+- **Coverage After**: ~94.0%
+- **Tests Added**: 2
+- **Uncovered Lines**: Root-find bisection bounds edge cases
