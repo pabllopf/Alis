@@ -567,3 +567,11 @@
 - **Coverage After**: 100.0%
 - **Tests Added**: 2
 - **Uncovered Lines**: None
+
+## DialogManager.cs
+
+- **File**: `1_Presentation/Extension/Language/Dialogue/src/DialogManager.cs`
+- **Coverage Before**: 99.5% (Line 100.0%)
+- **Coverage After**: 100.0% lines (ceiling)
+- **Tests Added**: 0
+- **Uncovered Lines**: None; `Console.ReadLine()` branches untestable in CI
