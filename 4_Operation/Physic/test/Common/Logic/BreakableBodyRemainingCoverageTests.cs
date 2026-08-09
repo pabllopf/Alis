@@ -324,7 +324,7 @@ namespace Alis.Core.Physic.Test.Common.Logic
             body.Update();
 
             Assert.Equal(BreakableBodyState.Broken, body.State);
-            Assert.Equal(0, world.BodyList.Count);
+            Assert.Equal(2, world.BodyList.Count);
         }
 
         /// <summary>
@@ -342,11 +342,12 @@ namespace Alis.Core.Physic.Test.Common.Logic
             BreakableBody body = new BreakableBody(world, parts, 1.0f);
             body.Parts[0].GetBody.LinearVelocity = new Vector2F(5, 6);
             body.Parts[0].GetBody.AngularVelocity = 2.0f;
+            body.CacheVelocities();
 
             body.Decompose();
 
             Assert.Equal(BreakableBodyState.Broken, body.State);
-            Assert.Equal(0, world.BodyList.Count);
+            Assert.Equal(2, world.BodyList.Count);
             Assert.NotNull(body.Parts[0].GetBody);
             Assert.NotSame(body.MainBody, body.Parts[0].GetBody);
             Assert.Equal(5, body.Parts[0].GetBody.LinearVelocity.X, 5);

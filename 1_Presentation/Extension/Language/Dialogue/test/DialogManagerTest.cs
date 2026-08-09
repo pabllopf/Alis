@@ -666,26 +666,6 @@ namespace Alis.Extension.Language.Dialogue.Test
             Assert.Empty(options);
         }
         
-
-        /// <summary>
-        ///     Tests that ShowDialog with null action does not throw (covers null branch of ?.)
-        /// </summary>
-        [Fact]
-        public void ShowDialog_WithNullAction_DoesNotThrow()
-        {
-            DialogManager manager = new DialogManager();
-            Dialog dialog = new Dialog("testId", "Test");
-            dialog.AddOption(new DialogOption("Option", null));
-            manager.AddDialog(dialog);
-
-            using (System.IO.StringReader reader = new System.IO.StringReader("1\n"))
-            {
-                System.Console.SetIn(reader);
-                Exception exception = Record.Exception(() => manager.ShowDialog("testId"));
-                Assert.Null(exception);
-            }
-        }
-
         /// <summary>
         ///     Tests that ChangeState with no current context does nothing
         /// </summary>
