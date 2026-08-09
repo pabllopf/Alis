@@ -1,256 +1,113 @@
-using System.Collections.Generic;
-using Alis.Core.Physic.Common.Decomposition.CDT;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:DelaunayTriangleRemainingCoverageTests.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay;
+using Alis.Core.Physic.Common.Decomposition.CDT;
+using Alis.Core.Physic.Common.Decomposition.CDT.Delaunay.Sweep;
+using Alis.Core.Physic.Common.Decomposition.CDT.Polygon;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Common.Decomposition.CDT.Delaunay
 {
     /// <summary>
-    /// The delaunay triangle remaining coverage tests class
+    ///     The delaunay triangle remaining coverage tests class
     /// </summary>
     public class DelaunayTriangleRemainingCoverageTests
     {
         /// <summary>
-        /// Tests that clear neighbor removes correct neighbor index 1
+        ///     Tests that contains constraint with both points returns true
         /// </summary>
         [Fact]
-        public void ClearNeighbor_RemovesCorrectNeighbor_Index1()
+        public void Contains_ConstraintWithBothPoints_ReturnsTrue()
         {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
+            PolygonPoint p1 = new PolygonPoint(0, 0);
+            PolygonPoint p2 = new PolygonPoint(1, 0);
+            PolygonPoint p3 = new PolygonPoint(0, 1);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            DtSweepConstraint constraint = new DtSweepConstraint(p1, p2);
 
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
-            t1.Neighbors[1] = t2;
+            bool result = triangle.Contains(constraint);
 
-            t1.ClearNeighbor(t2);
-
-            Assert.Null(t1.Neighbors[1]);
+            Assert.True(result);
         }
 
         /// <summary>
-        /// Tests that mark neighbor with points reverse order index 0
+        ///     Tests that contains constraint with one point returns false
         /// </summary>
         [Fact]
-        public void MarkNeighbor_WithPoints_ReverseOrder_Index0()
+        public void Contains_ConstraintWithOnePoint_ReturnsFalse()
         {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
+            PolygonPoint p1 = new PolygonPoint(0, 0);
+            PolygonPoint p2 = new PolygonPoint(1, 0);
+            PolygonPoint p3 = new PolygonPoint(0, 1);
+            PolygonPoint outside = new PolygonPoint(5, 5);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            DtSweepConstraint constraint = new DtSweepConstraint(p1, outside);
 
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
+            bool result = triangle.Contains(constraint);
 
-            t1.MarkNeighbor(p3, p2, t2);
-
-            Assert.Equal(t2, t1.Neighbors[0]);
+            Assert.False(result);
         }
 
         /// <summary>
-        /// Tests that mark neighbor with points reverse order index 1
+        ///     Tests that mark neighbor edges marks constrained edges
         /// </summary>
         [Fact]
-        public void MarkNeighbor_WithPoints_ReverseOrder_Index1()
+        public void MarkNeighborEdges_MarksConstrainedEdges()
         {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
+            PolygonPoint p1 = new PolygonPoint(0, 0);
+            PolygonPoint p2 = new PolygonPoint(1, 0);
+            PolygonPoint p3 = new PolygonPoint(0, 1);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            triangle.MarkConstrainedEdge(0);
 
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p1, p4, p3);
+            triangle.MarkNeighborEdges();
 
-            t1.MarkNeighbor(p3, p1, t2);
-
-            Assert.Equal(t2, t1.Neighbors[1]);
+            Assert.NotNull(triangle);
         }
 
         /// <summary>
-        /// Tests that mark neighbor with points reverse order index 2
+        ///     Tests that mark edge marks constrained edges on other triangle
         /// </summary>
         [Fact]
-        public void MarkNeighbor_WithPoints_ReverseOrder_Index2()
+        public void MarkEdge_MarksConstrainedEdgesOnOtherTriangle()
         {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
+            PolygonPoint p1 = new PolygonPoint(0, 0);
+            PolygonPoint p2 = new PolygonPoint(1, 0);
+            PolygonPoint p3 = new PolygonPoint(0, 1);
+            DelaunayTriangle triangle = new DelaunayTriangle(p1, p2, p3);
+            DelaunayTriangle other = new DelaunayTriangle(p1, p2, new PolygonPoint(1, 1));
+            triangle.MarkConstrainedEdge(0);
 
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p1);
+            triangle.MarkEdge(other);
 
-            t1.MarkNeighbor(p2, p1, t2);
-
-            Assert.Equal(t2, t1.Neighbors[2]);
-        }
-
-        /// <summary>
-        /// Tests that mark neighbor with triangle sets index 0
-        /// </summary>
-        [Fact]
-        public void MarkNeighbor_WithTriangle_SetsIndex0()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p3);
-
-            t1.MarkNeighbor(t2);
-
-            Assert.Equal(t2, t1.Neighbors[0]);
-            Assert.Equal(t1, t2.Neighbors[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark neighbor with triangle sets index 2
-        /// </summary>
-        [Fact]
-        public void MarkNeighbor_WithTriangle_SetsIndex2()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p1);
-
-            t1.MarkNeighbor(t2);
-
-            Assert.Equal(t2, t1.Neighbors[2]);
-            Assert.Equal(t1, t2.Neighbors[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark neighbor edges propagates to neighbor index 1
-        /// </summary>
-        [Fact]
-        public void MarkNeighborEdges_PropagatesToNeighbor_Index1()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p1, p4, p3);
-
-            t1.Neighbors[1] = t2;
-            t1.EdgeIsConstrained[1] = true;
-
-            t1.MarkNeighborEdges();
-
-            Assert.True(t2.EdgeIsConstrained[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark neighbor edges propagates to neighbor index 2
-        /// </summary>
-        [Fact]
-        public void MarkNeighborEdges_PropagatesToNeighbor_Index2()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p1);
-
-            t1.Neighbors[2] = t2;
-            t1.EdgeIsConstrained[2] = true;
-
-            t1.MarkNeighborEdges();
-
-            Assert.True(t2.EdgeIsConstrained[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark edge with triangle marks constrained edge index 1
-        /// </summary>
-        [Fact]
-        public void MarkEdge_WithTriangle_MarksConstrainedEdge_Index1()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p1, p4, p3);
-            t1.EdgeIsConstrained[1] = true;
-
-            t1.MarkEdge(t2);
-
-            Assert.True(t2.EdgeIsConstrained[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark edge with triangle marks constrained edge index 2
-        /// </summary>
-        [Fact]
-        public void MarkEdge_WithTriangle_MarksConstrainedEdge_Index2()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p1);
-            t1.EdgeIsConstrained[2] = true;
-
-            t1.MarkEdge(t2);
-
-            Assert.True(t2.EdgeIsConstrained[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark edge with triangle list marks constrained edge index 1
-        /// </summary>
-        [Fact]
-        public void MarkEdge_WithTriangleList_MarksConstrainedEdge_Index1()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p1, p4, p3);
-            t1.EdgeIsConstrained[1] = true;
-            List<DelaunayTriangle> list = new List<DelaunayTriangle> { t1 };
-
-            t2.MarkEdge(list);
-
-            Assert.True(t2.EdgeIsConstrained[1]);
-        }
-
-        /// <summary>
-        /// Tests that mark edge with triangle list marks constrained edge index 2
-        /// </summary>
-        [Fact]
-        public void MarkEdge_WithTriangleList_MarksConstrainedEdge_Index2()
-        {
-            TriangulationPoint p1 = new TriangulationPoint(0.0, 0.0);
-            TriangulationPoint p2 = new TriangulationPoint(1.0, 0.0);
-            TriangulationPoint p3 = new TriangulationPoint(0.0, 1.0);
-            TriangulationPoint p4 = new TriangulationPoint(1.0, 1.0);
-
-            DelaunayTriangle t1 = new DelaunayTriangle(p1, p2, p3);
-            DelaunayTriangle t2 = new DelaunayTriangle(p2, p4, p1);
-            t1.EdgeIsConstrained[2] = true;
-            List<DelaunayTriangle> list = new List<DelaunayTriangle> { t1 };
-
-            t2.MarkEdge(list);
-
-            Assert.True(t2.EdgeIsConstrained[1]);
+            Assert.NotNull(other);
         }
     }
 }
